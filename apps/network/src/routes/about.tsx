@@ -187,18 +187,25 @@ function RouteComponent() {
         imageUrl={isMobile ? headerSmallImage : headerImage}
         subtitleClassName={'max-w-[400px]'}
       />
-      <MediaCard
-        title={t('about.media1title')}
-        subtext={t('about.media1subtitle')}
-        imageUrl={isMobile ? media1SmallImage : media1Image}
-        alt="Scenic mountain lake"
-        titleClassName={'lg:max-w-[700px]'}
-        subtitleClassName={'lg:max-w-[40%] max-xl:!text-lg'}
-        imageClassName=""
-        subtitleUnderImage={true}
-        className="mt-12"
-      />
-      <PageBlock className="mt-12 lg:mt-24">
+
+      <PageBlock
+        className="mt-12 lg:mt-24"
+        withXMargin={false}
+        withYPadding={false}
+      >
+        <MediaCard
+          title={t('about.media1title')}
+          subtext={t('about.media1subtitle')}
+          imageUrl={isMobile ? media1SmallImage : media1Image}
+          alt="Scenic mountain lake"
+          titleClassName={'lg:max-w-[700px]'}
+          subtitleClassName={'lg:max-w-[40%] max-xl:!text-lg'}
+          imageClassName=""
+          subtitleUnderImage={true}
+        />
+      </PageBlock>
+
+      <PageBlock className="mt-12 lg:mt-24" withYPadding={false}>
         <h2 className="display-medium mb-8 max-lg:text-center">
           {t('about.ourValues.title')}
         </h2>
@@ -213,7 +220,8 @@ function RouteComponent() {
           ))}
         </div>
       </PageBlock>
-      <PageBlock className="mt-12 lg:mt-24">
+
+      <PageBlock className="mt-12 lg:mt-24" withYPadding={false}>
         <h3 className={cn(titleCss, '!text-center')}>
           {t('about.media2title')}
         </h3>
@@ -226,7 +234,7 @@ function RouteComponent() {
         </p>
       </PageBlock>
 
-      <PageBlock className="mt-8 lg:mt-16">
+      <PageBlock className="mt-8 lg:mt-16" withYPadding={false}>
         <h2 className="text-center display-medium">{t('about.companies')}</h2>
         <div className="max-w-[900px] mt-8 sm:mt-14 flex flex-wrap justify-center items-center gap-y-4 mx-auto">
           {!isFetched && <Loader size={'s'} />}
@@ -244,7 +252,7 @@ function RouteComponent() {
         </div>
       </PageBlock>
 
-      <PageBlock className="mt-8 lg:mt-16">
+      <PageBlock className="mt-8 lg:mt-16" withYPadding={false}>
         <h2 className="text-center display-medium">
           {t('about.networkCollaborators')}
         </h2>
@@ -264,7 +272,7 @@ function RouteComponent() {
         </div>
       </PageBlock>
 
-      <PageBlock className="mt-8 lg:mt-16">
+      <PageBlock className="mt-8 lg:mt-16" withYPadding={false}>
         <h2 className="text-center display-medium">{t('about.communities')}</h2>
         <div className="max-w-[900px] mt-8 sm:mt-14 flex flex-wrap justify-center items-center gap-y-4 mx-auto">
           {!isFetched && <Loader size={'s'} />}
@@ -281,7 +289,8 @@ function RouteComponent() {
           })}
         </div>
       </PageBlock>
-      <PageBlock className="mt-8 lg:mt-16">
+
+      <PageBlock className="mt-8 lg:mt-16" withYPadding={false}>
         <h2 className="text-center display-medium">{t('about.professors')}</h2>
         <div className="max-w-[900px] mt-8 sm:mt-14 flex flex-wrap justify-center items-center gap-y-4 mx-auto">
           {!isProfessorsFetched && <Loader size={'s'} />}
@@ -303,7 +312,8 @@ function RouteComponent() {
             : null}
         </div>
       </PageBlock>
-      <PageBlock className="mt-8 lg:mt-16">
+
+      <PageBlock className="mt-8 lg:mt-16" withYPadding={false}>
         <h2 className="text-center display-medium">
           {t('about.contributors')}
         </h2>

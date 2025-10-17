@@ -149,7 +149,6 @@ function RouteComponent() {
           imageUrl={isMobile ? media3MobileImage : media3Image}
           alt="Scenic mountain lake"
           subtitleClassName={'lg:max-w-[380px] max-xl:!text-lg text-gray-300'}
-          imageClassName=""
           subtitleUnderImage={true}
           BackgroundColor="border-dark"
           className="mt-12"
@@ -286,7 +285,7 @@ function RouteComponent() {
           titleClassName="text-orange-500"
         />
 
-        <div className="max-w-[1320px] mx-auto mt-10 lg:mt-20 border-[1px] border-gray-600 rounded-[68px]">
+        <div className="max-w-[1320px] mx-auto mt-10 lg:mt-20 border-[1px] border-gray-600 rounded-2xl lg:rounded-[68px]">
           <MediaCard
             title={t('academy.career.title')}
             subtext={t('academy.career.subtitle')}
@@ -295,7 +294,6 @@ function RouteComponent() {
             className="!px-0"
             titleClassName={'lg:max-w-[53%]'}
             subtitleClassName={'lg:max-w-[52%] max-xl:!text-lg text-gray-300'}
-            imageClassName="max-md:-mt-[14px] max-lg:-mt-28 rounded-[68px]"
             subtitleUnderImage={true}
             orientation="left"
             BottomElement={
@@ -353,7 +351,7 @@ function RouteComponent() {
           </PageBlock>
         </div>
 
-        <div className="mt-30 pb-10 max-w-[1320px] mx-auto border-[1px] border-gray-600 rounded-[68px]">
+        <div className="mt-30 pb-10 max-w-[1320px] mx-auto border-[1px] border-gray-600 rounded-2xl lg:rounded-[68px]">
           <PageBlock withXPadding={false} withYPadding={false}>
             <MediaCard
               title={t('academy.companies.title')}
@@ -365,7 +363,6 @@ function RouteComponent() {
               subtitleClassName={
                 'lg:max-w-[420px] max-xl:!text-lg text-gray-300'
               }
-              imageClassName="max-md:-mt-38 max-lg:-mt-28"
               subtitleUnderImage={true}
               orientation="right"
               BottomElement={
@@ -413,7 +410,7 @@ function RouteComponent() {
           subtitleClassName={
             'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
           }
-          imageClassName="lg:max-w-[40%]"
+          imageClassName="max-lg:px-2 lg:max-w-[40%] max-lg:relative"
           className="mt-10 lg:mt-20 pb-12 pt-10"
           orientation="left"
           BackgroundColor="transparent"
@@ -453,7 +450,7 @@ function RouteComponent() {
           subtitleClassName={
             'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
           }
-          imageClassName="lg:max-w-[40%]"
+          imageClassName="max-lg:px-2 lg:max-w-[40%] max-lg:relative"
           className="mt-12 pb-12 pt-10"
           orientation="right"
           BackgroundColor="transparent"
@@ -497,7 +494,7 @@ function RouteComponent() {
           subtitleClassName={
             'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
           }
-          imageClassName="lg:max-w-[40%]"
+          imageClassName="max-lg:px-2 lg:max-w-[40%] max-lg:relative"
           className="mt-12 pb-12 pt-10"
           orientation="left"
           BackgroundColor="transparent"

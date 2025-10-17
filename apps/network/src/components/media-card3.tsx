@@ -9,6 +9,8 @@ interface MediaCard3Props {
   imageUrl: string;
   titleClassName?: string;
   subtitleUnderImage?: boolean;
+  bottomElement?: React.ReactNode;
+  orientation?: 'left' | 'right';
 }
 
 export default function MediaCard3({
@@ -18,17 +20,28 @@ export default function MediaCard3({
   imageUrl,
   titleClassName = 'max-w-[700px]',
   subtitleUnderImage = false,
+  bottomElement,
+  orientation = 'left',
 }: MediaCard3Props) {
   return (
-    <div className={cn('relative flex justify-center mx-auto w-full')}>
-      <div className="w-full">
-        <div
-          className={cn(
-            'mx-auto absolute z-10 inset-0 flex flex-col',
-            'gap-8 xl:gap-16 tracking-[-0.4px]',
-            'pt-8 text-left',
-          )}
-        >
+    <div className={cn('relative flex justify-center w-full')}>
+      <img
+        src={imageUrl}
+        alt="Hero background"
+        className="absolute object-cover w-full"
+      />
+      <div
+        className={cn(
+          'flex flex-col w-full max-w-[2000px] mx-4 lg:mx-10',
+          orientation === 'left'
+            ? 'items-start  text-left'
+            : 'items-end  text-end',
+          'z-10 inset-0',
+          'gap-8 xl:gap-20 tracking-[-0.4px]',
+          'pt-8',
+        )}
+      >
+        <div className="flex flex-col gap-8 xl:gap-20">
           <h1
             className={cn(
               'text-5xl lg:text-6xl font-semibold z-20',
@@ -46,15 +59,11 @@ export default function MediaCard3({
               {subtitle}
             </p>
           )}
-          <NetworkButton variant={'secondary'}>{buttonText}</NetworkButton>
         </div>
-        <div className="absolute inset-0 bg w-full h-full bg-network-hero" />
-        <img
-          src={imageUrl}
-          alt="Hero background"
-          className="w-full  object-cover"
-        />
+        <NetworkButton variant={'secondary'}>{buttonText}</NetworkButton>
+        {bottomElement ? bottomElement : null}
       </div>
+      {/* <div className="absolute inset-0 bg w-full h-full bg-network-hero" /> */}
     </div>
   );
 }

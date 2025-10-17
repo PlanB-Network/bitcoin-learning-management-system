@@ -3,6 +3,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import headerImage from '#src/assets/news/header.png';
 import headerSmallImage from '#src/assets/news/header-small.png';
 import { Hero } from '#src/components/hero.tsx';
+import PageBlock from '#src/components/page-block.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { BlogList } from './-components/blog-list.tsx';
 
@@ -28,7 +29,10 @@ function BlogsNews() {
         titleClassName={'lg:max-w-[60%]'}
         subtitleClassName={'max-w-[90%] lg:max-w-[380px]'}
       />
-      <BlogList />
+
+      <PageBlock withYPadding={false}>
+        <BlogList />
+      </PageBlock>
     </>
   );
 }
