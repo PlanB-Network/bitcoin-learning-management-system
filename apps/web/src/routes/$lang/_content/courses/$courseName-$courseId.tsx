@@ -247,8 +247,8 @@ function CourseDetails() {
               )}
               hideWhenError={true}
               alt={course.name}
-              className="max-md:hidden mr-9"
-              breakpoints={{ default: 400 }}
+              className="max-md:hidden mr-9 max-w-[215px] w-full"
+              breakpoints={{ default: 450 }}
             />
           ) : null}
         </div>
@@ -293,8 +293,8 @@ function CourseDetails() {
             course.lastCommit,
           )}
           alt={course.name}
-          className="rounded-[20px] w-full lg:max-w-[550px] shrink-1"
-          breakpoints={{ default: 640, lg: 800 }}
+          className="rounded-[20px] w-full lg:max-w-[456px] shrink-1 object-cover [overflow-clip-margin:_unset] object-center"
+          breakpoints={{ default: 800 }}
         />
 
         <div className="w-full">
