@@ -21,8 +21,24 @@ export const MobileMenu = ({
   const lastScrollY = useRef(0);
 
   useEffect(() => {
-    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'auto';
+    const html = document.documentElement;
+    const body = document.body;
 
+    if (isMobileMenuOpen) {
+      html.style.overflow = 'hidden';
+      body.style.overflow = 'hidden';
+    } else {
+      html.style.overflow = '';
+      body.style.overflow = '';
+    }
+
+    return () => {
+      html.style.overflow = '';
+      body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Element | null;
       if (!mobileMenuRef.current || !isMobileMenuOpen) return;
@@ -94,7 +110,11 @@ export const MobileMenu = ({
       <nav
         className={cn(
           'flex flex-col fixed top-0 right-0 items-center w-full max-w-[327px] h-dvh duration-300 overflow-scroll no-scrollbar lg:hidden bg-header p-5 pt-3 z-20',
-          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full',
+          isMenuVisible
+            ? isMobileMenuOpen
+              ? 'translate-x-0'
+              : 'translate-x-full'
+            : 'hidden',
         )}
         ref={mobileMenuRef}
       >
