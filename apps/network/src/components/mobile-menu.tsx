@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbMenu2, TbX } from 'react-icons/tb';
-import Logo from '#src/assets/logo.png?no-inline';
+import Logo from '#src/assets/logo.svg?no-inline';
 
 export interface MobileMenuProps {
   isMobileMenuOpen: boolean;

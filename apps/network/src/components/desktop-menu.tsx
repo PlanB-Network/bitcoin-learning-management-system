@@ -2,7 +2,7 @@ import { cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Logo from '#src/assets/logo.png?no-inline';
+import Logo from '#src/assets/logo.svg?no-inline';
 
 const activeLinkProps = { className: 'text-orange-500' };
 const linkClassName = 'hover:font-bold';
@@ -44,7 +44,7 @@ export default function DesktopMenu() {
     >
       <div className="max-w-[1440px] flex flex-row justify-between gap-2 mx-auto">
         <Link to="/">
-          <img className="" src={Logo} alt="" loading="lazy" />
+          <img className="h-8 w-auto" src={Logo} alt="" loading="lazy" />
         </Link>
         <div className="flex flex-row gap-16">
           <Link
