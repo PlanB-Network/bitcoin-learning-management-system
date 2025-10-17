@@ -454,7 +454,7 @@ export function ListElement2({
   leftText,
   children,
 }: {
-  icon: IconType;
+  icon?: IconType;
   leftText: string;
   children: React.ReactNode;
 }) {
@@ -462,7 +462,7 @@ export function ListElement2({
   return (
     <article className="flex max-md:flex-wrap items-center justify-between gap-2 md:gap-4 py-1 md:py-2 border-b border-neutral-50 last:border-b-0">
       <div className="flex flex-row gap-2 items-center text-newGray-1">
-        <Icon className="size-6" />
+        {Icon && <Icon className="size-6" />}
         <span className="body-large">{leftText}</span>
       </div>
       <p className="body-large text-newBlack-3 text-right">{children}</p>

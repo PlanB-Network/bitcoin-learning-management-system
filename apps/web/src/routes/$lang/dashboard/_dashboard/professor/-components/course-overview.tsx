@@ -56,7 +56,7 @@ const CourseStatusBanner = ({ course }: { course: CourseResponse }) => {
   if (course.startDate && course.startDate > now) {
     return (
       <Banner
-        variant="info"
+        variant="inprogress"
         icon={<SandClockIcon className="size-9 fill-maroon-6" />}
       >
         <BannerTitle>

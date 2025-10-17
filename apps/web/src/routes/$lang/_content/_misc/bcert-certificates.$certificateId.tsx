@@ -99,7 +99,10 @@ function Certificate() {
         <p className="md:desktop-h8 body-16px  mt-4 lg:mt-8">
           {t('bCert.bCertDescription')}
         </p>
-        <Link to="/b-cert" className="flex justify-center mt-4 md:mt-8">
+        <Link
+          to="/certifications/b-cert"
+          className="flex justify-center mt-4 md:mt-8"
+        >
           <ButtonWithArrow variant="primary" size={isScreenMd ? 'l' : 'm'}>
             {t('courses.exam.buttonTextBCert')}
           </ButtonWithArrow>

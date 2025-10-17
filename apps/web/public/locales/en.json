@@ -1191,12 +1191,22 @@
     "courses": "Courses",
     "credentials": {
       "bCert": "₿-CERT",
+      "bCertResults": {
+        "score020": "You’ve embarked on your journey! Every expert once started from here",
+        "score100": "Perfect score! Are you Satoshi, or just brilliant?",
+        "score2140": "You’ve got the basics! Keep going, you’re improving fast!",
+        "score4160": "Solid base! You are ready for advanced classes",
+        "score6180": "You’re doing great! Keep refining your skills and mastering Bitcoin",
+        "score8199": "Great grasp! You handle complex Bitcoin topics with ease"
+      },
       "bCertSubtitle": "Here you can find the details concerning your bookings and grades of your past and future ₿ Certificates. The ₿ Certificate is a table exam organised by Plan ₿ Network to assert your level in Bitcoin and its related topics.",
       "beingGraded": "Your exam is being graded. The results should be available in 1 or 2 weeks.",
+      "beingTimestamped": "Your certificate is being timestamped. It should be available in the next 24 hours.",
       "completeACourse": "Complete your first course to receive a diploma ",
       "completionDiplomas": "Completion diplomas",
       "courseDiplomas": "Course diplomas",
       "courseDiplomasSubtitle": "Here you can find the details concerning all the exams you’ve taken after completing a course on the platform.",
+      "detailedScore": "Detailed score",
       "downloadTicket": "Download ticket",
       "exploreBCert": "Explore ₿-CERT",
       "exploreCourses": "Explore courses",
@@ -1473,6 +1483,7 @@
       "numberOfSpots": "Number of spots",
       "onlineAndInPerson": "Online and in-person",
       "secureYourSpot": "Secure your spot",
+      "sessionBooked": "Session booked",
       "whatsPlanned": "What's planned"
     },
     "main": {
@@ -2093,6 +2104,7 @@
     "account": "Account",
     "action": "Action",
     "actions": "Actions",
+    "address": "Address",
     "admin": "Admin",
     "admins": "Admins",
     "advanced": "Advanced",
@@ -2254,6 +2266,7 @@
     "security": "Security",
     "seeAll": "See all",
     "selectedAmount": "{{amount}} selected",
+    "session": "Session",
     "settings": "Settings",
     "share": "Share",
     "skip": "Skip",

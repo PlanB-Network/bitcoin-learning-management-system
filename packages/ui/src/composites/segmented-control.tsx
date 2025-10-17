@@ -65,7 +65,7 @@ function SegmentedControl({
       data-variant={variant}
       data-size={size}
       className={cn(
-        'bg-[#f0f0f0] py-1 group/toggle-group flex flex-wrap w-fit items-center rounded-xl',
+        'bg-newGray-6 py-1 group/toggle-group flex flex-wrap w-fit items-center rounded-xl',
         className,
       )}
       {...props}

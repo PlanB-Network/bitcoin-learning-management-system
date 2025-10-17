@@ -31,15 +31,8 @@ export const CourseDiplomas = () => {
       {!isFetched && isLoggedIn && <Loader size={'s'} />}
       {isFetched && examResults && examResults.length > 0 && (
         <>
-          <h4 className="text-newBlack-1 title-large-sb-24px">
-            {t('dashboard.credentials.courseDiplomas')}
-          </h4>
-          <p className="text-dashboardSectionText body-16px mt-4">
-            {t('dashboard.credentials.courseDiplomasSubtitle')}
-          </p>
-
           {/* Desktop */}
-          <table className="mt-10 max-md:hidden overflow table-auto w-full">
+          <table className="max-md:hidden overflow table-auto w-full">
             <TableHead />
             <tbody>
               {examResults.map((exam, index) => {

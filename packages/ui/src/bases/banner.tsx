@@ -3,14 +3,15 @@ import * as React from 'react';
 import type { IconType } from 'react-icons/lib';
 import { cn } from '../lib/utils.ts';
 
-const bannerVariants = cva('relative w-full rounded-lg border p-6', {
+const bannerVariants = cva('relative w-full rounded-lg border p-3 md:p-6', {
   defaultVariants: {
     variant: 'success',
   },
   variants: {
     variant: {
       success: 'bg-green-50 border-green-100 text-green-700',
-      info: 'bg-maroon-1 border-maroon-2 text-maroon-7',
+      info: 'bg-blue-50 border-blue-100 text-blue-600',
+      inprogress: 'bg-maroon-1 border-maroon-2 text-maroon-7',
     },
   },
 });
