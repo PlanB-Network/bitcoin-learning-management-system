@@ -70,7 +70,6 @@ services:
       - traefik.http.routers.university-cdn-${ENV}.tls=true
       - traefik.http.routers.university-cdn-${ENV}.middlewares=university-cdn-${ENV}-stripprefix,university-cdn-${ENV}-compress
       - traefik.http.middlewares.university-cdn-${ENV}-compress.compress=true
-      - traefik.http.middlewares.university-cdn-${ENV}-stripprefix.stripprefix.prefixes=/cdn
 
   web:
     <<: *defaults
