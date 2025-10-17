@@ -14,10 +14,10 @@ export const ContactUs = ({ text, email, className = '' }: ContactUsProps) => {
   const { t } = useTranslation();
 
   return (
-    <PageBlock>
+    <PageBlock withYPadding={false}>
       <div
         className={cn(
-          'flex flex-col lg:flex-row px-24 py-4 lg:py-14 justify-center items-center bg-[#070300] border-[1px] border-orange-900 rounded-[100px]',
+          'mt-15 flex flex-col lg:flex-row px-24 py-4 lg:py-14 justify-center items-center bg-[#070300] border-[1px] border-orange-900 rounded-[100px]',
           className,
         )}
       >

@@ -38,7 +38,6 @@ function IndexComponent() {
           {t('home.subtitle')}
         </p>
       </PageBlock>
-
       <PageBlock>
         <video
           className="relative w-full max-h-full"
@@ -49,15 +48,13 @@ function IndexComponent() {
           aria-label="Bitcoin network animation"
         />
       </PageBlock>
-
-      <PageBlock className="!max-w-[2000px]">
+      <PageBlock className="!max-w-[9000px] w-full">
         <MediaCard3
           title={t('home.media1.title')}
           subtitle={t('home.media1.subtitle')}
           buttonText={t('home.media1.button')}
           imageUrl={media1Img}
         />
-
         <div className={cn(cardsDivClassName, '-translate-y-45')}>
           <NetworkCard2
             icon={bitcoinIcon}
@@ -68,6 +65,7 @@ function IndexComponent() {
             icon={TbSchool}
             text={t('home.media1.card2Title')}
             subtext={t('home.media1.card2Subtitle')}
+            className="stroke-1"
           />
           <NetworkCard2
             icon={TbDatabaseSearch}
@@ -91,7 +89,6 @@ function IndexComponent() {
           />
         </div>
       </PageBlock>
-
       <PageBlock className="!max-w-[2000px]">
         <MediaCard3
           title={t('home.media2.title')}
@@ -118,7 +115,6 @@ function IndexComponent() {
           />
         </div>
       </PageBlock>
-
       <PageBlock className="!max-w-[2000px]">
         <MediaCard3
           title={t('home.media3.title')}

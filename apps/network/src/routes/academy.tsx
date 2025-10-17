@@ -3,7 +3,7 @@ import { cn } from '@blms/ui';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { Trans, useTranslation } from 'react-i18next';
 import headerImage from '#src/assets/academy/header.png';
-import headerSmallImage from '#src/assets/academy/header.png';
+import headerSmallImage from '#src/assets/academy/header-small.png';
 import media1Image from '#src/assets/academy/media-1.png';
 import media2Image from '#src/assets/academy/media-2.png';
 import media2MobileImage from '#src/assets/academy/media-2-mobile.png';
@@ -95,12 +95,14 @@ function RouteComponent() {
         </NetworkButton>
       </PageBlock>
 
-      <div className="py-30 rounded-tl-[200px] rounded-br-[200px] bg-academy-section1">
+      <PageBlock
+        withXMargin={false}
+        className="rounded-tl-[88px] rounded-br-[88px] lg:rounded-tl-[200px] lg:rounded-br-[200px] bg-academy-section1"
+      >
         <BlockTitle
           text={t('academy.blockTitle1Text')}
           subtext={t('academy.blockTitle1Subtext')}
         />
-
         <MediaCard
           title={t('academy.learnOnline.title')}
           subtext={t('academy.learnOnline.subtitle')}
@@ -113,7 +115,6 @@ function RouteComponent() {
           imageClassName=""
           subtitleUnderImage={true}
           BackgroundColor="border-dark"
-          className="mt-12"
           orientation="left"
           BottomElement={
             <>
@@ -143,7 +144,6 @@ function RouteComponent() {
             </>
           }
         />
-
         <MediaCard
           title={t('academy.learnLive.title')}
           subtext={t('academy.learnLive.subtitle')}
@@ -187,8 +187,7 @@ function RouteComponent() {
             </>
           }
         />
-
-        <PageBlock className="mt-14">
+        <PageBlock className="mt-40" withYPadding={false}>
           <div className="flex flex-col lg:flex-row max-lg:gap-12">
             <div className="lg:w-[45%] flex flex-col gap-14 max-lg:text-center">
               <p className="lg:max-w-[350px] title-extra-large">
@@ -276,130 +275,135 @@ function RouteComponent() {
             </div>
           </div>
         </PageBlock>
+      </PageBlock>
+
+      <div className="px-4 py-0 lg:py-16 rounded-tl-[88px] rounded-br-[88px] lg:rounded-tl-[200px] lg:rounded-br-[200px]">
+        <BlockTitle
+          text={t('academy.blockTitle2Text')}
+          subtext={t('academy.blockTitle2Subtext')}
+          titleClassName="text-orange-500"
+        />
+
+        <div className="max-w-[1320px] mx-auto border-[1px] border-gray-600 rounded-[68px]">
+          <MediaCard
+            title={t('academy.career.title')}
+            subtext={t('academy.career.subtitle')}
+            imageUrl={isMobile ? media4MobileImage : media4Image}
+            alt="Scenic mountain lake"
+            titleClassName={'lg:max-w-[53%]'}
+            subtitleClassName={'lg:max-w-[52%] max-xl:!text-lg text-gray-300'}
+            imageClassName="max-md:-mt-38 max-lg:-mt-28"
+            subtitleUnderImage={true}
+            orientation="left"
+            BottomElement={
+              <div className="max-lg:self-center flex flex-col gap-1 xl:gap-4">
+                <NetworkListItem
+                  img={bookOpenIcon}
+                  text={t('academy.career.list1')}
+                />
+                <NetworkListItem
+                  img={personIcon}
+                  text={t('academy.career.list2')}
+                />
+                <NetworkListItem
+                  img={barChartIcon}
+                  text={t('academy.career.list3')}
+                />
+              </div>
+            }
+          />
+
+          <PageBlock
+            className="rounded-[68px] pb-5 lg:pb-10"
+            withYPadding={false}
+          >
+            <p className="max-lg:mt-10 title-extra-large uppercase ">
+              {t('academy.career.title2')}
+            </p>
+            <div className="flex flex-row flex-wrap justify-center gap-4 mt-8">
+              <NetworkCard
+                img={replayIcon}
+                text={t('academy.career.item1Title')}
+                subtext={t('academy.career.item1Subtitle')}
+              />
+              <NetworkCard
+                img={luggageIcon}
+                text={t('academy.career.item2Title')}
+                subtext={t('academy.career.item2Subtitle')}
+              />
+              <NetworkCard
+                img={certificationIcon}
+                text={t('academy.career.item3Title')}
+                subtext={t('academy.career.item3Subtitle')}
+              />
+            </div>
+            <p className="title-medium lg:title-extra-large my-10 lg:my-5 uppercase">
+              {t('academy.career.title3')}
+            </p>
+            <div className="flex flex-col lg:flex-row max-lg:items-center justify-center gap-4">
+              <NetworkButton variant={'secondary'}>
+                {t('academy.career.buttonBusiness')}
+              </NetworkButton>
+              <NetworkButton variant={'secondary'}>
+                {t('academy.career.buttonDeveloper')}
+              </NetworkButton>
+            </div>
+          </PageBlock>
+        </div>
+
+        <div className="mt-30 pb-10 max-w-[1320px] mx-auto border-[1px] border-gray-600 rounded-[68px]">
+          <PageBlock withXPadding={false} withYPadding={false}>
+            <MediaCard
+              title={t('academy.companies.title')}
+              subtext={t('academy.companies.subtitle')}
+              imageUrl={isMobile ? media5MobileImage : media5Image}
+              alt="Scenic mountain lake"
+              titleClassName={'max-w-[500px]'}
+              subtitleClassName={
+                'lg:max-w-[420px] max-xl:!text-lg text-gray-300'
+              }
+              imageClassName="max-md:-mt-38 max-lg:-mt-28"
+              subtitleUnderImage={true}
+              orientation="right"
+              BottomElement={
+                <div className="flex flex-col gap-1 xl:gap-2">
+                  <NetworkButton className="max-lg:self-center">
+                    {t('academy.companies.button')}
+                  </NetworkButton>
+                </div>
+              }
+            />
+          </PageBlock>
+
+          <div className="flex flex-row flex-wrap justify-center gap-4 mt-8">
+            <NetworkCard
+              img={replayIcon}
+              text={t('academy.companies.item1Title')}
+              subtext={t('academy.companies.item1Subtitle')}
+            />
+            <NetworkCard
+              img={luggageIcon}
+              text={t('academy.companies.item2Title')}
+              subtext={t('academy.companies.item2Subtitle')}
+            />
+            <NetworkCard
+              img={certificationIcon}
+              text={t('academy.companies.item3Title')}
+              subtext={t('academy.companies.item3Subtitle')}
+            />
+          </div>
+        </div>
       </div>
 
-      <BlockTitle
-        text={t('academy.blockTitle2Text')}
-        subtext={t('academy.blockTitle2Subtext')}
-      />
-
-      <MediaCard
-        title={t('academy.career.title')}
-        subtext={t('academy.career.subtitle')}
-        imageUrl={isMobile ? media4MobileImage : media4Image}
-        alt="Scenic mountain lake"
-        titleClassName={'lg:max-w-[53%]'}
-        subtitleClassName={'lg:max-w-[52%] max-xl:!text-lg text-gray-300'}
-        imageClassName="max-md:-mt-38 max-lg:-mt-28"
-        subtitleUnderImage={true}
-        className="mt-12"
-        orientation="left"
-        BottomElement={
-          <div className="max-lg:self-center flex flex-col gap-1 xl:gap-2">
-            <NetworkListItem
-              img={bookOpenIcon}
-              text={t('academy.career.list1')}
-            />
-            <NetworkListItem
-              img={personIcon}
-              text={t('academy.career.list2')}
-            />
-            <NetworkListItem
-              img={barChartIcon}
-              text={t('academy.career.list3')}
-            />
-            <NetworkListItem
-              img={bookOpen2Icon}
-              text={t('academy.career.list4')}
-            />
-          </div>
-        }
-      />
-
-      <PageBlock className="bg-network-cards-dark-bottom rounded-[68px] pb-5 lg:pb-10">
-        <p className="max-lg:mt-10 title-extra-large uppercase ">
-          {t('academy.career.title2')}
-        </p>
-        <div className="flex flex-row flex-wrap justify-center gap-4 mt-8">
-          <NetworkCard
-            img={replayIcon}
-            text={t('academy.career.item1Title')}
-            subtext={t('academy.career.item1Subtitle')}
-          />
-          <NetworkCard
-            img={luggageIcon}
-            text={t('academy.career.item2Title')}
-            subtext={t('academy.career.item2Subtitle')}
-          />
-          <NetworkCard
-            img={certificationIcon}
-            text={t('academy.career.item3Title')}
-            subtext={t('academy.career.item3Subtitle')}
-          />
-        </div>
-        <p className="title-medium lg:title-extra-large my-10 lg:my-5 uppercase">
-          {t('academy.career.title3')}
-        </p>
-        <div className="flex flex-col lg:flex-row max-lg:items-center justify-center gap-4">
-          <NetworkButton variant={'secondary'}>
-            {t('academy.career.buttonBusiness')}
-          </NetworkButton>
-          <NetworkButton variant={'secondary'}>
-            {t('academy.career.buttonDeveloper')}
-          </NetworkButton>
-        </div>
-      </PageBlock>
-
-      <MediaCard
-        title={t('academy.companies.title')}
-        subtext={t('academy.companies.subtitle')}
-        imageUrl={isMobile ? media5MobileImage : media5Image}
-        alt="Scenic mountain lake"
-        titleClassName={'max-w-[500px]'}
-        subtitleClassName={'lg:max-w-[420px] max-xl:!text-lg text-gray-300'}
-        imageClassName="max-md:-mt-38 max-lg:-mt-28"
-        subtitleUnderImage={true}
-        className="mt-12"
-        orientation="right"
-        BottomElement={
-          <div className="flex flex-col gap-1 xl:gap-2">
-            <NetworkButton className="max-lg:self-center">
-              {t('academy.companies.button')}
-            </NetworkButton>
-          </div>
-        }
-      />
-
-      <PageBlock className="bg-network-cards-dark-bottom rounded-[68px]">
-        <div className="flex flex-row flex-wrap justify-center gap-4 mt-8">
-          <NetworkCard
-            img={replayIcon}
-            text={t('academy.companies.item1Title')}
-            subtext={t('academy.companies.item1Subtitle')}
-          />
-          <NetworkCard
-            img={luggageIcon}
-            text={t('academy.companies.item2Title')}
-            subtext={t('academy.companies.item2Subtitle')}
-          />
-          <NetworkCard
-            img={certificationIcon}
-            text={t('academy.companies.item3Title')}
-            subtext={t('academy.companies.item3Subtitle')}
-          />
-        </div>
-      </PageBlock>
-
-      <div className="py-30 rounded-tl-[200px] rounded-br-[200px] bg-academy-section2">
+      <div className="px-4 py-0 lg:py-30 rounded-tl-[88px] rounded-br-[88px] lg:rounded-tl-[200px] lg:rounded-br-[200px] bg-academy-section2">
         <BlockTitle
           text={t('academy.blockTitle3Text')}
           subtext={t('academy.blockTitle3Subtext')}
         />
-
         <MediaCard
           subtext={t('academy.salvador.text')}
           imageUrl={isMobile ? media6Image : media6Image}
-          alt="Scenic mountain lake"
+          alt=""
           subtitleClassName={
             'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
           }
@@ -436,7 +440,6 @@ function RouteComponent() {
             </div>
           }
         />
-
         <MediaCard
           subtext={t('academy.taipei.text')}
           imageUrl={isMobile ? media7Image : media7Image}
@@ -461,31 +464,26 @@ function RouteComponent() {
               <NetworkListItem
                 img={barChartDarkIcon}
                 text={t('academy.taipei.list1')}
-                dark={true}
                 orientation="right"
               />
               <NetworkListItem
                 img={personDarkIcon}
                 text={t('academy.taipei.list2')}
-                dark={true}
                 orientation="right"
               />
               <NetworkListItem
                 img={bookOpenDarkIcon}
                 text={t('academy.taipei.list3')}
-                dark={true}
                 orientation="right"
               />
               <NetworkListItem
                 img={calendarDarkIcon}
                 text={t('academy.taipei.list4')}
-                dark={true}
                 orientation="right"
               />
             </div>
           }
         />
-
         <MediaCard
           subtext={t('academy.polytecnico.text')}
           imageUrl={isMobile ? media8Image : media8Image}
@@ -535,12 +533,10 @@ function RouteComponent() {
           }
         />
 
-        <PageBlock className="mt-8 lg:mt-16">
-          <ContactUs text={t('academy.contactText')} email="toto@toto.com" />
-        </PageBlock>
+        <ContactUs text={t('academy.contactText')} email="toto@toto.com" />
       </div>
 
-      <div className="py-30 rounded-tl-[200px] rounded-br-[200px] bg-black border-t-[6px] border-orange-500">
+      <div className="py-30 rounded-tl-[88px] rounded-br-[88px] lg:rounded-tl-[200px] lg:rounded-br-[200px] bg-black border-t-[6px] border-orange-500">
         <ToolsForCommunities />
       </div>
     </>

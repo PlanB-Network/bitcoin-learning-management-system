@@ -19,11 +19,11 @@ export const Hero = ({
   subtitleUnderImage = false,
 }: HeroProps) => {
   return (
-    <div className={cn('relative flex justify-center mx-auto')}>
-      <div>
+    <div className={cn('relative flex justify-center mx-auto h-full w-full')}>
+      <div className="h-fit lg:h-[827px] w-full">
         <div
           className={cn(
-            'max-w-[1000px] mx-auto absolute z-10 inset-0 flex flex-col',
+            'max-w-[1000px] mx-auto lg:absolute z-10 inset-0 flex flex-col',
             'gap-8 xl:gap-16 tracking-[-0.4px]',
             'max-2xl:pl-6',
           )}
@@ -42,11 +42,11 @@ export const Hero = ({
             </p>
           )}
         </div>
-        <div className="absolute inset-0 bg w-full h-full bg-network-hero" />
+        <div className="max-lg:hidden absolute inset-0 bg w-full h-full bg-network-hero" />
         <img
           src={imageUrl}
           alt="Hero background"
-          className="mt-16 w-full h-[600px] lg:h-[827px] object-cover"
+          className="lg:h-full lg:w-full object-cover"
         />
       </div>
     </div>

@@ -18,7 +18,7 @@ const buttonVariants = cva(
         primary:
           'bg-primary text-black shadow-button disabled:!bg-darkOrange-1 disabled:!text-darkOrange-3',
         secondary: 'bg-white  text-headerDark',
-        tertiary: 'bg-black !text-white border-2 border-orange-500',
+        tertiary: 'bg-black !text-white border-[1px] border-orange-500',
         tag: 'bg-brown-800 !text-brown-500 ',
       },
     },

@@ -42,7 +42,7 @@ function RouteComponent() {
         subtitleClassName={'max-w-[85%] lg:max-w-[450px]'}
       />
       <PageBlock className="bg-gradient-network-lr-dark mt-8 p-10 rounded-[60px]">
-        <h1 className="title-extra-large text-6xl">
+        <h1 className="title-large lg:text-6xl">
           {t('hubs.co-working.title')}
         </h1>
         <p className="mt-8 max-w-[530px] text-gray-200">
@@ -68,9 +68,11 @@ function RouteComponent() {
       </PageBlock>
 
       <div
-        className={
-          'relative py-20 rounded-tl-[200px] rounded-br-[200px] bg-lugano-section mt-40'
-        }
+        className={cn(
+          'relative py-0 lg:py-20 bg-lugano-section mt-40',
+          'rounded-tl-[88px] rounded-br-[88px]',
+          'lg:rounded-tl-[200px] lg:rounded-br-[200px]',
+        )}
       >
         <img
           src={luganoBgImage}
@@ -78,15 +80,14 @@ function RouteComponent() {
           className={cn(
             'border-4 border-newBlue-1 absolute inset-0',
             'h-full w-full opacity-23 object-cover z-0',
-            'rounded-tl-[200px] rounded-br-[200px]',
+            'rounded-tl-[88px] rounded-br-[88px]',
+            'lg:rounded-tl-[200px] lg:rounded-br-[200px]',
           )}
         />
-
         <BlockTitle
           text={t('hubs.blockTitle1Text')}
           subtext={t('hubs.blockTitle1Subtext')}
         />
-
         <MediaCard2
           title={t('hubs.lugano.title')}
           subtext={t('hubs.lugano.subtitle')}

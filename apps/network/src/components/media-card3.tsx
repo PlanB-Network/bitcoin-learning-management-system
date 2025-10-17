@@ -20,8 +20,8 @@ export default function MediaCard3({
   subtitleUnderImage = false,
 }: MediaCard3Props) {
   return (
-    <div className={cn('relative flex justify-center mx-auto')}>
-      <div>
+    <div className={cn('relative flex justify-center mx-auto w-full')}>
+      <div className="w-full">
         <div
           className={cn(
             'mx-auto absolute z-10 inset-0 flex flex-col',
@@ -52,7 +52,7 @@ export default function MediaCard3({
         <img
           src={imageUrl}
           alt="Hero background"
-          className="w-full h-[700px] object-cover"
+          className="w-full  object-cover"
         />
       </div>
     </div>

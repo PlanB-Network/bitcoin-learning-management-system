@@ -18,7 +18,7 @@ export default function NetworkCard2({
   return (
     <div
       className={cn(
-        'flex flex-col gap-2 lg:gap-4 w-44 md:w-52 lg:w-[380px] border-[1px]',
+        'flex flex-col gap-2 lg:gap-4 w-40 md:w-52 lg:w-[380px] border-[1px]',
         'border-orange-600 bg-[#00000088] rounded-3xl p-4 md:p-8 text-left',
         className,
       )}
