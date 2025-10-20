@@ -310,6 +310,10 @@ function RouteComponent() {
                   icon={barChartIcon}
                   text={t('academy.career.list3')}
                 />
+                <NetworkListItem
+                  icon={ticketIcon}
+                  text={t('academy.career.list4')}
+                />
               </div>
             }
           />

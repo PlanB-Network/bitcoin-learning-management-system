@@ -16,8 +16,6 @@ export default function NetworkListItem({
 }: NetworkListItemProps) {
   const Icon = icon;
 
-  console.log(typeof icon);
-
   return (
     <div
       className={cn(

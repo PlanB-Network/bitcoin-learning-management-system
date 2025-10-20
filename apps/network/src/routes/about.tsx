@@ -92,7 +92,7 @@ function RouteComponent() {
         .sort((a, b) => a.name.localeCompare(b.name))
     : [];
 
-  const partnerCompaniesIds = [
+  const partnerIds = [
     '48ba05d4-d553-4402-9d56-6dab2d7e45dd',
     '28dd0137-b167-4e74-bc43-a5df60b93c00',
     '26d603ee-4b5a-4695-86c1-fe7658294413',
@@ -116,29 +116,12 @@ function RouteComponent() {
     'f5be605f-4422-451a-a5da-d938a56a16d6',
   ];
 
-  const filteredCompanies = projects
+  const filteredPartners = projects
     ? projects
-        .filter((el) => partnerCompaniesIds.includes(el.id))
+        .filter((el) => partnerIds.includes(el.id))
 
         .sort((a, b) => {
-          return (
-            partnerCompaniesIds.indexOf(a.id) -
-            partnerCompaniesIds.indexOf(b.id)
-          );
-        })
-    : [];
-
-  const networkCollaborators = ['66809911-775f-44ed-a5bb-dedb2649d7d7'];
-
-  const filteredNetworkCollaborators = projects
-    ? projects
-        .filter((el) => networkCollaborators.includes(el.id))
-
-        .sort((a, b) => {
-          return (
-            networkCollaborators.indexOf(a.id) -
-            networkCollaborators.indexOf(b.id)
-          );
+          return partnerIds.indexOf(a.id) - partnerIds.indexOf(b.id);
         })
     : [];
 
@@ -235,35 +218,15 @@ function RouteComponent() {
       </PageBlock>
 
       <PageBlock className="mt-8 lg:mt-16" withYPadding={false}>
-        <h2 className="text-center display-medium">{t('about.companies')}</h2>
+        <h2 className="text-center display-medium">{t('about.partners')}</h2>
         <div className="max-w-[900px] mt-8 sm:mt-14 flex flex-wrap justify-center items-center gap-y-4 mx-auto">
           {!isFetched && <Loader size={'s'} />}
-          {filteredCompanies.map((company) => {
+          {filteredPartners.map((partner) => {
             return (
-              <div key={company.id} className="flex flex-col items-center">
+              <div key={partner.id} className="flex flex-col items-center">
                 <ProjectCard
-                  name={company.name}
-                  logo={resourceImgUrl(company, 'logo.webp')}
-                  cardWidth=""
-                />
-              </div>
-            );
-          })}
-        </div>
-      </PageBlock>
-
-      <PageBlock className="mt-8 lg:mt-16" withYPadding={false}>
-        <h2 className="text-center display-medium">
-          {t('about.networkCollaborators')}
-        </h2>
-        <div className="max-w-[900px] mt-8 sm:mt-14 flex flex-wrap justify-center items-center gap-y-4 mx-auto">
-          {!isFetched && <Loader size={'s'} />}
-          {filteredNetworkCollaborators.map((company) => {
-            return (
-              <div key={company.id} className="flex flex-col items-center">
-                <ProjectCard
-                  name={company.name}
-                  logo={resourceImgUrl(company, 'logo.webp')}
+                  name={partner.name}
+                  logo={resourceImgUrl(partner, 'logo.webp')}
                   cardWidth=""
                 />
               </div>

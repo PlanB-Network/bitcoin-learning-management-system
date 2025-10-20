@@ -55,6 +55,7 @@ function IndexComponent() {
           title={t('home.media1.title')}
           subtitle={t('home.media1.subtitle')}
           buttonText={t('home.media1.button')}
+          buttonLink="/academy"
           imageUrl={media1Img}
           bottomElement={
             <div className={cn(cardsDivClassName)}>
@@ -98,6 +99,7 @@ function IndexComponent() {
           title={t('home.media2.title')}
           subtitle={t('home.media2.subtitle')}
           buttonText={t('home.media2.button')}
+          buttonLink="/hubs"
           imageUrl={media2Img}
           orientation="left"
           bottomElement={
@@ -127,6 +129,7 @@ function IndexComponent() {
           title={t('home.media3.title')}
           subtitle={t('home.media3.subtitle')}
           buttonText={t('home.media3.button')}
+          buttonLink="/funds"
           imageUrl={media3Img}
           bottomElement={
             <div className={cn(cardsDivClassName)}>

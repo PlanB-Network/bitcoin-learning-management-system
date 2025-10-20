@@ -1,4 +1,5 @@
 import { cn } from '@blms/ui';
+import { Link } from '@tanstack/react-router';
 import type React from 'react';
 import { NetworkButton } from './network-button.tsx';
 
@@ -6,6 +7,7 @@ interface MediaCard3Props {
   title: React.ReactNode;
   subtitle: string;
   buttonText: string;
+  buttonLink: string;
   imageUrl: string;
   titleClassName?: string;
   subtitleUnderImage?: boolean;
@@ -17,6 +19,7 @@ export default function MediaCard3({
   title,
   subtitle,
   buttonText,
+  buttonLink,
   imageUrl,
   titleClassName = 'max-w-[700px]',
   subtitleUnderImage = false,
@@ -60,7 +63,9 @@ export default function MediaCard3({
             </p>
           )}
         </div>
-        <NetworkButton variant={'secondary'}>{buttonText}</NetworkButton>
+        <Link to={buttonLink}>
+          <NetworkButton variant={'secondary'}>{buttonText}</NetworkButton>
+        </Link>
         {bottomElement ? bottomElement : null}
       </div>
       {/* <div className="absolute inset-0 bg w-full h-full bg-network-hero" /> */}
