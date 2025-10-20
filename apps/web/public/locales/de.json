@@ -1,7 +1,7 @@
 {
   "about": {
     "activeContributors": "Aktive Teilnehmer",
-    "commitmentContent": "Wir haben die folgenden Verpflichtungen gegenüber der Bitcoin-Gemeinschaft: \n - Open-Source bleiben \n - Hochwertige Bildungsinhalte bereitstellen \n - Wir übersetzen unsere Inhalte in so viele Sprachen wie möglich \n - Unterstützung von Bitcoin-Unternehmern auf ihrem Weg",
+    "commitmentContent": "Wir haben folgende Verpflichtungen gegenüber der Bitcoin-Gemeinschaft: \n - Wir bleiben Open-Source \n - Wir stellen hochwertige Bildungsinhalte bereit \n - Wir übersetzen unsere Inhalte in so viele Sprachen wie möglich \n - Wir unterstützen Bitcoin-Unternehmer auf ihrem Weg",
     "commitmentTitle": "Unsere Engagements",
     "coreTeamAjelexRole": "Knoten-Koordinator",
     "coreTeamAsioRole": "Bildungskoordinator",
@@ -10,17 +10,18 @@
     "coreTeamRogzyRole": "Produktmanager & Mitgründer",
     "coreTeamTitle": "Das Kernteam",
     "corporateContact": "Kontaktdaten:",
-    "corporateContent": "PlanB Network ist das gemeinsame Projekt von drei Entitäten, die sich mit der Entwicklung von Bitcoin beschäftigen. In dem Bemühen, die Bitcoin-Bildungsebene zu vergrößern,  beschlossen sie, zusammenzuarbeiten und PlanB Network zu gründen. Seitdem haben viele andere Entitäten entschlossen, ihren Beitrag zu leisten und ihre Kräfte zu bündeln, um unser Ziel, Bitcoin-Bildung in die Welt zu bringen. Aus diesem Grund gebührt ihnen ein großes Dankeschön.",
+    "corporateContent": "PlanB Network ist das gemeinsame Projekt von drei Personen, die sich mit der Entwicklung von Bitcoin beschäftigen. Um das Wissen über Bitcoin weiter zu verbreiten  beschlossen sie, zusammen das 'PlanB Network' zu gründen. Seitdem haben viele andere Personen ihren Beitrag geleistet, um das Bitcoin-Wissen in die Welt zu bringen. Dafür gebührt ihnen ein großes Dankeschön.",
     "corporateTitle": "Unternehmen, die hinter dem Projekt stehen",
-    "description": "Plan B Network hilft Gemeinschaften auf der ganzen Welt, sich zu organisieren, um eine bessere Bildung zu bieten. Die Plattform entwickelt die notwendigen Werkzeuge für dieses Ziel, durch die Online-Akademie, das Tutorial Portal, dem Bitcoin-Bildungstoolkit und dem Ressourcenportal.",
-    "manifesto": "Wir glauben an die dezentralisierte Zukunft, die Bitcoin uns bietet.\n\nUnsere Mission ist es, in einem Jahrzehnt eine Milliarde Menschen an Bitcoin zu bringen. Unsere Werkzeuge: Bildung und Information.\n\nWir unterstützen lokale Bitcoin Communitys, indem wir Open-Source Bildungsinhalte bereitstellen und ein Netzwerk von Bitcoin-Mentoren anbieten.\n\nUnsere Philosophie ist vom Cypherpunk Manifest inspiriert. Genau wie sie, kämpfen wir für den Schutz der Privatsphäre und verteidigen die Bildung. Wir glauben, dass Wissen das Fundament von Freiheit und Veränderung ist.\n\nWir sind Bitcoin-only.\n\nWir stehen zur individuellen Verantwortung und zur Unabhängigkeit bei, die durch den Besitz eigener Schlüssel geboten wird.\n\nWir bitten um Verifizierung und nicht um blindes Vertrauen.\n\nWir glauben, dass wir die Welt in Ordnung bringen können, wenn wir das Geld in Ordnung bringen..\n\nWir sind dezentral und Open-Source und vermeiden somit Schwachstellen (\"single point of failure\").\n\nWir ermutigen die freie Verbreitung unserer Inhalte.\n\nWir streben eine Welt an, die von unten nach oben operiert, in der der Mensch im Mittelpunkt steht.\n\nSchließe dich an unsere Mission an, die Orange-Pille in die Welt zu verteilen.\n",
+    "description": "Plan B Network hilft Gemeinschaften auf der ganzen Welt, sich zu organisieren zwecks besserer Bitcoin-Bildung. Die Plattform bietet die notwendigen Werkzeuge dafür;  die Online-Akademie, das Tutorial Portal, das Bitcoin-Bildungstoolkit und das Ressourcenportal.",
+    "manifesto": "Wir glauben an die dezentralisierte Zukunft, die Bitcoin uns bietet.\n\nUnsere Mission ist es, in einem Jahrzehnt eine Milliarde Menschen zu Bitcoin zu bringen. Unsere Werkzeuge: Bildung und Information.\n\nWir unterstützen lokale Bitcoin Communities, indem wir Open-Source Bildungsinhalte bereitstellen und ein Netzwerk von Bitcoin-Mentoren anbieten.\n\nUnsere Philosophie ist vom Cypherpunk-Manifest inspiriert. Genau wie sie, kämpfen wir für den Schutz der Privatsphäre und verteidigen die Bildung. Wir glauben, dass Wissen das Fundament von Freiheit und Veränderung ist.\n\nWir sind Bitcoin-only.\n\nWir stehen zur individuellen Verantwortung und zur Unabhängigkeit bei, die durch den Besitz eigener Schlüssel geboten wird.\n\nWir bitten um Verifizierung und nicht um blindes Vertrauen.\n\nWir glauben, dass wir die Welt in Ordnung bringen können, wenn wir das Geld in Ordnung bringen..\n\nWir sind dezentral und Open-Source und vermeiden somit Schwachstellen (\"single point of failure\").\n\nWir ermutigen die freie Verbreitung unserer Inhalte.\n\nWir streben eine Welt an, die von unten nach oben operiert, wo der Mensch im Mittelpunkt steht.\n\nSchließe dich unserer Mission an, um die orange Pille überall zu verteilen.\n",
     "missionContent1": "Unsere Mission ist es, lokale Bitcoin-Gemeinschaften durch Open-Source-Bildung und Networking zu unterstützen. Um dies zu erreichen, sammeln, organisieren und erstellen wir die notwendigen Ressourcen (Kurse, Bücher, Poster, Flyer, Videos), um die Bitcoin-Industrie voranzubringen.",
     "missionContent2": "Wir zentralisieren Wissen, um es durch ein einfaches, mehrsprachiges GitHub-Repository und eine E-Learning-Plattform besser zu verbreiten. Wir unterstützen lokale Bitcoin-Hubs in ihrer Entwicklung mit den richtigen Tools, damit ihre Talente wachsen können.",
     "missionTitle": "Unsere Mission",
-    "storyContent": "Das PlanB-Netzwerk ist eine Initiative zur Unterstützung der Bitcoin-Ausbildung weltweit. Es ist die Kreuzung verschiedener leidenschaftlicher Bitcoin-Unternehmen, die sich auf Bildung, Open-Source-Software, Peer-to-Peer-Netzwerke und das Gemeinschaftsgefühl konzentrieren. Gemeinsam haben sie beschlossen, das PlanB-Netzwerk aufzubauen und dem Bitcoin-Ökosystem die richtigen Werkzeuge zu bieten, um zu wachsen. Unsere 2023 Release Präsentation ist hier verfügbar.",
+    "storyContent": "Das PlanB-Netzwerk ist eine Initiative zur Unterstützung der Bitcoin-Ausbildung weltweit. Es ist eine Zusammenarbeit verschiedener leidenschaftlicher Bitcoin-Unternehmen, die sich auf Bildung, Open-Source-Software, Peer-to-Peer-Netzwerke und das Gemeinschaftsgefühl konzentrieren. Gemeinsam haben sie beschlossen, das PlanB-Netzwerk aufzubauen und dem Bitcoin-Ökosystem die richtigen Werkzeuge zu bieten, um zu wachsen. Unsere 2023 Release Präsentation ist hier verfügbar.",
     "storyTitle": "Unsere Geschichte",
     "subtitle": "Die Stärke von Bitcoin ist unsere Community. Lasst uns zu einem globalen Bitcoin-Netzwerk zusammenkommen.",
-    "title": "Über das planB-Netzwerk"
+    "title": "Über das planB-Netzwerk",
+    "readManifesto": "Lies unser Manifest"
   },
   "accessType": {
     "hybrid": "Persönlich & online",
@@ -117,7 +118,10 @@
     "hostSessionConditions": "So geht's:\n\n1. Lies die <0>Satzung</0> - Stelle sicher, dass deine Community die obligatorischen Hosting-Bedingungen erfüllt\n2. Planen & Festlegen – Wenn du dich qualifizierst, wähle ein Datum und bereite die Sitzung vor\n3. Veröffentliche deine Veranstaltung - Kontaktiere uns. Wir werden sie dann auf der Plan ₿ Network Plattform hinzuzufügen, damit sich Personen anmelden können",
     "myCertificates": "Meine Zertifikate",
     "noTestSessions": "Derzeit keine Test-Sitzungen verfügbar",
-    "wantHostSession": "Möchtest du eine ₿-CERT-Testsession an deinem lokalen Ort veranstalten?"
+    "wantHostSession": "Möchtest du eine ₿-CERT-Testsession an deinem lokalen Ort veranstalten?",
+    "certificates": "Zertifikate",
+    "chooseCourse": "Kurs auswählen",
+    "noDiplomasAvailable": "Noch keine Diplome verfügbar"
   },
   "bet": {
     "contributeButton": "Helfen & Beitragen",
@@ -154,7 +158,8 @@
     "noConferences": "Bisher wurden keine Konferenzen für {{year}} hinzugefügt.",
     "pageTitle": "Wiederholungen von Konferenzen",
     "planBConferences": "Plan B Konferenzen",
-    "topics": "Themen"
+    "topics": "Themen",
+    "conferencesGenesis": "Konferenzen seit dem Genesis Block"
   },
   "courses": {
     "chapter": {
@@ -1198,7 +1203,11 @@
       "exploreCourses": "Kurse erkunden",
       "getGlobalRecognition": "Erhalte weltweite Anerkennung mit einem ₿-CERT",
       "noCertificatesAvailable": "Keine Zertifikate verfügbar",
-      "noDiplomasAvailable": "Noch keine Diplome verfügbar"
+      "noDiplomasAvailable": "Noch keine Diplome verfügbar",
+      "bCertResults": {
+        "score020": "Du hast deine Reise begonnen! Jeder Experte hat einmal von vorne angefangen",
+        "score100": "Die volle Punktzahl! Bist du Satoshi oder einfach nur genial?"
+      }
     },
     "goToDashboard": "Gehe zum Dashboard",
     "goToHomepage": "Gehe zur Startseite",
@@ -1579,8 +1588,8 @@
       "hottestEvent": "Heißeste Bitcoin-Veranstaltung"
     },
     "header": {
-      "content": "Die PlanB-Plattform zielt darauf ab, die besten Werkzeuge und Bildungsinhalte auf der ganzen Welt bereitzustellen, um den Menschen zu helfen, ihre Souveränität wiederzuerlangen. Von Einzelpersonen bis hin zu Gemeinschaften, wir sind hier, um Sie auf Ihrer Bitcoin-Reise zu unterstützen.",
-      "forEducators": "Für Erzieher und Entwickler",
+      "content": "Die PlanB-Plattform zielt darauf ab, die besten Werkzeuge und Bildungsinhalte auf der ganzen Welt bereitzustellen, um den Menschen zu helfen, ihre Souveränität wiederzuerlangen. Von Einzelpersonen bis hin zu Gemeinschaften: Wir sind hier, um dich auf deiner Bitcoin-Reise zu unterstützen.",
+      "forEducators": "für jedermann",
       "globalNetwork": "Weltweites Bitcoin-Netzwerk",
       "welcome": "Willkommen im Plan ₿ Netzwerk"
     },
@@ -2213,7 +2222,8 @@
     "watchTrailer": "Sehen Sie sich den Trailer an"
   },
   "account": {
-    "account": "Konto"
+    "account": "Konto",
+    "myTeacherProfile": "Mein Lehrerprofil"
   },
   "months": {
     "april": "April",
