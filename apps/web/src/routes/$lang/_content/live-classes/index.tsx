@@ -65,6 +65,7 @@ function AllCourses() {
         .filter(
           (course) =>
             course.isArchived === false &&
+            course.isPlanbSchool === false &&
             (normalizeString(course.language) ===
               normalizeString(i18n.language) ||
               normalizeString(course.language) === 'en') &&
