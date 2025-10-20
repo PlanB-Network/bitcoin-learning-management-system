@@ -16,12 +16,16 @@ import {
 } from 'react-icons/tb';
 import mapVideo from '#src/assets/home/map-animation.webm';
 import media1Img from '#src/assets/home/media1.png';
+import media1MobileImg from '#src/assets/home/media1-mobile.png';
 import media2Img from '#src/assets/home/media2.png';
+import media2MobileImg from '#src/assets/home/media2-mobile.png';
 import media3Img from '#src/assets/home/media3.png';
+import media3MobileImg from '#src/assets/home/media3-mobile.png';
 import bitcoinIcon from '#src/assets/icons/bitcoin.png';
 import MediaCard3 from '#src/components/media-card3.tsx';
-import NetworkCard2 from '#src/components/network-card2.tsx';
+import NetworkCard from '#src/components/network-card.tsx';
 import PageBlock from '#src/components/page-block.tsx';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 
 export const Route = createFileRoute('/')({
   component: IndexComponent,
@@ -29,6 +33,8 @@ export const Route = createFileRoute('/')({
 
 function IndexComponent() {
   const { t } = useTranslation();
+  const isMobile = useSmaller('lg');
+
   const cardsDivClassName =
     'flex flex-wrap gap-4 lg:gap-10 max-w-[1300px] max-lg:justify-center';
   return (
@@ -56,36 +62,36 @@ function IndexComponent() {
           subtitle={t('home.media1.subtitle')}
           buttonText={t('home.media1.button')}
           buttonLink="/academy"
-          imageUrl={media1Img}
+          imageUrl={isMobile ? media1MobileImg : media1Img}
           bottomElement={
             <div className={cn(cardsDivClassName)}>
-              <NetworkCard2
+              <NetworkCard
                 icon={bitcoinIcon}
                 text={t('home.media1.card1Title')}
                 subtext={t('home.media1.card1Subtitle')}
               />
-              <NetworkCard2
+              <NetworkCard
                 icon={TbSchool}
                 text={t('home.media1.card2Title')}
                 subtext={t('home.media1.card2Subtitle')}
                 className="stroke-1"
               />
-              <NetworkCard2
+              <NetworkCard
                 icon={TbDatabaseSearch}
                 text={t('home.media1.card3Title')}
                 subtext={t('home.media1.card3Subtitle')}
               />
-              <NetworkCard2
+              <NetworkCard
                 icon={TbFileCertificate}
                 text={t('home.media1.card4Title')}
                 subtext={t('home.media1.card4Subtitle')}
               />
-              <NetworkCard2
+              <NetworkCard
                 icon={TbBuildingSkyscraper}
                 text={t('home.media1.card5Title')}
                 subtext={t('home.media1.card5Subtitle')}
               />
-              <NetworkCard2
+              <NetworkCard
                 icon={TbUsers}
                 text={t('home.media1.card6Title')}
                 subtext={t('home.media1.card6Subtitle')}
@@ -100,21 +106,21 @@ function IndexComponent() {
           subtitle={t('home.media2.subtitle')}
           buttonText={t('home.media2.button')}
           buttonLink="/hubs"
-          imageUrl={media2Img}
+          imageUrl={isMobile ? media2MobileImg : media2Img}
           orientation="left"
           bottomElement={
             <div className={cn(cardsDivClassName)}>
-              <NetworkCard2
+              <NetworkCard
                 icon={TbTie}
                 text={t('home.media2.card1Title')}
                 subtext={t('home.media2.card1Subtitle')}
               />
-              <NetworkCard2
+              <NetworkCard
                 icon={TbBuildingCastle}
                 text={t('home.media2.card2Title')}
                 subtext={t('home.media2.card2Subtitle')}
               />
-              <NetworkCard2
+              <NetworkCard
                 icon={TbPizza}
                 text={t('home.media2.card3Title')}
                 subtext={t('home.media2.card3Subtitle')}
@@ -130,20 +136,20 @@ function IndexComponent() {
           subtitle={t('home.media3.subtitle')}
           buttonText={t('home.media3.button')}
           buttonLink="/funds"
-          imageUrl={media3Img}
+          imageUrl={isMobile ? media3MobileImg : media3Img}
           bottomElement={
             <div className={cn(cardsDivClassName)}>
-              <NetworkCard2
+              <NetworkCard
                 icon={TbSpeakerphone}
                 text={t('home.media3.card1Title')}
                 subtext={t('home.media3.card1Subtitle')}
               />
-              <NetworkCard2
+              <NetworkCard
                 icon={TbPigMoney}
                 text={t('home.media3.card2Title')}
                 subtext={t('home.media3.card2Subtitle')}
               />
-              <NetworkCard2
+              <NetworkCard
                 icon={TbWashMachine}
                 text={t('home.media3.card3Title')}
                 subtext={t('home.media3.card3Subtitle')}

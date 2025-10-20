@@ -206,7 +206,7 @@ function BottomStuff({
       <p
         className={cn(
           'max-lg:mt-2 max-lg:px-4 ',
-          'text-center text-base lg:text-xl max-lg:font-normal title-base text-gray-100',
+          'text-center body-base lg:text-xl max-lg:font-normal text-gray-200',
           ' whitespace-pre-wrap',
           subtitleClassName ?? '',
           isLeft ? 'lg:text-start' : 'lg:text-end',
@@ -216,7 +216,7 @@ function BottomStuff({
       </p>
       {bottomElement ? (
         <>
-          {isMobile ? <div className="max-lg:h-4" /> : null}
+          {isMobile ? <div className="max-lg:h-8" /> : null}
           {bottomElement}
         </>
       ) : null}

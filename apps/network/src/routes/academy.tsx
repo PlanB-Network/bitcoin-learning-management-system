@@ -106,7 +106,7 @@ function RouteComponent() {
           title={t('academy.learnOnline.title')}
           subtext={t('academy.learnOnline.subtitle')}
           imageUrl={isMobile ? media2MobileImage : media2Image}
-          alt="Scenic mountain lake"
+          alt=""
           className="mt-10 lg:mt-20"
           titleClassName={'lg:max-w-[53%]'}
           subtitleClassName={
@@ -147,7 +147,7 @@ function RouteComponent() {
           title={t('academy.learnLive.title')}
           subtext={t('academy.learnLive.subtitle')}
           imageUrl={isMobile ? media3MobileImage : media3Image}
-          alt="Scenic mountain lake"
+          alt=""
           subtitleClassName={'lg:max-w-[380px] max-xl:!text-lg text-gray-300'}
           subtitleUnderImage={true}
           BackgroundColor="border-dark"
@@ -290,7 +290,7 @@ function RouteComponent() {
             title={t('academy.career.title')}
             subtext={t('academy.career.subtitle')}
             imageUrl={isMobile ? media4MobileImage : media4Image}
-            alt="Scenic mountain lake"
+            alt=""
             className="!px-0"
             titleClassName={'lg:max-w-[53%]'}
             subtitleClassName={'lg:max-w-[52%] max-xl:!text-lg text-gray-300'}
@@ -326,17 +326,17 @@ function RouteComponent() {
             </p>
             <div className="flex flex-row flex-wrap justify-center gap-4 mt-8">
               <NetworkCard
-                img={replayIcon}
+                icon={replayIcon}
                 text={t('academy.career.item1Title')}
                 subtext={t('academy.career.item1Subtitle')}
               />
               <NetworkCard
-                img={luggageOrangeIcon}
+                icon={luggageOrangeIcon}
                 text={t('academy.career.item2Title')}
                 subtext={t('academy.career.item2Subtitle')}
               />
               <NetworkCard
-                img={certificationIcon}
+                icon={certificationIcon}
                 text={t('academy.career.item3Title')}
                 subtext={t('academy.career.item3Subtitle')}
               />
@@ -361,7 +361,7 @@ function RouteComponent() {
               title={t('academy.companies.title')}
               subtext={t('academy.companies.subtitle')}
               imageUrl={isMobile ? media5MobileImage : media5Image}
-              alt="Scenic mountain lake"
+              alt=""
               className="!px-0"
               titleClassName={'max-w-[500px]'}
               subtitleClassName={
@@ -381,17 +381,17 @@ function RouteComponent() {
 
           <div className="flex flex-row flex-wrap justify-center gap-4 mt-8">
             <NetworkCard
-              img={replayIcon}
+              icon={replayIcon}
               text={t('academy.companies.item1Title')}
               subtext={t('academy.companies.item1Subtitle')}
             />
             <NetworkCard
-              img={bookOpenOrangeIcon}
+              icon={bookOpenOrangeIcon}
               text={t('academy.companies.item2Title')}
               subtext={t('academy.companies.item2Subtitle')}
             />
             <NetworkCard
-              img={toolsIcon}
+              icon={toolsIcon}
               text={t('academy.companies.item3Title')}
               subtext={t('academy.companies.item3Subtitle')}
             />
@@ -450,7 +450,7 @@ function RouteComponent() {
         <MediaCard
           subtext={t('academy.taipei.text')}
           imageUrl={isMobile ? media7Image : media7Image}
-          alt="Scenic mountain lake"
+          alt=""
           subtitleClassName={
             'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
           }
@@ -494,7 +494,7 @@ function RouteComponent() {
         <MediaCard
           subtext={t('academy.polytecnico.text')}
           imageUrl={isMobile ? media8Image : media8Image}
-          alt="Scenic mountain lake"
+          alt=""
           subtitleClassName={
             'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
           }

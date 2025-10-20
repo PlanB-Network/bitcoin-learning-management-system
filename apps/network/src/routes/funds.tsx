@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { Trans, useTranslation } from 'react-i18next';
 import headerImage from '#src/assets/funds/header.png';
 import headerSmallImage from '#src/assets/funds/header-small.png';
@@ -43,17 +43,16 @@ function RouteComponent() {
         title={t('funds.media1title')}
         subtext={t('funds.media1subtitle')}
         imageUrl={isMobile ? media1MobileImage : media1Image}
-        alt="Scenic mountain lake"
+        alt=""
         titleClassName={'lg:max-w-[500px]'}
-        subtitleClassName={
-          'lg:max-w-[450px] xl:max-w-[550px] max-xl:!text-lg text-gray-300'
-        }
+        subtitleClassName={'lg:max-w-[450px] xl:max-w-[550px] max-xl:!text-lg'}
+        imageClassName="mt-16"
         subtitleUnderImage={true}
         className="mt-12"
         orientation="left"
         BackgroundColor="border-dark"
         BottomElement={
-          <div className="flex flex-col gap-1 lg:gap-4">
+          <div className="flex flex-col gap-4 lg:gap-4 max-lg:pl-4">
             <NetworkListItem
               icon={personIcon}
               text={t('funds.cyphertankPitch1')}
@@ -74,18 +73,24 @@ function RouteComponent() {
         title={t('funds.media2title')}
         subtext={t('funds.media2subtitle')}
         imageUrl={isMobile ? media2MobileImage : media2Image}
-        alt="Scenic mountain lake"
+        alt=""
         titleClassName={'lg:max-w-[550px]'}
-        subtitleClassName={'lg:max-w-[350px] text-gray-300'}
+        subtitleClassName={'lg:max-w-[350px]'}
         subtitleUnderImage={true}
         className="mt-12"
         orientation="right"
         BackgroundColor="border-dark"
         BottomElement={
           <div className="flex flex-col max-lg:items-center">
-            <NetworkButton variant={'secondary'}>
-              Fundrise capital
-            </NetworkButton>
+            <Link
+              to="https://planbvc.fund/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <NetworkButton variant={'secondary'}>
+                Fundrise capital
+              </NetworkButton>
+            </Link>
           </div>
         }
       />
@@ -93,18 +98,18 @@ function RouteComponent() {
         title={t('funds.media3title')}
         subtext={t('funds.media3subtitle')}
         imageUrl={isMobile ? media3MobileImage : media3Image}
-        alt="Scenic mountain lake"
+        alt=""
         titleClassName={'lg:max-w-[60%]'}
-        subtitleClassName={
-          'lg:max-w-[60%] text-gray-300 max-xl:!text-lg !text-left'
-        }
+        subtitleClassName={'lg:max-w-[60%] max-xl:!text-lg !text-left'}
         subtitleUnderImage={true}
         className="mt-12"
         orientation="left"
         BackgroundColor="border-dark"
         BottomElement={
           <div className="flex flex-col max-lg:items-center">
-            <NetworkButton variant={'secondary'}>Contact us</NetworkButton>
+            <a href="mailto:contact@planb.network">
+              <NetworkButton variant={'secondary'}>Contact us</NetworkButton>
+            </a>
           </div>
         }
       />

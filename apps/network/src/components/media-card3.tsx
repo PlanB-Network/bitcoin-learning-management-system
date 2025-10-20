@@ -10,7 +10,6 @@ interface MediaCard3Props {
   buttonLink: string;
   imageUrl: string;
   titleClassName?: string;
-  subtitleUnderImage?: boolean;
   bottomElement?: React.ReactNode;
   orientation?: 'left' | 'right';
 }
@@ -22,7 +21,6 @@ export default function MediaCard3({
   buttonLink,
   imageUrl,
   titleClassName = 'max-w-[700px]',
-  subtitleUnderImage = false,
   bottomElement,
   orientation = 'left',
 }: MediaCard3Props) {
@@ -31,7 +29,7 @@ export default function MediaCard3({
       <img
         src={imageUrl}
         alt="Hero background"
-        className="absolute object-cover w-full"
+        className="max-lg:hidden absolute object-cover w-full"
       />
       <div
         className={cn(
@@ -47,23 +45,26 @@ export default function MediaCard3({
         <div className="flex flex-col gap-8 xl:gap-20">
           <h1
             className={cn(
-              'text-5xl lg:text-6xl font-semibold z-20',
+              'text-5xl lg:text-6xl font-semibold z-20 max-lg:text-center',
               titleClassName,
             )}
           >
             {title}
           </h1>
-          {subtitleUnderImage ? null : (
-            <p
-              className={cn(
-                'max-w-[410px] title-small lg:title-base text-gray-300',
-              )}
-            >
-              {subtitle}
-            </p>
-          )}
+          <img
+            src={imageUrl}
+            alt="Hero background"
+            className="lg:hidden object-cover w-full"
+          />
+          <p
+            className={cn(
+              'max-w-[410px] title-small lg:title-base text-gray-300 max-lg:text-center',
+            )}
+          >
+            {subtitle}
+          </p>
         </div>
-        <Link to={buttonLink}>
+        <Link to={buttonLink} className={'max-lg:self-center'}>
           <NetworkButton variant={'secondary'}>{buttonText}</NetworkButton>
         </Link>
         {bottomElement ? bottomElement : null}

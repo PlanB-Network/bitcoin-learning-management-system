@@ -180,7 +180,7 @@ function RouteComponent() {
           title={t('about.media1title')}
           subtext={t('about.media1subtitle')}
           imageUrl={isMobile ? media1SmallImage : media1Image}
-          alt="Scenic mountain lake"
+          alt=""
           titleClassName={'lg:max-w-[700px]'}
           subtitleClassName={'lg:max-w-[40%] max-xl:!text-lg'}
           imageClassName=""
@@ -195,7 +195,7 @@ function RouteComponent() {
         <div className="flex flex-row flex-wrap gap-2 lg:gap-10 justify-center-safe">
           {valuesCards.map((card) => (
             <NetworkCard
-              img={card.imageUrl}
+              icon={card.imageUrl}
               text={card.title}
               subtext={card.subtext}
               key={card.title}

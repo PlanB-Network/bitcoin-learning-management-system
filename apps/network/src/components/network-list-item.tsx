@@ -26,10 +26,14 @@ export default function NetworkListItem({
     >
       {typeof icon === 'string' ? (
         <div>
-          <img className="w-8 text-blue-300 fill-blue-100" src={icon} alt="" />
+          <img
+            className="w-6 lg:w-8 text-blue-300 fill-blue-100"
+            src={icon}
+            alt=""
+          />
         </div>
       ) : (
-        <Icon className="size-8" />
+        <Icon className="size-6 lg:size-8" />
       )}
       <span className="title-base xl:title-medium mx-2">{text}</span>
     </div>
