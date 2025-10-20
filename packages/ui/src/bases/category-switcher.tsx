@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority';
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import type { IconType } from 'react-icons/lib';
 import { cn } from '#src/lib/utils.ts';
 
@@ -19,11 +19,19 @@ export const CategorySwitcherBar = ({
   const onPointerDown = (e: React.PointerEvent) => {
     const el = elRef.current;
     if (!el) return;
+
+    preventClick.current = false;
+
     dragging.current = true;
     moved.current = false;
     startX.current = e.clientX;
     startScroll.current = el.scrollLeft;
-    (e.target as Element).setPointerCapture(e.pointerId);
+
+    if (e.pointerType === 'touch' || e.pointerType === 'pen') {
+      try {
+        (e.currentTarget as Element).setPointerCapture(e.pointerId);
+      } catch {}
+    }
   };
 
   const onPointerMove = (e: React.PointerEvent) => {
@@ -39,9 +47,12 @@ export const CategorySwitcherBar = ({
       preventClick.current = true;
     }
     dragging.current = false;
-    try {
-      (e.target as Element).releasePointerCapture(e.pointerId);
-    } catch {}
+
+    if (e.pointerType === 'touch' || e.pointerType === 'pen') {
+      try {
+        (e.currentTarget as Element).releasePointerCapture(e.pointerId);
+      } catch {}
+    }
   };
 
   const onClickCapture = (e: React.MouseEvent) => {
@@ -51,6 +62,19 @@ export const CategorySwitcherBar = ({
       preventClick.current = false;
     }
   };
+
+  const renderedChildren = React.Children.map(children, (child) => {
+    if (!React.isValidElement<{ onDragStart?: React.DragEventHandler }>(child))
+      return child;
+
+    const existing = child.props.onDragStart;
+    return React.cloneElement(child, {
+      onDragStart: (ev: React.DragEvent) => {
+        ev.preventDefault();
+        existing?.(ev);
+      },
+    });
+  });
 
   return (
     <div
@@ -64,7 +88,7 @@ export const CategorySwitcherBar = ({
       onPointerLeave={endDrag}
       onClickCapture={onClickCapture}
     >
-      {children}
+      {renderedChildren}
     </div>
   );
 };
