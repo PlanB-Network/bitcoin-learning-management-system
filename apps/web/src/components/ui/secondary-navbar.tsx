@@ -110,7 +110,7 @@ const SecondaryNavbarDesktop = ({ tabs }: { tabs: Tab[] }) => {
 
   return (
     <div
-      className="w-full flex items-center border-b border-neutral-100 px-6 pt-4 relative"
+      className="w-full flex items-center border-b border-neutral-100 px-6 pt-3.5 relative"
       role="tablist"
       ref={containerRef}
     >

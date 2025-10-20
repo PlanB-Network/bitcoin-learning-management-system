@@ -69,7 +69,7 @@ export const PageLayout = ({
           {tabs.length > 0 && <SecondaryNavbar tabs={tabs} />}
           {backLink && (
             <Link
-              className="w-fit flex items-center p-4 text-neutral-500 body-base-bold"
+              className="w-fit flex items-center px-4 py-2 mt-1.5 ml-1 text-neutral-500 body-base-bold hover:bg-neutral-50 hover:text-black rounded-full"
               to={backLink.href}
             >
               <TbChevronLeft size={24} className="shrink-0" />
