@@ -304,7 +304,6 @@ function RouteComponent() {
           subtext={t('academy.blockTitle2Subtext')}
           titleClassName="text-orange-500"
         />
-
         <div className="max-w-[1320px] mx-auto mt-10 lg:mt-20 border-[1px] border-gray-600 rounded-2xl lg:rounded-[68px]">
           <MediaCard
             title={t('academy.career.title')}
@@ -386,8 +385,7 @@ function RouteComponent() {
             </div>
           </PageBlock>
         </div>
-
-        <div className="mt-30 pb-10 max-w-[1320px] mx-auto border-[1px] border-gray-600 rounded-2xl lg:rounded-[68px]">
+        <div className="mt-8 lg:mt-30 pb-10 max-w-[1320px] mx-auto border-[1px] border-gray-600 rounded-2xl lg:rounded-[68px]">
           <PageBlock withXPadding={false} withYPadding={false}>
             <MediaCard
               title={t('academy.companies.title')}
@@ -415,7 +413,6 @@ function RouteComponent() {
               }
             />
           </PageBlock>
-
           <div className="flex flex-row flex-wrap justify-center gap-4 mt-8 px-4">
             <NetworkCard
               icon={replayIcon}

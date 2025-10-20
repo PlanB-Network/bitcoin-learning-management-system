@@ -7,7 +7,7 @@ import coworking2Image from '#src/assets/hubs/coworking-2.png';
 import coworking3Image from '#src/assets/hubs/coworking-3.png';
 import forumLogo from '#src/assets/hubs/forum-logo.png';
 import headerImage from '#src/assets/hubs/header.png';
-import headerSmallImage from '#src/assets/hubs/header.png';
+import headerSmallImage from '#src/assets/hubs/header-mobile.png';
 import luganoBgImage from '#src/assets/hubs/lugano-bg.png';
 import luganoLogo from '#src/assets/hubs/lugano-planb-logo.png';
 import spritzLogoImage from '#src/assets/hubs/spritz-logo.png';
@@ -88,7 +88,7 @@ function RouteComponent() {
 
       <div
         className={cn(
-          'relative py-12 lg:py-20 bg-lugano-section mt-40',
+          'relative py-12 lg:py-20 bg-lugano-section mt-20 lg:mt-40',
           'rounded-tl-[68px] rounded-br-[68px]',
           'lg:rounded-tl-[200px] lg:rounded-br-[200px]',
         )}
@@ -127,7 +127,7 @@ function RouteComponent() {
           tagText={t('hubs.spritz.tag')}
           imageUrl={spritzLogoImage}
           alt=""
-          className="mt-24"
+          className="mt-12 lg:mt-24"
           orientation="right"
         />
         <MediaCard2
@@ -138,7 +138,7 @@ function RouteComponent() {
           tagText={t('hubs.forum.tag')}
           imageUrl={forumLogo}
           alt=""
-          className="mt-24"
+          className="mt-12 lg:mt-24"
           orientation="left"
         />
         <MediaCard2
@@ -147,7 +147,7 @@ function RouteComponent() {
           tagText={t('hubs.ark.tag')}
           imageUrl={arkLogo}
           alt=""
-          className="mt-24 pb-12"
+          className="mt-12 lg:mt-24 pb-12"
           orientation="right"
         />
 
