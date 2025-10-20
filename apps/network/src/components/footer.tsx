@@ -1,0 +1,236 @@
+import { cn, DividerSimple } from '@blms/ui';
+import { Link } from '@tanstack/react-router';
+import { useTranslation } from 'react-i18next';
+import { BsGithub, BsLinkedin, BsTwitterX, BsYoutube } from 'react-icons/bs';
+// import Nostr from '#src/assets/icons/nostr.svg?react';
+// import Rumble from '#src/assets/icons/rumble.svg?react';
+import Logo from '#src/assets/logo.svg?no-inline';
+import { NetworkButton } from './network-button.tsx';
+
+const SOCIAL_LINKS = [
+  {
+    href: 'https://twitter.com/planb_network',
+    icon: BsTwitterX,
+    isReactIcon: true,
+    label: 'X',
+  },
+  {
+    href: 'https://www.youtube.com/@PlanBNetwork',
+    icon: BsYoutube,
+    isReactIcon: true,
+    label: 'YouTube',
+  },
+  {
+    href: 'https://github.com/PlanB-Network/bitcoin-educational-content',
+    icon: BsGithub,
+    isReactIcon: true,
+    label: 'Github',
+  },
+  {
+    href: 'https://www.linkedin.com/company/planb-network/',
+    icon: BsLinkedin,
+    isReactIcon: true,
+    label: 'Linkedin',
+  },
+  // {
+  //   href: 'https://rumble.com/user/planb_network',
+  //   icon: Rumble,
+  //   isReactIcon: false,
+  //   label: 'Rumble',
+  // },
+  // {
+  //   href: 'https://primal.net/planbnetwork',
+  //   icon: Nostr,
+  //   isReactIcon: false,
+  //   label: 'Nostr',
+  // },
+];
+
+export const Footer = () => {
+  const { t } = useTranslation();
+
+  const backgroundClass = 'bg-footer text-white';
+  const textSecondaryClass = 'text-white';
+
+  const mainLinks = [
+    { label: t('menu.academy'), to: '/academy' },
+    { label: t('menu.hubs'), to: '/hubs' },
+    { label: t('menu.funds'), to: '/funds' },
+  ];
+
+  const secondaryLinks = [
+    { label: t('menu.academy'), to: '/academy' },
+    { label: t('menu.hubs'), to: '/hubs' },
+    { label: t('menu.funds'), to: '/funds' },
+  ];
+
+  return (
+    <footer className="pt-3 md:pt-6 w-full">
+      {/* Desktop */}
+      <div
+        className={cn(
+          'w-full max-md:hidden bg-footer text-white',
+          backgroundClass,
+        )}
+      >
+        <div className="w-full flex flex-row justify-between px-10">
+          <img src={Logo} alt="Logo Plan ₿ Academy" className="w-56" />
+          <Link
+            to="https://planb.academy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <NetworkButton className="self-center mb-6" variant={'tertiary'}>
+              {t('academy.startLearning')}
+            </NetworkButton>
+          </Link>
+        </div>
+        <div className="flex w-full flex-col max-w-[1644px] mx-auto px-6">
+          <div className="flex items-center py-8 px-2 justify-between gap-4 flex-wrap">
+            <NavigationSection
+              mainLinks={mainLinks}
+              textSecondaryClass={'text-white'}
+            />
+
+            <NavigationSection
+              mainLinks={secondaryLinks}
+              textSecondaryClass={'text-white'}
+            />
+          </div>
+          <DividerSimple />
+          <SocialNetworksDesktop />
+        </div>
+      </div>
+
+      {/* Mobile */}
+      <div className={cn('flex w-full flex-col md:hidden', backgroundClass)}>
+        <div className="flex flex-col w-full p-4 pb-0 pt-6 gap-6">
+          <div className="w-full flex flex-col justify-center gap-6">
+            <img src={Logo} alt="Logo Plan ₿ Academy" className="w-26.5" />
+            <div className="flex flex-row justify-between">
+              <NavigationSection
+                mainLinks={mainLinks}
+                textSecondaryClass={textSecondaryClass}
+              />
+              <NavigationSection
+                mainLinks={secondaryLinks}
+                textSecondaryClass={'text-white'}
+              />
+            </div>
+          </div>
+
+          <Link
+            to="https://planb.academy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <NetworkButton className="self-center mb-6" variant={'tertiary'}>
+              {t('academy.startLearning')}
+            </NetworkButton>
+          </Link>
+          <DividerSimple />
+          <div className="w-full flex flex-col">
+            <SocialNetworksMobile />
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+const NavigationSection = ({
+  title,
+  mainLinks,
+  textSecondaryClass,
+}: {
+  title?: string;
+  mainLinks: Array<{ to: string; label: string }>;
+  textSecondaryClass: string;
+}) => (
+  <div className="flex max-md:flex-col gap-2 md:items-center shrink-0">
+    {title && <h4 className="body-medium-16px">{title}</h4>}
+    <ul
+      className={cn(
+        'flex max-md:flex-col gap-3 xl:gap-7 body-16px md:body-small',
+        textSecondaryClass,
+      )}
+    >
+      {mainLinks.map(({ to, label }) => (
+        <li key={to}>
+          <Link to={to}>{label}</Link>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+const SocialLink = ({
+  href,
+  icon: Icon,
+  isReactIcon,
+  iconSize,
+  iconClasses,
+}: {
+  href: string;
+  icon: React.ElementType;
+  isReactIcon: boolean;
+  iconSize?: number;
+  iconClasses: string;
+}) => (
+  <a href={href} target="_blank" rel="noreferrer">
+    {isReactIcon ? (
+      <Icon
+        className={cn(iconClasses, iconSize ? `h-${iconSize / 4}` : 'h-4.5')}
+      />
+    ) : (
+      <Icon
+        className={cn(
+          iconSize ? `h-${iconSize / 4}` : 'h-4.5',
+          'fill-current',
+          iconClasses,
+        )}
+      />
+    )}
+  </a>
+);
+
+const SocialNetworksMobile = () => {
+  const iconSize = 18;
+
+  return (
+    <div className="flex gap-5 mx-auto">
+      {SOCIAL_LINKS.map(({ href, icon, isReactIcon }) => (
+        <SocialLink
+          key={href}
+          href={href}
+          icon={icon}
+          isReactIcon={isReactIcon}
+          iconSize={iconSize}
+          iconClasses={'text-white stroke-newBlack-5'}
+        />
+      ))}
+    </div>
+  );
+};
+
+const SocialNetworksDesktop = () => {
+  const iconSize = 18;
+
+  return (
+    <div className="flex flex-col gap-12 max-md:hidden w-full items-center py-6">
+      <ul className={'flex gap-12 text-white'}>
+        {SOCIAL_LINKS.map(({ href, icon, isReactIcon }) => (
+          <li key={href}>
+            <SocialLink
+              href={href}
+              icon={icon}
+              isReactIcon={isReactIcon}
+              iconSize={iconSize}
+              iconClasses={'stroke-newBlack-5'}
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};

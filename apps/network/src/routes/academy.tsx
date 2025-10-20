@@ -401,8 +401,11 @@ function RouteComponent() {
               orientation="right"
               BottomElement={
                 <div className="flex flex-col gap-1 xl:gap-2">
-                  <Link to="mailto:rogzy@planb.network">
-                    <NetworkButton className="max-lg:self-center">
+                  <Link
+                    to="mailto:rogzy@planb.network"
+                    className="max-lg:self-center"
+                  >
+                    <NetworkButton>
                       {t('academy.companies.button')}
                     </NetworkButton>
                   </Link>
@@ -411,7 +414,7 @@ function RouteComponent() {
             />
           </PageBlock>
 
-          <div className="flex flex-row flex-wrap justify-center gap-4 mt-8">
+          <div className="flex flex-row flex-wrap justify-center gap-4 mt-8 px-4">
             <NetworkCard
               icon={replayIcon}
               text={t('academy.companies.item1Title')}

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbMenu2, TbX } from 'react-icons/tb';
 import Logo from '#src/assets/logo.svg?no-inline';
+import { NetworkButton } from './network-button.tsx';
 
 export interface MobileMenuProps {
   isMobileMenuOpen: boolean;
@@ -109,7 +110,7 @@ export const MobileMenu = ({
       )}
       <nav
         className={cn(
-          'flex flex-col w-full max-w-[327px] h-dvh',
+          'flex flex-col justify-between w-full max-w-[327px] h-dvh',
           'fixed top-0 right-0 items-center text-center',
           ' p-5 pt-3',
           'bg-black text-white',
@@ -147,7 +148,15 @@ export const MobileMenu = ({
             </Link>
           </div>
         </div>
-        {/* <SideBar isSidebarOpen={true} /> */}
+        <Link
+          to="https://planb.academy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <NetworkButton className="self-center mb-6" variant={'tertiary'}>
+            {t('academy.startLearning')}
+          </NetworkButton>
+        </Link>
       </nav>
     </div>
   );

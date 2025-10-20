@@ -856,6 +856,16 @@
   );
 }
 
+@utility bg-footer {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(75, 27, 0, 0.8) 42.66%,
+      rgba(255, 92, 0, 0.8) 100%
+    ), #000;
+}
+
 @utility bg-gradient-network-bt {
   background:
     linear-gradient(180deg, rgba(1, 2, 5, 0) 0.11%, #5c2100 104.27%),
