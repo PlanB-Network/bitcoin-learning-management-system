@@ -93,6 +93,8 @@ function RouteComponent() {
     : [];
 
   const partnerIds = [
+    'd81674bd-9e16-407b-acbe-e8725d01e0a1',
+    'b731a421-7e83-44e9-8f2b-f4a51f7a08e2',
     '48ba05d4-d553-4402-9d56-6dab2d7e45dd',
     '28dd0137-b167-4e74-bc43-a5df60b93c00',
     '26d603ee-4b5a-4695-86c1-fe7658294413',
@@ -107,8 +109,6 @@ function RouteComponent() {
     '3b2f45e6-d612-412c-95ba-cf65b49aa5b8',
     '0d0cb36a-a9f4-4698-94b3-94f0942f2090',
     '2a2b12e1-6b33-4bc1-b62d-1964e1578286',
-    'd81674bd-9e16-407b-acbe-e8725d01e0a1',
-    'b731a421-7e83-44e9-8f2b-f4a51f7a08e2',
     '10e85d67-c568-462a-b918-a35e2491b450',
     'eb67d966-e019-4b62-8ac3-1b7e1ae83e1c',
     'cf0fecdf-6a70-40ec-869d-c6c78f9fac01',
