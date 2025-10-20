@@ -71,7 +71,7 @@ function Projects() {
             className="ml-auto"
           />
           <div className="flex flex-col gap-2 md:gap-5 w-full">
-            {categories.map((category) => {
+            {categories.map((category, index) => {
               const filteredProjects = categorizedProjects[category].filter(
                 (project) =>
                   project.name.toLowerCase().includes(searchTerm.toLowerCase()),
@@ -84,7 +84,7 @@ function Projects() {
               return (
                 <details
                   key={category}
-                  open={isSearching ? true : undefined}
+                  open={isSearching ? true : index === 0 ? true : undefined}
                   className="group border border-neutral-100 rounded-2xl w-full hover:cursor-pointer"
                 >
                   <summary className="[&::-webkit-details-marker]:hidden list-none px-4 py-3">
