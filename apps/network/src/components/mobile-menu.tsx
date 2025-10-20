@@ -110,7 +110,7 @@ export const MobileMenu = ({
       )}
       <nav
         className={cn(
-          'flex flex-col justify-between w-full max-w-[327px] h-dvh',
+          'flex flex-col justify-between w-full h-dvh',
           'fixed top-0 right-0 items-center text-center',
           ' p-5 pt-3',
           'bg-black text-white',
@@ -126,10 +126,17 @@ export const MobileMenu = ({
         ref={mobileMenuRef}
       >
         <div className="flex flex-col w-full items-center gap-15">
-          <TbX
-            onClick={toggleMobileMenu}
-            className="cursor-pointer text-neutral-500 stroke-2 size-8 shrink-0 self-end"
-          />
+          <div className="w-full flex flex-row justify-between">
+            <img
+              src={Logo}
+              alt="Logo Plan ₿ Network"
+              className="w-40 self-start"
+            />
+            <TbX
+              onClick={toggleMobileMenu}
+              className="cursor-pointer text-neutral-500 stroke-2 size-8 shrink-0 self-end"
+            />
+          </div>
           <div className="flex flex-col gap-6 display-small text-center items-center w-fit">
             <Link to="/academy" onClick={toggleMobileMenu}>
               {t('menu.academy')}
