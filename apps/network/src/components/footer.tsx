@@ -76,33 +76,35 @@ export const Footer = () => {
           backgroundClass,
         )}
       >
-        <div className="w-full flex flex-row justify-between  px-10">
-          <img src={Logo} alt="Logo Plan ₿ Academy" className="w-56" />
-          <Link
-            to="https://planb.academy"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="self-center"
-          >
-            <NetworkButton variant={'tertiary'} size={'s'}>
-              {t('academy.startLearning')}
-            </NetworkButton>
-          </Link>
-        </div>
-        <div className="flex w-full flex-col max-w-[1644px] mx-auto px-6">
-          <div className="flex items-center py-8 px-2 justify-between gap-4 flex-wrap">
-            <NavigationSection
-              mainLinks={mainLinks}
-              textSecondaryClass={'text-white'}
-            />
-
-            <NavigationSection
-              mainLinks={secondaryLinks}
-              textSecondaryClass={'text-white'}
-            />
+        <div className="max-w-[1644px] mx-auto px-4">
+          <div className="w-full flex flex-row justify-between">
+            <img src={Logo} alt="Logo Plan ₿ Academy" className="w-56" />
+            <Link
+              to="https://planb.academy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="self-center"
+            >
+              <NetworkButton variant={'tertiary'} size={'s'}>
+                {t('academy.startLearning')}
+              </NetworkButton>
+            </Link>
           </div>
-          <DividerSimple />
-          <SocialNetworksDesktop />
+          <div className="flex w-full flex-col">
+            <div className="flex items-center py-8 justify-between gap-4 flex-wrap">
+              <NavigationSection
+                mainLinks={mainLinks}
+                textSecondaryClass={'text-white'}
+              />
+
+              <NavigationSection
+                mainLinks={secondaryLinks}
+                textSecondaryClass={'text-white'}
+              />
+            </div>
+            <DividerSimple className="bg-brown-500" />
+            <SocialNetworksDesktop />
+          </div>
         </div>
       </div>
 
@@ -133,7 +135,7 @@ export const Footer = () => {
               {t('academy.startLearning')}
             </NetworkButton>
           </Link>
-          <DividerSimple className="bg-brown-500 mx-auto w-[90%]" />
+          <DividerSimple className="bg-brown-500 mx-auto" />
           <div className="w-full flex flex-col">
             <SocialNetworksMobile />
           </div>

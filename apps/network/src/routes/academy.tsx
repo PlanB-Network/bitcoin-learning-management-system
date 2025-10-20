@@ -19,6 +19,7 @@ import media8Image from '#src/assets/academy/media-8.webp';
 import polytecnicoLogo from '#src/assets/academy/polytecnico-logo.webp';
 import salvadorImage from '#src/assets/academy/salvador.png';
 import taipeiLogo from '#src/assets/academy/taipei-logo.svg';
+import thanksImage from '#src/assets/academy/thanks.webp';
 import barChartIcon from '#src/assets/icons/bar-chart.svg';
 import bookOpenIcon from '#src/assets/icons/book-open.svg';
 import bookOpen2Icon from '#src/assets/icons/book-open-2.svg';
@@ -75,7 +76,6 @@ function RouteComponent() {
         titleClassName="max-w-[700px]"
         subtitleClassName={'max-w-[400px]'}
       />
-
       <PageBlock className="flex">
         <h2 className="display-small lg:display-large lg:text-6xl text-center">
           {t('academy.safestPlace')}
@@ -100,7 +100,6 @@ function RouteComponent() {
           </NetworkButton>
         </Link>
       </PageBlock>
-
       <PageBlock
         withXMargin={false}
         className="rounded-tl-[68px] rounded-br-[68px] lg:rounded-tl-[200px] lg:rounded-br-[200px] bg-academy-section1"
@@ -299,7 +298,6 @@ function RouteComponent() {
           </div>
         </PageBlock>
       </PageBlock>
-
       <PageBlock
         withXMargin={false}
         className="rounded-tl-[68px] rounded-br-[68px] lg:rounded-tl-[200px] lg:rounded-br-[200px]"
@@ -437,7 +435,6 @@ function RouteComponent() {
           </div>
         </div>
       </PageBlock>
-
       <PageBlock
         withXMargin={false}
         className=" bg-academy-section2 rounded-tl-[68px] rounded-br-[68px] lg:rounded-tl-[200px] lg:rounded-br-[200px]"
@@ -584,7 +581,6 @@ function RouteComponent() {
           email="rogzy@planb.network"
         />
       </PageBlock>
-
       <PageBlock
         withXMargin={false}
         withXPadding={false}
@@ -592,6 +588,16 @@ function RouteComponent() {
       >
         <ToolsForCommunities />
       </PageBlock>
+      <PageBlock withYPadding={false}>
+        <p className="display-medium lg:display-large text-center mb-10 lg:mb-30">
+          {t('academy.thanksTitle')}
+        </p>
+      </PageBlock>
+      <img
+        src={thanksImage}
+        alt="Pictures of people from the academy"
+        className="w-full mb-20 lg:mb-30"
+      />
     </>
   );
 }
