@@ -215,6 +215,10 @@ export const SideBar = ({
       .map((course) => courses.find((c) => c.id === course))
       .filter((c) => c !== undefined);
 
+  const path = window.location.pathname;
+  const isOnAdminPage = path.includes('/dashboard/administration');
+  const isOnProfessorPage = path.includes('/dashboard/professor');
+
   return (
     <nav
       className={cn(
@@ -230,7 +234,9 @@ export const SideBar = ({
         canAccess(UserRole.Professor)(user)) ? (
         <SegmentedControl
           variant="outline"
-          defaultValue={'learn'}
+          defaultValue={
+            isOnAdminPage ? 'admin' : isOnProfessorPage ? 'teach' : 'learn'
+          }
           value={currentTab}
           className={cn(isSidebarOpen ? '' : 'hidden')}
           size={isMobile ? 'sm' : 'default'}

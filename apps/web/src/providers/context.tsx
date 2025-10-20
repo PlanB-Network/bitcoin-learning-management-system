@@ -322,7 +322,11 @@ const setStoredUniversity = (university: string | null): void => {
 const getDefaultTabForUser = (user: UserDetails | null | undefined): string => {
   if (!user) return 'learn';
 
-  if (canAccess(UserRole.Admin)(user)) return 'admin';
-  if (canAccess(UserRole.Professor)(user)) return 'teach';
+  const path = window.location.pathname;
+  const isOnAdminPage = path.includes('/dashboard/administration');
+  const isOnProfessorPage = path.includes('/dashboard/professor');
+
+  if (canAccess(UserRole.Admin)(user) && isOnAdminPage) return 'admin';
+  if (canAccess(UserRole.Professor)(user) && isOnProfessorPage) return 'teach';
   return 'learn';
 };
