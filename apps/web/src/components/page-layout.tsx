@@ -92,11 +92,7 @@ export const PageLayout = ({
                   // biome-ignore lint/suspicious/noArrayIndexKey: <N/A>
                   <div key={index}>
                     {button.href ? (
-                      <Button
-                        variant="newTertiary"
-                        size={isMobile ? 's' : 'm'}
-                        asChild
-                      >
+                      <Button variant="newTertiary" size={'s'} asChild rounded>
                         <Link to={button.href} target="_blank" rel="noreferrer">
                           {button.text}
                         </Link>
