@@ -1,5 +1,5 @@
 import { cn } from '@blms/ui';
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { Trans, useTranslation } from 'react-i18next';
 import arkLogo from '#src/assets/hubs/ark-logo.png';
 import coworking1Image from '#src/assets/hubs/coworking-1.png';
@@ -50,21 +50,39 @@ function RouteComponent() {
           {t('hubs.co-working.subtitle')}
         </p>
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 mt-16">
-          <CoworkingCard
-            img={coworking1Image}
-            name={t('hubs.co-working.hub1Name')}
-            location={t('hubs.co-working.hub1Location')}
-          />
-          <CoworkingCard
-            img={coworking2Image}
-            name={t('hubs.co-working.hub2Name')}
-            location={t('hubs.co-working.hub2Location')}
-          />
-          <CoworkingCard
-            img={coworking3Image}
-            name={t('hubs.co-working.hub3Name')}
-            location={t('hubs.co-working.hub3Location')}
-          />
+          <Link
+            to="https://tokyobitcoin.space/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <CoworkingCard
+              img={coworking1Image}
+              name={t('hubs.co-working.hub1Name')}
+              location={t('hubs.co-working.hub1Location')}
+            />
+          </Link>
+          <Link
+            to="https://pow.space/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <CoworkingCard
+              img={coworking2Image}
+              name={t('hubs.co-working.hub2Name')}
+              location={t('hubs.co-working.hub2Location')}
+            />
+          </Link>
+          <Link
+            to="https://x.com/TempoHouseHQ"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <CoworkingCard
+              img={coworking3Image}
+              name={t('hubs.co-working.hub3Name')}
+              location={t('hubs.co-working.hub3Location')}
+            />
+          </Link>
         </div>
       </PageBlock>
 
@@ -93,6 +111,7 @@ function RouteComponent() {
           title={t('hubs.lugano.title')}
           subtext={t('hubs.lugano.subtitle')}
           buttontext={t('hubs.lugano.button')}
+          buttonLink="https://planb.lugano.ch/"
           tagText={t('hubs.lugano.tag')}
           imageUrl={luganoLogo}
           alt=""
@@ -104,6 +123,7 @@ function RouteComponent() {
           title={t('hubs.spritz.title')}
           subtext={t('hubs.spritz.subtitle')}
           buttontext={t('hubs.spritz.button')}
+          buttonLink="https://satoshispritzlugano.planb.network"
           tagText={t('hubs.spritz.tag')}
           imageUrl={spritzLogoImage}
           alt=""
@@ -114,6 +134,7 @@ function RouteComponent() {
           title={t('hubs.forum.title')}
           subtext={t('hubs.forum.subtitle')}
           buttontext={t('hubs.forum.button')}
+          buttonLink="https://planb.lugano.ch/planb-forum/"
           tagText={t('hubs.forum.tag')}
           imageUrl={forumLogo}
           alt=""
@@ -126,14 +147,18 @@ function RouteComponent() {
           tagText={t('hubs.ark.tag')}
           imageUrl={arkLogo}
           alt=""
-          className="mt-24"
+          className="mt-24 pb-12"
           orientation="right"
         />
 
-        <ContactUs text={t('hubs.contactText')} email="rogzy@planb.network" />
+        <ContactUs
+          className="relative z-30"
+          text={t('hubs.contactText')}
+          email="rogzy@planb.network"
+        />
       </div>
 
-      <PageBlock withXMargin={false}>
+      <PageBlock withXMargin={false} withXPadding={false}>
         <ToolsForCommunities />
       </PageBlock>
     </>

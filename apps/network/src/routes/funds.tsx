@@ -46,7 +46,7 @@ function RouteComponent() {
         alt=""
         titleClassName={'lg:max-w-[500px]'}
         subtitleClassName={'lg:max-w-[450px] xl:max-w-[550px] max-xl:!text-lg'}
-        imageClassName="mt-16"
+        imageClassName="max-lg:mt-16"
         subtitleUnderImage={true}
         className="mt-12"
         orientation="left"

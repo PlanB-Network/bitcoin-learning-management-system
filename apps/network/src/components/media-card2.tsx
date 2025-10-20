@@ -1,4 +1,5 @@
 import { cn } from '@blms/ui';
+import { Link } from '@tanstack/react-router';
 import { NetworkButton } from './network-button.tsx';
 import PageBlock from './page-block.tsx';
 
@@ -6,6 +7,7 @@ type MediaCard2Props = {
   title: string;
   subtext: string;
   buttontext?: string;
+  buttonLink?: string;
   tagText?: string;
   imageUrl: string;
   className?: string;
@@ -21,6 +23,7 @@ export default function MediaCard2({
   title,
   subtext,
   buttontext,
+  buttonLink,
   tagText,
   imageUrl,
   className,
@@ -87,12 +90,14 @@ export default function MediaCard2({
             {subtext}
           </p>
           {buttontext ? (
-            <NetworkButton
+            <Link
+              to={buttonLink || '#'}
+              target="_blank"
+              rel="noopener noreferrer"
               className={cn(isLeft ? 'lg:self-start' : 'lg:self-end')}
-              variant={'secondary'}
             >
-              {buttontext}
-            </NetworkButton>
+              <NetworkButton variant={'secondary'}>{buttontext}</NetworkButton>
+            </Link>
           ) : null}
         </div>
         <div

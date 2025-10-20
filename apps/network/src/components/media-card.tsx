@@ -180,7 +180,7 @@ function DisplayImage({
       alt={alt}
       className={[
         'object-cover self-center w-full h-full max-lg:mb-4',
-        'rounded-2xl',
+        'rounded-[68px]',
         subtitleUnderImage && isMobile ? '' : 'absolute',
         // subtitleUnderImage ? 'max-lg:-mt-28' : '',
         isLeft ? 'lg:self-end' : 'lg:self-start',

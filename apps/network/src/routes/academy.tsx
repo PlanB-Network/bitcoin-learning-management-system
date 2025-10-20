@@ -75,7 +75,7 @@ function RouteComponent() {
         subtitleClassName={'max-w-[400px]'}
       />
 
-      <PageBlock>
+      <PageBlock className="flex">
         <h2 className="display-small lg:display-large lg:text-6xl text-center">
           {t('academy.safestPlace')}
         </h2>
@@ -89,9 +89,15 @@ function RouteComponent() {
           src={media1Image}
           alt="Laptop showing the academy website"
         />
-        <NetworkButton className="justify-self-center z-10 relative md:-mt-6 lg:-mt-12">
-          {t('academy.startLearning')}
-        </NetworkButton>
+        <Link
+          to="https://planb.academy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <NetworkButton className="relative flex mx-auto z-10 md:-mt-6 lg:-mt-12">
+            {t('academy.startLearning')}
+          </NetworkButton>
+        </Link>
       </PageBlock>
 
       <PageBlock
@@ -136,9 +142,15 @@ function RouteComponent() {
                 />
               </div>
               <div className="mt-8 lg:mt-4 lg:mb-0 flex flex-row xl:flex-col max-lg:self-center gap-4">
-                <NetworkButton variant={'secondary'}>
-                  {t('academy.learnOnline.button')}
-                </NetworkButton>
+                <Link
+                  to="https://planb.academy/en/learn-anytime"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <NetworkButton variant={'secondary'}>
+                    {t('academy.learnOnline.button')}
+                  </NetworkButton>
+                </Link>
               </div>
             </>
           }
@@ -178,9 +190,15 @@ function RouteComponent() {
                 />
               </div>
               <div className="mt-8 lg:mt-4 lg:mb-0 flex flex-row xl:flex-col max-lg:self-center gap-4">
-                <NetworkButton variant={'secondary'}>
-                  {t('academy.learnLive.button2')}
-                </NetworkButton>
+                <Link
+                  to="https://planb.academy/en/live-classes"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <NetworkButton variant={'secondary'}>
+                    {t('academy.learnLive.button2')}
+                  </NetworkButton>
+                </Link>
               </div>
             </>
           }
@@ -323,9 +341,7 @@ function RouteComponent() {
             className="rounded-[68px] pb-5 lg:pb-10"
             withYPadding={false}
           >
-            <p className="max-lg:mt-10 title-extra-large uppercase ">
-              {t('academy.career.title2')}
-            </p>
+            <p className="mt-10 title-large">{t('academy.career.title2')}</p>
             <div className="flex flex-row flex-wrap justify-center gap-4 mt-8">
               <NetworkCard
                 icon={replayIcon}
@@ -343,16 +359,28 @@ function RouteComponent() {
                 subtext={t('academy.career.item3Subtitle')}
               />
             </div>
-            <p className="title-medium lg:title-extra-large my-10 lg:my-5 uppercase">
+            <p className="title-large my-10 lg:my-5 uppercase">
               {t('academy.career.title3')}
             </p>
             <div className="flex flex-col lg:flex-row max-lg:items-center justify-center gap-4">
-              <NetworkButton variant={'secondary'}>
-                {t('academy.career.buttonBusiness')}
-              </NetworkButton>
-              <NetworkButton variant={'secondary'}>
-                {t('academy.career.buttonDeveloper')}
-              </NetworkButton>
+              <Link
+                to="https://planb.academy/en/courses/plan-business-program-2026-a54c48c0-9b90-11f0-bee7-dbbaea825cda"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <NetworkButton variant={'secondary'}>
+                  {t('academy.career.buttonBusiness')}
+                </NetworkButton>
+              </Link>
+              <Link
+                to="https://planb.academy/en/courses/plan-developer-program-0be6cfae-9d32-11f0-9601-0f79f5ccc576"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <NetworkButton variant={'secondary'}>
+                  {t('academy.career.buttonDeveloper')}
+                </NetworkButton>
+              </Link>
             </div>
           </PageBlock>
         </div>
@@ -373,9 +401,11 @@ function RouteComponent() {
               orientation="right"
               BottomElement={
                 <div className="flex flex-col gap-1 xl:gap-2">
-                  <NetworkButton className="max-lg:self-center">
-                    {t('academy.companies.button')}
-                  </NetworkButton>
+                  <Link to="mailto:rogzy@planb.network">
+                    <NetworkButton className="max-lg:self-center">
+                      {t('academy.companies.button')}
+                    </NetworkButton>
+                  </Link>
                 </div>
               }
             />
@@ -417,7 +447,7 @@ function RouteComponent() {
             'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
           }
           imageClassName="max-lg:px-2 lg:max-w-[40%] max-lg:relative"
-          className="mt-10 lg:mt-20 pb-12"
+          className="mt-10 lg:mt-20 pb-12 lg:pt-10"
           orientation="left"
           BackgroundColor="transparent"
           TopElement={
@@ -457,7 +487,7 @@ function RouteComponent() {
             'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
           }
           imageClassName="max-lg:px-2 lg:max-w-[40%] max-lg:relative"
-          className="mt-12 pb-12"
+          className="mt-12 pb-12 lg:pt-10"
           orientation="right"
           BackgroundColor="transparent"
           TopElement={
@@ -501,7 +531,7 @@ function RouteComponent() {
             'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
           }
           imageClassName="max-lg:px-2 lg:max-w-[40%] max-lg:relative"
-          className="mt-12 pb-12"
+          className="mt-12 pb-12 lg:pt-10"
           orientation="left"
           BackgroundColor="transparent"
           TopElement={
@@ -550,6 +580,7 @@ function RouteComponent() {
 
       <PageBlock
         withXMargin={false}
+        withXPadding={false}
         className="rounded-tl-[68px] rounded-br-[68px] lg:rounded-tl-[200px] lg:rounded-br-[200px]"
       >
         <ToolsForCommunities />

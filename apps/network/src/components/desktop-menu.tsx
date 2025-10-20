@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import Logo from '#src/assets/logo.svg?no-inline';
 
 const activeLinkProps = { className: 'text-orange-500' };
-const linkClassName = 'hover:font-bold';
+const linkClassName = 'hover:font-bold hover:text-orange-500';
 
 export default function DesktopMenu() {
   const { t } = useTranslation();
@@ -36,7 +36,7 @@ export default function DesktopMenu() {
       className={cn(
         'sticky top-0 z-50 ',
         ' display-extra-small',
-        'py-8 px-10  bg-black max-lg:hidden',
+        'py-8 px-10  bg-[#000000b3] max-lg:hidden',
         'transition-transform duration-300 transform ',
         isMenuVisible ? 'translate-y-0' : '',
         !isMenuVisible && !isMenuVisible && '-translate-y-full',

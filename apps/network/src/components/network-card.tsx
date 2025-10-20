@@ -29,7 +29,7 @@ export default function NetworkCard({
         <Icon className="size-12 text-orange-500" />
       )}
 
-      <p className="uppercase display-extra-small lg:display-small">{text}</p>
+      <p className="display-extra-small lg:display-small">{text}</p>
       <p className="body-base lg:body-small lg:text-xl text-gray-300">
         {subtext}
       </p>
