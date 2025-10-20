@@ -109,7 +109,13 @@ export const MobileMenu = ({
       )}
       <nav
         className={cn(
-          'flex flex-col fixed top-0 right-0 items-center w-full max-w-[327px] h-dvh duration-300 overflow-scroll no-scrollbar lg:hidden bg-header p-5 pt-3 z-20',
+          'flex flex-col w-full max-w-[327px] h-dvh',
+          'fixed top-0 right-0 items-center text-center',
+          ' p-5 pt-3',
+          'bg-black text-white',
+          ' duration-300 overflow-scroll no-scrollbar ',
+          'z-20 lg:hidden',
+
           isMenuVisible
             ? isMobileMenuOpen
               ? 'translate-x-0'
@@ -118,31 +124,27 @@ export const MobileMenu = ({
         )}
         ref={mobileMenuRef}
       >
-        <div className="ml-auto mb-6 flex flex-col items-center gap2">
+        <div className="flex flex-col w-full items-center gap-15">
           <TbX
             onClick={toggleMobileMenu}
-            className="cursor-pointer text-neutral-500 stroke-2 size-8 shrink-0"
+            className="cursor-pointer text-neutral-500 stroke-2 size-8 shrink-0 self-end"
           />
-          <div className="flex flex-col gap-2 display-extra-small">
-            <div className="flex flex-col gap-2">
-              <Link to="/academy" onClick={toggleMobileMenu}>
-                {t('menu.academy')}
-              </Link>
-              <Link to="/hubs" onClick={toggleMobileMenu}>
-                {t('menu.hubs')}
-              </Link>
-              <Link to="/funds" onClick={toggleMobileMenu}>
-                {t('menu.funds')}
-              </Link>
-            </div>
-            <div className="flex flex-col gap-2 text-gray-700">
-              <Link to="/about" onClick={toggleMobileMenu}>
-                {t('menu.about')}
-              </Link>
-              <Link to="/news" onClick={toggleMobileMenu}>
-                {t('menu.news')}
-              </Link>
-            </div>
+          <div className="flex flex-col gap-6 display-small text-center items-center w-fit">
+            <Link to="/academy" onClick={toggleMobileMenu}>
+              {t('menu.academy')}
+            </Link>
+            <Link to="/hubs" onClick={toggleMobileMenu}>
+              {t('menu.hubs')}
+            </Link>
+            <Link to="/funds" onClick={toggleMobileMenu}>
+              {t('menu.funds')}
+            </Link>
+            <Link to="/news" onClick={toggleMobileMenu} className="mt-15">
+              {t('menu.news')}
+            </Link>
+            <Link to="/about" onClick={toggleMobileMenu}>
+              {t('menu.about')}
+            </Link>
           </div>
         </div>
         {/* <SideBar isSidebarOpen={true} /> */}
