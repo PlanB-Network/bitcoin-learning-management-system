@@ -19,7 +19,6 @@ import Discount from '#src/assets/icons/pixelated/navbar/discount.svg?react';
 import Location from '#src/assets/icons/pixelated/navbar/location.svg?react';
 import Luggage from '#src/assets/icons/pixelated/navbar/luggage.svg?react';
 import Medal from '#src/assets/icons/pixelated/navbar/medal.svg?react';
-import Pages from '#src/assets/icons/pixelated/navbar/pages.svg?react';
 import PeopleFrame from '#src/assets/icons/pixelated/navbar/people_frame.svg?react';
 import ProjectPen from '#src/assets/icons/pixelated/navbar/project_pen.svg?react';
 import Replay from '#src/assets/icons/pixelated/navbar/replay.svg?react';
@@ -276,7 +275,7 @@ export const SideBar = ({
             <>
               <div className="flex flex-col gap-1">
                 <SideBarItem
-                  icon={Pages}
+                  icon={BookOpen}
                   iconColor="orange"
                   label={t('navbar.myCourses')}
                   link="/my-courses"
