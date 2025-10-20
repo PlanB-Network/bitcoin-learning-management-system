@@ -36,16 +36,16 @@ export default function MediaCard2({
     <PageBlock
       withYPadding={false}
       className={cn(
-        'shadow-lg h-full border-white max-lg:mx-8 lg:border-[1px] rounded-[60px]',
+        'shadow-lg h-full border-white max-lg:mx-8 border-[1px] rounded-[60px]',
         className,
       )}
     >
       <fieldset
         aria-labelledby="media-card-title"
-        className={[
-          'w-full flex flex-col-reverse lg:flex-col items-center ',
+        className={cn(
+          'w-full flex flex-col-reverse lg:flex-col items-center max-lg:pt-4',
           isLeft ? 'lg:flex-row' : 'lg:flex-row-reverse ',
-        ].join(' ')}
+        )}
       >
         <div
           className={cn(

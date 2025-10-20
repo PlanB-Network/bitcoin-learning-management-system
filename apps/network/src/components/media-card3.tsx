@@ -20,7 +20,7 @@ export default function MediaCard3({
   buttonText,
   buttonLink,
   imageUrl,
-  titleClassName = 'max-w-[700px]',
+  titleClassName = 'lg:max-w-[700px]',
   bottomElement,
   orientation = 'left',
 }: MediaCard3Props) {
@@ -42,10 +42,10 @@ export default function MediaCard3({
           'pt-8',
         )}
       >
-        <div className="flex flex-col gap-8 xl:gap-20">
+        <div className="flex flex-col gap-8 xl:gap-20 w-full">
           <h1
             className={cn(
-              'text-5xl lg:text-6xl font-semibold z-20 max-lg:text-center',
+              'display-medium lg:text-6xl font-semibold z-20 max-lg:text-center',
               titleClassName,
             )}
           >
@@ -58,7 +58,7 @@ export default function MediaCard3({
           />
           <p
             className={cn(
-              'max-w-[410px] title-small lg:title-base text-gray-300 max-lg:text-center',
+              'title-small lg:title-base max-lg:text-center lg:max-w-[410px] text-gray-300 ',
             )}
           >
             {subtitle}

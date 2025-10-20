@@ -17,7 +17,7 @@ export const ContactUs = ({ text, email, className = '' }: ContactUsProps) => {
     <PageBlock withYPadding={false}>
       <div
         className={cn(
-          'mt-15 flex flex-col lg:flex-row px-24 py-4 lg:py-14 justify-center items-center bg-[#070300] border-[1px] border-orange-900 rounded-[100px]',
+          'w-full mt-15 flex flex-col lg:flex-row px-12 lg:px-24 py-4 lg:py-14 justify-center items-center bg-[#070300] border-[1px] border-orange-900 rounded-[60px] lg:rounded-[100px]',
           className,
         )}
       >

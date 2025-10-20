@@ -70,7 +70,7 @@ function RouteComponent() {
 
       <div
         className={cn(
-          'relative py-0 lg:py-20 bg-lugano-section mt-40',
+          'relative py-12 lg:py-20 bg-lugano-section mt-40',
           'rounded-tl-[68px] rounded-br-[68px]',
           'lg:rounded-tl-[200px] lg:rounded-br-[200px]',
         )}

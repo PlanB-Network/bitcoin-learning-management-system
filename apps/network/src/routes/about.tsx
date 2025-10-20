@@ -183,7 +183,7 @@ function RouteComponent() {
           alt=""
           titleClassName={'lg:max-w-[700px]'}
           subtitleClassName={'lg:max-w-[40%] max-xl:!text-lg'}
-          imageClassName=""
+          imageClassName="max-lg:mt-34"
           subtitleUnderImage={true}
         />
       </PageBlock>
