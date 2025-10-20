@@ -148,6 +148,7 @@ export const customToast = (
             )
           : false,
       closeOnClick: closeOnClick,
+      draggablePercent: 30,
       icon: options.imgSrc
         ? () => (
             <img
