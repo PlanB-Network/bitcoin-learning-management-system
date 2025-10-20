@@ -213,12 +213,16 @@ function RouteComponent() {
               <p className="body-base lg:title-base text-gray-200">
                 {t('academy.database.subtitle')}
               </p>
-              <NetworkButton
-                variant={'tertiary'}
+              <Link
+                to="https://t.me/PlanBNetwork_ContentBuilder"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="max-lg:self-center"
               >
-                {t('academy.database.button')}
-              </NetworkButton>
+                <NetworkButton variant={'tertiary'}>
+                  {t('academy.database.button')}
+                </NetworkButton>
+              </Link>
             </div>
             <div className="lg:w-[55%] lg:pl-12 flex flex-col gap-8">
               <div>
