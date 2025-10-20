@@ -95,7 +95,7 @@ const TimelineSmall = ({
   const { t } = useTranslation();
 
   return (
-    <div className="mb-0 w-full max-w-5xl px-4 sm:hidden mt-4">
+    <div className="mb-0 w-full max-w-5xl sm:hidden mt-4">
       <Link
         to={`/courses/${chapter.course.name}-${chapter.course.id}`}
         className="w-full flex justify-center items-center mb-4"
@@ -740,14 +740,14 @@ function CourseChapter() {
             <div className="flex w-full flex-col items-center justify-center lg:max-w-[1102px] lg:items-stretch lg:justify-stretch">
               {!chapter.isCourseExam && !chapter.isSingleTrialExam && (
                 <div
-                  className="text-blue-950 w-full space-y-5 break-words px-4 md:px-2 mt-3 md:mt-8 md:grow md:space-y-4 md:overflow-hidden pb-2 md:pb-0"
+                  className="text-blue-950 w-full space-y-5 break-words md:px-2 mt-3 md:mt-8 md:grow md:space-y-4 md:overflow-hidden pb-2 md:pb-0"
                   id="headerChapter"
                 >
                   <Header chapter={chapter} />
                 </div>
               )}
               <div className="flex w-full max-lg:flex-col items-center justify-center lg:max-w-[1102px] lg:items-stretch lg:justify-stretch">
-                <div className="text-blue-950 flex flex-col w-full gap-5 break-words px-4 md:px-2 md:mt-8 md:grow md:gap-4 md:overflow-hidden pb-2">
+                <div className="text-blue-950 flex flex-col w-full gap-5 break-words md:px-2 md:mt-8 md:grow md:gap-4 md:overflow-hidden pb-2">
                   {!chapter.isCourseExam &&
                     !chapter.isSingleTrialExam &&
                     sections.length > 0 && (
