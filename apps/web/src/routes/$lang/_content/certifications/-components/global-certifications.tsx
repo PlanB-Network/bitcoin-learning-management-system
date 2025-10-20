@@ -118,14 +118,7 @@ const BCertCard = ({
               <BCertDetailedScore bcertResult={exam} />{' '}
             </>
           ) : (
-            <Banner
-              variant="inprogress"
-              icon={<SandClock className="fill-maroon-7" />}
-            >
-              <BannerTitle>
-                {t('dashboard.credentials.beingTimestamped')}
-              </BannerTitle>
-            </Banner>
+            <BCertDetailedScore bcertResult={exam} />
           )
         ) : null}
         {!exam && examTicket && <BCertStatus examTicket={examTicket} />}
