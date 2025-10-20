@@ -16,16 +16,17 @@ import BookCover from '#src/assets/icons/pixelated/navbar/book_cover.svg?react';
 import BookOpen from '#src/assets/icons/pixelated/navbar/book_open.svg?react';
 import Calendar from '#src/assets/icons/pixelated/navbar/calendar.svg?react';
 import Discount from '#src/assets/icons/pixelated/navbar/discount.svg?react';
+import Location from '#src/assets/icons/pixelated/navbar/location.svg?react';
 import Luggage from '#src/assets/icons/pixelated/navbar/luggage.svg?react';
 import Medal from '#src/assets/icons/pixelated/navbar/medal.svg?react';
 import Pages from '#src/assets/icons/pixelated/navbar/pages.svg?react';
 import PeopleFrame from '#src/assets/icons/pixelated/navbar/people_frame.svg?react';
-import PositionPin from '#src/assets/icons/pixelated/navbar/position_pin.svg?react';
 import ProjectPen from '#src/assets/icons/pixelated/navbar/project_pen.svg?react';
+import Replay from '#src/assets/icons/pixelated/navbar/replay.svg?react';
 import Target from '#src/assets/icons/pixelated/navbar/target.svg?react';
 import TasksList from '#src/assets/icons/pixelated/navbar/tasks_list.svg?react';
+import Teacher from '#src/assets/icons/pixelated/navbar/teacher.svg?react';
 import Ticket from '#src/assets/icons/pixelated/navbar/ticket.svg?react';
-import Youtube from '#src/assets/icons/pixelated/navbar/youtube.svg?react';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
@@ -290,7 +291,7 @@ export const SideBar = ({
 
           <div className="flex flex-col gap-1">
             <SideBarItem
-              icon={BookOpen}
+              icon={Replay}
               iconColor="orange"
               label={t('navbar.learnAnytimeTitle')}
               description={t('navbar.learnAnytimeDescription')}
@@ -300,7 +301,7 @@ export const SideBar = ({
               isMain
             />
             <SideBarItem
-              icon={Youtube}
+              icon={Teacher}
               iconColor="orange"
               label={t('navbar.liveClassesTitle')}
               description={t('navbar.liveClassesDescription')}
@@ -333,7 +334,7 @@ export const SideBar = ({
               isSidebarOpen={isSidebarOpen}
             />
             <SideBarItem
-              icon={PositionPin}
+              icon={Location}
               iconColor="blue"
               label={t('words.events')}
               link="/events"
