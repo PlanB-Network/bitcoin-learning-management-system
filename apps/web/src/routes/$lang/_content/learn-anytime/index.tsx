@@ -110,7 +110,15 @@ function AllCourses() {
       desiredOrder.map((name, i) => [normalizeString(name), i]),
     );
 
-    const topicsSet = Array.from(new Set(courses.map((c) => c.topic)));
+    const topicsSet = Array.from(
+      new Set(
+        courses
+          .filter(
+            (course) => course.teachingFormat === TeachingFormat.SelfPaced,
+          )
+          .map((c) => c.topic),
+      ),
+    );
 
     return topicsSet.sort((a, b) => {
       const na = normalizeString(a);
