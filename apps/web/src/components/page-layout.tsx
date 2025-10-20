@@ -121,7 +121,7 @@ export const PageLayout = ({
           'flex h-fit justify-center px-3 md:px-12 pb-16 md:pb-40 mx-auto w-full',
           layoutSizeClassesMap[layoutSize],
           className,
-          actionButtons.length > 0 ? 'pt-2' : 'pt-4 md:pt-12',
+          actionButtons.length > 0 ? '' : 'pt-4 md:pt-12',
         )}
         style={{ marginTop: actionButtons.length > 0 ? 0 : navbarHeight }}
       >
