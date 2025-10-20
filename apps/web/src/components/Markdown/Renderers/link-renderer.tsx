@@ -48,7 +48,7 @@ export const LinkRenderer: React.FC<LinkRendererProps> = (props) => {
     const course = getCourse(href, courses ?? []);
     if (course) {
       return (
-        <div className="w-full py-2 md:py-1">
+        <div className="w-full py-2 md:py-2">
           <CourseCard
             course={course}
             mode="light"
