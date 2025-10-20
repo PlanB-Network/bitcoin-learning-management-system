@@ -42,7 +42,7 @@ function LegalInformationTab() {
         />
       ) : (
         <PageBlock>
-          <div className="flex flex-row title-large gap-6 mb-12">
+          <div className="flex flex-row title-small lg:title-large gap-6 mb-12">
             {legalTabs.map((tab) => (
               <Link
                 key={tab.id}
