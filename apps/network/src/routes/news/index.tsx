@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { Trans, useTranslation } from 'react-i18next';
-import headerImage from '#src/assets/news/header.png';
-import headerSmallImage from '#src/assets/news/header-small.png';
+import headerImage from '#src/assets/news/header.webp';
+import headerSmallImage from '#src/assets/news/header-small.webp';
 import { Hero } from '#src/components/hero.tsx';
 import PageBlock from '#src/components/page-block.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';

@@ -1,18 +1,18 @@
 import { cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { Trans, useTranslation } from 'react-i18next';
-import communityImg from '#src/assets/community/community-img.png';
+import communityImg from '#src/assets/community/community-img.webp';
 import communityLogo from '#src/assets/community/community-logo.png';
-import eventsImg from '#src/assets/community/events-img.png';
+import eventsImg from '#src/assets/community/events-img.webp';
 import eventsLogo from '#src/assets/community/events-logo.svg';
-import languageImg from '#src/assets/community/language-img.png';
+import languageImg from '#src/assets/community/language-img.webp';
 import languageLogo from '#src/assets/community/language-logo.svg';
-import resourceImg from '#src/assets/community/resource-img.png';
+import resourceImg from '#src/assets/community/resource-img.webp';
 import resourceLogo from '#src/assets/community/resource-logo.svg';
 import safeButtonsImage from '#src/assets/community/safe-buttons.png';
-import safeImg from '#src/assets/community/safe-img.png';
+import safeImg from '#src/assets/community/safe-img.webp';
 import safeLogo from '#src/assets/community/safe-logo.svg';
-import testImg from '#src/assets/community/test-img.png';
+import testImg from '#src/assets/community/test-img.webp';
 import testLogo from '#src/assets/community/test-logo.svg';
 import BlockTitle from './block-title.tsx';
 import PageBlock from './page-block.tsx';
@@ -63,7 +63,7 @@ function BlockOne() {
       className="max-lg:w-full flex"
     >
       <div className="h-fit w-full mx-2 px-4 flex flex-col border-1 border-orange-500 rounded-[40px] lg:max-w-[550px] xl:max-w-[670px] bg-[#100600] hover:bg-[#3F1700]">
-        <div className="mt-5 lg:mt-8 flex flex-row w-full gap-6 ml-5">
+        <div className="mt-5 lg:mt-8 flex flex-row w-full gap-6 pl-5">
           <img
             className="max-lg:h-16 object-cover "
             src={communityLogo}
@@ -102,7 +102,7 @@ function BlockTwo() {
       className="max-lg:w-full flex"
     >
       <div className="w-full mx-2 px-4 flex flex-col border-1 border-blue-400 rounded-[40px] lg:max-w-[387px] xl:max-w-[507px] bg-blue-950 hover:bg-[#032042]">
-        <div className="mt-5 lg:mt-8 flex flex-row w-full gap-6 ml-5">
+        <div className="mt-5 lg:mt-8 flex flex-row w-full gap-6 px-4">
           <img
             className="max-lg:h-16 object-cover "
             src={languageLogo}
@@ -134,7 +134,7 @@ function BlockThree() {
       className="max-lg:w-full flex h-fit lg:-translate-y-30"
     >
       <div className="w-full mx-2 flex flex-col border-1 border-yellow-4 rounded-[40px] lg:max-w-[450px] xl:max-w-[510px] bg-[#1B1000] hover:bg-[#402704]">
-        <div className="px-4  mt-5 lg:mt-8 flex flex-row w-full gap-6 ml-">
+        <div className="px-4 mt-5 lg:mt-8 flex flex-row w-full gap-6">
           <img
             className="max-lg:h-16 object-cover "
             src={resourceLogo}
@@ -165,7 +165,7 @@ function BlockFour() {
       className="max-lg:w-full flex h-fit"
     >
       <div className="w-full pt-2 h-fit mx-2 flex flex-col border-1 border-purple-400 rounded-[40px] lg:max-w-[480px] xl:max-w-[640px] bg-purple-950 hover:bg-[#3B0746]">
-        <div className="px-5 mt-5 lg:mt-8 flex flex-row w-full gap-6">
+        <div className="px-4 mt-5 lg:mt-8 flex flex-row w-full gap-6">
           <img className="max-lg:h-16" src={eventsLogo} alt="" />
           <div className="flex flex-col gap-4 title-large">
             <span>
@@ -195,8 +195,8 @@ function BlockFive() {
       rel="noopener noreferrer"
       className="max-lg:w-full flex lg:-translate-y-30"
     >
-      <div className="w-full mx-2 px-4 flex flex-col border-1 border-green-400 rounded-[40px] lg:max-w-[414px] xl:max-w-[534px] bg-[#001700] hover:bg-[#002600]">
-        <div className="mt-5 lg:mt-8 flex flex-row w-full gap-6 ml-5">
+      <div className="w-full mx-2 px-6 flex flex-col border-1 border-green-400 rounded-[40px] lg:max-w-[414px] xl:max-w-[534px] bg-[#001700] hover:bg-[#002600]">
+        <div className="mt-5 lg:mt-8 flex flex-row w-full gap-6 px-4">
           <img className="max-lg:h-16 object-cover " src={safeLogo} alt="" />
           <div className="flex flex-col gap-4 title-large max-w-[330px]">
             <span>
@@ -233,8 +233,8 @@ function BlockSix() {
       rel="noopener noreferrer"
       className="max-lg:w-full flex lg:-translate-y-30"
     >
-      <div className="w-full h-fit pb-2 mx-2 px-4 flex flex-col gap-6 border-1 border-orange-500 rounded-[40px] lg:max-w-[480px] xl:max-w-[600px] bg-[#100600] hover:bg-orange-950">
-        <div className="mt-5 lg:mt-8 flex flex-row w-full gap-6 ml-5">
+      <div className="w-full h-fit pb-2 mx-2 pr-6 flex flex-col gap-6 border-1 border-orange-500 rounded-[40px] lg:max-w-[480px] xl:max-w-[600px] bg-[#100600] hover:bg-orange-950">
+        <div className="mt-5 lg:mt-8 flex flex-row w-full gap-6 px-5">
           <img className="max-lg:h-16 object-cover " src={testLogo} alt="" />
           <div className="flex flex-col gap-4 title-large max-w-[330px]">
             <span>

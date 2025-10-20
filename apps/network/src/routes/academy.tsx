@@ -2,7 +2,7 @@ import { LANGUAGES_MAP } from '@blms/shared';
 import { cn } from '@blms/ui';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { Trans, useTranslation } from 'react-i18next';
-import headerImage from '#src/assets/academy/header.png';
+import headerImage from '#src/assets/academy/header.webp';
 import headerSmallImage from '#src/assets/academy/header-small.png';
 import media1Image from '#src/assets/academy/media-1.png';
 import media2Image from '#src/assets/academy/media-2.png';
@@ -33,6 +33,7 @@ import replayIcon from '#src/assets/icons/replay.png';
 import ticketIcon from '#src/assets/icons/ticket.svg';
 import toolsIcon from '#src/assets/icons/tools.svg';
 import tvIcon from '#src/assets/icons/tv.svg';
+import worldIcon from '#src/assets/icons/world.svg';
 import BlockTitle from '#src/components/block-title.tsx';
 import { ContactUs } from '#src/components/contact-us.tsx';
 import { Hero } from '#src/components/hero.tsx';
@@ -449,7 +450,7 @@ function RouteComponent() {
             'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
           }
           imageClassName="max-lg:px-2 lg:max-w-[40%] max-lg:relative"
-          className="mt-10 lg:mt-20 pb-12 lg:pt-10"
+          className="mt-10 lg:mt-20 pb-12 lg:pt-10 lg:pr-4"
           orientation="left"
           BackgroundColor="transparent"
           TopElement={
@@ -461,7 +462,7 @@ function RouteComponent() {
             />
           }
           BottomElement={
-            <div className="flex flex-col gap-1 xl:gap-2 max-lg:ml-4">
+            <div className="flex flex-col gap-1 xl:gap-4 max-lg:ml-4">
               <NetworkListItem
                 icon={locationIconBrown}
                 text={t('academy.salvador.list1')}
@@ -489,7 +490,7 @@ function RouteComponent() {
             'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
           }
           imageClassName="max-lg:px-2 lg:max-w-[40%] max-lg:relative"
-          className="mt-12 pb-12 lg:pt-10"
+          className="mt-12 pb-12 lg:pt-10 lg:pr-4"
           orientation="right"
           BackgroundColor="transparent"
           TopElement={
@@ -501,7 +502,7 @@ function RouteComponent() {
             />
           }
           BottomElement={
-            <div className="flex flex-col gap-1 xl:gap-2 max-lg:ml-4">
+            <div className="flex flex-col gap-1 xl:gap-4 max-lg:ml-4">
               <NetworkListItem
                 icon={barChartIcon}
                 text={t('academy.taipei.list1')}
@@ -533,7 +534,7 @@ function RouteComponent() {
             'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
           }
           imageClassName="max-lg:px-2 lg:max-w-[40%] max-lg:relative"
-          className="mt-12 pb-12 lg:pt-10"
+          className="mt-12 pb-12 lg:pt-10 lg:pr-4"
           orientation="left"
           BackgroundColor="transparent"
           TopElement={
@@ -545,7 +546,7 @@ function RouteComponent() {
             />
           }
           BottomElement={
-            <div className="flex flex-col gap-1 xl:gap-2 max-lg:ml-4">
+            <div className="flex flex-col gap-1 xl:gap-4 max-lg:ml-4">
               <NetworkListItem
                 icon={personIcon}
                 text={t('academy.polytecnico.list1')}
@@ -566,7 +567,7 @@ function RouteComponent() {
                 rel="noopener noreferrer"
               >
                 <NetworkListItem
-                  icon={calendarIcon}
+                  icon={worldIcon}
                   text={t('academy.polytecnico.list4')}
                 />
               </Link>

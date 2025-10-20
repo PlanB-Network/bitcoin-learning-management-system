@@ -56,7 +56,7 @@ export default function MediaCard({
       <fieldset
         aria-labelledby="media-card-title"
         className={[
-          'relative w-full rounded-2xl  ',
+          'relative w-full rounded-2xl',
           'flex flex-col lg:flex-col ',
           BackgroundColor === 'dark'
             ? 'max-lg:bg-gradient-network-bottom-and-top-dark'

@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { Trans, useTranslation } from 'react-i18next';
-import headerImage from '#src/assets/funds/header.png';
+import headerImage from '#src/assets/funds/header.webp';
 import headerSmallImage from '#src/assets/funds/header-small.png';
 import media1Image from '#src/assets/funds/media-1.png';
 import media1MobileImage from '#src/assets/funds/media-1-mobile.png';

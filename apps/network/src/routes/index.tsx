@@ -16,12 +16,12 @@ import {
 } from 'react-icons/tb';
 import mapVideo from '#src/assets/home/map-animation.webm';
 import mapMobileVideo from '#src/assets/home/map-animation-mobile.webm';
-import media1Img from '#src/assets/home/media1.png';
-import media1MobileImg from '#src/assets/home/media1-mobile.png';
-import media2Img from '#src/assets/home/media2.png';
-import media2MobileImg from '#src/assets/home/media2-mobile.png';
-import media3Img from '#src/assets/home/media3.png';
-import media3MobileImg from '#src/assets/home/media3-mobile.png';
+import media1Img from '#src/assets/home/media1.webp';
+import media1MobileImg from '#src/assets/home/media1-mobile.webp';
+import media2Img from '#src/assets/home/media2.webp';
+import media2MobileImg from '#src/assets/home/media2-mobile.webp';
+import media3Img from '#src/assets/home/media3.webp';
+import media3MobileImg from '#src/assets/home/media3-mobile.webp';
 import bitcoinIcon from '#src/assets/icons/bitcoin.png';
 import MediaCard3 from '#src/components/media-card3.tsx';
 import NetworkCard from '#src/components/network-card.tsx';
