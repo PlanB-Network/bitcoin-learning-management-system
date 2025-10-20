@@ -37,7 +37,7 @@ export default function ToolsForCommunities({
         withXPadding={false}
         className="max-w-[1400px] mx-auto"
       >
-        <div className="flex flex-row max-lg:flex-col lg:flex-wrap gap-x-10 gap-y-10 lg:justify-center max-lg:items-center w-full">
+        <div className="flex flex-row max-lg:flex-col lg:flex-wrap gap-x-10 gap-y-10 lg:justify-center max-lg:items-center w-full lg:-mb-30">
           <BlockOne />
           <BlockTwo />
           <BlockThree />
@@ -131,9 +131,9 @@ function BlockThree() {
       to={'https://planb.academy/resources'}
       target="_blank"
       rel="noopener noreferrer"
-      className="max-lg:w-full flex"
+      className="max-lg:w-full flex h-fit lg:-translate-y-30"
     >
-      <div className="w-full mx-2 lg:-translate-y-30 flex flex-col border-1 border-yellow-4 rounded-[40px] lg:max-w-[450px] xl:max-w-[570px] bg-[#1B1000] hover:bg-[#402704]">
+      <div className="w-full mx-2 flex flex-col border-1 border-yellow-4 rounded-[40px] lg:max-w-[450px] xl:max-w-[510px] bg-[#1B1000] hover:bg-[#402704]">
         <div className="px-4  mt-5 lg:mt-10 flex flex-row w-full gap-6 ml-">
           <img
             className="max-lg:h-16 object-cover "
@@ -162,9 +162,9 @@ function BlockFour() {
       to={'https://planb.academy/events'}
       target="_blank"
       rel="noopener noreferrer"
-      className="max-lg:w-full flex"
+      className="max-lg:w-full flex h-fit"
     >
-      <div className="w-full mx-2 flex flex-col border-1 border-purple-400 rounded-[40px] lg:max-w-[480px] xl:max-w-[600px] bg-purple-950 hover:bg-[#3B0746]">
+      <div className="w-full h-fit mx-2 flex flex-col border-1 border-purple-400 rounded-[40px] lg:max-w-[480px] xl:max-w-[640px] bg-purple-950 hover:bg-[#3B0746]">
         <div className="px-5 lg:mt-10 flex flex-row w-full gap-6">
           <img className="max-lg:h-16" src={eventsLogo} alt="" />
           <div className="flex flex-col gap-4 title-large">
@@ -193,7 +193,7 @@ function BlockFive() {
       to={'https://planb.academy'}
       target="_blank"
       rel="noopener noreferrer"
-      className="max-lg:w-full flex"
+      className="max-lg:w-full flex lg:-translate-y-30"
     >
       <div className="w-full mx-2 px-4 flex flex-col border-1 border-green-400 rounded-[40px] lg:max-w-[414px] xl:max-w-[534px] bg-[#001700] hover:bg-[#002600]">
         <div className="mt-5 lg:mt-10 flex flex-row w-full gap-6 ml-5">
@@ -231,7 +231,7 @@ function BlockSix() {
       to={'https://planb.academy/en/certifications/b-cert'}
       target="_blank"
       rel="noopener noreferrer"
-      className="max-lg:w-full flex"
+      className="max-lg:w-full flex lg:-translate-y-30"
     >
       <div className="w-full mx-2 px-4 flex flex-col gap-6 border-1 border-orange-500 rounded-[40px] lg:max-w-[480px] xl:max-w-[600px] bg-[#100600] hover:bg-orange-950">
         <div className="mt-5 lg:mt-10 flex flex-row w-full gap-6 ml-5">

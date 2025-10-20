@@ -175,7 +175,7 @@ function CoworkingCard({
   location: string;
 }) {
   return (
-    <div className="flex flex-col items-center gap-10 max-w-[400px] bg-black pb-6 rounded-4xl">
+    <div className="flex flex-col items-center gap-10 max-w-[400px] bg-black pb-6 rounded-4xl hover:bg-gray-900">
       <img src={img} alt="coworking 1" />
       <span className="display-base">{name}</span>
       <div className="flex flex-col items-center gap-2">

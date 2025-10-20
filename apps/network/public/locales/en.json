@@ -238,12 +238,19 @@
     "subtitle": "We support local initiatives in their transformation into Bitcoin citadels. From small communities to Bitcoin hubs, our network of passionate students, teachers, and builders is helping shape the next frontier of sovereign territory.",
     "title": "<0>Building</0> the Bitcoin places of tomorrow"
   },
+  "legal": {
+    "contact": "Contact",
+    "legalNotice": "Legal notice",
+    "notFound": "Legal informations not found",
+    "privacyPolicy": "Privacy policy",
+    "termsOfSale": "Terms of sale"
+  },
   "menu": {
     "about": "About",
     "academy": "Academy",
     "funds": "Funds",
-    "legal": "Legal",
     "hubs": "Hubs",
+    "legal": "Legal",
     "news": "News"
   },
   "news": {

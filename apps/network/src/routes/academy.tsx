@@ -25,7 +25,7 @@ import bookOpen2Icon from '#src/assets/icons/book-open-2.svg';
 import bookOpenOrangeIcon from '#src/assets/icons/book-open-orange.svg';
 import calendarIcon from '#src/assets/icons/calendar.svg';
 import certificationIcon from '#src/assets/icons/certification.png';
-import locationIcon from '#src/assets/icons/location.svg';
+import locationIconBrown from '#src/assets/icons/location-brown.svg';
 import luggageIcon from '#src/assets/icons/luggage.svg';
 import luggageOrangeIcon from '#src/assets/icons/luggage-orange.svg';
 import personIcon from '#src/assets/icons/person.svg';
@@ -341,7 +341,9 @@ function RouteComponent() {
             className="rounded-[68px] pb-5 lg:pb-10"
             withYPadding={false}
           >
-            <p className="mt-10 title-large">{t('academy.career.title2')}</p>
+            <p className="mt-10 title-medium lg:title-large">
+              {t('academy.career.title2')}
+            </p>
             <div className="flex flex-row flex-wrap justify-center gap-4 mt-8">
               <NetworkCard
                 icon={replayIcon}
@@ -359,7 +361,7 @@ function RouteComponent() {
                 subtext={t('academy.career.item3Subtitle')}
               />
             </div>
-            <p className="title-large my-10 lg:my-5 uppercase">
+            <p className="title-medium lg:title-large my-10 lg:my-5 uppercase">
               {t('academy.career.title3')}
             </p>
             <div className="flex flex-col lg:flex-row max-lg:items-center justify-center gap-4">
@@ -464,7 +466,7 @@ function RouteComponent() {
           BottomElement={
             <div className="flex flex-col gap-1 xl:gap-2 max-lg:ml-4">
               <NetworkListItem
-                icon={locationIcon}
+                icon={locationIconBrown}
                 text={t('academy.salvador.list1')}
               />
               <NetworkListItem

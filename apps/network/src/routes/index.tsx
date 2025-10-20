@@ -15,6 +15,7 @@ import {
   TbWashMachine,
 } from 'react-icons/tb';
 import mapVideo from '#src/assets/home/map-animation.webm';
+import mapMobileVideo from '#src/assets/home/map-animation-mobile.webm';
 import media1Img from '#src/assets/home/media1.png';
 import media1MobileImg from '#src/assets/home/media1-mobile.png';
 import media2Img from '#src/assets/home/media2.png';
@@ -50,7 +51,7 @@ function IndexComponent() {
       <PageBlock withYPadding={false}>
         <video
           className="relative w-full max-h-full"
-          src={mapVideo}
+          src={isMobile ? mapMobileVideo : mapVideo}
           autoPlay
           muted
           preload="auto"

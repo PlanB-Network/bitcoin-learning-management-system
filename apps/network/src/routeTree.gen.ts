@@ -15,7 +15,9 @@ import { Route as AcademyRouteImport } from './routes/academy';
 import { Route as AboutRouteImport } from './routes/about';
 import { Route as IndexRouteImport } from './routes/index';
 import { Route as NewsIndexRouteImport } from './routes/news/index';
+import { Route as LegalIndexRouteImport } from './routes/legal/index';
 import { Route as NewsCategoryRouteImport } from './routes/news/$category';
+import { Route as LegalNameRouteImport } from './routes/legal/$name';
 import { Route as NewsArticleBlogNameBlogIdRouteImport } from './routes/news/article/$blogName-$blogId';
 
 const HubsRoute = HubsRouteImport.update({
@@ -48,9 +50,19 @@ const NewsIndexRoute = NewsIndexRouteImport.update({
   path: '/news/',
   getParentRoute: () => rootRouteImport,
 } as any);
+const LegalIndexRoute = LegalIndexRouteImport.update({
+  id: '/legal/',
+  path: '/legal/',
+  getParentRoute: () => rootRouteImport,
+} as any);
 const NewsCategoryRoute = NewsCategoryRouteImport.update({
   id: '/news/$category',
   path: '/news/$category',
+  getParentRoute: () => rootRouteImport,
+} as any);
+const LegalNameRoute = LegalNameRouteImport.update({
+  id: '/legal/$name',
+  path: '/legal/$name',
   getParentRoute: () => rootRouteImport,
 } as any);
 const NewsArticleBlogNameBlogIdRoute =
@@ -66,7 +78,9 @@ export interface FileRoutesByFullPath {
   '/academy': typeof AcademyRoute;
   '/funds': typeof FundsRoute;
   '/hubs': typeof HubsRoute;
+  '/legal/$name': typeof LegalNameRoute;
   '/news/$category': typeof NewsCategoryRoute;
+  '/legal': typeof LegalIndexRoute;
   '/news': typeof NewsIndexRoute;
   '/news/article/$blogName-$blogId': typeof NewsArticleBlogNameBlogIdRoute;
 }
@@ -76,7 +90,9 @@ export interface FileRoutesByTo {
   '/academy': typeof AcademyRoute;
   '/funds': typeof FundsRoute;
   '/hubs': typeof HubsRoute;
+  '/legal/$name': typeof LegalNameRoute;
   '/news/$category': typeof NewsCategoryRoute;
+  '/legal': typeof LegalIndexRoute;
   '/news': typeof NewsIndexRoute;
   '/news/article/$blogName-$blogId': typeof NewsArticleBlogNameBlogIdRoute;
 }
@@ -87,7 +103,9 @@ export interface FileRoutesById {
   '/academy': typeof AcademyRoute;
   '/funds': typeof FundsRoute;
   '/hubs': typeof HubsRoute;
+  '/legal/$name': typeof LegalNameRoute;
   '/news/$category': typeof NewsCategoryRoute;
+  '/legal/': typeof LegalIndexRoute;
   '/news/': typeof NewsIndexRoute;
   '/news/article/$blogName-$blogId': typeof NewsArticleBlogNameBlogIdRoute;
 }
@@ -99,7 +117,9 @@ export interface FileRouteTypes {
     | '/academy'
     | '/funds'
     | '/hubs'
+    | '/legal/$name'
     | '/news/$category'
+    | '/legal'
     | '/news'
     | '/news/article/$blogName-$blogId';
   fileRoutesByTo: FileRoutesByTo;
@@ -109,7 +129,9 @@ export interface FileRouteTypes {
     | '/academy'
     | '/funds'
     | '/hubs'
+    | '/legal/$name'
     | '/news/$category'
+    | '/legal'
     | '/news'
     | '/news/article/$blogName-$blogId';
   id:
@@ -119,7 +141,9 @@ export interface FileRouteTypes {
     | '/academy'
     | '/funds'
     | '/hubs'
+    | '/legal/$name'
     | '/news/$category'
+    | '/legal/'
     | '/news/'
     | '/news/article/$blogName-$blogId';
   fileRoutesById: FileRoutesById;
@@ -130,7 +154,9 @@ export interface RootRouteChildren {
   AcademyRoute: typeof AcademyRoute;
   FundsRoute: typeof FundsRoute;
   HubsRoute: typeof HubsRoute;
+  LegalNameRoute: typeof LegalNameRoute;
   NewsCategoryRoute: typeof NewsCategoryRoute;
+  LegalIndexRoute: typeof LegalIndexRoute;
   NewsIndexRoute: typeof NewsIndexRoute;
   NewsArticleBlogNameBlogIdRoute: typeof NewsArticleBlogNameBlogIdRoute;
 }
@@ -179,11 +205,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NewsIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
+    '/legal/': {
+      id: '/legal/';
+      path: '/legal';
+      fullPath: '/legal';
+      preLoaderRoute: typeof LegalIndexRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     '/news/$category': {
       id: '/news/$category';
       path: '/news/$category';
       fullPath: '/news/$category';
       preLoaderRoute: typeof NewsCategoryRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    '/legal/$name': {
+      id: '/legal/$name';
+      path: '/legal/$name';
+      fullPath: '/legal/$name';
+      preLoaderRoute: typeof LegalNameRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/news/article/$blogName-$blogId': {
@@ -202,7 +242,9 @@ const rootRouteChildren: RootRouteChildren = {
   AcademyRoute: AcademyRoute,
   FundsRoute: FundsRoute,
   HubsRoute: HubsRoute,
+  LegalNameRoute: LegalNameRoute,
   NewsCategoryRoute: NewsCategoryRoute,
+  LegalIndexRoute: LegalIndexRoute,
   NewsIndexRoute: NewsIndexRoute,
   NewsArticleBlogNameBlogIdRoute: NewsArticleBlogNameBlogIdRoute,
 };

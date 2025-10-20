@@ -40,6 +40,7 @@ export default function MediaCard({
   return (
     <PageBlock
       withYPadding={false}
+      withXPadding={false}
       className={cn(
         'shadow-lg rounded-[48px]',
         className,
@@ -85,7 +86,7 @@ export default function MediaCard({
 
         <div
           className={cn(
-            'h-full z-10 p-5 lg:mt-4 flex flex-col gap-5 lg:gap-15 lg:pb-10',
+            'h-full z-10 px-5 py-2 lg:py-5 lg:mt-4 flex flex-col gap-5 lg:gap-15 lg:pb-10',
             'max-lg:px-0',
             !isLeft ? ' lg:items-end lg:self-end' : '',
           )}
@@ -180,7 +181,7 @@ function DisplayImage({
       alt={alt}
       className={[
         'object-cover self-center w-full h-full max-lg:mb-4',
-        'rounded-[68px]',
+        'rounded-2xl lg:rounded-[68px]',
         subtitleUnderImage && isMobile ? '' : 'absolute',
         // subtitleUnderImage ? 'max-lg:-mt-28' : '',
         isLeft ? 'lg:self-end' : 'lg:self-start',

@@ -63,12 +63,12 @@ export const Footer = () => {
     { label: t('menu.about'), to: '/about' },
     {
       label: t('menu.legal'),
-      to: 'https://planb.academy/en/legal/contact',
+      to: '/legal',
     },
   ];
 
   return (
-    <footer className="pt-3 md:pt-6 w-full">
+    <footer className="mt-6 pt-3 md:pt-6 w-full">
       {/* Desktop */}
       <div
         className={cn(
