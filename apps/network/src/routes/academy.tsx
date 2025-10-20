@@ -76,10 +76,10 @@ function RouteComponent() {
       />
 
       <PageBlock>
-        <h2 className="display-medium text-center">
+        <h2 className="display-small lg:display-large lg:text-6xl text-center">
           {t('academy.safestPlace')}
         </h2>
-        <div className="mt-6 flex flex-row justify-between max-w-[300px] self-center mx-auto text-gray-200 z-10 relative">
+        <div className="flex flex-row justify-between max-lg:px-12 max-w-[800px] lg:text-4xl font-medium lg:font-semibold mt-6   self-center mx-auto text-gray-200 z-10 relative">
           <span>{t('academy.safest1')}</span>
           <span>{t('academy.safest2')}</span>
           <span>{t('academy.safest3')}</span>
@@ -185,13 +185,15 @@ function RouteComponent() {
             </>
           }
         />
-        <PageBlock className="mt-40" withYPadding={false}>
+        <PageBlock className="mt-20 lg:mt-40" withYPadding={false}>
           <div className="flex flex-col lg:flex-row max-lg:gap-12">
             <div className="lg:w-[45%] flex flex-col gap-14 max-lg:text-center">
-              <p className="lg:max-w-[350px] title-extra-large">
+              <p className="lg:max-w-[350px] title-large lg:title-extra-large">
                 {t('academy.database.title')}
               </p>
-              <p className="title-base">{t('academy.database.subtitle')}</p>
+              <p className="body-base lg:title-base text-gray-200">
+                {t('academy.database.subtitle')}
+              </p>
               <NetworkButton
                 variant={'tertiary'}
                 className="max-lg:self-center"
@@ -415,7 +417,7 @@ function RouteComponent() {
             'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
           }
           imageClassName="max-lg:px-2 lg:max-w-[40%] max-lg:relative"
-          className="mt-10 lg:mt-20 pb-12 pt-10"
+          className="mt-10 lg:mt-20 pb-12"
           orientation="left"
           BackgroundColor="transparent"
           TopElement={
@@ -455,7 +457,7 @@ function RouteComponent() {
             'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
           }
           imageClassName="max-lg:px-2 lg:max-w-[40%] max-lg:relative"
-          className="mt-12 pb-12 pt-10"
+          className="mt-12 pb-12"
           orientation="right"
           BackgroundColor="transparent"
           TopElement={
@@ -499,7 +501,7 @@ function RouteComponent() {
             'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
           }
           imageClassName="max-lg:px-2 lg:max-w-[40%] max-lg:relative"
-          className="mt-12 pb-12 pt-10"
+          className="mt-12 pb-12"
           orientation="left"
           BackgroundColor="transparent"
           TopElement={

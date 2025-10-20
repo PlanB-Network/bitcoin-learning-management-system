@@ -45,7 +45,7 @@ export default function MediaCard({
         className,
         BackgroundColor === 'dark' ? 'lg:bg-gradient-network-bt-dark' : '',
         BackgroundColor === 'light' ? 'lg:bg-gradient-network-bt' : '',
-        BackgroundColor === 'transparent' ? 'lg:bg-[#00000088]' : '',
+        BackgroundColor === 'transparent' ? 'bg-[#00000088]' : '',
       )}
     >
       {!isMobile && TopElement ? (
@@ -63,7 +63,6 @@ export default function MediaCard({
           BackgroundColor === 'light'
             ? 'max-lg:bg-gradient-network-bottom-and-top'
             : '',
-          BackgroundColor === 'transparent' ? 'max-lg:bg-[#00000088]' : '',
           BackgroundColor === 'border-dark' ? 'max-lg:bg-network-cards' : '',
         ].join(' ')}
       >
@@ -87,7 +86,7 @@ export default function MediaCard({
         <div
           className={cn(
             'h-full z-10 p-5 lg:mt-4 flex flex-col gap-5 lg:gap-15 lg:pb-10',
-            'max-lg:px-4',
+            'max-lg:px-0',
             !isLeft ? ' lg:items-end lg:self-end' : '',
           )}
         >
@@ -108,6 +107,7 @@ export default function MediaCard({
               subtitleClassName={subtitleClassName}
               subtext={subtext}
               isLeft={isLeft}
+              subtitleUnderImage={subtitleUnderImage}
             />
           )}
         </div>
@@ -118,6 +118,7 @@ export default function MediaCard({
             subtitleClassName={subtitleClassName}
             subtext={subtext}
             isLeft={isLeft}
+            subtitleUnderImage={subtitleUnderImage}
           />
         ) : (
           <DisplayImage
@@ -194,11 +195,13 @@ function BottomStuff({
   subtitleClassName,
   subtext,
   isLeft,
+  subtitleUnderImage,
 }: {
   bottomElement?: React.ReactNode;
   subtitleClassName?: string;
   subtext?: string;
   isLeft: boolean;
+  subtitleUnderImage: boolean;
 }) {
   const isMobile = useSmaller('lg');
   return (
@@ -216,11 +219,13 @@ function BottomStuff({
       </p>
       {bottomElement ? (
         <>
-          {isMobile ? <div className="max-lg:h-8" /> : null}
+          {isMobile && subtitleUnderImage ? (
+            <div className="max-lg:h-8" />
+          ) : null}
           {bottomElement}
         </>
       ) : null}
-      {isMobile ? <div className="max-lg:h-5" /> : null}
+      {isMobile && subtitleUnderImage ? <div className="max-lg:h-5" /> : null}
     </>
   );
 }
