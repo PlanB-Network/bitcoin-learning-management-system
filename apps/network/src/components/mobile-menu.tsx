@@ -127,11 +127,13 @@ export const MobileMenu = ({
       >
         <div className="flex flex-col w-full items-center gap-15">
           <div className="w-full flex flex-row justify-between">
-            <img
-              src={Logo}
-              alt="Logo Plan ₿ Network"
-              className="w-40 self-start"
-            />
+            <Link to="/" onClick={toggleMobileMenu}>
+              <img
+                src={Logo}
+                alt="Logo Plan ₿ Network"
+                className="w-40 self-start"
+              />
+            </Link>
             <TbX
               onClick={toggleMobileMenu}
               className="cursor-pointer text-neutral-500 stroke-2 size-8 shrink-0 self-end"

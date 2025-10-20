@@ -2,8 +2,8 @@ import { cn, DividerSimple } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { BsGithub, BsLinkedin, BsTwitterX, BsYoutube } from 'react-icons/bs';
-// import Nostr from '#src/assets/icons/nostr.svg?react';
-// import Rumble from '#src/assets/icons/rumble.svg?react';
+import Nostr from '#src/assets/icons/nostr.svg?react';
+import Rumble from '#src/assets/icons/rumble.svg?react';
 import Logo from '#src/assets/logo.svg?no-inline';
 import { NetworkButton } from './network-button.tsx';
 
@@ -32,18 +32,18 @@ const SOCIAL_LINKS = [
     isReactIcon: true,
     label: 'Linkedin',
   },
-  // {
-  //   href: 'https://rumble.com/user/planb_network',
-  //   icon: Rumble,
-  //   isReactIcon: false,
-  //   label: 'Rumble',
-  // },
-  // {
-  //   href: 'https://primal.net/planbnetwork',
-  //   icon: Nostr,
-  //   isReactIcon: false,
-  //   label: 'Nostr',
-  // },
+  {
+    href: 'https://rumble.com/user/planb_network',
+    icon: Rumble,
+    isReactIcon: false,
+    label: 'Rumble',
+  },
+  {
+    href: 'https://primal.net/planbnetwork',
+    icon: Nostr,
+    isReactIcon: false,
+    label: 'Nostr',
+  },
 ];
 
 export const Footer = () => {
@@ -59,9 +59,12 @@ export const Footer = () => {
   ];
 
   const secondaryLinks = [
-    { label: t('menu.academy'), to: '/academy' },
-    { label: t('menu.hubs'), to: '/hubs' },
-    { label: t('menu.funds'), to: '/funds' },
+    { label: t('menu.news'), to: '/news' },
+    { label: t('menu.about'), to: '/about' },
+    {
+      label: t('menu.legal'),
+      to: 'https://planb.academy/en/legal/contact',
+    },
   ];
 
   return (
@@ -73,14 +76,15 @@ export const Footer = () => {
           backgroundClass,
         )}
       >
-        <div className="w-full flex flex-row justify-between px-10">
+        <div className="w-full flex flex-row justify-between  px-10">
           <img src={Logo} alt="Logo Plan ₿ Academy" className="w-56" />
           <Link
             to="https://planb.academy"
             target="_blank"
             rel="noopener noreferrer"
+            className="self-center"
           >
-            <NetworkButton className="self-center mb-6" variant={'tertiary'}>
+            <NetworkButton variant={'tertiary'} size={'s'}>
               {t('academy.startLearning')}
             </NetworkButton>
           </Link>
@@ -106,7 +110,7 @@ export const Footer = () => {
       <div className={cn('flex w-full flex-col md:hidden', backgroundClass)}>
         <div className="flex flex-col w-full p-4 pb-0 pt-6 gap-6">
           <div className="w-full flex flex-col justify-center gap-6">
-            <img src={Logo} alt="Logo Plan ₿ Academy" className="w-26.5" />
+            <img src={Logo} alt="Logo Plan ₿ Academy" className="w-44" />
             <div className="flex flex-row justify-between">
               <NavigationSection
                 mainLinks={mainLinks}
@@ -123,12 +127,13 @@ export const Footer = () => {
             to="https://planb.academy"
             target="_blank"
             rel="noopener noreferrer"
+            className="self-center"
           >
-            <NetworkButton className="self-center mb-6" variant={'tertiary'}>
+            <NetworkButton variant={'tertiary'}>
               {t('academy.startLearning')}
             </NetworkButton>
           </Link>
-          <DividerSimple />
+          <DividerSimple className="bg-brown-500 mx-auto w-[90%]" />
           <div className="w-full flex flex-col">
             <SocialNetworksMobile />
           </div>
@@ -139,19 +144,16 @@ export const Footer = () => {
 };
 
 const NavigationSection = ({
-  title,
   mainLinks,
   textSecondaryClass,
 }: {
-  title?: string;
   mainLinks: Array<{ to: string; label: string }>;
   textSecondaryClass: string;
 }) => (
   <div className="flex max-md:flex-col gap-2 md:items-center shrink-0">
-    {title && <h4 className="body-medium-16px">{title}</h4>}
     <ul
       className={cn(
-        'flex max-md:flex-col gap-3 xl:gap-7 body-16px md:body-small',
+        'flex max-md:flex-col gap-3 lg:gap-12 body-16px md:title-medium',
         textSecondaryClass,
       )}
     >
@@ -180,12 +182,12 @@ const SocialLink = ({
   <a href={href} target="_blank" rel="noreferrer">
     {isReactIcon ? (
       <Icon
-        className={cn(iconClasses, iconSize ? `h-${iconSize / 4}` : 'h-4.5')}
+        className={cn(iconClasses, iconSize ? `size-${iconSize}` : 'size-4.5')}
       />
     ) : (
       <Icon
         className={cn(
-          iconSize ? `h-${iconSize / 4}` : 'h-4.5',
+          iconSize ? `size-${iconSize}` : 'size-4.5',
           'fill-current',
           iconClasses,
         )}
@@ -198,7 +200,7 @@ const SocialNetworksMobile = () => {
   const iconSize = 18;
 
   return (
-    <div className="flex gap-5 mx-auto">
+    <div className="flex gap-5 mx-auto mb-6">
       {SOCIAL_LINKS.map(({ href, icon, isReactIcon }) => (
         <SocialLink
           key={href}
@@ -206,7 +208,7 @@ const SocialNetworksMobile = () => {
           icon={icon}
           isReactIcon={isReactIcon}
           iconSize={iconSize}
-          iconClasses={'text-white stroke-newBlack-5'}
+          iconClasses={'stroke-brown-100'}
         />
       ))}
     </div>
@@ -214,19 +216,17 @@ const SocialNetworksMobile = () => {
 };
 
 const SocialNetworksDesktop = () => {
-  const iconSize = 18;
-
   return (
     <div className="flex flex-col gap-12 max-md:hidden w-full items-center py-6">
-      <ul className={'flex gap-12 text-white'}>
+      <ul className={'flex gap-12 text-brown-100'}>
         {SOCIAL_LINKS.map(({ href, icon, isReactIcon }) => (
           <li key={href}>
             <SocialLink
               href={href}
               icon={icon}
               isReactIcon={isReactIcon}
-              iconSize={iconSize}
-              iconClasses={'stroke-newBlack-5'}
+              iconSize={7}
+              iconClasses={'stroke-brown-100'}
             />
           </li>
         ))}
