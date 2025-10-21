@@ -13,7 +13,6 @@ import valuesFreedomImage from '#src/assets/icons/freedom.png';
 import valuesOpenSourceImage from '#src/assets/icons/github.png';
 import valuesBitcoinFirst2Image from '#src/assets/icons/groups.png';
 import valuesPrivacyImage from '#src/assets/icons/visibility_off.png';
-import { ContactUs } from '#src/components/contact-us.tsx';
 import { Hero } from '#src/components/hero.tsx';
 import MediaCard from '#src/components/media-card.tsx';
 import NetworkCard from '#src/components/network-card.tsx';
@@ -303,8 +302,6 @@ function RouteComponent() {
             : null}
         </div>
       </PageBlock>
-
-      <ContactUs text={t('about.contactText')} email="rogzy@planb.network" />
     </>
   );
 }

@@ -21,7 +21,7 @@ const SOCIAL_LINKS = [
     label: 'YouTube',
   },
   {
-    href: 'https://github.com/PlanB-Network/bitcoin-educational-content',
+    href: 'https://github.com/PlanB-Network',
     icon: BsGithub,
     isReactIcon: true,
     label: 'Github',
@@ -68,11 +68,11 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="mt-6 pt-3 md:pt-6 w-full">
+    <footer className="mt-25 pt-3 md:pt-6 w-full">
       {/* Desktop */}
       <div
         className={cn(
-          'w-full max-md:hidden bg-footer text-white',
+          'w-full max-md:hidden bg-footer text-white pb-20',
           backgroundClass,
         )}
       >
@@ -85,7 +85,7 @@ export const Footer = () => {
               rel="noopener noreferrer"
               className="self-center"
             >
-              <NetworkButton variant={'tertiary'} size={'s'}>
+              <NetworkButton variant={'tertiary'} size={'m'}>
                 {t('academy.startLearning')}
               </NetworkButton>
             </Link>

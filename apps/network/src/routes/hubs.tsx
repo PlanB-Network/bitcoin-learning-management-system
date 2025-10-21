@@ -158,7 +158,12 @@ function RouteComponent() {
         />
       </div>
 
-      <PageBlock withXMargin={false} withXPadding={false}>
+      <PageBlock
+        className="pt-10 lg:pt-30"
+        withXMargin={false}
+        withXPadding={false}
+        withYPadding={false}
+      >
         <ToolsForCommunities />
       </PageBlock>
     </>

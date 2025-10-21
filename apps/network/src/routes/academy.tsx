@@ -364,7 +364,7 @@ function RouteComponent() {
                 subtext={t('academy.career.item3Subtitle')}
               />
             </div>
-            <p className="title-medium lg:title-large my-10 lg:my-5 uppercase">
+            <p className="title-medium lg:title-large my-10 lg:my-5">
               {t('academy.career.title3')}
             </p>
             <div className="flex flex-col lg:flex-row max-lg:items-center justify-center gap-4">
