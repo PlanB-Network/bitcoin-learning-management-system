@@ -43,7 +43,7 @@ export default function DesktopMenu() {
       )}
     >
       <div className="max-w-[1440px] flex flex-row justify-between gap-2 mx-auto">
-        <Link to="/">
+        <Link to="/" viewTransition>
           <img className="h-8 w-auto" src={Logo} alt="" loading="lazy" />
         </Link>
         <div className="flex flex-row gap-16">
@@ -51,6 +51,7 @@ export default function DesktopMenu() {
             to="/academy"
             className={linkClassName}
             activeProps={activeLinkProps}
+            viewTransition
           >
             {t('menu.academy')}
           </Link>
@@ -58,6 +59,7 @@ export default function DesktopMenu() {
             to="/hubs"
             className={linkClassName}
             activeProps={activeLinkProps}
+            viewTransition
           >
             {t('menu.hubs')}
           </Link>
@@ -65,6 +67,7 @@ export default function DesktopMenu() {
             to="/funds"
             className={linkClassName}
             activeProps={activeLinkProps}
+            viewTransition
           >
             {t('menu.funds')}
           </Link>
@@ -74,6 +77,7 @@ export default function DesktopMenu() {
             to="/news"
             className={linkClassName}
             activeProps={activeLinkProps}
+            viewTransition
           >
             {t('menu.news')}
           </Link>
@@ -81,6 +85,7 @@ export default function DesktopMenu() {
             to="/about"
             className={linkClassName}
             activeProps={activeLinkProps}
+            viewTransition
           >
             {t('menu.about')}
           </Link>

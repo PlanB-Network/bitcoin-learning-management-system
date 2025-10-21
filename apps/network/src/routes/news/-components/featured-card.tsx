@@ -76,6 +76,7 @@ export const FeaturedCard = ({
         <Link
           className="self-start justify-self-start"
           to={`/news/article/${formatNameForURL(latestBlog.title)}-${latestBlog.id}`}
+          viewTransition
         >
           <h2 className="mb-2 lg:mb-5 mobile-h2 lg:display-small-32px">
             {latestBlog.title}
@@ -102,6 +103,7 @@ export const FeaturedCard = ({
         <Link
           key={latestBlog.id}
           to={`/news/article/${formatNameForURL(latestBlog.title)}-${latestBlog.id}`}
+          viewTransition
         >
           <img
             className="rounded-xs lg:rounded-[20px] lg:max-w-[500px]"

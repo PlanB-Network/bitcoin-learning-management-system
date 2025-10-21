@@ -55,6 +55,7 @@ export const BlogList = () => {
           <div className=" grid grid-cols-2 lg:grid-cols-3 gap-6 px-2 lg:px-12 mt-8 lg:mt-11">
             {sortedBlogs.slice(1).map((blog) => (
               <Link
+                viewTransition
                 to={`/news/article/${formatNameForURL(blog.title)}-${blog.id}`}
                 key={blog.id}
               >

@@ -89,7 +89,7 @@ function SingleBlogDetail() {
             </div>
           </div>
           <div className="flex w-max-[135px] mt-6 max-md:justify-center">
-            <Link to="/news">
+            <Link to="/news" viewTransition>
               <NetworkButton variant="primary" className="group">
                 {t('news.backToAll')}
               </NetworkButton>

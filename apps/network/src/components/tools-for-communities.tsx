@@ -83,7 +83,11 @@ function BlockOne() {
         <span className="lg:hidden my-5 body-12px-small text-gray-200 ">
           {t('community.box1Subtitle')}
         </span>
-        <img className="lg:mt-5 rounded-4xl" src={communityImg} alt="" />
+        <img
+          className="lg:mt-5 rounded-4xl rounded-b-3xl"
+          src={communityImg}
+          alt=""
+        />
       </div>
     </Link>
   );
@@ -119,7 +123,7 @@ function BlockTwo() {
         <span className="my-5 body-12px-small lg:title-small text-gray-200 lg:max-w-[400px] lg:ml-10 ">
           {t('community.box2Subtitle')}
         </span>
-        <img className="lg:mt-5 rounded-4xl" src={languageImg} alt="" />
+        <img className="lg:mt-5 rounded-t-4xl" src={languageImg} alt="" />
       </div>
     </Link>
   );
@@ -220,7 +224,7 @@ function BlockFive() {
           </div>
           <div className="w-[50%]">
             <img
-              className="rounded-4xl translate-x-4 w-full"
+              className="rounded-t-4xl translate-x-4 w-full"
               src={safeImg}
               alt=""
             />
@@ -252,11 +256,11 @@ function BlockSix() {
             </span>
           </div>
         </div>
-        <div className="flex flex-row pl-7 justify-items-center items-start">
-          <p className="title-small text-gray-200 w-[50%]">
+        <div className="flex flex-col lg:flex-row pl-7 justify-items-center items-center lg:items-start max-lg:gap-4">
+          <p className="title-small text-gray-200 lg:w-[50%]">
             {t('community.box6Subtitle')}
           </p>
-          <img className=" w-[50%] pl-4 pb-3" src={testImg} alt="" />
+          <img className="lg:w-[50%] pl-4 pb-3" src={testImg} alt="" />
         </div>
       </div>
     </Link>
