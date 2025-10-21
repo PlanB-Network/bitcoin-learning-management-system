@@ -43,10 +43,10 @@ function IndexComponent() {
   return (
     <div className="text-center">
       <PageBlock withYPadding={false} className="mt-8">
-        <h1 className="display-base lg:text-6xl font-medium mb-2">
+        <h1 className="display-base text-4xl lg:text-6xl font-medium mb-2">
           {t('home.title')}
         </h1>
-        <p className="text-3xl font-bold text-orange-500">
+        <p className="display-extra-small lg:text-3xl font-bold text-orange-500">
           {t('home.subtitle')}
         </p>
       </PageBlock>
@@ -144,7 +144,7 @@ function IndexComponent() {
       </PageBlock>
 
       <PageBlock
-        className="lg:!py-25 mb-150"
+        className="lg:!py-25 lg:mb-150"
         withXMargin={false}
         withXPadding={false}
       >

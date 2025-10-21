@@ -155,7 +155,7 @@ const NavigationSection = ({
   <div className="flex max-md:flex-col gap-2 md:items-center shrink-0">
     <ul
       className={cn(
-        'flex max-md:flex-col gap-3 lg:gap-12 body-16px md:title-medium',
+        'flex max-md:flex-col gap-3 lg:gap-12 subtitle-base md:title-medium',
         textSecondaryClass,
       )}
     >
