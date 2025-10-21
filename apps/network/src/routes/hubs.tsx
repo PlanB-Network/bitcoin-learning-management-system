@@ -154,7 +154,7 @@ function RouteComponent() {
         <ContactUs
           className="relative z-30"
           text={t('hubs.contactText')}
-          email="rogzy@planb.network"
+          email="mir@planb.network"
         />
       </div>
 
