@@ -61,11 +61,11 @@ function IndexComponent() {
           src={isMobile ? mapMobileVideo : mapVideo}
           autoPlay
           muted
+          playsInline
+          webkit-playsinline="true"
           preload="auto"
           aria-label="Bitcoin network animation"
-          onCanPlay={() => {
-            setIsLoading(false);
-          }}
+          onCanPlay={() => setIsLoading(false)}
         />
       </PageBlock>
 
