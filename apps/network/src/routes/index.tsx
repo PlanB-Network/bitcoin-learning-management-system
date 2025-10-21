@@ -35,7 +35,7 @@ export const Route = createFileRoute('/')({
 
 function IndexComponent() {
   const { t } = useTranslation();
-  const isMobile = useSmaller('lg');
+  const isMobile = useSmaller('lg') || window.innerWidth < 1024;
   const [isLoading, setIsLoading] = useState(true);
 
   const cardsDivClassName =
