@@ -67,7 +67,7 @@ function IndexComponent() {
           preload="auto"
           loop
           aria-label="Bitcoin network animation"
-          onCanPlay={() => setIsLoading(false)}
+          onPlay={() => setIsLoading(false)}
         />
       </PageBlock>
 
