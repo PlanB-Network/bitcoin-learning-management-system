@@ -199,11 +199,11 @@
   },
   "hubs": {
     "ark": {
-      "subtitle": "In collaboration with local start-ups ArkLabs and Boltz, Lugano has become an epicenter for prototyping Layer 3 Bitcoin payment solutions. With numerous merchants already accepting Bitcoin, the city offers the perfect environment for innovation and disruptive opportunities.",
+      "subtitle": "In collaboration with local start-ups ArkLabs and Boltz, Lugano is becoming an epicenter for prototyping Layer 3 Bitcoin payment solutions. With numerous merchants eager to experiment, the city is offering the perfect environment for innovation and disruptive opportunities.",
       "tag": "Technology",
       "title": "Custom Ark Payment"
     },
-    "blockTitle1Subtext": "As a hub of global digital transformation, the city of Lugano is driving innovation in technology, payments, and digital identity. We're proud  to support this momentum by working alongside local partners to advance Bitcoin education and initiatives throughout the city",
+    "blockTitle1Subtext": "As a hub of global digital transformation, the city of Lugano is driving innovation in technology, payments, and digital identity. We're proud to support this momentum by working alongside local partners to advance Bitcoin education and initiatives throughout the city.",
     "blockTitle1Text": "Empowering Lugano",
     "co-working": {
       "hub1Location": "Tokyo, Japan",
@@ -212,13 +212,14 @@
       "hub2Name": "PoW.space",
       "hub3Location": "Taipei, Taiwan",
       "hub3Name": "Tempo House",
-      "subtitle": "Plan ₿ Network supports the growth of key Bitcoin hubs around the world, by creating educational events, seminars and networking opportunities. We work in close collaboration with local Bitcoin communities to create synergy among passionate builders, local businesses, and key public actors. Our goal is to cultivate a global network of safe spaces where anyone, anywhere can learn, collaborate, and build with Bitcoin.",
+      "subtitle": "Plan ₿ Network supports the growth of key Bitcoin hubs around the world, by creating educational events, seminars and networking opportunities. We work in close collaboration with local Bitcoin communities to create synergies among passionate builders, local businesses, and key public actors. Our goal is to cultivate a global network of spaces where anyone, anywhere can learn, collaborate, and build with Bitcoin.",
       "title": "Bitcoin Coworking Hubs"
     },
     "contactText": "To know more about our activities in Lugano, please contact us.",
     "forum": {
       "button": "Learn more",
-      "subtitle": "Every October, thousands of the brightest Bitcoin minds gather in Lugano for the annual Plan ₿ Forum. From engaging masterclass sessions to the Italian free stage, exams, and game shows, our team help making the forum better each year.",
+      "subtitle": "Every October, thousands of the brightest Bitcoin minds gather in Lugano for the annual Plan ₿ Forum. Leveraging the Forum impact, our team expands the agenda with an addition of more than 50 workshops and 40 events, notably via the Plan ₿ Week, Spazio 21, and the Masterclasses.",
+
       "tag": "Conference",
       "title": "Plan ₿ Forum"
     },
@@ -236,7 +237,7 @@
       "tag": "Meetup",
       "title": "Satoshi Spritz"
     },
-    "subtitle": "We support local initiatives in their transformation into Bitcoin citadels. From small communities to Bitcoin hubs, our network of passionate students, teachers, and builders is helping shape the next frontier of sovereign territory.",
+    "subtitle": "We support local initiatives in their transformation into Bitcoin citadels. From small communities to Bitcoin hubs, our network of top-notch builders, teachers, and students is helping shape the next frontier of sovereign territory.",
     "title": "<0>Building</0> the Bitcoin places of tomorrow"
   },
   "legal": {
