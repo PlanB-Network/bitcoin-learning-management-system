@@ -29,7 +29,7 @@ export default function MediaCard3({
       <img
         src={imageUrl}
         alt="Hero background"
-        className="max-lg:hidden absolute object-cover w-full"
+        className="max-lg:hidden absolute object-cover w-full max-w-[2000px]"
       />
       <div
         className={cn(
