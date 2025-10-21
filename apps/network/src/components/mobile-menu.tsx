@@ -1,6 +1,6 @@
 import { cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbMenu2, TbX } from 'react-icons/tb';
 import Logo from '#src/assets/logo.svg?no-inline';
@@ -18,8 +18,6 @@ export const MobileMenu = ({
   const { t } = useTranslation();
 
   const mobileMenuRef = useRef<HTMLDivElement>(null);
-  const [isMenuVisible, setIsMenuVisible] = useState(true);
-  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const html = document.documentElement;
@@ -65,34 +63,8 @@ export const MobileMenu = ({
     };
   }, [isMobileMenuOpen, toggleMobileMenu]);
 
-  useEffect(() => {
-    const updateMenuVisibility = () => {
-      if (window.scrollY > lastScrollY.current && window.scrollY > 50) {
-        setIsMenuVisible(false);
-      } else {
-        setIsMenuVisible(true);
-      }
-
-      lastScrollY.current = window.scrollY;
-    };
-
-    window.addEventListener('scroll', updateMenuVisibility);
-
-    return () => {
-      window.removeEventListener('scroll', updateMenuVisibility);
-    };
-  }, []);
-
   return (
-    <div
-      className={cn(
-        'sticky top-0 z-50',
-        'text-black bg-black lg:hidden',
-        'transition-transform duration-300 transform',
-        isMobileMenuOpen ? 'translate-y-0' : '',
-        !isMobileMenuOpen && !isMenuVisible && '-translate-y-full',
-      )}
-    >
+    <div className={cn('sticky top-0 z-50 text-black bg-black lg:hidden')}>
       <div className="flex w-full items-center justify-between px-2">
         <Link to="/" className="w-fit">
           <img className="my-4 h-8 w-auto" src={Logo} alt="" loading="lazy" />
@@ -116,12 +88,7 @@ export const MobileMenu = ({
           'bg-black text-white',
           ' duration-300 overflow-scroll no-scrollbar ',
           'z-20 lg:hidden',
-
-          isMenuVisible
-            ? isMobileMenuOpen
-              ? 'translate-x-0'
-              : 'translate-x-full'
-            : 'hidden',
+          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full',
         )}
         ref={mobileMenuRef}
       >
