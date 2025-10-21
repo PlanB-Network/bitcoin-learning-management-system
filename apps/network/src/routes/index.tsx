@@ -40,6 +40,7 @@ function IndexComponent() {
 
   const cardsDivClassName =
     'flex flex-wrap gap-4 lg:gap-10 max-w-[1300px] max-lg:justify-center';
+
   return (
     <div className="text-center">
       <PageBlock withYPadding={false} className="mt-8">
