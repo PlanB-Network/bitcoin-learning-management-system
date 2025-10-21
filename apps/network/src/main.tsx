@@ -8,7 +8,10 @@ import { TRPCProvider, trpcClient } from './utils/trpc.ts';
 import './utils/i18n';
 
 import '../../../packages/ui/src/styles/global.css';
+import { HelmetProvider } from 'react-helmet-async';
+import PageMeta from './components/Head/PageMeta/index.tsx';
 import { NotFound } from './components/not-found.tsx';
+import { SITE_NAME } from './utils/meta.ts';
 
 // Create a new router instance
 const router = createRouter({
@@ -64,10 +67,18 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <TRPCProvider trpcClient={trpcClient} queryClient={queryClient}>
-        <RouterProvider router={router} />
-      </TRPCProvider>
-    </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <TRPCProvider trpcClient={trpcClient} queryClient={queryClient}>
+          <RouterProvider router={router} />
+          <PageMeta
+            title={SITE_NAME}
+            description="Let's build together the Bitcoin educational layer"
+            type="website"
+            imageSrc="/share-default.jpg"
+          />
+        </TRPCProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
   </StrictMode>,
 );
