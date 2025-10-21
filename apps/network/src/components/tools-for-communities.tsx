@@ -133,7 +133,7 @@ function BlockThree() {
       rel="noopener noreferrer"
       className="max-lg:w-full flex h-fit lg:-translate-y-30"
     >
-      <div className="w-full mx-2 flex flex-col border-1 border-yellow-4 rounded-[40px] lg:max-w-[450px] xl:max-w-[510px] bg-[#1B1000] hover:bg-[#402704]">
+      <div className="w-full mx-2 flex flex-col border-1 border-yellow-4 rounded-[40px] lg:max-w-[450px] xl:max-w-[530px] bg-[#1B1000] hover:bg-[#402704]">
         <div className="px-4 mt-5 lg:mt-8 flex flex-row w-full gap-6">
           <img
             className="max-lg:h-16 object-cover "
@@ -148,7 +148,11 @@ function BlockThree() {
             </span>
           </div>
         </div>
-        <img className="mt-10 rounded-4xl w-fit" src={resourceImg} alt="" />
+        <img
+          className="mt-10 rounded-4xl w-fit pl-8"
+          src={resourceImg}
+          alt=""
+        />
       </div>
     </Link>
   );
@@ -164,7 +168,7 @@ function BlockFour() {
       rel="noopener noreferrer"
       className="max-lg:w-full flex h-fit"
     >
-      <div className="w-full pt-2 h-fit mx-2 flex flex-col border-1 border-purple-400 rounded-[40px] lg:max-w-[480px] xl:max-w-[640px] bg-purple-950 hover:bg-[#3B0746]">
+      <div className="w-full pt-2 h-fit mx-2 flex flex-col border-1 border-purple-400 rounded-[40px] lg:max-w-[480px] xl:max-w-[595px] bg-purple-950 hover:bg-[#3B0746]">
         <div className="px-4 mt-5 lg:mt-8 flex flex-row w-full gap-6">
           <img className="max-lg:h-16" src={eventsLogo} alt="" />
           <div className="flex flex-col gap-4 title-large">
@@ -181,7 +185,11 @@ function BlockFour() {
         <span className="lg:hidden px-5 my-5 body-12px-small text-gray-200 ">
           {t('community.box4Subtitle')}
         </span>
-        <img className="lg:mt-5 rounded-4xl mx-20" src={eventsImg} alt="" />
+        <img
+          className="lg:mt-5 rounded-4xl  pl-20 pr-15"
+          src={eventsImg}
+          alt=""
+        />
       </div>
     </Link>
   );
