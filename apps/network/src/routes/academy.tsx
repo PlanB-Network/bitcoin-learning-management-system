@@ -77,10 +77,10 @@ function RouteComponent() {
         subtitleClassName={'max-w-[400px]'}
       />
       <PageBlock className="flex">
-        <h2 className="display-small lg:display-large lg:text-6xl text-center">
+        <h2 className="display-base lg:display-large lg:text-6xl text-center">
           {t('academy.safestPlace')}
         </h2>
-        <div className="flex flex-row justify-between max-lg:px-12 max-w-[800px] lg:text-4xl font-medium lg:font-semibold mt-6   self-center mx-auto text-gray-200 z-10 relative">
+        <div className="flex flex-row justify-between max-lg:px-2 max-w-[800px] lg:text-4xl font-medium lg:font-semibold mt-6   self-center mx-auto text-gray-200 z-10 relative">
           <span>{t('academy.safest1')}</span>
           <span>{t('academy.safest2')}</span>
           <span>{t('academy.safest3')}</span>
