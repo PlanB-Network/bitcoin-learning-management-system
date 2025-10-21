@@ -17,6 +17,7 @@ type MediaCardProps = {
   TopElement?: React.ReactNode;
   BottomElement?: React.ReactNode;
   BackgroundColor?: 'dark' | 'light' | 'border-dark' | 'transparent' | 'none';
+  gradientBackground?: boolean;
 };
 
 export default function MediaCard({
@@ -33,7 +34,10 @@ export default function MediaCard({
   TopElement,
   BottomElement,
   BackgroundColor = 'none',
+  gradientBackground = false,
 }: MediaCardProps) {
+  // bg-academy-image-gradient
+
   const isLeft = orientation === 'left';
   const isMobile = useSmaller('lg');
 
@@ -75,6 +79,7 @@ export default function MediaCard({
               alt={alt}
               imageClassName={imageClassName}
               subtitleUnderImage={subtitleUnderImage}
+              gradientBackground={gradientBackground}
             />
             <DisplayTitle
               isLeft={isLeft}
@@ -128,6 +133,7 @@ export default function MediaCard({
             alt={alt}
             imageClassName={imageClassName}
             subtitleUnderImage={subtitleUnderImage}
+            gradientBackground={gradientBackground}
           />
         )}
       </fieldset>
@@ -166,28 +172,35 @@ function DisplayImage({
   alt,
   subtitleUnderImage,
   isLeft,
+  gradientBackground,
 }: {
   imageUrl: string;
   imageClassName?: string;
   alt?: string;
   subtitleUnderImage?: boolean;
   isLeft: boolean;
+  gradientBackground: boolean;
 }) {
   const isMobile = useSmaller('lg');
 
   return (
-    <img
-      src={imageUrl}
-      alt={alt}
-      className={[
-        'object-cover self-center w-full h-full max-lg:mb-4',
-        'rounded-2xl lg:rounded-[68px]',
-        subtitleUnderImage && isMobile ? '' : 'absolute',
-        // subtitleUnderImage ? 'max-lg:-mt-28' : '',
-        isLeft ? 'lg:self-end' : 'lg:self-start',
-        imageClassName,
-      ].join(' ')}
-    />
+    <>
+      <img
+        src={imageUrl}
+        alt={alt}
+        className={[
+          'z-0 object-cover self-center w-full h-full max-lg:mb-4',
+          'rounded-2xl lg:rounded-[68px]',
+          subtitleUnderImage && isMobile ? '' : 'absolute',
+          // subtitleUnderImage ? 'max-lg:-mt-28' : '',
+          isLeft ? 'lg:self-end' : 'lg:self-start',
+          imageClassName,
+        ].join(' ')}
+      />
+      {gradientBackground ? (
+        <div className="z-0 max-lg:hidden absolute inset-0 bg w-full h-full bg-academy-image-gradient" />
+      ) : null}
+    </>
   );
 }
 

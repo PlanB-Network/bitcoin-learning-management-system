@@ -789,6 +789,10 @@
   );
 }
 
+@utility bg-academy-image-gradient {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 86%, #000 100%);
+}
+
 @utility bg-lugano-section {
   background: linear-gradient(
     174deg,

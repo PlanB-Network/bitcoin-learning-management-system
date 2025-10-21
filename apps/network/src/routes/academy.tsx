@@ -318,6 +318,7 @@ function RouteComponent() {
             subtitleClassName={'lg:max-w-[52%] max-xl:!text-lg text-gray-300'}
             subtitleUnderImage={true}
             orientation="left"
+            gradientBackground={true}
             BottomElement={
               <div className="max-lg:self-center flex flex-col gap-1 xl:gap-4">
                 <NetworkListItem
@@ -402,6 +403,7 @@ function RouteComponent() {
               }
               subtitleUnderImage={true}
               orientation="right"
+              gradientBackground={true}
               BottomElement={
                 <div className="flex flex-col gap-1 xl:gap-2">
                   <Link

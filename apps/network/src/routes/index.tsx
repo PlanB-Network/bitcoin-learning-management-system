@@ -1,5 +1,6 @@
-import { cn } from '@blms/ui';
+import { cn, Loader } from '@blms/ui';
 import { createFileRoute } from '@tanstack/react-router';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   TbBuildingCastle,
@@ -35,6 +36,7 @@ export const Route = createFileRoute('/')({
 function IndexComponent() {
   const { t } = useTranslation();
   const isMobile = useSmaller('lg');
+  const [isLoading, setIsLoading] = useState(true);
 
   const cardsDivClassName =
     'flex flex-wrap gap-4 lg:gap-10 max-w-[1300px] max-lg:justify-center';
@@ -48,6 +50,11 @@ function IndexComponent() {
           {t('home.subtitle')}
         </p>
       </PageBlock>
+      {isLoading ? (
+        <PageBlock>
+          <Loader className="w-40 mx-auto mt-12" />
+        </PageBlock>
+      ) : null}
       <PageBlock withYPadding={false}>
         <video
           className="relative w-full max-h-full"
@@ -56,6 +63,9 @@ function IndexComponent() {
           muted
           preload="auto"
           aria-label="Bitcoin network animation"
+          onCanPlay={() => {
+            setIsLoading(false);
+          }}
         />
       </PageBlock>
 
