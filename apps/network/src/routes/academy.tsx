@@ -86,7 +86,7 @@ function RouteComponent() {
           <span>{t('academy.safest3')}</span>
         </div>
         <img
-          className="lg:-mt-12"
+          className="max-lg:mt-3 lg:px-30"
           src={media1Image}
           alt="Laptop showing the academy website"
         />
@@ -95,7 +95,7 @@ function RouteComponent() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <NetworkButton className="relative flex mx-auto z-10 md:-mt-6 lg:-mt-12">
+          <NetworkButton className="relative flex mx-auto z-10 mt-6 lg:mt-12">
             {t('academy.startLearning')}
           </NetworkButton>
         </Link>
