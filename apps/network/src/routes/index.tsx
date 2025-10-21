@@ -64,6 +64,7 @@ function IndexComponent() {
           playsInline
           webkit-playsinline="true"
           preload="auto"
+          loop
           aria-label="Bitcoin network animation"
           onCanPlay={() => setIsLoading(false)}
         />
