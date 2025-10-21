@@ -304,7 +304,7 @@ function RouteComponent() {
         </div>
       </PageBlock>
 
-      <ContactUs text={t('about.contactText')} email="toto@toto.com" />
+      <ContactUs text={t('about.contactText')} email="rogzy@planb.network" />
     </>
   );
 }
