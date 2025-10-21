@@ -728,6 +728,7 @@ export const SideBarItem = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={wrapperClassName}
+      viewTransition
     >
       {inner}
     </Link>
