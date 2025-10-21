@@ -1203,7 +1203,17 @@
       "exploreCourses": "Explorez les cours",
       "getGlobalRecognition": "Obtenez une reconnaissance mondiale avec un ₿-CERT",
       "noCertificatesAvailable": "Aucun certificat disponible",
-      "noDiplomasAvailable": "Aucun diplôme disponible pour le moment"
+      "noDiplomasAvailable": "Aucun diplôme disponible pour le moment",
+      "bCertResults": {
+        "score020": "Vous avez entamé votre parcours ! Tout expert a commencé ici un jour.",
+        "score100": "Score parfait ! Seriez-vous Satoshi… ou simplement brillant ?",
+        "score2140": "Vous avez acquis les bases ! Continuez, vos progrès sont rapides !",
+        "score4160": "Base solide ! Vous êtes prêt pour les cours avancés.",
+        "score6180": "Vous progressez à merveille ! Continuez à affiner vos compétences et à maîtriser Bitcoin.",
+        "score8199": "Excellente maîtrise ! Vous abordez les sujets complexes de Bitcoin avec aisance."
+      },
+      "beingTimestamped": "Votre certificat est en cours d’horodatage. Il sera disponible dans les prochaines 24 heures.",
+      "detailedScore": "Score détaillé"
     },
     "goToDashboard": "Aller au tableau de bord",
     "goToHomepage": "Aller à la page d'accueil",
@@ -1517,7 +1527,8 @@
       "numberOfSpots": "Nombre de places",
       "onlineAndInPerson": "En ligne et en présentiel",
       "secureYourSpot": "Réservez votre place",
-      "whatsPlanned": "Ce qui est prévu"
+      "whatsPlanned": "Ce qui est prévu",
+      "sessionBooked": "Session réservée"
     },
     "addEvent": "Ajouter un événement",
     "myTickets": "Mes billets",
@@ -1754,7 +1765,10 @@
       "noTipsYet": "Ce professeur n'accepte pas les pourboires pour le moment.",
       "thanks": "Merci d'avoir soutenu le travail de {{name}} !",
       "thanksNoName": "Merci d'avoir soutenu mon travail !"
-    }
+    },
+    "coursesCount": "{{count}} cours",
+    "lecturesCount": "{{count}} séminaires",
+    "tutorialsCount": "{{count}} tutoriels"
   },
   "projects": {
     "languages": "Langues",
@@ -2245,7 +2259,9 @@
     "legal": "Mentions légales",
     "legals": "Mentions légales",
     "planBNetwork": "Plan ₿ Network",
-    "list": "Liste"
+    "list": "Liste",
+    "address": "Adresse",
+    "session": "Session"
   },
   "youtubeChannels": {
     "pageTitle": "Chaînes Youtube",

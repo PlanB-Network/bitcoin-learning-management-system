@@ -1203,7 +1203,17 @@
       "exploreCourses": "Istražite kurseve",
       "getGlobalRecognition": "Steknite globalno priznanje uz ₿-CERT sertifikat",
       "noCertificatesAvailable": "Nema dostupnih sertifikata",
-      "noDiplomasAvailable": "Još uvek nema dostupnih diploma"
+      "noDiplomasAvailable": "Još uvek nema dostupnih diploma",
+      "bCertResults": {
+        "score020": "Krenuo si na svoje putovanje! Svaki stručnjak je nekada počeo odavde",
+        "score100": "Savršen rezultat! Jesi li ti Satoši ili samo genije?",
+        "score2140": "Savladao si osnove! Samo nastavi, brzo napreduješ!",
+        "score4160": "Čvrsta osnova! Spreman si za napredne časove",
+        "score6180": "Odlično ti ide! Nastavi da usavršavaš svoje veštine i ovladaš Bitcoin-om",
+        "score8199": "Odlično razumevanje! Lako barataš složenim Bitcoin temama"
+      },
+      "beingTimestamped": "Tvoja potvrda se trenutno vremenski obeležava. Biće dostupna u naredna 24 sata.",
+      "detailedScore": "Detaljan rezultat"
     },
     "goToDashboard": "Otvori kontrolnu tablu",
     "goToHomepage": "Otvori početnu stranicu",
@@ -1515,7 +1525,8 @@
       "numberOfSpots": "Broj mesta",
       "onlineAndInPerson": "Online ili lično",
       "secureYourSpot": "Obezbedi svoje mesto",
-      "whatsPlanned": "Šta je planirano"
+      "whatsPlanned": "Šta je planirano",
+      "sessionBooked": "Termin je rezervisan"
     },
     "myTickets": "Moje karte",
     "planBWeek": {
@@ -1754,7 +1765,10 @@
       "noTipsYet": "Ovaj profesor trenutno ne prihvata donacije.",
       "thanks": "Hvala Vam što podržavate rad {{name}}!",
       "thanksNoName": "Hvala Vam što podržavate moj rad!"
-    }
+    },
+    "coursesCount": "{{count}} kurseva",
+    "lecturesCount": "{{count}} predavanja",
+    "tutorialsCount": "{{count}} tutorijala"
   },
   "projects": {
     "languages": "Jezici",
@@ -2231,7 +2245,9 @@
     "type": "Vrsta",
     "viewAll": "Vidi sve",
     "week": "Nedelja",
-    "weight": "Težina"
+    "weight": "Težina",
+    "address": "Adresa",
+    "session": "Sesija"
   },
   "youtubeChannels": {
     "pageTitle": "Youtube Kanali",
