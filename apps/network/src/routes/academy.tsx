@@ -491,7 +491,7 @@ function RouteComponent() {
             'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
           }
           imageClassName="max-lg:px-2 lg:max-w-[40%] max-lg:relative"
-          className="mt-12 pb-12 lg:pt-10 lg:pr-4"
+          className="mt-12 pb-12 lg:pt-10 lg:px-4"
           orientation="right"
           BackgroundColor="transparent"
           TopElement={

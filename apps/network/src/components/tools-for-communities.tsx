@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router';
 import { Trans, useTranslation } from 'react-i18next';
 import communityImg from '#src/assets/community/community-img.webp';
 import communityLogo from '#src/assets/community/community-logo.png';
-import eventsImg from '#src/assets/community/events-img.webp';
+import eventsImg from '#src/assets/community/events-img2.webp';
 import eventsLogo from '#src/assets/community/events-logo.svg';
 import languageImg from '#src/assets/community/language-img.webp';
 import languageLogo from '#src/assets/community/language-logo.svg';
