@@ -220,7 +220,7 @@ function BlockFive() {
           </div>
           <div className="w-[50%]">
             <img
-              className="mt-10 rounded-4xl translate-x-4 w-full"
+              className="rounded-4xl translate-x-4 w-full"
               src={safeImg}
               alt=""
             />
@@ -256,7 +256,7 @@ function BlockSix() {
           <p className="title-small text-gray-200 w-[50%]">
             {t('community.box6Subtitle')}
           </p>
-          <img className=" w-[50%] pl-4" src={testImg} alt="" />
+          <img className=" w-[50%] pl-4 pb-3" src={testImg} alt="" />
         </div>
       </div>
     </Link>
