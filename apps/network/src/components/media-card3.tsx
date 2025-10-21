@@ -42,7 +42,7 @@ export default function MediaCard3({
           'pt-8',
         )}
       >
-        <div className="flex flex-col gap-8 xl:gap-20 w-full">
+        <div className="flex flex-col xl:gap-20 w-full">
           <h1
             className={cn(
               'display-medium lg:text-6xl font-semibold z-20 max-lg:text-center',
@@ -58,7 +58,7 @@ export default function MediaCard3({
           />
           <p
             className={cn(
-              'title-small lg:title-base max-lg:text-center lg:max-w-[410px] text-gray-300 ',
+              'title-small lg:title-base max-lg:text-center lg:max-w-[410px] text-gray-300 mt-8 ',
             )}
           >
             {subtitle}
