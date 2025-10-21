@@ -64,7 +64,7 @@ export default function MediaCard3({
             {subtitle}
           </p>
         </div>
-        <Link to={buttonLink} className={'max-lg:self-center'}>
+        <Link to={buttonLink} className={'max-lg:self-center'} viewTransition>
           <NetworkButton variant={'secondary'}>{buttonText}</NetworkButton>
         </Link>
         {bottomElement ? bottomElement : null}

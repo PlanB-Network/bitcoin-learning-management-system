@@ -161,7 +161,9 @@ const NavigationSection = ({
     >
       {mainLinks.map(({ to, label }) => (
         <li key={to}>
-          <Link to={to}>{label}</Link>
+          <Link to={to} viewTransition>
+            {label}
+          </Link>
         </li>
       ))}
     </ul>
