@@ -75,7 +75,7 @@ root.render(
             title={SITE_NAME}
             description="Let's build together the Bitcoin educational layer"
             type="website"
-            imageSrc="/share-default.jpg"
+            imageSrc="/share-default.png"
           />
         </TRPCProvider>
       </QueryClientProvider>
