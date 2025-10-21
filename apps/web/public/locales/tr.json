@@ -20,7 +20,8 @@
     "storyContent": "PlanB ağı, dünya çapında Bitcoin eğitimini desteklemek amacıyla gerçekleştirilen bir girişimdir. Bu girişim, eğitime, açık kaynaklı yazılıma, eşler arası ağlara ve topluluk duygusuna odaklı çeşitli tutkulu Bitcoin şirketlerinin birleşiminden oluşan bir projedir. Birlikte, PlanB ağını oluşturmaya ve Bitcoin ekosistemini büyütmek için doğru destekleri sunmaya karar verdiler. 2023 sürüm sunumumuz burada mevcuttur.",
     "storyTitle": "Hikayemiz",
     "subtitle": "Tum dünyayı turuncu haplamak mi istiyorsunuz? PlanB Ağı'na katılın.",
-    "title": "Plan B Network Hakkında"
+    "title": "Plan B Network Hakkında",
+    "readManifesto": "Manifestomuzu okuyun"
   },
   "accessType": {
     "hybrid": "Yüz yüze & online",
@@ -113,7 +114,11 @@
     "pageTitle": "B-Sertifikası",
     "readChart": "Tabloyu oku",
     "tweetText": "@planb_network'da ₿-Sertifikasını {{score}}/100 puanla geçtiğim için çok heyecanlıyım! {{emoji}} #BCertificate\n\n{{certificateUrl}}",
-    "verify": "Belgenizin geçerliliğini kontrol edin"
+    "verify": "Belgenizin geçerliliğini kontrol edin",
+    "certificates": "Sertifikalar",
+    "chooseCourse": "Kurs seçin",
+    "hostSessionConditions": "Nasıl yapılır:\n\n1. <0>Tüzüğü</0> Okuyun - Topluluğunuzun zorunlu ev sahipliği koşullarını karşıladığından emin olun\n2. Planlama & Programlama - Eğer uygunluğunuz varsa, bir tarih seçin ve oturumu ayarlayın\n3. Etkinliğinizi Yayınlayın - İnsanların katılabilmesi için Plan ₿ Network platformuna eklememiz için bizimle iletişime geçin",
+    "myCertificates": "Sertifikalarım"
   },
   "bet": {
     "contributeButton": "Yardım et & katkıda bulun",
@@ -2179,5 +2184,9 @@
     "translationPanel": "Çeviri paneli",
     "tutorials": "Eğitimler",
     "userRolesAllocation": "Kullanıcı rollerinin tahsisi"
+  },
+  "account": {
+    "account": "Hesap",
+    "myTeacherProfile": "Doçent profilim"
   }
 }
