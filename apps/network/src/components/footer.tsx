@@ -78,7 +78,7 @@ export const Footer = () => {
       >
         <div className="max-w-[1644px] mx-auto px-4">
           <div className="w-full flex flex-row justify-between">
-            <img src={Logo} alt="Logo Plan ₿ Academy" className="w-56" />
+            <img src={Logo} alt="Logo Plan ₿ Network" className="w-56" />
             <Link
               to="https://planb.academy"
               target="_blank"
@@ -112,7 +112,7 @@ export const Footer = () => {
       <div className={cn('flex w-full flex-col md:hidden', backgroundClass)}>
         <div className="flex flex-col w-full p-4 pb-0 pt-6 gap-6">
           <div className="w-full flex flex-col justify-center gap-6">
-            <img src={Logo} alt="Logo Plan ₿ Academy" className="w-44" />
+            <img src={Logo} alt="Logo Plan ₿ Network" className="w-44" />
             <div className="flex flex-row justify-between">
               <NavigationSection
                 mainLinks={mainLinks}
