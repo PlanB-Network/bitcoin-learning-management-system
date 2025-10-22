@@ -181,7 +181,9 @@ function RouteComponent() {
           imageUrl={isMobile ? media1SmallImage : media1Image}
           alt=""
           titleClassName={'lg:max-w-[700px]'}
-          subtitleClassName={'lg:max-w-[40%] max-xl:!text-lg'}
+          subtitleClassName={
+            'lg:max-w-[40%] max-xl:!text-lg max-lg:!text-start'
+          }
           imageClassName="max-lg:mt-34"
           subtitleUnderImage={true}
         />
