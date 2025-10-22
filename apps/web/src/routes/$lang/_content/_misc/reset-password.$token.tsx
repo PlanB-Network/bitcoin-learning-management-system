@@ -4,7 +4,7 @@ import { createFileRoute, Link } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
-import { MainLayout } from '#src/components/main-layout.js';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { trpc } from '#src/utils/trpc.js';
 
 const minLength = 10;
@@ -202,12 +202,12 @@ function ResetPasswordPage() {
   };
 
   return (
-    <MainLayout>
-      <div className="font-primary bg-black flex size-full flex-col items-center space-y-16 p-10 text-blue-700">
-        <section className="max-w-4xl text-white flex min-h-[50vh] flex-col items-center justify-center">
+    <PageLayout layoutSize="wide">
+      <div className="font-primary flex size-full flex-col items-center space-y-16 p-10">
+        <section className="max-w-4xl flex min-h-[50vh] flex-col items-center justify-center">
           {validationMessages[pageState]}
         </section>
       </div>
-    </MainLayout>
+    </PageLayout>
   );
 }
