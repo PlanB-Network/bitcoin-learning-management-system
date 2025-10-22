@@ -1,5 +1,5 @@
-import { copyFileSync, existsSync, mkdirSync, rmSync, statSync } from 'node:fs';
-import { readFile, rm, writeFile } from 'node:fs/promises';
+import { existsSync, mkdirSync, rmSync, statSync } from 'node:fs';
+import { copyFile, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import type { ChangedAsset, ChangedFile, GitHubSyncConfig } from '@blms/types';
 import type { SimpleGit } from 'simple-git';
@@ -364,7 +364,7 @@ export const createSyncCdnRepository = (cdnPath: string) => {
 
         // Copy the file to the CDN directory
         const absolutePath = path.join(repositoryDirectory, asset.path);
-        copyFileSync(absolutePath, computedCdnPath);
+        await copyFile(absolutePath, computedCdnPath);
         copyCount += 1;
       }
 
