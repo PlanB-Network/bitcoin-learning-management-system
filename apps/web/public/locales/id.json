@@ -1203,7 +1203,17 @@
       "exploreCourses": "Jelajahi semua kursus",
       "getGlobalRecognition": "Dapatkan pengakuan global dengan sertifikat ₿-CERT",
       "noCertificatesAvailable": "Tidak ada sertifikat yang tersedia",
-      "noDiplomasAvailable": "Belum ada progam diploma yang tersedia"
+      "noDiplomasAvailable": "Belum ada progam diploma yang tersedia",
+      "bCertResults": {
+        "score020": "Anda telah memulai perjalanan Anda! Setiap ahli juga memulaimya dari sini",
+        "score100": "Skor sempurna! Apakah kamu Satoshi, atau hanya cerdas?",
+        "score2140": "Kamu sudah menguasai dasarnya! Teruslah berjuang, kamu menunjukkan perkembangan yang pesat!",
+        "score4160": "Dasar yang baik! Kamu siap untuk kelas lanjutan",
+        "score6180": "Kamu melakukannya dengan baik! Terus asah keterampilanmu dan kuasai Bitcoin",
+        "score8199": "Pemahaman yang baik! Anda menguasai topik Bitcoin yang kompleks dengan mudah."
+      },
+      "beingTimestamped": "Sertifikat Anda sedang diberi timestamp. Sertifikas akan tersedia dalam 24 jam ke depan.",
+      "detailedScore": "Rincian Skor"
     },
     "goToDashboard": "Buka dasbor",
     "goToHomepage": "Pergi ke beranda",
@@ -1525,7 +1535,8 @@
       "numberOfSpots": "Jumlah tempat",
       "onlineAndInPerson": "Online dan tatap muka",
       "secureYourSpot": "Amankan kursi Anda",
-      "whatsPlanned": "Apa yang direncanakan"
+      "whatsPlanned": "Apa yang direncanakan",
+      "sessionBooked": "Sesi telah dipesan"
     },
     "myTickets": "Tiket saya",
     "planBWeek": {
@@ -1754,7 +1765,10 @@
       "noTipsYet": "Profesor ini tidak menerima tip saat ini.",
       "thanks": "Terima kasih telah mendukung karya {{name}}!",
       "thanksNoName": "Terima kasih telah mendukung pekerjaanku!"
-    }
+    },
+    "coursesCount": "{{count}} Kursus",
+    "lecturesCount": "{{count}} Kuliah",
+    "tutorialsCount": "{{count}} Tutorial"
   },
   "projects": {
     "languages": "Bahasa",
@@ -1802,7 +1816,8 @@
       "contact": "Kontak",
       "legalNotice": "Pemberitahuan hukum",
       "privacyPolicy": "Kebijakan privasi",
-      "termsOfSale": "Ketentuan penjualan"
+      "termsOfSale": "Ketentuan penjualan",
+      "notFound": "Informasi hukum tidak ditemukan"
     },
     "title": "String ini muncul di bagian komunikasi Publik: https://planb.network/en/public-communication/blogs-and-news"
   },
@@ -1916,7 +1931,9 @@
     "tutorial": "Tutorial",
     "tutorials": "Tutorial",
     "youtube_channel": "Saluran Youtube",
-    "youtube_channels": "Saluran Youtube"
+    "youtube_channels": "Saluran Youtube",
+    "noResults": "Tidak ada hasil yang ditemukan",
+    "resultsFound": "Ditemukan hasil {{count}}"
   },
   "settings": {
     "changeDisplayName": "Ganti nama tampilan",
@@ -2223,7 +2240,14 @@
     "week": "Minggu",
     "weight": "Berat",
     "seeAll": "Lihat semua",
-    "discover": "Temukan"
+    "discover": "Temukan",
+    "aboutUs": "Tentang kami",
+    "address": "Alamat",
+    "legal": "Hukum",
+    "legals": "Hukum",
+    "list": "Daftar",
+    "planBNetwork": "Plan ₿ Network",
+    "session": "Sesi"
   },
   "youtubeChannels": {
     "pageTitle": "Saluran Youtube",
@@ -2268,7 +2292,10 @@
     },
     "translationPanel": "Panel terjemahan",
     "tutorials": "Tutorial",
-    "userRolesAllocation": "Alokasi peran pengguna"
+    "userRolesAllocation": "Alokasi peran pengguna",
+    "careers": "Karir",
+    "myCoursesDescription": "Pantau perkembangan Anda",
+    "tutorialsAnalytics": "Analisis tutorial"
   },
   "videoSelector": {
     "language": {
@@ -2285,6 +2312,7 @@
     }
   },
   "footer": {
-    "FOSSOpenContent": "FOSS & Konten Terbuka"
+    "FOSSOpenContent": "FOSS & Konten Terbuka",
+    "proudlyPartOf": "Bangga menjadi bagian dari <0>Plan ₿ Network</0>"
   }
 }
