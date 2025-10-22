@@ -1,13 +1,13 @@
 {
   "devDependencies": {
-    "@biomejs/biome": "2.2.6",
+    "@biomejs/biome": "2.2.7",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^24.7.0",
+    "@types/node": "^24.9.1",
     "dotenv-cli": "^10.0.0",
     "husky": "^9.1.7",
     "jsonc-parser": "^3.3.1",
-    "knip": "^5.64.1",
-    "lint-staged": "^16.2.3",
+    "knip": "^5.66.2",
+    "lint-staged": "^16.2.5",
     "mocha": "^11.7.4",
     "tsx": "^4.20.6",
     "turbo": "^2.5.8",
@@ -20,7 +20,7 @@
     ]
   },
   "name": "blms",
-  "packageManager": "pnpm@10.18.3",
+  "packageManager": "pnpm@10.19.0",
   "workspaces": [
     "packages/*",
     "apps/*"
