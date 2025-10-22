@@ -145,11 +145,7 @@ function IndexComponent() {
         />
       </PageBlock>
 
-      <PageBlock
-        className="lg:!py-25 lg:mb-150"
-        withXMargin={false}
-        withXPadding={false}
-      >
+      <PageBlock className="lg:!py-25" withXMargin={false} withXPadding={false}>
         <MediaCard3
           title={t('home.media3.title')}
           subtitle={t('home.media3.subtitle')}
