@@ -293,12 +293,12 @@ function CourseDetails() {
             course.lastCommit,
           )}
           alt={course.name}
-          className="rounded-[20px] w-full lg:max-w-[456px] shrink-1 object-cover [overflow-clip-margin:_unset] object-center"
+          className="rounded-[20px] w-full lg:max-w-[456px] lg:max-h-[320px] shrink object-cover [overflow-clip-margin:unset] object-center"
           breakpoints={{ default: 800 }}
         />
 
         <div className="w-full">
-          <article className="flex flex-col lg:pt-3 w-full lg:max-w-[564px] [&>*:not(:last-child)]:border-b [&>*:not(:last-child)]:border-newGray-4">
+          <article className="flex flex-col w-full lg:max-w-[564px] [&>*:not(:last-child)]:border-b [&>*:not(:last-child)]:border-newGray-4">
             <ListItem
               leftText={t('words.professor')}
               rightText={course.mainProfessors.map((professor, index) => (
