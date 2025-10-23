@@ -31,9 +31,7 @@ const GlossaryMarkdownBody = ({
           <BlockquoteRenderer mode={'light'}>{children}</BlockquoteRenderer>
         ),
         code: ({ className, children }) => (
-          <CodeRenderer className={className} intent="glossary">
-            {children}
-          </CodeRenderer>
+          <CodeRenderer className={className}>{children}</CodeRenderer>
         ),
         h2: ({ children }) => (
           <h2 className="mt-6 text-xl font-semibold text-black sm:mt-10 sm:text-2xl">

@@ -1,18 +1,14 @@
 import { CopyButton, cn } from '@blms/ui';
 import { cva, type VariantProps } from 'class-variance-authority';
 import type React from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const codeStyles = cva('text-base tracking-wide', {
-  defaultVariants: {
-    intent: 'default',
-  },
+  defaultVariants: { intent: 'default' },
   variants: {
     intent: {
       default: 'bg-newGray-4 px-1.5 rounded-lg font-mono inline-block text-sm',
-      glossary:
-        'bg-black/20 px-1.5 rounded-lg font-mono inline-block text-sm text-black',
     },
   },
 });
@@ -22,22 +18,18 @@ interface CodeRendererProps
     VariantProps<typeof codeStyles> {
   children?: React.ReactNode;
   className?: string;
-  intent?: 'default' | 'glossary';
 }
 
-export const CodeRenderer: React.FC<CodeRendererProps> = (props) => {
-  const { children, className, intent } = props;
+export const CodeRenderer: React.FC<CodeRendererProps> = ({
+  children,
+  className,
+  intent,
+}) => {
   const childrenText = String(children).replace(/\n$/, '');
 
-  // Default to treating as inline code
-  let isCodeBlock = false;
-
-  if ((className || '').startsWith('language-')) {
-    isCodeBlock = true;
-  } else if (!className && children) {
-    // If it contains line breaks, treat as a code block
-    isCodeBlock = String(children).includes('\n');
-  }
+  const isCodeBlock =
+    (className || '').startsWith('language-') ||
+    (!className && String(children).includes('\n'));
 
   const languageMatch = /language-(\w+)/.exec(className || '');
   const language = languageMatch
@@ -52,7 +44,7 @@ export const CodeRenderer: React.FC<CodeRendererProps> = (props) => {
   return isCodeBlock ? (
     <div className="relative">
       <SyntaxHighlighter
-        style={atomDark}
+        style={oneLight}
         language={language}
         wrapLines={shouldWrapLines}
         PreTag="div"

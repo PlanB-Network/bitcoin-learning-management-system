@@ -22,7 +22,7 @@ export const CopyButton = ({ text }: CopyButtonProps) => {
     <button
       type="button"
       onClick={copyToClipboard}
-      className="absolute top-1 right-1 sm:top-2 sm:right-2 text-white"
+      className="absolute top-1 right-1 sm:top-2 sm:right-2 text-black"
       aria-label="Copy to Clipboard"
     >
       {isClicked ? <LuCopyCheck /> : <LuCopy />}
