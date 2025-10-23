@@ -77,6 +77,8 @@ function IndexComponent() {
           subtitle={t('home.media1.subtitle')}
           buttonText={t('home.media1.button')}
           buttonLink="/academy"
+          buttonText2={t('academy.startLearning')}
+          buttonLink2="https://planb.academy/"
           imageUrl={isMobile ? media1MobileImg : media1Img}
           bottomElement={
             <div className={cn(cardsDivClassName)}>

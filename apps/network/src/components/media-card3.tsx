@@ -8,6 +8,8 @@ interface MediaCard3Props {
   subtitle: string;
   buttonText: string;
   buttonLink: string;
+  buttonText2?: string;
+  buttonLink2?: string;
   imageUrl: string;
   titleClassName?: string;
   bottomElement?: React.ReactNode;
@@ -19,6 +21,8 @@ export default function MediaCard3({
   subtitle,
   buttonText,
   buttonLink,
+  buttonText2,
+  buttonLink2,
   imageUrl,
   titleClassName = 'lg:max-w-[700px]',
   bottomElement,
@@ -64,9 +68,30 @@ export default function MediaCard3({
             {subtitle}
           </p>
         </div>
-        <Link to={buttonLink} className={'max-lg:self-center'} viewTransition>
-          <NetworkButton variant={'secondary'}>{buttonText}</NetworkButton>
-        </Link>
+
+        {buttonText2 && buttonLink2 ? (
+          <div className="flex flex-col lg:flex-row gap-5 max-lg:self-center">
+            <Link
+              to={buttonLink2}
+              className={'max-lg:self-center'}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <NetworkButton variant={'secondary'}>{buttonText2}</NetworkButton>
+            </Link>
+            <Link
+              to={buttonLink}
+              className={'max-lg:self-center'}
+              viewTransition
+            >
+              <NetworkButton variant={'tertiary'}>{buttonText}</NetworkButton>
+            </Link>
+          </div>
+        ) : (
+          <Link to={buttonLink} className={'max-lg:self-center'} viewTransition>
+            <NetworkButton variant={'secondary'}>{buttonText}</NetworkButton>
+          </Link>
+        )}
         {bottomElement ? bottomElement : null}
       </div>
       {/* <div className="absolute inset-0 bg w-full h-full bg-network-hero" /> */}
