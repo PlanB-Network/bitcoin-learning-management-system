@@ -16,6 +16,8 @@ const TutorialsMarkdownBody = lazy(
   () => import('#src/components/Markdown/tutorials-markdown-body.js'),
 );
 
+const SCROLL_OFFSET = 140;
+
 export default function TutorialWithTOC({
   rawContent,
   assetPrefix,
@@ -71,8 +73,6 @@ export default function TutorialWithTOC({
       headingsRef.current = headings;
     };
 
-    const offset = 140;
-
     const updateActive = () => {
       const headings = headingsRef.current;
       if (!headings || headings.length === 0) {
@@ -96,7 +96,7 @@ export default function TutorialWithTOC({
       for (let i = headings.length - 1; i >= 0; i--) {
         const h = headings[i];
         const rect = h.getBoundingClientRect();
-        if (rect.top <= offset + 10) {
+        if (rect.top <= SCROLL_OFFSET + 10) {
           newActiveId = h.id;
           break;
         }
@@ -181,7 +181,7 @@ export default function TutorialWithTOC({
     const target = document.getElementById(key);
     if (target) {
       const rect = target.getBoundingClientRect();
-      const top = window.scrollY + rect.top - 140;
+      const top = window.scrollY + rect.top - SCROLL_OFFSET;
       window.scrollTo({ top });
       setActiveKey(key);
     }
