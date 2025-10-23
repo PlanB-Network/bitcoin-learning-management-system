@@ -222,7 +222,7 @@ export const SideBar = ({
   return (
     <nav
       className={cn(
-        'pt-if-pear lg:fixed flex flex-col top-18 lg:px-4 h-full lg:h-[calc(100vh-72px)] overflow-y-auto no-scrollbar transition-all ease-in-out gap-3 max-lg:w-full',
+        'pt-if-pear lg:fixed flex flex-col top-18 lg:px-4 h-full lg:h-[calc(100vh-72px)] overflow-y-auto no-scrollbar transition-all ease-in-out gap-3 max-lg:w-full bg-header',
         isSidebarOpen ? openWidth : closedWidth,
         className,
       )}
