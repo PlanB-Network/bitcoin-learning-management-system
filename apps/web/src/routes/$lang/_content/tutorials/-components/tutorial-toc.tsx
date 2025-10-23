@@ -150,6 +150,9 @@ export default function TutorialWithTOC({
   }, [rawContent, toc]);
 
   useEffect(() => {
+    const topEl = topSentinelRef.current;
+    const bottomEl = bottomSentinelRef.current;
+
     const topObserver = new IntersectionObserver(
       ([entry]) => setIsFixed(!entry.isIntersecting),
       { threshold: 0, rootMargin: '-120px 0px 0px 0px' },
@@ -157,23 +160,35 @@ export default function TutorialWithTOC({
 
     const bottomObserver = new IntersectionObserver(
       ([entry]) => {
-        const bounding = entry.boundingClientRect;
+        const rect = entry.boundingClientRect;
         const viewportHeight = window.innerHeight;
-        const isBelowBottom =
-          bounding.top < viewportHeight && bounding.bottom < 0;
 
-        setIsAtBottom(entry.isIntersecting || isBelowBottom);
+        const reachedEnd = entry.isIntersecting || rect.top <= viewportHeight;
+
+        setIsAtBottom(reachedEnd);
       },
       { threshold: 0, rootMargin: '0px 0px -60% 0px' },
     );
 
-    if (topSentinelRef.current) topObserver.observe(topSentinelRef.current);
-    if (bottomSentinelRef.current)
-      bottomObserver.observe(bottomSentinelRef.current);
+    const handleScroll = () => {
+      const el = bottomSentinelRef.current;
+      if (!el) return;
+
+      const rect = el.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const reachedEnd = rect.top <= viewportHeight - 200;
+      setIsAtBottom(reachedEnd);
+    };
+
+    if (topEl) topObserver.observe(topEl);
+    if (bottomEl) bottomObserver.observe(bottomEl);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       topObserver.disconnect();
       bottomObserver.disconnect();
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
