@@ -4,7 +4,7 @@ import { cn, customToast, DividerSimple, Loader } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
-import React, { memo, Suspense, useContext, useEffect, useState } from 'react';
+import React, { memo, useContext, useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { TbCheck } from 'react-icons/tb';
 import { z } from 'zod';
@@ -22,13 +22,10 @@ import { useDisclosure } from '#src/hooks/use-disclosure.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
 import { AppContext } from '#src/providers/context.js';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
-import { cdnUrl } from '#src/utils/index.js';
+import { cdnUrl } from '#src/utils/index.ts';
 import { trpc } from '#src/utils/trpc.js';
 import { TutorialLikes } from '../-components/tutorial-likes.tsx';
-
-const TutorialsMarkdownBody = React.lazy(
-  () => import('#src/components/Markdown/tutorials-markdown-body.js'),
-);
+import TutorialWithTOC from '../-components/tutorial-toc.tsx';
 
 export const Route = createFileRoute(
   '/$lang/_content/tutorials/$category/$subcategory/$name-$id',
@@ -433,9 +430,10 @@ function TutorialDetails() {
     );
   };
   const isOriginalLanguage = tutorial?.language === tutorial?.originalLanguage;
+
   return (
     <PageLayout
-      layoutSize="base"
+      layoutSize="wide"
       backLink={{
         text: `${t(`tutorials.${params.category}.title`)}`,
         href: `/tutorials/${params.category}#${params.subcategory}`,
@@ -472,9 +470,7 @@ function TutorialDetails() {
                   likeCount: likesCounts.likeCount,
                 }}
               />
-              <div className="break-words overflow-hidden w-full space-y-4 md:space-y-6">
-                <MarkdownContent tutorial={tutorial} />
-              </div>
+              <MarkdownContent tutorial={tutorial} />
               <LikeDislikeButtons />
               {tutorial.creditLink && (
                 <span className="w-full flex flex-col gap-4 subtitle-medium-caps-18px subtitle-small-caps-14px text-darkOrange-5 mx-auto">
@@ -510,14 +506,10 @@ function TutorialDetails() {
 const MarkdownContent = memo(
   ({ tutorial }: { tutorial: GetTutorialResponse }) => {
     return (
-      <Suspense fallback={<Loader size={'s'} />}>
-        {tutorial && (
-          <TutorialsMarkdownBody
-            content={tutorial.rawContent}
-            assetPrefix={cdnUrl(tutorial.path)}
-          />
-        )}
-      </Suspense>
+      <TutorialWithTOC
+        rawContent={tutorial.rawContent}
+        assetPrefix={cdnUrl(tutorial.path)}
+      />
     );
   },
 );
