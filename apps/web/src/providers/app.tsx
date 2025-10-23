@@ -163,7 +163,7 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
                       title={SITE_NAME}
                       description="Let's build together the Bitcoin educational layer"
                       type="website"
-                      imageSrc="/share-default.jpg"
+                      imageSrc="/share-default.png"
                     />
                     <ToastContainer autoClose={5000} />
                     {children}

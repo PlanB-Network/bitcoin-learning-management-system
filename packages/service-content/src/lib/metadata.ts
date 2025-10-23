@@ -35,7 +35,7 @@ interface Metadata {
   lang: string;
 }
 
-const DEFAULT_IMAGE = '/share-default.jpg';
+const DEFAULT_IMAGE = '/share-default.png';
 
 const DEFAULT: Metadata = {
   description: "Let's build together the Bitcoin educational layer",
