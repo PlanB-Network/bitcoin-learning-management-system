@@ -1,29 +1,15 @@
-import { CopyButton, cn } from '@blms/ui';
-import { cva, type VariantProps } from 'class-variance-authority';
+import { CopyButton } from '@blms/ui';
 import type React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-const codeStyles = cva('text-base tracking-wide', {
-  defaultVariants: { intent: 'default' },
-  variants: {
-    intent: {
-      default: 'bg-newGray-4 px-1.5 rounded-lg font-mono inline-block text-sm',
-    },
-  },
-});
-
-interface CodeRendererProps
-  extends React.HTMLAttributes<HTMLParagraphElement>,
-    VariantProps<typeof codeStyles> {
+interface CodeRendererProps extends React.HTMLAttributes<HTMLParagraphElement> {
   children?: React.ReactNode;
   className?: string;
 }
-
 export const CodeRenderer: React.FC<CodeRendererProps> = ({
   children,
   className,
-  intent,
 }) => {
   const childrenText = String(children).replace(/\n$/, '');
 
@@ -54,6 +40,12 @@ export const CodeRenderer: React.FC<CodeRendererProps> = ({
       <CopyButton text={childrenText} />
     </div>
   ) : (
-    <code className={cn(codeStyles({ intent }))}>{children}</code>
+    <code
+      className={
+        'bg-[#fafafa] text-[#383A42] text-left whitespace-pre break-normal leading-normal p-0.5 overflow-auto rounded-[0.3em] font-mono'
+      }
+    >
+      {children}
+    </code>
   );
 };
