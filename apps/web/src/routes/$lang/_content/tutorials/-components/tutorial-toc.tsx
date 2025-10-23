@@ -220,7 +220,7 @@ export default function TutorialWithTOC({
           <div className="ml-8 w-50 shrink-0 max-lg:hidden">
             <aside
               className={cn(
-                'flex flex-col gap-2 shrink-0 w-50 transition-transform h-full overflow-y-scroll scrollbar-light pr-1',
+                'flex flex-col gap-2 shrink-0 w-50 transition-transform h-full overflow-y-auto scrollbar-light pr-1',
                 isFixed && !isAtBottom ? 'fixed top-32' : 'relative',
               )}
               style={maxHeightStyle}
