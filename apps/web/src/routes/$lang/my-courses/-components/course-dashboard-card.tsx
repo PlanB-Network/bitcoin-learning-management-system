@@ -69,7 +69,7 @@ export const CourseDashboardCard = ({
       >
         {text}
       </span>
-      <div className="flex flex-col justify-between w-full max-md:items-start pt-1 md:p-2.5 min-[1440px]:pb-7 px-2.5 pb-2.5 gap-2 md:gap-4">
+      <div className="flex flex-col justify-between w-full max-md:items-start pt-1 md:p-2.5 min-[1440px]:pb-7! px-2.5 pb-2.5 gap-2 md:gap-4">
         <div className="flex flex-row min-[1440px]:flex-col min-[1440px]:gap-2 max-xl:items-center justify-between">
           <div className="flex flex-wrap gap-2 max-[1440px]:order-2 max-md:hidden shrink-0 h-fit">
             <TextTag size={'small'} variant="grey" className="uppercase">
@@ -94,7 +94,7 @@ export const CourseDashboardCard = ({
             <span className="line-clamp-2">{course.name}</span>
           </div>
         </div>
-        <div className=" w-full flex flex-row min-[1440px]:flex-col gap-4">
+        <div className="w-full flex flex-row min-[1440px]:flex-col gap-4">
           <img
             src={assetUrl(
               `courses/${course.index}`,
@@ -193,9 +193,9 @@ export const CourseDashboardCard = ({
               )}
 
               {isInProgress && (
-                <div className="flex flex-row min-[1440px]:flex-col gap-2.5 items-center w-full mt-auto">
+                <div className="flex max-md:flex-wrap gap-2.5 items-center w-full mt-auto min-[1440px]:flex-col">
                   <Link
-                    className="w-full"
+                    className="max-md:flex-1 max-md:basis-[calc(50%-0.3125rem)] md:w-full"
                     to={`/courses/${course.id}/${progress?.nextChapter?.chapterId}`}
                   >
                     <ButtonWithArrow
@@ -206,11 +206,14 @@ export const CourseDashboardCard = ({
                       {t('dashboard.myCourses.resumeLesson')}
                     </ButtonWithArrow>
                   </Link>
-                  <Link className="w-full" to={`/my-courses/${course.id}`}>
+                  <Link
+                    className="max-md:flex-1 max-md:basis-[calc(50%-0.3125rem)] md:w-full"
+                    to={`/my-courses/${course.id}`}
+                  >
                     <ButtonWithArrow
                       variant="outline"
-                      size={isScreenLg ? 'm' : 's'}
                       className="w-full"
+                      size={isScreenLg ? 'm' : 's'}
                     >
                       {t('dashboard.myCourses.seeDetails')}
                     </ButtonWithArrow>
