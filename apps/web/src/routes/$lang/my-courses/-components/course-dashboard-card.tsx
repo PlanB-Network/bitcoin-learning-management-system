@@ -15,7 +15,7 @@ export const CourseDashboardCard = ({
   course: JoinedCourse;
   progress: CourseProgressExtended | null;
 }) => {
-  const isScreenLg = useGreater('2xl');
+  const isScreenLg = useGreater('1440px');
 
   const { t, i18n } = useTranslation();
   const isInProgress =
@@ -57,21 +57,21 @@ export const CourseDashboardCard = ({
   const beginnerFriendlyCourses = new Set(['btc101', 'btc102', 'scu101']);
 
   return (
-    <article className="flex flex-row md:max-h-fit 2xl:max-h-fit size-full 2xl:flex-col rounded-[10px] border border-black bg-white">
+    <article className="flex flex-row md:max-h-fit min-[1440px]:max-h-fit size-full min-[1440px]:flex-col rounded-[10px] border border-black bg-white">
       <span
         className={cn(
-          'p-1 md:p-4 title-small-med-16px md:display-small-bold-caps-22px uppercase text-black max-2xl:[writing-mode:vertical-rl] 2xl:border-b  2xl:rounded-t-[10px] border-black text-center text-sm',
+          'p-1 md:p-4 title-small-med-16px md:display-small-bold-caps-22px uppercase text-black max-[1440px]:[writing-mode:vertical-rl] min-[1440px]:border-b min-[1440px]:rounded-t-[10px] border-black text-center text-sm',
           bgColor,
           !LANGUAGES_WITH_NATIVE_VERTICAL_SCRIPT.includes(i18n.language)
-            ? 'max-2xl:[transform:rotate(180deg)] max-2xl:rounded-r-[10px] max-2xl:border-l'
-            : 'max-2xl:rounded-l-[10px] max-2xl:border-r',
+            ? 'max-[1440px]:transform-[rotate(180deg)] max-[1440px]:rounded-r-[10px] max-[1440px]:border-l'
+            : 'max-[1440px]:rounded-l-[10px] max-[1440px]:border-r',
         )}
       >
         {text}
       </span>
-      <div className="flex flex-col justify-between w-full max-md:items-start pt-1 md:p-2.5 2xl:pb-7 px-2.5 pb-2.5 gap-2 md:gap-4">
-        <div className="flex flex-row 2xl:flex-col 2xl:gap-2 max-xl:items-center justify-between">
-          <div className="flex flex-wrap gap-2 max-2xl:order-2 max-md:hidden shrink-0 h-fit">
+      <div className="flex flex-col justify-between w-full max-md:items-start pt-1 md:p-2.5 min-[1440px]:pb-7 px-2.5 pb-2.5 gap-2 md:gap-4">
+        <div className="flex flex-row min-[1440px]:flex-col min-[1440px]:gap-2 max-xl:items-center justify-between">
+          <div className="flex flex-wrap gap-2 max-[1440px]:order-2 max-md:hidden shrink-0 h-fit">
             <TextTag size={'small'} variant="grey" className="uppercase">
               {course.index}
             </TextTag>
@@ -94,7 +94,7 @@ export const CourseDashboardCard = ({
             <span className="line-clamp-2">{course.name}</span>
           </div>
         </div>
-        <div className=" w-full flex flex-row 2xl:flex-col gap-4">
+        <div className=" w-full flex flex-row min-[1440px]:flex-col gap-4">
           <img
             src={assetUrl(
               `courses/${course.index}`,
@@ -102,9 +102,9 @@ export const CourseDashboardCard = ({
               course.lastCommit,
             )}
             alt={course.name}
-            className="max-md:hidden rounded-md object-cover [overflow-clip-margin:_unset] object-center max-h-[183px] max-w-[255px]"
+            className="max-md:hidden rounded-md object-cover [overflow-clip-margin:unset] object-center max-h-[183px] max-w-[255px]"
           />
-          <div className="flex flex-col gap-2 md:gap-3 2xl:gap-4 w-full">
+          <div className="flex flex-col gap-2 md:gap-3 min-[1440px]:gap-4! w-full">
             {!isInProgress && (
               <div className="flex flex-col md:gap-2.5">
                 <div className="flex items-center md:justify-between gap-1">
@@ -130,7 +130,7 @@ export const CourseDashboardCard = ({
 
                 {!progress && course.requiresPayment && (
                   <>
-                    <div className="max-2xl:hidden 2xl:flex items-center md:justify-between gap-1">
+                    <div className="max-[1440px]:hidden min-[1440px]:flex items-center md:justify-between gap-1">
                       <span className="body-14px font-normal text-newBlack-4 md:body-16px">
                         {t('dashboard.myCourses.price')} {''}
                       </span>
@@ -140,20 +140,20 @@ export const CourseDashboardCard = ({
                           : `$${course.onlinePriceDollars}`}
                       </span>
                     </div>
-                    <hr className="max-2xl:hidden" />
+                    <hr className="max-[1440px]:hidden" />
                   </>
                 )}
               </div>
             )}
-            <div className="max-md:hidden flex flex-col gap-4 order-2 2xl:order-1">
-              <span className="body-14px text-newBlack-4 line-clamp-2 2xl:line-clamp-4">
+            <div className="max-md:hidden flex flex-col gap-4 order-2 min-[1440px]:order-1">
+              <span className="body-14px text-newBlack-4 line-clamp-2 min-[1440px]:line-clamp-4">
                 {course.goal}
               </span>
-              <hr className="max-2xl:hidden" />
+              <hr className="max-[1440px]:hidden" />
             </div>
 
             {isInProgress && (
-              <div className="flex flex-col gap-3 2xl:gap-4 2xl:order-2">
+              <div className="flex flex-col gap-3 min-[1440px]:gap-4 min-[1440px]:order-2">
                 <div className="hidden md:flex flex-row items-center justify-between">
                   <span className="label-medium-med-16px text-black">
                     {t('dashboard.myCourses.yourProgress')}
@@ -170,7 +170,7 @@ export const CourseDashboardCard = ({
                   />
                 </div>
 
-                <hr className="max-2xl:hidden" />
+                <hr className="max-[1440px]:hidden" />
               </div>
             )}
 
@@ -193,7 +193,7 @@ export const CourseDashboardCard = ({
               )}
 
               {isInProgress && (
-                <div className="flex flex-row 2xl:flex-col gap-2.5 items-center w-full mt-auto">
+                <div className="flex flex-row min-[1440px]:flex-col gap-2.5 items-center w-full mt-auto">
                   <Link
                     className="w-full"
                     to={`/courses/${course.id}/${progress?.nextChapter?.chapterId}`}

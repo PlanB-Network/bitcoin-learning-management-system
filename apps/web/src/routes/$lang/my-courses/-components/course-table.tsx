@@ -90,7 +90,7 @@ export const CourseTable = ({
   }
 
   return (
-    <section className="max-md:hidden md:flex flex-col 2xl:flex-row md:gap-4 2xl:gap-16 w-fit max-2xl:max-w-[733px] bg-brown-100 p-2.5 rounded-[20px]">
+    <section className="max-md:hidden md:flex flex-col min-[1440px]:flex-row md:gap-4 2xl:gap-16 w-fit max-[1440px]:max-w-[733px] bg-brown-100 p-2.5 rounded-[20px]">
       <div className="max-w-[733px] max-md:hidden shrink-0 bg-white px-4 py-8 rounded-xl">
         <Table maxHeightClass="" className="size-full border-spacing-2">
           {/* Table Header */}
@@ -114,8 +114,8 @@ export const CourseTable = ({
           <TableBody className="bg-newGray-6 p-1 gap-1">
             {Object.values(CourseLevel).map((level) => (
               <TableRow key={level}>
-                <TableCell className="p-1 !bg-white lg:w-[37px]">
-                  <div className="capitalize desktop-caption1 text-black py-px px-1 bg-maroon-2 rounded-[5px] self-center align-middle text-center [writing-mode:vertical-rl] [transform:rotate(180deg)]">
+                <TableCell className="p-1 bg-white! lg:w-[37px]">
+                  <div className="capitalize desktop-caption1 text-black py-px px-1 bg-maroon-2 rounded-[5px] self-center align-middle text-center [writing-mode:vertical-rl] transform-[rotate(180deg)]">
                     {level}
                   </div>
                 </TableCell>
@@ -202,7 +202,7 @@ export const CourseTable = ({
       </div>
 
       {selectedCourse ? (
-        <div className="2xl:max-w-[280px] w-full">
+        <div className="min-[1440px]:max-w-[280px] w-full">
           {[...combinedMap.values()]
             .filter(({ course }) => course.name === selectedCourse)
             .map(({ course, progress }) => (
@@ -212,14 +212,14 @@ export const CourseTable = ({
             ))}
         </div>
       ) : highestProgressCourse ? (
-        <div className="2xl:max-w-[280px] w-full">
+        <div className="min-[1440px]:max-w-[280px] w-full">
           <CourseDashboardCard
             course={highestProgressCourse.course}
             progress={highestProgressCourse.progress}
           />
         </div>
       ) : (
-        <div className="2xl:max-w-[280px] w-full">
+        <div className="min-[1440px]:max-w-[280px] w-full">
           {combinedMap.get(BTC101ID)?.course ? (
             <CourseDashboardCard
               course={combinedMap.get(BTC101ID)!.course}
