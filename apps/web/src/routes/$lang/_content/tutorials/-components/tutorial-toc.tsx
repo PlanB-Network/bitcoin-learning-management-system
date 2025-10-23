@@ -182,7 +182,7 @@ export default function TutorialWithTOC({
     if (target) {
       const rect = target.getBoundingClientRect();
       const top = window.scrollY + rect.top - SCROLL_OFFSET;
-      window.scrollTo({ top });
+      window.scrollTo({ top, behavior: 'smooth' });
       setActiveKey(key);
     }
   };
@@ -196,6 +196,10 @@ export default function TutorialWithTOC({
     ),
     [rawContent, assetPrefix],
   );
+
+  const maxHeightStyle = {
+    maxHeight: 'calc(100vh - 160px)',
+  };
 
   return (
     <>
@@ -216,9 +220,10 @@ export default function TutorialWithTOC({
           <div className="ml-8 w-50 shrink-0 max-lg:hidden">
             <aside
               className={cn(
-                'flex flex-col gap-2 shrink-0 w-50 transition-transform',
+                'flex flex-col gap-2 shrink-0 w-50 transition-transform h-full overflow-y-scroll scrollbar-light pr-1',
                 isFixed && !isAtBottom ? 'fixed top-32' : 'relative',
               )}
+              style={maxHeightStyle}
             >
               <h3 className="flex gap-1 items-center body-small-bold">
                 <TbNotebook size={12} className="shrink-0" />
