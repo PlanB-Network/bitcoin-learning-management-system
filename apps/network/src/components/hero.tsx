@@ -48,7 +48,6 @@ export const Hero = ({
           alt="Hero background"
           className="lg:h-full lg:w-full object-cover"
           breakpoints={{ default: 700, md: 1500 }}
-          loading="lazy"
         />
       </div>
     </div>
