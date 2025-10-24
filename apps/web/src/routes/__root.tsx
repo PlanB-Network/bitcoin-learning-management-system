@@ -29,6 +29,8 @@ export const Route = createRootRouteWithContext<{
     </>
   ),
   errorComponent: function ErrorComp({ error }) {
+    console.log('An error occurred:', error);
+
     return (
       <div className="flex flex-col p-4">
         <a href="/">
