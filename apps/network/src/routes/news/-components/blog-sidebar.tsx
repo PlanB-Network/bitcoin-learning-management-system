@@ -1,4 +1,5 @@
 import { formatNameForURL } from '@blms/shared';
+import { Image } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import type React from 'react';
@@ -50,7 +51,13 @@ const BlogSidebar: React.FC<BlogSidebarProps> = ({
   return (
     <div className="mx-auto p-2.5 rounded-2xl">
       <div className="flex flex-row items-center py-5 gap-5 border-b border-newGray-4">
-        <img className="size-[35px] ml-2.5" src={MessageIcon} alt="" />
+        <Image
+          className="size-[35px] ml-2.5"
+          src={MessageIcon}
+          alt=""
+          loading="lazy"
+          breakpoints={{ default: 200 }}
+        />
         <h3 className="subtitle-large-18px capitalize">
           {t('news.previousNews')}
         </h3>

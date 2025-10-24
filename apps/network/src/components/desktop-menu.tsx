@@ -1,4 +1,4 @@
-import { cn } from '@blms/ui';
+import { cn, Image } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -44,7 +44,13 @@ export default function DesktopMenu() {
     >
       <div className="max-w-[1440px] flex flex-row justify-between gap-2 mx-auto">
         <Link to="/" viewTransition>
-          <img className="h-8 w-auto" src={Logo} alt="" loading="lazy" />
+          <Image
+            className="h-8 w-auto"
+            src={Logo}
+            alt=""
+            loading="lazy"
+            breakpoints={{ default: 700 }}
+          />
         </Link>
         <div className="flex flex-row gap-16">
           <Link

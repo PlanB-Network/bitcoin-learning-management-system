@@ -1,6 +1,6 @@
 import { formatNameForURL } from '@blms/shared';
 import type { JoinedBlog, JoinedBlogLight } from '@blms/types';
-import { cn } from '@blms/ui';
+import { cn, Image } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { cva } from 'class-variance-authority';
@@ -105,10 +105,12 @@ export const FeaturedCard = ({
           to={`/news/article/${formatNameForURL(latestBlog.title)}-${latestBlog.id}`}
           viewTransition
         >
-          <img
+          <Image
             className="rounded-xs lg:rounded-[20px] lg:max-w-[500px]"
             src={resourceImgUrl(latestBlog)}
             alt={latestBlog.title}
+            loading="lazy"
+            breakpoints={{ default: 1000 }}
           />
         </Link>
       </div>

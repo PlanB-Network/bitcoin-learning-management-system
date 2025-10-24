@@ -1,4 +1,4 @@
-import { cn } from '@blms/ui';
+import { cn, Image } from '@blms/ui';
 import type React from 'react';
 
 interface HeroProps {
@@ -43,10 +43,12 @@ export const Hero = ({
           )}
         </div>
         <div className="max-lg:hidden absolute inset-0 bg w-full h-full bg-network-hero" />
-        <img
+        <Image
           src={imageUrl}
           alt="Hero background"
           className="lg:h-full lg:w-full object-cover"
+          breakpoints={{ default: 700, md: 1500 }}
+          loading="lazy"
         />
       </div>
     </div>

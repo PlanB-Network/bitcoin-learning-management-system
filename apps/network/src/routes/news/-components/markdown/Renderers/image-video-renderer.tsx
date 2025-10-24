@@ -1,3 +1,5 @@
+import { Image } from '@blms/ui';
+
 export const ImageVideoRenderer = ({
   src,
   alt,
@@ -8,10 +10,12 @@ export const ImageVideoRenderer = ({
   if (!src) return null;
 
   return (
-    <img
+    <Image
       className="mx-auto flex justify-center rounded-lg pb-6 md:pt-4 last:pb-0 last:md:pb-4"
       src={src}
       alt={alt}
+      loading="lazy"
+      breakpoints={{ default: 1500 }}
     />
   );
 };

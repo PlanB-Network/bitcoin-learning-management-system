@@ -1,4 +1,4 @@
-import { cn } from '@blms/ui';
+import { cn, Image } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -67,7 +67,13 @@ export const MobileMenu = ({
     <div className={cn('sticky top-0 z-50 text-black bg-black lg:hidden')}>
       <div className="flex w-full items-center justify-between px-2">
         <Link to="/" className="w-fit">
-          <img className="my-4 h-8 w-auto" src={Logo} alt="" loading="lazy" />
+          <Image
+            className="my-4 h-8 w-auto"
+            src={Logo}
+            alt=""
+            loading="lazy"
+            breakpoints={{ default: 700 }}
+          />
         </Link>
 
         <div className="flex items-center gap-2">
@@ -95,10 +101,12 @@ export const MobileMenu = ({
         <div className="flex flex-col w-full items-center gap-15">
           <div className="w-full flex flex-row justify-between">
             <Link to="/" onClick={toggleMobileMenu}>
-              <img
+              <Image
                 src={Logo}
                 alt="Logo Plan ₿ Network"
                 className="w-40 self-start"
+                loading="lazy"
+                breakpoints={{ default: 700 }}
               />
             </Link>
             <TbX

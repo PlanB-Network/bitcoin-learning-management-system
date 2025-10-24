@@ -1,5 +1,5 @@
 import { LANGUAGES_MAP } from '@blms/shared';
-import { cn } from '@blms/ui';
+import { cn, Image } from '@blms/ui';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { Trans, useTranslation } from 'react-i18next';
 import headerImage from '#src/assets/academy/header.webp';
@@ -85,10 +85,12 @@ function RouteComponent() {
           <span>{t('academy.safest2')}</span>
           <span>{t('academy.safest3')}</span>
         </div>
-        <img
+        <Image
           className="max-lg:mt-3 lg:px-30"
           src={media1Image}
           alt="Laptop showing the academy website"
+          loading="lazy"
+          breakpoints={{ default: 700, lg: 1500 }}
         />
         <Link
           to="https://planb.academy"
@@ -595,10 +597,12 @@ function RouteComponent() {
           {t('academy.thanksTitle')}
         </p>
       </PageBlock>
-      <img
+      <Image
         src={thanksImage}
         alt="Pictures of people from the academy"
         className="w-full mb-20 lg:mb-30"
+        loading="lazy"
+        breakpoints={{ default: 700, lg: 2500 }}
       />
     </>
   );
@@ -643,10 +647,12 @@ function InstitutionTitleElement({
         </p>
       </div>
       <div className="flex flex-row gap-4">
-        <img
+        <Image
           src={img}
           className="h-12 max-lg:mt-2 lg:h-28 object-cover"
           alt=""
+          loading="lazy"
+          breakpoints={{ default: 200 }}
         />
       </div>
     </div>

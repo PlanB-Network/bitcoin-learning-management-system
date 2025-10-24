@@ -1,4 +1,4 @@
-import { cn } from '@blms/ui';
+import { cn, Image } from '@blms/ui';
 import { useTranslation } from 'react-i18next';
 import emailIcon from '#src/assets/icons/email.svg';
 import { NetworkButton } from './network-button.tsx';
@@ -21,7 +21,12 @@ export const ContactUs = ({ text, email, className = '' }: ContactUsProps) => {
           className,
         )}
       >
-        <img src={emailIcon} alt="Email icon" />
+        <Image
+          src={emailIcon}
+          alt="Email icon"
+          breakpoints={{ default: 300 }}
+          loading="lazy"
+        />
         <div className="max-lg:mt-3 lg:ml-10 max-w-[400px] body-small lg:title-medium max-lg:text-center">
           {text}
         </div>

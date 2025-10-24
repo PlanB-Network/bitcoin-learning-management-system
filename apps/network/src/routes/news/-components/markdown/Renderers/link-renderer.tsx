@@ -1,5 +1,5 @@
 import type { JoinedBlogLight } from '@blms/types';
-import { cn } from '@blms/ui';
+import { cn, Image } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { cva, type VariantProps } from 'class-variance-authority';
 import type React from 'react';
@@ -79,10 +79,12 @@ export const LinkRenderer: React.FC<LinkRendererProps> = (props) => {
           rel="noreferrer"
           className="flex max-md:flex-col items-center w-full bg-newGray-6 shadow-course-navigation border border-newGray-5 rounded-[20px] p-4 gap-6 max-md:max-w-96"
         >
-          <img
+          <Image
             src={resourceImgUrl(blog)}
             alt={blog.category}
             className="size-20 rounded-full"
+            loading="lazy"
+            breakpoints={{ default: 200 }}
           />
           <div className="flex flex-col max-md:text-center">
             <p className="text-newBlack-3 text-xs font-light mb-2">

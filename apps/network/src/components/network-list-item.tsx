@@ -1,4 +1,4 @@
-import { cn } from '@blms/ui';
+import { cn, Image } from '@blms/ui';
 import type { IconType } from 'react-icons';
 
 type NetworkListItemProps = {
@@ -26,10 +26,12 @@ export default function NetworkListItem({
     >
       {typeof icon === 'string' ? (
         <div>
-          <img
+          <Image
             className="w-6 lg:w-8 text-blue-300 fill-blue-100"
             src={icon}
             alt=""
+            loading="lazy"
+            breakpoints={{ default: 100 }}
           />
         </div>
       ) : (

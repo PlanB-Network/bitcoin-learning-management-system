@@ -1,4 +1,4 @@
-import { cn } from '@blms/ui';
+import { cn, Image } from '@blms/ui';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { titleCss } from '#src/utils/css.tsx';
 import PageBlock from './page-block.tsx';
@@ -185,7 +185,7 @@ function DisplayImage({
 
   return (
     <>
-      <img
+      <Image
         src={imageUrl}
         alt={alt}
         className={[
@@ -196,6 +196,8 @@ function DisplayImage({
           isLeft ? 'lg:self-end' : 'lg:self-start',
           imageClassName,
         ].join(' ')}
+        breakpoints={{ default: 700, md: 1500 }}
+        loading="lazy"
       />
       {gradientBackground ? (
         <div className="z-0 max-lg:hidden absolute inset-0 bg w-full h-full bg-academy-image-gradient" />

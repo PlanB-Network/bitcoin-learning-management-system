@@ -1,4 +1,4 @@
-import { cn } from '@blms/ui';
+import { cn, Image } from '@blms/ui';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { Trans, useTranslation } from 'react-i18next';
 import arkLogo from '#src/assets/hubs/ark-logo.webp';
@@ -93,7 +93,7 @@ function RouteComponent() {
           'lg:rounded-tl-[200px] lg:rounded-br-[200px]',
         )}
       >
-        <img
+        <Image
           src={luganoBgImage}
           alt=""
           className={cn(
@@ -102,6 +102,8 @@ function RouteComponent() {
             'rounded-tl-[68px] rounded-br-[68px]',
             'lg:rounded-tl-[200px] lg:rounded-br-[200px]',
           )}
+          loading="lazy"
+          breakpoints={{ default: 700, lg: 1500 }}
         />
         <BlockTitle
           text={t('hubs.blockTitle1Text')}
@@ -181,10 +183,21 @@ function CoworkingCard({
 }) {
   return (
     <div className="flex flex-col items-center gap-10 max-w-[400px] bg-black pb-6 rounded-4xl hover:bg-gray-900">
-      <img src={img} alt="coworking 1" />
+      <Image
+        src={img}
+        alt="coworking 1"
+        loading="lazy"
+        breakpoints={{ default: 700, lg: 1500 }}
+      />
       <span className="display-base">{name}</span>
       <div className="flex flex-col items-center gap-2">
-        <img src={locationImage} alt="location" className="w-8" />
+        <Image
+          src={locationImage}
+          alt="location"
+          className="w-8"
+          loading="lazy"
+          breakpoints={{ default: 100 }}
+        />
         <span className="title-small text-orange-500">{location}</span>
       </div>
     </div>

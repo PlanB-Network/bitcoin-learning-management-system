@@ -1,4 +1,4 @@
-import { cn } from '@blms/ui';
+import { cn, Image } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { NetworkButton } from './network-button.tsx';
 import PageBlock from './page-block.tsx';
@@ -106,10 +106,12 @@ export default function MediaCard2({
             isLeft ? 'justify-end' : 'justify-start',
           )}
         >
-          <img
+          <Image
             src={imageUrl}
             alt={alt}
             className={['object-cover ', imageClassName].join(' ')}
+            breakpoints={{ default: 700, md: 1500 }}
+            loading="lazy"
           />
         </div>
       </fieldset>

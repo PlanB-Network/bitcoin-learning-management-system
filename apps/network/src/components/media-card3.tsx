@@ -1,4 +1,4 @@
-import { cn } from '@blms/ui';
+import { cn, Image } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import type React from 'react';
 import { NetworkButton } from './network-button.tsx';
@@ -30,10 +30,12 @@ export default function MediaCard3({
 }: MediaCard3Props) {
   return (
     <div className={cn('relative flex justify-center w-full')}>
-      <img
+      <Image
         src={imageUrl}
         alt="Hero background"
         className="max-lg:hidden absolute object-cover w-full max-w-[2000px]"
+        breakpoints={{ default: 700, md: 1500 }}
+        loading="lazy"
       />
       <div
         className={cn(
@@ -55,10 +57,12 @@ export default function MediaCard3({
           >
             {title}
           </h1>
-          <img
+          <Image
             src={imageUrl}
             alt="Hero background"
             className="lg:hidden object-cover w-full"
+            breakpoints={{ default: 700, md: 1500 }}
+            loading="lazy"
           />
           <p
             className={cn(
