@@ -1,5 +1,5 @@
 import type { JoinedCourse } from '@blms/types';
-import { cn, ListItem } from '@blms/ui';
+import { cn, Image, ListItem } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -77,13 +77,14 @@ export const CourseDetails = ({ course }: { course: JoinedCourse }) => {
             </div>
             {/* Course image section */}
             <div className="w-full max-w-[406px] flex justify-center items-center max-lg:-order-1">
-              <img
+              <Image
                 src={assetUrl(
                   `courses/${course.index}`,
                   'thumbnail.webp',
                   course.lastCommit,
                 )}
                 alt={course.name}
+                breakpoints={{ default: 600 }}
                 className="rounded-[20px] shadow-course-navigation"
               />
             </div>

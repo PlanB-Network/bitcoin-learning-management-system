@@ -1,5 +1,5 @@
 import type { CourseResponse } from '@blms/types';
-import { cn } from '@blms/ui';
+import { cn, Image } from '@blms/ui';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import leftBackgroundImg from '#src/assets/courses/left-background.webp?no-inline';
@@ -72,12 +72,13 @@ export const ModalPaymentSummary = ({
           <span className="text-sm">{professorNames}</span>
         ) : null}
         <div className={cn('rounded-2xl w-full mb-5 lg:mb-8', borderClassName)}>
-          <img
+          <Image
             src={assetUrl(
               `courses/${course.index}`,
               'thumbnail.webp',
               course.lastCommit,
             )}
+            breakpoints={{ default: 800 }}
             alt={courseName}
           />
         </div>

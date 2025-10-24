@@ -1,6 +1,6 @@
 import { formatNameForURL } from '@blms/shared';
 import type { CourseProgressExtended, JoinedCourse } from '@blms/types';
-import { ButtonWithArrow, cn, Progress, TextTag } from '@blms/ui';
+import { ButtonWithArrow, cn, Image, Progress, TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
@@ -95,13 +95,14 @@ export const CourseDashboardCard = ({
           </div>
         </div>
         <div className="w-full flex flex-row min-[1440px]:flex-col gap-4">
-          <img
+          <Image
             src={assetUrl(
               `courses/${course.index}`,
               'thumbnail.webp',
               course.lastCommit,
             )}
             alt={course.name}
+            breakpoints={{ default: 800 }}
             className="max-md:hidden rounded-md object-cover [overflow-clip-margin:unset] object-center max-h-[183px] max-w-[255px]"
           />
           <div className="flex flex-col gap-2 md:gap-3 min-[1440px]:gap-4! w-full">

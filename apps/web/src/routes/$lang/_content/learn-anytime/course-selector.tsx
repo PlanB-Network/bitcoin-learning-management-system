@@ -169,7 +169,7 @@ function CourseSelector() {
                 )}
                 alt={activeCourse.name}
                 className="rounded-md mb-6"
-                breakpoints={{ default: 700 }}
+                breakpoints={{ default: 800 }}
               />
 
               <span className="text-justify leading-normal tracking-015px text-neutral-500 whitespace-break-spaces mb-5">
@@ -244,12 +244,14 @@ function CourseSelector() {
                         />
                       </summary>
                       <article className="flex flex-col gap-4 mt-2.5">
-                        <img
+                        <Image
                           src={assetUrl(
                             `courses/${course.index}`,
                             'thumbnail.webp',
+                            course.lastCommit,
                           )}
                           alt={course.name}
+                          breakpoints={{ default: 800 }}
                           className="rounded-md"
                         />
                         <CourseInfoSection course={course} />

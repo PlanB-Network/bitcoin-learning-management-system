@@ -1,6 +1,6 @@
 import { LANGUAGES_MAP } from '@blms/shared';
 import type { CourseChapterResponse, CourseResponse } from '@blms/types';
-import { cn } from '@blms/ui';
+import { cn, Image } from '@blms/ui';
 import { capitalize } from 'lodash-es';
 import { useTranslation } from 'react-i18next';
 import leftBackgroundImg from '#src/assets/courses/left-background.webp?no-inline';
@@ -56,12 +56,13 @@ export const ModalBookSummary = ({
           <span>{professorNames}</span>
         </div>
         <div className={cn('rounded-2xl w-full mb-5 lg:mb-8', borderClassName)}>
-          <img
+          <Image
             src={assetUrl(
               `courses/${course.index}`,
               'thumbnail.webp',
               course.lastCommit,
             )}
+            breakpoints={{ default: 800 }}
             alt={courseName}
           />
         </div>

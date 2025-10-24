@@ -1,6 +1,6 @@
 import type { JoinedTutorialLight } from '@blms/types';
+import { Image } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
-
 import { assetUrl } from '#src/utils/index.ts';
 
 export const TutorialTile = ({
@@ -21,10 +21,11 @@ export const TutorialTile = ({
         }}
         className="group/project relative flex flex-col items-center justify-center"
       >
-        <img
+        <Image
           className="size-12 sm:size-14 md:size-16 lg:size-20 rounded-full group-hover/project:blur-xs group-focus/project:blur-xs group-focus/project:brightness-[30%] transition-all bg-white/20"
           src={assetUrl(tutorial.logoUrl, 'logo.webp', tutorial.lastCommit)}
           alt={tutorial.title}
+          breakpoints={{ default: 160 }}
         />
         <p className="absolute flex justify-center items-center size-full p-1 rounded-full text-center text-xs font-bold text-white group-hover/project:bg-black/60 opacity-0 group-hover/project:opacity-100 group-focus/project:opacity-100 transition-all">
           {tutorial.title.slice(0, 18)}

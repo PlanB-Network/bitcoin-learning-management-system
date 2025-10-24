@@ -11,12 +11,17 @@ import { createGetPodcast } from './resources/services/get-podcast.js';
 import { createGetProjectMeta } from './resources/services/get-project-meta.js';
 import { createGetTutorialMeta } from './tutorials/services/get-tutorial-meta.js';
 
-const cdn = (contentPath: string, assetPath?: string | null) => {
+const cdn = (
+  contentPath: string,
+  assetPath?: string | null,
+  // invalidate cache by passing a cacheKey (usually the last commit sha)
+  cacheKey?: string,
+) => {
   if (!assetPath) {
     return DEFAULT_IMAGE;
   }
 
-  return `/cdn/${contentPath}/assets/${assetPath}`;
+  return `/cdn/${contentPath}/assets/${assetPath}${cacheKey ? `?c=${cacheKey}` : ''}`;
 };
 
 // Extract an uuid from a uuid-terminated URL
@@ -111,7 +116,7 @@ export const createGetMetadata = (dependencies: Dependencies) => {
     return meta(
       course.name,
       course.goal,
-      cdn(`courses/${course.index}`, 'thumbnail.webp'),
+      cdn(`courses/${course.index}`, 'thumbnail.webp', course.lastCommit),
       course.language,
     );
   };
