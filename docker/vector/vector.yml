@@ -17,7 +17,9 @@ transforms:
     inputs:
       - docker
     type: 'filter'
-    condition: '.message != ""'
+    condition:  |
+      message = string(.message) ?? ""
+      length(strip_whitespace(message)) > 0
   docker_remap:
     inputs:
       - empty_message_filter
@@ -41,8 +43,20 @@ transforms:
     inputs:
       - api_filter
     type: 'remap'
-    source: | # noop
-      #
+    source: | # Replace "@blms/api:dev: " with "" (dev only, appended by turbo)
+      .message = replace!(.message, r'@blms/api:dev: ', "")
+
+  api_multiline_merge:
+    inputs:
+      - api_remap
+    type: 'reduce'
+    group_by: [".container_id"]
+    starts_when: |
+      message = string(.message) ?? ""
+      !match(message, r'^[ \t\n]') && !match(message, r'^[ \t]*[}\]][ \t]*$')
+    expire_after_ms: 200
+    merge_strategies:
+      message: 'concat_newline'
 
   api_light_remap:
     inputs:
@@ -64,10 +78,12 @@ transforms:
     inputs:
       - web_filter
     type: 'remap'
-    source:
-      | # Replace prepending iso date (web is an nginx service in production)
+    source: |
+      # Replace prepending iso date (web is an nginx service in production)
       .message = replace!(.message, r'^[\d-]+T[\d:.]+Z\s+', "")
       .message = replace(.message, r'^[\d\/]+ [\d:.]+ ', "")
+      # Remove turbo dev tag
+      .message = replace(.message, r'@blms/api:dev: ', "")
 
   web_light_remap:
     inputs:
@@ -156,7 +172,8 @@ transforms:
     inputs:
       - docker_remap
     type: 'filter'
-    condition: '.service == "postgres"'
+    condition: |
+      .service == "postgres"
 
   postgres_remap:
     inputs:
@@ -165,9 +182,29 @@ transforms:
     source: | # Replace prepending iso date and log level
       .message = replace!(.message, r'^[\d-]{10} [\d:.]+ UTC\s+\[\d+\]\s+[A-Z]+:\s+', "")
 
-  postgres_light_remap:
+  postgres_remap_filter_empty:
     inputs:
       - postgres_remap
+    type: 'filter'
+    condition:  |
+      message = string(.message) ?? ""
+      length(strip_whitespace(message)) > 0
+
+  postgres_multiline_merge:
+    inputs:
+      - postgres_remap_filter_empty
+    type: 'reduce'
+    group_by: [".container_id"]
+    starts_when: |
+      message = string(.message) ?? ""
+      !match(message, r'^[ \t\n]')
+    expire_after_ms: 200
+    merge_strategies:
+      message: 'concat_newline'
+
+  postgres_light_remap:
+    inputs:
+      - postgres_remap_filter_empty
     type: 'remap'
     source: | # Keep only message and timestamp
       .old = del(.)
@@ -202,8 +239,8 @@ transforms:
     inputs:
       - web_remap
       - cdn_remap
-      - api_remap
-      - postgres_remap
+      - api_multiline_merge
+      - postgres_multiline_merge
       - seed_remap
       - traefik_remap
       - grafana_remap
@@ -309,7 +346,7 @@ sinks:
   # Postgres output
   postgres:
     inputs:
-      - postgres_remap
+      - postgres_remap_filter_empty
     type: 'file'
     path: '/var/log/vector/%Y-%m-%d/full/postgres.log'
     encoding:
