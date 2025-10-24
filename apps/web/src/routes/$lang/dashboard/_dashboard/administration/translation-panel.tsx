@@ -58,7 +58,7 @@ function DashboardAdministrationTranslationPanel() {
   }
 
   return (
-    <PageLayout layoutSize="wide">
+    <PageLayout layoutSize="wide" title="Translation panel" hideTitle>
       <div className="flex flex-col gap-6 lg:gap-8">
         <TranslationPanelHeader activeTab={currentTab}>
           {/* Requests Tab */}

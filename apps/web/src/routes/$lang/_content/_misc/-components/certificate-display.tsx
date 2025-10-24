@@ -48,7 +48,7 @@ export const CertificateDisplay = ({
     : null;
 
   return (
-    <PageLayout>
+    <PageLayout title={t('courses.exam.courseDiploma')} hideTitle>
       <h2 className="text-center display-small-32px lg:display-large">
         {t('courses.exam.courseDiploma')}
       </h2>

@@ -249,6 +249,8 @@ function AllCourses() {
           href: '/learn-anytime/course-selector',
         },
       ]}
+      title={t('courses.allCourses')}
+      hideTitle
     >
       {inProgressCourses.length !== 0 && (
         <div className="flex flex-col w-full gap-4 mb-6 md:mb-12">

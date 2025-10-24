@@ -73,6 +73,8 @@ function Channel() {
         text: t('resources.channels.title'),
       }}
       layoutSize="wide"
+      title={channel?.name ?? undefined}
+      hideTitle
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !channel && (

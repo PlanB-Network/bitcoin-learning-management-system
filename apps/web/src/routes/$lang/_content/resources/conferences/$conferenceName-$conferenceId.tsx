@@ -165,6 +165,8 @@ function Conference() {
         text: t('conferences.pageTitle'),
       }}
       layoutSize="wide"
+      title={conference?.name ?? undefined}
+      hideTitle
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !conference && (

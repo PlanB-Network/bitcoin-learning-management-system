@@ -144,6 +144,8 @@ function Project() {
     <PageLayout
       backLink={{ href: '/resources/projects', text: t('words.projects') }}
       layoutSize="wide"
+      title={project?.name ?? undefined}
+      hideTitle
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !project && (

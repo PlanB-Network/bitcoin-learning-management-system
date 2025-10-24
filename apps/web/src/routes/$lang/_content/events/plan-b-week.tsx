@@ -34,7 +34,7 @@ function PlanBWeek() {
   );
 
   return (
-    <PageLayout>
+    <PageLayout title={t('events.planBWeek.pageTitle')} hideTitle>
       <div className="max-w-[1440px] w-full flex flex-col gap-6 px-3 pt-2.5 mx-auto md:gap-7 md:px-10">
         {!isFetched && <Loader size={'s'} />}
         {filteredEvents && (

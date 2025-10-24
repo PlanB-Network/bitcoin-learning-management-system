@@ -35,7 +35,11 @@ function AdminBookings() {
   }
 
   return (
-    <PageLayout layoutSize="wide">
+    <PageLayout
+      layoutSize="wide"
+      title={t('dashboard.adminPanel.bookingsPanel')}
+      hideTitle
+    >
       <section className="flex flex-col gap-4 lg:gap-8">
         <div className="flex flex-col">
           <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-5 mb-5 md:mb-11">

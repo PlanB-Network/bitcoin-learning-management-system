@@ -241,6 +241,8 @@ function EventDetails() {
     <PageLayout
       layoutSize="base"
       backLink={{ text: t('words.events'), href: '/events' }}
+      title={event?.name ?? undefined}
+      hideTitle
     >
       <div>
         {event &&

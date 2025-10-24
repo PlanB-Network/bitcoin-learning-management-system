@@ -202,7 +202,7 @@ function ResetPasswordPage() {
   };
 
   return (
-    <PageLayout layoutSize="wide">
+    <PageLayout layoutSize="wide" title={t('auth.resetPassword')} hideTitle>
       <div className="font-primary flex size-full flex-col items-center space-y-16 p-10">
         <section className="max-w-4xl flex min-h-[50vh] flex-col items-center justify-center">
           {validationMessages[pageState]}

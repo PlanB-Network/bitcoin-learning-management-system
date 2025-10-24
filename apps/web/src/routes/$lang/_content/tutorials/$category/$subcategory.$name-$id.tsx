@@ -438,6 +438,8 @@ function TutorialDetails() {
         text: `${t(`tutorials.${params.category}.title`)}`,
         href: `/tutorials/${params.category}#${params.subcategory}`,
       }}
+      title={tutorial?.title ?? undefined}
+      hideTitle
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !tutorial && (

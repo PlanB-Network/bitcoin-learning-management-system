@@ -73,6 +73,8 @@ function Podcast() {
         text: t('resources.podcasts.title'),
       }}
       layoutSize="wide"
+      title={podcast?.name ?? undefined}
+      hideTitle
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !podcast && (

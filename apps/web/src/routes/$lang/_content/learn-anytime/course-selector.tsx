@@ -88,6 +88,8 @@ function CourseSelector() {
           href: '/learn-anytime/course-selector',
         },
       ]}
+      title={t('courses.courseSelector')}
+      hideTitle
     >
       {!filteredCourses && <Loader size={'s'} />}
 

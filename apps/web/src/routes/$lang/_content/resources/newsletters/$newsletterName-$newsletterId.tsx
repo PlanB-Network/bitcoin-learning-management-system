@@ -85,6 +85,8 @@ function NewsletterDetail() {
         text: t('resources.newsletters.title'),
       }}
       layoutSize="wide"
+      title={newsletter?.title ?? undefined}
+      hideTitle
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !newsletter && (

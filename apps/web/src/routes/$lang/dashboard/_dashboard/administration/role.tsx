@@ -46,7 +46,11 @@ function DashboardAdministrationRole() {
   }
 
   return (
-    <PageLayout layoutSize="wide">
+    <PageLayout
+      layoutSize="wide"
+      title={t('dashboard.adminPanel.userRolesAllocation')}
+      hideTitle
+    >
       <div className="flex flex-col gap-4 lg:gap-8">
         <div className="flex max-lg:flex-col lg:items-center gap-2 lg:gap-5">
           <h1 className="display-small-32px">

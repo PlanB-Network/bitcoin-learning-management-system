@@ -214,7 +214,11 @@ function AdminCoupons() {
   };
 
   return (
-    <PageLayout layoutSize="wide">
+    <PageLayout
+      layoutSize="wide"
+      title={t('dashboard.adminPanel.discountCodes')}
+      hideTitle
+    >
       <section className="flex flex-col gap-4 lg:gap-8">
         <div className="flex flex-col">
           <div className="flex gap-2.5 md:gap-5 mb-5">

@@ -73,6 +73,8 @@ function Movie() {
         text: t('resources.movies.title'),
       }}
       layoutSize="wide"
+      title={movie?.title ?? undefined}
+      hideTitle
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !movie && (

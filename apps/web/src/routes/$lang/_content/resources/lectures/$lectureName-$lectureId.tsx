@@ -107,6 +107,8 @@ function Lecture() {
         text: t('resources.lectures.title'),
       }}
       layoutSize="wide"
+      title={lecture?.name ?? undefined}
+      hideTitle
     >
       {!isFetched && <Loader size={'s'} />}
       {isFetched && !lecture && (

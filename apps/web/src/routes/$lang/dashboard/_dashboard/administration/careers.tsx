@@ -175,7 +175,7 @@ function AdminCareers() {
     'text-dashboardSectionTitle leading-normal !font-medium tracking-015px';
 
   return (
-    <PageLayout layoutSize="wide">
+    <PageLayout layoutSize="wide" title={t('words.careerPortal')} hideTitle>
       <div className="flex gap-2.5 md:gap-5 mb-5">
         <h1 className="title-large-24px md:display-small-32px text-dashboardSectionText">
           {t('words.careerPortal')}

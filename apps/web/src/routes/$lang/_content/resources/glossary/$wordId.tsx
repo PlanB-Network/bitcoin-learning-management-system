@@ -89,7 +89,7 @@ function GlossaryWord() {
     glossaryWord?.language === glossaryWord?.originalLanguage;
   return (
     <PageLayout
-      title={isFetched ? glossaryWord?.term : 'resources.glossary.title'}
+      title={isFetched ? glossaryWord?.term : t('resources.glossary.title')}
       tabs={resourcesTabs}
       layoutSize="wide"
     >
