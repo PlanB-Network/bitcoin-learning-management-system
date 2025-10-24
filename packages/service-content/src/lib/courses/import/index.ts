@@ -566,6 +566,11 @@ export const createUpdateCourses = ({
           }
 
           if (parsedCourse.videos) {
+            await transaction`
+              DELETE FROM content.videos
+              WHERE course_id = ${parsedCourse.id}
+            `;
+
             for (let i = 0; i < parsedCourse.videos.length; i++) {
               const currentVideo = parsedCourse.videos[i];
 
