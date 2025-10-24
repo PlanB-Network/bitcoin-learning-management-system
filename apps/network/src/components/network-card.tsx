@@ -1,4 +1,4 @@
-import { cn, Image } from '@blms/ui';
+import { cn } from '@blms/ui';
 import type { IconType } from 'react-icons';
 
 type NetworkCardProps = {
@@ -24,13 +24,7 @@ export default function NetworkCard({
       )}
     >
       {typeof icon === 'string' ? (
-        <Image
-          className="w-12 lg:ml-3"
-          src={icon}
-          alt=""
-          loading="lazy"
-          breakpoints={{ default: 100 }}
-        />
+        <img className="w-12 lg:ml-3" src={icon} alt="" loading="lazy" />
       ) : (
         <Icon className="size-12 text-orange-500" />
       )}
