@@ -4,9 +4,10 @@ import type {
   JoinedTutorialLight,
 } from '@blms/types';
 
+const base = '(?:planb\\.network|planb\\.academy)';
+
 export const getTutorial = (url: string, tutorials: JoinedTutorialLight[]) => {
-  const pattern =
-    /^https:\/\/planb\.network\/tutorials\/[^/]+\/[^/]+\/([^/]+)$/;
+  const pattern = new RegExp(`^https://${base}/tutorials/[^/]+/[^/]+/([^/]+)$`);
   const match = url.match(pattern);
 
   if (match) {
@@ -18,7 +19,7 @@ export const getTutorial = (url: string, tutorials: JoinedTutorialLight[]) => {
 };
 
 export const getCourse = (url: string, courses: JoinedCourse[]) => {
-  const pattern = /^https:\/\/planb\.network\/courses\/([^/]+)$/;
+  const pattern = new RegExp(`^https://${base}/courses/([^/]+)$`);
   const match = url.match(pattern);
 
   if (match) {
@@ -32,7 +33,7 @@ export const getCourse = (url: string, courses: JoinedCourse[]) => {
 export const getBlog = (url: string, blogs?: JoinedBlogLight[]) => {
   if (!blogs) return null;
 
-  const pattern = /^https:\/\/planb\.network\/blogs\/(\d+)$/;
+  const pattern = new RegExp(`^https://${base}/blogs/(\\d+)$`);
   const match = url.match(pattern);
 
   if (match) {
