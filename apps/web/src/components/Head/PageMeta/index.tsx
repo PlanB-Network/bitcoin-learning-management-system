@@ -38,7 +38,7 @@ const PageMeta = ({
             : isTestnetOrDevelopmentEnvironment()
               ? 'TESTNET - '
               : ''}
-          {title}
+          {title !== SITE_NAME ? `${title} | ${SITE_NAME}` : SITE_NAME}
         </title>
       )}
       {description && <meta name="description" content={newDescription} />}
