@@ -6,11 +6,13 @@ import { TbChevronLeft } from 'react-icons/tb';
 import { PageHeader } from '#src/components/page-header.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
+import PageMeta from './Head/PageMeta/index.tsx';
 import { MainLayout } from './main-layout.tsx';
 import { SecondaryNavbar } from './ui/secondary-navbar.tsx';
 
 interface Props {
   title?: string;
+  hideTitle?: boolean;
   subtitle?: string;
   description?: string;
   link?: string;
@@ -27,6 +29,7 @@ interface Props {
 
 export const PageLayout = ({
   title,
+  hideTitle,
   subtitle,
   description,
   link,
@@ -52,6 +55,7 @@ export const PageLayout = ({
 
   return (
     <MainLayout>
+      <PageMeta title={title} description={description} />
       {/** biome-ignore lint/complexity/noUselessFragments: <N/A> */}
       <>
         <div
@@ -134,7 +138,7 @@ export const PageLayout = ({
                 Icon
               )
             ) : null}
-            {title && (
+            {title && !hideTitle && (
               <PageHeader
                 title={title}
                 subtitle={subtitle}

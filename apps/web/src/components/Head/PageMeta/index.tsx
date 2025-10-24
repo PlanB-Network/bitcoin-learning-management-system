@@ -15,9 +15,9 @@ interface PageMetaProps {
 
 const PageMeta = ({
   title = SITE_NAME,
-  description,
-  type,
-  imageSrc,
+  description = "Let's build together the Bitcoin educational layer",
+  type = 'website',
+  imageSrc = '/share-default.png',
 }: PageMetaProps) => {
   const newDescription =
     description && description.length > 200

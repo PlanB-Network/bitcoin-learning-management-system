@@ -21,7 +21,6 @@ import { z } from 'zod';
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
-import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
@@ -33,8 +32,7 @@ import {
   COURSES_WITH_INLINE_LATEX_SUPPORT,
   goToChapterParameters,
 } from '#src/utils/courses.js';
-import { assetUrl, cdnUrl, compose, trpc } from '#src/utils/index.js';
-import { SITE_NAME } from '#src/utils/meta.js';
+import { cdnUrl, compose, trpc } from '#src/utils/index.js';
 import { capitalizeFirstWord, joinWords } from '#src/utils/string.js';
 import { ClassDetails } from './-components/class-details.tsx';
 import { LiveVideo } from './-components/live-video.tsx';
@@ -649,7 +647,11 @@ function CourseChapter() {
   }, [chapter, isLoggedIn, isAroundLiveTime]);
 
   return (
-    <PageLayout layoutSize="max">
+    <PageLayout
+      layoutSize="max"
+      title={`${course?.name || ''} - ${chapter?.title || ''}`}
+      hideTitle
+    >
       {proofreading ? (
         <ProofreadingProgress
           isOriginalLanguage={isOriginalLanguage}
@@ -663,19 +665,6 @@ function CourseChapter() {
         <></>
       )}
 
-      <PageMeta
-        title={`${SITE_NAME} - ${chapter?.course.name} - ${chapter?.title}`}
-        description={chapter?.course.objectives?.join(',')}
-        imageSrc={
-          chapter
-            ? assetUrl(
-                `courses/${chapter.course.index}`,
-                'thumbnail.webp',
-                chapter.lastCommit,
-              )
-            : ''
-        }
-      />
       <div className="text-black flex flex-col grow">
         {!isFetched && (
           <div className="flex flex-col flex-1 items-center size-full">

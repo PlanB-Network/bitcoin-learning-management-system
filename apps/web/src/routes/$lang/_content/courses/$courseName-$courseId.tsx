@@ -36,7 +36,6 @@ import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
 import { AuthModalState } from '#src/components/AuthModals/props.js';
 import { AuthorCard } from '#src/components/author-card.tsx';
-import PageMeta from '#src/components/Head/PageMeta/index.js';
 import { LinkRenderer } from '#src/components/Markdown/Renderers/link-renderer.tsx';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
@@ -48,7 +47,6 @@ import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx'
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { formatDate, formatDateRange } from '#src/utils/date.ts';
 import { assetUrl, cdnUrl } from '#src/utils/index.js';
-import { SITE_NAME } from '#src/utils/meta.js';
 import { base64ToBlob } from '#src/utils/misc.ts';
 import { trpc } from '#src/utils/trpc.js';
 import { CoursePaymentModal } from './-components/payment-modal/course-payment-modal.tsx';
@@ -838,6 +836,8 @@ function CourseDetails() {
     <PageLayout
       layoutSize="wide"
       className="relative"
+      title={course?.name}
+      hideTitle
       backLink={
         isFetched && course
           ? {
@@ -853,19 +853,6 @@ function CourseDetails() {
           : undefined
       }
     >
-      <PageMeta
-        title={`${SITE_NAME} - ${course?.name}`}
-        description={course?.goal}
-        imageSrc={
-          course
-            ? assetUrl(
-                `courses/${course.index}`,
-                'thumbnail.webp',
-                course.lastCommit,
-              )
-            : ''
-        }
-      />
       <div className="text-newBlack-1">
         {!isFetched && <Loader size={'s'} />}
         {isFetched && !course && (
