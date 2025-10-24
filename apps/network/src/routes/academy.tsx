@@ -90,7 +90,7 @@ function RouteComponent() {
           src={media1Image}
           alt="Laptop showing the academy website"
           loading="lazy"
-          breakpoints={{ default: 700, lg: 1500 }}
+          breakpoints={{ default: 400, lg: 1500 }}
         />
         <Link
           to="https://planb.academy"
