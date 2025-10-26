@@ -25,7 +25,7 @@
     "stripe": "^18.5.0",
     "superjson": "^2.2.3",
     "typesense": "~2.0.3",
-    "zod": "~3.25.76"
+    "zod": "~4.1.12"
   },
   "devDependencies": {
     "@blms/types": "workspace:*",
