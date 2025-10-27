@@ -232,7 +232,7 @@ function CourseDetails() {
 
     return (
       <section className="flex flex-col self-start w-full">
-        <div className="md:flex md:flex-row md:justify-between items-center">
+        <div className="md:flex md:flex-row md:justify-between items-center gap-4">
           <h1 className="text-newBlack-1 max-md:text-center title-large-sb-24px md:display-large-med-48px">
             {course.name}
           </h1>
@@ -283,7 +283,7 @@ function CourseDetails() {
 
   const CourseInfo = ({ course }: { course: CourseResponse }) => {
     return (
-      <section className="flex max-lg:flex-col lg:py-2.5 mt-6 lg:mt-7 w-full gap-5 lg:gap-10">
+      <section className="flex max-xl:flex-col xl:py-2.5 mt-6 xl:mt-7 w-full gap-5 xl:gap-10">
         <Image
           src={assetUrl(
             `courses/${course.index}`,
@@ -291,12 +291,12 @@ function CourseDetails() {
             course.lastCommit,
           )}
           alt={course.name}
-          className="rounded-[20px] w-full lg:max-w-[456px] lg:max-h-[320px] shrink object-cover [overflow-clip-margin:unset] object-center"
+          className="rounded-[20px] w-full xl:max-w-[456px] xl:max-h-[320px] shrink object-cover [overflow-clip-margin:unset] object-center"
           breakpoints={{ default: 800 }}
         />
 
         <div className="w-full">
-          <article className="flex flex-col w-full lg:max-w-[564px] [&>*:not(:last-child)]:border-b [&>*:not(:last-child)]:border-newGray-4">
+          <article className="flex flex-col w-full xl:max-w-[564px] [&>*:not(:last-child)]:border-b [&>*:not(:last-child)]:border-newGray-4">
             <ListItem
               leftText={t('words.professor')}
               rightText={course.mainProfessors.map((professor, index) => (
@@ -440,12 +440,12 @@ function CourseDetails() {
               wrapOnMobile
               hasIncreasedPadding
             />
-            <div className="lg:flex lg:w-full justify-end max-lg:my-2 lg:mt-5">
+            <div className="xl:flex xl:w-full justify-end max-xl:my-2 xl:mt-5">
               <BuyCourseButtons />
             </div>
           </article>
           {displayDownloadTicket && (
-            <div className="ml-2 max-lg:mb-4 max-lg:italic lg:mt-2 flex flex-col gap-4 w-fit">
+            <div className="ml-2 max-xl:mb-4 max-xl:italic xl:mt-2 flex flex-col gap-4 w-fit">
               <p className="text-lg font-normal max-md:text-base">
                 {t('courses.details.inPersonAccess')}
               </p>
@@ -619,7 +619,7 @@ function CourseDetails() {
         {course.format === 'hybrid' &&
         course.inpersonPriceDollars &&
         course.onlinePriceDollars ? (
-          <div className="flex flex-col lg:flex-row gap-0 lg:gap-3 lg:self-end">
+          <div className="flex flex-col xl:flex-row gap-0 xl:gap-3 xl:self-end">
             <BuyCourseButton format="inperson">
               <>
                 <FaLock className="mr-2" />
@@ -645,7 +645,7 @@ function CourseDetails() {
         )}
       </>
     ) : (
-      <div className="flex flex-col lg:flex-row">
+      <div className="flex flex-col xl:flex-row">
         <BuyCourseButton hasArrow format={'online'}>
           <span>
             {userCourseProgress &&

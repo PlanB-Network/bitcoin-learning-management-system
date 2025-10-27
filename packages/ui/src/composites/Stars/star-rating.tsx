@@ -100,5 +100,5 @@ export const StarRating = ({
     );
   }
 
-  return <div className={cn('flex gap-5', className)}>{stars}</div>;
+  return <div className={cn('flex gap-1', className)}>{stars}</div>;
 };
