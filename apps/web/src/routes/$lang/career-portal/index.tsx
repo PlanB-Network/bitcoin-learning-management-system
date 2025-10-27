@@ -100,7 +100,7 @@ function CareerPortal() {
       .array(
         z.object({
           languageCode: z.string(),
-          level: z.nativeEnum(CareerLanguageLevel),
+          level: z.enum(CareerLanguageLevel),
         }),
       )
       .min(1, { message: t('dashboard.careerPortal.languageRequired') }),
@@ -113,15 +113,15 @@ function CareerPortal() {
   const Step2FormSchema = z.object({
     availabilityStart: z.string().optional(),
     companySizes: z
-      .array(z.nativeEnum(CareerCompanySize))
+      .array(z.enum(CareerCompanySize))
       .min(1, { message: t('dashboard.careerPortal.companySizeRequired') }),
     expectedSalary: z.string().optional(),
     isAvailableFullTime: z.boolean().default(true),
-    remoteWorkPreference: z.nativeEnum(CareerRemote).default(CareerRemote.Yes),
+    remoteWorkPreference: z.enum(CareerRemote).default(CareerRemote.Yes),
     roles: z
       .array(
         z.object({
-          level: z.nativeEnum(CareerRoleLevel),
+          level: z.enum(CareerRoleLevel),
           roleId: z.string(),
         }),
       )

@@ -94,17 +94,17 @@ const updateCareerProfileProcedure = studentProcedure
       languages: z.array(
         z.object({
           languageCode: z.string(),
-          level: z.nativeEnum(CareerLanguageLevel),
+          level: z.enum(CareerLanguageLevel),
         }),
       ),
       lastName: z.string().optional(),
       linkedin: z.string().optional(),
       motivationLetter: z.string(),
       otherContact: z.string().optional(),
-      remoteWorkPreference: z.nativeEnum(CareerRemote),
+      remoteWorkPreference: z.enum(CareerRemote),
       roles: z.array(
         z.object({
-          level: z.nativeEnum(CareerRoleLevel),
+          level: z.enum(CareerRoleLevel),
           roleId: z.string(),
         }),
       ),

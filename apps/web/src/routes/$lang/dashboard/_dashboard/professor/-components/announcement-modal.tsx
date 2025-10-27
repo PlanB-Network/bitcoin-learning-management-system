@@ -51,7 +51,7 @@ const schema = z.object({
       'dashboard.teacher.courses.announcementModal.dateRequired',
     ),
   }),
-  studentGroup: z.nativeEnum(StudentGroup).optional(),
+  studentGroup: z.enum(StudentGroup).optional(),
   timezone: z.string(),
   type: z.string(),
 });

@@ -7,7 +7,7 @@ import {
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 
-export const eventTypeSchema = z.nativeEnum(EventType);
+export const eventTypeSchema = z.enum(EventType);
 
 export const eventSchema = createSelectSchema(contentEvents);
 

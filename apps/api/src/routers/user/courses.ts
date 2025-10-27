@@ -128,7 +128,7 @@ const getProgressProcedure = studentProcedure
     z
       .object({
         courseId: z.string().optional(),
-        teachingFormat: z.nativeEnum(TeachingFormat).optional(),
+        teachingFormat: z.enum(TeachingFormat).optional(),
       })
       .optional(),
   )
@@ -148,7 +148,7 @@ const startExamAttemptProcedure = studentProcedure
     z.object({
       chapterId: z.string(),
       courseId: z.string(),
-      examType: z.nativeEnum(ExamType),
+      examType: z.enum(ExamType),
       language: z.string(),
     }),
   )
@@ -671,7 +671,7 @@ const getStudentsByCourseIdProcedure = professorProcedure
       limit: z.number(),
       search: z.string(),
       orderDirection: z
-        .nativeEnum(SortDirection)
+        .enum(SortDirection)
         .optional()
         .default(SortDirection.Asc),
       orderField: z

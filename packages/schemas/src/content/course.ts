@@ -1,4 +1,4 @@
-import { CourseLevel, TeachingFormat } from '@blms/constants';
+import { CourseFormat, CourseLevel, TeachingFormat } from '@blms/constants';
 import {
   contentCourseChapters,
   contentCourseChaptersLocalized,
@@ -13,8 +13,9 @@ import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 import { formattedProfessorSchema } from './professor.js';
 
-export const courseLevelSchema = z.nativeEnum(CourseLevel);
-export const teachingFormatSchema = z.nativeEnum(TeachingFormat);
+export const courseLevelSchema = z.enum(CourseLevel);
+export const teachingFormatSchema = z.enum(TeachingFormat);
+export const courseFormat = z.enum(CourseFormat);
 
 export const courseSchema = createSelectSchema(contentCourses);
 export const courseLocalizedSchema = createSelectSchema(
@@ -140,6 +141,7 @@ export const minimalJoinedCourseSchema = courseSchema
     assignmentEndDate: true,
     assignmentDescription: true,
     areScoresCalculated: true,
+    level: true,
   })
   .merge(
     z.object({
@@ -158,7 +160,6 @@ export const minimalJoinedCourseSchema = courseSchema
   .merge(
     z.object({
       chaptersCount: z.number().optional(),
-      level: courseLevelSchema,
     }),
   )
   .merge(

@@ -87,9 +87,9 @@ const insertScheduledCourseAnnouncementProcedure = professorProcedure
       content: z.string(),
       courseId: z.string(),
       scheduledAt: z.date(),
-      studentGroup: z.nativeEnum(StudentGroup),
+      studentGroup: z.enum(StudentGroup),
       timezone: z.string(),
-      type: z.nativeEnum(NotificationType),
+      type: z.enum(NotificationType),
     }),
   )
   .output<Parser<void>>(z.void())
@@ -112,9 +112,9 @@ const updateScheduledCourseAnnouncementProcedure = professorProcedure
       courseId: z.string(),
       id: z.string(),
       scheduledAt: z.date(),
-      studentGroup: z.nativeEnum(StudentGroup),
+      studentGroup: z.enum(StudentGroup),
       timezone: z.string(),
-      type: z.nativeEnum(NotificationType),
+      type: z.enum(NotificationType),
     }),
   )
   .output<Parser<void>>(z.void())

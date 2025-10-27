@@ -57,7 +57,7 @@ const getTutorialsWithProfessorNameProcedure = publicProcedure
       language: z.string(),
       limit: z.number(),
       orderDirection: z
-        .nativeEnum(SortDirection)
+        .enum(SortDirection)
         .optional()
         .default(SortDirection.Asc),
       orderField: z

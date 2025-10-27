@@ -7,7 +7,7 @@ import {
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 
-export const notificationTypeSchema = z.nativeEnum(NotificationType);
+export const notificationTypeSchema = z.enum(NotificationType);
 
 export const notificationSchema = createSelectSchema(usersNotifications);
 export const userNotificationStatusSchema = createSelectSchema(
