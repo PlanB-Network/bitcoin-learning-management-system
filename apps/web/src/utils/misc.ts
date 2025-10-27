@@ -73,7 +73,8 @@ export const isUrlFromValidVideoPlatform = (src: string) => {
     doesVideoUrlWorkWithReactPlayer(src) ||
     src.startsWith('https://www.rumble.com') ||
     src.startsWith('https://rumble.com') ||
-    src.startsWith('https://peertube.planb.network')
+    src.startsWith('https://peertube.planb.network') ||
+    src.startsWith('https://makertube.net')
   );
 };
 
