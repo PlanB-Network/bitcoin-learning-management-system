@@ -1,60 +1,32 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ListItem } from '#src/bases/ListItem/list-item.tsx';
 
-const variants = ['dark', 'light', 'lightMaroon'] as const;
+const variants = ['dark', 'light', 'lightMaroon', 'grey'] as const;
 
 const meta: Meta<typeof ListItem> = {
-  args: {
-    className: '',
-    hasIncreasedPadding: false,
-    isDesktopOnly: false,
-    isMobileOnly: false,
-    leftText: 'Label',
-    leftTextClassName: '',
-    rightText: 'Value',
-    rightTextClassName: '',
-    variant: 'dark',
-    wrapOnMobile: false,
-  },
-  argTypes: {
-    className: {
-      control: 'text',
-    },
-    hasIncreasedPadding: {
-      control: 'boolean',
-    },
-    isDesktopOnly: {
-      control: 'boolean',
-    },
-    isMobileOnly: {
-      control: 'boolean',
-    },
-    leftText: {
-      control: 'text',
-    },
-    leftTextClassName: {
-      control: 'text',
-    },
-    rightText: {
-      control: 'text',
-    },
-    rightTextClassName: {
-      control: 'text',
-    },
-    variant: {
-      control: { type: 'select' },
-      options: variants,
-    },
-    wrapOnMobile: {
-      control: 'boolean',
-    },
-  },
+  title: 'Bases/list-item',
   component: ListItem,
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
   },
-  tags: ['autodocs'],
-  title: 'Bases/list-item',
+  args: {
+    leftText: 'Label',
+    rightText: 'Value',
+    variant: 'dark',
+  },
+  argTypes: {
+    variant: { control: 'select', options: variants },
+    hasIncreasedPadding: { control: 'boolean' },
+    isDesktopOnly: { control: 'boolean' },
+    isMobileOnly: { control: 'boolean' },
+    wrapOnMobile: { control: 'boolean' },
+    className: { control: 'text' },
+    leftTextClassName: { control: 'text' },
+    rightTextClassName: { control: 'text' },
+    leftText: { control: 'text' },
+    rightText: { control: 'text' },
+  },
 };
 
 export default meta;
@@ -62,7 +34,13 @@ export default meta;
 type Story = StoryObj<typeof ListItem>;
 
 export const Default: Story = {
-  args: {},
+  decorators: [
+    (Story) => (
+      <div className="bg-neutral-900 p-6 max-w-md rounded">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export const LightVariant: Story = {
@@ -71,6 +49,13 @@ export const LightVariant: Story = {
     rightText: '2 hours',
     variant: 'light',
   },
+  decorators: [
+    (Story) => (
+      <div className="bg-white p-6 max-w-md rounded border border-neutral-200">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export const LightMaroonVariant: Story = {
@@ -79,14 +64,28 @@ export const LightMaroonVariant: Story = {
     rightText: 'Intermediate',
     variant: 'lightMaroon',
   },
+  decorators: [
+    (Story) => (
+      <div className="bg-maroon-1 p-6 max-w-md rounded border border-maroon-3">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
-export const WithIncreasedPadding: Story = {
+export const GreyVariant: Story = {
   args: {
-    hasIncreasedPadding: true,
-    leftText: 'Course Price',
-    rightText: '$29.99',
+    leftText: 'Language',
+    rightText: 'English',
+    variant: 'grey',
   },
+  decorators: [
+    (Story) => (
+      <div className="bg-newGray-8 p-6 max-w-md rounded">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export const WithReactNodeRight: Story = {
@@ -98,6 +97,28 @@ export const WithReactNodeRight: Story = {
       </span>
     ),
   },
+  decorators: [
+    (Story) => (
+      <div className="bg-neutral-900 p-6 max-w-md rounded">
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export const WithIncreasedPadding: Story = {
+  args: {
+    hasIncreasedPadding: true,
+    leftText: 'Course Price',
+    rightText: '$29.99',
+  },
+  decorators: [
+    (Story) => (
+      <div className="bg-neutral-900 p-6 max-w-md rounded">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export const LongContent: Story = {
@@ -106,21 +127,25 @@ export const LongContent: Story = {
       'Very Long Label That Demonstrates How The Component Handles Lengthy Text Content',
     rightText:
       'This is also a very long value that shows how the right side content behaves with extended text',
+    wrapOnMobile: true,
   },
+  decorators: [
+    (Story) => (
+      <div className="bg-neutral-900 p-6 max-w-md rounded">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export const MultipleItems: Story = {
   render: () => (
-    <div className="w-full max-w-md">
-      <ListItem
-        leftText="Course Name"
-        rightText="Bitcoin Fundamentals"
-        variant="dark"
-      />
-      <ListItem leftText="Duration" rightText="2 hours" variant="dark" />
-      <ListItem leftText="Difficulty" rightText="Beginner" variant="dark" />
-      <ListItem leftText="Price" rightText="Free" variant="dark" />
-      <ListItem leftText="Language" rightText="English" variant="dark" />
+    <div className="bg-neutral-900 p-6 max-w-md rounded space-y-0 divide-y divide-white/10">
+      <ListItem leftText="Course Name" rightText="Bitcoin Fundamentals" />
+      <ListItem leftText="Duration" rightText="2 hours" />
+      <ListItem leftText="Difficulty" rightText="Beginner" />
+      <ListItem leftText="Price" rightText="Free" />
+      <ListItem leftText="Language" rightText="English" />
     </div>
   ),
 };

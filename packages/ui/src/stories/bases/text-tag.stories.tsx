@@ -29,6 +29,7 @@ const meta: Meta<typeof TextTag> = {
         'green',
         'lightMaroon',
         'darkMaroon',
+        'yellow',
       ],
     },
   },
@@ -74,6 +75,13 @@ export const Orange: Story = {
   args: {
     children: 'Orange Tag',
     variant: 'orange',
+  },
+};
+
+export const Yellow: Story = {
+  args: {
+    children: 'Yellow Tag',
+    variant: 'yellow',
   },
 };
 
