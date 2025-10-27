@@ -66,10 +66,6 @@ export const sendgrid: SendGridConfig = {
   email: getenv('SENDGRID_EMAIL', null),
   enable: getenv('SENDGRID_ENABLE', false),
   key: getenv('SENDGRID_KEY', null),
-  templates: {
-    emailChange: getenv('SENDGRID_EMAIL_CHANGE_TEMPLATE_ID', null),
-    resetPassword: getenv('SENDGRID_RESET_PASSWORD_TEMPLATE_ID', null),
-  },
 };
 
 export const postgres: PostgresClientConfig = {

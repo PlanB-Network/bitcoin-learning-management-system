@@ -12,10 +12,6 @@ export interface SendGridConfig {
   key: string | null;
   email: string | null;
   enable: boolean;
-  templates: {
-    emailChange: string | null;
-    resetPassword: string | null;
-  };
 }
 
 export interface SessionConfig {

@@ -9,12 +9,7 @@ import { consumeTokenQuery, createTokenQuery } from '../queries/token.js';
 import { createSendEmail } from './email.js';
 
 export const createPasswordResetToken = (deps: Dependencies) => {
-  const template = deps.config.sendgrid.templates.resetPassword;
   const domainUrl = deps.config.domainUrl;
-
-  if (!template) {
-    throw new Error('Missing reset password template');
-  }
 
   const sendEmail = createSendEmail(deps);
 
@@ -43,7 +38,7 @@ export const createPasswordResetToken = (deps: Dependencies) => {
             },
             email,
             subject: 'Reset your password',
-            template,
+            template: 'd-036ba1b9cadc48798326bf4f176854a8',
           }),
         )
         .then(() => ({ success: true }))

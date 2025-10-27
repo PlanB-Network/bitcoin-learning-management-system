@@ -41,12 +41,7 @@ export const createChangeEmailConfirmation = ({ postgres }: Dependencies) => {
  */
 export const createEmailValidationToken = (deps: Dependencies) => {
   const { postgres, config } = deps;
-  const template = config.sendgrid.templates.emailChange;
   const domain = config.domainUrl;
-
-  if (!template) {
-    throw new Error('Missing SendGrid email change template');
-  }
 
   const sendEmail = createSendEmail({ config });
 
@@ -79,7 +74,7 @@ export const createEmailValidationToken = (deps: Dependencies) => {
           },
           email,
           subject: 'Validate your email',
-          template,
+          template: 'd-4bb80937894d42bebef0019dfb219bcc',
         }),
       )
       .then(() => ({ success: true }))

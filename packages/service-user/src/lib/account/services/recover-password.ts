@@ -10,12 +10,7 @@ import { createTokenQuery } from '../queries/token.js';
 import { createSendEmail } from './email.js';
 
 export const createPasswordRecoveryToken = (deps: Dependencies) => {
-  const template = deps.config.sendgrid.templates.resetPassword;
   const domain = deps.config.domainUrl;
-
-  if (!template) {
-    throw new Error('Missing recover password template');
-  }
 
   const sendEmail = createSendEmail(deps);
 
@@ -38,7 +33,7 @@ export const createPasswordRecoveryToken = (deps: Dependencies) => {
           },
           email,
           subject: 'Recover your password',
-          template,
+          template: 'd-036ba1b9cadc48798326bf4f176854a8',
         }),
       )
       .then(() => ({ success: true }))
