@@ -1,6 +1,6 @@
 import { cn, Loader } from '@blms/ui';
 import { createFileRoute } from '@tanstack/react-router';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   TbBuildingCastle,
@@ -38,6 +38,27 @@ function IndexComponent() {
   const isMobile = useSmaller('lg') || window.innerWidth < 1024;
   const [isLoading, setIsLoading] = useState(true);
 
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    let animationFrame: number;
+
+    const checkVideoPlaying = () => {
+      if (video.readyState >= 3 && !video.paused) {
+        setIsLoading(false);
+      } else {
+        animationFrame = requestAnimationFrame(checkVideoPlaying);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(checkVideoPlaying);
+
+    return () => cancelAnimationFrame(animationFrame);
+  }, []);
+
   const cardsDivClassName =
     'flex flex-wrap gap-4 lg:gap-10 max-w-[1300px] max-lg:justify-center';
 
@@ -58,6 +79,7 @@ function IndexComponent() {
       ) : null}
       <PageBlock withYPadding={false}>
         <video
+          ref={videoRef}
           className="relative w-full max-h-full"
           src={isMobile ? mapMobileVideo : mapVideo}
           autoPlay
@@ -67,7 +89,9 @@ function IndexComponent() {
           preload="auto"
           loop
           aria-label="Bitcoin network animation"
-          onPlay={() => setIsLoading(false)}
+          onPlay={() => {
+            setIsLoading(false);
+          }}
         />
       </PageBlock>
 
