@@ -44,7 +44,7 @@ transforms:
       - api_filter
     type: 'remap'
     source: | # Replace "@blms/api:dev: " with "" (dev only, appended by turbo)
-      .message = replace!(.message, r'@blms/api:dev: ', "")
+      .message = replace!(.message, "@blms/api:dev: ", "")
 
   api_multiline_merge:
     inputs:
@@ -83,11 +83,19 @@ transforms:
       .message = replace!(.message, r'^[\d-]+T[\d:.]+Z\s+', "")
       .message = replace(.message, r'^[\d\/]+ [\d:.]+ ', "")
       # Remove turbo dev tag
-      .message = replace(.message, r'@blms/api:dev: ', "")
+      .message = replace(.message, "@blms/web:dev: ", "")
+
+  web_remap_filter_empty:
+    inputs:
+      - web_remap
+    type: 'filter'
+    condition:  |
+      message = string(.message) ?? ""
+      length(strip_whitespace(message)) > 0
 
   web_light_remap:
     inputs:
-      - web_remap
+      - web_remap_filter_empty
     type: 'remap'
     source: | # Keep only message and timestamp
       .old = del(.)
@@ -136,6 +144,23 @@ transforms:
     type: 'remap'
     source: | # Replace prepending iso date
       .message = replace!(.message, r'^time=".+Z" level=\S+\s+', "")
+
+  # Typesense logs
+  typesense_filter:
+    inputs:
+      - docker_remap
+    type: 'filter'
+    condition: '.service == "typesense"'
+
+  typesense_remap:
+    inputs:
+      - typesense_filter
+    type: 'remap'
+    source: | # Replace Level + Date + ? (e.g., "I20251028 07:46:52.010643 262")
+      .message = replace!(.message, r'^[I][\d]{8} [\d:.]+\s+[\d]+', "INFO")
+      .message = replace(.message, r'^[W][\d]{8} [\d:.]+\s+[\d]+', "WARN")
+      .message = replace(.message, r'^[E][\d]{8} [\d:.]+\s+[\d]+', "ERROR")
+      .message = replace(.message, r'^[F][\d]{8} [\d:.]+\s+[\d]+', "FATAL")
 
   # Quickwit logs
   quickwit_filter:
@@ -237,13 +262,14 @@ transforms:
   # Merge all remaps into one
   all_remap:
     inputs:
-      - web_remap
+      - web_remap_filter_empty
       - cdn_remap
       - api_multiline_merge
       - postgres_multiline_merge
       - seed_remap
       - traefik_remap
       - grafana_remap
+      - typesense_remap
       - quickwit_remap
       - prometheus_remap
     type: 'remap'
@@ -329,7 +355,7 @@ sinks:
   # Web output
   web:
     inputs:
-      - web_remap
+      - web_remap_filter_empty
     type: 'file'
     path: '/var/log/vector/%Y-%m-%d/full/web.log'
     encoding:
