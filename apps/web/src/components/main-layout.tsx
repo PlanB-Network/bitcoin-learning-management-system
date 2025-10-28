@@ -111,7 +111,7 @@ export const MainLayout = ({
         setIsSidebarOpen={setIsSidebarOpen}
       />
 
-      <div className="flex w-full flex-grow overflow-hidden">
+      <div className="flex w-full grow overflow-hidden">
         {/* Sidebar */}
         <SideBar isSidebarOpen={isSidebarOpen} className="max-lg:hidden" />
 
@@ -682,15 +682,13 @@ export const SideBarItem = ({
                   } as React.CSSProperties
                 }
                 className={cn(
-                  'align-middle whitespace-nowrap !leading-none text-newBlack-1',
+                  'align-middle whitespace-nowrap leading-none! text-newBlack-1 inline-block',
                   description || isMain
                     ? 'text-lg'
                     : isActive
                       ? 'subtitle-small-med-14px'
                       : 'subtitle-small-14px',
-                  isHovered && isOverflowing
-                    ? 'marquee-active inline-block'
-                    : 'truncate block',
+                  isHovered && isOverflowing ? 'marquee-active' : 'truncate',
                   isActive && 'font-medium',
                 )}
               >
