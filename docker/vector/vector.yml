@@ -162,6 +162,62 @@ transforms:
       .message = replace(.message, r'^[E][\d]{8} [\d:.]+\s+[\d]+', "ERROR")
       .message = replace(.message, r'^[F][\d]{8} [\d:.]+\s+[\d]+', "FATAL")
 
+  # Onlyoffice logs
+  onlyoffice_filter:
+    inputs:
+      - docker_remap
+    type: 'filter'
+    condition: '.service == "onlyoffice"'
+
+  onlyoffice_remap:
+    inputs:
+      - onlyoffice_filter
+    type: 'remap'
+    source: | # noop
+      #
+
+  # Contribute logs
+  contribute_filter:
+    inputs:
+      - docker_remap
+    type: 'filter'
+    condition: '.service == "contribute"'
+
+  contribute_remap:
+    inputs:
+      - contribute_filter
+    type: 'remap'
+    source: | # Replace "@blms/contribute:dev: " with "" (dev only, appended by turbo)
+      .message = replace!(.message, "@blms/contribute:dev: ", "")
+
+  # Network logs
+  network_filter:
+    inputs:
+      - docker_remap
+    type: 'filter'
+    condition: '.service == "network"'
+
+  network_remap:
+    inputs:
+      - network_filter
+    type: 'remap'
+    source: | # Replace "@blms/network:dev: " with "" (dev only, appended by turbo)
+      .message = replace!(.message, "@blms/network:dev: ", "")
+
+  # Pear-Sync logs
+  pear_sync_filter:
+    inputs:
+      - docker_remap
+    type: 'filter'
+    condition: '.service == "pear-sync"'
+
+  pear_sync_remap:
+    inputs:
+      - pear_sync_filter
+    type: 'remap'
+    source: | # noop
+      #
+
   # Quickwit logs
   quickwit_filter:
     inputs:
@@ -270,6 +326,10 @@ transforms:
       - traefik_remap
       - grafana_remap
       - typesense_remap
+      - onlyoffice_remap
+      - contribute_remap
+      - network_remap
+      - pear_sync_remap
       - quickwit_remap
       - prometheus_remap
     type: 'remap'
