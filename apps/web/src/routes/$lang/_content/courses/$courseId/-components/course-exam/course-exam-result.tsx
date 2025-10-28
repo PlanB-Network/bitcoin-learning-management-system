@@ -394,7 +394,7 @@ const ConcludeButton = ({
         variant={variant}
         size={window.innerWidth < 768 ? 'm' : 'l'}
         onClick={completeChapter}
-        className={cn(!hasSkipText ? 'mt-4' : '')}
+        className={cn(!hasSkipText && variant === 'primary' ? 'mt-4' : '')}
       >
         <span>
           {hasSkipText

@@ -2,6 +2,7 @@ import { TeachingFormat } from '@blms/constants';
 import type { CourseProgressExtended } from '@blms/types';
 import {
   cn,
+  EmptyState,
   Loader,
   Progress,
   SegmentedControl,
@@ -11,6 +12,7 @@ import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { TbBookOff } from 'react-icons/tb';
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
@@ -175,6 +177,16 @@ function DashboardCourses() {
               courseProgress={courseProgress}
             />
           ))}
+          {filteredInProgressSelfLearningCourses.length === 0 && (
+            <EmptyState
+              title={t('dashboard.myCourses.noCourseStarted')}
+              linkButton={{
+                href: '/learn-anytime',
+                label: t('bCert.chooseCourse'),
+              }}
+              icon={TbBookOff}
+            />
+          )}
         </div>
       )}
     </PageLayout>
