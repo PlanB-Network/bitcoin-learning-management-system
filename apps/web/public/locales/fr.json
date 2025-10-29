@@ -19,7 +19,6 @@
     "missionTitle": "Notre mission",
     "storyContent": "Plan ₿ Network est une initiative qui soutient l'éducation autour de Bitcoin dans le monde entier. Il s'agit du croisement de diverses entreprises Bitcoin passionnées axées sur l'éducation, les logiciels open source, les réseaux pair-à-pair et le sens de la communauté. Ensemble, ils ont décidé de construire Plan ₿ Network et d'offrir à l'écosystème Bitcoin les bons outils pour se développer. Notre présentation de la version 2023 est disponible ici.",
     "storyTitle": "Notre histoire",
-    "subtitle": "Vous voulez orange pill le monde ? Rejoignez le réseau Plan ₿.",
     "title": "À propos de Plan ₿ Network",
     "readManifesto": "Lire notre manifeste"
   },
@@ -54,7 +53,6 @@
       "errorValidatingEmailDescription": "Une erreur s'est produite lors de la validation de votre changement d'e-mail, il semble que le lien a expiré ou a déjà été utilisé. Veuillez réessayer.",
       "successfullyChanged": "Votre e-mail a été modifié avec succès en {{email}}.",
       "successfullyValidated": "Votre e-mail a été validé avec succès.",
-      "validateChange": "Validation du changement d'e-mail",
       "validatingEmail": "Validation de l'e-mail",
       "validatingEmailChange": "Validation du changement d'e-mail",
       "wontTakeLong": "Ça ne prendra pas longtemps..."
@@ -76,7 +74,6 @@
       "invalid": "Le token est invalide",
       "notFound": "Token non trouvé"
     },
-    "lnurlAuthDescription": "Scannez ce code QR avec votre portefeuille Lightning pour vous connecter !",
     "newPassword": "Nouveau mot de passe",
     "noAccountNeeded": "Pas besoin d'un compte pour commencer à apprendre sur Plan ₿ Network !",
     "noAccountYet": "Vous n'avez pas encore de compte ?",
@@ -100,23 +97,13 @@
     "bCertDescription": "Le ₿-CERT est un examen reconnu internationalement pour évaluer votre niveau de préparation sur Bitcoin et ses sujets dérivés. Ce certificat vous permettra de démontrer vos compétences et connaissances dans l’industrie de Bitcoin, vous donnant ainsi accès à des entreprises et des postes dans ce secteur.",
     "bookExam": "Réservez une session d'examen",
     "challengeYourself": "Mettez-vous au défi et évaluez votre niveau",
-    "checkout": "Consultez le ₿-CERT",
     "download": "Télécharger le certificat",
     "knowledgeableBitcoin": "Connaisseur à propos de Bitcoin ?",
-    "noBookExam": "Il n'y a pas encore de session d'examen prévue.",
-    "organizeDescription": "Super idée ! Si votre communauté est intégrée au Plan ₿ Network, vous pouvez mettre en place une session ₿-CERT dans votre hub.\nIl est important de lire la <0>charter</0> pour confirmer que vous respectez les conditions indispensables pour accueillir l'examen. Si vous êtes admissible, vous pouvez le programmer et ajouter l'événement à la plateforme.",
     "organizeExam": "Organiser un examen",
-    "organizeSessionConditions": "Veuillez lire la <0>charte</0> pour vous assurer que vous remplissez les conditions obligatoires pour organiser le test.\nSi vous êtes éligible, nous serons ravis de planifier une session pour votre communauté locale avec vous.\nVeuillez nous contacter en utilisant votre méthode préférée.",
-    "organizeSessionHub": "Organisez une session du ₿-CERT dans votre hub local",
-    "organizeSubtitle": "Orangepill un milliard de personnes n'est pas facile",
-    "organizeTitle": "Voulez-vous organiser un examen ₿-CERT dans votre Hub ?",
-    "pageSubtitle": "Adoption de masse grâce à une éducation centralisée open-source",
     "pageTitle": "Passer le ₿-CERT",
-    "readChart": "Lire la charte",
     "tweetText": "Fier d'avoir réussi le ₿-CERT de @planb_network avec un score de {{score}}/100 ! {{emoji}}\n\n{{certificateUrl}}",
     "verify": "Vérifiez l'authenticité de votre certificat",
     "hostSessionConditions": "Voici comment faire :\n\n1. Lisez la <0>Charte</0> - Assurez-vous que votre communauté répond aux conditions d'hébergement obligatoires\n2. Planifiez & Programmez - Si vous êtes éligible, choisissez une date et organisez la session\n3. Publiez Votre Événement - Contactez-nous pour l'ajouter à la plateforme Plan ₿ Network afin que des personnes puissent participer",
-    "myCertificates": "Mes certificats",
     "noTestSessions": "Aucune session de test actuellement disponible",
     "wantHostSession": "Vous souhaitez organiser une session de test ₿-CERT dans votre hub local ?",
     "certificates": "Certificats",
@@ -124,33 +111,20 @@
     "noDiplomasAvailable": "Aucun diplôme disponible pour le moment"
   },
   "bet": {
-    "contributeButton": "Aider et contribuer",
-    "contributeDescription": "Si vous souhaitez ajouter, modifier ou traduire du contenu, votre aide sera la bienvenue !",
-    "contributeTitle": "Vous souhaitez contribuer ?",
     "educationalContent": {
-      "description": "Les articles ci-dessous peuvent être utilisés pour des événements et à des objectifs éducatifs.",
       "title": "Contenu pédagogique"
     },
-    "pageDescription": "L'adoption de masse n'est pas chose aisée. Pour nous rapprocher plus rapidement de cet objectif, nous avons développé une base de données extensible de contenu éducatif. Ici, les éducateurs Bitcoin peuvent librement déposer et accéder au contenu selon leurs besoins. Nous n'avons pas besoin de réinventer la roue à chaque fois, alors travaillons ensemble pour centraliser les ressources utiles dans un seul outil !",
-    "pageTitle": "Boîte à outils pédagogique Bitcoin",
     "visualContent": {
-      "description": "Ce contenu comporte des données visuelles brutes pour vos créations.",
       "title": "Contenu visuel"
     }
   },
   "conferences": {
-    "addConferences": "N'hésitez pas à ajouter toute conférence manquante via ce dépôt <0>Github</0>.",
-    "backConferences": "Retour aux conférences",
     "conferenceName": "Nom de la conférence",
     "conferencesSinceGenesis": "Archives des conférences Bitcoin depuis le Bloc Genesis",
-    "description": "Les conférences sont des éléments clés de l'industrie du Bitcoin. Elles font partie du parcours éducatif de tout Bitcoiner. Nous avons construit cet outil pour vous aider à naviguer à travers des centaines de conférences.",
     "details": {
       "findReplay": "Trouver une rediffusion",
-      "nextVideo": "Prochaine vidéo",
-      "previousVideo": "Vidéo précédente",
       "selectStage": "Sélectionnez une scène",
-      "selectVideo": "Sélectionnez une vidéo",
-      "watchReplay": "Regardez la redifusion"
+      "selectVideo": "Sélectionnez une vidéo"
     },
     "language": "Langue",
     "latestConferences": "Dernières conférences",
@@ -158,8 +132,7 @@
     "noConferences": "Aucune conférence n'a été ajoutée pour {{year}} pour l'instant.",
     "pageTitle": "Rediffusion de conférences",
     "planBConferences": "Conférences Plan ₿",
-    "topics": "Sujets",
-    "conferencesGenesis": "Conférences depuis le Bloc de Genèse"
+    "topics": "Sujets"
   },
   "courses": {
     "chapter": {
@@ -167,10 +140,6 @@
         "bookSeat": "Réserver votre place",
         "cancelBooking": "Annulez votre réservation",
         "classIsFull": "La classe est déjà complète",
-        "p1content": "Assurez-vous de réserver votre place",
-        "p1heading": "Prévoyez-vous d'assister à ce cours en personne ?",
-        "p2content": "Pas de problème ! Le cours sera diffusé en direct sur cette page et disponible en rediffusion plus tard.",
-        "p2heading": "Vous n'êtes plus disponible ?",
         "ticketDownload": "Téléchargez votre billet",
         "title": "Détails de la classe"
       },
@@ -179,9 +148,7 @@
         "stayTuned": "La session en direct commencera 30 minutes avant le début du cours. Restez à l'écoute !",
         "title": "Vidéo en direct"
       },
-      "next": "Chapitre terminé",
-      "nextLesson": "La prochaine leçon sera",
-      "thanksTip": "Vous souhaitez montrer votre appréciation ?\nVous pouvez soutenir l'auteur en lui laissant un pourboire."
+      "next": "Chapitre terminé"
     },
     "conclusion": {
       "completedChaptersHeadline": "Tous les chapitres sont maintenant terminés !",
@@ -223,7 +190,6 @@
       "premiumContentNeedsPaymentAction": "Accédez à la page d'accueil du cours",
       "startCourse": "Débuter le cours",
       "taughtBy": "Ce cours est enseigné par",
-      "teacherLed": "Dirigé par l'enseignant",
       "thanksTipping": "Vous pouvez dire merci en donnant un pourboire au professeur."
     },
     "exam": {
@@ -243,7 +209,6 @@
       "dontGiveUpTryAgain": "N'abandonne pas !\nTu peux réessayer après 24 heures.",
       "dontWorry": "Ne vous inquiétez pas des erreurs ; ce test aide à renforcer votre apprentissage. Si vous ne le réussissez pas, vous pouvez le repasser dans 24 heures.",
       "dontWorryRetake": "Ne vous en faites pas, vous pouvez repasser l'examen après 24 heures.",
-      "examAndDiploma": "Examen & Diplôme",
       "examAvailabilityDetails": "Si l'examen n'est pas réussi pendant sa période de disponibilité sur la plateforme, l'étudiant recevra automatiquement la note de 0.",
       "examCertificateCompletionText": "Plan ₿ Network a le plaisir de féliciter {{username}} pour avoir obtenu le diplôme du cours \"{{courseName}}\".",
       "examDetails": "L'examen comprend {{nb}} questions à choix multiples, chacune avec une seule bonne réponse. Vous pouvez changer vos réponses à tout moment avant de les soumettre, tant que le chronomètre tourne.",
@@ -263,7 +228,6 @@
       "goodLuck": "Bonne chance !",
       "instantVerification": "Vérification instantanée : Les employeurs peuvent facilement vérifier l'authenticité et la date de délivrance de votre diplôme.",
       "instructions": "Instructions :",
-      "letsConclude": "Tout est fini, concluons",
       "nbMinutes": "{{nb}} minutes",
       "nbQuestions": "{{nb}} questions",
       "nextChapter": "Chapitre suivant",
@@ -272,7 +236,6 @@
       "oneMinuteLeft": "Vous n'avez plus que 1 minute",
       "oopsFailed": "Oups, il semble que vous ayez <0>échoué</0> à l'examen final.",
       "passed": "Passé",
-      "passExam": "Passer l'examen",
       "passRate": "Le taux de réussite est de 80%.",
       "planBTimeStamp": "Chez Plan ₿ Network, nous sécurisons votre diplôme à l'aide d'une technologie d'horodatage soutenue par la blockchain.",
       "quitWithoutSubmitting": "Oups, il semble que vous ayez quitté la page sans soumettre vos réponses. Cela annule le test.",
@@ -318,23 +281,13 @@
       "tryAgain": "Réessayer",
       "tryOneMoreTime": "Essayons encore une fois !",
       "verifyDisplayName": "Avant de commencer, veuillez vérifier votre nom d'affichage ci-dessous, car il sera utilisé pour générer votre diplôme.",
-      "viewExam": "Voir le test",
       "weight": "Poids : {{weight}}%",
       "whyTimeStamp": "Horodatage de votre diplôme :\nPourquoi c'est important",
       "wishTryAgain": "Si vous souhaitez réessayer, l'examen sera disponible dans 24 heures.",
-      "yesSubmit": "Oui, soumettre",
-      "reviewTest": "Revoir"
+      "yesSubmit": "Oui, soumettre"
     },
     "explorer": {
-      "buildPath": "Construisez votre propre chemin dans le terrier du lapin",
-      "comingSoon": "bientôt disponible",
-      "exploreCourses": "Explorez tous les cours Plan ₿",
-      "findCourses": "Trouvez le cours parfait pour vos besoins grâce au sélecteur de cours",
       "goal": "But :",
-      "journey": "Bitcoin est un voyage, pas une destination",
-      "pageDescription": "L'Académie Plan ₿ met à disposition une vaste sélection de cours sur Bitcoin, gratuits et premium, pour les débutants comme pour les experts. Que vous soyez guidé par des experts ou que vous appreniez à votre propre rythme, nos cours s'adaptent à tous les modes d'apprentissage. Notre mission est simple : rendre les connaissances sur Bitcoin claires, captivantes et accessibles à tous !",
-      "planbSchool": "PLAN ₿ SCHOOL",
-      "planbSchoolHeadline": "Plan ₿ School, dirigée par Giacomo Zucco, propose des programmes éducatifs intensifs de trois mois conçus pour combler le fossé entre l'apprentissage et les applications concrètes. Au-delà des cours traditionnels, les étudiants participent à des projets pratiques dirigés par des entreprises et à un bootcamp de première classe dédié aux meilleurs performeurs. Seuls les meilleurs talents avancent après deux tours de sélection compétitifs, garantissant que les meilleurs étudiants finaux sont entièrement équipés pour lancer leur carrière dans l'industrie du Bitcoin.",
       "seeCourse": "Découvrir le cours",
       "discover": "Découvrir"
     },
@@ -347,15 +300,12 @@
       "count": "Partie n°{{count}}"
     },
     "payment": {
-      "accessibility": "Accessibilité",
-      "accessibility_forever": "Pour toujours",
       "amount": "Montant",
       "back_course": "Retour au cours",
       "book_description": "Veuillez passer en revue les détails du lieu fournis. Lorsque la réservation sera confirmée, un billet de confirmation et un code QR à présenter en salle de cours vous seront délivrés.",
       "checkoutError": "Une erreur s'est produite lors du processus de paiement.\nVeuillez réessayer.",
       "courseType": "Type de cours",
       "date": "Date",
-      "downloadCurriculum": "Télécharger le syllabus",
       "duration": "Durée",
       "hybridDescription": "Veuillez consulter les détails du cours fournis.\nChaque leçon a lieu en personne aux dates et lieux spécifiés. Tous les cours sont toujours diffusés en direct et enregistrés pour rediffusion.\n\nLa présence en personne est gérée par leçon, nous vous demandons donc gentiment de réserver votre place chaque fois que vous souhaitez assister physiquement.",
       "inPersonCallout": "Vous êtes sur le point d'acheter un accès <strong>en personne</strong> à ce cours.",
@@ -366,8 +316,6 @@
       "payment_details": "Détails de paiement",
       "payment_successful": "Paiement réussi !",
       "qr_unified": "Ce code QR est unifié, il accepte donc les paiements lightning et on-chain.",
-      "teacher": "Professeur",
-      "teachers": "Professeurs",
       "time": "Temps"
     },
     "quizz": {
@@ -428,7 +376,6 @@
     "courseSelector": "Sélecteur de cours",
     "noCoursesFound": "Aucun cours trouvé. Essayez d'ajuster vos filtres.",
     "plusXMore": "+{{count}} de plus",
-    "selectATopic": "Sélectionnez un sujet",
     "tryAdjustingFilters": "Essayez d'ajuster vos filtres",
     "liveClasses": {
       "allOtherTitle": "Tous les autres cours en direct",
@@ -438,7 +385,6 @@
     }
   },
   "dashboard": {
-    "account": "Compte",
     "adminPanel": {
       "accessGranted": "Accès accordé",
       "bookings": "Réservations",
@@ -447,7 +393,6 @@
         "careers": "Carrières",
         "careersSubtitle": "Ici, vous pouvez consulter la liste des participants qui ont enregistré leurs candidatures. Vous pouvez trouver toutes les informations sur les candidatures à l'intérieur du tableur.",
         "cv": "CV",
-        "downloadProfiles": "Télécharger le tableau (spreadsheet)",
         "downloadSpreadsheet": "Télécharger le tableau (spreadsheet)",
         "lastUpdate": "Dernière mise à jour",
         "lastUpdated": "Dernière mise à jour",
@@ -465,7 +410,6 @@
         "delete": "Supprimer",
         "deleteDiscountCode": "Supprimer le code de réduction",
         "deleteDiscountCodeConfirm": "Êtes-vous sûr de vouloir supprimer ce code de réduction ?",
-        "deleteDiscountCodeSuccess": "Code de réduction supprimé avec succès",
         "deleteDiscountCodeWarning": "Une fois ce code supprimé, il ne sera plus fonctionnel. Ce changement est irréversible",
         "discountCode": "Code de réduction",
         "discountCodeCopied": "Code de réduction copié",
@@ -476,7 +420,6 @@
         "discountType": "Quel type de code de réduction ?",
         "discountValue": "Pourcentage de réduction",
         "discountValueExplanation": "Entrez un nombre par incréments de 5 (par exemple 5, 10, 15... jusqu'à 100)",
-        "discountValuePlaceholder": "exemple : 20 pour 20%",
         "downloadImage": "Télécharger l'image",
         "downloadImages": "Télécharger les images",
         "explanation": "Générez et gérez des codes de réduction pour des événements et des cours - soit à usage unique pour des bourses d'études ou des cas similaires, soit à usage multiple pour des campagnes de marketing.",
@@ -519,10 +462,8 @@
           "maxUses": "Utilisations max",
           "name": "Nom",
           "owner": "Propriétaire",
-          "total": "Total",
           "type": "Type",
-          "uses": "Utilisé",
-          "value": "Valeur"
+          "uses": "Utilisé"
         }
       },
       "coursesIndexes": "Indices des cours",
@@ -534,7 +475,6 @@
       "githubLink": "Lien Github",
       "hasAccessTo": "A accès à :",
       "listOfParticipants": "Liste des participants",
-      "makeProfessor": "Faire professeur",
       "nameOfEvent": "Nom de l'événement",
       "participants": "Participants",
       "professorName": "Nom du professeur",
@@ -900,14 +840,8 @@
       "publicationDate": "Date de publication"
     },
     "backToDashboard": "Retour au tableau de bord",
-    "bCert": {
-      "grade": "Note",
-      "noResults": "Il n'y a pas encore de notes ou de certificats associés à ce compte.\nSi vous avez réussi un examen et que vos résultats ne sont pas disponibles après une période prolongée, veuillez nous contacter pour obtenir de l'aide."
-    },
     "booking": {
       "accessLive": "Accéder à l'examen en direct",
-      "billingSubtitle": "Téléchargez les factures de vos réservations ici.",
-      "billingTitle": "Historique de facturation",
       "cancelBookingTitle": "Êtes-vous sûr de vouloir annuler cette réservation ?",
       "invoiceDate": "Date",
       "invoiceTitle": "Titre",
@@ -920,12 +854,10 @@
       "ticketLocation": "Emplacement",
       "ticketTitle": "Titre",
       "ticketType": "Type",
-      "upcomingTicketSubtitle": "Téléchargez votre billet ici pour assister à votre prochain événement. N'oubliez pas de l'apporter avec vous pour entrer.",
       "upcomingTicketTitle": "Réservations à venir",
       "yesCancel": "Oui, annule"
     },
     "calendar": {
-      "calendar": "Calendrier",
       "eventType": {
         "class": "Classes",
         "event": "Événements"
@@ -1116,11 +1048,8 @@
       "assignment": "Affectation",
       "assignmentCompletedDescription": "Votre projet a été soumis avec succès et est en cours de révision.\nVotre note sera visible ici après la correction.",
       "assignmentCompletedTitle": "Devoir terminé",
-      "assignmentDescription": "L'attribution du projet marque la seconde phase du programme Plan ₿ Biz School et n'est disponible que pour les étudiants qui ont réussi la première phase. Selon leur classement et leurs préférences, chaque étudiant se verra attribuer un projet développé par une entreprise Bitcoin, qui doit être soumis avant le 18 juin.\nLes étudiants prépareront le devoir du 2 juin au 18 juin, avec la possibilité de recevoir un mentorat d'un représentant de l'entreprise.\n\nLes projets seront notés par l'entreprise, et les scores influenceront la note finale. Seuls les étudiants les mieux classés seront invités à participer à l'école d'été à Lugano, en Suisse, du 23 juillet au 30 juillet 2025.",
-      "assignmentInformation": "Informations sur la mission",
       "assignmentScore": "Score du devoir",
       "assignmentTitle": "Mission du projet",
-      "checkDetailsCompleted": "Ici, vous pouvez consulter tous les détails concernant ce cours que vous avez terminé.",
       "completionDiploma": "Diplôme final",
       "completionExamInfo": "Vous devez terminer l'examen pour accéder à cette fonctionnalité.",
       "conclusionHeadline": "Voici un résumé de ce que vous avez appris. Si certains chapitres sont manquants ou n'ont pas été validés correctement, c'est maintenant le moment de le faire, soit en revenant pour apprendre, soit en appuyant sur le bouton terminer.",
@@ -1132,18 +1061,14 @@
       "congratulationsPassed": "Félicitations ! Vous avez réussi avec succès !",
       "coordinator": "Coordinateur de cours",
       "courseCalendar": "Calendrier du cours",
-      "coursesCompleted": "Cours complété",
       "diplomaReleaseDescription": "Une fois toutes les classes terminées, vous recevrez un diplôme pour avoir réussi le cours. Les diplômes seront disponibles pour téléchargement ici après la dernière classe et la fin du chapitre de conclusion.",
       "diplomaReleaseTitle": "Délivrance du diplôme",
       "exams": "Examens",
       "examScore": "Score :",
       "feedbacks": "Ici, vous pouvez consulter et modifier les notes et les retours que vous avez donnés à ce cours.",
       "fileUploaded": "Votre travail a été téléchargé avec succès !",
-      "fileUploadError": "Il y a eu une erreur lors du téléchargement de votre",
-      "finalAverageGradeDescription": "Vous pouvez trouver votre note moyenne finale dans la section Examen & Diplôme de votre tableau de bord.",
       "finalGradeSummary": "Résumé de la note finale",
       "finalScore": "Score final",
-      "gaveSolidEffort": "Vous avez fourni un bel effort !",
       "generalInformation": "Informations générales",
       "individualWork": "Travail individuel",
       "isSubmissionFinal": "Votre soumission est-elle définitive ?",
@@ -1156,8 +1081,6 @@
       "mostPreferred": "Le plus préféré",
       "mustBePdf": "Votre fichier doit être un PDF. Si vous devez soumettre un fichier supplémentaire, veuillez inclure un lien vers celui-ci dans votre PDF.",
       "notSelectedAssignment": "Malheureusement, vous n'avez pas été sélectionné pour participer à l'attribution du projet.\nVous pouvez toujours continuer à suivre les cours.",
-      "planbSchoolExamDescription": "Le programme Plan ₿ Biz School 2025 se compose de deux phases. Dans la première phase, vous passerez deux examens en ligne, spécifiquement l'examen de mi-parcours et le final : ce sont des tests chronométrés à tentative unique que vous pouvez faire à tout moment pendant une période de disponibilité de trois jours. Après la première phase, les étudiants seront sélectionnés en fonction de leur classement pour passer à la deuxième phase, qui implique l'assignation d'un projet : une tâche individuelle fournie par une entreprise Bitcoin. Vous pouvez trouver plus de détails à ce sujet dans l'onglet Assignment.\n\nLa note finale sera calculée comme une moyenne pondérée des trois tests. Les étudiants qui atteignent un score supérieur à 80 % recevront un diplôme, et les étudiants les mieux classés auront également la chance de participer à l'école d'été à Lugano, en juillet.",
-      "planbSchoolGeneralInformation": "Le programme Plan ₿ Biz School 2025 se compose de deux phases. Dans la première phase, vous passerez deux examens en ligne, spécifiquement l'examen de mi-parcours et le final : ce sont des tests chronométrés à tentative unique que vous pouvez faire à tout moment pendant une période de disponibilité de trois jours. Après la première phase, les étudiants seront sélectionnés en fonction de leur classement pour passer à la deuxième phase, qui implique l'assignation d'un projet : une tâche individuelle fournie par une entreprise Bitcoin. Vous pouvez trouver plus de détails à ce sujet dans l'onglet Assignment.\n\nLa note finale sera calculée comme une moyenne pondérée des trois tests. Les étudiants qui atteignent un score supérieur à {{threshold}}% recevront un diplôme, et les étudiants les mieux classés auront également la chance de participer à l'école d'été à Lugano, en juillet.",
       "projectRankingInstructions": "Instructions pour le classement des projets :",
       "ranking": "Classement",
       "rankingInstructions": "Classez les projets proposés selon vos préférences (le numéro 1 étant votre premier choix). Ce classement nous permettra de vous attribuer le projet le plus approprié. Les étudiants avec des scores plus élevés verront leur sélection considérée en premier.",
@@ -1169,7 +1092,6 @@
       "shareOnSocials": "Partager sur les réseaux :",
       "submissionInstructions": "Instructions de soumission",
       "submitBefore": "Vous devez soumettre votre travail avant {{date}} à {{hour}}. Les soumissions reçues après cette date limite ne seront pas notées.",
-      "submitFileNamingFormat": "Votre fichier doit être nommé en utilisant le format suivant :\n<0>entreprise_username.pdf</0>.\nSupprimez tous les espaces du nom de l'entreprise, utilisez votre nom d'utilisateur exact sur la plateforme planB.network (username), et vérifiez les fautes de frappe.",
       "submitReviewInfo": "Vous devez soumettre un avis pour avoir accès à cette fonctionnalité.",
       "submitYourWork": "Soumettre votre travail",
       "summerSchool": "Summer School",
@@ -1177,33 +1099,21 @@
       "thresholdToPass": "Seuil à franchir : {{threshold}}%",
       "tweetText": "Fier d'avoir terminé le cours {{courseIndex}} chez @planb_network et d'avoir obtenu mon certificat avec un score de {{score}}/100 à l'examen final ! {{emoji}}\n\n{{certificateUrl}}",
       "tweetTextCourseDiploma": "Ravi d'avoir terminé le cours {{courseName}}, enseigné par {{courseCoordinator}} sur @planb_network et d'avoir obtenu mon diplôme !\n#PBNDiploma\n\n{{certificateUrl}}",
-      "viewFinalGrade": "Voir la note finale",
       "viewScoreSummary": "Voir le résumé des scores",
       "wellDoneCompleting": "Félicitations pour avoir terminé et réussi ce cours !\nVoici votre diplôme bien mérité",
       "yourProject": "Votre projet",
       "yourProjectAssignment": "Votre affectation de projet",
       "assignmentNotAccessible": "L’attribution a déjà commencé et n’est plus accessible."
     },
-    "courses": "Cours",
     "credentials": {
       "bCert": "₿-CERT",
-      "bCertSubtitle": "Ici vous pouvez trouver les détails concernant vos réservations et les notes de vos ₿-CERT passés et futurs.\nLe ₿-CERT est un examen sur table organisé par Plan ₿ Network pour évaluer votre niveau sur Bitcoin et ses sujets connexes.",
       "beingGraded": "Votre examen est en cours de correction. Les résultats devraient être disponibles dans 1 ou 2 semaines.",
-      "completionDiplomas": "Diplômes finaux",
       "courseDiplomas": "Diplômes de cours",
-      "courseDiplomasSubtitle": "Ici vous pouvez trouver les détails concernant tous les examens que vous avez passés après avoir terminé un cours sur la plateforme.",
-      "downloadTicket": "Télécharger le billet",
       "globalCertifications": "Certifications mondiales",
-      "retakeExam": "Repasser l'examen",
-      "seatBooked": "Votre place à la session d'examen est réservée",
-      "takePlaceAt": "La session aura lieu à :",
-      "yourCertificate": "Votre certificat",
       "completeACourse": "Terminez un cours pour obtenir votre premier !",
       "exploreBCert": "Découvrez le ₿-CERT",
-      "exploreCourses": "Explorez les cours",
       "getGlobalRecognition": "Obtenez une reconnaissance mondiale avec un ₿-CERT",
       "noCertificatesAvailable": "Aucun certificat disponible",
-      "noDiplomasAvailable": "Aucun diplôme disponible pour le moment",
       "bCertResults": {
         "score020": "Vous avez entamé votre parcours ! Tout expert a commencé ici un jour.",
         "score100": "Score parfait ! Seriez-vous Satoshi… ou simplement brillant ?",
@@ -1212,7 +1122,6 @@
         "score6180": "Vous progressez à merveille ! Continuez à affiner vos compétences et à maîtriser Bitcoin.",
         "score8199": "Excellente maîtrise ! Vous abordez les sujets complexes de Bitcoin avec aisance."
       },
-      "beingTimestamped": "Votre certificat est en cours d’horodatage. Il sera disponible dans les prochaines 24 heures.",
       "detailedScore": "Score détaillé"
     },
     "goToDashboard": "Aller au tableau de bord",
@@ -1221,28 +1130,20 @@
     "myCourses": {
       "completeAll": "Complétez tout",
       "completed": "Terminé",
-      "completedCoursesDescription": "Ici, vous pouvez consulter vos cours terminés.",
-      "completedCoursesTitle": "Cours terminés",
-      "courseDashboard": "Tableau de bord du cours",
       "detailsAndCertificate": "Détails & certificat",
       "done": "Fait",
       "download": "Télécharger le diplôme",
       "duration": "Durée :",
       "inProgress": "En cours",
-      "newCourses": "De nouveaux cours sont ajoutés chaque mois",
-      "noCoursesAvailable": "Aucun cours disponible.",
       "notStarted": "Non commencé",
       "notValidated": "Non validé",
       "price": "Prix :",
       "professor": "Professeur :",
       "resumeLesson": "Reprendre la leçon",
       "seeDetails": "Voir les détails",
-      "seeProgress": "pour voir vos progrès ici.",
       "seeTheCourse": "Voir le cours",
       "shareOn": "Partager sur",
-      "startCourse": "Commencer ou terminer un cours",
       "verify": "Vérifiez l'authenticité de votre diplôme",
-      "viewDetails": "Voir les détails",
       "whereYouAre": "Voyons où vous en êtes !",
       "yourCertificate": "Votre certificat",
       "yourProgress": "Votre progression :"
@@ -1273,36 +1174,25 @@
         "none": "Aucun",
         "platformTitle": "Quels types de notifications souhaitez-vous recevoir sur cette plateforme ?",
         "settingsSaved": "Vos paramètres ont été enregistrés avec succès !",
-        "title": "Paramètres de notification",
-        "assignedAt": "Attribué à",
-        "displayName": "Nom d'affichage",
-        "filter": "Filtre",
-        "role": "Rôle"
+        "title": "Paramètres de notification"
       },
       "password": "Mot de passe",
-      "personalInformation": "Mes informations personnelles",
       "preview": "Aperçu",
       "profile": "Profil",
-      "profileInformation": "Informations du profil",
       "profilePicture": "Photo de profil",
       "save": "Sauvegarder",
       "saving": "Enregistrement…",
       "security": "Sécurité",
       "securitySettings": "Paramètres de sécurité",
-      "settings": "Paramètres",
       "username": "Nom d'utilisateur"
     },
-    "studentDashboard": "Tableau de bord de l'étudiant",
     "teacher": {
       "courses": {
         "allStudents": "Tous les étudiants",
-        "analytics": "Analytique",
         "announcementModal": {
           "contentLabel": "Texte de l'annonce",
           "contentPlaceholder": "Veuillez saisir votre texte ici.",
           "create": "Créer une annonce",
-          "dateLabel": "Date de publication",
-          "datePlaceholder": "Choisissez une date",
           "dateRequired": "La date est requise",
           "editAnnouncement": "Modifier l'annonce",
           "groupLabel": "Sélectionnez le groupe d'étudiants que vous souhaitez contacter",
@@ -1319,7 +1209,6 @@
         "assignment": "Affectation",
         "assignmentGrade": {
           "alertDescription": "Après avoir saisi toutes les notes, cliquez sur « Publier toutes les notes » pour les publier toutes en même temps.\nVeuillez vérifier les notes au préalable, car elles ne seront plus modifiables une fois qu'elles auront été publiées. ",
-          "alertDescription2": "Les notes de l'assignation doivent être publiées avant le 22 juin à minuit (CET).",
           "alertTitle": "Évaluation des devoirs",
           "confirmPublication": "Confirmer la publication",
           "confirmPublicationDescription": "Après la publication des notes, il n'y a pas de retour en arrière, car elles ne seront plus modifiables.",
@@ -1340,7 +1229,6 @@
         "courseDetails": "Détails du cours",
         "courseLongDescription": "Description introductive",
         "courseModification": "Si vous avez besoin d'aide pour modifier quelque chose dans le cours, veuillez consulter ce <0>tutoriel</0>.",
-        "coursesManagementPanel": "Panneau de cours",
         "curriculum": "Programme de cours",
         "curriculumDescription": "Voici le programme actuel de ce cours.",
         "deleteAnnouncementTitle": "Êtes-vous sûr de vouloir supprimer cette annonce ?",
@@ -1350,18 +1238,14 @@
         "exportExamData": "Exporter les données d'examen",
         "finalAverageResults": "Résultats moyens finaux",
         "finalScore": "Score final",
-        "goal": "But",
         "makeModifications": "Besoin de faire des modifications ?",
         "medianScore": "Score médian",
         "noExamLinked": "Il n'y a actuellement aucun examen lié à ce cours. Si vous souhaitez créer un examen, veuillez nous contacter.",
         "noPastAnnouncement": "VOUS N'AVEZ AUCUNE annonce passée pour le moment.",
         "noWrittenAnnouncement": "Vous n'avez aucune annonce écrite pour le moment.",
         "objectives": "Objectifs",
-        "proposeNewCourse": "Proposer un nouveau cours",
         "quickRecap": "Ici vous pouvez trouver toutes les informations générales concernant ce cours.",
-        "reviewInfos": "Ici vous pouvez contrôler et examiner toutes les informations concernant chaque cours que vous avez coordonné.",
         "reviews": "Avis",
-        "selectCourse": "Sélectionner le cours",
         "studentsGraduated": "Étudiants diplômés",
         "summerStudents": "Summer School",
         "thresholdToPass": "Seuil à franchir",
@@ -1372,12 +1256,9 @@
         "overview": "Vue d'ensemble",
         "successRate": "Taux de réussite",
         "amountPaid": "Montant payé",
-        "lastActive": "Dernière activité",
-        "studentsList": "Liste des étudiants"
+        "lastActive": "Dernière activité"
       },
-      "menu": "Menu enseignant",
       "profile": {
-        "account": "Compte enseignant",
         "billingInformation": "Informations de facturation",
         "description": "Votre description",
         "enterTipsInformation": "Le réseau Plan ₿ encourage les utilisateurs à donner des pourboires aux enseignants. Veuillez saisir vos informations afin que les personnes puissent vous donner des pourboires quand elles le souhaitent.",
@@ -1386,12 +1267,9 @@
         "noLightningAddress": "Aucune adresse lightning n'a encore été ajoutée.",
         "noShortBio": "Aucune courte biographie n'est liée à ce compte pour le moment, n'hésitez pas à l'ajouter sur GitHub.",
         "noTags": "Aucune étiquette liée à ce compte pour le moment.",
-        "notifications": "Notifications",
         "publicDescription": "Cette description est affichée dans votre fiche d'information enseignant sur la plateforme.",
         "publicProfile": "Profil public",
         "publicProfileDescription": "Ici vous pouvez remplir ou modifier toutes les informations associées à votre activité en tant qu'enseignant au sein du réseau Plan ₿.",
-        "teacher": "Professeur",
-        "teacherProfile": "Profil enseignant",
         "tutorialModification": "Si vous avez besoin d'aide pour modifier quelque chose, veuillez consulter ce <0>tutoriel</0>."
       },
       "reviews": {
@@ -1440,44 +1318,18 @@
     "card": {
       "bookLive": "Réserver en direct",
       "bookSeat": "Réservez une place",
-      "buyReplay": "Acheter la rediffusion",
-      "buyVideo": "Acheter une vidéo",
-      "eventFull": "L'événement est complet",
       "free": "gratuit",
-      "limited": "limité à",
       "online": "en ligne",
       "people": "personne",
       "purchased": "Acheté",
-      "seatBooked": "Siège réservé",
       "unlimited": "illimité",
       "visitWebsite": "Visitez le site Web",
-      "watchLive": "Regarder en direct",
       "watchReplay": "Regarder la rediffusion",
       "buyLecture": "Acheter un séminaire"
     },
-    "errors": {
-      "premiumContentNeedsLogin": "Vous devez être connecté pour accéder à cet événement.",
-      "premiumContentNeedsPayment": "Cet événement fait partie d'un programme premium.",
-      "premiumContentNeedsPaymentAction": "Accédez à la page des événements"
-    },
     "main": {
-      "currentEvents": "Événements qui se déroulent en ce moment",
       "upcomingEvents": "Événements à venir"
     },
-    "missed": {
-      "missedH1": "Événements passés à rejouer",
-      "missedP1": "Vous avez manqué un événement ?",
-      "missedP2": "Pas de souci ! Nous stockons toutes les rediffusions des événements passés qui ont eu lieu sur le réseau, permettant à chacun de rattraper librement ce qu'il a manqué."
-    },
-    "newEvent": {
-      "button": "Ajouter mon événement",
-      "description": "Bien sûr ! Tous les événements Bitcoin peuvent accroître leur visibilité ici, donc toute initiative visant à créer un nouvel événement est plus que bienvenue !",
-      "subtitle": "Orangepill un milliard de personnes n'est pas facile",
-      "title": "Voulez-vous ajouter votre événement ?"
-    },
-    "pageDescription": "Vous souhaitez parler de Bitcoin en temps réel ? Retrouvez ici tous les événements soutenus par les communautés de Plan ₿ Network. Que vous souhaitiez écouter un séminaire, discuter de Bitcoin autour d'un verre ou passer un examen pour évaluer vos connaissances, vous trouverez ici l'événement qui vous convient via Plan ₿ Network.",
-    "pageSubtitle": "Adoption ascendante améliorée par un réseau solide",
-    "pageTitle": "Vous cherchez un événement Bitcoin auquel assister ?",
     "payment": {
       "access_online_successful": "Lorsque l'événement commence, connectez-vous à la plateforme pour accéder à la diffusion en direct sur la page de l'événement.",
       "access_physical_successful": "Vous pouvez télécharger votre billet ici, ou le télécharger plus tard dans votre tableau de bord.",
@@ -1507,9 +1359,6 @@
     "tcDisclaimer": "Je suis d'accord pour que mes informations soient partagées avec les organisateurs à des fins d'accès au lieu.",
     "tcMustBeAccepted": "Vous devez accepter les termes et conditions pour continuer",
     "calendar": {
-      "displayCalendar": "Afficher le calendrier",
-      "fullMap": "Carte complète",
-      "hideCalendar": "Masquer le calendrier",
       "inXMonths": "Dans {{number}} mois",
       "lastMonth": "Le mois dernier",
       "nextMonth": "Le mois prochain",
@@ -1540,27 +1389,13 @@
         "meetup": "meetups",
         "workshop": "ateliers"
       }
-    },
-    "upcomingEvents": "Événements à venir"
+    }
   },
   "filters": {
-    "categories": "Catégories",
-    "levels": "Niveaux",
-    "resources": "Ressources",
     "topics": "Sujets"
   },
   "glossary": {
-    "anotherWord": "Cherchez un autre mot",
-    "creditsLoic": "<0>Crédits</0> : Dictionnaire Bitcoin écrit par <1>Loïc Morel (Pandul)</1>, disponible sur ce <2>dépôt Github</2>.",
     "definition": "Définition",
-    "filterBar": "Trouvez le mot dont vous avez besoin juste ici",
-    "keepLooking": "Voulez-vous continuer à chercher ?",
-    "loadMoreWords": "Charger plus de mots",
-    "needHelp": "Besoin d'aide pour définir un mot technique ?",
-    "notTranslated": "Les données dans le glossaire n'ont pas encore été traduites.\nSi vous souhaitez aider, n'hésitez pas à contribuer sur notre",
-    "pageTitle": "Glossaire Bitcoin",
-    "placeHolder": "Qu'est-ce que c'est ?",
-    "randomSearch": "Recherche aléatoire",
     "relatedWords": "Mots associés :",
     "term": "Terme",
     "showMoreWords": "Afficher plus de mots"
@@ -1571,68 +1406,25 @@
       "bitcoinFocusTitle": "Focus sur Bitcoin",
       "communityContent": "Nous sommes avant tout une communauté de passionnés qui s'entraident dans leur voyage dans l'univers du Bitcoin",
       "communityTitle": "Communauté",
-      "content": "Plan ₿ Network est une initiative pour soutenir l'éducation Bitcoin dans le monde entier. C'est le croisement de diverses entreprises passionnées de Bitcoin axées sur l'éducation, les logiciels libres, les réseaux peer-to-peer et le sens des communautés. Ensemble, ils ont décidé de construire cette initiative et d'offrir à l'écosystème Bitcoin les bons outils pour grandir. Notre présentation de version 2023 est disponible ici.",
       "openSourceContent": "Notre objectif est de promouvoir la libre circulation des connaissances et de contribuer à l'élaboration davantage de solutions ouvertes",
       "openSourceTitle": "Open source",
       "privacyContent": "Nous considérons que la vie privée est l'un des droits de l'homme les plus fondamentaux et qu'elle est essentielle au progrès",
-      "privacyTitle": "Vie privée",
-      "subtitle": "Un peu sur nous",
-      "title": "Qui sommes-nous ?"
+      "privacyTitle": "Vie privée"
     },
     "blogSection": {
-      "blogTitle": "Quoi de neuf chez Plan ₿ Network",
-      "description": "Nous continuons d'améliorer la plateforme, le contenu et le réseau - allez voir !",
-      "noBlogsAvailable": "Aucun blog disponible.",
-      "noDateAvailable": "Aucune date disponible",
       "seeAll": "Voir tout"
     },
     "courseSection": {
-      "checkAllCourses": "Explorez tous les cours",
-      "upcomingCourseDescription": "Découvrez les derniers cours publiés sur la plateforme. L'apprentissage ne s'arrête jamais !",
-      "upcomingCourseTitle": "Cours à venir et nouveaux cours"
-    },
-    "eventSection": {
-      "checkEvents": "Explorez tous les événements",
-      "eventTitle": "Un Réseau Mondial d'Éducateurs Bitcoin",
-      "hottestEvent": "L'événement Bitcoin le plus chaud"
-    },
-    "header": {
-      "content": "La plateforme Plan ₿ Network vise à fournir les meilleurs outils et le meilleur contenu éducatif au monde pour aider les gens à retrouver leur souveraineté. De personnes à communautés, nous sommes là pour vous aider tout au long de votre voyage à travers Bitcoin.",
-      "forEducators": "Pour les éducateurs et les créateurs",
-      "globalNetwork": "Réseau mondial Bitcoin",
-      "welcome": "Bienvenue sur Plan ₿ Network"
+      "checkAllCourses": "Explorez tous les cours"
     },
     "languageSection": {
       "availableLanguages": "Langues disponibles",
-      "availableLanguagesVariation": "Langues disponibles : ",
-      "content1": "Chez Plan ₿, nous croyons fermement que Bitcoin est une révolution internationale qui concerne chacun d'entre nous. Dans l'objectif d'habiliter des milliards d'individus, nous développons cette plateforme pour être multilingue et ouverte à tous. Actuellement, la plateforme supporte {{nb}} langues, et chaque mois, d'autres sont intégrées. Pour réaliser cela, nous utilisons une combinaison d'IA et de la passion des Bitcoiners à travers le monde. Vous aussi, vous pouvez débuter la création de votre propre réseau local dans votre pays !",
-      "link": "Aidez-nous à traduire l'académie",
-      "subtitle": "Tout est traduit dans les langues locales !",
-      "title": "Aucune barrière de langue ici."
-    },
-    "patreonSection": {
-      "content": "Plan ₿ Network est fier de s'associer à de nombreuses entreprises Bitcoin à travers le monde afin de fournir les meilleures ressources éducatives possibles !",
-      "title": "Ensemble, améliorons l'éducation Bitcoin !"
-    },
-    "tutorialSection": {
-      "content1": "Bitcoin évolue constamment, avec de nouveaux acteurs, des solutions, des protocoles et des avancées technologiques à venir. Il est souvent difficile de maintenir une base de données unique et précise de bons tutoriels mis à jour. Ici, chez Plan ₿, c'est ce que nous avons réalisé. Des débutants aux utilisateurs avancés, vous pouvez naviguer dans des centaines de tutoriels pour explorer notre industrie en fonction de vos besoins.",
-      "link": "Voir tous les tutoriels",
-      "link2": "Voir toutes les ressources",
-      "subtitle1": "L’éducation Bitcoin simplifiée.",
-      "title": "Centraliser les connaissances pour mieux les diffuser"
-    },
-    "wallOfLoveSection": {
-      "subtitle": "Ce que les Bitcoiners disent de nous",
-      "title": "Mur de l'amour"
+      "link": "Aidez-nous à traduire l'académie"
     }
   },
   "imagesAlt": {
-    "bookCover": "une couverture de livre",
-    "contributorHeart": "un cœur pour un bon contributeur",
-    "orangePill": "une pilule orange",
     "printedCircuits": "un circuit imprimé",
     "rabbit404": "un lapin éclairant d'une lampe de poche un panneau 404",
-    "sthRepresentingCompany": "quelque chose qui représente la société",
     "underConstructionImage": "Illustration de plusieurs lapins travaillant sur un site de construction"
   },
   "labs": {
@@ -1642,8 +1434,7 @@
     "planBLabs": "Plan ₿ Labs",
     "presentation": {
       "link": "Découvrez Plan ₿ Labs",
-      "subtitle": "Rejoignez un laboratoire pour apprendre, discuter et grandir !",
-      "title": "Améliorez vos compétences sur Bitcoin !"
+      "subtitle": "Rejoignez un laboratoire pour apprendre, discuter et grandir !"
     },
     "title": "Cours pratiques et interactifs pour un apprentissage continu"
   },
@@ -1651,41 +1442,12 @@
     "buyVideoToUnlock": "Achetez la vidéo pour la déverrouiller",
     "checkFullCourse": "Découvrez le cours complet",
     "lecturePartCourse": "Cette rediffusion de séminaire fait partie du cours <0>{{courseTitle}}</0>.\nPlongez dans le cours complet pour maîtriser l'ensemble du concept et libérer votre plein potentiel !",
-    "pageTitle": "Rediffusion des séminaires",
-    "partCourse": "Ce séminaire fait partie du cours :",
     "watchLecture": "Regardez la rediffusion du séminaire"
   },
-  "library": {
-    "pageTitle": "La bibliothèque Bitcoin"
-  },
   "menu": {
-    "bCertDescription": "Passez l'examen du ₿-CERT pour évaluer votre niveau sur Bitcoin",
-    "betDescription": "Collection de contenu que vous pouvez utiliser pour vos projets éducatifs",
-    "bitcoinDescription": "Apprenez le Bitcoin des fondamentaux aux applications avancées.",
-    "businessDescription": "Découvrez l'utilisation de Bitcoin dans le commerce.",
-    "channelsDescription": "Accédez à notre sélection exclusive de chaînes Youtube pour en savoir plus sur Bitcoin",
-    "chooseLanguage": "Choisissez une langue",
-    "conferencesDescription": "Collection de rediffusions de conférences Bitcoin depuis le Bloc Genesis",
-    "glossaryDescription": "Comprendre le langage du Bitcoin",
-    "lecturesDescription": "Revoir les séminaires enregistrés d'experts de Bitcoin",
-    "libraryDescription": "Découvrez beaucoup de livres pour améliorer vos connaissances",
-    "login": "Se connecter",
-    "miningCourseDescription": "Comprenez les processus, les outils et l'industrie derrière le minage de Bitcoin.",
-    "moviesDescription": "Découvrez des histoires captivantes et des explorations approfondies de l'évolution et de l'impact du Bitcoin",
-    "newsletterDescription": "Collection de contenu que vous pouvez utiliser pour vos projets éducatifs",
-    "planBLabsDescription": "Rejoignez un groupe d'étude pour continuer à apprendre sur le Lightning, le Minage et la Confidentialité",
-    "podcastsDescription": "Explorez l'écosystème bitcoin à travers des podcasts",
-    "projectsDescription": "Apprenez à connaître les entreprises et les projets qui contribuent à améliorer Bitcoin et à augmenter son adoption",
-    "protocolDescription": "Découvrez les règles fondamentales qui régissent le réseau Bitcoin.",
-    "publicDescription": "Explorez les articles sur la communication publique",
-    "securityDescription": "Maîtrisez les techniques pour protéger vos actifs Bitcoin.",
-    "socialStudiesDescription": "Étudiez l'impact de Bitcoin sur la société.",
-    "teachersDescription": "Apprenez à connaître nos professeurs universitaires, nos bitcoiners passionnés"
+    "login": "Se connecter"
   },
   "movies": {
-    "goToMovie": "Aller au cinéma",
-    "pageTitle": "Films & Documentaires",
-    "watchTrailer": "Regardez la bande-annonce",
     "checkTheMovie": "Regarder le film"
   },
   "notFound": {
@@ -1713,7 +1475,6 @@
     "calendar_5m_online_event": "C'est l'heure ! Le {{eventName}} commence dans 5 minutes. Cliquez ici pour rejoindre maintenant !",
     "dashboardDescription": "Voici vos dernières notifications. Elles sont automatiquement supprimées un mois après leur consultation.",
     "daysAgo": "Il y a {{days}} jours",
-    "hoursAgo": "Il y a {{hours}} heures",
     "markAsRead": "Marquer comme lu",
     "monthsAgo": "Il y a {{months}} mois",
     "noRecentNotifications": "Vous n'avez aucune notification récente pour le moment.",
@@ -1724,7 +1485,6 @@
     "results": "Vos résultats du ₿-CERT sont disponibles !",
     "select": "Sélectionner",
     "selectAll": "Sélectionner tout",
-    "stayUpToDate": "Restez informé !",
     "today": "Aujourd'hui",
     "unread": "Non lu",
     "upcomingEvent": "Événement à venir",
@@ -1745,12 +1505,6 @@
   "placeholders": {
     "selectTimeZone": "Sélectionner le fuseau horaire"
   },
-  "podcast": {
-    "check": "Explorez le podcast"
-  },
-  "podcasts": {
-    "pageTitle": "Le portail Podcast"
-  },
   "professors": {
     "navigationTitles": {
       "all": "Tout",
@@ -1765,17 +1519,11 @@
       "noTipsYet": "Ce professeur n'accepte pas les pourboires pour le moment.",
       "thanks": "Merci d'avoir soutenu le travail de {{name}} !",
       "thanksNoName": "Merci d'avoir soutenu mon travail !"
-    },
-    "coursesCount": "{{count}} cours",
-    "lecturesCount": "{{count}} séminaires",
-    "tutorialsCount": "{{count}} tutoriels"
+    }
   },
   "projects": {
-    "languages": "Langues",
-    "networkStrength": "La force d'un réseau réside dans ses membres",
     "noRelatedEvents": "Il n'y a actuellement aucun événement à venir lié à cet éducateur.",
     "otherCommunities": "Explorez les communautés de Plan ₿ Network",
-    "pageTitle": "Projets Bitcoin",
     "related": "Associé",
     "relatedEvents": "Événements à venir liés"
   },
@@ -1790,27 +1538,6 @@
     "thanks": "Un grand merci à nos incroyables relecteurs !"
   },
   "publicCommunication": {
-    "blogCategories": {
-      "all": "Tout",
-      "content": "Contenu",
-      "feature": "Fonctionnalité",
-      "network": "Réseau"
-    },
-    "blogPageStrings": {
-      "blogListButtonText": "Lire",
-      "blogSidebarTitle": "Anciens posts {{category}}",
-      "blogSidebarTitleForAll": "Publications précédentes",
-      "errorMessageNotFound": "Blog introuvable.",
-      "featuredArticleTitleText": "Dernier article publié",
-      "filterText": "Filtrer par sujet :",
-      "noArticlesText": "Il n'y a pas de publications de blog à ce moment.",
-      "pastArticleSubtitleText": "Articles passés"
-    },
-    "blogPost": "Blogs & Actualités",
-    "description": "Le réseau Plan ₿ est fier de respecter les normes open-source et de maintenir la transparence tout au long de son parcours",
-    "goBackButtons": {
-      "simpleGoBack": "Retour à tous les articles"
-    },
     "legal": "Informations légales",
     "legalSections": {
       "contact": "Contact",
@@ -1818,19 +1545,14 @@
       "privacyPolicy": "Politique de confidentialité",
       "termsOfSale": "Conditions de vente",
       "notFound": "Informations légales introuvables"
-    },
-    "title": "Communication publique"
+    }
   },
   "resources": {
-    "articles": {
-      "title": "Articles"
-    },
     "bet": {
       "title": "Boîte à outils Éducative",
       "addEducationKit": "Ajouter un kit éducatif"
     },
     "books": {
-      "author": "Auteur : ",
       "title": "Bibliothèque",
       "addBook": "Ajouter un livre"
     },
@@ -1842,12 +1564,10 @@
       "title": "Rediffusion de conférences",
       "addConference": "Ajouter une rediffusion de conférence"
     },
-    "github": "Toutes ces données sont gérées via un dépôt <0>Github</0> open-source. N'hésitez pas à contribuer et à ajouter tout contenu manquant.",
     "glossary": {
       "title": "Glossaire"
     },
     "lectures": {
-      "noLectures": "Il n'y a actuellement aucune rediffusion de séminaires pour la langue sélectionnée.",
       "title": "Rediffusion des séminaires"
     },
     "movies": {
@@ -1858,19 +1578,14 @@
       "check": "Retrouver la newsletter"
     },
     "newsletters": {
-      "author": "Auteur : ",
-      "level": "Niveau :",
       "noNewsletters": "Il n'y a actuellement aucune newsletter pour la langue sélectionnée.",
       "subtitle": "<0>D'autres newsletters</0> qui pourraient vous intéresser",
       "title": "Newsletters"
     },
-    "pageDescription": "Essayer de comprendre Bitcoin, c'est comme explorer un labyrinthe qui ne cesse de croître. Pour vous aider dans votre voyage, nous avons sélectionné une vaste collection de ressources traitant d'une myriade de sujets.",
     "pageSubtitle": "Centraliser les connaissances pour mieux les diffuser",
     "pageSubtitleBooks": "<0>D'autres livres</0> que vous pourriez aimer",
     "pageSubtitleChannels": "<0>Autres chaînes Youtube</0> que vous pourriez aimer",
-    "pageSubtitleLectures": "<0>Autres rediffusions de séminaires</0> qui pourraient vous intéresser",
     "pageSubtitlePodcast": "<0>D'autres podcasts</0> que vous pourriez aimer",
-    "pageTitle": "Ressources",
     "podcasts": {
       "noPodcasts": "Il n'y a actuellement aucun podcast pour la langue sélectionnée.",
       "title": "Podcasts",
@@ -1882,7 +1597,6 @@
       "addProjects": "Ajouter un projet"
     },
     "searchFilterName": "Recherche par nom",
-    "toggleFreeOnly": "Gratuit seulement",
     "toggleLabelAll": "Tout",
     "toggleLabelSelectedLanguage": "Langue sélectionnée",
     "pageSubtitleMovies": "<0>D'autres films</0> que vous pourriez aimer"
@@ -1902,13 +1616,10 @@
     "event": "Événement",
     "events": "Événements",
     "explorer": {
-      "subtitle": "Que cherchez-vous aujourd'hui ?",
       "title": "Portail de recherche"
     },
-    "filterByType": "Filtrer par type",
     "glossary_word": "Mot du glossaire",
     "glossary_words": "Mots du glossaire",
-    "languageSelected": "Langue sélectionnée : {{language}}",
     "lecture_replay": "Rediffusion de séminaire",
     "lecture_replays": "Rediffusion des séminaires",
     "loadMoreResults": "Voir plus de résultats",
@@ -1922,11 +1633,9 @@
     "projects": "Projets",
     "resultEmpty": "Oups ! Nous n'avons pas trouvé de résultats pour votre recherche. Vérifiez l'orthographe, essayez un autre terme ou sélectionnez une autre catégorie.",
     "resultError": "Une erreur s'est produite. Veuillez réessayer.",
-    "resultInfo": "{{count}} résultats trouvés en {{time}}ms",
     "results": "Résultats",
     "resultsRemaining": "{{count}} résultats restants",
     "search": "Rechercher",
-    "searchResult": "Résultat de la recherche",
     "startSearch": "Saisissez votre recherche",
     "tutorial": "Tutoriel",
     "tutorials": "Tutoriels",
@@ -1942,57 +1651,33 @@
     "changeProfilePicture": "Changer la photo de profil"
   },
   "tutorials": {
-    "approvedByCreator": "Approuvé par le créateur",
-    "backTutorials": "Retour à tous les tutoriels",
     "business": {
-      "description": "Vous souhaitez intégrer Bitcoin à votre entreprise ? Cette catégorie rassemble tous les tutoriels destinés aux professionnels. Qu’il s’agisse de mettre en place un point de vente pour accepter facilement les paiements en bitcoins, ou bien d'ajouter et de gérer du bitcoin dans la trésorerie de votre entreprise, vous y trouverez les informations techniques et pratiques essentielles.",
-      "shortDescription": "Accepter les paiements en Bitcoin et le gérer dans votre trésorerie",
       "title": "Entreprise"
     },
     "computer-security": {
-      "description": "La sécurité informatique est essentielle à tout Bitcoiner. Dans cette catégorie, vous trouverez des tutoriels sur des outils et pratiques généralistes indispensables pour protéger votre environnement numérique. Systèmes d'exploitation, navigateurs sécurisés, gestionnaires de mots de passe, systèmes d'authentification, VPN ou encore solutions de communication chiffrées : toutes les ressources présentées ici visent à renforcer votre sécurité et votre confidentialité.",
-      "shortDescription": "Les outils essentiels pour votre sécurité numérique et votre vie privée",
       "title": "Sécurité informatique"
     },
     "contribution": {
-      "description": "Vous souhaitez contribuer sur notre plateforme open-source Plan ₿ Network ? Dans cette catégorie, vous découvrirez comment rédiger et publier un nouveau tutoriel, effectuer des traductions, assurer la relecture des contenus, ou encore ajouter de nouvelles ressources utiles à la communauté. Grâce à ces tutoriels, vous pourrez facilement participer à l’éducation sur Bitcoin et enrichir notre base de connaissances partagée.",
-      "shortDescription": "Contribuez sur la plateforme open-source Plan ₿ Network",
       "title": "Contribution"
     },
     "details": {
       "author": "Auteur :",
-      "didHelp": "Cela a-t-il aidé ?",
       "ratingSuccess": "Merci pour votre avis !",
       "source": "Source originale :",
       "tutorialName": "Nom du tutoriel",
-      "writtenBy": "Ce tutoriel a été écrit par :",
       "didThisWork": "Cela a-t-il bien fonctionné pour vous ?"
     },
     "exchange": {
-      "description": "Les échanges sont une des portes d'entrée et de sortie entre votre devise traditionnelle (euro, dollars) et le monde de Bitcoin. Les échanges peuvent être réglementés et KYC (Know Your Client), ou peer-to-peer et anonymes. Chaque échange offrira des fonctionnalités différentes, des structures de frais, de la liquidité et du soutien à la clientèle. Chaque bitcoiner utilisera un différent en fonction de ses besoins et de ses convictions.",
-      "shortDescription": "Solutions d'achat-vente Bitcoin, KYC et non-KYC",
       "title": "Plateforme d'échange"
-    },
-    "explorer": {
-      "description": "Tous ces tutoriels ont été écrits par des bitcoiners passionnés et dévoués, qui souhaitent diffuser l'éducation Bitcoin dans le monde entier. N'oubliez pas d'aimer, de faire des retours et de leur envoyer quelques sats !",
-      "didYouKnow": "Saviez-vous ?",
-      "exploreAllTutorials": "Explorez tous les tutoriels"
     },
     "hasBeenProofreadBy": "Ce tutoriel a été relu par",
     "hasNotBeenProofread": "Ce tutoriel n'a pas encore été relu",
     "mining": {
-      "description": "L'industrie minière est un sujet complexe composé de nombreux terriers du lapin. Ici, nous essaierons de vous accompagner dans votre voyage concernant l'utilisation de votre matériel et logiciels. De la modification d'un S9 en chauffage domestique à la tentative de gagner à la loterie avec un NerdMiner.",
-      "shortDescription": "Solutions de minage de bitcoins",
       "title": "Minage"
     },
     "node": {
-      "description": "Les nœuds sont comme vos serveurs personnels. En Bitcoin, c'est le logiciel qui vous permet de rejoindre le réseau, d'archiver les transactions, de vérifier les règles, et d'être vraiment souverain. Dans notre écosystème, il existe différents nœuds, de Bitcoin Core, aux implémentations Lightning, RGB, et d'autres solutions de confidentialité plus avancées.",
-      "shortDescription": "Solutions pour faire tourner un nœud bitcoin et intégrer le réseau",
       "title": "Noeud"
     },
-    "pageDescription": "Bitcoin est une grande industrie, qui grandit chaque jour. Pour vous aider à l'explorer, nous avons rassemblé un grand nombre de tutoriels qui décrivent diverses solutions.",
-    "pageSubtitle": "Découvrez les mystères du Bitcoin en explorant son vaste écosystème",
-    "pageTitle": "Tutoriels",
     "privacy": {
       "description": "La vie privée est un droit fondamental. Alors que nous aspirons à un monde où la vie privée est par défaut, ce n'est pas la réalité dans laquelle nous vivons. Nous essaierons de vous expliquer les meilleures pratiques, de vous aider avec des tutoriels et de vous mettre sur un chemin plus souverain concernant vos données.",
       "shortDescription": "Outils de sauvegarde et de maintien de la vie privée",
@@ -2020,8 +1705,6 @@
       "resource": "Ressource"
     },
     "wallet": {
-      "description": "Un portefeuille Bitcoin est comme votre trousseau de clés. Il vous permet de dépenser et de recevoir des bitcoins. Il y a beaucoup de différents types de portefeuilles, tous avec différents cas d'utilisation, fonctions, coûts et expériences d'utilisation. Chaque bitcoiner utilisera un portefeuille différent en fonction de ses besoins, de son niveau d'exigence et de son expérience.",
-      "shortDescription": "Solutions de sécurisation et d'utilisation de vos bitcoins",
       "title": "Portefeuille"
     },
     "writtenBy": "Ce tutoriel a été écrit par"
@@ -2098,7 +1781,7 @@
     "description": "Description",
     "details": "Détails",
     "diploma": "Diplôme",
-    "dislikes": "Aversions",
+    "dislikes": "Votes négatifs",
     "displayName": "Nom d'affichage",
     "download": "Télécharger",
     "duration": "Durée",
@@ -2106,9 +1789,7 @@
     "email": "Email",
     "events": "Événements",
     "exam": "Examen",
-    "failed": "Échoué",
     "filter": "Filtre",
-    "finish": "Finir",
     "free": "Gratuit",
     "github": "Github",
     "glossary": "Glossaire",
@@ -2130,18 +1811,14 @@
       "advanced": "Avancé",
       "beginner": "Débutant",
       "beginnerFriendly": "Adapté aux débutants",
-      "developer": "Développeur",
       "expert": "Expert",
       "intermediate": "Intermédiaire",
       "level": "Niveau",
-      "levels": "Niveaux",
-      "wizard": "Sorcier"
+      "levels": "Niveaux"
     },
-    "library": "Bibliothèque",
     "lightningInvoice": "Facture lightning",
-    "likes": "Aime",
+    "likes": "Votes positifs",
     "linkedin": "Linkedin",
-    "lnurlAuth": "LNURL Auth",
     "location": "Emplacement",
     "members": " Membres",
     "mentor": "Mentor",
@@ -2157,7 +1834,6 @@
     "on": "sur",
     "onChainAddress": "Adresse sur la chaîne",
     "online": "En ligne",
-    "ourStory": "Notre histoire",
     "overview": "Vue d'ensemble",
     "paid": "Premium",
     "part": "Partie",
@@ -2175,7 +1851,6 @@
     "projects": "Projets",
     "protocol": "Protocole",
     "public": "Communication publique",
-    "publicationDate": "Date de publication :",
     "questions": "Questions",
     "ratings": "Évaluations",
     "register": "Inscription",
@@ -2199,7 +1874,6 @@
     "submit": "Soumettre",
     "teacher": "Professeur",
     "telegram": "Telegram",
-    "termsAndConditions": "Termes et conditions",
     "ticket": "Billet",
     "tickets": "Billets",
     "time": "Temps",
@@ -2249,7 +1923,6 @@
     "enrolled": "Inscrit",
     "invoices": "Factures",
     "map": "Carte",
-    "myCertificates": "Mes certificats",
     "resetFilters": "Réinitialiser les filtres",
     "sats": "Sats",
     "settings": "Paramètres",
@@ -2264,7 +1937,6 @@
     "session": "Session"
   },
   "youtubeChannels": {
-    "pageTitle": "Chaînes Youtube",
     "view": "Voir la chaîne Youtube",
     "watchTrailer": "Regardez la bande-annonce"
   },
@@ -2283,15 +1955,12 @@
     "september": "Septembre"
   },
   "navbar": {
-    "analytics": "Analytique",
     "bookings": "Réservations",
     "career": "Carrière",
     "discountCode": "Codes de réduction",
     "learnAnytimeDescription": "Cours à faire à votre rythme",
     "learnAnytimeTitle": "Étudier en autonomie",
     "manageCourses": "Gérer les cours",
-    "myCalendar": "Mon calendrier",
-    "myCareer": "Ma carrière",
     "myCourses": "Mes cours",
     "tabs": {
       "admin": "Administrateur",
@@ -2304,7 +1973,6 @@
     "liveClassesDescription": "Cours encadrés par un enseignant",
     "liveClassesTitle": "Étudier en direct",
     "careers": "Carrières",
-    "myCoursesDescription": "Suivez vos progrès",
     "tutorialsAnalytics": "Statistiques des tutoriels"
   },
   "account": {

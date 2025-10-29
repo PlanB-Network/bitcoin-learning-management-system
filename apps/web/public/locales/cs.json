@@ -19,7 +19,6 @@
     "missionTitle": "Naše mise",
     "storyContent": "Plan ₿ Network je iniciativa zaměřená na podporu celosvětového vzdělávání o Bitcoinu. Jedná se o spojení rozlišných Bitcoin firem zaměřených na vzdělávání, open-source software, peer-to-peer sítě a smyslem pro komunitu. Společně se rozhodli vybudovat síť Plan ₿ a nabídnout bitcoinovému ekosystému ty správné nástroje k růstu. Naše prezentace k vydání v roce 2023 je dostupná zde.",
     "storyTitle": "Náš příběh",
-    "subtitle": "Síla bitcoinu spočívá v komunitě. Spojme své síly a staňme se jednou velkou bitcoinovou sítí.",
     "title": "O Plan ₿ Network"
   },
   "accessType": {
@@ -53,7 +52,6 @@
       "errorValidatingEmailDescription": "Došlo k chybě při ověřování vašeho e-mailu, zdá se, že odkaz vypršel nebo již byl použit. Zkuste to prosím znovu.",
       "successfullyChanged": "Váš email byl úspěšně změněn na {{email}}.",
       "successfullyValidated": "Váš email byl úspěšně ověřen.",
-      "validateChange": "Ověřování změny e-mailu",
       "validatingEmail": "Ověřování e-mailu",
       "validatingEmailChange": "Ověřování změny e-mailu",
       "wontTakeLong": "To nebude trvat dlouho..."
@@ -75,7 +73,6 @@
       "invalid": "Token je neplatný",
       "notFound": "Token nebyl nalezen"
     },
-    "lnurlAuthDescription": "Naskenujte QR kód pomocí peněženky Lightning a přihlaste se!",
     "newPassword": "Nové heslo",
     "noAccountNeeded": "Abyste se mohli začít učit na naší vzdělávací platformě, nepotřebujete účet!",
     "noAccountYet": "Nemáte účet?",
@@ -97,50 +94,28 @@
     "bCertDescription": "₿-CERT je nejvyšší test znalostí Bitcoinu, který hodnotí vaše znalosti o Bitcoinu a souvisejících tématech. Pokud získáte více než 80%, získáte certifikát ₿-CERT, který může prokázat vaši odbornost v oblasti Bitcoinu a otevřít tak dveře k různým pracovním pozicím v tomto oboru.",
     "bookExam": "Zarezervujte si testovací sezení",
     "challengeYourself": "Otestujte se a posuďte svou úroveň",
-    "checkout": "Podívejte se na ₿-CERT",
     "download": "Stáhnout certifikát",
     "knowledgeableBitcoin": "Kolik toho víte o Bitcoinu?",
-    "noBookExam": "Zatím není naplánováný žádný test.",
-    "organizeDescription": "Skvělý nápad! Pokud je vaše komunita součástí sítě Plan ₿, můžete ve svém centru uspořádat sezení ₿-CERT.\nPřečtěte si prosím <0>stanovy</0>, abyste se ujistili, že splňujete povinné podmínky pro pořádání testu. Pokud splňujete kritéria, můžete test naplánovat a přidat událost na platformu.",
     "organizeExam": "Zorganizujte sezení",
-    "organizeSessionConditions": "Prosím, přečtěte si <0>stanovy</0>, abyste se ujistil, že splňujete povinné podmínky pro pořádání testu. \nPokud splňujete kritéria, budeme rádi, když s vámi naplánujeme sezení pro vaši místní komunitu. \nKontaktujte nás prosím pomocí vaší preferované metody.",
-    "organizeSessionHub": "Zorganizujte testovací sezení ₿-CERT ve vašem místním centru",
-    "organizeSubtitle": "Přivést na cestu k bitcoinu miliardu lidí není snadné",
-    "organizeTitle": "Chcete uspořádat testovací sezení ₿-CERT ve vašem centru?",
-    "pageSubtitle": "Globální adopce prostřednictvím centralizovaného vzdělávání v oblasti otevřených zdrojů",
     "pageTitle": "Složte test ₿-CERT",
-    "readChart": "Přečtěte si stanovy",
     "tweetText": "Jsem nadšený, že jsem prošel ₿-CERT na @planb_network s výsledkem {{score}}/100! {{emoji}} #BCERT\n\n{{certificateUrl}}",
     "verify": "Ověřte pravost vašeho certifikátu"
   },
   "bet": {
-    "contributeButton": "Pomozte & Přispěje",
-    "contributeDescription": "Pokud chcete něco přidat, upravit nebo přeložit, vaše pomoc bude vítána!",
-    "contributeTitle": "Chcete přispět?",
     "educationalContent": {
-      "description": "Tento materiál je připraven k použití na vzdělávacích akcích a pro další použití.",
       "title": "Vzdělávací obsah"
     },
-    "pageDescription": "Masové přijetí není snadné. Abychom se tomuto cíli přiblížili a urychlili jej, vyvinuli jsme širokou databázi pro hostování vzdělávacího obsahu. Zde mohou vzdělavatelé v oblasti Bitcoinu volně vkládat obsah a přistupovat k obsahu dle potřeby. Nemusíme pokaždé znovu vynalézat kolo, takže pojďme společně pracovat na centralizaci užitečných zdrojů v jedné sadě nástrojů!",
-    "pageTitle": "Sada vzdělávacích nástrojů pro Bitcoin",
     "visualContent": {
-      "description": "Tento obsah jsou nezpracovaná vizuální data, která můžete použít pro své vlastní tvorbu.",
       "title": "Vizuální obsah"
     }
   },
   "conferences": {
-    "addConferences": "Neváhejte přidat chybějící konference prostřednictvím tohoto <0>Github</0> repozitáře.",
-    "backConferences": "Zpět na konference",
     "conferenceName": "Název konference",
     "conferencesSinceGenesis": "Archiv bitcoinových konferencí od prvního bloku",
-    "description": "Konference jsou v odvětví bitcoinu klíčovým prvkem. Jsou součástí vzdělávací cesty každého bitcoinera. Vytvořili jsme proto tento nástroj, který vám pomůže zorientovat se ve stovkách konferencí.",
     "details": {
       "findReplay": "Najít a přehrát",
-      "nextVideo": "Další video",
-      "previousVideo": "Předchozí video",
       "selectStage": "Vybrat část",
-      "selectVideo": "Vybrat video",
-      "watchReplay": "Sledovat opakovaný záznam"
+      "selectVideo": "Vybrat video"
     },
     "language": "Jazyk",
     "latestConferences": "Nejnovější konference",
@@ -156,10 +131,6 @@
         "bookSeat": "Rezervovat místo",
         "cancelBooking": "Zrušit rezervaci",
         "classIsFull": "Tato třída je již plná",
-        "p1content": "Nezapomeňte si zarezervovat své místo",
-        "p1heading": "Hodláte se této lekce zúčastnit osobně?",
-        "p2content": "Není problém! Tato lekce bude živě streamovaná na této stránce a později dostupná k přehrání.",
-        "p2heading": "Nemůžete se zúčastnit osobně?",
         "ticketDownload": "Stáhnout vstupenku",
         "title": "Podrobnosti o lekci"
       },
@@ -168,9 +139,7 @@
         "stayTuned": "Přímý přenost začne půl hodiny před začátkem lekce. Zůstaňte na příjmu!",
         "title": "Přímý přenos"
       },
-      "next": "Hotovo, pokračovat na další kapitolu",
-      "nextLesson": "Další lekce proběhne",
-      "thanksTip": "Chcete poděkovat za kurz? \nPřispějte."
+      "next": "Hotovo, pokračovat na další kapitolu"
     },
     "conclusion": {
       "completedChaptersHeadline": "Všechny kapitoly jsou nyní dokončeny!",
@@ -212,7 +181,6 @@
       "premiumContentNeedsPaymentAction": "Přejděte na domovskou stránku kurzu",
       "startCourse": "Začátek kurzu",
       "taughtBy": "Tento kurz vyučuje",
-      "teacherLed": "Vedený profesorem",
       "thanksTipping": "Můžete poděkovat tím, že dáte profesorovi spropitné."
     },
     "exam": {
@@ -232,7 +200,6 @@
       "dontGiveUpTryAgain": "Neztrácejte naději!\nMůžete to zkusit znovu za 24 hodin.",
       "dontWorry": "Nebojte se dělat chyby; tento test je navržen tak, aby posílil vaše učení. Pokud ho neprojdete, můžete ho znovu absolvovat po 24 hodinách.",
       "dontWorryRetake": "Nebojte se, zkoušku můžete opakovat po 24 hodinách.",
-      "examAndDiploma": "Zkouška & Diplom",
       "examAvailabilityDetails": "Pokud student nesloží zkoušku během doby její dostupnosti na platformě, automaticky obdrží známku 0.",
       "examCertificateCompletionText": "Síť Plan ₿ je potěšena, že může pogratulovat {{username}} k získání diplomu z kurzu \"{{courseName}}\".",
       "examDetails": "Zkouška se skládá z {{nb}} otázek s výběrem možností, z nichž každá má jednu správnou odpověď. Své odpovědi můžete kdykoli před odesláním změnit, pokud běží časovač.",
@@ -251,7 +218,6 @@
       "goodLuck": "Hodně štěstí!",
       "instantVerification": "Okamžité ověření: Zaměstnavatelé mohou snadno ověřit pravost vašeho diplomu a datum jeho vydání.",
       "instructions": "Pokyny:",
-      "letsConclude": "Vše hotovo, pojďme to uzavřít",
       "nbMinutes": "{{nb}} minut",
       "nbQuestions": "{{nb}} otázky",
       "nextChapter": "Další kapitola",
@@ -259,7 +225,6 @@
       "notTranslatedYet": "Omlouváme se, ale funkce závěrečné zkoušky ještě není dostupná ve vašem vybraném jazyce. Můžete si vybrat jiný jazyk a pokračovat.",
       "oneMinuteLeft": "Zbývá vám pouze 1 minuta",
       "oopsFailed": "Jejda, zdá se, že jsi <0>nedostal</0> závěrečnou zkoušku.",
-      "passExam": "Složit zkoušku",
       "passed": "Prošel",
       "passRate": "Hranice úspěšnosti je 80%.",
       "planBTimeStamp": "V síti Plan ₿ Network zabezpečujeme váš diplom pomocí technologie časového razítka podporované blockchainem.",
@@ -305,22 +270,13 @@
       "tryAgain": "Zkuste to znovu",
       "tryOneMoreTime": "Zkuste to ještě jednou!",
       "verifyDisplayName": "Před zahájením prosím ověřte své zobrazované jméno níže, protože bude použito pro vytvoření vašeho diplomu.",
-      "viewExam": "Zobrazit test",
       "weight": "Hmotnost: {{weight}}%",
       "whyTimeStamp": "Časové razítko vašeho diplomu:\nProč je to důležité",
       "wishTryAgain": "Pokud si přejete zkoušku zopakovat, bude k dispozici za 24 hodin.",
       "yesSubmit": "Ano, odeslat"
     },
     "explorer": {
-      "buildPath": "Vytvořte si vlastní cestu",
-      "comingSoon": "brzy k dispozici",
-      "exploreCourses": "Prozkoumejte kurzy Plan ₿",
-      "findCourses": "Najděte ideální kurz pro vaše potřeby díky nástroji pro výběr kurzu",
       "goal": "CÍL:",
-      "journey": "Bitcoin je cesta, ne cíl",
-      "pageDescription": "Plan ₿ Academy nabízí širokou škálu kurzů o Bitcoinu, ať už bezplatných nebo prémiových, od začátečníků až po experty. Kurzy vedou experti nebo se je můžete učit vlastním tempem a přizpůsobí se každému stylu učení. Naše poslání je jednoduché: zpřístupnit znalosti o Bitcoinu všem, tak aby byly srozumitelné, poutavé a přístupné všem!",
-      "planbSchool": "PLAN ₿ SCHOOL",
-      "planbSchoolHeadline": "Plan ₿ School, vedená Giacomem Zuccem, nabízí intenzivní tříměsíční vzdělávací programy navržené tak, aby překlenuly propast mezi učením a reálnými aplikacemi. Mimo tradiční třídy se studenti zapojují do praktických projektů vedených společnostmi a prvotřídního bootcampu věnovaného nejlepším výkonům. Pouze nejlepší talenty postupují po dvou konkurenčních výběrových kolech, což zajišťuje, že koneční top studenti jsou plně vybaveni k zahájení své kariéry v průmyslu Bitcoinu.",
       "seeCourse": "Objevte kurz"
     },
     "format": {
@@ -332,15 +288,12 @@
       "count": "Část {{count}}"
     },
     "payment": {
-      "accessibility": "Přístupnost",
-      "accessibility_forever": "Navždy",
       "amount": "Částka",
       "back_course": "Zpět na kurz",
       "book_description": "Zkontrolujte prosím uvedené informace o místě konání. Jakmile bude rezervace potvrzena, obdržíte potvrzovací lístek a QR kód, který musíte předložit ve třídě.",
       "checkoutError": "Během procesu placení došlo k chybě. \nProsím, zkuste to znovu.",
       "courseType": "Typ kurzu",
       "date": "Datum",
-      "downloadCurriculum": "Stáhnout osnovu",
       "duration": "Trvání",
       "hybridDescription": "Prosím, přečtěte si poskytnuté informace o kurzu.\nKaždá lekce probíhá osobně v určených termínech a místech. Všechny hodiny jsou vždy vysílány živě a nahrávány pro pozdější přehrání.\n\nÚčast na místě je řízena podle jednotlivých lekcí, proto vás laskavě žádáme, abyste si rezervovali místo pokaždé, když si přejete být fyzicky přítomni.",
       "inPersonCallout": "Chystáte se zakoupit <strong>přístup osobně</strong> k tomuto kurzu.",
@@ -351,8 +304,6 @@
       "payment_details": "Detaily platby",
       "payment_successful": "Platba proběhla úspěšně!",
       "qr_unified": "Tento kód QR je sjednocený, takže přijímá lightning i on-chain platby.",
-      "teacher": "Vyučující",
-      "teachers": "Vyučující",
       "time": "Čas"
     },
     "quizz": {
@@ -410,7 +361,6 @@
     }
   },
   "dashboard": {
-    "account": "Účet",
     "adminPanel": {
       "accessGranted": "Přístup povolen",
       "bookings": "Rezervace",
@@ -419,7 +369,6 @@
         "careers": "Kariéry",
         "careersSubtitle": "Zde si můžete prohlédnout seznam účastníků, kteří dokončili své přihlášky. Všechny informace o přihláškách najdete v tabulce.",
         "cv": "Životopis",
-        "downloadProfiles": "Stáhnout tabulku",
         "downloadSpreadsheet": "Stáhnout tabulku",
         "lastUpdate": "Poslední aktualizace",
         "lastUpdated": "Naposledy aktualizováno",
@@ -435,7 +384,6 @@
         "delete": "Smazat",
         "deleteDiscountCode": "Odstranit slevový kód",
         "deleteDiscountCodeConfirm": "Opravdu chcete smazat tento slevový kód?",
-        "deleteDiscountCodeSuccess": "Slevový kód byl úspěšně smazán",
         "deleteDiscountCodeWarning": "Jakmile bude tento kód smazán, už nebude funkční. Tato změna je nevratná",
         "discountCode": "Slevový kód",
         "discountCodeCopied": "Slevový kód zkopírován",
@@ -446,7 +394,6 @@
         "discountType": "Jaký typ slevového kódu?",
         "discountValue": "Procento snížení",
         "discountValueExplanation": "Zadejte číslo v násobcích pěti (např. 5, 10, 15... až do 100)",
-        "discountValuePlaceholder": "příklad: 20 pro 20%",
         "downloadImage": "Stáhnout vstupenku",
         "downloadImages": "Stáhnout obrázky",
         "explanation": "Generujte a spravujte slevové kódy pro akce a kurzy - buď jednorázové pro stipendia nebo podobné případy, nebo vícekrát použitelné pro marketingové kampaně.",
@@ -489,10 +436,8 @@
           "maxUses": "Max. použití",
           "name": "Jméno",
           "owner": "Majitel",
-          "total": "Celkem",
           "type": "Typ",
-          "uses": "Použitý",
-          "value": "Hodnota"
+          "uses": "Použitý"
         }
       },
       "coursesIndexes": "Indexy kurzů",
@@ -504,7 +449,6 @@
       "githubLink": "Odkaz na Github",
       "hasAccessTo": "Má přístup k:",
       "listOfParticipants": "Seznam účastníků",
-      "makeProfessor": "Udělejte profesora",
       "nameOfEvent": "Název události",
       "participants": "Účastníci",
       "professorName": "Jméno profesora",
@@ -531,14 +475,8 @@
       "publicationDate": "Datum publikace"
     },
     "backToDashboard": "Zpět na přehled",
-    "bCert": {
-      "grade": "Známka",
-      "noResults": "S tímto účtem zatím nejsou spojeny žádné známky nebo certifikáty.\nPokud jste složili zkoušku a vaše výsledky nejsou dostupné po delší dobu, prosím <0>kontaktujte nás</0> pro pomoc."
-    },
     "booking": {
       "accessLive": "Přístup k živému přenosu",
-      "billingSubtitle": "Stáhněte si faktury z rezervací zde.",
-      "billingTitle": "Historie vyúčtování",
       "cancelBookingTitle": "Jste si jisti, že chcete zrušit tuto rezervaci?",
       "invoiceDate": "Datum",
       "invoiceTitle": "Název",
@@ -551,12 +489,10 @@
       "ticketLocation": "Místo",
       "ticketTitle": "Název",
       "ticketType": "Typ",
-      "upcomingTicketSubtitle": "Stáhněte si vstupenku a zúčastněte se příští akce. Ujistěte se, že máte vstupenku s sebou, abyste měli přístup na akci.",
       "upcomingTicketTitle": "Nadcházející rezervace",
       "yesCancel": "Ano, zrušit"
     },
     "calendar": {
-      "calendar": "Kalendář",
       "eventType": {
         "class": "Třídy",
         "event": "Události"
@@ -747,10 +683,7 @@
       "assignment": "Úkol",
       "assignmentCompletedDescription": "Váš projekt byl úspěšně odevzdán a je právě přezkoumáván. \nVaše známka bude viditelná zde po vyhodnocení 23. června.",
       "assignmentCompletedTitle": "Úkol dokončen",
-      "assignmentDescription": "Projekt označuje druhou fázi programu Plan ₿ Biz School a je k dispozici pouze studentům, kteří úspěšně dokončili první fázi. Podle jejich hodnocení a preferencí bude každému studentovi přidělen projekt vyvinutý bitcoinovou společností. Ten musí být odevzdán do 18. června.\nStudenti budou připravovat úkol od 2. června do 18. června, s možností získat mentorství od zástupce společnosti.\n\nProjekty budou hodnoceny společností a skóre bude ovlivňovat konečnou známku. Pouze nejlépe hodnocení studenti budou pozváni k účasti na letní škole v Luganu ve Švýcarsku od 23. července do 30. července 2025.",
-      "assignmentInformation": "Informace o úkolu",
       "assignmentTitle": "Zadání projektu",
-      "checkDetailsCompleted": "Zde si můžete zkontrolovat všechny detaily týkající se tohoto kurzu, který jste dokončil.",
       "completionDiploma": "Diplom o absolvování",
       "completionExamInfo": "Musíte dokončit zkoušku, abyste měli přístup k této funkci.",
       "conclusionHeadline": "Zde je shrnutí toho, co jste se naučili. Pokud byly některé kapitoly vynechány nebo nebyly řádně ověřeny, nyní je čas to napravit, buď tím, že se vrátíte k učení, nebo stisknutím tlačítka dokončit.",
@@ -762,15 +695,12 @@
       "congratulationsPassed": "Gratulujeme! Úspěšně jste absolvovali tento kurz",
       "coordinator": "Koordinátor kurzu",
       "courseCalendar": "Kalendář kurzu",
-      "coursesCompleted": "Dokončené kurzy",
       "diplomaReleaseDescription": "Po absolvování všech kurzů vám bude udělen diplom za úspěšné absolvování kurzu. Diplomy budou ke stažení zde po poslední hodině 25. června a po dokončení závěrečné kapitoly.",
       "diplomaReleaseTitle": "Vydání diplomu",
       "examScore": "Skóre:",
       "exams": "Zkoušky",
       "feedbacks": "Zde můžete zkontrolovat a upravit hodnocení a zpětnou vazbu, kterou jste tomuto kurzu dali.",
-      "fileUploadError": "Došlo k chybě při nahrávání vašeho",
       "fileUploaded": "Vaše práce byla úspěšně nahrána!",
-      "finalAverageGradeDescription": "Svou konečnou průměrnou známku najdete v sekci Zkoušky a diplomy na vašem řídicím panelu.",
       "finalGradeSummary": "Shrnutí konečné známky",
       "finalScore": "Konečné skóre",
       "generalInformation": "Obecné informace",
@@ -785,8 +715,6 @@
       "mostPreferred": "Nejpreferovanější",
       "mustBePdf": "Váš soubor musí být ve formátu PDF. Pokud potřebujete odeslat další soubor, prosím vložte do svého PDF odkaz na něj.",
       "notSelectedAssignment": "Bohužel jste nebyli vybráni k účasti na projektovém zadání. \nMůžete stále sledovat přednášky kurzu",
-      "planbSchoolExamDescription": "Program Plan ₿ Biz School 2025 se skládá ze dvou fází. V první fázi absolvujete dvě online zkoušky, konkrétně pololetní a závěrečnou: jedná se o jednorázové, časově omezené testy, které můžete dokončit kdykoli během dostupného třídenního období. Po první fázi budou na základě jejich hodnocení vybráni studenti, kteří postoupí do druhé fáze, která zahrnuje projektové zadání: individuální úkol poskytnutý bitcoinovou společností. Další podrobnosti o tom najdete v záložce Úkol.\n\nZávěrečná známka bude vypočítána jako vážený průměr tří testů. Studenti, kteří dosáhnou skóre nad 80 %, obdrží diplom a studenti s nejvyšším hodnocením budou mít také možnost účastnit se letní školy v Luganu v červenci.",
-      "planbSchoolGeneralInformation": "Program Plan ₿ Biz School 2025 se skládá ze dvou fází. V první fázi absolvujete dvě online zkoušky, konkrétně pololetní a závěrečnou: jedná se o testy s jedním pokusem a časovým limitem, které můžete vyplnit kdykoli během třídenní lhůty. Po první fázi budou studenti na základě svého umístění vybráni do druhé fáze, která zahrnuje projektové zadání: individuální úkol poskytnutý bitcoinovou společností. Více informací o něm naleznete na kartě Zadání.\n\nKonečná známka bude vypočítána jako vážený průměr tří testů. Studenti, kteří dosáhnou skóre nad {{threshold}} %, obdrží diplom a studenti s nejlepším hodnocením budou mít také možnost zúčastnit se letní školy v Luganu v červenci.",
       "projectRankingInstructions": "Pokyny pro hodnocení projektů:",
       "ranking": "Pořadí",
       "rankingInstructions": "Seřaďte navrhované projekty podle svých preferencí (číslo 1 je vaše nejvyšší volba). Toto hodnocení nám umožní přiřadit vám nejvhodnější projekt. Studenti s vyššími skóre budou mít svůj výběr zvážen jako první.",
@@ -798,30 +726,19 @@
       "shareOnSocials": "Sdílet na sociálních sítích:",
       "submissionInstructions": "Pokyny pro odevzdání",
       "submitBefore": "Musíte odevzdat svou práci před <0>18. červnem v 23:59 (UTC+2)</0>. Příspěvky doručené po tomto termínu nebudou hodnoceny.",
-      "submitFileNamingFormat": "Váš soubor musí být pojmenován následujícím formátem:\n<0>company_username.pdf</0>.\nOdstraňte všechny mezery z názvu společnosti, použijte své přesné uživatelské jméno na platformě planB.network a zkontrolujte překlepy.",
       "submitReviewInfo": "Musíte odeslat recenzi, abyste měli přístup k této funkci.",
       "submitYourWork": "Odevzdejte svou práci",
       "summerSchool": "Letní škola",
       "surePreferenceList": "Jste si jisti, že váš seznam preferencí je definitivní?",
       "thresholdToPass": "Prahová hodnota k překonání: {{threshold}}%",
       "tweetText": "Nadšený z toho, že jsem dokončil kurz {{courseIndex}} na @planb_network a získal jsem diplom s hodnocením {{score}}/100 na závěrečné zkoušce! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
-      "viewFinalGrade": "Zobrazit konečnou známku",
       "yourProject": "Váš projekt"
     },
-    "courses": "Kurzy",
     "credentials": {
       "bCert": "₿-CERT",
-      "bCertSubtitle": "Zde najdete podrobnosti týkající se vašich rezervací a hodnocení vašich minulých a budoucích testů ₿-CERT.\n₿-TEST je tabulkový test organizovaný sítí Plan ₿, který hodnotí vaši úroveň znalostí v Bitcoinu a souvisejících tématech.",
       "beingGraded": "Vaše zkouška je právě hodnocena. Výsledky by měly být k dispozici za 1 nebo 2 týdny.",
-      "completionDiplomas": "Diplomy o absolvování",
       "courseDiplomas": "Diplomy z kurzů",
-      "courseDiplomasSubtitle": "Zde najdete podrobnosti o všech zkouškách, které jste absolvovali po dokončení kurzu na platformě.",
-      "downloadTicket": "Stáhnout vstupenku",
-      "globalCertifications": "Globální certifikace",
-      "retakeExam": "Opakujte zkoušku",
-      "seatBooked": "Vaše místo na zkoušce je rezervováno",
-      "takePlaceAt": "Setkání se uskuteční na:",
-      "yourCertificate": "Váš certifikát"
+      "globalCertifications": "Globální certifikace"
     },
     "goToDashboard": "Přejděte na portál",
     "goToHomepage": "Přejděte na domovskou stránku",
@@ -829,28 +746,20 @@
     "myCourses": {
       "completeAll": "Dokončete vše",
       "completed": "Dokončené kurzy",
-      "completedCoursesDescription": "Zde si můžete prohlédnout své dokončené kurzy.",
-      "completedCoursesTitle": "Dokončené kurzy",
-      "courseDashboard": "Portál s kurzy",
       "detailsAndCertificate": "Detaily & certifikáty",
       "done": "Hotovo",
       "download": "Stáhněte diplom",
       "duration": "Délka :",
       "inProgress": "Probíhající kurzy",
-      "newCourses": "Nové kurzy jsou přidávány každý měsíc",
-      "noCoursesAvailable": "Žádné kurzy nejsou dostupné.",
       "notStarted": "Nezahájené kurzy",
       "notValidated": "Neověřeno",
       "price": "Cena :",
       "professor": "Profesor:",
       "resumeLesson": "Pokračovat v lekci",
       "seeDetails": "Zobrazit podrobnosti",
-      "seeProgress": "Podívejte se na svůj pokrok zde.",
       "seeTheCourse": "Podívejte se na kurz",
       "shareOn": "Sdílejte na",
-      "startCourse": "Začněte nebo dokončete kurz",
       "verify": "Ověřte si pravost diplomu",
-      "viewDetails": "Zobrazte detaily",
       "whereYouAre": "Podívejme se, kde jsi!",
       "yourCertificate": "Tvůj certifikát",
       "yourProgress": "Tvůj pokrok :"
@@ -884,29 +793,22 @@
         "title": "Nastavení oznámení"
       },
       "password": "Heslo",
-      "personalInformation": "Moje osobní údaje",
       "preview": "Náhled",
       "profile": "Profil",
-      "profileInformation": "Profilové informace",
       "profilePicture": "Profilový obrázek",
       "save": "Uložit",
       "saving": "Ukládání…",
       "security": "Zabezpečení",
       "securitySettings": "Nastavení zabezpečení",
-      "settings": "Nastavení",
       "username": "Uživatelské jméno"
     },
-    "studentDashboard": "Studentský portál",
     "teacher": {
       "courses": {
         "allStudents": "Všichni studenti",
-        "analytics": "Analytika",
         "announcementModal": {
           "contentLabel": "Text oznámení",
           "contentPlaceholder": "Prosím, pište sem.",
           "create": "Vytvořit oznámení",
-          "dateLabel": "Datum vydání",
-          "datePlaceholder": "Vyberte datum",
           "dateRequired": "Datum je povinné",
           "editAnnouncement": "Upravit oznámení",
           "groupLabel": "Vyberte skupinu studentů, kterou chcete oslovit",
@@ -923,7 +825,6 @@
         "assignment": "Úkol",
         "assignmentGrade": {
           "alertDescription": "Po zadání všech známek klikněte na tlačítko „Publikovat všechny známky“ a publikujte je všechny najednou.\nZnámky si prosím předem ověřte, protože po zveřejnění je již nebude možné upravovat. ",
-          "alertDescription2": "Známky úkolů musí být zveřejněny do 22. června do půlnoci (SEČ).",
           "alertTitle": "Hodnocení úkolů",
           "confirmPublication": "Potvrdit publikaci",
           "confirmPublicationDescription": "Po zveřejnění známek není cesty zpět, protože je již nebude možné upravovat.",
@@ -941,29 +842,22 @@
         "courseDetails": "Detaily kurzu",
         "courseLongDescription": "Úvodní popis",
         "courseModification": "Pokud potřebujete pomoc s úpravou něčeho v kurzu, podívejte se prosím na tento <0>tutoriál</0>.",
-        "coursesManagementPanel": "Panel kurzů",
         "curriculum": "Učební plán",
         "curriculumDescription": "Zde je aktuální učební plán tohoto kurzu.",
         "deleteAnnouncementTitle": "Jste si jisti, že chcete toto oznámení smazat?",
         "deleteAnnouncementWarning": "Tato změna je nevratná",
         "editOnGithub": "Upravit na Githubu",
         "examResults": "Výsledky zkoušek",
-        "goal": "Cíl",
         "makeModifications": "Potřebujete provést úpravy?",
         "noPastAnnouncement": "Aktuálně nemáte žádné předchozí oznámení.",
         "noWrittenAnnouncement": "Momentálně nemáte žádné písemné oznámení.",
         "objectives": "Cíle",
-        "proposeNewCourse": "Navrhněte nový kurz",
         "quickRecap": "Zde naleznete veškeré obecné informace týkající se tohoto kurzu.",
-        "reviewInfos": "Zde můžete spravovat a kontrolovat všechny informace týkající se každého kurzu, který jste koordinovali.",
         "reviews": "Recenze",
-        "selectCourse": "Vybrat kurz",
         "summerStudents": "Letní škola",
         "writeAnnouncement": "Napište oznámení"
       },
-      "menu": "Menu učitele",
       "profile": {
-        "account": "Profesorský účet",
         "billingInformation": "Fakturační údaje",
         "description": "Váš popis",
         "enterTipsInformation": "Síť Plan ₿ povzbuzuje uživatele k tomu, aby učitelům dávali spropitné. Zadejte prosím své údaje, aby vám lidé mohli dávat spropitné, kdykoli si to přejí.",
@@ -972,12 +866,9 @@
         "noLightningAddress": "Zatím nebyla přidána žádná Lightning adresa.",
         "noShortBio": "K tomuto účtu zatím není připojen žádný krátký životopis, klidně si ho můžete přidat na GitHub.",
         "noTags": "S tímto účtem zatím nejsou propojeny žádné štítky.",
-        "notifications": "Oznámení",
         "publicDescription": "Tento popis se zobrazí na vaší kartě s informacemi o učitelích na platformě.",
         "publicProfile": "Veřejný profil",
         "publicProfileDescription": "Zde můžete vyplnit nebo upravit veškeré informace spojené s vaší aktivitou jako učitele v Plan ₿ Network.",
-        "teacher": "Učitel/ka",
-        "teacherProfile": "Učitelský profil",
         "tutorialModification": "Pokud potřebujete s úpravou něčeho pomoct, podívejte se prosím na tento <0>tutoriál</0>."
       },
       "reviews": {
@@ -1003,43 +894,17 @@
     "card": {
       "bookLive": "Rezervujte si přímý přenos",
       "bookSeat": "Rezervujte si místo",
-      "buyReplay": "Koupit záznam",
-      "buyVideo": "Koupit video",
-      "eventFull": "Událost je plně obsazena",
       "free": "zdarma",
-      "limited": "omezeno na",
       "online": "online",
       "people": "lidé",
       "purchased": "Koupené",
-      "seatBooked": "Místo rezervováno",
       "unlimited": "neomezeno",
       "visitWebsite": "Navštívit webové stránky",
-      "watchLive": "Sledovat živě",
       "watchReplay": "Sledovat záznam"
     },
-    "errors": {
-      "premiumContentNeedsLogin": "Pro přístup k této události se musíte přihlásit.",
-      "premiumContentNeedsPayment": "Tato akce je součástí prémiového programu.",
-      "premiumContentNeedsPaymentAction": "Přejít na stránku událostí"
-    },
     "main": {
-      "currentEvents": "Právě probíhající události",
       "upcomingEvents": "Nadcházející události"
     },
-    "missed": {
-      "missedH1": "Proběhlé události k přehrání",
-      "missedP1": "Nestihli jste událost?",
-      "missedP2": "Zde ukládáme všechny záznamy z minulých událostí, které se odehrály na síti, aby každý mohl bez omezení dohnat, co zmeškal."
-    },
-    "newEvent": {
-      "button": "Přidat událost",
-      "description": "Samozřejmě! Všechny bitcoinové události se mohou na tomto místě zviditelnit a každá iniciativa pro vytvoření nové události je vítána!",
-      "subtitle": "Přivést na cestu k bitcoinu miliardu lidí není snadné",
-      "title": "Přejete si přidat vlastní událost?"
-    },
-    "pageDescription": "Zde najdete všechny akce podporované komunitami sítě Plan B Network. Ať už si chcete poslechnout přednášku, diskutovat o Bitcoinu u skleničky nebo složit zkoušku, která zhodnotí vaše znalosti... prostřednictvím sítě Plan B Network najdete tu správnou událost.",
-    "pageSubtitle": "Adopce „zdola nahoru“ podpořená silnou sítí",
-    "pageTitle": "Hledáte bitcoinovou akci, na kterou zajít?",
     "payment": {
       "access_online_successful": "Jakmile událost začne, přihlaste se na platformu a spusťte živé vysílání prostřednictvím stránky události.",
       "access_physical_successful": "Svou vstupenku si můžete stáhnout zde nebo si ji můžete stáhnout později ve svém portálu.",
@@ -1070,23 +935,10 @@
     "tcMustBeAccepted": "Pro pokračování musíte přijmout obchodní podmínky"
   },
   "filters": {
-    "categories": "Kategorie",
-    "levels": "Úrovně",
-    "resources": "Zdroje",
     "topics": "Témata"
   },
   "glossary": {
-    "anotherWord": "Hledat další slovo",
-    "creditsLoic": "<0>Zdroj:</0>: Slovník Bitcoinu, jehož autorem je <1>Loïc Morel (Pandul)</1>, dostupný v tomto <2>repozitáři Github</2>.",
     "definition": "Definice",
-    "filterBar": "Najděte zde slovo, které potřebujete",
-    "keepLooking": "Chcete pokračovat v hledání?",
-    "loadMoreWords": "Načíst více slov",
-    "needHelp": "Potřebujete pomoc s definicí technického slova?",
-    "notTranslated": "Data v glosáři ještě nebyla přeložena.\nPokud byste chtěli pomoci, neváhejte přispět na náš",
-    "pageTitle": "Bitcoin slovník pojmů",
-    "placeHolder": "Co je tohle?",
-    "randomSearch": "Náhodné vyhledávání",
     "relatedWords": "Související slova:",
     "term": "Pojem"
   },
@@ -1096,68 +948,25 @@
       "bitcoinFocusTitle": "Zaměření bitcoinu",
       "communityContent": "Jsme především komunita nadšenců, kteří si navzájem pomáhají na své bitcoinové cestě",
       "communityTitle": "Komunita",
-      "content": "Síť PlanB je iniciativa na podporu vzdělávání v oblasti bitcoinu po celém světě. Jde o propojení různých nadšených bitcoinových společností zaměřených na vzdělávání, open-source software, peer-to-peer sítě a smysl pro budování komunit. Společně se rozhodly vybudovat síť PlanB a nabídnout bitcoinovým ekosystémům ty správné nástroje pro jejich rozvoj.",
       "openSourceContent": "Naším cílem je podporovat svobodný tok znalostí a pomáhat vytvářet více řešení s otevřeným zdrojovým kódem",
       "openSourceTitle": "Open source",
       "privacyContent": "Považujeme soukromí za jedno ze základních lidských práv a nutností k rozvoji",
-      "privacyTitle": "Soukromí",
-      "subtitle": "Něco málo o nás",
-      "title": "Kdo jsme?"
+      "privacyTitle": "Soukromí"
     },
     "blogSection": {
-      "blogTitle": "Co je nového v síti Plan ₿",
-      "description": "Platformu, obsah a síť neustále vylepšujeme – podívejte se!",
-      "noBlogsAvailable": "Žádné blogy nejsou k dispozici.",
-      "noDateAvailable": "Žádné datum k dispozici",
       "seeAll": "Zobrazit vše"
     },
     "courseSection": {
-      "checkAllCourses": "Prohlédněte si všechny kurzy",
-      "upcomingCourseDescription": "Prohlédněte si nejnovější kurzy zveřejněné na platformě. Učení nikdy nekončí!",
-      "upcomingCourseTitle": "Nadcházející & nové kurzy"
-    },
-    "eventSection": {
-      "checkEvents": "Zkontrolovat všechny události",
-      "eventTitle": "Globální bitcoinová síť pedagogů",
-      "hottestEvent": "Nejvíc trendy bitcoinová událost"
-    },
-    "header": {
-      "content": "Platforma Plan ₿ si klade za cíl poskytovat nejlepší nástroje a vzdělávací obsah po celém světě, aby pomohla lidem získat zpět jejich suverenitu. Jsme tu, abychom vám pomohli na vaší cestě za Bitcoinem, a to od jednotlivců až po komunity.",
-      "forEducators": "Pro pedagogy a studenty",
-      "globalNetwork": "Celosvětová bitcoinová síť",
-      "welcome": "Vítejte v síti Plan ₿ Network"
+      "checkAllCourses": "Prohlédněte si všechny kurzy"
     },
     "languageSection": {
       "availableLanguages": "Dostupné jazyky",
-      "availableLanguagesVariation": "Dostupné jazyky: ",
-      "content1": "V Plan ₿ Network věříme, že Bitcoin je mezinárodní revoluce, která se týká všech. Chceme posílit postavení miliard lidí, a proto navrhujeme tuto platformu tak, aby byla vícejazyčná a přístupná všem. Platforma v současné době podporuje {{nb}} jazyků a každý měsíc přibývají další. Abychom toho dosáhli, využíváme kombinaci umělé inteligence a nadšení bitcoinerů z celého světa!",
-      "link": "Pomozte nám s překladem akademie",
-      "subtitle": "Vše je přeloženo do místních jazyků!",
-      "title": "Bez jazykových bariér."
-    },
-    "patreonSection": {
-      "content": "Plan ₿ Network je hrdá na spojení s mnoha bitcoinovými firmami po celém světě, za účelem poskytnout ty nejlepší dostupné vzdělávací materiály!",
-      "title": "Pojďme společně zlepšit vzdělávání o bitcoinu!"
-    },
-    "tutorialSection": {
-      "content1": "Bitcoin se neustále vyvíjí, přicházejí a odcházejí noví aktéři, řešení, protokoly a technologické objevy. Často je obtížné udržovat jedinou přesnou databázi dobrých a aktualizovaných návodů. Zde v Plan ₿ jsme toho dosáhli. Od začátečníků až po pokročilé uživatele se můžete orientovat ve stovkách výukových materiálů a prozkoumat tak naše odvětví na základě svých potřeb.",
-      "link": "Prohlédnout si všechny návody",
-      "link2": "Zobrazit všechny zdroje",
-      "subtitle1": "Pomůžeme vám osvojit si technologii pomocí mnoha podrobných výukových programů.",
-      "title": "Naším cílem je sjednotit výuku o bitcoinu"
-    },
-    "wallOfLoveSection": {
-      "subtitle": "Co o nás říkají Bitcoineři",
-      "title": "Zeď lásky"
+      "link": "Pomozte nám s překladem akademie"
     }
   },
   "imagesAlt": {
-    "bookCover": "obálka knihy",
-    "contributorHeart": "srdce pro milého přispěvatele",
-    "orangePill": "oranžová pilulka",
     "printedCircuits": "plošný obvod",
     "rabbit404": "zajíc svítící baterkou na symbol 404",
-    "sthRepresentingCompany": "něco, co reprezentuje společnost",
     "underConstructionImage": "Ilustrace několika zajíců pracujících na stavbě"
   },
   "labs": {
@@ -1167,8 +976,7 @@
     "planBLabs": "Plan ₿ Laboratoře",
     "presentation": {
       "link": "Objevte Plan ₿ Laboratoře",
-      "subtitle": "Přidejte se do laboratoře, kde se můžete učit, diskutovat a rozvíjet!",
-      "title": "Dostaňte své bitcoinové dovednosti na další úroveň!"
+      "subtitle": "Přidejte se do laboratoře, kde se můžete učit, diskutovat a rozvíjet!"
     },
     "title": "Praktické a interaktivní kurzy pro kontinuální vzdělávání"
   },
@@ -1176,41 +984,10 @@
     "buyVideoToUnlock": "Kupte si video a odemkněte ho",
     "checkFullCourse": "Podívejte se na celý kurz",
     "lecturePartCourse": "Tato přednáška je součástí kurzu <0>{{courseTitle}}<0>.\nPonořte se do celého kurzu, abyste zvládli celý koncept a odemkli svůj plný potenciál!",
-    "pageTitle": "Záznamy přednášek",
-    "partCourse": "Tato přednáška je součástí kurzu:",
     "watchLecture": "Podívejte se na záznam přednášky"
   },
-  "library": {
-    "pageTitle": "Bitcoinová knihovna"
-  },
   "menu": {
-    "bCertDescription": "Složte test ₿-CERT a zhodnoťte svou úroveň znalostí Bitcoinu",
-    "betDescription": "Sbírka materiálů, které můžete použít pro své vzdělávací projekty",
-    "bitcoinDescription": "Naučte se Bitcoin od základů až po pokročilé aplikace.",
-    "businessDescription": "Objevte využití Bitcoinu v obchodě.",
-    "channelsDescription": "Získejte přístup k našemu exkluzivnímu výběru YouTube kanálů a dozvíte se více o Bitcoinu",
-    "chooseLanguage": "Vyberte jazyk",
-    "conferencesDescription": "Sbírka záznamů z bitcoinových konferencí od Genesis Block",
-    "glossaryDescription": "Pochopte jazyk Bitcoinu",
-    "lecturesDescription": "Znovu si prostudujte nahrané přednášky bitcoinových expertů",
-    "libraryDescription": "Objevte spoustu knih, které vám pomohou prohloubit vaše znalosti",
-    "login": "Přihlašte se",
-    "miningCourseDescription": "Pochopte procesy, nástroje a odvětví, které stojí za těžbou bitcoinů.",
-    "moviesDescription": "Objevte poutavé příběhy a hloubkové zkoumání vývoje a vlivu Bitcoinu",
-    "newsletterDescription": "Sbírka obsahu, který můžete použít pro své vzdělávací projekty",
-    "planBLabsDescription": "Připojte se ke studijní skupině a pokračujte ve vzdělávání v oblasti Lightningu, těžby a ochrany osobních údajů",
-    "podcastsDescription": "Objevte bitcoinový ekosystém pomocí podcastů",
-    "projectsDescription": "Zjistěte více o společnostech a projektech, které přispívají ke zlepšení Bitcoinu a zvyšování jeho adopce",
-    "protocolDescription": "Objevte základní pravidla, která pohánějí bitcoinovou síť.",
-    "publicDescription": "Prostudujte články veřejné komunikace",
-    "securityDescription": "Zvládněte techniky pro ochranu vašich bitcoinů.",
-    "socialStudiesDescription": "Prozkoumejte dopad Bitcoinu na společnost.",
-    "teachersDescription": "Seznamte se s našimi univerzitními vyučujícími, vášnivými bitcoinery"
-  },
-  "movies": {
-    "goToMovie": "Podívejte se na film",
-    "pageTitle": "Filmy & Dokumenty",
-    "watchTrailer": "Podívejte se na upoutávku"
+    "login": "Přihlašte se"
   },
   "notFound": {
     "here": "Zde",
@@ -1237,7 +1014,6 @@
     "calendar_48h_online_event": "Akce {{eventName}} se brzy uskuteční! Je naplánována na {{date}} od {{formattedTime}}. ",
     "dashboardDescription": "Zde jsou vaše nejnovější oznámení. Budou automaticky odstraněna měsíc poté, co jste si je přečetli.",
     "daysAgo": "před {{days}} dny",
-    "hoursAgo": "před {{hours}} hodinami",
     "markAsRead": "Označit jako přečtené",
     "monthsAgo": "před {{months}} měsíci",
     "noRecentNotifications": "Momentálně nemáte žádná nedávná oznámení.",
@@ -1248,7 +1024,6 @@
     "results": "Výsledky testu ₿-CERT jsou k dispozici!",
     "select": "Vyberte",
     "selectAll": "Vyberte vše",
-    "stayUpToDate": "Zůstaňte v obraze!",
     "today": "Dnes",
     "unread": "Nepřečtené",
     "upcomingEvent": "Nadcházející událost",
@@ -1268,12 +1043,6 @@
   "placeholders": {
     "selectTimeZone": "Vyberte časové pásmo"
   },
-  "podcast": {
-    "check": "Podívejte se na podcast"
-  },
-  "podcasts": {
-    "pageTitle": "Bitcoinové podcasty"
-  },
   "professors": {
     "navigationTitles": {
       "all": "Vše",
@@ -1291,11 +1060,8 @@
     }
   },
   "projects": {
-    "languages": "Jazyky",
-    "networkStrength": "Síla sítě spočívá v jejích členech",
     "noRelatedEvents": "Tento pedagog momentálně nemá žádné nadcházející události.",
     "otherCommunities": "Objevte Plan ₿ komunity",
-    "pageTitle": "Bitcoinové projekty",
     "related": "Související",
     "relatedEvents": "Související nadcházející události"
   },
@@ -1310,45 +1076,19 @@
     "thanks": "Velké poděkování patří našim úžasným korektorům!"
   },
   "publicCommunication": {
-    "blogCategories": {
-      "all": "Vše",
-      "content": "Obsah",
-      "feature": "Funkce",
-      "network": "Síť"
-    },
-    "blogPageStrings": {
-      "blogListButtonText": "Přečíst článek",
-      "blogSidebarTitle": "Předchozí příspěvky v {{category}} kategorii",
-      "blogSidebarTitleForAll": "Předchozí příspěvky",
-      "errorMessageNotFound": "Blog nenalezen.",
-      "featuredArticleTitleText": "Nejnovější článek byl zveřejněn",
-      "filterText": "Filtrovat podle tématu :",
-      "noArticlesText": "Momentálně nejsou žádné příspěvky na blogu.",
-      "pastArticleSubtitleText": "Starší články"
-    },
-    "blogPost": "Blogs & Novinky",
-    "description": "Síť Plan ₿ je hrdá na to, že dodržuje standardy open source a po celou dobu své existence si udržuje transparentnost",
-    "goBackButtons": {
-      "simpleGoBack": "Zpět na všechny články"
-    },
     "legal": "Právní informace",
     "legalSections": {
       "contact": "Kontakt",
       "legalNotice": "Právní upozornění",
       "privacyPolicy": "Zásady ochrany osobních údajů",
       "termsOfSale": "Podmínky prodeje"
-    },
-    "title": "Veřejná komunikace"
+    }
   },
   "resources": {
-    "articles": {
-      "title": "Články"
-    },
     "bet": {
       "title": "Vzdělávací nástroje"
     },
     "books": {
-      "author": "Autor: ",
       "title": "Knihovna"
     },
     "channels": {
@@ -1358,12 +1098,10 @@
     "conferences": {
       "title": "Záznamy z konferencí"
     },
-    "github": "Všechna tato data jsou spravována prostřednictvím jednoho open-source <0>Github</0> repozitáře. Neváhejte přispívat a přidávat chybějící obsah.",
     "glossary": {
       "title": "Slovníček pojmů"
     },
     "lectures": {
-      "noLectures": "Pro vybraný jazyk momentálně nejsou k dispozici žádné záznamy přednášek.",
       "title": "Záznamy přednášek"
     },
     "movies": {
@@ -1374,19 +1112,14 @@
       "check": "Podívejte se na newsletter"
     },
     "newsletters": {
-      "author": "Autor : ",
-      "level": "Stupeň :",
       "noNewsletters": "Pro vybraný jazyk momentálně nejsou k dispozici žádné newslettery.",
       "subtitle": "<0>Další newslettery</0>, které by se vám mohly líbit",
       "title": "Newslettery"
     },
-    "pageDescription": "Snažit se porozumět Bitcoinu je jako prozkoumávat bludiště, které se neustále zvětšuje. Abychom vám na této cestě pomohli, připravili jsme pro vás širokou nabídku materiálů včetně knih, podcastů, videí a záznamů z konferencí. Tento portál shromažďuje všechny informace v jednom repozitáři Github, aby vám pomohl lépe pochopit ekosystém Bitcoinu.",
     "pageSubtitle": "Centralizace znalostí za účelem jejich lepšího šíření",
     "pageSubtitleBooks": "<0>Další knihy</0>, které by se vám mohly líbit",
     "pageSubtitleChannels": "<0>Další Youtube kanály</0>, které by se vám mohly líbit",
-    "pageSubtitleLectures": "<0>Další záznamy přednášek</0>, které by se vám mohly líbit",
     "pageSubtitlePodcast": "<0>Další podcasty</0>, které by se vám mohly líbit",
-    "pageTitle": "Vítejte na portálu se zdroji",
     "podcasts": {
       "noPodcasts": "Pro vybraný jazyk momentálně nejsou k dispozici žádné podcasty.",
       "title": "Podcasty"
@@ -1395,7 +1128,6 @@
       "title": "Projekty"
     },
     "searchFilterName": "Vyhledat podle názvu",
-    "toggleFreeOnly": "Pouze zdarma",
     "toggleLabelAll": "Vše",
     "toggleLabelSelectedLanguage": "Vybrané jazyky"
   },
@@ -1414,13 +1146,10 @@
     "event": "Událost",
     "events": "Události",
     "explorer": {
-      "subtitle": "Co hledáte?",
       "title": "Vyhledávací portál"
     },
-    "filterByType": "Filtrovat podle typu",
     "glossary_word": "Slovníček slov",
     "glossary_words": "Slovníček pojmů",
-    "languageSelected": "Zvolený jazyk: {{language}}",
     "lecture_replay": "Záznam lekce",
     "lecture_replays": "Záznamy lekcí",
     "loadMoreResults": "Zobrazit další výsledky",
@@ -1434,11 +1163,9 @@
     "projects": "Projekty",
     "resultEmpty": "Jejda! Nenašli jsme nic odpovídajícího vašemu vyhledávání. Zkontrolujte pravopis, zkuste jiná klíčová slova nebo vyberte jinou kategorii.",
     "resultError": "Něco se pokazilo. Zkuste to prosím znovu.",
-    "resultInfo": "Nalezeno {{count}} výsledků za {{time}}",
     "results": "Výsledky",
     "resultsRemaining": "{{count}} zbývajících výsledků",
     "search": "Hledat",
-    "searchResult": "Výsledky hledání",
     "startSearch": "Začněte s vyhledáváním a zobrazte si výsledky zde",
     "tutorial": "Tutoriál",
     "tutorials": "Tutoriály",
@@ -1452,56 +1179,32 @@
     "changeProfilePicture": "Změnit profilový obrázek"
   },
   "tutorials": {
-    "approvedByCreator": "Schváleno tvůrcem",
-    "backTutorials": "Zpět na všechny tutoriály",
     "business": {
-      "description": "Chcete integrovat Bitcoin do svého podnikání? Tato kategorie shromažďuje všechny návody určené pro profesionály. Ať už jde o nastavení pokladního systému pro snadné přijímání plateb v Bitcoinu nebo o přidávání a správu bitcoinů v pokladně vaší společnosti, najdete zde základní technické a praktické informace.",
-      "shortDescription": "Přijímání plateb v bitcoinech a jejich správa ve vaší pokladně",
       "title": "Business"
     },
     "computer-security": {
-      "description": "Počítačová bezpečnost je nezbytná pro každého bitcoinerového uživatele. V této kategorii najdete návody na základní nástroje a obecné postupy pro ochranu vašeho digitálního prostředí. Operační systémy, zabezpečené prohlížeče, správci hesel, ověřovací systémy, VPN a řešení šifrované komunikace – všechny zde uvedené zdroje mají za cíl zvýšit vaši bezpečnost a soukromí.",
-      "shortDescription": "Základní nástroje pro ochranu vaší digitální bezpečnosti a soukromí",
       "title": "Zabezpečení počítače"
     },
     "contribution": {
-      "description": "Chcete přispět k open-source platformě Plan ₿ Network? V této kategorii se naučíte, jak psát a publikovat nový tutoriál, recenzovat nebo korigovat obsah nebo přidávat nové užitečné zdroje pro komunitu. Tyto tutoriály vám dají možnost zapojit se do vzdělávání v oblasti Bitcoinu a obohatit naši sdílenou znalostní základnu.",
-      "shortDescription": "Přispějte k open-source platformě Plan ₿ Network",
       "title": "Příspěvek"
     },
     "details": {
       "author": "Autor:",
-      "didHelp": "Pomohlo to?",
       "ratingSuccess": "Děkujeme za vaše hodnocení!",
       "source": "Původní zdroj:",
-      "tutorialName": "Název tutoriálu",
-      "writtenBy": "Tento tutoriál byl napsán :"
+      "tutorialName": "Název tutoriálu"
     },
     "exchange": {
-      "description": "Směnárny jsou jednou ze vstupních a výstupních bran mezi vaší tradiční měnou (eura, dolary) a světem bitcoinu. Burzy mohou být regulované a podléhající pravidlům KYC (Know Your Customer) nebo peer-to-peer a anonymní. Každá burza bude nabízet jiné funkce, strukturu poplatků, likviditu a zákaznickou podporu. Každý bitcoiner bude používat jinou na základě svých potřeb a přesvědčení.",
-      "shortDescription": "Řešení pro nákup a prodej bitcoinů, KYC a non-KYC",
       "title": "Směnárna"
-    },
-    "explorer": {
-      "description": "Všechny tyto výukové programy byly napsány nadšenými a oddanými bitcoinery, kteří chtějí šířit bitcoinové vzdělání po celém světě. Nezapomeňte je lajkovat, recenzovat a přispět jim saty!",
-      "didYouKnow": "Věděli jste?",
-      "exploreAllTutorials": "Prozkoumejte všechny tutoriály"
     },
     "hasBeenProofreadBy": "Tento tutoriál byl korektován uživatelem",
     "hasNotBeenProofread": "Tento tutoriál ještě nebyl korekturován",
     "mining": {
-      "description": "Těžební průmysl je složité téma plné králičích děr. Zde se vás pokusíme doprovodit na vaší cestě pomocí používání hardwaru a softwaru. Od implementace S9 do domácího topení až po pokus o výhru v loterii s těžařem.",
-      "shortDescription": "Řešení pro těžbu bitcoinů",
       "title": "Těžba"
     },
     "node": {
-      "description": "Uzly jsou jako vaše osobní servery. V Bitcoinu je to software, který vám umožňuje provozovat síť, shromažďovat transakce, ověřovat pravidla a být skutečně nezávislý. V rámci našeho ekosystému existují různé uzly, od jádra Bitcoinu po implementace Lightning, RGB nebo jiná pokročilejší řešení ochrany soukromí.",
-      "shortDescription": "Řešení pro provozování bitcoinového uzlu a připojení k síti",
       "title": "Uzel"
     },
-    "pageDescription": "Bitcoin je širokým odvětvím, které se každým dnem rozrůstá. Abychom vám ho pomohli prozkoumat, shromáždili jsme a sestavili velké množství výukových materiálů, které popisují různá řešení ve všech oblastech souvisejících s Bitcoinem.",
-    "pageSubtitle": "Pojďme demystifikovat Bitcoin tím, že budeme ukazovat rozmanitost a bohatství jeho ekosystému",
-    "pageTitle": "Objevte naše výukové programy",
     "privacy": {
       "description": "Soukromí je základní právo. Ačkoli usilujeme o svět, kde je soukromí standardem, není to realita, ve které žijeme. Vysvětlíme vám ověřené postupy, poskytneme vám návody a nasměrujeme vás na nezávislejší cestu, pokud jde o vaše údaje.",
       "shortDescription": "Nástroje pro zálohování a zachování soukromí",
@@ -1529,8 +1232,6 @@
       "resource": "Zdroj"
     },
     "wallet": {
-      "description": "Bitcoinová peněženka je jako vaše klíčenka. Umožňuje vám utrácet a přijímat bitcoiny. Existuje mnoho různých typů peněženek, všechny s různými způsoby užití, funkcemi, cenou a uživatelskými zkušenostmi. Každý bitcoiner bude používat jiné zařízení na základě svých potřeb, úrovně náročnosti a zkušeností.",
-      "shortDescription": "Bezpečnostní řešení a používání vašich bitcoinů",
       "title": "Peněženka"
     },
     "writtenBy": "Tento tutoriál napsal/a"
@@ -1600,9 +1301,7 @@
     "email": "Email",
     "events": "Události",
     "exam": "Zkouška",
-    "failed": "Selhalo",
     "filter": "Filtrovat",
-    "finish": "Skončit",
     "free": "Zdarma",
     "github": "Github",
     "glossary": "Slovníček",
@@ -1624,18 +1323,14 @@
       "advanced": "Pokročilý",
       "beginner": "Začátečník",
       "beginnerFriendly": "Vhodný pro začátečníky",
-      "developer": "Vývojář",
       "expert": "Expert",
       "intermediate": "Mírně pokročilý",
       "level": "Stupeň",
-      "levels": "Stupně",
-      "wizard": "Expert"
+      "levels": "Stupně"
     },
-    "library": "Knihovna",
     "lightningInvoice": "Lightning faktura",
     "likes": "Líbí se mi",
     "linkedin": "Linkedin",
-    "lnurlAuth": "LNURL Autorizace",
     "location": "Lokalita",
     "members": " Členové",
     "mentor": "Mentor",
@@ -1651,7 +1346,6 @@
     "on": "na",
     "onChainAddress": "On chain addresa",
     "online": "Online",
-    "ourStory": "Náš příběh",
     "overview": "Přehled",
     "paid": "Premium",
     "part": "Část",
@@ -1669,7 +1363,6 @@
     "projects": "Projekty",
     "protocol": "Protokol",
     "public": "Veřejná komunikace",
-    "publicationDate": "Datum zveřejnění:",
     "ratings": "Hodnocení",
     "register": "Registrovat",
     "required": "Požadováno",
@@ -1690,7 +1383,6 @@
     "submit": "Odevzdat",
     "teacher": "Učitel",
     "telegram": "Telegram",
-    "termsAndConditions": "Podmínky a ustanovení",
     "ticket": "Vstupenka",
     "tickets": "Vstupenky",
     "time": "Čas",
@@ -1714,7 +1406,6 @@
     "yes": "Ano"
   },
   "youtubeChannels": {
-    "pageTitle": "Youtube kanály",
     "view": "Zobrazit YouTube kanál",
     "watchTrailer": "Podívejte se na upoutávku"
   }

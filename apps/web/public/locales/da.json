@@ -19,7 +19,6 @@
     "missionTitle": "Our mission",
     "storyContent": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow. Our 2023 release presentation is available here.",
     "storyTitle": "Out story",
-    "subtitle": "Bitcoin strength is our community. let's gather into a global bitcoin network.",
     "title": "About the planB network"
   },
   "accessType": {
@@ -53,7 +52,6 @@
       "errorValidatingEmailDescription": "",
       "successfullyChanged": "",
       "successfullyValidated": "",
-      "validateChange": "",
       "validatingEmail": "",
       "validatingEmailChange": "",
       "wontTakeLong": ""
@@ -75,7 +73,6 @@
       "invalid": "",
       "notFound": ""
     },
-    "lnurlAuthDescription": "Scan this QR code with your Lightning wallet in order to login!",
     "newPassword": "",
     "noAccountNeeded": "No need for an account in order to start learning at the Sovereign University!",
     "noAccountYet": "Don't have an account?",
@@ -97,50 +94,28 @@
     "bCertDescription": "",
     "bookExam": "",
     "challengeYourself": "",
-    "checkout": "",
     "download": "",
     "knowledgeableBitcoin": "",
-    "noBookExam": "",
-    "organizeDescription": "",
     "organizeExam": "",
-    "organizeSessionConditions": "",
-    "organizeSessionHub": "",
-    "organizeSubtitle": "",
-    "organizeTitle": "",
-    "pageSubtitle": "",
     "pageTitle": "",
-    "readChart": "",
     "tweetText": "",
     "verify": ""
   },
   "bet": {
-    "contributeButton": "",
-    "contributeDescription": "",
-    "contributeTitle": "",
     "educationalContent": {
-      "description": "This content is meant to be ready to use for educational events and use.",
       "title": "Educational Content"
     },
-    "pageDescription": "The Sovereign University supports bitcoin educators and local communities all over the world, to helpspread bitcoin adoption. Towards that goal, we collect and make accessible a large database, of both educational content (created by us and by others), as well as visual data.",
-    "pageTitle": "Bitcoin Educational Toolkit",
     "visualContent": {
-      "description": "This content is raw visual data, to be used for your creations.",
       "title": "Visual Content"
     }
   },
   "conferences": {
-    "addConferences": "",
-    "backConferences": "",
     "conferenceName": "",
     "conferencesSinceGenesis": "",
-    "description": "",
     "details": {
       "findReplay": "",
-      "nextVideo": "",
-      "previousVideo": "",
       "selectStage": "",
-      "selectVideo": "",
-      "watchReplay": ""
+      "selectVideo": ""
     },
     "language": "",
     "latestConferences": "",
@@ -156,10 +131,6 @@
         "bookSeat": "",
         "cancelBooking": "",
         "classIsFull": "",
-        "p1content": "",
-        "p1heading": "",
-        "p2content": "",
-        "p2heading": "",
         "ticketDownload": "",
         "title": ""
       },
@@ -168,9 +139,7 @@
         "stayTuned": "",
         "title": ""
       },
-      "next": "Done, let's go to the next chapter!",
-      "nextLesson": "",
-      "thanksTip": "Wanna say thanks ? Tip."
+      "next": "Done, let's go to the next chapter!"
     },
     "conclusion": {
       "completedChaptersHeadline": "",
@@ -212,7 +181,6 @@
       "premiumContentNeedsPaymentAction": "",
       "startCourse": "Start the course",
       "taughtBy": "This course is being taught by :",
-      "teacherLed": "",
       "thanksTipping": ""
     },
     "exam": {
@@ -232,7 +200,6 @@
       "dontGiveUpTryAgain": "",
       "dontWorry": "",
       "dontWorryRetake": "",
-      "examAndDiploma": "",
       "examAvailabilityDetails": "",
       "examCertificateCompletionText": "",
       "examDetails": "",
@@ -251,7 +218,6 @@
       "goodLuck": "",
       "instantVerification": "",
       "instructions": "",
-      "letsConclude": "",
       "nbMinutes": "",
       "nbQuestions": "",
       "nextChapter": "",
@@ -259,7 +225,6 @@
       "notTranslatedYet": "",
       "oneMinuteLeft": "",
       "oopsFailed": "",
-      "passExam": "",
       "passed": "",
       "passRate": "",
       "planBTimeStamp": "",
@@ -305,22 +270,13 @@
       "tryAgain": "",
       "tryOneMoreTime": "",
       "verifyDisplayName": "",
-      "viewExam": "",
       "weight": "",
       "whyTimeStamp": "",
       "wishTryAgain": "",
       "yesSubmit": ""
     },
     "explorer": {
-      "buildPath": "",
-      "comingSoon": "",
-      "exploreCourses": "",
-      "findCourses": "",
       "goal": "",
-      "journey": "",
-      "pageDescription": "Here you will be able to find a large numbers of courses related to Bitcoin as a whole, with a large range of subjects. This educational content is organic, growing along as Bitcoin grows. All content is free, open-source and accessible to everyone. The courses index, organized in circles to adapt to anyone’s path of learning.",
-      "planbSchool": "",
-      "planbSchoolHeadline": "",
       "seeCourse": ""
     },
     "format": {
@@ -332,15 +288,12 @@
       "count": "Part n°{{count}}/{{total}}"
     },
     "payment": {
-      "accessibility": "Accessibility",
-      "accessibility_forever": "Forever",
       "amount": "Amount",
       "back_course": "",
       "book_description": "",
       "checkoutError": "",
       "courseType": "",
       "date": "Date",
-      "downloadCurriculum": "Download curriculum",
       "duration": "Duration",
       "hybridDescription": "",
       "inPersonCallout": "",
@@ -351,8 +304,6 @@
       "payment_details": "Payment details",
       "payment_successful": "Payment successful!",
       "qr_unified": "",
-      "teacher": "Teacher",
-      "teachers": "Teachers",
       "time": ""
     },
     "quizz": {
@@ -410,7 +361,6 @@
     }
   },
   "dashboard": {
-    "account": "",
     "adminPanel": {
       "accessGranted": "",
       "bookings": "",
@@ -419,7 +369,6 @@
         "careers": "",
         "careersSubtitle": "",
         "cv": "",
-        "downloadProfiles": "",
         "downloadSpreadsheet": "",
         "lastUpdate": "",
         "lastUpdated": "",
@@ -435,7 +384,6 @@
         "delete": "",
         "deleteDiscountCode": "",
         "deleteDiscountCodeConfirm": "",
-        "deleteDiscountCodeSuccess": "",
         "deleteDiscountCodeWarning": "",
         "discountCode": "",
         "discountCodeCopied": "",
@@ -446,7 +394,6 @@
         "discountType": "",
         "discountValue": "",
         "discountValueExplanation": "",
-        "discountValuePlaceholder": "",
         "downloadImage": "",
         "downloadImages": "",
         "explanation": "",
@@ -489,10 +436,8 @@
           "maxUses": "",
           "name": "",
           "owner": "",
-          "total": "",
           "type": "",
-          "uses": "",
-          "value": ""
+          "uses": ""
         }
       },
       "coursesIndexes": "",
@@ -504,7 +449,6 @@
       "githubLink": "",
       "hasAccessTo": "",
       "listOfParticipants": "",
-      "makeProfessor": "",
       "nameOfEvent": "",
       "participants": "",
       "professorName": "",
@@ -531,14 +475,8 @@
       "publicationDate": ""
     },
     "backToDashboard": "",
-    "bCert": {
-      "grade": "",
-      "noResults": ""
-    },
     "booking": {
       "accessLive": "",
-      "billingSubtitle": "",
-      "billingTitle": "",
       "cancelBookingTitle": "",
       "invoiceDate": "",
       "invoiceTitle": "",
@@ -551,12 +489,10 @@
       "ticketLocation": "",
       "ticketTitle": "",
       "ticketType": "",
-      "upcomingTicketSubtitle": "",
       "upcomingTicketTitle": "",
       "yesCancel": ""
     },
     "calendar": {
-      "calendar": "",
       "eventType": {
         "class": "",
         "event": ""
@@ -747,10 +683,7 @@
       "assignment": "",
       "assignmentCompletedDescription": "",
       "assignmentCompletedTitle": "",
-      "assignmentDescription": "",
-      "assignmentInformation": "",
       "assignmentTitle": "",
-      "checkDetailsCompleted": "",
       "completionDiploma": "",
       "completionExamInfo": "",
       "conclusionHeadline": "",
@@ -762,15 +695,12 @@
       "congratulationsPassed": "",
       "coordinator": "",
       "courseCalendar": "",
-      "coursesCompleted": "",
       "diplomaReleaseDescription": "",
       "diplomaReleaseTitle": "",
       "examScore": "",
       "exams": "",
       "feedbacks": "",
-      "fileUploadError": "",
       "fileUploaded": "",
-      "finalAverageGradeDescription": "",
       "finalGradeSummary": "",
       "finalScore": "",
       "generalInformation": "",
@@ -785,8 +715,6 @@
       "mostPreferred": "",
       "mustBePdf": "",
       "notSelectedAssignment": "",
-      "planbSchoolExamDescription": "",
-      "planbSchoolGeneralInformation": "",
       "projectRankingInstructions": "",
       "ranking": "",
       "rankingInstructions": "",
@@ -798,30 +726,19 @@
       "shareOnSocials": "",
       "submissionInstructions": "",
       "submitBefore": "",
-      "submitFileNamingFormat": "",
       "submitReviewInfo": "",
       "submitYourWork": "",
       "summerSchool": "",
       "surePreferenceList": "",
       "thresholdToPass": "",
       "tweetText": "",
-      "viewFinalGrade": "",
       "yourProject": ""
     },
-    "courses": "",
     "credentials": {
       "bCert": "",
-      "bCertSubtitle": "",
       "beingGraded": "",
-      "completionDiplomas": "",
       "courseDiplomas": "",
-      "courseDiplomasSubtitle": "",
-      "downloadTicket": "",
-      "globalCertifications": "",
-      "retakeExam": "",
-      "seatBooked": "",
-      "takePlaceAt": "",
-      "yourCertificate": ""
+      "globalCertifications": ""
     },
     "goToDashboard": "",
     "goToHomepage": "",
@@ -829,28 +746,20 @@
     "myCourses": {
       "completeAll": "",
       "completed": "",
-      "completedCoursesDescription": "",
-      "completedCoursesTitle": "",
-      "courseDashboard": "",
       "detailsAndCertificate": "",
       "done": "",
       "download": "",
       "duration": "",
       "inProgress": "",
-      "newCourses": "",
-      "noCoursesAvailable": "",
       "notStarted": "",
       "notValidated": "",
       "price": "",
       "professor": "",
       "resumeLesson": "Resume the lesson",
       "seeDetails": "",
-      "seeProgress": "",
       "seeTheCourse": "",
       "shareOn": "",
-      "startCourse": "",
       "verify": "",
-      "viewDetails": "",
       "whereYouAre": "",
       "yourCertificate": "",
       "yourProgress": ""
@@ -884,29 +793,22 @@
         "title": ""
       },
       "password": "",
-      "personalInformation": "",
       "preview": "",
       "profile": "",
-      "profileInformation": "",
       "profilePicture": "",
       "save": "",
       "saving": "",
       "security": "",
       "securitySettings": "",
-      "settings": "",
       "username": ""
     },
-    "studentDashboard": "",
     "teacher": {
       "courses": {
         "allStudents": "",
-        "analytics": "",
         "announcementModal": {
           "contentLabel": "",
           "contentPlaceholder": "",
           "create": "",
-          "dateLabel": "",
-          "datePlaceholder": "",
           "dateRequired": "",
           "editAnnouncement": "",
           "groupLabel": "",
@@ -923,7 +825,6 @@
         "assignment": "",
         "assignmentGrade": {
           "alertDescription": "",
-          "alertDescription2": "",
           "alertTitle": "",
           "confirmPublication": "",
           "confirmPublicationDescription": "",
@@ -941,29 +842,22 @@
         "courseDetails": "",
         "courseLongDescription": "",
         "courseModification": "",
-        "coursesManagementPanel": "",
         "curriculum": "",
         "curriculumDescription": "",
         "deleteAnnouncementTitle": "",
         "deleteAnnouncementWarning": "",
         "editOnGithub": "",
         "examResults": "",
-        "goal": "",
         "makeModifications": "",
         "noPastAnnouncement": "",
         "noWrittenAnnouncement": "",
         "objectives": "",
-        "proposeNewCourse": "",
         "quickRecap": "",
-        "reviewInfos": "",
         "reviews": "",
-        "selectCourse": "",
         "summerStudents": "",
         "writeAnnouncement": ""
       },
-      "menu": "",
       "profile": {
-        "account": "",
         "billingInformation": "",
         "description": "",
         "enterTipsInformation": "",
@@ -972,12 +866,9 @@
         "noLightningAddress": "",
         "noShortBio": "",
         "noTags": "",
-        "notifications": "",
         "publicDescription": "",
         "publicProfile": "",
         "publicProfileDescription": "",
-        "teacher": "",
-        "teacherProfile": "",
         "tutorialModification": ""
       },
       "reviews": {
@@ -1003,43 +894,17 @@
     "card": {
       "bookLive": "Book live",
       "bookSeat": "Book your seat",
-      "buyReplay": "",
-      "buyVideo": "",
-      "eventFull": "",
       "free": "free",
-      "limited": "limited to",
       "online": "online",
       "people": "people",
       "purchased": "",
-      "seatBooked": "",
       "unlimited": "unlimited",
       "visitWebsite": "Visit website",
-      "watchLive": "Watch live",
       "watchReplay": "Watch replay"
     },
-    "errors": {
-      "premiumContentNeedsLogin": "",
-      "premiumContentNeedsPayment": "",
-      "premiumContentNeedsPaymentAction": ""
-    },
     "main": {
-      "currentEvents": "Events happening right now",
       "upcomingEvents": "Upcoming events"
     },
-    "missed": {
-      "missedH1": "Past events to replay",
-      "missedP1": "Did you miss an event ?",
-      "missedP2": "Here we store all replays of past events that took place in the Network, so that everyone can catch up freely on what they missed."
-    },
-    "newEvent": {
-      "button": "",
-      "description": "",
-      "subtitle": "",
-      "title": ""
-    },
-    "pageDescription": "",
-    "pageSubtitle": "",
-    "pageTitle": "",
     "payment": {
       "access_online_successful": "",
       "access_physical_successful": "",
@@ -1070,23 +935,10 @@
     "tcMustBeAccepted": ""
   },
   "filters": {
-    "categories": "",
-    "levels": "",
-    "resources": "",
     "topics": ""
   },
   "glossary": {
-    "anotherWord": "",
-    "creditsLoic": "",
     "definition": "",
-    "filterBar": "",
-    "keepLooking": "",
-    "loadMoreWords": "",
-    "needHelp": "",
-    "notTranslated": "",
-    "pageTitle": "",
-    "placeHolder": "",
-    "randomSearch": "",
     "relatedWords": "",
     "term": ""
   },
@@ -1096,68 +948,25 @@
       "bitcoinFocusTitle": "Bitcoin focus",
       "communityContent": "We are first and foremost a community of enthusiasts helping each other on their Bitcoin journey",
       "communityTitle": "Community",
-      "content": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow.",
       "openSourceContent": "We aim to promote the free flow of knowledge and to help build more open-source solutions",
       "openSourceTitle": "Open source",
       "privacyContent": "We consider privacy to be one of the most fundamental human rights and essential for progress",
-      "privacyTitle": "Privacy",
-      "subtitle": "A little bit about us",
-      "title": "Who are we ?"
+      "privacyTitle": "Privacy"
     },
     "blogSection": {
-      "blogTitle": "",
-      "description": "",
-      "noBlogsAvailable": "",
-      "noDateAvailable": "",
       "seeAll": ""
     },
     "courseSection": {
-      "checkAllCourses": "",
-      "upcomingCourseDescription": "",
-      "upcomingCourseTitle": ""
-    },
-    "eventSection": {
-      "checkEvents": "",
-      "eventTitle": "",
-      "hottestEvent": ""
-    },
-    "header": {
-      "content": "The PlanB platform aims to provide the best tools and educational content around the world to help people regain their sovereignty. From individuals to communities, we are here to help you along your Bitcoin journey.",
-      "forEducators": "For educators and builders",
-      "globalNetwork": "Global Bitcoin Network",
-      "welcome": "Welcome to PlanB Network"
+      "checkAllCourses": ""
     },
     "languageSection": {
       "availableLanguages": "",
-      "availableLanguagesVariation": "",
-      "content1": "At PlanB, we believe Bitcoin is an international revolution that concerns everyone. To empower billions of people, we are designing this platform to be multilingual and accessible to all. The platform currently supports 7 languages, and more are being added every month. To achieve this, we use a mix of AI and the passion of Bitcoiners around the world.",
-      "link": "Help us translate the academy",
-      "subtitle": "Everything is translated to local languages",
-      "title": "No language barrier here."
-    },
-    "patreonSection": {
-      "content": "The PlanB Network is proud to team up with many bitcoin companies around the world in order to provide the best educational resources possible !",
-      "title": "Together let's make Bitcoin education better !"
-    },
-    "tutorialSection": {
-      "content1": "Bitcoin is constantly evolving, with new actors, solutions, protocols, and technological breakthroughs coming and going. It is often hard to maintain a single, accurate database of good, updated tutorials. Here at PlanB, this is what we've achieved. From beginners to advanced users, you can navigate hundreds of tutorials to explore our industry based on your needs.",
-      "link": "See all tutorials",
-      "link2": "",
-      "subtitle1": "We help you master the technology with numerous in-depth tutorials!",
-      "title": "Making Bitcoin education simple is our objective."
-    },
-    "wallOfLoveSection": {
-      "subtitle": "",
-      "title": ""
+      "link": "Help us translate the academy"
     }
   },
   "imagesAlt": {
-    "bookCover": "a book cover",
-    "contributorHeart": "a heart for nice contributor",
-    "orangePill": "an orange pill",
     "printedCircuits": "a printed circuits",
     "rabbit404": "a rabbit shining a flashlight on a 404 sign",
-    "sthRepresentingCompany": "something representing the company",
     "underConstructionImage": "Illustration of several rabbits working on a construction site"
   },
   "labs": {
@@ -1167,8 +976,7 @@
     "planBLabs": "",
     "presentation": {
       "link": "",
-      "subtitle": "",
-      "title": ""
+      "subtitle": ""
     },
     "title": ""
   },
@@ -1176,41 +984,10 @@
     "buyVideoToUnlock": "",
     "checkFullCourse": "",
     "lecturePartCourse": "",
-    "pageTitle": "",
-    "partCourse": "",
     "watchLecture": ""
   },
-  "library": {
-    "pageTitle": "The library"
-  },
   "menu": {
-    "bCertDescription": "",
-    "betDescription": "Collection of content that you can use for your educational projects",
-    "bitcoinDescription": "",
-    "businessDescription": "",
-    "channelsDescription": "",
-    "chooseLanguage": "",
-    "conferencesDescription": "",
-    "glossaryDescription": "",
-    "lecturesDescription": "",
-    "libraryDescription": "Discover plenty of books to improve your knowledge",
-    "login": "",
-    "miningCourseDescription": "",
-    "moviesDescription": "",
-    "newsletterDescription": "",
-    "planBLabsDescription": "",
-    "podcastsDescription": "Explore the bitcoin ecosystem through podcasts",
-    "projectsDescription": "",
-    "protocolDescription": "",
-    "publicDescription": "",
-    "securityDescription": "",
-    "socialStudiesDescription": "",
-    "teachersDescription": "Get to know our university teachers, passionate bitcoiners"
-  },
-  "movies": {
-    "goToMovie": "",
-    "pageTitle": "",
-    "watchTrailer": ""
+    "login": ""
   },
   "notFound": {
     "here": "Here",
@@ -1237,7 +1014,6 @@
     "calendar_48h_online_event": "",
     "dashboardDescription": "",
     "daysAgo": "",
-    "hoursAgo": "",
     "markAsRead": "",
     "monthsAgo": "",
     "noRecentNotifications": "",
@@ -1248,7 +1024,6 @@
     "results": "",
     "select": "",
     "selectAll": "",
-    "stayUpToDate": "",
     "today": "",
     "unread": "",
     "upcomingEvent": "",
@@ -1268,12 +1043,6 @@
   "placeholders": {
     "selectTimeZone": ""
   },
-  "podcast": {
-    "check": ""
-  },
-  "podcasts": {
-    "pageTitle": "The Podcast Portal"
-  },
   "professors": {
     "navigationTitles": {
       "all": "",
@@ -1291,11 +1060,8 @@
     }
   },
   "projects": {
-    "languages": "",
-    "networkStrength": "",
     "noRelatedEvents": "",
     "otherCommunities": "",
-    "pageTitle": "",
     "related": "",
     "relatedEvents": ""
   },
@@ -1310,45 +1076,19 @@
     "thanks": ""
   },
   "publicCommunication": {
-    "blogCategories": {
-      "all": "",
-      "content": "",
-      "feature": "",
-      "network": ""
-    },
-    "blogPageStrings": {
-      "blogListButtonText": "",
-      "blogSidebarTitle": "",
-      "blogSidebarTitleForAll": "",
-      "errorMessageNotFound": "",
-      "featuredArticleTitleText": "",
-      "filterText": "",
-      "noArticlesText": "",
-      "pastArticleSubtitleText": ""
-    },
-    "blogPost": "",
-    "description": "",
-    "goBackButtons": {
-      "simpleGoBack": ""
-    },
     "legal": "",
     "legalSections": {
       "contact": "",
       "legalNotice": "",
       "privacyPolicy": "",
       "termsOfSale": ""
-    },
-    "title": ""
+    }
   },
   "resources": {
-    "articles": {
-      "title": ""
-    },
     "bet": {
       "title": ""
     },
     "books": {
-      "author": "",
       "title": ""
     },
     "channels": {
@@ -1358,12 +1098,10 @@
     "conferences": {
       "title": ""
     },
-    "github": "",
     "glossary": {
       "title": ""
     },
     "lectures": {
-      "noLectures": "",
       "title": ""
     },
     "movies": {
@@ -1374,19 +1112,14 @@
       "check": ""
     },
     "newsletters": {
-      "author": "",
-      "level": "",
       "noNewsletters": "",
       "subtitle": "",
       "title": "Newsletters"
     },
-    "pageDescription": "Trying to understand Bitcoin is like exploring a maze that keeps growing. To aid you in your journey, we've curated an extensive collection of resources addressing a myriad of topics.",
     "pageSubtitle": "Welcome into the infinite rabbit hole of Bitcoin!",
     "pageSubtitleBooks": "",
     "pageSubtitleChannels": "",
-    "pageSubtitleLectures": "",
     "pageSubtitlePodcast": "",
-    "pageTitle": "Resources",
     "podcasts": {
       "noPodcasts": "",
       "title": "Podcasts"
@@ -1395,7 +1128,6 @@
       "title": ""
     },
     "searchFilterName": "",
-    "toggleFreeOnly": "",
     "toggleLabelAll": "",
     "toggleLabelSelectedLanguage": ""
   },
@@ -1414,13 +1146,10 @@
     "event": "",
     "events": "",
     "explorer": {
-      "subtitle": "",
       "title": ""
     },
-    "filterByType": "",
     "glossary_word": "",
     "glossary_words": "",
-    "languageSelected": "",
     "lecture_replay": "",
     "lecture_replays": "",
     "loadMoreResults": "",
@@ -1434,11 +1163,9 @@
     "projects": "",
     "resultEmpty": "",
     "resultError": "",
-    "resultInfo": "",
     "results": "",
     "resultsRemaining": "",
     "search": "",
-    "searchResult": "",
     "startSearch": "",
     "tutorial": "",
     "tutorials": "",
@@ -1452,56 +1179,32 @@
     "changeProfilePicture": ""
   },
   "tutorials": {
-    "approvedByCreator": "",
-    "backTutorials": "",
     "business": {
-      "description": "",
-      "shortDescription": "",
       "title": ""
     },
     "computer-security": {
-      "description": "",
-      "shortDescription": "",
       "title": ""
     },
     "contribution": {
-      "description": "",
-      "shortDescription": "",
       "title": ""
     },
     "details": {
       "author": "",
-      "didHelp": "",
       "ratingSuccess": "",
       "source": "Original source :",
-      "tutorialName": "",
-      "writtenBy": ""
+      "tutorialName": ""
     },
     "exchange": {
-      "description": "Exchanges are one of the entry and exit doors between your traditional currency (euro, dollars) and the bitcoin world. Exchanges can be regulated and KYC (Know Your Customer) compliant, or peer-to-peer and anonymous. Each exchange will offer different features, fee structures, liquidity, and customer support. Each bitcoiner will use a different one based on their needs and convictions.",
-      "shortDescription": "Bitcoin buying-selling solutions, KYC and non-KYC",
       "title": "Exchange"
-    },
-    "explorer": {
-      "description": "All these tutorials have been written by passionate and dedicated bitcoiners, who wish to spread bitcoin education throughout the world. Don't forget to like, review, and tip them sats!",
-      "didYouKnow": "Did you know?",
-      "exploreAllTutorials": ""
     },
     "hasBeenProofreadBy": "",
     "hasNotBeenProofread": "",
     "mining": {
-      "description": "The mining industry is a complex topic full of rabbit holes within. Here, we will try to accompany you on your journey by using hardware and software. From modifying an S9 into a home heater to trying to win the lottery with a nerd miner.",
-      "shortDescription": "Bitcoin mining solutions",
       "title": "Mining"
     },
     "node": {
-      "description": "Nodes are like your personal servers. In Bitcoin, it's the software that allows you to run the network, collect transactions, verify the rules, and be truly sovereign. Within our ecosystem, there exist various nodes, from Bitcoin Core, to Lightning implementations, RGB, or other more advanced privacy solutions.",
-      "shortDescription": "Solutions to operate a bitcoin node and join the network",
       "title": "Node"
     },
-    "pageDescription": "Bitcoin is a wide industry, that becomes wider and wider everyday. To help you explore it, we’ve gathered a large number of tutorials that describe various solutions.",
-    "pageSubtitle": "Welcome into the infinite rabbit hole of Bitcoin!",
-    "pageTitle": "Tutorials",
     "privacy": {
       "description": "Privacy is a fundamental right. While we aspire to a world where privacy is the default, it is not the reality we live in. We will try to explain to you the best practices, assist you with tutorials, and set you on a more sovereign path regarding your data.",
       "shortDescription": "Tools for backup and maintaining privacy",
@@ -1529,8 +1232,6 @@
       "resource": ""
     },
     "wallet": {
-      "description": "A Bitcoin wallet is like your keychain. It allows you to spend and receive bitcoin. There are a lot of different types of wallets, all with different use cases, functions, costs, and user experiences. Each bitcoiner will use a different device based on their needs, level of exigence, and experience.",
-      "shortDescription": "Security solutions and usage of your bitcoins",
       "title": "Wallet"
     },
     "writtenBy": ""
@@ -1600,9 +1301,7 @@
     "email": "",
     "events": "Events",
     "exam": "",
-    "failed": "",
     "filter": "",
-    "finish": "",
     "free": "",
     "github": "",
     "glossary": "",
@@ -1624,18 +1323,14 @@
       "advanced": "Advanced",
       "beginner": "Beginner",
       "beginnerFriendly": "",
-      "developer": "developer",
       "expert": "",
       "intermediate": "Intermediate",
       "level": "",
-      "levels": "",
-      "wizard": ""
+      "levels": ""
     },
-    "library": "Library",
     "lightningInvoice": "",
     "likes": "",
     "linkedin": "",
-    "lnurlAuth": "LNURL Auth",
     "location": "",
     "members": " Members",
     "mentor": "",
@@ -1651,7 +1346,6 @@
     "on": "",
     "onChainAddress": "",
     "online": "",
-    "ourStory": "Our story",
     "overview": "",
     "paid": "",
     "part": "",
@@ -1669,7 +1363,6 @@
     "projects": "",
     "protocol": "",
     "public": "",
-    "publicationDate": "",
     "ratings": "",
     "register": "Register",
     "required": "",
@@ -1690,7 +1383,6 @@
     "submit": "",
     "teacher": "",
     "telegram": "",
-    "termsAndConditions": "Terms and conditions",
     "ticket": "",
     "tickets": "",
     "time": "",
@@ -1714,7 +1406,6 @@
     "yes": ""
   },
   "youtubeChannels": {
-    "pageTitle": "",
     "view": "",
     "watchTrailer": ""
   }

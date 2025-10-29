@@ -19,7 +19,6 @@
     "missionTitle": "Sứ mệnh của chúng tôi",
     "storyContent": "PlanB Network là một sáng kiến ra đời để hỗ trợ việc mở rộng giáo dục về Bitcoin trên phạm vi toàn cầu. Nó là giao điểm của nhiều công ty có đam mê tập trung vào giao dục, phần mềm mã nguồn mở, mạng lưới ngang hàng và ý thức cộng đồng. Cùng nhau, họ đã quyết định xây dựng nên PlanB Network để mang đến một công cụ hữu ích cho sự phát triển của hệ sinh thái Bitcoin. Bài trình chiếu về năm 2023 của chúng tôi có tại đây.",
     "storyTitle": "Câu chuyện về chúng tôi",
-    "subtitle": "Bạn muốn \"orange pill\" cả thế giới? Hãy tham gia vào PlanB Network.",
     "title": "Về PlanB Network"
   },
   "accessType": {
@@ -53,7 +52,6 @@
       "errorValidatingEmailDescription": "",
       "successfullyChanged": "",
       "successfullyValidated": "",
-      "validateChange": "",
       "validatingEmail": "",
       "validatingEmailChange": "",
       "wontTakeLong": ""
@@ -75,7 +73,6 @@
       "invalid": "Token không hợp lệ",
       "notFound": "Token không tìm thấy"
     },
-    "lnurlAuthDescription": "Quét mã QR với ví Lightning của bạn để đăng nhập!",
     "newPassword": "Mật khẩu mới",
     "noAccountNeeded": "Không cần phải có tài khoản để bắt đầu học trên Sovereign University!",
     "noAccountYet": "Bạn chưa có tài khoản?",
@@ -97,50 +94,28 @@
     "bCertDescription": "Chứng chỉ ₿-CERT là một bài thi được công nhận toàn cầu dùng để đánh giá sự thành thạo của bạn liên quan tới Bitcoin và các chủ đề liên quan. Chứng chỉ này có thể chứng minh cho kỹ năng và hiểu biết của bạn trong ngành công nghiệp Bitcoin, cho phép bạn được tiếp cận tới các công ty và cơ hội việc làm tốt nhất.",
     "bookExam": "Đặt lịch thi",
     "challengeYourself": "Thử thách bản thân & khẳng định trình độ của bạn!",
-    "checkout": "Kiểm tra Chứng chỉ ₿-CERT",
     "download": "Tải chứng chỉ về",
     "knowledgeableBitcoin": "Có hiểu biết về Bitcoin?",
-    "noBookExam": "Hiện vẫn chưa có lịch thi nào được lên kế hoạch.",
-    "organizeDescription": "Không vấn đề gì! Nếu cộng đồng của bạn là một phần của Mạng lưới, bạn có thể tổ chức kỳ thi tại trung tâm của mình. Vui lòng đọc điều lệ để đảm bảo rằng bạn có thể tuân thủ các điều kiện bắt buộc để tổ chức kỳ thi. Nếu bạn đáp ứng được chúng, thì bạn có thể lên lịch cho kỳ thi của bạn và thêm nó vào nền tảng.",
     "organizeExam": "Tổ chức một kỳ thi",
-    "organizeSessionConditions": "Vui lòng đòng <0>điều lệ</0> để đảm bảo bạn đáp ứng các điều kiện bắt buộc để tổ chức kỳ thi.\nNếu bạn đạt yêu cầu, chúng tôi rất vui lòng được lên kế hoạch với bạn về một kỳ thi cho công đồng địa phương của bạn.\nVui lòng liên hệ với chúng tôi theo phương pháp mà bạn ưa thích.",
-    "organizeSessionHub": "Tổ chức một kỳ thi cấp chứng chỉ ₿-CERT tại địa điểm địa phương của bạn",
-    "organizeSubtitle": "Giúp một tỷ người hiểu và tin Bitcoin (Orange Pill) không phải là chuyện dễ dàng",
-    "organizeTitle": "Muốn tổ chức một kỳ thi cấp Chứng chỉ ₿-CERT ở trung tâm của bạn?",
-    "pageSubtitle": "Mở rộng sự áp dụng rộng rãi thông qua giáo dục mã nguồn mở tập trung",
     "pageTitle": "Đạt Chứng chỉ ₿-CERT",
-    "readChart": "Đọc điều lệ",
     "tweetText": "Rất tuyệt vì đã đạt được Chứng chỉ ₿-CERT tại @planb_network với số điểm {{score}}/100! {{emoji}} #BCertificate\n\n{{certificateUrl}}",
     "verify": "Xác minh tính xác thực đối với chứng chỉ của bạn"
   },
   "bet": {
-    "contributeButton": "Hỗ trợ & Đóng góp",
-    "contributeDescription": "Nếu bạn muốn thêm, chỉnh sửa hoặc dịch một số nội dung, chúng tôi hoan nghênh sự hỗ trợ của bạn!",
-    "contributeTitle": "Muốn đóng góp?",
     "educationalContent": {
-      "description": "Nội dung này được đảm bảo sẵn sàng để sử dụng cho các sự kiện và mục đích giáo dục.",
       "title": "Nội dung dùng cho giáo dục"
     },
-    "pageDescription": "Sovereign University hỗ trợ các nhà giáo dục bitcoin và các cộng đồng bitcoin trên toàn thế giới, nhằm thúc đẩy quá trình mở rộng sự áp dụng bitcoin. Nhằm hướng tới mục tiêu đó, chúng tôi tập hợp và tạo ra một nguồn dữ liệu lớn bao gồm các nội dung giáo dục (được tạo ra bởi chúng tôi hoặc những người khác) và các dữ liệu trực quan, để mọi người có thể tiếp cận.",
-    "pageTitle": "Bộ công cụ giáo dục về Bitcoin - BET",
     "visualContent": {
-      "description": "Nội dung này là dữ liệu trực quan, được phép sử dụng cho sáng tạo của bạn.",
       "title": "Nội dung trực quan"
     }
   },
   "conferences": {
-    "addConferences": "Vui lòng thêm bất kỳ hội nghị nào còn thiếu thông qua kho lưu trữ <0>Github</0> này.",
-    "backConferences": "Quay lại các hội nghị",
     "conferenceName": "Tên của hội nghị",
     "conferencesSinceGenesis": "Nguồn lưu trữ các hội nghị Bitcoin kể từ Genesis Block",
-    "description": "Các hội nghị là một yếu tố chủ chốt của ngành công nghiệp Bitcoin. Chúng là một phần trong hành trình giáo dục của bất kỳ Bitcoiner nào. Chúng tôi tạo ra công cụ này để giúp bạn khám phá và định hướng bản thân thông qua hàng trăm hội nghị.",
     "details": {
       "findReplay": "Tìm kiếm việc chiếu lại",
-      "nextVideo": "Video tiếp theo",
-      "previousVideo": "Video phía trước",
       "selectStage": "Chọn một sân khấu",
-      "selectVideo": "Chọn một video",
-      "watchReplay": "Xem chiếu lại"
+      "selectVideo": "Chọn một video"
     },
     "language": "Ngôn ngữ",
     "latestConferences": "Hội nghị mới nhất",
@@ -156,10 +131,6 @@
         "bookSeat": "Đặt chỗ cho bạn",
         "cancelBooking": "Huỷ đặt chỗ của bạn",
         "classIsFull": "Lớp học đã đầy chỗ",
-        "p1content": "Đảm bảo rằng bạn đã đặt chỗ cho bản thân",
-        "p1heading": "Bạn có dự định tham gia trực tiếp buổi học này?",
-        "p2content": "Không sao ! Buổi học sẽ được phát trực tiếp trên trang và có sẵn để xem lại sau.",
-        "p2heading": "Bạn không thể đích thân đến?",
         "ticketDownload": "Tải về vé của bạn",
         "title": "Chi tiết lớp học"
       },
@@ -168,9 +139,7 @@
         "stayTuned": "Buổi phát trực tiếp sẽ bắt đầu nửa tiếng trước khi buổi học bắt đầu. Hãy theo dõi!",
         "title": "Video trực tiếp"
       },
-      "next": "Xong, hãy đi tới chương tiếp theo!",
-      "nextLesson": "Bài học tiếp theo sẽ là",
-      "thanksTip": "Bạn muốn cảm ơn? Thưởng."
+      "next": "Xong, hãy đi tới chương tiếp theo!"
     },
     "conclusion": {
       "completedChaptersHeadline": "Tất cả các chương đã được hoàn thành!",
@@ -212,7 +181,6 @@
       "premiumContentNeedsPaymentAction": "Đi tới trang chủ của khoá học",
       "startCourse": "Bắt đầu khoá học",
       "taughtBy": "Khoá học này đang được giảng dạy bởi:",
-      "teacherLed": "Do giáo viên hướng dẫn",
       "thanksTipping": "Bạn có thể nói lời cảm ơn bằng cách thưởng cho giáo sư."
     },
     "exam": {
@@ -232,7 +200,6 @@
       "dontGiveUpTryAgain": "Đừng bỏ cuộc!\nBạn có thể thử lại sau 24 giờ.",
       "dontWorry": "Đừng lo lăng về các lỗi; bài kiểm tra này nhằm mục đích cải thiện việc học tập của bạn. Nếu chưa vượt qua được, bạn có thể thực hiện lại sau 24 giờ.",
       "dontWorryRetake": "Đừng lo lắng, bạn có thể thực hiện lại bài kiểm tra sau 24 giờ.",
-      "examAndDiploma": "Bài kiểm tra & Chứng chỉ",
       "examAvailabilityDetails": "",
       "examCertificateCompletionText": "Plan ₿ Network rất vinh hạnh được chúc mừng {{username}} vì đã nhận được chứng chỉ của khoá học “{{courseName}}”.",
       "examDetails": "Bài kiểm tra có {{nb}} câu hỏi trắc nghiệm nhiều lựa chọn, mỗi câu hỏi có một lựa chọn đúng. Bạn có thể thay đổi câu trả lời của mình vào bất kỳ thời điểm nào trước khi nộp bài, miễn là thời gian làm bài chưa kết thúc.",
@@ -251,7 +218,6 @@
       "goodLuck": "Chúc bạn may mắn!",
       "instantVerification": "Xác thực nhanh chóng: Nhà tuyển dụng có thể dễ dàng xác minh tính xác thực của bằng cấp và ngày cấp.",
       "instructions": "Hướng dẫn:",
-      "letsConclude": "Tất cả đã xong, hãy kết thúc",
       "nbMinutes": "",
       "nbQuestions": "",
       "nextChapter": "",
@@ -259,7 +225,6 @@
       "notTranslatedYet": "Chúng tôi xin lỗi, nhưng bài kiểm tra cuối đang không khả dụng với ngôn ngữ mà bạn đã chọn. Bạn có thể chuyển sang ngôn ngữ khác để tiếp tục.",
       "oneMinuteLeft": "Bạn chỉ còn 1 phút",
       "oopsFailed": "Ui, có vẻ như bạn đã <0>rớt</0> bài kiểm tra cuối.",
-      "passExam": "Vượt qua bài kiểm tra",
       "passed": "Đậu",
       "passRate": "Tỷ lệ đậu là 80%.",
       "planBTimeStamp": "Tại Plan ₿ Network, chúng tôi bảo mật chứng chỉ của bạn bằng cách sử dụng công nghệ gán nhãn thời gian được hỗ trợ bởi blockchain.",
@@ -305,22 +270,13 @@
       "tryAgain": "Thử lại",
       "tryOneMoreTime": "Hãy thử thêm một lần nữa!",
       "verifyDisplayName": "Trước khi bắt đầu, vui lòng xác nhận lại tên hiển thị của bạn phía dưới, bởi vì nó sẽ được sử dụng để cấp chứng chỉ cho bạn.",
-      "viewExam": "",
       "weight": "",
       "whyTimeStamp": "Gán nhãn thời gian cho chứng chỉ của bạn:\nTại sao điều đó lại quan trọng",
       "wishTryAgain": "Bạn có thể thực hiện lại bài thi sau 24 giờ.",
       "yesSubmit": "Vâng, nộp bài"
     },
     "explorer": {
-      "buildPath": "Xây dựng con đường khám phá hang thỏ của chính bạn",
-      "comingSoon": "sẽ có sớm",
-      "exploreCourses": "Khám phá tất các khoá học của Plan B",
-      "findCourses": "Tìm khoá học hoàn hảo cho nhu cầu của bạn nhớ vào bộ chọn lựa khoá học",
       "goal": "",
-      "journey": "Bitcoin là một hành trình, không phải là một đích đến",
-      "pageDescription": "Học viên Plan B ra đời nhằm mục đích đơn giản hoá việc giáo dục về Bitcoin trên toàn thế giới. Được tuyển chọn bởi các chuyên gia thuộc nhiều lĩnh vực chuyên môn, học viên cung cấp vô số các khoá học được thiết kế để làm sáng tỏ mọi khía cạnh của Bitcoin. Từ người mới bắt đầu cho đến chuyên giá, dù là học theo tốc độ riêng của bản thân hay được theo dõi hàng tuần bởi một giáo sư, chúng tôi hi vọng rằng học viện có thể giúp bạn hiểu rõ hơn về một chủ đề rất rộng lớn là Bitcoin. Phần lớn các khoá học của chúng tôi là hoàn toàn miễn phí với tất cả mọi người, ở bất kỳ đâu, đều có thể tiếp cận với giáo dục.",
-      "planbSchool": "PLAN ₿ SCHOOL",
-      "planbSchoolHeadline": "Plan ₿ School, được lãnh đạo bởi Giacomo Zucco, cung cấp các chương trình đào tạo chuyên sâu kéo dài 3 tháng được thiết kế để khoả lấp khoảng trống giữa học tập và ứng dụng thực tế. Vượt lên trên các lớp học truyền thống, các sinh viên sẽ được tham gia vào các dự án thực tế của các công ty và một chương trình bootcamp hàng đầu dành cho những người có thành tích xuất sắc. Chỉ những tài năng xuất sắc mới vượt qua được 2 vòng lựa chọn cạnh tranh, đảm bảo rằng những sinh viên hàng đầu sẽ được trang bị đây đủ để xây dựng sự nghiệp của mình trong ngành Bitcoin.",
       "seeCourse": "Xem khoá học"
     },
     "format": {
@@ -332,15 +288,12 @@
       "count": "Phần số {{count}}/{{total}}"
     },
     "payment": {
-      "accessibility": "Quyền truy cập",
-      "accessibility_forever": "Mãi mãi",
       "amount": "Số lượng",
       "back_course": "Quay trở lại khoá học",
       "book_description": "Vui long xem lại chi tiết địa điểm đã được cung cấp.\nMột khi quá trình đặt chỗ được xử lý, chúng tôi sẽ cung cấp cho bạn vé xác nhận và mã QR để bạn xuất trình tại sự kiện.",
       "checkoutError": "Một lỗi đã xảy ra trong quá trình thanh toán.\nVui lòng thử lại.",
       "courseType": "",
       "date": "Ngày",
-      "downloadCurriculum": "Tải về chương trình giảng dạy",
       "duration": "Thời lượng",
       "hybridDescription": "",
       "inPersonCallout": "Bạn đang chuẩn bị mua quyền truy cập <strong>trực tiếp</strong> khoá học này.",
@@ -351,8 +304,6 @@
       "payment_details": "Chi tiết thanh toán",
       "payment_successful": "Thanh toán thành công!",
       "qr_unified": "Mã QR này được hợp nhất, nên nó chấp nhận thanh toán Lightning và thanh toán on-chain.",
-      "teacher": "Giáo viên",
-      "teachers": "Các giáo viên",
       "time": "Thời gian"
     },
     "quizz": {
@@ -410,7 +361,6 @@
     }
   },
   "dashboard": {
-    "account": "Tài khoản",
     "adminPanel": {
       "accessGranted": "",
       "bookings": "Đặt chỗ",
@@ -419,7 +369,6 @@
         "careers": "Nghề nghiệp",
         "careersSubtitle": "Bạn có thể xem danh sách những người đã ứng tuyển và hoàn thành đơn ở đây. Bạn có thể tìm thấy tất cả thông tin trong bảng tính.",
         "cv": "Hồ sơ",
-        "downloadProfiles": "Tải về bảng tính",
         "downloadSpreadsheet": "Tải về bảng tính",
         "lastUpdate": "Cập nhật cuối",
         "lastUpdated": "Cập nhật cuối",
@@ -435,7 +384,6 @@
         "delete": "",
         "deleteDiscountCode": "",
         "deleteDiscountCodeConfirm": "",
-        "deleteDiscountCodeSuccess": "",
         "deleteDiscountCodeWarning": "",
         "discountCode": "",
         "discountCodeCopied": "",
@@ -446,7 +394,6 @@
         "discountType": "",
         "discountValue": "",
         "discountValueExplanation": "",
-        "discountValuePlaceholder": "",
         "downloadImage": "",
         "downloadImages": "",
         "explanation": "",
@@ -489,10 +436,8 @@
           "maxUses": "",
           "name": "",
           "owner": "",
-          "total": "",
           "type": "",
-          "uses": "",
-          "value": ""
+          "uses": ""
         }
       },
       "coursesIndexes": "",
@@ -504,7 +449,6 @@
       "githubLink": "Đường dẫn Github",
       "hasAccessTo": "",
       "listOfParticipants": "Danh sách những người tham gia",
-      "makeProfessor": "Bổ nhiệm giáo sư",
       "nameOfEvent": "Tên của sự kiện",
       "participants": "Người tham gia",
       "professorName": "Tên giáo sư",
@@ -531,14 +475,8 @@
       "publicationDate": ""
     },
     "backToDashboard": "Quay lại bảng điều khiển",
-    "bCert": {
-      "grade": "Điểm",
-      "noResults": "Chưa có bảng điểm hoặc chứng chỉ nào liên quan tới tài khoản này.\nNếu bạn đã vượt qua một kỳ thi và kết quả của bạn không có sau một thời gian dài, vui lòng liên hệ với chúng tôi để được hỗ trợ."
-    },
     "booking": {
       "accessLive": "Truy cập bài thi trực tiếp",
-      "billingSubtitle": "Tải về các hoá đơn đặt chỗ của bạn tại đây.",
-      "billingTitle": "Lịch sử thanh toán",
       "cancelBookingTitle": "Bạn có chắc là muốn huỷ đặt chỗ không?",
       "invoiceDate": "Ngày",
       "invoiceTitle": "Tiêu đề",
@@ -551,12 +489,10 @@
       "ticketLocation": "Vị trí",
       "ticketTitle": "Tiêu đề",
       "ticketType": "Loại",
-      "upcomingTicketSubtitle": "Tải xuống vé của bạn ở đây để tham dự sự kiện sắp tới. Vui lòng mang theo vé ở cổng vào.",
       "upcomingTicketTitle": "Đặt chỗ sắp tới",
       "yesCancel": "Vâng, huỷ"
     },
     "calendar": {
-      "calendar": "Lịch",
       "eventType": {
         "class": "",
         "event": ""
@@ -747,10 +683,7 @@
       "assignment": "",
       "assignmentCompletedDescription": "",
       "assignmentCompletedTitle": "",
-      "assignmentDescription": "",
-      "assignmentInformation": "",
       "assignmentTitle": "",
-      "checkDetailsCompleted": "Tại đây, bạn có thể kiểm tra tất cả các chi tiết liên quan tới khoá học mà bạn đã hoàn thành.",
       "completionDiploma": "Chứng chỉ hoàn thành",
       "completionExamInfo": "Bạn cần hoàn thành bài kiểm tra để có thể truy cập vào tính năng này.",
       "conclusionHeadline": "Đây là bản tòm tắt của những gì bạn đã học được. Nếu một số chương bị bỏ sót hoặc không được xác thực đúng cách, bây giờ là lúc để làm điều đó, hoặc là quay lại để học, hoặc là nhấp vào nút hoàn thành.",
@@ -762,15 +695,12 @@
       "congratulationsPassed": "",
       "coordinator": "",
       "courseCalendar": "",
-      "coursesCompleted": "Các khoá học đã hoàn thành",
       "diplomaReleaseDescription": "",
       "diplomaReleaseTitle": "",
       "examScore": "",
       "exams": "",
       "feedbacks": "Tại đây, bạn có thể kiểm tra và chỉnh sửa các xếp hạng và phản hồi mà bạn đã đưa ra cho khoá học này.",
-      "fileUploadError": "",
       "fileUploaded": "",
-      "finalAverageGradeDescription": "",
       "finalGradeSummary": "",
       "finalScore": "",
       "generalInformation": "",
@@ -785,8 +715,6 @@
       "mostPreferred": "",
       "mustBePdf": "",
       "notSelectedAssignment": "",
-      "planbSchoolExamDescription": "",
-      "planbSchoolGeneralInformation": "",
       "projectRankingInstructions": "",
       "ranking": "",
       "rankingInstructions": "",
@@ -798,30 +726,19 @@
       "shareOnSocials": "Chia sẻ trên mạng xã hội:",
       "submissionInstructions": "",
       "submitBefore": "",
-      "submitFileNamingFormat": "",
       "submitReviewInfo": "Bạn phải nộp một đánh giá để có quyền truy cập vào tính năng này.",
       "submitYourWork": "",
       "summerSchool": "",
       "surePreferenceList": "",
       "thresholdToPass": "",
       "tweetText": "Vui mừng vì đã hoàn thành khoá học {{courseIndex}} tại @planb_network và nhận được chứng chỉ của tôi với điểm số {{score}}/100 ở bài kiểm tra cuối khoá! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
-      "viewFinalGrade": "",
       "yourProject": ""
     },
-    "courses": "Các khoá học của tôi",
     "credentials": {
       "bCert": "Chứng chỉ ₿-CERT",
-      "bCertSubtitle": "Ở đây, bạn có thể tìm thấy các chi tiết liên quan tới đặt chỗ và điểm số trong quá khứ cũng như tương lai của bài kiểm tra cấp Chứng chỉ ₿-CERT.\nChứng chỉ - ₿ là một bài kiểm tra được tổ chức bởi Plan ₿ Network để đánh giá trình độ của bạn về Bitcoin và các chủ đề liên quan.",
       "beingGraded": "Bài kiểm tra của bạn đang được chấm điểm. Các kết quả sẽ có trong khoảng 1 hoặc 2 tuần.",
-      "completionDiplomas": "Các chứng chỉ hoàn thành",
       "courseDiplomas": "Các chứng chỉ khoá học",
-      "courseDiplomasSubtitle": "Ở đây, bạn có thể tìm thấy các chi tiết liên quan tới tất cả các bài kiểm tra mà bạn đã tham gia sau khi hoàn thành một khoá học trên nền tảng.",
-      "downloadTicket": "Tải vé về",
-      "globalCertifications": "Các chứng chỉ toàn cầu",
-      "retakeExam": "Thực hiện lại bài kiểm tra",
-      "seatBooked": "Chỗ của bạn trong đợt kiểm tra đã được đặt",
-      "takePlaceAt": "Bài kiểm tra sẽ được thực hiện tại",
-      "yourCertificate": "Chứng chỉ của bạn"
+      "globalCertifications": "Các chứng chỉ toàn cầu"
     },
     "goToDashboard": "",
     "goToHomepage": "",
@@ -829,28 +746,20 @@
     "myCourses": {
       "completeAll": "Hoàn thành tất cả",
       "completed": "Các khoá học đã hoàn thành",
-      "completedCoursesDescription": "Bạn có thể kiểm tra các khoá học đã hoàn thành tại đây.",
-      "completedCoursesTitle": "Các khoá học đã hoàn thành",
-      "courseDashboard": "Bảng điều khiển khoá học",
       "detailsAndCertificate": "Các chi tiết & chứng chỉ",
       "done": "Xong",
       "download": "Tải về chứng chỉ",
       "duration": "Khoảng thời gian:",
       "inProgress": "Các khoá đang học",
-      "newCourses": "Các khoá học mới được thêm vào mỗi tháng",
-      "noCoursesAvailable": "Không có khoá học nào khả dụng.",
       "notStarted": "Chưa bắt đầu",
       "notValidated": "Chưa được xác nhận",
       "price": "Giá:",
       "professor": "Giáo sư:",
       "resumeLesson": "Tiếp tục bài học",
       "seeDetails": "Xem các chi tiết",
-      "seeProgress": "để thấy tiến độ của bạn ở đây.",
       "seeTheCourse": "Xem khoá học",
       "shareOn": "Chia sẻ trên",
-      "startCourse": "Bắt đầu hoặc hoàn thành một khoá học",
       "verify": "Xác minh tính xác thực chứng chỉ của bạn",
-      "viewDetails": "Xem chi tiết",
       "whereYouAre": "Hãy xem bạn đang ở đâu!",
       "yourCertificate": "Chứng chỉ của bạn",
       "yourProgress": "Tiến độ của bạn:"
@@ -884,29 +793,22 @@
         "title": ""
       },
       "password": "Mật khẩu",
-      "personalInformation": "Thông tin cá nhân của tôi",
       "preview": "Xem trước",
       "profile": "Hồ sơ",
-      "profileInformation": "Thông tin hồ sơ",
       "profilePicture": "Ảnh hồ sơ",
       "save": "Lưu lại",
       "saving": "Đang lưu…",
       "security": "Bảo mật",
       "securitySettings": "",
-      "settings": "",
       "username": "Tên người dùng"
     },
-    "studentDashboard": "Bảng điều khiển học viên",
     "teacher": {
       "courses": {
         "allStudents": "",
-        "analytics": "Phân tích",
         "announcementModal": {
           "contentLabel": "",
           "contentPlaceholder": "",
           "create": "",
-          "dateLabel": "",
-          "datePlaceholder": "",
           "dateRequired": "",
           "editAnnouncement": "",
           "groupLabel": "",
@@ -923,7 +825,6 @@
         "assignment": "",
         "assignmentGrade": {
           "alertDescription": "",
-          "alertDescription2": "",
           "alertTitle": "",
           "confirmPublication": "",
           "confirmPublicationDescription": "",
@@ -941,29 +842,22 @@
         "courseDetails": "Chi tiết khoá học",
         "courseLongDescription": "Mô tả giới thiệu",
         "courseModification": "Nếu bạn cần hỗ trợ để chỉnh sửa vài thứ của khoá học, vui lòng kiểm tra <0>tutorial</0>.",
-        "coursesManagementPanel": "Bảng điều khiển khoá học",
         "curriculum": "Chương trình học",
         "curriculumDescription": "Đây là chương trình hiện tại của khoá học này.",
         "deleteAnnouncementTitle": "",
         "deleteAnnouncementWarning": "",
         "editOnGithub": "Chỉnh sửa trên Github",
         "examResults": "Kết quả của kỳ thi",
-        "goal": "",
         "makeModifications": "Có cần phải sửa đổi không?",
         "noPastAnnouncement": "",
         "noWrittenAnnouncement": "",
         "objectives": "Các mục tiêu",
-        "proposeNewCourse": "Đề xuất một khoá mới",
         "quickRecap": "Bạn có thẻ tìm thấy tất cả thông tin chung về khoá học này tại đây.",
-        "reviewInfos": "Bạn có thể kiểm soát và xem lại tất cả các thông tin liên quan tới mỗi khoá học mà bạn hợp tác tại đây.",
         "reviews": "Duyệt lại",
-        "selectCourse": "",
         "summerStudents": "",
         "writeAnnouncement": ""
       },
-      "menu": "Menu dành cho giáo viên",
       "profile": {
-        "account": "Tài khoản của giáo viên",
         "billingInformation": "Thông tin thanh toán",
         "description": "Mô tả của bạn",
         "enterTipsInformation": "Plan ₿ Network khuyến khích người dùng boa tiền cho giáo viên. Vui lòng nhập thông tin của bạn để mọi người có thể boa tiền cho bạn khi họ muốn.",
@@ -972,12 +866,9 @@
         "noLightningAddress": "Chưa có địa chỉ Lightning nào được thêm vào.",
         "noShortBio": "Chưa có tiểu sử ngắn nào được liên kết đến tài khoản này, bạn có thể thêm vào trên Github.",
         "noTags": "Chưa có thẻ nào gắn với tài khoản này.",
-        "notifications": "Thông báo",
         "publicDescription": "Mô tả này được hiển thị trong thẻ giáo vên của bạn trên nền tảng.",
         "publicProfile": "Hồ sơ công khai",
         "publicProfileDescription": "Bạn có thể điền vào hoặc chỉnh sửa tất cả các thông tin liên quan tới hoạt động của bạn với tư cách là một giáo viên tại Plan ₿ Network tại đây.",
-        "teacher": "Giáo viên",
-        "teacherProfile": "Hồ sơ giáo viên",
         "tutorialModification": "Nếu bạn muốn hỗ trợ để chỉnh sửa điều gì đó, vui lòng kiểm tra <0>tutorial</0> này."
       },
       "reviews": {
@@ -1003,43 +894,17 @@
     "card": {
       "bookLive": "Đặt chỗ trực tiếp",
       "bookSeat": "Đặt chỗ",
-      "buyReplay": "Mua bản phát lại",
-      "buyVideo": "Mua video",
-      "eventFull": "Sự kiện đã đầy chỗ",
       "free": "miễn phí",
-      "limited": "giới hạn ở",
       "online": "trực tuyến",
       "people": "mọi người",
       "purchased": "Đã thanh toán",
-      "seatBooked": "Chỗ đã được đặt",
       "unlimited": "không giới hạn",
       "visitWebsite": "Thăm website",
-      "watchLive": "Xem trực tiếp",
       "watchReplay": "Xem bản phát lại"
     },
-    "errors": {
-      "premiumContentNeedsLogin": "Bạn cần đăng nhập để truy cập vào sự kiện này.",
-      "premiumContentNeedsPayment": "Sự kiện này là một phần của chương trình chất lượng cao.",
-      "premiumContentNeedsPaymentAction": "Đi tới trang các sự kiện"
-    },
     "main": {
-      "currentEvents": "Những sự kiện đang diễn ra hiện tại",
       "upcomingEvents": "Những sự kiện sắp tới"
     },
-    "missed": {
-      "missedH1": "Những sự kiện đã diễn ra để xem lại",
-      "missedP1": "Bạn đã bỏ lỡ một sự kiện?",
-      "missedP2": "Ở đây chúng tôi lưu trữ tất cả các bản xem lại của các sự kiện trong quá khứ được tổ chức trong mạng lưới, do đó mọi người có thể theo dõi miễn phí những sự kiện mà họ đã bỏ lỡ."
-    },
-    "newEvent": {
-      "button": "Thêm vào sự kiện của tôi",
-      "description": "Tất nhiên! Tất cả các sự kiện Bitcoin có thể gia tăng sự hiện diện của họ ở đây, mọi sáng kiến tạo sự kiện mới đều được hoan nghênh :)",
-      "subtitle": "Làm cho một tỷ người hiểu và tin Bitcoin \"Orange pill\" không phải là việc dễ dàng",
-      "title": "Muốn thêm sự kiện của bạn?"
-    },
-    "pageDescription": "Bạn muốn nói về Bitcoin trong thời gian thực? Ở đây, bạn có thể tìm thấy tất cả các sự kiện được hỗ trợ bởi cộng đồng Plan B Network. Cho dù bạn muốn nghe một bài giảng, thảo luận về Bitcoin quanh bàn trà, hoặc làm bài kiểm tra đánh giá kiến thực của bạn, bạn sẽ có thể tìm thấy sự kiện phù hợp tại đây thông qua Plan B Network.",
-    "pageSubtitle": "Việc mở rộng áp dụng từ dưới lên được tăng cường bởi một mạng lưới mạnh mẽ",
-    "pageTitle": "Bạn đang tìm kiếm một sự kiện Bitcoin để tham dự?",
     "payment": {
       "access_online_successful": "Khi các sự kiện bắt đầu, đăng nhập vào nền tảng để truy cập vào các buổi phát trực tuyến trên trang sự kiện.",
       "access_physical_successful": "Bạn có thể tải vé của mình về tại đây, hoặc tải về sau trên bảng điều khiển của mình.",
@@ -1070,23 +935,10 @@
     "tcMustBeAccepted": ""
   },
   "filters": {
-    "categories": "Các chuyên mục",
-    "levels": "Các cấp độ",
-    "resources": "Các nguồn",
     "topics": "Các chủ đề"
   },
   "glossary": {
-    "anotherWord": "Tìm kiếm với từ khác",
-    "creditsLoic": "<0>Tín chỉ</0>: Từ điển Bitcoin được viết bởi Loïc Morel (Pandul), có sẵn trên <1>Github repository</1> của chúng tôi.",
     "definition": "Định nghĩa",
-    "filterBar": "Tìm từ bạn cần tại đây",
-    "keepLooking": "Bạn muốn tiếp tục tìm kiếm?",
-    "loadMoreWords": "Tải thêm nhiều tư hơn",
-    "needHelp": "Cần sự hỗ trợ để định nghĩa một từ kỹ thuật?",
-    "notTranslated": "Dữ liệu trong bảng chú giải vẫn chưa được dịch.\nNếu bạn muốn giúp đỡ, hãy đóng góp trên",
-    "pageTitle": "Bảng chú giải Bitcoin",
-    "placeHolder": "Đây là gì?",
-    "randomSearch": "Tìm kiếm ngẫu nhiên",
     "relatedWords": "Các từ liên quan:",
     "term": "Thuật ngữ"
   },
@@ -1096,68 +948,25 @@
       "bitcoinFocusTitle": "Bitcoin tập trung vào",
       "communityContent": "Trước hết, chúng tôi là một cộng đồng gồm những người đam mê Bitcoin đang giúp đỡ lẫn nhau trên hành trình Bitcoin của mỗi người",
       "communityTitle": "Cộng đồng",
-      "content": "PlanB Network làm một sáng kiến nhằm hỗ trợ việc giáo dục về Bitcoin trên phạm vi toàn thế giới. Nó là sự giao thoa của các công ty đam mê về Bitcoin tập trung vào giao dục, phần mềm mã nguồn mở, mạng lưới ngang hàng và nâng cao nhận thức cộng đồng. Cùng nhau, họ đã quyết định xây dựng nên PlanB Network và mang lại công cụ phù hợp để giúp hệ sinh thái Bitcoin phát triển.",
       "openSourceContent": "Chúng tôi mong muốn thúc đẩy dòng chảy tri thức miễn phí và giúp xây dưng thêm nhiều giải pháp mã nguồn mở",
       "openSourceTitle": "Mã nguồn mở",
       "privacyContent": "Chúng tôi xem quyền riêng tư là một trong những quyền con người cơ bản và thiết yếu nhất cho sự tiến bộ",
-      "privacyTitle": "Riêng tư",
-      "subtitle": "Một chút thông tin về chúng tôi",
-      "title": "Chúng tôi là ai?"
+      "privacyTitle": "Riêng tư"
     },
     "blogSection": {
-      "blogTitle": "Có điều gì mới ở Plan ₿ Network",
-      "description": "Chúng tôi vẫn không ngừng cải thiện nền tảng, nội dung và mạng lưới - hãy khám phá ngay!",
-      "noBlogsAvailable": "Không có blog nào khả dụng.",
-      "noDateAvailable": "Không có thời điểm nào khả dụng",
       "seeAll": "Xem tất cả"
     },
     "courseSection": {
-      "checkAllCourses": "Kiểm tra tất cả các khoá học",
-      "upcomingCourseDescription": "Khám phá các khoá học mới nhất được phát hành trên nền tảng. Học tập không ngừng nghỉ!",
-      "upcomingCourseTitle": "Các khoá học mới & sắp có"
-    },
-    "eventSection": {
-      "checkEvents": "Khám phá tất cả các sự kiện",
-      "eventTitle": "Mạng lưới các nhà giáo dục Bitcoin toàn cầu",
-      "hottestEvent": "Sự kiện bitcoin nóng nhất"
-    },
-    "header": {
-      "content": "Nền tảng Plan B mong muốn cung cấp các công cụ và nội dung giáo dục tốt nhất trên thế giới để giúp mọi người lấy lại chủ quyền của mình. Từ các cá nhân cho tới các cộng đồng, chúng tôi ở đây để hỗ trợ bạn trên hành trình Bitcoin của mình.",
-      "forEducators": "Dành cho các nhà giáo dục và các nhà phát triển",
-      "globalNetwork": "Mạng lưới Bitcoin toàn cầu",
-      "welcome": "Chào mừng bạn đến với PlanB Network"
+      "checkAllCourses": "Kiểm tra tất cả các khoá học"
     },
     "languageSection": {
       "availableLanguages": "Các ngôn ngữ có sẵn",
-      "availableLanguagesVariation": "Các ngôn ngữ khả dụng: ",
-      "content1": "Tại PlanB, chúng tôi tin rằng Bitcoin là một cuộc cách mạng toàn cầu và nó ảnh hưởng tới tất cả mọi người. Để trao sức mạnh cho hàng tỷ người, chúng tôi đang thiết kế nền tảng này theo hướng đa ngôn ngữ và mở quyền truy cập với tất cả mọi người. Nền tảng hiện tại hỗ trợ  {{nb}} lngôn ngữ, và sẽ có thêm nhiều ngôn ngữ được thêm vào mỗi tháng. Để đạt được điều này, chúng tôi sử dụng sự kết hợp giữa AI và niềm đam mê của các Bitcoiner trên toàn thế giới.",
-      "link": "Giúp chúng tôi dịch các nội dung trên học viện",
-      "subtitle": "Tất cả mọi thứ đều được dịch sang ngôn ngữ địa phương",
-      "title": "Không có rào cản ngôn ngữ ở đây."
-    },
-    "patreonSection": {
-      "content": "PlanB Network rất tự hào khi hợp tác với nhiều công ty Bitcoin trên toàn thế giới để cung cấp các tài nguyên giáo dục tốt nhất!",
-      "title": "Cùng nhau, chúng ta hãy làm cho giáo dục về Bitcoin trở nên tốt hơn!"
-    },
-    "tutorialSection": {
-      "content1": "Bitcoin không ngừng phát triển, với các tác nhân, giải pháp, giao thức và các đột phát công nghệ mới sẽ đến và đi. Rất khó đề duy trì một cơ sở dữ liệu các hướng dẫn chất lượng, được cập nhất chính xác và duy nhất. Tại PlanB, đây là những gì chúng tôi đã đạt được. Từ người mới bắt đầu cho tới người dùng nâng cao, bạn có thể tham khảo hàng trăm hướng dẫn để khám phá ngành công nghiệp này dựa trên nhu cầu của bản thân.",
-      "link": "Xem tất cả các hướng dẫn",
-      "link2": "Xem tất cả các khoá học",
-      "subtitle1": "Chúng tôi giúp bạn làm chủ công nghệ với rất nhiều hướng dẫn chi tiết!",
-      "title": "Đơn giản hoá việc giáo dục Bitcoin là mục tiêu của chúng tôi."
-    },
-    "wallOfLoveSection": {
-      "subtitle": "Các Bitcoiners nói gì về chúng tôi",
-      "title": "Bức tường của tình yêu"
+      "link": "Giúp chúng tôi dịch các nội dung trên học viện"
     }
   },
   "imagesAlt": {
-    "bookCover": "một bìa cuốn sách",
-    "contributorHeart": "một trái tim dành cho người đóng góp",
-    "orangePill": "một viên thuốc màu cam",
     "printedCircuits": "một mạch in",
     "rabbit404": "một con thỏ chiếu đèn pin vào biển báo 404",
-    "sthRepresentingCompany": "một cái gì đó đại diện cho công ty",
     "underConstructionImage": "Hình minh hoạ một số chú thỏ đang làm việc trên công trường"
   },
   "labs": {
@@ -1167,8 +976,7 @@
     "planBLabs": "",
     "presentation": {
       "link": "",
-      "subtitle": "",
-      "title": ""
+      "subtitle": ""
     },
     "title": ""
   },
@@ -1176,41 +984,10 @@
     "buyVideoToUnlock": "Mua video để mở khoá nó",
     "checkFullCourse": "Khám phá toàn bộ khoá học",
     "lecturePartCourse": "Bản xem lại này là một phần của khoá học <0>{{courseTitle}}</0>.\nKhám phá toàn bộ khoá học để làm chủ hoàn toàn các khái niệm và mở khoá tiềm năng của bản thân!",
-    "pageTitle": "Bản xem lại bài giảng",
-    "partCourse": "Bài giảng này là một phần của khoá học:",
     "watchLecture": "Xem lại bài giảng"
   },
-  "library": {
-    "pageTitle": "Thư viện Bitcoin"
-  },
   "menu": {
-    "bCertDescription": "Vượt qua kỳ thi Chứng chỉ ₿-CERT để khẳng định đẳng cấp của bạn về Bitcoin",
-    "betDescription": "Tập hợp các nội dung mà bạn có thể sử dụng vào các dự án giáo dục của bạn",
-    "bitcoinDescription": "Học về Bitcoin từ các ứng dụng cơ bản đến nâng cao.",
-    "businessDescription": "Khám phá việc sử dụng Bitcoin trong hoạt động thương mại.",
-    "channelsDescription": "Truy cập bộ sưu tập độc quyền các kênh Yotube để học về Bitcoin",
-    "chooseLanguage": "Chọn một ngôn ngữ",
-    "conferencesDescription": "Tập hợp các bản phát lại của các hội nghị Bitcoin kể từ Genesis Block",
-    "glossaryDescription": "Hiểu về ngôn ngữ của Bitcoin",
-    "lecturesDescription": "Xem lại các bản ghi bài giảng từ các chuyên gia Bitcoin",
-    "libraryDescription": "Khám phá một loạt các cuốn sách để gia tăng hiểu biết của bạn",
-    "login": "Đăng nhập",
-    "miningCourseDescription": "Hiểu về quá trình, công cụ và ngành công nghiệp phía sau hoạt động đào Bitcoin.",
-    "moviesDescription": "Khám phá những câu chuyện hấp dẫn và phân tích chuyên sâu về sự phát triển và tác động của Bitcoin",
-    "newsletterDescription": "Bộ sưu tập các nội dung mà bạn có thể sử dụng cho các dự án giáo dục của bạn",
-    "planBLabsDescription": "",
-    "podcastsDescription": "Khám phá hệ sinh thái Bitcoin thông qua các podcast",
-    "projectsDescription": "Tìm hiểu thêm về các công ty và các dự án có đóng góp vào việc cải thiện và thúc đấy sự áp dụng Bitcoin",
-    "protocolDescription": "Khám phá các nguyên tắc cơ bản tạo nên sức mạnh của mạng lưới Bitcoin.",
-    "publicDescription": "Khám phá các bài viết truyền thông công khai",
-    "securityDescription": "Làm chủ các kỹ thuật bảo vệ tài sản Bitcoin của bạn.",
-    "socialStudiesDescription": "Nghiên cứu về ảnh hưởng của Bitcoin đối với xã hội.",
-    "teachersDescription": "Làm quen với các giáo viên của chúng tôi, những Bitcoiner đầy đam mê"
-  },
-  "movies": {
-    "goToMovie": "Đi tới phim",
-    "pageTitle": "Phim & Phim tài liệu",
-    "watchTrailer": "Xem trailer"
+    "login": "Đăng nhập"
   },
   "notFound": {
     "here": "Tại đây",
@@ -1237,7 +1014,6 @@
     "calendar_48h_online_event": "",
     "dashboardDescription": "",
     "daysAgo": "",
-    "hoursAgo": "",
     "markAsRead": "",
     "monthsAgo": "",
     "noRecentNotifications": "",
@@ -1248,7 +1024,6 @@
     "results": "",
     "select": "",
     "selectAll": "",
-    "stayUpToDate": "",
     "today": "",
     "unread": "",
     "upcomingEvent": "",
@@ -1268,12 +1043,6 @@
   "placeholders": {
     "selectTimeZone": ""
   },
-  "podcast": {
-    "check": "Kiểm tra podcast"
-  },
-  "podcasts": {
-    "pageTitle": "Các podcast về Bitcoin"
-  },
   "professors": {
     "navigationTitles": {
       "all": "Tất cả",
@@ -1291,11 +1060,8 @@
     }
   },
   "projects": {
-    "languages": "Các ngôn ngữ",
-    "networkStrength": "Sức mạnh của mạng lưới nằm ở các thành viên của nó",
     "noRelatedEvents": "Không có sự kiện nào sắp tới liên quan tới nhà đào tạo này ở thời điểm hiện tại.",
     "otherCommunities": "Khám phá các cộng đồng Plan ₿",
-    "pageTitle": "Các dự án Bitcoin",
     "related": "Liên quan",
     "relatedEvents": "Các sự kiện liên quan sắp tới"
   },
@@ -1310,45 +1076,19 @@
     "thanks": "Xin chân thành cảm ơn những người duyệt lại nội dung!"
   },
   "publicCommunication": {
-    "blogCategories": {
-      "all": "Tất cả",
-      "content": "Nội dung",
-      "feature": "Tính năng",
-      "network": "Mạng lưới"
-    },
-    "blogPageStrings": {
-      "blogListButtonText": "Đọc",
-      "blogSidebarTitle": "Bài đăng trước đó trên mạng lưới",
-      "blogSidebarTitleForAll": "",
-      "errorMessageNotFound": "Không tìm thấy blog.",
-      "featuredArticleTitleText": "Bài báo mới được phát hành",
-      "filterText": "Lọc theo chủ đề:",
-      "noArticlesText": "Không có bài blog nào ở thời điểm này.",
-      "pastArticleSubtitleText": "Các bài báo trước đó"
-    },
-    "blogPost": "Blog & Tin tức",
-    "description": "Tại Plan B Network, chúng tôi tự hào đi theo tiêu chuẩn mã nguồn mở và duy trì sự minh bạch trong suốt hành trình của mình",
-    "goBackButtons": {
-      "simpleGoBack": "Quay lại tất cả bài báo"
-    },
     "legal": "Thông tin pháp lý",
     "legalSections": {
       "contact": "Liên hệ",
       "legalNotice": "Thông báo pháp lý",
       "privacyPolicy": "Chính sách riêng tư",
       "termsOfSale": "Điều khoản bán hàng"
-    },
-    "title": "Truyền thông công cộng"
+    }
   },
   "resources": {
-    "articles": {
-      "title": "Các bài viết"
-    },
     "bet": {
       "title": "Công cụ giáo dục"
     },
     "books": {
-      "author": "Tác giả: ",
       "title": "Thư viện"
     },
     "channels": {
@@ -1358,12 +1098,10 @@
     "conferences": {
       "title": "Bản xem lại các hội nghị"
     },
-    "github": "Tất cả dữ liệu này được quản lý thông qua một kho mã nguồn mở trên <0>Github</0>. Bạn có thể thoải mái đóng góp và bổ sung bất kỳ nội dung còn thiếu nào.",
     "glossary": {
       "title": "Bảng thuật ngữ"
     },
     "lectures": {
-      "noLectures": "Hiện tại không có bản xem lại bài giảng nào theo ngôn ngữ bạn chọn.",
       "title": "Bản xem lại bài giảng"
     },
     "movies": {
@@ -1374,19 +1112,14 @@
       "check": "Kiểm tra bản tin"
     },
     "newsletters": {
-      "author": "Tác giả: ",
-      "level": "Cấp độ:",
       "noNewsletters": "Hiện tại không có bản tin nào theo ngôn ngữ bạn chọn.",
       "subtitle": "<0>Các bản tin khác</0> mà bạn có thể thích",
       "title": "Bản tin"
     },
-    "pageDescription": "Tìm hiểu về Bitcoin giống như bạn đang khám phá một mê cung đang phát triển không ngừng. Để giúp bạn trong hành trình này, chúng tôi đã biên soạn rất nhiều nguồn tài nguyên gồm sách, podcast, video và bản phát lại của các hội nghị. Cổng thông tin này tập hợp tất cả thông tin vào một kho lưu trữ trên Github để giúp bạn hiểu hõ hơn về hệ sinh thái Bitcoin.",
     "pageSubtitle": "Tập trung tri thức lại để có thể phân phối tối hơn",
     "pageSubtitleBooks": "<0>Các quyển sách khác</0> mà có thể bạn thích",
     "pageSubtitleChannels": "<0>Các kênh Youtube khác</0> bạn có thể thích",
-    "pageSubtitleLectures": "<0>Các bản xem lại bài giảng khác</0> có thể bạn thích",
     "pageSubtitlePodcast": "<0>Các kênh podcast khác</0> có thể bạn thích",
-    "pageTitle": "Chào mừng bạn đến với Cổng tài nguyên",
     "podcasts": {
       "noPodcasts": "Hiện tại không có kênh podcast nào theo ngôn ngữ bạn chọn.",
       "title": "Các podcast"
@@ -1395,7 +1128,6 @@
       "title": "Các dự án"
     },
     "searchFilterName": "Tìm kiếm theo tên",
-    "toggleFreeOnly": "Chỉ miễn phí",
     "toggleLabelAll": "Tất cả",
     "toggleLabelSelectedLanguage": "Ngôn ngữ được chọn"
   },
@@ -1414,13 +1146,10 @@
     "event": "Sự kiện",
     "events": "Các sự kiện",
     "explorer": {
-      "subtitle": "Bạn đang tìm kiếm cái gì?",
       "title": "Bảng tìm kiếm"
     },
-    "filterByType": "Lọc theo thể loại",
     "glossary_word": "Từ vựng thuật ngữ",
     "glossary_words": "Từ vựng thuận ngữ",
-    "languageSelected": "Ngôn ngữ được chọn: {{language}}",
     "lecture_replay": "Bản xem lại bài giảng",
     "lecture_replays": "Bản xem lại các bài giảng",
     "loadMoreResults": "Xem thêm kết quả",
@@ -1434,11 +1163,9 @@
     "projects": "Các dự án",
     "resultEmpty": "Ui! Chúng tôi không thể tìm thấy thứ gì phù hợp với tìm kiếm của bạn. Kiểm tra lại các ký tự, thử từ khoá khác hoặc chọn danh mục khác.",
     "resultError": "Có điều gì đó không đúng. Vui lòng thử lại.",
-    "resultInfo": "Đã tìm thấy {{count}} kết quả trong {{time}}ms",
     "results": "Các kết quả",
     "resultsRemaining": "{{count}} kết quả còn lại",
     "search": "Tìm kiếm",
-    "searchResult": "Các kết quả tìm kiếm",
     "startSearch": "Bắt đầu tìm kiếm để xem kết quả tại đây",
     "tutorial": "Hướng dẫn",
     "tutorials": "Các hướng dẫn",
@@ -1452,56 +1179,32 @@
     "changeProfilePicture": "Thay đổi hình ảnh hồ sơ"
   },
   "tutorials": {
-    "approvedByCreator": "Được chấp thuận bởi nhà sáng tạo",
-    "backTutorials": "Quay lại tất cả hướng dẫn",
     "business": {
-      "description": "",
-      "shortDescription": "",
       "title": ""
     },
     "computer-security": {
-      "description": "",
-      "shortDescription": "",
       "title": ""
     },
     "contribution": {
-      "description": "",
-      "shortDescription": "",
       "title": ""
     },
     "details": {
       "author": "Tác giả: ",
-      "didHelp": "Điều này hữu ích?",
       "ratingSuccess": "Cảm ơn xếp hạng của bạn!",
       "source": "Nguồn chính thức:",
-      "tutorialName": "Tên hướng dẫn",
-      "writtenBy": "Hướng dẫn này được viết bởi:"
+      "tutorialName": "Tên hướng dẫn"
     },
     "exchange": {
-      "description": "Các sàn giao dịch là những cánh cửa vào và ra giữa tiền tệ truyền thống (euro, đô-la) và thế giới bitcoin. Các sàn giao dịch có thể được quản lý và tuân thủ việc xác minh danh tính người dùng (KYC), hoặc giao dịch ngang hàng ẩn danh. Mỗi sàn giao dịch sẽ cung cấp những tính năng, cơ cấu phí, mức độ thanh khoản và dịch vụ hỗ trợ người dùng khác nhau. Mỗi Bitcoiner sẽ sử dụng các sàn giao dịch khác nhau dựa trên nhu cầu và nhận định của họ.",
-      "shortDescription": "Các giải pháp mua - bán bitcoin, KYC và không KYC",
       "title": "Sàn giao dịch"
-    },
-    "explorer": {
-      "description": "Tất cả các hướng dẫn được viết bởi nhưng bitcoiner đầy đam mê và tận tâm, những người mong muốn mở rộng việc giáo dục về bitcoin ra toàn thế giới. Hãy nhớ thích, xem lại và típ satoshi cho họ!",
-      "didYouKnow": "Bạn đã biết?",
-      "exploreAllTutorials": "Khám phá tất cả hướng dẫn"
     },
     "hasBeenProofreadBy": "Hướng dẫn này đã được hiệu đính bởi",
     "hasNotBeenProofread": "Hướng dẫn này chưa được hiệu đính",
     "mining": {
-      "description": "Ngành công nghiệp đào bitcoin là một chủ đề phức tạp với rất nhiều hang thỏ trong đó. Ở đây, chúng tôi sẽ cố gắng để đồng hành cùng bạn trên hành trình sử dụng phần cứng và phần mềm. Từ việc điều chỉnh một máy đào S9 trở thành một máy sưởi tại gia cho đến việc cố gắng thắng xổ số với một thợ đào mọt sách.",
-      "shortDescription": "Các giải pháp đào bitcoin",
       "title": "Đào"
     },
     "node": {
-      "description": "Các nút giống như một máy chủ của cá nhân bạn. Trong Bitcoin, đó là phần mềm cho phép bạn vận hàng mạng lưới, tập hợp các giao dịch, xác thực các quy tắc và thực sự bảo vệ chủ quyền của mình. Trong hệ sinh thái của chúng ta, có rất nhiều nút, từ Bitcoin Core, đến nút vận hàng Lightning, RGB, hoặc các giải pháp riêng tư nâng cao khác.",
-      "shortDescription": "Các giải pháp để vận hành một nút Bitcoin và tham gia vào mạng lưới",
       "title": "Nút"
     },
-    "pageDescription": "Bitcoin là một ngành rộng, và đang trở nên rộng hơn mỗi ngày. Nhằm giúp bạn khám phá nó, chúng tôi đã tập hợp và lựa chọn một lượng lớn các hướng dẫn mô tả về các giải pháp khác nhau trên tất cả các mảng liên quan tới Bitcoin.",
-    "pageSubtitle": "Cùng làm sáng tỏ Bitcoin bằng cách chỉ ra sự rộng lớn và phong phú của hệ sinh thái Bitcoin",
-    "pageTitle": "Khám phá các hướng dẫn của chúng tôi",
     "privacy": {
       "description": "Quyền riêng tư là một quyền cơ bản. Trong khi chúng tôi mong muốn xây dựng một thế giới mà quyền riêng tư được mặc định bảo đảm, điều đó không phải là thực tế mà chúng ta đang có. Chúng tôi sẽ cố gắng để giải thích cho bạn những thực hành đúng, hỗ trợ bạn với các hướng dẫn và giúp bạn trở nên có chủ quyền vững chãi hơn liên quan tới thông tin cá nhân.",
       "shortDescription": "Các công cụ để sao lưu và bảo đảm riêng tư",
@@ -1529,8 +1232,6 @@
       "resource": ""
     },
     "wallet": {
-      "description": "Một chiếc ví Bitcoin giống như là một chùm chìa khoá của bạn vậy. Nó cho phép bạn chi tiêu và nhận bitcoin. Có rất nhiều loại ví khác nhau, với các trường hợp ứng dụng, chức năng, chi phí và trải nghiệm người dùng khác nhau. Mỗi Bitcoiner sẽ sử dụng một thiết bị khác nhau dựa trên nhu cầu, mức độ cấp thiết và kinh nghiệm của họ.",
-      "shortDescription": "Các giải pháp bảo mật và sử dụng bitcoin của bạn",
       "title": "Ví"
     },
     "writtenBy": "Hướng dẫn này đã được viết bởi"
@@ -1600,9 +1301,7 @@
     "email": "Email",
     "events": "Các sự kiện",
     "exam": "Bài thi",
-    "failed": "Rớt",
     "filter": "Lọc",
-    "finish": "Kết thúc",
     "free": "Miễn phí",
     "github": "Github",
     "glossary": "Thuật ngữ",
@@ -1624,18 +1323,14 @@
       "advanced": "Nâng cao",
       "beginner": "Người mới bắt đầu",
       "beginnerFriendly": "Phù hợp với người bắt đầu",
-      "developer": "lập trình viên",
       "expert": "Chuyên gia",
       "intermediate": "Trung cấp",
       "level": "Trình độ",
-      "levels": "Các trình độ",
-      "wizard": "Phù thuỷ"
+      "levels": "Các trình độ"
     },
-    "library": "Thư viện",
     "lightningInvoice": "Hoá đơn Lightning",
     "likes": "Thích",
     "linkedin": "LinkedIn",
-    "lnurlAuth": "Xác thực LNURL",
     "location": "Địa điểm",
     "members": " Các thành viên",
     "mentor": "",
@@ -1651,7 +1346,6 @@
     "on": "trên",
     "onChainAddress": "Địa chỉ on-chain",
     "online": "Trực tuyến",
-    "ourStory": "Câu chuyện của chúng tôi",
     "overview": "Tổng quan",
     "paid": "Đã thanh toán",
     "part": "Phần",
@@ -1669,7 +1363,6 @@
     "projects": "Các dự án",
     "protocol": "Giao thức",
     "public": "Truyền thông công cộng",
-    "publicationDate": "Ngày xuất bản:",
     "ratings": "Xếp hạng",
     "register": "Đăng ký",
     "required": "Bắt buộc",
@@ -1690,7 +1383,6 @@
     "submit": "Nộp",
     "teacher": "Giáo viên",
     "telegram": "Telegram",
-    "termsAndConditions": "Các điều khoản và điều kiện",
     "ticket": "Vé",
     "tickets": "Vé",
     "time": "Thời gian",
@@ -1714,7 +1406,6 @@
     "yes": "Vâng"
   },
   "youtubeChannels": {
-    "pageTitle": "Các kênh Youtube",
     "view": "Xem kênh Youtube",
     "watchTrailer": "Xem trailer"
   }

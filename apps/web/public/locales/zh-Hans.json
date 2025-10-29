@@ -19,7 +19,6 @@
     "missionTitle": "我们的任务",
     "storyContent": "Plan ₿网络是一个旨在全球范围内支持比特币教育的倡议。它是各种热衷于比特币的公司的相遇之处。这些公司专注于教育、开源软件、点对点网络和社区意识。他们共同决定建立Plan ₿网络，并为比特币生态系统提供适合的工具以助其成长。在这里你可以找到我们2023年的演示报告。",
     "storyTitle": "我们的故事",
-    "subtitle": "想要让全世界接受橙色药丸吗？加入Plan ₿网络。",
     "title": "关于Plan ₿网络"
   },
   "accessType": {
@@ -53,7 +52,6 @@
       "errorValidatingEmailDescription": "验证邮箱时发生错误，似乎链接已过期或被使用。请再试一次。",
       "successfullyChanged": "您的电子邮件已成功更改为{{email}}。",
       "successfullyValidated": "您的邮箱已成功验证。",
-      "validateChange": "正在验证邮箱更改",
       "validatingEmail": "正在验证邮箱",
       "validatingEmailChange": "正在验证邮箱更改",
       "wontTakeLong": "马上完成..."
@@ -75,7 +73,6 @@
       "invalid": "通证无效",
       "notFound": "未找到通证"
     },
-    "lnurlAuthDescription": "用您的Lightning钱包扫描这个二维码以登录！",
     "newPassword": "新密码",
     "noAccountNeeded": "在Plan ₿网路开始学习无需账户！",
     "noAccountYet": "没有账户？",
@@ -99,54 +96,31 @@
     "bCertDescription": "₿-CERT是一项国际认证的考试，用于评估您对比特币及其衍生主题的了解程度。如果您的得分大于80%，您会获得₿-CERT证书，它将使您能够在比特币行业中证明自己的技能和知识，是进入该行业公司和职位的准入证。",
     "bookExam": "预约考试时间",
     "challengeYourself": "让我们挑战自己并证明您的水平！",
-    "checkout": "查看₿-CERT证书",
     "download": "下载证书",
     "knowledgeableBitcoin": "熟悉比特币吗？",
-    "noBookExam": "目前未有已排程的考试。",
-    "organizeDescription": "没问题！如果您的社区是网络的一部分，那么在您可以在您的中心组织₿-CERT考试。请阅读图表，确保您满足举办考试的必要条件。如果您能满足这些条件，您就可以安排考试并将其添加到平台上。",
     "organizeExam": "组织一场考试",
-    "organizeSessionConditions": "请阅读<0>章程</0>，以确保您符合举办测试的强制性条件。若您符合要求，我们很乐意与您一起为您的本地社区举行一场测试。请通过您方便的方式联系我们。",
-    "organizeSessionHub": "在您的当地中心组织₿-CERT考试",
-    "organizeSubtitle": "给十亿人提供比特币这种“橙色药丸”并不容易",
-    "organizeTitle": "想在您的中心组织₿-CERT考试吗？",
-    "pageSubtitle": "通过集中的开源教育实现大规模应用",
     "pageTitle": "参加₿-CERT考试",
-    "readChart": "阅读章程",
     "tweetText": "很高兴成功通过了在@planb_network的₿-CERT考试，得分为{{score}}/100! {{emoji}} #₿-CERT证书\n\n{{certificateUrl}}",
     "verify": "验证您的证书的真实性",
     "hostSessionConditions": "操作步骤如下：\n\n1. 请阅读<0>宪章</0> - 确保您的社区满足主办条件\n2. 计划和安排 - 如果您符合资格，请选择日期并准备活动\n3. 发布您的活动 - 与我们联系，将其添加到Plan ₿ Network平台，以便人们可以加入",
-    "myCertificates": "我的证书",
     "noTestSessions": "当前没有可参加的考试",
     "wantHostSession": "想要在您的当地中心组织₿-CERT考试吗？"
   },
   "bet": {
-    "contributeButton": "帮助和贡献",
-    "contributeDescription": "如果您想添加、编辑或翻译一些内容，我们非常欢迎您的帮助！",
-    "contributeTitle": "想要贡献一份力量吗？",
     "educationalContent": {
-      "description": "这些内容本来就是准备好用于教育活动及其应用的。",
       "title": "教育内容"
     },
-    "pageDescription": "大规模应用不容。为了更快接近这个目标，我们开发了一个可扩展的教育内容数据库。在这里，比特币教育者可以根据需要自由地添加和获取内容。让我们向前行进时不要每次都重新发明轮子，而是共同努力，将有用的资源集中在一个工具包！",
-    "pageTitle": "比特币教育工具包",
     "visualContent": {
-      "description": "这些内容是原始的视觉数据，可用于您的创作。",
       "title": "视觉内容"
     }
   },
   "conferences": {
-    "addConferences": "随时通过<0>Github</0>代码仓库添加任何缺失的大会。",
-    "backConferences": "回到大会",
     "conferenceName": "大会名称",
     "conferencesSinceGenesis": "自创世区块以来的比特币大会档案",
-    "description": "大会是比特币行业的关键元素。它们是每个比特币用户教育旅程的一部分。我们构建了这个工具，帮助您在数百个会议中浏览。",
     "details": {
       "findReplay": "找到回放",
-      "nextVideo": "下一个视频",
-      "previousVideo": "上一个视频",
       "selectStage": "选择一个会场",
-      "selectVideo": "选择一个视频",
-      "watchReplay": "观看回放"
+      "selectVideo": "选择一个视频"
     },
     "language": "语言",
     "latestConferences": "最新的大会",
@@ -154,8 +128,7 @@
     "noConferences": "尚未为{{year}}添加大会。",
     "pageTitle": "大会回放",
     "planBConferences": "Plan ₿大会",
-    "topics": "主题",
-    "conferencesGenesis": "Genesis Block 以来的会议"
+    "topics": "主题"
   },
   "courses": {
     "chapter": {
@@ -163,10 +136,6 @@
         "bookSeat": "预定您的位子",
         "cancelBooking": "取消您的预订",
         "classIsFull": "班级已经满员",
-        "p1content": "一定要预定您的位子",
-        "p1heading": "您打算亲自参加这堂课吗？",
-        "p2content": "没问题！课程将在此页面上直播，并在稍后提供重播。",
-        "p2heading": "您不能亲自来吗？",
         "ticketDownload": "下载您的票据",
         "title": "课程详情"
       },
@@ -175,9 +144,7 @@
         "stayTuned": "直播将在课程开始前半小时开始。请保持关注。",
         "title": "直播视频"
       },
-      "next": "完成，进入下一章节",
-      "nextLesson": "下一节课将会是",
-      "thanksTip": "想说谢谢？打赏。"
+      "next": "完成，进入下一章节"
     },
     "conclusion": {
       "completedChaptersHeadline": "所有章节已完成！",
@@ -219,7 +186,6 @@
       "premiumContentNeedsPaymentAction": "前往课程主页",
       "startCourse": "开始课程",
       "taughtBy": "这门课程由以下人员教授：",
-      "teacherLed": "由教授指导",
       "thanksTipping": "您可以打赏教授以表达您的感谢。"
     },
     "exam": {
@@ -239,7 +205,6 @@
       "dontGiveUpTryAgain": "不要放弃！\n24小时后，您可以再试一次。",
       "dontWorry": "不要担心错误；本考试将帮助您加强所学知识。如果您没有通过，您可以在24小时后重新参加考试。",
       "dontWorryRetake": "不要担心，24小时后，您可以重新参加考试。",
-      "examAndDiploma": "考试与文凭",
       "examAvailabilityDetails": "学生若在规定时间内未通过考试，将被系统自动评分为0分。",
       "examCertificateCompletionText": "Plan ₿网络很高兴祝贺 {{username}} 获得“{{courseName}}”的课程文凭。",
       "examDetails": "考试由 {{nb}}道单项选择题组成，每题只有一项正确答案。提交前，只要考试时间未结束，您可以随时更换您的答案。",
@@ -258,7 +223,6 @@
       "goodLuck": "祝您好运！",
       "instantVerification": "立即验证：雇主可轻松验证您的学位的真实性和颁发日期。",
       "instructions": "用法说明：",
-      "letsConclude": "一切已完成，我们将总结一下",
       "nbMinutes": "{{nb}}分钟",
       "nbQuestions": "{{nb}}道题",
       "nextChapter": "下一章",
@@ -266,7 +230,6 @@
       "notTranslatedYet": "我们很抱歉，期末考试的功能尚未支持您选择的语言。您可以选择交换语言以继续操作。",
       "oneMinuteLeft": "只剩余1分钟了",
       "oopsFailed": "哎哟，您<0>未通过/0>期末考试。",
-      "passExam": "通过考试",
       "passed": "合格",
       "passRate": "合格率为80%。",
       "planBTimeStamp": "在Plan ₿网络中，我们通过使用区块链支持的时间戳技术来保障您的学位安全。",
@@ -312,25 +275,15 @@
       "tryAgain": "再试一次",
       "tryOneMoreTime": "再试一次吧！",
       "verifyDisplayName": "开始之前，请验证下面的显示名，因为它将用于生成您的文凭。",
-      "viewExam": "查看测试",
       "weight": "权重占比：{{weight}}%",
       "whyTimeStamp": "为您的学位进行时间戳：\n为何这很重要",
       "wishTryAgain": "24小时后，您可以重新参加考试。",
       "yesSubmit": "是，提交",
       "examResults": "考试结果",
-      "reviewTest": "查看答题",
       "scoreAndDiploma": "得分与文凭"
     },
     "explorer": {
-      "buildPath": "進入兔子洞時建造你自己的道路",
-      "comingSoon": "马上就来",
-      "exploreCourses": "探索所有Plan ₿课程",
-      "findCourses": "借助于课程选择器，找到最适合您需求的完美课程",
       "goal": "目标：",
-      "journey": "比特币是一场旅行，而不是一个目的地",
-      "pageDescription": "Plan ₿学院致力于在全球范围内简化比特币教育。由各领域的专家精心策划，学院提供了丰富的课程，旨在揭示比特币的各个方面。从初学者到专家，无论是按照你自己的节奏学习，还是每周由教授指导，我们希望学院能帮助你更好理解比特币这个广泛的主题。我们的大部分课程都是完全免费的，以便任何人，任何地方，都可以接受教育。",
-      "planbSchool": "PLAN ₿ SCHOOL",
-      "planbSchoolHeadline": "PLAN ₿ SCHOOL，由Giacomo Zucco带领，提供三个月的密集教育项目，作为学习和实际应用差距的桥梁。超越了常规的课堂，学生们将参与由公司主导的实践项目，并且为表现最优的学生们提供高级训练营。学生们需要通过两轮竞争性选拔，以便确保最优秀的人才具备充分的能力，使他们能够顺利开始追求在比特币行业的职业生涯。",
       "seeCourse": "查看课程",
       "discover": "了解更多"
     },
@@ -343,15 +296,12 @@
       "count": "部分{{count}}"
     },
     "payment": {
-      "accessibility": "可访问性",
-      "accessibility_forever": "永远",
       "amount": "金额",
       "back_course": "回到课程",
       "book_description": "请查场地详情。\n一旦预订处理完毕，我们将为您提供确认票据和二维码，以在活动现场出示。",
       "checkoutError": "在结账过程中发生了错误。\n请再试一次。",
       "courseType": "课程类型",
       "date": "日期",
-      "downloadCurriculum": "下载课程课表",
       "duration": "持续时间",
       "hybridDescription": "请查看课程详情。\n每堂课程都会在指定的日期和地点面对面进行。所有课程总会有实时直播和录制回放。\n\n每课程的现场出席由课程管理，因此请在计划线下出席的每堂课前完成预约。",
       "inPersonCallout": "您将购买本课程的 <strong>当面</strong>参与权限。",
@@ -362,8 +312,6 @@
       "payment_details": "付款详情",
       "payment_successful": "付款成功！",
       "qr_unified": "此二维码是统一的，因此它接受闪电和链上支付。",
-      "teacher": "教师",
-      "teachers": "教师",
       "time": "时间"
     },
     "quizz": {
@@ -424,7 +372,6 @@
     "courseSelector": "课程选择器",
     "noCoursesFound": "未找到课程。尝试调整您的筛选条件。",
     "plusXMore": "+{{count}} 门课程",
-    "selectATopic": "选择一个主题",
     "tryAdjustingFilters": "尝试调整您的筛选条件",
     "liveClasses": {
       "allOtherTitle": "所有其他的直播课程",
@@ -434,7 +381,6 @@
     }
   },
   "dashboard": {
-    "account": "账户",
     "adminPanel": {
       "accessGranted": "已获得访问权限",
       "bookings": "预订",
@@ -443,7 +389,6 @@
         "careers": "职业生涯",
         "careersSubtitle": "在这里，您可以查看已完成申请的参与者名单。您可以在电子表格中找到所有申请信息。",
         "cv": "简历",
-        "downloadProfiles": "下载电子表格",
         "downloadSpreadsheet": "下载电子表格",
         "lastUpdate": "最后更新",
         "lastUpdated": "最后更新",
@@ -461,7 +406,6 @@
         "delete": "删除",
         "deleteDiscountCode": "删除折扣码",
         "deleteDiscountCodeConfirm": "您确定要删除此折扣码吗？",
-        "deleteDiscountCodeSuccess": "已成功删除折扣码",
         "deleteDiscountCodeWarning": "此折扣码删除后将不可再用。该操作不可回退",
         "discountCode": "折扣码",
         "discountCodeCopied": "已复制折扣码",
@@ -472,7 +416,6 @@
         "discountType": "什么类型的折扣码？",
         "discountValue": "折扣的百分比",
         "discountValueExplanation": "请输入 5 的倍数（示例：5、10、15…，最大值为 100）",
-        "discountValuePlaceholder": "比如：“20”代表20%折扣",
         "downloadImage": "下载图片",
         "downloadImages": "下载图片",
         "explanation": "生成并管理活动及课程的折扣码，可选择一次性（适用于奖学金等情况）或可重用（适用于营销活动）。",
@@ -515,10 +458,8 @@
           "maxUses": "最大使用次数",
           "name": "名称",
           "owner": "所有者",
-          "total": "总计",
           "type": "类型",
-          "uses": "是否已用过？",
-          "value": "折扣码百分比"
+          "uses": "是否已用过？"
         }
       },
       "coursesIndexes": "课程索引",
@@ -530,7 +471,6 @@
       "githubLink": "Github链接",
       "hasAccessTo": "可访问资源：",
       "listOfParticipants": "参与者名单",
-      "makeProfessor": "成为教授",
       "nameOfEvent": "活动名称",
       "participants": "参与者",
       "professorName": "教授名称",
@@ -896,14 +836,8 @@
       "publicationDate": "出版日期"
     },
     "backToDashboard": "返回仪表板",
-    "bCert": {
-      "grade": "成绩",
-      "noResults": "此帐户尚未关联任何成绩或证书。\n如果你已经通过考试，但在较长时间后仍无法查看结果，请联系我们寻求帮助。"
-    },
     "booking": {
       "accessLive": "访问直播",
-      "billingSubtitle": "在此处下载您的预训发票。",
-      "billingTitle": "账单历史",
       "cancelBookingTitle": "您确定要取消此预订吗？",
       "invoiceDate": "日期",
       "invoiceTitle": "标题",
@@ -916,12 +850,10 @@
       "ticketLocation": "位置",
       "ticketTitle": "标题",
       "ticketType": "类型",
-      "upcomingTicketSubtitle": "在此处下载您的票据，以参加您的下次活动。请确保带上票据，以便能进入活动现场。",
       "upcomingTicketTitle": "即将到来的预订",
       "yesCancel": "是，取消"
     },
     "calendar": {
-      "calendar": "日历",
       "eventType": {
         "class": "课程",
         "event": "活动"
@@ -1112,10 +1044,7 @@
       "assignment": "任务",
       "assignmentCompletedDescription": "您的项目作业已成功提交并正在审核中。\n打分后，您的成绩将在此处可见。",
       "assignmentCompletedTitle": "任务已完成",
-      "assignmentDescription": "该项目任务标志着Plan ₿ Biz School程序的第二阶段，仅供成功通过第一阶段的学生使用。根据他们的排名和偏好，每个学生将被分配一个由比特币公司开发的项目，该项目必须在6月18日之前提交。\n学生将在6月2日至6月18日期间准备任务，有可能从公司的代表人员获得指导。\n\n项目将由公司进行评分，而分数将影响最终成绩。只有排名最高的学生才会被邀请参加从2025年7月23日到7月30日在瑞士卢加诺举行的暑期学校。",
-      "assignmentInformation": "任务信息",
       "assignmentTitle": "项目任务",
-      "checkDetailsCompleted": "在这里，您可以查看与您完成的课程的相关细节。",
       "completionDiploma": "完成文凭",
       "completionExamInfo": "您必须完成考试以访问此功能。",
       "conclusionHeadline": "这是您所学内容的总结。如果还有您错过或为未验证的一些章节，您可以现在通过返回学习或点击完成按钮来处理。",
@@ -1127,15 +1056,12 @@
       "congratulationsPassed": "恭喜！你已经成功通过了！",
       "coordinator": "课程协调员",
       "courseCalendar": "课程日历",
-      "coursesCompleted": "已完成的课程",
       "diplomaReleaseDescription": "一旦所有课程都完成了，你将会获得一份成功完成课程的文凭。在最后一堂课和完成结论章节之后，文凭将在这里可供下载。",
       "diplomaReleaseTitle": "文凭颁发",
       "examScore": "得分：",
       "exams": "考试",
       "feedbacks": "在这里，您可以查看并编辑您为此课程的评价和反馈。",
-      "fileUploadError": "上传时发生错误",
       "fileUploaded": "已成功上传您的文件！",
-      "finalAverageGradeDescription": "您可以在仪表板的“考试与文凭”部分找到您的最终平均成绩。",
       "finalGradeSummary": "总成绩汇总",
       "finalScore": "最终得分",
       "generalInformation": "基本信息",
@@ -1150,8 +1076,6 @@
       "mostPreferred": "偏好最高的课程",
       "mustBePdf": "您的文件必须为PDF格式。如果您需要提交额外的文件，请在PDF中包含其链接。",
       "notSelectedAssignment": "抱歉，您未入选项目任务。\n但您可以继续观看课程讲解",
-      "planbSchoolExamDescription": "“Plan ₿ Biz School 2025”计划由两个阶段组成。在第一阶段中，您将需要参加两次在线考试，包括期中测试和最终测试：它们是一次性的定时测试，您可以在三天的可用期内的任何时间完成。第一阶段结束后，将根据学生的排名选择进入第二阶段的学生，第二阶段包括一个项目任务：由比特币公司提供的个人任务。您可以在“作业”标签中找到相关的更多细节。\n\n最后的成绩将根据这三项测试的加权平均分来计算。达到80%以上分数的学生将会获得文凭，并且排名靠前的学生会有机会参加在七月的卢加诺夏季学校。",
-      "planbSchoolGeneralInformation": "“Plan ₿ Biz School 2025”计划由两个阶段组成。在第一阶段中，您将需要参加两次在线考试，包括期中测试和最终测试：它们是一次性的定时测试，您可以在三天的可用期内的任何时间完成。第一阶段结束后，将根据学生的排名选择进入第二阶段的学生，第二阶段包括一个项目任务：由比特币公司提供的个人任务。您可以在“作业”标签中找到相关的更多细节。\n\n最后的成绩将根据这三项测试的加权平均分来计算。达到{{threshold}}%以上分数的学生将会获得文凭，并且排名靠前的学生会有机会参加在七月的卢加诺夏季学校。",
       "projectRankingInstructions": "项目排名说明：",
       "ranking": "排名",
       "rankingInstructions": "根据您的偏好对提议的项目进行排序（数字1是您的首选）。这个排名将帮助我们为您分配最合适的项目。分数较高的学生将优先考虑他们的选择。",
@@ -1163,43 +1087,29 @@
       "shareOnSocials": "在社交媒体上分享：",
       "submissionInstructions": "提交指南",
       "submitBefore": "您必须在{{date}}{{hour}}之前提交您的作业。此截止日期后收到的提交将不会被评分。",
-      "submitFileNamingFormat": "您的文件必须按照以下格式命名：\n<0>company_username.pdf</0>。\n请从公司名称中删除所有空格，使用planB.network平台上的用户名，并检查是否有拼写错误。",
       "submitReviewInfo": "您必须提交评论以访问此功能。",
       "submitYourWork": "提交您的任务",
       "summerSchool": "暑期学校",
       "surePreferenceList": "您确定以下是您的最终偏好吗？",
       "thresholdToPass": "合格门槛：{{threshold}}%",
       "tweetText": "很高兴完成了在@planb_network的{{courseIndex}} 课程并获得了文凭，期末考试得分为{{score}}/100！{{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
-      "viewFinalGrade": "查看最终成绩",
       "yourProject": "您的项目",
       "assignmentNotAccessible": "任务已经开始，无法再访问。",
       "assignmentScore": "任务得分",
-      "gaveSolidEffort": "您付出了坚实的努力！",
       "tweetTextCourseDiploma": "很高兴完成了在@planb_network上由{{courseCoordinator}}教授的{{courseName}}课程，并且获得了我的文凭！\n#PBNDiploma\n\n{{certificateUrl}}",
       "viewScoreSummary": "查看成绩汇总",
       "wellDoneCompleting": "恭喜您完成并通过了这门课程！\n这是您应得的毕业文凭",
       "yourProjectAssignment": "您的项目任务"
     },
-    "courses": "课程",
     "credentials": {
       "bCert": "₿-CERT",
-      "bCertSubtitle": "在这里，您可以找到关于您的过去和未来₿-CERT考试的预订和成绩细节。\n₿-CERT是一个由Plan ₿网络组织的考试，用于证明您在比特币与其相关题目的知识水平。",
       "beingGraded": "您的考试正在被评分。结果将在1到2周内公布。",
-      "completionDiplomas": "完成文凭",
       "courseDiplomas": "课程文凭",
-      "courseDiplomasSubtitle": "在这里，您可以查看自己在平台上完成课程后参加的所有考试的相关详情。",
-      "downloadTicket": "下载票证",
       "globalCertifications": "全球认证",
-      "retakeExam": "重新参加考试",
-      "seatBooked": "您的考试座位已预订好",
-      "takePlaceAt": "考试将在...举行",
-      "yourCertificate": "您的证书",
       "completeACourse": "完成课程以获得您的第一个证书！",
       "exploreBCert": "探索₿-CERT",
-      "exploreCourses": "探索课程",
       "getGlobalRecognition": "通过₿-CERT获得全球认可",
-      "noCertificatesAvailable": "暂无证书",
-      "noDiplomasAvailable": "暂时没有可用的文凭"
+      "noCertificatesAvailable": "暂无证书"
     },
     "goToDashboard": "前往仪表板",
     "goToHomepage": "前往主页",
@@ -1207,28 +1117,20 @@
     "myCourses": {
       "completeAll": "完成一切",
       "completed": "已完成",
-      "completedCoursesDescription": "在这里，您可以查看您已完成的课程。",
-      "completedCoursesTitle": "已完成的课程",
-      "courseDashboard": "课程仪表板",
       "detailsAndCertificate": "详情与证书",
       "done": "完毕",
       "download": "下载文凭",
       "duration": "时长：",
       "inProgress": "进行中",
-      "newCourses": "每月将有新的课程",
-      "noCoursesAvailable": "无可用的课程。",
       "notStarted": "尚未开始",
       "notValidated": "尚未验证",
       "price": "价格：",
       "professor": "教授：",
       "resumeLesson": "摘要",
       "seeDetails": "查看详情",
-      "seeProgress": "在这里查看你的进度。",
       "seeTheCourse": "查看课程",
       "shareOn": "分享到",
-      "startCourse": "开始或完成一门课程",
       "verify": "验证您的文凭的真实性",
-      "viewDetails": "查看详情",
       "whereYouAre": "查看您的进度吧！",
       "yourCertificate": "您的证书",
       "yourProgress": "您的进展："
@@ -1259,36 +1161,25 @@
         "none": "无",
         "platformTitle": "您希望在此平台上接收哪些类型的通知？",
         "settingsSaved": "已成功保存您的设置！",
-        "title": "通知设置",
-        "assignedAt": "被分配于",
-        "displayName": "显示名",
-        "filter": "筛选器",
-        "role": "角色"
+        "title": "通知设置"
       },
       "password": "密码",
-      "personalInformation": "我的个人信息",
       "preview": "预览",
       "profile": "简介",
-      "profileInformation": "个人资料",
       "profilePicture": "个人资料照片",
       "save": "保存",
       "saving": "保存中…",
       "security": "安全",
       "securitySettings": "安全设置",
-      "settings": "设置",
       "username": "用户名"
     },
-    "studentDashboard": "学生仪表板",
     "teacher": {
       "courses": {
         "allStudents": "所有学生",
-        "analytics": "分析",
         "announcementModal": {
           "contentLabel": "通知内容",
           "contentPlaceholder": "请在此输入。",
           "create": "创建公告",
-          "dateLabel": "出版日期",
-          "datePlaceholder": "选择日期",
           "dateRequired": "您需要输入日期",
           "editAnnouncement": "编辑公告",
           "groupLabel": "请选择您想要通知的学生组",
@@ -1305,7 +1196,6 @@
         "assignment": "任务",
         "assignmentGrade": {
           "alertDescription": "输入所有成绩后，请点击\"发布所有成绩\"以发布所有成绩。\n请提前验证成绩，因为一旦发布，就无法再编辑。 ",
-          "alertDescription2": "任务成绩必须在6月22日午夜（中欧时间）之前公布。",
           "alertTitle": "任务评分",
           "confirmPublication": "确认发布",
           "confirmPublicationDescription": "成绩发布后，就无法再进行更改，因为它们将无法再被编辑。",
@@ -1324,23 +1214,18 @@
         "courseDetails": "课程细节",
         "courseLongDescription": "介绍描述",
         "courseModification": "如果您需要帮助来编辑课程中的内容，请查看这个<0>教程</0>。",
-        "coursesManagementPanel": "课程面板",
         "curriculum": "课程计划",
         "curriculumDescription": "以下是本课程的当前计划。",
         "deleteAnnouncementTitle": "你确定要删除这个公告吗？",
         "deleteAnnouncementWarning": "更改后无法恢复",
         "editOnGithub": "在Github上编辑",
         "examResults": "考试结果",
-        "goal": "目标",
         "makeModifications": "需要进行修改？",
         "noPastAnnouncement": "您目前没有过去的公告。",
         "noWrittenAnnouncement": "你目前没有已发布的公告。",
         "objectives": "目标",
-        "proposeNewCourse": "提议开设新的课程",
         "quickRecap": "在这里，您可以查看关于这门课程的所有总体信息。",
-        "reviewInfos": "在这里，您可以管理并评估关于您所协调的每一门课程的所有信息。",
         "reviews": "评估",
-        "selectCourse": "选择课程",
         "summerStudents": "暑期学校",
         "writeAnnouncement": "创建公告",
         "averageAttempts": "平均尝试次数",
@@ -1358,12 +1243,9 @@
         "thresholdToPass": "合格门槛",
         "totalQuestions": "题目总数",
         "amountPaid": "付款金额",
-        "lastActive": "最后活跃",
-        "studentsList": "学生名单"
+        "lastActive": "最后活跃"
       },
-      "menu": "教师画面",
       "profile": {
-        "account": "教师账户",
         "billingInformation": "账单信息",
         "description": "您的描述",
         "enterTipsInformation": "Plan ₿网络鼓励用户打赏教师。请填写您的消息，以便用户可为您提供小费。",
@@ -1372,12 +1254,9 @@
         "noLightningAddress": "未添加闪电地址。",
         "noShortBio": "此账户尚未连接到简短的个人简介，您可以在 GitHub 上添加。",
         "noTags": "此账户尚未连接到任何标记。",
-        "notifications": "通知",
         "publicDescription": "该描述将显示在平台上的教师信息卡中。",
         "publicProfile": "公开简介",
         "publicProfileDescription": "在这里，您可以填写或编辑您作为Plan ₿网络教师的所有活动的相关信息。",
-        "teacher": "教师",
-        "teacherProfile": "教师简介",
         "tutorialModification": "如果您需要帮助来编辑某些内容，请查看这个<0>教程</0>。"
       },
       "reviews": {
@@ -1426,44 +1305,18 @@
     "card": {
       "bookLive": "预订现场直播",
       "bookSeat": "预订位置",
-      "buyReplay": "购买重播",
-      "buyVideo": "购买视频",
-      "eventFull": "活动已满员",
       "free": "免费",
-      "limited": "限于",
       "online": "在线",
       "people": "人们",
       "purchased": "已购买",
-      "seatBooked": "已预订座位",
       "unlimited": "无限的",
       "visitWebsite": "访问网站",
-      "watchLive": "观看直播",
       "watchReplay": "观看回放",
       "buyLecture": "购买讲座"
     },
-    "errors": {
-      "premiumContentNeedsLogin": "您需要登录以参加这个活动。",
-      "premiumContentNeedsPayment": "这场活动是高级项目的一部分。",
-      "premiumContentNeedsPaymentAction": "前往活动页面"
-    },
     "main": {
-      "currentEvents": "正在举办的活动",
       "upcomingEvents": "即将举办的活动"
     },
-    "missed": {
-      "missedH1": "之前的活动重播",
-      "missedP1": "你错过了一个活动吗？",
-      "missedP2": "我们在此储存了所有过去活动的重播，以便人人都可以自由了解错过的内容。"
-    },
-    "newEvent": {
-      "button": "添加我的活动",
-      "description": "当然！所有比特币活动都可以在这里被看见，欢迎任何创办新活动的倡议 :)",
-      "subtitle": "给十亿人提供比特币这种“橙色药丸”并不容易",
-      "title": "想要添加您的活动吗？"
-    },
-    "pageDescription": "想要实时讨论比特币吗？在这里，您可以找到Plan ₿网络社区支持的所有活动。无论您是想听讲座，手持饮料讨论比特币，还是想通过考试评估您的知识，您都能通过Plan ₿网络找到适合的活动。",
-    "pageSubtitle": "强大的网络增进了自上而下的采纳过程",
-    "pageTitle": "正在寻找可以参加的比特币活动？",
     "payment": {
       "access_online_successful": "当活动开始时，请登录平台，使您能在活动页面中访问直播内容。",
       "access_physical_successful": "您可以在此下载您的票证，也可以稍后在您的仪表板中下载。",
@@ -1493,9 +1346,6 @@
     "tcDisclaimer": "我同意将我的信息提供给主办方，用于场地入场。",
     "tcMustBeAccepted": "您必须同意条款和条件以继续操作",
     "calendar": {
-      "displayCalendar": "显示日历",
-      "fullMap": "完整地图",
-      "hideCalendar": "隐藏日历",
       "inXMonths": "{{number}}个月以后",
       "lastMonth": "上个月",
       "nextMonth": "下个月",
@@ -1525,27 +1375,13 @@
         "meetup": "聚会",
         "workshop": "工作坊"
       }
-    },
-    "upcomingEvents": "即将举办的活动"
+    }
   },
   "filters": {
-    "categories": "类型",
-    "levels": "水平",
-    "resources": "资料",
     "topics": "主题"
   },
   "glossary": {
-    "anotherWord": "寻找另一个词",
-    "creditsLoic": "<0>致谢</0>: 比特币词典，由<1>Loïc Morel (Pandul)</1>写作，可访问在此<2>Github仓库中</2>。",
     "definition": "定义",
-    "filterBar": "找到你正在寻找的单词",
-    "keepLooking": "想继续看吗？",
-    "loadMoreWords": "加载更多单词",
-    "needHelp": "需要帮助定义一个技术词汇吗？",
-    "notTranslated": "词汇表中的数据还尚未翻译。\n如果您愿意协助，欢迎在我们的平台上贡献。",
-    "pageTitle": "比特币词汇表",
-    "placeHolder": "这是什么？",
-    "randomSearch": "随机搜索",
     "relatedWords": "相关词汇：",
     "term": "术语",
     "showMoreWords": "加载更多单词"
@@ -1556,68 +1392,25 @@
       "bitcoinFocusTitle": "比特币关注",
       "communityContent": "我们首先是一个热衷于在比特币在之旅中相互帮助的社区",
       "communityTitle": "社区",
-      "content": "Plan ₿网络是一个旨在全球范围内支持比特币教育的倡议。它是各种热衷于比特币的公司的交叉点，这些公司专注于教育、开源软件、点对点网络和社区意识。他们共同决定建立PlanB网络，并为比特币生态系统提供合适的工具以实现增长。",
       "openSourceContent": "我们的目标是促进知识的自由流动，并帮助构建更多的开源解决方案",
       "openSourceTitle": "开源",
       "privacyContent": "我们认为隐私是最基本的人权之一，对于进步至关重要",
-      "privacyTitle": "隐私",
-      "subtitle": "关于我们的一些情况",
-      "title": "我们是谁？"
+      "privacyTitle": "隐私"
     },
     "blogSection": {
-      "blogTitle": "Plan ₿网络的新动态",
-      "description": "我们一直在改善平台、内容和网络——快来看看吧！",
-      "noBlogsAvailable": "暂无���客可用。",
-      "noDateAvailable": "暂无日期可用",
       "seeAll": "查看全部"
     },
     "courseSection": {
-      "checkAllCourses": "查看所有课程",
-      "upcomingCourseDescription": "了解平台上发布的最新课程。学习过程永无止境！",
-      "upcomingCourseTitle": "即将开设的课程与新课程"
-    },
-    "eventSection": {
-      "checkEvents": "查看所有活动",
-      "eventTitle": "一个全球性的比特币教育家网络",
-      "hottestEvent": "最热门的比特币活动"
-    },
-    "header": {
-      "content": "Plan ₿平台旨在向全球提供最佳工具和教育内容，帮助人们重获他们的自主权。从个人到社区，我们在此帮助您走过比特币旅程。",
-      "forEducators": "给教育者和建设者",
-      "globalNetwork": "全球比特币网络",
-      "welcome": "欢迎来到Plan ₿网络"
+      "checkAllCourses": "查看所有课程"
     },
     "languageSection": {
       "availableLanguages": "可用语言",
-      "availableLanguagesVariation": "支持的语言： ",
-      "content1": "在Plan ₿网络，我们坚信比特币是一场涉及所有人的国际革命。为了赋予数十亿人权力，我们正在设计这个平台，使其支持多种语言，对所有人开放。该平台目前支持 {{nb}} 种语言，每个月都会增加更多。为了实现这一目标，我们使用了AI和全球比特币爱好者的热情相结合的方式。",
-      "link": "帮助我们翻译学院",
-      "subtitle": "一切都被翻译成了当地语言",
-      "title": "这里没有语言障碍。"
-    },
-    "patreonSection": {
-      "content": "Plan ₿网络很荣幸能与世界各地的许多比特币公司合作，以最大可能提供最佳教育资源！",
-      "title": "让我们一起让比特币教育变得更好！"
-    },
-    "tutorialSection": {
-      "content1": "比特币正在不断发展，新的参与者、解决方案、协议和技术突破不断涌现。维护一个单一、准确的、更新的教程数据库往往很难。但在Plan ₿，我们已经实现了这一目标。从初学者到高级用户，你可以浏览数百个教程，根据你的需求探索我们的行业。",
-      "link": "查看所有教程",
-      "link2": "查看所有资料",
-      "subtitle1": "我们通过大量深入的教程帮助您掌握这项技术！",
-      "title": "我们的目标是简化比特币教育。"
-    },
-    "wallOfLoveSection": {
-      "subtitle": "比特币爱好者对我们的看法",
-      "title": "爱之墙"
+      "link": "帮助我们翻译学院"
     }
   },
   "imagesAlt": {
-    "bookCover": "書籍封面",
-    "contributorHeart": "对优秀贡献者的心意",
-    "orangePill": "一个橙色的药片",
     "printedCircuits": "印刷电路板",
     "rabbit404": "一只兔子用手电筒照亮一个404标志",
-    "sthRepresentingCompany": "代表公司的东西",
     "underConstructionImage": "描绘了几只兔子在建筑工地上工作的插图"
   },
   "labs": {
@@ -1627,8 +1420,7 @@
     "planBLabs": "Plan ₿ Labs",
     "presentation": {
       "link": "发现 Plan ₿ Labs",
-      "subtitle": "加入实验室学习，探讨和成长！",
-      "title": "提升您的比特币技能！"
+      "subtitle": "加入实验室学习，探讨和成长！"
     },
     "title": "实用互动的课程，以实现持续学习"
   },
@@ -1636,41 +1428,12 @@
     "buyVideoToUnlock": "购买视频以解锁",
     "checkFullCourse": "查看完整课程",
     "lecturePartCourse": "本讲课回放是<0>{{courseTitle}}<0>课程的一部分。\n探索完整课程以掌握全体的概念并解放您所有的潜力！",
-    "pageTitle": "讲课回放",
-    "partCourse": "以下讲课是课程的组成部分：",
     "watchLecture": "查看讲课回放"
   },
-  "library": {
-    "pageTitle": "比特币图书馆"
-  },
   "menu": {
-    "bCertDescription": "通过₿-CERT考试来证明您的比特币水平",
-    "betDescription": "您可以用于教育项目的内容收集",
-    "bitcoinDescription": "从基础到它的高级应用学习比特币。",
-    "businessDescription": "发现比特币在商业中的用途。",
-    "channelsDescription": "访问我们专门选出的YouTube频道以学习关于比特币的内容",
-    "chooseLanguage": "选择语言",
-    "conferencesDescription": "自创世区块以来的比特币大会回放集",
-    "glossaryDescription": "理解比特币的语言",
-    "lecturesDescription": "重新观看比特币专家的讲课记录",
-    "libraryDescription": "发现大量的书籍来提升你的知识",
-    "login": "登录",
-    "miningCourseDescription": "了解比特币挖矿背后的过程、工具和行业。",
-    "moviesDescription": "发现引人入胜的故事以及比特币演变和影响的深入探讨",
-    "newsletterDescription": "可用作教育项目的内容集合",
-    "planBLabsDescription": "加入一个学习小组，继续深入了解闪电网络，挖矿和隐私",
-    "podcastsDescription": "通过播客探索比特币生态系统",
-    "projectsDescription": "了解关于为比特币和其采用做出贡献的公司和项目",
-    "protocolDescription": "了解驱动比特币网络的核心规则。",
-    "publicDescription": "浏览公开传播的文章",
-    "securityDescription": "掌握保护您的比特币资产的技术。",
-    "socialStudiesDescription": "了解比特币对社会的影响。",
-    "teachersDescription": "了解我们学院的教师"
+    "login": "登录"
   },
   "movies": {
-    "goToMovie": "前往观看电影",
-    "pageTitle": "电影与纪录片",
-    "watchTrailer": "观看预告片",
     "checkTheMovie": "检查电影"
   },
   "notFound": {
@@ -1698,7 +1461,6 @@
     "calendar_48h_online_event": "{{eventName}}即将来临！计划于{{date}}，从{{formattedTime}}开始。 ",
     "dashboardDescription": "这是您的最新通知。查看一个月后会被自动删除。",
     "daysAgo": "{{days}}天前",
-    "hoursAgo": "{{hours}}小时前",
     "markAsRead": "标记为已读",
     "monthsAgo": "{{months}}个月前",
     "noRecentNotifications": "您目前没有最近的通知。",
@@ -1709,7 +1471,6 @@
     "results": "您的₿-CERT成绩已公布！",
     "select": "选择",
     "selectAll": "全选",
-    "stayUpToDate": "了解最近情况！",
     "today": "今天",
     "unread": "未读",
     "upcomingEvent": "即将举办的活动",
@@ -1730,12 +1491,6 @@
   "placeholders": {
     "selectTimeZone": "选择时区"
   },
-  "podcast": {
-    "check": "查看播客"
-  },
-  "podcasts": {
-    "pageTitle": "比特币播客"
-  },
   "professors": {
     "navigationTitles": {
       "all": "所有教授",
@@ -1753,11 +1508,8 @@
     }
   },
   "projects": {
-    "languages": "语言",
-    "networkStrength": "网络的力量在于它的会员",
     "noRelatedEvents": "目前没有与该教育家相关的即将举行的活动。",
     "otherCommunities": "探索Plan ₿的社区",
-    "pageTitle": "比特币项目",
     "related": "相关内容",
     "relatedEvents": "即将举行的相关活动"
   },
@@ -1772,46 +1524,20 @@
     "thanks": "非常感谢我们的优秀校对员！"
   },
   "publicCommunication": {
-    "blogCategories": {
-      "all": "所有新闻",
-      "content": "内容",
-      "feature": "功能",
-      "network": "网络"
-    },
-    "blogPageStrings": {
-      "blogListButtonText": "阅读",
-      "blogSidebarTitle": "网络中的前期帖子",
-      "blogSidebarTitleForAll": "以前的帖子",
-      "errorMessageNotFound": "未找到博客。",
-      "featuredArticleTitleText": "最近发布文章",
-      "filterText": "按照主题筛选：",
-      "noArticlesText": "目前没有博客帖子。",
-      "pastArticleSubtitleText": "前期文章"
-    },
-    "blogPost": "博客与新闻",
-    "description": "Plan ₿网络遵循开源标准，并在整个过程中保持透明",
-    "goBackButtons": {
-      "simpleGoBack": "返回所有文章"
-    },
     "legal": "法律信息",
     "legalSections": {
       "contact": "联系信息",
       "legalNotice": "法律声明",
       "privacyPolicy": "隐私政策",
       "termsOfSale": "销售条款"
-    },
-    "title": "公共传播"
+    }
   },
   "resources": {
-    "articles": {
-      "title": "文章"
-    },
     "bet": {
       "title": "教育工具",
       "addEducationKit": "教育工具"
     },
     "books": {
-      "author": "作者： ",
       "title": "资料库",
       "addBook": "添加书籍"
     },
@@ -1823,12 +1549,10 @@
       "title": "大会回放",
       "addConference": "添加会议回放"
     },
-    "github": "所有这些数据都通过一个开源的<0> Github </0>仓库进行管理。欢迎自由贡献并添加任何缺失的内容。",
     "glossary": {
       "title": "词汇表"
     },
     "lectures": {
-      "noLectures": "目前没有所选语言的讲课回放。",
       "title": "讲课回放"
     },
     "movies": {
@@ -1839,19 +1563,14 @@
       "check": "查看电子报"
     },
     "newsletters": {
-      "author": "作者： ",
-      "level": "级别：",
       "noNewsletters": "目前没有所选语言的电子报。",
       "subtitle": "您可能有兴趣的<0>其他电子报</0>",
       "title": "电子报"
     },
-    "pageDescription": "试图理解比特币就像探索一个不断增长的迷宫。为了在这个旅程中帮助您，我们整理了大量的资源，包括书籍、播客、视频和大会回放。这个门户网站将所有信息汇集在一个Github仓库中，以帮助您更好地理解比特币生态系统。",
     "pageSubtitle": "集中知识以更好地分发它",
     "pageSubtitleBooks": "您可能感兴趣的<0>其他书籍</0>",
     "pageSubtitleChannels": "您可能感兴趣的<0>其他YouTube频道</0>",
-    "pageSubtitleLectures": "您可能感兴趣的<0>其他讲课回放</0>",
     "pageSubtitlePodcast": "您可能感兴趣的<0>其他播客</0>",
-    "pageTitle": "欢迎来到资源门户",
     "podcasts": {
       "noPodcasts": "目前没有所选语言的播客。",
       "title": "播客",
@@ -1863,7 +1582,6 @@
       "addProjects": "添加项目"
     },
     "searchFilterName": "按照名称搜索",
-    "toggleFreeOnly": "仅限免费",
     "toggleLabelAll": "所有",
     "toggleLabelSelectedLanguage": "所选语言",
     "pageSubtitleMovies": "<0>你可能会喜欢的其他电影</0>"
@@ -1883,13 +1601,10 @@
     "event": "活动",
     "events": "活动",
     "explorer": {
-      "subtitle": "您在寻找什么？",
       "title": "搜索门户"
     },
-    "filterByType": "按类型筛选",
     "glossary_word": "词汇表单词",
     "glossary_words": "词汇表单词",
-    "languageSelected": "所选语言：{{language}}",
     "lecture_replay": "讲座回放",
     "lecture_replays": "讲座回放",
     "loadMoreResults": "查看更多结果",
@@ -1903,11 +1618,9 @@
     "projects": "项目",
     "resultEmpty": "哎呀！我们未找到与您的搜索匹配的内容。请检查拼写、尝试其他的关键词，或者选择其他类型。",
     "resultError": "出现了问题。请再试一次。",
-    "resultInfo": "在{{time}}毫秒内找到了{{count}}个结果",
     "results": "结果",
     "resultsRemaining": "还剩余{{count}}个结果",
     "search": "搜素",
-    "searchResult": "搜索结果",
     "startSearch": "开始搜索以在这里查看结果",
     "tutorial": "教程",
     "tutorials": "教程",
@@ -1921,57 +1634,33 @@
     "changeProfilePicture": "更换头像"
   },
   "tutorials": {
-    "approvedByCreator": "已受到创作者的认可",
-    "backTutorials": "返回到其他教程",
     "business": {
-      "description": "想要将比特币融合到您的业务中吗？这个类别收集了所有为专业人士设计的教程。无论是设置销售点系统以轻松接受比特币付款，还是在您公司的财务中增加和管理比特币，您都会在这里找到必要的技术和实用信息。",
-      "shortDescription": "接受比特币支付并在您的财务中进行管理",
       "title": "商业"
     },
     "computer-security": {
-      "description": "计算机安全对每个比特币支持者来说都至关重要。在这个类别中，你会找到关于必要工具和通用操作的教程，以保护您的数字环境。操作系统，安全浏览器，密码管理器，身份验证系统，虚拟私人网络，以及加密通信解决方案，这里介绍的所有资源都旨在增强您的安全性和隐私性。",
-      "shortDescription": "保护您的数字安全和隐私的必要工具",
       "title": "计算机安全"
     },
     "contribution": {
-      "description": "想为Plan ₿ Network的开源平台做出贡献吗？在本类别中，您将学习如何写作和发布新的教程，评估或校对内容，或为社区添加新的有用资源。这些教程将给您提供参与比特币教育和丰富我们共享知识库的机会。",
-      "shortDescription": "为Plan ₿ Network开源平台做出贡献",
       "title": "贡献"
     },
     "details": {
       "author": "作者： ",
-      "didHelp": "这对您有助吗？",
       "ratingSuccess": "谢谢您的评价！",
       "source": "原始资源",
       "tutorialName": "教程名称",
-      "writtenBy": "本教程作者：",
       "didThisWork": "这对你来说效果好吗？"
     },
     "exchange": {
-      "description": "交易所是您的传统货币（欧元，美元）与比特币世界之间的进出门户之一。交易所可以是受监管的，也可以是符合KYC（客户了解）规定的，或者是点对点的，匿名的。每个交易所都会提供不同的功能，费用结构，流动性和客户支持。每个比特币用户会根据他们的需求和信念选择不同的交易所。",
-      "shortDescription": "比特币买卖解决方案，KYC和非KYC",
       "title": "交换"
-    },
-    "explorer": {
-      "description": "所有这些教程都是由热情并致力于比特币的人编写的，他们希望将比特币教育传播到世界各地。别忘了点赞，评论，并给他们打赏sats(聪）！",
-      "didYouKnow": "你知道吗？",
-      "exploreAllTutorials": "浏览所有教程"
     },
     "hasBeenProofreadBy": "教程校对员：",
     "hasNotBeenProofread": "此教程尚未校对",
     "mining": {
-      "description": "挖矿是一个充满了复杂性和深奥性的话题。在这里，我们将尝试通过硬件和软件来陪伴你的探索之旅。从将S9改造成家用暖气，到尝试用极客矿工赢得彩票。",
-      "shortDescription": "比特币挖矿解决方案",
       "title": "挖矿"
     },
     "node": {
-      "description": "节点就像您的个人服务器。在比特币中，它是允许您运行网络、收集交易、验证规则并行使真正主权的软件。在我们的生态系统中，存在各种节点，从比特币核心，到闪电网络实现，RGB，或其他更高级的隐私解决方案。",
-      "shortDescription": "操作比特币节点并加入网络的解决方案",
       "title": "节点"
     },
-    "pageDescription": "比特币是一个日益扩大的广泛行业。为了帮助您探索它，我们收集并策划了大量的教程，描述了与比特币相关的所有领域的各种解决方案。",
-    "pageSubtitle": "通过探索其庞大的生态系统，揭开比特币的神秘面纱",
-    "pageTitle": "探索我们的教程",
     "privacy": {
       "description": "隐私是一项基本权利。虽然我们向往一个隐私是默认设置的世界，但这并不是我们生活的现实。我们将尽力向您解释最佳实践，为您提供教程，并引导您在处理您的数据时走上更具自主权的道路。",
       "shortDescription": "备份和维护隐私的工具",
@@ -1999,8 +1688,6 @@
       "resource": "资源"
     },
     "wallet": {
-      "description": "比特币钱包就像你的钥匙链。它能让你花费和接收比特币。有很多不同类型的钱包，他们都有不同的使用场景、功能、成本和用户体验。每个比特币用户会根据他们的需求、水平和经验选择不同的设备。",
-      "shortDescription": "安全解决方案和比特币的使用",
       "title": "钱包"
     },
     "writtenBy": "本教程作者："
@@ -2070,9 +1757,7 @@
     "email": "电子邮箱",
     "events": "活动",
     "exam": "考试",
-    "failed": "失败",
     "filter": "筛选",
-    "finish": "完成",
     "free": "免费",
     "github": "Github",
     "glossary": "词汇表",
@@ -2094,18 +1779,14 @@
       "advanced": "高级",
       "beginner": "初学者",
       "beginnerFriendly": "适合初学者",
-      "developer": "开发者",
       "expert": "专家",
       "intermediate": "中级",
       "level": "级别",
-      "levels": "级别",
-      "wizard": "巫师"
+      "levels": "级别"
     },
-    "library": "图书馆",
     "lightningInvoice": "闪电发票",
     "likes": "喜好",
     "linkedin": "领英",
-    "lnurlAuth": "LNURL授权",
     "location": "位置",
     "members": " 成员",
     "mentor": "导师",
@@ -2121,7 +1802,6 @@
     "on": "上线",
     "onChainAddress": "链上地址",
     "online": "在线",
-    "ourStory": "我们的故事",
     "overview": "概述",
     "paid": "付款",
     "part": "部分",
@@ -2139,7 +1819,6 @@
     "projects": "项目",
     "protocol": "协议",
     "public": "公共传播",
-    "publicationDate": "发布日期：",
     "ratings": "评分",
     "register": "注册",
     "required": "必要的",
@@ -2160,7 +1839,6 @@
     "submit": "提交",
     "teacher": "教师",
     "telegram": "Telegram",
-    "termsAndConditions": "条款和条件",
     "ticket": "票据",
     "tickets": "票据",
     "time": "时间",
@@ -2216,13 +1894,11 @@
     "map": "地图",
     "settings": "设置",
     "certifications": "认证",
-    "myCertificates": "我的证书",
     "resetFilters": "重置筛选条件",
     "discover": "了解更多",
     "seeAll": "查看全部"
   },
   "youtubeChannels": {
-    "pageTitle": "YouTube频道",
     "view": "查看YouTube频道",
     "watchTrailer": "查看预告片"
   },
@@ -2241,15 +1917,12 @@
     "september": "九月"
   },
   "navbar": {
-    "analytics": "分析",
     "bookings": "预订",
     "career": "职业生涯",
     "discountCode": "折扣码",
     "learnAnytimeDescription": "自学课程",
     "learnAnytimeTitle": "随时学习",
     "manageCourses": "管理课程",
-    "myCalendar": "隐藏日历",
-    "myCareer": "我的职业生涯",
     "myCourses": "我的课程",
     "tabs": {
       "admin": "管理员",

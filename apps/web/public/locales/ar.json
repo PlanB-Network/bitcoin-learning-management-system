@@ -19,7 +19,6 @@
     "missionTitle": "مهمتنا",
     "storyContent": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow. Our 2023 release presentation is available here.",
     "storyTitle": "Out story",
-    "subtitle": "Bitcoin strength is our community. let's gather into a global bitcoin network.",
     "title": "About the planB network"
   },
   "accessType": {
@@ -53,7 +52,6 @@
       "errorValidatingEmailDescription": "حدث خطأ أثناء التحقق من صحة بريدك الإلكتروني، يبدو أن الرابط قد انتهت صلاحيته أو تم استخدامه مسبقاً. يرجى المحاولة مرة أخرى.",
       "successfullyChanged": "تم تغيير بريدك الإلكتروني بنجاح إلى {{email}}.",
       "successfullyValidated": "تم التحقق من بريدك الإلكتروني بنجاح.",
-      "validateChange": "جاري التأكد من تغيير البريد الإلكتروني",
       "validatingEmail": "جاري التأكد من البريد الإلكتروني",
       "validatingEmailChange": "جاري التأكد من تغيير البريد الإلكتروني",
       "wontTakeLong": "لن يستغرق هذا وقتاً طويلاً..."
@@ -75,7 +73,6 @@
       "invalid": "الرمز غير صالح",
       "notFound": "لم يتم العثور على الرمز"
     },
-    "lnurlAuthDescription": "Scanne diesen QR-Code mit deiner Lightning Wallet, um dich anzumelden!",
     "newPassword": "كلمة المرور الجديدة",
     "noAccountNeeded": "Es ist kein Konto notwendig um bei der Bitcoin Akademie zu starten !",
     "noAccountYet": "Haben Sie noch kein Konto?",
@@ -97,50 +94,28 @@
     "bCertDescription": "شهادة ₿ هي اختبار معترف به دوليًا لتقييم استعدادك للعملة الرقمية Bitcoin والموضوعات المشتقة منها. ستمكنك هذه الشهادة من إثبات مهاراتك ومعرفتك في صناعة Bitcoin، مما يتيح لك الوصول إلى الشركات والمناصب في هذه الصناعة.",
     "bookExam": "احجز جلسة امتحان",
     "challengeYourself": "تحدى نفسك وقيّم مستواك",
-    "checkout": "تحقق من شهادة ₿",
     "download": "تنزيل الشهادة",
     "knowledgeableBitcoin": "ما مدى معرفتك بالبيتكوين؟",
-    "noBookExam": "لم يتم تخطيط جلسة اختبار بعد.",
-    "organizeDescription": "فكرة رائعة! إذا كان مجتمعك جزء من Plan ₿ Network، يمكنك تنظيم جلسة CERT-₿ في الملتقى أو المركز الخاص بكم.\nيرجى قراءة <0>الميثاق</0> للتأكد من أنك تستوفي الشروط الإلزامية لاستضافة الاختبار. إذا كنت مؤهلاً، يمكنك جدولة الإختبار وإضافة الفعالية إلى المنصة.",
     "organizeExam": "تنظيم جلسة",
-    "organizeSessionConditions": "يرجى قراءة <0>الميثاق</0> للتأكد من أنك تستوفي الشروط الإلزامية لاستضافة الاختبار.\nإذا كنت مؤهلاً، سنكون سعداء بالتخطيط معك لجلسة لمجتمعك المحلي.\nيرجى التواصل معنا باستخدام الطريقة المفضلة لديك.",
-    "organizeSessionHub": "تنظيم جلسة اختبار CERT-₿ في مَجمعك المحلي",
-    "organizeSubtitle": "إعطاء الحبة البرتقالية لمليار شخص ليس بالأمر السهل",
-    "organizeTitle": "هل ترغب بتنظيم جلسة اختبار CERT-₿ في مَجمعك؟",
-    "pageSubtitle": "التبني العالمي من خلال التعليم المفتوح مركزيّ المصدر",
     "pageTitle": "أخذ اختبار CERT-₿",
-    "readChart": "قراءة الميثاق",
     "tweetText": "أنا في قمة السعادة لأني نجحت في CERT-₿ في @planb_network بمعدل {{score}}/100! {{emoji}} #BCERT\n\n{{certificateUrl}}",
     "verify": "التحقق من صحة شهادتك"
   },
   "bet": {
-    "contributeButton": "مساعدة و مساهمة",
-    "contributeDescription": "إذا كنت ترغب بإضافة أو تعديل أو ترجمة بعض المحتوى، مساعدتك مرحب بها بالتأكيد!",
-    "contributeTitle": "هل ترغب في المساهمة؟",
     "educationalContent": {
-      "description": "Dieser Inhalt soll für pädagogische Zwecke zur Verfügung stehen.",
       "title": "Lehrinhalte"
     },
-    "pageDescription": "Die Sovereign University unterstützt Bitcoin Pädagogen und lokale Communitys auf der ganzen Welt, um bei der Bitcoin Adoption zu helfen. Ziel ist es, eine große Datenbank zusammenzustellen und zugänglich machen. Sowohl mit Bildungsinhalten (von uns und von anderen erstellt) als auch mit visuellen Daten.",
-    "pageTitle": "Bitcoin Educational Toolkit",
     "visualContent": {
-      "description": "Dieser Inhalt sind Rohdaten für deine Projekte.",
       "title": "Visueller Inhalt"
     }
   },
   "conferences": {
-    "addConferences": "لا تتردد في إضافة أي مؤتمرات مفقودة عبر هذا المستودع على <0>GitHub</0>.",
-    "backConferences": "العودة إلى المؤتمرات",
     "conferenceName": "اسم المؤتمر",
     "conferencesSinceGenesis": "أرشيف المؤتمرات الخاصة بالبيتكوين منذ الكتلة التأسيسية",
-    "description": "تلعب المؤتمرات دوراً حاسماً في مجال البيتكوين، حيث تشكل جزءاً أساسياً من رحلة التعلم لكل مستخدم للبيتكوين. لهذا السبب، قمنا بإنشاء هذه الأداة لتيسير الاطلاع بسهولة على مئات الفعاليات المتعلقة بالبيتكوين.",
     "details": {
       "findReplay": "البحث عن تسجيل",
-      "nextVideo": "الفيديو التالي",
-      "previousVideo": "الفيديو السابق",
       "selectStage": "اختيار مرحلة",
-      "selectVideo": "اختيار فيديو",
-      "watchReplay": "مشاهدة التسجيل"
+      "selectVideo": "اختيار فيديو"
     },
     "language": "اللغة",
     "latestConferences": "أحدث المؤتمرات",
@@ -156,10 +131,6 @@
         "bookSeat": "احجز مقعدك",
         "cancelBooking": "إلغاء الحجز",
         "classIsFull": "هذا الصف ممتلئ",
-        "p1content": "تأكد أن تحجز مقعدك",
-        "p1heading": "هل تخطط لحضور هذا الدرس شخصياً؟",
-        "p2content": "لا بأس! سيتم بث الدرس مباشرة على هذه الصفحة وسيكون متاحاً للمشاهدة مرة أخرى بعد ذلك.",
-        "p2heading": "لا يمكنك الحضور شخصياً؟",
         "ticketDownload": "تنزيل التذكرة",
         "title": "تفاصيل الدرس"
       },
@@ -168,9 +139,7 @@
         "stayTuned": "ستبدأ الجلسة المباشرة قبل بداية الدرس بـ 30 دقيقة. تابعونا!",
         "title": "فيديو مباشر"
       },
-      "next": "Fertig, gehen wir zum nächsten Kapitel!",
-      "nextLesson": "الدرس التالي سيكون",
-      "thanksTip": "Danke sagen ? Tipp."
+      "next": "Fertig, gehen wir zum nächsten Kapitel!"
     },
     "conclusion": {
       "completedChaptersHeadline": "لقد اكملت جميع الوحدات الآن!",
@@ -212,7 +181,6 @@
       "premiumContentNeedsPaymentAction": "الذهاب إلى الصفحة الرئيسية للدورة",
       "startCourse": "Kurs beginnen",
       "taughtBy": "Dieser Kurs wird unterrichtet von :",
-      "teacherLed": "بإشراف أستاذ",
       "thanksTipping": "يمكنك تقديم إكرامية للأستاذ كطريقة لشكره."
     },
     "exam": {
@@ -232,7 +200,6 @@
       "dontGiveUpTryAgain": "لا تستسلم!\nيمكنك المحاولة مرة أخرى بعد 24 ساعة.",
       "dontWorry": "لا تقلق بشأن ارتكاب الأخطاء؛ هذا الاختبار مصمم لتعزيز تعلمك. وإذا لم تنجح، يمكنك إعادة الاختبار بعد 24 ساعة.",
       "dontWorryRetake": "لا تقلق، يمكنك إعادة الامتحان بعد 24 ساعة.",
-      "examAndDiploma": "الامتحان و الدبلوم",
       "examAvailabilityDetails": "في حال عدم اجتياز الاختبار خلال المدة المحددة له على المنصة، تُسجَّل للطالب درجة 0 تلقائياً.",
       "examCertificateCompletionText": "يسر Plan ₿ Network أن تهنئ {{username}} للحصول على شهادة إتمام دورة \"{{courseName}}\".",
       "examDetails": "الاختبار يحتوي على 40 سؤال اختيار من متعدد، ولكل سؤال إجابة صحيحة واحدة فقط. يمكنك تعديل إجاباتك في أي وقت قبل الإرسال، طالما أن المؤقت لم ينتهِ.",
@@ -251,7 +218,6 @@
       "goodLuck": "حظاً موفقاً!",
       "instantVerification": "تحقق فوري وسهل: يمكن لأي جهة عمل التحقق من مصداقية شهادتك وتاريخ إصدارها.",
       "instructions": "التعليمات:",
-      "letsConclude": "حسناً، هيا نختتم الآن",
       "nbMinutes": "{{nb}} دقائق",
       "nbQuestions": "{{nb}} أسئلة",
       "nextChapter": "الوحدة التالية",
@@ -259,7 +225,6 @@
       "notTranslatedYet": "عذراً، الامتحان النهائي ما زال غير متاح باللغة اللي اخترتها. يمكنك اختيار لغة أخرى للمتابعة.",
       "oneMinuteLeft": "تبقّت دقيقة واحدة فقط",
       "oopsFailed": "أوه، يبدو أنك <0>لم تنجح</0> في الامتحان النهائي.",
-      "passExam": "اجتياز الامتحان",
       "passed": "ناجح",
       "passRate": "معدل النجاح هو 80٪.",
       "planBTimeStamp": "نعتمد في Plan ₿ Network على تقنية الطابع الزمني المدعومة بالبلوكشين لحماية شهادتك وضمان مصداقيتها.",
@@ -305,22 +270,13 @@
       "tryAgain": "المحاولة مرة أخرى",
       "tryOneMoreTime": "حاول مجدداً!",
       "verifyDisplayName": "قبل البدء، يرجى التأكد من اسم العرض أدناه، حيث سيتم استخدامه لإصدار شهادتك.",
-      "viewExam": "عرض الاختبار",
       "weight": "الوزن النسبي: {{weight}}%",
       "whyTimeStamp": "وضع الطابع الزمني على شهادتك: \nما أهمية ذلك؟",
       "wishTryAgain": "إذا كنت ترغب في المحاولة مرة أخرى، سيكون الامتحان متاحاً بعد 24 ساعة.",
       "yesSubmit": "نعم، تسليم"
     },
     "explorer": {
-      "buildPath": "اصنع مسيرتك بنفسك",
-      "comingSoon": "انتظرونا قريباً",
-      "exploreCourses": "استكشاف دورات ₿ Plan",
-      "findCourses": "اكتشف الدورة الأنسب لاحتياجاتك باستخدام أداة اختيار الدورات",
       "goal": "الهدف:",
-      "journey": "البيتكوين هي رحلة، وليست وجهة",
-      "pageDescription": "Hier finden Sie eine große Anzahl von Kursen rund um Bitcoin, mit einer Vielzahl von Themen. Dieser Kontent ist wie Bitcoin und wächst organisch weiter. Alle Inhalte sind kostenlos, Open-Source und für jedermann zugänglich. Der Kursindex ist in Kreisen organisiert, um sich an den Lernweg eines jeden anzupassen.",
-      "planbSchool": "مدرسة ₿ Plan",
-      "planbSchoolHeadline": "تقدم Plan ₿ School، بقيادة جياكومو زوكو، برامج تعليمية مكثفة لمدة ثلاثة أشهر مصممة لسد الفجوة بين التعلم والتطبيقات العملية. بالإضافة إلى الدروس التقليدية، يشارك الطلاب في مشاريع عملية بقيادة شركات عدة ومعسكر تعليمي من الدرجة الأولى مخصص لنخبة المتفوقين. لا تتأهل إلى المرحلة النهائية إلا أفضل المواهب بعد جولتين من التصفيات التنافسية، وذلك لضمان جاهزية الطلاب لبدء مسيرتهم المهنية في مجال صناعة البيتكوين.",
       "seeCourse": "استكشاف الدورة"
     },
     "format": {
@@ -332,15 +288,12 @@
       "count": "Teilenummer {{count}}/{{total}}"
     },
     "payment": {
-      "accessibility": "Accessibility",
-      "accessibility_forever": "Forever",
       "amount": "Amount",
       "back_course": "العودة إلى الدورة التدريبية",
       "book_description": "يرجى مراجعة تفاصيل الموقع المرفقة. بمجرد تأكيد الحجز، سيتم إرسال تذكرة تأكيد ورمز QR لتقديمه عند الحضور إلى القاعة.",
       "checkoutError": "حد�� خطأ أثناء عملية الدفع.\nالرجاء المحاولة مرة أخرى.",
       "courseType": "نوع الدورة التدريبية",
       "date": "Date",
-      "downloadCurriculum": "Download curriculum",
       "duration": "Duration",
       "hybridDescription": "يرجى مراجعة التفاصيل المرفقة عن الدورة التدريبية.\nتُعقد كل جلسة حضورياً في المواعيد والمواقع المحددة، ويتم دائماً بث جميع الحصص مباشرة وتُسجل لإعادة المشاهدة في أي وقت.\n\nيتم تنظيم الحضور الشخصي لكل جلسة بشكل منفصل، لذا نرجو منك حجز مقعدك في كل مرة ترغب فيها بالحضور شخصياً.",
       "inPersonCallout": "أنت على وشك التسجيل <strong>للمشاركة الحضورية</strong> في هذه الدورة.",
@@ -351,8 +304,6 @@
       "payment_details": "Payment details",
       "payment_successful": "Payment successful!",
       "qr_unified": "رمز QR الموحّد هذا يقبل طريقتين للدفع: عبر Lightning أو مباشرة على السلسلة (On-chain).",
-      "teacher": "Teacher",
-      "teachers": "Teachers",
       "time": "الوقت"
     },
     "quizz": {
@@ -410,7 +361,6 @@
     }
   },
   "dashboard": {
-    "account": "الحساب",
     "adminPanel": {
       "accessGranted": "تم السماح بالوصول",
       "bookings": "الحجوزات",
@@ -419,7 +369,6 @@
         "careers": "الوظائف",
         "careersSubtitle": "يمكنك هنا الاطلاع على قائمة المشاركين الذين أكملوا طلباتهم. تجد جميع تفاصيل الطلبات داخل جدول البيانات.",
         "cv": "السيرة الذاتية",
-        "downloadProfiles": "تنزيل جدول البيانات",
         "downloadSpreadsheet": "تنزيل جدول البيانات",
         "lastUpdate": "آخر تحديث",
         "lastUpdated": "تم التحديث آخر مرة",
@@ -435,7 +384,6 @@
         "delete": "حذف",
         "deleteDiscountCode": "حذف رمز الخصم",
         "deleteDiscountCodeConfirm": "هل أنت متأكد أنك ترغب بحذف رمز الخصم هذا؟",
-        "deleteDiscountCodeSuccess": "تم حذف رمز الخصم بنجاح",
         "deleteDiscountCodeWarning": "بمجرد حذف هذا الرمز، تبطل صلاحيته ولن يعود فعالاً. هذا التغيير لا يمكن التراجع عنه",
         "discountCode": "رمز الخصم",
         "discountCodeCopied": "تم نسخ رمز الخصم",
@@ -446,7 +394,6 @@
         "discountType": "ما نوع رمز الخصم؟",
         "discountValue": "نسبة الخفض",
         "discountValueExplanation": "أدخل رقماً بزيادات 5 (مثل 5 ، 10 ، 15 ... حتى الـ 100)",
-        "discountValuePlaceholder": "مثال: 20 لـ 20%",
         "downloadImage": "تنزيل الصورة",
         "downloadImages": "تنزيل الصور",
         "explanation": "إنشاء و إدارة رموز خصم للفعاليات والدورات – سواء كانت للاستخدام لمرة واحدة مثل المنح الدراسية، أو متعددة الاستخدام لحملات التسويق.",
@@ -489,10 +436,8 @@
           "maxUses": "الحد الأقصى للاستخدامات",
           "name": "الاسم",
           "owner": "المالك",
-          "total": "المجموع",
           "type": "النوع",
-          "uses": "مستخدم",
-          "value": "القيمة"
+          "uses": "مستخدم"
         }
       },
       "coursesIndexes": "فهارس الدورات",
@@ -504,7 +449,6 @@
       "githubLink": "رابط Github",
       "hasAccessTo": "لديه الوصول إلى:",
       "listOfParticipants": "قائمة المشاركين",
-      "makeProfessor": "تعيين كأستاذ",
       "nameOfEvent": "اسم الفعالية",
       "participants": "المشاركون",
       "professorName": "اسم الأستاذ",
@@ -531,14 +475,8 @@
       "publicationDate": "تاريخ النشر"
     },
     "backToDashboard": "العودة إلى اللائحة الرئيسية",
-    "bCert": {
-      "grade": "الدرجة",
-      "noResults": "لا توجد أي درجات أو شهادات مرتبطة بهذا الحساب بعد.\nإذا كنت قد اجتزت امتحاناً ولم تظهر نتائجك بعد مرور فترة طويلة، يُرجى <0>التواصل معنا</0> للحصول على المساعدة."
-    },
     "booking": {
       "accessLive": "الدخول إلى البث المباشر",
-      "billingSubtitle": "قم بتنزيل فواتير حجوزاتك من هنا.",
-      "billingTitle": "سجل الفواتير",
       "cancelBookingTitle": "هل أنت متأكد أنك تريد إلغاء هذا الحجز؟",
       "invoiceDate": "التاريخ",
       "invoiceTitle": "العنوان",
@@ -551,12 +489,10 @@
       "ticketLocation": "الموقع",
       "ticketTitle": "العنوان",
       "ticketType": "النوع",
-      "upcomingTicketSubtitle": "يرجى تنزيل تذكرتك من هنا لحضور الفعالية القادمة. لا تنسَ إحضارها معك للدخول.",
       "upcomingTicketTitle": "الحجوزات القادمة",
       "yesCancel": "نعم، إلغاء"
     },
     "calendar": {
-      "calendar": "التقويم",
       "eventType": {
         "class": "الصفوف",
         "event": "الفعاليات"
@@ -747,10 +683,7 @@
       "assignment": "الواجبات",
       "assignmentCompletedDescription": "",
       "assignmentCompletedTitle": "",
-      "assignmentDescription": "",
-      "assignmentInformation": "معلومات الواجب",
       "assignmentTitle": "",
-      "checkDetailsCompleted": "هنا يمكنك الاطّلاع على جميع التفاصيل المتعلقة بالدورة التي أنهيتها.",
       "completionDiploma": "شهادة الإنهاء",
       "completionExamInfo": "يجب عليك إكمال الامتحان للوصول إلى هذه الميزة.",
       "conclusionHeadline": "فيما يلي ملخص لما تعلّمته. إن فاتتك بعض الوحدات أو لم يتم اعتمادها بالشكل الصحيح، يمكنك إتمامها الآن إمّا بإعادة دراستها أو الضغط على زر \"إكمال\".",
@@ -762,15 +695,12 @@
       "congratulationsPassed": "",
       "coordinator": "منسق الدورة التدريبية",
       "courseCalendar": "تقويم الدورة التدريبية",
-      "coursesCompleted": "الدورات المكملة",
       "diplomaReleaseDescription": "",
       "diplomaReleaseTitle": "",
       "examScore": "النتيجة:",
       "exams": "الامتحانات",
       "feedbacks": "",
-      "fileUploadError": "",
       "fileUploaded": "",
-      "finalAverageGradeDescription": "",
       "finalGradeSummary": "",
       "finalScore": "",
       "generalInformation": "المعلومات العامة",
@@ -785,8 +715,6 @@
       "mostPreferred": "",
       "mustBePdf": "",
       "notSelectedAssignment": "",
-      "planbSchoolExamDescription": "",
-      "planbSchoolGeneralInformation": "",
       "projectRankingInstructions": "",
       "ranking": "",
       "rankingInstructions": "",
@@ -798,30 +726,19 @@
       "shareOnSocials": "المشاركة على الشبكات الاجتماعية:",
       "submissionInstructions": "",
       "submitBefore": "",
-      "submitFileNamingFormat": "",
       "submitReviewInfo": "يجب عليك تقديم مراجعة أو رأي للوصول إلى هذه الميزة.",
       "submitYourWork": "",
       "summerSchool": "",
       "surePreferenceList": "",
       "thresholdToPass": "",
       "tweetText": "",
-      "viewFinalGrade": "",
       "yourProject": ""
     },
-    "courses": "الدورات",
     "credentials": {
       "bCert": "CERT-₿",
-      "bCertSubtitle": "",
       "beingGraded": "جاري تصحيح امتحانك. ستكون النتائج متاحة في غضون أسبوع أو أسبوعين.",
-      "completionDiplomas": "شهادات الإنهاء",
       "courseDiplomas": "",
-      "courseDiplomasSubtitle": "",
-      "downloadTicket": "",
-      "globalCertifications": "",
-      "retakeExam": "",
-      "seatBooked": "",
-      "takePlaceAt": "",
-      "yourCertificate": ""
+      "globalCertifications": ""
     },
     "goToDashboard": "",
     "goToHomepage": "",
@@ -829,28 +746,20 @@
     "myCourses": {
       "completeAll": "",
       "completed": "",
-      "completedCoursesDescription": "",
-      "completedCoursesTitle": "",
-      "courseDashboard": "",
       "detailsAndCertificate": "",
       "done": "",
       "download": "",
       "duration": "",
       "inProgress": "",
-      "newCourses": "",
-      "noCoursesAvailable": "",
       "notStarted": "",
       "notValidated": "",
       "price": "",
       "professor": "",
       "resumeLesson": "Resume the lesson",
       "seeDetails": "",
-      "seeProgress": "",
       "seeTheCourse": "",
       "shareOn": "",
-      "startCourse": "",
       "verify": "",
-      "viewDetails": "",
       "whereYouAre": "",
       "yourCertificate": "",
       "yourProgress": ""
@@ -884,29 +793,22 @@
         "title": ""
       },
       "password": "",
-      "personalInformation": "",
       "preview": "",
       "profile": "",
-      "profileInformation": "",
       "profilePicture": "",
       "save": "",
       "saving": "",
       "security": "",
       "securitySettings": "",
-      "settings": "",
       "username": ""
     },
-    "studentDashboard": "",
     "teacher": {
       "courses": {
         "allStudents": "",
-        "analytics": "",
         "announcementModal": {
           "contentLabel": "",
           "contentPlaceholder": "",
           "create": "",
-          "dateLabel": "",
-          "datePlaceholder": "",
           "dateRequired": "",
           "editAnnouncement": "",
           "groupLabel": "",
@@ -923,7 +825,6 @@
         "assignment": "",
         "assignmentGrade": {
           "alertDescription": "",
-          "alertDescription2": "",
           "alertTitle": "",
           "confirmPublication": "",
           "confirmPublicationDescription": "",
@@ -941,29 +842,22 @@
         "courseDetails": "",
         "courseLongDescription": "",
         "courseModification": "",
-        "coursesManagementPanel": "",
         "curriculum": "",
         "curriculumDescription": "",
         "deleteAnnouncementTitle": "",
         "deleteAnnouncementWarning": "",
         "editOnGithub": "",
         "examResults": "",
-        "goal": "",
         "makeModifications": "",
         "noPastAnnouncement": "",
         "noWrittenAnnouncement": "",
         "objectives": "",
-        "proposeNewCourse": "",
         "quickRecap": "",
-        "reviewInfos": "",
         "reviews": "",
-        "selectCourse": "",
         "summerStudents": "",
         "writeAnnouncement": ""
       },
-      "menu": "",
       "profile": {
-        "account": "",
         "billingInformation": "",
         "description": "",
         "enterTipsInformation": "",
@@ -972,12 +866,9 @@
         "noLightningAddress": "",
         "noShortBio": "",
         "noTags": "",
-        "notifications": "",
         "publicDescription": "",
         "publicProfile": "",
         "publicProfileDescription": "",
-        "teacher": "",
-        "teacherProfile": "",
         "tutorialModification": ""
       },
       "reviews": {
@@ -1003,43 +894,17 @@
     "card": {
       "bookLive": "Book live",
       "bookSeat": "Book your seat",
-      "buyReplay": "",
-      "buyVideo": "",
-      "eventFull": "",
       "free": "free",
-      "limited": "limited to",
       "online": "online",
       "people": "people",
       "purchased": "",
-      "seatBooked": "",
       "unlimited": "unlimited",
       "visitWebsite": "Visit website",
-      "watchLive": "Watch live",
       "watchReplay": "Watch replay"
     },
-    "errors": {
-      "premiumContentNeedsLogin": "",
-      "premiumContentNeedsPayment": "",
-      "premiumContentNeedsPaymentAction": ""
-    },
     "main": {
-      "currentEvents": "Events happening right now",
       "upcomingEvents": "Upcoming events"
     },
-    "missed": {
-      "missedH1": "Past events to replay",
-      "missedP1": "Did you miss an event ?",
-      "missedP2": "Here we store all replays of past events that took place in the Network, so that everyone can catch up freely on what they missed."
-    },
-    "newEvent": {
-      "button": "",
-      "description": "",
-      "subtitle": "",
-      "title": ""
-    },
-    "pageDescription": "",
-    "pageSubtitle": "",
-    "pageTitle": "",
     "payment": {
       "access_online_successful": "",
       "access_physical_successful": "",
@@ -1070,23 +935,10 @@
     "tcMustBeAccepted": ""
   },
   "filters": {
-    "categories": "",
-    "levels": "",
-    "resources": "",
     "topics": ""
   },
   "glossary": {
-    "anotherWord": "البحث عن كلمة أخرى",
-    "creditsLoic": "<0>الاعتمادات</0>: قاموس البيتكوين من تأليف <1>Loïc Morel (Pandul)</1>، متاح على <2>مستودع الـ Github</2> هذا.",
     "definition": "التعريف",
-    "filterBar": "ابحث عن الكلمة التي تحتاجها هنا",
-    "keepLooking": "هل ترغب في مواصلة البحث؟",
-    "loadMoreWords": "تحميل المزيد من الكلمات",
-    "needHelp": "هل تحتاج لمساعدة في تعريف مصطلح تقني؟",
-    "notTranslated": "لم يتم ترجمة البيانات في القاموس بعد.\nإذا كنت ترغب في المساعدة، فلا تتردد في المساهمة في",
-    "pageTitle": "قاموس البيتكوين",
-    "placeHolder": "عمّ تبحث؟",
-    "randomSearch": "بحث عشوائي",
     "relatedWords": "كلمات ذات صلة:",
     "term": "المصطلح"
   },
@@ -1096,68 +948,25 @@
       "bitcoinFocusTitle": "Bitcoin focus",
       "communityContent": "We are first and foremost a community of enthusiasts helping each other on their Bitcoin journey",
       "communityTitle": "Community",
-      "content": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow.",
       "openSourceContent": "We aim to promote the free flow of knowledge and to help build more open-source solutions",
       "openSourceTitle": "Open source",
       "privacyContent": "We consider privacy to be one of the most fundamental human rights and essential for progress",
-      "privacyTitle": "Privacy",
-      "subtitle": "A little bit about us",
-      "title": "Who are we ?"
+      "privacyTitle": "Privacy"
     },
     "blogSection": {
-      "blogTitle": "",
-      "description": "",
-      "noBlogsAvailable": "",
-      "noDateAvailable": "",
       "seeAll": ""
     },
     "courseSection": {
-      "checkAllCourses": "",
-      "upcomingCourseDescription": "",
-      "upcomingCourseTitle": ""
-    },
-    "eventSection": {
-      "checkEvents": "",
-      "eventTitle": "",
-      "hottestEvent": ""
-    },
-    "header": {
-      "content": "The PlanB platform aims to provide the best tools and educational content around the world to help people regain their sovereignty. From individuals to communities, we are here to help you along your Bitcoin journey.",
-      "forEducators": "Für Educators und Schaffer",
-      "globalNetwork": "Globales Bitcoin-Netzwerk",
-      "welcome": "Welcome to PlanB Network"
+      "checkAllCourses": ""
     },
     "languageSection": {
       "availableLanguages": "",
-      "availableLanguagesVariation": "",
-      "content1": "At PlanB, we believe Bitcoin is an international revolution that concerns everyone. To empower billions of people, we are designing this platform to be multilingual and accessible to all. The platform currently supports 7 languages, and more are being added every month. To achieve this, we use a mix of AI and the passion of Bitcoiners around the world.",
-      "link": "Help us translate the academy",
-      "subtitle": "Everything is translated to local languages",
-      "title": "No language barrier here."
-    },
-    "patreonSection": {
-      "content": "The PlanB Network is proud to team up with many bitcoin companies around the world in order to provide the best educational resources possible !",
-      "title": "Together let's make Bitcoin education better !"
-    },
-    "tutorialSection": {
-      "content1": "Bitcoin is constantly evolving, with new actors, solutions, protocols, and technological breakthroughs coming and going. It is often hard to maintain a single, accurate database of good, updated tutorials. Here at PlanB, this is what we've achieved. From beginners to advanced users, you can navigate hundreds of tutorials to explore our industry based on your needs.",
-      "link": "See all tutorials",
-      "link2": "",
-      "subtitle1": "We help you master the technology with numerous in-depth tutorials!",
-      "title": "Making Bitcoin education simple is our objective."
-    },
-    "wallOfLoveSection": {
-      "subtitle": "",
-      "title": ""
+      "link": "Help us translate the academy"
     }
   },
   "imagesAlt": {
-    "bookCover": "ein Buchcover",
-    "contributorHeart": "ein Herz für netten Mitwirkenden",
-    "orangePill": "an orange pill",
     "printedCircuits": "a printed circuits",
     "rabbit404": "a rabbit shining a flashlight on a 404 sign",
-    "sthRepresentingCompany": "etwas für das Unternehmen",
     "underConstructionImage": "Abbildung mehrerer Kaninchen auf einer Baustelle"
   },
   "labs": {
@@ -1167,8 +976,7 @@
     "planBLabs": "",
     "presentation": {
       "link": "",
-      "subtitle": "",
-      "title": ""
+      "subtitle": ""
     },
     "title": ""
   },
@@ -1176,41 +984,10 @@
     "buyVideoToUnlock": "",
     "checkFullCourse": "",
     "lecturePartCourse": "",
-    "pageTitle": "",
-    "partCourse": "",
     "watchLecture": ""
   },
-  "library": {
-    "pageTitle": "Die Bibliothek"
-  },
   "menu": {
-    "bCertDescription": "",
-    "betDescription": "Collection of content that you can use for your educational projects",
-    "bitcoinDescription": "",
-    "businessDescription": "",
-    "channelsDescription": "",
-    "chooseLanguage": "",
-    "conferencesDescription": "",
-    "glossaryDescription": "التعرف على لغة البيتكوين",
-    "lecturesDescription": "",
-    "libraryDescription": "Entdecke viele Bücher, um dein Wissen zu verbessern",
-    "login": "",
-    "miningCourseDescription": "",
-    "moviesDescription": "",
-    "newsletterDescription": "",
-    "planBLabsDescription": "",
-    "podcastsDescription": "Erkunde das Bitcoin-Ökosystem durch Podcasts",
-    "projectsDescription": "",
-    "protocolDescription": "",
-    "publicDescription": "",
-    "securityDescription": "",
-    "socialStudiesDescription": "",
-    "teachersDescription": "Lernen Sie unsere Universitätslehrer kennen, entschuldigen Sie Bitcoiner"
-  },
-  "movies": {
-    "goToMovie": "",
-    "pageTitle": "",
-    "watchTrailer": ""
+    "login": ""
   },
   "notFound": {
     "here": "Hier",
@@ -1237,7 +1014,6 @@
     "calendar_48h_online_event": "",
     "dashboardDescription": "",
     "daysAgo": "",
-    "hoursAgo": "",
     "markAsRead": "",
     "monthsAgo": "",
     "noRecentNotifications": "",
@@ -1248,7 +1024,6 @@
     "results": "",
     "select": "",
     "selectAll": "",
-    "stayUpToDate": "",
     "today": "",
     "unread": "",
     "upcomingEvent": "",
@@ -1268,12 +1043,6 @@
   "placeholders": {
     "selectTimeZone": ""
   },
-  "podcast": {
-    "check": ""
-  },
-  "podcasts": {
-    "pageTitle": "بودكاستات البيتكوين"
-  },
   "professors": {
     "navigationTitles": {
       "all": "الكل",
@@ -1291,11 +1060,8 @@
     }
   },
   "projects": {
-    "languages": "",
-    "networkStrength": "",
     "noRelatedEvents": "",
     "otherCommunities": "",
-    "pageTitle": "مشاريع البيتكوين",
     "related": "",
     "relatedEvents": ""
   },
@@ -1310,45 +1076,19 @@
     "thanks": ""
   },
   "publicCommunication": {
-    "blogCategories": {
-      "all": "",
-      "content": "",
-      "feature": "",
-      "network": ""
-    },
-    "blogPageStrings": {
-      "blogListButtonText": "",
-      "blogSidebarTitle": "المنشورات السابقة لـ {{category}}",
-      "blogSidebarTitleForAll": "المنشورات السابقة",
-      "errorMessageNotFound": "",
-      "featuredArticleTitleText": "أحدث مقال منشور",
-      "filterText": "",
-      "noArticlesText": "",
-      "pastArticleSubtitleText": "المقالات السابقة"
-    },
-    "blogPost": "",
-    "description": "",
-    "goBackButtons": {
-      "simpleGoBack": ""
-    },
     "legal": "",
     "legalSections": {
       "contact": "",
       "legalNotice": "",
       "privacyPolicy": "",
       "termsOfSale": ""
-    },
-    "title": "النشر العام"
+    }
   },
   "resources": {
-    "articles": {
-      "title": "المقالات"
-    },
     "bet": {
       "title": "الموارد التعليمية"
     },
     "books": {
-      "author": "",
       "title": "المكتبة"
     },
     "channels": {
@@ -1358,12 +1098,10 @@
     "conferences": {
       "title": "تسيجلات المؤتمرات"
     },
-    "github": "",
     "glossary": {
       "title": "قاموس المصطلحات"
     },
     "lectures": {
-      "noLectures": "",
       "title": ""
     },
     "movies": {
@@ -1374,19 +1112,14 @@
       "check": ""
     },
     "newsletters": {
-      "author": "",
-      "level": "",
       "noNewsletters": "",
       "subtitle": "",
       "title": "Newsletters"
     },
-    "pageDescription": "Trying to understand Bitcoin is like exploring a maze that keeps growing. To aid you in your journey, we've curated an extensive collection of resources addressing a myriad of topics.",
     "pageSubtitle": "Welcome into the infinite rabbit hole of Bitcoin!",
     "pageSubtitleBooks": "",
     "pageSubtitleChannels": "",
-    "pageSubtitleLectures": "",
     "pageSubtitlePodcast": "",
-    "pageTitle": "Ressourcen",
     "podcasts": {
       "noPodcasts": "",
       "title": "Podcasts"
@@ -1395,7 +1128,6 @@
       "title": ""
     },
     "searchFilterName": "",
-    "toggleFreeOnly": "",
     "toggleLabelAll": "",
     "toggleLabelSelectedLanguage": ""
   },
@@ -1414,13 +1146,10 @@
     "event": "",
     "events": "",
     "explorer": {
-      "subtitle": "",
       "title": ""
     },
-    "filterByType": "",
     "glossary_word": "كلمة القاموس",
     "glossary_words": "كلمات القاموس",
-    "languageSelected": "",
     "lecture_replay": "",
     "lecture_replays": "",
     "loadMoreResults": "",
@@ -1434,11 +1163,9 @@
     "projects": "",
     "resultEmpty": "",
     "resultError": "",
-    "resultInfo": "",
     "results": "",
     "resultsRemaining": "",
     "search": "",
-    "searchResult": "",
     "startSearch": "",
     "tutorial": "",
     "tutorials": "",
@@ -1452,56 +1179,32 @@
     "changeProfilePicture": ""
   },
   "tutorials": {
-    "approvedByCreator": "",
-    "backTutorials": "",
     "business": {
-      "description": "",
-      "shortDescription": "",
       "title": ""
     },
     "computer-security": {
-      "description": "",
-      "shortDescription": "",
       "title": ""
     },
     "contribution": {
-      "description": "",
-      "shortDescription": "",
       "title": ""
     },
     "details": {
       "author": "",
-      "didHelp": "",
       "ratingSuccess": "",
       "source": "Original source :",
-      "tutorialName": "",
-      "writtenBy": ""
+      "tutorialName": ""
     },
     "exchange": {
-      "description": "Exchanges are one of the entry and exit doors between your traditional currency (euro, dollars) and the bitcoin world. Exchanges can be regulated and KYC (Know Your Customer) compliant, or peer-to-peer and anonymous. Each exchange will offer different features, fee structures, liquidity, and customer support. Each bitcoiner will use a different one based on their needs and convictions.",
-      "shortDescription": "Bitcoin-Kauflösungen, KYC und Nicht-KYC",
       "title": "Umtausch"
-    },
-    "explorer": {
-      "description": "All these tutorials have been written by passionate and dedicated bitcoiners, who wish to spread bitcoin education throughout the world. Don't forget to like, review, and tip them sats!",
-      "didYouKnow": "Did you know?",
-      "exploreAllTutorials": ""
     },
     "hasBeenProofreadBy": "",
     "hasNotBeenProofread": "",
     "mining": {
-      "description": "The mining industry is a complex topic full of rabbit holes within. Here, we will try to accompany you on your journey by using hardware and software. From modifying an S9 into a home heater to trying to win the lottery with a nerd miner.",
-      "shortDescription": "Bitcoin Mining Lösungen",
       "title": "Bergbau"
     },
     "node": {
-      "description": "Nodes are like your personal servers. In Bitcoin, it's the software that allows you to run the network, collect transactions, verify the rules, and be truly sovereign. Within our ecosystem, there exist various nodes, from Bitcoin Core, to Lightning implementations, RGB, or other more advanced privacy solutions.",
-      "shortDescription": "Lösungen für den Betrieb eines Bitcoin-Knotens und den Beitritt zum Netzwerk",
       "title": "Knoten"
     },
-    "pageDescription": "Bitcoin is a wide industry, that becomes wider and wider everyday. To help you explore it, we’ve gathered a large number of tutorials that describe various solutions.",
-    "pageSubtitle": "Welcome into the infinite rabbit hole of Bitcoin!",
-    "pageTitle": "Anleitungen",
     "privacy": {
       "description": "Privacy is a fundamental right. While we aspire to a world where privacy is the default, it is not the reality we live in. We will try to explain to you the best practices, assist you with tutorials, and set you on a more sovereign path regarding your data.",
       "shortDescription": "Werkzeuge zur Sicherung und Wahrung der Privatsphäre",
@@ -1529,8 +1232,6 @@
       "resource": ""
     },
     "wallet": {
-      "description": "A Bitcoin wallet is like your keychain. It allows you to spend and receive bitcoin. There are a lot of different types of wallets, all with different use cases, functions, costs, and user experiences. Each bitcoiner will use a different device based on their needs, level of exigence, and experience.",
-      "shortDescription": "Sicherheitslösungen und Nutzung Ihrer Bitcoins",
       "title": "Wallet"
     },
     "writtenBy": ""
@@ -1600,9 +1301,7 @@
     "email": "البريد الإلكتروني",
     "events": "Events",
     "exam": "امتحان",
-    "failed": "غير ناجح",
     "filter": "فلتر",
-    "finish": "انهاء",
     "free": "مجاني",
     "github": "GitHub",
     "glossary": "قاموس",
@@ -1624,18 +1323,14 @@
       "advanced": "Erweitert",
       "beginner": "Anfänger",
       "beginnerFriendly": "",
-      "developer": "developer",
       "expert": "خبير",
       "intermediate": "Mittler",
       "level": "مستوى",
-      "levels": "مستويات",
-      "wizard": "خبير"
+      "levels": "مستويات"
     },
-    "library": "Bibliothek",
     "lightningInvoice": "",
     "likes": "إعجابات",
     "linkedin": "لينكدإن",
-    "lnurlAuth": "LNURL Auth",
     "location": "موقع",
     "members": " Members",
     "mentor": "",
@@ -1651,7 +1346,6 @@
     "on": "على",
     "onChainAddress": "",
     "online": "عبر الإنترنت",
-    "ourStory": "Unsere Geschichte",
     "overview": "نظرة عامة",
     "paid": "بريميوم",
     "part": "جزء",
@@ -1669,7 +1363,6 @@
     "projects": "مشاريع",
     "protocol": "بروتوكول",
     "public": "",
-    "publicationDate": "تاريخ النشر:",
     "ratings": "تقييمات",
     "register": "Registrieren",
     "required": "مطلوب",
@@ -1690,7 +1383,6 @@
     "submit": "تسليم",
     "teacher": "معلم",
     "telegram": "تيليجرام",
-    "termsAndConditions": "Nutzungsbedingungen",
     "ticket": "تذكرة",
     "tickets": "تذاكر",
     "time": "الوقت",
@@ -1714,7 +1406,6 @@
     "yes": "نعم"
   },
   "youtubeChannels": {
-    "pageTitle": "قنوات يوتيوب",
     "view": "",
     "watchTrailer": ""
   }
