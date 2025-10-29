@@ -1,7 +1,6 @@
 {
   "about": {
     "communities": "Communities",
-    "contactText": "To know more about our activities in Lugano, please contact us.",
     "contributors": "Contributors",
     "media1subtitle": "Plan ₿ Network is a joint initiative between Tether, Fulgur Ventures and DécouvreBitcoin led by Rogzy & Giacomo Zucco.\n\nOur mission is to offer worldwide Bitcoin solutions to make Bitcoin mass adoption easier, we focus around three major areas:\n  • Academic resources to spread knowledge\n  • Community building to stay decentralized\n  • Start-up support to drive innovation\n\nOur experts and founders' network share common values that help guide us throughout our journey.",
     "media1title": "A global ecosystem of builders focus on Bitcoin",
@@ -73,7 +72,6 @@
       "tutorials": "Tutorials"
     },
     "learnLive": {
-      "button1": "Become a teacher",
       "button2": "Browse Live Classes",
       "list1": "Online, in-person or both",
       "list2": "Led by a professor",
@@ -226,8 +224,6 @@
     "lugano": {
       "button": "Learn more",
       "subtitle": "In Lugano, Plan ₿ is bringing Bitcoin and sovereign technologies into everyday life.\nLaunched by the City of Lugano and Tether, the initiative connects adoption, education, and innovation to make the city a place where decentralized technologies can thrive.",
-      "superSubtitle": "Plan ₿ Network is very well implanted in the city of Lugano. We work hand in hand with other organizations to develop Bitcoin education and activities in the city.",
-      "superTitle": "Supporting Bitcoin activities in Lugano",
       "tag": "Activities",
       "title": "Plan ₿ Lugano"
     },
@@ -261,7 +257,6 @@
     "noNews": "There are no news at this time.",
     "pastArticles": "Past articles",
     "previousNews": "Previous Network Posts",
-    "readArticle": "Read article",
     "subtitle": "At Plan ₿ Network, we are proud to follow open source standards and maintain transparency throughout our journey. Check out our latest activities and news!",
     "title": "Latest news of the <0>Network</0>"
   },
