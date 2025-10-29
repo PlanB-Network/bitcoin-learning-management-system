@@ -19,7 +19,6 @@
     "missionTitle": "Intumbero yacu",
     "storyContent": "Plan ₿ Network ni umugambi ushigikira inyigisho zijanye na Bitcoin kw’isi yose. Ni ihwaniro ry’amashirahamwe atandukanye akora ibikorwa vya Bitcoin, yibanda ku nyigisho, porogarame za open-source, uburyo bwo guhanahana amakuru hagati y’abantu babiri (peer-to-peer), no kwubaka ubumwe mu migwi. Turihamwe, Ayo mashirahamwe yiyemeje gukorera hamwe kugira yubake Plan ₿ Network, maze batange ibikoresho bikwiye vyofasha Umuryango wagutse wa Bitcoin kugirango ukure . Icegeranyo c’ivyo twashize ahabona mu 2023 kiraboneka ngaha.",
     "storyTitle": "Inkuru zacu",
-    "subtitle": "Uripfuza gukangurira isi Bitcoin? Ingo uje muri Plan ₿ Network.",
     "title": "Ivyerekeye Plan ₿ Network",
     "readManifesto": "Soma urwandiko rwacu rw’ivyiyumviro"
   },
@@ -54,7 +53,6 @@
       "errorValidatingEmailDescription": "Habaye ikosa mugihe twariko turemeza imeyili yawe, biboneka nkaho linki yahagaritswe canke yamaze gukoreshwa. Nyabuna, subira ugerageze.",
       "successfullyChanged": "Imeyili yawe yahinduwe neza, ubu ni {{email}}.",
       "successfullyValidated": "Imeyili yawe yemejwe neza.",
-      "validateChange": "Ukwemeza impinduka ya Imeyili",
       "validatingEmail": "Ukwemeza Imeyili",
       "validatingEmailChange": "Ukwemeza ihindurwa rya Imeyili",
       "wontTakeLong": "Ibi ntibiza gutwara umwanya munini..."
@@ -76,7 +74,6 @@
       "invalid": "Token siyo",
       "notFound": "Nta token yabonetse"
     },
-    "lnurlAuthDescription": "Sikana iyi kode ya QR ukoresheje ingodo ya Lightning kugira winjire!",
     "newPassword": "Ijamba kabanga rishasha",
     "noAccountNeeded": "Nta konti ikenewe kugira utangure kwiga kuri Plan ₿ Network!",
     "noAccountYet": "Nta konti ufise?",
@@ -100,57 +97,34 @@
     "bCertDescription": "₿-CERT ni ikibazo ca nyuma cikwije ca Bitcoin kigenewe gusuzuma ubumenyi bwawe ku bijanye na Bitcoin hamwe n’ibijanye nicocigwa. Iyo ushikanye hejuru ya 80%, uzoronka impamyabushobozi ya ₿-CERT yerekana ubuhinga bwawe mu bijanye n'uruganda rwa Bitcoin, kikazoshobora kwugurura amarembo y’akazi atandukanye mu buhinga bwa Bitcoin.",
     "bookExam": "Fatisha akanya ko gukora ikibazo",
     "challengeYourself": "Ihe ihangiro hama upime urwego rwawe",
-    "checkout": "Reba ₿-CERT",
     "download": "Teresharija impamyabushobozi",
     "knowledgeableBitcoin": "Uzi ibihe ku bijanye na Bitcoin?",
-    "noBookExam": "Nta kibazo kirategurwa gushika ubu.",
-    "organizeDescription": "Iciyumviro ciza cane! Nimba aho iwanyu muri mu muryango wa Plan ₿ Network, murashobora gutunganya ikiganiro ₿-CERT aho mukorera.\nNdabasavye musome <0>ibwirizwa ngenderwako</0> kugira mumenye nimba mushika ku bisabwa kugira mube abemerewe gutunganya iko kabazo. Nimusanga mukwije ibisabwa, murashobora kuritegura no kurishira ku rubuga rwabigenewe.",
     "organizeExam": "Tunganya ihwaniro",
-    "organizeSessionConditions": "Turagusavye usome <0>ibwirizwa ngenderwako</0> kugira wemeze ko ushikije ibisabwa vy’ingenzi kugira ushobore gutunganya iryo geragezwa.\nNiwashika ku bisabwa, bizodutera umunezero gutegura hamwe nawe ikiganiro kigenewe umuryango wawe w’aho iwanyu.\nUrashobora kuduhamagara ukoresheje uburyo bukubangukiye.",
-    "organizeSessionHub": "Tunganya ihwaniro y’igeragezwa rya ₿-CERT aho mu kigo canyu",
-    "organizeSubtitle": "Guhindura abantu umiliyaridi ku vyiyumviro vya Bitcoin (orange-pilling) si ibintu vyoroshe",
-    "organizeTitle": "Uripfuza gutunganya ihaniro y’igeragezwa rya ₿-CERT aho mukorera?",
-    "pageSubtitle": "Iyemezwa kurugero rwisi yose biciye mu nyigisho zifunguye kandi zitegurwa mu buryo bukwirikiranwa n’uruhande rumwe",
     "pageTitle": "Kora igeragezwa rya ₿-CERT",
-    "readChart": "Soma ibwirizwa-ngenderwako",
     "tweetText": "Turanezerewe cane kuba washoboye igeragezwa rya ₿-CERT kuri @planb_network kumanota {{score}}/100! {{emoji}} #BCERT\n\n{{certificateUrl}}",
     "verify": "Suzumako impamyabushobozi yawe ariyukuri",
     "certificates": "Impamyabumenyi",
     "chooseCourse": "Hitamwo icirwa",
     "hostSessionConditions": "Uko bikorwa:\n\nSoma <0>Amategeko shingiro</0> – Raba ko ishirahamwe ryawe ryuzuza ibisabwa kugira rihabwe uburenganzira bwo gutunganya ico gikorwa.\nTegura kandi utegure isango – Nimba wujuje ibisabwa, hitamwo italiki kandi utegure ico gikorwa.\nSohora igikorwa cawe – Tubarane kugira twongere ico gikorwa kuri Plan ₿ Network platform kugira abandi bashobore kwifatanya.",
-    "myCertificates": "Impamyabumenyi yanje",
     "noDiplomasAvailable": "Nta diplome ziraboneka ubu",
     "noTestSessions": "Nta vyirwa vyo gukwirikirana biraboneka ubu",
     "wantHostSession": "Uripfuza gutunganya isession y’ikibazo ca ₿-CERT mukigo cawe y’aho uri?"
   },
   "bet": {
-    "contributeButton": "Fasha & Uterere",
-    "contributeDescription": "Nimba ushaka kongera, guhindura canke gusobanura mu rundi rurimi inyandiko zimwezimwe, gufasha kwawe kurakirwa neza cane!",
-    "contributeTitle": "Uripfuza kugira icutereye?",
     "educationalContent": {
-      "description": "Ibintu biri hasi aha birashobora gukoreshwa mu mahwaniro no mu migambi y'ukwigisha.",
       "title": "Ibijanye n’inyigisho"
     },
-    "pageDescription": "Kwemerwa na benshi si ibintu vyoroshe. Kugira dutere intambwe yihuta kandi idushikana hafi y’iyo ntumbero, twarakoze ububiko burimwo ibisigurwa bushobora kwagurwa, bugenewe kwakira inyandiko zijanye n’inyigisho. Aha, abigisha ba Bitcoin barashobora gushira no gukuramwo ivyigwa uko babikeneye, ku buryo bw’ukwisanzura. Ntidukeneye gusubira guhanga ikintu gisa n’icarakozwe uko igihe cose. Nimukaze rero dufatanye gushira hamwe ivyo bikoresho vyose bifasha mu kwigisha, tubigire urutonde rumwe rukora neza!",
-    "pageTitle": "Igikoresho c’inyigisho za Bitcoin",
     "visualContent": {
-      "description": "Amashusho ari hasi aha urashobora kuyakoresha mu bihangano vyawe bwite.",
       "title": "Ibirimwo amasanamu"
     }
   },
   "conferences": {
-    "addConferences": "Wiyumve wisanzuye kwongeramwo inama zoba zabuzemwo ukoresheje iri soko rya <0>Github</0>.",
-    "backConferences": "Subira mu manama",
     "conferenceName": "izina ry'inama",
     "conferencesSinceGenesis": "Ubushinguzi bw'inama za Bitcoin kuva ku Mumamuko y’Urubanza (Genesis Block)",
-    "description": "Inama zifise uruhara rukomeye mu vy’uruganda rwa Bitcoin, zikagira igice gihambaye mu rugendo rw’inyigisho z’umuntu wese yemera Bitcoin. Kubw’ivyo, twarashizeho iki gikoresho kugira kigufashe kworosha uburyo bwo kugenda hagati y’ibiba vyinshi vya Bitcoin.",
     "details": {
       "findReplay": "Rondera iyusubizamwo",
-      "nextVideo": "Videwo ikwirikira",
-      "previousVideo": "Videwo yabanje",
       "selectStage": "Hitamwo urwego",
-      "selectVideo": "Hitamwo videwo",
-      "watchReplay": "Raba isubirwamwo"
+      "selectVideo": "Hitamwo videwo"
     },
     "language": "Ururimi",
     "latestConferences": "Inama ziheruka",
@@ -158,8 +132,7 @@
     "noConferences": "Nta nama yashizweho mu mwaka wa {{year}}.",
     "pageTitle": "Gusubiramwo kw’inama",
     "planBConferences": "Inama za Plan ₿",
-    "topics": "Ivyotuvugako",
-    "conferencesGenesis": "Inama zabaye kuva kuri Genesis Block"
+    "topics": "Ivyotuvugako"
   },
   "courses": {
     "chapter": {
@@ -167,10 +140,6 @@
         "bookSeat": "Fatisha icicaro cawe",
         "cancelBooking": "Hagarika gufatira icicaro",
         "classIsFull": "Ishure ryamaze kwuzura",
-        "p1content": "Wemeze gufatira icicaro cawe",
-        "p1heading": "Urateganya kwitaba kino cirwa ugashika aho kizobera?",
-        "p2content": "Nta ngorane! Kino cirwa kizokwirikirwa ikibiriraho kuri kino gice c'urubuga, kandi kizoboneka no gusubiramwo inyuma.",
-        "p2heading": "Ntushobora kuhashika mukibanza?",
         "ticketDownload": "Terecharija(Download) itike",
         "title": "Ibiranga ishure"
       },
@@ -179,9 +148,7 @@
         "stayTuned": "Ikiganiro c'imbonankubone c'ikibiriraho kizotangura iminota 30 imbere y’uko ishure ritangura. Mugume murimaso!",
         "title": "Videwo y’imbonankubone"
       },
-      "next": "Rangiza ikigabane",
-      "nextLesson": "Icigwa gikwirikira kizoba ari",
-      "thanksTip": "Uripfuza kwerekana uko wabibonye?\nUrashobora gufasha umwanditsi ukoresheje agashimwe k'udufaranga."
+      "next": "Rangiza ikigabane"
     },
     "conclusion": {
       "completedChaptersHeadline": "Ibigabane vyose vyarangije ubu!",
@@ -223,7 +190,6 @@
       "premiumContentNeedsPaymentAction": "Genda ku rupapuro nyamukuru rw’ico cigwa",
       "startCourse": "Tangura icigwa",
       "taughtBy": "Kino cigwa gitangwa na",
-      "teacherLed": "Ritunganywa na mwigisha",
       "thanksTipping": "Urashobora gushimira umwigisha mu kumuha intererano."
     },
     "exam": {
@@ -243,7 +209,6 @@
       "dontGiveUpTryAgain": "Ntiwihebure! \nUshobora gusubira kugerageza inyuma y'amasaha 24.",
       "dontWorry": "Ntugire ubwoba ku vyerekeye gukora amakosa; iri suzuma ryateguwe kugira rikomeze ugutahura kwawe. N’utashobora kubitora, urashobora kurisubiramwo inyuma y’amasaha 24.",
       "dontWorryRetake": "Ntugire ubwoba, urashobora gusubiramwo ikibazo inyuma y’amasaha 24.",
-      "examAndDiploma": "Ikibazo & Impamyabushobozi",
       "examAvailabilityDetails": "Nimba ikibazo kitatowe mu gihe cari kikiri kurubuga, umunyeshure azohabwa amanota angana na 0 mu buryo bwikora.",
       "examCertificateCompletionText": "Plan ₿ Network iranezerewe nogukeza {{username}} ku kuba yaronse impamyabushobozi y’inyigisho ya “{{courseName}}.",
       "examDetails": "Iki kibazo kigizwe n’ibibazo {{nb}} vy’amahitamwo menshi, aho buri kibazo gifise inyishu imwe y’ukuri. Urashobora guhindura inyishu zawe igihe ico ari co cose imbere y’uko uheza, igihe isaha ikiriko irakora.",
@@ -262,7 +227,6 @@
       "goodLuck": "Ugire amahirwe!",
       "instantVerification": "Gusuzuma ako kanya: Abakoresha bashobora gusuzuma vyoroshe ukuri kw'impamyabushobozi yawe n’itariki yashikirijwe.",
       "instructions": "Intangamarara:",
-      "letsConclude": "Vyose birarangiye, reka dusozere",
       "nbMinutes": "{{nb}} iminota",
       "nbQuestions": "{{nb}} Ibibazo",
       "nextChapter": "Ikigabane gikwirikira",
@@ -270,7 +234,6 @@
       "notTranslatedYet": "Turasavye imbabazi, ariko igikorwa co gukora ikibazo ca nyuma ntikiraja kumugaragaro mu rurimi wahisemwo. Urashobora guhitamwo urundi rurimi kugira ubandanye.",
       "oneMinuteLeft": "Usigaranye umunota umwe gusa",
       "oopsFailed": "Erega, bisa nk'uko <0>wananiwe</0> ikibazo ca nyuma.",
-      "passExam": "Gutsinda ikibazo",
       "passed": "Wabitoye",
       "passRate": "Urugezo rwogutsindirako ni 80%.",
       "planBTimeStamp": "Muri Plan ₿ Network, turakingira impamyabushobozi yawe dukoresheje ikoranabuhanga ryo gushira igihe (time-stamping) rishingiye kuri blockchain.",
@@ -316,25 +279,15 @@
       "tryAgain": "Gerageza kandi",
       "tryOneMoreTime": "Gerageza iyindi ncuro!",
       "verifyDisplayName": "Imbere yo gutangura, birasabwa suzuma neza izina ryawe riri hasi, kuko rizosabwa mu gukora impamyabushobozi yawe.",
-      "viewExam": "Raba isuzuma",
       "weight": "Uburemere: {{weight}}%",
       "whyTimeStamp": "Gushira-igihe(Time-Stamping ) kumpamyabushobozi yawe:\nKubera iki arivyingenzi",
       "wishTryAgain": "Nimba ushaka kugerageza ukundi, ikibazo kizoboneka inyuma y’amasaha 24.",
       "yesSubmit": "Ego, rungika",
       "examResults": "Inyishu z'ikibazo",
-      "scoreAndDiploma": "Amanota & Impamyabumenyi",
-      "reviewTest": "Isuzuma"
+      "scoreAndDiploma": "Amanota & Impamyabumenyi"
     },
     "explorer": {
-      "buildPath": "Wubake urugendo rwawe",
-      "comingSoon": "Biri mu nzira",
-      "exploreCourses": "Rondera ivyigwa vya Plan ₿",
-      "findCourses": "Rondera icigwa gikwiranye n’ivyifuzo vyawe ukoresheje Igikoresho co Guhitamo Inyigisho",
       "goal": "Ikigamijwe:",
-      "journey": "Bitcoin ni urugendo, si iherezo",
-      "pageDescription": "Plan ₿ Academy itanga inyigisho nyinshi ku bijanye na Bitcoin, zimwe z’ubuntu n’izindi zirishwa, kuva ku batanguye gushika kubahinga. Ziyoborwa n’abahinga canke zikaba umuntu yigisha yiyigirako, zikwiranye n’uburyo bwose bwo kwiga. Integuro yacu ni ugutuma ubumenyi bwa Bitcoin buba busa neza, bukurura kandi bushobora kugerwako n’abose!",
-      "planbSchool": "Ishure PLAN ₿",
-      "planbSchoolHeadline": "Ishure rya Plan ₿, riyobowe na Giacomo Zucco, ritanga porogarama z’inyigisho zikomeye z’amezi atatu zigamije guhungura ikibanza hagati y’ukwigira n’ukubandanya mu vyo mu buzima busanzwe. Uretse inyigisho zisanzwe, abanyeshure bitabira imishinga y’ubumenyi ikorwa n’ibigo n’ishure rikomeye ryihariye abanyeshure beza cane. Ni impano z’inararibonye gusa arizo zinjira inyuma y’ibihe bibiri vy’ugutoranya mu marushanwa, bituma abanyeshure bonyene beza bahabwa ubumenyi bwose bukenewe kugira batangure imirimo yabo mu gisata ca Bitcoin.",
       "seeCourse": "Vumbura icigwa",
       "discover": "Menya"
     },
@@ -347,15 +300,12 @@
       "count": "Igice {{count}}"
     },
     "payment": {
-      "accessibility": "Kuboneka",
-      "accessibility_forever": "Ibihe vyose",
       "amount": "Igitigiri",
       "back_course": "Subira kucigwa",
       "book_description": "Tugusabe uraba neza ivyerekeye aho ibikorwa bizobera. niyo gufatisha ikibanza vyemezwa, uzoronka itike yemeza hamwe n’akode ya QR ko uzosaba kwereka mu ishure.",
       "checkoutError": "Habayeho ikosa mu gihe co kwishura.\nTugusabe wongera ugerageze kandi.",
       "courseType": "Ubwoko bw’ivyigwa",
       "date": "Itariki",
-      "downloadCurriculum": "Teresharija(Download) integuro y’inyigisho",
       "duration": "Ikiringo",
       "hybridDescription": "Tugusabe usuzume neza icigwa insiguro z'inyigisho zatanzwe.\nBuricirwa cose gitangwa mu buryo bw'ikibiriraho aho vyabereye ku matariki n’ahantu vyateguwe. Amashure yose aca kandi atwarwa ku buhinga bwo kubisangiza abantu ku murongo no gufatwa amajwi n’amashusho kugira bishobore kwerekanwa ukundi.\n\nKwemera ko umuntu aza mu kibanza bibandanya ku somo ryose, ni co gituma tugusavye neza ko wofata umwanya wawe buri gihe ushaka kuza kwitaba ivyigwa wishikiye aho bibera.",
       "inPersonCallout": "Ugiye kugura uburenganzira bwo kwitaba ivyovyigwa <strong>uri ahobibera</strong>.",
@@ -366,8 +316,6 @@
       "payment_details": "Insiguro z'ukuriha",
       "payment_successful": "Kuriha vyagenze neza!",
       "qr_unified": "Iyi kode QR imwe isanzwe, yemera uburyo bwose bwo kwishura bwa Lightning canke bwa on-chain.",
-      "teacher": "Umwigisha",
-      "teachers": "Abigisha",
       "time": "Umwanya"
     },
     "quizz": {
@@ -434,11 +382,9 @@
     },
     "noCoursesFound": "Ntacirwa catowe",
     "plusXMore": "+{{count}} ibindi",
-    "selectATopic": "Hitamwo icigwa",
     "tryAdjustingFilters": "Gerageza guhindura uburyo bwo guhitamwo"
   },
   "dashboard": {
-    "account": "Ikonti",
     "adminPanel": {
       "accessGranted": "Waronkejwe uburenganzira bwokwinjira",
       "bookings": "Kubikisha",
@@ -447,7 +393,6 @@
         "careers": "Umyuga",
         "careersSubtitle": "Hano urashobora kuraba urutonde rw’abitabiriye bose barangije kuzuza ibisabwa. Ushobora kubona amakuru yose ajanye n’ibisabwa mu rupapuro rw’akazi (spreadsheet).",
         "cv": "Incamake y'ukudondora icurico(Curriculum Vitae)",
-        "downloadProfiles": "Guteresharija urupapuro rw’akazi(Download spreadsheet)",
         "downloadSpreadsheet": "Guteresharija urupapuro rw’akazi(Download spreadsheet)",
         "lastUpdate": "Ibiheruka kuvugwa",
         "lastUpdated": "Ibiheruka kuvugwa",
@@ -465,7 +410,6 @@
         "delete": "Futa",
         "deleteDiscountCode": "Futa ikodo y'ukugabanya",
         "deleteDiscountCodeConfirm": "Uravyemera neza ko ushaka gufuta iyi kode y’ukugabanya?",
-        "deleteDiscountCodeSuccess": "Kode y’ukugabanya yafuswe neza",
         "deleteDiscountCodeWarning": "Iyo kode imaze gufutwa, ntizosubira gukora narimwe. Uku guhindura ntibishobora gusubirwamwo",
         "discountCode": "Kode y'ukugabanya",
         "discountCodeCopied": "Urupapuro rundi rwa kode y'ukugabanya",
@@ -476,7 +420,6 @@
         "discountType": "Ni ubwoko bwa kode iyihe y’ukugabanya amafaranga?",
         "discountValue": "Ibice kwijana bigabanywa",
         "discountValueExplanation": "Shiramwo igitigiri ciyongera ku 5 (nk’akarorero: 5, 10, 15… gushika kuri 100)",
-        "discountValuePlaceholder": "akarorero: 20 kuri 20%",
         "downloadImage": "Teresharija(Download) isanamu",
         "downloadImages": "teresharija(Download) imasanamu",
         "explanation": "Tegura kandi uziganye ama kode yokugabanya ibiciro ku birori canke ivyigwa — ushobora gukoresha ikarata imwe gusa ku banyeshure bahawe ubuhanisho canke ibindi bisa n’ivyo, canke ukoreshe amakarata menshi y’ihungurirwa mu bikorwa vy’ukwamamaza.",
@@ -519,10 +462,8 @@
           "maxUses": "Incuro ntarengwa z’ikoreshwa",
           "name": "Izina",
           "owner": "Nyeneyo",
-          "total": "Igitigiri cose",
           "type": "Ubwoko",
-          "uses": "Vyakoreshejwe",
-          "value": "Agaciro"
+          "uses": "Vyakoreshejwe"
         }
       },
       "coursesIndexes": "Ibimenyetso vy'ivyigwa",
@@ -534,7 +475,6 @@
       "githubLink": "Linki igitwara kuri Github",
       "hasAccessTo": "Afise uburenganzira bwo gushika kuri:",
       "listOfParticipants": "Urutonde rw’abitabiriye",
-      "makeProfessor": "Guhindura umuntu umwigisha mukuru",
       "nameOfEvent": "Izina ry’Igikorwa",
       "participants": "Abitabiriye",
       "professorName": "Izina ry’umwigisha mukuru",
@@ -900,14 +840,8 @@
       "publicationDate": "Itariki y’ugushira ahabona"
     },
     "backToDashboard": "Subira ku rubuga nyamukuru",
-    "bCert": {
-      "grade": "Urugero rw’amanota",
-      "noResults": "nta manota canke impapuro z'icemezo vyari vyarabitswe kuri iyi konti gushika ubu\nnyimba warakoze ikibazo ariko ivyavuyemwo bitaraboneka haciye igihe kirekire, urashobora <0>kutwandikira<0>kugira tugufashe."
-    },
     "booking": {
       "accessLive": "Injira mu kiganiro c'ako kanya",
-      "billingSubtitle": "kurura fagitire z'ivyabitswe vyawe ngaha.",
-      "billingTitle": "Amateka yo kwishurwa",
       "cancelBookingTitle": "uri murkuri ushaka guhagarika iri fatisha ryawe?",
       "invoiceDate": "Itariki",
       "invoiceTitle": "Umutwe",
@@ -920,12 +854,10 @@
       "ticketLocation": "Ikibanza",
       "ticketTitle": "Umutwe w'ijambo",
       "ticketType": "Ubwoko",
-      "upcomingTicketSubtitle": "Kurura itike yawe aha kugira ngo witabire igikorwa cawe gitegekanijwe. Ntiwibagire kuyizana kugira winjire.",
       "upcomingTicketTitle": "Ibibanza vyokubika bitegekanijwe",
       "yesCancel": "Ego, hagarika"
     },
     "calendar": {
-      "calendar": "Ikirangamisi",
       "eventType": {
         "class": "Amashure",
         "event": "Ibirori"
@@ -1116,10 +1048,7 @@
       "assignment": "Inshingano",
       "assignmentCompletedDescription": "Inshingano yawe y’umushinga yoherejwe neza kandi iriko irasuzumwa. \nAmanota yawe azoboneka aha inyuma yo gusuzumwa.",
       "assignmentCompletedTitle": "Inshingano yarangiye",
-      "assignmentDescription": "Inshingano y’umushinga ni igice ca kabiri c’inyigisho za Plan ₿ Biz School kandi iraboneka gusa ku banyeshure barangije neza igice ca mbere. Bishingiye ku myanya yabo n’ivyo bahisemwo, umunyeshure wese azohabwa umugambi watewe imbere n’ishirahamwe ya Bitcoin, kandi ugomba gutangwa bitarenze igenekerezo rya 18 Ruheshi.\nAbanyeshure bazotegura iyo nshingano kuva ku igenekerezo rya 2 gushika ku rya 18 Ruheshi, hamwe n’ubushobozi bwo kwakira inyigisho n’ubujenama buva ku muhingwa w’iyo shirahamwe.\n\nImishinga izosuzumwa n’iyo kompanyi, kandi amanota azokoresha ku manota ya nyuma. Abanyeshure barusha abandi bazohamagara gusa kugira bitabire Summer School ibera i Lugano, muri Suisse, kuva igenekerezo rya 23 gushika ku rya 30 Nyakanga 2025.",
-      "assignmentInformation": "Amakuru ku nshingano",
       "assignmentTitle": "Umugambi w'umwimenyerezo",
-      "checkDetailsCompleted": "Aha urashobora kureba amakuru yose yerekeye iyi nyigisho warangije.",
       "completionDiploma": "Impamyabumenyi yo kurangiza",
       "completionExamInfo": "Ugomba kurangiza ikibazo kugira ushobore gushikira kino gice.",
       "conclusionHeadline": "Aha harakwereka incamake y’ivyo wize. Nimba hari ibigabane wasimvye canke bitaremezwa neza, ubu ni bwo buryo bwo kubikora, woca usubira kwiga, canke ugafyonda kw' ibuto ya 'Complete'.",
@@ -1131,15 +1060,12 @@
       "congratulationsPassed": "Turagukeje! Wabitoye neza!",
       "coordinator": "Uwurongoye inyigisho",
       "courseCalendar": "Ikirangamisi c'inyigisho",
-      "coursesCompleted": "Inyigisho zarangijwe",
       "diplomaReleaseDescription": "Nimara kurangiza inyigisho zose, uzohabwa impamyanumenyi yo kwemeza ko warangije neza inyigisho. Impamyabumeni zizoboneka hano kugira ushobore kuzikurura inyuma y’ishure rya nyuma hamwe no kurangiza ikigabane c’umusozo.",
       "diplomaReleaseTitle": "Gutanga Impamyabumenyi",
       "examScore": "Amanota:",
       "exams": "Ikibazo",
       "feedbacks": "Aha urashobora kuraba no guhindura amanota n’inyishu watanze ku nyigisho iyi.",
-      "fileUploadError": "Habaye ikosa mu gihe warungika iyawe",
       "fileUploaded": "Akazi kawe karungitswe neza!",
-      "finalAverageGradeDescription": "Urashobora kubona amanota yawe y’ubusanzwe mu gice c'ikibazo & guhitamwo Impamyabumenyi ku rubuga rwawe.",
       "finalGradeSummary": "Incuke y’amanota ya nyuma",
       "finalScore": "Amanota ya nyuma",
       "generalInformation": "Amakuru rusangi",
@@ -1154,8 +1080,6 @@
       "mostPreferred": "Ihitamwo ryahiswemwo cane",
       "mustBePdf": "Dosiye yawe igomba kuba PDF. Nimba ukeneye kurungika iyindi dosiye, ndakwinginze shiramwo umuhora wayo muri PDF yawe.",
       "notSelectedAssignment": "Nubwo biriko, ntiwahisemwo kugira witabire Inshingano y’Umushinga.\n Ariko urashobora gukomeza gukurikira inyigisho z’iyi nyigisho.",
-      "planbSchoolExamDescription": "Porogaramu ya Plan ₿ Biz School 2025 igizwe n’ibice bibiri. Mu gice ca mbere, uzokora ibibazo bibiri kurubuga ngurukana bumenyi, arivyo ikibazo ca hagati mu gihe n’ikibazo ca nyuma: ni ibibazo bishobora gukorwa rimwe gusa, bifise igihe ntarengwa, ushobora kubirangura igihe ico ari co cose mu minsi itatu biraboneka. Nyuma y’igice ca mbere, abanyeshure bazohiswemwo bishingiye ku myanya yabo kugira babandanye ku gice ca kabiri, kirimwo Inshingano y’Umushinga: akazi ku giti cawe gatangwa n’ikompanyi ya Bitcoin. Ushobora kubona amakuru aramvuye mugicapo c'Inshingano.\n\nAmanota ya nyuma azobazwa nk’impuzandengo ibarirwa ku bwinshi bw’ibizamini bitatu. Abanyeshure bagera ku manota arenga 80% bazohabwa Impamyabumenyi, kandi abanyeshure barusha abandi bazoronka kandi amahirwe yo kwitabira Summer School ibera i Lugano, mu kwezi kwa Nyakanga.",
-      "planbSchoolGeneralInformation": "Porogaramu ya Plan ₿ Biz School 2025 igizwe n’ibice bibiri. Mu gice ca mbere, uzokora ibibazo bibiri kurubuga ngurukanabumenyi, arivyo ikibazo ca hagati mu gihe n’ikibazo ca nyuma: ni ibibazo bishobora gukorwa rimwe gusa, bifise igihe ntarengwa, ushobora kubirangura igihe icyo ari co cose mu minsi itatu biraboneka. Nyuma y’igice ca mbere, abanyeshure bazohisemwo bishingiye ku myanya yabo kugira babandanye ku gice ca kabiri, kirimwo Inshingano y’Umushinga: akazi ku giti cawe gatangwa n’ikompanyi ya Bitcoin. Ushobora kubona amakuru aramvuye muri tab y'Inshingano.\n\nAmanota ya nyuma azobazwa nk’impuzandengo ibarirwa ku bwinshi bw’ibibazo bitatu. Abanyeshure bagera ku manota arenga {{threshold}}% bazohabwa impamyabumenyi, kandi abanyeshure barusha abandi bazoronka kandi amahirwe yo kwitabira Summer School ibera i Lugano, mu kwezi kwa Nyakanga.",
       "projectRankingInstructions": "Amabwirizwa yo gutoranya umushinga:",
       "ranking": "Urutonde rw’imyanya",
       "rankingInstructions": "Shira ku murongo imishinga yatanzwe uhereye ku vyo wahisemwo (nomero 1 ikaba ari yo wahisemwo cane). Uru rutonde ruzotuma tubasha kuguha umushinga ukwiranye nawe cane. Abanyeshure bafise amanota menshi bazobanza gufatwa mu guhitamwo.",
@@ -1167,43 +1091,29 @@
       "shareOnSocials": "Sangiza ku mbuga ngurukanabumenyi:",
       "submissionInstructions": "Amabwirizwa yo kurungika",
       "submitBefore": "Utegezwa kurungika akazi kawe mbere y’igenekerezo rya {{date}} isaha {{hour}}. Ibikorwa bizorungikwa inyuma y’ibi bihe ntibizoshobora guhabwa amanota.",
-      "submitFileNamingFormat": "Dosiye yawe igomba kwitwa mu buryo bukurikira :\n<0>company_username.pdf</0>.\nKuraho umwanya wose uri mu izina ry’ikompanyi, ukoreshe izina ryawe nyakuri ku rubuga rwa planB.network, kandi wemeze ko nta makosa y’imyandikire abayeho.",
       "submitReviewInfo": "Ugomba gutanga isesengura kugira ushobore gukoresha iyi ngingo.",
       "submitYourWork": "Rungika igikorwa cawe",
       "summerSchool": "Ishure ryomuci",
       "surePreferenceList": "Urizeyeko uru rutonde rw’ivyo wahisemo ari rwo rwa nyuma?",
       "thresholdToPass": "Urwego rwo gutsinda: {{threshold}}%",
       "tweetText": "Nishimye cane kurangiza inyigisho ya {{courseIndex}} muri @planb_network no kubona diplome yanje n’amanota {{score}}/100 mu kizamini ca nyuma! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}\"",
-      "viewFinalGrade": "Raba amanota ya nyuma",
       "yourProject": "Umugambi wawe",
       "assignmentNotAccessible": "Umwimenyerezo watanguye kandi ntushobora gusubira kuboneka.",
       "assignmentScore": "Amanota y'umwimenyerezo",
-      "gaveSolidEffort": "Watanze ukwitanga gukomeye!",
       "tweetTextCourseDiploma": "Nishimye cane kurangiza inyigisho ya {{courseName}}, yigishijwe na {{courseCoordinator}} kuri @planb_network no kubona diplome yanje!\n\n#PBNDiploma\n\n{{certificateUrl}}",
       "viewScoreSummary": "Raba incamake y’amanota",
       "wellDoneCompleting": "Wabikoze neza cane ku kurangiza no gutsinda iyi nyigisho!\nRaba Impamyabumenyi yawe wahawe Uyikwiriye",
       "yourProjectAssignment": "Inshingano yawe y’umugambi"
     },
-    "courses": "Inyigisho",
     "credentials": {
       "bCert": "₿-CERT",
-      "bCertSubtitle": "Aha ni ho ushobora kuronka insiguro zimbitse zijanye n’ukubikisha ibibanza vyawe hamwe n’amanota yawe ku masuzuma ya ₿-CERT wigeze gukora canke uzokora.\nIsuzuma rya ₿-TEST ni isuzuma rikorwa ku meza ryateguwe na Plan ₿ Network kugira bamenye urwego rwawe mu vyerekeye Bitcoin hamwe n’ibindi bijanye na yo.",
       "beingGraded": "Ikibazo cawe kiri gukosorwa. Inyishu zitegekanijwe gutangwa mu ndwi 1 canke 2.",
-      "completionDiplomas": "Impamyabumenyi y'uguheza amashure",
       "courseDiplomas": "Impamyabumenyi z’icigwa",
-      "courseDiplomasSubtitle": "Aha niho ushobora kuronka insiguro zimbitse zijanye n’ibibazp vyose wakoze inyuma y’ukuzuza icigwa kuri uru rubuga.",
-      "downloadTicket": "Teresharija itike",
       "globalCertifications": "Impamyabushobozi mpuzamakungu",
-      "retakeExam": "Subiramwo ikiazo",
-      "seatBooked": "Ikibanza cawe mu kiringo c’ikibazo carabitswe.",
-      "takePlaceAt": "Ikiringo kizobera aho:",
-      "yourCertificate": "Urupapuro rw'umutsindo rwawe",
       "completeACourse": "Uzuza icirwa cawe cambere kugira uronke diplome. ",
       "exploreBCert": "Menya ₿-CERT",
-      "exploreCourses": "Menya ivyigwa",
       "getGlobalRecognition": "Bona icubahiro mpuzamakungu ukoresheje impamyabumenyi ya ₿-CERT",
-      "noCertificatesAvailable": "Nta mpamyabumenyi ihari",
-      "noDiplomasAvailable": "Nta diplome ziraboneka ubu"
+      "noCertificatesAvailable": "Nta mpamyabumenyi ihari"
     },
     "goToDashboard": "Genda ku rubaho(dashboard)",
     "goToHomepage": "Genda ku rupapuro rw’itanguriro",
@@ -1211,28 +1121,20 @@
     "myCourses": {
       "completeAll": "Uzuza vyose",
       "completed": "Uzuza",
-      "completedCoursesDescription": "Aha ni ho ushobora kuraba avyigwa wahejeje.",
-      "completedCoursesTitle": "Ivyigwa wahejeje",
-      "courseDashboard": "Urubaho(dashboard) rw'ivyigwa",
       "detailsAndCertificate": "Insiguro & urupapuro rw'umutsindo",
       "done": "Birarangiye",
       "download": "Teresharija impamyabumenyi",
       "duration": "Ikiringo :",
       "inProgress": "Biriko birakorwa",
-      "newCourses": "Ivyigwa bishasha vyongerwako burikwezi",
-      "noCoursesAvailable": "Nta vyigwa bihari.",
       "notStarted": "Ntibiratangura",
       "notValidated": "Ntayihari",
       "price": "Igiciro :",
       "professor": "Umwigisha mukuru:",
       "resumeLesson": "Incamake",
       "seeDetails": "Raba insiguro yimbitse",
-      "seeProgress": "kugira urabe intambwe umaze guterera aha.",
       "seeTheCourse": "Raba icigwa",
       "shareOn": "Sangiza kuri",
-      "startCourse": "Tangura canke urangize icigwa",
       "verify": "Ihweze ukuri kw'Impamyabumenyi",
-      "viewDetails": "Raba insiguro",
       "whereYouAre": "Reka turabe aho ugeze !",
       "yourCertificate": "Impamyabumenyi yawe",
       "yourProgress": "Intambwe umaze guterera :"
@@ -1263,36 +1165,25 @@
         "none": "Ntanakimwe",
         "platformTitle": "Ni ubwoko ubuhe bw’amatangazo wipfuza ko akwiyandikira kuri uru rubuga?",
         "settingsSaved": "Imyirondoro yawe yarashinguwe neza!",
-        "title": "Imyirondoro y’amatangazo",
-        "assignedAt": "Yahawe aho",
-        "displayName": "Izina ryerakana",
-        "filter": "Hitamwo",
-        "role": "Inshingano"
+        "title": "Imyirondoro y’amatangazo"
       },
       "password": "Ijambo ry’ibanga",
-      "personalInformation": "Amakuru yanje bwite",
       "preview": "Ivyaherutse",
       "profile": "Umwidondoro",
-      "profileInformation": "Amakuru y'umwidondoro",
       "profilePicture": "Isanamu y'umwidondoro",
       "save": "Shingura",
       "saving": "Biriko birashingurwa…",
       "security": "Umutekano",
       "securitySettings": "Ihinyanyuriro ry’umutekano",
-      "settings": "Ihinyanyuriro",
       "username": "Izina ry’uwukoresha"
     },
-    "studentDashboard": "Urubaho rw'umunyeshure",
     "teacher": {
       "courses": {
         "allStudents": "Abanyeshure bose",
-        "analytics": "Isesengura",
         "announcementModal": {
           "contentLabel": "Inyandiko y’itangazo",
           "contentPlaceholder": "Tugusabe wandike hano",
           "create": "Kora itangazo",
-          "dateLabel": "Igihe itangazo ryasohowe",
-          "datePlaceholder": "Hitamwo itariki",
           "dateRequired": "Itariki irakenewe",
           "editAnnouncement": "Hindura itangazo",
           "groupLabel": "Hitamwo umurwi w'abanyeshure ushaka kwitura",
@@ -1309,7 +1200,6 @@
         "assignment": "Igikorwa cogukora",
         "assignmentGrade": {
           "alertDescription": "Inyuma y’ukwandika amanota yose, kanda kuri ‘Sohora amanota yose’ kugira ngo ashirwe ahabona icarimwe.\nTubasavye mubanze mwemeze neza ayo manota, kuko ntazoshobora guhindurwa inyuma y’aho ashiriwe ahabona. ",
-          "alertDescription2": "Amanota y’ivyigwa vyahawe abanyeshure ategerezwa gusohorwa imbere y'itariki 22 Ruheshi, isaha zitandatu z'ijoro (CET).",
           "alertTitle": "Gutanga amanota y’igikorwa",
           "confirmPublication": "Emeza ishirwa kumugaragaro",
           "confirmPublicationDescription": "Inyuma y’aho amanota asohorewe, ntibishobora gusubirwamwo kuko ata bwo azosubira guhindurwa.",
@@ -1328,23 +1218,18 @@
         "courseDetails": "Ibisobanuro vy’ivyigwa",
         "courseLongDescription": "Insiguro y'intangamarara",
         "courseModification": "Nimba ukeneye gufashwa guhindura ikintu muvyigwa, tugusabe urabe <0>inyigisho</0> iyi.",
-        "coursesManagementPanel": "Ibibanza vy’ivyigwa",
         "curriculum": "Integuro y’icigwa",
         "curriculumDescription": "Ng’iyi integuro y’ivyigwa y’iki kiringo.",
         "deleteAnnouncementTitle": "Uremeza neza ko ushaka gufuta iri tangazo?",
         "deleteAnnouncementWarning": "Iri hinduka ntirishobora gusubirwamwo",
         "editOnGithub": "Hindura kuri Github",
         "examResults": "Inyishu z'ikibazo",
-        "goal": "Ihangiro",
         "makeModifications": "Urakeneye gukora impinduka?",
         "noPastAnnouncement": "UBU NTA tangazo rya kera ufise.",
         "noWrittenAnnouncement": "Ubu nta tangazo wanditse ufise.",
         "objectives": "Intego",
-        "proposeNewCourse": "Tanga iciyumviro c’icigwa gishasha",
         "quickRecap": "Aha ushobora gusanga amakuru rusangi yerekeye kinocigwa.",
-        "reviewInfos": "Aha ushobora kugenzura no gusubira kuraba amakuru yose yerekeye icigwa cose wigeze kuyobora.",
         "reviews": "Isubirwamwo",
-        "selectCourse": "Hitamwo icirwa",
         "summerStudents": "Ishure ryo muci (Summer School)",
         "writeAnnouncement": "Andika itangazo",
         "averageAttempts": "Igitigiri kirihagati c'igeragezwa",
@@ -1362,12 +1247,9 @@
         "overview": "Murirusangi",
         "successRate": "Igipimo co gutsinda",
         "amountPaid": "Amafaranga yarishwe",
-        "lastActive": "Igikorwa giherukirwako",
-        "studentsList": "Urutonde rw’abanyeshuri"
+        "lastActive": "Igikorwa giherukirwako"
       },
-      "menu": "Ikarata y’umwarimu",
       "profile": {
-        "account": "Konti y’umwarimu mukuru",
         "billingInformation": "Amakuru y’ukwishura",
         "description": "Insiguro zawe",
         "enterTipsInformation": "Plan ₿ Network irashigikira abakoresha guterera imitwe abarimu. Nyabuna shiramwo amakuru yawe kugira ngo abantu babashe kukwitura igihe bavyipfuza.",
@@ -1376,12 +1258,9 @@
         "noLightningAddress": "Nta aderesi ya Lightning yongerwa ubu.",
         "noShortBio": "Nta bisobanuro bigufi bihuzwa n’iyi konti biriho ubu, wiyumvire kuvyongerwako kuri GitHub.",
         "noTags": "Nta tags zihuzwa n’iyi konti zihari ubu.",
-        "notifications": "Amatangazo",
         "publicDescription": "Ibisobanuro vy’iki birerekanwa kuri karata y’amakuru yawe y’umwarimu kuri runo rubuga.",
         "publicProfile": "Umwidondoro uja kukarubanda",
         "publicProfileDescription": "Aha ushobora kuzuza canke guhindura amakuru yose ahuzwa n’akazi kawe k’ubwarimu kuri Plan ₿ Network.",
-        "teacher": "Umwigisha",
-        "teacherProfile": "Umwidondoro w'umwigisha",
         "tutorialModification": "Nimba ukeneye gufashwa guhindura ikintu, tugusabe urabe <0>inyigisho</0> iyi."
       },
       "reviews": {
@@ -1430,44 +1309,18 @@
     "card": {
       "bookLive": "Tegura ikiganiro c'ikibiriraho",
       "bookSeat": "Bikisha ikibanza",
-      "buyReplay": "Gura inyuma y’akaryo",
-      "buyVideo": "Gura video",
-      "eventFull": "Ibirori vyuzuye",
       "free": "Kubuntu",
-      "limited": "bishingiye gusa kuri",
       "online": "Kurubuga ngurukanabumenyi",
       "people": "Abantu",
       "purchased": "Vyaguzwe",
-      "seatBooked": "Intebe yamazekubikwa",
       "unlimited": "Nta mupaka",
       "visitWebsite": "Raba urubuga",
-      "watchLive": "Raba ikibiriraho",
       "watchReplay": "Raba ubusubizo bw’akaryo",
       "buyLecture": "Gura icirwa"
     },
-    "errors": {
-      "premiumContentNeedsLogin": "Ugomba kwinjira muri konti yawe kugira ngo ubashe kwinjira muri iki gikorwa.",
-      "premiumContentNeedsPayment": "Iki gikorwa kigize igice c’ishirahamwe ririhisha.",
-      "premiumContentNeedsPaymentAction": "Ja ku rupapuro rw’ivyo bikorwa"
-    },
     "main": {
-      "currentEvents": "Ibikorwa biriko biraba ubu",
       "upcomingEvents": "Ibikorwa birimukuza"
     },
-    "missed": {
-      "missedH1": "Ibikorwa vya kera ushobora gusubira kuraba",
-      "missedP1": "Igikorwa caragucitse?",
-      "missedP2": "Ntugire ubwoba! Tubika Inyishu zose z’ibikorwa vya kera vyabaye mumuryango, ku buryo buri wese ashobora gusubira kuraba ibitagenda neza ataco arishe."
-    },
-    "newEvent": {
-      "button": "Ongeraho igikorwa canje",
-      "description": "Ego rwose! Ibikorwa vyose vya Bitcoin bishobora kongera kumenyekana hano, rero buri mugambi wo gutegura igikorwa gishasha urakirwa neza cane!",
-      "subtitle": "Kwigisha abantu miliyari gusoma Bitcoin si ibintu vyoroshe",
-      "title": "Urashaka kongerako igikorwa cawe?"
-    },
-    "pageDescription": "Uripfuza kuganira ku bijanye na Bitcoin murunomwanya? Hano, ushobora kuronka ibikorwa vyose bishigikiwe n’imbere mu miryango ya Plan ₿ Network. Nimba uripfuza kumviriza ikiganiro, kuganira kuri Bitcoin uri ku kinyobwa, canke gukora ikibazo kugira ugerageze ubumenyi bwawe, uzoronka igikorwa gikwiye hano biciye muri Plan ₿ Network.",
-    "pageSubtitle": "Gufatwa kw’ibintu kuva hasi gushigikiwe n’urubuga rukomeye",
-    "pageTitle": "Urikurondera igikorwa ca Bitcoin co kwitabira?",
     "payment": {
       "access_online_successful": "Iyo igikorwa gitanguye, winjire ku rubuga hanyuma utangure kwerekana ikibiriraho biciye ku rupapuro rw’igikorwa.",
       "access_physical_successful": "Urashobora guteresharija itike yawe hano, canke ugateresharija inyuma muri kurubaho(dashboard) rwawe.",
@@ -1497,9 +1350,6 @@
     "tcDisclaimer": "Nemeye ko amakuru yanje ashobora gusangirwa n’abategura igikorwa kugira ngo mbone uburyo bwo kwinjira ahazobera igikorwa.",
     "tcMustBeAccepted": "Ugomba kwemera amategeko n’amabwirizwa kugira uronke uburyo bwo gukubandanya",
     "calendar": {
-      "displayCalendar": "Erekana Ikarangamisi",
-      "fullMap": "Ikarita yose",
-      "hideCalendar": "Nyegeza Ikirangamisi",
       "inXMonths": "Mu mezi {{number}}",
       "lastMonth": "Ukwezi guheze",
       "nextMonth": "Ukwezi kuzoza",
@@ -1529,27 +1379,13 @@
         "meetup": "Amakoraniro",
         "workshop": "Amahugurwa"
       }
-    },
-    "upcomingEvents": "Ibikorwa birimukuza"
+    }
   },
   "filters": {
-    "categories": "Ubwoko",
-    "levels": "Urwego",
-    "resources": "Amasoko",
     "topics": "Ukovyitwa"
   },
   "glossary": {
-    "anotherWord": "Romdera irindi jambo",
-    "creditsLoic": "<0>Amashimwe</0>: Kazinduzi ya Bitcoin yanditswe na <1>Loïc Morel (Pandul)</1>, iraboneka kuri <2>Github repository</2>.",
     "definition": "Indangurakintu",
-    "filterBar": "Rondera ijambo ukeneye hano",
-    "keepLooking": "Uripfuza kuguma urondera?",
-    "loadMoreWords": "Kwerekana amajambo menshi",
-    "needHelp": "Urakeneye ubufasha mu gusigura ijambo ry’ubuhinga?",
-    "notTranslated": "Amakuru ari mu bisobanuro vy’amajambo ntarahindurwa. \nNimba ushaka gufasha, wumva ushobora gutanga intererano y'igikorwa kuri",
-    "pageTitle": "Insiguro y’amajambo ya Bitcoin",
-    "placeHolder": "Iki n’iki?",
-    "randomSearch": "Kurondera ku buryo butunguranye",
     "relatedWords": "Amajambo afitanye isano:",
     "term": "Ijambo",
     "showMoreWords": "Erekana amajambo menshi"
@@ -1560,68 +1396,25 @@
       "bitcoinFocusTitle": "Kwibanda kuri Bitcoin",
       "communityContent": "Icambere kandi mbere ya vyose, turi umurwi w’abakunzi ba Bitcoin bafashanya mu rugendo rwabo rwa Bitcoin",
       "communityTitle": "Umuryango",
-      "content": "Plan ₿ Network ishigikira inyigisho za Bitcoin kw’isi yose. Yerekana ubufatanye bw’amakompanyi akunda Bitcoin, akibanda ku nyigisho, porogarama za Open Source, imiyoborere hagati y’abantu ku giti cabo, no kubaka umuryango. Hamwe, batangije iyi gahunda kugira batange ibikoresho nkenerwa ku ruganda rwa Bitcoin kugira rwongere gukura.",
       "openSourceContent": "Tushigikira gukwirakwiza ubwenge ku buntu kandi dushigikira inyishu zizananye zishingiye kuri Open Source",
       "openSourceTitle": "Open Source",
       "privacyContent": "Twemera ko ibanga ry’umuntu ari kimwe mu burenganzira bw’ibanze bwa muntu kandi ari ngirakamaro kw'iterambere",
-      "privacyTitle": "Ibanga",
-      "subtitle": "Akantu gato kubitwerkeye",
-      "title": "Turibande ?"
+      "privacyTitle": "Ibanga"
     },
     "blogSection": {
-      "blogTitle": "Ikintu gishasha kiri muri Plan ₿ Network",
-      "description": "Turakomeza kunagura urubuga, ibikubiyemwo, n’urubuga rw’abantu - Vyirabire!",
-      "noBlogsAvailable": "Ntarubuga rw'amakuru ruhari.",
-      "noDateAvailable": "Nta italiki iboneka",
       "seeAll": "Raba vyose"
     },
     "courseSection": {
-      "checkAllCourses": "Raba avyigwa vyose",
-      "upcomingCourseDescription": "Menya Ivyigwa biheruka gushirwa ku rubuga. Kwiga ntibihagarara!",
-      "upcomingCourseTitle": "Ivyigwa bitegekanije & ivyigwa bishasha"
-    },
-    "eventSection": {
-      "checkEvents": "Reba ibikorwa vyose",
-      "eventTitle": "Urubuga mpuzamakungu rwa Bitcoin rw’abigisha",
-      "hottestEvent": "Igikorwa ca Bitcoin gikunzwe cane"
-    },
-    "header": {
-      "content": "Plan ₿ Network igamije gutanga ibikoresho vyiza n’ibihuriramwo inyigisho kw’isi yose, ituma abantu bongera kwigenga. Ku bantu ku giti cabo gushika ku miryango, turi hano kugira tugufashe mu rugendo rwawe rwa Bitcoin.",
-      "forEducators": "Kubiga no kubigisha",
-      "globalNetwork": "Urubuga mpuzamakungu rwa Bitcoin",
-      "welcome": "Murakaza neza muri Plan ₿ Network"
+      "checkAllCourses": "Raba avyigwa vyose"
     },
     "languageSection": {
       "availableLanguages": "Indimi ziboneka",
-      "availableLanguagesVariation": "Indimi ziboneka: ",
-      "content1": "Muri Plan ₿, twemera ko Bitcoin ari impinduka mpuzamakungu iraba bose. Kugira dufashe miliyari z’abantu, turiko turashira ku rubuga uru rwego rwo gushobora kuvugwa n’indimi nyinshi kandi rugerere kuri bose. Uru rubuga ubu rushigikira indimi {{nb}}, kandi izindi ziriko zongerwa buri kwezi. Kugira bigerweho, dukoresha uruvange rwa AI n’ishaka ry’abakunzi ba Bitcoin kw’isi yose. Na wewe urashobora gutangura gushiraho urubuga rwawe rw’imbere mu gihugu cawe!",
-      "link": "Dufashe guhindura inyigisho (academy)",
-      "subtitle": "Vyose vyahinduriwe mu ndimi kavukire!",
-      "title": "Nta mbibe y’indimi hano."
-    },
-    "patreonSection": {
-      "content": "Plan ₿ Network irashimishwa no gufatanya n’amakompanyi menshi ya Bitcoin kw’isi yose kugira itange amasoko meza y’inyigisho zishoboka!",
-      "title": "Hamwe, reka turonke inyigisho za Bitcoin nziza kurushiriza!"
-    },
-    "tutorialSection": {
-      "content1": "Bitcoin irahinduka buri gihe, hamwe n’uguhagarara kw’abantu barimwo bashasha, inyishu nshasha, amategeko mashasha, n’iterambere ry’ubuhinga. Kubera iyo mpamvu, birashobora kugorana gufata no kugumana urutonde rw’inyigisho z’ukuri kandi zigezweho. Hano kuri Plan ₿, twarashoboye kubishingura. Nimba uri umushasha canke umunyamwuga, ushobora kwiga no gusoma no mu majana y’inyigisho kugira ngo usuzume inganda zacu ukurikije ibikenewe vyawe.",
-      "link": "Raba inyigisho zose",
-      "link2": "Raba amasoko y'inyigisho yose",
-      "subtitle1": "Kwiga Bitcoin mu buryo bworoshe.",
-      "title": "Hahurize ubumenyi kugira bushikirizwe neza"
-    },
-    "wallOfLoveSection": {
-      "subtitle": "N'ibiki abakoresha Bitcoin bavuga kuritwebwe",
-      "title": "Urukuta rw’urukundo"
+      "link": "Dufashe guhindura inyigisho (academy)"
     }
   },
   "imagesAlt": {
-    "bookCover": "Igifuniko c’igitabo",
-    "contributorHeart": "Umutima w'uwuterera akazi mwiza",
-    "orangePill": "Ikinini gitukura",
     "printedCircuits": "Urujanuruza rucapuye",
     "rabbit404": "Agakwavu kariko kaka itara ku kirango ca 404",
-    "sthRepresentingCompany": "Ikintu gihagarariye ishirahamwe",
     "underConstructionImage": "Ishusho ry'inkwavu nyinshi zikora ku rubuga rw’inyubako"
   },
   "labs": {
@@ -1631,8 +1424,7 @@
     "planBLabs": "Amahingurirwa ya Plan ₿",
     "presentation": {
       "link": "Vumbura amahingurirwa (Laboratoire) ya Plan ₿",
-      "subtitle": "Inira mumahinguriro kugira wige, muganire kandi utere imbere!",
-      "title": "Kuza ubuhinga bwawe bwa Bitcoin!"
+      "subtitle": "Inira mumahinguriro kugira wige, muganire kandi utere imbere!"
     },
     "title": "Amashure akorwa kandi atuma abayajamwo bahanahana ivyiyumviro ku nyigisho zidahagarara"
   },
@@ -1640,41 +1432,12 @@
     "buyVideoToUnlock": "Gura video kugira uyugurure",
     "checkFullCourse": "Raba icigwa cose",
     "lecturePartCourse": "Iyi video y’inyigisho isubirwamwo ni igice c’isomo <0>{{courseTitle}}</0>.\nInjira mu isomo ryose kugira wige neza ivyiyumviro vyose kandi wugurure ubushobozi bwawe bwose!",
-    "pageTitle": "Ibisubirwamwo vy’inyigisho",
-    "partCourse": "Izinyigisho ziri mugice c'icigwa:",
     "watchLecture": "Raba ibisubirwamwo vy’inyigisho"
   },
-  "library": {
-    "pageTitle": "Bibliothèque ya Bitcoin"
-  },
   "menu": {
-    "bCertDescription": "Kora ikibazo ca ₿-CERT kugira usuzume urwego rwawe rwa Bitcoin",
-    "betDescription": "Ishirwahamye ry’inyandiko zose ushobora gukoresha mu migambi yawe y'ikwigisha",
-    "bitcoinDescription": "Wige Bitcoin uva ku ntango gushika ku gukoresha mu buryo buteye imbere.",
-    "businessDescription": "Rondera uko Bitcoin ikoreshwa mu bucuruzi.",
-    "channelsDescription": "Injira mwihitamwo yihariwe ya YouTube kugira wige ivyerekeye Bitcoin",
-    "chooseLanguage": "Hitamwo ururimi",
-    "conferencesDescription": "Aho amasubirwamwo y’inama za Bitcoin yegeranirijwe guhera kuri Genesis Block",
-    "glossaryDescription": "Menya ururimi rwa Bitcoin",
-    "lecturesDescription": "Subira urabe inyigisho zatanzwe n’abanyamwuga ba Bitcoin",
-    "libraryDescription": "Rondera ibitabu vyinshi kugira wunguke ubumenyi",
-    "login": "Injira",
-    "miningCourseDescription": "Menya ukobigenda, ibikoresho n’inganda biri inyuma gucukura Bitcoin.",
-    "moviesDescription": "Rondera inkuru zidasanzwe n’isesengura ryimbitse ry’ukuntu Bitcoin yahindutse kandi igira ingaruka.",
-    "newsletterDescription": "Ihuriro ry’ibikubiye vyose ushobora gukoresha mu mumigambi yawe y’inyigisho",
-    "planBLabsDescription": "Injira mumugwi ry’ivyigwa kugira ubandanye wiga ku bijanye na Lightning, gucukura, n’ugukingira amakuru y'ibanga",
-    "podcastsDescription": "Soma vyimbitse ibijanye na Bitcoin biciye mubiganiro vyokuri ngurukanabumenyi",
-    "projectsDescription": "Wige ku mashirahamwe n’imigambi itanga ubufasha mu guteza imbere Bitcoin no kongera uko ikoreshwa",
-    "protocolDescription": "Rondera amategeko nyamukuru atuma urubuga rwa Bitcoin rukora.",
-    "publicDescription": "Rondera inyandiko z’ugutumatumanako amakuru ziri kukarubanda",
-    "securityDescription": "Menya neza ubuhinga bwo kurinda ubutunzi bwawe bwa Bitcoin.",
-    "socialStudiesDescription": "Iga ku ngaruka za Bitcoin ku muryango.",
-    "teachersDescription": "Menya abarimu bacu b’ishure"
+    "login": "Injira"
   },
   "movies": {
-    "goToMovie": "Ngenda kwireresi",
-    "pageTitle": "Ireresi & Ibiganiro",
-    "watchTrailer": "Raba icitegererezo",
     "checkTheMovie": "Reba amareresi"
   },
   "notFound": {
@@ -1702,7 +1465,6 @@
     "calendar_48h_online_event": "Ibirori vya {{eventName}} biriko biregereza cane! Vyateguwe ku {{date}}, guhera saa {{formattedTime}. ",
     "dashboardDescription": "Aha niho hari amatangazo yawe aheruka. Afutwa bisazwe vyikora inyuma y’ukwezi kumwe umaze kuyaraba.",
     "daysAgo": "{{days}} imisi ihaciye",
-    "hoursAgo": "{{hours}} amasaha ahaciye",
     "markAsRead": "Shira akamemyetsoko wasomye",
     "monthsAgo": "{{months}} amezi{{s}} ahaciye",
     "noRecentNotifications": "Ubu nta matangazo ya vuba ufise.",
@@ -1713,7 +1475,6 @@
     "results": "Inyishu zawe za ₿-CERT zasohotse!",
     "select": "Hitamwo",
     "selectAll": "Hitamwo vyose",
-    "stayUpToDate": "Guma ufise amakuru mashasha!",
     "today": "Unomusi",
     "unread": "Bitarasomwa",
     "upcomingEvent": "Igikorwa kizokurikira",
@@ -1734,12 +1495,6 @@
   "placeholders": {
     "selectTimeZone": "Hitamwo agace k'umwanya"
   },
-  "podcast": {
-    "check": "Raba ibiganiro vyokuri ngurukana bumenyi"
-  },
-  "podcasts": {
-    "pageTitle": "Ibiganiro vyokuri ngurukana bumenyi vya Bitcoin"
-  },
   "professors": {
     "navigationTitles": {
       "all": "Vyose",
@@ -1757,11 +1512,8 @@
     }
   },
   "projects": {
-    "languages": "Indimi",
-    "networkStrength": "Inguvu z’urubuga ziri mu banyamuryango barwo",
     "noRelatedEvents": "Ubu nta bikorwa bizokurikira bijanye n’uyu mwarimu biriho.",
     "otherCommunities": "Genzura Imiryango ya Plan ₿",
-    "pageTitle": "Imigambi ya Bitcoin",
     "related": "Bijanye",
     "relatedEvents": "Ibikorwa bijanye birikobiraza"
   },
@@ -1776,27 +1528,6 @@
     "thanks": "Turashimiye cane rwose abasuzumyi bacu b’igitangaza!"
   },
   "publicCommunication": {
-    "blogCategories": {
-      "all": "Yose",
-      "content": "Inyandiko",
-      "feature": "Ikiranga",
-      "network": "Umuryango"
-    },
-    "blogPageStrings": {
-      "blogListButtonText": "Soma inyandiko",
-      "blogSidebarTitle": "Inyandiko ziheruka za {{category}}",
-      "blogSidebarTitleForAll": "Ivyashizwe ahabona biheruka",
-      "errorMessageNotFound": "Urubuga rw'amakuru ntirwabonetse.",
-      "featuredArticleTitleText": "Inyandiko nshasha yasohotse",
-      "filterText": "Hitamwo hakurikijwe imitwe y'amajambo :",
-      "noArticlesText": "Ubu nta nyandiko ziri ku rubuga rw'amakuru.",
-      "pastArticleSubtitleText": "Inyandiko zotanguye"
-    },
-    "blogPost": "Urubuga rw'amakuru & Amakuru",
-    "description": "Plan ₿ Network ishima gukurikiza amategeko ya open-source no gukomeza kuba ugushira kumugaragaro mu rugendo rwayo rwose",
-    "goBackButtons": {
-      "simpleGoBack": "Subira ku nyandiko zose"
-    },
     "legal": "Amakuru y’amategeko",
     "legalSections": {
       "contact": "Hamagara",
@@ -1804,19 +1535,14 @@
       "privacyPolicy": "Amabwirizwa y’amakuru y'ibanga",
       "termsOfSale": "Amabwirizwa y’ukugurisha",
       "notFound": "Amakuru y’amategeko ntiyabonetse"
-    },
-    "title": "Itumatumanako amakuru rusangi"
+    }
   },
   "resources": {
-    "articles": {
-      "title": "Ivyanditwe"
-    },
     "bet": {
       "title": "Ibikoresho vy’inyigisho",
       "addEducationKit": "Ongerako igikoresho c’ishure/ubumenyi"
     },
     "books": {
-      "author": "Umwanditsi: ",
       "title": "Bibliothèque(Ububiko bw'ibitabo)",
       "addBook": "Ongerako igitabu"
     },
@@ -1828,12 +1554,10 @@
       "title": "Amasubirwamwo y’inama",
       "addConference": "Ongerako gusubiramwo kw'amakoraniro"
     },
-    "github": "Ivyose biracungwa biciye mu gitabo kimwe ca open-source <0>Github</0>. Wumve ko ushobora gutanga intererano no kongerako ivyabuze vyose.",
     "glossary": {
       "title": "Insiguro z'amajambo"
     },
     "lectures": {
-      "noLectures": "Ubu nta bisubirwamwo vy’inyigisho biboneka ku rurimi wahisemwo.",
       "title": "Ibisubirwamwo vy’inyigisho"
     },
     "movies": {
@@ -1844,19 +1568,14 @@
       "check": "Raba urwandiko rw’amakuru"
     },
     "newsletters": {
-      "author": "Umwanditsi: ",
-      "level": "Urwego :",
       "noNewsletters": "Ubu nta nyandiko z’amakuru ziriho ku rurimi wahisemwo.",
       "subtitle": "<0>Izindi nyandiko z’amakuru</0> ushobora gukunda",
       "title": "Inyandiko z’amakuru"
     },
-    "pageDescription": "Kwihweza Bitcoin bisa no kugerageza kwinjira mu mwobo udatabara ukabandanya kwaguka. Kugira tugufashe mu rugendo rwawe, twahurije hamwe ibikoresho vyinshi birimwo ibitabu, ibiganiro vyokuri ngurukanabumenyi, amareresi n’amasubirwamwo y’inama. Uyu muryango uhurije hamwe amakuru yose mu gitabo kimwe ca Github kugira ugufashe kumenya neza uburyo urubuga rwa Bitcoin rukora.",
     "pageSubtitle": "Huzamwo ubumenyi kugira butangwe neza",
     "pageSubtitleBooks": "<0>Ibindi bitabu</0> ushobora gukunda",
     "pageSubtitleChannels": "<0>Iyindi mihora ya YouTube</0> ushobora gukunda",
-    "pageSubtitleLectures": "<0>Ibindi bisubirwamwo vy’inyigisho</0> ushobora gukunda",
     "pageSubtitlePodcast": "<0>Ibindi biganiro vyo kuringurukana bumenyi</0> ushobora gukunda",
-    "pageTitle": "Ikaze ku nkomoko y'Ibikoresho",
     "podcasts": {
       "noPodcasts": "Ubu ntabiganiro vyokuri ngurukanabumenyi bihari ku rurimi wahisemwo.",
       "title": "Ibiganiro vyokuri ngurukana bumenyi",
@@ -1868,7 +1587,6 @@
       "addProjects": "Ongerako umugambi"
     },
     "searchFilterName": "Rondera ukoresheje izina",
-    "toggleFreeOnly": "Kubuntu gusa",
     "toggleLabelAll": "Vyose",
     "toggleLabelSelectedLanguage": "Hitamwo ururimi",
     "pageSubtitleMovies": "<0>Izindi reresi</0> ushobora gukunda"
@@ -1888,13 +1606,10 @@
     "event": "Igikorwa",
     "events": "Ibikorwa",
     "explorer": {
-      "subtitle": "Uriko urarondera iki?",
       "title": "Aho Kuronderera"
     },
-    "filterByType": "Hitamwo ushingiye ku bwoko",
     "glossary_word": "Ijambo ryo muri kazinduzi",
     "glossary_words": "Amajambo yomuri kazinduzi",
-    "languageSelected": "Ururimi rwahiswemwo: {{language}}",
     "lecture_replay": "Isubirwamwo ry’inyigisho",
     "lecture_replays": "Amasubirwamwo y'inyigisho",
     "loadMoreResults": "Raba izindi nyishu",
@@ -1908,11 +1623,9 @@
     "projects": "Imigambi",
     "resultEmpty": "Eeeh! Nta na kimwe twashoboye kuronka kijanye n’ivyo warondera. Raba neza uko wanditse, gerageza amajambo atandukanye, canke uhitemwo ubundi bwoko.",
     "resultError": "Hari ikintu cagenze nabi. Tugusabe ugerageze ukundi.",
-    "resultInfo": "Harabonetse {{count}} inyishu mu {{time}}ms",
     "results": "Inyishu",
     "resultsRemaining": "Hasigaye inyishu {{count}}",
     "search": "Rondera",
-    "searchResult": "Rondera inyishu",
     "startSearch": "Tangura kurondera kugira ngo ubone inyishu hano",
     "tutorial": "Inyigisho y'ukwifashisha",
     "tutorials": "Inyigisho z'ukwifashisha",
@@ -1928,57 +1641,33 @@
     "changeProfilePicture": "Hindura isanamu y'umwidondore"
   },
   "tutorials": {
-    "approvedByCreator": "Vyemejwe n’uwabikoze",
-    "backTutorials": "Subira ku nyigisho z'ukwifashisha",
     "business": {
-      "description": "Urashaka kwinjiza Bitcoin mu bucuruzi bwawe? Iki gisata cegeranya inyigisho z'ukwifashisha zose y’imfashanyigisho yagenewe abakozi n’abahinga. Nimba ari ugushiraho uburyo bwo kwakira Bitcoin mu buryo bworoshye ku rubuga rw’ugucuruza canke kongera no gucunga bitcoins mu ngengo y’imari y’isosiyete yawe, uzoronka hano amakuru akenewe y’ubuhinga n’ay’ukuri.",
-      "shortDescription": "Kwakira amafaranga ya Bitcoin no kuyacunga mu ngengo y’imari yawe",
       "title": "Ubudandaji"
     },
     "computer-security": {
-      "description": "Umutekano wa mudasobwa ni ngirakamaro kuri buri wese akoresha Bitcoin. Muri iki gisata, uzoronka ivyigwa vy’imfashanyigisho ku bikoresho bikenerwa n’imyitwarire rusangi yo kurinda ibikorana n'ubuhinga bwa none. Porogaramu za mudasobwa,umutekano wa ngurukanabumenyi , Abayobozi b'amajambo yibanga (password managers), uburyo bwo kwemeza abakoreshwa (authentication systems), VPNs, hamwe n’uburyo bwo gutumanako bwihishwa, vyose biri hano bigamije kuronsha umutekano n’ubuzima bw'ibanga.",
-      "shortDescription": "Ibikoresho vy’ingenzi vyo kurinda umutekano n’ubuzima bw'ibanga kubuhinga bwanone",
       "title": "Umutekano wa mudasobwa"
     },
     "contribution": {
-      "description": "Urashaka gufasha ku rubuga rwa Plan ₿ Network ruri ku mugaragaro (open-source)? Muri uno mutigiri, uzokwiga ukuntu wandika kandi usohore inyigisho nshasha, usuzume canke usome neza ivyanditswe, canke wongere utange ibikoresho bishasha vy’ingirakamaro ku muryango wacu. Izi nyigisho zizokugira amahirwe yo kwinjira mu kwigisha Bitcoin no gushigikira ubumenyi dusangiye.",
-      "shortDescription": "Fasha ku rubuga rwa Plan ₿ Network ruri ku mugaragaro (open-source)",
       "title": "Terera igikorwa"
     },
     "details": {
       "author": "Umwanditsi:",
-      "didHelp": "Vyoba vyagufashije ?",
       "ratingSuccess": "Urakoze kumanota utanze!",
       "source": "Isoko y'ukuri:",
       "tutorialName": "Izina ry’inyigisho",
-      "writtenBy": "Iyi nyigisho yanditswe na :",
       "didThisWork": "Ibi vyoba vyakugendeye neza?"
     },
     "exchange": {
-      "description": "Amabanki y’ukuvunjisha (Exchanges) ni kimwe mu miryango yinjira canke isohoka hagati y’ifaranga ryawe risanzwe (euro, dollars) n’isi ya Bitcoin. Amabanki y’ukuvunjisha ashobora kuba ayagenwe n’amategeko kandi akubahiriza KYC (Know Your Customer), canke akaba hagati y’abantu ku giti cabo (peer-to-peer) kandi atamenyekana. Buri banki y’ukuvunjisha itanga ivyiyumviro bitandukanye, uburyo bwo kwishura amafaranga y’ishimwe, uburyo bwo kubona amafaranga (liquidity), hamwe n’inkunga ku bakiriya. Buri munyabitcoin azokoresha ubwoko butandukanye hashingiwe ku vyifuzo n’ukwemera kwiwe.",
-      "shortDescription": "Ibisubizo vyo kugura no kugurisha Bitcoin, vyubahiriza KYC(Umwindondore w'Umunywanyi) canke bitayubahiriza",
       "title": "Ibanki z'ukuvunjisha"
-    },
-    "explorer": {
-      "description": "Izi nyigisho zose zanditswe n’abanyabitcoin babikunze kandi biyemeje, bipfuza gukwiragiza inyigisho za Bitcoin mu bihugu vyose kw’isi. Ntiwibagire Ntingo kubakunda, kubaha amanota no kubaha ama sats!",
-      "didYouKnow": "Wari ubizi?",
-      "exploreAllTutorials": "Ihweze inyigisho zose"
     },
     "hasBeenProofreadBy": "Iyi nyigisho yasuzumwe na",
     "hasNotBeenProofread": "Iyi nyigisho ntirarasuzumwa",
     "mining": {
-      "description": "Inganda z’ukucukura Bitcoin (mining industry) ni ikibanza kigoye kirimwo ibintu vyinshi bitwara mu bindi. Aha, tuzogerageza kugufasha mu rugendo rwawe dukoresheje ibikoresho bikomeye (hardware) n’ivy’amasoftware. Kuva mu guhindura S9 ikaba ishitira ryo mu nzu gushika ku kwigerageza gutsindira ihiganwa nk’ukina tombola ukoresheje nerd miner.",
-      "shortDescription": "Inyishu zo gucukura Bitcoin",
       "title": "Ugucukura"
     },
     "node": {
-      "description": "Ipfundo (Nodes) bisa n’amaseriveri(servers) yawe bwite. Mu bijanye na Bitcoin, ni software igufasha gukoresha umuryango, kwakira ubuhinga bwo guhererekanya amafaranga, kugenzura amategeko, no kuba wigenga koko. Mu nzira yacu, hariho ubwoko butandukanye bwa nodes, kuva kuri Bitcoin Core, gushika ku vyerekeye Lightning, RGB, canke ibindi bisubizo bihanitse vyerekeye ubuzima bw’ibanga (privacy).",
-      "shortDescription": "Inyishu zo gukoresha node ya Bitcoin no kwinjira mumuryango",
       "title": "Ipfundo(Node)"
     },
-    "pageDescription": "Bitcoin ni uruganda runini, rwaguka uko bukeye n’uko bwije. Kugufasha kurwimbura, twarashize hamwe kandi dutunganya inyigisho nyinshi zerekana inyishu zitandukanya mu bice vyose bijanye na Bitcoin.",
-    "pageSubtitle": "Ugurura ibinyegezwa vya Bitcoin mu kwihweza umuryango wayo wagutse",
-    "pageTitle": "Menya inyigisho zacu",
     "privacy": {
       "description": "Ubuzima bw’ibanga ni uburenganzira bw’ibanze. Naho twipfuza kuba mw’isi aho ubuzima bw’ibanga ari itegeko risanzwe, si ko biri mu buzima tubamwo. Tuzogerageza kukwereka ingendo nziza wokurikiza, tugufashe biciye mu nyigisho, kandi tugushire mu nzira yo kwigenga kurushiriza ku bijanye n’ukuntu witwararika amakuru yawe.",
       "shortDescription": "Ibikoresho vyo kubika no gukingira ubuzima bw’ibanga",
@@ -2006,8 +1695,6 @@
       "resource": "Inkomoko"
     },
     "wallet": {
-      "description": "Ingodo(Iwallet) ya Bitcoin isa n’urufunguzo rwawe. Ikoreshwa kugira ngo ushobore gukoresha no kwakira Bitcoin. Hariho ubwoko bwinshi butandukanye bwa wallet, bwose bufise uburyo bwabwo bwo gukoresha, imirimo, igiciro, n’uburambe bw’umukoresha. Buri munyabitcoin azokoresha igikoresho gitandukanye hashingiwe ku vyifuzo vyawe, urwego rw’ukwipfuza, n’uburambe.",
-      "shortDescription": "Ibisubizo vyo gukinga no gukoresha Bitcoin zawe",
       "title": "Ingodo(Wallet)"
     },
     "writtenBy": "Iyi nyigisho yanditswe na"
@@ -2077,9 +1764,7 @@
     "email": "Email",
     "events": "Ibikorwa",
     "exam": "Ikibazo",
-    "failed": "Yananiwe",
     "filter": "Gusobanura",
-    "finish": "Guheza",
     "free": "Kubuntu",
     "github": "Github",
     "glossary": "Kazinduzi",
@@ -2101,18 +1786,14 @@
       "advanced": "Iteyimbere",
       "beginner": "Intango",
       "beginnerFriendly": "Ikwiriye ku batanguye",
-      "developer": "Umuhinga mu gukora porogaramu",
       "expert": "Umuhinga",
       "intermediate": "Hagati na hagati",
       "level": "Urugezo",
-      "levels": "Ingezo",
-      "wizard": "Umuhinga"
+      "levels": "Ingezo"
     },
-    "library": "Ububiko bw'ibitabo",
     "lightningInvoice": "Fagitire ya Lightning",
     "likes": "Ababikunze",
     "linkedin": "Linkedin",
-    "lnurlAuth": "LNURL Auth",
     "location": "Aho iherereye",
     "members": " Abanywanyi",
     "mentor": "Umuhanuzi",
@@ -2128,7 +1809,6 @@
     "on": "Kuri",
     "onChainAddress": "Aderesi ya On chain",
     "online": "Kumurongo(Online)",
-    "ourStory": "Inkuru yacu",
     "overview": "Ishusho rusangi",
     "paid": "Irihirwa",
     "part": "Agace",
@@ -2146,7 +1826,6 @@
     "projects": "Imigambi",
     "protocol": "Urukwirikirane",
     "public": "Itangazo rusangi",
-    "publicationDate": "Itariki yogushira kumugaragaro:",
     "ratings": "Amanota",
     "register": "Kwiyandikisha",
     "required": "Ibisabwa",
@@ -2167,7 +1846,6 @@
     "submit": "Rungika",
     "teacher": "Umwigisha",
     "telegram": "Telegram",
-    "termsAndConditions": "Amategeko n'amabwirizwa",
     "ticket": "Itike",
     "tickets": "Amatike",
     "time": "Umwanya",
@@ -2216,7 +1894,6 @@
     "legal": "Itegeko",
     "legals": "Amategeko",
     "map": "Ikarata",
-    "myCertificates": "Impamyabumenyi zanje",
     "planBNetwork": "Plan ₿ Network",
     "practice": "Imyimenyerezo",
     "resetAll": "Subiza vyose inyuma",
@@ -2233,7 +1910,6 @@
     "week": "Indwi"
   },
   "youtubeChannels": {
-    "pageTitle": "Imihora ya Youtube",
     "view": "Raba umuhora wa Youtube",
     "watchTrailer": "Reba igice gitangura"
   },
@@ -2266,15 +1942,12 @@
     }
   },
   "navbar": {
-    "analytics": "Isesengura ry’ivyegeranyo",
     "bookings": "Kubikisha ahantu",
     "career": "Umwuga",
     "discountCode": "Amakode y’igabanyamafaranga",
     "learnAnytimeDescription": "Ivyigwa wiyigisha",
     "learnAnytimeTitle": "Iga igihe ushakiye",
     "manageCourses": "Shiraho kandi usuzume ivyigwa",
-    "myCalendar": "Ikirangamisi canje",
-    "myCareer": "Umwuga wanje",
     "myCourses": "Ivyigwa vyanje",
     "tabs": {
       "admin": "Umuyobozi",
@@ -2287,7 +1960,6 @@
     "careers": "Imirimo",
     "liveClassesDescription": "Ivyigwa biyobowe n’umwigisha",
     "liveClassesTitle": "Ivyirwa vy'ikibiriraho",
-    "myCoursesDescription": "Kurikirana intambwe ugezeko",
     "tutorialsAnalytics": "Isesengura ry’ivyigwa"
   },
   "account": {

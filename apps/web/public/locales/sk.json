@@ -18,9 +18,9 @@
     "missionTitle": "Naša misia",
     "storyContent": "Plan ₿ Network je iniciatíva podporujúca vzdelávanie v oblasti Bitcoinu po celom svete. Ide o prepojenie rôznych nadšených Bitcoin spoločností, ktoré sa zameriavajú na vzdelávanie, softvér s otvoreným zdrojovým kódom, peer-to-peer siete a zmysel pre komunitu. Spoločne sa rozhodli vybudovať sieť Plan ₿ Network a ponúknuť Bitcoin ekosystému správne nástroje na rast. Naša prezentácia pre rok 2023 je k dispozícii tu.",
     "storyTitle": "Náš príbeh",
-    "subtitle": "Chceš orange-pillnúť svet? Pridaj sa k Plan ₿ Network.",
     "title": "O Plan ₿ Network",
-    "coreTeamTitle": "Hlavný tím"
+    "coreTeamTitle": "Hlavný tím",
+    "readManifesto": "Prečítajte si náš manifest"
   },
   "account": {
     "account": "Účet",
@@ -51,7 +51,6 @@
       "errorValidatingEmailDescription": "Pri overovaní vášho e-mailu nastala chyba, zdá sa, že odkaz už vypršal alebo už bol použitý. Skúste to znova.",
       "successfullyChanged": "Vaša e-mailová adresa bola úspešne zmenená na {{email}}.",
       "successfullyValidated": "Váš e-mail bol úspešne overený.",
-      "validateChange": "Overovanie zmeny e-mailu",
       "validatingEmail": "Overovanie e-mailu",
       "validatingEmailChange": "Overovanie zmeny e-mailu",
       "wontTakeLong": "To nebude trvať dlho..."
@@ -73,7 +72,6 @@
       "invalid": "Token je neplatný",
       "notFound": "Token nebol nájdený"
     },
-    "lnurlAuthDescription": "Oskenujte tento QR kód pomocou svojej Lightning peňaženky, aby ste sa prihlásili!",
     "loginNotAvailable1": "Funkcie prihlásenia ešte nie sú dostupné v desktopovej aplikácii.",
     "loginNotAvailable2": "Môžete navštíviť našu webovú stránku a prihlásiť sa do svojho účtu.",
     "newPassword": "Nové heslo",
@@ -97,38 +95,24 @@
     "bCertDescription": "₿-CERT je ultimátny test Bitcoinu navrhnutý na ohodnotenie vašich vedomostí o Bitcoine a súvisiacich témach.\n\nDosiahnite skóre viac ako 80% a získajte certifikát ₿-CERT, ktorý dokazuje vašu odbornosť v oblasti Bitcoinu a otvára dvere k pracovným pozíciám v tomto odvetví.",
     "bookExam": "Rezervujte si test",
     "challengeYourself": "Prijmite výzvu a zistite svoju úroveň",
-    "checkout": "Pozrite si ₿-CERT",
     "download": "Stiahnuť certifikát",
     "hostSessionConditions": "Ako na to:\n\n1. Prečítajte si <0>Charty</0> – Uistite sa, či vaša komunita spĺňa povinné podmienky na usporiadanie testovania\n2. Plán & Harmonogram – Ak spĺňate podmienky, vyberte dátum a zorganizujte testovanie \n3. Zverejnite svoju udalosť– Kontaktujte nás, aby sme ju mohli pridať na platformu Plan ₿ Network, aby sa mohli ľudia pridať",
     "knowledgeableBitcoin": "Koľko toho viete o Bitcoine?",
-    "myCertificates": "Moje certifikáty",
-    "noBookExam": "Zatiaľ nie je naplánované žiadne testovanie.",
     "noTestSessions": "Momentálne nie je k dispozícii žiadne testovanie",
-    "organizeDescription": "Skvelý nápad! Ak je vaša komunita súčasťou siete Plan ₿ Network, môžete vo svojom centre organizovať testovanie ₿-CERT.\nProsím, prečítajte si <0>chartu</0>, aby ste sa uistili, že spĺňate povinné podmienky na usporiadanie testu. Ak spĺňate podmienky, môžete začať testovanie naplánovať a pridať udalosť na platformu.",
     "organizeExam": "Zorganizovať testovanie",
-    "organizeSessionConditions": "Prosím, prečítajte si <0>charty</0>, aby ste sa uistili, že spĺňate povinné podmienky na organizovanie testu. \nAk spĺňate kritériá, radi s vami naplánujeme testovanie pre vašu miestnu komunitu.\nKontaktujte nás prosím pomocou vášho preferovaného spôsobu.",
-    "organizeSessionHub": "Zorganizujte ₿-CERT testovanie vo vašom lokálnom centre",
-    "organizeSubtitle": "Orange pillnúť miliardu ľudí nie je jednoduché",
-    "organizeTitle": "Chcete zorganizovať ₿-CERT testovanie vo svojom centre?",
-    "pageSubtitle": "Globálne prijatie prostredníctvom centralizovaného open-source vzdelávania",
     "pageTitle": "Spraviť ₿-CERT test",
-    "readChart": "Prečítajte si chartu",
     "verify": "Overte pravosť vášho certifikátu",
     "wantHostSession": "Chcete usporiadať testovanie ₿-CERT vo svojom miestnom hube?",
-    "tweetText": "Som nadšený, že som prešiel ₿-CERT na @planb_network so skóre {{score}}/100! {{emoji}} #BCERT\n\n{{certificateUrl}}"
+    "tweetText": "Som nadšený, že som prešiel ₿-CERT na @planb_network so skóre {{score}}/100! {{emoji}} #BCERT\n\n{{certificateUrl}}",
+    "certificates": "Certifikáty",
+    "chooseCourse": "Vyberte kurz",
+    "noDiplomasAvailable": "Zatiaľ nie sú dostupné žiadne diplomy"
   },
   "bet": {
-    "contributeButton": "Pomôžte a prispejte",
-    "contributeDescription": "Ak chcete pridať, upraviť alebo preložiť nejaký obsah, vaša pomoc je vítaná!",
-    "contributeTitle": "Chcete priložiť ruku k dielu?",
     "educationalContent": {
-      "description": "Nižšie uvedené položky možno použiť na vzdelávacie udalosti a účely.",
       "title": "Vzdelávací obsah"
     },
-    "pageDescription": "Masové prijatie nie je jednoduché. Aby sme sa k tomuto cieľu priblížili rýchlejšie, vyvinuli sme rozšíriteľnú databázu vzdelávacieho obsahu. Tu majú Bitcoin edukátori voľný prístup a možnosť pridávať vzdelávací obsah podľa potreby. Netreba zakaždým vynaliezať koleso, spolupracujme radšej na centralizácii užitočných zdrojov v jednom nástrojovom sete!",
-    "pageTitle": "Sada vzdelávacích nástrojov pre Bitcoin",
     "visualContent": {
-      "description": "Obrázky nižšie môžete použiť pre vlastnú tvorbu.",
       "title": "Vizuálny obsah"
     }
   },
@@ -139,18 +123,11 @@
     "replay": "Prehrať znovu"
   },
   "conferences": {
-    "addConferences": "Neváhajte pridať akékoľvek chýbajúce konferencie prostredníctvom tohto <0>Github</0> repozitára.",
-    "backConferences": "Späť na konferencie",
     "conferenceName": "Názov konferencie",
-    "conferencesGenesis": "Konferencie od Genesis Blocku",
     "conferencesSinceGenesis": "Archív Bitcoin konferencií od Genesis Blocku",
-    "description": "Konferencie zohrávajú kľúčovú úlohu v Bitcoin odvetví, tvoria neoddeliteľnú súčasť vzdelávacej cesty každého Bitcoinera. Z toho dôvodu sme vytvorili tento nástroj, ktorý vám pomôže ľahko sa orientovať medzi stovkami Bitcoinových udalostí.",
     "details": {
       "findReplay": "Nájsť a prehrať znovu",
-      "nextVideo": "Ďalšie video",
-      "previousVideo": "Predchádzajúce video",
-      "selectVideo": "Vybrať video",
-      "watchReplay": "Pozrite si záznam"
+      "selectVideo": "Vybrať video"
     },
     "language": "Jazyk",
     "latestConferences": "Najnovšie konferencie",
@@ -167,10 +144,6 @@
         "bookSeat": "Rezervujte si svoje miesto",
         "cancelBooking": "Zrušiť rezerváciu",
         "classIsFull": "Trieda je už plná",
-        "p1content": "Nezabudnite si rezervovať miesto",
-        "p1heading": "Plánujete sa tejto lekcie zúčastniť osobne?",
-        "p2content": "Žiadny problém! Táto lekcia bude vysielaná naživo na tejto stránke a neskôr bude k dispozícii záznam.",
-        "p2heading": "Nemôžete sa zúčastniť osobne?",
         "ticketDownload": "Stiahnuť lístok",
         "title": "Podrobnosti o lekcii"
       },
@@ -179,9 +152,7 @@
         "stayTuned": "Živé vysielanie začne 30 minút pred začiatkom lekcie. Ostaňte naladení!",
         "title": "Priamy prenos"
       },
-      "next": "Dokončiť kapitolu",
-      "nextLesson": "Ďalšia lekcia bude",
-      "thanksTip": "Chcete vyjadriť svoju vďaku? \nMôžete autora podporiť finančným príspevkom."
+      "next": "Dokončiť kapitolu"
     },
     "conclusion": {
       "completedChaptersHeadline": "Všetky kapitoly sú teraz dokončené!",
@@ -225,7 +196,6 @@
       "premiumContentNeedsPaymentAction": "Prejsť na domovskú stránku kurzu",
       "startCourse": "Začať kurz",
       "taughtBy": "Tento kurz vyučuje",
-      "teacherLed": "Vedené profesorom",
       "thanksTipping": "Môžete poďakovať tým, že dáte profesorovi tringelt."
     },
     "exam": {
@@ -245,7 +215,6 @@
       "dontGiveUpTryAgain": "Nevzdávajte to!\nMôžete to skúsiť znova po 24 hodinách.",
       "dontWorry": "Nebojte sa robiť chyby; tento test je navrhnutý tak, aby posilňoval vaše učenie. Ak neprejdete, môžete ho absolvovať znova po 24 hodinách.",
       "dontWorryRetake": "Nebojte sa, po 24 hodinách môžete skúšku opakovať.",
-      "examAndDiploma": "Skúška a diplom",
       "examAvailabilityDetails": "Ak študent nespraví skúšku počas jej dostupnosti na platforme, automaticky dostane hodnotenie 0.",
       "examCertificateCompletionText": "Plan ₿ Network s potešením gratuluje {{username}} k získaniu diplomu z kurzu \"{{courseName}}\".",
       "examDetails": "Skúška pozostáva z {{nb}} otázok s viacerými možnosťami, z ktorých každá má jednu správnu odpoveď. Svoje odpovede môžete kedykoľvek zmeniť pred ich odoslaním, pokiaľ časovač beží.",
@@ -265,7 +234,6 @@
       "goodLuck": "Veľa šťastia!",
       "instantVerification": "Okamžité overenie: Zamestnávatelia môžu ľahko overiť pravosť vášho diplomu a dátum jeho vydania.",
       "instructions": "Pokyny:",
-      "letsConclude": "Všetko hotové, poďme to uzavrieť",
       "nbMinutes": "{{nb}} minút",
       "nbQuestions": "{{nb}} otázok",
       "nextChapter": "Ďalšia kapitola",
@@ -274,7 +242,6 @@
       "oneMinuteLeft": "Máte už len 1 minútu",
       "oopsFailed": "Ups, zdá sa, že ste <0>neprešli</0> záverečnou skúškou.",
       "passed": "Prešiel",
-      "passExam": "Zložiť skúšku",
       "passRate": "Miera úspešnosti je 80%.",
       "planBTimeStamp": "V Plan ₿ Network zabezpečujeme váš diplom pomocou technológie časovej pečiatky podporovanej blockchainom.",
       "quitWithoutSubmitting": "Ups, zdá sa, že ste opustili stránku bez odoslania vašich odpovedí. To zruší test.",
@@ -288,7 +255,6 @@
       },
       "retakeExam": "Opakovať skúšku",
       "retakeInstructions": "Máte 20 minút na odpovedanie na 40 otázok, z ktorých každá má len jednu správnu odpoveď. Medzi otázkami môžete navigovať a svoje odpovede odovzdať na konci.",
-      "reviewTest": "Skontrolovať",
       "sameRules": "Chystáte sa znovu absolvovať záverečnú skúšku. Pravidlá ostávajú rovnaké.",
       "score": "Vaše skóre je",
       "scoreAndDiploma": "Skóre a diplom",
@@ -321,22 +287,13 @@
       "tryAgain": "Skúsiť znova",
       "tryOneMoreTime": "Skúste to ešte raz!",
       "verifyDisplayName": "Pred začiatkom, prosím, overte svoje zobrazované meno nižšie, pretože sa použije na vytvorenie vášho diplomu.",
-      "viewExam": "Zobraziť test",
       "whyTimeStamp": "Časové označenie vášho diplomu:\nPrečo je to dôležité",
       "wishTryAgain": "Ak si prajete skúsiť to znova, skúška bude dostupná o 24 hodín.",
       "yesSubmit": "Áno, odoslať"
     },
     "explorer": {
-      "buildPath": "Vytvorte si vlastnú cestu",
-      "comingSoon": "už čoskoro",
       "discover": "Zistiť viac",
-      "exploreCourses": "Objavte Plan ₿ kurzy",
-      "findCourses": "Nájdite perfektný kurz pre vaše potreby s nástrojom na výber kurzu",
       "goal": "Cieľ:",
-      "journey": "Bitcoin je cesta, nie cieľ",
-      "pageDescription": "Plan ₿ Academy ponúka širokú škálu kurzov o Bitcoine, ako bezplatné tak aj prémiové, od začiatočníkov po expertov. Vedené odborníkmi alebo vo vlastnom tempe, prispôsobené každému štýlu učenia. Naša misia je jednoduchá: šíriť znalosti o Bitcoine tak aby boli jasné, pútavé a dostupné pre všetkých!",
-      "planbSchool": "PLAN ₿ SCHOOL",
-      "planbSchoolHeadline": "Plan ₿ School, vedená Giacomom Zuccom, ponúka intenzívne trojmesačné vzdelávacie programy navrhnuté pre premostenie medzery medzi učením a aplikáciou v reálnom živote. Okrem tradičných lekcií budú študenti zapojení do praktických projektov vo firmách a prvotriedneho bootcampu určeného pre tých najšikovnejších. Iba najlepšie talenty postupujú po dvoch kompetitívnych výberových kolách, čo zaručuje, že finálni top študenti sú plne vybavení na rozbehnutie svojej kariéry v Bitcoin odvetví.",
       "seeCourse": "Pozrieť si kurz"
     },
     "format": {
@@ -355,15 +312,12 @@
       "count": "Časť {{count}}"
     },
     "payment": {
-      "accessibility": "Prístupnosť",
-      "accessibility_forever": "Navždy",
       "amount": "Množstvo",
       "back_course": "Späť na kurz",
       "book_description": "Prosím, skontrolujte uvedené informácie o mieste konania. Po potvrdení rezervácie obdržíte potvrdzovací lístok a QR kód, ktorý predložíte v triede.",
       "checkoutError": "V priebehu procesu platenia došlo k chybe.\nProsím, skúste to znova.",
       "courseType": "Typ kurzu",
       "date": "Dátum",
-      "downloadCurriculum": "Stiahnuť osnovu",
       "duration": "Trvanie",
       "hybridDescription": "Prosím, skontrolujte uvedené informácie o kurze.\nKaždá lekcia prebieha osobne v určených termínoch a miestach. Všetky hodiny sú vždy vysielané naživo a nahrávané na neskoršie prehratie.\n\nOsobná účasť sa rezervuje osobitne ku každej lekcii, preto vás láskavo žiadame, aby ste si rezervovali svoje miesto vždy, keď chcete byť fyzicky prítomný.",
       "inPersonCallout": "Chystáte sa zakúpiť <strong>osobný</strong> prístup k tomuto kurzu.",
@@ -374,8 +328,6 @@
       "payment_details": "Podrobnosti o platbe",
       "payment_successful": "Platba úspešná!",
       "qr_unified": "Tento QR kód je zjednotený, takže prijíma lightning aj on-chain platby.",
-      "teacher": "Učiteľ",
-      "teachers": "Učitelia",
       "time": "Čas"
     },
     "plusXMore": "+{{count}} ďalších",
@@ -432,11 +384,9 @@
       "yesOfCourse": "áno, samozrejme",
       "yesVeryMuch": "áno, veľmi"
     },
-    "selectATopic": "Vyberte tému",
     "tryAdjustingFilters": "Skúste upraviť svoje filtre"
   },
   "dashboard": {
-    "account": "Účet",
     "adminPanel": {
       "accessGranted": "Prístup povolený",
       "bookings": "Rezervácie",
@@ -446,7 +396,6 @@
         "careers": "Pracovné pozície",
         "careersSubtitle": "Tu si môžete prezrieť zoznam účastníkov, ktorí dokončili svoje prihlášky. Všetky informácie o prihláškach nájdete vo vnútri tabuľky.",
         "cv": "Životopis",
-        "downloadProfiles": "Stiahnuť tabuľku",
         "downloadSpreadsheet": "Stiahnuť tabuľku",
         "file": "Súbor",
         "lastUpdate": "Posledná aktualizácia",
@@ -463,7 +412,6 @@
         "delete": "Vymazať",
         "deleteDiscountCode": "Odstrániť zľavový kód",
         "deleteDiscountCodeConfirm": "Ste si istý, že chcete odstrániť tento zľavový kód?",
-        "deleteDiscountCodeSuccess": "Zľavový kód úspešne odstránený",
         "deleteDiscountCodeWarning": "Ak raz tento kód vymažete, už nebude funkčný. Táto zmena je nezvratná",
         "discountCode": "Zľavový kód",
         "discountCodeCopied": "Zľavový kód skopírovaný",
@@ -474,7 +422,6 @@
         "discountType": "Aký druh zľavového kódu?",
         "discountValue": "Percento zníženia",
         "discountValueExplanation": "Zadajte číslo v násobkoch po 5 (napr. 5, 10, 15... až do 100)",
-        "discountValuePlaceholder": "príklad: 20 pre 20%",
         "downloadImage": "Stiahnuť obrázok",
         "downloadImages": "Stiahnuť obrázky",
         "explanation": "Generujte a spravujte zľavové kódy pre udalosti a kurzy - buď jednorazové pre štipendiá alebo podobné prípady, alebo viacnásobné pre marketingové kampane.",
@@ -509,7 +456,191 @@
         "productCourse": "Kurz",
         "productEvent": "Udalosť",
         "selectCourse": "Vybrať kurz",
-        "selectEvent": "Vybrať udalosť"
+        "selectEvent": "Vybrať udalosť",
+        "tableHead": {
+          "actions": "Akcie",
+          "code": "Kód",
+          "discount": "Zľava",
+          "maxUses": "Max. použitia",
+          "name": "Meno",
+          "owner": "Majiteľ",
+          "type": "Typ",
+          "uses": "Použité"
+        }
+      },
+      "coursesIndexes": "Indexy kurzov",
+      "date": "Dátum",
+      "deleteRole": "Vymazať rolu",
+      "discountCodes": "Zľavové kódy",
+      "downloadList": "Stiahnuť zoznam",
+      "editRole": "Upraviť rolu",
+      "githubLink": "Odkaz na Github",
+      "hasAccessTo": "Má prístup k:",
+      "listOfParticipants": "Zoznam účastníkov",
+      "nameOfEvent": "Názov udalosti",
+      "participants": "Účastníci",
+      "professorName": "Meno profesora",
+      "removeTeacherDescription": "Ste si istý, že chcete odstrániť tohto učiteľa?",
+      "searchByNameOrCategory": "Hľadať podľa mena alebo kategórie",
+      "seeOrEdit": "Vidieť alebo upraviť",
+      "selectProfessor": "Vybrať profesora",
+      "selectRole": "Vybrať rolu",
+      "translation": "Panel prekladov",
+      "translationPanel": {
+        "actions": {
+          "accept": "Prijať",
+          "delete": "Vymazať",
+          "reject": "Odmietnuť"
+        },
+        "addContributor": {
+          "addLanguage": "Pridať ďalší jazyk",
+          "assign": "Priradiť",
+          "assignedLanguages": "Už priradené jazyky",
+          "assigning": "Priraďovanie...",
+          "assignmentSuccess": "Prispievatelia úspešne priradení!",
+          "confirm": "Potvrdiť",
+          "findContributor": "Nájsť prispievateľa",
+          "language": "Jazyk",
+          "noUsers": "Žiadni dostupní používatelia",
+          "searchUsers": "Hľadať používateľov...",
+          "selectLanguage": "Vyberte jazyk",
+          "selectedUsers": "Vybraní užívatelia:",
+          "title": "Pridajte prispievateľa"
+        },
+        "admin": "SPRÁVCA",
+        "comingSoon": {
+          "courses": "Zobrazenie kurzov čoskoro dostupné",
+          "coverage": "Náhľad pokrytia jazykov čoskoro dostupný"
+        },
+        "contentManagement": {
+          "actions": {
+            "assign": "Priradiť",
+            "backToContentManagement": "Späť na správu obsahu",
+            "reassign": "Zmeniť priradenie",
+            "view": "Zobraziť"
+          },
+          "assignModal": {
+            "assign": "Priradiť",
+            "assigning": "Priraďovanie...",
+            "assigningCourse": "Pridelenie kurzu:",
+            "assignmentSuccess": "Kurz bol úspešne priradený!",
+            "cancel": "Zrušiť",
+            "chooseContributor": "Vyberte prispievateľa...",
+            "courseInfo": "Informácie o kurze",
+            "selectContributor": "Vybrať prispievateľa",
+            "title": "Priradiť kurz prispievateľovi"
+          },
+          "description": "Spravovať preklady kurzov a priradiť ich prispievateľom",
+          "noCourses": "Žiadne kurzy nie sú k dispozícii",
+          "noCoursesFiltered": "Žiadne kurzy nezodpovedajú vašim filtrom",
+          "notAssigned": "Nepriradené",
+          "reassignModal": {
+            "cancel": "Zrušiť",
+            "chooseNewContributor": "Vybrať nového prispievateľa...",
+            "courseInfo": "Informácie o kurze",
+            "currentlyAssignedTo": "Momentálne priradené k:",
+            "reassign": "Zmeniť priradenie",
+            "reassigning": "Priraďuje sa...",
+            "reassigningCourse": "Prideľovanie kurzu:",
+            "reassignmentSuccess": "Kurz bol úspešne priradený!",
+            "selectNewContributor": "Vyberte nového prispievateľa",
+            "title": "Priradiť kurz novému prispievateľovi",
+            "warning": {
+              "description": "Kapitoly, ktoré už boli skontrolované, nebudú znovu priradené.",
+              "title": "Dôležitá poznámka"
+            }
+          },
+          "status": {
+            "assigned": "Pridelené",
+            "notAssigned": "Nepriradené",
+            "readyForReview": "Pripravené na kontrolu",
+            "underReview": "Prebieha kontrola"
+          },
+          "table": {
+            "actions": "Akcie",
+            "contributor": "Prispievateľ",
+            "course": "Kurz",
+            "index": "Index",
+            "language": "Jazyk",
+            "progress": "Pokrok",
+            "status": "Stav"
+          },
+          "title": "Správa obsahu"
+        },
+        "courseDetails": {
+          "actions": "Akcie",
+          "assignedTo": "Priradený k",
+          "chapterIndex": "Kapitola",
+          "chapterTitle": "Názov",
+          "chaptersAndProgress": "Kapitoly a pokrok",
+          "chaptersCompleted": "dokončené kapitoly",
+          "courseIndex": "Index kurzov",
+          "courseInformation": "Informácie o kurze",
+          "courseName": "Názov kurzu",
+          "currentContributor": "Aktuálny prispievateľ",
+          "errorLoadingDetails": "Chyba pri načítaní detailov kurzu",
+          "language": "Jazyk",
+          "noChapters": "Pre tento kurz nie sú dostupné žiadne kapitoly",
+          "noContributor": "Nie je priradený žiadny prispievateľ",
+          "partTitle": "Časť {{index}}: {{title}}",
+          "progress": "Pokrok",
+          "status": "Status",
+          "translationStatus": "Stav prekladu"
+        },
+        "courseNotFound": "Kurz sa nenašiel",
+        "messages": {
+          "noPendingRequests": "Žiadne ďalšie čakajúce požiadavky na korektúru.",
+          "noPendingRequestsSearch": "Žiadne žiadosti o korektúru zodpovedajúce \"{{query}}\".",
+          "noRejectedRequests": "Žiadne zamietnuté požiadavky na korektúru.",
+          "noRejectedRequestsSearch": "Žiadne zamietnuté požiadavky na korektúru zodpovedajúce \"{{query}}\"."
+        },
+        "modal": {
+          "acceptRequest": "Prijať žiadosť",
+          "acceptTranslationRequest": "Prijať žiadosť o korektúru",
+          "accepting": "Potvrdzuje sa...",
+          "cancel": "Zrušiť",
+          "close": "Zavrieť",
+          "contributor": "Prispievateľ",
+          "course": "Kurz",
+          "doYouWantToAcceptRequest": "Chcete prijať túto žiadosť o preklad?",
+          "language": "Jazyk",
+          "provideRejectionReason": "Prosím, uveďte dôvod pre odmietnutie tejto žiadosti",
+          "reasonForRejection": "Dôvod odmietnutia",
+          "reasonPlaceholder": "Sem napíšte svoje vysvetlenie...",
+          "rejecting": "Odmietam...",
+          "requestAcceptedMessage": "Prispievateľ bol informovaný a teraz môže začať pracovať na preklade.",
+          "requestAcceptedSuccess": "Prijali ste žiadosť o preklad!",
+          "requestRejectedSuccess": "Požiadavka úspešne zamietnutá",
+          "submitRejection": "Odoslať"
+        },
+        "noResultsFound": "Neboli nájdené žiadne výsledky",
+        "pendingTranslationRequests": "Čakajúce žiadosti o korektúru",
+        "reports": {
+          "comingSoon": {
+            "courses": "Zobrazenie kurzov čoskoro dostupné",
+            "coverage": "Náhľad pokrytia jazykov čoskoro dostupný"
+          },
+          "contributors": {
+            "assignedCourses": "Priradené kurzy",
+            "completedCourses": "Dokončené kurzy",
+            "languages": "Jazyky",
+            "startDate": "Dátum začiatku",
+            "title": "Prispievatelia",
+            "totalReward": "Celková odmena",
+            "username": "Používateľské meno"
+          },
+          "courses": {
+            "contributor": "Prispievateľ",
+            "filterByCourse": "Filtrovať podľa kurzu",
+            "lastUpdated": "Naposledy aktualizované",
+            "progress": "Pokrok %"
+          },
+          "dateFilter": "Filtrovať podľa dátumu",
+          "downloadData": "Stiahnuť dáta",
+          "filterByLanguage": "Filtrovať podľa jazyka",
+          "fromMonth": "Od",
+          "fromMonthPlaceholder": "Od ktorého mesiaca?"
+        }
       }
     }
   }

@@ -19,7 +19,6 @@
     "missionTitle": "Misyonumuz",
     "storyContent": "PlanB ağı, dünya çapında Bitcoin eğitimini desteklemek amacıyla gerçekleştirilen bir girişimdir. Bu girişim, eğitime, açık kaynaklı yazılıma, eşler arası ağlara ve topluluk duygusuna odaklı çeşitli tutkulu Bitcoin şirketlerinin birleşiminden oluşan bir projedir. Birlikte, PlanB ağını oluşturmaya ve Bitcoin ekosistemini büyütmek için doğru destekleri sunmaya karar verdiler. 2023 sürüm sunumumuz burada mevcuttur.",
     "storyTitle": "Hikayemiz",
-    "subtitle": "Tum dünyayı turuncu haplamak mi istiyorsunuz? PlanB Ağı'na katılın.",
     "title": "Plan B Network Hakkında",
     "readManifesto": "Manifestomuzu okuyun"
   },
@@ -54,7 +53,6 @@
       "errorValidatingEmailDescription": "E-postanızı doğrularken bir hata oluştu, bağlantının süresi dolmuş gibi görünüyor veya zaten kullanılmış. Lütfen tekrar deneyin.",
       "successfullyChanged": "E-posta adresiniz başarıyla {{email}} olarak değiştirildi.",
       "successfullyValidated": "E-postanız başarıyla doğrulandı.",
-      "validateChange": "E-posta değişikliğini doğrulama",
       "validatingEmail": "E-posta doğrulama",
       "validatingEmailChange": "E-posta değişikliğini doğrulama",
       "wontTakeLong": "Bu uzun sürmeyecek..."
@@ -76,7 +74,6 @@
       "invalid": "Geçersiz Token",
       "notFound": "Token bulunamadı"
     },
-    "lnurlAuthDescription": "Bu QR kodu Lightning cüzdanınıza okutarak oturum açın!",
     "newPassword": "Yeni şifre",
     "noAccountNeeded": "Plan B Network'te öğrenmeye başlamak için hesaba gerek yok!",
     "noAccountYet": "Hesabınız yok mu?",
@@ -100,54 +97,31 @@
     "bCertDescription": "B-sertifikası, Bitcoin ve bağlantılı konular hakkındaki seviyenizi değerlendirmek için uluslararası olarak tanınan bir sınavdır. Bu sertifika, Bitcoin endüstrisi arasında yeteneklerinizi ve bilginizi kanıtlamanızı sağlar, size bu endüstrideki şirketlere ve pozisyonlara erişim imkanı verir.",
     "bookExam": "Bir sınav oturumu ayırtın",
     "challengeYourself": "Kendine meydan oku ve seviyeni belirle",
-    "checkout": "B-Sertifikasını kontrol et",
     "download": "Sertifika indir",
     "knowledgeableBitcoin": "Bitcoin hakkında bilgili misiniz?",
-    "noBookExam": "Henüz planlanmış bir sınav oturumu yok.",
-    "organizeDescription": "Sorun değil! Topluluğunuz Plan B Network parçasıysa, merkezinizde bir sınav oturumu düzenlemek mümkündür.\n Bir sınavı ağırlayabilmeniz için zorunlu koşullara uyup uymadığınızdan emin olmak için lütfen tabloyu okuyun. Bu koşulları yerine getirebiliyorsanız, oturumunuzu planlayabilir ve onu platforma ekleyebilirsiniz.",
     "organizeExam": "Bir sınav düzenle",
-    "organizeSessionConditions": "Lütfen testi düzenleme konusundaki zorunlu şartları karşıladığınızdan emin olmak için <0>tüzüğü</0> okuyun.\nEğer uygunsa, yerel topluluğunuz için sizinle bir oturum planlamaktan memnuniyet duyarız.\nLütfen tercih ettiğiniz yöntemle bizimle iletişime geçin.",
-    "organizeSessionHub": "Yerel merkezinizde bir ₿-CERT test oturumu düzenleyin",
-    "organizeSubtitle": "Bir milyar kişiyi turuncu haplamak kolay değil",
-    "organizeTitle": "Merkezinizde bir B-sertifika sınavı düzenlemek ister misiniz?",
-    "pageSubtitle": "Merkezi açık kaynak eğitim aracılığıyla kitlesel benimsenme",
     "pageTitle": "B-Sertifikası",
-    "readChart": "Tabloyu oku",
     "tweetText": "@planb_network'da ₿-Sertifikasını {{score}}/100 puanla geçtiğim için çok heyecanlıyım! {{emoji}} #BCertificate\n\n{{certificateUrl}}",
     "verify": "Belgenizin geçerliliğini kontrol edin",
     "certificates": "Sertifikalar",
     "chooseCourse": "Kurs seçin",
-    "hostSessionConditions": "Nasıl yapılır:\n\n1. <0>Tüzüğü</0> Okuyun - Topluluğunuzun zorunlu ev sahipliği koşullarını karşıladığından emin olun\n2. Planlama & Programlama - Eğer uygunluğunuz varsa, bir tarih seçin ve oturumu ayarlayın\n3. Etkinliğinizi Yayınlayın - İnsanların katılabilmesi için Plan ₿ Network platformuna eklememiz için bizimle iletişime geçin",
-    "myCertificates": "Sertifikalarım"
+    "hostSessionConditions": "Nasıl yapılır:\n\n1. <0>Tüzüğü</0> Okuyun - Topluluğunuzun zorunlu ev sahipliği koşullarını karşıladığından emin olun\n2. Planlama & Programlama - Eğer uygunluğunuz varsa, bir tarih seçin ve oturumu ayarlayın\n3. Etkinliğinizi Yayınlayın - İnsanların katılabilmesi için Plan ₿ Network platformuna eklememiz için bizimle iletişime geçin"
   },
   "bet": {
-    "contributeButton": "Yardım et & katkıda bulun",
-    "contributeDescription": "Eğer bazı içerikleri eklemek, düzenlemek veya çevirmek isterseniz, yardımınız memnuniyetle karşılanacaktır!",
-    "contributeTitle": "Katkıda bulunmak ister misiniz?",
     "educationalContent": {
-      "description": "Bu içerik, eğitim etkinlikleri ve kullanım için gerekli olacak şekilde tasarlanmıştır.",
       "title": "Eğitim içeriği"
     },
-    "pageDescription": "Kitlesel benimsenme kolay değildir. Bu hedefe daha yakın ve daha hızlı ilerlemek için genişletilebilir bir eğitim içeriği veritabanı geliştirdik. Burada, Bitcoin eğitmenleri gerektiği gibi içerik bırakabilir ve erişebilirler. Her seferinde tekerleği yeniden icat etmeyelim ve yararlı kaynakları tek bir egitim setinde merkezileştirmek için birlikte çalışalım!",
-    "pageTitle": "Bitcoin Eğitim Seti",
     "visualContent": {
-      "description": "Bu içerik, yaratımlarınız için kullanılacak ham görsel veridir.",
       "title": "Görsel İçerik"
     }
   },
   "conferences": {
-    "addConferences": "Bu <0>Github</0> repository aracılığıyla eksik konferansları ekleyebilirsiniz.",
-    "backConferences": "Konferanslara geri dönüş",
     "conferenceName": "Konferans adı",
     "conferencesSinceGenesis": "Genesis Bloğundan bu yana Bitcoin Konferansları Arşivi",
-    "description": "Konferanslar, Bitcoin endüstrisinde kritik bir rol oynar ve her Bitcoiner'ın eğitim yolculuğunun vazgeçilmez bir parçasıdır. Bu nedenle, yüzlerce Bitcoin etkinliğine kolayca göz atmanızı sağlamak için bu aracı oluşturduk.",
     "details": {
       "findReplay": "Bir replay bulun",
-      "nextVideo": "Sonraki vidyo",
-      "previousVideo": "Önceki vidyo",
       "selectStage": "Bir sahne seçin",
-      "selectVideo": "Bir vidyo seçin",
-      "watchReplay": "Tekrarı izleyin"
+      "selectVideo": "Bir vidyo seçin"
     },
     "language": "Dil",
     "latestConferences": "Son konferanslar",
@@ -163,10 +137,6 @@
         "bookSeat": "Koltuğunuzu ayırtın",
         "cancelBooking": "Rezervasyonunuzu iptal edin",
         "classIsFull": "Ders kontenjanı doldu",
-        "p1content": "Koltuğunuzu ayırtmayı unutmayın",
-        "p1heading": "Bu derse yüz yüze katılmayı planlıyor musunuz?",
-        "p2content": "Sorun değil! Ders, bu sayfada canlı yayınlanacak ve sonrasında tekrar izlemek üzere kullanılabilir olacak.",
-        "p2heading": "Yüz yüze gelemiyor musun?",
         "ticketDownload": "Biletinizi indirin",
         "title": "Ders detayları"
       },
@@ -175,9 +145,7 @@
         "stayTuned": "Canlı oturum, dersin başlamasından 30 dakika önce başlayacak. Takipte kalın!",
         "title": "Canlı vidyo"
       },
-      "next": "Bölümü bitir",
-      "nextLesson": "Bir sonraki ders",
-      "thanksTip": "Takdirinizi göstermek ister misiniz?\nYazarı bir bahşiş ile destekleyebilirsiniz."
+      "next": "Bölümü bitir"
     },
     "conclusion": {
       "completedChaptersHeadline": "Tüm bölümler şimdi tamamlandı!",
@@ -219,7 +187,6 @@
       "premiumContentNeedsPaymentAction": "Ders ana sayfasına gidin",
       "startCourse": "Kursu başlatın",
       "taughtBy": "Bu kurs, bu doçent tarafından verilmektedir",
-      "teacherLed": "Profesör tarafından verilen",
       "thanksTipping": "Profesöre katkıda bulunarak teşekkür edebilirsiniz."
     },
     "exam": {
@@ -239,7 +206,6 @@
       "dontGiveUpTryAgain": "Pes etme!\n24 saat sonra tekrar deneyebilirsin.",
       "dontWorry": "Hatalar yapma konusunda endişelenme; bu test öğrenmeyi pekiştirmek için tasarlandı. Eğer geçemezsen, 24 saat sonra tekrar yapabilirsin.",
       "dontWorryRetake": "Endişelenme, sınavı 24 saat sonra tekrar alabilirsin.",
-      "examAndDiploma": "Sınav & Diploma",
       "examAvailabilityDetails": "Eğer sınav, platformdaki kullanılabilirlik süresi boyunca geçilmezse, öğrenci otomatik olarak 0 notu alacaktır.",
       "examCertificateCompletionText": "Plan ₿ Network, \"{{courseName}}\" kurs diploması ile ödüllendirilen {{username}}'i tebrik eder.",
       "examDetails": "Sınavda {{nb}} adet çoklu seçmeli soru bulunmaktadır ve her birinin sadece bir doğru cevabı vardır. Süre bitene kadar, teslim etmeden önce cevaplarınızı istediğiniz zaman değiştirebilirsiniz.",
@@ -258,7 +224,6 @@
       "goodLuck": "İyi şanslar!",
       "instantVerification": "Anında Doğrulama: İşverenler, diplomalarınızın geçerliliğini ve veriliş tarihini kolayca doğrulayabilirler.",
       "instructions": "Kullanım kılavuzu:",
-      "letsConclude": "Her şey tamam, hadi sonuçlandıralım",
       "nbMinutes": "{{nb}} dakika",
       "nbQuestions": "{{nb}} sorular",
       "nextChapter": "Sonraki bölüm",
@@ -266,7 +231,6 @@
       "notTranslatedYet": "Üzgünüz, ancak final sınavı özelliği seçtiğiniz dilde henüz mevcut değil. Devam etmek için başka bir dile geçiş yapabilirsiniz.",
       "oneMinuteLeft": "Sadece 1 dakikanız kaldı",
       "oopsFailed": "Hata, görünüşe göre <0>final sınavını</0> geçemedin.",
-      "passExam": "Sınavı geç",
       "passed": "Geçti",
       "passRate": "Geçme oranı %80'dir.",
       "planBTimeStamp": "Plan ₿ Network'te, diplomalarınızı blockchain tarafından desteklenen zaman damgalama teknolojisi kullanarak güvence altına alıyoruz.",
@@ -312,25 +276,15 @@
       "tryAgain": "Tekrar deneyin",
       "tryOneMoreTime": "Bir kez daha dene!",
       "verifyDisplayName": "Başlamadan önce, lütfen aşağıdaki görünen adınızı doğrulayın, çünkü bu diploma oluşturulurken kullanılacaktır.",
-      "viewExam": "Testi görüntüleyin",
       "weight": "Ağırlık: {{weight}}%",
       "whyTimeStamp": "Diplomanızın Zaman Damgası:\nNeden Önemlidir",
       "wishTryAgain": "Sınavı 24 saat sonra tekrar deneyebilirsiniz.",
       "yesSubmit": "Evet, gönder",
-      "reviewTest": "İnceleme",
       "scoreAndDiploma": "Skor & Diploma",
       "examResults": "Sınav sonuçları"
     },
     "explorer": {
-      "buildPath": "Kendi yolculuğunu oluştur",
-      "comingSoon": "yakında geliyor",
-      "exploreCourses": "Tüm Plan ₿ Kurslarını Keşfedin",
-      "findCourses": "İhtiyaçlarınıza uygun mükemmel kursu Kurs Seçim Aracı sayesinde bulun",
       "goal": "Hedef:",
-      "journey": "Bitcoin bir yolculuktur, varış noktası değil",
-      "pageDescription": "Plan ₿ Akademisi, dünya çapında Bitcoin eğitimini basitleştirmeyi hedefliyor. Çeşitli alanlardan uzmanlar tarafından hazırlanan akademimiz, Bitcoin'in her yönünü açıklığa kavuşturmayı amaçlayan kapsamlı bir ders yelpazesi sunmaktadır. Başlangıç seviyesinden uzmana kadar, kendi hızınızda ya da bir profesör tarafından haftalık olarak takip edildiğiniz, akademinin Bitcoin'in geniş dünyasını daha derin bir şekilde anlamanıza yardımcı olmasını umuyoruz. Kurslarımızın birçoğu tamamen ücretsizdir, böylece herkes, her yerde, kaliteli eğitime erişebilir!",
-      "planbSchool": "PLAN ₿ SCHOOL",
-      "planbSchoolHeadline": "Plan ₿ School, Giacomo Zucco tarafından yönetilen, öğrenme ile gerçek hayattaki uygulamalar arasındaki boşluğu doldurmayı amaçlayan üç aylık yoğun eğitim programları sunmaktadır. Geleneksel derslerin ötesinde, öğrenciler şirket liderliğindeki pratik projelerde yer alır ve en iyi performans gösterenlere yönelik birinci sınıf bir bootcamp'e katılır. Sadece en iyi yetenekler, iki rekabetçi seçim turundan sonra ilerler, bu da son üst düzey öğrencilerin Bitcoin endüstrisinde kariyerlerini başlatmak için tamamen donanımlı hale geldiğini garanti eder.",
       "seeCourse": "Kursu keşfedin"
     },
     "format": {
@@ -342,15 +296,12 @@
       "count": "Parça no {{count}}"
     },
     "payment": {
-      "accessibility": "Erişilebilirlik",
-      "accessibility_forever": "Sürekli",
       "amount": "Miktar",
       "back_course": "Derslere geri dön",
       "book_description": "Lütfen sağlanan mekan detaylarını gözden geçirin. Rezervasyonunuz işleme alındıktan sonra, etkinlikte sunmanız için size bir onay bileti ve bir QR kodu göndereceğiz.",
       "checkoutError": "Ödeme sürecinde bir hata oluştu.\nLütfen tekrar deneyin.",
       "courseType": "Ders türü",
       "date": "Tarih",
-      "downloadCurriculum": "Özgeçmişi indirin",
       "duration": "Süre",
       "hybridDescription": "Lütfen sağlanan kurs detaylarını gözden geçirin.\nHer ders, belirtilen tarihlerde ve yerlerde yüz yüze gerçekleşir. Tüm dersler her zaman canlı yayınlanır ve tekrar oynatma için kaydedilir.\n\nYüz yüze katılım, her ders için geçerlidir, bu yüzden fiziksel olarak katılmak istediğiniz her seferde yerinizi ayırmanızı rica ederiz.",
       "inPersonCallout": "Bu kursa <strong>yüz yüze</strong> erişim satın almak üzeresiniz.",
@@ -361,8 +312,6 @@
       "payment_details": "Ödeme detayları",
       "payment_successful": "Ödeme başarılı!",
       "qr_unified": "Bu QR kodu birleştirilmiştir, bu yüzden hem lightning ve hem on-chain ödemeleri kabul eder.",
-      "teacher": "Doçent",
-      "teachers": "Doçentler",
       "time": "Zaman"
     },
     "quizz": {
@@ -420,7 +369,6 @@
     }
   },
   "dashboard": {
-    "account": "Hesap",
     "adminPanel": {
       "accessGranted": "Erişim verildi",
       "bookings": "Rezervasyonlar",
@@ -429,7 +377,6 @@
         "careers": "Kariyerler",
         "careersSubtitle": "Burada başvurularını tamamlamış katılımcıların listesini görüntüleyebilirsiniz. Tüm başvuru bilgilerini hesap tablosunun içinde bulabilirsiniz.",
         "cv": "CV",
-        "downloadProfiles": "Tabloyu indirin",
         "downloadSpreadsheet": "Tabloyu indirin",
         "lastUpdate": "Son güncelleme",
         "lastUpdated": "Son güncelleme",
@@ -447,7 +394,6 @@
         "delete": "Sil",
         "deleteDiscountCode": "İndirim kodunu sil",
         "deleteDiscountCodeConfirm": "Bu indirim kodunu silmek istediğinizden emin misiniz?",
-        "deleteDiscountCodeSuccess": "İndirim kodu başarıyla silindi",
         "deleteDiscountCodeWarning": "Bu kod silindiğinde, artık çalışmayacaktır. Bu değişiklik geri alınamaz",
         "discountCode": "İndirim kodu",
         "discountCodeCopied": "İndirim kodu kopyalandı",
@@ -458,7 +404,6 @@
         "discountType": "Hangi tür indirim kodu?",
         "discountValue": "İndirim yüzdesi",
         "discountValueExplanation": "5'in katları şeklinde bir sayı girin (örneğin 5, 10, 15... 100'a kadar)",
-        "discountValuePlaceholder": "örnek: 20, yüzde 20 için",
         "downloadImage": "Resim indir",
         "downloadImages": "Görselleri indir",
         "explanation": "Etkinlikler ve kurslar için indirim kodları oluşturun ve yönetin - burslar veya benzer durumlar için tek kullanımlık, pazarlama kampanyaları için çoklu kullanımlı.",
@@ -501,10 +446,8 @@
           "maxUses": "Max. kullanımlar",
           "name": "İsim",
           "owner": "Sahibi",
-          "total": "Total",
           "type": "Tür",
-          "uses": "Kullanılmış",
-          "value": "Oran"
+          "uses": "Kullanılmış"
         }
       },
       "coursesIndexes": "Ders indeksleri",
@@ -516,7 +459,6 @@
       "githubLink": "Github bağlantısı",
       "hasAccessTo": "Buralara erişim hakkı var:",
       "listOfParticipants": "Katılımcıların listesi",
-      "makeProfessor": "Profesör yap",
       "nameOfEvent": "Etkinlik Adı",
       "participants": "Katılımcılar",
       "professorName": "Profesör adı",
@@ -872,14 +814,8 @@
       "publicationDate": "Yayın tarihi"
     },
     "backToDashboard": "Gösterge paneline geri dön",
-    "bCert": {
-      "grade": "Not",
-      "noResults": "Bu hesapla henüz ilişkilendirilmiş bir not veya sertifika bulunmamaktadır.\nBir sınavı geçtiyseniz ve sonuçlarınız uzun bir süre sonra hala mevcut değilse, lütfen yardım için <0>bize ulaşın</0>."
-    },
     "booking": {
       "accessLive": "Canlıya erişin",
-      "billingSubtitle": "Rezervasyonlarınızdan faturaları buradan indirin.",
-      "billingTitle": "Fatura geçmişi",
       "cancelBookingTitle": "Bu rezervasyonu iptal etmek istediğinizden emin misiniz?",
       "invoiceDate": "Tarih",
       "invoiceTitle": "Başlık",
@@ -892,12 +828,10 @@
       "ticketLocation": "Lokasyon",
       "ticketTitle": "Başlık",
       "ticketType": "Tür",
-      "upcomingTicketSubtitle": "Yaklaşan etkinliğinize katılmak için biletinizi buradan indirin. Giriş için yanınızda getirmeyi unutmayın.",
       "upcomingTicketTitle": "Yaklaşan rezervasyonlar",
       "yesCancel": "Evet, iptal et"
     },
     "calendar": {
-      "calendar": "Takvim",
       "eventType": {
         "class": "Dersler",
         "event": "Etkinlikler"
@@ -1088,10 +1022,7 @@
       "assignment": "Ödev",
       "assignmentCompletedDescription": "Proje göreviniz başarıyla gönderildi ve inceleniyor.\nNotunuz, notlandırma işleminden sonra burada görünecektir.",
       "assignmentCompletedTitle": "Görev tamamlandı",
-      "assignmentDescription": "Proje görevi, Plan ₿ İş Okulu programının ikinci aşamasını işaret eder ve yalnızca ilk aşamayı başarıyla tamamlayan öğrencilere sunulur. Sıralamalarına ve tercihlerine göre, her öğrenciye bir Bitcoin şirketi tarafından geliştirilen bir proje atanacak ve bu proje 12 Haziran'a kadar teslim edilmelidir.\nÖğrenciler, 2 Haziran'dan 12 Haziran'a kadar görevi hazırlayacaklar ve şirketin bir temsilcisinden mentorluk alabilme olasılığı olacak.\n\nProjeler, şirket tarafından derecelendirilecek ve puanlar final notunu etkileyecek. Yalnızca en yüksek sıralamadaki öğrenciler, 23 Temmuz'dan 30 Temmuz 2025'e kadar İsviçre, Lugano'daki Yaz Okulu'na katılmaya davet edilecekler.",
-      "assignmentInformation": "Ödev bilgileri",
       "assignmentTitle": "Proje görevi",
-      "checkDetailsCompleted": "Burada tamamladığınız bu kursla ilgili tüm detayları kontrol edebilirsiniz.",
       "completionDiploma": "Diploma tamamlama",
       "completionExamInfo": "Bu özelliğe erişim sağlamak için sınavı tamamlamanız gerekiyor.",
       "conclusionHeadline": "İşte öğrendiklerinizin bir özeti. Bazı bölümler atlandıysa veya düzgün bir şekilde doğrulanmadıysa, şimdi geri dönüp öğrenmek veya tamamla düğmesine basmak için doğru zaman.",
@@ -1103,15 +1034,12 @@
       "congratulationsPassed": "Tebrikler! Başarıyla geçtiniz!",
       "coordinator": "Kurs koordinatörü",
       "courseCalendar": "Ders takvimi",
-      "coursesCompleted": "Tamamlanan kurslar",
       "diplomaReleaseDescription": "Tüm dersler tamamlandığında, kursu başarıyla tamamladığınız zaman bir diploma alacaksınız. Diplomalar, son dersin ve sonuç bölümünün tamamlanmasının ardından buradan indirilebilir olacak.",
       "diplomaReleaseTitle": "Diploma teslimi",
       "examScore": "Skor:",
       "exams": "Sınavlar",
       "feedbacks": "Burada bu kursa verdiğiniz puanları ve geri bildirimleri kontrol edebilir ve düzenleyebilirsiniz.",
-      "fileUploadError": "Dosyanızı yüklerken bir hata oluştu",
       "fileUploaded": "İşiniz başarıyla yüklendi!",
-      "finalAverageGradeDescription": "Sınav & Diploma bölümündeki kontrol panelinizde nihai ortalama notunuzu bulabilirsiniz.",
       "finalGradeSummary": "Son not özeti",
       "finalScore": "Final skor",
       "generalInformation": "Genel bilgiler",
@@ -1126,8 +1054,6 @@
       "mostPreferred": "En çok tercih edilen",
       "mustBePdf": "Dosyanız bir PDF olmalıdır. Ek bir dosya göndermeniz gerekiyorsa, lütfen PDF'iniz içinde ona ait bir bağlantı ekleyin.",
       "notSelectedAssignment": "Ne yazık ki, Proje Atamasına katılmak üzere seçilmediniz.\nDersleri takip etmeye devam edebilirsiniz",
-      "planbSchoolExamDescription": "Plan ₿ Business Okulu 2025 programı iki aşamadan oluşmaktadır. İlk aşamada, özellikle ara sınav ve final olmak üzere iki online sınav yapacaksınız: bunlar, üç günlük kullanılabilirlik süresi boyunca herhangi bir zamanda tamamlayabileceğiniz tek denemeli, zamanlı testlerdir. İlk aşamadan sonra, öğrenciler sıralamalarına göre ikinci aşamaya geçmek üzere seçileceklerdir, bu aşama bir proje görevini içerir: bir Bitcoin şirketi tarafından sağlanan bireysel bir görev. Görev hakkında daha fazla ayrıntıyı Görev sekmesinde bulabilirsiniz.\n\nFinal notu, üç testin ağırlıklı ortalaması olarak hesaplanacaktır. Puanı %80'in üzerine çıkan öğrenciler bir diploma alacak ve en yüksek sıralamadaki öğrenciler ayrıca Lugano'daki Yaz Okulu'na katılma şansına da sahip olacaklar, Temmuz ayında.",
-      "planbSchoolGeneralInformation": "Plan ₿ Business Okulu 2025 programı iki aşamadan oluşmaktadır. İlk aşamada, özellikle ara sınav ve final olmak üzere iki online sınav yapacaksınız: bunlar, üç günlük kullanılabilirlik süresi boyunca herhangi bir zamanda tamamlayabileceğiniz tek denemeli, zamanlı testlerdir. İlk aşamadan sonra, öğrenciler sıralamalarına göre ikinci aşamaya geçmek üzere seçileceklerdir, bu aşama bir proje görevini içerir: bir Bitcoin şirketi tarafından sağlanan bireysel bir görev. Görev hakkında daha fazla ayrıntıyı Görev sekmesinde bulabilirsiniz.\n\nFinal notu, üç testin ağırlıklı ortalaması olarak hesaplanacaktır. Puanı %{{threshold}}'in üzerine çıkan öğrenciler bir diploma alacak ve en yüksek sıralamadaki öğrenciler ayrıca Lugano'daki Yaz Okulu'na katılma şansına da sahip olacaklar, Temmuz ayında.",
       "projectRankingInstructions": "Proje Sıralama Talimatları:",
       "ranking": "Sıralama",
       "rankingInstructions": "Önerilen projeleri tercihlerinize göre sıralayın (1 numara en üst seçiminiz olacak). Bu sıralama, size en uygun projeyi atamamızı sağlayacaktır. Daha yüksek puanlı öğrencilerin seçimleri öncelikli olarak dikkate alınacaktır.",
@@ -1139,37 +1065,25 @@
       "shareOnSocials": "Sosyal medyada paylaş:",
       "submissionInstructions": "Gönderim talimatları",
       "submitBefore": "Görevinizi {{date}} tarihinde {{hour}} saatine kadar teslim etmelisiniz. Bu süre sonrasında alınan gönderimler notlandırılmayacaktır.",
-      "submitFileNamingFormat": "Dosyanız aşağıdaki formatı kullanarak adlandırılmalıdır:\n<0>şirket_kullanıcıadı.pdf</0>.\nŞirket adından tüm boşlukları kaldırın, planB.network platformundaki tam kullanıcı adınızı kullanın ve yazım hatalarını kontrol edin.",
       "submitReviewInfo": "Bu özelliğe erişim sağlamak için bir inceleme göndermeniz gerekiyor.",
       "submitYourWork": "Görevinizi teslim edin",
       "summerSchool": "Yaz Okulu",
       "surePreferenceList": "Tercih listenizin son hali olduğundan emin misiniz?",
       "thresholdToPass": "Geçiş eşiği: {{threshold}}%",
       "tweetText": "@planb_network'deki {{courseIndex}} kursunu tamamladığım için çok heyecanlıyım ve final sınavında {{score}}/100 puan alarak diplomamı kazandım! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
-      "viewFinalGrade": "Final notu görüntüleyin",
       "yourProject": "Projeniz",
       "assignmentScore": "Ödev puanı",
       "assignmentNotAccessible": "Görev zaten başlamış ve artık erişilebilir değil.",
       "wellDoneCompleting": "Bu kursu tamamlayıp geçtiğiniz için tebrikler!\nİşte hak ettiğiniz diploma",
-      "gaveSolidEffort": "Sağlam bir çaba gösterdiniz!",
       "tweetTextCourseDiploma": "@planb_network üzerinde {{courseCoordinator}} tarafından verilen {{courseName}} kursunu tamamladığım için çok heyecanlıyım ve diplomamı kazandım!\n#PBNDiploma\n\n{{certificateUrl}}",
       "viewScoreSummary": "Puan özeti görüntüle",
       "yourProjectAssignment": "Proje göreviniz"
     },
-    "courses": "Kurslar",
     "credentials": {
       "bCert": "₿-CERT",
-      "bCertSubtitle": "Burada geçmiş ve gelecek ₿-CERT testlerinizin rezervasyonları ve notları hakkında detayları bulabilirsiniz.\n₿-TEST, Bitcoin ve ilgili konulardaki seviyenizi değerlendirmek için Plan ₿ Network tarafından düzenlenen bir testdir.",
       "beingGraded": "Sınavınız notlandırılıyor. Sonuçlar 1 veya 2 hafta içinde mevcut olacaktır.",
-      "completionDiplomas": "Diplomalar",
       "courseDiplomas": "Diploma kursları",
-      "courseDiplomasSubtitle": "Platformda bir kursu tamamladıktan sonra verdiğiniz tüm sınavlarla ilgili detayları burada bulabilirsiniz.",
-      "downloadTicket": "Biletinizi indirin",
-      "globalCertifications": "Sertifikalar",
-      "retakeExam": "Sınavı tekrar alın",
-      "seatBooked": "Sınav oturumunda yeriniz rezerve edildi",
-      "takePlaceAt": "Oturum şu adreste gerçekleşecek:",
-      "yourCertificate": "Sertifikanız"
+      "globalCertifications": "Sertifikalar"
     },
     "goToDashboard": "Gösterge paneline git",
     "goToHomepage": "Ana sayfaya git",
@@ -1177,28 +1091,20 @@
     "myCourses": {
       "completeAll": "Tümünü tamamla",
       "completed": "Tamamlandı",
-      "completedCoursesDescription": "Buradan tamamladığınız kursları kontrol edebilirsiniz.",
-      "completedCoursesTitle": "Tamamlanan kurslar",
-      "courseDashboard": "Ders kontrol paneli",
       "detailsAndCertificate": "Detaylar & sertifika",
       "done": "Tamamlandı",
       "download": "Diploma indir",
       "duration": "Süre :",
       "inProgress": "Devam ediyor",
-      "newCourses": "Her ay yeni kurslar eklenir",
-      "noCoursesAvailable": "Kurs bulunamadı.",
       "notStarted": "Başlanmadı",
       "notValidated": "Doğrulanmamış",
       "price": "Fiyat :",
       "professor": "Profesör:",
       "resumeLesson": "Derse devam et",
       "seeDetails": "Detayları görün",
-      "seeProgress": "buradaki ilerlemenizi görün.",
       "seeTheCourse": "Kursa git",
       "shareOn": "Paylaş",
-      "startCourse": "Bir kursa başla veya tamamla",
       "verify": "Diploma doğruluğunu doğrulayın",
-      "viewDetails": "Detayları görün",
       "whereYouAre": "Bakalım neredesin!",
       "yourCertificate": "Sertifikanız",
       "yourProgress": "İlerlemeniz :"
@@ -1229,36 +1135,25 @@
         "none": "Hiçbiri",
         "platformTitle": "Bu platformda hangi türde bildirimler almak istersiniz?",
         "settingsSaved": "Ayarlarınız başarıyla kaydedildi!",
-        "title": "Bildirim ayarları",
-        "assignedAt": "Atanan Kişi",
-        "displayName": "Görünen ad",
-        "filter": "Filtre",
-        "role": "Rol"
+        "title": "Bildirim ayarları"
       },
       "password": "Parola",
-      "personalInformation": "Kişisel bilgilerim",
       "preview": "Önizleme",
       "profile": "Profil",
-      "profileInformation": "Kişisel bilgiler",
       "profilePicture": "Profil resmi",
       "save": "Kaydet",
       "saving": "Kaydediliyor…",
       "security": "Güvenlik",
       "securitySettings": "Güvenlik ayarları",
-      "settings": "Ayarlar",
       "username": "Kullanıcı Adı"
     },
-    "studentDashboard": "Öğrenci kontrol paneli",
     "teacher": {
       "courses": {
         "allStudents": "Tüm öğrenciler",
-        "analytics": "Analiz",
         "announcementModal": {
           "contentLabel": "Duyuru metni",
           "contentPlaceholder": "Lütfen buraya yazın.",
           "create": "Duyuru oluşturun",
-          "dateLabel": "Yayın tarihi",
-          "datePlaceholder": "Bir tarih seçin",
           "dateRequired": "Tarih gereklidir",
           "editAnnouncement": "Duyuru düzenleme",
           "groupLabel": "Adreslemek istediğiniz öğrenci grubunu seçin",
@@ -1275,7 +1170,6 @@
         "assignment": "Ödev",
         "assignmentGrade": {
           "alertDescription": "Tüm notlar girildikten sonra, hepsini birden yayınlamak için \"Tüm notları yayınla\"ya tıklayın.\nLütfen notları önceden doğrulayın, çünkü yayınlandıktan sonra daha fazla düzenlenemezler. ",
-          "alertDescription2": "Ödev notlarının 22 Haziran gece yarısından önce (CET) yayınlanması gerekiyor.",
           "alertTitle": "Ödev notlandırma",
           "confirmPublication": "Yayını onayla",
           "confirmPublicationDescription": "Notlar yayınlandıktan sonra geri dönüş yoktur çünkü artık düzenlenemezler.",
@@ -1294,23 +1188,18 @@
         "courseDetails": "Kurs detayları",
         "courseLongDescription": "Giriş açıklaması",
         "courseModification": "Eğer kursla ilgili bir şeyi düzenlemeye yardımcı olmamızı isterseniz, lütfen <0>tutorial</0> 'yi kontrol edin.",
-        "coursesManagementPanel": "Dersler paneli",
         "curriculum": "Ders müfredatı",
         "curriculumDescription": "İşte bu kursun mevcut müfredatı.",
         "deleteAnnouncementTitle": "Bu duyuruyu silmek istediğinizden emin misiniz?",
         "deleteAnnouncementWarning": "Bu değişiklik geri alınamaz",
         "editOnGithub": "Github'da Düzenle",
         "examResults": "Sınav sonuçları",
-        "goal": "Kurs hedefi",
         "makeModifications": "Modifikasyon yapılması gerekiyor mu?",
         "noPastAnnouncement": "Şu anda geçmişe dair bir duyurunuz yok.",
         "noWrittenAnnouncement": "Şu anda yazılı bir duyurunuz yok.",
         "objectives": "Hedefler",
-        "proposeNewCourse": "Yeni bir kurs önerin",
         "quickRecap": "Burada bu kursla ilgili tüm genel bilgileri bulabilirsiniz.",
-        "reviewInfos": "Burada koordine ettiğiniz her kursla ilgili tüm bilgileri kontrol edebilir ve gözden geçirebilirsiniz.",
         "reviews": "Yorumlar",
-        "selectCourse": "Ders seçin",
         "summerStudents": "Yaz Okulu",
         "writeAnnouncement": "Bir duyuru yazın",
         "noExamLinked": "Bu dersle şu anda bağlantılı bir sınav bulunmamaktadır. Bir sınav oluşturmak isterseniz, lütfen bizimle iletişime geçin.",
@@ -1328,9 +1217,7 @@
         "overview": "Genel Bakış",
         "successRate": "Başarı oranı"
       },
-      "menu": "Öğretmen menüsü",
       "profile": {
-        "account": "Profesör hesabı",
         "billingInformation": "Fatura bilgisi",
         "description": "Açıklamanız",
         "enterTipsInformation": "Plan ₿ Network, kullanıcıları öğretmenlere bağış vermeye için teşvik eder. İnsanların size istediklerinde bağış verebilmeleri için lütfen bilgilerinizi girin.",
@@ -1339,12 +1226,9 @@
         "noLightningAddress": "Henüz bir lightning adresi eklenmedi.",
         "noShortBio": "Bu hesaba henüz bir biyografi bağlanmadı, GitHub'da ekleyiniz.",
         "noTags": "Bu hesaba henüz etiket bağlanmamış.",
-        "notifications": "Bildirimler",
         "publicDescription": "Bu açıklama, platformdaki öğretmen bilgi kartınızda görüntülenir.",
         "publicProfile": "Açık profil",
         "publicProfileDescription": "Burada, Plan ₿ Network'teki öğretmen olarak yaptığınız tüm faaliyetlerle ilgili bilgileri doldurabilir veya düzenleyebilirsiniz.",
-        "teacher": "Doçent",
-        "teacherProfile": "Öğretmen profili",
         "tutorialModification": "Eğer bir şeyi düzenlemeye yardımcı olmamızı isterseniz, lütfen <0>tutorial</0> 'yi kontrol edin."
       },
       "reviews": {
@@ -1393,43 +1277,17 @@
     "card": {
       "bookLive": "Canlı event için rezervasyon yap",
       "bookSeat": "Bir koltuk ayırt",
-      "buyReplay": "Tekrarını satın al",
-      "buyVideo": "Video satın al",
-      "eventFull": "Etkinlik dolu",
       "free": "ücretsiz",
-      "limited": "Şu sayıda kişiyle sınırlıdır",
       "online": "online",
       "people": "insanlar",
       "purchased": "Satın alındı",
-      "seatBooked": "Koltuk rezerve edildi",
       "unlimited": "sınırsız",
       "visitWebsite": "Web sitesini ziyaret edin",
-      "watchLive": "Canlı izle",
       "watchReplay": "Replay izle"
     },
-    "errors": {
-      "premiumContentNeedsLogin": "Bu etkinliğe erişebilmek için giriş yapmış olmanız gerekiyor.",
-      "premiumContentNeedsPayment": "Bu etkinlik, premium bir programın parçasıdır.",
-      "premiumContentNeedsPaymentAction": "Etkinlikler sayfasına gidin"
-    },
     "main": {
-      "currentEvents": "Şu anda devam eden etkinlikler",
       "upcomingEvents": "Gelecek etkinlikler"
     },
-    "missed": {
-      "missedH1": "Tekrar oynatılacak geçmiş etkinlikler",
-      "missedP1": "Bir etkinliği mi kaçırdınız?",
-      "missedP2": "Endişelenme! Ağımızda gerçekleşen geçmiş etkinliklerin tüm tekrarlarını saklıyoruz, böylece herkes kaçırdıkları konuları özgürce yakalayabilir."
-    },
-    "newEvent": {
-      "button": "Etkinliğimi ekle",
-      "description": "Elbette! Tüm Bitcoin etkinlikleri burada görünürlüklerini artırabilir, dolayısıyla yeni bir etkinlik oluşturma girişimi fazlasıyla hoş karşılanır!",
-      "subtitle": "Bir milyar kişiyi turuncu haplamak kolay değil",
-      "title": "Etkinliğinizi eklemek ister misiniz?"
-    },
-    "pageDescription": "Canlı olarak Bitcoin hakkında konuşmak ister misiniz? İşte, Plan ₿ Network toplulukları tarafından desteklenen bütün etkinlikleri burada bulabilirsiniz. Bir konferansı dinlemek, bir içecek eşliğinde Bitcoin hakkında tartışmak ya da bilginizi değerlendirmek için bir sınav yapmak isterseniz, doğru etkinliği Plan ₿ Network aracılığıyla burada bulabilirsiniz.",
-    "pageSubtitle": "Güçlü bir ağ tarafından desteklenen alttan üste yayılma",
-    "pageTitle": "Bir Bitcoin etkinliğine mi katılmak istiyorsunuz?",
     "payment": {
       "access_online_successful": "Etkinlik başladığında, platforma giriş yapın ve etkinlik sayfası üzerinden canlı yayına başlayın.",
       "access_physical_successful": "Biletinizi buradan indirebilir veya daha sonra kontrol panelinizden indirebilirsiniz.",
@@ -1459,9 +1317,6 @@
     "tcDisclaimer": "Bilgilerimin mekan erişim amaçları için organizatörlerle paylaşılmasını kabul ediyorum.",
     "tcMustBeAccepted": "Devam etmek için şartları ve koşulları kabul etmelisiniz",
     "calendar": {
-      "displayCalendar": "Takvimi Görüntüle",
-      "fullMap": "Tam harita",
-      "hideCalendar": "Takvimi gizle",
       "inXMonths": "{{number}} ay içinde",
       "lastMonth": "Geçen ay",
       "nextMonth": "Gelecek ay",
@@ -1475,23 +1330,10 @@
     }
   },
   "filters": {
-    "categories": "Kategoriler",
-    "levels": "Seviyeler",
-    "resources": "Kaynaklar",
     "topics": "Konular"
   },
   "glossary": {
-    "anotherWord": "Başka bir kelime ara",
-    "creditsLoic": "<0>Kredi</0>: <1>Loïc Morel (Pandul)</1> tarafından yazılan Bitcoin Sözlüğü, bu <2>Github deposunda</2> mevcuttur.",
     "definition": "Tanım",
-    "filterBar": "İhtiyacınız olan kelimeyi hemen burada bulun",
-    "keepLooking": "Aramaya devam etmek ister misin?",
-    "loadMoreWords": "Daha fazla kelime yükle",
-    "needHelp": "Teknik bir kelimeyi tanımlamada yardım mı gerekiyor?",
-    "notTranslated": "Sözlükteki veriler henüz çevrilmemiş. \nEğer yardımcı olmak isterseniz, lütfen katkıda bulunmak için başvurun",
-    "pageTitle": "Bitcoin Terimleri",
-    "placeHolder": "Bu nedir?",
-    "randomSearch": "Rastgele arama",
     "relatedWords": "İlgili kelimeler:",
     "term": "Dönem"
   },
@@ -1501,68 +1343,25 @@
       "bitcoinFocusTitle": "Bitcoin odaklı",
       "communityContent": "Öncelikle, Bitcoin yolculuğunda birbirimize yardımcı olan bir meraklılar topluluğuyuz",
       "communityTitle": "Topluluk",
-      "content": "Plan ₿ Network, dünya çapında Bitcoin eğitimini destekler. Eğitime, açık kaynaklı yazılıma, eşler arası ağlara ve topluluk oluşturmaya odaklanan tutkulu Bitcoin şirketlerinin bir işbirliğini temsil eder. Birlikte, Bitcoin ekosistemine büyüme için gerekli araçları sağlamak amacıyla bu girişimi başlatmışlardır.",
       "openSourceContent": "Bilginin serbest akışını teşvik ediyoruz ve açık kaynak çözümlerini destekliyoruz",
       "openSourceTitle": "Açık kaynak",
       "privacyContent": "Gizliliğin, ilerleme için hayati öneme sahip en temel insan haklarından biri olduğuna inanıyoruz",
-      "privacyTitle": "Gizlilik",
-      "subtitle": "Hakkımızda",
-      "title": "Biz kimiz?"
+      "privacyTitle": "Gizlilik"
     },
     "blogSection": {
-      "blogTitle": "Plan ₿ Network'de yeni neler var?",
-      "description": "Platformu, içeriği ve ağı sürekli olarak geliştiriyoruz - göz atın!",
-      "noBlogsAvailable": "Hiç blog mevcut değil.",
-      "noDateAvailable": "Uygun tarih yok",
       "seeAll": "Hepsini görüntüle"
     },
     "courseSection": {
-      "checkAllCourses": "Tüm kursları kontrol et",
-      "upcomingCourseDescription": "Platforma en son eklenen kursları görüntüleyin. Öğrenim asla durmaz!",
-      "upcomingCourseTitle": "Yaklaşan ve yeni kurslar"
-    },
-    "eventSection": {
-      "checkEvents": "Tüm etkinlikleri kontrol et",
-      "eventTitle": "Bitcoin eğitimcilerinin Global Ağı",
-      "hottestEvent": "En sıcak bitcoin etkinliği"
-    },
-    "header": {
-      "content": "Plan ₿ Network, dünya genelinde en iyi araçları ve eğitici içerikleri sağlamayı hedefler, insanlara egemenliklerini yeniden kazanmaları için güç verir. Bireylerden topluluklara, Bitcoin yolculuğunuz boyunca size yardımcı olmak için buradayız.",
-      "forEducators": "Öğrenciler ve eğitimciler için",
-      "globalNetwork": "Global Bitcoin Ağı",
-      "welcome": "Plan ₿ Ağı'na Hoş Geldiniz"
+      "checkAllCourses": "Tüm kursları kontrol et"
     },
     "languageSection": {
       "availableLanguages": "Kullanılabilir diller",
-      "availableLanguagesVariation": "Kullanılabilir diller: ",
-      "content1": "Plan ₿'de, Bitcoin'in herkesi ilgilendiren uluslararası bir devrim olduğuna inanıyoruz. Milyarlarca insanı güçlendirmek için, bu platformu çok dilli ve herkes tarafından erişilebilir olacak şekilde tasarlıyoruz. Platform şu anda {{nb}} dilini destekliyor ve her ay daha fazla dil ekleniyor. Bunu gerçekleştirmek için, AI ve dünya çapındaki Bitcoin severlerin tutkusu karışımını kullanıyoruz. Siz de kendi yerel ağınızı ülkenizde başlayabilirsiniz!",
-      "link": "Akademiyi çevirmemize yardımcı olun",
-      "subtitle": "Her şey yerel dillere çevrilmiştir!",
-      "title": "Burada dil engeli yok."
-    },
-    "patreonSection": {
-      "content": "Plan ₿ Network, en iyi eğitim kaynaklarını sağlamak için dünya çapında birçok bitcoin şirketiyle işbirliği yapmaktan gurur duyar!",
-      "title": "Birlikte, Bitcoin eğitimini daha iyi hale getirelim!"
-    },
-    "tutorialSection": {
-      "content1": "Bitcoin sürekli olarak gelişiyor, yeni aktörlerin, çözümlerin, protokollerin ve teknolojik atılımların ortaya çıkmasıyla. Bu nedenle, kaliteli eğitimlerin güncel ve doğru bir veritabanını sürdürmek zor olabilir. İşte burada, Plan ₿'de, tam da bunu başardık. İster bir başlangıç kullanıcısı olun ister ileri düzey bir kullanıcı, ihtiyaçlarınıza göre sektörümüzü keşfetmek için yüzlerce eğitimi keşfedebilirsiniz.",
-      "link": "Tüm eğitimlere bakın",
-      "link2": "Tüm kaynakları görün",
-      "subtitle1": "Bitcoin eğitimi basitleştirildi.",
-      "title": "Daha iyi dağıtabilmek için bilgiyi merkezileştiriyoruz"
-    },
-    "wallOfLoveSection": {
-      "subtitle": "Bitcoinciler bizim hakkımızda ne diyor?",
-      "title": "Aşk Duvarı"
+      "link": "Akademiyi çevirmemize yardımcı olun"
     }
   },
   "imagesAlt": {
-    "bookCover": "bir kitap kapağı",
-    "contributorHeart": "Güzel katkıda bulunanlar için bir kalp",
-    "orangePill": "turuncu bir hap",
     "printedCircuits": "baskılı devre",
     "rabbit404": "Bir tavşanın bir 404 işaretine el feneri tutması",
-    "sthRepresentingCompany": "şirketi temsil eden bir şey",
     "underConstructionImage": "Bir inşaat alanında çalışan birkaç tavşanın illüstrasyonu"
   },
   "labs": {
@@ -1572,8 +1371,7 @@
     "planBLabs": "Plan ₿ Labs",
     "presentation": {
       "link": "Plan ₿ Labs'ı Keşfedin",
-      "subtitle": "Bir laboratuvara katılın, öğrenin, tartışın ve büyüyün!",
-      "title": "Bitcoin becerilerinizi geliştirin!"
+      "subtitle": "Bir laboratuvara katılın, öğrenin, tartışın ve büyüyün!"
     },
     "title": "Sürekli öğrenme için pratik ve interaktif dersler"
   },
@@ -1581,41 +1379,10 @@
     "buyVideoToUnlock": "Videoyu kilidini açmak için satın alın",
     "checkFullCourse": "Tam kursu kontrol edin",
     "lecturePartCourse": "Bu ders tekrarı <0>{{courseTitle}}</0> kursunun bir parçasıdır.\nTüm konuyu kavramak ve tam potansiyelinizi açığa çıkarmak için tam kursa dalın!",
-    "pageTitle": "Ders Tekrarları",
-    "partCourse": "Bu ders, şu kursun bir parçasıdır:",
     "watchLecture": "Dersin tekrarını izleyin"
   },
-  "library": {
-    "pageTitle": "Bitcoin Kütüphanesi"
-  },
   "menu": {
-    "bCertDescription": "₿-CERT testini geçerek Bitcoin seviyenizi değerlendirin",
-    "betDescription": "Eğitim projeleriniz için kullanabileceğiniz içerik koleksiyonu",
-    "bitcoinDescription": "Bitcoin'i temellerden ileri düzey uygulamalara kadar öğrenin.",
-    "businessDescription": "Ticarette Bitcoin kullanımını ortaya çıkarın.",
-    "channelsDescription": "Bitcoin hakkında bilgi edinmek için özel Youtube kanallarımıza erişin",
-    "chooseLanguage": "Bir dil seçin",
-    "conferencesDescription": "Genesis Block'tan bu yana Bitcoin konferansı tekrarlarının koleksiyonu",
-    "glossaryDescription": "Bitcoin dilini anlayın",
-    "lecturesDescription": "Bitcoin uzmanlarından kaydedilmiş dersleri tekrar izleyin",
-    "libraryDescription": "Bilginizi artırmak için bol miktarda kitap keşfedin",
-    "login": "Giriş Yap",
-    "miningCourseDescription": "Bitcoin madenciliğinin arkasındaki süreçleri, araçları ve endüstriyi anlayın.",
-    "moviesDescription": "Bitcoin'in evrimi ve etkisinin derinlemesine keşiflerinin yanı sıra büyüleyici hikayeleri keşfedin",
-    "newsletterDescription": "Eğitim projeleriniz için kullanabileceğiniz içerik koleksiyonu",
-    "planBLabsDescription": "Lightning, Madencilik ve Gizlilik hakkında öğrenmeye devam etmek için bir çalışma grubuna katılın",
-    "podcastsDescription": "Podcast'lar aracılığıyla Bitcoin ekosistemini keşfedin",
-    "projectsDescription": "Bitcoin'i iyileştirmeye ve benimsenmesini artırmaya katkıda bulunan şirketler ve projeler hakkında bilgi edinin",
-    "protocolDescription": "Bitcoin ağını çalıştıran temel kuralları keşfedin.",
-    "publicDescription": "Kamuoyu iletişim makalelerini keşfedin",
-    "securityDescription": "Bitcoin varlıklarınızı koruma tekniklerini öğrenin.",
-    "socialStudiesDescription": "Bitcoin'in toplum üzerindeki etkisini inceleyin.",
-    "teachersDescription": "Akademi öğretmenlerimizi tanıyın"
-  },
-  "movies": {
-    "goToMovie": "Filme git",
-    "pageTitle": "Filmler & Belgeseller",
-    "watchTrailer": "Fragmanı izle"
+    "login": "Giriş Yap"
   },
   "notFound": {
     "here": "Burada",
@@ -1642,7 +1409,6 @@
     "calendar_48h_online_event": "{{eventName}} yakında geliyor! {{date}} tarihinde, {{formattedTime}} saatlerinde planlanmış. ",
     "dashboardDescription": "İşte en son bildirimleriniz. Onları gördükten bir ay sonra otomatik olarak kaldırılırlar.",
     "daysAgo": "{{days}} gün önce",
-    "hoursAgo": "{{hours}} saat önce",
     "markAsRead": "Okundu olarak işaretle",
     "monthsAgo": "{{months}} ay{{s}} önce",
     "noRecentNotifications": "Şu anda hiçbir yeni bildiriminiz yok.",
@@ -1653,7 +1419,6 @@
     "results": "₿-CERT sonuçlarınız açıklandı!",
     "select": "Seç",
     "selectAll": "Tümünü seçin",
-    "stayUpToDate": "Güncel kalın!",
     "today": "Bugün",
     "unread": "Okunmamış",
     "upcomingEvent": "Gelecek etkinlik",
@@ -1674,12 +1439,6 @@
   "placeholders": {
     "selectTimeZone": "Zaman dilimini seçin"
   },
-  "podcast": {
-    "check": "Podcast’i dinle"
-  },
-  "podcasts": {
-    "pageTitle": "Bitcoin Podcastları"
-  },
   "professors": {
     "navigationTitles": {
       "all": "Hepsi",
@@ -1697,11 +1456,8 @@
     }
   },
   "projects": {
-    "languages": "Diller",
-    "networkStrength": "Bir ağın gücü üyelerinden gelir",
     "noRelatedEvents": "Bu eğitmenle ilgili şu anda yaklaşan etkinlik bulunmamaktadır.",
     "otherCommunities": "Plan ₿ Topluluklarını Keşfedin",
-    "pageTitle": "Bitcoin Projeleri",
     "related": "İlgili",
     "relatedEvents": "İlgili yaklaşan etkinlikler"
   },
@@ -1716,45 +1472,19 @@
     "thanks": "Harika düzelticilerimize büyük bir teşekkür gönderiyoruz!"
   },
   "publicCommunication": {
-    "blogCategories": {
-      "all": "Hepsi",
-      "content": "İçerik",
-      "feature": "Özellik",
-      "network": "Ağ"
-    },
-    "blogPageStrings": {
-      "blogListButtonText": "Makaleyi oku",
-      "blogSidebarTitle": "Önceki {{category}} Gönderiler",
-      "blogSidebarTitleForAll": "Önceki Gönderiler",
-      "errorMessageNotFound": "Blog bulunamadı.",
-      "featuredArticleTitleText": "Son yayınlanan makale",
-      "filterText": "Konuya göre filtrele:",
-      "noArticlesText": "Şu anda hiç blog yazısı yok.",
-      "pastArticleSubtitleText": "Geçmiş makaleler"
-    },
-    "blogPost": "Bloglar & Haberler",
-    "description": "Plan ₿ Network, yolculuğu boyunca şeffaflığı korumak ve açık kaynak standartlarına uymaktan gurur duyar",
-    "goBackButtons": {
-      "simpleGoBack": "Tüm makalelere geri dön"
-    },
     "legal": "Hukuki bilgiler",
     "legalSections": {
       "contact": "İletişim",
       "legalNotice": "Hukuki bildirim",
       "privacyPolicy": "Gizlilik politikası",
       "termsOfSale": "Satış Şartları"
-    },
-    "title": "Kamu iletişimi"
+    }
   },
   "resources": {
-    "articles": {
-      "title": "Makaleler"
-    },
     "bet": {
       "title": "Eğitim Araç Seti"
     },
     "books": {
-      "author": "Yazar: ",
       "title": "Kütüphane"
     },
     "channels": {
@@ -1764,12 +1494,10 @@
     "conferences": {
       "title": "Konferans tekrarları"
     },
-    "github": "Tüm veriler, tek bir açık kaynaklı <0>Github</0> deposu aracılığıyla yönetilir. Katkıda bulunmaktan ve eksik içeriği eklemekten çekinmeyin.",
     "glossary": {
       "title": "Sözlük"
     },
     "lectures": {
-      "noLectures": "Seçilen dil için şu anda hiçbir Ders Tekrarı bulunmamaktadır.",
       "title": "Ders Tekrarları"
     },
     "movies": {
@@ -1780,19 +1508,14 @@
       "check": "Bülteni kontrol et"
     },
     "newsletters": {
-      "author": "Yazar: ",
-      "level": "Seviye :",
       "noNewsletters": "Seçilen dil için şu anda bir bülten bulunmamaktadır.",
       "subtitle": "<0>Diğer bültenler</0> hoşunuza gidebilir",
       "title": "Bültenler"
     },
-    "pageDescription": "Bitcoin'i anlamaya çalışmak, sürekli büyüyen bir labirenti keşfetmeye benzer. Sizin yolculuğunuzda size yardımcı olmak için, kitaplar, podcast'ler, videolar ve konferans tekrarları dahil olmak üzere geniş bir kaynak yelpazesi derledik. Bu portal, Bitcoin ekosistemini daha iyi anlamanıza yardımcı olmak için tüm bilgileri bir Github deposunda toplar.",
     "pageSubtitle": "Bilgiyi daha iyi dağıtmak için merkezileştirmek",
     "pageSubtitleBooks": "<0>Diğer kitaplar</0> hoşunuza gidebilir",
     "pageSubtitleChannels": "<0>Beğenebileceğiniz Diğer Youtube Kanalları</0>",
-    "pageSubtitleLectures": "<0>Diğer Ders Tekrarları</0> hoşunuza gidebilir",
     "pageSubtitlePodcast": "<0>Hoşunuza gidebilecek diğer podcastler </0>",
-    "pageTitle": "Kaynaklar",
     "podcasts": {
       "noPodcasts": "Seçilen dil için şu anda hiç podcast bulunmamaktadır.",
       "title": "Podcast'ler"
@@ -1801,7 +1524,6 @@
       "title": "Projeler"
     },
     "searchFilterName": "İsimle ara",
-    "toggleFreeOnly": "Yalnızca ücretsiz",
     "toggleLabelAll": "Hepsi",
     "toggleLabelSelectedLanguage": "Seçilen dil"
   },
@@ -1820,13 +1542,10 @@
     "event": "Etkinlik",
     "events": "Etkinlikler",
     "explorer": {
-      "subtitle": "Ne arıyorsun?",
       "title": "Arama Portalı"
     },
-    "filterByType": "Türe göre filtrele",
     "glossary_word": "Sözlük kelimesi",
     "glossary_words": "Sözlük kelimeleri",
-    "languageSelected": "Seçilen dil: {{language}}",
     "lecture_replay": "Ders tekrarı",
     "lecture_replays": "Ders tekrarları",
     "loadMoreResults": "Daha fazla sonuç görün",
@@ -1840,11 +1559,9 @@
     "projects": "Projeler",
     "resultEmpty": "Hata! Aramanızla eşleşen bir şey bulamadık. Yazımınızı kontrol edin, farklı anahtar kelimeler deneyin veya başka bir kategori seçin.",
     "resultError": "Bir hata oluştu. Lütfen tekrar deneyin.",
-    "resultInfo": "{{count}} sonuç {{time}} dakika içinde bulundu",
     "results": "Sonuçlar",
     "resultsRemaining": "{{count}} sonuç kaldı",
     "search": "Ara",
-    "searchResult": "Arama sonuçları",
     "startSearch": "Arama yapmaya başlayın ve sonuçları burada görün",
     "tutorial": "Öğretici içerik",
     "tutorials": "Öğretici içerikler",
@@ -1858,56 +1575,32 @@
     "changeProfilePicture": "Profil resmini değiştir"
   },
   "tutorials": {
-    "approvedByCreator": "Yaratıcısı tarafından onaylandı",
-    "backTutorials": "Tüm eğitimlere geri dön",
     "business": {
-      "description": "Bitcoin'i işletmenize entegre etmek ister misiniz? Bu kategori, profesyoneller için tasarlanmış tüm eğitimleri bir araya getirir. Bitcoin ödemelerini kolayca kabul etmek için bir satış noktası sistemi kurmak veya şirketin hazine bölümünde bitcoin eklemek ve yönetmek olsun, burada gereken teknik ve pratik bilgileri bulacaksınız.",
-      "shortDescription": "Bitcoin ödemelerini kabul etmek ve bunları hazine yönetimi içinde kullanmak",
       "title": "Business"
     },
     "computer-security": {
-      "description": "Siber güvenliği, her Bitcoiner için önceliklidir. Bu kategoride, dijital ortamınızı korumaya yönelik temel araçlar ve genel uygulamalar hakkında eğitimler bulacaksınız. İşletim sistemleri, güvenli tarayıcılar, şifre yöneticileri, kimlik doğrulama sistemleri, VPN'ler ve şifrelenmiş iletişim çözümleri, burada sunulan tüm kaynaklar güvenliğinizi ve gizliliğinizi artırmayı hedefler.",
-      "shortDescription": "Dijital güvenliğinizi ve gizliliğinizi korumak için temel araçlar",
       "title": "Siber güvenliği"
     },
     "contribution": {
-      "description": "Plan ₿ Network açık kaynak platformuna katkıda bulunmak ister misiniz? Bu kategoride, yeni bir eğitim, inceleme yayınlamayı veya içeriği düzeltmeyi veya topluluk için yeni kullanışlı kaynaklar eklemeyi öğreneceksiniz. Bu eğitimler, Bitcoin eğitimine katılım sağlama ve ortak bilgi tabanımızı zenginleştirme şansı verecektir.",
-      "shortDescription": "Plan ₿ Network açık kaynak platformuna katkıda bulunun",
       "title": "Katkı"
     },
     "details": {
       "author": "Yazar:",
-      "didHelp": "Bu yardımcı oldu mu?",
       "ratingSuccess": "Değerlendirmeniz için teşekkürler!",
       "source": "Orjinal kaynak :",
-      "tutorialName": "Öğretici içerik ismi",
-      "writtenBy": "Bu ders bu kişi tarafından sunulmuştur :"
+      "tutorialName": "Öğretici içerik ismi"
     },
     "exchange": {
-      "description": "Borsalar, geleneksel para biriminiz (euro, dolarlar) ile bitcoin dünyası arasındaki giriş ve çıkış kapılarından biridir. Borsalar, düzenlenmiş ve KYC (Müşterini Tanıma sistemi) uyumlu veya eşler arası ve anonim olabilir. Her borsa farklı özellikler, ücret yapıları, likidite ve müşteri desteği sunar. Her bitcoin kullanıcısı, ihtiyaçlarına ve inançlarına göre farklı bir borsa kullanır.",
-      "shortDescription": "Bitcoin alım-satım imkânları, KYC ve KYC olmayan",
       "title": "Borsa"
-    },
-    "explorer": {
-      "description": "Tüm bu eğitimler, dünya çapında bitcoin eğitimini yaymak isteyen tutkulu ve adanmış bitcoin kullanıcıları tarafından yazılmıştır. Beğenmeyi, inceleme yapmayı ve onlara sats vererek bahşiş atmayı unutmayın!",
-      "didYouKnow": "Biliyor Muydunuz?",
-      "exploreAllTutorials": "Tüm dersleri keşfedin"
     },
     "hasBeenProofreadBy": "Bu öğretici, bu kişi tarafından düzeltildi",
     "hasNotBeenProofread": "Bu içerik için henüz düzeltme yapılmamıştır",
     "mining": {
-      "description": "Madencilik endüstrisi, içerisinde birçok derin konuyu barındıran karmaşık bir konudur. Burada, donanım ve yazılım kullanarak sizinle bu yolculukta birlikte olmaya çalışacağız. Bir S9'u ev ısıtıcısına dönüştürmekten, bir nerd madenci ile piyangoyu kazanmaya çalışmaya varan konulara kadar.",
-      "shortDescription": "Bitcoin madencilik çözümleri",
       "title": "Madencilik"
     },
     "node": {
-      "description": "Düğümler kişisel sunucularınız gibidir. Bitcoin'de, ağı çalıştırmanıza, işlemleri toplamanıza, kuralları doğrulamanıza ve gerçekten egemen olmanıza olanak sağlayan yazılımdır. Ekosistemimiz içinde Bitcoin Core'dan Lightning uygulamalarına, RGB'ye veya diğer daha gelişmiş gizlilik çözümlerine kadar çeşitli düğümler bulunmaktadır.",
-      "shortDescription": "Bitcoin düğümünü çalıştırma ve ağa katılma çözümleri",
       "title": "Nodlar"
     },
-    "pageDescription": "Bitcoin geniş bir endüstri olup, her geçen gün daha da genişlemektedir. Sizin için bu konudaki çeşitli çözümlerle ilgili birçok eğitimi topladık ve düzenleme yaptık. Bu, Bitcoin ile ilgili tüm alanları keşfetmenize yardımcı olacaktır.",
-    "pageSubtitle": "Bitcoin'in geniş ekosistemini keşfederek onun gizemlerini çözün",
-    "pageTitle": "Öğretici derslerimizi keşfedin",
     "privacy": {
       "description": "Gizlilik temel bir haktır. Gizliliğin varsayılan olduğu bir dünyaya özlem duysak da, yaşadığımız gerçeklik bu değil. Size en iyi uygulamaları açıklamaya çalışacağız, size eğitimlerle yardımcı olacağız ve verileriniz konusunda daha egemen bir yola çıkmanızı sağlayacağız.",
       "shortDescription": "Yedekleme ve gizliliği koruma araçları",
@@ -1935,8 +1628,6 @@
       "resource": "Kaynak"
     },
     "wallet": {
-      "description": "Bir Bitcoin cüzdanı, anahtarlık gibidir. Size Bitcoin harcama ve alma imkanı sunar. Farklı kullanım durumları, işlevler, maliyetler ve kullanıcı deneyimleriyle birçok farklı cüzdan türü vardır. Her bitcoin kullanıcısı, ihtiyaçlarına, aciliyet seviyesine ve deneyimlerine dayalı olarak farklı bir cihaz kullanacaktır.",
-      "shortDescription": "Güvenlik çözümleri ve bitcoinlerinizin kullanımı",
       "title": "Cüzdan"
     },
     "writtenBy": "Bu ders şu kişi tarafından yazılmıştır"
@@ -2006,9 +1697,7 @@
     "email": "Email",
     "events": "Etkinlikler",
     "exam": "Sınav",
-    "failed": "Başarısız",
     "filter": "Filtre",
-    "finish": "Bitir",
     "free": "Ücretsiz",
     "github": "Github",
     "glossary": "Sözlük",
@@ -2030,18 +1719,14 @@
       "advanced": "Gelişmiş seviye",
       "beginner": "Başlangıç seviyesi",
       "beginnerFriendly": "Yeni başlayanlar için",
-      "developer": "Geliştirici",
       "expert": "Uzman",
       "intermediate": "Orta seviye",
       "level": "Seviye",
-      "levels": "Seviyeler",
-      "wizard": "Uzman"
+      "levels": "Seviyeler"
     },
-    "library": "Kütüphane",
     "lightningInvoice": "Lightning faturası",
     "likes": "Beğeniler",
     "linkedin": "Linkedin",
-    "lnurlAuth": "LNURL Auth",
     "location": "Lokasyon",
     "members": " Üyeler",
     "mentor": "Mentör",
@@ -2057,7 +1742,6 @@
     "on": "üzerinde",
     "onChainAddress": "Onchain adres",
     "online": "Online",
-    "ourStory": "Hikayemiz",
     "overview": "Genel Bakış",
     "paid": "Premium",
     "part": "Kısım",
@@ -2075,7 +1759,6 @@
     "projects": "Projeler",
     "protocol": "Protokol",
     "public": "Kamu iletişimi",
-    "publicationDate": "Yayın tarihi:",
     "ratings": "Derecelendirme",
     "register": "Kayıt Olun",
     "required": "Gerekli olan",
@@ -2096,7 +1779,6 @@
     "submit": "Gönder",
     "teacher": "Doçent",
     "telegram": "Telegram",
-    "termsAndConditions": "Şartlar ve koşullar",
     "ticket": "Bilet",
     "tickets": "Biletler",
     "time": "Zaman",
@@ -2134,7 +1816,6 @@
     "weight": "Ağırlık"
   },
   "youtubeChannels": {
-    "pageTitle": "Youtube kanalları",
     "view": "Youtube Kanalını Görüntüle",
     "watchTrailer": "Fragmanı izle"
   },
@@ -2166,15 +1847,12 @@
     }
   },
   "navbar": {
-    "analytics": "Analiz",
     "bookings": "Rezervasyonlar",
     "career": "Kariyer",
     "discountCode": "İndirim kodları",
     "learnAnytimeDescription": "Kendi hızında kurslar",
     "learnAnytimeTitle": "Dilediğin zaman öğrenin",
     "manageCourses": "Kursları yönet",
-    "myCalendar": "Takvimim",
-    "myCareer": "Kariyerim",
     "myCourses": "Kurslarım",
     "tabs": {
       "admin": "Admin",

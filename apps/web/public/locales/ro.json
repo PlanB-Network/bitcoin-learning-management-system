@@ -19,7 +19,6 @@
     "missionTitle": "Misiunea noastră",
     "storyContent": "PlanB network este o inițiativă care susține educația Bitcoin la nivel mondial. Este intersectarea diverselor companii pasionate de Bitcoin, concentrate pe educație, software open-source, rețele peer-to-peer și sentimentul de comunitate. Împreună, au decis să construiască PlanB network și să ofere ecosistemului Bitcoin instrumentele potrivite pentru a crește. Prezentarea noastră de lansare În 2023 este disponibilă aici.",
     "storyTitle": "Povestea noastră",
-    "subtitle": "Vrei să \"orange pill\"-ezi lumea? Alătură-te rețelei PlanB.",
     "title": "Despre Plan B Network"
   },
   "accessType": {
@@ -53,7 +52,6 @@
       "errorValidatingEmailDescription": "",
       "successfullyChanged": "",
       "successfullyValidated": "",
-      "validateChange": "",
       "validatingEmail": "",
       "validatingEmailChange": "",
       "wontTakeLong": ""
@@ -75,7 +73,6 @@
       "invalid": "Tokenul este invalid",
       "notFound": "Tokenul nu a fost găsit"
     },
-    "lnurlAuthDescription": "Scanează acest cod QR cu portofelul tău Lightning pentru a te autentifica!",
     "newPassword": "Parolă nouă",
     "noAccountNeeded": "Nu este nevoie de un cont pentru a începe să înveți la Plan B Network!",
     "noAccountYet": "Nu aveți un cont?",
@@ -97,50 +94,28 @@
     "bCertDescription": "Certificatul ₿ este un examen recunoscut internațional care evaluează stăpânirea ta asupra Bitcoin și a subiectelor derivate din acesta. Acest certificat îți va permite să îți dovedești abilitățile și cunoștințele în industria Bitcoin, oferindu-ți acces la cele mai bune companii și poziții de muncă excelente.",
     "bookExam": "Rezervați o sesiune de examen",
     "challengeYourself": "Puneți-vă la încercare și afirmați-vă nivelul",
-    "checkout": "Verificați Certificatul ₿",
     "download": "Descarcă certificatul",
     "knowledgeableBitcoin": "Cunoscător în Bitcoin?",
-    "noBookExam": "încă nu este planificată nicio sesiune de examene.",
-    "organizeDescription": "Foarte bună idee! Dacă comunitatea ta face parte din Rețeaua Plan ₿, poți să organizezi o sesiune ₿-CERT la hub-ul tău.\nTe rog să citești <0>carta</0> pentru a te asigura că îndeplinești condițiile obligatorii pentru a găzdui testul. Dacă te califici, poți să-l programezi și să adaugi evenimentul pe platformă.",
     "organizeExam": "Organizează un examen",
-    "organizeSessionConditions": "Te rugam să citești <0>statutul</0> pentru a te asigura că îndeplinești condițiile obligatorii pentru găzduirea testului.\nDacă îndeplinești condițiile, vom fi bucuroși să planificăm împreună cu tine o sesiune pentru comunitatea ta locală.\nTe rugăm să ne contactezi folosind metoda ta preferată.",
-    "organizeSessionHub": "Organizează o sesiune de testare ₿-CERT la hub-ul tău local",
-    "organizeSubtitle": "A Orange pill-a un miliard de persoane nu este ușor",
-    "organizeTitle": "Doriți să organizați un examen pentru certificatul ₿ la hub-ul dvs?",
-    "pageSubtitle": "Adoptare în masă prin educație open-source centralizată",
     "pageTitle": "Treceți Certificatul ₿",
-    "readChart": "Citește statutul",
     "tweetText": "Bucuros că ai obținut Certificatul B @planb_network cu un scor de {{score}}/100 la examenul final! {{emoji}}\n\n{{certificateUrl}}",
     "verify": "Verifică autenticitatea certificatului tău"
   },
   "bet": {
-    "contributeButton": "Ajută & contribuie",
-    "contributeDescription": "Dacă doriți să adăugați, să modificați sau să traduceți un conținut, ajutorul dvs. va fi binevenit!",
-    "contributeTitle": "Vrei să contribui?",
     "educationalContent": {
-      "description": "Acest conținut este destinat să fie gata de utilizat pentru evenimente și scopuri educaționale.",
       "title": "Conținut educațional"
     },
-    "pageDescription": "Adoptarea în masă nu este ușoară. Pentru a ne apropia mai rapid și mai eficient de acest obiectiv, am dezvoltat o bază de date extensibilă cu conținut educațional. Aici, educatorii Bitcoin pot accesa și adăuga conținutul după cum este necesar. Să nu reinventăm roata de fiecare dată și să lucrăm împreună pentru a centraliza resursele utile într-un singur toolkit!",
-    "pageTitle": "Kit Educațional Bitcoin",
     "visualContent": {
-      "description": "Imaginile de mai jos pot fi folosite pentru propriile tale creații.",
       "title": "Conținut vizual"
     }
   },
   "conferences": {
-    "addConferences": "Nu ezitați să adăugați orice conferințe lipsă prin acest repository <0>Github</0>.",
-    "backConferences": "Înapoi la conferințe",
     "conferenceName": "Numele conferinței",
     "conferencesSinceGenesis": "Arhiva Conferințelor Bitcoin de la Blocul Genesis",
-    "description": "Conferințele sunt un element cheie în industria Bitcoin. Ele fac parte din călătoria educațională a oricărui Bitcoiner. Am construit acest instrument pentru a vă ajuta să navigați prin sute de conferințe.",
     "details": {
       "findReplay": "Găsește o reluare",
-      "nextVideo": "Următorul video",
-      "previousVideo": "Video anterior",
       "selectStage": "Selectează o etapă",
-      "selectVideo": "Selectează un video",
-      "watchReplay": "Urmărește reluarea"
+      "selectVideo": "Selectează un video"
     },
     "language": "Limbă",
     "latestConferences": "Ultimele conferințe",
@@ -156,10 +131,6 @@
         "bookSeat": "Rezervați-vă locul",
         "cancelBooking": "Anulează-ți rezervarea",
         "classIsFull": "Clasa este deja plină",
-        "p1content": "Asigurați-vă că vă rezervați locul",
-        "p1heading": "Intenționezi să participi la această lecție în persoană?",
-        "p2content": "Nici o problemă! Lecția va fi transmisă în direct pe această pagină și va fi disponibilă pentru redare ulterioară.",
-        "p2heading": "Nu poți veni în persoană?",
         "ticketDownload": "Descărcați biletul dvs",
         "title": "Detalii despre clasă"
       },
@@ -168,9 +139,7 @@
         "stayTuned": "Sesiunea live va începe cu 30 de minute înainte de începerea cursului. Stați pe fază!",
         "title": "Video în direct"
       },
-      "next": "Gata, treci la următorul capitol",
-      "nextLesson": "Următoarea lecție va fi",
-      "thanksTip": "Doriți să vă arătați aprecierea?\nPuteți susține autorul cu un bacșiș."
+      "next": "Gata, treci la următorul capitol"
     },
     "conclusion": {
       "completedChaptersHeadline": "Toate capitolele sunt acum finalizate!",
@@ -212,7 +181,6 @@
       "premiumContentNeedsPaymentAction": "Mergi la pagina principală a cursului",
       "startCourse": "Începe cursul",
       "taughtBy": "Acest curs este predat de",
-      "teacherLed": "condus de profesor",
       "thanksTipping": "Poți mulțumi dând un bacșiș profesorului."
     },
     "exam": {
@@ -232,7 +200,6 @@
       "dontGiveUpTryAgain": "Nu renunța!\nPoți încerca din nou după 24 de ore.",
       "dontWorry": "Nu vă faceți griji în legătură cu greșelile; acest test ajută la consolidarea învățării dumneavoastră. Dacă nu îl treceți, îl puteți relua după 24 de ore.",
       "dontWorryRetake": "Nu-ți face griji, poți da din nou examenul după 24 de ore.",
-      "examAndDiploma": "Examen & Diplomă",
       "examAvailabilityDetails": "",
       "examCertificateCompletionText": "Plan ₿ Network are plăcerea de a-l felicita pe {{username}} pentru obținerea diplomei cursului \"{{courseName}}”.",
       "examDetails": "Examenul are {{nb}} de întrebări cu variante multiple de răspuns, fiecare cu un singur răspuns corect. Îți poți schimba răspunsurile oricând înainte de a le trimite, atâta timp cât cronometrul este în funcțiune.",
@@ -251,7 +218,6 @@
       "goodLuck": "Succes!",
       "instantVerification": "Verificare instantanee: Angajatorii pot verifica cu ușurință autenticitatea și data emiterii diplomei tale.",
       "instructions": "Instrucțiuni:",
-      "letsConclude": "Totul gata, să încheiem",
       "nbMinutes": "",
       "nbQuestions": "",
       "nextChapter": "",
@@ -259,7 +225,6 @@
       "notTranslatedYet": "Ne pare rău, dar funcția de examen final nu este încă disponibilă în limba selectată de dvs. Puteți alege să treceți la o altă limbă pentru a continua.",
       "oneMinuteLeft": "Mai aveți doar 1 minut rămas",
       "oopsFailed": "Oops, se pare că ai <0>picat</0> examenul final.",
-      "passExam": "Trece examenul",
       "passed": "Trecut",
       "passRate": "Procentul de trecere este de 80%.",
       "planBTimeStamp": "La Plan ₿ Network, vă securizăm diploma folosind tehnologia de marcare a timpului cu sprijinul blockchainului.",
@@ -305,22 +270,13 @@
       "tryAgain": "Încearcă din nou",
       "tryOneMoreTime": "Hai să încercăm încă o dată!",
       "verifyDisplayName": "Înainte de a începe, vă rugăm să verificați numele dvs. de mai jos, deoarece acesta va fi folosit pentru a genera diploma dvs.",
-      "viewExam": "",
       "weight": "",
       "whyTimeStamp": "Marcarea timpului pe diploma ta:\nDe ce este important",
       "wishTryAgain": "Dacă doriți să încercați din nou, examenul va fi disponibil în 24 de ore.",
       "yesSubmit": "Da, trimite"
     },
     "explorer": {
-      "buildPath": "Construiește-ți propriul drum în \"gaura iepurelui\"",
-      "comingSoon": "în curând",
-      "exploreCourses": "Explorați toate cursurile Plan B",
-      "findCourses": "Găsește cursul perfect pentru nevoile tale datorită selectorului de cursuri",
       "goal": "Obiectiv:",
-      "journey": "Bitcoin este o călătorie, nu o destinație",
-      "pageDescription": "Academia Plan B este dedicată simplificării educației Bitcoin la nivel mondial. Curată de experți din diverse domenii, academia noastră oferă o gamă completă de cursuri concepute pentru a clarifica fiecare aspect al Bitcoin.\nDe la începător la expert, fie în ritmul propriu, fie urmat săptămânal de un profesor, sperăm că academia poate ajuta la înțelegerea mai bună a subiectului vast care este Bitcoin. O mare parte din cursurile noastre sunt complet gratuite, astfel încât oricine, oriunde, să aibă acces la educație.",
-      "planbSchool": "PLAN ₿ SCHOOL",
-      "planbSchoolHeadline": "Plan ₿ School, condusă de Giacomo Zucco, oferă programe educaționale intensive de trei luni concepute pentru a umple golul dintre învățare și aplicațiile din lumea reală. Dincolo de clasele tradiționale, studenții se implică în proiecte practice conduse de companii și un bootcamp de primă clasă dedicat celor mai buni performeri. Doar cele mai bune talente avansează după două runde de selecție competitive, asigurându-se că studenții finali de top sunt complet echipați pentru a-și lansa carierele în industria Bitcoin.",
       "seeCourse": "Vezi cursul"
     },
     "format": {
@@ -332,15 +288,12 @@
       "count": "Partea {{count}}"
     },
     "payment": {
-      "accessibility": "Accesibilitate",
-      "accessibility_forever": "Pentru totdeauna",
       "amount": "Cantitate",
       "back_course": "Înapoi la curs",
       "book_description": "Vă rugăm să verificați detaliile locației furnizate. Odată ce rezervarea dvs. este procesată, vă vom trimite un ticket de confirmare și un cod QR pentru a-l prezenta la eveniment.",
       "checkoutError": "A apărut o eroare în timpul procesului de checkout.\nVă rugăm să încercați din nou.",
       "courseType": "Tip de curs",
       "date": "Data",
-      "downloadCurriculum": "Descarcă curriculumul",
       "duration": "Durată",
       "hybridDescription": "Te rugăm să verifici detaliile cursului.\nFiecare lecție are loc în persoană la datele și în locațiile specificate. Toate cursurile sunt întotdeauna transmise în direct și înregistrate pentru reluare.\n\nPrezența în persoană este gestionată pentru fiecare lecție, așa că te rugăm să îți rezervi locul de fiecare dată când dorești să participi fizic.",
       "inPersonCallout": "Sunteți pe cale să achiziționați acces <strong>în persoană</strong> la acest curs.",
@@ -351,8 +304,6 @@
       "payment_details": "Detalii de plată",
       "payment_successful": "Plata efectuată cu succes!",
       "qr_unified": "Acest cod QR este unificat, deci acceptă plăți lightning și on-chain.",
-      "teacher": "Profesor",
-      "teachers": "Profesori",
       "time": "Timp"
     },
     "quizz": {
@@ -410,7 +361,6 @@
     }
   },
   "dashboard": {
-    "account": "Cont",
     "adminPanel": {
       "accessGranted": "Acces acordat",
       "bookings": "Rezervări",
@@ -419,7 +369,6 @@
         "careers": "Cariere",
         "careersSubtitle": "Aici poți vedea lista participanților care și-au completat cererile. Poți găsi toate informațiile despre cereri în interiorul spreadsheetului.",
         "cv": "CV",
-        "downloadProfiles": "Descarcă spreadsheet-ul",
         "downloadSpreadsheet": "Descarcă spreadsheet-ul",
         "lastUpdate": "Ultimul update",
         "lastUpdated": "Ultimul actualizat",
@@ -435,7 +384,6 @@
         "delete": "",
         "deleteDiscountCode": "",
         "deleteDiscountCodeConfirm": "",
-        "deleteDiscountCodeSuccess": "",
         "deleteDiscountCodeWarning": "",
         "discountCode": "Cod de reducere",
         "discountCodeCopied": "",
@@ -446,7 +394,6 @@
         "discountType": "Ce tip de cod de reducere?",
         "discountValue": "Procent de reducere",
         "discountValueExplanation": "Introdu un număr în pași de 5 (de exemplu, 5, 10, 15... până la 100)",
-        "discountValuePlaceholder": "exemplu: 20 pentru 20%",
         "downloadImage": "",
         "downloadImages": "",
         "explanation": "Generează și gestionează coduri de reducere pentru evenimente și cursuri - fie de unică folosință pentru burse sau cazuri similare, fie de folosință multiplă pentru campanii de marketing.",
@@ -489,10 +436,8 @@
           "maxUses": "",
           "name": "Nume",
           "owner": "Proprietar",
-          "total": "Total",
           "type": "Tip",
-          "uses": "Folosit",
-          "value": "Valoare"
+          "uses": "Folosit"
         }
       },
       "coursesIndexes": "Indici cursuri",
@@ -504,7 +449,6 @@
       "githubLink": "Link Github",
       "hasAccessTo": "Are acces la:",
       "listOfParticipants": "Lista participanților",
-      "makeProfessor": "Fă-te profesor",
       "nameOfEvent": "Numele evenimentului",
       "participants": "Participanți",
       "professorName": "Numele profesorului",
@@ -531,14 +475,8 @@
       "publicationDate": ""
     },
     "backToDashboard": "Înapoi la dashboard",
-    "bCert": {
-      "grade": "Nota",
-      "noResults": "încă nu există note sau certificate asociate cu acest cont .\nDacă ați trecut un examen și rezultatele dvs. nu sunt disponibile după o perioadă îndelungată, vă rugăm să ne contactați pentru asistență."
-    },
     "booking": {
       "accessLive": "Accesați examenul live",
-      "billingSubtitle": "Descărcați facturile de la rezervările dvs. aici.",
-      "billingTitle": "Istoric facturare",
       "cancelBookingTitle": "Ești sigur că vrei să anulezi această rezervare?",
       "invoiceDate": "Data",
       "invoiceTitle": "Titlu",
@@ -551,12 +489,10 @@
       "ticketLocation": "Locație",
       "ticketTitle": "Titlu",
       "ticketType": "Tip",
-      "upcomingTicketSubtitle": "Descărcați biletul dvs. aici pentru a participa la evenimentul viitor. Vă rugăm să nu uitați să îl aduceți cu dvs. pentru intrare.",
       "upcomingTicketTitle": "Rezervări viitoare",
       "yesCancel": "Da, anulează"
     },
     "calendar": {
-      "calendar": "Calendar",
       "eventType": {
         "class": "",
         "event": ""
@@ -747,10 +683,7 @@
       "assignment": "",
       "assignmentCompletedDescription": "",
       "assignmentCompletedTitle": "",
-      "assignmentDescription": "",
-      "assignmentInformation": "",
       "assignmentTitle": "",
-      "checkDetailsCompleted": "Aici puteți verifica toate detaliile referitoare la acest curs pe care l-ați finalizat.",
       "completionDiploma": "Diplomă de absolvire",
       "completionExamInfo": "Aici puteți găsi informații referitoare la examenul de absolvire de la sfârșitul acestui curs.",
       "conclusionHeadline": "Iată un rezumat a ceea ce ai învățat. Dacă unele capitole au fost omise sau nu au fost validate corespunzător, acum este momentul să o faci, fie întorcându-te să înveți, fie apăsând pe butonul de completare.",
@@ -762,15 +695,12 @@
       "congratulationsPassed": "",
       "coordinator": "Coordonator de curs",
       "courseCalendar": "",
-      "coursesCompleted": "Cursuri finalizate",
       "diplomaReleaseDescription": "",
       "diplomaReleaseTitle": "",
       "examScore": "",
       "exams": "",
       "feedbacks": "Un capitol la sfârșitul cursului este dedicat feedback-urilor. Dacă doriți să vă dați feedback-ul acum, puteți să o faceți aici.",
-      "fileUploadError": "",
       "fileUploaded": "",
-      "finalAverageGradeDescription": "",
       "finalGradeSummary": "",
       "finalScore": "",
       "generalInformation": "",
@@ -785,8 +715,6 @@
       "mostPreferred": "",
       "mustBePdf": "",
       "notSelectedAssignment": "",
-      "planbSchoolExamDescription": "",
-      "planbSchoolGeneralInformation": "",
       "projectRankingInstructions": "",
       "ranking": "",
       "rankingInstructions": "",
@@ -798,30 +726,19 @@
       "shareOnSocials": "Share pe rețelele sociale:",
       "submissionInstructions": "",
       "submitBefore": "",
-      "submitFileNamingFormat": "",
       "submitReviewInfo": "Trebuie să trimiți o recenzie pentru a avea acces la această funcție.",
       "submitYourWork": "",
       "summerSchool": "",
       "surePreferenceList": "",
       "thresholdToPass": "",
       "tweetText": "Bucuros că am finalizat cursul {{courseIndex}} la @planb_network și mi-am obținut certificatul cu un scor de {{score}}/100 la examenul final! {{emoji}}\n\n{{certificateUrl}}",
-      "viewFinalGrade": "",
       "yourProject": ""
     },
-    "courses": "Cursuri",
     "credentials": {
       "bCert": "Certificatul ₿",
-      "bCertSubtitle": "Aici puteți găsi detalii referitoare la rezervările și notele dumneavoastră pentru Certificatele ₿ trecute și viitoare.\nCertificatul ₿ este un examen organizat de Plan ₿ Network pentru a confirma cunoștințele dumneavoastră în Bitcoin și subiectele sale conexe.",
       "beingGraded": "Examenul tău este în curs de corectare. Rezultatele ar trebui să fie disponibile în 1 sau 2 săptămâni.",
-      "completionDiplomas": "Diplome de absolvire",
       "courseDiplomas": "Diplome de curs",
-      "courseDiplomasSubtitle": "Aici puteți găsi detalii referitoare la toate examenele pe care le-ați dat după finalizarea unui curs pe platformă.",
-      "downloadTicket": "Descărcați biletul dvs",
-      "globalCertifications": "Certificări globale",
-      "retakeExam": "Redați examenul",
-      "seatBooked": "Locul tău la sesiunea de examen este rezervat",
-      "takePlaceAt": "Sesiunea va avea loc la",
-      "yourCertificate": "Certificatul tău"
+      "globalCertifications": "Certificări globale"
     },
     "goToDashboard": "",
     "goToHomepage": "",
@@ -829,28 +746,20 @@
     "myCourses": {
       "completeAll": "Finalizează tot",
       "completed": "Finalizat",
-      "completedCoursesDescription": "Aici puteți verifica cursurile pe care le-ați finalizat.",
-      "completedCoursesTitle": "Cursuri finalizate",
-      "courseDashboard": "Dashboardul cursului",
       "detailsAndCertificate": "Detalii și certificat",
       "done": "Terminat",
       "download": "Descarcă diploma",
       "duration": "Durată :",
       "inProgress": "În desfășurare",
-      "newCourses": "Noi cursuri sunt adăugate în fiecare lună",
-      "noCoursesAvailable": "Nu sunt cursuri disponibile.",
       "notStarted": "Nu a început",
       "notValidated": "Nevalidat",
       "price": "Preț :",
       "professor": "Profesor :",
       "resumeLesson": "reia lecția",
       "seeDetails": "Vezi detalii",
-      "seeProgress": "Aici pentru a vedea progresul tău .",
       "seeTheCourse": "Vezi cursul",
       "shareOn": "Distribuie pe",
-      "startCourse": "Începeți sau finalizați un curs",
       "verify": "Verificați autenticitatea diplomei dvs.",
-      "viewDetails": "Vezi detalii",
       "whereYouAre": "Să vedem unde te afli!",
       "yourCertificate": "Certificatul tău",
       "yourProgress": "Progresul tău :"
@@ -884,29 +793,22 @@
         "title": ""
       },
       "password": "Parolă",
-      "personalInformation": "Informațiile mele personale",
       "preview": "Previzualizare",
       "profile": "Profil",
-      "profileInformation": "Informații de profil",
       "profilePicture": "Fotografie de profil",
       "save": "Salvează",
       "saving": "Salvare…",
       "security": "Securitate",
       "securitySettings": "",
-      "settings": "",
       "username": "Username"
     },
-    "studentDashboard": "Dashboardul studentului",
     "teacher": {
       "courses": {
         "allStudents": "",
-        "analytics": "Analitice",
         "announcementModal": {
           "contentLabel": "",
           "contentPlaceholder": "",
           "create": "",
-          "dateLabel": "",
-          "datePlaceholder": "",
           "dateRequired": "",
           "editAnnouncement": "",
           "groupLabel": "",
@@ -923,7 +825,6 @@
         "assignment": "",
         "assignmentGrade": {
           "alertDescription": "",
-          "alertDescription2": "",
           "alertTitle": "",
           "confirmPublication": "",
           "confirmPublicationDescription": "",
@@ -941,29 +842,22 @@
         "courseDetails": "Detalii despre curs",
         "courseLongDescription": "Descriere introductivă",
         "courseModification": "Dacă aveți nevoie de ajutor pentru a edita ceva în curs, vă rugăm să verificați acest <0>tutorial</0>.",
-        "coursesManagementPanel": "Panou de cursuri",
         "curriculum": "Program de cursuri",
         "curriculumDescription": "Iată programul actual al acestui curs.",
         "deleteAnnouncementTitle": "",
         "deleteAnnouncementWarning": "",
         "editOnGithub": "Editează pe Github",
         "examResults": "Rezultatele examenelor",
-        "goal": "Obiectiv",
         "makeModifications": "Trebuie să faceți modificări?",
         "noPastAnnouncement": "",
         "noWrittenAnnouncement": "",
         "objectives": "Obiective",
-        "proposeNewCourse": "Propune un curs nou",
         "quickRecap": "Aici puteți găsi toate informațiile generale referitoare la acest curs.",
-        "reviewInfos": "Aici puteți controla și revizui toate informațiile referitoare la fiecare curs pe care l-ați coordonat.",
         "reviews": "Recenzii",
-        "selectCourse": "",
         "summerStudents": "",
         "writeAnnouncement": ""
       },
-      "menu": "Meniu profesor",
       "profile": {
-        "account": "Cont de profesor",
         "billingInformation": "Informații de facturare",
         "description": "Descrierea ta",
         "enterTipsInformation": "Rețeaua Plan ₿ încurajează utilizatorii să lase bacșiș profesorilor. Vă rugăm să introduceți informațiile dvs. astfel încât oamenii să vă poată lăsa bacșiș atunci când doresc.",
@@ -972,12 +866,9 @@
         "noLightningAddress": "încă nici o adresă lightning adăugată.",
         "noShortBio": "Nu există încă o scurtă biografie asociată acestui cont, nu ezitați să o adăugați pe GitHub.",
         "noTags": "Niciun tag nu a fost încă asociat acestui cont.",
-        "notifications": "Notificări",
         "publicDescription": "Această descriere este afișată în cartea de informații a profesorului pe platformă.",
         "publicProfile": "Profil public",
         "publicProfileDescription": "Aici puteți completa sau edita toate informațiile asociate cu activitatea dvs. ca profesor la Plan ₿ Network.",
-        "teacher": "Profesor",
-        "teacherProfile": "Profilul profesorului",
         "tutorialModification": "Dacă ai nevoie de ajutor pentru a edita ceva, te rog verifică acest <0>tutorial</0>."
       },
       "reviews": {
@@ -1003,43 +894,17 @@
     "card": {
       "bookLive": "Rezervați live",
       "bookSeat": "Rezervați un loc",
-      "buyReplay": "Cumpărați reluarea",
-      "buyVideo": "Cumpără video",
-      "eventFull": "Evenimentul este plin",
       "free": "gratuit",
-      "limited": "limitat la",
       "online": "online",
       "people": "persoane",
       "purchased": "Cumpărat",
-      "seatBooked": "Loc rezervat",
       "unlimited": "nelimitat",
       "visitWebsite": "Vizitează site-ul web",
-      "watchLive": "Urmărește în direct",
       "watchReplay": "Urmărește reluarea"
     },
-    "errors": {
-      "premiumContentNeedsLogin": "Trebuie să fii logat pentru a accesa acest eveniment.",
-      "premiumContentNeedsPayment": "Acest eveniment face parte dintr-un program premium.",
-      "premiumContentNeedsPaymentAction": "Mergi la pagina de evenimente"
-    },
     "main": {
-      "currentEvents": "Evenimente care au loc chiar acum",
       "upcomingEvents": "Evenimente viitoare"
     },
-    "missed": {
-      "missedH1": "Reluare de venimente trecute",
-      "missedP1": "Ai ratat un eveniment?",
-      "missedP2": "Fără griji! Stocăm toate reluările evenimentelor trecute care au avut loc în Network, permițând tuturor să se pună la curent cu ceea ce au ratat."
-    },
-    "newEvent": {
-      "button": "Adaugă evenimentul meu",
-      "description": "Desigur! Toate evenimentele Bitcoin își pot crește vizibilitatea aici, așa că orice inițiativă de a crea un nou eveniment este mai mult decât binevenită!",
-      "subtitle": "A Orange pill-a un miliard de persoane nu este ușor",
-      "title": "Doriți să adăugați evenimentul dvs.?"
-    },
-    "pageDescription": "Vrei să discuți despre Bitcoin în real time? Aici, poți găsi toate evenimentele susținute de comunitățile Plan B Network. Indiferent dacă vrei să asculți un curs, să discuți despre Bitcoin la un drink sau să dai un examen pentru a-ți evalua cunoștințele,aici vei găsi evenimentul potrivit prin intermediul Plan B Network.",
-    "pageSubtitle": "Adoptare ascendentă consolidată de o rețea puternică",
-    "pageTitle": "Cauți un eveniment Bitcoin la care să participi?",
     "payment": {
       "access_online_successful": "Când începe evenimentul, conectează-te la platformă pentru a avea acces la transmisia în direct pe pagina evenimentului.",
       "access_physical_successful": "Îți poți descărca biletul aici sau îl poți descărca mai târziu din dashboard-ul tău.",
@@ -1070,23 +935,10 @@
     "tcMustBeAccepted": "Trebuie să accepți termenii și condițiile pentru a continua"
   },
   "filters": {
-    "categories": "Categorii",
-    "levels": "Niveluri",
-    "resources": "Resurse",
     "topics": "Subiecte"
   },
   "glossary": {
-    "anotherWord": "Caută un alt cuvânt",
-    "creditsLoic": "<0>Credite</0>: Dicționarul Bitcoin scris de <1>Loïc Morel (Pandul)</1>, disponibil pe acest <2>repository Github</2>.",
     "definition": "Definiție",
-    "filterBar": "Găsește cuvântul de care ai nevoie aici",
-    "keepLooking": "Doriți să continuați să căutați?",
-    "loadMoreWords": "Încarcă mai multe cuvinte",
-    "needHelp": "Ai nevoie de ajutor pentru a defini un cuvânt tehnic?",
-    "notTranslated": "Informațiile din glosar nu au fost încă traduse.\nDacă doriți să ajutați, nu ezitați să contribuiți",
-    "pageTitle": "Glosar Bitcoin",
-    "placeHolder": "Ce este asta?",
-    "randomSearch": "Căutare aleatorie",
     "relatedWords": "Cuvinte asociate:",
     "term": "Termen"
   },
@@ -1096,68 +948,25 @@
       "bitcoinFocusTitle": "Focalizare pe Bitcoin",
       "communityContent": "Suntem în primul rând o comunitate de entuziaști care se ajută reciproc în călătoria Bitcoin",
       "communityTitle": "Comunitate",
-      "content": "Plan ₿ Network susține educația Bitcoin la nivel mondial. Reprezintă o colaborare a companiilor pasionate de Bitcoin concentrate pe educație, software open-source, rețele peer-to-peer și construcția comunității. Împreună, au lansat această inițiativă pentru a furniza ecosistemului Bitcoin instrumentele esențiale pentru creștere.",
       "openSourceContent": "Promovăm libera circulație a cunoștințelor și susținem soluțiile open-source",
       "openSourceTitle": "Open source",
       "privacyContent": "Credem că intimitatea este unul dintre cele mai fundamentale drepturi umane care este esențial pentru progres",
-      "privacyTitle": "Confidențialitate",
-      "subtitle": "Un pic despre noi",
-      "title": "Cine suntem?"
+      "privacyTitle": "Confidențialitate"
     },
     "blogSection": {
-      "blogTitle": "Ce este nou la Plan ₿ Network",
-      "description": "Continuăm să îmbunătățim platforma, conținutul și rețeaua - verifică!",
-      "noBlogsAvailable": "Nu sunt bloguri disponibile.",
-      "noDateAvailable": "Nicio dată disponibilă",
       "seeAll": "Vezi tot"
     },
     "courseSection": {
-      "checkAllCourses": "Vezi toate cursurile",
-      "upcomingCourseDescription": "Descoperă cele mai recente cursuri lansate pe platformă. Învățarea nu se oprește niciodată!",
-      "upcomingCourseTitle": "Cursuri noi și viitoare"
-    },
-    "eventSection": {
-      "checkEvents": "Verifică toate evenimentele",
-      "eventTitle": "O rețea globală de educatori Bitcoin",
-      "hottestEvent": "Cel mai fierbinte eveniment Bitcoin"
-    },
-    "header": {
-      "content": "Platforma Plan ₿ network își propune să ofere cele mai bune instrumente și conținut educațional la nivel mondial, împuternicind oamenii să-și recâștige suveranitatea. De la indivizi la comunități, suntem aici pentru a vă ajuta pe parcursul călătoriei dvs. cu Bitcoin.",
-      "forEducators": "Pentru educatori și constructori",
-      "globalNetwork": "O rețea globală Bitcoin",
-      "welcome": "Bine ați venit în Plan ₿ Network"
+      "checkAllCourses": "Vezi toate cursurile"
     },
     "languageSection": {
       "availableLanguages": "Limbi disponibile",
-      "availableLanguagesVariation": "Limbi disponibile: ",
-      "content1": "La Plan ₿, credem că Bitcoin este o revoluție internațională care îi privește pe toți. Pentru a împuternici miliarde de oameni, proiectăm această platformă să fie multilingvă și accesibilă tuturor. Platforma suportă în prezent {{nb}} limbi, iar altele sunt adăugate în fiecare lună. Pentru a realiza acest lucru, folosim un amestec de inteligență artificială și pasiunea bitcoin-erilor din întreaga lume. De asemenea, poți începe să îți construiești propria rețea locală în țara ta!",
-      "link": "Ajuta-ne să traducem academia",
-      "subtitle": "Totul este tradus în limbile locale!",
-      "title": "Niciun obstacol lingvistic aici."
-    },
-    "patreonSection": {
-      "content": "Suntem mândri să colaborăm cu numeroase companii Bitcoin din întreaga lume pentru a oferi cele mai bune resurse educaționale posibile!",
-      "title": "Să lucrăm împreună pentru a îmbunătăți educația Bitcoin !"
-    },
-    "tutorialSection": {
-      "content1": "Bitcoin este în continuă evoluție, cu apariția unor noi actori, soluții, protocoale și progrese tehnologice. Astfel, poate fi dificil să menții o bază de date precisă și actualizată cu tutoriale de calitate. Aici, la Plan ₿, am reușit exact asta. Indiferent dacă ești un începător sau un utilizator avansat, poți naviga prin sute de tutoriale pentru a explora industria noastră în funcție de nevoile tale.",
-      "link": "Vezi toate tutorialele",
-      "link2": "Vedeți toate resursele",
-      "subtitle1": "Educația Bitcoin făcută simplă.",
-      "title": "Centralizează cunoștințele pentru a le distribui mai bine"
-    },
-    "wallOfLoveSection": {
-      "subtitle": "Ce spun Bitcoinerii despre noi",
-      "title": "Zidul iubirii"
+      "link": "Ajuta-ne să traducem academia"
     }
   },
   "imagesAlt": {
-    "bookCover": "coperta unei cărți",
-    "contributorHeart": "o inimă pentru un contribuitor drăguț",
-    "orangePill": "o pastilă portocalie",
     "printedCircuits": "circuite imprimate",
     "rabbit404": "un iepure care îndreaptă o lanternă spre un semn 404",
-    "sthRepresentingCompany": "ceva ce reprezintă compania",
     "underConstructionImage": "Ilustrație cu mai mulți iepuri care lucrează pe un șantier de construcții"
   },
   "labs": {
@@ -1167,8 +976,7 @@
     "planBLabs": "Plan ₿ Labs",
     "presentation": {
       "link": "Descoperă Plan ₿ Labs",
-      "subtitle": "Alătură-te unui laborator pentru a învăța, a discuta și a crește!",
-      "title": "Îmbunătățește-ți abilitățile Bitcoin!"
+      "subtitle": "Alătură-te unui laborator pentru a învăța, a discuta și a crește!"
     },
     "title": "Cursuri practice și interactive pentru învățare continuă"
   },
@@ -1176,41 +984,10 @@
     "buyVideoToUnlock": "Cumpără videoclipul pentru a-l debloca",
     "checkFullCourse": "Verifică cursul complet",
     "lecturePartCourse": "Această reluare a prelegerii face parte din cursul <0>{{courseTitle}}</0>.\nDescoperă cursul complet pentru a stăpâni întregul concept și pentru a-ți debloca întregul potențial!",
-    "pageTitle": "Reluarea cursurilor",
-    "partCourse": "Această prelegere face parte din cursul:",
     "watchLecture": "Urmărește reluarea prelegerii"
   },
-  "library": {
-    "pageTitle": "Biblioteca Bitcoin"
-  },
   "menu": {
-    "bCertDescription": "Trece examenul pentru Certificatul ₿ pentru a-ți demonstra nivelul de cunoștințe despre Bitcoin",
-    "betDescription": "Colecție de conținut pe care îl puteți utiliza pentru proiectele dvs. educaționale",
-    "bitcoinDescription": "Învață Bitcoin de la fundamentale la aplicații avansate.",
-    "businessDescription": "Dezvăluie utilizarea Bitcoin în comerț.",
-    "channelsDescription": "Accesează selecția noastră exclusivă de canale Youtube pentru a învăța despre Bitcoin",
-    "chooseLanguage": "Alege o limbă",
-    "conferencesDescription": "Colecție de reluări ale conferințelor Bitcoin de la Blocul Genesis",
-    "glossaryDescription": "Înțelege limba Bitcoin",
-    "lecturesDescription": "Revedeți înregistrările de la experții în Bitcoin",
-    "libraryDescription": "Descoperă multe cărți pentru a-ți îmbunătăți cunoștințele",
-    "login": "Autentificare",
-    "miningCourseDescription": "Înțelege care sunt procesele, instrumentele și industria din spatele procesului de mining Bitcoin.",
-    "moviesDescription": "Descoperă povești captivante și explorări profunde ale evoluției și impactului Bitcoin",
-    "newsletterDescription": "Colecție de conținuturi pe care îl poți folosi pentru proiectele tale educaționale",
-    "planBLabsDescription": "Alătură-te unui grup de studiu pentru a continua să înveți despre Lightning, Mining și Privacy",
-    "podcastsDescription": "Explorează ecosistemul bitcoin prin podcasturi",
-    "projectsDescription": "Află despre companiile și proiectele care contribuie la îmbunătățirea Bitcoin și la creșterea adoptării sale",
-    "protocolDescription": "Descoperă regulile de bază care alimentează rețeaua Bitcoin.",
-    "publicDescription": "Explorați articolele de comunicare publică",
-    "securityDescription": "Stăpânește tehnicile de protejare a averii tale în Bitcoin.",
-    "socialStudiesDescription": "Studiază impactul Bitcoin asupra societății.",
-    "teachersDescription": "Cunoașteți profesorii noștri de la academie"
-  },
-  "movies": {
-    "goToMovie": "Mergi la film",
-    "pageTitle": "Filme & Documentare",
-    "watchTrailer": "Urmărește trailerul"
+    "login": "Autentificare"
   },
   "notFound": {
     "here": "Aici",
@@ -1237,7 +1014,6 @@
     "calendar_48h_online_event": "",
     "dashboardDescription": "",
     "daysAgo": "",
-    "hoursAgo": "",
     "markAsRead": "",
     "monthsAgo": "",
     "noRecentNotifications": "",
@@ -1248,7 +1024,6 @@
     "results": "",
     "select": "",
     "selectAll": "",
-    "stayUpToDate": "",
     "today": "",
     "unread": "",
     "upcomingEvent": "",
@@ -1268,12 +1043,6 @@
   "placeholders": {
     "selectTimeZone": ""
   },
-  "podcast": {
-    "check": "Verifică podcastul"
-  },
-  "podcasts": {
-    "pageTitle": "Podcasturi Bitcoin"
-  },
   "professors": {
     "navigationTitles": {
       "all": "Toți",
@@ -1291,11 +1060,8 @@
     }
   },
   "projects": {
-    "languages": "Limbi",
-    "networkStrength": "Forța unei rețele constă în membrii săi",
     "noRelatedEvents": "Nu există evenimente viitoare legate de acest educator în acest moment.",
     "otherCommunities": "Explorează Comunitățile Plan ₿",
-    "pageTitle": "Proiecte Bitcoin",
     "related": "Conex",
     "relatedEvents": "Evenimente viitoare conexe"
   },
@@ -1310,45 +1076,19 @@
     "thanks": "Mulțumim mult recenzorilor noștri extraordinari!"
   },
   "publicCommunication": {
-    "blogCategories": {
-      "all": "Toate",
-      "content": "Conținut",
-      "feature": "Caracteristici",
-      "network": "Network"
-    },
-    "blogPageStrings": {
-      "blogListButtonText": "Citește",
-      "blogSidebarTitle": "Postări {{category}} din trecut",
-      "blogSidebarTitleForAll": "",
-      "errorMessageNotFound": "Blogul nu a fost găsit.",
-      "featuredArticleTitleText": "Cel mai recent articol publicat",
-      "filterText": "Filtrează după subiect:",
-      "noArticlesText": "Nu există postări pe blog în acest moment.",
-      "pastArticleSubtitleText": "Articole anterioare"
-    },
-    "blogPost": "Bloguri & Știri",
-    "description": "Plan ₿ Network este mândru să adere la standardele open-source și să mențină transparența pe parcursul călătoriei sale",
-    "goBackButtons": {
-      "simpleGoBack": "Înapoi la toate articolele"
-    },
     "legal": "Informații legale",
     "legalSections": {
       "contact": "Contact",
       "legalNotice": "Notă legală",
       "privacyPolicy": "Politica de privacy",
       "termsOfSale": "Termeni de vânzare"
-    },
-    "title": "Comunicare publică"
+    }
   },
   "resources": {
-    "articles": {
-      "title": "Articole"
-    },
     "bet": {
       "title": "Instrumente educaționale"
     },
     "books": {
-      "author": "Autor : ",
       "title": "Bibliotecă"
     },
     "channels": {
@@ -1358,12 +1098,10 @@
     "conferences": {
       "title": "Reluări de conferințe"
     },
-    "github": "Toate aceste date sunt gestionate printr-un repository <0>Github</0> open-source. Simțiți-vă liber să contribuiți și să adăugați orice conținut lipsă.",
     "glossary": {
       "title": "Glosar"
     },
     "lectures": {
-      "noLectures": "În prezent nu există reluări de prelegeri pentru limba selectată.",
       "title": "Reluarea cursurilor"
     },
     "movies": {
@@ -1374,19 +1112,14 @@
       "check": "Verifică newsletterul"
     },
     "newsletters": {
-      "author": "Autor : ",
-      "level": "Nivel :",
       "noNewsletters": "În prezent nu există newsletter pentru limba selectată.",
       "subtitle": "<0>Alte newsletter</0> care ți-ar putea plăcea",
       "title": "newslettere"
     },
-    "pageDescription": "Încercarea de a înțelege Bitcoin este ca și cum ai explora un labirint care continuă să crească. Pentru a te ajuta în călătoria ta, am compilat o gamă vastă de resurse, inclusiv cărți, podcasturi, videoclipuri și reluări de conferințe. Acest portal adună toate informațiile într-un singur repository Github pentru a te ajuta să înțelegi mai bine ecosistemul Bitcoin.",
     "pageSubtitle": "Centralizează cunoștințele pentru a le distribui mai bine",
     "pageSubtitleBooks": "<0>Alte cărți</0> care s-ar putea să îți placă",
     "pageSubtitleChannels": "<0>Alte canale de Youtube</0> care s-ar putea să îți placă",
-    "pageSubtitleLectures": "<0>Repetări ale altor prelegeri</0> care s-ar putea să îți placă",
     "pageSubtitlePodcast": "<0>Alte podcasturi</0> care s-ar putea să îți placă",
-    "pageTitle": "Bine ați venit la Portalul de Resurse",
     "podcasts": {
       "noPodcasts": "În prezent, nu există podcasturi pentru limba selectată.",
       "title": "Podcasturi"
@@ -1395,7 +1128,6 @@
       "title": "Proiecte"
     },
     "searchFilterName": "Căutare după nume",
-    "toggleFreeOnly": "Doar gratis",
     "toggleLabelAll": "Totul",
     "toggleLabelSelectedLanguage": "Limba selectată"
   },
@@ -1414,13 +1146,10 @@
     "event": "Eveniment",
     "events": "Evenimente",
     "explorer": {
-      "subtitle": "Ce cauți?",
       "title": "Portal de căutare"
     },
-    "filterByType": "Filtrează după tip",
     "glossary_word": "Cuvânt din glosar",
     "glossary_words": "Cuvinte din glosar",
-    "languageSelected": "Limba selectată: {{language}}",
     "lecture_replay": "Reluarea prelegerii",
     "lecture_replays": "Reluări de prelegeri",
     "loadMoreResults": "Vezi mai multe rezultate",
@@ -1434,11 +1163,9 @@
     "projects": "Proiecte",
     "resultEmpty": "Oops! Nu am putut găsi nimic care să se potrivească cu căutarea ta. Verifică dacă ai scris corect, încearcă cuvinte cheie diferite sau selectează o altă categorie.",
     "resultError": "Ceva nu a funcționat. Te rugăm să încerci din nou.",
-    "resultInfo": "Găsite {{count}} rezultate în {{time}}ms",
     "results": "Rezultate",
     "resultsRemaining": "Au mai rămas {{count}} rezultate",
     "search": "Caută",
-    "searchResult": "Rezultatele căutării",
     "startSearch": "Începe căutarea pentru a vedea rezultatele aici",
     "tutorial": "Tutorial",
     "tutorials": "Tutoriale",
@@ -1452,56 +1179,32 @@
     "changeProfilePicture": "Schimbă poza de profil"
   },
   "tutorials": {
-    "approvedByCreator": "Aprobat de creator",
-    "backTutorials": "Înapoi la toate tutorialele",
     "business": {
-      "description": "Dorești să integrezi Bitcoin în afacerea ta? Această categorie reunește toate tutorialele concepute pentru profesioniști. Fie că este vorba de configurarea unui sistem de punct de vânzare pentru a accepta cu ușurință plăți în Bitcoin sau de adăugarea și gestionarea bitcoinilor în trezoreria companiei tale, vei găsi aici informații tehnice și practice esențiale.",
-      "shortDescription": "Acceptarea plăților în Bitcoin și gestionarea acestora în propria trezorerie",
       "title": "Business"
     },
     "computer-security": {
-      "description": "Securitatea computerului este esențială pentru fiecare Bitcoiner. În această categorie, vei găsi tutoriale despre instrumente esențiale și practici generale pentru a-ți proteja mediul digital. Sisteme de operare, browsere securizate, administratori de parole, sisteme de autentificare, VPN-uri și soluții de comunicare criptate, toate resursele prezentate aici au ca scop îmbunătățirea securității și a confidențialității tale.",
-      "shortDescription": "Instrumente esențiale pentru a-ți proteja securitatea digitală și confidențialitatea",
       "title": "Securitatea informatică"
     },
     "contribution": {
-      "description": "Dorești să contribui la platforma open-source a rețelei Plan ₿? În această categorie, vei învăța cum să scrii și să publici un nou tutorial, să revizuiești sau să corectezi conținutul sau să adaugi noi resurse utile pentru comunitate. Aceste tutoriale îți vor oferi șansa de a te implica în educația Bitcoin și de a îmbogăți baza noastră comună de cunoștințe.",
-      "shortDescription": "Contribuie la platforma open-source a rețelei Plan ₿",
       "title": "Contribuție"
     },
     "details": {
       "author": "Autor:",
-      "didHelp": "A fost de ajutor?",
       "ratingSuccess": "Mulțumesc pentru evaluarea ta!",
       "source": "Sursa originală :",
-      "tutorialName": "Numele tutorialului",
-      "writtenBy": "Acest tutorial a fost scris de :"
+      "tutorialName": "Numele tutorialului"
     },
     "exchange": {
-      "description": "Exchange-urile sunt una dintre ușile de intrare și ieșire între moneda ta tradițională (euro, dolari) și lumea bitcoin. Acestea pot fi: reglementate prin KYC (Know Your Customer), sau peer-to-peer și anonime. Fiecare exchange va avea caracteristici diferite, structuri de taxe, lichiditate și suport pentru clienți. Fiecare bitcoiner va folosi unul diferit în funcție de nevoile și convingerile sale.",
-      "shortDescription": "Soluții de cumpărare-vânzare Bitcoin, KYC și non-KYC",
       "title": "Exchange"
-    },
-    "explorer": {
-      "description": "Toate aceste tutoriale au fost scrise de bitcoineri pasionați și dedicați, care doresc să răspândească educația bitcoin în întreaga lume. Nu uita să le dai like, să le faci recenzii și să le dai bacșiș în sats!",
-      "didYouKnow": "Știai?",
-      "exploreAllTutorials": "Explorează toate tutorialele"
     },
     "hasBeenProofreadBy": "Acest tutorial a fost corectat de",
     "hasNotBeenProofread": "Acest tutorial încă nu a fost corectat",
     "mining": {
-      "description": "Industria de mining este un subiect complex, plin de capcane în interior. Aici, vom încerca să vă însoțim în călătoria dvs. folosind hardware și software. De la modificarea unui S9 pentru a vă încălzi casa, până la încercarea de a câștiga la loterie cu un nerd miner.",
-      "shortDescription": "Soluții pentru minarea Bitcoin",
       "title": "Mining"
     },
     "node": {
-      "description": "Nodurile sunt ca serverele personale. În Bitcoin, este software-ul care îți permite să rulezi rețeaua, să colectezi tranzacții, să verifici regulile și să fii cu adevărat suveran. În cadrul ecosistemului nostru, există diverse noduri, de la Bitcoin Core, la implementări Lightning, RGB sau alte soluții de privacy mai avansate.",
-      "shortDescription": "Soluții pentru a opera un nod bitcoin și a te alătura rețelei",
       "title": "Nod"
     },
-    "pageDescription": "Bitcoin este o industrie vastă, care se extinde tot mai mult în fiecare zi. Pentru a vă ajuta să o explorați, am adunat și selectat un număr mare de tutoriale care descriu diverse soluții în toate domeniile legate de Bitcoin.",
-    "pageSubtitle": "Descoperiți misterele Bitcoin prin explorarea ecosistemului său vast",
-    "pageTitle": "Descoperă tutorialele noastre",
     "privacy": {
       "description": "Confidențialitatea este un drept fundamental. Deși aspirăm la o lume în care confidențialitatea este implicită, nu este realitatea în care trăim. Vom încerca să vă explicăm cele mai bune practici, să vă ajutăm cu tutoriale și să vă îndrumăm pe cel mai bun drum în ceea ce privește suveranitatea datelor dumneavoastră.",
       "shortDescription": "Instrumente pentru backup și menținerea confidențialității",
@@ -1529,8 +1232,6 @@
       "resource": "Resursă"
     },
     "wallet": {
-      "description": "Un portofel Bitcoin este ca și brelocul tău. Îți permite să cheltuiești și să primești bitcoin. Există multe tipuri diferite de portofele, toate cu diferite cazuri de utilizare, funcții, costuri și experiențe ale utilizatorilor. Fiecare bitcoiner va folosi un dispozitiv diferit în funcție de nevoile, nivelul de exigență și experiența sa.",
-      "shortDescription": "Soluții de securitate și utilizarea bitcoinilor dvs",
       "title": "Portofel"
     },
     "writtenBy": "Acest tutorial a fost scris de"
@@ -1600,9 +1301,7 @@
     "email": "Email",
     "events": "Evenimente",
     "exam": "Examen",
-    "failed": "Eșuat",
     "filter": "Filtru",
-    "finish": "Finalizează",
     "free": "Gratuit",
     "github": "Github",
     "glossary": "Glosar",
@@ -1624,18 +1323,14 @@
       "advanced": "Avansat",
       "beginner": "Începător",
       "beginnerFriendly": "Pentru începători",
-      "developer": "Dezvoltator",
       "expert": "Expert",
       "intermediate": "Intermediar",
       "level": "Nivel",
-      "levels": "Niveluri",
-      "wizard": "Vrăjitor"
+      "levels": "Niveluri"
     },
-    "library": "Bibliotecă",
     "lightningInvoice": "Factură Lightning",
     "likes": "Like-uri",
     "linkedin": "Linkedin",
-    "lnurlAuth": "Autentificare LNURL",
     "location": "Locație",
     "members": " Membri",
     "mentor": "",
@@ -1651,7 +1346,6 @@
     "on": "pe",
     "onChainAddress": "Adresă On chain",
     "online": "Online",
-    "ourStory": "Povestea noastră",
     "overview": "Prezentare generală",
     "paid": "Plătit",
     "part": "Parte",
@@ -1669,7 +1363,6 @@
     "projects": "Proiecte",
     "protocol": "Protocol",
     "public": "Comunicarea publică",
-    "publicationDate": "Data publicării:",
     "ratings": "Evaluări",
     "register": "Înregistrați",
     "required": "Necesar",
@@ -1690,7 +1383,6 @@
     "submit": "Trimite",
     "teacher": "Profesor",
     "telegram": "Telegram",
-    "termsAndConditions": "Termeni și condiții",
     "ticket": "Bilet",
     "tickets": "Bilete",
     "time": "Timp",
@@ -1714,7 +1406,6 @@
     "yes": "Da"
   },
   "youtubeChannels": {
-    "pageTitle": "Canale Youtube",
     "view": "Vezi canalul Youtube",
     "watchTrailer": "Vizionează trailerul"
   }
