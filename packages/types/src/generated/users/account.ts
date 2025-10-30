@@ -73,11 +73,7 @@ export interface UsersLud4PublicKey {
 export interface LoginResponse {
   message: string;
   status: number;
-  user: {
-    email: string | null;
-    uid: string;
-    username: string;
-  };
+  user: { email: string | null; uid: string; username: string };
 }
 
 export interface ApiKey {

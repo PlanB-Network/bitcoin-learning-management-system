@@ -4,7 +4,12 @@
   "assist": {
     "actions": { "source": { "organizeImports": "on", "useSortedKeys": "off" } }
   },
-
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "lineWidth": 80
+    }
+  },
   "linter": {
     "rules": {
       "correctness": {

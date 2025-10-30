@@ -115,23 +115,13 @@ export interface CourseProgressExtended {
   startDate: Date;
   totalScore: number | null;
   uid: string;
-  chapters: {
-    chapterId: string;
-    completedAt: Date | null;
-  }[];
+  chapters: { chapterId: string; completedAt: Date | null }[];
   courseIndex: string;
   lastCompletedChapter?:
-    | {
-        chapterId: string;
-        completedAt: Date | null;
-      }
+    | { chapterId: string; completedAt: Date | null }
     | undefined;
   nextChapter?:
-    | {
-        chapterId: string;
-        chapterIndex: number;
-        courseId: string;
-      }
+    | { chapterId: string; chapterIndex: number; courseId: string }
     | undefined;
   totalChapters: number;
 }
@@ -145,10 +135,7 @@ export interface GetUserChapterResponse {
 
 export interface PartialExamQuestion {
   id: string;
-  answers: {
-    order: number;
-    text: string;
-  }[];
+  answers: { order: number; text: string }[];
   text: string;
 }
 
@@ -163,11 +150,7 @@ export interface CourseExamResults {
   isTimestamped?: boolean | undefined;
   pdfKey?: string | undefined;
   questions: {
-    answers: {
-      correctAnswer: boolean;
-      order: number;
-      text: string;
-    }[];
+    answers: { correctAnswer: boolean; order: number; text: string }[];
     chapterIndex: number;
     chapterLink: string;
     chapterName: string;
@@ -189,11 +172,7 @@ export interface CourseExamResultsExtended {
   isTimestamped?: boolean | undefined;
   pdfKey?: string | undefined;
   questions: {
-    answers: {
-      correctAnswer: boolean;
-      order: number;
-      text: string;
-    }[];
+    answers: { correctAnswer: boolean; order: number; text: string }[];
     chapterIndex: number;
     chapterLink: string;
     chapterName: string;
@@ -235,11 +214,7 @@ export interface MinimalAssignmentGrade {
 }
 
 export interface CourseWithSingleTrialExamsGradesAndSummary {
-  assignmentGrades: {
-    assignmentGrade: number | null;
-    uid: string;
-    username: string;
-  }[];
+  assignmentGrades: MinimalAssignmentGrade[];
   averageTotalScore: number;
   examsGrades: MinimalCourseExamAttemptWithUsername[];
   graduatedStudentsAmount: number;
