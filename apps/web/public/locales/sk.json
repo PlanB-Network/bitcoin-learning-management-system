@@ -124,7 +124,6 @@
   },
   "conferences": {
     "conferenceName": "Názov konferencie",
-    "conferencesSinceGenesis": "Archív Bitcoin konferencií od Genesis Blocku",
     "details": {
       "findReplay": "Nájsť a prehrať znovu",
       "selectVideo": "Vybrať video"
@@ -410,7 +409,6 @@
         "cancel": "Zrušiť",
         "close": "Zavrieť",
         "delete": "Vymazať",
-        "deleteDiscountCode": "Odstrániť zľavový kód",
         "deleteDiscountCodeConfirm": "Ste si istý, že chcete odstrániť tento zľavový kód?",
         "deleteDiscountCodeWarning": "Ak raz tento kód vymažete, už nebude funkčný. Táto zmena je nezvratná",
         "discountCode": "Zľavový kód",
@@ -452,7 +450,6 @@
         },
         "noCouponsFound": "Neboli nájdené žiadne kupóny.",
         "numberOfCodes": "Koľko kódov chcete generovať?",
-        "numberOfCodesPlaceholder": "napíšte číslo",
         "productCourse": "Kurz",
         "productEvent": "Udalosť",
         "selectCourse": "Vybrať kurz",
