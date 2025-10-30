@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { useState } from 'react';
 import ReactPlayer from 'react-player';
 import VideoSVG from '#src/assets/resources/video.svg?react';
 import {
@@ -16,6 +17,14 @@ export const ImageVideoRenderer = ({
   src?: string;
   alt?: string;
 }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  if (isOpen) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+
   if (!src) return null;
 
   if (isUrlFromValidVideoPlatform(src)) {
@@ -33,7 +42,7 @@ export const ImageVideoRenderer = ({
         )}
 
         {header === 'text' && (
-          <div className=" flex items-center">
+          <div className="flex items-center">
             <div className="ml-2">
               <p className="text-lg font-medium text-blue-900">
                 {t('words.video')}
@@ -69,10 +78,35 @@ export const ImageVideoRenderer = ({
   }
 
   return (
-    <img
-      className="mx-auto flex justify-center rounded-lg pb-6 md:pt-4 last:pb-0 last:md:pb-4"
-      src={src}
-      alt={alt}
-    />
+    <>
+      <button
+        type="button"
+        className="mx-auto flex justify-center rounded-lg pb-6 md:pt-4 last:pb-0 last:md:pb-4 p-0 bg-transparent border-0 cursor-zoom-in"
+        onClick={() => setIsOpen(true)}
+        aria-label={`Open image${alt ? `: ${alt}` : ''}`}
+      >
+        <img src={src} alt={alt} className="rounded-lg" />
+      </button>
+
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-9999 flex items-center justify-center bg-[#042F6280]"
+          onClick={() => setIsOpen(false)}
+          onKeyDown={(e) => {
+            if (e.key === 'Escape') setIsOpen(false);
+          }}
+          role="dialog"
+          aria-label="Close image overlay"
+        >
+          <div className="relative m-2 md:m-5" role="dialog" aria-modal="true">
+            <img
+              src={src}
+              alt={alt}
+              className="mx-auto rounded-lg max-w-[min(1920px,100%)] max-h-[80vh] cursor-zoom-out"
+            />
+          </div>
+        </div>
+      )}
+    </>
   );
 };
