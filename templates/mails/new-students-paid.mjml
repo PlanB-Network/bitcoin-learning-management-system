@@ -21,7 +21,7 @@
     <!-- Logo -->
     <mj-section padding-top="40px" padding-bottom="20px">
       <mj-column>
-        <mj-image src="http://cdn.mcauto-images-production.sendgrid.net/1320c1d7e5304d1f/60c4ab01-f068-4c89-8535-0a83955e19fa/528x98.png" alt="Logo" width="264px" align="center" padding="0" />
+        <mj-image src="http://cdn.mcauto-images-production.sendgrid.net/1320c1d7e5304d1f/4fc3540f-18ed-4e56-acc9-11251f854028/558x104.png" alt="Logo" width="264px" align="center" padding="0" />
       </mj-column>
     </mj-section>
 

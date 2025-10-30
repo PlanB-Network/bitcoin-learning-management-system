@@ -30,11 +30,6 @@
         letter-spacing: 0.10px !important;
         font-family: 'IBM Plex Sans', Rubik, Arial, sans-serif !important;
       }
-      .footer-text div {
-        letter-spacing: 0.10px !important;
-        font-family: Rubik, Arial, sans-serif !important;
-        / font-size, line-height, and font-weight are set on the mj-text tag directly */
-      }
     </mj-style>
   </mj-head>
   <mj-body>
@@ -50,10 +45,10 @@
     <mj-section padding-top="20px" padding-bottom="16px">
       <mj-column>
         <mj-text align="center" padding-bottom="10px" css-class="main-title">
-          {{courseName}}
+          Careers
         </mj-text>
         <mj-text align="center" padding="0" css-class="sub-title">
-          special announcement
+          new candidate file submitted
         </mj-text>
       </mj-column>
     </mj-section>
@@ -61,25 +56,17 @@
     <!-- Announcement -->
     <mj-section padding-top="30px" padding-bottom="50px">
       <mj-column width="90%">
-        <mj-text font-weight="400" padding="0" padding-bottom="20px">
-          Hello,<br/>Here is an important announcement from your professor:
+        <mj-text font-weight="400" padding="0">
+          Hello,<br/><br/>A new candidate has submitted their application through the Plan ₿ Academy career portal.<br/><br/>You can log in to your admin dashboard to review the candidate CV and Application File.
         </mj-text>
-        {{#each announcementText}}
-        <mj-text css-class="announcement-highlight" padding="0">
-          {{this}}
-        </mj-text>
-        {{/each}}
       </mj-column>
     </mj-section>
 
     <!-- Dashboard -->
     <mj-section padding-top="0px" padding-bottom="50px">
       <mj-column width="90%">
-        <mj-text font-weight="400" padding="0" padding-bottom="20px">
-          The best way to keep track of news related to this course is to log in and visit your student dashboard.
-        </mj-text>
-        <mj-button href="{{dashboardLink}}" align="left" padding="0" inner-padding="14px 18px">
-          Go to course dashboard
+        <mj-button href="{{adminDashboardLink}}" align="left" padding="0" inner-padding="14px 18px">
+          Access Admin dashboard
         </mj-button>
       </mj-column>
     </mj-section>
@@ -87,25 +74,11 @@
     <!-- Contact & signature -->
     <mj-section padding-top="0px" padding-bottom="15px">
       <mj-column width="90%">
-        <mj-text font-weight="400" padding="0" padding-bottom="20px">
-          If you encounter any issue, please reach out at <a href="mailto:contact@planb.network" style="color: #000000; text-decoration: underline;">contact@planb.network</a>.
-        </mj-text>
         <mj-text font-weight="400" padding="0">
           Best regards,<br />
-          The {{courseName}} team<br />
-          Plan ₿ Network
+          The Plan ₿ Academy team
         </mj-text>
       </mj-column>
     </mj-section>
-
-    <!-- Footer -->
-    <mj-section padding-top="40px" padding-bottom="40px">
-      <mj-column>
-        <mj-text align="center" font-size="12px" line-height="14px" font-weight="400" css-class="footer-text" padding="0 25px">
-          You are receiving this email because you have an account on planb.network.<br />If you would like to change your email preferences, please click <a href="{{unsubscribeLink}}" style="color: #000000; text-decoration: underline;">here</a>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-
   </mj-body>
 </mjml>
