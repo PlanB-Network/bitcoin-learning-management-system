@@ -57,16 +57,16 @@ export const Register = ({
         ])
         .transform((data) => data || null)
         .nullable(),
-      password: z.string().refine(
-        (pwd) => password.validate(pwd),
-        (pwd) => {
+      password: z
+        .string()
+        .refine((pwd) => password.validate(pwd))
+        .refine((pwd) => {
           const result = password.validate(pwd, { details: true });
           return { message: Array.isArray(result) ? result[0].message : '' };
-        },
-      ),
+        }),
       university: z.string().optional(),
       username: z
-        .string({ required_error: t('auth.errors.usernameRequired') })
+        .string({ error: t('auth.errors.usernameRequired') })
         .min(5, { message: t('auth.errors.usernameTooShort') })
         .regex(/^[\w.-]+$/, {
           message: t('auth.errors.usernameRegex'),

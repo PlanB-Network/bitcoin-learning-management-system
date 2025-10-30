@@ -50,13 +50,13 @@ export const ChangePasswordModal = ({
 
   const changePasswordSchema = z
     .object({
-      newPassword: z.string().refine(
-        (pwd) => password.validate(pwd),
-        (pwd) => {
+      newPassword: z
+        .string()
+        .refine((pwd) => password.validate(pwd))
+        .refine((pwd) => {
           const result = password.validate(pwd, { details: true });
           return { message: Array.isArray(result) ? result[0].message : '' };
-        },
-      ),
+        }),
       newPasswordConfirmation: z.string(),
       oldPassword: z.string(),
     })
