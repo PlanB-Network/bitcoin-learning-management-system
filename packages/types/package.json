@@ -5,8 +5,7 @@
     "@types/express-session": "^1.18.2",
     "typescript": "~5.9.3",
     "typesense": "~2.0.3",
-    "zod": "~4.1.12",
-    "zod-to-ts": "~1.2.0"
+    "zod": "~4.1.12"
   },
   "exports": {
     "development": "./src/index.ts",
