@@ -4,6 +4,7 @@ import { default as DOMPurify } from 'dompurify';
 import { useTranslation } from 'react-i18next';
 import { TbChevronRight } from 'react-icons/tb';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { LANGUAGES } from '#src/utils/i18n.ts';
 
 interface SearchResultProps {
   item: SearchResultItem<Searchable>;
@@ -14,10 +15,20 @@ export const SearchResult = ({ item }: SearchResultProps) => {
   const isMobile = useSmaller('md');
   const { t } = useTranslation();
 
+  const language =
+    LANGUAGES.find(
+      (l) => l.toLowerCase() === item.document.language.toLowerCase(),
+    ) ?? item.document.language;
+
+  const linkWithRewrittenLanguage = item.document.link.replace(
+    /^\/[A-Za-z0-9-]+(?=\/)/,
+    `/${language}`,
+  );
+
   return (
     <a
       className="flex gap-2 rounded-2xl px-0.5 py-1 md:px-4 md:py-3 hover:bg-neutral-50 border border-transparent focus:bg-neutral-50 focus:border-orange-500 focus:outline-hidden search-results w-full justify-between items-center"
-      href={`${item.document.link}#:~:text=${item.highlight.body?.matched_tokens?.[0] ?? item.document.title}`}
+      href={`${linkWithRewrittenLanguage}#:~:text=${item.highlight.body?.matched_tokens?.[0] ?? item.document.title}`}
       target="_blank"
       rel="noreferrer"
     >
