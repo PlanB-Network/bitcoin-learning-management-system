@@ -1,5 +1,9 @@
 import { formatNameForURL } from '@blms/shared';
-import type { CourseResponse, JoinedCourse } from '@blms/types';
+import type {
+  CourseResponse,
+  CourseReviewsExtended,
+  JoinedCourse,
+} from '@blms/types';
 import { Button, cn, DividerSimple, Image, ListItem, TextTag } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
@@ -42,6 +46,17 @@ export const CourseCard = ({
   className?: string;
   openInNewTab?: boolean;
 }) => {
+  const { data: reviews } = useQuery(
+    trpc.content.getPublicCourseReviews.queryOptions(
+      {
+        courseId: course.id,
+      },
+      {
+        staleTime: 300_000, // 5 minutes
+      },
+    ),
+  );
+
   return (
     <Link
       key={course.id}
@@ -111,23 +126,31 @@ export const CourseCard = ({
                 </TextTag>
               )}
               {course.averageRating !== 0 && (
-                <span className="flex items-center gap-1">
-                  <HalfFilledStar className="size-5" />
-                  <span className="text-yellow-500 text-sm font-semibold leading-none tracking-[-0.15px]">
-                    {course.averageRating.toFixed(1)}
-                  </span>
-                </span>
+                <RatingCourseCard
+                  course={course}
+                  reviews={reviews}
+                  className="md:hidden"
+                />
               )}
             </div>
           </div>
         </div>
         <div className="relative px-2 max-md:pb-2 md:px-4">
-          <p className="text-neutral-400 dark:text-maroon-4 body-small line-clamp-3 md:line-clamp-5 transition-opacity opacity-100 md:group-hover:opacity-0 md:group-hover:absolute">
+          <p className="text-neutral-400 dark:text-maroon-4 body-small line-clamp-3 md:line-clamp-3 md:group-hover:hidden">
             {course.goal}
           </p>
         </div>
+
+        {course.averageRating !== 0 && (
+          <RatingCourseCard
+            course={course}
+            reviews={reviews}
+            className="absolute bottom-4 right-4 max-md:hidden transition-opacity md:group-hover:hidden"
+          />
+        )}
+
         <div className="max-md:hidden relative md:px-4">
-          <div className="flex flex-col transition-opacity opacity-0 md:group-hover:opacity-100 absolute md:group-hover:static duration-0 md:group-hover:duration-150">
+          <div className="flex-col hidden md:group-hover:flex absolute md:group-hover:static">
             <ListItem
               leftText={t('words.professor')}
               rightText={course.mainProfessors
@@ -162,6 +185,30 @@ export const CourseCard = ({
         </div>
       </article>
     </Link>
+  );
+};
+
+const RatingCourseCard = ({
+  course,
+  reviews,
+  className,
+}: {
+  course: JoinedCourse | CourseResponse;
+  reviews: CourseReviewsExtended | undefined;
+  className?: string;
+}) => {
+  return (
+    <span className={cn('flex items-center gap-1', className)}>
+      <HalfFilledStar className="size-5" />
+      <span className="text-yellow-500 text-sm font-semibold leading-none tracking-[-0.15px]">
+        {course.averageRating.toFixed(1)}
+      </span>
+      {reviews && (
+        <span className="text-yellow-500 text-sm font-medium leading-none tracking-[-0.15px]">
+          ({reviews.general.length})
+        </span>
+      )}
+    </span>
   );
 };
 
