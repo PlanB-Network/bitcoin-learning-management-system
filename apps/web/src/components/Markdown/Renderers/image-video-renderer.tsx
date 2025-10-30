@@ -1,5 +1,5 @@
 import { t } from 'i18next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import VideoSVG from '#src/assets/resources/video.svg?react';
 import {
@@ -24,6 +24,15 @@ export const ImageVideoRenderer = ({
   } else {
     document.body.style.overflow = '';
   }
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsOpen(false);
+    };
+
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, []);
 
   if (!src) return null;
 
@@ -81,7 +90,7 @@ export const ImageVideoRenderer = ({
     <>
       <button
         type="button"
-        className="mx-auto flex justify-center rounded-lg pb-6 md:pt-4 last:pb-0 last:md:pb-4 p-0 bg-transparent border-0 cursor-zoom-in"
+        className="mx-auto flex justify-center rounded-lg pb-6 md:pt-4 last:pb-0 last:md:pb-4 p-0 bg-transparent border-0 cursor-zoom-in focus:outline-none"
         onClick={() => setIsOpen(true)}
         aria-label={`Open image${alt ? `: ${alt}` : ''}`}
       >
@@ -102,7 +111,7 @@ export const ImageVideoRenderer = ({
             <img
               src={src}
               alt={alt}
-              className="mx-auto rounded-lg max-w-[min(1920px,100%)] max-h-[80vh] cursor-zoom-out"
+              className="mx-auto rounded-lg max-w-[min(1920px,100%)] max-h-[80vh] cursor-zoom-out bg-white"
             />
           </div>
         </div>
