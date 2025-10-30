@@ -97,11 +97,10 @@ function groupCountries(
   const now = Date.now();
   for (const event of events) {
     // Skip past events
-    const startDate = event.startDate.getTime();
-    if (now > startDate) {
+    const endDate = event.endDate.getTime();
+    if (now > endDate) {
       continue;
     }
-
     // Skip events that are excluded by filter
     if (filter?.length && (!event.type || !filter?.includes(event.type))) {
       continue;
