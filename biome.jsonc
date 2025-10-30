@@ -1,7 +1,17 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.3.2/schema.json",
   "assist": {
-    "actions": { "source": { "organizeImports": "on", "useSortedKeys": "off" } }
+    "actions": {
+      "source": {
+        "organizeImports": "on",
+        "useSortedKeys": "off"
+      }
+    }
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
   },
   "files": {
     "ignoreUnknown": false,
@@ -63,7 +73,8 @@
       "suspicious": {
         "noDuplicateProperties": "off", //To remove
         "noExplicitAny": "off",
-        "noUnknownAtRules": "off" // To remove
+        "noNonNullAssertedOptionalChain": "off",
+        "noUnknownAtRules": "off" // To remove,
       }
     }
   },
