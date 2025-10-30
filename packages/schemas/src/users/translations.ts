@@ -1,10 +1,12 @@
+import { AssignmentStatus, UserRole } from '@blms/constants';
 import { usersTranslationAssignments } from '@blms/database';
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
-
-import { assignmentStatusEnum } from '../enums.js';
 import { userAccountSchema } from './account.js';
 import { languageSchema } from './career.js';
+
+export const assignmentStatusSchemaReexported = z.enum(AssignmentStatus);
+export const userRoleSchemaReexported = z.enum(UserRole);
 
 // Create select schemas for database tables
 export const translationAssignmentSchema = createSelectSchema(
@@ -63,7 +65,7 @@ export const userAssignmentDetailsSchema = translationAssignmentSchema
   })
   .merge(
     z.object({
-      assignmentStatus: assignmentStatusEnum,
+      assignmentStatus: assignmentStatusSchemaReexported,
       index: z.string().optional(),
       courseName: z.string().nullable(),
       translationStatus: z.string().nullable(),
@@ -124,10 +126,10 @@ export const serviceTranslationAssignmentSchema = translationAssignmentSchema
     assignedAt: true,
     completedAt: true,
     rejectionReason: true,
+    status: true,
   })
   .merge(
     z.object({
-      status: assignmentStatusEnum,
       index: z.string().optional(),
       courseName: z.string().optional(),
       assigneeUsername: z.string().optional(),

@@ -15,7 +15,7 @@ import { formattedProfessorSchema } from './professor.js';
 
 export const courseLevelSchema = z.enum(CourseLevel);
 export const teachingFormatSchema = z.enum(TeachingFormat);
-export const courseFormat = z.enum(CourseFormat);
+export const courseFormatSchema = z.enum(CourseFormat);
 
 export const courseSchema = createSelectSchema(contentCourses);
 export const courseLocalizedSchema = createSelectSchema(

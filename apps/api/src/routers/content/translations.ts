@@ -10,7 +10,6 @@ import {
   courseTranslationStatusSchema,
   courseWithTodoTranslationsSchema,
   createTranslationInputSchema,
-  getCourseTranslationChapterProgressInputSchema,
   getCourseTranslationSlidesInputSchema,
   updateCourseTranslationSlideInputSchema,
   updateCourseTranslationStatusInputSchema,
@@ -338,7 +337,7 @@ const updateCourseTranslationSlideProcedure = contributorProcedure
 
 // Get course translation chapter progress
 const getCourseTranslationChapterProgressProcedure = contributorProcedure
-  .input(getCourseTranslationChapterProgressInputSchema)
+  .input(z.object({ courseId: z.string(), language: z.string() }))
   .query(({ ctx, input }) => {
     return createGetCourseTranslationChapterProgress(ctx.dependencies)(input);
   });
@@ -359,7 +358,7 @@ const adminUpdateCourseTranslationSlideProcedure = adminProcedure
   });
 
 const adminGetCourseTranslationChapterProgressProcedure = adminProcedure
-  .input(getCourseTranslationChapterProgressInputSchema)
+  .input(z.object({ courseId: z.string(), language: z.string() }))
   .query(({ ctx, input }) => {
     return createGetCourseTranslationChapterProgress(ctx.dependencies)(input);
   });

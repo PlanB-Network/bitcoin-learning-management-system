@@ -1,4 +1,4 @@
-import { TranslationStatus } from '@blms/constants';
+import { AssignmentStatus, TranslationStatus } from '@blms/constants';
 import {
   contentCourseTranslationChapters,
   contentCourseTranslationSlides,
@@ -10,14 +10,15 @@ import {
 
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
-
-import { assignmentStatusEnum, translationStatusEnum } from '../enums.js';
 import {
   courseChapterSchema,
   courseLocalizedSchema,
   coursePartSchema,
   courseSchema,
 } from './course.js';
+
+export const translationStatusSchema = z.enum(TranslationStatus);
+export const assignmentStatusSchema = z.enum(AssignmentStatus);
 
 // Create select schemas for database tables
 export const courseTranslationSchema = createSelectSchema(
@@ -34,9 +35,11 @@ export const courseTranslationSlidesSchema = createSelectSchema(
 export const usersTranslationChapterAssignmentsSchema = createSelectSchema(
   usersTranslationChapterAssignments,
 );
+
 export const usersTranslationReviewsSchema = createSelectSchema(
   usersTranslationReviews,
 );
+
 export const courseTranslationUploadSchema =
   createSelectSchema(contentCourseUploads);
 
@@ -57,7 +60,7 @@ export const availableCourseTranslationSchema = courseTranslationSchema.pick({
 export const availableCourseTranslationWithAssignmentSchema =
   availableCourseTranslationSchema.merge(
     z.object({
-      assignmentStatus: assignmentStatusEnum.optional(),
+      assignmentStatus: assignmentStatusSchema.optional(),
     }),
   );
 
@@ -100,7 +103,7 @@ export const adminContentManagementCourseSchema = courseTranslationSchema
       assignmentId: z.string().nullable(),
       assigneeId: z.string().nullable(),
       assignerId: z.string().nullable(),
-      assignmentStatus: assignmentStatusEnum.nullable(),
+      assignmentStatus: assignmentStatusSchema.nullable(),
       assignedAt: z.date().nullable(),
       completedAt: z.date().nullable().optional(),
       assigneeUsername: z.string().nullable(),
@@ -121,7 +124,7 @@ export const createTranslationInputSchema = z.object({
   language: z.string(),
   chapterId: z.string(),
   partId: z.string(),
-  status: translationStatusEnum
+  status: translationStatusSchema
     .optional()
     .default(TranslationStatus.InProgress),
 });
@@ -130,13 +133,13 @@ export const updateTranslationStatusInputSchema = z.object({
   courseId: z.string(),
   language: z.string(),
   chapterId: z.string(),
-  status: translationStatusEnum,
+  status: translationStatusSchema,
 });
 
 export const updateCourseTranslationStatusInputSchema = z.object({
   courseId: z.string(),
   language: z.string(),
-  status: translationStatusEnum,
+  status: translationStatusSchema,
 });
 
 // Course details schemas for course management UI - these are service response schemas, keep as z.object for now
@@ -209,7 +212,7 @@ export const courseTranslationDetailsServiceResponseSchema = courseSchema
       assigneeUsername: z.string().nullable(),
       assigneeDisplayName: z.string().nullable(),
       assignedAt: z.date().nullable(),
-      assignmentStatus: z.string().nullable(),
+      assignmentStatus: assignmentStatusSchema.nullable(),
       parts: z.array(coursePartDetailsSchema),
       progress: z.number(),
       totalChapters: z.number(),
@@ -255,7 +258,7 @@ export const courseTranslationSlideSchema = courseTranslationSlidesSchema
       transcriptionValidated: z.boolean(),
       audioValidated: z.boolean(),
       audioTries: z.number(),
-      status: translationStatusEnum,
+      status: translationStatusSchema,
     }),
   );
 
@@ -308,7 +311,7 @@ export const updateCourseTranslationSlideInputSchema = z.object({
   chapterId: z.string(),
   slideId: z.string(),
   translatedContent: z.string().optional(),
-  status: translationStatusEnum
+  status: translationStatusSchema
     .optional()
     .default(TranslationStatus.InProgress),
   pptValidated: z.boolean().optional(),
@@ -316,3 +319,20 @@ export const updateCourseTranslationSlideInputSchema = z.object({
   audioValidated: z.boolean().optional(),
   audioTries: z.number().optional(),
 });
+
+export const courseDetailsSchema = courseSchema
+  .pick({
+    id: true,
+    index: true,
+  })
+  .merge(
+    z.object({
+      courseName: z.string().nullable(),
+      translationStatus: z.string().nullable(),
+      assigneeDisplayName: z.string().nullable(),
+      progress: z.number(),
+      totalChapters: z.number(),
+      completedChapters: z.number(),
+      parts: coursePartDetailsSchema.array(),
+    }),
+  );
