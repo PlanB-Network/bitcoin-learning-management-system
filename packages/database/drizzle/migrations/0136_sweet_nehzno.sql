@@ -1,0 +1,1 @@
+ALTER TYPE "public"."video_provider" ADD VALUE 'pears' BEFORE 'peertube';
