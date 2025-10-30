@@ -5,7 +5,7 @@
     "@types/express-session": "^1.18.2",
     "typescript": "~5.9.3",
     "typesense": "~2.0.3",
-    "zod": "~3.25.76",
+    "zod": "~4.1.12",
     "zod-to-ts": "~1.2.0"
   },
   "exports": {
@@ -30,5 +30,9 @@
   },
   "type": "module",
   "types": "./src/index.ts",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "dependencies": {
+    "@duplojs/zod-to-typescript": "^0.4.2",
+    "json-schema-to-typescript": "^15.0.4"
+  }
 }

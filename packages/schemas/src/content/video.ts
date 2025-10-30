@@ -3,8 +3,8 @@ import { contentVideos, contentVideosLocalized } from '@blms/database';
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 
-export const videoSourceTypeSchema = z.nativeEnum(VideoSourceType);
-export const videoProviderSchema = z.nativeEnum(VideoProvider);
+export const videoSourceTypeSchema = z.enum(VideoSourceType);
+export const videoProviderSchema = z.enum(VideoProvider);
 
 export const videoSchema = createSelectSchema(contentVideos);
 export const videosLocalizedSchema = createSelectSchema(contentVideosLocalized);

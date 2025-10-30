@@ -16,13 +16,13 @@ import {
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 
-export const careerLanguageLevelSchema = z.nativeEnum(CareerLanguageLevel);
+export const careerLanguageLevelSchema = z.enum(CareerLanguageLevel);
 
-export const careerRoleLevelSchema = z.nativeEnum(CareerRoleLevel);
-export const careerCompanySizeSchema = z.nativeEnum(CareerCompanySize);
-export const careerRemoteSchema = z.nativeEnum(CareerRemote); //
-export const jobNameSchema = z.nativeEnum(JobName);
-export const jobCategorySchema = z.nativeEnum(JobCategory);
+export const careerRoleLevelSchema = z.enum(CareerRoleLevel);
+export const careerCompanySizeSchema = z.enum(CareerCompanySize);
+export const careerRemoteSchema = z.enum(CareerRemote); //
+export const jobNameSchema = z.enum(JobName);
+export const jobCategorySchema = z.enum(JobCategory);
 
 export const careerLanguageSchema = createSelectSchema(usersCareerLanguages);
 export const careerProfileSchema = createSelectSchema(usersCareerProfiles);

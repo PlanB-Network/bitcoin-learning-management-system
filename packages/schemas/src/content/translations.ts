@@ -1,26 +1,24 @@
-import { TranslationStatus } from '@blms/constants';
+import { AssignmentStatus, TranslationStatus } from '@blms/constants';
 import {
-  contentCourseChapters,
-  contentCourseChaptersLocalized,
-  contentCourseParts,
-  contentCoursePartsLocalized,
-  contentCourses,
-  contentCoursesLocalized,
   contentCourseTranslationChapters,
   contentCourseTranslationSlides,
   contentCourseTranslations,
   contentCourseUploads,
-  usersLanguages,
-  usersReviewerLanguages,
-  usersTranslationAssignments,
   usersTranslationChapterAssignments,
   usersTranslationReviews,
 } from '@blms/database';
 
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
+import {
+  courseChapterSchema,
+  courseLocalizedSchema,
+  coursePartSchema,
+  courseSchema,
+} from './course.js';
 
-import { assignmentStatusEnum, translationStatusEnum } from '../enums.js';
+export const translationStatusSchema = z.enum(TranslationStatus);
+export const assignmentStatusSchema = z.enum(AssignmentStatus);
 
 // Create select schemas for database tables
 export const courseTranslationSchema = createSelectSchema(
@@ -29,34 +27,19 @@ export const courseTranslationSchema = createSelectSchema(
 export const courseTranslationChapterSchema = createSelectSchema(
   contentCourseTranslationChapters,
 );
-export const courseBasicSchema = createSelectSchema(contentCourses);
-export const coursesLocalizedSchema = createSelectSchema(
-  contentCoursesLocalized,
-);
-export const coursePartsSchema = createSelectSchema(contentCourseParts);
-export const coursePartsLocalizedSchema = createSelectSchema(
-  contentCoursePartsLocalized,
-);
-export const courseChaptersSchema = createSelectSchema(contentCourseChapters);
-export const courseChaptersLocalizedSchema = createSelectSchema(
-  contentCourseChaptersLocalized,
-);
+
 export const courseTranslationSlidesSchema = createSelectSchema(
   contentCourseTranslationSlides,
 );
-export const usersLanguagesSchema = createSelectSchema(usersLanguages);
-export const usersReviewerLanguagesSchema = createSelectSchema(
-  usersReviewerLanguages,
-);
-export const usersTranslationAssignmentsSchema = createSelectSchema(
-  usersTranslationAssignments,
-);
+
 export const usersTranslationChapterAssignmentsSchema = createSelectSchema(
   usersTranslationChapterAssignments,
 );
+
 export const usersTranslationReviewsSchema = createSelectSchema(
   usersTranslationReviews,
 );
+
 export const courseTranslationUploadSchema =
   createSelectSchema(contentCourseUploads);
 
@@ -77,7 +60,7 @@ export const availableCourseTranslationSchema = courseTranslationSchema.pick({
 export const availableCourseTranslationWithAssignmentSchema =
   availableCourseTranslationSchema.merge(
     z.object({
-      assignmentStatus: assignmentStatusEnum.optional(),
+      assignmentStatus: assignmentStatusSchema.optional(),
     }),
   );
 
@@ -108,7 +91,7 @@ export const adminContentManagementCourseSchema = courseTranslationSchema
     updatedAt: true,
   })
   .merge(
-    courseBasicSchema.pick({
+    courseSchema.pick({
       index: true,
       topic: true,
     }),
@@ -120,7 +103,7 @@ export const adminContentManagementCourseSchema = courseTranslationSchema
       assignmentId: z.string().nullable(),
       assigneeId: z.string().nullable(),
       assignerId: z.string().nullable(),
-      assignmentStatus: assignmentStatusEnum.nullable(),
+      assignmentStatus: assignmentStatusSchema.nullable(),
       assignedAt: z.date().nullable(),
       completedAt: z.date().nullable().optional(),
       assigneeUsername: z.string().nullable(),
@@ -136,18 +119,12 @@ export const courseTranslationStatusSchema = courseTranslationSchema.merge(
   }),
 );
 
-// Input schemas for API operations - these are API interfaces, keep as z.object
-export const getTranslationStatusInputSchema = z.object({
-  courseId: z.string(),
-  language: z.string(),
-});
-
 export const createTranslationInputSchema = z.object({
   courseId: z.string(),
   language: z.string(),
   chapterId: z.string(),
   partId: z.string(),
-  status: translationStatusEnum
+  status: translationStatusSchema
     .optional()
     .default(TranslationStatus.InProgress),
 });
@@ -156,13 +133,13 @@ export const updateTranslationStatusInputSchema = z.object({
   courseId: z.string(),
   language: z.string(),
   chapterId: z.string(),
-  status: translationStatusEnum,
+  status: translationStatusSchema,
 });
 
 export const updateCourseTranslationStatusInputSchema = z.object({
   courseId: z.string(),
   language: z.string(),
-  status: translationStatusEnum,
+  status: translationStatusSchema,
 });
 
 // Course details schemas for course management UI - these are service response schemas, keep as z.object for now
@@ -176,13 +153,13 @@ export const courseLanguageSchema = z.object({
 });
 
 // Schema for CourseInfo - what the UI expects
-export const courseLanguageInfoSchema = courseBasicSchema
+export const courseLanguageInfoSchema = courseSchema
   .pick({
     id: true,
     index: true,
   })
   .merge(
-    coursesLocalizedSchema.pick({
+    courseLocalizedSchema.pick({
       name: true,
     }),
   )
@@ -193,7 +170,7 @@ export const courseLanguageInfoSchema = courseBasicSchema
   );
 
 // Course chapter details schema - based on course chapters schema
-export const courseChapterDetailsSchema = courseChaptersSchema
+export const courseChapterDetailsSchema = courseChapterSchema
   .pick({
     chapterId: true,
     chapterIndex: true,
@@ -207,7 +184,7 @@ export const courseChapterDetailsSchema = courseChaptersSchema
   );
 
 // Course part details schema - based on course parts schema
-export const coursePartDetailsSchema = coursePartsSchema
+export const coursePartDetailsSchema = coursePartSchema
   .pick({
     partId: true,
     partIndex: true,
@@ -219,26 +196,8 @@ export const coursePartDetailsSchema = coursePartsSchema
     }),
   );
 
-// Course details schema - based on course schema
-export const courseDetailsSchema = courseBasicSchema
-  .pick({
-    id: true,
-    index: true,
-  })
-  .merge(
-    z.object({
-      courseName: z.string().nullable(),
-      translationStatus: z.string().nullable(),
-      assigneeDisplayName: z.string().nullable(),
-      progress: z.number(),
-      totalChapters: z.number(),
-      completedChapters: z.number(),
-      parts: coursePartDetailsSchema.array(),
-    }),
-  );
-
 // Service response schema - complex joined data, based on course schema
-export const courseTranslationDetailsServiceResponseSchema = courseBasicSchema
+export const courseTranslationDetailsServiceResponseSchema = courseSchema
   .pick({
     id: true,
     index: true,
@@ -253,7 +212,7 @@ export const courseTranslationDetailsServiceResponseSchema = courseBasicSchema
       assigneeUsername: z.string().nullable(),
       assigneeDisplayName: z.string().nullable(),
       assignedAt: z.date().nullable(),
-      assignmentStatus: z.string().nullable(),
+      assignmentStatus: assignmentStatusSchema.nullable(),
       parts: z.array(coursePartDetailsSchema),
       progress: z.number(),
       totalChapters: z.number(),
@@ -262,7 +221,7 @@ export const courseTranslationDetailsServiceResponseSchema = courseBasicSchema
   );
 
 // Schema for courses with todo translations - service response, based on course schema
-export const courseWithTodoTranslationsSchema = courseBasicSchema
+export const courseWithTodoTranslationsSchema = courseSchema
   .pick({
     id: true,
     index: true,
@@ -275,46 +234,6 @@ export const courseWithTodoTranslationsSchema = courseBasicSchema
       totalLanguages: z.number(),
     }),
   );
-// Schema for course translation uploads - based on database schema
-export const courseTranslationUploadResponseSchema =
-  courseTranslationUploadSchema.pick({
-    id: true,
-    courseId: true,
-    originalLanguage: true,
-    translationLanguages: true,
-    uploaderId: true,
-    partId: true,
-    chapterId: true,
-    pptxFileUrl: true,
-    textFileUrl: true,
-    uploadSuccess: true,
-    errorMessage: true,
-    createdAt: true,
-    updatedAt: true,
-  });
-
-// Input schema for creating translation uploads - API interface
-export const createCourseTranslationUploadInputSchema = z.object({
-  courseId: z.string(),
-  languages: z.array(z.string()),
-  pptxFileUrl: z.string().optional(),
-  textFileUrl: z.string().optional(),
-});
-
-// Input schema for updating translation upload - API interface
-export const updateCourseTranslationUploadInputSchema = z.object({
-  id: z.string(),
-  pptxFileUrl: z.string().optional(),
-  textFileUrl: z.string().optional(),
-  uploadSuccess: z.boolean().optional(),
-  errorMessage: z.string().optional(),
-});
-
-// Input schema for starting translation (updating status to in_progress) - API interface
-export const startTranslationInputSchema = z.object({
-  courseId: z.string(),
-  languages: z.array(z.string()),
-});
 
 // Schema for course translation slide - based on database schema
 export const courseTranslationSlideSchema = courseTranslationSlidesSchema
@@ -339,23 +258,23 @@ export const courseTranslationSlideSchema = courseTranslationSlidesSchema
       transcriptionValidated: z.boolean(),
       audioValidated: z.boolean(),
       audioTries: z.number(),
-      status: translationStatusEnum,
+      status: translationStatusSchema,
     }),
   );
 
 // Schema for chapter translation context - based on course and chapter schemas
-export const chapterTranslationContextSchema = courseBasicSchema
+export const chapterTranslationContextSchema = courseSchema
   .pick({
     id: true,
   })
   .merge(
-    courseChaptersSchema.pick({
+    courseChapterSchema.pick({
       chapterId: true,
       chapterIndex: true,
     }),
   )
   .merge(
-    coursePartsSchema.pick({
+    coursePartSchema.pick({
       partId: true,
       partIndex: true,
     }),
@@ -392,7 +311,7 @@ export const updateCourseTranslationSlideInputSchema = z.object({
   chapterId: z.string(),
   slideId: z.string(),
   translatedContent: z.string().optional(),
-  status: translationStatusEnum
+  status: translationStatusSchema
     .optional()
     .default(TranslationStatus.InProgress),
   pptValidated: z.boolean().optional(),
@@ -401,31 +320,19 @@ export const updateCourseTranslationSlideInputSchema = z.object({
   audioTries: z.number().optional(),
 });
 
-// Schema for chapter progress in course translation overview - based on chapter schema
-export const chapterProgressSchema = courseChaptersSchema
+export const courseDetailsSchema = courseSchema
   .pick({
-    chapterId: true,
-    chapterIndex: true,
+    id: true,
+    index: true,
   })
   .merge(
-    coursePartsSchema.pick({
-      partId: true,
-      partIndex: true,
-    }),
-  )
-  .merge(
     z.object({
-      chapterTitle: z.string(),
-      totalSlides: z.number(),
-      completedSlides: z.number(),
-      inProgressSlides: z.number(),
-      todoSlides: z.number(),
-      status: z.enum(['completed', 'in-progress', 'not-started']),
+      courseName: z.string().nullable(),
+      translationStatus: z.string().nullable(),
+      assigneeDisplayName: z.string().nullable(),
+      progress: z.number(),
+      totalChapters: z.number(),
+      completedChapters: z.number(),
+      parts: coursePartDetailsSchema.array(),
     }),
   );
-
-// Input schema for getting chapter progress
-export const getCourseTranslationChapterProgressInputSchema = z.object({
-  courseId: z.string(),
-  language: z.string(),
-});

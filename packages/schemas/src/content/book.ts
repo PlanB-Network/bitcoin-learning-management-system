@@ -1,7 +1,6 @@
 import { contentBooks, contentBooksLocalized } from '@blms/database';
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
-import { courseLevelSchema } from './course.js';
 import { resourceSchema } from './resource.js';
 
 export const bookSchema = createSelectSchema(contentBooks);
@@ -18,6 +17,7 @@ export const joinedBookSchema = resourceSchema
     bookSchema.pick({
       author: true,
       websiteUrl: true,
+      level: true,
     }),
   )
   .merge(
@@ -38,7 +38,6 @@ export const joinedBookSchema = resourceSchema
   )
   .merge(
     z.object({
-      level: courseLevelSchema,
       tags: z.array(z.string()),
     }),
   );

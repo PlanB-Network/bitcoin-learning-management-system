@@ -47,9 +47,6 @@ export interface JoinedBCertResults {
   pdfKey: string | null;
   txtKey: string | null;
   txtOtsKey: string | null;
-  results: {
-    category: string;
-    score: number;
-  }[];
+  results: { category: string; score: number }[];
   score?: number | undefined;
 }

@@ -8,8 +8,8 @@ import {
 import { createSelectSchema } from 'drizzle-zod';
 import { z } from 'zod';
 
-export const userRoleSchema = z.nativeEnum(UserRole);
-export const userPermissionSchema = z.nativeEnum(UserPermission);
+export const userRoleSchema = z.enum(UserRole);
+export const userPermissionSchema = z.enum(UserPermission);
 
 export const userAccountSchema = createSelectSchema(usersAccounts);
 

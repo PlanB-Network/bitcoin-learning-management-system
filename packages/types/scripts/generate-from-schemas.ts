@@ -2,8 +2,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import * as schemas from '@blms/schemas';
 import { SyntaxKind } from 'typescript';
-import type { ZodEnumDef, ZodTypeAny } from 'zod';
-import { type GetType, printNode, zodToTs } from 'zod-to-ts';
+import type { ZodObject } from 'zod';
+import { TsTypeNode } from './TsTypeNode.js';
+import { TsTypePrinter } from './TsTypePrinter.js';
 
 const schemasDirectory = '../schemas/src';
 const outputDirectory = './src/generated';
@@ -24,11 +25,19 @@ fs.mkdirSync(outputDirectory, { recursive: true });
 // Process a regular file: extract schemas based on our export patterns
 // (basically any time of exports of a variable ending with 'Schema')
 // and generate a new file in types with type definitions
-const processFile = (filePath: string, relativePath: string) => {
+const processFile = (
+  filePath: string,
+  relativePath: string,
+  onlyTypes: boolean,
+) => {
   const fileContent = fs.readFileSync(filePath, 'utf8');
 
   const exportedSchemas = extractSchemas(fileContent);
-  const newFileContent = generateFileContent(exportedSchemas, relativePath);
+  const newFileContent = generateFileContent(
+    exportedSchemas,
+    relativePath,
+    onlyTypes,
+  );
 
   // Write the result in `packages/types` while maintaining folder structure
   const outputFilePath = path.join(outputDirectory, relativePath);
@@ -37,13 +46,17 @@ const processFile = (filePath: string, relativePath: string) => {
 };
 
 // Recursive function to traverse directory structure
-const processDirectory = (directory: string, relativePath = '') => {
+const processDirectory = (
+  directory: string,
+  onlyTypes: boolean,
+  relativePath = '',
+) => {
   for (const file of fs.readdirSync(directory).reverse()) {
     const fullPath = path.join(directory, file);
     const relPath = path.join(relativePath, file);
     if (fs.statSync(fullPath).isDirectory()) {
       if (!ignorePaths.has(file)) {
-        processDirectory(fullPath, relPath);
+        processDirectory(fullPath, onlyTypes, relPath);
       }
     } else if (file === 'index.ts') {
       processIndexFile(fullPath, relPath);
@@ -52,7 +65,7 @@ const processDirectory = (directory: string, relativePath = '') => {
       !file.endsWith('.test.ts') &&
       !ignoreFiles.has(file)
     ) {
-      processFile(fullPath, relPath);
+      processFile(fullPath, relPath, onlyTypes);
     }
   }
 };
@@ -96,6 +109,7 @@ const processIndexFile = (sourcePath: string, relativePath: string) => {
 const extractSchemas = (fileContent: string): string[] => {
   const schemaNames = new Set<string>();
   const regexPatterns = [
+    /export\s+const\s+(\w+SchemaReexported)\s*=/g, // For direct exports
     /export\s+const\s+(\w+Schema)\s*=/g, // For direct exports
     /export\s+{\s*(\w+Schema)\s*}/g, // For named exports
     /export\s+{\s*\w+\s+as\s+(\w+Schema)\s*}/g, // For renamed exports
@@ -112,109 +126,132 @@ const extractSchemas = (fileContent: string): string[] => {
   return [...schemaNames];
 };
 
-// Map of enum values to their corresponding type name and import path
 const enumsMap = new Map<string, string>();
-
-let currentlyProcessedType = '';
-let currentlyProcessedFile = '';
-// String array of imports for the current file
-let currentImportSet: Set<string>;
-// List of constants variables to import from @blms/constants
+const typesMap = new Map<string, { typeName: string; filePath: string }>();
+let currentTypesInFile: Set<string>;
+let currentImportSet: Set<{ typeName: string; filePath: string }>;
 const nativeEnumImports = new Set<string>();
 let currentNativeEnumImports: Set<string>;
+const letSchemasAsIs = ['ProjectLocation', 'CourseInfo'];
 
 const generateFileContent = (
   schemaNames: string[],
   filePath: string, // Current file path (used to track imports)
+  onlyTypes: boolean,
 ): string => {
   let fileContent = '';
-  currentlyProcessedFile = filePath;
-  currentImportSet = new Set();
 
+  currentTypesInFile = new Set<string>();
+  currentImportSet = new Set();
   currentNativeEnumImports = new Set<string>();
 
-  for (const name of schemaNames) {
-    const schema = (schemas as any)[name] as ZodTypeAny & GetType;
+  if (onlyTypes) {
+    // Put all schemas in typesMap
+    for (const name of schemaNames) {
+      const schema = (schemas as any)[name] as ZodObject;
+      const typeName = typeNameFromSchema(name);
+      const zodType = schema.type as string;
 
-    const typeName = typeNameFromSchema(name);
-    currentlyProcessedType = typeName;
+      if (zodType === 'enum') {
+        continue;
+      }
 
-    const zodType = schema._def?.typeName;
+      const typeNode = TsTypeNode.fromZod(schema);
+      let output = TsTypePrinter.print(typeNode);
+      output = output.replace(/\s+/g, ' ');
 
-    // console.debug(`Processing schema "${typeName}" (${zodType})`);
-
-    // Register enum
-    if (zodType === 'ZodEnum') {
-      throw new Error('Please use native enums instead of ZodEnum');
+      typesMap.set(output.replace(/\n/g, '\n '), {
+        typeName: typeName,
+        filePath: filePath,
+      });
     }
 
-    if (zodType === 'ZodNativeEnum') {
-      const enumValue = (schema._def as ZodEnumDef).values;
-      // console.debug(`Processing native enum "${typeName}"`, enumValue);
-      const values = Object.values(enumValue);
-      enumsMap.set(values.map((v) => `"${v}"`).join(' | '), typeName);
+    // Replace all schemas objects (recursively)
+    for (const [mainValue, mainType] of typesMap) {
+      let updatedValue = mainValue;
+      for (const [value, type] of typesMap) {
+        if (updatedValue.includes(value) && mainType !== type) {
+          updatedValue = updatedValue.replaceAll(value, type.typeName);
+        }
+      }
+      if (updatedValue !== mainValue) {
+        typesMap.delete(mainValue);
+        typesMap.set(updatedValue, mainType);
+      }
+    }
+  }
+
+  if (onlyTypes) {
+    return '';
+  }
+
+  for (const name of schemaNames) {
+    const schema = (schemas as any)[name] as ZodObject;
+    const typeName = typeNameFromSchema(name);
+    currentTypesInFile.add(typeName);
+
+    const zodType = schema.type as string;
+
+    console.debug(`Processing schema "${typeName}" (${zodType})`);
+    // console.log('Zod type:', zodType);
+
+    // Add enums from the current file to Array
+    if (zodType === 'enum') {
+      const values = Object.values(schema.def);
+
+      const enumKeyArray = Object.keys(values.at(1));
+      enumsMap.set(enumKeyArray.map((v) => `"${v}"`).join(' | '), typeName);
+      const enumValueArray = Object.values(values.at(1));
+      enumsMap.set(enumValueArray.map((v) => `"${v}"`).join(' | '), typeName);
+
       currentNativeEnumImports.add(typeName);
       nativeEnumImports.add(typeName);
     }
 
-    const { node } = zodToTs(schema);
+    const currentlyProcessedFile = '';
+    const typeNode = TsTypeNode.fromZod(schema);
 
-    // Append a custom getType function to the schema once it have been processed
-    schema._def.getType = (ts: any) => {
-      // Do not return self-references (otherwise you end up with export A = A)
-      if (currentlyProcessedType === typeName) {
-        // console.debug(`Skipping self-reference for type "${typeName}"`);
-        return null;
-      }
+    let output = TsTypePrinter.print(typeNode);
+    output = output.replace(/\s+/g, ' ');
 
-      // console.debug(`Get type "${currentlyProcessedType}" -> "${typeName}"`);
+    // REPLACE TYPES (must do before enums)
+    if (!letSchemasAsIs.includes(typeName)) {
+      for (const [values, type] of typesMap) {
+        if (output.includes(values) && type.typeName !== typeName) {
+          output = output.replaceAll(values, type.typeName);
 
-      if (filePath !== currentlyProcessedFile) {
-        // console.debug(
-        //   `Type "${typeName}" not found in ${currentlyProcessedFile} and will be imported from ${filePath}`,
-        // );
-
-        // Native enums are handled via currentNativeEnumImports to keep a single import statement.
-        if (nativeEnumImports.has(typeName)) {
-          // nothing – import handled globally for the file
-        }
-
-        // Import from an other type file
-        else {
-          // TODO: This is a bit hacky, but it works for now
-          const importName = `${/.*\/(.+)\.ts$/.exec(filePath)?.[1]}.js`;
-          currentImportSet.add(
-            `import { ${typeName} } from './${importName}';\n`,
-          );
+          if (
+            type.typeName !== typeName &&
+            !currentTypesInFile.has(type.typeName)
+          ) {
+            if (type.filePath !== currentlyProcessedFile) {
+              if (!nativeEnumImports.has(typeName)) {
+                currentImportSet.add(type);
+              }
+            }
+          }
         }
       }
+    }
 
-      console.log('createIdentifier for', typeName, 'in file', filePath);
-      return ts.factory.createIdentifier(typeName);
-    };
-
-    let output = printNode(node);
-
-    // Look for enum values in the output and replace them with the corresponding type name
-    // Tip: search ('.+' \| )+'.+' to find all enum values left in the output
+    // REPLACE ENUMS
+    //   Look for enum values in the output and replace them with the corresponding type name
+    //   Tip: search ('.+' \| )+'.+' to find all enum values left in the output
     for (const [values, type] of enumsMap) {
       if (output.includes(values)) {
-        // console.debug('Replacing', values, 'with', type);
         output = output.replace(values, type);
       }
     }
 
-    switch (node.kind) {
-      case SyntaxKind.TypeLiteral:
+    switch (typeNode.kind) {
+      case SyntaxKind.TypeLiteral || SyntaxKind.UnknownKeyword:
         fileContent += `export interface ${typeName} ${output};\n\n`;
         break;
+      case SyntaxKind.UnionType:
+        break;
       default: {
-        if (zodType === 'ZodNativeEnum') {
-          break;
-        }
-
-        const kind = findKindName(node.kind) ?? 'Unknown';
-        fileContent += `// Default export for ${typeName} (${node.kind}:${kind}|${zodType})\n`;
+        const kind = findKindName(typeNode.kind) ?? 'Unknown';
+        fileContent += `// Default export for ${typeName} (${typeNode.kind}:${kind}|${zodType})\n`;
         fileContent += `export type ${typeName} = ${output};\n\n`;
       }
     }
@@ -227,19 +264,29 @@ const generateFileContent = (
     }
   }
 
+  const importStatements = Array.from(currentImportSet)
+    .filter((type) => fileContent.includes(type.typeName)) // Filter out unused types
+    .map((type) => {
+      const importName = `${/.*\/(.+)\.ts$/.exec(type.filePath)?.[1]}.js`;
+      return `import { ${type.typeName} } from './${importName}';\n`;
+    })
+    .join('');
+
   return [
     generatedHeader,
     currentNativeEnumImports.size
-      ? `import { ${Array.from(currentNativeEnumImports).join(', ')} } from '@blms/constants';`
+      ? `import type { ${Array.from(currentNativeEnumImports).join(', ')} } from '@blms/constants';`
       : '',
-    Array.from(currentImportSet).join(''),
+    importStatements,
     fileContent,
   ].join('\n');
 };
 
 // Convert a schema name to a type name (capitalized and without the 'Schema' suffix)
 const typeNameFromSchema = (schemaName: string): string => {
-  const nameWithoutSchema = schemaName.replace(/Schema$/, '');
+  const nameWithoutSchema = schemaName
+    .replace(/SchemaReexported$/, '')
+    .replace(/Schema$/, '');
   return nameWithoutSchema.charAt(0).toUpperCase() + nameWithoutSchema.slice(1);
 };
 
@@ -247,5 +294,5 @@ const findKindName = (kind: SyntaxKind) => {
   return Object.entries(SyntaxKind).find(([, v]) => v === kind)?.[0];
 };
 
-processDirectory(schemasDirectory);
-processDirectory(schemasDirectory); // Do it twice to handle imports correctly
+processDirectory(schemasDirectory, true);
+processDirectory(schemasDirectory, false);

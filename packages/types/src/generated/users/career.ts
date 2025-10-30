@@ -87,14 +87,8 @@ export interface JoinedCareerProfile {
   telegram: string | null;
   uid: string;
   companySizes: CareerCompanySize[];
-  languages: {
-    languageCode: string;
-    level: CareerLanguageLevel;
-  }[];
-  roles: {
-    level: CareerRoleLevel;
-    roleId: string;
-  }[];
+  languages: { languageCode: string; level: CareerLanguageLevel }[];
+  roles: { level: CareerRoleLevel; roleId: string }[];
   courses?:
     | {
         courseId: string;

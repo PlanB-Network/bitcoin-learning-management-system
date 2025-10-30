@@ -35,7 +35,7 @@
     "tailwindcss-animate": "^1.0.7",
     "vite-plugin-svgr": "^4.5.0",
     "vite-tsconfig-paths": "^5.1.4",
-    "zod": "~3.25.76"
+    "zod": "~4.1.12"
   },
   "devDependencies": {
     "@blms/api": "workspace:*",

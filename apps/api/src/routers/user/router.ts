@@ -156,7 +156,7 @@ export const userRouter = createTRPCRouter({
   changePermission: superadminProcedure
     .input(
       z.object({
-        permissions: z.nativeEnum(UserPermission).array(),
+        permissions: z.enum(UserPermission).array(),
         uid: z.string(),
       }),
     )
@@ -172,7 +172,7 @@ export const userRouter = createTRPCRouter({
     .input(
       z.object({
         professorId: z.string().nullable(),
-        role: z.nativeEnum(UserRole).optional(),
+        role: z.enum(UserRole).optional(),
         uid: z.string(),
       }),
     )
@@ -246,7 +246,7 @@ export const userRouter = createTRPCRouter({
         limit: z.number(),
         name: z.string(),
         orderDirection: z
-          .nativeEnum(SortDirection)
+          .enum(SortDirection)
           .optional()
           .default(SortDirection.Asc),
         orderField: z
@@ -292,7 +292,7 @@ export const userRouter = createTRPCRouter({
       z.object({
         couponCode: z.string().optional(),
         dollarPrice: z.number(),
-        item: z.nativeEnum(GeneralPaymentItem),
+        item: z.enum(GeneralPaymentItem),
         method: z.string(),
         satsPrice: z.number(),
       }),
