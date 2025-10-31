@@ -16,8 +16,7 @@
   },
   "devDependencies": {
     "@blms/types": "workspace:*",
-    "@types/js-yaml": "^4.0.9",
-    "@types/uuid": "^10.0.0"
+    "@types/js-yaml": "^4.0.9"
   },
   "exports": {
     "development": "./src/index.ts",

@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "openpgp": "6.2.0",
+    "openpgp": "6.2.2",
     "opentimestamps": "0.4.9"
   },
   "devDependencies": {
