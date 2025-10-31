@@ -22,7 +22,7 @@
     "formidable": "^3.5.4",
     "jszip": "^3.10.1",
     "sharp": "^0.34.4",
-    "stripe": "^18.5.0",
+    "stripe": "^19.2.0",
     "superjson": "^2.2.5",
     "typesense": "~2.1.0",
     "zod": "~4.1.12"
