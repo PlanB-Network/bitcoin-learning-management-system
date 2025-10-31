@@ -30,6 +30,7 @@ export async function pdfThumbnail(pdf: Readonly<Buffer>): Promise<Buffer> {
 
   const renderTask = page.render({
     canvasContext: canvasAndContext.context,
+    canvas: canvasAndContext.canvas,
     viewport,
   });
 
