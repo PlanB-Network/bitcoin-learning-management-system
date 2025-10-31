@@ -474,7 +474,7 @@ importers:
         specifier: ^0.7.1
         version: 0.7.1
       cropperjs:
-        specifier: ^1.6.2
+        specifier: 1.6.2
         version: 1.6.2
       d3:
         specifier: ^7.9.0

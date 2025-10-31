@@ -183,7 +183,7 @@
         "@trpc/tanstack-react-query": "^11.7.1",
         "b4a": "^1.7.3",
         "class-variance-authority": "^0.7.1",
-        "cropperjs": "^1.6.2",
+        "cropperjs": "1.6.2",
         "d3": "^7.9.0",
         "date-fns": "^4.1.0",
         "date-fns-tz": "^3.2.0",
