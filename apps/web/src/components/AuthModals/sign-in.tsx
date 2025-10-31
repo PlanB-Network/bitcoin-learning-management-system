@@ -86,7 +86,6 @@ export const SignIn = ({ isOpen, onClose, goTo, redirectTo }: SignInProps) => {
         trigger={<button type="button" className="hidden" />}
         open={isOpen}
         onOpenChange={onClose}
-        contentClassName="!max-w-xs md:!max-w-96"
       >
         <div className="flex flex-col gap-8">
           <p className="font-medium text-xl">{t('auth.loginNotAvailable1')}</p>
@@ -109,7 +108,6 @@ export const SignIn = ({ isOpen, onClose, goTo, redirectTo }: SignInProps) => {
       title={t('menu.login')}
       open={isOpen}
       onOpenChange={onClose}
-      contentClassName="!max-w-xs md:!max-w-fit"
     >
       <Form {...methods}>
         <form

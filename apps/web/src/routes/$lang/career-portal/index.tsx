@@ -1308,7 +1308,6 @@ const DeleteProfileDialog = ({ onConfirm }: { onConfirm: () => void }) => {
       }
       title={t('dashboard.careerPortal.deleteCareerProfileTitle')}
       content={<p>{t('dashboard.careerPortal.cannotUndo')}</p>}
-      showLogo={true}
     >
       <div className="!flex gap-4 md:!gap-7">
         <DialogClose asChild>

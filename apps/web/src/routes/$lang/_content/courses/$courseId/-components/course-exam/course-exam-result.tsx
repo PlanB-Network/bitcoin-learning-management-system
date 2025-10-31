@@ -222,64 +222,61 @@ export const TimeStampDialog = ({
   onHoverAddColor?: boolean;
 }) => {
   return (
-    <>
-      <BasicModal
-        trigger={
-          <button
-            type="button"
-            className={cn(
-              'group relative justify-center text-nowrap',
-              onHoverAddColor
-                ? 'text-newBlack-1 hover:text-darkOrange-5 hover:underline hover:decoration-darkOrange-5 font-medium'
-                : 'text-darkOrange-5 underline decoration-darkOrange-5 max-md:font-medium',
-            )}
-          >
-            {triggerText ?? t('courses.exam.timeStamped')}
-            <img
-              src={QuestionBelow}
-              alt="Question"
-              className="absolute left-1/2 -translate-x-1/2 -bottom-19 size-20 hidden md:group-hover:block"
-            />
-          </button>
-        }
-        title={t('courses.exam.whyTimeStamp')}
-        content={
-          <div className="!flex !flex-col !gap-10 !items-center">
-            <img
-              src={TimeStamp}
-              alt="Time stamp"
-              className="shrink-0 max-md:w-[90px]"
-            />
-            <p className="body-medium-16px md:subtitle-large-med-20px text-newBlack-1 text-center max-w-[541px] md:px-5">
-              {t('courses.exam.planBTimeStamp')}
-            </p>
-            <div className="flex flex-col gap-5 w-full text-newBlack-1">
-              <div className="flex flex-col">
-                <span className="title-small-med-16px">
-                  {t('courses.exam.timeStampHow')}
-                </span>
-                <p className="subtitle-medium-16px">
-                  {t('courses.exam.timeStampHowDescription')}
-                </p>
-              </div>
+    <BasicModal
+      trigger={
+        <button
+          type="button"
+          className={cn(
+            'group relative justify-center text-nowrap',
+            onHoverAddColor
+              ? 'text-newBlack-1 hover:text-darkOrange-5 hover:underline hover:decoration-darkOrange-5 font-medium'
+              : 'text-darkOrange-5 underline decoration-darkOrange-5 max-md:font-medium',
+          )}
+        >
+          {triggerText ?? t('courses.exam.timeStamped')}
+          <img
+            src={QuestionBelow}
+            alt="Question"
+            className="absolute left-1/2 -translate-x-1/2 -bottom-19 size-20 hidden md:group-hover:block"
+          />
+        </button>
+      }
+      title={t('courses.exam.whyTimeStamp')}
+      content={
+        <div className="!flex !flex-col !gap-10 !items-center">
+          <img
+            src={TimeStamp}
+            alt="Time stamp"
+            className="shrink-0 max-md:w-[90px]"
+          />
+          <p className="body-medium-16px md:subtitle-large-med-20px text-newBlack-1 text-center max-w-[541px] md:px-5">
+            {t('courses.exam.planBTimeStamp')}
+          </p>
+          <div className="flex flex-col gap-5 w-full text-newBlack-1">
+            <div className="flex flex-col">
+              <span className="title-small-med-16px">
+                {t('courses.exam.timeStampHow')}
+              </span>
+              <p className="subtitle-medium-16px">
+                {t('courses.exam.timeStampHowDescription')}
+              </p>
+            </div>
 
-              <div className="flex flex-col">
-                <span className="title-small-med-16px">
-                  {t('courses.exam.timeStampBenefits')}
-                </span>
-                <ul className="subtitle-medium-16px flex flex-col list-disc list-outside pl-6">
-                  <li>{t('courses.exam.instantVerification')}</li>
-                  <li>{t('courses.exam.tamperProof')}</li>
-                  <li>{t('courses.exam.globallyRecognized')}</li>
-                  <li>{t('courses.exam.futureProof')}</li>
-                </ul>
-              </div>
+            <div className="flex flex-col">
+              <span className="title-small-med-16px">
+                {t('courses.exam.timeStampBenefits')}
+              </span>
+              <ul className="subtitle-medium-16px flex flex-col list-disc list-outside pl-6">
+                <li>{t('courses.exam.instantVerification')}</li>
+                <li>{t('courses.exam.tamperProof')}</li>
+                <li>{t('courses.exam.globallyRecognized')}</li>
+                <li>{t('courses.exam.futureProof')}</li>
+              </ul>
             </div>
           </div>
-        }
-        showLogo={true}
-      />
-    </>
+        </div>
+      }
+    />
   );
 };
 

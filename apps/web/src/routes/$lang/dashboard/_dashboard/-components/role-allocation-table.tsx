@@ -973,7 +973,6 @@ const RemoveTeacherDialog = ({ onConfirm }: { onConfirm: () => void }) => {
         />
       }
       title={t('dashboard.adminPanel.removeTeacherDescription')}
-      showLogo
     >
       <div className="!flex gap-4 md:!gap-5">
         <DialogClose asChild>

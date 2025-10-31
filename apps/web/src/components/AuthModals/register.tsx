@@ -118,7 +118,6 @@ export const Register = ({
       }
       open={isOpen}
       onOpenChange={onClose}
-      contentClassName="!max-w-xs md:!max-w-fit"
     >
       {register.data && !register.error ? (
         <div className="flex flex-col items-center">

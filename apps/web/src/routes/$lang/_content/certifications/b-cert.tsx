@@ -109,7 +109,6 @@ const OrganizeDialog = () => {
           </Trans>
         </p>
       }
-      showLogo={true}
     >
       <div className="!flex max-md:flex-col gap-3 w-full">
         <Button variant="secondary" size="xl" asChild>

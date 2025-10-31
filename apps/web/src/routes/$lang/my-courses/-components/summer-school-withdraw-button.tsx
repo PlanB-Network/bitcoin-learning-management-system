@@ -33,7 +33,6 @@ export const SummerSchoolWithdrawButton = ({ onConfirm }: ModalProps) => {
           </p>
         </div>
       }
-      showLogo={true}
     >
       <div className="!flex gap-4 md:!gap-7">
         <DialogClose asChild>

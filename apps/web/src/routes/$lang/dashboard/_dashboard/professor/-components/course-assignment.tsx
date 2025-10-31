@@ -539,8 +539,6 @@ const ConfirmGradingSubmissionDialog = ({
         </p>
       }
       iconSrc={InformationIcon}
-      showLogo
-      contentClassName="w-[95%] max-md:max-w-100 md:w-[530px]"
     >
       <div className="!flex max-md:flex-wrap justify-center items-center gap-2.5 md:!gap-7">
         <DialogClose asChild>

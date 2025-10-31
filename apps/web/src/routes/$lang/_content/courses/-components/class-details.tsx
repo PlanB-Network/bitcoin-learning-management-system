@@ -246,7 +246,6 @@ const CancelBookingDialog = ({ onConfirm }: { onConfirm: () => void }) => {
         </Button>
       }
       title={t('dashboard.booking.cancelBookingTitle')}
-      showLogo={true}
     >
       <div className="!flex gap-4 md:!gap-7">
         <DialogClose asChild>

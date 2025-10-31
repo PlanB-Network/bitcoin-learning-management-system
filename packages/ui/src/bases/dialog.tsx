@@ -1,8 +1,8 @@
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import * as React from 'react';
 import { IoMdClose } from 'react-icons/io';
-import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black.svg';
-
+import { TbX } from 'react-icons/tb';
+import CroppedPill from '#src/assets/icons/cropped_pill.png';
 import { cn } from '#src/lib/utils.ts';
 
 interface DialogTitleProps
@@ -14,12 +14,9 @@ interface BasicModalProps {
   trigger?: React.ReactNode;
   title?: string;
   content?: React.ReactNode;
-  showLogo?: boolean;
   iconSrc?: string;
   iconAlt?: string;
   children?: React.ReactNode;
-  showCloseButton?: boolean;
-  titleVariant?: 'orange' | 'black';
   contentClassName?: string;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
@@ -37,7 +34,7 @@ const DialogOverlay = React.forwardRef<
   <DialogPrimitive.Overlay
     ref={ref}
     className={cn(
-      'fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
+      'fixed inset-0 z-50 bg-black/60 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
       className,
     )}
     {...props}
@@ -60,7 +57,7 @@ const DialogContent = React.forwardRef<
       <DialogPrimitive.Content
         ref={ref}
         className={cn(
-          'flex flex-col my-2 max-h-[95%] max-w-[90%] overflow-scroll no-scrollbar fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 gap-4 border bg-white py-5 px-4 md:p-6 rounded-[1.5em]',
+          'flex flex-col my-2 max-h-[95%] max-w-[90%] overflow-scroll no-scrollbar fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-[0px_2px_60px_-15px_rgba(0,0,0,0.50)]',
           className,
         )}
         {...props}
@@ -97,8 +94,8 @@ DialogFooter.displayName = 'DialogFooter';
 const DialogTitle = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Title>,
   DialogTitleProps
->(({ className, variant = 'orange', ...props }, ref) => {
-  const baseClass = 'text-center subtitle-large-18px md:title-large-24px';
+>(({ className, variant = 'black', ...props }, ref) => {
+  const baseClass = 'text-center';
   const variantStyles = {
     black: 'text-black',
     orange: 'text-darkOrange-5',
@@ -131,12 +128,9 @@ const BasicModal = ({
   trigger,
   title,
   content,
-  showLogo = false,
   iconSrc,
   iconAlt = 'Icon',
   children,
-  showCloseButton = true,
-  titleVariant = 'orange',
   contentClassName,
   open,
   onOpenChange,
@@ -145,36 +139,31 @@ const BasicModal = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent
-        className={cn(
-          'gap-6 md:gap-15 w-full max-w-[90%] sm:max-w-[544px]',
-          contentClassName,
-        )}
-        showCloseButton={showCloseButton}
+        className={cn('w-full max-w-[90%] sm:max-w-[496px]', contentClassName)}
+        showCloseButton={false}
       >
-        {showLogo && (
+        <div className="w-full flex justify-between items-center bg-neutral-50 border-b border-b-neutral-100">
           <img
-            src={PlanBLogoBlack}
-            alt="Logo"
-            className="w-[186px] md:w-[266px] mx-auto pt-6 md:pt-3"
+            src={CroppedPill}
+            alt="Cropped Pill"
+            className="w-[38px] self-end mx-6"
           />
-        )}
-
-        <div className="flex flex-col items-center text-center gap-5 md:gap-8 py-5">
-          <DialogTitle
-            variant={titleVariant}
-            className="whitespace-pre-line md:max-w-[422px]"
-          >
+          <DialogTitle className="whitespace-pre-line subtitle-base px-4 py-3">
             {title}
           </DialogTitle>
+          <DialogPrimitive.Close>
+            <TbX size={24} className="shrink-0 mx-6 text-neutral-400" />
+            <span className="sr-only">Close</span>
+          </DialogPrimitive.Close>
+        </div>
 
+        <div className="flex flex-col items-center text-center gap-5 md:gap-8 p-6">
           {iconSrc && (
             <img src={iconSrc} alt={iconAlt} className="size-10 md:size-15" />
           )}
 
           <DialogDescription
-            className={cn(
-              content ? 'whitespace-pre-line md:max-w-[422px]' : 'hidden',
-            )}
+            className={cn(content ? 'whitespace-pre-line w-full' : 'hidden')}
             asChild
           >
             {content ? content : <span>{title}</span>}

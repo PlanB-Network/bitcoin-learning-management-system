@@ -304,8 +304,6 @@ export const ExamSession = ({
             </ButtonWithArrow>
           }
           title={t('courses.exam.sureSubmit')}
-          titleVariant="black"
-          showLogo={false}
         >
           <div className="!flex flex-wrap !gap-4 max-md:mb-5">
             <DialogClose asChild>
@@ -337,7 +335,6 @@ export const ExamSession = ({
         iconSrc={SandClockEmpty}
         open={isTimeLeftAlertOpen}
         onOpenChange={setIsTimeLeftAlertOpen}
-        contentClassName="!w-full md:!max-w-[530px]"
       />
     </section>
   );

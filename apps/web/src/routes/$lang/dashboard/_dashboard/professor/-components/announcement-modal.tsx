@@ -204,7 +204,6 @@ export const AnnouncementModal = ({
           ? t('dashboard.teacher.courses.announcementModal.editAnnouncement')
           : t('dashboard.teacher.courses.announcementModal.title')
       }
-      contentClassName="w-[95%] max-md:max-w-100 md:w-[530px]"
       open={isOpen}
       onOpenChange={() => closeModal()}
     >

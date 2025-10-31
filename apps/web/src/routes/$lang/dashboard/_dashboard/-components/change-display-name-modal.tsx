@@ -61,51 +61,43 @@ export const ChangeDisplayNameModal = ({
   };
 
   return (
-    <>
-      <BasicModal
-        trigger={<button type="button" className="hidden" />}
-        title={t('settings.changeDisplayName')}
-        open={isOpen}
-        onOpenChange={onClose}
-        contentClassName="!max-w-xs md:!max-w-fit"
-      >
-        <Form {...form}>
-          <form
-            className="flex w-full flex-col items-center"
-            onSubmit={form.handleSubmit(onSubmit)}
-          >
-            <FormField
-              control={form.control}
-              name="displayName"
-              render={({ field, fieldState }) => (
-                <FormItem className="space-y-2 flex flex-col justify-between text-center">
-                  <div className="my-2 w-full md:w-80">
-                    <FormLabel className="text-sm font-normal !max-md:leading-[120%] !md:desktop-h7 !text-dashboardSectionText">
-                      {t('auth.displayName')}
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        type="text"
-                        {...field}
-                        error={fieldState.error?.message || null}
-                      />
-                    </FormControl>
-                  </div>
-                </FormItem>
-              )}
-            />
+    <BasicModal
+      trigger={<button type="button" className="hidden" />}
+      title={t('settings.changeDisplayName')}
+      open={isOpen}
+      onOpenChange={onClose}
+    >
+      <Form {...form}>
+        <form
+          className="flex w-full flex-col items-center"
+          onSubmit={form.handleSubmit(onSubmit)}
+        >
+          <FormField
+            control={form.control}
+            name="displayName"
+            render={({ field, fieldState }) => (
+              <FormItem className="space-y-2 flex flex-col justify-between text-center">
+                <div className="my-2 w-full md:w-80">
+                  <FormLabel className="text-sm font-normal !max-md:leading-[120%] !md:desktop-h7 !text-dashboardSectionText">
+                    {t('auth.displayName')}
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      type="text"
+                      {...field}
+                      error={fieldState.error?.message || null}
+                    />
+                  </FormControl>
+                </div>
+              </FormItem>
+            )}
+          />
 
-            <Button
-              type="submit"
-              variant="primary"
-              mode="light"
-              className="mt-6"
-            >
-              {t('words.update')}
-            </Button>
-          </form>
-        </Form>
-      </BasicModal>
-    </>
+          <Button type="submit" variant="primary" mode="light" className="mt-6">
+            {t('words.update')}
+          </Button>
+        </form>
+      </Form>
+    </BasicModal>
   );
 };

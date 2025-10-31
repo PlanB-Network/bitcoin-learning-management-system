@@ -90,7 +90,6 @@ export const ChangePasswordModal = ({
       title={t('settings.changePassword')}
       open={isOpen}
       onOpenChange={onClose}
-      contentClassName="!max-w-xs md:!max-w-fit"
     >
       <Form {...methods}>
         <form

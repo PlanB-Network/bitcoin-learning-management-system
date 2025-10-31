@@ -73,7 +73,6 @@ export const Confirmation: Story = {
           All your career data will be permanently removed.
         </p>
       }
-      showLogo={true}
     >
       <div className="!flex gap-4 md:!gap-7">
         <DialogClose asChild>
