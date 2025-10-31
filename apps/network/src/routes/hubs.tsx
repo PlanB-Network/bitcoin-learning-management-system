@@ -39,7 +39,7 @@ function RouteComponent() {
         }
         subtitle={t('hubs.subtitle')}
         imageUrl={isMobile ? headerSmallImage : headerImage}
-        titleClassName="max-w-[65%]"
+        titleClassName={'max-w-[700px]'}
         subtitleClassName={'max-w-[85%] lg:max-w-[450px]'}
       />
       <PageBlock className="bg-gradient-network-lr-dark mt-8 p-10 rounded-[60px]">
