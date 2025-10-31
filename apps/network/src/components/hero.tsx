@@ -46,7 +46,7 @@ export const Hero = ({
         <Image
           src={imageUrl}
           alt="Hero background"
-          className="lg:h-full lg:w-full object-cover"
+          className="lg:h-full w-full object-cover"
           breakpoints={{ default: 700, md: 1500 }}
         />
       </div>
