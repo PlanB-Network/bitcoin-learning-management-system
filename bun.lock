@@ -46,7 +46,7 @@
         "sharp": "^0.34.4",
         "stripe": "^18.5.0",
         "superjson": "^2.2.5",
-        "typesense": "~2.0.3",
+        "typesense": "~2.1.0",
         "zod": "~4.1.12",
       },
       "devDependencies": {
@@ -318,7 +318,7 @@
       "name": "@blms/service-common",
       "version": "0.0.1",
       "dependencies": {
-        "pdfjs-dist": "~5.3.93",
+        "pdfjs-dist": "~5.4.296",
       },
       "devDependencies": {
         "@blms/types": "workspace:*",
@@ -338,7 +338,7 @@
         "js-yaml": "^4.1.0",
         "marked": "^16.4.1",
         "remove-markdown": "^0.6.2",
-        "typesense": "~2.0.3",
+        "typesense": "~2.1.0",
         "uuid": "^13.0.0",
         "zod": "~4.1.12",
       },
@@ -400,7 +400,7 @@
         "@blms/schemas": "workspace:*",
         "@types/express-session": "^1.18.2",
         "typescript": "~5.9.3",
-        "typesense": "~2.0.3",
+        "typesense": "~2.1.0",
         "zod": "~4.1.12",
       },
     },
@@ -2611,7 +2611,7 @@
 
     "pdf-lib": ["pdf-lib@1.17.1", "", { "dependencies": { "@pdf-lib/standard-fonts": "^1.0.0", "@pdf-lib/upng": "^1.0.1", "pako": "^1.0.11", "tslib": "^1.11.1" } }, "sha512-V/mpyJAoTsN4cnP31vc0wfNA1+p20evqqnap0KLoRUN0Yk/p3wN52DOEsL4oBFcLdb76hlpKPtzJIgo67j/XLw=="],
 
-    "pdfjs-dist": ["pdfjs-dist@5.3.93", "", { "optionalDependencies": { "@napi-rs/canvas": "^0.1.71" } }, "sha512-w3fQKVL1oGn8FRyx5JUG5tnbblggDqyx2XzA5brsJ5hSuS+I0NdnJANhmeWKLjotdbPQucLBug5t0MeWr0AAdg=="],
+    "pdfjs-dist": ["pdfjs-dist@5.4.296", "", { "optionalDependencies": { "@napi-rs/canvas": "^0.1.80" } }, "sha512-DlOzet0HO7OEnmUmB6wWGJrrdvbyJKftI1bhMitK7O2N8W2gc757yyYBbINy9IDafXAV9wmKr9t7xsTaNKRG5Q=="],
 
     "pear-ipc": ["pear-ipc@6.6.1", "", { "dependencies": { "bare-fs": "^4.0.1", "bare-os": "^3.2.0", "bare-path": "^3.0.0", "bare-pipe": "^4.0.5", "framed-stream": "^1.0.1", "fs-native-extensions": "^1.2.7", "ready-resource": "^1.0.3", "streamx": "^2.16.1", "tiny-buffer-rpc": "^2.2.0", "which-runtime": "^1.2.0" } }, "sha512-AckFrfVrjBtt/teAxawPITQ0N55RHVLRkecwb8Chpp7cGtmCszaDifm+eOx/mxibcoyGqz3+42ZOTp4qL3nkcQ=="],
 
@@ -3117,7 +3117,7 @@
 
     "typescript": ["typescript@5.9.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw=="],
 
-    "typesense": ["typesense@2.0.3", "", { "dependencies": { "axios": "^1.7.2", "loglevel": "^1.8.1", "tslib": "^2.6.2" }, "peerDependencies": { "@babel/runtime": "^7.23.2" } }, "sha512-fRJjFdDNZn6qF9XzIk+bB8n8cm0fiAx1SGcpLDfNcsGtp8znITfG+SO+l/qk63GCRXZwJGq7wrMDLFUvblJSHA=="],
+    "typesense": ["typesense@2.1.0", "", { "dependencies": { "axios": "^1.8.4", "loglevel": "^1.8.1", "tslib": "^2.6.2" }, "peerDependencies": { "@babel/runtime": "^7.23.2" } }, "sha512-a/IRTL+dRXlpRDU4UodyGj8hl5xBz3nKihVRd/KfSFAfFPGcpdX6lxIgwdXy3O6VLNNiEsN8YwIsPHQPVT0vNw=="],
 
     "ua-parser-js": ["ua-parser-js@1.0.41", "", { "bin": { "ua-parser-js": "script/cli.js" } }, "sha512-LbBDqdIC5s8iROCUjMbW1f5dJQTEFB1+KO9ogbvlb3nm9n4YHa5p4KTvFPWvh2Hs8gZMBuiB1/8+pdfe/tDPug=="],
 

@@ -120,8 +120,8 @@ importers:
         specifier: ^2.2.5
         version: 2.2.5
       typesense:
-        specifier: ~2.0.3
-        version: 2.0.3(@babel/runtime@7.28.4)
+        specifier: ~2.1.0
+        version: 2.1.0(@babel/runtime@7.28.4)
       zod:
         specifier: ~4.1.12
         version: 4.1.12
@@ -733,8 +733,8 @@ importers:
   packages/service-common:
     dependencies:
       pdfjs-dist:
-        specifier: ~5.3.93
-        version: 5.3.93
+        specifier: ~5.4.296
+        version: 5.4.296
     devDependencies:
       '@blms/types':
         specifier: workspace:*
@@ -773,8 +773,8 @@ importers:
         specifier: ^0.6.2
         version: 0.6.2
       typesense:
-        specifier: ~2.0.3
-        version: 2.0.3(@babel/runtime@7.28.4)
+        specifier: ~2.1.0
+        version: 2.1.0(@babel/runtime@7.28.4)
       uuid:
         specifier: ^13.0.0
         version: 13.0.0
@@ -879,8 +879,8 @@ importers:
         specifier: ~5.9.3
         version: 5.9.3
       typesense:
-        specifier: ~2.0.3
-        version: 2.0.3(@babel/runtime@7.28.4)
+        specifier: ~2.1.0
+        version: 2.1.0(@babel/runtime@7.28.4)
       zod:
         specifier: ~4.1.12
         version: 4.1.12
@@ -6181,8 +6181,8 @@ packages:
   pdf-lib@1.17.1:
     resolution: {integrity: sha512-V/mpyJAoTsN4cnP31vc0wfNA1+p20evqqnap0KLoRUN0Yk/p3wN52DOEsL4oBFcLdb76hlpKPtzJIgo67j/XLw==}
 
-  pdfjs-dist@5.3.93:
-    resolution: {integrity: sha512-w3fQKVL1oGn8FRyx5JUG5tnbblggDqyx2XzA5brsJ5hSuS+I0NdnJANhmeWKLjotdbPQucLBug5t0MeWr0AAdg==}
+  pdfjs-dist@5.4.296:
+    resolution: {integrity: sha512-DlOzet0HO7OEnmUmB6wWGJrrdvbyJKftI1bhMitK7O2N8W2gc757yyYBbINy9IDafXAV9wmKr9t7xsTaNKRG5Q==}
     engines: {node: '>=20.16.0 || >=22.3.0'}
 
   pear-ipc@6.7.0:
@@ -7329,8 +7329,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  typesense@2.0.3:
-    resolution: {integrity: sha512-fRJjFdDNZn6qF9XzIk+bB8n8cm0fiAx1SGcpLDfNcsGtp8znITfG+SO+l/qk63GCRXZwJGq7wrMDLFUvblJSHA==}
+  typesense@2.1.0:
+    resolution: {integrity: sha512-a/IRTL+dRXlpRDU4UodyGj8hl5xBz3nKihVRd/KfSFAfFPGcpdX6lxIgwdXy3O6VLNNiEsN8YwIsPHQPVT0vNw==}
     engines: {node: '>=18'}
     peerDependencies:
       '@babel/runtime': ^7.23.2
@@ -13633,7 +13633,7 @@ snapshots:
       pako: 1.0.11
       tslib: 1.14.1
 
-  pdfjs-dist@5.3.93:
+  pdfjs-dist@5.4.296:
     optionalDependencies:
       '@napi-rs/canvas': 0.1.81
 
@@ -14983,7 +14983,7 @@ snapshots:
 
   typescript@5.9.3: {}
 
-  typesense@2.0.3(@babel/runtime@7.28.4):
+  typesense@2.1.0(@babel/runtime@7.28.4):
     dependencies:
       '@babel/runtime': 7.28.4
       axios: 1.13.1

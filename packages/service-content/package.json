@@ -10,7 +10,7 @@
     "js-yaml": "^4.1.0",
     "marked": "^16.4.1",
     "remove-markdown": "^0.6.2",
-    "typesense": "~2.0.3",
+    "typesense": "~2.1.0",
     "uuid": "^13.0.0",
     "zod": "~4.1.12"
   },
