@@ -204,7 +204,7 @@ const RatingCourseCard = ({
         {course.averageRating.toFixed(1)}
       </span>
       {reviews && (
-        <span className="text-yellow-500 text-sm font-medium leading-none tracking-[-0.15px]">
+        <span className="text-yellow-500 text-sm font-normal leading-none tracking-[-0.15px]">
           ({reviews.general.length})
         </span>
       )}
