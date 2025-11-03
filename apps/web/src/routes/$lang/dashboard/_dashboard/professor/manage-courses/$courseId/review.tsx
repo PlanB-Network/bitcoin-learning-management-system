@@ -28,7 +28,7 @@ function Review() {
   const { i18n, t } = useTranslation();
   const params = Route.useParams();
   const navigate = useNavigate();
-  const { session } = useContext(AppContext);
+  const { session, courses } = useContext(AppContext);
 
   const { data: course } = useQuery(
     trpc.content.getCourse.queryOptions({
@@ -58,7 +58,7 @@ function Review() {
       layoutSize="wide"
       title={t('dashboard.teacher.reviews.reviewsAndGrading')}
       description={t('dashboard.teacher.reviews.checkReviews')}
-      tabs={getTabs(course.id)}
+      tabs={getTabs(course.id, courses || [])}
     >
       <CourseReview
         courseId={course.id}

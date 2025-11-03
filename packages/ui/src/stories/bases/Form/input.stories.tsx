@@ -6,18 +6,10 @@ const meta: Meta<typeof Input> = {
     className: {
       control: 'text',
     },
-    cornerHint: {
-      table: {
-        disable: true,
-      },
-    },
     disabled: {
       control: 'boolean',
     },
     error: {
-      control: 'text',
-    },
-    labelText: {
       control: 'text',
     },
     mandatory: {
@@ -46,14 +38,12 @@ type Story = StoryObj<typeof Input>;
 
 export const Default: Story = {
   args: {
-    labelText: 'Default Input',
     placeholder: 'Enter text here',
   },
 };
 
 export const MandatoryInput: Story = {
   args: {
-    labelText: 'Required Field',
     mandatory: true,
     placeholder: 'This field is mandatory',
   },
@@ -61,7 +51,6 @@ export const MandatoryInput: Story = {
 
 export const PasswordInput: Story = {
   args: {
-    labelText: 'Password',
     placeholder: 'Enter your password',
     type: 'password',
   },
@@ -70,7 +59,6 @@ export const PasswordInput: Story = {
 export const WithError: Story = {
   args: {
     error: 'Invalid email format.',
-    labelText: 'Email Address',
     placeholder: 'you@example.com',
     type: 'email',
   },
@@ -79,14 +67,12 @@ export const WithError: Story = {
 export const DisabledInput: Story = {
   args: {
     disabled: true,
-    labelText: 'Disabled Input',
     placeholder: 'You cannot type here',
   },
 };
 
 export const InputWithTypeNumber: Story = {
   args: {
-    labelText: 'Age',
     placeholder: 'Enter your age',
     type: 'number',
   },

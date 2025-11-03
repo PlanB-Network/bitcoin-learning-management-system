@@ -139,25 +139,25 @@ const BasicModal = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent
-        className={cn('w-full max-w-[90%] sm:max-w-[496px]', contentClassName)}
+        className={cn('w-full max-w-[min(90%,496px)]', contentClassName)}
         showCloseButton={false}
       >
         <div className="w-full flex justify-between items-center bg-neutral-50 border-b border-b-neutral-100">
           <img
             src={CroppedPill}
             alt="Cropped Pill"
-            className="w-[38px] self-end mx-6"
+            className="w-6.5 md:w-9.5 self-end mx-6"
           />
-          <DialogTitle className="whitespace-pre-line subtitle-base px-4 py-3">
+          <DialogTitle className="whitespace-pre-line subtitle-small md:subtitle-base px-4 py-3">
             {title}
           </DialogTitle>
           <DialogPrimitive.Close>
-            <TbX size={24} className="shrink-0 mx-6 text-neutral-400" />
+            <TbX className="size-5 md:size-6 shrink-0 mx-6 text-neutral-400" />
             <span className="sr-only">Close</span>
           </DialogPrimitive.Close>
         </div>
 
-        <div className="flex flex-col items-center text-center gap-5 md:gap-8 p-6">
+        <div className="flex flex-col items-center text-center gap-5 md:gap-8 p-4 md:p-6">
           {iconSrc && (
             <img src={iconSrc} alt={iconAlt} className="size-10 md:size-15" />
           )}

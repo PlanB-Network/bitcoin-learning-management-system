@@ -60,7 +60,7 @@ function Announcements() {
       layoutSize="wide"
       title={t('dashboard.teacher.courses.announcements')}
       description={t('dashboard.teacher.courses.announcementsIntroduction')}
-      tabs={getTabs(params.courseId)}
+      tabs={getTabs(params.courseId, courses)}
     >
       <CourseAnnouncements courseId={params.courseId} />
     </PageLayout>

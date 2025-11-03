@@ -1,20 +1,18 @@
 import {
   BasicModal,
   Button,
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
+  Field,
+  FieldGroup,
+  FieldLabel,
   Input,
 } from '@blms/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { useCallback, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { trpc } from '#src/utils/index.js';
 import { AuthModalState } from './props.ts';
 
@@ -31,6 +29,7 @@ enum ResetPasswordState {
 }
 
 export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
+  const isMobile = useSmaller('md') || window.innerWidth < 768;
   const { t } = useTranslation();
 
   const [resetPasswordState, setResetPasswordState] =
@@ -69,50 +68,51 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
 
   const modalContent = {
     [ResetPasswordState.Initial]: (
-      <>
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(handlePasswordReset)}
-            className="flex w-full flex-col items-center"
-          >
-            <FormItem className="space-y-2 my-2 w-4/5">
-              <FormLabel>{t('auth.emailAddress')}</FormLabel>
-              <FormField
-                name="email"
-                render={({ field }) => (
-                  <FormControl>
-                    <Input type="email" {...field} className="w-full" />
-                  </FormControl>
-                )}
-              />
-              <FormMessage />
-            </FormItem>
-            <Button
-              variant="primary"
-              type="submit"
-              className="mb-5 mt-2"
-              disabled={!form.watch('email')}
-            >
-              {t('auth.sendLink')}
-            </Button>
-          </form>
-        </Form>
+      <form
+        onSubmit={form.handleSubmit(handlePasswordReset)}
+        className="flex w-full flex-col items-center gap-5"
+      >
+        <FieldGroup>
+          <Controller
+            name="email"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel htmlFor="email">
+                  {t('auth.emailAddress')}
+                </FieldLabel>
+                <Input
+                  type="email"
+                  id="email"
+                  {...field}
+                  className="w-full"
+                  aria-invalid={fieldState.invalid}
+                />
+              </Field>
+            )}
+          />
+        </FieldGroup>
 
-        <p className="mb-0 text-xs">
-          <button
-            type="button"
-            onClick={() => goTo(AuthModalState.SignIn)}
-            className="cursor-pointer border-none bg-transparent text-xs underline"
-          >
-            {t('words.back')}
-          </button>
-        </p>
-      </>
+        <Button
+          variant="primary"
+          type="submit"
+          className="w-full"
+          size={isMobile ? 'm' : 'l'}
+          disabled={!form.watch('email')}
+        >
+          {t('auth.sendLink')}
+        </Button>
+      </form>
     ),
     [ResetPasswordState.Sent]: (
       <div className="flex flex-col items-center">
         <p className="mb-8">{t('auth.passwordResetSent')}</p>
-        <Button variant="primary" onClick={() => goTo(AuthModalState.SignIn)}>
+        <Button
+          variant="primary"
+          className="w-full"
+          size={isMobile ? 'm' : 'l'}
+          onClick={() => goTo(AuthModalState.SignIn)}
+        >
           {t('auth.backToLogin')}
         </Button>
       </div>
@@ -123,6 +123,8 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
         <Button
           variant="primary"
           mode="light"
+          className="w-full"
+          size={isMobile ? 'm' : 'l'}
           onClick={() => setResetPasswordState(ResetPasswordState.Initial)}
         >
           {t('auth.tryAgain')}
@@ -132,18 +134,15 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
   };
 
   return (
-    <>
-      <BasicModal
-        trigger={<button type="button" className="hidden" />}
-        title={t('auth.resetPassword')}
-        open={isOpen}
-        onOpenChange={onClose}
-        contentClassName="!max-w-xs md:!max-w-fit"
-      >
-        <div className="flex flex-col items-center w-full">
-          {modalContent[resetPasswordState]}
-        </div>
-      </BasicModal>
-    </>
+    <BasicModal
+      trigger={<button type="button" className="hidden" />}
+      title={t('auth.resetPassword')}
+      open={isOpen}
+      onOpenChange={onClose}
+    >
+      <div className="flex flex-col items-center w-full">
+        {modalContent[resetPasswordState]}
+      </div>
+    </BasicModal>
   );
 };

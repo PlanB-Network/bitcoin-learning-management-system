@@ -60,7 +60,7 @@ function Assignment() {
       layoutSize="wide"
       title={t('dashboard.teacher.courses.assignmentGrade.title')}
       description={t('dashboard.teacher.courses.assignmentGrade.description')}
-      tabs={getTabs(params.courseId)}
+      tabs={getTabs(params.courseId, courses)}
     >
       <CourseAssignment courseId={params.courseId} />
     </PageLayout>

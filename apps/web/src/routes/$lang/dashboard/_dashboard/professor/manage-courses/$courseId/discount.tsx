@@ -60,7 +60,7 @@ function Discount() {
       layoutSize="wide"
       title={t('dashboard.adminPanel.discountCodes')}
       description={t('dashboard.teacher.discount.description')}
-      tabs={getTabs(params.courseId)}
+      tabs={getTabs(params.courseId, courses)}
     >
       <CourseDiscount courseId={params.courseId} />
     </PageLayout>

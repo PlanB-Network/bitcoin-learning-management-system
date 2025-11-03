@@ -2,22 +2,20 @@ import {
   BasicModal,
   Button,
   customToast,
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
+  Field,
+  FieldError,
+  FieldLabel,
   Input,
 } from '@blms/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import PasswordValidator from 'password-validator';
 import type { SubmitHandler } from 'react-hook-form';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { ImCheckmark } from 'react-icons/im';
 import { z } from 'zod';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { trpc } from '#src/utils/trpc.js';
 
 const password = new PasswordValidator().is().min(10);
@@ -31,6 +29,7 @@ export const ChangePasswordModal = ({
   isOpen,
   onClose,
 }: ChangePasswordModalProps) => {
+  const isMobile = useSmaller('md') || window.innerWidth < 768;
   const { t } = useTranslation();
   const changePassword = useMutation(
     trpc.user.changePassword.mutationOptions({
@@ -50,19 +49,33 @@ export const ChangePasswordModal = ({
 
   const changePasswordSchema = z
     .object({
-      newPassword: z
-        .string()
-        .refine((pwd) => password.validate(pwd))
-        .refine((pwd) => {
-          const result = password.validate(pwd, { details: true });
-          return { message: Array.isArray(result) ? result[0].message : '' };
-        }),
+      newPassword: z.string().superRefine((pwd, ctx) => {
+        const isValid = password.validate(pwd);
+        const details = password.validate(pwd, { details: true });
+
+        if (!isValid) {
+          ctx.addIssue({
+            code: 'custom',
+            message:
+              Array.isArray(details) && details.length > 0
+                ? details[0].message
+                : t('auth.errors.passwordTooShort'),
+          });
+        }
+      }),
       newPasswordConfirmation: z.string(),
-      oldPassword: z.string(),
+      oldPassword: z
+        .string()
+        .nonempty({ message: t('auth.errors.oldPasswordRequired') }),
     })
-    .refine((data) => data.newPassword === data.newPasswordConfirmation, {
-      message: passwordsDontMatchMessage,
-      path: ['newPasswordConfirmation'],
+    .superRefine((data, ctx) => {
+      if (data.newPassword !== data.newPasswordConfirmation) {
+        ctx.addIssue({
+          code: 'custom',
+          message: passwordsDontMatchMessage,
+          path: ['newPasswordConfirmation'],
+        });
+      }
     });
 
   type ChangePasswordForm = z.infer<typeof changePasswordSchema>;
@@ -82,7 +95,6 @@ export const ChangePasswordModal = ({
       oldPassword: values.oldPassword,
     });
   };
-  const methods = useForm();
 
   return (
     <BasicModal
@@ -91,72 +103,88 @@ export const ChangePasswordModal = ({
       open={isOpen}
       onOpenChange={onClose}
     >
-      <Form {...methods}>
-        <form
-          className="flex w-full flex-col items-center"
-          onSubmit={form.handleSubmit(onSubmit)}
+      <form
+        className="flex w-full flex-col items-center gap-4"
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
+        <Controller
+          control={form.control}
+          name="oldPassword"
+          render={({ field, fieldState }) => (
+            <Field
+              data-invalid={fieldState.invalid}
+              className="w-full flex flex-col"
+            >
+              <FieldLabel htmlFor={field.name}>Old password</FieldLabel>
+
+              <Input
+                {...field}
+                id={field.name}
+                type="password"
+                aria-invalid={fieldState.invalid}
+                error={fieldState.error?.message || null}
+              />
+
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
+          )}
+        />
+
+        <Controller
+          control={form.control}
+          name="newPassword"
+          render={({ field, fieldState }) => (
+            <Field
+              data-invalid={fieldState.invalid}
+              className="w-full flex flex-col"
+            >
+              <FieldLabel htmlFor={field.name}>New password</FieldLabel>
+
+              <Input
+                {...field}
+                id={field.name}
+                type="password"
+                aria-invalid={fieldState.invalid}
+                error={fieldState.error?.message || null}
+              />
+
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
+          )}
+        />
+
+        <Controller
+          control={form.control}
+          name="newPasswordConfirmation"
+          render={({ field, fieldState }) => (
+            <Field
+              data-invalid={fieldState.invalid}
+              className="w-full flex flex-col"
+            >
+              <FieldLabel htmlFor={field.name}>Confirmation</FieldLabel>
+
+              <Input
+                {...field}
+                id={field.name}
+                type="password"
+                aria-invalid={fieldState.invalid}
+                error={fieldState.error?.message || null}
+              />
+
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
+          )}
+        />
+
+        <Button
+          type="submit"
+          variant="primary"
+          size={isMobile ? 'm' : 'l'}
+          className="mt-2 w-full"
         >
-          <FormField
-            control={form.control}
-            name="oldPassword"
-            render={({ field, fieldState }) => (
-              <FormItem className="gap-2 w-full flex flex-col justify-between text-center">
-                <div className="my-2 w-full md:w-80">
-                  <FormLabel className="text-sm font-normal !max-md:leading-[120%] !md:desktop-h7 !text-dashboardSectionText">
-                    Old password
-                  </FormLabel>
-                  <FormControl>
-                    <Input type="password" {...field} />
-                  </FormControl>
-                </div>
-                <FormMessage>{fieldState.error?.message}</FormMessage>
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="newPassword"
-            render={({ field, fieldState }) => (
-              <FormItem className="gap-2 w-full flex flex-col justify-between text-center">
-                <div className="my-2 w-full md:w-80">
-                  <FormLabel className="text-sm font-normal !max-md:leading-[120%] !md:desktop-h7 !text-dashboardSectionText">
-                    New password
-                  </FormLabel>
-                  <FormControl>
-                    <Input type="password" {...field} />
-                  </FormControl>
-                </div>
-                <FormMessage>{fieldState.error?.message}</FormMessage>
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="newPasswordConfirmation"
-            render={({ field, fieldState }) => (
-              <FormItem className="gap-2 w-full flex flex-col justify-between text-center">
-                <div className="my-2 w-full md:w-80">
-                  <FormLabel className="text-sm font-normal !max-md:leading-[120%] !md:desktop-h7 !text-dashboardSectionText">
-                    Confirmation
-                  </FormLabel>
-                  <FormControl>
-                    <Input type="password" {...field} />
-                  </FormControl>
-                </div>
-                <FormMessage>{fieldState.error?.message}</FormMessage>
-              </FormItem>
-            )}
-          />
-          <Button
-            type="submit"
-            variant="primary"
-            mode="light"
-            className="mt-4 md:mt-6"
-          >
-            {t('words.update')}
-          </Button>
-        </form>
-      </Form>
+          {t('words.update')}
+        </Button>
+      </form>
     </BasicModal>
   );
 };

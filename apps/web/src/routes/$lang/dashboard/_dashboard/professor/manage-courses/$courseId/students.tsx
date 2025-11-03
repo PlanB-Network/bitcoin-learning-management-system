@@ -28,7 +28,7 @@ function Students() {
   const navigate = useNavigate();
   const { i18n, t } = useTranslation();
   const params = Route.useParams();
-  const { session } = useContext(AppContext);
+  const { session, courses } = useContext(AppContext);
 
   const { data: course } = useQuery(
     trpc.content.getCourse.queryOptions({
@@ -58,7 +58,7 @@ function Students() {
     <PageLayout
       layoutSize="wide"
       title={t('words.students')}
-      tabs={getTabs(course.id)}
+      tabs={getTabs(course.id, courses || [])}
     >
       <CourseStudentsTable course={course} />
     </PageLayout>

@@ -34,7 +34,7 @@ export const Header = ({ isSidebarOpen, setIsSidebarOpen }: HeaderProps) => {
     >
       <FlyingMenu
         onClickLogin={() => {
-          setAuthMode(AuthModalState.SignIn);
+          setAuthMode(AuthModalState.Register);
           openAuthModal();
         }}
         onClickRegister={() => {
@@ -47,7 +47,7 @@ export const Header = ({ isSidebarOpen, setIsSidebarOpen }: HeaderProps) => {
 
       <MobileMenu
         onClickLogin={() => {
-          setAuthMode(AuthModalState.SignIn);
+          setAuthMode(AuthModalState.Register);
           openAuthModal();
         }}
         isMobileMenuOpen={isMobileMenuOpen}
@@ -59,7 +59,6 @@ export const Header = ({ isSidebarOpen, setIsSidebarOpen }: HeaderProps) => {
           isOpen={isAuthModalOpen}
           onClose={closeAuthModal}
           initialState={authMode}
-          redirectTo={'/my-courses'}
         />
       )}
     </header>

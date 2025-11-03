@@ -1,10 +1,7 @@
-import { useContext } from 'react';
+import type { JoinedCourse } from '@blms/types';
 import type { Tab } from '#src/components/ui/secondary-navbar.tsx';
-import { AppContext } from '#src/providers/context.tsx';
 
-export const getTabs = (courseId: string): Tab[] => {
-  const { courses } = useContext(AppContext);
-
+export const getTabs = (courseId: string, courses: JoinedCourse[]): Tab[] => {
   if (!courses) {
     return [];
   }
