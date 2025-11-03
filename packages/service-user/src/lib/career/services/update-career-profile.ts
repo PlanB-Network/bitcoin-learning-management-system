@@ -8,7 +8,9 @@ import type {
 import { firstRow } from '@blms/database';
 import { TRPCError } from '@trpc/server';
 import type { Dependencies } from '../../../dependencies.js';
-import { getCareerProfileIdQuery } from '../queries/get-career-profile.js';
+import { getCareerAdminEmailsQuery } from '../../account/queries/get-emails.js';
+import { createSendEmail } from '../../account/services/email.js';
+import { getCareerProfileQuery } from '../queries/get-career-profile.js';
 import {
   deleteCareerProfileCompanySizesQuery,
   deleteCareerProfileLanguagesQuery,
@@ -48,29 +50,33 @@ interface Options {
   };
 }
 
-export const createUpdateCareerProfile = ({ postgres }: Dependencies) => {
+export const createUpdateCareerProfile = ({
+  postgres,
+  config,
+}: Dependencies) => {
   return async ({ uid, data }: Options) => {
-    const careerProfileId = await postgres
-      .exec(getCareerProfileIdQuery(uid))
+    const careerProfile = await postgres
+      .exec(getCareerProfileQuery(uid))
       .then(firstRow);
 
-    if (!careerProfileId) {
+    if (!careerProfile) {
       throw new TRPCError({
         code: 'UNAUTHORIZED',
         message: 'Invalid career profile',
       });
     }
 
-    await postgres.exec(deleteCareerProfileLanguagesQuery(careerProfileId.id));
-    await postgres.exec(deleteCareerProfileRolesQuery(careerProfileId.id));
-    await postgres.exec(
-      deleteCareerProfileCompanySizesQuery(careerProfileId.id),
-    );
+    const wasAlreadyComplete =
+      careerProfile.areTermsAccepted && careerProfile.allowReceivingEmails;
+
+    await postgres.exec(deleteCareerProfileLanguagesQuery(careerProfile.id));
+    await postgres.exec(deleteCareerProfileRolesQuery(careerProfile.id));
+    await postgres.exec(deleteCareerProfileCompanySizesQuery(careerProfile.id));
 
     if (data.languages.length > 0) {
       await postgres.exec(
         updateCareerProfileLanguagesQuery({
-          careerProfileId: careerProfileId.id,
+          careerProfileId: careerProfile.id,
           ...data,
         }),
       );
@@ -79,7 +85,7 @@ export const createUpdateCareerProfile = ({ postgres }: Dependencies) => {
     if (data.roles.length > 0) {
       await postgres.exec(
         updateCareerProfileRolesQuery({
-          careerProfileId: careerProfileId.id,
+          careerProfileId: careerProfile.id,
           ...data,
         }),
       );
@@ -88,7 +94,7 @@ export const createUpdateCareerProfile = ({ postgres }: Dependencies) => {
     if (data.companySizes.length > 0) {
       await postgres.exec(
         updateCareerProfileCompanySizesQuery({
-          careerProfileId: careerProfileId.id,
+          careerProfileId: careerProfile.id,
           ...data,
         }),
       );
@@ -96,9 +102,44 @@ export const createUpdateCareerProfile = ({ postgres }: Dependencies) => {
 
     await postgres.exec(
       updateCareerProfileQuery({
-        careerProfileId: careerProfileId.id,
+        careerProfileId: careerProfile.id,
         ...data,
       }),
     );
+
+    const isNowComplete = data.areTermsAccepted && data.allowReceivingEmails;
+
+    if (!wasAlreadyComplete && isNowComplete) {
+      console.log('Career profile completed for user:', uid);
+      const careerAdminEmails = await postgres.exec(
+        getCareerAdminEmailsQuery(),
+      );
+
+      const sendEmail = createSendEmail({ config });
+      const adminDashboardLink = `${config.domainUrl}/dashboard/administration/careers`;
+      const subject = `${process.env.PLANB_ENVIRONMENT !== 'mainnet' ? '[TEST] - ' : ''}New candidate file submitted`;
+
+      for (const admin of careerAdminEmails) {
+        try {
+          console.log(
+            `Sending new career profile email to ${admin.email} for user ${uid}`,
+          );
+          await sendEmail({
+            data: {
+              adminDashboardLink: adminDashboardLink,
+              subject,
+            },
+            email: admin.email,
+            subject,
+            template: 'd-98adfd2cafe740ee99fb3559d0dc77f6',
+          });
+        } catch (emailError) {
+          console.error(
+            `Failed to send career profile notification to ${admin.email} for user ${uid}:`,
+            emailError,
+          );
+        }
+      }
+    }
   };
 };
