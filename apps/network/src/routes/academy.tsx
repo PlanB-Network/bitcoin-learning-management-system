@@ -76,7 +76,7 @@ function RouteComponent() {
         titleClassName="max-w-[700px]"
         subtitleClassName={'max-w-[400px]'}
       />
-      <PageBlock className="flex">
+      <PageBlock className="flex max-lg:justify-center">
         <h2 className="display-base lg:display-large lg:text-6xl text-center">
           {t('academy.safestPlace')}
         </h2>
@@ -86,7 +86,7 @@ function RouteComponent() {
           <span>{t('academy.safest3')}</span>
         </div>
         <Image
-          className="max-lg:mt-3 lg:px-30"
+          className="max-lg:mt-3 lg:px-30 max-lg:mx-auto"
           src={media1Image}
           alt="Laptop showing the academy website"
           loading="lazy"
