@@ -57,13 +57,13 @@ export const Register = ({
         ])
         .transform((data) => data || null)
         .nullable(),
-      password: z
-        .string()
-        .refine((pwd) => password.validate(pwd))
-        .refine((pwd) => {
-          const result = password.validate(pwd, { details: true });
-          return { message: Array.isArray(result) ? result[0].message : '' };
-        }),
+      password: z.string().superRefine((pwd, ctx) => {
+        const result = password.validate(pwd, { details: true });
+        if (Array.isArray(result) && result.length > 0) {
+          const msg = result[0].message;
+          ctx.addIssue({ code: 'custom', message: msg });
+        }
+      }),
       university: z.string().optional(),
       username: z
         .string({ error: t('auth.errors.usernameRequired') })
