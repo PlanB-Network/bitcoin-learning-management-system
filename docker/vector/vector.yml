@@ -46,6 +46,37 @@ transforms:
     source: | # Replace "@blms/api:dev: " with "" (dev only, appended by turbo)
       .message = replace!(.message, "@blms/api:dev: ", "")
 
+      # Get request_id, request_ip, request_session, request_uid
+      if starts_with!(.message, "[request]") {
+        parsed, err = parse_regex(.message, r'^\[request\] (?P<request_id>[a-f0-9]{16})(?P<tags>[^ ]*)')
+
+        if err == null {
+          .request_id = parsed.request_id
+
+          # Parse IP
+          ip_match, ip_err = parse_regex(parsed.tags, r'\|ip=(?P<ip>[^|]+)')
+          if ip_err == null {
+            .request_ip = ip_match.ip
+          }
+
+          # Parse session
+          session_match, session_err = parse_regex(parsed.tags, r'\|session=(?P<session>[^|]+)')
+          if session_err == null {
+            .request_session = session_match.session
+          }
+
+          # Parse uid
+          uid_match, uid_err = parse_regex(parsed.tags, r'\|uid=(?P<uid>[^|]+)')
+          if uid_err == null {
+            .request_uid = uid_match.uid
+          }
+        }
+      }
+
+      # Replace [request] request_id|ip=...|session=...|uid=... with "[request] request_id"
+      .message = replace!(.message, r'\[request\] (?P<rid>[a-f0-9]{16})[^ ]*', "[request] $$rid")
+
+
   api_multiline_merge:
     inputs:
       - api_remap

@@ -8,6 +8,7 @@ import { createCookieSessionMiddleware } from './middlewares/session.js';
 import { createRestRouter } from './routers/rest/index.js';
 import { trpcRouter } from './routers/trpc-router.js';
 import { createContext } from './trpc/index.js';
+import { requestLogging } from './config.js';
 
 const routesWithRawBody = new Set([
   '/users/courses/payment/webhooks',
@@ -53,11 +54,11 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
       req.ip;
 
     req.id ||= req.header('x-request-id') || genRequestId();
-    req.log = (...a: any[]) => console.log(`[request] ${req.id}`, ...a);
+    req.log = (...a: any[]) => console.log(`[request] ${req.id}${requestLogging ? `|ip=${ip}${uid && `|session=${sessionId}|uid=${uid}`}` : ''}`, ...a);
 
     if (!path.includes('getUserNotifications')) {
       req.log(
-        `${method} ${path} (ip=${ip})${uid && ` session=${sessionId} uid=${uid}`}`,
+        `${method} ${path}`,
       );
     }
 

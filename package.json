@@ -36,6 +36,7 @@
     "clear": "turbo run clear",
     "clear:dist": "find . -name 'dist' -type d -prune -exec rm -rf '{}' +",
     "clear:turbo": "find . -name '.turbo' -type d -prune -exec rm -rf '{}' +",
+    "clear:node_modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
     "dev": "dotenv -- turbo dev --cache-dir=.turbo",
     "dev:api": "dotenv -- turbo dev --cache-dir=.turbo --filter=@blms/api",
     "dev:db:generate": "cd ./packages/database && pnpm drizzle:generate",

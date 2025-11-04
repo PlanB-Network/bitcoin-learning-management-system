@@ -57,6 +57,8 @@ export const docker: boolean = getenv('DOCKER', false);
 
 export const protectSyncRoute: boolean = getenv('PROTECT_SYNC_ROUTE', true);
 
+export const requestLogging: boolean = getenv('REQUEST_LOGGING', false);
+
 /**
  * Real application domain (without trailing slash)
  */
