@@ -195,7 +195,7 @@ const Buttons = ({
               if (ticket.type === 'course') {
                 if (course && chapter) {
                   base64 = await downloadTicketMutateAsync({
-                    organizer: course.projectName ?? 'Plan ₿ Network',
+                    organizer: course.projectName || 'Plan ₿ Network',
                     ...chapter,
                     ...course,
                     availableSeats: chapter.availableSeats,

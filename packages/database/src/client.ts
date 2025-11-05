@@ -52,7 +52,7 @@ export interface PostgresClient extends SqlHelper {
   /**
    * Get the first row from the query result
    */
-  getOne: <T extends Row>(q: PendingQuery<T[]>) => Promise<T | undefined>;
+  getOne: <T extends Row>(q: PendingQuery<T[]>) => Promise<T | null>;
 
   /**
    * Get the first row from the query result or reject if the result is empty
@@ -114,7 +114,7 @@ export const createPostgresClient = (
     exec<T extends Row>(query: PendingQuery<T[]>) {
       return query;
     },
-    getOne<T extends Row>(query: PendingQuery<T[]>): Promise<T | undefined> {
+    getOne<T extends Row>(query: PendingQuery<T[]>): Promise<T | null> {
       return this.exec(query).then(firstRow);
     },
     getOneOrReject<T extends Row>(query: PendingQuery<T[]>): Promise<T> {

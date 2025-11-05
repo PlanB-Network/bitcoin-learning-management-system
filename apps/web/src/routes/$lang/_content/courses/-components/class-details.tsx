@@ -170,7 +170,7 @@ export const ClassDetails = ({
                         let pdf = downloadedPdf;
                         if (!pdf) {
                           pdf = await downloadTicketMutateAsync({
-                            organizer: course.projectName ?? 'Plan ₿ Network',
+                            organizer: course.projectName || 'Plan ₿ Network',
                             ...chapter,
                             ...course,
                             availableSeats: chapter.availableSeats,

@@ -7,9 +7,9 @@ export class EmptyResultError extends Error {
 }
 
 export const firstRow = <T>(rows: T[] | RowList<T[]>) =>
-  rows.length > 0 ? rows[0] : undefined;
+  rows.length > 0 ? rows[0] : null;
 
-export const rejectOnEmpty = <T>(row: T | undefined): T => {
+export const rejectOnEmpty = <T>(row: T | null): T => {
   if (!row) {
     throw new EmptyResultError();
   }

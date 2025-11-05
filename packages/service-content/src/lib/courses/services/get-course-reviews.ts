@@ -9,7 +9,7 @@ import {
 } from '../queries/get-course-reviews.js';
 
 export const createGetPublicCourseReviews = ({ postgres }: Dependencies) => {
-  return (courseId: string): Promise<CourseReviewsExtended | undefined> => {
+  return (courseId: string): Promise<CourseReviewsExtended | null> => {
     return postgres.exec(getPublicCourseReviewsQuery(courseId)).then(firstRow);
   };
 };

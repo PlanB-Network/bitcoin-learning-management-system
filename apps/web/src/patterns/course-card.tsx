@@ -194,7 +194,7 @@ const RatingCourseCard = ({
   className,
 }: {
   course: JoinedCourse | CourseResponse;
-  reviews: CourseReviewsExtended | undefined;
+  reviews: CourseReviewsExtended | null | undefined;
   className?: string;
 }) => {
   return (

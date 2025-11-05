@@ -672,16 +672,16 @@ function CourseDetails() {
           if (!pdf) {
             pdf = await downloadTicketMutateAsync({
               addressLine1: '',
-              addressLine2: '', // TODO ADD
-              addressLine3: '', // TODO ADD
-              availableSeats: course.availableSeats, // TODO ADD
+              addressLine2: course.addressLine1,
+              addressLine3: '',
+              availableSeats: course.availableSeats,
               formattedStartDate: `Start date: ${formatDate(course.startDate ?? undefined)}`,
               formattedTime: `End date: ${formatDate(course.endDate ?? undefined)}`,
               liveLanguage:
                 LANGUAGES_MAP[
                   course.originalLanguage.toLowerCase().replaceAll('-', '')
                 ],
-              organizer: course.projectName ?? 'Plan ₿ Network',
+              organizer: course.projectName || 'Plan ₿ Network',
               title: course.name,
               userName: user ? user.username : '',
             });

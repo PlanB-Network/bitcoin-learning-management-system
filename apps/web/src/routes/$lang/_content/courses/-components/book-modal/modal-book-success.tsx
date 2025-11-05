@@ -69,7 +69,7 @@ export const ModalBookSuccess = ({
           variant="primary"
           onClick={async () => {
             const base64 = await downloadTicketMutateAsync({
-              organizer: course.projectName ?? 'Plan ₿ Network',
+              organizer: course.projectName || 'Plan ₿ Network',
               ...chapter,
               ...course,
               availableSeats: chapter.availableSeats,
