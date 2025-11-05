@@ -1394,6 +1394,7 @@ const FormText = ({
                     : 'max-w-[596px]'
                   : '',
               )}
+              placeholder={placeholder}
             />
           ) : (
             <Textarea
