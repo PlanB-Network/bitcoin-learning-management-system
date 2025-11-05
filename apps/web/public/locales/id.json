@@ -131,7 +131,8 @@
     "noConferences": "Belum ada konferensi yang ditambahkan ke {{year}}.",
     "pageTitle": "Tayangan ulang konferensi",
     "planBConferences": "Konferensi Plan ₿",
-    "topics": "Topik"
+    "topics": "Topik",
+    "conferencesGenesis": "Konferensi sejak Blok Genesis"
   },
   "courses": {
     "chapter": {
@@ -1140,7 +1141,8 @@
       "verify": "Verifikasi keaslian ijazah Anda",
       "whereYouAre": "Mari kita lihat di mana posisi Anda!",
       "yourCertificate": "Sertifikat Anda",
-      "yourProgress": "Kemajuanmu:"
+      "yourProgress": "Kemajuanmu:",
+      "noCourseStarted": "Anda belum memulai kursus mandiri apa pun."
     },
     "profile": {
       "cancel": "Batal",
