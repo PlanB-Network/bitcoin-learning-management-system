@@ -280,7 +280,10 @@ export const CourseDiscount = ({ courseId }: { courseId: string }) => {
             variant="primary"
             onClick={() => {
               if (couponToDelete) {
-                deleteCouponCode.mutate(couponToDelete.code);
+                deleteCouponCode.mutate({
+                  code: couponToDelete.code,
+                  itemId: couponToDelete.itemId,
+                });
               }
 
               deleteModal.close();

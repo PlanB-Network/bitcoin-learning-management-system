@@ -7,7 +7,15 @@ import { createCheckCoordinator } from '../professors/services/check-coordinator
 export const createDeleteCourseCouponCodeCoordinator = ({
   postgres,
 }: Pick<Dependencies, 'postgres'>) => {
-  return async ({ code, userId }: { code: string; userId: string }) => {
+  return async ({
+    code,
+    itemId,
+    userId,
+  }: {
+    code: string;
+    itemId: string;
+    userId: string;
+  }) => {
     const isCourseCoordinator = await createCheckCoordinator({
       postgres,
     })({ userId, code });
@@ -25,6 +33,7 @@ export const createDeleteCourseCouponCodeCoordinator = ({
         UPDATE content.coupon_code
         SET deleted_at = NOW()
         WHERE code = ${code}
+        AND item_id = ${itemId}
         RETURNING *;
       `)
       .then(firstRow)
@@ -35,14 +44,15 @@ export const createDeleteCourseCouponCodeCoordinator = ({
 export const createDeleteCouponCode = ({
   postgres,
 }: Pick<Dependencies, 'postgres'>) => {
-  return (code: string) => {
-    console.log('Delete coupon code', code);
+  return (code: string, itemId: string) => {
+    console.log('Delete coupon code', code, itemId);
 
     return postgres
       .exec(sql<CouponCode[]>`
       UPDATE content.coupon_code
         SET deleted_at = NOW()
         WHERE code = ${code}
+        AND item_id = ${itemId}
         RETURNING *;
     `)
       .then(firstRow)

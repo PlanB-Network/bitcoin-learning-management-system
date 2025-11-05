@@ -329,7 +329,7 @@ function AdminCoupons() {
           <tbody>
             {coupons.data?.map((coupon) => {
               return (
-                <tr key={coupon.code} className="*:pt-2">
+                <tr key={coupon.code + coupon.itemId} className="*:pt-2">
                   <td>{coupon.code}</td>
                   <td>
                     {itemsMap.get(coupon.itemId)?.type === 'event'
@@ -384,7 +384,7 @@ function AdminCoupons() {
             {coupons.data?.map((coupon) => {
               return (
                 <CouponCard
-                  key={coupon.code}
+                  key={coupon.code + coupon.itemId}
                   coupon={coupon}
                   itemName={itemsMap.get(coupon.itemId)?.name ?? null}
                   onViewClick={() => {
@@ -421,7 +421,10 @@ function AdminCoupons() {
               variant="primary"
               onClick={() => {
                 if (couponToDelete) {
-                  deleteCouponCode.mutate(couponToDelete.code);
+                  deleteCouponCode.mutate({
+                    code: couponToDelete.code,
+                    itemId: couponToDelete.itemId,
+                  });
                 }
 
                 deleteModal.close();

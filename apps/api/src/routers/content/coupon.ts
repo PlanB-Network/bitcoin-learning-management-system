@@ -76,11 +76,12 @@ const createCouponCodeTeacher = professorProcedure
 
 // Owner/teacher
 const deleteCouponCodeOwner = professorProcedure
-  .input(z.string())
+  .input(z.object({ code: z.string(), itemId: z.string() }))
   .output<Parser<CouponCode>>(couponCodeSchema)
   .mutation(({ ctx, input }) =>
     createDeleteCourseCouponCodeCoordinator(ctx.dependencies)({
-      code: input,
+      code: input.code,
+      itemId: input.itemId,
       userId: ctx.user.uid,
     }),
   );
@@ -127,10 +128,10 @@ const createCouponCode = adminProcedure
 // Admin
 const deleteCouponCode = adminProcedure
   .use(checkPermissions(UserPermission.Coupons))
-  .input(z.string())
+  .input(z.object({ code: z.string(), itemId: z.string() }))
   .output<Parser<CouponCode>>(couponCodeSchema)
   .mutation(({ ctx, input }) =>
-    createDeleteCouponCode(ctx.dependencies)(input),
+    createDeleteCouponCode(ctx.dependencies)(input.code, input.itemId),
   );
 
 // Router
