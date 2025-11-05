@@ -18,7 +18,6 @@ const listEventsAndCourses = () => {
       FROM content.courses_localized cl
       JOIN content.courses c ON c.id = cl.course_id
       WHERE c.requires_payment = true
-        AND (c.end_date >= NOW() OR c.end_date IS NULL)
         AND (cl.course_id,
           CASE
             WHEN cl.language = 'en' THEN 1
