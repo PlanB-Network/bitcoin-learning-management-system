@@ -66,7 +66,7 @@ export const ChangePasswordModal = ({
       newPasswordConfirmation: z.string(),
       oldPassword: z
         .string()
-        .nonempty({ message: t('auth.errors.oldPasswordRequired') }),
+        .min(1, { message: t('auth.errors.oldPasswordRequired') }),
     })
     .superRefine((data, ctx) => {
       if (data.newPassword !== data.newPasswordConfirmation) {
@@ -115,7 +115,9 @@ export const ChangePasswordModal = ({
               data-invalid={fieldState.invalid}
               className="w-full flex flex-col"
             >
-              <FieldLabel htmlFor={field.name}>Old password</FieldLabel>
+              <FieldLabel htmlFor={field.name}>
+                {t('auth.oldPassword')}
+              </FieldLabel>
 
               <Input
                 {...field}
@@ -138,7 +140,9 @@ export const ChangePasswordModal = ({
               data-invalid={fieldState.invalid}
               className="w-full flex flex-col"
             >
-              <FieldLabel htmlFor={field.name}>New password</FieldLabel>
+              <FieldLabel htmlFor={field.name}>
+                {t('auth.newPassword')}
+              </FieldLabel>
 
               <Input
                 {...field}
@@ -161,7 +165,9 @@ export const ChangePasswordModal = ({
               data-invalid={fieldState.invalid}
               className="w-full flex flex-col"
             >
-              <FieldLabel htmlFor={field.name}>Confirmation</FieldLabel>
+              <FieldLabel htmlFor={field.name}>
+                {t('words.confirmation')}
+              </FieldLabel>
 
               <Input
                 {...field}
