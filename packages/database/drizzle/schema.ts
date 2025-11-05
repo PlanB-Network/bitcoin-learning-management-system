@@ -1215,7 +1215,7 @@ export const usersCoursePayment = users.table(
   'course_payment',
   (t) => ({
     amount: t.integer().notNull(),
-    couponCode: t.varchar({ length: 20 }).references(() => couponCode.code),
+    couponCode: t.varchar({ length: 20 }),
     courseId: t
       .varchar({ length: 100 })
       .notNull()
@@ -1468,7 +1468,7 @@ export const usersEventPayment = users.table(
   'event_payment',
   (t) => ({
     amount: t.integer().notNull(),
-    couponCode: t.varchar({ length: 20 }).references(() => couponCode.code),
+    couponCode: t.varchar({ length: 20 }),
     eventId: t
       .uuid()
       .notNull()
@@ -1836,7 +1836,7 @@ export const usersGeneralPayment = users.table(
   'general_payment',
   (t) => ({
     amount: t.integer().notNull(),
-    couponCode: t.varchar({ length: 20 }).references(() => couponCode.code),
+    couponCode: t.varchar({ length: 20 }),
     invoiceUrl: t.varchar({ length: 255 }),
     item: generalPaymentItemEnum('item').notNull(),
     lastUpdated: t
@@ -2070,18 +2070,26 @@ export const contentVideosLocalized = content.table(
   }),
 );
 
-export const couponCode = content.table('coupon_code', (t) => ({
-  code: t.varchar({ length: 20 }).primaryKey().notNull(),
-  createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
-  deletedAt: t.timestamp({ withTimezone: true }),
-  itemId: t.varchar({ length: 100 }).notNull(),
-  maxUses: t.integer().default(1).notNull(),
-  reductionPercentage: t.integer(),
-  uid: t.uuid().references(() => usersAccounts.uid, {
-    onDelete: 'cascade',
+export const couponCode = content.table(
+  'coupon_code',
+  (t) => ({
+    code: t.varchar({ length: 20 }).notNull(),
+    createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    deletedAt: t.timestamp({ withTimezone: true }),
+    itemId: t.varchar({ length: 100 }).notNull(),
+    maxUses: t.integer().default(1).notNull(),
+    reductionPercentage: t.integer(),
+    uid: t.uuid().references(() => usersAccounts.uid, {
+      onDelete: 'cascade',
+    }),
+    uses: t.integer().default(0).notNull(), // Paranoid delete
   }),
-  uses: t.integer().default(0).notNull(), // Paranoid delete
-}));
+  (table) => ({
+    pk: primaryKey({
+      columns: [table.code, table.itemId],
+    }),
+  }),
+);
 
 /**
  * Custom drizzle type for bytea columns.

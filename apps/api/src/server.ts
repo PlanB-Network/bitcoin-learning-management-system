@@ -2,13 +2,12 @@ import type { Server } from 'node:http';
 
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
 import express, { json, Router } from 'express';
-
+import { requestLogging } from './config.js';
 import type { Dependencies } from './dependencies.js';
 import { createCookieSessionMiddleware } from './middlewares/session.js';
 import { createRestRouter } from './routers/rest/index.js';
 import { trpcRouter } from './routers/trpc-router.js';
 import { createContext } from './trpc/index.js';
-import { requestLogging } from './config.js';
 
 const routesWithRawBody = new Set([
   '/users/courses/payment/webhooks',
@@ -54,12 +53,14 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
       req.ip;
 
     req.id ||= req.header('x-request-id') || genRequestId();
-    req.log = (...a: any[]) => console.log(`[request] ${req.id}${requestLogging ? `|ip=${ip}${uid && `|session=${sessionId}|uid=${uid}`}` : ''}`, ...a);
+    req.log = (...a: any[]) =>
+      console.log(
+        `[request] ${req.id}${requestLogging ? `|ip=${ip}${uid && `|session=${sessionId}|uid=${uid}`}` : ''}`,
+        ...a,
+      );
 
     if (!path.includes('getUserNotifications')) {
-      req.log(
-        `${method} ${path}`,
-      );
+      req.log(`${method} ${path}`);
     }
 
     // Log response time
