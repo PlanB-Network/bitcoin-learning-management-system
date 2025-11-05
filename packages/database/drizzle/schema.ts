@@ -1508,13 +1508,14 @@ export const contentTutorials = content.table('tutorials', (t) => ({
   id: t.uuid().primaryKey().notNull(),
   lastCommit: t.varchar({ length: 40 }).notNull(),
   lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
-
   lastUpdated: t
     .timestamp({
       withTimezone: true,
     })
     .defaultNow()
     .notNull(),
+
+  isArchived: t.boolean().default(false).notNull(),
 
   level: t.varchar({ length: 255 }).notNull(),
   logoUrl: t.text().notNull().default(''),

@@ -1,0 +1,1 @@
+ALTER TABLE "content"."tutorials" ADD COLUMN "is_archived" boolean DEFAULT false NOT NULL;

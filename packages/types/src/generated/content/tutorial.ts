@@ -10,6 +10,7 @@ export interface Tutorial {
   lastCommit: string;
   lastSync: Date;
   lastUpdated: Date;
+  isArchived: boolean;
   level: string;
   logoUrl: string;
   name: string;
