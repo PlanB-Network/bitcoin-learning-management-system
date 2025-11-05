@@ -1,16 +1,15 @@
 import { Loader, SegmentedControl, SegmentedControlItem } from '@blms/ui';
-import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 import { CategoryIcon } from '#src/components/category-icon.js';
 import { PageLayout } from '#src/components/page-layout.tsx';
+import { AppContext } from '#src/providers/context.tsx';
 import {
   extractSubCategories,
   TUTORIALS_CATEGORIES,
 } from '#src/services/utils.tsx';
-import { trpc } from '#src/utils/trpc.js';
 import { TutorialCard } from '../-components/tutorial-card.tsx';
 import { tutorialsTabs } from '../index.tsx';
 
@@ -29,7 +28,7 @@ export const Route = createFileRoute('/$lang/_content/tutorials/$category/')({
 });
 
 function TutorialCategory() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const params = Route.useParams();
   const category = params.category;
 
@@ -44,6 +43,13 @@ function TutorialCategory() {
     string | undefined
   >();
 
+  const { tutorials: allTutorials } = useContext(AppContext);
+  const isFetched = allTutorials && allTutorials.length > 0;
+
+  const tutorials = allTutorials?.filter(
+    (tutorial) => tutorial.category === tutorialCategory?.name,
+  );
+
   useEffect(() => {
     let hash = location.hash.replace('#', '');
     hash = decodeURI(hash);
@@ -52,13 +58,6 @@ function TutorialCategory() {
       validTabs.includes(hash) ? hash : subCategories.at(0),
     );
   }, [subCategories]);
-
-  const { data: tutorials, isFetched } = useQuery(
-    trpc.content.getTutorialsByCategory.queryOptions({
-      category,
-      language: i18n.language,
-    }),
-  );
 
   useEffect(() => {
     if (!tutorialCategory) {

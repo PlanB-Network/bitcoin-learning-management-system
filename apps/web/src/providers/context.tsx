@@ -199,6 +199,7 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
     trpcClient.content.getTutorials
       .query({
         language: i18n.language,
+        notArchivedOnly: true,
       })
       .then((data) => data ?? null)
       .then(setTutorials)

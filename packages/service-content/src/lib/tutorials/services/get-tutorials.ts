@@ -29,10 +29,13 @@ interface Options {
 
 export const createGetTutorials = ({ postgres }: Dependencies) => {
   return (
+    notArchivedOnly: boolean,
     category?: string,
     language?: string,
   ): Promise<JoinedTutorialLight[]> => {
-    return postgres.exec(getTutorialsQuery(category, language));
+    return postgres.exec(
+      getTutorialsQuery(notArchivedOnly, category, language),
+    );
   };
 };
 

@@ -11,7 +11,11 @@ interface Cursor {
   value: string | number;
 }
 
-export const getTutorialsQuery = (category?: string, language?: string) => {
+export const getTutorialsQuery = (
+  notArchivedOnly: boolean,
+  category?: string,
+  language?: string,
+) => {
   return sql<JoinedTutorialLight[]>`
       SELECT
           t.id,
@@ -61,6 +65,9 @@ export const getTutorialsQuery = (category?: string, language?: string) => {
               : sql`WHERE tl.language = LOWER(${language})`
             : sql``
         }
+
+
+      ${notArchivedOnly ? sql`AND t.is_archived = false` : sql``}
 
       GROUP BY
           t.id,

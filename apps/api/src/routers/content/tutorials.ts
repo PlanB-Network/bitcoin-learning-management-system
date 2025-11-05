@@ -25,12 +25,17 @@ const getTutorialsProcedure = publicProcedure
     z
       .object({
         language: z.string().optional(),
+        notArchivedOnly: z.boolean().optional(),
       })
       .optional(),
   )
   .output<Parser<JoinedTutorialLight[]>>(joinedTutorialLightSchema.array())
   .query(({ ctx, input }) => {
-    return createGetTutorials(ctx.dependencies)(undefined, input?.language);
+    return createGetTutorials(ctx.dependencies)(
+      input?.notArchivedOnly === true,
+      undefined,
+      input?.language,
+    );
   });
 
 const getTutorialsByCategoryProcedure = publicProcedure
@@ -42,7 +47,11 @@ const getTutorialsByCategoryProcedure = publicProcedure
   )
   .output<Parser<JoinedTutorialLight[]>>(joinedTutorialLightSchema.array())
   .query(({ ctx, input }) => {
-    return createGetTutorials(ctx.dependencies)(input.category, input.language);
+    return createGetTutorials(ctx.dependencies)(
+      false,
+      input.category,
+      input.language,
+    );
   });
 
 const getTutorialsWithProfessorNameProcedure = publicProcedure
