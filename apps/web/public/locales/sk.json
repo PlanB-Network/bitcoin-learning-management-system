@@ -636,7 +636,109 @@
           "downloadData": "Stiahnuť dáta",
           "filterByLanguage": "Filtrovať podľa jazyka",
           "fromMonth": "Od",
-          "fromMonthPlaceholder": "Od ktorého mesiaca?"
+          "fromMonthPlaceholder": "Od ktorého mesiaca?",
+          "chooseYear": "Ktorý rok chcete zohľadniť?",
+          "generalReport": "Všeobecný report",
+          "languageCoverage": {
+            "completed": "Dokončené",
+            "inProgress": "Prebieha",
+            "notStarted": "Nezačaté",
+            "totalCourses": "Celkový počet kurzov"
+          },
+          "languagesProofread": "Skontrolované jazyky",
+          "noContributors": "Neboli nájdení žiadni prispievatelia",
+          "noCourses": "Nenašli sa žiadne kurzy",
+          "noLanguages": "Nenašli sa žiadne jazyky",
+          "proofreadCourses": "Skontrolované kurzy",
+          "table": {
+            "contributor": "Prispievateľ",
+            "lastUpdated": "Naposledy aktualizované",
+            "progress": "Pokrok %"
+          },
+          "tabs": {
+            "contributors": "Prispievatelia",
+            "courses": "Kurzy",
+            "coverage": "Pokrytie jazykov"
+          },
+          "toMonth": "Do",
+          "toMonthPlaceholder": "Do ktorého mesiaca?",
+          "totalLanguages": "Celkový počet jazykov",
+          "year": "Rok"
+        },
+        "searchPlaceholder": "Hľadanie...",
+        "status": {
+          "assigned": "Pridelené",
+          "completed": "Dokončené",
+          "inProgress": "Prebieha",
+          "readyForReview": "Pripravené na kontrolu",
+          "todo": "Potrebná korektúra",
+          "underReview": "Prebieha kontrola"
+        },
+        "table": {
+          "actions": "Akcie",
+          "course": "Kurz",
+          "index": "Index",
+          "language": "Jazyk",
+          "username": "Používateľské meno"
+        },
+        "tabs": {
+          "contentManagement": "Správa obsahu",
+          "reports": "Reporty",
+          "requests": "Žiadosti",
+          "translate": "Preložiť",
+          "userManagement": "Správa používateľov"
+        },
+        "title": "Adminitrátorský panel prekladov",
+        "toggle": {
+          "pendingRequest": "Čakajúca žiadosť",
+          "rejectedRequests": "Zamietnuté žiadosti"
+        },
+        "translate": {
+          "actions": {
+            "translate": "Preložiť"
+          },
+          "backToCourse": "Späť na kurz",
+          "changeSpeed": "Zmeniť rýchlosť prehrávania",
+          "chapterTitle": "Názov kapitoly",
+          "compare": "Porovnať",
+          "compareDisabledTooltip": "Skontrolovaná verzia nie je dostupná",
+          "compareTooltip": "Porovnajte pôvodnú a skontrolovanú verziu",
+          "comparison": {
+            "backToChapter": "Späť na kapitolu",
+            "originalVersion": "Pôvodná verzia",
+            "translatedVersion": "Preložená verzia"
+          },
+          "description": "Začnite prekladať kurzy do konkrétnych jazykov.",
+          "forward15Seconds": "Dopredu o 15 sekúnd",
+          "imageNotFound": "Obrázok sa nenašiel",
+          "language": "Jazyk",
+          "loadingPresentation": "Načítava sa prezentácia...",
+          "noContentAvailable": "Žiadny obsah nie je k dispozícii",
+          "noCourses": "Momentálne žiadny kurz nepotrebuje preklad.",
+          "noOriginalContent": "Žiadny pôvodný obsah",
+          "noPngSlides": "Pre túto prezentáciu nie sú dostupné žiadne PNG slajdy",
+          "noSlidesFound": "Nenašli sa žiadne slajdy",
+          "originalContent": "Pôvodný obsah",
+          "pause": "Zastaviť",
+          "play": "Prehrať",
+          "presentations": "Prezentácie"
+        },
+        "userManagement": {
+          "modal": {
+            "assignments": "História zadaní",
+            "noAssignments": "Nenašli sa žiadne úlohy",
+            "title": "Podrobnosti o používateľovi",
+            "userInfo": "Informácie o používateľovi"
+          },
+          "noUsers": "Neboli nájdení žiadni prispievatelia",
+          "status": {
+            "published": "Publikované",
+            "readyForReview": "Pripravené na kontrolu",
+            "rejected": "Odmietnutý",
+            "reviewed": "Skontrolovaný",
+            "todo": "Potrebná kontrola",
+            "underReview": "Prebieha kontrola"
+          }
         }
       }
     }
