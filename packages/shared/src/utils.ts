@@ -138,3 +138,20 @@ export const formatNameForURL = (name: string): string => {
       .replace(/-+/g, '-')
   );
 };
+
+export const getCountryForFlagFromAddress = (address: string): string => {
+  // biome-ignore lint: simpler here
+  address = address.toLowerCase();
+
+  if (address.includes('switzerland')) {
+    return 'ch';
+  }
+  if (address.includes('france')) {
+    return 'fr';
+  }
+  if (address.includes('italy')) {
+    return 'it';
+  }
+
+  return 'en';
+};

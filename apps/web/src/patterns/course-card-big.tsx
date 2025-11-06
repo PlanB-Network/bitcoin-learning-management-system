@@ -1,4 +1,4 @@
-import { formatNameForURL } from '@blms/shared';
+import { formatNameForURL, getCountryForFlagFromAddress } from '@blms/shared';
 import type { CourseResponse, JoinedCourse } from '@blms/types';
 import { Button, cn, Flag, Image } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
@@ -87,7 +87,9 @@ export const CourseCardBig = ({
                 {course.format === 'inperson' || course.format === 'hybrid' ? (
                   <div className="flex flex-row gap-2">
                     <Flag
-                      code={'ch'}
+                      code={getCountryForFlagFromAddress(
+                        course.addressLine1 || '',
+                      )}
                       size="s"
                       className="self-center"
                       isRound={true}
