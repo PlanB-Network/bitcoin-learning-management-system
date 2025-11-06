@@ -36,13 +36,22 @@ export const Route = createRootRouteWithContext<{
     console.log('An error occurred:', error);
 
     return (
-      <div className="flex flex-col p-4">
+      <div className="flex min-h-screen flex-col items-center justify-center p-4">
         <a href="/">
-          <PlanBLogo className="h-auto lg:w-32 xl:w-40" />
+          <PlanBLogo className="h-auto w-40 mb-6" />
         </a>
-        <span className="mt-6">An error occurred : {error.message} </span>
-        <a className="text-orange-500" href="/">
-          Go back Home
+        <h2 className="text-3xl font-bold">Something went wrong.</h2>
+        <p className="my-4 text-center">
+          We've updated the application. Please refresh the page to continue, or
+          go to home page.
+        </p>
+        <a href={'/'}>
+          <button
+            type="button"
+            className="rounded bg-orange-500 px-4 py-2 text-white"
+          >
+            Home page
+          </button>
         </a>
       </div>
     );
