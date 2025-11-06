@@ -66,6 +66,7 @@
     "resetPassword": "Reset your password",
     "sendLink": "Send me a link",
     "signIn": "Sign In",
+    "signUp": "Sign up",
     "trackProgress": "Create an account or log in to keep track of your progress",
     "tryAgain": "Try again"
   },
@@ -1045,6 +1046,7 @@
     "on": "on",
     "onChainAddress": "On chain address",
     "online": "Online",
+    "optional": "Optional",
     "ourStory": "Our story",
     "overview": "Overview",
     "paid": "Premium",

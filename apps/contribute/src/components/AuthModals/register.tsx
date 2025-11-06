@@ -6,11 +6,10 @@ import {
   DialogHeader,
   DialogPortal,
   DialogTitle,
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
   Input,
 } from '@blms/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -18,17 +17,17 @@ import { useMutation } from '@tanstack/react-query';
 import PasswordValidator from 'password-validator';
 import { useCallback } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { BsCheck } from 'react-icons/bs';
 import { z } from 'zod';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { trpc } from '../../utils/trpc.ts';
 import { AuthModalState } from './props.ts';
 
 interface RegisterFormData {
   username: string;
   password: string;
-  confirmation: string;
   email: string | null;
 }
 
@@ -45,44 +44,39 @@ export const Register = ({
   goTo,
   redirectTo,
 }: RegisterProps) => {
+  const isMobile = useSmaller('md') || window.innerWidth < 768;
+
   const { t } = useTranslation();
   const password = new PasswordValidator().is().min(10);
 
-  const registerSchema = z
-    .object({
-      username: z
-        .string({ required_error: t('auth.errors.usernameRequired') })
-        .min(5, { message: t('auth.errors.usernameTooShort') })
-        .regex(/^[\w.-]+$/, {
-          message: t('auth.errors.usernameRegex'),
-        }),
-      password: z.string().refine(
-        (pwd) => password.validate(pwd),
-        (pwd) => {
-          const result = password.validate(pwd, { details: true });
-          return { message: Array.isArray(result) ? result[0].message : '' };
-        },
-      ),
-      confirmation: z.string(),
-      email: z
-        .union([
-          z.literal(''),
-          z.string().email({ message: t('auth.errors.emailInvalid') }),
-        ])
-        .transform((data) => data || null)
-        .nullable(),
-    })
-    .refine((data) => data.password === data.confirmation, {
-      message: t('auth.passwordsDontMatch'),
-      path: ['confirmation'],
-    });
+  const registerSchema = z.object({
+    username: z
+      .string({ error: t('auth.errors.usernameRequired') })
+      .min(5, { message: t('auth.errors.usernameTooShort') })
+      .regex(/^[\w.-]+$/, {
+        message: t('auth.errors.usernameRegex'),
+      }),
+    password: z.string().superRefine((pwd, ctx) => {
+      const result = password.validate(pwd, { details: true });
+      if (Array.isArray(result) && result.length > 0) {
+        const msg = result[0].message;
+        ctx.addIssue({ code: 'custom', message: msg });
+      }
+    }),
+    email: z
+      .union([
+        z.literal(''),
+        z.string().email({ message: t('auth.errors.emailInvalid') }),
+      ])
+      .transform((data) => data || null)
+      .nullable(),
+  });
 
   const methods = useForm({
     resolver: zodResolver(registerSchema),
     defaultValues: {
       username: '',
       password: '',
-      confirmation: '',
       email: '',
     },
   });
@@ -140,139 +134,109 @@ export const Register = ({
               </DialogDescription>
             </div>
           ) : (
-            <>
-              <div className="flex flex-col items-center w-full px-0.5 sm:px-5">
-                <DialogDescription className="hidden">
-                  Register
-                </DialogDescription>
+            <div className="flex flex-col items-center w-full px-0.5 sm:px-5">
+              <DialogDescription className="hidden">Register</DialogDescription>
 
-                <Form {...methods}>
-                  <form
-                    onSubmit={methods.handleSubmit(handleCreateUserAccount)}
-                    className="flex w-full flex-col items-center mt-3"
-                  >
-                    <FormField
-                      control={methods.control}
-                      name="username"
-                      render={({ field, fieldState }) => (
-                        <FormItem className="space-y-2 my-2 w-full">
-                          <FormLabel required>
-                            {t('dashboard.profile.username')}
-                          </FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="username"
-                              {...field}
-                              error={fieldState.error?.message || null}
-                            />
-                          </FormControl>
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={methods.control}
-                      name="password"
-                      render={({ field, fieldState }) => (
-                        <FormItem className="space-y-2 my-2 w-full">
-                          <FormLabel required>
-                            {t('dashboard.profile.password')}
-                          </FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="password"
-                              type="password"
-                              {...field}
-                              error={fieldState.error?.message || null}
-                            />
-                          </FormControl>
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={methods.control}
-                      name="confirmation"
-                      render={({ field, fieldState }) => (
-                        <FormItem className="space-y-2 my-2 w-full">
-                          <FormLabel required>
-                            {t('auth.confirmation')}
-                          </FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="password"
-                              type="password"
-                              {...field}
-                              error={fieldState.error?.message || null}
-                            />
-                          </FormControl>
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={methods.control}
-                      name="email"
-                      render={({ field, fieldState }) => (
-                        <FormItem className="space-y-2 my-2 w-full">
-                          <FormLabel>{t('auth.emailAddress')}</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="email"
-                              type="email"
-                              {...field}
-                              value={field.value ?? ''}
-                              error={fieldState.error?.message || null}
-                            />
-                          </FormControl>
-                        </FormItem>
-                      )}
-                    />
-
-                    <p className="mt-4 text-sm text-gray-400">
-                      {t('auth.emailTip')}
-                    </p>
-
-                    {register.error && (
-                      <p className="mt-2 text-base font-semibold text-red-300">
-                        {register.error.message}
-                      </p>
+              <form
+                onSubmit={methods.handleSubmit(handleCreateUserAccount)}
+                className="flex w-full flex-col items-center"
+              >
+                <FieldGroup className="w-full gap-4">
+                  <Controller
+                    name="username"
+                    control={methods.control}
+                    render={({ field, fieldState }) => (
+                      <Field data-invalid={fieldState.invalid}>
+                        <FieldLabel htmlFor={field.name} required>
+                          {t('dashboard.profile.username')}
+                        </FieldLabel>
+                        <Input
+                          {...field}
+                          id={field.name}
+                          placeholder="username"
+                        />
+                        {fieldState.invalid && (
+                          <FieldError errors={[fieldState.error]} />
+                        )}
+                      </Field>
                     )}
+                  />
 
-                    <Button
-                      variant="primary"
-                      size="m"
-                      type="submit"
-                      className="my-8"
-                    >
-                      {t('auth.createAccount')}
-                    </Button>
-                  </form>
-                </Form>
+                  <Controller
+                    name="email"
+                    control={methods.control}
+                    render={({ field, fieldState }) => (
+                      <Field data-invalid={fieldState.invalid}>
+                        <FieldLabel
+                          htmlFor={field.name}
+                          optionalText={`(${t('words.optional').toLowerCase()})`}
+                        >
+                          {t('words.email')}
+                        </FieldLabel>
+                        <Input
+                          {...field}
+                          id={field.name}
+                          type="email"
+                          placeholder="email"
+                          value={field.value ?? ''}
+                        />
+                        {fieldState.invalid && (
+                          <FieldError errors={[fieldState.error]} />
+                        )}
+                      </Field>
+                    )}
+                  />
 
-                <p className="mobile-body2 md:desktop-body1 text-center max-md:max-w-[198px] mx-auto">
-                  {t('auth.alreadyHaveAccount')}
-                  <button
-                    type="button"
-                    onClick={() => goTo(AuthModalState.SignIn)}
-                    className="cursor-pointer underline italic"
-                  >
-                    {t('menu.login')}
-                  </button>
-                </p>
-              </div>
-            </>
+                  <Controller
+                    name="password"
+                    control={methods.control}
+                    render={({ field, fieldState }) => (
+                      <Field data-invalid={fieldState.invalid}>
+                        <FieldLabel htmlFor={field.name} required>
+                          {t('dashboard.profile.password')}
+                        </FieldLabel>
+                        <Input
+                          {...field}
+                          id={field.name}
+                          type="password"
+                          placeholder="password"
+                        />
+                        {fieldState.invalid && (
+                          <FieldError errors={[fieldState.error]} />
+                        )}
+                      </Field>
+                    )}
+                  />
+                </FieldGroup>
+
+                {register.error && (
+                  <p className="mt-2 text-base font-semibold text-red-5">
+                    {register.error.message}
+                  </p>
+                )}
+
+                <Button
+                  variant="primary"
+                  size={isMobile ? 'm' : 'l'}
+                  type="submit"
+                  className="mt-6 w-full"
+                >
+                  {t('auth.signUp')}
+                </Button>
+              </form>
+
+              <p className="body-base text-center mt-4">
+                {t('auth.alreadyHaveAccount')}
+                <button
+                  type="button"
+                  onClick={() => goTo(AuthModalState.SignIn)}
+                  className="ml-1 cursor-pointer underline italic"
+                >
+                  {t('menu.login')}
+                </button>
+              </p>
+            </div>
           )}
-
-          <div className="flex flex-col items-center text-center px-0.5 sm:px-5 mx-auto">
-            <div className="h-px bg-darkOrange-5 w-full max-w-40 rounded-3xl mb-2.5" />
-            <span className="max-md:mobile-h3 md:desktop-h7 text-darkOrange-5">
-              {t('auth.didYouKnow')}
-            </span>
-            <span className="text-darkOrange-5">
-              {t('auth.noAccountNeeded')}
-            </span>
-          </div>
         </DialogContent>
       </DialogPortal>
     </Dialog>
