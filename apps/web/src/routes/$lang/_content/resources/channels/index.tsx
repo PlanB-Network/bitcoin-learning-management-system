@@ -46,8 +46,12 @@ function YoutubeChannels() {
     showLocalOnly ? [...localYoutubeChannels] : [...(youtubeChannels ?? [])]
   )
     .sort((a, b) => a.name.localeCompare(b.name))
-    .filter((youtubeChannel) =>
-      youtubeChannel.name.toLowerCase().includes(searchTerm.toLowerCase()),
+    .filter(
+      (youtubeChannel) =>
+        youtubeChannel.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        youtubeChannel.description
+          ?.toLowerCase()
+          .includes(searchTerm.toLowerCase()),
     );
 
   const isEnglishLanguage = i18n.language === 'en';
@@ -100,10 +104,14 @@ function YoutubeChannels() {
               <LanguageResourcesSectionHeader language="en" />
               <div className="flex flex-wrap gap-0.5 sm:gap-6">
                 {englishYoutubeChannels
-                  .filter((youtubeChannel) =>
-                    youtubeChannel.name
-                      .toLowerCase()
-                      .includes(searchTerm.toLowerCase()),
+                  .filter(
+                    (youtubeChannel) =>
+                      youtubeChannel.name
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase()) ||
+                      youtubeChannel.description
+                        ?.toLowerCase()
+                        .includes(searchTerm.toLowerCase()),
                   )
                   .map((youtubeChannel) => (
                     <Link

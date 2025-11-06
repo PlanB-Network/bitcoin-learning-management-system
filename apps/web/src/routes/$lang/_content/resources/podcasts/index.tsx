@@ -42,8 +42,11 @@ function Podcasts() {
     showLocalOnly ? [...localPodcasts] : [...(podcasts ?? [])]
   )
     .sort((a, b) => a.name.localeCompare(b.name))
-    .filter((podcast) =>
-      podcast.name.toLowerCase().includes(searchTerm.toLowerCase()),
+    .filter(
+      (podcast) =>
+        podcast.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        podcast.host?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        podcast.description?.toLowerCase().includes(searchTerm.toLowerCase()),
     );
 
   const isEnglishLanguage = i18n.language === 'en';
@@ -101,8 +104,17 @@ function Podcasts() {
             <LanguageResourcesSectionHeader language="en" />
             <div className="flex flex-wrap gap-0.5 sm:gap-6">
               {englishPodcasts
-                .filter((podcast) =>
-                  podcast.name.toLowerCase().includes(searchTerm.toLowerCase()),
+                .filter(
+                  (podcast) =>
+                    podcast.name
+                      .toLowerCase()
+                      .includes(searchTerm.toLowerCase()) ||
+                    podcast.host
+                      ?.toLowerCase()
+                      .includes(searchTerm.toLowerCase()) ||
+                    podcast.description
+                      ?.toLowerCase()
+                      .includes(searchTerm.toLowerCase()),
                 )
                 .map((podcast) => (
                   <Link

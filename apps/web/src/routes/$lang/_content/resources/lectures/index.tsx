@@ -37,8 +37,20 @@ function Lectures() {
           />
           <div className="flex flex-wrap gap-3 sm:gap-2">
             {lectures
-              ?.filter((lecture) =>
-                lecture.name?.toLowerCase().includes(searchTerm.toLowerCase()),
+              ?.filter(
+                (lecture) =>
+                  lecture.name
+                    ?.toLowerCase()
+                    .includes(searchTerm.toLowerCase()) ||
+                  lecture.professorName
+                    ?.toLowerCase()
+                    .includes(searchTerm.toLowerCase()) ||
+                  lecture.description
+                    ?.toLowerCase()
+                    .includes(searchTerm.toLowerCase()) ||
+                  lecture.projectName
+                    ?.toLowerCase()
+                    .includes(searchTerm.toLowerCase()),
               )
               .map((lecture) => (
                 <LectureCard key={lecture.id} lecture={lecture} />

@@ -45,8 +45,13 @@ function Newsletter() {
     showLocalOnly ? [...localNewsletters] : [...(newsletters ?? [])]
   )
     ?.sort((a, b) => a.title.localeCompare(b.title))
-    .filter((newsletter) =>
-      newsletter.title?.toLowerCase().includes(searchTerm.toLowerCase()),
+    .filter(
+      (newsletter) =>
+        newsletter.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        newsletter.author?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        newsletter.description
+          ?.toLowerCase()
+          .includes(searchTerm.toLowerCase()),
     );
 
   const isEnglishLanguage = i18n.language === 'en';
@@ -104,10 +109,17 @@ function Newsletter() {
               <LanguageResourcesSectionHeader language="en" />
               <div className="flex flex-wrap gap-0.5 sm:gap-6">
                 {englishNewsletters
-                  .filter((newsletter) =>
-                    newsletter.title
-                      ?.toLowerCase()
-                      .includes(searchTerm.toLowerCase()),
+                  .filter(
+                    (newsletter) =>
+                      newsletter.title
+                        ?.toLowerCase()
+                        .includes(searchTerm.toLowerCase()) ||
+                      newsletter.author
+                        ?.toLowerCase()
+                        .includes(searchTerm.toLowerCase()) ||
+                      newsletter.description
+                        ?.toLowerCase()
+                        .includes(searchTerm.toLowerCase()),
                   )
                   .map((newsletter) => (
                     <Link

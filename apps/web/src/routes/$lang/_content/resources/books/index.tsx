@@ -62,7 +62,8 @@ function Books() {
                   book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                   book.description
                     ?.toLowerCase()
-                    .includes(searchTerm.toLowerCase()),
+                    .includes(searchTerm.toLowerCase()) ||
+                  book.author.toLowerCase().includes(searchTerm.toLowerCase()),
               )
               .map((book) => (
                 <Link

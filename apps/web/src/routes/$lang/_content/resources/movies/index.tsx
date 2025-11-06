@@ -40,8 +40,11 @@ function Movies() {
 
   const sortedMovies = (showLocalOnly ? [...localMovies] : [...(movies ?? [])])
     .sort((a, b) => a.title.localeCompare(b.title))
-    .filter((movie) =>
-      movie.title.toLowerCase().includes(searchTerm.toLowerCase()),
+    .filter(
+      (movie) =>
+        movie.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        movie.author?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        movie.description?.toLowerCase().includes(searchTerm.toLowerCase()),
     );
 
   const isEnglishLanguage = i18n.language === 'en';
@@ -93,8 +96,17 @@ function Movies() {
             <LanguageResourcesSectionHeader language="en" />
             <div className="flex flex-wrap gap-0.5 sm:gap-6">
               {englishMovies
-                .filter((movie) =>
-                  movie.title.toLowerCase().includes(searchTerm.toLowerCase()),
+                .filter(
+                  (movie) =>
+                    movie.title
+                      .toLowerCase()
+                      .includes(searchTerm.toLowerCase()) ||
+                    movie.author
+                      ?.toLowerCase()
+                      .includes(searchTerm.toLowerCase()) ||
+                    movie.description
+                      ?.toLowerCase()
+                      .includes(searchTerm.toLowerCase()),
                 )
                 .map((movie) => (
                   <Link
