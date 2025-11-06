@@ -125,8 +125,10 @@ const NotificationItem = ({ notification, onClose }: NotificationItemProps) => {
   return (
     <div
       className={cn(
-        'group flex w-full items-start self-stretch',
-        isHovered && 'bg-darkOrange-0 border-l border-darkOrange-4 ',
+        'group flex w-full items-start self-stretch border-l',
+        isHovered
+          ? 'bg-darkOrange-0 border-darkOrange-4 '
+          : 'border-transparent',
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
