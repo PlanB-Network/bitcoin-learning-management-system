@@ -41,7 +41,7 @@
     "ol": "^10.6.1",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.16",
-    "vite": "~7.1.12",
+    "vite": "~7.2.1",
     "vite-plugin-svgr": "^4.5.0",
     "vite-tsconfig-paths": "^5.1.4"
   },
