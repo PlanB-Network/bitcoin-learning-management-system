@@ -664,7 +664,12 @@ export const SideBarItem = ({
               : 'w-0 ml-0 opacity-0',
           )}
         >
-          <div className="flex flex-col whitespace-nowrap">
+          <div
+            className={cn(
+              'flex flex-col whitespace-nowrap',
+              isMain && 'h-9 flex justify-center',
+            )}
+          >
             <div
               ref={labelContainerRef}
               className={cn('relative w-full overflow-hidden')}
@@ -682,7 +687,7 @@ export const SideBarItem = ({
                   } as React.CSSProperties
                 }
                 className={cn(
-                  'align-middle whitespace-nowrap leading-none! text-newBlack-1 inline-block',
+                  'align-middle whitespace-nowrap text-newBlack-1 inline-block',
                   description || isMain
                     ? 'text-lg'
                     : isActive
