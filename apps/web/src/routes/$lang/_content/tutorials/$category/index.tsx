@@ -46,10 +46,6 @@ function TutorialCategory() {
   const { tutorials: allTutorials } = useContext(AppContext);
   const isFetched = allTutorials && allTutorials.length > 0;
 
-  const tutorials = allTutorials?.filter(
-    (tutorial) => tutorial.category === tutorialCategory?.name,
-  );
-
   useEffect(() => {
     let hash = location.hash.replace('#', '');
     hash = decodeURI(hash);
@@ -68,8 +64,8 @@ function TutorialCategory() {
   }, [tutorialCategory, navigate]);
 
   useEffect(() => {
-    if (tutorials) {
-      const filteredTutorials = tutorials.filter(
+    if (allTutorials) {
+      const filteredTutorials = allTutorials.filter(
         (tutorial) => tutorial.category === tutorialCategory?.name,
       );
       const subCats = extractSubCategories(
@@ -81,7 +77,7 @@ function TutorialCategory() {
         setCurrentSubCategory(subCats[0]);
       }
     }
-  }, [tutorials]);
+  }, [allTutorials]);
 
   const handleTabChange = (value: string) => {
     setCurrentSubCategory(value);
@@ -101,7 +97,7 @@ function TutorialCategory() {
       tabs={tutorialsTabs}
     >
       {!isFetched && <Loader size={'s'} />}
-      {tutorials && subCategories.length > 0 && (
+      {allTutorials && subCategories.length > 0 && (
         <>
           <SegmentedControl
             variant="outline"
@@ -121,7 +117,7 @@ function TutorialCategory() {
             ))}
           </SegmentedControl>
           <div className="mt-6 md:mt-2 flex flex-col">
-            {[...tutorials]
+            {[...allTutorials]
               .filter(
                 (tutorial) =>
                   tutorial.subcategory ===
