@@ -65,10 +65,10 @@ export const MobileMenu = ({
 
   return (
     <div className={cn('sticky top-0 z-50 text-black bg-black lg:hidden')}>
-      <div className="flex w-full items-center justify-between px-2">
+      <div className="flex w-full items-center justify-between px-4">
         <Link to="/" className="w-fit">
           <Image
-            className="my-4 h-8 w-auto"
+            className="my-4 h-6 w-auto"
             src={Logo}
             alt=""
             loading="lazy"

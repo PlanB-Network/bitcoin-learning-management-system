@@ -64,8 +64,8 @@ function IndexComponent() {
 
   return (
     <div className="text-center">
-      <PageBlock withYPadding={false} className="mt-8">
-        <h1 className="display-base text-4xl lg:text-6xl font-medium mb-2">
+      <PageBlock withYPadding={false} className="mt-12 lg:mt-8 max-lg:mb-9">
+        <h1 className="display-large lg:text-6xl font-medium mb-8 lg:mb-2">
           {t('home.title')}
         </h1>
         <p className="display-extra-small lg:text-3xl font-bold text-orange-500">
@@ -77,7 +77,7 @@ function IndexComponent() {
           <Loader className="w-40 mx-auto mt-12" />
         </PageBlock>
       ) : null}
-      <PageBlock withYPadding={false}>
+      <PageBlock withYPadding={false} className="max-lg:py-9">
         <video
           ref={videoRef}
           className="relative w-full max-h-full"
@@ -95,7 +95,11 @@ function IndexComponent() {
         />
       </PageBlock>
 
-      <PageBlock className="lg:!py-25" withXMargin={false} withXPadding={false}>
+      <PageBlock
+        className="max-lg:pt-10 lg:!py-25"
+        withXMargin={false}
+        withXPadding={false}
+      >
         <MediaCard3
           title={t('home.media1.title')}
           subtitle={t('home.media1.subtitle')}
