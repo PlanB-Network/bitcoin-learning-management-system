@@ -117,7 +117,7 @@ export const createUpdateCareerProfile = ({
 
       const sendEmail = createSendEmail({ config });
       const adminDashboardLink = `${config.domainUrl}/dashboard/administration/careers`;
-      const subject = `${process.env.PLANB_ENVIRONMENT !== 'mainnet' ? '[TEST] - ' : ''}New candidate file submitted`;
+      const subject = `${process.env.PLANB_ENVIRONMENT !== 'mainnet' ? '[TEST] - ' : ''}New Plan B student application submission`;
 
       for (const admin of careerAdminEmails) {
         try {
