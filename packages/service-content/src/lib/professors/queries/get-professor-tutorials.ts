@@ -17,7 +17,7 @@ export const getProfessorTutorialsQuery = ({
       professorId?: undefined;
     }
 )) => {
-  const whereClauses = [];
+  const whereClauses = [sql`t.is_archived = false`];
 
   if (id !== undefined) {
     whereClauses.push(sql`t.id = ${id}`);
