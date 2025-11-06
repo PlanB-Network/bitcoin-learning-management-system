@@ -2,6 +2,7 @@ import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import VideoSVG from '#src/assets/resources/video.svg?react';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import {
   doesVideoUrlWorkWithReactPlayer,
   fixEmbedUrl,
@@ -17,6 +18,7 @@ export const ImageVideoRenderer = ({
   src?: string;
   alt?: string;
 }) => {
+  const isMobile = useSmaller('md') || window.innerWidth < 768;
   const [isOpen, setIsOpen] = useState(false);
 
   if (isOpen) {
@@ -91,7 +93,7 @@ export const ImageVideoRenderer = ({
       <button
         type="button"
         className="mx-auto flex justify-center rounded-lg pb-6 md:pt-4 last:pb-0 last:md:pb-4 p-0 bg-transparent border-0 cursor-zoom-in focus:outline-none"
-        onClick={() => setIsOpen(true)}
+        onClick={() => (isMobile ? undefined : setIsOpen(true))}
         aria-label={`Open image${alt ? `: ${alt}` : ''}`}
       >
         <img src={src} alt={alt} className="rounded-lg" />
