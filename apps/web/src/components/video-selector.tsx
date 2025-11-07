@@ -7,7 +7,8 @@ import {
 } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
-import React, { lazy, Suspense, useMemo, useState } from 'react';
+import type React from 'react';
+import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import { TbVideo } from 'react-icons/tb';
 import ReactPlayer from 'react-player';
 import { fixEmbedUrl } from '#src/utils/misc.ts';
@@ -42,13 +43,18 @@ export const VideoSelector = ({
       return [];
     }
 
+    let filteredVideos = _videos;
+    if (!_videos.find((v) => v.language === language)) {
+      filteredVideos = _videos.filter((v) => v.language === 'en');
+    }
+
     if (!isPearApp) {
-      return _videos;
+      return filteredVideos;
     }
 
     const pearsVideos = [];
 
-    for (const video of _videos) {
+    for (const video of filteredVideos) {
       if (video.provider === VideoProvider.Peertube) {
         pearsVideos.push({
           ...video,
@@ -57,18 +63,13 @@ export const VideoSelector = ({
       }
     }
 
-    console.log('Augmented videos:', [...pearsVideos, ..._videos]);
+    console.log('Augmented videos:', [...pearsVideos, ...filteredVideos]);
 
-    return [...pearsVideos, ..._videos];
+    return [...pearsVideos, ...filteredVideos];
   }, [_videos]);
 
   const providers = useMemo(
     () => Array.from(new Set(videos?.map((v) => v.provider) ?? [])),
-    [videos],
-  );
-
-  const sourceTypes = useMemo(
-    () => Array.from(new Set(videos?.map((v) => v.sourceType) ?? [])),
     [videos],
   );
 
@@ -77,6 +78,19 @@ export const VideoSelector = ({
   const [selectedProvider, setSelectedProvider] = useState(
     firstVideo?.provider || providers[0] || '',
   );
+
+  const sourceTypes = useMemo(
+    () =>
+      Array.from(
+        new Set(
+          videos
+            ?.filter((v) => v.provider === selectedProvider)
+            .map((v) => v.sourceType) ?? [],
+        ),
+      ),
+    [videos, selectedProvider],
+  );
+
   const [selectedSourceType, setSelectedSourceType] = useState(
     firstVideo?.sourceType || sourceTypes[0] || '',
   );
@@ -93,12 +107,18 @@ export const VideoSelector = ({
     [videos, selectedProvider, selectedSourceType, firstVideo],
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (firstVideo) {
       setSelectedProvider(firstVideo.provider);
       setSelectedSourceType(firstVideo.sourceType);
     }
   }, [firstVideo]);
+
+  useEffect(() => {
+    if (sourceTypes.length > 0 && !sourceTypes.includes(selectedSourceType)) {
+      setSelectedSourceType(sourceTypes[0]);
+    }
+  }, [sourceTypes, selectedSourceType]);
 
   if (isLoading) {
     return <Loader variant="black" size={'m'} />;
@@ -194,12 +214,16 @@ const CollapsibleSelectorPart = ({
         </div>
       ) : null}
 
-      {sourceTypes.length > 1 ? (
+      {sourceTypes.length > 0 ? (
         <div className="flex justify-between items-center">
           <span className="mr-2 label-small-12px md:subtitle-medium-16px">
             {t('videoSelector.language.language')}
           </span>
-          <SegmentedControl variant="outline" defaultValue={selectedSourceType}>
+          <SegmentedControl
+            variant="outline"
+            defaultValue={selectedSourceType}
+            value={selectedSourceType}
+          >
             {sourceTypes.map((sourceType) => (
               <SegmentedControlItem
                 value={sourceType}

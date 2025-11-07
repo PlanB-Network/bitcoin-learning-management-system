@@ -31,7 +31,19 @@ export const getVideosQuery = (id: string, language?: string) => {
     JOIN content.videos_localized vl ON v.id = vl.id
     JOIN content.courses c ON c.id = v.course_id
     WHERE v.id = ${id}
-      ${language ? sql`AND (vl.language = LOWER(${language}) OR vl.language = c.original_language)` : sql``}
+      ${
+        language
+          ? sql` AND (
+        (
+          EXISTS(SELECT 1 FROM content.videos_localized vl2 WHERE vl2.id = v.id AND vl2.language = LOWER(${language})) AND
+          (vl.language = LOWER(${language}) OR vl.language = c.original_language)
+        ) OR (
+          NOT EXISTS(SELECT 1 FROM content.videos_localized vl2 WHERE vl2.id = v.id AND vl2.language = LOWER(${language})) AND
+          vl.language = 'en'
+        )
+      )`
+          : sql``
+      }
     ORDER BY
       CASE
         WHEN vl.language = c.original_language THEN 2
