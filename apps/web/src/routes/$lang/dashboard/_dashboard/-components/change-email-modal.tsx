@@ -1,18 +1,16 @@
 import {
   BasicModal,
   Button,
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
+  Field,
+  FieldError,
+  FieldLabel,
   Input,
 } from '@blms/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { useCallback } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 import { trpc } from '#src/utils/trpc.js';
@@ -67,54 +65,46 @@ export const ChangeEmailModal = ({
   );
 
   return (
-    <>
-      <BasicModal
-        trigger={<button type="button" className="hidden" />}
-        title={t('settings.changeEmail')}
-        open={isOpen}
-        onOpenChange={onClose}
-        contentClassName="!max-w-xs md:!max-w-fit"
+    <BasicModal
+      trigger={<button type="button" className="hidden" />}
+      title={t('settings.changeEmail')}
+      open={isOpen}
+      onOpenChange={onClose}
+    >
+      <form
+        className="flex w-full flex-col items-center gap-6"
+        onSubmit={form.handleSubmit(onSubmit)}
       >
-        <Form {...form}>
-          <form
-            className="flex w-full flex-col items-center gap-6"
-            onSubmit={form.handleSubmit(onSubmit)}
-          >
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field, fieldState }) => (
-                <FormItem className="flex flex-col justify-between text-center w-full md:w-80">
-                  <FormLabel className="text-sm font-normal !max-md:leading-[120%] !md:desktop-h7 !text-dashboardSectionText">
-                    Email{' '}
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      type="email"
-                      {...field}
-                      error={fieldState.error?.message || null}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
+        <Controller
+          control={form.control}
+          name="email"
+          render={({ field, fieldState }) => (
+            <Field data-invalid={fieldState.invalid}>
+              <FieldLabel htmlFor={field.name}>{t('words.email')}</FieldLabel>
 
-            <div className="flex gap-4 justify-between">
-              <Button variant="primary" size="m" type="submit">
-                {t('dashboard.profile.save')}
-              </Button>
-              <Button
-                variant="secondary"
-                size="m"
-                type="button"
-                onClick={onClose}
-              >
-                {t('dashboard.profile.cancel')}
-              </Button>
-            </div>
-          </form>
-        </Form>
-      </BasicModal>
-    </>
+              <Input
+                {...field}
+                id={field.name}
+                type="email"
+                aria-invalid={fieldState.invalid}
+                error={fieldState.error?.message || null}
+              />
+
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
+          )}
+        />
+
+        <div className="flex gap-4 justify-between items-center w-full">
+          <Button variant="primary" size="m" type="submit">
+            {t('dashboard.profile.save')}
+          </Button>
+
+          <Button variant="secondary" size="m" type="button" onClick={onClose}>
+            {t('dashboard.profile.cancel')}
+          </Button>
+        </div>
+      </form>
+    </BasicModal>
   );
 };

@@ -27,7 +27,7 @@ function Results() {
   const params = Route.useParams();
 
   const navigate = useNavigate();
-  const { session } = useContext(AppContext);
+  const { session, courses } = useContext(AppContext);
 
   useEffect(() => {
     if (session === undefined) return;
@@ -46,7 +46,7 @@ function Results() {
     <PageLayout
       layoutSize="wide"
       title={t('courses.exam.examResults')}
-      tabs={getTabs(params.courseId)}
+      tabs={getTabs(params.courseId, courses || [])}
     >
       <ExamResults courseId={params.courseId} />
     </PageLayout>

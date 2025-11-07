@@ -4,12 +4,9 @@ import {
   Button,
   Checkbox,
   customToast,
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
+  Field,
+  FieldError,
+  FieldLabel,
   Loader,
 } from '@blms/ui';
 import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
@@ -17,7 +14,8 @@ import { useMutation } from '@tanstack/react-query';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useContext, useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { TbCheck } from 'react-icons/tb';
 import { z } from 'zod';
 import { PageLayout } from '#src/components/page-layout.tsx';
@@ -176,54 +174,81 @@ const NotificationSettings = () => {
 
   return (
     <section className="flex flex-col mt-5 md:mt-8 gap-5 md:gap-8">
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit, console.error)}
-          className="flex flex-col gap-6"
-        >
-          <div className="flex flex-col gap-2.5 md:gap-4">
-            <div className="flex justify-between w-full items-center flex-wrap">
-              <h3 className="subtitle-large-18px font-medium md:subtitle-large-med-20px text-newBlack-1">
-                {t('dashboard.profile.notificationSettings.title')}
-              </h3>
-              <Button
-                type={isEditingNotificationsSettings ? 'button' : 'submit'}
-                onClick={
-                  isEditingNotificationsSettings
-                    ? () => setIsEditingNotificationsSettings(false)
-                    : () => setIsEditingNotificationsSettings(true)
-                }
-                size="s"
-                disabled={changeNotificationSettings.isPending}
-                className="md:self-end w-fit"
-              >
-                {changeNotificationSettings.isPending
-                  ? t('words.saving')
-                  : !isEditingNotificationsSettings
-                    ? t('words.edit')
-                    : t('words.save')}
-              </Button>
-            </div>
+      <form
+        onSubmit={form.handleSubmit(onSubmit, console.error)}
+        className="flex flex-col gap-6"
+      >
+        <div className="flex flex-col gap-2.5 md:gap-4">
+          <div className="flex justify-between w-full items-center flex-wrap">
+            <h3 className="subtitle-large-18px font-medium md:subtitle-large-med-20px text-newBlack-1">
+              {t('dashboard.profile.notificationSettings.title')}
+            </h3>
 
-            <p className="desktop-typo1 md:body-16px text-newBlack-1">
-              {t('dashboard.profile.notificationSettings.description')}
-            </p>
+            <Button
+              type={isEditingNotificationsSettings ? 'button' : 'submit'}
+              onClick={
+                isEditingNotificationsSettings
+                  ? () => setIsEditingNotificationsSettings(false)
+                  : () => setIsEditingNotificationsSettings(true)
+              }
+              size="s"
+              disabled={changeNotificationSettings.isPending}
+              className="md:self-end w-fit"
+            >
+              {changeNotificationSettings.isPending
+                ? t('words.saving')
+                : !isEditingNotificationsSettings
+                  ? t('words.edit')
+                  : t('words.save')}
+            </Button>
           </div>
-          <div className="flex flex-col gap-6">
-            <div className="flex max-md:flex-col gap-4 md:gap-2 justify-between">
+
+          <p className="desktop-typo1 md:body-16px text-newBlack-1">
+            {t('dashboard.profile.notificationSettings.description')}
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-6">
+          <div className="flex max-md:flex-col gap-4 md:gap-2 justify-between">
+            <FormCheckboxGroup
+              id="platformNotifications"
+              control={form.control}
+              label={t('dashboard.profile.notificationSettings.platformTitle')}
+              options={[
+                {
+                  label: t(
+                    'dashboard.profile.notificationSettings.eventsOption',
+                  ),
+                  value: 'events',
+                },
+                {
+                  label: t(
+                    'dashboard.profile.notificationSettings.coursesOption',
+                  ),
+                  value: 'courses',
+                },
+                {
+                  label: t(
+                    'dashboard.profile.notificationSettings.generalOption',
+                  ),
+                  value: 'general',
+                },
+              ]}
+              disabled={
+                changeNotificationSettings.isPending ||
+                !isEditingNotificationsSettings
+              }
+              addNoneButton
+            />
+          </div>
+
+          <div className="flex max-md:flex-col gap-4 md:gap-2 justify-between">
+            <div className="flex flex-col gap-2">
               <FormCheckboxGroup
-                id="platformNotifications"
+                id="emailNotifications"
                 control={form.control}
-                label={t(
-                  'dashboard.profile.notificationSettings.platformTitle',
-                )}
+                label={t('dashboard.profile.notificationSettings.emailTitle')}
                 options={[
-                  {
-                    label: t(
-                      'dashboard.profile.notificationSettings.eventsOption',
-                    ),
-                    value: 'events',
-                  },
                   {
                     label: t(
                       'dashboard.profile.notificationSettings.coursesOption',
@@ -243,45 +268,16 @@ const NotificationSettings = () => {
                 }
                 addNoneButton
               />
-            </div>
 
-            <div className="flex max-md:flex-col gap-4 md:gap-2 justify-between">
-              <div className="flex flex-col gap-2">
-                <FormCheckboxGroup
-                  id="emailNotifications"
-                  control={form.control}
-                  label={t('dashboard.profile.notificationSettings.emailTitle')}
-                  options={[
-                    {
-                      label: t(
-                        'dashboard.profile.notificationSettings.coursesOption',
-                      ),
-                      value: 'courses',
-                    },
-                    {
-                      label: t(
-                        'dashboard.profile.notificationSettings.generalOption',
-                      ),
-                      value: 'general',
-                    },
-                  ]}
-                  disabled={
-                    changeNotificationSettings.isPending ||
-                    !isEditingNotificationsSettings
-                  }
-                  addNoneButton
-                />
-
-                {!user?.email && (
-                  <p className="body-14px text-red-6">
-                    {t('dashboard.profile.notificationSettings.emailWarning')}
-                  </p>
-                )}
-              </div>
+              {!user?.email && (
+                <p className="body-14px text-red-6">
+                  {t('dashboard.profile.notificationSettings.emailWarning')}
+                </p>
+              )}
             </div>
           </div>
-        </form>
-      </Form>
+        </div>
+      </form>
     </section>
   );
 };
@@ -305,73 +301,78 @@ export const FormCheckboxGroup = ({
   mandatory?: boolean;
   addNoneButton?: boolean;
 }) => {
+  const { t } = useTranslation();
+
   return (
-    <FormField
+    <Controller
       control={control}
       name={id}
-      render={({ field }) => (
-        <FormItem className="w-full flex flex-col gap-2">
-          <FormLabel className="flex flex-col gap-2" removeDefaultClasses>
+      render={({ field, fieldState }) => (
+        <Field
+          data-invalid={fieldState.invalid}
+          className="w-full flex flex-col gap-2"
+        >
+          <FieldLabel htmlFor={id} required={mandatory}>
             <span className="text-black subtitle-medium-med-16px whitespace-pre-line">
               {label}
-              {mandatory && <span className="text-red-5 ml-0.5">*</span>}
             </span>
 
             {subLabel && (
               <span className="text-newGray-1 body-14px">{subLabel}</span>
             )}
-          </FormLabel>
-          <FormControl>
-            <div className="flex flex-col gap-2 pl-4">
-              {options.map((option) => (
-                <div key={option.value} className="flex gap-4 items-center">
-                  <Checkbox
-                    id={`${id}-${option.value}`}
-                    value={option.value}
-                    checked={field.value.includes(option.value)}
-                    onCheckedChange={(checked) => {
-                      if (checked) {
-                        field.onChange([...field.value, option.value]);
-                      } else {
-                        field.onChange(
-                          field.value.filter((v: string) => v !== option.value),
-                        );
-                      }
-                    }}
-                    disabled={disabled}
-                  />
-                  <label
-                    htmlFor={`${id}-${option.value}`}
-                    className="text-black label-medium-16px cursor-pointer"
-                  >
-                    {option.label}
-                  </label>
-                </div>
-              ))}
-              {addNoneButton && (
-                <div className="flex gap-4 items-center">
-                  <Checkbox
-                    id={`${id}-no-preference`}
-                    checked={field.value.length === 0}
-                    onCheckedChange={(checked) => {
+          </FieldLabel>
+
+          <div className="flex flex-col gap-2 pl-4">
+            {options.map((option) => (
+              <div key={option.value} className="flex gap-4 items-center">
+                <Checkbox
+                  id={`${id}-${option.value}`}
+                  value={option.value}
+                  checked={field.value.includes(option.value)}
+                  onCheckedChange={(checked) => {
+                    if (checked) {
+                      field.onChange([...field.value, option.value]);
+                    } else {
                       field.onChange(
-                        checked ? [] : options.map((option) => option.value),
+                        field.value.filter((v: string) => v !== option.value),
                       );
-                    }}
-                    disabled={disabled}
-                  />
-                  <label
-                    htmlFor={`${id}-no-preference`}
-                    className="text-black label-medium-16px cursor-pointer"
-                  >
-                    {t('dashboard.profile.notificationSettings.none')}
-                  </label>
-                </div>
-              )}
-            </div>
-          </FormControl>
-          <FormMessage />
-        </FormItem>
+                    }
+                  }}
+                  disabled={disabled}
+                />
+                <label
+                  htmlFor={`${id}-${option.value}`}
+                  className="text-black label-medium-16px cursor-pointer"
+                >
+                  {option.label}
+                </label>
+              </div>
+            ))}
+
+            {addNoneButton && (
+              <div className="flex gap-4 items-center">
+                <Checkbox
+                  id={`${id}-no-preference`}
+                  checked={field.value.length === 0}
+                  onCheckedChange={(checked) => {
+                    field.onChange(
+                      checked ? [] : options.map((option) => option.value),
+                    );
+                  }}
+                  disabled={disabled}
+                />
+                <label
+                  htmlFor={`${id}-no-preference`}
+                  className="text-black label-medium-16px cursor-pointer"
+                >
+                  {t('dashboard.profile.notificationSettings.none')}
+                </label>
+              </div>
+            )}
+          </div>
+
+          {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+        </Field>
       )}
     />
   );

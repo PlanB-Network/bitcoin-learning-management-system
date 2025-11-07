@@ -28,7 +28,7 @@ function Details() {
   const { i18n, t } = useTranslation();
   const params = Route.useParams();
   const navigate = useNavigate();
-  const { session } = useContext(AppContext);
+  const { session, courses } = useContext(AppContext);
 
   const { data: course } = useQuery(
     trpc.content.getCourse.queryOptions({
@@ -58,7 +58,7 @@ function Details() {
       layoutSize="wide"
       title={course.name}
       description={t('dashboard.teacher.courses.quickRecap')}
-      tabs={getTabs(course.id)}
+      tabs={getTabs(course.id, courses || [])}
     >
       <CourseDetails course={course} />
     </PageLayout>

@@ -101,7 +101,7 @@ export const ImageVideoRenderer = ({
 
       {isOpen && (
         <div
-          className="fixed inset-0 z-9999 flex items-center justify-center bg-[#042F6280]"
+          className="fixed inset-0 z-9999 flex items-center justify-center bg-black/60"
           onClick={() => setIsOpen(false)}
           onKeyDown={(e) => {
             if (e.key === 'Escape') setIsOpen(false);

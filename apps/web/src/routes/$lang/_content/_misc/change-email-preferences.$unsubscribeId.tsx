@@ -1,9 +1,16 @@
-import { Button, ButtonWithArrow, customToast, Form } from '@blms/ui';
+import {
+  Button,
+  ButtonWithArrow,
+  customToast,
+  Field,
+  FieldError,
+  FieldGroup,
+} from '@blms/ui';
 import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { MdMarkEmailRead } from 'react-icons/md';
 import { z } from 'zod';
@@ -105,48 +112,59 @@ function ChangeEmailPreferences() {
         )}
       </p>
       {emailPreferences ? (
-        <>
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit, console.error)}
-              className="flex flex-col gap-4 md:gap-8"
-            >
-              <div className="flex flex-col gap-2">
-                <FormCheckboxGroup
-                  id="emailNotifications"
-                  control={form.control}
-                  label={t('dashboard.profile.notificationSettings.emailTitle')}
-                  options={[
-                    {
-                      label: t(
-                        'dashboard.profile.notificationSettings.coursesOption',
-                      ),
-                      value: 'courses',
-                    },
-                    {
-                      label: t(
-                        'dashboard.profile.notificationSettings.generalOption',
-                      ),
-                      value: 'general',
-                    },
-                  ]}
-                  addNoneButton
-                />
-              </div>
+        <form
+          onSubmit={form.handleSubmit(onSubmit, console.error)}
+          className="flex flex-col gap-4 md:gap-8"
+        >
+          <FieldGroup className="flex flex-col gap-2">
+            <Controller
+              name="emailNotifications"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FormCheckboxGroup
+                    {...field}
+                    control={form.control}
+                    id={field.name}
+                    label={t(
+                      'dashboard.profile.notificationSettings.emailTitle',
+                    )}
+                    options={[
+                      {
+                        label: t(
+                          'dashboard.profile.notificationSettings.coursesOption',
+                        ),
+                        value: 'courses',
+                      },
+                      {
+                        label: t(
+                          'dashboard.profile.notificationSettings.generalOption',
+                        ),
+                        value: 'general',
+                      },
+                    ]}
+                    addNoneButton
+                  />
 
-              <Button
-                type={'submit'}
-                size="s"
-                disabled={changeEmailSettings.isPending}
-                className="w-fit self-center"
-              >
-                {changeEmailSettings.isPending
-                  ? t('words.saving')
-                  : t('words.save')}
-              </Button>
-            </form>
-          </Form>
-        </>
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+          </FieldGroup>
+
+          <Button
+            type="submit"
+            size="s"
+            disabled={changeEmailSettings.isPending}
+            className="w-fit self-center"
+          >
+            {changeEmailSettings.isPending
+              ? t('words.saving')
+              : t('words.save')}
+          </Button>
+        </form>
       ) : (
         <div className="text-newBlack-1 body-14px md:body-16px">
           <p className="mb-2 font-medium">

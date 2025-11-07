@@ -5,12 +5,9 @@ import {
   Button,
   Calendar,
   cn,
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
+  Field,
+  FieldError,
+  FieldLabel,
   Popover,
   PopoverContent,
   PopoverTrigger,
@@ -26,9 +23,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { format } from 'date-fns';
 import { fromZonedTime, toZonedTime } from 'date-fns-tz';
-import { t } from 'i18next';
 import { useContext, useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { LuCalendar } from 'react-icons/lu';
 import { z } from 'zod';
@@ -44,18 +40,6 @@ interface AnnouncementModalProps {
   existingAnnouncement?: ScheduledCourseAnnouncement;
 }
 
-const schema = z.object({
-  content: z.string().min(1, { message: t('courses.review.fieldRequired') }),
-  dateTime: z.date({
-    error: t('dashboard.teacher.courses.announcementModal.dateRequired'),
-  }),
-  studentGroup: z.enum(StudentGroup).optional(),
-  timezone: z.string(),
-  type: z.string(),
-});
-
-type FormData = z.infer<typeof schema>;
-
 export const AnnouncementModal = ({
   courseId,
   isOpen,
@@ -63,6 +47,19 @@ export const AnnouncementModal = ({
   existingAnnouncement,
 }: AnnouncementModalProps) => {
   const { t } = useTranslation();
+
+  const schema = z.object({
+    content: z.string().min(1, { message: t('courses.review.fieldRequired') }),
+    dateTime: z.date({
+      error: t('dashboard.teacher.courses.announcementModal.dateRequired'),
+    }),
+    studentGroup: z.enum(StudentGroup).optional(),
+    timezone: z.string(),
+    type: z.string(),
+  });
+
+  type FormData = z.infer<typeof schema>;
+
   const form = useForm<FormData>({
     resolver: zodResolver(schema),
   });
@@ -204,318 +201,324 @@ export const AnnouncementModal = ({
           ? t('dashboard.teacher.courses.announcementModal.editAnnouncement')
           : t('dashboard.teacher.courses.announcementModal.title')
       }
-      contentClassName="w-[95%] max-md:max-w-100 md:w-[530px]"
       open={isOpen}
       onOpenChange={() => closeModal()}
     >
       <div className="flex flex-col gap-6">
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col gap-5 md:gap-10"
-          >
-            <FormField
-              control={form.control}
-              name="type"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-left mb-2" required>
-                    {t('dashboard.teacher.courses.announcementModal.typeLabel')}
-                  </FormLabel>
-                  <FormControl>
-                    <Select onValueChange={field.onChange} value={field.value}>
-                      <SelectTrigger mode="light" className="md:w-96">
-                        <SelectValue
-                          placeholder={t(
-                            'dashboard.teacher.courses.announcementModal.typePlaceholder',
-                          )}
-                        />
-                      </SelectTrigger>
-                      <SelectContent mode="light">
-                        {notificationOptions.map((type) => (
-                          <SelectItem key={type} value={type}>
-                            <span className="flex gap-1.5 items-center">
-                              {getNotificationIcon(type, 'size-4')}
-                              {t(`notification.types.${type.toLowerCase()}`)}
-                            </span>
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </FormControl>
-                </FormItem>
-              )}
-            />
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex flex-col gap-5 md:gap-10"
+        >
+          <Controller
+            control={form.control}
+            name="type"
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel className="text-left" htmlFor={field.name} required>
+                  {t('dashboard.teacher.courses.announcementModal.typeLabel')}
+                </FieldLabel>
 
-            <FormField
-              control={form.control}
-              name="content"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-left mb-2" required>
-                    {t(
-                      'dashboard.teacher.courses.announcementModal.contentLabel',
-                    )}
-                  </FormLabel>
-                  <FormControl>
-                    <Textarea
+                <Select onValueChange={field.onChange} value={field.value}>
+                  <SelectTrigger mode="light" className="md:w-96">
+                    <SelectValue
                       placeholder={t(
-                        'dashboard.teacher.courses.announcementModal.contentPlaceholder',
+                        'dashboard.teacher.courses.announcementModal.typePlaceholder',
                       )}
-                      className="min-h-25 bg-white border-newGray-3"
-                      {...field}
                     />
-                  </FormControl>
-                </FormItem>
+                  </SelectTrigger>
+
+                  <SelectContent mode="light">
+                    {notificationOptions.map((type) => (
+                      <SelectItem key={type} value={type}>
+                        <span className="flex gap-1.5 items-center">
+                          {getNotificationIcon(type, 'size-4')}
+                          {t(`notification.types.${type.toLowerCase()}`)}
+                        </span>
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
+          />
+          <Controller
+            control={form.control}
+            name="content"
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel className="text-left" htmlFor={field.name} required>
+                  {t(
+                    'dashboard.teacher.courses.announcementModal.contentLabel',
+                  )}
+                </FieldLabel>
+
+                <Textarea
+                  placeholder={t(
+                    'dashboard.teacher.courses.announcementModal.contentPlaceholder',
+                  )}
+                  className="min-h-25 bg-white border-newGray-3"
+                  {...field}
+                />
+
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
+          />
+          {isPlanBSchoolCourse && (
+            <Controller
+              control={form.control}
+              name="studentGroup"
+              defaultValue={StudentGroup.All}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel className="text-left" htmlFor={field.name}>
+                    {t(
+                      'dashboard.teacher.courses.announcementModal.groupLabel',
+                    )}
+                  </FieldLabel>
+
+                  <div className="flex flex-col gap-2 pl-4 text-left">
+                    {[
+                      {
+                        label: t('dashboard.announcements.groups.all'),
+                        value: 'all',
+                      },
+                      {
+                        label: t('dashboard.announcements.groups.active'),
+                        value: 'assignment',
+                      },
+                      {
+                        label: t('dashboard.announcements.groups.summer'),
+                        value: 'summer',
+                      },
+                    ].map((option) => (
+                      <label
+                        key={option.value}
+                        className="flex gap-4 items-start"
+                      >
+                        <div className="mt-1 grid place-items-center">
+                          <input
+                            type="radio"
+                            value={option.value}
+                            checked={field.value === option.value}
+                            onChange={() => field.onChange(option.value)}
+                            className="peer col-start-1 row-start-1 size-3.5 appearance-none rounded-full border bg-white border-darkOrange-5 shrink-0"
+                          />
+                          <div className="col-start-1 row-start-1 w-2 h-2 rounded-full peer-checked:bg-darkOrange-5" />
+                        </div>
+
+                        <span className="text-black label-medium-16px">
+                          {option.label}
+                        </span>
+                      </label>
+                    ))}
+                  </div>
+
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+          )}
+          <div className="flex flex-col gap-2">
+            <FieldLabel required>
+              {t('dashboard.announcements.publicationDate')}
+            </FieldLabel>
+
+            <Controller
+              control={form.control}
+              name="dateTime"
+              render={({ field, fieldState }) => (
+                <Field
+                  data-invalid={fieldState.invalid}
+                  className="flex flex-col w-full max-w-[320px]"
+                >
+                  <FieldLabel required>{t('words.day')}</FieldLabel>
+
+                  <Popover open={isDateOpen} onOpenChange={setIsDateOpen}>
+                    <PopoverTrigger asChild>
+                      <button
+                        className={cn(
+                          'flex items-center justify-between rounded-lg bg-white border-newGray-3 px-3 py-2 text-sm leading-[120%] text-newBlack-1 data-placeholder:text-newGray-2 dark:bg-transparent dark:border-newGray-4 border shadow-none',
+                        )}
+                        type="button"
+                      >
+                        {field.value ? (
+                          `${format(field.value, 'PPP')}, ${time}`
+                        ) : (
+                          <span className="text-newGray-2">
+                            {t('dashboard.announcements.pickADate')}
+                          </span>
+                        )}
+                        <LuCalendar className="ml-auto h-4 w-4 opacity-50" />
+                      </button>
+                    </PopoverTrigger>
+
+                    <PopoverContent
+                      className="w-auto p-0 z-60 bg-white"
+                      align="start"
+                    >
+                      <Calendar
+                        mode="single"
+                        startMonth={new Date()}
+                        selected={date || field.value}
+                        onSelect={(selectedDate) => {
+                          const [hours, minutes] = time.split(':')!;
+                          selectedDate?.setHours(
+                            Number(hours),
+                            Number(minutes),
+                          );
+                          setDate(selectedDate!);
+                          field.onChange(selectedDate);
+                        }}
+                        onDayClick={() => setIsDateOpen(false)}
+                        endMonth={new Date(new Date().getFullYear() + 3, 11)}
+                        disabled={(date) =>
+                          Number(date) < Date.now() - 1000 * 60 * 60 * 24
+                        }
+                        defaultMonth={field.value}
+                        className="border border-newGray-4 rounded-lg"
+                      />
+                    </PopoverContent>
+                  </Popover>
+
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
               )}
             />
 
-            {isPlanBSchoolCourse && (
-              <FormField
-                control={form.control}
-                name="studentGroup"
-                defaultValue={StudentGroup.All}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-left mb-2">
-                      {t(
-                        'dashboard.teacher.courses.announcementModal.groupLabel',
-                      )}
-                    </FormLabel>
-                    <FormControl>
-                      <div className="flex flex-col gap-2 pl-4 text-left">
-                        {[
-                          {
-                            label: t('dashboard.announcements.groups.all'),
-                            value: 'all',
-                          },
-                          {
-                            label: t('dashboard.announcements.groups.active'),
-                            value: 'assignment',
-                          },
-                          {
-                            label: t('dashboard.announcements.groups.summer'),
-                            value: 'summer',
-                          },
-                        ].map((option) => (
-                          <label
-                            key={option.value}
-                            className="flex gap-4 items-start"
-                          >
-                            <div className="mt-1 grid place-items-center">
-                              <input
-                                type="radio"
-                                value={option.value}
-                                checked={field.value === option.value}
-                                onChange={() => field.onChange(option.value)}
-                                className="peer col-start-1 row-start-1 size-3.5 appearance-none rounded-full border bg-white border-darkOrange-5 shrink-0"
-                              />
-                              <div className="col-start-1 row-start-1 w-2 h-2 rounded-full peer-checked:bg-darkOrange-5" />
-                            </div>
-                            <span className="text-black label-medium-16px">
-                              {option.label}
-                            </span>
-                          </label>
-                        ))}
-                      </div>
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-            )}
+            <Controller
+              control={form.control}
+              name="dateTime"
+              render={({ field, fieldState }) => (
+                <Field
+                  data-invalid={fieldState.invalid}
+                  className="flex flex-col"
+                >
+                  <FieldLabel required>{t('words.time')}</FieldLabel>
 
-            <div className="flex flex-col gap-2">
-              <FormLabel required>
-                {t('dashboard.announcements.publicationDate')}
-              </FormLabel>
-              <FormField
-                control={form.control}
-                name="dateTime"
-                render={({ field }) => (
-                  <FormItem className="flex flex-col w-full max-w-[320px]">
-                    <FormLabel required className="mb-2">
-                      {t('words.day')}
-                    </FormLabel>
-                    <Popover open={isDateOpen} onOpenChange={setIsDateOpen}>
-                      <PopoverTrigger asChild>
-                        <FormControl>
-                          <button
-                            className={cn(
-                              'flex items-center justify-between rounded-lg bg-white border-newGray-3 px-3 py-2 text-sm leading-[120%] text-newBlack-1 data-[placeholder]:text-newGray-2 data-[placeholder]:dark:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 [&>span]:truncate dark:bg-transparent dark:border-newGray-4 border shadow-none',
-                            )}
-                            type="button"
-                          >
-                            {field.value ? (
-                              `${format(field.value, 'PPP')}, ${time}`
-                            ) : (
-                              <span className="text-newGray-2">
-                                {t('dashboard.announcements.pickADate')}
-                              </span>
-                            )}
-                            <LuCalendar className="ml-auto h-4 w-4 opacity-50" />
-                          </button>
-                        </FormControl>
-                      </PopoverTrigger>
-                      <PopoverContent
-                        className="w-auto p-0 z-[60] bg-white"
-                        align="start"
-                      >
-                        <Calendar
-                          mode="single"
-                          startMonth={new Date()}
-                          selected={date || field.value}
-                          onSelect={(selectedDate) => {
-                            const [hours, minutes] = time.split(':')!;
-                            selectedDate?.setHours(
-                              Number.parseInt(hours),
-                              Number.parseInt(minutes),
-                            );
-                            setDate(selectedDate!);
-                            field.onChange(selectedDate);
-                          }}
-                          onDayClick={() => setIsDateOpen(false)}
-                          endMonth={new Date(new Date().getFullYear() + 3, 11)}
-                          disabled={(date) =>
-                            Number(date) < Date.now() - 1000 * 60 * 60 * 24
-                          }
-                          defaultMonth={field.value}
-                          className="border border-newGray-4 rounded-lg"
-                        />
-                      </PopoverContent>
-                    </Popover>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="dateTime"
-                render={({ field }) => (
-                  <FormItem className="flex flex-col">
-                    <FormLabel required className="mb-2">
-                      {t('words.time')}
-                    </FormLabel>
-                    <FormControl>
-                      <Select
-                        defaultValue={time!}
-                        onValueChange={(e) => {
-                          setTime(e);
-                          if (date) {
-                            const [hours, minutes] = e.split(':');
-                            const newDate = new Date(date.getTime());
-                            newDate.setHours(
-                              Number.parseInt(hours),
-                              Number.parseInt(minutes),
-                            );
-                            setDate(newDate);
-                            field.onChange(newDate);
-                          }
-                        }}
-                      >
-                        <SelectTrigger
-                          mode="light"
-                          className="dark:bg-transparent dark:border-newGray-4 border shadow-none w-fit"
-                        >
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent mode="light">
-                          <ScrollArea className="h-[15rem]">
-                            {Array.from({ length: 96 }).map((_, i) => {
-                              const hour = Math.floor(i / 4)
-                                .toString()
-                                .padStart(2, '0');
-                              const minute = ((i % 4) * 15)
-                                .toString()
-                                .padStart(2, '0');
-                              return (
-                                <SelectItem
-                                  // biome-ignore lint/suspicious/noArrayIndexKey: explanation
-                                  key={i}
-                                  value={`${hour}:${minute}`}
-                                >
-                                  {hour}:{minute}
-                                </SelectItem>
-                              );
-                            })}
-                          </ScrollArea>
-                        </SelectContent>
-                      </Select>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                  <Select
+                    defaultValue={time!}
+                    onValueChange={(value) => {
+                      setTime(value);
 
-              <FormField
-                control={form.control}
-                name="timezone"
-                render={({ field }) => (
-                  <FormItem className="flex flex-col w-full max-w-[320px]">
-                    <FormLabel required className="mb-2">
-                      {t('words.timeZone')}
-                    </FormLabel>
-                    <FormControl defaultValue={timezone}>
-                      <Select
-                        value={field.value}
-                        onValueChange={(selectedValue) => {
-                          setTimezone(selectedValue);
-                          field.onChange(selectedValue);
-                        }}
-                      >
-                        <SelectTrigger
-                          mode="light"
-                          className="dark:bg-transparent dark:border-newGray-4 border shadow-none"
-                        >
-                          <SelectValue
-                            placeholder={t('placeholders.selectTimeZone')}
-                          />
-                        </SelectTrigger>
+                      if (date) {
+                        const [h, m] = value.split(':');
+                        const newDate = new Date(date.getTime());
+                        newDate.setHours(Number(h), Number(m));
+                        setDate(newDate);
+                        field.onChange(newDate);
+                      }
+                    }}
+                  >
+                    <SelectTrigger
+                      mode="light"
+                      className="dark:bg-transparent dark:border-newGray-4 border shadow-none w-fit"
+                    >
+                      <SelectValue />
+                    </SelectTrigger>
 
-                        <SelectContent mode="light">
-                          <ScrollArea className="h-[15rem]">
-                            {Object.entries(timeZones)
-                              .sort(([a], [b]) => {
-                                const offsetA = getUTCOffset(a);
-                                const offsetB = getUTCOffset(b);
-                                const numericA =
-                                  Number.parseInt(
-                                    offsetA.replace('UTC', '').replace('+', ''),
-                                    10,
-                                  ) || 0;
-                                const numericB =
-                                  Number.parseInt(
-                                    offsetB.replace('UTC', '').replace('+', ''),
-                                    10,
-                                  ) || 0;
-                                return numericA - numericB;
-                              })
-                              .map(([timeZoneKey, description]) => (
-                                <SelectItem
-                                  key={timeZoneKey}
-                                  value={timeZoneKey}
-                                >
-                                  {`(${getUTCOffset(timeZoneKey)}) ${description}`}
-                                </SelectItem>
-                              ))}
-                          </ScrollArea>
-                        </SelectContent>
-                      </Select>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
+                    <SelectContent mode="light">
+                      <ScrollArea className="h-60">
+                        {Array.from({ length: 96 }).map((_, i) => {
+                          const hour = `${Math.floor(i / 4)}`.padStart(2, '0');
+                          const minute = `${(i % 4) * 15}`.padStart(2, '0');
+                          return (
+                            // biome-ignore lint/suspicious/noArrayIndexKey: <N/A>
+                            <SelectItem key={i} value={`${hour}:${minute}`}>
+                              {hour}:{minute}
+                            </SelectItem>
+                          );
+                        })}
+                      </ScrollArea>
+                    </SelectContent>
+                  </Select>
 
-            <div className="flex justify-center">
-              <Button type="submit" variant="primary">
-                {existingAnnouncement
-                  ? t('words.save')
-                  : t('dashboard.teacher.courses.announcementModal.create')}
-              </Button>
-            </div>
-          </form>
-        </Form>
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+
+            <Controller
+              control={form.control}
+              name="timezone"
+              render={({ field, fieldState }) => (
+                <Field
+                  data-invalid={fieldState.invalid}
+                  className="flex flex-col w-full max-w-[320px]"
+                >
+                  <FieldLabel required>{t('words.timeZone')}</FieldLabel>
+
+                  <Select
+                    value={field.value}
+                    defaultValue={timezone}
+                    onValueChange={(selectedValue) => {
+                      setTimezone(selectedValue);
+                      field.onChange(selectedValue);
+                    }}
+                  >
+                    <SelectTrigger
+                      mode="light"
+                      className="dark:bg-transparent dark:border-newGray-4 border shadow-none"
+                    >
+                      <SelectValue
+                        placeholder={t('placeholders.selectTimeZone')}
+                      />
+                    </SelectTrigger>
+
+                    <SelectContent mode="light">
+                      <ScrollArea className="h-60">
+                        {Object.entries(timeZones)
+                          .sort(([a], [b]) => {
+                            const offsetA = getUTCOffset(a);
+                            const offsetB = getUTCOffset(b);
+                            const numericA =
+                              Number.parseInt(
+                                offsetA.replace('UTC', '').replace('+', ''),
+                                10,
+                              ) || 0;
+                            const numericB =
+                              Number.parseInt(
+                                offsetB.replace('UTC', '').replace('+', ''),
+                                10,
+                              ) || 0;
+                            return numericA - numericB;
+                          })
+                          .map(([timeZoneKey, description]) => (
+                            <SelectItem key={timeZoneKey} value={timeZoneKey}>
+                              {`(${getUTCOffset(timeZoneKey)}) ${description}`}
+                            </SelectItem>
+                          ))}
+                      </ScrollArea>
+                    </SelectContent>
+                  </Select>
+
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+          </div>
+          <div className="flex justify-center">
+            <Button type="submit" variant="primary">
+              {existingAnnouncement
+                ? t('words.save')
+                : t('dashboard.teacher.courses.announcementModal.create')}
+            </Button>
+          </div>
+        </form>
       </div>
     </BasicModal>
   );

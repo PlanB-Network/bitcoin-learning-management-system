@@ -65,10 +65,13 @@
       "displayNameTooShort": "Display name must contain at least 2 characters.",
       "emailInvalid": "Invalid email",
       "invalidCredentials": "Invalid credentials",
+      "oldPasswordRequired": "Old password required",
+      "passwordTooShort": "Password is too short",
       "usernameRegex": "The username can only contain letters, digits, underscores (_), full-stops (.) and dashes (-).",
       "usernameRequired": "Username is required.",
       "usernameTooShort": "Username must contain at least 5 characters."
     },
+    "forgotPassword": "Forgot password?",
     "forgottenPassword": "Did you forget your password?",
     "headerAccountCreated": "Account created",
     "invalidToken": "Invalid token",
@@ -78,11 +81,13 @@
       "invalid": "The token is invalid",
       "notFound": "The token was not found"
     },
+    "login": "Login",
     "loginNotAvailable1": "Login features are not available in the desktop app just yet.",
     "loginNotAvailable2": "You can visit our website to log in and access your account.",
     "newPassword": "New password",
     "noAccountNeeded": "No need for an account to start learning at Plan ₿ Network!",
     "noAccountYet": "Don't have an account?",
+    "oldPassword": "Old password",
     "passwordChanged": "Password changed",
     "passwordChangedSuccess": "Password changed successfully",
     "passwordMinLength": "Password must be at least {{len}} characters",
@@ -94,6 +99,7 @@
     "resetPassword": "Reset your password",
     "sendLink": "Send me a link",
     "signIn": "Sign in",
+    "signUp": "Sign up",
     "trackProgress": "Create an account or log in to keep track of your progress",
     "tryAgain": "Try again"
   },
@@ -1177,6 +1183,7 @@
       "email": "Email",
       "emailChangeConfirmation": "A confirmation email for your email change has been sent, please check your inbox to confirm.",
       "emailChangeRateLimitError": "You've recently updated your email. Please wait a few minutes before trying again.",
+      "emailOrUsername": "Email or username",
       "notificationSettings": {
         "coursesOption": "Updates about courses you enrolled in",
         "description": "You can customize your notification settings below. ",
@@ -1446,6 +1453,7 @@
     "watchLecture": "Watch the lecture replay"
   },
   "menu": {
+    "getStarted": "Get started",
     "login": "Log in"
   },
   "months": {
@@ -1802,6 +1810,7 @@
     "company": "Company",
     "completed": "Completed",
     "conference": "Conference",
+    "confirmation": "Confirmation",
     "congrats": "Congrats!",
     "continue": "Continue",
     "country": "Country",
@@ -1875,6 +1884,7 @@
     "on": "on",
     "onChainAddress": "On chain address",
     "online": "Online",
+    "optional": "Optional",
     "overview": "Overview",
     "paid": "Premium",
     "part": "Part",

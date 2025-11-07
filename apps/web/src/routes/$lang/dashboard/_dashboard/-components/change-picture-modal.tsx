@@ -4,13 +4,11 @@ import { Cropper, type ReactCropperElement } from 'react-cropper';
 import 'cropperjs/dist/cropper.css';
 
 import {
+  BasicModal,
   Button,
   cn,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
+  SegmentedControl,
+  SegmentedControlItem,
 } from '@blms/ui';
 
 import spinner from '#src/assets/icons/spinner.svg';
@@ -71,54 +69,39 @@ export const ChangePictureModal = (props: Props) => {
   };
 
   return (
-    <Dialog open={props.isOpen} onOpenChange={props.onClose}>
-      <DialogContent
-        showCloseButton={false}
-        className="px-4 py-2 sm:p-6 sm:gap-6 gap-3"
-      >
-        <DialogHeader>
-          <DialogTitle>{t('settings.changeProfilePicture')}</DialogTitle>
-          <DialogDescription className="hidden">
-            {t('settings.changeProfilePicture')}
-          </DialogDescription>
-        </DialogHeader>
-
-        <div className="min-h-80 my-4">
-          <div className={cn('flex border-y', !image && 'hidden')}>
-            <button
-              type="button"
-              onClick={() => setActiveTab(Tabs.CROP)}
-              className={cn(
-                'p-2 flex-1',
-                activeTab === Tabs.CROP &&
-                  'bg-darkOrange-5 text-white cursor-default',
-              )}
-            >
+    <BasicModal
+      trigger={<button type="button" className="hidden" />}
+      title={t('settings.changeProfilePicture')}
+      open={props.isOpen}
+      onOpenChange={props.onClose}
+    >
+      <div className="min-h-80 my-4">
+        {image && (
+          <SegmentedControl
+            variant="outline"
+            value={activeTab === Tabs.CROP ? 'crop' : 'preview'}
+            onValueChange={(val) => {
+              if (val === 'preview') getCropData();
+              setActiveTab(val === 'crop' ? Tabs.CROP : Tabs.PREVIEW);
+            }}
+            className="mb-2 w-full"
+          >
+            <SegmentedControlItem value="crop">
               {t('dashboard.profile.crop')}
-            </button>
+            </SegmentedControlItem>
 
-            <button
-              type="button"
-              onClick={() => {
-                getCropData();
-                setActiveTab(Tabs.PREVIEW);
-              }}
-              className={cn(
-                'p-2 flex-1',
-                activeTab === Tabs.PREVIEW &&
-                  'bg-darkOrange-5 text-white cursor-default',
-              )}
-            >
+            <SegmentedControlItem value="preview">
               {t('dashboard.profile.preview')}
-            </button>
-          </div>
+            </SegmentedControlItem>
+          </SegmentedControl>
+        )}
 
-          {/* Cropper */}
-          <div className={cn('p-4', activeTab === Tabs.PREVIEW && 'hidden')}>
-            <div className="size-96 p-2 mx-auto">
+        {/* Cropper */}
+        <div className={cn('p-4', activeTab === Tabs.PREVIEW && 'hidden')}>
+          <div className="size-96 p-2 mx-auto">
+            {image && (
               <Cropper
                 className="cropper border rounded size-full"
-                zoomTo={0.5}
                 initialAspectRatio={1}
                 aspectRatio={1}
                 src={image}
@@ -135,44 +118,48 @@ export const ChangePictureModal = (props: Props) => {
                 checkOrientation={false}
                 ref={cropperRef}
                 guides={true}
+                ready={() => {
+                  const cropper = cropperRef.current?.cropper;
+                  if (cropper) cropper.zoomTo(0.5);
+                }}
               />
-            </div>
-          </div>
-
-          {/* Preview */}
-          <div className={cn('p-4', activeTab === Tabs.CROP && 'hidden')}>
-            <div className="size-96 p-2 mx-auto">
-              {cropData && (
-                <img
-                  src={cropData}
-                  alt="cropped"
-                  className="object-cover size-full rounded-full"
-                />
-              )}
-            </div>
-          </div>
-
-          <div className="p-4 flex gap-4 justify-between items-center">
-            {image &&
-              (loading ? (
-                <div className="flex gap-2 px-2">
-                  <span>{t('dashboard.profile.saving')}</span>
-                  <img src={spinner} alt="spinner" className="size-6" />
-                </div>
-              ) : (
-                <>
-                  <Button variant="primary" size="m" onClick={validateChange}>
-                    <span>{t('dashboard.profile.save')}</span>
-                  </Button>
-
-                  <Button variant="secondary" size="m" onClick={props.onClose}>
-                    {t('dashboard.profile.cancel')}
-                  </Button>
-                </>
-              ))}
+            )}
           </div>
         </div>
-      </DialogContent>
-    </Dialog>
+
+        {/* Preview */}
+        <div className={cn('p-4', activeTab === Tabs.CROP && 'hidden')}>
+          <div className="size-96 p-2 mx-auto">
+            {cropData && (
+              <img
+                src={cropData}
+                alt="cropped"
+                className="object-cover size-full rounded-full"
+              />
+            )}
+          </div>
+        </div>
+
+        <div className="p-4 flex gap-4 justify-between items-center">
+          {image &&
+            (loading ? (
+              <div className="flex gap-2 px-2">
+                <span>{t('dashboard.profile.saving')}</span>
+                <img src={spinner} alt="spinner" className="size-6" />
+              </div>
+            ) : (
+              <>
+                <Button variant="primary" size="m" onClick={validateChange}>
+                  <span>{t('dashboard.profile.save')}</span>
+                </Button>
+
+                <Button variant="secondary" size="m" onClick={props.onClose}>
+                  {t('dashboard.profile.cancel')}
+                </Button>
+              </>
+            ))}
+        </div>
+      </div>
+    </BasicModal>
   );
 };

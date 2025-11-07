@@ -4,20 +4,20 @@ import {
   DialogContent,
   DialogDescription,
   DialogTitle,
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
   Input,
 } from '@blms/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { useCallback } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { trpc } from '../../utils/trpc.ts';
 import { AuthModalState } from './props.ts';
 
@@ -34,6 +34,8 @@ interface SignInProps {
 }
 
 export const SignIn = ({ isOpen, onClose, goTo, redirectTo }: SignInProps) => {
+  const isMobile = useSmaller('md') || window.innerWidth < 768;
+
   const { t } = useTranslation();
   const usernameRequired = t('auth.errors.usernameRequired');
   const passwordRequired = t('auth.passwordRequired');
@@ -92,72 +94,82 @@ export const SignIn = ({ isOpen, onClose, goTo, redirectTo }: SignInProps) => {
           {t('menu.login')}
         </DialogDescription>
 
-        <Form {...methods}>
-          <form
-            onSubmit={methods.handleSubmit(handleLogin)}
-            className="flex w-full flex-col items-center mt-3"
-          >
-            <FormField
-              control={methods.control}
+        <form
+          onSubmit={methods.handleSubmit(handleLogin)}
+          className="flex w-full flex-col items-center"
+        >
+          <FieldGroup className="w-full gap-4">
+            <Controller
               name="username"
-              render={({ field, fieldState }) => (
-                <FormItem className="space-y-2 my-2 w-full md:w-80 text-center">
-                  <FormLabel>{t('dashboard.profile.username')}</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="username"
-                      {...field}
-                      error={fieldState.error?.message || null}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-
-            <FormField
               control={methods.control}
-              name="password"
               render={({ field, fieldState }) => (
-                <FormItem className="space-y-2 my-2 w-full md:w-80 text-center">
-                  <FormLabel>{t('dashboard.profile.password')}</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="password"
-                      type="password"
-                      {...field}
-                      error={fieldState.error?.message || null}
-                    />
-                  </FormControl>
-                </FormItem>
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor={field.name} required>
+                    {t('dashboard.profile.username')}
+                  </FieldLabel>
+                  <Input
+                    {...field}
+                    id={field.name}
+                    placeholder="username"
+                    aria-invalid={fieldState.invalid}
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
               )}
             />
 
-            <Button type="submit" className="my-8">
-              {t('menu.login')}
-            </Button>
+            <Controller
+              name="password"
+              control={methods.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor={field.name} required>
+                    {t('dashboard.profile.password')}
+                  </FieldLabel>
+                  <Input
+                    {...field}
+                    id={field.name}
+                    type="password"
+                    placeholder="password"
+                    aria-invalid={fieldState.invalid}
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+          </FieldGroup>
 
-            <p className="mobile-body2 md:desktop-body1 text-center">
-              {t('auth.noAccountYet')}
-              <button
-                type="button"
-                onClick={() => goTo(AuthModalState.Register)}
-                className="ml-1 cursor-pointer underline italic"
-              >
-                {t('auth.createOne')}
-              </button>
-            </p>
+          <button
+            type="button"
+            onClick={() => goTo(AuthModalState.PasswordReset)}
+            className="cursor-pointer border-none bg-transparent body-extra-small-bold self-end w-fit text-orange-500 mt-2"
+          >
+            {t('auth.forgottenPassword')}
+          </button>
 
-            <p className="mb-0 mt-2 text-xs">
-              <button
-                type="button"
-                onClick={() => goTo(AuthModalState.PasswordReset)}
-                className="cursor-pointer border-none bg-transparent text-xs underline"
-              >
-                {t('auth.forgottenPassword')}
-              </button>
-            </p>
-          </form>
-        </Form>
+          <Button
+            type="submit"
+            className="w-full mt-6"
+            size={isMobile ? 'm' : 'l'}
+          >
+            {t('menu.login')}
+          </Button>
+        </form>
+
+        <p className="body-base text-center mt-4">
+          {t('auth.noAccountYet')}
+          <button
+            type="button"
+            onClick={() => goTo(AuthModalState.Register)}
+            className="ml-1 cursor-pointer underline italic"
+          >
+            {t('auth.createOne')}
+          </button>
+        </p>
       </DialogContent>
     </Dialog>
   );

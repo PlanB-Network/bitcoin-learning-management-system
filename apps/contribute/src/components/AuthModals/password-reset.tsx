@@ -5,17 +5,14 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
+  Field,
+  FieldError,
+  FieldLabel,
   Input,
 } from '@blms/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useCallback, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 import { trpcClient } from '#src/utils/trpc.ts';
@@ -73,33 +70,45 @@ export const PasswordReset = ({ isOpen, onClose, goTo }: LoginModalProps) => {
   const modalContent = {
     [ResetPasswordState.Initial]: (
       <>
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(handlePasswordReset)}
-            className="flex w-full flex-col items-center"
+        <form
+          onSubmit={form.handleSubmit(handlePasswordReset)}
+          className="flex w-full flex-col items-center"
+        >
+          <div className="space-y-2 my-2 w-4/5">
+            <Controller
+              name="email"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor={field.name} required>
+                    {t('auth.emailAddress')}
+                  </FieldLabel>
+
+                  <Input
+                    {...field}
+                    id={field.name}
+                    type="email"
+                    className="w-full"
+                    aria-invalid={fieldState.invalid}
+                  />
+
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+          </div>
+
+          <Button
+            variant="primary"
+            type="submit"
+            className="mb-5 mt-2"
+            disabled={!form.watch('email')}
           >
-            <FormItem className="space-y-2 my-2 w-4/5">
-              <FormLabel>{t('auth.emailAddress')}</FormLabel>
-              <FormField
-                name="email"
-                render={({ field }) => (
-                  <FormControl>
-                    <Input type="email" {...field} className="w-full" />
-                  </FormControl>
-                )}
-              />
-              <FormMessage />
-            </FormItem>
-            <Button
-              variant="primary"
-              type="submit"
-              className="mb-5 mt-2"
-              disabled={!form.watch('email')}
-            >
-              {t('auth.sendLink')}
-            </Button>
-          </form>
-        </Form>
+            {t('auth.sendLink')}
+          </Button>
+        </form>
 
         <p className="mb-0 text-xs">
           <button

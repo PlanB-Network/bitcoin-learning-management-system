@@ -18,7 +18,7 @@ export * from './bases/dialog.tsx';
 export * from './bases/divider.tsx';
 export * from './bases/empty-state.tsx';
 export * from './bases/Flag/flag.tsx';
-export * from './bases/form.tsx';
+export * from './bases/field.tsx';
 export * from './bases/image.tsx';
 export * from './bases/input.tsx';
 export * from './bases/ListItem/list-item.tsx';

@@ -1,11 +1,9 @@
 import {
-  BasicModal,
   Button,
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
   Input,
 } from '@blms/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -13,73 +11,59 @@ import { useMutation } from '@tanstack/react-query';
 import PasswordValidator from 'password-validator';
 import { useCallback, useContext } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { BsCheck } from 'react-icons/bs';
 import { z } from 'zod';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { trpc } from '../../utils/trpc.ts';
-import { AuthModalState } from './props.ts';
 
 interface RegisterFormData {
   username: string;
   password: string;
-  confirmation: string;
   email: string | null;
   university?: string | null;
 }
 
 interface RegisterProps {
-  isOpen: boolean;
-  onClose: () => void;
   redirectTo?: string | null;
-  goTo: (newState: AuthModalState) => void;
 }
 
-export const Register = ({
-  isOpen,
-  onClose,
-  goTo,
-  redirectTo,
-}: RegisterProps) => {
+export const Register = ({ redirectTo }: RegisterProps) => {
+  const isMobile = useSmaller('md') || window.innerWidth < 768;
+
   const { t } = useTranslation();
   const { university } = useContext(AppContext);
 
   const password = new PasswordValidator().is().min(10);
 
-  const registerSchema = z
-    .object({
-      confirmation: z.string(),
-      email: z
-        .union([
-          z.literal(''),
-          z.string().email({ message: t('auth.errors.emailInvalid') }),
-        ])
-        .transform((data) => data || null)
-        .nullable(),
-      password: z.string().superRefine((pwd, ctx) => {
-        const result = password.validate(pwd, { details: true });
-        if (Array.isArray(result) && result.length > 0) {
-          const msg = result[0].message;
-          ctx.addIssue({ code: 'custom', message: msg });
-        }
+  const registerSchema = z.object({
+    email: z
+      .union([
+        z.literal(''),
+        z.string().email({ message: t('auth.errors.emailInvalid') }),
+      ])
+      .transform((data) => data || null)
+      .nullable(),
+    password: z.string().superRefine((pwd, ctx) => {
+      const result = password.validate(pwd, { details: true });
+      if (Array.isArray(result) && result.length > 0) {
+        const msg = result[0].message;
+        ctx.addIssue({ code: 'custom', message: msg });
+      }
+    }),
+    university: z.string().optional(),
+    username: z
+      .string({ error: t('auth.errors.usernameRequired') })
+      .min(5, { message: t('auth.errors.usernameTooShort') })
+      .regex(/^[\w.-]+$/, {
+        message: t('auth.errors.usernameRegex'),
       }),
-      university: z.string().optional(),
-      username: z
-        .string({ error: t('auth.errors.usernameRequired') })
-        .min(5, { message: t('auth.errors.usernameTooShort') })
-        .regex(/^[\w.-]+$/, {
-          message: t('auth.errors.usernameRegex'),
-        }),
-    })
-    .refine((data) => data.password === data.confirmation, {
-      message: t('auth.passwordsDontMatch'),
-      path: ['confirmation'],
-    });
+  });
 
   const methods = useForm({
     defaultValues: {
-      confirmation: '',
       email: '',
       password: '',
       university: university ?? undefined,
@@ -110,150 +94,105 @@ export const Register = ({
     [register],
   );
 
+  if (register.data && !register.error) {
+    return (
+      <div className="flex flex-col items-center">
+        <BsCheck className="my-8 text-black" size={80} />
+        <p>
+          {t('auth.accountCreated', {
+            userName: register.data.user.username,
+          })}
+          <br />
+          {t('auth.canSaveProgress')}
+        </p>
+      </div>
+    );
+  }
+
   return (
-    <BasicModal
-      trigger={<button type="button" className="hidden" />}
-      title={
-        register.data ? t('auth.headerAccountCreated') : t('auth.createAccount')
-      }
-      open={isOpen}
-      onOpenChange={onClose}
-      contentClassName="!max-w-xs md:!max-w-fit"
+    <form
+      onSubmit={methods.handleSubmit(handleCreateUserAccount)}
+      className="flex w-full flex-col items-center"
     >
-      {register.data && !register.error ? (
-        <div className="flex flex-col items-center">
-          <BsCheck className="my-8 text-black" size={80} />
-          <p>
-            {t('auth.accountCreated', {
-              userName: register.data.user.username,
-            })}
-            <br />
-            {t('auth.canSaveProgress')}
-          </p>
-        </div>
-      ) : (
-        <div className="flex flex-col items-center w-full px-0.5 sm:px-5">
-          <Form {...methods}>
-            <form
-              onSubmit={methods.handleSubmit(handleCreateUserAccount)}
-              className="flex w-full flex-col items-center mt-3"
-            >
-              <FormField
-                control={methods.control}
-                name="username"
-                render={({ field, fieldState }) => (
-                  <FormItem className="space-y-2 my-2 w-full">
-                    <FormLabel required>
-                      {t('dashboard.profile.username')}
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="username"
-                        {...field}
-                        error={fieldState.error?.message || null}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
+      <FieldGroup className="w-full gap-4">
+        <Controller
+          name="username"
+          control={methods.control}
+          render={({ field, fieldState }) => (
+            <Field data-invalid={fieldState.invalid}>
+              <FieldLabel htmlFor={field.name} required>
+                {t('dashboard.profile.username')}
+              </FieldLabel>
+              <Input {...field} id={field.name} placeholder="username" />
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
+          )}
+        />
+
+        <Controller
+          name="email"
+          control={methods.control}
+          render={({ field, fieldState }) => (
+            <Field data-invalid={fieldState.invalid}>
+              <FieldLabel
+                htmlFor={field.name}
+                optionalText={`(${t('words.optional').toLowerCase()})`}
+              >
+                {t('words.email')}
+              </FieldLabel>
+              <Input
+                {...field}
+                id={field.name}
+                type="email"
+                placeholder="email"
+                value={field.value ?? ''}
               />
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
+          )}
+        />
 
-              <FormField
-                control={methods.control}
-                name="password"
-                render={({ field, fieldState }) => (
-                  <FormItem className="space-y-2 my-2 w-full">
-                    <FormLabel required>
-                      {t('dashboard.profile.password')}
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="password"
-                        type="password"
-                        {...field}
-                        error={fieldState.error?.message || null}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
+        <Controller
+          name="password"
+          control={methods.control}
+          render={({ field, fieldState }) => (
+            <Field data-invalid={fieldState.invalid}>
+              <FieldLabel htmlFor={field.name} required>
+                {t('dashboard.profile.password')}
+              </FieldLabel>
+              <Input
+                {...field}
+                id={field.name}
+                type="password"
+                placeholder="password"
               />
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            </Field>
+          )}
+        />
 
-              <FormField
-                control={methods.control}
-                name="confirmation"
-                render={({ field, fieldState }) => (
-                  <FormItem className="space-y-2 my-2 w-full">
-                    <FormLabel required>{t('auth.confirmation')}</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="password"
-                        type="password"
-                        {...field}
-                        error={fieldState.error?.message || null}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
+        {/* Hidden field */}
+        <Controller
+          name="university"
+          control={methods.control}
+          render={({ field }) => <input type="hidden" {...field} />}
+        />
+      </FieldGroup>
 
-              <FormField
-                control={methods.control}
-                name="email"
-                render={({ field, fieldState }) => (
-                  <FormItem className="space-y-2 my-2 w-full">
-                    <FormLabel>{t('auth.emailAddress')}</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="email"
-                        type="email"
-                        {...field}
-                        value={field.value ?? ''}
-                        error={fieldState.error?.message || null}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={methods.control}
-                name="university"
-                render={({ field }) => <input type="hidden" {...field} />}
-              />
-
-              <p className="mt-4 text-sm text-gray-400">{t('auth.emailTip')}</p>
-
-              {register.error && (
-                <p className="mt-2 text-base font-semibold text-red-300">
-                  {register.error.message}
-                </p>
-              )}
-
-              <Button variant="primary" size="m" type="submit" className="my-8">
-                {t('auth.createAccount')}
-              </Button>
-            </form>
-          </Form>
-
-          <p className="mobile-body2 md:desktop-body1 text-center max-md:max-w-[198px] mx-auto">
-            {t('auth.alreadyHaveAccount')}
-            <button
-              type="button"
-              onClick={() => goTo(AuthModalState.SignIn)}
-              className="cursor-pointer underline italic"
-            >
-              {t('menu.login')}
-            </button>
-          </p>
-        </div>
+      {register.error && (
+        <p className="mt-2 text-base font-semibold text-red-5">
+          {register.error.message}
+        </p>
       )}
 
-      <div className="flex flex-col items-center text-center px-0.5 sm:px-5 mx-auto">
-        <div className="h-px bg-darkOrange-5 w-full max-w-40 rounded-3xl mb-2.5" />
-        <span className="max-md:mobile-h3 md:desktop-h7 text-darkOrange-5">
-          {t('auth.didYouKnow')}
-        </span>
-        <span className="text-darkOrange-5">{t('auth.noAccountNeeded')}</span>
-      </div>
-    </BasicModal>
+      <Button
+        variant="primary"
+        size={isMobile ? 'm' : 'l'}
+        type="submit"
+        className="mt-6 w-full"
+      >
+        {t('auth.signUp')}
+      </Button>
+    </form>
   );
 };
