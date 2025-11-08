@@ -63,7 +63,9 @@
       "invalidCredentials": "Identifiants invalides",
       "usernameRegex": "Le nom d’utilisateur ne peut contenir que des lettres, des chiffres, des traits de soulignement (_), des points (.) et des tirets (-).",
       "usernameRequired": "Le nom d'utilisateur est requis.",
-      "usernameTooShort": "Le nom d'utilisateur doit contenir au moins 5 caractères."
+      "usernameTooShort": "Le nom d'utilisateur doit contenir au moins 5 caractères.",
+      "oldPasswordRequired": "Ancien mot de passe requis",
+      "passwordTooShort": "Le mot de passe est trop court"
     },
     "forgottenPassword": "Mot de passe oublié ?",
     "headerAccountCreated": "Compte créé",
@@ -91,7 +93,11 @@
     "trackProgress": "Créez un compte ou connectez-vous pour suivre votre progression",
     "tryAgain": "Réessayez",
     "loginNotAvailable1": "Les fonctionnalités de connexion ne sont pas encore disponibles dans l'application de bureau.",
-    "loginNotAvailable2": "Vous pouvez visiter notre site web pour vous connecter et accéder à votre compte."
+    "loginNotAvailable2": "Vous pouvez visiter notre site web pour vous connecter et accéder à votre compte.",
+    "forgotPassword": "Mot de passe oublié ?",
+    "login": "Connexion",
+    "oldPassword": "Ancien mot de passe",
+    "signUp": "S’inscrire"
   },
   "bCert": {
     "bCertDescription": "Le ₿-CERT est un examen reconnu internationalement pour évaluer votre niveau de préparation sur Bitcoin et ses sujets dérivés. Ce certificat vous permettra de démontrer vos compétences et connaissances dans l’industrie de Bitcoin, vous donnant ainsi accès à des entreprises et des postes dans ce secteur.",
@@ -131,7 +137,8 @@
     "noConferences": "Aucune conférence n'a été ajoutée pour {{year}} pour l'instant.",
     "pageTitle": "Rediffusion de conférences",
     "planBConferences": "Conférences Plan ₿",
-    "topics": "Sujets"
+    "topics": "Sujets",
+    "conferencesGenesis": "Conférences depuis le bloc de Genèse"
   },
   "courses": {
     "chapter": {
@@ -1140,7 +1147,8 @@
       "verify": "Vérifiez l'authenticité de votre diplôme",
       "whereYouAre": "Voyons où vous en êtes !",
       "yourCertificate": "Votre certificat",
-      "yourProgress": "Votre progression :"
+      "yourProgress": "Votre progression :",
+      "noCourseStarted": "Vous n’avez encore commencé aucun cours en autonomie"
     },
     "profile": {
       "cancel": "Annuler",
@@ -1176,7 +1184,8 @@
       "save": "Sauvegarder",
       "saving": "Enregistrement…",
       "securitySettings": "Paramètres de sécurité",
-      "username": "Nom d'utilisateur"
+      "username": "Nom d'utilisateur",
+      "emailOrUsername": "E-mail ou nom d'utilisateur"
     },
     "teacher": {
       "courses": {
@@ -1436,7 +1445,8 @@
     "watchLecture": "Regardez la rediffusion du séminaire"
   },
   "menu": {
-    "login": "Se connecter"
+    "login": "Se connecter",
+    "getStarted": "Commencer"
   },
   "movies": {
     "checkTheMovie": "Regarder le film"
@@ -1697,7 +1707,8 @@
     "wallet": {
       "title": "Portefeuille"
     },
-    "writtenBy": "Ce tutoriel a été écrit par"
+    "writtenBy": "Ce tutoriel a été écrit par",
+    "onThisPage": "Sur cette page"
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1904,7 +1915,9 @@
     "planBNetwork": "Plan ₿ Network",
     "list": "Liste",
     "address": "Adresse",
-    "session": "Session"
+    "session": "Session",
+    "confirmation": "Confirmation",
+    "optional": "Facultatif"
   },
   "youtubeChannels": {
     "view": "Voir la chaîne Youtube",
