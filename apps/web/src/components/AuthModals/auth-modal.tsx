@@ -47,6 +47,7 @@ export const AuthModal = ({
             title={t('menu.getStarted')}
             open={isOpen}
             onOpenChange={onClose}
+            showPill
           >
             <div className="flex flex-col w-full gap-4">
               <SegmentedControl

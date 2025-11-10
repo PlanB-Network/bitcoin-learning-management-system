@@ -16,6 +16,7 @@ interface BasicModalProps {
   content?: React.ReactNode;
   iconSrc?: string;
   iconAlt?: string;
+  showPill?: boolean;
   children?: React.ReactNode;
   contentClassName?: string;
   open?: boolean;
@@ -130,6 +131,7 @@ const BasicModal = ({
   content,
   iconSrc,
   iconAlt = 'Icon',
+  showPill,
   children,
   contentClassName,
   open,
@@ -143,11 +145,11 @@ const BasicModal = ({
         showCloseButton={false}
       >
         <div className="w-full flex justify-between items-center bg-neutral-50 border-b border-b-neutral-100">
-          <img
-            src={CroppedPill}
-            alt="Cropped Pill"
-            className="w-6.5 md:w-9.5 self-end mx-6"
-          />
+          <div className="w-6.5 md:w-9.5 self-end mx-6 shrink-0">
+            {showPill && (
+              <img src={CroppedPill} alt="Cropped Pill" className="w-full" />
+            )}
+          </div>
           <DialogTitle className="whitespace-pre-line subtitle-small md:subtitle-base px-4 py-3">
             {title}
           </DialogTitle>
