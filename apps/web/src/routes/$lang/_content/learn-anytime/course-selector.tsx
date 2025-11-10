@@ -224,7 +224,7 @@ function CourseSelector() {
         <div className="flex flex-col gap-6">
           {levels.map((level) => (
             <div key={level} className="flex flex-col gap-1">
-              <h4 className="body-small-bold text-neutral-800">
+              <h4 className="subtitle-base text-neutral-800">
                 {t(`words.level.${level}`)}
               </h4>
               <div className="flex flex-col gap-1">
@@ -236,7 +236,7 @@ function CourseSelector() {
                       className="group w-full py-3 px-2 text-start rounded-lg bg-neutral-50"
                     >
                       <summary className="flex items-center justify-between hover:cursor-pointer">
-                        <span className="truncate body-extra-small text-black">
+                        <span className="truncate body-base text-black">
                           {course.name}
                         </span>
                         <MdKeyboardArrowDown
