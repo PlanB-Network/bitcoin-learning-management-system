@@ -1,14 +1,11 @@
-import { joinedVideoSchema } from '@blms/schemas';
 import {
   createGenerateCourseVideo,
   createGetVideos,
 } from '@blms/service-content';
-import type { JoinedVideo } from '@blms/types';
 import { z } from 'zod';
 import { contributorProcedure } from '#src/procedures/protected.js';
 import { publicProcedure } from '#src/procedures/public.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
-import type { Parser } from '#src/trpc/types.js';
 
 const getVideosProcedure = publicProcedure
   .input(
@@ -17,7 +14,7 @@ const getVideosProcedure = publicProcedure
       language: z.string(),
     }),
   )
-  .output<Parser<JoinedVideo[]>>(joinedVideoSchema.array())
+  // .output<Parser<JoinedVideo[]>>(joinedVideoSchema.array()) // Issues with validation of uuid with some versions
   .query(({ ctx, input }) =>
     createGetVideos(ctx.dependencies)(input.id, input.language),
   );
