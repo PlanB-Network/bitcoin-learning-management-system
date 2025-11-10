@@ -96,12 +96,12 @@ export const ChangeEmailModal = ({
         />
 
         <div className="flex gap-4 justify-between items-center w-full">
-          <Button variant="primary" size="m" type="submit">
-            {t('dashboard.profile.save')}
-          </Button>
-
           <Button variant="secondary" size="m" type="button" onClick={onClose}>
             {t('dashboard.profile.cancel')}
+          </Button>
+
+          <Button variant="primary" size="m" type="submit">
+            {t('dashboard.profile.save')}
           </Button>
         </div>
       </form>

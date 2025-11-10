@@ -94,7 +94,12 @@ export const ChangeDisplayNameModal = ({
           )}
         />
 
-        <Button type="submit" variant="primary" mode="light" className="mt-6">
+        <Button
+          type="submit"
+          variant="primary"
+          mode="light"
+          className="mt-6 w-full"
+        >
           {t('words.update')}
         </Button>
       </form>

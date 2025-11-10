@@ -75,7 +75,7 @@ export const ChangePictureModal = (props: Props) => {
       open={props.isOpen}
       onOpenChange={props.onClose}
     >
-      <div className="min-h-80 my-4">
+      <div className="min-h-80 w-full">
         {image && (
           <SegmentedControl
             variant="outline"
@@ -97,7 +97,7 @@ export const ChangePictureModal = (props: Props) => {
         )}
 
         {/* Cropper */}
-        <div className={cn('p-4', activeTab === Tabs.PREVIEW && 'hidden')}>
+        <div className={cn(activeTab === Tabs.PREVIEW && 'hidden')}>
           <div className="size-96 p-2 mx-auto">
             {image && (
               <Cropper
@@ -128,7 +128,7 @@ export const ChangePictureModal = (props: Props) => {
         </div>
 
         {/* Preview */}
-        <div className={cn('p-4', activeTab === Tabs.CROP && 'hidden')}>
+        <div className={cn(activeTab === Tabs.CROP && 'hidden')}>
           <div className="size-96 p-2 mx-auto">
             {cropData && (
               <img
@@ -140,7 +140,7 @@ export const ChangePictureModal = (props: Props) => {
           </div>
         </div>
 
-        <div className="p-4 flex gap-4 justify-between items-center">
+        <div className="flex gap-4 justify-between items-center mt-2">
           {image &&
             (loading ? (
               <div className="flex gap-2 px-2">

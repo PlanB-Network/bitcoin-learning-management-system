@@ -308,7 +308,7 @@ const TryAgainDialog = ({
       }
       title={t('courses.exam.tryOneMoreTime')}
     >
-      <div className="body-16px md:title-large-24px text-newBlack-1 text-center max-w-[482px] md:px-5 flex flex-col gap-6 md:gap-8">
+      <div className="font-semibold text-newBlack-1 text-center md:px-5 flex flex-col gap-6 md:gap-8">
         <p>{t('courses.exam.sameRules')}</p>
         <p>{t('courses.exam.retakeInstructions')}</p>
         <p>{t('courses.exam.goodLuck')}</p>

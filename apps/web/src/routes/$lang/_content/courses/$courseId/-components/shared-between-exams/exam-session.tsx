@@ -305,12 +305,12 @@ export const ExamSession = ({
           }
           title={t('courses.exam.sureSubmit')}
         >
-          <div className="!flex flex-wrap !gap-4 max-md:mb-5">
-            <DialogClose asChild>
+          <div className="!flex max-md:flex-wrap !gap-4 max-md:mb-5 w-full">
+            <DialogClose asChild className="w-full">
               <Button
                 variant="outline"
                 size={isMobile ? 's' : 'l'}
-                className="!w-fit"
+                className="w-full"
               >
                 {t('courses.exam.noGoBack')}
               </Button>
@@ -318,7 +318,7 @@ export const ExamSession = ({
             <Button
               variant="primary"
               size={isMobile ? 's' : 'l'}
-              className="w-fit"
+              className="w-full"
               onClick={onSubmit}
             >
               {t('courses.exam.yesSubmit')}
