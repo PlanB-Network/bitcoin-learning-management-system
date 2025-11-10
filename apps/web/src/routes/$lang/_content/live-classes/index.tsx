@@ -78,7 +78,10 @@ function AllCourses() {
 
   if (!courses) {
     return (
-      <PageLayout title={t('courses.allCourses')}>
+      <PageLayout
+        title={t('courses.liveClasses.liveClasses')}
+        layoutSize="wide"
+      >
         <Loader size="s" />
       </PageLayout>
     );

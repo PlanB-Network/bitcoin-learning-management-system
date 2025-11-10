@@ -107,7 +107,11 @@ function DashboardCourses() {
   }, [session]);
 
   if (!session) {
-    return <Loader />;
+    return (
+      <PageLayout title={t('navbar.myCourses')} layoutSize="max">
+        <Loader size="s" />
+      </PageLayout>
+    );
   }
 
   return (
