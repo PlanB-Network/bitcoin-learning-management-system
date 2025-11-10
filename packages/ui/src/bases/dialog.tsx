@@ -2,7 +2,7 @@ import * as DialogPrimitive from '@radix-ui/react-dialog';
 import * as React from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { TbX } from 'react-icons/tb';
-import CroppedPill from '#src/assets/icons/cropped_pill.png';
+import CroppedPill from '#src/assets/icons/cropped_pill.svg';
 import { cn } from '#src/lib/utils.ts';
 
 interface DialogTitleProps
