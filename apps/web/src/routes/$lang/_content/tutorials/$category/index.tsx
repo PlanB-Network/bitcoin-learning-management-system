@@ -120,8 +120,9 @@ function TutorialCategory() {
             {[...allTutorials]
               .filter(
                 (tutorial) =>
+                  tutorial.category === tutorialCategory?.name &&
                   tutorial.subcategory ===
-                  (currentSubCategory ?? subCategories[0]),
+                    (currentSubCategory ?? subCategories[0]),
               )
               .sort((a, b) => b.likeCount - a.likeCount)
               .map((tutorial) => (
