@@ -1454,7 +1454,8 @@
   },
   "menu": {
     "getStarted": "Get started",
-    "login": "Log in"
+    "login": "Log in",
+    "signIn": "Sign in"
   },
   "months": {
     "april": "April",
