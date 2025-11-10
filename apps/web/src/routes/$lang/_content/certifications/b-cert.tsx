@@ -7,7 +7,6 @@ import { FaTelegram } from 'react-icons/fa6';
 import { MdOutlineEmail } from 'react-icons/md';
 import bCertsImage from '#src/assets/about/bcert-presentation.webp?no-inline';
 import { PageLayout } from '#src/components/page-layout.js';
-import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { trpc } from '#src/utils/trpc.js';
 import { BCertEvents } from './-components/b-cert-events.tsx';
 
@@ -84,13 +83,12 @@ function BCert() {
 }
 
 const OrganizeDialog = () => {
-  const isMobile = useSmaller('md');
   const { t } = useTranslation();
 
   return (
     <BasicModal
       trigger={
-        <Button variant="newTertiary" size={isMobile ? 's' : 'm'}>
+        <Button variant="newTertiary" size="s" rounded>
           {t('bCert.organizeExam')}
         </Button>
       }

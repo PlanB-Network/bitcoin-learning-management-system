@@ -104,8 +104,9 @@ export const PageLayout = ({
                     ) : (
                       <Button
                         variant="newTertiary"
-                        size={isMobile ? 's' : 'm'}
+                        size={'s'}
                         onClick={button.onClick}
+                        rounded
                       >
                         {button.text}
                       </Button>
