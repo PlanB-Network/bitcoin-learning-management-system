@@ -36,6 +36,46 @@ export const CourseReview = ({
     ),
   );
 
+  const sliderFiltered = (() => {
+    if (!reviews) {
+      return {
+        length: [] as number[],
+        difficulty: [] as number[],
+        quality: [] as number[],
+        faithful: [] as number[],
+        recommend: [] as number[],
+      };
+    }
+
+    const minLen = Math.min(
+      reviews.length?.length ?? 0,
+      reviews.difficulty?.length ?? 0,
+      reviews.quality?.length ?? 0,
+      reviews.faithful?.length ?? 0,
+      reviews.recommend?.length ?? 0,
+    );
+
+    const keepIndices: number[] = [];
+    for (let i = 0; i < minLen; i++) {
+      const allZero =
+        reviews.length[i] === 0 &&
+        reviews.difficulty[i] === 0 &&
+        reviews.quality[i] === 0 &&
+        reviews.faithful[i] === 0 &&
+        reviews.recommend[i] === 0;
+
+      if (!allZero) keepIndices.push(i);
+    }
+
+    return {
+      length: keepIndices.map((i) => reviews.length[i]),
+      difficulty: keepIndices.map((i) => reviews.difficulty[i]),
+      quality: keepIndices.map((i) => reviews.quality[i]),
+      faithful: keepIndices.map((i) => reviews.faithful[i]),
+      recommend: keepIndices.map((i) => reviews.recommend[i]),
+    };
+  })();
+
   return (
     <section className="flex flex-col">
       {!isFetched && <Loader size={'s'} />}
@@ -62,7 +102,7 @@ export const CourseReview = ({
                   t('courses.review.asExpected'),
                   t('courses.review.tooLong'),
                 ]}
-                ratings={reviews.length}
+                ratings={sliderFiltered.length}
               />
 
               <SliderGradeSection
@@ -72,7 +112,7 @@ export const CourseReview = ({
                   t('courses.review.asExpected'),
                   t('courses.review.tooHard'),
                 ]}
-                ratings={reviews.difficulty}
+                ratings={sliderFiltered.difficulty}
               />
 
               <SliderGradeSection
@@ -82,7 +122,7 @@ export const CourseReview = ({
                   t('courses.review.soAndSo'),
                   t('courses.review.veryGood'),
                 ]}
-                ratings={reviews.quality}
+                ratings={sliderFiltered.quality}
               />
             </div>
             <div className="flex flex-col gap-8 lg:gap-12 w-full max-w-[464px]">
@@ -93,7 +133,7 @@ export const CourseReview = ({
                   t('courses.review.neutral'),
                   t('courses.review.yesVeryMuch'),
                 ]}
-                ratings={reviews.faithful}
+                ratings={sliderFiltered.faithful}
               />
 
               <SliderGradeSection
@@ -103,7 +143,7 @@ export const CourseReview = ({
                   t('courses.review.soAndSo'),
                   t('courses.review.yesOfCourse'),
                 ]}
-                ratings={reviews.recommend}
+                ratings={sliderFiltered.recommend}
               />
             </div>
           </div>
@@ -148,9 +188,13 @@ const WrittenFeedbacks = ({
     setVisibleFeedbacks((prev) => prev + 5);
   };
 
+  const nonEmptyFeedbacks = feedbacks.filter(
+    (feedback) => feedback.publicComment || feedback.teacherComment,
+  );
+
   return (
     <section className="mt-7 flex flex-col gap-5 md:gap-7">
-      {feedbacks.slice(0, visibleFeedbacks).map((feedback, index) => (
+      {nonEmptyFeedbacks.slice(0, visibleFeedbacks).map((feedback, index) => (
         // biome-ignore lint/suspicious/noArrayIndexKey: explanation
         <article key={index} className="flex flex-col">
           <div className="flex flex-col">
@@ -189,7 +233,7 @@ const WrittenFeedbacks = ({
           </div>
         </article>
       ))}
-      {visibleFeedbacks < feedbacks.length && (
+      {visibleFeedbacks < nonEmptyFeedbacks.length && (
         <div className="flex flex-col gap-2 items-center">
           <Button
             variant="outline"
@@ -202,7 +246,7 @@ const WrittenFeedbacks = ({
           </Button>
           <span className="body-14px">
             {visibleFeedbacks} {t('courses.review.displayOutOf')}{' '}
-            {feedbacks.length}
+            {nonEmptyFeedbacks.length}
           </span>
         </div>
       )}
@@ -224,9 +268,14 @@ const SliderGradeSection = ({
     [t('words.users')]: ratings.filter((rating) => rating === i - 5).length,
   }));
 
-  const averageRating = Math.round(
-    ratings.reduce((acc, rating) => acc + rating, 0) / ratings.length,
-  );
+  const averageRating =
+    ratings.length > 0
+      ? Math.round(
+          ratings.reduce((acc, rating) => acc + rating, 0) / ratings.length,
+        )
+      : 0;
+
+  const isDisabled = ratings.length === 0;
 
   return (
     <article className="flex flex-col items-center w-full">
@@ -235,18 +284,23 @@ const SliderGradeSection = ({
         label={label}
         stepNames={stepNames}
         value={averageRating}
+        disabled={isDisabled}
       />
-      <CollapsibleDropdown
-        title={t('dashboard.teacher.reviews.seeStatistics')}
-        className="mt-10"
-      >
-        <div className="px-5 pt-5 pb-8">
-          <Suspense fallback={<Loader size="s" />}>
-            <RatingChart chartData={chartData} />
-          </Suspense>
-        </div>
-      </CollapsibleDropdown>
-      <div className="h-px bg-newGray-4 w-full px-5 my-4" />
+      {!isDisabled && (
+        <>
+          <CollapsibleDropdown
+            title={t('dashboard.teacher.reviews.seeStatistics')}
+            className="mt-10"
+          >
+            <div className="px-5 pt-5 pb-8">
+              <Suspense fallback={<Loader size="s" />}>
+                <RatingChart chartData={chartData} />
+              </Suspense>
+            </div>
+          </CollapsibleDropdown>
+          <div className="h-px bg-newGray-4 w-full px-5 my-4" />
+        </>
+      )}
     </article>
   );
 };
