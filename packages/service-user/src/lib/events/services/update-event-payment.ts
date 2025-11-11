@@ -1,8 +1,10 @@
+import { firstRow } from '@blms/database';
 import type { Dependencies } from '../../../dependencies.js';
 import {
   updateEventPaymentInvoiceId,
   updateEventPaymentQuery,
 } from '../queries/update-event-payment.js';
+import { createSendEventBookingEmail } from './send-booking-email.js';
 
 type Options = { id: string } & (
   | { isPaid: true; isExpired: false }
@@ -11,10 +13,18 @@ type Options = { id: string } & (
 
 export const createUpdateEventPayment = ({
   postgres,
-}: Pick<Dependencies, 'postgres'>) => {
+  config,
+}: Pick<Dependencies, 'postgres' | 'config'>) => {
   return async (options: Options) => {
     const query = updateEventPaymentQuery(options);
-    await postgres.exec(query);
+    const paymentDetails = await postgres.exec(query).then(firstRow);
+
+    if (options.isPaid && paymentDetails) {
+      await createSendEventBookingEmail({ postgres, config })({
+        eventId: paymentDetails.eventId,
+        userId: paymentDetails.uid,
+      });
+    }
   };
 };
 

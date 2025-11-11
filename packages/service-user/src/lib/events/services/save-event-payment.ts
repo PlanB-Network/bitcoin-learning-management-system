@@ -11,6 +11,7 @@ import {
 import { insertEventPayment } from '../queries/insert-event-payment.js';
 import { updateEventCoupon } from '../queries/update-event-coupon.js';
 import { updateEventPaymentQuery } from '../queries/update-event-payment.js';
+import { createSendEventBookingEmail } from './send-booking-email.js';
 
 interface Options {
   uid: string;
@@ -95,6 +96,11 @@ export const createSaveEventPayment = (dependencies: Dependencies) => {
             paymentId: payment[0].paymentId,
           }),
         );
+
+        await createSendEventBookingEmail(dependencies)({
+          eventId: eventId,
+          userId: uid,
+        });
       }
     }
 

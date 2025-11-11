@@ -18,24 +18,24 @@ export const updateEventPaymentQuery = ({
   stripeInvoiceId,
 }: UpdateEventPayment) => {
   if (isExpired) {
-    return sql<EventPayment[]>`
+    return sql<{ eventId: string; uid: string }[]>`
       UPDATE users.event_payment
       SET payment_status = 'expired'
       ${intentId ? sql`, stripe_payment_intent = ${intentId}` : sql``}
       ${stripeInvoiceId ? sql`, stripe_invoice_id = ${stripeInvoiceId}` : sql``}
       WHERE payment_id = ${id}
-    ;
+      RETURNING event_id, uid;
     `;
   }
 
   if (isPaid) {
-    return sql<EventPayment[]>`
+    return sql<{ eventId: string; uid: string }[]>`
       UPDATE users.event_payment
         SET payment_status = 'paid'
         ${intentId ? sql`, stripe_payment_intent = ${intentId}` : sql``}
         ${stripeInvoiceId ? sql`, stripe_invoice_id = ${stripeInvoiceId}` : sql``}
         WHERE payment_id = ${id}
-      ;
+      RETURNING event_id, uid;
     `;
   }
 
