@@ -169,7 +169,6 @@ const NotificationItem = ({ notification, onClose }: NotificationItemProps) => {
               notification.type,
               notification.chapterId || undefined,
               notification.eventId || undefined,
-              notification.blogId || undefined,
             )}
         </p>
       </Link>
@@ -202,7 +201,7 @@ const NotificationsHeader = () => {
         to="/notifications"
         className="flex items-center justify-center gap-2.5 overflow-hidden rounded-lg px-2.5 text-base font-normal text-newBlack-5 hover:text-darkOrange-5 underline"
       >
-        {t('home.blogSection.seeAll')}
+        {t('words.seeAll')}
       </Link>
     </div>
   );

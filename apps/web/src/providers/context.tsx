@@ -1,7 +1,6 @@
 import { UserRole } from '@blms/constants';
 import { canAccess } from '@blms/shared';
 import type {
-  JoinedBlogLight,
   JoinedCourse,
   JoinedTutorialLight,
   SessionData,
@@ -42,10 +41,6 @@ interface AppContext {
   setCourses: (courses: JoinedCourse[] | null) => void;
   refetchCourses: () => Promise<void>;
 
-  // Blog
-  blogs: JoinedBlogLight[] | null;
-  setBlogs: (blogs: JoinedBlogLight[] | null) => void;
-
   // Register Toast
   hasSeenRegisterToast: boolean;
   setHasSeenRegisterToast: (value: boolean) => void;
@@ -64,7 +59,6 @@ interface AppContext {
 
 export const AppContext = createContext<AppContext>({
   accountSettings: null,
-  blogs: null,
   courses: null,
   fetchUserDetailsAndSettings: async () => {},
   hasSeenRegisterToast: false,
@@ -73,7 +67,6 @@ export const AppContext = createContext<AppContext>({
   refetchCourses: async () => {},
   session: undefined,
   setAccountSettings: () => {},
-  setBlogs: () => {},
   setCourses: () => {},
   setHasSeenRegisterToast: () => {},
   setSession: () => {},
@@ -98,7 +91,6 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
     null,
   );
   const [courses, setCourses] = useState<JoinedCourse[] | null>(null);
-  const [blogs, setBlogs] = useState<JoinedBlogLight[] | null>(null);
 
   const [hasSeenRegisterToast, setHasSeenRegisterToast] =
     useState<boolean>(false);
@@ -212,16 +204,6 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
       .then((data) => data ?? null)
       .then(setCourses)
       .catch(() => null);
-
-    trpcClient.content.getBlogs
-      .query({
-        language: i18n.language,
-      })
-      .then((data) => {
-        return data ?? null;
-      })
-      .then(setBlogs)
-      .catch(() => {});
   }, [i18n.language]);
 
   useEffect(() => {
@@ -238,7 +220,6 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
 
   const appContext: AppContext = {
     accountSettings,
-    blogs,
     courses,
     fetchUserDetailsAndSettings,
     hasSeenRegisterToast,
@@ -247,7 +228,6 @@ export const AppContextProvider = ({ children }: PropsWithChildren) => {
     refetchCourses,
     session,
     setAccountSettings,
-    setBlogs,
     setCourses,
     setHasSeenRegisterToast,
     setSession,

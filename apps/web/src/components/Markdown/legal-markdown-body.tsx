@@ -4,9 +4,7 @@ interface LegalMarkdownComponentProps {
   content?: string;
 }
 
-export const LegalMarkdownComponent = ({
-  content,
-}: LegalMarkdownComponentProps) => {
+export const LegalMarkdownBody = ({ content }: LegalMarkdownComponentProps) => {
   return (
     <ReactMarkdown
       components={{

@@ -13,7 +13,6 @@ const paragraphStyles = cva('text-base tracking-wide', {
   },
   variants: {
     intent: {
-      blog: 'text-black mb-4 text-base tracking-wide md:text-justify text-start',
       conference: 'desktop-subtitle1 text-newGray-1',
       default: 'text-blue-950 body-16px',
       general: 'text-blue-950 text-base tracking-wide',
@@ -27,7 +26,7 @@ interface ParagraphRendererProps
     VariantProps<typeof paragraphStyles> {
   children?: React.ReactNode;
   className?: string;
-  intent?: 'default' | 'blog' | 'conference' | 'general' | 'glossary';
+  intent?: 'default' | 'conference' | 'general' | 'glossary';
   header: 'none' | 'logo' | 'text';
 }
 export const ParagraphRenderer: React.FC<ParagraphRendererProps> = (props) => {

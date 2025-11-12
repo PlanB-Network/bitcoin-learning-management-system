@@ -385,7 +385,6 @@ const NotificationItem = ({
                 notification.type,
                 notification.chapterId ?? undefined,
                 notification.eventId ?? undefined,
-                notification.blogId ?? undefined,
               )}
           </p>
         </Link>
@@ -472,7 +471,6 @@ export const getNotificationContent = (
   type: string,
   chapterId?: string,
   eventId?: string,
-  blogId?: string,
 ) => {
   const { i18n } = useTranslation();
 
@@ -493,11 +491,6 @@ export const getNotificationContent = (
       },
     ),
   );
-
-  const blog = useContext(AppContext).blogs?.find((blog) => blog.id === blogId);
-  if (blogId && !blog) {
-    return t('notifications.blogNotTranslated');
-  }
 
   switch (type) {
     case NotificationType.Calendar24HoursCourse: {
@@ -550,8 +543,6 @@ export const getNotificationContent = (
       });
     case NotificationType.Results:
       return t('notifications.results');
-    case NotificationType.Blog:
-      return blog?.title;
     default:
       return null;
   }

@@ -1,4 +1,3 @@
-import type { JoinedBlogLight } from '@blms/types';
 import { cn } from '@blms/ui';
 import { cva, type VariantProps } from 'class-variance-authority';
 import type React from 'react';
@@ -9,8 +8,7 @@ import {
 } from '#src/patterns/course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { TutorialCard } from '#src/routes/$lang/_content/tutorials/-components/tutorial-card.tsx';
-import { resourceImgUrl } from '#src/utils/index.ts';
-import { getBlog, getCourse, getTutorial } from '../utils/link-preview.tsx';
+import { getCourse, getTutorial } from '../utils/link-preview.tsx';
 
 const linkStyles = cva('text-base tracking-wide', {
   defaultVariants: {
@@ -31,11 +29,10 @@ interface LinkRendererProps
   children?: React.ReactNode;
   href?: string;
   intent?: 'default' | 'general' | 'glossary';
-  blogs?: JoinedBlogLight[];
 }
 
 export const LinkRenderer: React.FC<LinkRendererProps> = (props) => {
-  const { children, href, intent, blogs } = props;
+  const { children, href, intent } = props;
   const { courses, tutorials } = useContext(AppContext);
 
   if (href && children === href) {
@@ -61,39 +58,6 @@ export const LinkRenderer: React.FC<LinkRendererProps> = (props) => {
             openInNewTab
           />
         </div>
-      );
-    }
-
-    const blog = getBlog(href, blogs);
-    if (blog) {
-      return (
-        <a
-          href={href}
-          target="_blank"
-          rel="noreferrer"
-          className="flex max-md:flex-col items-center w-full bg-newGray-6 border border-newGray-5 rounded-[20px] p-4 gap-6 max-md:max-w-96"
-        >
-          <img
-            src={resourceImgUrl(blog)}
-            alt={blog.category}
-            className="size-20 rounded-full"
-          />
-          <div className="flex flex-col max-md:text-center">
-            <p className="text-newBlack-3 text-xs font-light mb-2">
-              {blog.description}
-            </p>
-            <div className="flex gap-4 max-md:justify-center">
-              {blog.tags?.map((tag) => (
-                <span
-                  key={tag}
-                  className="bg-[rgba(204,204,204,0.5)] px-2 py-1 rounded-md desktop-typo1 text-newBlack-3"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        </a>
       );
     }
   }

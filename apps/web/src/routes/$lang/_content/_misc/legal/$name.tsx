@@ -5,10 +5,9 @@ import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { TbError404 } from 'react-icons/tb';
 import { z } from 'zod';
+import { LegalMarkdownBody } from '#src/components/Markdown/legal-markdown-body.tsx';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { trpc } from '#src/utils/trpc.js';
-import { LegalMarkdownComponent } from './-components/legal-markdown.tsx';
-import { legalTabs } from './-components/utils/legal-utils.tsx';
 
 export const Route = createFileRoute('/$lang/_content/_misc/legal/$name')({
   component: LegalInformationTab,
@@ -23,6 +22,29 @@ export const Route = createFileRoute('/$lang/_content/_misc/legal/$name')({
     }),
   },
 });
+
+const legalTabs = [
+  {
+    href: '/legal/contact',
+    id: 'contact',
+    label: 'publicCommunication.legalSections.contact',
+  },
+  {
+    href: '/legal/legal-notice',
+    id: 'legal-notice',
+    label: 'publicCommunication.legalSections.legalNotice',
+  },
+  {
+    href: '/legal/privacy-policy',
+    id: 'privacy-policy',
+    label: 'publicCommunication.legalSections.privacyPolicy',
+  },
+  {
+    href: '/legal/terms-of-sale',
+    id: 'terms-of-sale',
+    label: 'publicCommunication.legalSections.termsOfSale',
+  },
+];
 
 function LegalInformationTab() {
   const { i18n } = useTranslation();
@@ -49,7 +71,7 @@ function LegalInformationTab() {
           icon={TbError404}
         />
       ) : (
-        <LegalMarkdownComponent content={legal?.rawContent} />
+        <LegalMarkdownBody content={legal?.rawContent} />
       )}
     </PageLayout>
   );
