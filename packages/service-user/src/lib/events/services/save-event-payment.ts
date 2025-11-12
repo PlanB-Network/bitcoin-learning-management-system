@@ -10,7 +10,6 @@ import {
 } from '../../payments/services/payment-service.js';
 import { insertEventPayment } from '../queries/insert-event-payment.js';
 import { updateEventCoupon } from '../queries/update-event-coupon.js';
-import { updateEventPaymentQuery } from '../queries/update-event-payment.js';
 import { createSendEventBookingEmail } from './send-booking-email.js';
 
 interface Options {
@@ -161,26 +160,5 @@ export const createSaveEventPayment = (dependencies: Dependencies) => {
     }
 
     throw new Error(`Unsupported payment method ${method}`);
-  };
-};
-
-export const createUpdateEventPaymentStatus = ({
-  postgres,
-}: Pick<Dependencies, 'postgres'>) => {
-  return async ({
-    paymentId,
-    paymentIntentId,
-  }: {
-    paymentId: string;
-    paymentIntentId: string;
-  }) => {
-    await postgres.exec(
-      updateEventPaymentQuery({
-        id: paymentId,
-        intentId: paymentIntentId,
-        isExpired: false,
-        isPaid: true,
-      }),
-    );
   };
 };

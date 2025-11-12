@@ -28,6 +28,36 @@ export const createUpdateEventPayment = ({
   };
 };
 
+export const createUpdateEventPaymentStatus = (
+  dependencies: Pick<Dependencies, 'postgres' | 'config'>,
+) => {
+  return async ({
+    paymentId,
+    paymentIntentId,
+  }: {
+    paymentId: string;
+    paymentIntentId: string;
+  }) => {
+    const query = updateEventPaymentQuery({
+      id: paymentId,
+      intentId: paymentIntentId,
+      isExpired: false,
+      isPaid: true,
+    });
+
+    const paymentDetails = await dependencies.postgres
+      .exec(query)
+      .then(firstRow);
+
+    if (paymentDetails) {
+      await createSendEventBookingEmail(dependencies)({
+        eventId: paymentDetails.eventId,
+        userId: paymentDetails.uid,
+      });
+    }
+  };
+};
+
 interface Options2 {
   intentId: string;
   stripeInvoiceId: string;
