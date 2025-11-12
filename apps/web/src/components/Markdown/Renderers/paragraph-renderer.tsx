@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { t } from 'i18next';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import VideoSVG from '#src/assets/resources/video.svg?react';
+import { TbVideo } from 'react-icons/tb';
 import { VideoSelector } from '#src/components/video-selector.tsx';
 import { TradingViewWidget } from './tradingview-widget.tsx';
 
@@ -56,7 +56,7 @@ export const ParagraphRenderer: React.FC<ParagraphRendererProps> = (props) => {
             <div className="mb-8">
               {header === 'logo' && (
                 <div className="flex items-center">
-                  <VideoSVG className="mb-2 ml-4 size-10" />
+                  <TbVideo className="size-10" />
                   <div className="ml-2">
                     <p className="text-lg font-medium text-blue-900">
                       {t('words.video')}

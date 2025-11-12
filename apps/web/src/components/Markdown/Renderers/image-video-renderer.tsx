@@ -1,7 +1,7 @@
 import { t } from 'i18next';
 import { useEffect, useState } from 'react';
+import { TbVideo } from 'react-icons/tb';
 import ReactPlayer from 'react-player';
-import VideoSVG from '#src/assets/resources/video.svg?react';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import {
   doesVideoUrlWorkWithReactPlayer,
@@ -43,7 +43,7 @@ export const ImageVideoRenderer = ({
       <div className="mx-auto mb-2 max-w-full rounded-lg pb-6 md:pt-4 last:pb-0 last:md:pb-4">
         {header === 'logo' && (
           <div className="flex items-center">
-            <VideoSVG className="mb-2 ml-4 size-10" />
+            <TbVideo className="size-10" />
             <div className="ml-2">
               <p className="text-lg font-medium text-blue-900">
                 {t('words.video')}
