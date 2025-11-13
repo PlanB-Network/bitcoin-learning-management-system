@@ -1,5 +1,4 @@
-/** biome-ignore-all lint/correctness/useHookAtTopLevel: TODO check */
-import type { CourseResponse, JoinedCourseChapter } from '@blms/types';
+import type { JoinedCourseChapter } from '@blms/types';
 import {
   Alert,
   AlertDescription,
@@ -12,8 +11,9 @@ import {
   Loader,
 } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
-import { Link } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { t } from 'i18next';
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiPencil } from 'react-icons/bi';
 import { BsTwitterX } from 'react-icons/bs';
@@ -23,35 +23,46 @@ import { TbAlertOctagon, TbDownload } from 'react-icons/tb';
 import ApprovedIcon from '#src/assets/icons/approved.svg?react';
 import Finish from '#src/assets/icons/finish.svg?react';
 import SuccessExam from '#src/assets/icons/success_party.svg?react';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { CourseContext } from '#src/providers/courseContext.tsx';
 import { formatDate, formatDateRange } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
+import { CourseTitle } from '../-components/course-title.tsx';
+import { getTabs } from '../-utils/get-tabs.tsx';
 
-export const SingleTrialExam = ({ course }: { course: CourseResponse }) => {
-  const { data: userProgress } = useQuery(
-    trpc.user.courses.getProgress.queryOptions({
-      courseId: course.id,
-    }),
-  );
+export const Route = createFileRoute(
+  '/$lang/_content/courses/$courseSlug/_$courseSlug/single-trial-exam',
+)({
+  component: SingleTrialExam,
+});
+
+function SingleTrialExam() {
+  const params = Route.useParams();
+
+  const { course, courseProgress, isLoggedIn } = useContext(CourseContext);
+
+  const courseId = params.courseSlug;
 
   const { data: enrolledStudentsCount } = useQuery(
     trpc.user.courses.getEnrolledStudentsCount.queryOptions({
-      courseId: course.id,
+      courseId: courseId,
     }),
   );
 
   const { data: timestamp, isSuccess: isTimestampFetched } = useQuery(
     trpc.user.courses.getTeacherLedCourseDiplomaTimestamp.queryOptions({
-      courseId: course.id,
+      courseId: courseId,
     }),
   );
 
-  const courseProgress = userProgress?.[0];
-  const assignmentScore = courseProgress?.assignmentGrade;
+  const currentCourseProgress = courseProgress?.[0];
+  const assignmentScore = currentCourseProgress?.assignmentGrade;
 
-  const singleTrialExams = course?.parts.flatMap((p) =>
-    p.chapters.filter((c) => c?.isSingleTrialExam),
-  );
+  const singleTrialExams =
+    course?.parts.flatMap((p) =>
+      p.chapters.filter((c) => c?.isSingleTrialExam),
+    ) || [];
 
   const courseHasAssignment = course?.hasAssignment;
   const assignmentWeight = course?.assignmentWeight ?? 40;
@@ -60,8 +71,8 @@ export const SingleTrialExam = ({ course }: { course: CourseResponse }) => {
     singleTrialExams.reduce((acc, exam) => acc + (exam.rateWeight ?? 0), 0) +
     assignmentWeight;
 
-  const finalScore = courseProgress?.totalScore || 0;
-  const passingThreshold = course.passingGradeThreshold ?? 50;
+  const finalScore = currentCourseProgress?.totalScore || 0;
+  const passingThreshold = course?.passingGradeThreshold ?? 50;
   const totalStudents = enrolledStudentsCount ?? '-';
 
   const hasPassed = finalScore >= passingThreshold;
@@ -110,126 +121,136 @@ export const SingleTrialExam = ({ course }: { course: CourseResponse }) => {
     'flex flex-col gap-2.5 md:gap-4 items-center justify-center p-5 bg-white rounded-2xl border border-newGray-5 w-full md:max-w-80';
 
   return (
-    <section className="flex flex-col mt-6 md:mt-10 w-full max-w-[1000px] gap-6">
-      {isCourseConclusionReleased && (
-        <div className="flex flex-col gap-4 md:gap-6 w-full">
-          <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle capitalize">
-            {t('dashboard.course.finalGradeSummary')}
-          </h2>
-          <section className="flex flex-col items-center w-full rounded-2xl bg-newGray-6 border border-newGray-5 px-2.5 py-5 md:p-8 gap-4 md:gap-10">
-            <div className="flex flex-col items-center gap-5">
-              {hasPassed && (
-                <SuccessExam className="size-7 md:size-9 fill-green-500" />
-              )}
-              <p className="whitespace-pre-line label-med-18px md:label-large-med-20px text-newBlack-1 text-center">
-                {hasPassed
-                  ? t('dashboard.course.congratulationsPassed')
-                  : t('dashboard.course.keepMovingForward')}
-              </p>
-            </div>
-            <div className="flex max-md:flex-col max-md:items-center gap-2.5 md:gap-4 items-stretch justify-center w-full">
-              <div className={scoreAndRankingClasses}>
-                <span
-                  className={cn(
-                    hasPassed ? 'text-green-500' : 'text-red-5',
-                    'title-large-sb-24px md:display-small-med-32px',
+    <PageLayout
+      title={t('courses.exam.scoreAndDiploma')}
+      hideTitle
+      layoutSize="max"
+      overTitle={course ? <CourseTitle course={course} /> : undefined}
+      tabs={isLoggedIn && course ? getTabs(course, currentCourseProgress) : []}
+    >
+      {course && (
+        <section className="flex flex-col mt-6 md:mt-10 w-full max-w-[1000px] gap-6">
+          {isCourseConclusionReleased && (
+            <div className="flex flex-col gap-4 md:gap-6 w-full">
+              <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle capitalize">
+                {t('dashboard.course.finalGradeSummary')}
+              </h2>
+              <section className="flex flex-col items-center w-full rounded-2xl bg-newGray-6 border border-newGray-5 px-2.5 py-5 md:p-8 gap-4 md:gap-10">
+                <div className="flex flex-col items-center gap-5">
+                  {hasPassed && (
+                    <SuccessExam className="size-7 md:size-9 fill-green-500" />
                   )}
-                >
-                  {finalScore}%
-                </span>
-                <div className="flex flex-col items-center">
-                  <span className="subtitle-medium-16px md:label-18px text-newGray-1">
-                    {t('dashboard.course.finalScore')}
-                  </span>
-                  <span className="body-12px text-newGray-2">
-                    {t('dashboard.course.thresholdToPass', {
-                      threshold: passingThreshold,
-                    })}
-                  </span>
+                  <p className="whitespace-pre-line label-med-18px md:label-large-med-20px text-newBlack-1 text-center">
+                    {hasPassed
+                      ? t('dashboard.course.congratulationsPassed')
+                      : t('dashboard.course.keepMovingForward')}
+                  </p>
                 </div>
-              </div>
-              <div className={scoreAndRankingClasses}>
-                <span
-                  className={cn(
-                    'text-darkOrange-6 title-large-sb-24px md:display-small-med-32px',
-                  )}
-                >
-                  {courseProgress?.ranking ?? '-'} / {totalStudents}
-                </span>
-                <span className="subtitle-medium-16px md:label-18px text-newGray-1">
-                  {t('dashboard.course.ranking')}
-                </span>
-              </div>
+                <div className="flex max-md:flex-col max-md:items-center gap-2.5 md:gap-4 items-stretch justify-center w-full">
+                  <div className={scoreAndRankingClasses}>
+                    <span
+                      className={cn(
+                        hasPassed ? 'text-green-500' : 'text-red-5',
+                        'title-large-sb-24px md:display-small-med-32px',
+                      )}
+                    >
+                      {finalScore}%
+                    </span>
+                    <div className="flex flex-col items-center">
+                      <span className="subtitle-medium-16px md:label-18px text-newGray-1">
+                        {t('dashboard.course.finalScore')}
+                      </span>
+                      <span className="body-12px text-newGray-2">
+                        {t('dashboard.course.thresholdToPass', {
+                          threshold: passingThreshold,
+                        })}
+                      </span>
+                    </div>
+                  </div>
+                  <div className={scoreAndRankingClasses}>
+                    <span
+                      className={cn(
+                        'text-darkOrange-6 title-large-sb-24px md:display-small-med-32px',
+                      )}
+                    >
+                      {currentCourseProgress?.ranking ?? '-'} / {totalStudents}
+                    </span>
+                    <span className="subtitle-medium-16px md:label-18px text-newGray-1">
+                      {t('dashboard.course.ranking')}
+                    </span>
+                  </div>
+                </div>
+              </section>
             </div>
-          </section>
-        </div>
-      )}
-      {hasPassed &&
-        (isCourseConclusionReleased ? (
-          <section className="flex flex-col items-center w-full rounded-2xl bg-newGray-6 border border-newGray-5 px-2.5 py-5 md:p-8 gap-4 md:gap-5">
-            <Finish className="fill-darkOrange-5 size-7 md:size-9" />
-            <p className="label-medium-16px md:subtitle-large-med-20px text-newBlack-1 whitespace-pre-line text-center">
-              {t('dashboard.course.wellDoneCompleting')}
-            </p>
-            {isTimestampFetched && timestamp ? (
-              <DiplomaSection
-                timestampId={timestamp.id}
-                imgKey={timestamp.imgKey || ''}
-                courseName={course.name}
-                courseCoordinator={course.mainProfessors[0]?.name}
-              />
+          )}
+          {hasPassed &&
+            (isCourseConclusionReleased ? (
+              <section className="flex flex-col items-center w-full rounded-2xl bg-newGray-6 border border-newGray-5 px-2.5 py-5 md:p-8 gap-4 md:gap-5">
+                <Finish className="fill-darkOrange-5 size-7 md:size-9" />
+                <p className="label-medium-16px md:subtitle-large-med-20px text-newBlack-1 whitespace-pre-line text-center">
+                  {t('dashboard.course.wellDoneCompleting')}
+                </p>
+                {isTimestampFetched && timestamp ? (
+                  <DiplomaSection
+                    timestampId={timestamp.id}
+                    imgKey={timestamp.imgKey || ''}
+                    courseName={course.name}
+                    courseCoordinator={course.mainProfessors[0]?.name}
+                  />
+                ) : (
+                  <Loader />
+                )}
+              </section>
             ) : (
-              <Loader />
-            )}
-          </section>
-        ) : (
-          <Alert hasCloseButton variant="warning">
-            <AlertTitle icon={TbAlertOctagon}>
-              {t('dashboard.course.diplomaReleaseTitle')}
-            </AlertTitle>
-            <AlertDescription className="max-md:body-14px text-newBlack-2">
-              {t('dashboard.course.diplomaReleaseDescription')}
-            </AlertDescription>
-          </Alert>
-        ))}
-      <div className="flex flex-col gap-2.5 md:gap-6">
-        <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
-          {t('dashboard.course.exams')}
-        </h2>
-      </div>
+              <Alert hasCloseButton variant="warning">
+                <AlertTitle icon={TbAlertOctagon}>
+                  {t('dashboard.course.diplomaReleaseTitle')}
+                </AlertTitle>
+                <AlertDescription className="max-md:body-14px text-newBlack-2">
+                  {t('dashboard.course.diplomaReleaseDescription')}
+                </AlertDescription>
+              </Alert>
+            ))}
+          <div className="flex flex-col gap-2.5 md:gap-6">
+            <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
+              {t('dashboard.course.exams')}
+            </h2>
+          </div>
 
-      <div className="flex flex-col gap-4">
-        {allItems.map((item) => {
-          if (item.type === 'exam') {
-            return (
-              <ExamItem
-                key={item.data.chapterId}
-                exam={item.data}
-                totalWeight={totalWeight}
-                courseId={course.id}
-                chapterId={item.data.chapterId}
-                language={item.data.language}
-              />
-            );
-          }
+          <div className="flex flex-col gap-4">
+            {allItems.map((item) => {
+              if (item.type === 'exam') {
+                return (
+                  <ExamItem
+                    key={item.data.chapterId}
+                    exam={item.data}
+                    totalWeight={totalWeight}
+                    courseId={course.id}
+                    chapterId={item.data.chapterId}
+                    language={item.data.language}
+                  />
+                );
+              }
 
-          return (
-            <AssignmentItem
-              key={'assignment'}
-              title={item.data.title}
-              description={item.data.description}
-              weight={item.data.weight}
-              startDate={item.data.startDate}
-              endDate={item.data.endDate}
-              score={item.data.score}
-              isGradePublished={item.data.isGradePublished}
-            />
-          );
-        })}
-      </div>
-    </section>
+              return (
+                <AssignmentItem
+                  key={'assignment'}
+                  title={item.data.title}
+                  description={item.data.description}
+                  weight={item.data.weight}
+                  startDate={item.data.startDate}
+                  endDate={item.data.endDate}
+                  score={item.data.score}
+                  isGradePublished={item.data.isGradePublished}
+                />
+              );
+            })}
+          </div>
+        </section>
+      )}
+    </PageLayout>
   );
-};
+}
 
 const ExamItem = ({
   exam,
@@ -244,7 +265,7 @@ const ExamItem = ({
   chapterId: string;
   language: string;
 }) => {
-  if (!exam.startDate || !exam.endDate) return null;
+  const isMobile = useSmaller('md');
 
   const { data: examInfo, isFetched: isExamInfoFetched } = useQuery(
     trpc.user.courses.getExamInfo.queryOptions({
@@ -260,8 +281,9 @@ const ExamItem = ({
     }),
   );
 
+  if (!exam.startDate || !exam.endDate) return null;
+
   const now = Date.now();
-  const isMobile = useSmaller('md');
 
   const isExamOngoing =
     exam.startDate.getTime() <= now && exam.endDate.getTime() >= now;

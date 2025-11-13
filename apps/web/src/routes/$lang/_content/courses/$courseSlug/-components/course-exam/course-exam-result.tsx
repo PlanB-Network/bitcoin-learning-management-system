@@ -129,7 +129,7 @@ export const CourseExamResult = ({
                       <div className="flex justify-center gap-4 items-center max-md:hidden mt-10">
                         {examResults.isTimestamped && (
                           <Link
-                            to={`/my-courses/${chapter.courseId}#retakeExam`}
+                            to={`/courses/${chapter.courseId}/retake-exam`}
                             className="w-fit"
                           >
                             <ButtonWithArrow

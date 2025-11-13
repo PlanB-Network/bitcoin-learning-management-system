@@ -16,7 +16,7 @@ import {
   RadialGauge,
 } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { Link } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import type React from 'react';
 import { useContext, useEffect, useRef, useState } from 'react';
@@ -41,11 +41,21 @@ import Certificate from '#src/assets/icons/certificate.svg';
 import SadFace from '#src/assets/icons/face_sad.svg';
 import ThumbUp from '#src/assets/icons/thumb_up.svg';
 import InformationIcon from '#src/assets/icons/warning_orange.svg';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
+import { CourseContext } from '#src/providers/courseContext.tsx';
+import { WeightIndicator } from '#src/routes/$lang/dashboard/_dashboard/professor/-components/exam-results.tsx';
 import { formatDate, formatDateRange, formatTime } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
-import { WeightIndicator } from '../../dashboard/_dashboard/professor/-components/exam-results.tsx';
+import { CourseTitle } from '../-components/course-title.tsx';
+import { getTabs } from '../-utils/get-tabs.tsx';
+
+export const Route = createFileRoute(
+  '/$lang/_content/courses/$courseSlug/_$courseSlug/assignment',
+)({
+  component: Assignment,
+});
 
 interface RankingItemProps {
   name: string | null;
@@ -69,9 +79,14 @@ interface InfoRowProps {
   value: string | React.ReactNode;
 }
 
-export const Assignment = ({ courseId }: { courseId: string }) => {
+function Assignment() {
+  const params = Route.useParams();
   const { user } = useContext(AppContext);
   const { courses } = useContext(AppContext);
+
+  const { course, isLoggedIn } = useContext(CourseContext);
+
+  const courseId = params.courseSlug;
 
   const courseInfo = courses?.find((course) => course.id === courseId);
 
@@ -304,308 +319,320 @@ export const Assignment = ({ courseId }: { courseId: string }) => {
   }
 
   return (
-    <section className="flex flex-col mt-4 md:mt-8 w-full max-w-[1000px] gap-4 md:gap-8">
-      {!hasSubmittedWork && (
-        <div className="flex flex-col gap-5">
-          <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
-            {t('dashboard.course.assignment')}
-          </h2>
-          {courseInfo.assignmentDescription && (
-            <CollapsibleDropdown
-              title={t('dashboard.course.generalInformation')}
-              className="border border-newGray-4"
-              variant="dark"
-              defaultOpen={!hasAffectedAssignment}
-              icon={<LuCircleAlert />}
-            >
-              <p className="whitespace-pre-line text-newBlack-4 body-14px md:body-16px ">
-                {courseInfo.assignmentDescription}
-              </p>
-            </CollapsibleDropdown>
-          )}
-        </div>
-      )}
-
-      {shouldShowRanking && !hasAffectedAssignment && (
-        <>
-          <div className="flex flex-col gap-4 md:gap-5">
+    <PageLayout
+      title={t('dashboard.course.assignment')}
+      hideTitle
+      layoutSize="max"
+      overTitle={course ? <CourseTitle course={course} /> : undefined}
+      tabs={isLoggedIn && course ? getTabs(course, courseProgress) : []}
+    >
+      <section className="flex flex-col mt-4 md:mt-8 w-full max-w-[1000px] gap-4 md:gap-8">
+        {!hasSubmittedWork && (
+          <div className="flex flex-col gap-5">
             <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
-              {t('dashboard.course.rankProjectPreferences')}
+              {t('dashboard.course.assignment')}
             </h2>
-
-            {!hasAlreadyRanked && (
-              <Alert hasCloseButton variant="warning">
-                <AlertTitle icon={TbAlertOctagon}>
-                  {t('dashboard.course.projectRankingInstructions')}
-                </AlertTitle>
-                <AlertDescription>
-                  <div className="flex flex-col text-newBlack-2">
-                    <p className="font-medium">
-                      {t('dashboard.course.rankingOnly24Hours')}
-                    </p>
-                    <p>{t('dashboard.course.rankingInstructions')}</p>
-                  </div>
-                </AlertDescription>
-              </Alert>
+            {courseInfo.assignmentDescription && (
+              <CollapsibleDropdown
+                title={t('dashboard.course.generalInformation')}
+                className="border border-newGray-4"
+                variant="dark"
+                defaultOpen={!hasAffectedAssignment}
+                icon={<LuCircleAlert />}
+              >
+                <p className="whitespace-pre-line text-newBlack-4 body-14px md:body-16px ">
+                  {courseInfo.assignmentDescription}
+                </p>
+              </CollapsibleDropdown>
             )}
           </div>
+        )}
 
-          {canRankAssignments && (
-            <>
-              <div className="flex flex-col gap-4">
-                <span className="subtitle-small-caps-14px text-newBlack-5">
-                  {t('dashboard.course.mostPreferred')}
-                </span>
+        {shouldShowRanking && !hasAffectedAssignment && (
+          <>
+            <div className="flex flex-col gap-4 md:gap-5">
+              <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
+                {t('dashboard.course.rankProjectPreferences')}
+              </h2>
 
-                {assignmentsOrdered.map((assignment, index) => (
-                  <RankingItem
-                    key={assignment.id}
-                    name={assignment.name}
-                    description={assignment.description}
-                    fileUrl={`/api/files/${assignment.fileUrl}`}
-                    rank={index + 1}
-                    index={index}
-                    onMoveUp={() => handleMoveUp(index)}
-                    onMoveDown={() => handleMoveDown(index)}
-                    onDragStart={handleDragStart}
-                    onDragEnd={handleDragEnd}
-                    onDragOver={(e) => handleDragOver(e, index)}
-                    onDrop={(e) => handleDrop(e, index)}
-                    isDragging={draggedIndex === index}
-                    isDraggedOver={draggedOverIndex === index}
-                  />
-                ))}
+              {!hasAlreadyRanked && (
+                <Alert hasCloseButton variant="warning">
+                  <AlertTitle icon={TbAlertOctagon}>
+                    {t('dashboard.course.projectRankingInstructions')}
+                  </AlertTitle>
+                  <AlertDescription>
+                    <div className="flex flex-col text-newBlack-2">
+                      <p className="font-medium">
+                        {t('dashboard.course.rankingOnly24Hours')}
+                      </p>
+                      <p>{t('dashboard.course.rankingInstructions')}</p>
+                    </div>
+                  </AlertDescription>
+                </Alert>
+              )}
+            </div>
 
-                <span className="subtitle-small-caps-14px text-newBlack-5">
-                  {t('dashboard.course.leastPreferred')}
-                </span>
-              </div>
-              <ConfirmAssignmentsOrderDialog onConfirm={handleSaveList} />
-            </>
-          )}
+            {canRankAssignments && (
+              <>
+                <div className="flex flex-col gap-4">
+                  <span className="subtitle-small-caps-14px text-newBlack-5">
+                    {t('dashboard.course.mostPreferred')}
+                  </span>
 
-          {hasAlreadyRanked && (
-            <InformationalPanel
-              icon={ThumbUp}
-              iconClassName="filter-darkOrange"
-              description={t('dashboard.course.listSavedComeTomorrow')}
-            />
-          )}
-        </>
-      )}
-
-      {hasAffectedAssignment && affectedAssignment && (
-        <div className="flex flex-col gap-5 md:gap-8">
-          <section className="flex flex-col w-full bg-neutral-50 rounded-2xl">
-            <h3 className="px-2 md:px-6 py-3 border-b border-neutral-100 mobile-h3 md:title-large-sb-24px">
-              {t('dashboard.course.yourProjectAssignment')}
-            </h3>
-            <div className="w-full p-2 md:p-6 flex flex-col gap-6 md:gap-7">
-              <article className="flex flex-col bg-white p-2 md:px-5 md:py-4 gap-2 rounded-2xl w-full">
-                <div className="flex flex-col gap-2">
-                  {affectedAssignment.name && (
-                    <InfoRow
-                      icon={TbBuildingSkyscraper}
-                      label={t('words.company')}
-                      value={affectedAssignment.name}
+                  {assignmentsOrdered.map((assignment, index) => (
+                    <RankingItem
+                      key={assignment.id}
+                      name={assignment.name}
+                      description={assignment.description}
+                      fileUrl={`/api/files/${assignment.fileUrl}`}
+                      rank={index + 1}
+                      index={index}
+                      onMoveUp={() => handleMoveUp(index)}
+                      onMoveDown={() => handleMoveDown(index)}
+                      onDragStart={handleDragStart}
+                      onDragEnd={handleDragEnd}
+                      onDragOver={(e) => handleDragOver(e, index)}
+                      onDrop={(e) => handleDrop(e, index)}
+                      isDragging={draggedIndex === index}
+                      isDraggedOver={draggedOverIndex === index}
                     />
-                  )}
-                  <InfoRow
-                    icon={TbBook2}
-                    label={t('words.title')}
-                    value={affectedAssignment.description}
-                  />
-                  {affectedAssignment.mentor && (
-                    <InfoRow
-                      icon={TbUser}
-                      label={t('words.mentor')}
-                      value={affectedAssignment.mentor}
-                    />
-                  )}
-                  <InfoRow
-                    icon={TbCalendar}
-                    label={t('words.date')}
-                    value={formatDateRange(
-                      courseInfo.assignmentStartDate || undefined,
-                      courseInfo.assignmentEndDate || undefined,
-                    )}
-                  />
-                  <InfoRow
-                    icon={TbWeight}
-                    label={t('words.weight')}
-                    value={
-                      <div className="flex items-center gap-3">
-                        <span>{courseInfo.assignmentWeight}%</span>
-                        <WeightIndicator
-                          weight={courseInfo.assignmentWeight || 0}
-                        />
-                      </div>
-                    }
-                  />
+                  ))}
+
+                  <span className="subtitle-small-caps-14px text-newBlack-5">
+                    {t('dashboard.course.leastPreferred')}
+                  </span>
                 </div>
-              </article>
-              <div className="flex max-md:flex-wrap gap-4 items-center">
-                <Button variant="outline" mode="light" size="s" asChild>
-                  <a
-                    href={`/api/files/${affectedAssignment.fileUrl}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <MdOutlineRemoveRedEye className="mr-2" />
-                    {t('dashboard.course.readAssignment')}
-                  </a>
-                </Button>
-                {affectedAssignment.telegramUrl && (
+                <ConfirmAssignmentsOrderDialog onConfirm={handleSaveList} />
+              </>
+            )}
+
+            {hasAlreadyRanked && (
+              <InformationalPanel
+                icon={ThumbUp}
+                iconClassName="filter-darkOrange"
+                description={t('dashboard.course.listSavedComeTomorrow')}
+              />
+            )}
+          </>
+        )}
+
+        {hasAffectedAssignment && affectedAssignment && (
+          <div className="flex flex-col gap-5 md:gap-8">
+            <section className="flex flex-col w-full bg-neutral-50 rounded-2xl">
+              <h3 className="px-2 md:px-6 py-3 border-b border-neutral-100 mobile-h3 md:title-large-sb-24px">
+                {t('dashboard.course.yourProjectAssignment')}
+              </h3>
+              <div className="w-full p-2 md:p-6 flex flex-col gap-6 md:gap-7">
+                <article className="flex flex-col bg-white p-2 md:px-5 md:py-4 gap-2 rounded-2xl w-full">
+                  <div className="flex flex-col gap-2">
+                    {affectedAssignment.name && (
+                      <InfoRow
+                        icon={TbBuildingSkyscraper}
+                        label={t('words.company')}
+                        value={affectedAssignment.name}
+                      />
+                    )}
+                    <InfoRow
+                      icon={TbBook2}
+                      label={t('words.title')}
+                      value={affectedAssignment.description}
+                    />
+                    {affectedAssignment.mentor && (
+                      <InfoRow
+                        icon={TbUser}
+                        label={t('words.mentor')}
+                        value={affectedAssignment.mentor}
+                      />
+                    )}
+                    <InfoRow
+                      icon={TbCalendar}
+                      label={t('words.date')}
+                      value={formatDateRange(
+                        courseInfo.assignmentStartDate || undefined,
+                        courseInfo.assignmentEndDate || undefined,
+                      )}
+                    />
+                    <InfoRow
+                      icon={TbWeight}
+                      label={t('words.weight')}
+                      value={
+                        <div className="flex items-center gap-3">
+                          <span>{courseInfo.assignmentWeight}%</span>
+                          <WeightIndicator
+                            weight={courseInfo.assignmentWeight || 0}
+                          />
+                        </div>
+                      }
+                    />
+                  </div>
+                </article>
+                <div className="flex max-md:flex-wrap gap-4 items-center">
                   <Button variant="outline" mode="light" size="s" asChild>
                     <a
-                      href={affectedAssignment.telegramUrl}
+                      href={`/api/files/${affectedAssignment.fileUrl}`}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <FaTelegram className="mr-2" />
-                      {t('dashboard.course.joinTelegramGroup')}
+                      <MdOutlineRemoveRedEye className="mr-2" />
+                      {t('dashboard.course.readAssignment')}
                     </a>
                   </Button>
-                )}
-              </div>
-            </div>
-          </section>
-
-          <Divider mode="light" className="!mx-0" width="w-full" />
-
-          {!hasSubmittedWork && !courseInfo.isAssignmentGradingPublished && (
-            <div className="flex flex-col gap-5">
-              <h3 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
-                {t('dashboard.course.submitYourWork')}
-              </h3>
-
-              <Alert hasCloseButton variant="warning">
-                <AlertTitle icon={TbAlertOctagon}>
-                  {t('dashboard.course.submissionInstructions')}
-                </AlertTitle>
-                <AlertDescription>
-                  <ul className="list-disc pl-6 text-newBlack-2">
-                    <li>
-                      <span className="font-medium">
-                        {t('dashboard.course.submitBefore', {
-                          date: formatDate(endAssignmentDate),
-                          hour: formatTime(endAssignmentDate),
-                        })}
-                      </span>
-                    </li>
-                    <li>{t('dashboard.course.mustBePdf')}</li>
-                  </ul>
-                </AlertDescription>
-              </Alert>
-
-              <div className="flex flex-col gap-1 md:gap-2 mb-5 md:mb-10">
-                {/* Hidden file input */}
-                <input
-                  type="file"
-                  accept=".pdf"
-                  className="hidden"
-                  ref={fileInputRef}
-                  onChange={(e) => {
-                    const file = e.target.files?.[0];
-                    if (file) {
-                      setSelectedFile(file);
-                      setSelectedFileName(file.name);
-                    }
-                  }}
-                />
-                <div className="flex max-md:flex-wrap gap-4 w-full">
-                  <div className="flex flex-col gap-2 max-w-[614px] w-full">
-                    <div className="flex items-center rounded-[10px] overflow-hidden w-full hover:shadow-course-navigation-sm h-[46px]">
-                      <button
-                        type="button"
-                        onClick={() => fileInputRef.current?.click()}
-                        className="h-full flex items-center px-3.5 rounded-l-[10px] border border-newBlack-4 md:text-lg leading-normal font-medium bg-darkOrange-5 text-white hover:cursor-pointer shrink-0 focus:border-newBlack-2 focus:bg-darkOrange-6"
+                  {affectedAssignment.telegramUrl && (
+                    <Button variant="outline" mode="light" size="s" asChild>
+                      <a
+                        href={affectedAssignment.telegramUrl}
+                        target="_blank"
+                        rel="noreferrer"
                       >
-                        {t('dashboard.careerPortal.chooseFile')}
-                      </button>
-                      <span className="h-full flex items-center px-3.5 body-16px md:label-medium-16px text-newBlack-5 truncate w-full border-r border-y border-newBlack-4 rounded-r-[10px]">
-                        {selectedFileName ||
-                          t('dashboard.careerPortal.noFileSelected')}
-                      </span>
-                    </div>
-
-                    <p className="body-14px text-newGray-1">
-                      {t('dashboard.careerPortal.acceptedFormat')}
-                    </p>
-                    {workErrorMessage && (
-                      <p className="text-red-6 body-14px">{workErrorMessage}</p>
-                    )}
-                  </div>
-                  <ConfirmSubmissionDialog
-                    onConfirm={handleWorkUpload}
-                    selectedFile={selectedFile}
-                    isUploading={isUploading}
-                  />
+                        <FaTelegram className="mr-2" />
+                        {t('dashboard.course.joinTelegramGroup')}
+                      </a>
+                    </Button>
+                  )}
                 </div>
               </div>
-            </div>
-          )}
-          {hasSubmittedWork && !courseInfo.isAssignmentGradingPublished && (
-            <InformationalPanel
-              icon={Certificate}
-              title={t('dashboard.course.assignmentCompletedTitle')}
-              description={t('dashboard.course.assignmentCompletedDescription')}
-            />
-          )}
-
-          {courseInfo.isAssignmentGradingPublished && (
-            <section className="flex flex-col w-full bg-white rounded-2xl border border-newGray-5">
-              <div className="px-2 md:px-6 py-3 border-b border-newGray-5 mobile-h3 md:title-large-sb-24px flex gap-2 md:gap-4 items-center">
-                <img
-                  src={Certificate}
-                  alt={'Certificate icon'}
-                  className={cn('w-4 md:w-6')}
-                />
-                <span>{t('dashboard.course.assignmentCompletedTitle')}</span>
-              </div>
-              <div className="w-full p-2 md:p-6 flex flex-col gap-2 items-center justify-center">
-                <RadialGauge
-                  size="l"
-                  label={t('dashboard.course.assignmentScore')}
-                  percentage={courseProgress?.assignmentGrade ?? 0}
-                  variant="green"
-                />
-                <ButtonWithArrow
-                  variant="outline"
-                  mode="light"
-                  size="s"
-                  asChild
-                >
-                  <Link
-                    to={''}
-                    hash="singleTrialExam"
-                    onClick={() => {
-                      window.scrollTo({ behavior: 'smooth', top: 0 });
-                    }}
-                  >
-                    {t('dashboard.course.viewScoreSummary')}
-                  </Link>
-                </ButtonWithArrow>
-              </div>
             </section>
-          )}
-        </div>
-      )}
 
-      {isNotSelected && userProgressFetched && (
-        <InformationalPanel
-          icon={SadFace}
-          iconClassName="filter-darkOrange"
-          description={
-            isPlanBSchool
-              ? t('dashboard.course.notSelectedAssignment')
-              : t('dashboard.course.assignmentNotAccessible')
-          }
-        />
-      )}
-    </section>
+            <Divider mode="light" className="!mx-0" width="w-full" />
+
+            {!hasSubmittedWork && !courseInfo.isAssignmentGradingPublished && (
+              <div className="flex flex-col gap-5">
+                <h3 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
+                  {t('dashboard.course.submitYourWork')}
+                </h3>
+
+                <Alert hasCloseButton variant="warning">
+                  <AlertTitle icon={TbAlertOctagon}>
+                    {t('dashboard.course.submissionInstructions')}
+                  </AlertTitle>
+                  <AlertDescription>
+                    <ul className="list-disc pl-6 text-newBlack-2">
+                      <li>
+                        <span className="font-medium">
+                          {t('dashboard.course.submitBefore', {
+                            date: formatDate(endAssignmentDate),
+                            hour: formatTime(endAssignmentDate),
+                          })}
+                        </span>
+                      </li>
+                      <li>{t('dashboard.course.mustBePdf')}</li>
+                    </ul>
+                  </AlertDescription>
+                </Alert>
+
+                <div className="flex flex-col gap-1 md:gap-2 mb-5 md:mb-10">
+                  {/* Hidden file input */}
+                  <input
+                    type="file"
+                    accept=".pdf"
+                    className="hidden"
+                    ref={fileInputRef}
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        setSelectedFile(file);
+                        setSelectedFileName(file.name);
+                      }
+                    }}
+                  />
+                  <div className="flex max-md:flex-wrap gap-4 w-full">
+                    <div className="flex flex-col gap-2 max-w-[614px] w-full">
+                      <div className="flex items-center rounded-[10px] overflow-hidden w-full hover:shadow-course-navigation-sm h-[46px]">
+                        <button
+                          type="button"
+                          onClick={() => fileInputRef.current?.click()}
+                          className="h-full flex items-center px-3.5 rounded-l-[10px] border border-newBlack-4 md:text-lg leading-normal font-medium bg-darkOrange-5 text-white hover:cursor-pointer shrink-0 focus:border-newBlack-2 focus:bg-darkOrange-6"
+                        >
+                          {t('dashboard.careerPortal.chooseFile')}
+                        </button>
+                        <span className="h-full flex items-center px-3.5 body-16px md:label-medium-16px text-newBlack-5 truncate w-full border-r border-y border-newBlack-4 rounded-r-[10px]">
+                          {selectedFileName ||
+                            t('dashboard.careerPortal.noFileSelected')}
+                        </span>
+                      </div>
+
+                      <p className="body-14px text-newGray-1">
+                        {t('dashboard.careerPortal.acceptedFormat')}
+                      </p>
+                      {workErrorMessage && (
+                        <p className="text-red-6 body-14px">
+                          {workErrorMessage}
+                        </p>
+                      )}
+                    </div>
+                    <ConfirmSubmissionDialog
+                      onConfirm={handleWorkUpload}
+                      selectedFile={selectedFile}
+                      isUploading={isUploading}
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+            {hasSubmittedWork && !courseInfo.isAssignmentGradingPublished && (
+              <InformationalPanel
+                icon={Certificate}
+                title={t('dashboard.course.assignmentCompletedTitle')}
+                description={t(
+                  'dashboard.course.assignmentCompletedDescription',
+                )}
+              />
+            )}
+
+            {courseInfo.isAssignmentGradingPublished && (
+              <section className="flex flex-col w-full bg-white rounded-2xl border border-newGray-5">
+                <div className="px-2 md:px-6 py-3 border-b border-newGray-5 mobile-h3 md:title-large-sb-24px flex gap-2 md:gap-4 items-center">
+                  <img
+                    src={Certificate}
+                    alt={'Certificate icon'}
+                    className={cn('w-4 md:w-6')}
+                  />
+                  <span>{t('dashboard.course.assignmentCompletedTitle')}</span>
+                </div>
+                <div className="w-full p-2 md:p-6 flex flex-col gap-2 items-center justify-center">
+                  <RadialGauge
+                    size="l"
+                    label={t('dashboard.course.assignmentScore')}
+                    percentage={courseProgress?.assignmentGrade ?? 0}
+                    variant="green"
+                  />
+                  <ButtonWithArrow
+                    variant="outline"
+                    mode="light"
+                    size="s"
+                    asChild
+                  >
+                    <Link
+                      to={''}
+                      hash="singleTrialExam"
+                      onClick={() => {
+                        window.scrollTo({ behavior: 'smooth', top: 0 });
+                      }}
+                    >
+                      {t('dashboard.course.viewScoreSummary')}
+                    </Link>
+                  </ButtonWithArrow>
+                </div>
+              </section>
+            )}
+          </div>
+        )}
+
+        {isNotSelected && userProgressFetched && (
+          <InformationalPanel
+            icon={SadFace}
+            iconClassName="filter-darkOrange"
+            description={
+              isPlanBSchool
+                ? t('dashboard.course.notSelectedAssignment')
+                : t('dashboard.course.assignmentNotAccessible')
+            }
+          />
+        )}
+      </section>
+    </PageLayout>
   );
-};
+}
 
 const RankingItem = ({
   name,

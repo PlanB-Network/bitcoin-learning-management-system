@@ -54,7 +54,7 @@ export const CourseDiplomas = () => {
                     </td>
                     <td className="px-1.5 font-medium">{`${exam.score}%`}</td>
                     <td className="px-1.5 py-2">
-                      <Link to={`/my-courses/${exam.courseId}#retakeExam`}>
+                      <Link to={`/courses/${exam.courseId}/retake-exam`}>
                         <Button className="gap-2.5" size={'s'}>
                           {t('words.view')}
                           <TbEye size={24} />
@@ -89,7 +89,7 @@ export const CourseDiplomas = () => {
                         <span className="font-medium">{`${exam.score}%`}</span>
                       </p>
 
-                      <Link to={`/my-courses/${exam.courseId}#retakeExam`}>
+                      <Link to={`/courses/${exam.courseId}/retake-exam`}>
                         <Button className="gap-2.5" size={'xs'}>
                           {t('words.view')}
                           <TbEye size={24} />

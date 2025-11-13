@@ -9,6 +9,7 @@ import {
   DividerSimple,
 } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { createFileRoute } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useContext, useEffect, useMemo, useState } from 'react';
 import type { IconType } from 'react-icons/lib';
@@ -39,16 +40,28 @@ import CheckPixel from '#src/assets/icons/pixelated/check.svg?react';
 import HeartPixel from '#src/assets/icons/pixelated/heart_speaking.svg?react';
 import SuccessParty from '#src/assets/icons/success_party.svg?react';
 import { GeneralPaymentModal } from '#src/components/GeneralPaymentModal/payment-modal/general-payment-modal.tsx';
-import { AppContext } from '#src/providers/context.tsx';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
+import { CourseContext } from '#src/providers/courseContext.tsx';
+import { SummerSchoolWithdrawButton } from '#src/routes/$lang/_content/courses/$courseSlug/_$courseSlug/-components/summer-school-withdraw-button.tsx';
 import { fixEmbedUrl } from '#src/utils/misc.ts';
 import { trpc } from '#src/utils/trpc.ts';
-import { SummerSchoolWithdrawButton } from './summer-school-withdraw-button.tsx';
+import { CourseTitle } from '../-components/course-title.tsx';
+import { getTabs } from '../-utils/get-tabs.tsx';
 
-export const SummerSchool = ({ courseId }: { courseId: string }) => {
+export const Route = createFileRoute(
+  '/$lang/_content/courses/$courseSlug/_$courseSlug/summer-school',
+)({
+  component: SummerSchool,
+});
+
+function SummerSchool() {
+  const params = Route.useParams();
+
   const { conversionRate } = useContext(ConversionRateContext);
-  const { session } = useContext(AppContext);
-  const isLoggedIn = !!session;
+  const { course, courseProgress, isLoggedIn } = useContext(CourseContext);
+
+  const courseId = params.courseSlug;
 
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
   const [satsPrice, setSatsPrice] = useState<number>(0);
@@ -83,96 +96,104 @@ export const SummerSchool = ({ courseId }: { courseId: string }) => {
   }, [dollarPrice]);
 
   return (
-    <div className="flex flex-col gap-4 md:gap-8 w-full max-w-[1000px]">
-      <section className="flex flex-col md:mt-8 w-full gap-4 md:gap-8">
-        <div className="flex flex-col gap-5">
-          <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle !font-bold">
-            {t('dashboard.course.summerSchool')}
-          </h2>
-        </div>
-        <div>
-          {isEventPaid ? (
-            <>
+    <PageLayout
+      title={t('words.ratings')}
+      hideTitle
+      layoutSize="max"
+      overTitle={course ? <CourseTitle course={course} /> : undefined}
+      tabs={isLoggedIn && course ? getTabs(course, courseProgress?.[0]) : []}
+    >
+      <div className="flex flex-col gap-4 md:gap-8 w-full max-w-[1000px]">
+        <section className="flex flex-col md:mt-8 w-full gap-4 md:gap-8">
+          <div className="flex flex-col gap-5">
+            <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle !font-bold">
+              {t('dashboard.course.summerSchool')}
+            </h2>
+          </div>
+          <div>
+            {isEventPaid ? (
+              <>
+                <Banner
+                  variant="success"
+                  icon={<CheckPixel className="fill-green-500" />}
+                >
+                  <BannerTitle>You've successfully enrolled!</BannerTitle>
+                </Banner>
+                <h2 className="mt-4 mb-2 mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle !font-bold">
+                  Next step
+                </h2>
+                <p>
+                  Join the Telegram group to connect with other students and get
+                  all the key Summer School updates.
+                </p>
+                <a
+                  href="https://t.me/+f8Zt5yQI3jc5ZTZk"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Button className="mx-auto my-4">
+                    <TbBrandTelegram className="mr-2" />
+                    Join Telegram Group
+                  </Button>
+                </a>
+              </>
+            ) : (
               <Banner
                 variant="success"
-                icon={<CheckPixel className="fill-green-500" />}
+                icon={<SuccessParty className="fill-green-500" />}
               >
-                <BannerTitle>You've successfully enrolled!</BannerTitle>
+                <BannerTitle>
+                  Congratulations! You have been selected to participate in the
+                  Summer School!
+                </BannerTitle>
+                <BannerDescription className="max-md:hidden">
+                  You are 1 of the 21 students selected for the exclusive Summer
+                  School
+                </BannerDescription>
               </Banner>
-              <h2 className="mt-4 mb-2 mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle !font-bold">
-                Next step
-              </h2>
-              <p>
-                Join the Telegram group to connect with other students and get
-                all the key Summer School updates.
-              </p>
-              <a
-                href="https://t.me/+f8Zt5yQI3jc5ZTZk"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Button className="mx-auto my-4">
-                  <TbBrandTelegram className="mr-2" />
-                  Join Telegram Group
-                </Button>
-              </a>
-            </>
-          ) : (
-            <Banner
-              variant="success"
-              icon={<SuccessParty className="fill-green-500" />}
-            >
-              <BannerTitle>
-                Congratulations! You have been selected to participate in the
-                Summer School!
-              </BannerTitle>
-              <BannerDescription className="max-md:hidden">
-                You are 1 of the 21 students selected for the exclusive Summer
-                School
-              </BannerDescription>
-            </Banner>
-          )}
-        </div>
-      </section>
-      {isEventPaid ? (
-        <CollapsibleDropdown
-          title="Overview"
-          className="border border-newGray-4"
-          variant="dark"
-          defaultOpen={false}
-        >
+            )}
+          </div>
+        </section>
+        {isEventPaid ? (
+          <CollapsibleDropdown
+            title="Overview"
+            className="border border-newGray-4"
+            variant="dark"
+            defaultOpen={false}
+          >
+            <SummerPresentation />
+          </CollapsibleDropdown>
+        ) : (
           <SummerPresentation />
-        </CollapsibleDropdown>
-      ) : (
-        <SummerPresentation />
-      )}
+        )}
 
-      <WhatsIncluded
-        satsPrice={satsPrice}
-        isEventPaid={isEventPaid}
-        setIsPaymentModalOpen={setIsPaymentModalOpen}
-        courseId={courseId}
-      />
+        <WhatsIncluded
+          satsPrice={satsPrice}
+          isEventPaid={isEventPaid}
+          setIsPaymentModalOpen={setIsPaymentModalOpen}
+          courseId={courseId}
+        />
 
-      <GeneralPaymentModal
-        item={GeneralPaymentItem.SummerSchool2025}
-        satsPrice={satsPrice}
-        dollarPrice={dollarPrice}
-        isOpen={isPaymentModalOpen}
-        onClose={() => {
-          setIsPaymentModalOpen(false);
-          refetchPayment();
-          setTimeout(() => {
+        <GeneralPaymentModal
+          item={GeneralPaymentItem.SummerSchool2025}
+          satsPrice={satsPrice}
+          dollarPrice={dollarPrice}
+          isOpen={isPaymentModalOpen}
+          onClose={() => {
+            setIsPaymentModalOpen(false);
             refetchPayment();
-          }, 5000);
-          setTimeout(() => {
-            refetchPayment();
-          }, 10000);
-        }}
-      />
-    </div>
+            setTimeout(() => {
+              refetchPayment();
+            }, 5000);
+            setTimeout(() => {
+              refetchPayment();
+            }, 10000);
+          }}
+        />
+      </div>
+    </PageLayout>
   );
-};
+}
 
 function SummerPresentation() {
   const videoUrl = 'https://youtu.be/kaePVoEuP00';

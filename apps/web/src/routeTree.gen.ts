@@ -17,7 +17,6 @@ import { Route as LangMyCoursesIndexRouteImport } from './routes/$lang/my-course
 import { Route as LangCareerPortalIndexRouteImport } from './routes/$lang/career-portal/index';
 import { Route as LangCalendarIndexRouteImport } from './routes/$lang/calendar/index';
 import { Route as LangAccountIndexRouteImport } from './routes/$lang/account/index';
-import { Route as LangMyCoursesCourseIdRouteImport } from './routes/$lang/my-courses/$courseId';
 import { Route as LangDashboardDashboardRouteImport } from './routes/$lang/dashboard/_dashboard';
 import { Route as LangAccountTeacherProfileRouteImport } from './routes/$lang/account/teacher-profile';
 import { Route as LangAccountSettingsRouteImport } from './routes/$lang/account/settings';
@@ -72,7 +71,7 @@ import { Route as LangContentResourcesGlossaryWordIdRouteImport } from './routes
 import { Route as LangContentResourcesConferencesConferenceNameConferenceIdRouteImport } from './routes/$lang/_content/resources/conferences/$conferenceName-$conferenceId';
 import { Route as LangContentResourcesChannelsChannelNameChannelIdRouteImport } from './routes/$lang/_content/resources/channels/$channelName-$channelId';
 import { Route as LangContentResourcesBooksBookNameBookIdRouteImport } from './routes/$lang/_content/resources/books/$bookName-$bookId';
-import { Route as LangContentCoursesCourseIdChapterNameChapterIdRouteImport } from './routes/$lang/_content/courses/$courseId.$chapterName-$chapterId';
+import { Route as LangContentCoursesCourseSlugCourseSlugRouteImport } from './routes/$lang/_content/courses/$courseSlug/_$courseSlug';
 import { Route as LangContentMiscValidateEmailTokenRouteImport } from './routes/$lang/_content/_misc/validate-email.$token';
 import { Route as LangContentMiscValidateEmailChangeTokenRouteImport } from './routes/$lang/_content/_misc/validate-email-change.$token';
 import { Route as LangContentMiscResetPasswordTokenRouteImport } from './routes/$lang/_content/_misc/reset-password.$token';
@@ -85,6 +84,13 @@ import { Route as LangContentMiscCourseDiplomasCertificateIdRouteImport } from '
 import { Route as LangContentMiscChangeEmailPreferencesUnsubscribeIdRouteImport } from './routes/$lang/_content/_misc/change-email-preferences.$unsubscribeId';
 import { Route as LangContentMiscBcertCertificatesCertificateIdRouteImport } from './routes/$lang/_content/_misc/bcert-certificates.$certificateId';
 import { Route as LangContentTutorialsCategorySubcategoryNameIdRouteImport } from './routes/$lang/_content/tutorials/$category/$subcategory.$name-$id';
+import { Route as LangContentCoursesCourseSlugCourseSlugSyllabusRouteImport } from './routes/$lang/_content/courses/$courseSlug/_$courseSlug/syllabus';
+import { Route as LangContentCoursesCourseSlugCourseSlugSummerSchoolRouteImport } from './routes/$lang/_content/courses/$courseSlug/_$courseSlug/summer-school';
+import { Route as LangContentCoursesCourseSlugCourseSlugSingleTrialExamRouteImport } from './routes/$lang/_content/courses/$courseSlug/_$courseSlug/single-trial-exam';
+import { Route as LangContentCoursesCourseSlugCourseSlugRetakeExamRouteImport } from './routes/$lang/_content/courses/$courseSlug/_$courseSlug/retake-exam';
+import { Route as LangContentCoursesCourseSlugCourseSlugRatingsRouteImport } from './routes/$lang/_content/courses/$courseSlug/_$courseSlug/ratings';
+import { Route as LangContentCoursesCourseSlugCourseSlugAssignmentRouteImport } from './routes/$lang/_content/courses/$courseSlug/_$courseSlug/assignment';
+import { Route as LangContentCoursesCourseSlugCourseSlugChapterNameChapterIdRouteImport } from './routes/$lang/_content/courses/$courseSlug/_$courseSlug/$chapterName-$chapterId';
 import { Route as LangDashboardDashboardProfessorManageCoursesCourseIdStudentsRouteImport } from './routes/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/students';
 import { Route as LangDashboardDashboardProfessorManageCoursesCourseIdReviewRouteImport } from './routes/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/review';
 import { Route as LangDashboardDashboardProfessorManageCoursesCourseIdResultsRouteImport } from './routes/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/results';
@@ -99,6 +105,9 @@ import { Route as LangDashboardDashboardAdministrationTranslationPanelCompareSli
 import { Route as LangDashboardDashboardAdministrationTranslationPanelChapterChapterIdRouteImport } from './routes/$lang/dashboard/_dashboard/administration/translation-panel/chapter/$chapterId';
 
 const LangDashboardRouteImport = createFileRoute('/$lang/dashboard')();
+const LangContentCoursesCourseSlugRouteImport = createFileRoute(
+  '/$lang/_content/courses/$courseSlug',
+)();
 
 const LangDashboardRoute = LangDashboardRouteImport.update({
   id: '/$lang/dashboard',
@@ -135,11 +144,6 @@ const LangAccountIndexRoute = LangAccountIndexRouteImport.update({
   path: '/$lang/account/',
   getParentRoute: () => rootRouteImport,
 } as any);
-const LangMyCoursesCourseIdRoute = LangMyCoursesCourseIdRouteImport.update({
-  id: '/$lang/my-courses/$courseId',
-  path: '/$lang/my-courses/$courseId',
-  getParentRoute: () => rootRouteImport,
-} as any);
 const LangDashboardDashboardRoute = LangDashboardDashboardRouteImport.update({
   id: '/_dashboard',
   getParentRoute: () => LangDashboardRoute,
@@ -160,6 +164,12 @@ const LangAccountInvoicesRoute = LangAccountInvoicesRouteImport.update({
   path: '/$lang/account/invoices',
   getParentRoute: () => rootRouteImport,
 } as any);
+const LangContentCoursesCourseSlugRoute =
+  LangContentCoursesCourseSlugRouteImport.update({
+    id: '/$lang/_content/courses/$courseSlug',
+    path: '/$lang/courses/$courseSlug',
+    getParentRoute: () => rootRouteImport,
+  } as any);
 const LangDashboardDashboardIndexRoute =
   LangDashboardDashboardIndexRouteImport.update({
     id: '/',
@@ -456,11 +466,10 @@ const LangContentResourcesBooksBookNameBookIdRoute =
     path: '/$lang/resources/books/$bookName-$bookId',
     getParentRoute: () => rootRouteImport,
   } as any);
-const LangContentCoursesCourseIdChapterNameChapterIdRoute =
-  LangContentCoursesCourseIdChapterNameChapterIdRouteImport.update({
-    id: '/$lang/_content/courses/$courseId/$chapterName-$chapterId',
-    path: '/$lang/courses/$courseId/$chapterName-$chapterId',
-    getParentRoute: () => rootRouteImport,
+const LangContentCoursesCourseSlugCourseSlugRoute =
+  LangContentCoursesCourseSlugCourseSlugRouteImport.update({
+    id: '/_$courseSlug',
+    getParentRoute: () => LangContentCoursesCourseSlugRoute,
   } as any);
 const LangContentMiscValidateEmailTokenRoute =
   LangContentMiscValidateEmailTokenRouteImport.update({
@@ -533,6 +542,48 @@ const LangContentTutorialsCategorySubcategoryNameIdRoute =
     id: '/$lang/_content/tutorials/$category/$subcategory/$name-$id',
     path: '/$lang/tutorials/$category/$subcategory/$name-$id',
     getParentRoute: () => rootRouteImport,
+  } as any);
+const LangContentCoursesCourseSlugCourseSlugSyllabusRoute =
+  LangContentCoursesCourseSlugCourseSlugSyllabusRouteImport.update({
+    id: '/syllabus',
+    path: '/syllabus',
+    getParentRoute: () => LangContentCoursesCourseSlugCourseSlugRoute,
+  } as any);
+const LangContentCoursesCourseSlugCourseSlugSummerSchoolRoute =
+  LangContentCoursesCourseSlugCourseSlugSummerSchoolRouteImport.update({
+    id: '/summer-school',
+    path: '/summer-school',
+    getParentRoute: () => LangContentCoursesCourseSlugCourseSlugRoute,
+  } as any);
+const LangContentCoursesCourseSlugCourseSlugSingleTrialExamRoute =
+  LangContentCoursesCourseSlugCourseSlugSingleTrialExamRouteImport.update({
+    id: '/single-trial-exam',
+    path: '/single-trial-exam',
+    getParentRoute: () => LangContentCoursesCourseSlugCourseSlugRoute,
+  } as any);
+const LangContentCoursesCourseSlugCourseSlugRetakeExamRoute =
+  LangContentCoursesCourseSlugCourseSlugRetakeExamRouteImport.update({
+    id: '/retake-exam',
+    path: '/retake-exam',
+    getParentRoute: () => LangContentCoursesCourseSlugCourseSlugRoute,
+  } as any);
+const LangContentCoursesCourseSlugCourseSlugRatingsRoute =
+  LangContentCoursesCourseSlugCourseSlugRatingsRouteImport.update({
+    id: '/ratings',
+    path: '/ratings',
+    getParentRoute: () => LangContentCoursesCourseSlugCourseSlugRoute,
+  } as any);
+const LangContentCoursesCourseSlugCourseSlugAssignmentRoute =
+  LangContentCoursesCourseSlugCourseSlugAssignmentRouteImport.update({
+    id: '/assignment',
+    path: '/assignment',
+    getParentRoute: () => LangContentCoursesCourseSlugCourseSlugRoute,
+  } as any);
+const LangContentCoursesCourseSlugCourseSlugChapterNameChapterIdRoute =
+  LangContentCoursesCourseSlugCourseSlugChapterNameChapterIdRouteImport.update({
+    id: '/$chapterName-$chapterId',
+    path: '/$chapterName-$chapterId',
+    getParentRoute: () => LangContentCoursesCourseSlugCourseSlugRoute,
   } as any);
 const LangDashboardDashboardProfessorManageCoursesCourseIdStudentsRoute =
   LangDashboardDashboardProfessorManageCoursesCourseIdStudentsRouteImport.update(
@@ -639,7 +690,6 @@ export interface FileRoutesByFullPath {
   '/$lang/account/settings': typeof LangAccountSettingsRoute;
   '/$lang/account/teacher-profile': typeof LangAccountTeacherProfileRoute;
   '/$lang/dashboard': typeof LangDashboardDashboardRouteWithChildren;
-  '/$lang/my-courses/$courseId': typeof LangMyCoursesCourseIdRoute;
   '/$lang/account': typeof LangAccountIndexRoute;
   '/$lang/calendar': typeof LangCalendarIndexRoute;
   '/$lang/career-portal': typeof LangCareerPortalIndexRoute;
@@ -676,7 +726,7 @@ export interface FileRoutesByFullPath {
   '/$lang/reset-password/$token': typeof LangContentMiscResetPasswordTokenRoute;
   '/$lang/validate-email-change/$token': typeof LangContentMiscValidateEmailChangeTokenRoute;
   '/$lang/validate-email/$token': typeof LangContentMiscValidateEmailTokenRoute;
-  '/$lang/courses/$courseId/$chapterName-$chapterId': typeof LangContentCoursesCourseIdChapterNameChapterIdRoute;
+  '/$lang/courses/$courseSlug': typeof LangContentCoursesCourseSlugCourseSlugRouteWithChildren;
   '/$lang/resources/books/$bookName-$bookId': typeof LangContentResourcesBooksBookNameBookIdRoute;
   '/$lang/resources/channels/$channelName-$channelId': typeof LangContentResourcesChannelsChannelNameChannelIdRoute;
   '/$lang/resources/conferences/$conferenceName-$conferenceId': typeof LangContentResourcesConferencesConferenceNameConferenceIdRoute;
@@ -707,6 +757,13 @@ export interface FileRoutesByFullPath {
   '/$lang/resources/podcasts': typeof LangContentResourcesPodcastsIndexRoute;
   '/$lang/resources/projects': typeof LangContentResourcesProjectsIndexRoute;
   '/$lang/tutorials/$category': typeof LangContentTutorialsCategoryIndexRoute;
+  '/$lang/courses/$courseSlug/$chapterName-$chapterId': typeof LangContentCoursesCourseSlugCourseSlugChapterNameChapterIdRoute;
+  '/$lang/courses/$courseSlug/assignment': typeof LangContentCoursesCourseSlugCourseSlugAssignmentRoute;
+  '/$lang/courses/$courseSlug/ratings': typeof LangContentCoursesCourseSlugCourseSlugRatingsRoute;
+  '/$lang/courses/$courseSlug/retake-exam': typeof LangContentCoursesCourseSlugCourseSlugRetakeExamRoute;
+  '/$lang/courses/$courseSlug/single-trial-exam': typeof LangContentCoursesCourseSlugCourseSlugSingleTrialExamRoute;
+  '/$lang/courses/$courseSlug/summer-school': typeof LangContentCoursesCourseSlugCourseSlugSummerSchoolRoute;
+  '/$lang/courses/$courseSlug/syllabus': typeof LangContentCoursesCourseSlugCourseSlugSyllabusRoute;
   '/$lang/tutorials/$category/$subcategory/$name-$id': typeof LangContentTutorialsCategorySubcategoryNameIdRoute;
   '/$lang/dashboard/administration/translation-panel/chapter/$chapterId': typeof LangDashboardDashboardAdministrationTranslationPanelChapterChapterIdRoute;
   '/$lang/dashboard/administration/translation-panel/compare/$slideId': typeof LangDashboardDashboardAdministrationTranslationPanelCompareSlideIdRoute;
@@ -727,7 +784,6 @@ export interface FileRoutesByTo {
   '/$lang/account/settings': typeof LangAccountSettingsRoute;
   '/$lang/account/teacher-profile': typeof LangAccountTeacherProfileRoute;
   '/$lang/dashboard': typeof LangDashboardDashboardIndexRoute;
-  '/$lang/my-courses/$courseId': typeof LangMyCoursesCourseIdRoute;
   '/$lang/account': typeof LangAccountIndexRoute;
   '/$lang/calendar': typeof LangCalendarIndexRoute;
   '/$lang/career-portal': typeof LangCareerPortalIndexRoute;
@@ -763,7 +819,7 @@ export interface FileRoutesByTo {
   '/$lang/reset-password/$token': typeof LangContentMiscResetPasswordTokenRoute;
   '/$lang/validate-email-change/$token': typeof LangContentMiscValidateEmailChangeTokenRoute;
   '/$lang/validate-email/$token': typeof LangContentMiscValidateEmailTokenRoute;
-  '/$lang/courses/$courseId/$chapterName-$chapterId': typeof LangContentCoursesCourseIdChapterNameChapterIdRoute;
+  '/$lang/courses/$courseSlug': typeof LangContentCoursesCourseSlugCourseSlugRouteWithChildren;
   '/$lang/resources/books/$bookName-$bookId': typeof LangContentResourcesBooksBookNameBookIdRoute;
   '/$lang/resources/channels/$channelName-$channelId': typeof LangContentResourcesChannelsChannelNameChannelIdRoute;
   '/$lang/resources/conferences/$conferenceName-$conferenceId': typeof LangContentResourcesConferencesConferenceNameConferenceIdRoute;
@@ -794,6 +850,13 @@ export interface FileRoutesByTo {
   '/$lang/resources/podcasts': typeof LangContentResourcesPodcastsIndexRoute;
   '/$lang/resources/projects': typeof LangContentResourcesProjectsIndexRoute;
   '/$lang/tutorials/$category': typeof LangContentTutorialsCategoryIndexRoute;
+  '/$lang/courses/$courseSlug/$chapterName-$chapterId': typeof LangContentCoursesCourseSlugCourseSlugChapterNameChapterIdRoute;
+  '/$lang/courses/$courseSlug/assignment': typeof LangContentCoursesCourseSlugCourseSlugAssignmentRoute;
+  '/$lang/courses/$courseSlug/ratings': typeof LangContentCoursesCourseSlugCourseSlugRatingsRoute;
+  '/$lang/courses/$courseSlug/retake-exam': typeof LangContentCoursesCourseSlugCourseSlugRetakeExamRoute;
+  '/$lang/courses/$courseSlug/single-trial-exam': typeof LangContentCoursesCourseSlugCourseSlugSingleTrialExamRoute;
+  '/$lang/courses/$courseSlug/summer-school': typeof LangContentCoursesCourseSlugCourseSlugSummerSchoolRoute;
+  '/$lang/courses/$courseSlug/syllabus': typeof LangContentCoursesCourseSlugCourseSlugSyllabusRoute;
   '/$lang/tutorials/$category/$subcategory/$name-$id': typeof LangContentTutorialsCategorySubcategoryNameIdRoute;
   '/$lang/dashboard/administration/translation-panel/chapter/$chapterId': typeof LangDashboardDashboardAdministrationTranslationPanelChapterChapterIdRoute;
   '/$lang/dashboard/administration/translation-panel/compare/$slideId': typeof LangDashboardDashboardAdministrationTranslationPanelCompareSlideIdRoute;
@@ -816,7 +879,6 @@ export interface FileRoutesById {
   '/$lang/account/teacher-profile': typeof LangAccountTeacherProfileRoute;
   '/$lang/dashboard': typeof LangDashboardRouteWithChildren;
   '/$lang/dashboard/_dashboard': typeof LangDashboardDashboardRouteWithChildren;
-  '/$lang/my-courses/$courseId': typeof LangMyCoursesCourseIdRoute;
   '/$lang/account/': typeof LangAccountIndexRoute;
   '/$lang/calendar/': typeof LangCalendarIndexRoute;
   '/$lang/career-portal/': typeof LangCareerPortalIndexRoute;
@@ -853,7 +915,8 @@ export interface FileRoutesById {
   '/$lang/_content/_misc/reset-password/$token': typeof LangContentMiscResetPasswordTokenRoute;
   '/$lang/_content/_misc/validate-email-change/$token': typeof LangContentMiscValidateEmailChangeTokenRoute;
   '/$lang/_content/_misc/validate-email/$token': typeof LangContentMiscValidateEmailTokenRoute;
-  '/$lang/_content/courses/$courseId/$chapterName-$chapterId': typeof LangContentCoursesCourseIdChapterNameChapterIdRoute;
+  '/$lang/_content/courses/$courseSlug': typeof LangContentCoursesCourseSlugRouteWithChildren;
+  '/$lang/_content/courses/$courseSlug/_$courseSlug': typeof LangContentCoursesCourseSlugCourseSlugRouteWithChildren;
   '/$lang/_content/resources/books/$bookName-$bookId': typeof LangContentResourcesBooksBookNameBookIdRoute;
   '/$lang/_content/resources/channels/$channelName-$channelId': typeof LangContentResourcesChannelsChannelNameChannelIdRoute;
   '/$lang/_content/resources/conferences/$conferenceName-$conferenceId': typeof LangContentResourcesConferencesConferenceNameConferenceIdRoute;
@@ -884,6 +947,13 @@ export interface FileRoutesById {
   '/$lang/_content/resources/podcasts/': typeof LangContentResourcesPodcastsIndexRoute;
   '/$lang/_content/resources/projects/': typeof LangContentResourcesProjectsIndexRoute;
   '/$lang/_content/tutorials/$category/': typeof LangContentTutorialsCategoryIndexRoute;
+  '/$lang/_content/courses/$courseSlug/_$courseSlug/$chapterName-$chapterId': typeof LangContentCoursesCourseSlugCourseSlugChapterNameChapterIdRoute;
+  '/$lang/_content/courses/$courseSlug/_$courseSlug/assignment': typeof LangContentCoursesCourseSlugCourseSlugAssignmentRoute;
+  '/$lang/_content/courses/$courseSlug/_$courseSlug/ratings': typeof LangContentCoursesCourseSlugCourseSlugRatingsRoute;
+  '/$lang/_content/courses/$courseSlug/_$courseSlug/retake-exam': typeof LangContentCoursesCourseSlugCourseSlugRetakeExamRoute;
+  '/$lang/_content/courses/$courseSlug/_$courseSlug/single-trial-exam': typeof LangContentCoursesCourseSlugCourseSlugSingleTrialExamRoute;
+  '/$lang/_content/courses/$courseSlug/_$courseSlug/summer-school': typeof LangContentCoursesCourseSlugCourseSlugSummerSchoolRoute;
+  '/$lang/_content/courses/$courseSlug/_$courseSlug/syllabus': typeof LangContentCoursesCourseSlugCourseSlugSyllabusRoute;
   '/$lang/_content/tutorials/$category/$subcategory/$name-$id': typeof LangContentTutorialsCategorySubcategoryNameIdRoute;
   '/$lang/dashboard/_dashboard/administration/translation-panel/chapter/$chapterId': typeof LangDashboardDashboardAdministrationTranslationPanelChapterChapterIdRoute;
   '/$lang/dashboard/_dashboard/administration/translation-panel/compare/$slideId': typeof LangDashboardDashboardAdministrationTranslationPanelCompareSlideIdRoute;
@@ -906,7 +976,6 @@ export interface FileRouteTypes {
     | '/$lang/account/settings'
     | '/$lang/account/teacher-profile'
     | '/$lang/dashboard'
-    | '/$lang/my-courses/$courseId'
     | '/$lang/account'
     | '/$lang/calendar'
     | '/$lang/career-portal'
@@ -943,7 +1012,7 @@ export interface FileRouteTypes {
     | '/$lang/reset-password/$token'
     | '/$lang/validate-email-change/$token'
     | '/$lang/validate-email/$token'
-    | '/$lang/courses/$courseId/$chapterName-$chapterId'
+    | '/$lang/courses/$courseSlug'
     | '/$lang/resources/books/$bookName-$bookId'
     | '/$lang/resources/channels/$channelName-$channelId'
     | '/$lang/resources/conferences/$conferenceName-$conferenceId'
@@ -974,6 +1043,13 @@ export interface FileRouteTypes {
     | '/$lang/resources/podcasts'
     | '/$lang/resources/projects'
     | '/$lang/tutorials/$category'
+    | '/$lang/courses/$courseSlug/$chapterName-$chapterId'
+    | '/$lang/courses/$courseSlug/assignment'
+    | '/$lang/courses/$courseSlug/ratings'
+    | '/$lang/courses/$courseSlug/retake-exam'
+    | '/$lang/courses/$courseSlug/single-trial-exam'
+    | '/$lang/courses/$courseSlug/summer-school'
+    | '/$lang/courses/$courseSlug/syllabus'
     | '/$lang/tutorials/$category/$subcategory/$name-$id'
     | '/$lang/dashboard/administration/translation-panel/chapter/$chapterId'
     | '/$lang/dashboard/administration/translation-panel/compare/$slideId'
@@ -994,7 +1070,6 @@ export interface FileRouteTypes {
     | '/$lang/account/settings'
     | '/$lang/account/teacher-profile'
     | '/$lang/dashboard'
-    | '/$lang/my-courses/$courseId'
     | '/$lang/account'
     | '/$lang/calendar'
     | '/$lang/career-portal'
@@ -1030,7 +1105,7 @@ export interface FileRouteTypes {
     | '/$lang/reset-password/$token'
     | '/$lang/validate-email-change/$token'
     | '/$lang/validate-email/$token'
-    | '/$lang/courses/$courseId/$chapterName-$chapterId'
+    | '/$lang/courses/$courseSlug'
     | '/$lang/resources/books/$bookName-$bookId'
     | '/$lang/resources/channels/$channelName-$channelId'
     | '/$lang/resources/conferences/$conferenceName-$conferenceId'
@@ -1061,6 +1136,13 @@ export interface FileRouteTypes {
     | '/$lang/resources/podcasts'
     | '/$lang/resources/projects'
     | '/$lang/tutorials/$category'
+    | '/$lang/courses/$courseSlug/$chapterName-$chapterId'
+    | '/$lang/courses/$courseSlug/assignment'
+    | '/$lang/courses/$courseSlug/ratings'
+    | '/$lang/courses/$courseSlug/retake-exam'
+    | '/$lang/courses/$courseSlug/single-trial-exam'
+    | '/$lang/courses/$courseSlug/summer-school'
+    | '/$lang/courses/$courseSlug/syllabus'
     | '/$lang/tutorials/$category/$subcategory/$name-$id'
     | '/$lang/dashboard/administration/translation-panel/chapter/$chapterId'
     | '/$lang/dashboard/administration/translation-panel/compare/$slideId'
@@ -1082,7 +1164,6 @@ export interface FileRouteTypes {
     | '/$lang/account/teacher-profile'
     | '/$lang/dashboard'
     | '/$lang/dashboard/_dashboard'
-    | '/$lang/my-courses/$courseId'
     | '/$lang/account/'
     | '/$lang/calendar/'
     | '/$lang/career-portal/'
@@ -1119,7 +1200,8 @@ export interface FileRouteTypes {
     | '/$lang/_content/_misc/reset-password/$token'
     | '/$lang/_content/_misc/validate-email-change/$token'
     | '/$lang/_content/_misc/validate-email/$token'
-    | '/$lang/_content/courses/$courseId/$chapterName-$chapterId'
+    | '/$lang/_content/courses/$courseSlug'
+    | '/$lang/_content/courses/$courseSlug/_$courseSlug'
     | '/$lang/_content/resources/books/$bookName-$bookId'
     | '/$lang/_content/resources/channels/$channelName-$channelId'
     | '/$lang/_content/resources/conferences/$conferenceName-$conferenceId'
@@ -1150,6 +1232,13 @@ export interface FileRouteTypes {
     | '/$lang/_content/resources/podcasts/'
     | '/$lang/_content/resources/projects/'
     | '/$lang/_content/tutorials/$category/'
+    | '/$lang/_content/courses/$courseSlug/_$courseSlug/$chapterName-$chapterId'
+    | '/$lang/_content/courses/$courseSlug/_$courseSlug/assignment'
+    | '/$lang/_content/courses/$courseSlug/_$courseSlug/ratings'
+    | '/$lang/_content/courses/$courseSlug/_$courseSlug/retake-exam'
+    | '/$lang/_content/courses/$courseSlug/_$courseSlug/single-trial-exam'
+    | '/$lang/_content/courses/$courseSlug/_$courseSlug/summer-school'
+    | '/$lang/_content/courses/$courseSlug/_$courseSlug/syllabus'
     | '/$lang/_content/tutorials/$category/$subcategory/$name-$id'
     | '/$lang/dashboard/_dashboard/administration/translation-panel/chapter/$chapterId'
     | '/$lang/dashboard/_dashboard/administration/translation-panel/compare/$slideId'
@@ -1171,7 +1260,6 @@ export interface RootRouteChildren {
   LangAccountSettingsRoute: typeof LangAccountSettingsRoute;
   LangAccountTeacherProfileRoute: typeof LangAccountTeacherProfileRoute;
   LangDashboardRoute: typeof LangDashboardRouteWithChildren;
-  LangMyCoursesCourseIdRoute: typeof LangMyCoursesCourseIdRoute;
   LangAccountIndexRoute: typeof LangAccountIndexRoute;
   LangCalendarIndexRoute: typeof LangCalendarIndexRoute;
   LangCareerPortalIndexRoute: typeof LangCareerPortalIndexRoute;
@@ -1207,7 +1295,7 @@ export interface RootRouteChildren {
   LangContentMiscResetPasswordTokenRoute: typeof LangContentMiscResetPasswordTokenRoute;
   LangContentMiscValidateEmailChangeTokenRoute: typeof LangContentMiscValidateEmailChangeTokenRoute;
   LangContentMiscValidateEmailTokenRoute: typeof LangContentMiscValidateEmailTokenRoute;
-  LangContentCoursesCourseIdChapterNameChapterIdRoute: typeof LangContentCoursesCourseIdChapterNameChapterIdRoute;
+  LangContentCoursesCourseSlugRoute: typeof LangContentCoursesCourseSlugRouteWithChildren;
   LangContentResourcesBooksBookNameBookIdRoute: typeof LangContentResourcesBooksBookNameBookIdRoute;
   LangContentResourcesChannelsChannelNameChannelIdRoute: typeof LangContentResourcesChannelsChannelNameChannelIdRoute;
   LangContentResourcesConferencesConferenceNameConferenceIdRoute: typeof LangContentResourcesConferencesConferenceNameConferenceIdRoute;
@@ -1285,13 +1373,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangAccountIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
-    '/$lang/my-courses/$courseId': {
-      id: '/$lang/my-courses/$courseId';
-      path: '/$lang/my-courses/$courseId';
-      fullPath: '/$lang/my-courses/$courseId';
-      preLoaderRoute: typeof LangMyCoursesCourseIdRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
     '/$lang/dashboard/_dashboard': {
       id: '/$lang/dashboard/_dashboard';
       path: '/$lang/dashboard';
@@ -1318,6 +1399,13 @@ declare module '@tanstack/react-router' {
       path: '/$lang/account/invoices';
       fullPath: '/$lang/account/invoices';
       preLoaderRoute: typeof LangAccountInvoicesRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    '/$lang/_content/courses/$courseSlug': {
+      id: '/$lang/_content/courses/$courseSlug';
+      path: '/$lang/courses/$courseSlug';
+      fullPath: '/$lang/courses/$courseSlug';
+      preLoaderRoute: typeof LangContentCoursesCourseSlugRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/dashboard/_dashboard/': {
@@ -1670,12 +1758,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangContentResourcesBooksBookNameBookIdRouteImport;
       parentRoute: typeof rootRouteImport;
     };
-    '/$lang/_content/courses/$courseId/$chapterName-$chapterId': {
-      id: '/$lang/_content/courses/$courseId/$chapterName-$chapterId';
-      path: '/$lang/courses/$courseId/$chapterName-$chapterId';
-      fullPath: '/$lang/courses/$courseId/$chapterName-$chapterId';
-      preLoaderRoute: typeof LangContentCoursesCourseIdChapterNameChapterIdRouteImport;
-      parentRoute: typeof rootRouteImport;
+    '/$lang/_content/courses/$courseSlug/_$courseSlug': {
+      id: '/$lang/_content/courses/$courseSlug/_$courseSlug';
+      path: '/$lang/courses/$courseSlug';
+      fullPath: '/$lang/courses/$courseSlug';
+      preLoaderRoute: typeof LangContentCoursesCourseSlugCourseSlugRouteImport;
+      parentRoute: typeof LangContentCoursesCourseSlugRoute;
     };
     '/$lang/_content/_misc/validate-email/$token': {
       id: '/$lang/_content/_misc/validate-email/$token';
@@ -1760,6 +1848,55 @@ declare module '@tanstack/react-router' {
       fullPath: '/$lang/tutorials/$category/$subcategory/$name-$id';
       preLoaderRoute: typeof LangContentTutorialsCategorySubcategoryNameIdRouteImport;
       parentRoute: typeof rootRouteImport;
+    };
+    '/$lang/_content/courses/$courseSlug/_$courseSlug/syllabus': {
+      id: '/$lang/_content/courses/$courseSlug/_$courseSlug/syllabus';
+      path: '/syllabus';
+      fullPath: '/$lang/courses/$courseSlug/syllabus';
+      preLoaderRoute: typeof LangContentCoursesCourseSlugCourseSlugSyllabusRouteImport;
+      parentRoute: typeof LangContentCoursesCourseSlugCourseSlugRoute;
+    };
+    '/$lang/_content/courses/$courseSlug/_$courseSlug/summer-school': {
+      id: '/$lang/_content/courses/$courseSlug/_$courseSlug/summer-school';
+      path: '/summer-school';
+      fullPath: '/$lang/courses/$courseSlug/summer-school';
+      preLoaderRoute: typeof LangContentCoursesCourseSlugCourseSlugSummerSchoolRouteImport;
+      parentRoute: typeof LangContentCoursesCourseSlugCourseSlugRoute;
+    };
+    '/$lang/_content/courses/$courseSlug/_$courseSlug/single-trial-exam': {
+      id: '/$lang/_content/courses/$courseSlug/_$courseSlug/single-trial-exam';
+      path: '/single-trial-exam';
+      fullPath: '/$lang/courses/$courseSlug/single-trial-exam';
+      preLoaderRoute: typeof LangContentCoursesCourseSlugCourseSlugSingleTrialExamRouteImport;
+      parentRoute: typeof LangContentCoursesCourseSlugCourseSlugRoute;
+    };
+    '/$lang/_content/courses/$courseSlug/_$courseSlug/retake-exam': {
+      id: '/$lang/_content/courses/$courseSlug/_$courseSlug/retake-exam';
+      path: '/retake-exam';
+      fullPath: '/$lang/courses/$courseSlug/retake-exam';
+      preLoaderRoute: typeof LangContentCoursesCourseSlugCourseSlugRetakeExamRouteImport;
+      parentRoute: typeof LangContentCoursesCourseSlugCourseSlugRoute;
+    };
+    '/$lang/_content/courses/$courseSlug/_$courseSlug/ratings': {
+      id: '/$lang/_content/courses/$courseSlug/_$courseSlug/ratings';
+      path: '/ratings';
+      fullPath: '/$lang/courses/$courseSlug/ratings';
+      preLoaderRoute: typeof LangContentCoursesCourseSlugCourseSlugRatingsRouteImport;
+      parentRoute: typeof LangContentCoursesCourseSlugCourseSlugRoute;
+    };
+    '/$lang/_content/courses/$courseSlug/_$courseSlug/assignment': {
+      id: '/$lang/_content/courses/$courseSlug/_$courseSlug/assignment';
+      path: '/assignment';
+      fullPath: '/$lang/courses/$courseSlug/assignment';
+      preLoaderRoute: typeof LangContentCoursesCourseSlugCourseSlugAssignmentRouteImport;
+      parentRoute: typeof LangContentCoursesCourseSlugCourseSlugRoute;
+    };
+    '/$lang/_content/courses/$courseSlug/_$courseSlug/$chapterName-$chapterId': {
+      id: '/$lang/_content/courses/$courseSlug/_$courseSlug/$chapterName-$chapterId';
+      path: '/$chapterName-$chapterId';
+      fullPath: '/$lang/courses/$courseSlug/$chapterName-$chapterId';
+      preLoaderRoute: typeof LangContentCoursesCourseSlugCourseSlugChapterNameChapterIdRouteImport;
+      parentRoute: typeof LangContentCoursesCourseSlugCourseSlugRoute;
     };
     '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/students': {
       id: '/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/students';
@@ -1943,13 +2080,60 @@ const LangDashboardRouteWithChildren = LangDashboardRoute._addFileChildren(
   LangDashboardRouteChildren,
 );
 
+interface LangContentCoursesCourseSlugCourseSlugRouteChildren {
+  LangContentCoursesCourseSlugCourseSlugChapterNameChapterIdRoute: typeof LangContentCoursesCourseSlugCourseSlugChapterNameChapterIdRoute;
+  LangContentCoursesCourseSlugCourseSlugAssignmentRoute: typeof LangContentCoursesCourseSlugCourseSlugAssignmentRoute;
+  LangContentCoursesCourseSlugCourseSlugRatingsRoute: typeof LangContentCoursesCourseSlugCourseSlugRatingsRoute;
+  LangContentCoursesCourseSlugCourseSlugRetakeExamRoute: typeof LangContentCoursesCourseSlugCourseSlugRetakeExamRoute;
+  LangContentCoursesCourseSlugCourseSlugSingleTrialExamRoute: typeof LangContentCoursesCourseSlugCourseSlugSingleTrialExamRoute;
+  LangContentCoursesCourseSlugCourseSlugSummerSchoolRoute: typeof LangContentCoursesCourseSlugCourseSlugSummerSchoolRoute;
+  LangContentCoursesCourseSlugCourseSlugSyllabusRoute: typeof LangContentCoursesCourseSlugCourseSlugSyllabusRoute;
+}
+
+const LangContentCoursesCourseSlugCourseSlugRouteChildren: LangContentCoursesCourseSlugCourseSlugRouteChildren =
+  {
+    LangContentCoursesCourseSlugCourseSlugChapterNameChapterIdRoute:
+      LangContentCoursesCourseSlugCourseSlugChapterNameChapterIdRoute,
+    LangContentCoursesCourseSlugCourseSlugAssignmentRoute:
+      LangContentCoursesCourseSlugCourseSlugAssignmentRoute,
+    LangContentCoursesCourseSlugCourseSlugRatingsRoute:
+      LangContentCoursesCourseSlugCourseSlugRatingsRoute,
+    LangContentCoursesCourseSlugCourseSlugRetakeExamRoute:
+      LangContentCoursesCourseSlugCourseSlugRetakeExamRoute,
+    LangContentCoursesCourseSlugCourseSlugSingleTrialExamRoute:
+      LangContentCoursesCourseSlugCourseSlugSingleTrialExamRoute,
+    LangContentCoursesCourseSlugCourseSlugSummerSchoolRoute:
+      LangContentCoursesCourseSlugCourseSlugSummerSchoolRoute,
+    LangContentCoursesCourseSlugCourseSlugSyllabusRoute:
+      LangContentCoursesCourseSlugCourseSlugSyllabusRoute,
+  };
+
+const LangContentCoursesCourseSlugCourseSlugRouteWithChildren =
+  LangContentCoursesCourseSlugCourseSlugRoute._addFileChildren(
+    LangContentCoursesCourseSlugCourseSlugRouteChildren,
+  );
+
+interface LangContentCoursesCourseSlugRouteChildren {
+  LangContentCoursesCourseSlugCourseSlugRoute: typeof LangContentCoursesCourseSlugCourseSlugRouteWithChildren;
+}
+
+const LangContentCoursesCourseSlugRouteChildren: LangContentCoursesCourseSlugRouteChildren =
+  {
+    LangContentCoursesCourseSlugCourseSlugRoute:
+      LangContentCoursesCourseSlugCourseSlugRouteWithChildren,
+  };
+
+const LangContentCoursesCourseSlugRouteWithChildren =
+  LangContentCoursesCourseSlugRoute._addFileChildren(
+    LangContentCoursesCourseSlugRouteChildren,
+  );
+
 const rootRouteChildren: RootRouteChildren = {
   LangIndexRoute: LangIndexRoute,
   LangAccountInvoicesRoute: LangAccountInvoicesRoute,
   LangAccountSettingsRoute: LangAccountSettingsRoute,
   LangAccountTeacherProfileRoute: LangAccountTeacherProfileRoute,
   LangDashboardRoute: LangDashboardRouteWithChildren,
-  LangMyCoursesCourseIdRoute: LangMyCoursesCourseIdRoute,
   LangAccountIndexRoute: LangAccountIndexRoute,
   LangCalendarIndexRoute: LangCalendarIndexRoute,
   LangCareerPortalIndexRoute: LangCareerPortalIndexRoute,
@@ -1997,8 +2181,8 @@ const rootRouteChildren: RootRouteChildren = {
     LangContentMiscValidateEmailChangeTokenRoute,
   LangContentMiscValidateEmailTokenRoute:
     LangContentMiscValidateEmailTokenRoute,
-  LangContentCoursesCourseIdChapterNameChapterIdRoute:
-    LangContentCoursesCourseIdChapterNameChapterIdRoute,
+  LangContentCoursesCourseSlugRoute:
+    LangContentCoursesCourseSlugRouteWithChildren,
   LangContentResourcesBooksBookNameBookIdRoute:
     LangContentResourcesBooksBookNameBookIdRoute,
   LangContentResourcesChannelsChannelNameChannelIdRoute:

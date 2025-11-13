@@ -19,9 +19,9 @@ import ApprovedIcon from '#src/assets/icons/approved.svg?react';
 import PaperCheckPixel from '#src/assets/icons/pixelated/paper_checked.svg?react';
 import SandClock from '#src/assets/icons/sandClock/sand clock_bottom.svg?react';
 import { AppContext } from '#src/providers/context.js';
-import { ListElement2 } from '#src/routes/$lang/my-courses/-components/summer-school.tsx';
 import { formatDate, formatTime } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.js';
+import { ListElement2 } from '../../courses/$courseSlug/_$courseSlug/summer-school.tsx';
 
 export const GlobalCertifications = () => {
   const { session } = useContext(AppContext);
