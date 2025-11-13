@@ -1,9 +1,7 @@
 import { cn } from '@blms/ui';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { t } from 'i18next';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { TbVideo } from 'react-icons/tb';
 import { VideoSelector } from '#src/components/video-selector.tsx';
 import { TradingViewWidget } from './tradingview-widget.tsx';
 
@@ -53,33 +51,12 @@ export const ParagraphRenderer: React.FC<ParagraphRendererProps> = (props) => {
         const planbVideoId = child.match(/id=([a-zA-Z0-9_-]+)/)?.[1] ?? '';
         if (planbVideoId) {
           return (
-            <div className="mb-8">
-              {header === 'logo' && (
-                <div className="flex items-center">
-                  <TbVideo className="size-10" />
-                  <div className="ml-2">
-                    <p className="text-lg font-medium text-blue-900">
-                      {t('words.video')}
-                    </p>
-                  </div>
-                </div>
-              )}
-
-              {header === 'text' && (
-                <div className=" flex items-center">
-                  <div className="ml-2">
-                    <p className="text-lg font-medium text-blue-900">
-                      {t('words.video')}
-                    </p>
-                  </div>
-                </div>
-              )}
-              <VideoSelector
-                key={planbVideoId}
-                videoId={planbVideoId}
-                language={i18n.language}
-              />
-            </div>
+            <VideoSelector
+              key={planbVideoId}
+              videoId={planbVideoId}
+              language={i18n.language}
+              header={header}
+            />
           );
         }
       }

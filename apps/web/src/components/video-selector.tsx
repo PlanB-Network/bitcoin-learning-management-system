@@ -18,9 +18,11 @@ import { isPearApp } from '../env.ts';
 export const VideoSelector = ({
   videoId,
   language,
+  header,
 }: {
   videoId: string;
   language: string;
+  header: 'none' | 'logo' | 'text';
 }) => {
   const {
     data: _videos,
@@ -132,9 +134,7 @@ export const VideoSelector = ({
   }
 
   if (!videos || videos.length === 0) {
-    return (
-      <div className="my-4 text-center text-gray-500">No video found.</div>
-    );
+    return null;
   }
 
   const handleProviderChange = (provider: string) =>
@@ -143,26 +143,47 @@ export const VideoSelector = ({
     setSelectedSourceType(lang);
 
   return (
-    <div>
-      {selectedVideo ? (
-        <DisplayVideo
-          idFromProvider={selectedVideo.idFromProvider!}
-          provider={selectedVideo.provider}
-          title={selectedVideo.id}
-        />
-      ) : (
-        <div className="my-4 text-center text-gray-500">No video found.</div>
-      )}
-      {videos.length > 1 ? (
-        <CollapsibleSelectorPart
-          providers={providers}
-          sourceTypes={sourceTypes}
-          selectedProvider={selectedProvider}
-          selectedSourceType={selectedSourceType}
-          onProviderChange={handleProviderChange}
-          onSourceTypeChange={handleSourceTypeChange}
-        />
-      ) : null}
+    <div className="mb-8">
+      <div>
+        {header === 'logo' && (
+          <div className="flex items-center mb-1">
+            <TbVideo className="size-10" />
+            <div className="ml-2">
+              <p className="text-lg font-medium text-blue-900">
+                {t('words.video')}
+              </p>
+            </div>
+          </div>
+        )}
+        {header === 'text' && (
+          <div className=" flex items-center">
+            <div className="ml-2">
+              <p className="text-lg font-medium text-blue-900">
+                {t('words.video')}
+              </p>
+            </div>
+          </div>
+        )}
+        {selectedVideo ? (
+          <DisplayVideo
+            idFromProvider={selectedVideo.idFromProvider!}
+            provider={selectedVideo.provider}
+            title={selectedVideo.id}
+          />
+        ) : (
+          <div className="my-4 text-center text-gray-500">No video found.</div>
+        )}
+        {videos.length > 1 ? (
+          <CollapsibleSelectorPart
+            providers={providers}
+            sourceTypes={sourceTypes}
+            selectedProvider={selectedProvider}
+            selectedSourceType={selectedSourceType}
+            onProviderChange={handleProviderChange}
+            onSourceTypeChange={handleSourceTypeChange}
+          />
+        ) : null}
+      </div>
     </div>
   );
 };
