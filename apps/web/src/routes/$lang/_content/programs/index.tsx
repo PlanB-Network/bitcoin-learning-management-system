@@ -1,17 +1,17 @@
 import {
   Button,
-  ButtonWithArrow,
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
   cn,
-  Image,
 } from '@blms/ui';
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbChevronDown } from 'react-icons/tb';
 import avatarImage from '#src/assets/programs/avatar.png';
+import avatar2Image from '#src/assets/programs/avatar2.png';
+import avatar3Image from '#src/assets/programs/avatar3.png';
 import diplomaImage from '#src/assets/programs/diploma.png';
 import levelIcon from '#src/assets/programs/icon-level.png';
 import luggageIcon from '#src/assets/programs/icon-luggage.svg';
@@ -26,6 +26,7 @@ import track3Image from '#src/assets/programs/track3.webp';
 import track4Image from '#src/assets/programs/track4.webp';
 import videoScreenshotImage from '#src/assets/programs/video-screenshot.png';
 import { PageLayout } from '#src/components/page-layout.tsx';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { CourseCardBig } from '#src/patterns/course-card-big.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 
@@ -87,24 +88,7 @@ function ProgramPresentation() {
         </div>
         <img className="md:w-2/5 object-cover" src={presentationImage} alt="" />
       </div>
-      <div className="flex flex-row gap-1 w-full mt-9">
-        <Link
-          to="/courses/plan-developer-program-0be6cfae-9d32-11f0-9601-0f79f5ccc576"
-          className="w-full"
-        >
-          <ButtonWithArrow variant={'newTertiary'} className="w-full">
-            Developer Program
-          </ButtonWithArrow>
-        </Link>
-        <Link
-          to="/courses/plan-business-program-a54c48c0-9b90-11f0-bee7-dbbaea825cda"
-          className="w-full"
-        >
-          <ButtonWithArrow variant={'newTertiary'} className="w-full">
-            Business Program
-          </ButtonWithArrow>
-        </Link>
-      </div>
+      <EnrollNow />
     </div>
   );
 }
@@ -121,12 +105,7 @@ function ProgramElement({
   return (
     <div className="flex flex-row gap-3 items-center">
       <div className="flex items-center justify-center bg-orange-50 rounded-full p-4">
-        <Image
-          className="size-8"
-          src={icon}
-          alt=""
-          breakpoints={{ default: 100 }}
-        />
+        <img className="size-8" src={icon} alt="" />
       </div>
       <div>
         <p className="title-base text-orange-500">{title}</p>
@@ -151,7 +130,7 @@ function TracksAndCalendar() {
       </p>
 
       <div className="flex flex-row gap-2 mt-10">
-        <img src={trackImage} alt="" className="max-xl:hidden w-[200px]" />
+        <img src={trackImage} alt="" className="max-xl:hidden w-fit" />
         <div className="flex flex-col gap-5 w-auto">
           <CalendarElement
             title="Foundations"
@@ -161,6 +140,7 @@ function TracksAndCalendar() {
             location2="Online"
             contentText="The program starts with lectures led by Giacomo Zucco. Thanks to his characteristic style, you will develop in one month a deep understanding of Bitcoin relevancy and implications."
             imageUrl={track1Image}
+            imageClassName="xl:w-[322px]"
           />
           <CalendarElement
             title="Masterclasses"
@@ -170,6 +150,7 @@ function TracksAndCalendar() {
             location2="Online"
             contentText="The Plan ₿ Program brings together a distinguished group of professors and industry leaders — each an expert in their field. Through live, expert-led sessions, you’ll gain direct access to some of the most influential minds shaping the Bitcoin ecosystem."
             imageUrl={track2Image}
+            imageClassName="xl:w-[322px]"
           />
           <CalendarElement
             title="Project Assignments"
@@ -189,7 +170,7 @@ function TracksAndCalendar() {
           />
         </div>
       </div>
-      <Button className="justify-self-center mt-6 w-2/5">Enroll now</Button>
+      <EnrollNow />
     </div>
   );
 }
@@ -202,6 +183,7 @@ function CalendarElement({
   location2,
   contentText,
   imageUrl,
+  imageClassName,
 }: {
   title: string;
   subtitle: string;
@@ -210,6 +192,7 @@ function CalendarElement({
   location2?: string;
   contentText: string;
   imageUrl: string;
+  imageClassName?: string;
 }) {
   return (
     <div className="flex flex-row">
@@ -237,9 +220,13 @@ function CalendarElement({
             </div>
           </div>
         </div>
-        <div className="flex flex-col xl:flex-row bg-white mb-2 p-3 rounded-xl">
+        <div className="flex flex-col xl:flex-row bg-white mb-2 p-3 rounded-xl gap-3">
           <p className="text-orange-800 text-sm">{contentText}</p>
-          <img className="object-cover rounded-xl" src={imageUrl} alt="" />
+          <img
+            className={cn(imageClassName, 'object-cover rounded-xl')}
+            src={imageUrl}
+            alt=""
+          />
         </div>
       </div>
     </div>
@@ -315,84 +302,78 @@ function HearStudents() {
 }
 
 function Feedbacks() {
-  const commentClassName = 'label bg-brown-50 rounded-4xl px-6 py-4';
-
+  const commentClassName =
+    'label bg-brown-100 rounded-t-4xl rounded-l-4xl px-6 py-4';
+  const divClassName = 'flex flex-col gap-4';
   return (
     <div>
       <div className="flex flex-col gap-6">
         <SectionTitle title="What students think about the program" />
-        <p className={cn(commentClassName, 'w-[640px] self-end')}>
-          “This experience has been{' '}
-          <span className="font-medium">truly transformative</span>. I pushed
-          myself in ways I hadn't before — building a real-world proposal,
-          collaborating with mentors, and challenging my thinking. I'm grateful
-          for the knowledge, community, and support. Excited for what comes
-          next! :D”
-        </p>
-        <FeedbackUser
-          className="self-end"
-          name="Cristian Antonio Garcia"
-          imageUrl={avatarImage}
-        />
-        <p className={cn(commentClassName, 'w-[640px] self-start')}>
-          “Plan ₿ Biz School 2025 has been{' '}
-          <span className="font-medium">a mind blowing experience</span>,
-          learned a lot. The speakers have been{' '}
-          <span className="font-medium">
-            World Class experts in their fields
-          </span>
-          , and the international diversity was so great.”
-        </p>
-        <FeedbackUser
-          className="self-start"
-          name="Luis Escobar"
-          imageUrl={avatarImage}
-        />
-        <p className={cn(commentClassName, 'w-[640px] self-end')}>
-          “<span className="font-medium">A top-level course</span>, enriched by
-          outstanding guest lectures: having the chance to interact directly
-          with some of the{' '}
-          <span className="font-medium">
-            most influential and skilled professionals
-          </span>{' '}
-          in the field was a{' '}
-          <span className="font-medium">truly invaluable</span> experience.
-          Although most students attended the course online, for those ,like
-          myself ,who had the privilege of participating in person, the
-          experience was even more meaningful.”
-        </p>
-        <FeedbackUser
-          className="self-end"
-          name="Beatrice Sofia Fiori"
-          imageUrl={avatarImage}
-        />
-        <p className={cn(commentClassName, 'w-[640px] self-start')}>
-          “I just completed Plan ₿ Biz School 2025 and it was truly excellent.
-          The course content is well-structured, practical, and taught by true
-          industry leaders. Whether you're new to Bitcoin or already in the
-          space, this course offers valuable, real-world insights. Highly
-          recommended.”
-        </p>
-        <FeedbackUser
-          className="self-start"
-          name="Jose Saenz"
-          imageUrl={avatarImage}
-        />
-        <p className={cn(commentClassName, 'w-[640px] self-end')}>
-          Thanks for{' '}
-          <span className="font-medium">
-            excellent teachers and content provided
-          </span>
-          . I would highly recommend this program to anyone else on their
-          Bitcoin journey in the future.
-        </p>
-        <FeedbackUser
-          className="self-end"
-          name="ticoo"
-          imageUrl={avatarImage}
-        />
+        <div className={cn(divClassName, 'self-end')}>
+          <p className={cn(commentClassName, 'md:w-[740px] self-end')}>
+            “This experience has been{' '}
+            <span className="font-medium">truly transformative</span>. I pushed
+            myself in ways I hadn't before — building a real-world proposal,
+            collaborating with mentors, and challenging my thinking. I'm
+            grateful for the knowledge, community, and support. Excited for what
+            comes next! :D”
+          </p>
+          <FeedbackUser
+            name="Cristian Antonio Garcia"
+            imageUrl={avatar2Image}
+          />
+        </div>
+        <div className={cn(divClassName, 'self-start')}>
+          <p className={cn(commentClassName, 'md:w-[640px] self-start')}>
+            “Plan ₿ Biz School 2025 has been{' '}
+            <span className="font-medium">a mind blowing experience</span>,
+            learned a lot. The speakers have been{' '}
+            <span className="font-medium">
+              World Class experts in their fields
+            </span>
+            , and the international diversity was so great.”
+          </p>
+          <FeedbackUser name="Luis Escobar" imageUrl={avatarImage} />
+        </div>
+        <div className={cn(divClassName, 'self-end')}>
+          <p className={cn(commentClassName, 'md:w-[740px] self-end')}>
+            “<span className="font-medium">A top-level course</span>, enriched
+            by outstanding guest lectures: having the chance to interact
+            directly with some of the{' '}
+            <span className="font-medium">
+              most influential and skilled professionals
+            </span>{' '}
+            in the field was a{' '}
+            <span className="font-medium">truly invaluable</span> experience.
+            Although most students attended the course online, for those ,like
+            myself ,who had the privilege of participating in person, the
+            experience was even more meaningful.”
+          </p>
+          <FeedbackUser name="Beatrice Sofia Fiori" imageUrl={avatarImage} />
+        </div>
+        <div className={cn(divClassName, 'self-start')}>
+          <p className={cn(commentClassName, 'md:w-[640px] self-start')}>
+            “I just completed Plan ₿ Biz School 2025 and it was truly excellent.
+            The course content is well-structured, practical, and taught by true
+            industry leaders. Whether you're new to Bitcoin or already in the
+            space, this course offers valuable, real-world insights. Highly
+            recommended.”
+          </p>
+          <FeedbackUser name="Jose Saenz" imageUrl={avatarImage} />
+        </div>
+        <div className={cn(divClassName, 'self-end')}>
+          <p className={cn(commentClassName, 'md:w-[740px] self-end')}>
+            Thanks for{' '}
+            <span className="font-medium">
+              excellent teachers and content provided
+            </span>
+            . I would highly recommend this program to anyone else on their
+            Bitcoin journey in the future.
+          </p>
+          <FeedbackUser name="ticoo" imageUrl={avatar3Image} />
+        </div>
       </div>
-      <Button className="justify-self-center mt-6 w-2/5">Enroll now</Button>
+      <EnrollNow />
     </div>
   );
 }
@@ -407,7 +388,7 @@ function FeedbackUser({
   imageUrl: string;
 }) {
   return (
-    <div className={cn(className, 'flex flex-row gap-3')}>
+    <div className={cn(className, 'flex flex-row gap-2 self-end')}>
       <img src={imageUrl} alt="" />
       <p className="title-small">{name}</p>
     </div>
@@ -475,5 +456,54 @@ function FAQQuestion({
         </CollapsibleContent>
       </CollapsibleTrigger>
     </Collapsible>
+  );
+}
+
+function EnrollNow() {
+  const [isOpened, setIsOpened] = useState(false);
+  const isMobile = useSmaller('lg');
+
+  return (
+    <div>
+      {!isOpened ? (
+        <Button
+          className="justify-self-center mt-6 w-2/5"
+          onClick={() => {
+            setIsOpened(!isOpened);
+          }}
+          size={isMobile ? 'm' : 'xl'}
+        >
+          Enroll now
+        </Button>
+      ) : null}
+      {isOpened ? (
+        <div className="flex flex-row gap-1 w-full mt-6">
+          <Link
+            to="/courses/plan-developer-program-0be6cfae-9d32-11f0-9601-0f79f5ccc576"
+            className="w-full"
+          >
+            <Button
+              variant={'newTertiary'}
+              className="w-full"
+              size={isMobile ? 'm' : 'xl'}
+            >
+              Developer Program <span className="ml-6">{' >'}</span>
+            </Button>
+          </Link>
+          <Link
+            to="/courses/plan-business-program-a54c48c0-9b90-11f0-bee7-dbbaea825cda"
+            className="w-full"
+          >
+            <Button
+              variant={'newTertiary'}
+              className="w-full"
+              size={isMobile ? 'm' : 'xl'}
+            >
+              Business Program <span className="ml-6">{' >'}</span>
+            </Button>
+          </Link>
+        </div>
+      ) : null}
+    </div>
   );
 }

@@ -172,7 +172,9 @@ function AllCourses() {
             </h3>
           </div>
           <Link to={'/programs'}>
-            <Button className="ml-6">Learn more</Button>
+            <Button className="ml-6 mt-4" size={'xl'}>
+              {t('courses.learnMore')} <span className="ml-6">{' >'}</span>
+            </Button>
           </Link>
         </div>
 
