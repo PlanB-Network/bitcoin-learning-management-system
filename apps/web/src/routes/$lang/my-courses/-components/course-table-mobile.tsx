@@ -17,7 +17,7 @@ import {
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import bitcoinSvg from '#src/assets/icons/btc.svg';
-import businessSvg from '#src/assets/icons/luggage.svg';
+import businessSvg from '#src/assets/icons/luggage-black.svg';
 import miningSvg from '#src/assets/icons/mining-black.svg';
 import securitySvg from '#src/assets/icons/padlock-black.svg';
 import protocolSvg from '#src/assets/icons/protocol-black.svg';

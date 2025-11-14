@@ -171,6 +171,9 @@ function AllCourses() {
               {t('courses.liveClasses.secondaryTitle')}
             </h3>
           </div>
+          <Link to={'/programs'}>
+            <Button className="ml-6">Learn more</Button>
+          </Link>
         </div>
 
         <div className="flex flex-wrap gap-4 lg:gap-8 mt-2 lg:mt-4 px-2 lg:px-6 pb-2 lg:pb-6">

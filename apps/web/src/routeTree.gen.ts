@@ -26,6 +26,7 @@ import { Route as LangDashboardDashboardIndexRouteImport } from './routes/$lang/
 import { Route as LangContentTutorialsIndexRouteImport } from './routes/$lang/_content/tutorials/index';
 import { Route as LangContentSearchIndexRouteImport } from './routes/$lang/_content/search/index';
 import { Route as LangContentResourcesIndexRouteImport } from './routes/$lang/_content/resources/index';
+import { Route as LangContentProgramsIndexRouteImport } from './routes/$lang/_content/programs/index';
 import { Route as LangContentLiveClassesIndexRouteImport } from './routes/$lang/_content/live-classes/index';
 import { Route as LangContentLearnAnytimeIndexRouteImport } from './routes/$lang/_content/learn-anytime/index';
 import { Route as LangContentEventsIndexRouteImport } from './routes/$lang/_content/events/index';
@@ -180,6 +181,12 @@ const LangContentResourcesIndexRoute =
   LangContentResourcesIndexRouteImport.update({
     id: '/$lang/_content/resources/',
     path: '/$lang/resources/',
+    getParentRoute: () => rootRouteImport,
+  } as any);
+const LangContentProgramsIndexRoute =
+  LangContentProgramsIndexRouteImport.update({
+    id: '/$lang/_content/programs/',
+    path: '/$lang/programs/',
     getParentRoute: () => rootRouteImport,
   } as any);
 const LangContentLiveClassesIndexRoute =
@@ -653,6 +660,7 @@ export interface FileRoutesByFullPath {
   '/$lang/events': typeof LangContentEventsIndexRoute;
   '/$lang/learn-anytime': typeof LangContentLearnAnytimeIndexRoute;
   '/$lang/live-classes': typeof LangContentLiveClassesIndexRoute;
+  '/$lang/programs': typeof LangContentProgramsIndexRoute;
   '/$lang/resources': typeof LangContentResourcesIndexRoute;
   '/$lang/search': typeof LangContentSearchIndexRoute;
   '/$lang/tutorials': typeof LangContentTutorialsIndexRoute;
@@ -740,6 +748,7 @@ export interface FileRoutesByTo {
   '/$lang/events': typeof LangContentEventsIndexRoute;
   '/$lang/learn-anytime': typeof LangContentLearnAnytimeIndexRoute;
   '/$lang/live-classes': typeof LangContentLiveClassesIndexRoute;
+  '/$lang/programs': typeof LangContentProgramsIndexRoute;
   '/$lang/resources': typeof LangContentResourcesIndexRoute;
   '/$lang/search': typeof LangContentSearchIndexRoute;
   '/$lang/tutorials': typeof LangContentTutorialsIndexRoute;
@@ -828,6 +837,7 @@ export interface FileRoutesById {
   '/$lang/_content/events/': typeof LangContentEventsIndexRoute;
   '/$lang/_content/learn-anytime/': typeof LangContentLearnAnytimeIndexRoute;
   '/$lang/_content/live-classes/': typeof LangContentLiveClassesIndexRoute;
+  '/$lang/_content/programs/': typeof LangContentProgramsIndexRoute;
   '/$lang/_content/resources/': typeof LangContentResourcesIndexRoute;
   '/$lang/_content/search/': typeof LangContentSearchIndexRoute;
   '/$lang/_content/tutorials/': typeof LangContentTutorialsIndexRoute;
@@ -917,6 +927,7 @@ export interface FileRouteTypes {
     | '/$lang/events'
     | '/$lang/learn-anytime'
     | '/$lang/live-classes'
+    | '/$lang/programs'
     | '/$lang/resources'
     | '/$lang/search'
     | '/$lang/tutorials'
@@ -1004,6 +1015,7 @@ export interface FileRouteTypes {
     | '/$lang/events'
     | '/$lang/learn-anytime'
     | '/$lang/live-classes'
+    | '/$lang/programs'
     | '/$lang/resources'
     | '/$lang/search'
     | '/$lang/tutorials'
@@ -1091,6 +1103,7 @@ export interface FileRouteTypes {
     | '/$lang/_content/events/'
     | '/$lang/_content/learn-anytime/'
     | '/$lang/_content/live-classes/'
+    | '/$lang/_content/programs/'
     | '/$lang/_content/resources/'
     | '/$lang/_content/search/'
     | '/$lang/_content/tutorials/'
@@ -1179,6 +1192,7 @@ export interface RootRouteChildren {
   LangContentEventsIndexRoute: typeof LangContentEventsIndexRoute;
   LangContentLearnAnytimeIndexRoute: typeof LangContentLearnAnytimeIndexRoute;
   LangContentLiveClassesIndexRoute: typeof LangContentLiveClassesIndexRoute;
+  LangContentProgramsIndexRoute: typeof LangContentProgramsIndexRoute;
   LangContentResourcesIndexRoute: typeof LangContentResourcesIndexRoute;
   LangContentSearchIndexRoute: typeof LangContentSearchIndexRoute;
   LangContentTutorialsIndexRoute: typeof LangContentTutorialsIndexRoute;
@@ -1332,6 +1346,13 @@ declare module '@tanstack/react-router' {
       path: '/$lang/resources';
       fullPath: '/$lang/resources';
       preLoaderRoute: typeof LangContentResourcesIndexRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    '/$lang/_content/programs/': {
+      id: '/$lang/_content/programs/';
+      path: '/$lang/programs';
+      fullPath: '/$lang/programs';
+      preLoaderRoute: typeof LangContentProgramsIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/_content/live-classes/': {
@@ -1952,6 +1973,7 @@ const rootRouteChildren: RootRouteChildren = {
   LangContentEventsIndexRoute: LangContentEventsIndexRoute,
   LangContentLearnAnytimeIndexRoute: LangContentLearnAnytimeIndexRoute,
   LangContentLiveClassesIndexRoute: LangContentLiveClassesIndexRoute,
+  LangContentProgramsIndexRoute: LangContentProgramsIndexRoute,
   LangContentResourcesIndexRoute: LangContentResourcesIndexRoute,
   LangContentSearchIndexRoute: LangContentSearchIndexRoute,
   LangContentTutorialsIndexRoute: LangContentTutorialsIndexRoute,
