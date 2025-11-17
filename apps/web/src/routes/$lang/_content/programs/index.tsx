@@ -19,7 +19,7 @@ import luggageIcon from '#src/assets/programs/icon-luggage.svg';
 import textbookIcon from '#src/assets/programs/icon-textbook.png';
 import toolsIcon from '#src/assets/programs/icon-tools.png';
 import presentationImage from '#src/assets/programs/presentation.webp';
-import trackImage from '#src/assets/programs/track.png';
+import trackImage from '#src/assets/programs/track.webp';
 import trackTriangleImage from '#src/assets/programs/track-triangle.png';
 import track1Image from '#src/assets/programs/track1.webp';
 import track2Image from '#src/assets/programs/track2.webp';
@@ -130,7 +130,7 @@ function TracksAndCalendar() {
       </p>
 
       <div className="flex flex-row gap-2 mt-10">
-        <img src={trackImage} alt="" className="max-xl:hidden w-fit" />
+        <img src={trackImage} alt="" className="max-xl:hidden w-[220px]" />
         <div className="flex flex-col gap-5 w-auto">
           <CalendarElement
             title="Foundations"
@@ -208,7 +208,7 @@ function CalendarElement({
       />
 
       <div className="w-auto bg-orange-50 rounded-xl px-2 pt-3">
-        <div className="flex flex-col md:flex-row justify-between pb-3">
+        <div className="flex flex-col md:flex-row justify-between pb-3 px-3">
           <div className="flex flex-col text-orange-500">
             <p className="title-base md:title-medium">{title}</p>
             <p className="label">{subtitle}</p>
@@ -238,7 +238,7 @@ function CalendarElement({
             isBig ? (
               <div className={cn(imageClassName)}>
                 <ReactPlayer
-                  height={'180px'}
+                  height={'175px'}
                   width={'350px'}
                   className="mb-2 rounded-lg"
                   controls={true}
@@ -313,7 +313,11 @@ function EarnDiploma() {
             into their first major step into the industry.
           </p>
         </div>
-        <img className="h-fit self-center md:w-1/3" src={diplomaImage} alt="" />
+        <img
+          className="h-fit self-center md:w-1/3 max-md:w-full max-md:px-6"
+          src={diplomaImage}
+          alt=""
+        />
       </div>
     </div>
   );
@@ -505,7 +509,7 @@ function EnrollNow() {
     <div>
       {!isOpened ? (
         <Button
-          className="mt-6 mx-auto w-full md:w-2/5"
+          className="mt-8 md:mt-14 mx-auto w-full md:w-2/5"
           onClick={() => {
             setIsOpened(!isOpened);
           }}
