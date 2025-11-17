@@ -309,12 +309,15 @@
       "inperson": "In-person",
       "online": "Online"
     },
-    "learnMore": "Learn more",
     "liveClasses": {
       "allOtherTitle": "All other live classes",
       "liveClasses": "Live classes",
-      "secondaryTitle": "Become employable in Bitcoin-focused companies.",
-      "title": "Plan ₿ official annual programs"
+      "program": {
+        "goal": "Become employable in Bitcoin-focused Companies. Become employable in Bitcoin-focused Companies. Become employable in Bitcoin-focused Companies.",
+        "semester": "Semester",
+        "title": "Plan ₿ Program"
+      },
+      "title": "Master Bitcoin. Transform Your Career."
     },
     "noCoursesFound": "No courses found",
     "part": {
