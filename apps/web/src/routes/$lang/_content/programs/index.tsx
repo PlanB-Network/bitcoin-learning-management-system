@@ -9,6 +9,7 @@ import { createFileRoute, Link } from '@tanstack/react-router';
 import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbChevronDown } from 'react-icons/tb';
+import ReactPlayer from 'react-player';
 import avatarImage from '#src/assets/programs/avatar.png';
 import avatar2Image from '#src/assets/programs/avatar2.png';
 import avatar3Image from '#src/assets/programs/avatar3.png';
@@ -23,9 +24,8 @@ import trackTriangleImage from '#src/assets/programs/track-triangle.png';
 import track1Image from '#src/assets/programs/track1.webp';
 import track2Image from '#src/assets/programs/track2.webp';
 import track3Image from '#src/assets/programs/track3.webp';
-import track4Image from '#src/assets/programs/track4.webp';
-import videoScreenshotImage from '#src/assets/programs/video-screenshot.png';
 import { PageLayout } from '#src/components/page-layout.tsx';
+import { useGreater } from '#src/hooks/use-greater.ts';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { CourseCardBig } from '#src/patterns/course-card-big.tsx';
 import { AppContext } from '#src/providers/context.tsx';
@@ -104,12 +104,12 @@ function ProgramElement({
 }) {
   return (
     <div className="flex flex-row gap-3 items-center">
-      <div className="flex items-center justify-center bg-orange-50 rounded-full p-4">
-        <img className="size-8" src={icon} alt="" />
+      <div className="min-w-12 flex items-center justify-center bg-orange-50 rounded-full">
+        <img className="size-8 m-4" src={icon} alt="" />
       </div>
-      <div>
-        <p className="title-base text-orange-500">{title}</p>
-        <p className="body-base">{description}</p>
+      <div className="w-full">
+        <p className="label-strong md:title-base text-orange-500">{title}</p>
+        <p className="body-small mg:body-base">{description}</p>
       </div>
     </div>
   );
@@ -126,7 +126,7 @@ function TracksAndCalendar() {
           {' '}
           combines theory, real-case practice and networking{' '}
         </span>
-        opportunities. Choose your specialized track.
+        opportunities.
       </p>
 
       <div className="flex flex-row gap-2 mt-10">
@@ -140,7 +140,7 @@ function TracksAndCalendar() {
             location2="Online"
             contentText="The program starts with lectures led by Giacomo Zucco. Thanks to his characteristic style, you will develop in one month a deep understanding of Bitcoin relevancy and implications."
             imageUrl={track1Image}
-            imageClassName="xl:w-[322px]"
+            imageClassName="xl:w-[330px]"
           />
           <CalendarElement
             title="Masterclasses"
@@ -150,7 +150,7 @@ function TracksAndCalendar() {
             location2="Online"
             contentText="The Plan ₿ Program brings together a distinguished group of professors and industry leaders — each an expert in their field. Through live, expert-led sessions, you’ll gain direct access to some of the most influential minds shaping the Bitcoin ecosystem."
             imageUrl={track2Image}
-            imageClassName="xl:w-[322px]"
+            imageClassName="xl:w-[310px]"
           />
           <CalendarElement
             title="Project Assignments"
@@ -159,6 +159,7 @@ function TracksAndCalendar() {
             location1="Online"
             contentText="The best 100 students of each track will be able to choose an assignment associated with either a Bitcoin company or open-source project. This is your chance to be mentored directly by a professional. Assignments are individual work."
             imageUrl={track3Image}
+            imageClassName="xl:w-[360px]"
           />
           <CalendarElement
             title="Summer School"
@@ -166,7 +167,7 @@ function TracksAndCalendar() {
             date="June"
             location1="Lugano, Switzerland"
             contentText="The 21 best-ranked students of each track will be selected to join the Lugano Summer School. This 2-week intensive bootcamp blends expert-led workshops, and practical applications of Bitcoin businesses. Beyond the classroom, it's a career-defining experience, a chance to connect directly with industry leaders, showcase your skills, and open doors to future opportunities."
-            imageUrl={track4Image}
+            videoUrl="https://www.youtube.com/embed/7kaMQsDBlfE"
           />
         </div>
       </div>
@@ -183,6 +184,7 @@ function CalendarElement({
   location2,
   contentText,
   imageUrl,
+  videoUrl,
   imageClassName,
 }: {
   title: string;
@@ -191,9 +193,12 @@ function CalendarElement({
   location1: string;
   location2?: string;
   contentText: string;
-  imageUrl: string;
+  imageUrl?: string;
+  videoUrl?: string;
   imageClassName?: string;
 }) {
+  const isBig = useGreater('xl');
+
   return (
     <div className="flex flex-row">
       <img
@@ -203,16 +208,16 @@ function CalendarElement({
       />
 
       <div className="w-auto bg-orange-50 rounded-xl px-2 pt-3">
-        <div className="flex flex-row justify-between pb-3">
+        <div className="flex flex-col md:flex-row justify-between pb-3">
           <div className="flex flex-col text-orange-500">
-            <p className="title-medium">{title}</p>
+            <p className="title-base md:title-medium">{title}</p>
             <p className="label">{subtitle}</p>
           </div>
-          <div className="flex flex-col body-base text-neutral-500 items-end">
+          <div className="flex flex-row md:flex-col max-md:justify-between max-md:px-2 max-md:mt-2 md:self-center gap-2 body-small md:body-base text-neutral-500 md:items-end">
             <p>{date}</p>
-            <div>
+            <div className="">
               {location2 ? (
-                <span className="border-r border-orange-100 pr-2">
+                <span className="border-r border-neutral-100-100 pr-2">
                   {location2}
                 </span>
               ) : null}
@@ -221,12 +226,38 @@ function CalendarElement({
           </div>
         </div>
         <div className="flex flex-col xl:flex-row bg-white mb-2 p-3 rounded-xl gap-3">
-          <p className="text-orange-800 text-sm">{contentText}</p>
-          <img
-            className={cn(imageClassName, 'object-cover rounded-xl')}
-            src={imageUrl}
-            alt=""
-          />
+          <p className="text-orange-800 body-base md:text-sm">{contentText}</p>
+          {imageUrl ? (
+            <img
+              className={cn(imageClassName, 'object-cover rounded-xl')}
+              src={imageUrl}
+              alt=""
+            />
+          ) : null}
+          {videoUrl ? (
+            isBig ? (
+              <div className={cn(imageClassName)}>
+                <ReactPlayer
+                  height={'180px'}
+                  width={'350px'}
+                  className="mb-2 rounded-lg"
+                  controls={true}
+                  src={videoUrl}
+                />
+              </div>
+            ) : (
+              <div className="relative pt-[56.25%] mt-6">
+                <ReactPlayer
+                  height={'100%'}
+                  width={'100%'}
+                  style={{ left: 0, position: 'absolute', top: 0 }}
+                  className="mb-2 rounded-lg"
+                  controls={true}
+                  src={videoUrl}
+                />
+              </div>
+            )
+          ) : null}
         </div>
       </div>
     </div>
@@ -249,7 +280,7 @@ function ChooseYourTrack() {
     <div>
       <SectionTitle title="Choose your track and enroll" />
 
-      <div className="flex flex-wrap gap-4 lg:gap-8 mt-2 lg:mt-4 px-2 lg:px-6 pb-2 lg:pb-6">
+      <div className="flex flex-wrap gap-4 lg:gap-8 mt-2 lg:mt-4">
         {planbCourses.map((course) => (
           <div key={course.id} className="w-full">
             <CourseCardBig course={course} />
@@ -263,16 +294,18 @@ function ChooseYourTrack() {
 function EarnDiploma() {
   return (
     <div>
-      <div className="flex flex-row">
-        <div className="flex flex-col gap-4">
-          <SectionTitle title="Earn a Bitcoin Diploma trusted by top Bitcoin companies" />
+      <SectionTitle title="Earn a Bitcoin Diploma trusted by top Bitcoin companies" />
+      <div className="flex flex-col md:flex-row mt-6 gap-8 text-lg">
+        <div className="flex flex-col gap-4 md:w-2/3">
           <p>
             The top-performing students selected for the Summer School in Lugano
-            earn an official, physical Plan ₿ Diploma, a distinction that
-            recognizes not only their academic excellence but also their proven,
-            hands-on performance throughout the program. This diploma is a
-            trusted signal of practical skills, professional discipline, and
-            real-world contribution to Bitcoin projects.
+            earn an official, physical Plan ₿ Diploma,{' '}
+            <b>
+              a distinction that recognizes not only their academic excellence
+            </b>{' '}
+            but also their proven, hands-on performance throughout the program.
+            This diploma is a trusted signal of practical skills, professional
+            discipline, and real-world contribution to Bitcoin projects.
           </p>
           <p>
             From last year's cohort of 21 graduates, more than 13 have already
@@ -280,7 +313,7 @@ function EarnDiploma() {
             into their first major step into the industry.
           </p>
         </div>
-        <img className="w-1/2 h-fit self-center" src={diplomaImage} alt="" />
+        <img className="h-fit self-center md:w-1/3" src={diplomaImage} alt="" />
       </div>
     </div>
   );
@@ -290,13 +323,16 @@ function HearStudents() {
   return (
     <div>
       <SectionTitle title="Hear from students who became teachers: Mari and Birk's stories" />
-      <Link
-        to="https://x.com/planb_network/status/1947706959790018860?s=20"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <img className="mt-4" src={videoScreenshotImage} alt="" />
-      </Link>
+      <div className="relative pt-[56.25%] mt-6">
+        <ReactPlayer
+          height={'100%'}
+          width={'100%'}
+          style={{ left: 0, position: 'absolute', top: 0 }}
+          className="mb-2 rounded-lg"
+          controls={true}
+          src={'https://www.youtube.com/embed/50p92rsqAG4'}
+        />
+      </div>
     </div>
   );
 }
@@ -310,7 +346,7 @@ function Feedbacks() {
       <div className="flex flex-col gap-6">
         <SectionTitle title="What students think about the program" />
         <div className={cn(divClassName, 'self-end')}>
-          <p className={cn(commentClassName, 'md:w-[740px] self-end')}>
+          <p className={cn(commentClassName, 'md:max-w-[740px] self-end')}>
             “This experience has been{' '}
             <span className="font-medium">truly transformative</span>. I pushed
             myself in ways I hadn't before — building a real-world proposal,
@@ -324,7 +360,7 @@ function Feedbacks() {
           />
         </div>
         <div className={cn(divClassName, 'self-start')}>
-          <p className={cn(commentClassName, 'md:w-[640px] self-start')}>
+          <p className={cn(commentClassName, 'md:max-w-[640px] self-start')}>
             “Plan ₿ Biz School 2025 has been{' '}
             <span className="font-medium">a mind blowing experience</span>,
             learned a lot. The speakers have been{' '}
@@ -336,7 +372,7 @@ function Feedbacks() {
           <FeedbackUser name="Luis Escobar" imageUrl={avatarImage} />
         </div>
         <div className={cn(divClassName, 'self-end')}>
-          <p className={cn(commentClassName, 'md:w-[740px] self-end')}>
+          <p className={cn(commentClassName, 'md:max-w-[740px] self-end')}>
             “<span className="font-medium">A top-level course</span>, enriched
             by outstanding guest lectures: having the chance to interact
             directly with some of the{' '}
@@ -352,7 +388,7 @@ function Feedbacks() {
           <FeedbackUser name="Beatrice Sofia Fiori" imageUrl={avatarImage} />
         </div>
         <div className={cn(divClassName, 'self-start')}>
-          <p className={cn(commentClassName, 'md:w-[640px] self-start')}>
+          <p className={cn(commentClassName, 'md:max-w-[640px] self-start')}>
             “I just completed Plan ₿ Biz School 2025 and it was truly excellent.
             The course content is well-structured, practical, and taught by true
             industry leaders. Whether you're new to Bitcoin or already in the
@@ -362,7 +398,7 @@ function Feedbacks() {
           <FeedbackUser name="Jose Saenz" imageUrl={avatarImage} />
         </div>
         <div className={cn(divClassName, 'self-end')}>
-          <p className={cn(commentClassName, 'md:w-[740px] self-end')}>
+          <p className={cn(commentClassName, 'md:max--[740px] self-end')}>
             Thanks for{' '}
             <span className="font-medium">
               excellent teachers and content provided
@@ -431,7 +467,9 @@ function FAQ() {
 }
 
 function SectionTitle({ title }: { title: string }) {
-  return <h2 className="title-large mt-9">{title}</h2>;
+  return (
+    <h2 className="display-small md:title-large mt-8 md:mt-14">{title}</h2>
+  );
 }
 
 function FAQQuestion({
@@ -467,7 +505,7 @@ function EnrollNow() {
     <div>
       {!isOpened ? (
         <Button
-          className="justify-self-center mt-6 w-2/5"
+          className="mt-6 mx-auto w-full md:w-2/5"
           onClick={() => {
             setIsOpened(!isOpened);
           }}
@@ -477,7 +515,7 @@ function EnrollNow() {
         </Button>
       ) : null}
       {isOpened ? (
-        <div className="flex flex-row gap-1 w-full mt-6">
+        <div className="flex flex-col md:flex-row gap-1 w-full mt-6">
           <Link
             to="/courses/plan-developer-program-0be6cfae-9d32-11f0-9601-0f79f5ccc576"
             className="w-full"
