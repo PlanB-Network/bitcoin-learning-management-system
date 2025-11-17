@@ -41,9 +41,11 @@ export const CourseCardBig = ({
       )}
     >
       <article
-        className={`flex flex-row w-full ${courseCardStyles({
-          color: featured ? 'featured' : 'primary',
-        })}`}
+        className={`flex flex-row w-full hover:bg-neutral-50 ${courseCardStyles(
+          {
+            color: featured ? 'featured' : 'primary',
+          },
+        )}`}
       >
         <DesktopCourseThumbnail course={course} />
 

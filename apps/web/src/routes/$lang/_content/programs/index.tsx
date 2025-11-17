@@ -8,7 +8,7 @@ import {
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { TbChevronDown } from 'react-icons/tb';
+import { TbChevronDown, TbChevronRight } from 'react-icons/tb';
 import ReactPlayer from 'react-player';
 import avatarImage from '#src/assets/programs/avatar.png';
 import avatar2Image from '#src/assets/programs/avatar2.png';
@@ -398,7 +398,7 @@ function Feedbacks() {
           <FeedbackUser name="Jose Saenz" imageUrl={avatarImage} />
         </div>
         <div className={cn(divClassName, 'self-end')}>
-          <p className={cn(commentClassName, 'md:max--[740px] self-end')}>
+          <p className={cn(commentClassName, 'md:max-w-[740px] self-end')}>
             Thanks for{' '}
             <span className="font-medium">
               excellent teachers and content provided
@@ -515,7 +515,7 @@ function EnrollNow() {
         </Button>
       ) : null}
       {isOpened ? (
-        <div className="flex flex-col md:flex-row gap-1 w-full mt-6">
+        <div className="flex flex-col md:flex-row gap-1 w-full mt-6 px-12">
           <Link
             to="/courses/plan-developer-program-0be6cfae-9d32-11f0-9601-0f79f5ccc576"
             className="w-full"
@@ -525,7 +525,10 @@ function EnrollNow() {
               className="w-full"
               size={isMobile ? 'm' : 'xl'}
             >
-              Developer Program <span className="ml-6">{' >'}</span>
+              Developer Program
+              <TbChevronRight
+                className={cn('inline-flex whitespace-nowrap ml-3')}
+              />
             </Button>
           </Link>
           <Link
@@ -537,7 +540,10 @@ function EnrollNow() {
               className="w-full"
               size={isMobile ? 'm' : 'xl'}
             >
-              Business Program <span className="ml-6">{' >'}</span>
+              Business Program
+              <TbChevronRight
+                className={cn('inline-flex whitespace-nowrap ml-3')}
+              />
             </Button>
           </Link>
         </div>

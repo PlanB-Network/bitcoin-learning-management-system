@@ -211,7 +211,9 @@ const ProgramCard = ({ course }: { course: JoinedCourse | CourseResponse }) => {
       )}
     >
       <article
-        className={'flex flex-row w-full border border-neutral-50 rounded-2xl'}
+        className={
+          'flex flex-row w-full border border-neutral-50 rounded-2xl hover:bg-neutral-50'
+        }
       >
         <DesktopCourseThumbnail />
         <div className="grow min-w-0 w-full">
