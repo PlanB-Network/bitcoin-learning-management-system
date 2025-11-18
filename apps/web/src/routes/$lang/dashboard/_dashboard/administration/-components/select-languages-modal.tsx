@@ -14,6 +14,13 @@ interface SelectLanguagesModalProps {
   course: CourseWithTodoTranslations;
 }
 
+interface UploadProgress {
+  progress: string;
+  totalFiles?: number;
+  processedFiles?: number;
+  currentFile?: string;
+}
+
 interface ModalState {
   selectedLanguages: string[];
   isStarting: boolean;
@@ -22,6 +29,7 @@ interface ModalState {
   hasExisting: boolean;
   overwriteWarning: boolean;
   uploadType: 'folder' | 'zip' | 'url' | null;
+  uploadProgress: UploadProgress | null;
 }
 
 const initialState: ModalState = {
@@ -32,6 +40,7 @@ const initialState: ModalState = {
   hasExisting: false,
   overwriteWarning: false,
   uploadType: null,
+  uploadProgress: null,
 };
 
 export const SelectLanguagesModal = ({
@@ -157,6 +166,77 @@ export const SelectLanguagesModal = ({
     [isValidUrl],
   );
 
+  /**
+   * Poll upload job status until completion or failure
+   */
+  const pollUploadJobStatus = useCallback(
+    async (jobId: string): Promise<{ uploadId: string } | null> => {
+      const maxAttempts = 120; // 10 minutes max (120 * 5s)
+      const pollInterval = 5000; // 5 seconds
+
+      for (let attempt = 0; attempt < maxAttempts; attempt++) {
+        try {
+          const statusResponse = await fetch(
+            `/api/upload-job-status/${jobId}`,
+            {
+              method: 'GET',
+              credentials: 'include',
+            },
+          );
+
+          if (!statusResponse.ok) {
+            if (statusResponse.status === 404) {
+              throw new Error('Upload job not found');
+            }
+            throw new Error(
+              `Status check failed: ${statusResponse.statusText}`,
+            );
+          }
+
+          const jobStatus = await statusResponse.json();
+
+          // Update progress in state for UI display
+          setState((prev) => ({
+            ...prev,
+            uploadProgress: {
+              progress: jobStatus.progress || 'Processing...',
+              totalFiles: jobStatus.totalFiles,
+              processedFiles: jobStatus.processedFiles,
+              currentFile: jobStatus.currentFile,
+            },
+          }));
+
+          if (jobStatus.status === 'completed') {
+            console.log('[Upload] Job completed successfully');
+            return { uploadId: jobStatus.uploadId };
+          }
+
+          if (jobStatus.status === 'failed') {
+            throw new Error(jobStatus.error || 'Upload failed');
+          }
+
+          // Still processing, wait before next poll
+          console.log(
+            `[Upload] Job still processing (${jobStatus.progress || 'uploading...'})`,
+          );
+          await new Promise((resolve) => setTimeout(resolve, pollInterval));
+        } catch (error) {
+          console.error('[Upload] Error polling job status:', error);
+          // Clear progress on error
+          setState((prev) => ({ ...prev, uploadProgress: null }));
+          throw error;
+        }
+      }
+
+      // Timeout after max attempts
+      setState((prev) => ({ ...prev, uploadProgress: null }));
+      throw new Error(
+        'Upload timed out after 10 minutes. Please try with smaller files.',
+      );
+    },
+    [],
+  );
+
   const handleStartTranslation = useCallback(async () => {
     // User must have chosen at least one language AND (uploaded files OR previous uploads exist OR provided URL)
     const readyToStart =
@@ -187,7 +267,7 @@ export const SelectLanguagesModal = ({
     setState((prev) => ({ ...prev, isStarting: true }));
 
     try {
-      // Step 1: Upload files
+      // Step 1: Start upload (returns immediately with jobId)
       const formData = new FormData();
       formData.append('courseId', course.id);
       formData.append('languages', JSON.stringify(state.selectedLanguages));
@@ -200,190 +280,113 @@ export const SelectLanguagesModal = ({
         formData.append('url', folderUrl);
       }
 
-      // Create AbortController with extended timeout for file uploads
-      const uploadController = new AbortController();
-      const uploadTimeoutId = setTimeout(
-        () => {
-          uploadController.abort();
-        },
-        10 * 60 * 1000,
-      ); // 10 minutes timeout for uploads
+      const uploadResponse = await fetch('/api/upload-translation-files', {
+        method: 'POST',
+        body: formData,
+        credentials: 'include',
+      });
 
-      let uploadResult: { uploadId: string; filesUploaded: number } | undefined;
-      try {
-        const uploadResponse = await fetch('/api/upload-translation-files', {
-          method: 'POST',
-          body: formData,
-          credentials: 'include',
-          signal: uploadController.signal,
-        });
-
-        clearTimeout(uploadTimeoutId);
-
-        if (!uploadResponse.ok) {
-          let errorMessage = uploadResponse.statusText;
-          try {
-            const errorData = await uploadResponse.json();
-            if (errorData.message) {
-              errorMessage = errorData.message;
-            }
-          } catch {
-            // If error response is not JSON, use default message
+      if (!uploadResponse.ok) {
+        let errorMessage = uploadResponse.statusText;
+        try {
+          const errorData = await uploadResponse.json();
+          if (errorData.message) {
+            errorMessage = errorData.message;
           }
-
-          // Show upload-specific error notification
-          customToast(
-            errorMessage.includes('timeout') ||
-              errorMessage.includes('timed out')
-              ? t(
-                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.uploadTimeoutError',
-                ) ||
-                  'Upload timed out after 10 minutes. Please try with smaller files or check your connection.'
-              : t(
-                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.uploadError',
-                ) || `Upload failed: ${errorMessage}`,
-            { color: 'warning' },
-          );
-
-          return;
+        } catch {
+          // If error response is not JSON, use default message
         }
 
-        uploadResult = await uploadResponse.json();
-
-        // Upload completed successfully - proceed to translation step without notification
-        // (final notification will be shown after translation starts)
-      } catch (uploadError) {
-        clearTimeout(uploadTimeoutId);
-        console.error('Error during file upload:', uploadError);
-
-        // Handle upload-specific errors
-        if (uploadError instanceof Error) {
-          if (uploadError.name === 'AbortError') {
-            customToast(
-              t(
-                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.uploadTimeoutError',
-              ) ||
-                'Upload timed out after 10 minutes. Please try with smaller files or check your connection.',
-              { color: 'warning' },
-            );
-          } else {
-            customToast(
-              t(
-                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.uploadError',
-              ) || 'Upload failed. Please check your files and try again.',
-              { color: 'warning' },
-            );
-          }
-        }
+        customToast(
+          t(
+            'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.uploadError',
+          ) || `Upload failed: ${errorMessage}`,
+          { color: 'warning' },
+        );
         return;
       }
 
-      // Step 2: Start translation (returns immediately with taskId)
-      const translationController = new AbortController();
-      const translationTimeoutId = setTimeout(() => {
-        translationController.abort();
-      }, 30 * 1000); // 30 seconds timeout (API returns immediately)
+      const uploadJobResponse = await uploadResponse.json();
+      const { jobId } = uploadJobResponse;
 
-      try {
-        const translationResponse = await fetch(
-          `/api/start-translation/${uploadResult!.uploadId}`,
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              languages: state.selectedLanguages,
-            }),
-            credentials: 'include',
-            signal: translationController.signal,
+      console.log('[Upload] Job started with ID:', jobId);
+
+      // Step 2: Poll upload job status until completion
+      const uploadResult = await pollUploadJobStatus(jobId);
+
+      if (!uploadResult) {
+        throw new Error('Upload job did not return upload ID');
+      }
+
+      console.log(
+        '[Upload] Upload completed, uploadId:',
+        uploadResult.uploadId,
+      );
+
+      // Clear upload progress after successful completion
+      setState((prev) => ({ ...prev, uploadProgress: null }));
+
+      // Step 3: Start translation (returns immediately)
+      const translationResponse = await fetch(
+        `/api/start-translation/${uploadResult.uploadId}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
           },
+          body: JSON.stringify({
+            languages: state.selectedLanguages,
+          }),
+          credentials: 'include',
+        },
+      );
+
+      if (!translationResponse.ok) {
+        let errorMessage = translationResponse.statusText;
+        try {
+          const errorData = await translationResponse.json();
+          if (errorData.message) {
+            errorMessage = errorData.message;
+          }
+        } catch {
+          // If error response is not JSON, use default message
+        }
+
+        customToast(
+          t(
+            'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.translationFailed',
+          ) || `Translation failed: ${errorMessage}`,
+          { color: 'warning' },
         );
+        return;
+      }
 
-        clearTimeout(translationTimeoutId);
+      await translationResponse.json();
 
-        if (!translationResponse.ok) {
-          let errorMessage = translationResponse.statusText;
-          try {
-            const errorData = await translationResponse.json();
-            if (errorData.message) {
-              errorMessage = errorData.message;
-            }
-          } catch {
-            // If error response is not JSON, use default message
-          }
+      // Show unified success message
+      const successMessage =
+        t(
+          'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.uploadAndTranslationStarted',
+        ) ||
+        'Files uploaded and translation started! The process may take several minutes for large courses. You can close this modal and check back later.';
 
-          // Show translation-specific error notification
-          customToast(
-            errorMessage.includes('timeout') ||
-              errorMessage.includes('timed out')
-              ? t(
-                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.timeoutError',
-                ) ||
-                  'Translation request timed out. Please try again or contact support.'
-              : t(
-                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.translationFailed',
-                ) || `Translation failed: ${errorMessage}`,
-            { color: 'warning' },
-          );
+      customToast(successMessage, { color: 'success' });
 
-          return;
-        }
-
-        // Translation started successfully (response doesn't include taskId as it's handled server-side)
-        await translationResponse.json();
-
-        // Show unified success message including upload and translation start
-        const successMessage = uploadResult!.filesUploaded
-          ? t(
-              'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.uploadAndTranslationStarted',
-            ) ||
-            'Files uploaded and translation started! The process may take several minutes for large courses. You can close this modal and check back later.'
-          : t(
-              'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.processingStarted',
-            ) ||
-            'Translation started! The process may take several minutes for large courses. You can close this modal and check back later.';
-
-        customToast(successMessage, { color: 'success' });
-
-        if (onSuccess) {
-          onSuccess();
-        } else {
-          onClose();
-        }
-      } catch (translationError) {
-        clearTimeout(translationTimeoutId);
-        console.error('Error during translation start:', translationError);
-
-        // Handle translation-specific errors
-        if (translationError instanceof Error) {
-          if (translationError.name === 'AbortError') {
-            customToast(
-              t(
-                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.timeoutError',
-              ) ||
-                'Translation request timed out. Please try again or contact support.',
-              { color: 'warning' },
-            );
-          } else {
-            customToast(
-              t(
-                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.translationFailed',
-              ) || 'Failed to start translation. Please try again.',
-              { color: 'warning' },
-            );
-          }
-        }
+      if (onSuccess) {
+        onSuccess();
+      } else {
+        onClose();
       }
     } catch (error) {
       console.error('Error in translation process:', error);
 
-      // Show general error notification
+      const errorMessage =
+        error instanceof Error ? error.message : 'Unknown error occurred';
+
       customToast(
         t(
           'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.networkError',
-        ) ||
-          'Network error occurred. Please check your connection and try again.',
+        ) || errorMessage,
         { color: 'warning' },
       );
     } finally {
@@ -399,6 +402,7 @@ export const SelectLanguagesModal = ({
     folderUrl,
     t,
     isValidUrl,
+    pollUploadJobStatus,
   ]);
 
   // Determine if translation can start (for button disabled state)
@@ -409,10 +413,14 @@ export const SelectLanguagesModal = ({
       (folderUrl.trim().length > 0 && isValidUrl(folderUrl)));
 
   const handleClose = useCallback(() => {
+    // Don't allow closing while upload is in progress
+    if (state.uploadProgress) {
+      return;
+    }
     setState(initialState);
     setFolderUrl('');
     onClose();
-  }, [onClose]);
+  }, [onClose, state.uploadProgress]);
 
   return (
     <CommonModal
@@ -424,235 +432,288 @@ export const SelectLanguagesModal = ({
       )}
       maxWidth="max-w-lg"
     >
-      <div className="w-full space-y-6">
-        {/* Course Information */}
-        <div className="text-center space-y-1">
-          <div>
-            <span className="text-sm font-medium text-gray-700">
-              {t(
-                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.course',
-              )}
-            </span>
-            <p className="text-base font-semibold">{course.courseName}</p>
+      {/* Show progress UI when uploading */}
+      {state.uploadProgress ? (
+        <div className="w-full space-y-6 py-8">
+          {/* Spinner */}
+          <div className="flex justify-center">
+            <Loader size="xl" />
           </div>
-          <div>
-            <span className="text-sm font-medium text-gray-700">
-              {t(
-                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.originalLanguage',
-              )}
-            </span>
-            <p className="text-base font-semibold">
-              {getLanguageName(course.originalLanguage)}
-            </p>
-            <p className="text-xs text-gray-600 mt-1">
-              {t(
-                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.englishFilesRequired',
-              ) || 'Please upload files in English only'}
-            </p>
-          </div>
-        </div>
 
-        {/* Language Selection */}
-        <div>
-          <h3 className="text-sm font-medium text-gray-700 mb-3 text-center">
-            {t(
-              'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.selectLanguages',
+          {/* Progress message */}
+          <div className="text-center space-y-2">
+            <p className="text-base font-medium text-gray-900">
+              {state.uploadProgress.progress}
+            </p>
+
+            {/* File counter */}
+            {state.uploadProgress.totalFiles !== undefined &&
+              state.uploadProgress.processedFiles !== undefined && (
+                <p className="text-sm text-gray-600">
+                  {state.uploadProgress.processedFiles} /{' '}
+                  {state.uploadProgress.totalFiles} files processed
+                </p>
+              )}
+
+            {/* Current file */}
+            {state.uploadProgress.currentFile && (
+              <p className="text-xs text-gray-500 truncate max-w-md mx-auto">
+                {state.uploadProgress.currentFile}
+              </p>
             )}
-          </h3>
-
-          {course.todoLanguages.length === 0 ? (
-            <p className="text-gray-500 text-center">
-              {t(
-                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.noLanguagesAvailable',
-              )}
-            </p>
-          ) : (
-            <div className="grid grid-cols-2 gap-2 max-h-40 overflow-y-auto">
-              {course.todoLanguages.map((language) => (
-                <label
-                  key={language}
-                  className={cn(
-                    'flex items-center p-2 rounded border cursor-pointer transition-colors',
-                    state.selectedLanguages.includes(language)
-                      ? 'bg-orange-50 border-orange-500 text-orange-700'
-                      : 'bg-gray-50 border-gray-300 hover:bg-gray-100',
-                  )}
-                >
-                  <input
-                    type="checkbox"
-                    checked={state.selectedLanguages.includes(language)}
-                    onChange={() => handleLanguageToggle(language)}
-                    className="sr-only"
-                  />
-                  <span className="text-sm font-medium">
-                    {getLanguageName(language)}
-                  </span>
-                </label>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Upload Section & Notice */}
-        <div className="space-y-4">
-          <h3 className="text-sm font-medium text-gray-700 text-center">
-            {t(
-              'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.uploadFolder',
-            )}
-          </h3>
-
-          {/* Hidden file inputs */}
-          <input
-            ref={folderInputRef}
-            type="file"
-            multiple
-            // non-standard attribute for folder selection
-            {...{ webkitdirectory: 'true', directory: 'true' }}
-            className="hidden"
-            onChange={handleFolderChange}
-          />
-
-          <input
-            ref={zipInputRef}
-            type="file"
-            accept=".zip"
-            className="hidden"
-            onChange={handleZipChange}
-          />
-
-          <div className="flex flex-col md:flex-row gap-3">
-            <div
-              className={cn(
-                'flex items-center rounded-lg overflow-hidden border transition-colors hover:shadow-sm',
-                state.uploadType === 'folder'
-                  ? 'border-orange-500 bg-orange-50'
-                  : 'border-gray-300',
-              )}
-            >
-              <button
-                type="button"
-                onClick={handleFolderInputClick}
-                className="flex items-center px-4 py-2 bg-orange-500 text-white font-medium hover:bg-orange-600 focus:bg-orange-600 transition-colors"
-              >
-                {t(
-                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.chooseFolder',
-                )}
-              </button>
-              <span className="flex-1 px-3 py-2 text-sm text-gray-600 truncate">
-                {state.uploadType === 'folder' && state.selectedFiles.length > 0
-                  ? `${state.selectedFiles.length} files selected`
-                  : t(
-                      'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.noFolderSelected',
-                    )}
-              </span>
-            </div>
-
-            <div
-              className={cn(
-                'flex items-center rounded-lg overflow-hidden border transition-colors hover:shadow-sm',
-                state.uploadType === 'zip'
-                  ? 'border-orange-500 bg-orange-50'
-                  : 'border-gray-300',
-              )}
-            >
-              <button
-                type="button"
-                onClick={handleZipInputClick}
-                className="flex items-center px-4 py-2 bg-orange-500 text-white font-medium hover:bg-orange-600 focus:bg-orange-600 transition-colors"
-              >
-                {t(
-                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.chooseZip',
-                )}
-              </button>
-              <span className="flex-1 px-3 py-2 text-sm text-gray-600 truncate">
-                {state.uploadType === 'zip' && state.selectedFiles.length > 0
-                  ? `${state.selectedFiles.length} ZIP file(s) selected`
-                  : t(
-                      'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.noZipSelected',
-                    )}
-              </span>
-            </div>
           </div>
 
-          {state.overwriteWarning && (
-            <p className="text-orange-600 text-xs" role="alert">
-              {t(
-                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.overwriteWarning',
-              )}
-            </p>
-          )}
-
-          {state.folderError && (
-            <p className="text-red-600 text-xs" role="alert">
-              {state.folderError}
-            </p>
-          )}
-
-          {/* Optional URL field */}
-          <div className="space-y-1">
-            <label
-              htmlFor="folderUrl"
-              className="block text-sm font-medium text-gray-700"
-            >
-              {t(
-                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.folderUrl',
-              )}
-            </label>
-            <Input
-              id="folderUrl"
-              type="url"
-              value={folderUrl}
-              onChange={(e) => handleUrlChange(e.target.value)}
-              placeholder="https://..."
-              className={cn(
-                state.uploadType === 'url' && 'border-orange-500 bg-orange-50',
-                state.folderError && folderUrl && 'border-red-500',
-              )}
-            />
-          </div>
-        </div>
-
-        {/* Info about existing uploads */}
-        {state.hasExisting && (
-          <p className="text-sm text-gray-700 text-center">
-            {t(
-              'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.existingUploadsInfo',
+          {/* Progress bar (optional) */}
+          {state.uploadProgress.totalFiles !== undefined &&
+            state.uploadProgress.processedFiles !== undefined &&
+            state.uploadProgress.totalFiles > 0 && (
+              <div className="w-full bg-gray-200 rounded-full h-2 max-w-md mx-auto">
+                <div
+                  className="bg-orange-500 h-2 rounded-full transition-all duration-300"
+                  style={{
+                    width: `${(state.uploadProgress.processedFiles / state.uploadProgress.totalFiles) * 100}%`,
+                  }}
+                />
+              </div>
             )}
+
+          <p className="text-sm text-gray-500 text-center">
+            This may take several minutes. Please do not close this window.
           </p>
-        )}
-
-        {/* Action Buttons */}
-        <div className="flex gap-3 pt-4">
-          <button
-            type="button"
-            onClick={handleClose}
-            className="flex-1 py-2 px-4 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
-          >
-            {t(
-              'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.cancel',
-            )}
-          </button>
-          <button
-            type="button"
-            onClick={handleStartTranslation}
-            disabled={!canStartTranslation || state.isStarting}
-            className="flex-1 py-2 px-4 bg-orange-500 text-white rounded-lg hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
-          >
-            {state.isStarting ? (
-              <>
-                <Loader size="s" className="mr-2" />
-                {t(
-                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.startingTranslation',
-                )}
-              </>
-            ) : (
-              t(
-                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.startTranslation',
-              )
-            )}
-          </button>
         </div>
-      </div>
+      ) : (
+        <div className="w-full space-y-6">
+          {/* Course Information */}
+          <div className="text-center space-y-1">
+            <div>
+              <span className="text-sm font-medium text-gray-700">
+                {t(
+                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.course',
+                )}
+              </span>
+              <p className="text-base font-semibold">{course.courseName}</p>
+            </div>
+            <div>
+              <span className="text-sm font-medium text-gray-700">
+                {t(
+                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.originalLanguage',
+                )}
+              </span>
+              <p className="text-base font-semibold">
+                {getLanguageName(course.originalLanguage)}
+              </p>
+              <p className="text-xs text-gray-600 mt-1">
+                {t(
+                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.englishFilesRequired',
+                ) || 'Please upload files in English only'}
+              </p>
+            </div>
+          </div>
+
+          {/* Language Selection */}
+          <div>
+            <h3 className="text-sm font-medium text-gray-700 mb-3 text-center">
+              {t(
+                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.selectLanguages',
+              )}
+            </h3>
+
+            {course.todoLanguages.length === 0 ? (
+              <p className="text-gray-500 text-center">
+                {t(
+                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.noLanguagesAvailable',
+                )}
+              </p>
+            ) : (
+              <div className="grid grid-cols-2 gap-2 max-h-40 overflow-y-auto">
+                {course.todoLanguages.map((language) => (
+                  <label
+                    key={language}
+                    className={cn(
+                      'flex items-center p-2 rounded border cursor-pointer transition-colors',
+                      state.selectedLanguages.includes(language)
+                        ? 'bg-orange-50 border-orange-500 text-orange-700'
+                        : 'bg-gray-50 border-gray-300 hover:bg-gray-100',
+                    )}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={state.selectedLanguages.includes(language)}
+                      onChange={() => handleLanguageToggle(language)}
+                      className="sr-only"
+                    />
+                    <span className="text-sm font-medium">
+                      {getLanguageName(language)}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Upload Section & Notice */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-medium text-gray-700 text-center">
+              {t(
+                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.uploadFolder',
+              )}
+            </h3>
+
+            {/* Hidden file inputs */}
+            <input
+              ref={folderInputRef}
+              type="file"
+              multiple
+              // non-standard attribute for folder selection
+              {...{ webkitdirectory: 'true', directory: 'true' }}
+              className="hidden"
+              onChange={handleFolderChange}
+            />
+
+            <input
+              ref={zipInputRef}
+              type="file"
+              accept=".zip"
+              className="hidden"
+              onChange={handleZipChange}
+            />
+
+            <div className="flex flex-col md:flex-row gap-3">
+              <div
+                className={cn(
+                  'flex items-center rounded-lg overflow-hidden border transition-colors hover:shadow-sm',
+                  state.uploadType === 'folder'
+                    ? 'border-orange-500 bg-orange-50'
+                    : 'border-gray-300',
+                )}
+              >
+                <button
+                  type="button"
+                  onClick={handleFolderInputClick}
+                  className="flex items-center px-4 py-2 bg-orange-500 text-white font-medium hover:bg-orange-600 focus:bg-orange-600 transition-colors"
+                >
+                  {t(
+                    'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.chooseFolder',
+                  )}
+                </button>
+                <span className="flex-1 px-3 py-2 text-sm text-gray-600 truncate">
+                  {state.uploadType === 'folder' &&
+                  state.selectedFiles.length > 0
+                    ? `${state.selectedFiles.length} files selected`
+                    : t(
+                        'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.noFolderSelected',
+                      )}
+                </span>
+              </div>
+
+              <div
+                className={cn(
+                  'flex items-center rounded-lg overflow-hidden border transition-colors hover:shadow-sm',
+                  state.uploadType === 'zip'
+                    ? 'border-orange-500 bg-orange-50'
+                    : 'border-gray-300',
+                )}
+              >
+                <button
+                  type="button"
+                  onClick={handleZipInputClick}
+                  className="flex items-center px-4 py-2 bg-orange-500 text-white font-medium hover:bg-orange-600 focus:bg-orange-600 transition-colors"
+                >
+                  {t(
+                    'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.chooseZip',
+                  )}
+                </button>
+                <span className="flex-1 px-3 py-2 text-sm text-gray-600 truncate">
+                  {state.uploadType === 'zip' && state.selectedFiles.length > 0
+                    ? `${state.selectedFiles.length} ZIP file(s) selected`
+                    : t(
+                        'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.noZipSelected',
+                      )}
+                </span>
+              </div>
+            </div>
+
+            {state.overwriteWarning && (
+              <p className="text-orange-600 text-xs" role="alert">
+                {t(
+                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.overwriteWarning',
+                )}
+              </p>
+            )}
+
+            {state.folderError && (
+              <p className="text-red-600 text-xs" role="alert">
+                {state.folderError}
+              </p>
+            )}
+
+            {/* Optional URL field */}
+            <div className="space-y-1">
+              <label
+                htmlFor="folderUrl"
+                className="block text-sm font-medium text-gray-700"
+              >
+                {t(
+                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.folderUrl',
+                )}
+              </label>
+              <Input
+                id="folderUrl"
+                type="url"
+                value={folderUrl}
+                onChange={(e) => handleUrlChange(e.target.value)}
+                placeholder="https://..."
+                className={cn(
+                  state.uploadType === 'url' &&
+                    'border-orange-500 bg-orange-50',
+                  state.folderError && folderUrl && 'border-red-500',
+                )}
+              />
+            </div>
+          </div>
+
+          {/* Info about existing uploads */}
+          {state.hasExisting && (
+            <p className="text-sm text-gray-700 text-center">
+              {t(
+                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.existingUploadsInfo',
+              )}
+            </p>
+          )}
+
+          {/* Action Buttons */}
+          <div className="flex gap-3 pt-4">
+            <button
+              type="button"
+              onClick={handleClose}
+              className="flex-1 py-2 px-4 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+            >
+              {t(
+                'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.cancel',
+              )}
+            </button>
+            <button
+              type="button"
+              onClick={handleStartTranslation}
+              disabled={!canStartTranslation || state.isStarting}
+              className="flex-1 py-2 px-4 bg-orange-500 text-white rounded-lg hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
+            >
+              {state.isStarting ? (
+                <>
+                  <Loader size="s" className="mr-2" />
+                  {t(
+                    'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.startingTranslation',
+                  )}
+                </>
+              ) : (
+                t(
+                  'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.startTranslation',
+                )
+              )}
+            </button>
+          </div>
+        </div>
+      )}
     </CommonModal>
   );
 };

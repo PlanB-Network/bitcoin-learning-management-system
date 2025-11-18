@@ -1,3 +1,4 @@
+import { randomUUID } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import {
@@ -14,6 +15,7 @@ import {
 } from '@blms/service-content';
 import type { Router } from 'express';
 import formidable from 'formidable';
+import { LRUCache } from 'lru-cache';
 import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest, InternalServerError } from '#src/errors.js';
 import { expressAuthMiddleware } from '#src/middlewares/auth.js';
@@ -42,6 +44,25 @@ const ALLOWED_DOWNLOAD_HOSTNAMES = (
   .split(',')
   .map((h) => h.trim())
   .filter(Boolean);
+
+// In-memory LRU cache for upload job status (no persistence needed for temporary jobs)
+interface UploadJobStatus {
+  jobId: string;
+  courseId: string;
+  status: 'processing' | 'completed' | 'failed';
+  progress?: string;
+  error?: string;
+  uploadId?: string;
+  uploadCount?: number;
+  totalFiles?: number;
+  processedFiles?: number;
+  currentFile?: string;
+}
+
+const uploadJobs = new LRUCache<string, UploadJobStatus>({
+  max: 100, // Max 100 concurrent upload jobs
+  ttl: 1000 * 60 * 60, // 1 hour TTL
+});
 
 const receiveUploadForm = (req: any): Promise<UploadFormData> => {
   return new Promise<UploadFormData>((resolve, reject) => {
@@ -282,217 +303,6 @@ export const createRestTranslationUploadRoutes = async (
     }
   };
 
-  const processFileUpload = async (
-    uid: string,
-    courseId: string,
-    languages: string[],
-    initialFiles: formidable.File[],
-  ) => {
-    // Check existing uploads for this course
-    const existingUploads = await getUploadsService(courseId);
-
-    // Since we now assume all files are in English, we hardcode the original language
-    const originalLanguage = 'en';
-
-    const filesProvided = initialFiles.length > 0;
-
-    if (!filesProvided && existingUploads.length === 0) {
-      throw new BadRequest(
-        'No files provided and no existing uploads found for this course',
-      );
-    }
-
-    // If no new files provided, return existing upload info
-    if (!filesProvided) {
-      return {
-        uploadId: `existing-${courseId}`,
-        courseId,
-        languages,
-        originalLanguage,
-        filesUploaded: false,
-        message: 'Using existing uploads',
-      };
-    }
-
-    // If new files are provided and uploads already exist, overwrite by deleting old rows AND S3 files
-    if (filesProvided && existingUploads.length > 0) {
-      // Delete S3 files first
-      await deleteS3FilesForCourse(courseId, originalLanguage);
-
-      // Then delete database records
-      await deleteUploadsService(courseId);
-    }
-
-    const files = initialFiles;
-
-    // Log extracted files for debugging
-    console.log(
-      `[UPLOAD] Processing ${files.length} files for course ${courseId}`,
-    );
-    for (const file of files) {
-      console.log(
-        `[UPLOAD] File: ${file.originalFilename}, MIME: ${file.mimetype}`,
-      );
-    }
-
-    // Organize files per chapter key "part.chapter"
-    const chapterGroups = new Map<string, ChapterGroup>();
-
-    for (const file of files) {
-      const relativePath = file.originalFilename ?? (file as any).newFilename;
-      const chapterInfo = parseChapterKey(relativePath);
-
-      if (!chapterInfo) {
-        // Skip files not matching expected pattern
-        console.warn(
-          `[UPLOAD] Skipping file (no chapter pattern): ${relativePath}`,
-        );
-        continue;
-      }
-
-      const { partIndex, chapterIndex } = chapterInfo;
-      const key = `${partIndex}.${chapterIndex}`;
-
-      let group = chapterGroups.get(key);
-      if (!group) {
-        group = { txts: [] };
-        chapterGroups.set(key, group);
-      }
-
-      const fileType = categorizeFile(file);
-      if (fileType === 'pptx') {
-        group.pptx = file;
-      } else if (fileType === 'txt') {
-        group.txts.push(file);
-      }
-    }
-
-    if (chapterGroups.size === 0) {
-      throw new BadRequest('No valid chapter files detected');
-    }
-
-    const uploadResults: any[] = [];
-
-    for (const [key, group] of chapterGroups.entries()) {
-      const [partIdxStr, chapIdxStr] = key.split('.');
-      const partIndex = Number(partIdxStr);
-      const chapterIndex = Number(chapIdxStr);
-
-      let partId: string;
-      let chapterId: string;
-      try {
-        const mapping = await getPartAndChapterIdsService(
-          courseId,
-          partIndex,
-          chapterIndex,
-        );
-        partId = mapping.partId;
-        chapterId = mapping.chapterId;
-      } catch (_err) {
-        // Skip chapters that don't exist in DB
-        console.warn(
-          `Skipping upload for unmapped part ${partIndex} chapter ${chapterIndex}`,
-        );
-        continue;
-      }
-
-      let pptxKey: string | undefined;
-
-      // upload pptx once per chapter (or skip if absent)
-      if (group.pptx) {
-        const pptFile = group.pptx;
-        const base = path.basename(pptFile.originalFilename ?? 'upload.pptx');
-        pptxKey = buildS3Key(
-          'pptx',
-          courseId,
-          originalLanguage,
-          partId,
-          chapterId,
-          base,
-        );
-        console.log(`[UPLOAD] Uploading PPTX to S3: ${pptxKey}`);
-
-        // Check file size before upload
-        const stats = fs.statSync(pptFile.filepath);
-        console.log(`[UPLOAD] PPTX file size: ${stats.size} bytes`);
-
-        if (stats.size === 0) {
-          console.error(
-            `[UPLOAD] PPTX file is empty: ${pptFile.originalFilename}`,
-          );
-          continue;
-        }
-
-        const stream = fs.createReadStream(pptFile.filepath);
-
-        await dependencies.s3.upload(pptxKey, stream, {
-          contentType: TRANSLATION_UPLOAD_CONSTANTS.MIME_TYPES.PPTX,
-        });
-
-        // After successful upload → convert to PNG slides via ConvertAPI
-        try {
-          console.log(`[UPLOAD] Starting PPTX conversion for: ${pptxKey}`);
-          // Pass the exact pptxKey that was used for upload
-          // ConvertAPI should use this exact key to find the file
-          await convertPptxToPngs(dependencies, pptxKey);
-          console.log(`[UPLOAD] PPTX conversion completed for: ${pptxKey}`);
-        } catch (err) {
-          console.error(
-            `[UPLOAD] Failed to convert PPTX to PNGs via ConvertAPI for ${pptxKey}:`,
-            err,
-          );
-        }
-      }
-
-      // each txt => one DB row
-      for (const txt of group.txts) {
-        const baseTxt = path.basename(txt.originalFilename ?? 'slide.txt');
-        const txtKey = buildS3Key(
-          'text',
-          courseId,
-          originalLanguage,
-          partId,
-          chapterId,
-          baseTxt,
-        );
-        const stream = fs.createReadStream(txt.filepath);
-
-        await dependencies.s3.upload(txtKey, stream, {
-          contentType: TRANSLATION_UPLOAD_CONSTANTS.MIME_TYPES.TEXT,
-        });
-
-        const uploadRecord = await (createUpload as any)(
-          courseId,
-          originalLanguage,
-          languages,
-          uid,
-          partId,
-          chapterId,
-          pptxKey,
-          txtKey,
-        );
-
-        await updateUpload(uploadRecord.id, pptxKey, txtKey, true, undefined);
-        uploadResults.push(uploadRecord);
-      }
-    }
-
-    // Return the first upload record ID as the upload identifier
-    const uploadId =
-      uploadResults.length > 0 ? uploadResults[0].id : `existing-${courseId}`;
-
-    return {
-      uploadId,
-      courseId,
-      languages,
-      originalLanguage,
-      filesUploaded: true,
-      uploadCount: uploadResults.length,
-      uploadRecords: uploadResults,
-      message: 'Files uploaded successfully',
-    };
-  };
-
   /**
    * Background task to start translation and poll for results
    */
@@ -636,7 +446,269 @@ export const createRestTranslationUploadRoutes = async (
     };
   };
 
-  // Endpoint 1: Upload files only
+  /**
+   * Background task to process file upload with ConvertAPI
+   * Includes progress tracking for better UX
+   */
+  async function processFileUploadInBackground(
+    jobId: string,
+    uid: string,
+    courseId: string,
+    languages: string[],
+    initialFiles: formidable.File[],
+  ) {
+    try {
+      console.log(
+        `[Upload] Starting background upload job ${jobId} for course ${courseId}`,
+      );
+
+      // Count total files (PPTX + TXT)
+      const totalFiles = initialFiles.length;
+
+      // Update status to processing with initial progress
+      uploadJobs.set(jobId, {
+        jobId,
+        courseId,
+        status: 'processing',
+        progress: 'Preparing files for upload...',
+        totalFiles,
+        processedFiles: 0,
+      });
+
+      // Check existing uploads
+      const existingUploads = await getUploadsService(courseId);
+      const originalLanguage = 'en';
+      const filesProvided = initialFiles.length > 0;
+
+      if (!filesProvided && existingUploads.length === 0) {
+        throw new BadRequest('No files provided and no existing uploads found');
+      }
+
+      // If no new files, return existing upload info
+      if (!filesProvided) {
+        uploadJobs.set(jobId, {
+          jobId,
+          courseId,
+          status: 'completed',
+          uploadId: `existing-${courseId}`,
+          progress: 'Using existing uploads',
+        });
+        return;
+      }
+
+      // Delete old uploads if they exist
+      if (filesProvided && existingUploads.length > 0) {
+        uploadJobs.set(jobId, {
+          jobId,
+          courseId,
+          status: 'processing',
+          progress: 'Cleaning up old uploads...',
+          totalFiles,
+          processedFiles: 0,
+        });
+
+        await deleteS3FilesForCourse(courseId, originalLanguage);
+        await deleteUploadsService(courseId);
+      }
+
+      // Organize files per chapter
+      const chapterGroups = new Map<string, ChapterGroup>();
+      for (const file of initialFiles) {
+        const relativePath = file.originalFilename ?? (file as any).newFilename;
+        const chapterInfo = parseChapterKey(relativePath);
+
+        if (!chapterInfo) {
+          console.warn(
+            `[UPLOAD] Skipping file (no chapter pattern): ${relativePath}`,
+          );
+          continue;
+        }
+
+        const { partIndex, chapterIndex } = chapterInfo;
+        const key = `${partIndex}.${chapterIndex}`;
+
+        let group = chapterGroups.get(key);
+        if (!group) {
+          group = { txts: [] };
+          chapterGroups.set(key, group);
+        }
+
+        const fileType = categorizeFile(file);
+        if (fileType === 'pptx') {
+          group.pptx = file;
+        } else if (fileType === 'txt') {
+          group.txts.push(file);
+        }
+      }
+
+      if (chapterGroups.size === 0) {
+        throw new BadRequest('No valid chapter files detected');
+      }
+
+      const uploadResults: any[] = [];
+      let processedFiles = 0;
+
+      // Process each chapter group
+      for (const [key, group] of chapterGroups.entries()) {
+        const [partIdxStr, chapIdxStr] = key.split('.');
+        const partIndex = Number(partIdxStr);
+        const chapterIndex = Number(chapIdxStr);
+
+        let partId: string;
+        let chapterId: string;
+        try {
+          const mapping = await getPartAndChapterIdsService(
+            courseId,
+            partIndex,
+            chapterIndex,
+          );
+          partId = mapping.partId;
+          chapterId = mapping.chapterId;
+        } catch (_err) {
+          console.warn(
+            `Skipping unmapped part ${partIndex} chapter ${chapterIndex}`,
+          );
+          continue;
+        }
+
+        let pptxKey: string | undefined;
+
+        // Upload PPTX if present
+        if (group.pptx) {
+          const pptFile = group.pptx;
+          const base = path.basename(pptFile.originalFilename ?? 'upload.pptx');
+
+          uploadJobs.set(jobId, {
+            jobId,
+            courseId,
+            status: 'processing',
+            progress: `Uploading PPTX for chapter ${chapterIndex}...`,
+            totalFiles,
+            processedFiles,
+            currentFile: base,
+          });
+
+          pptxKey = buildS3Key(
+            'pptx',
+            courseId,
+            originalLanguage,
+            partId,
+            chapterId,
+            base,
+          );
+          const stats = fs.statSync(pptFile.filepath);
+
+          if (stats.size === 0) {
+            console.error(
+              `[UPLOAD] PPTX file is empty: ${pptFile.originalFilename}`,
+            );
+            continue;
+          }
+
+          const stream = fs.createReadStream(pptFile.filepath);
+          await dependencies.s3.upload(pptxKey, stream, {
+            contentType: TRANSLATION_UPLOAD_CONSTANTS.MIME_TYPES.PPTX,
+          });
+
+          processedFiles++;
+
+          // Convert PPTX to PNG
+          uploadJobs.set(jobId, {
+            jobId,
+            courseId,
+            status: 'processing',
+            progress: `Converting PPTX to images for chapter ${chapterIndex}...`,
+            totalFiles,
+            processedFiles,
+            currentFile: base,
+          });
+
+          try {
+            await convertPptxToPngs(dependencies, pptxKey);
+          } catch (err) {
+            console.error(
+              `[UPLOAD] Failed to convert PPTX to PNGs for ${pptxKey}:`,
+              err,
+            );
+          }
+        }
+
+        // Upload TXT files
+        for (const txt of group.txts) {
+          const baseTxt = path.basename(txt.originalFilename ?? 'slide.txt');
+
+          uploadJobs.set(jobId, {
+            jobId,
+            courseId,
+            status: 'processing',
+            progress: `Uploading text file for chapter ${chapterIndex}...`,
+            totalFiles,
+            processedFiles,
+            currentFile: baseTxt,
+          });
+
+          const txtKey = buildS3Key(
+            'text',
+            courseId,
+            originalLanguage,
+            partId,
+            chapterId,
+            baseTxt,
+          );
+          const stream = fs.createReadStream(txt.filepath);
+
+          await dependencies.s3.upload(txtKey, stream, {
+            contentType: TRANSLATION_UPLOAD_CONSTANTS.MIME_TYPES.TEXT,
+          });
+
+          const uploadRecord = await (createUpload as any)(
+            courseId,
+            originalLanguage,
+            languages,
+            uid,
+            partId,
+            chapterId,
+            pptxKey,
+            txtKey,
+          );
+
+          await updateUpload(uploadRecord.id, pptxKey, txtKey, true, undefined);
+          uploadResults.push(uploadRecord);
+
+          processedFiles++;
+        }
+      }
+
+      const uploadId =
+        uploadResults.length > 0 ? uploadResults[0].id : `existing-${courseId}`;
+
+      // Mark as completed
+      uploadJobs.set(jobId, {
+        jobId,
+        courseId,
+        status: 'completed',
+        uploadId,
+        uploadCount: uploadResults.length,
+        totalFiles,
+        processedFiles,
+        progress: 'Upload completed successfully!',
+      });
+
+      console.log(`[Upload] ✓ Job ${jobId} completed successfully`);
+    } catch (error) {
+      console.error(`[Upload] Job ${jobId} failed:`, error);
+
+      // Mark as failed
+      uploadJobs.set(jobId, {
+        jobId,
+        courseId,
+        status: 'failed',
+        error: error instanceof Error ? error.message : 'Unknown error',
+      });
+    }
+  }
+
+  // Endpoint 1: Upload files only (returns immediately with jobId)
   router.post(
     '/upload-translation-files',
     expressAuthMiddleware,
@@ -647,10 +719,38 @@ export const createRestTranslationUploadRoutes = async (
       }
 
       receiveUploadForm(req)
-        .then(({ courseId, languages, files: initialFiles }) =>
-          processFileUpload(uid, courseId, languages, initialFiles),
-        )
-        .then((result) => res.json(result))
+        .then(({ courseId, languages, files: initialFiles }) => {
+          // Generate unique job ID
+          const jobId = randomUUID();
+
+          // Initialize job status
+          uploadJobs.set(jobId, {
+            jobId,
+            courseId,
+            status: 'processing',
+            progress: 'Starting upload...',
+          });
+
+          // Start background processing (fire and forget)
+          processFileUploadInBackground(
+            jobId,
+            uid,
+            courseId,
+            languages,
+            initialFiles,
+          ).catch((error) => {
+            console.error('[Upload] Background upload failed:', error);
+          });
+
+          // Return immediately with jobId
+          res.status(202).json({
+            jobId,
+            courseId,
+            status: 'processing',
+            message:
+              'Upload started successfully. Use /upload-job-status/:jobId to check progress.',
+          });
+        })
         .catch(next);
     },
   );
@@ -702,6 +802,36 @@ export const createRestTranslationUploadRoutes = async (
       } catch (error) {
         console.error('[Upload] Error getting course uploads:', error);
         next(new InternalServerError('Failed to get course uploads'));
+      }
+    },
+  );
+
+  // Endpoint to check upload job status (for polling during background upload)
+  router.get(
+    '/upload-job-status/:jobId',
+    expressAuthMiddleware,
+    async (req, res, next) => {
+      const { jobId } = req.params;
+
+      if (!jobId) {
+        return next(new BadRequest('Job ID is required'));
+      }
+
+      try {
+        const job = uploadJobs.get(jobId);
+
+        if (!job) {
+          return res.status(404).json({
+            error: 'Job not found',
+            message:
+              'Upload job not found. It may have expired or never existed.',
+          });
+        }
+
+        res.json(job);
+      } catch (error) {
+        console.error('[Upload] Error checking job status:', error);
+        next(new InternalServerError('Failed to check upload job status'));
       }
     },
   );
