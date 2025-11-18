@@ -104,10 +104,10 @@ function ProgramElement({
 }) {
   return (
     <div className="flex flex-row gap-3 items-center">
-      <div className="min-w-12 flex items-center justify-center bg-orange-50 rounded-full">
-        <img className="size-8 m-4" src={icon} alt="" />
+      <div className="w-fit min-w-fit flex items-center justify-center bg-orange-50 rounded-full">
+        <img className="size-4 md:size-6 m-3 md:m-4" src={icon} alt="" />
       </div>
-      <div className="w-full">
+      <div className="grow">
         <p className="label-strong md:title-base text-orange-500">{title}</p>
         <p className="body-small mg:body-base">{description}</p>
       </div>
