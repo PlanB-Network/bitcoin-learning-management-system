@@ -15,7 +15,7 @@
       "request": "launch",
       "type": "chrome",
       "url": "http://localhost:8181",
-      "webRoot": "${workspaceFolder}/apps/web/src"
+      "webRoot": "${workspaceFolder}/apps/academy/src"
     }
   ],
   "version": "0.2.0"

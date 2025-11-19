@@ -80,17 +80,17 @@ services:
       <<: *healthcheck
       test: ['CMD', 'nc', '-zv', 'localhost', '3000']
 
-  web:
+  academy:
     <<: *defaults
     build: .
     user: "${UID:-1000}:${GID:-1000}"
-    command: pnpm turbo run dev --env-mode=loose --filter='@blms/web'
+    command: pnpm turbo run dev --env-mode=loose --filter='@blms/academy'
     ports:
       - 8181:8181
     volumes:
-      - ./apps/web:/home/node/apps/web
+      - ./apps/academy:/home/node/apps/academy
       - ./packages:/home/node/packages
-      - /home/node/apps/web/node_modules/
+      - /home/node/apps/academy/node_modules/
       - cdn:$CDN_PATH
     depends_on:
       - api

@@ -443,7 +443,7 @@
   ],
   "i18n-ally.keystyle": "nested",
   "i18n-ally.localesPaths": [
-    "apps/web/public/locales",
+    "apps/academy/public/locales",
     "apps/network/public/locales"
   ],
   "i18n-ally.sortKeys": true,

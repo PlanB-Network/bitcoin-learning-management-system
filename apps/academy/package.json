@@ -84,7 +84,7 @@
   "imports": {
     "#src/*": "./src/*"
   },
-  "name": "@blms/web",
+  "name": "@blms/academy",
   "scripts": {
     "build": "tsc --build tsconfig.app.json && vite build --mode production",
     "check-types": "tsc --noEmit --project tsconfig.app.json",

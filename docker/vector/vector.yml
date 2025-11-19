@@ -27,7 +27,7 @@ transforms:
     source: |
       del(.stream)
       del(.source_type)
-      .service = del(.label."com.docker.compose.service") # api / web / ...
+      .service = del(.label."com.docker.compose.service") # api / academy / ...
       .project = del(.label."com.docker.compose.project") # mainnet / testnet
       .container_number = del(.label."com.docker.compose.container-number")
       .platform = "Docker"
@@ -104,35 +104,35 @@ transforms:
       .message = format_timestamp!(.old.timestamp, "%Y-%m-%dT%H:%M:%S%.3fZ") + " " + .old.message ?? ""
       del(.old)
 
-  # Web logs
-  web_filter:
+  # academy logs
+  academy_filter:
     inputs:
       - docker_remap
     type: 'filter'
-    condition: '.service == "web"'
+    condition: '.service == "academy"'
 
-  web_remap:
+  academy_remap:
     inputs:
-      - web_filter
+      - academy_filter
     type: 'remap'
     source: |
-      # Replace prepending iso date (web is an nginx service in production)
+      # Replace prepending iso date (academy is an nginx service in production)
       .message = replace!(.message, r'^[\d-]+T[\d:.]+Z\s+', "")
       .message = replace(.message, r'^[\d\/]+ [\d:.]+ ', "")
       # Remove turbo dev tag
-      .message = replace(.message, "@blms/web:dev: ", "")
+      .message = replace(.message, "@blms/academy:dev: ", "")
 
-  web_remap_filter_empty:
+  academy_remap_filter_empty:
     inputs:
-      - web_remap
+      - academy_remap
     type: 'filter'
     condition:  |
       message = string(.message) ?? ""
       length(strip_whitespace(message)) > 0
 
-  web_light_remap:
+  academy_light_remap:
     inputs:
-      - web_remap_filter_empty
+      - academy_remap_filter_empty
     type: 'remap'
     source: | # Keep only message and timestamp
       .old = del(.)
@@ -355,7 +355,7 @@ transforms:
   # Merge all remaps into one
   all_remap:
     inputs:
-      - web_remap_filter_empty
+      - academy_remap_filter_empty
       - cdn_remap
       - api_multiline_merge
       - postgres_multiline_merge
@@ -449,20 +449,20 @@ sinks:
     encoding:
       codec: text
 
-  # Web output
-  web:
+  # Academy output
+  academy:
     inputs:
-      - web_remap_filter_empty
+      - academy_remap_filter_empty
     type: 'file'
-    path: '/var/log/vector/%Y-%m-%d/full/web.log'
+    path: '/var/log/vector/%Y-%m-%d/full/academy.log'
     encoding:
       codec: json
 
-  web_light:
+  academy_light:
     inputs:
-      - web_light_remap
+      - academy_light_remap
     type: 'file'
-    path: '/var/log/vector/%Y-%m-%d/light/web.log'
+    path: '/var/log/vector/%Y-%m-%d/light/academy.log'
     encoding:
       codec: text
 

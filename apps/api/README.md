@@ -1,6 +1,6 @@
 # BLMS API
 
-Backend API service for the Bitcoin Learning Management System, providing tRPC endpoints for both web and contribute applications.
+Backend API service for the Bitcoin Learning Management System, providing tRPC endpoints for both academy and contribute applications.
 
 ## Architecture
 

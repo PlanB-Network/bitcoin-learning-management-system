@@ -8,7 +8,7 @@ The web app has a complete authentication system that can be directly reused:
 
 ### Authentication Components
 
-Located in `apps/web/src/components/AuthModals/`:
+Located in `apps/academy/src/components/AuthModals/`:
 
 - **auth-modal.tsx**: Main modal wrapper for authentication
 - **register.tsx**: Registration form component
@@ -18,7 +18,7 @@ Located in `apps/web/src/components/AuthModals/`:
 
 ### Authentication Context
 
-Located in `apps/web/src/providers/`:
+Located in `apps/academy/src/providers/`:
 
 - **auth.tsx**: Authentication state management
   - Manages modal state (open/closed)
@@ -26,7 +26,7 @@ Located in `apps/web/src/providers/`:
 
 ## Header Components
 
-Located in `apps/web/src/components/Header/`:
+Located in `apps/academy/src/components/Header/`:
 
 - **header.tsx**: Main header component with navigation
 - **language-selector.tsx**: Language selection dropdown
@@ -39,7 +39,7 @@ Located in `apps/web/src/components/Header/`:
 
 ## Hooks
 
-Located in `apps/web/src/hooks/`:
+Located in `apps/academy/src/hooks/`:
 
 - **use-disclosure.ts**: Toggle state management (open/closed)
 - **use-greater.ts**: Media query hook for larger screens
@@ -49,7 +49,7 @@ Located in `apps/web/src/hooks/`:
 
 ## Providers
 
-Located in `apps/web/src/providers/`:
+Located in `apps/academy/src/providers/`:
 
 - **app.tsx**: Main application provider
   - Wraps the application with necessary context providers
@@ -64,7 +64,7 @@ Located in `apps/web/src/providers/`:
 
 ## Utilities
 
-Located in `apps/web/src/utils/`:
+Located in `apps/academy/src/utils/`:
 
 - **i18n.ts**: Internationalization setup and language constants
 - **trpc.ts**: tRPC client configuration
@@ -78,8 +78,8 @@ Located in `apps/web/src/utils/`:
 
 The web app has a comprehensive internationalization system that can be reused:
 
-- **i18n setup**: Located in `apps/web/src/utils/i18n.ts`
-- **Translation files**: Located in `apps/web/public/locales/`
+- **i18n setup**: Located in `apps/academy/src/utils/i18n.ts`
+- **Translation files**: Located in `apps/academy/public/locales/`
   - Existing translations for authentication, navigation, and common UI elements
   - Language detection and switching functionality
 

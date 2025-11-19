@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Script to run the web app through the nginx server in order to test the nginx configuration
+# Script to run the academy app through the nginx server in order to test the nginx configuration
 
 set -e
 

@@ -29,7 +29,7 @@ bitcoin-learning-management-system/
 
 ## Applications
 
-### Web Application (`apps/web`)
+### Web Application (`apps/academy`)
 
 The main web application serves as the primary interface for users to access educational content.
 

@@ -16,7 +16,7 @@ This directory contains comprehensive documentation for the Bitcoin Learning Man
 
 The BLMS is built as a monorepo using pnpm workspaces, consisting of multiple applications:
 
-- **Web Application** (`apps/web`) - The main user-facing application for accessing educational content
+- **Web Application** (`apps/academy`) - The main user-facing application for accessing educational content
 - **API Application** (`apps/api`) - Backend services and endpoints for both web and contribute applications
 - **Contribute Application** (`apps/contribute`) - Platform for contributors to manage and translate content
 
@@ -65,7 +65,7 @@ The BLMS includes a comprehensive translation management system:
 
 ## Application Structure
 
-### Web Application (`apps/web`)
+### Web Application (`apps/academy`)
 
 Main user-facing application with:
 

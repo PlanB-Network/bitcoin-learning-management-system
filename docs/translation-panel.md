@@ -58,7 +58,7 @@ classDiagram
 ### Route Structure
 
 ```
-apps/web/src/routes/$lang/dashboard/_dashboard/administration/
+apps/academy/src/routes/$lang/dashboard/_dashboard/administration/
 ├── translation-panel/
 │   ├── index.tsx                 # Router entry, renders <DashboardAdministrationTranslationPanel/>
 │   ├── user/$userId.tsx          # Contributor details page
@@ -240,7 +240,7 @@ Below is an exhaustive list of **current, production-ready features** exposed by
 
 ### 7.9 Internationalisation
 
-* Translation keys follow pattern `dashboard.adminPanel.translationPanel.*` present in `apps/web/public/locales/*`.
+* Translation keys follow pattern `dashboard.adminPanel.translationPanel.*` present in `apps/academy/public/locales/*`.
 * Fallback language: English → French.
 
 ---
@@ -257,8 +257,8 @@ Below is an exhaustive list of **current, production-ready features** exposed by
 ## 9. Local Development Tips
 
 ```bash
-# Start web app in watch mode
-pnpm --filter @blms/web dev
+# Start academy app in watch mode
+pnpm --filter @blms/academy dev
 
 # Visit
 http://localhost:5173/{lang}/dashboard/administration/translation-panel

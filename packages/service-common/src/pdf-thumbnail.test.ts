@@ -11,7 +11,7 @@ const BITCOIN_WHITE_PAPER_PDF_HASH =
 
 const pdfFile = path.resolve(
   import.meta.dirname,
-  '../../../apps/web/public/bitcoin.pdf',
+  '../../../apps/academy/public/bitcoin.pdf',
 );
 
 describe('PDF Thumbnail', () => {

@@ -102,9 +102,9 @@ The web application follows a structured organization pattern:
 Components are organized following atomic design principles:
 
 1. **Atoms**: Smallest UI building blocks (in `packages/ui/src/atoms/`)
-2. **Molecules**: Combinations of atoms (in `apps/web/src/molecules/`)
-3. **Organisms**: Complex UI components (in `apps/web/src/organisms/`)
-4. **Components**: General purpose components (in `apps/web/src/components/`)
+2. **Molecules**: Combinations of atoms (in `apps/academy/src/molecules/`)
+3. **Organisms**: Complex UI components (in `apps/academy/src/organisms/`)
+4. **Components**: General purpose components (in `apps/academy/src/components/`)
 
 ### Route Structure
 
@@ -138,10 +138,10 @@ The routing structure uses conventions:
 The application uses a combination of:
 
 1. **React Context**: For global UI state
-   - Located in `apps/web/src/providers/`
+   - Located in `apps/academy/src/providers/`
 
 2. **TanStack Query + tRPC**: For server state
-   - Hooks in `apps/web/src/hooks/`
+   - Hooks in `apps/academy/src/hooks/`
 
 ## API Structure
 
