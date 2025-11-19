@@ -15,11 +15,21 @@ export interface TranslateCoursePayload {
   use_english?: boolean;
 }
 
+export interface TaskProgress {
+  message: string;
+  current?: number;
+  total?: number;
+}
+
 export interface LanguageToolkitClient {
   translateCourse: (payload: TranslateCoursePayload) => Promise<string | null>;
   pollTask: (
     taskId: string,
-    opts?: { intervalMs?: number; maxAttempts?: number },
+    opts?: {
+      intervalMs?: number;
+      maxAttempts?: number;
+      onProgress?: (progress: TaskProgress) => void;
+    },
   ) => Promise<unknown | null>;
 }
 
@@ -130,7 +140,7 @@ export const createLanguageToolkitClient = (
 
   const pollTask: LanguageToolkitClient['pollTask'] = async (
     taskId,
-    { intervalMs = 5000, maxAttempts = 120 } = {},
+    { intervalMs = 5000, maxAttempts = 120, onProgress } = {},
   ) => {
     if (!cfg.baseUrl) return null;
     for (let attempt = 0; attempt < maxAttempts; attempt++) {
@@ -159,8 +169,20 @@ export const createLanguageToolkitClient = (
           status: z.string(),
           manifest: z.unknown().optional(),
           error: z.union([z.string(), z.null()]).optional(),
+          progress: z.string().optional().nullable(),
+          progress_current: z.number().optional().nullable(),
+          progress_total: z.number().optional().nullable(),
         });
         const data = dataSchema.parse(rawResponse);
+
+        // Call onProgress callback if provided
+        if (onProgress && data.progress) {
+          onProgress({
+            message: data.progress,
+            current: data.progress_current ?? undefined,
+            total: data.progress_total ?? undefined,
+          });
+        }
 
         // Handle different task statuses
         if (data.status === 'completed') {
@@ -175,8 +197,12 @@ export const createLanguageToolkitClient = (
         }
 
         // If status is 'pending' or 'processing', continue polling
+        const progressInfo =
+          data.progress_current && data.progress_total
+            ? ` (${data.progress_current}/${data.progress_total})`
+            : '';
         console.log(
-          `[LT] Task ${taskId} still ${data.status}, continuing to poll...`,
+          `[LT] Task ${taskId} still ${data.status}${progressInfo}, continuing to poll...`,
         );
       } catch (err) {
         // Check if this is a critical error (task failed) or a recoverable error

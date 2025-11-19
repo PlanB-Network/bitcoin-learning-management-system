@@ -340,9 +340,20 @@ export const createRestTranslationUploadRoutes = async (
       });
 
       // Poll without timeout - translation can take as long as needed
+      // Use onProgress callback to update job status in real-time
       const manifest = await dependencies.languageToolkit.pollTask(taskId, {
         intervalMs: 5000, // Check every 5 seconds
         maxAttempts: Number.MAX_SAFE_INTEGER, // No timeout - poll until completed or failed
+        onProgress: async (ltProgress) => {
+          // Update job with LT progress info in real-time
+          await upsertTranslationJob(courseId, 'translation', 'polling', {
+            languages,
+            taskId,
+            progress: ltProgress.message,
+            processedFiles: ltProgress.current,
+            totalFiles: ltProgress.total,
+          });
+        },
       });
 
       if (manifest) {
