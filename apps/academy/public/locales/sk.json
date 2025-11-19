@@ -61,7 +61,9 @@
       "invalidCredentials": "Neplatné údaje",
       "usernameRegex": "Používateľské meno môže obsahovať len písmená, číslice, podčiarknutia (_), bodky (.) a pomlčky (-).",
       "usernameRequired": "Je potrebné zadať používateľské meno.",
-      "usernameTooShort": "Užívateľské meno musí obsahovať minimálne 5 znakov."
+      "usernameTooShort": "Užívateľské meno musí obsahovať minimálne 5 znakov.",
+      "oldPasswordRequired": "Vyžaduje sa staré heslo",
+      "passwordTooShort": "Heslo je príliš krátke"
     },
     "forgottenPassword": "Zabudli ste svoje heslo?",
     "headerAccountCreated": "Účet vytvorený",
@@ -89,7 +91,11 @@
     "sendLink": "Pošlite mi odkaz",
     "signIn": "Prihlásiť sa",
     "trackProgress": "Vytvorte si účet alebo sa prihláste, aby ste mohli sledovať svoj pokrok",
-    "tryAgain": "Skúste to znova"
+    "tryAgain": "Skúste to znova",
+    "forgotPassword": "Zabudli ste heslo?",
+    "login": "Prihlásiť sa",
+    "oldPassword": "Staré heslo",
+    "signUp": "Zaregistrovať sa"
   },
   "bCert": {
     "bCertDescription": "₿-CERT je ultimátny test Bitcoinu navrhnutý na ohodnotenie vašich vedomostí o Bitcoine a súvisiacich témach.\n\nDosiahnite skóre viac ako 80% a získajte certifikát ₿-CERT, ktorý dokazuje vašu odbornosť v oblasti Bitcoinu a otvára dvere k pracovným pozíciám v tomto odvetví.",
@@ -126,7 +132,8 @@
     "conferenceName": "Názov konferencie",
     "details": {
       "findReplay": "Nájsť a prehrať znovu",
-      "selectVideo": "Vybrať video"
+      "selectVideo": "Vybrať video",
+      "selectStage": "Vybrať časť"
     },
     "language": "Jazyk",
     "latestConferences": "Najnovšie konferencie",
@@ -134,7 +141,8 @@
     "noConferences": "Pre {{year}} zatiaľ neboli pridané žiadne konferencie.",
     "pageTitle": "Záznamy konferencie",
     "planBConferences": "Plan ₿ konferencie",
-    "topics": "Témy"
+    "topics": "Témy",
+    "conferencesGenesis": "Konferencie od Genesis Blocku"
   },
   "courses": {
     "allCourses": "Všetky kurzy",
@@ -303,8 +311,12 @@
     "liveClasses": {
       "allOtherTitle": "Všetky ostatné živé lekcie",
       "liveClasses": "Živé lekcie",
-      "secondaryTitle": "Staňte sa zemestnateľný v Bitcoin firmách.",
-      "title": "Plan ₿ oficiálne ročné programy"
+      "title": "Plan ₿ oficiálne ročné programy",
+      "program": {
+        "goal": "Staňte sa zamestnateľným v spoločnostiach zameraných na Bitcoin. Staňte sa zamestnateľným v spoločnostiach zameraných na Bitcoin. Staňte sa zamestnateľným v spoločnostiach zameraných na Bitcoin.",
+        "semester": "Semester",
+        "title": "Plan ₿ Program"
+      }
     },
     "noCoursesFound": "Nenašli sa žiadne kurzy",
     "part": {
@@ -721,7 +733,70 @@
           "originalContent": "Pôvodný obsah",
           "pause": "Zastaviť",
           "play": "Prehrať",
-          "presentations": "Prezentácie"
+          "presentations": "Prezentácie",
+          "rewind15Seconds": "Pretočiť späť o 15 sekúnd",
+          "selectLanguagesModal": {
+            "audioFile": "Zvukový súbor",
+            "audioFileInfo": "Podporované formáty: MP3, WAV, M4A (max 50MB)",
+            "audioFileTooLarge": "Zvukový súbor je príliš veľký. Maximálna veľkosť je 50MB.",
+            "cancel": "Zrušiť",
+            "chooseAudioFile": "Vyberte audio",
+            "chooseFolder": "Vyberte priečinok",
+            "choosePptxFile": "Vyberte PPTX",
+            "chooseZip": "Vyberte ZIP",
+            "course": "Kurz",
+            "englishFilesRequired": "Prosím, uistite sa, že všetky nahrané súbory sú v angličtine",
+            "existingUploadsInfo": "Pôvodné súbory už boli nahrané. Môžete začať prekladať bez ich opätovného pridávania. Nahratie nových súborov prepíše existujúce.",
+            "folderUrl": "URL priečinka",
+            "invalidAudioFile": "Prosím vyberte platný zvukový súbor.",
+            "invalidPptxFile": "Prosím, vyberte platný PowerPoint (.pptx) súbor.",
+            "missingFilesError": "Prosím nahrajte súbory na preklad alebo poskytnite URL pred začatím prekladu.",
+            "networkError": "Vyskytla sa chyba siete. Skontrolujte svoje pripojenie a skúste to znova.",
+            "noAudioFileSelected": "Nie je vybraný zvukový súbor",
+            "noFolderSelected": "Nebola vybraná žiadna zložka",
+            "noLanguagesAvailable": "Žiadne jazyky k dispozícii pre preklad.",
+            "noPptxFileSelected": "Nebol vybratý žiadny PowerPoint súbor",
+            "noZipSelected": "Nie je vybratý žiadny ZIP súbor",
+            "originalLanguage": "Pôvodný jazyk:",
+            "overwriteWarning": "Existujúce súbory budú nahradené.",
+            "pptxFile": "Súbor PowerPoint",
+            "pptxFileInfo": "Podporované sú len súbory .pptx (max 100MB)",
+            "pptxFileTooLarge": "Súbor PowerPoint je príliš veľký. Maximálna veľkosť je 100 MB.",
+            "processingStarted": "Preklad sa spustil! Proces môže trvať niekoľko minút pri veľkých kurzoch.",
+            "selectLanguages": "Vyberte jazyky pre preklad:",
+            "startingTranslation": "Nahrávanie súborov...",
+            "startingTranslationStep": "Začína sa preklad...",
+            "startSuccess": "Preklad úspešne začal!",
+            "startTranslation": "Začať preklad",
+            "timeoutError": "Požiadavka na preklad vypršala. Obsah kurzu môže byť príliš veľký. Skúste to prosím znova alebo kontaktujte podporu.",
+            "title": "Vyberte jazyky pre preklad",
+            "translationFailed": "Preklad zlyhal. Skontrolujte záznamy a skúste to znova.",
+            "uploadAndTranslationStarted": "Súbory nahrané a preklad spustený! Proces môže trvať niekoľko minút pre veľké kurzy.",
+            "uploadError": "Nahrávanie zlyhalo. Skontrolujte prosím vaše súbory a skúste to znova.",
+            "uploadFiles": "Nahrať podporné súbory (Voliteľné)",
+            "uploadFolder": "Nahrať priečinok (PPTX + TXT)",
+            "uploadingFiles": "Nahrávanie súborov...",
+            "uploadTimeoutError": "Nahrávanie sa prerušilo po 10 minútach. Skúste to prosím s menšími súbormi alebo skontrolujte svoje pripojenie.",
+            "useEnglishLabel": "Kurz už bol preložený do angličtiny. Použiť anglickú verziu ako zdroj?"
+          },
+          "slideNavigation": {
+            "next": "Ďalej",
+            "previous": "Predchádzajúci",
+            "slideCounter": "{{current}} / {{total}}"
+          },
+          "slideNotAvailable": "Snímka {{slideNumber}} nie je k dispozícii",
+          "slideNotFound": "Snímka sa nenašla",
+          "table": {
+            "actions": "Akcie",
+            "course": "Kurz",
+            "index": "Index",
+            "todoLanguages": "Jazyky na preklad",
+            "totalLanguages": "Celkový počet jazykov"
+          },
+          "textContent": "Obsah textu",
+          "title": "Preložiť kurzy",
+          "translateTo": "Preložiť do",
+          "unknownContributor": "Neznámy"
         },
         "userManagement": {
           "modal": {
@@ -738,9 +813,79 @@
             "reviewed": "Skontrolovaný",
             "todo": "Potrebná kontrola",
             "underReview": "Prebieha kontrola"
-          }
+          },
+          "actions": {
+            "backToList": "Späť na zoznam používateľov",
+            "backToUsers": "Späť k používateľom",
+            "viewDetails": "Zobraziť podrobnosti"
+          },
+          "addContributor": "Pridať prispievateľa",
+          "chapters": "Kapitoly",
+          "contributorInformation": "Informácie o prispievateľovi",
+          "courses": "Kurzy",
+          "table": {
+            "actions": "Akcie",
+            "assignedCourses": "Priradené kurzy",
+            "language": "Jazyk",
+            "startDate": "Dátum začiatku",
+            "username": "Používateľské meno"
+          },
+          "title": "Prispievatelia"
         }
-      }
+      },
+      "tutorialAnalytics": "Analýza tutoriálov",
+      "tutorialAnalyticsDescription": "Tu si môžete skontrolovať a porovnať všetky návody na platforme.",
+      "tutorialsManagementPanel": "Panel na správu tutoriálov",
+      "type": "Typ",
+      "upcomingBookings": "Nadchádzajúce rezervácie",
+      "upcomingBookingsSubtitle": "Tu si môžete stiahnuť zoznam účastníkov všetkých prezenčných podujatí.",
+      "userRolesAllocation": "Pridelenie užívateľských rolí"
+    },
+    "announcements": {
+      "groups": {
+        "active": "Študenti vybraní pre projektové zadanie",
+        "all": "Všetci zaregistrovaní študenti",
+        "summer": "Študenti vybraní na Letnú školu"
+      },
+      "pickADate": "Vyberte dátum",
+      "publicationDate": "Dátum publikovania"
+    },
+    "backToDashboard": "Späť na kontrolný panel",
+    "booking": {
+      "accessLive": "Prístup k živému prenosu",
+      "cancelBookingTitle": "Ste si istý, že chcete zrušiť túto rezerváciu?",
+      "invoiceDate": "Dátum",
+      "invoiceTitle": "Názov",
+      "invoiceType": "Typ",
+      "noGoBack": "Nie, vrátiť sa späť",
+      "noInvoice": "Momentálne nemáte žiadne faktúry.",
+      "noTicket": "Momentálne nemáte žiadne lístky.",
+      "pastTicketTitle": "Predchádzajúce rezervácie",
+      "ticketDate": "Dátum",
+      "ticketLocation": "Miesto",
+      "ticketTitle": "Názov",
+      "ticketType": "Typ",
+      "upcomingTicketTitle": "Nadchádzajúce rezervácie",
+      "yesCancel": "Áno, zrušiť"
+    },
+    "calendar": {
+      "eventType": {
+        "class": "Triedy",
+        "event": "Udalosti"
+      },
+      "personalCalendar": "Osobný kalendár"
+    },
+    "careerPortal": {
+      "acceptedFormat": "Akceptovaný formát súborov: pdf / Maximálna veľkosť súboru: 10 MB.",
+      "acceptTermsAndConditions": "Prečítal som si a prijímam všeobecné podmienky",
+      "add": "Pridať",
+      "allowReceivingEmails": "Súhlasím s prijímaním e-mailov od Plan ₿ Network o potenciálnych pracovných príležitostiach",
+      "applicationComplete": "Vaša prihláška je <highlight>Dokončená</highlight>",
+      "applicationIncomplete": "Vaša prihláška je <highlight>neúplná</highlight>",
+      "applicationSaved": "Vaša prihláška je uložená!",
+      "availability": "Vaša dostupnosť",
+      "availabilityStart": "Kedy môžete začať?",
+      "availabilityStartPlaceholder": "Dátum"
     }
   }
 }
