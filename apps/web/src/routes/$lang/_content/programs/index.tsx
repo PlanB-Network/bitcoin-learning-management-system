@@ -129,7 +129,7 @@ function TracksAndCalendar() {
         opportunities.
       </p>
 
-      <div className="flex flex-row gap-2 mt-10">
+      <div className="flex flex-row gap-2 mt-5 md:mt-10">
         <img src={trackImage} alt="" className="max-xl:hidden w-[220px]" />
         <div className="flex flex-col gap-5 w-auto">
           <CalendarElement
@@ -519,7 +519,7 @@ function EnrollNow() {
         </Button>
       ) : null}
       {isOpened ? (
-        <div className="flex flex-col md:flex-row gap-1 w-full mt-6 px-12">
+        <div className="flex flex-col md:flex-row gap-1 w-full mt-8 md:mt-14 px-12">
           <Link
             to="/courses/plan-developer-program-0be6cfae-9d32-11f0-9601-0f79f5ccc576"
             className="w-full"
