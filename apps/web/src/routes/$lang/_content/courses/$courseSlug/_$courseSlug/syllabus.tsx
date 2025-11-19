@@ -1,34 +1,41 @@
 import { NotificationType } from '@blms/constants';
 import type {
   CourseProgressExtended,
-  CourseResponse,
   ScheduledCourseAnnouncement,
 } from '@blms/types';
 import { ButtonWithArrow, cn, Divider, TextTag } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
-import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
-import { useEffect, useState } from 'react';
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { useContext, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { IoMdClose } from 'react-icons/io';
 import { AuthorCard } from '#src/components/author-card.tsx';
-import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
+import type { CalendarEvent } from '#src/components/Calendar/calendar-event.ts';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
 import { CourseCurriculum } from '#src/patterns/course-curriculum.tsx';
-import { trpc } from '#src/utils/trpc.ts';
-import { ProgressBar } from '../../dashboard/_dashboard/-components/courses-progress-list.tsx';
-import { EventCalendar } from '../../dashboard/_dashboard/-components/event-calendar.tsx';
+import { CourseContext } from '#src/providers/courseContext.tsx';
+import { ProgressBar } from '#src/routes/$lang/dashboard/_dashboard/-components/courses-progress-list.tsx';
+import { EventCalendar } from '#src/routes/$lang/dashboard/_dashboard/-components/event-calendar.tsx';
 import {
   getNotificationDateString,
   getNotificationIcon,
   getNotificationTitle,
-} from '../../notifications/index.tsx';
+} from '#src/routes/$lang/notifications/index.tsx';
+import { trpc } from '#src/utils/trpc.ts';
+import { CourseTitle } from '../-components/course-title.tsx';
+import { getTabs } from '../-utils/get-tabs.tsx';
 
-export const CourseOverview = ({ course }: { course: CourseResponse }) => {
-  const { data: courseProgress } = useQuery(
-    trpc.user.courses.getProgress.queryOptions({
-      courseId: course.id,
-    }),
-  );
+export const Route = createFileRoute(
+  '/$lang/_content/courses/$courseSlug/_$courseSlug/syllabus',
+)({
+  component: Syllabus,
+});
+
+function Syllabus() {
+  const { t } = useTranslation();
+
+  const { course, courseProgress, isLoggedIn } = useContext(CourseContext);
 
   const completedChapters = courseProgress?.[0]?.chapters ?? [];
 
@@ -37,91 +44,103 @@ export const CourseOverview = ({ course }: { course: CourseResponse }) => {
   );
 
   return (
-    <div className="flex flex-col w-fit">
-      {courseProgress &&
-        courseProgress.length > 0 &&
-        courseProgress[0].progressPercentage < 100 && (
-          <>
-            <span className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle mt-4 md:mt-10">
-              {t('dashboard.myCourses.whereYouAre')}
-            </span>
+    <PageLayout
+      title={t('words.syllabus')}
+      hideTitle
+      layoutSize="max"
+      overTitle={course ? <CourseTitle course={course} /> : undefined}
+      tabs={isLoggedIn && course ? getTabs(course, courseProgress?.[0]) : []}
+    >
+      {course && (
+        <div className="flex flex-col w-fit">
+          {courseProgress &&
+            courseProgress.length > 0 &&
+            courseProgress[0].progressPercentage < 100 && (
+              <>
+                <span className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle mt-4 md:mt-10">
+                  {t('dashboard.myCourses.whereYouAre')}
+                </span>
 
-            <CourseProgress courseProgress={courseProgress[0]} />
-          </>
-        )}
+                <CourseProgress courseProgress={courseProgress[0]} />
+              </>
+            )}
 
-      <CourseAnnouncements courseId={course.id} />
+          <CourseAnnouncements courseId={course.id} />
 
-      {containsChapterStartDate ? (
-        <div className="flex flex-col gap-6 mt-6 text-xl course-overview">
-          <h3 className="subtitle-large-med-20px text-newBlack-1">
-            {t('dashboard.course.courseCalendar')}
-          </h3>
-          <CourseCalendar courseId={course.id} />
-        </div>
-      ) : null}
-      <CourseCurriculum
-        course={course}
-        completedChapters={completedChapters.map(
-          (chapter) => chapter.chapterId,
-        )}
-        nextChapter={courseProgress?.[0]?.nextChapter?.chapterId}
-        hideGithubLink
-        className="self-start mt-7 md:mt-10 w-full"
-      >
-        <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-darkOrange-5 mb-7 md:mb-6">
-          {t('courses.details.curriculum')}
-        </h4>
-      </CourseCurriculum>
-
-      <Divider className="my-6 md:my-9" width="w-full" />
-
-      <section className="flex flex-col md:gap-5">
-        <h4 className="title-small-med-16px md:title-large-sb-24px text-dashboardSectionTitle">
-          {course.associatedProfessors.length > 0
-            ? t('words.professors')
-            : t('words.professor')}
-        </h4>
-        <div className="flex h-fit flex-col max-md:gap-4">
-          {course.associatedProfessors.length > 0 ? (
-            <span className="uppercase text-darkOrange-5 text-lg">
-              {t('dashboard.course.coordinator')}
-            </span>
+          {containsChapterStartDate ? (
+            <div className="flex flex-col gap-6 mt-6 text-xl course-overview">
+              <h3 className="subtitle-large-med-20px text-newBlack-1">
+                {t('dashboard.course.courseCalendar')}
+              </h3>
+              <CourseCalendar courseId={course.id} />
+            </div>
           ) : null}
-          {course.mainProfessors.map((professor) => (
-            <AuthorCard
-              key={professor.id}
-              professor={professor}
-              hasDonateButton
-            />
-          ))}
-        </div>
-        {course.associatedProfessors.length > 0 ? (
-          <div className="flex h-fit flex-col">
-            <span className="max-md:mt-6 uppercase text-darkOrange-5 text-lg ">
-              {t('courses.details.associatedProfessors')}
-            </span>
-            <div className="mt-6 flex flex-row flex-wrap gap-6 max-md:justify-center">
-              {course.associatedProfessors.map((professor) => (
-                <ProfessorCardReduced
+          <CourseCurriculum
+            course={course}
+            completedChapters={completedChapters.map(
+              (chapter) => chapter.chapterId,
+            )}
+            nextChapter={courseProgress?.[0]?.nextChapter?.chapterId}
+            hideGithubLink
+            className="self-start mt-7 md:mt-10 w-full"
+          >
+            <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-darkOrange-5 mb-7 md:mb-6">
+              {t('courses.details.curriculum')}
+            </h4>
+          </CourseCurriculum>
+
+          <Divider className="my-6 md:my-9" width="w-full" />
+
+          <section className="flex flex-col md:gap-5">
+            <h4 className="title-small-med-16px md:title-large-sb-24px text-dashboardSectionTitle">
+              {course.associatedProfessors.length > 0
+                ? t('words.professors')
+                : t('words.professor')}
+            </h4>
+            <div className="flex h-fit flex-col max-md:gap-4">
+              {course.associatedProfessors.length > 0 ? (
+                <span className="uppercase text-darkOrange-5 text-lg">
+                  {t('dashboard.course.coordinator')}
+                </span>
+              ) : null}
+              {course.mainProfessors.map((professor) => (
+                <AuthorCard
                   key={professor.id}
                   professor={professor}
                   hasDonateButton
                 />
               ))}
             </div>
-          </div>
-        ) : null}
-      </section>
-    </div>
+            {course.associatedProfessors.length > 0 ? (
+              <div className="flex h-fit flex-col">
+                <span className="max-md:mt-6 uppercase text-darkOrange-5 text-lg ">
+                  {t('courses.details.associatedProfessors')}
+                </span>
+                <div className="mt-6 flex flex-row flex-wrap gap-6 max-md:justify-center">
+                  {course.associatedProfessors.map((professor) => (
+                    <ProfessorCardReduced
+                      key={professor.id}
+                      professor={professor}
+                      hasDonateButton
+                    />
+                  ))}
+                </div>
+              </div>
+            ) : null}
+          </section>
+        </div>
+      )}
+    </PageLayout>
   );
-};
+}
 
 const CourseProgress = ({
   courseProgress,
 }: {
   courseProgress: CourseProgressExtended;
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div
       key={courseProgress.courseId}
@@ -168,6 +187,7 @@ const CourseProgress = ({
 };
 
 const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
+  const { t } = useTranslation();
   const { data: publishedCourseAnnouncements } = useQuery(
     trpc.user.notifications.getPublishedScheduledCourseAnnouncements.queryOptions(
       {

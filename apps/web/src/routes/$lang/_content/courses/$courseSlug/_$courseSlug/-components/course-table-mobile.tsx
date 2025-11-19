@@ -22,7 +22,7 @@ import miningSvg from '#src/assets/icons/mining-black.svg';
 import securitySvg from '#src/assets/icons/padlock-black.svg';
 import protocolSvg from '#src/assets/icons/protocol-black.svg';
 import socialStudiesSvg from '#src/assets/icons/world-black.svg';
-import { CourseDashboardCard } from './course-dashboard-card.tsx';
+import { CourseDashboardCard } from '../../../../../my-courses/-components/course-dashboard-card.tsx';
 import { courseCategoriesDashboard } from './course-table.tsx';
 
 const categoryIcons = {

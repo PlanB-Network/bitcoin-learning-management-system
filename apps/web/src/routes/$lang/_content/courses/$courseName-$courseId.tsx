@@ -225,7 +225,7 @@ function CourseDetails() {
         to: `/courses/${formatNameForURL(course.name)}-${course.id}`,
       });
     }
-  }, [course, isFetched, navigate, params.bookName]);
+  }, [course, isFetched, navigate, params.courseName]);
 
   const Header = ({ course }: { course: CourseResponse }) => {
     const beginnerFriendlyCourses = ['btc101', 'btc102', 'scu101'];

@@ -18,8 +18,8 @@ import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.ts';
-import { CourseTable } from './-components/course-table.tsx';
-import { CourseTableMobile } from './-components/course-table-mobile.tsx';
+import { CourseTable } from '../_content/courses/$courseSlug/_$courseSlug/-components/course-table.tsx';
+import { CourseTableMobile } from '../_content/courses/$courseSlug/_$courseSlug/-components/course-table-mobile.tsx';
 
 export const Route = createFileRoute('/$lang/my-courses/')({
   component: DashboardCourses,
@@ -210,7 +210,7 @@ const InProgressCourseCard = ({
 
   return (
     <Link
-      to={`/my-courses/${course.id}`}
+      to={`/courses/${course.id}/syllabus`}
       className="flex items-center justify-between w-full border border-neutral-100 rounded-2xl p-3 md:p-8 gap-2 max-w-[1097px] hover:bg-neutral-50"
       key={course.id}
     >

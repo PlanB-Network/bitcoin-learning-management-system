@@ -29,8 +29,8 @@ import { formatDateRange, formatTimeRange } from '#src/utils/date.ts';
 import { resourceImgUrl } from '#src/utils/index.ts';
 import { base64ToBlob } from '#src/utils/misc.ts';
 import { trpc } from '#src/utils/trpc.js';
-import { ListElement2 } from '../../my-courses/-components/summer-school.tsx';
 import { TaxesSpan } from '../courses/$courseName-$courseId.tsx';
+import { ListElement2 } from '../courses/$courseSlug/_$courseSlug/summer-school.tsx';
 import { EventBookModal } from './-components/event-book-modal.tsx';
 import { EventPaymentModal } from './-components/event-payment-modal.tsx';
 

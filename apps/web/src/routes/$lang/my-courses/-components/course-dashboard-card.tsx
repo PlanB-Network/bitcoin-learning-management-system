@@ -209,7 +209,7 @@ export const CourseDashboardCard = ({
                   </Link>
                   <Link
                     className="max-md:flex-1 max-md:basis-[calc(50%-0.3125rem)] md:w-full"
-                    to={`/my-courses/${course.id}`}
+                    to={`/courses/${course.id}/syllabus`}
                   >
                     <ButtonWithArrow
                       variant="outline"
@@ -227,7 +227,7 @@ export const CourseDashboardCard = ({
                   <Link
                     className="w-full"
                     // TODO: remove the condition when the course completion page for professor led course is ready
-                    to={`/my-courses/${course.id}`}
+                    to={`/courses/${course.id}/syllabus`}
                   >
                     <ButtonWithArrow
                       variant="primary"

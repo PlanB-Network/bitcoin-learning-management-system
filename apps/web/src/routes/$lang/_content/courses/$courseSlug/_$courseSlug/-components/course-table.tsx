@@ -15,7 +15,7 @@ import {
 } from '@blms/ui';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { CourseDashboardCard } from './course-dashboard-card.tsx';
+import { CourseDashboardCard } from '../../../../../my-courses/-components/course-dashboard-card.tsx';
 
 export const courseCategoriesDashboard = [
   'bitcoin',

@@ -12,6 +12,7 @@ import { SecondaryNavbar } from './ui/secondary-navbar.tsx';
 
 interface Props {
   title?: string;
+  overTitle?: ReactNode;
   hideTitle?: boolean;
   subtitle?: string;
   description?: string;
@@ -29,6 +30,7 @@ interface Props {
 
 export const PageLayout = ({
   title,
+  overTitle,
   hideTitle,
   subtitle,
   description,
@@ -131,6 +133,7 @@ export const PageLayout = ({
         style={{ marginTop: actionButtons.length > 0 ? 0 : navbarHeight }}
       >
         <div className={cn('w-full')}>
+          {overTitle}
           <div className="flex items-center gap-6">
             {Icon ? (
               typeof Icon === 'function' ? (

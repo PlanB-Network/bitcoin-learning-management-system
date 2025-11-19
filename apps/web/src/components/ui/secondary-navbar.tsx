@@ -97,6 +97,14 @@ const SecondaryNavbarDesktop = ({ tabs }: { tabs: Tab[] }) => {
 
   const activeTab = tabs.reduce<Tab | null>((best, tab) => {
     const tabPath = `/${i18n.language}${tab.href}`;
+
+    if (tab.id === 'courseChapter') {
+      const chapterPathPattern = new RegExp(
+        `^/${i18n.language}/courses/[0-9a-fA-F-]{36}/[a-z0-9-]+-[0-9a-fA-F-]{8}-[0-9a-fA-F-]{4}-[0-9a-fA-F-]{4}-[0-9a-fA-F-]{4}-[0-9a-fA-F-]{12}(?:/|$)`,
+      );
+      if (chapterPathPattern.test(pathname)) return tab;
+    }
+
     if (pathname === tabPath || pathname.startsWith(tabPath + '/')) {
       if (!best || tabPath.length > `/${i18n.language}${best.href}`.length) {
         return tab;

@@ -287,10 +287,9 @@ const DiplomaSelfPaced = ({
             <Link
               to={
                 examResults?.succeeded
-                  ? '/my-courses/$courseId'
+                  ? '/courses/$courseId/retake-exam'
                   : '/courses/$courseId/$chapterId'
               }
-              hash={examResults?.succeeded ? 'retakeExam' : ''}
               params={{
                 chapterId: examChapterId,
                 courseId: course?.id,
@@ -349,8 +348,7 @@ const DiplomaTeacherLed = ({ course }: { course: CourseResponse }) => {
           </p>
 
           <Link
-            to={'/my-courses/$courseId'}
-            hash={'singleTrialExam'}
+            to={'/courses/$courseId/single-trial-exam'}
             params={{
               courseId: course?.id,
             }}

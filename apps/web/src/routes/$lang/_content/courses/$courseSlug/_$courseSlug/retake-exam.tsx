@@ -1,9 +1,9 @@
 import type { CourseExamResults } from '@blms/types';
 import { Button, cn, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
-import { Link } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { t } from 'i18next';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsTwitterX } from 'react-icons/bs';
 import { FiDownload } from 'react-icons/fi';
@@ -14,64 +14,83 @@ import CertificateSatoshiImage from '#src/assets/courses/completion-diploma-sato
 import ApprovedIcon from '#src/assets/icons/approved.svg?react';
 import LockGif from '#src/assets/icons/lock.gif?no-inline';
 import SandClockGif from '#src/assets/icons/sandClock/sandclock.gif?no-inline';
+import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
-import { TimeStampDialog } from '#src/routes/$lang/_content/courses/$courseId/-components/course-exam/course-exam-result.tsx';
-import { AnswersReviewPanel } from '#src/routes/$lang/_content/courses/$courseId/-components/shared-between-exams/answers-review-panel.tsx';
+import { CourseContext } from '#src/providers/courseContext.tsx';
+import { TimeStampDialog } from '#src/routes/$lang/_content/courses/$courseSlug/-components/course-exam/course-exam-result.tsx';
+import { AnswersReviewPanel } from '#src/routes/$lang/_content/courses/$courseSlug/-components/shared-between-exams/answers-review-panel.tsx';
 import { ONE_DAY_IN_MS } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
+import { CourseTitle } from '../-components/course-title.tsx';
+import { getTabs } from '../-utils/get-tabs.tsx';
 
-export const CourseRetakeExam = ({
-  courseId,
-  courseIndex,
-  examLink,
-  openLastExam = true,
-}: {
-  courseId: string;
-  courseIndex: string;
-  examLink: string;
-  openLastExam?: boolean;
-}) => {
+export const Route = createFileRoute(
+  '/$lang/_content/courses/$courseSlug/_$courseSlug/retake-exam',
+)({
+  component: CourseRetakeExam,
+});
+
+function CourseRetakeExam() {
+  const params = Route.useParams();
+  const { course, courseProgress, isLoggedIn } = useContext(CourseContext);
+
   const { data: examResults, isFetched: isExamResultsFetched } = useQuery(
     trpc.user.courses.getAllUserCourseExamResults.queryOptions({
-      courseId,
+      courseId: params.courseSlug,
     }),
   );
 
+  const examLink = `/courses/${course?.id}/${
+    course?.parts
+      .find((part) => part.chapters.find((chapter) => chapter?.isCourseExam))
+      ?.chapters.find((chapter) => chapter?.isCourseExam)?.chapterId
+  }`;
+
   return (
-    <div className="flex flex-col mt-4 md:mt-10 w-full">
-      <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle max-md:mb-4">
-        {t('dashboard.course.completionDiploma')}
-      </h2>
+    <PageLayout
+      title={t('courses.exam.scoreAndDiploma')}
+      hideTitle
+      layoutSize="max"
+      overTitle={course ? <CourseTitle course={course} /> : undefined}
+      tabs={isLoggedIn && course ? getTabs(course, courseProgress?.[0]) : []}
+    >
+      {course && (
+        <div className="flex flex-col mt-4 md:mt-10 w-full">
+          <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle max-md:mb-4">
+            {t('dashboard.course.completionDiploma')}
+          </h2>
 
-      {!isExamResultsFetched && <Loader />}
+          {!isExamResultsFetched && <Loader />}
 
-      {isExamResultsFetched && examResults && examResults.length === 0 && (
-        <>
-          <p className="body-14px md:subtitle-large-med-20px text-dashboardSectionText/75 md:text-newBlack-1">
-            {t('dashboard.course.completionExamInfo')}
-          </p>
-          <div className="flex justify-center items-center relative w-full max-w-[264px] md:max-w-[652px] mt-7 md:mt-10">
-            <img src={CertificateSatoshiImage} alt="Certificate" />
-            <img
-              src={LockGif}
-              alt="Locked"
-              className="absolute size-16 md:size-24"
+          {isExamResultsFetched && examResults && examResults.length === 0 && (
+            <>
+              <p className="body-14px md:subtitle-large-med-20px text-dashboardSectionText/75 md:text-newBlack-1">
+                {t('dashboard.course.completionExamInfo')}
+              </p>
+              <div className="flex justify-center items-center relative w-full max-w-[264px] md:max-w-[652px] mt-7 md:mt-10">
+                <img src={CertificateSatoshiImage} alt="Certificate" />
+                <img
+                  src={LockGif}
+                  alt="Locked"
+                  className="absolute size-16 md:size-24"
+                />
+              </div>
+            </>
+          )}
+
+          {isExamResultsFetched && examResults && examResults?.length > 0 && (
+            <CourseExamsTable
+              examResults={examResults}
+              courseIndex={course.index}
+              examLink={examLink}
+              openLastExam={true}
             />
-          </div>
-        </>
+          )}
+        </div>
       )}
-
-      {isExamResultsFetched && examResults && examResults?.length > 0 && (
-        <CourseExamsTable
-          examResults={examResults}
-          courseIndex={courseIndex}
-          examLink={examLink}
-          openLastExam={openLastExam}
-        />
-      )}
-    </div>
+    </PageLayout>
   );
-};
+}
 
 const CourseExamsTable = ({
   examResults,

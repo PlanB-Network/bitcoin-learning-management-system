@@ -25,7 +25,7 @@ import { PageLayout } from '#src/components/page-layout.tsx';
 import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { useGreater } from '#src/hooks/use-greater.js';
-import { AppContext } from '#src/providers/context.js';
+import { CourseContext } from '#src/providers/courseContext.tsx';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import {
   addSpaceToCourseIndex,
@@ -34,22 +34,25 @@ import {
 } from '#src/utils/courses.js';
 import { cdnUrl, compose, trpc } from '#src/utils/index.js';
 import { capitalizeFirstWord, joinWords } from '#src/utils/string.js';
-import { ClassDetails } from './-components/class-details.tsx';
-import { LiveVideo } from './-components/live-video.tsx';
-import { NavigationPanel } from './-components/navigation-panel.tsx';
-import QuizzCard, { type Question } from './-components/quizz/quizz-card.tsx';
-import { CourseConclusion } from './$courseId/-components/course-conclusion/course-conclusion.tsx';
-import { CourseExamWorkflow } from './$courseId/-components/course-exam/course-exam-workflow.tsx';
-import { CourseReviewComponent } from './$courseId/-components/course-review-component.tsx';
-import { SingleTrialExamWorkflow } from './$courseId/-components/single-trial-exam/single-trial-exam-workflow.tsx';
+import { ClassDetails } from '../../-components/class-details.tsx';
+import { LiveVideo } from '../../-components/live-video.tsx';
+import { NavigationPanel } from '../../-components/navigation-panel.tsx';
+import QuizzCard, {
+  type Question,
+} from '../../-components/quizz/quizz-card.tsx';
+import { CourseConclusion } from '../-components/course-conclusion/course-conclusion.tsx';
+import { CourseExamWorkflow } from '../-components/course-exam/course-exam-workflow.tsx';
+import { CourseReviewComponent } from '../-components/course-review-component.tsx';
+import { SingleTrialExamWorkflow } from '../-components/single-trial-exam/single-trial-exam-workflow.tsx';
+import { getTabs } from '../-utils/get-tabs.tsx';
 
 export const Route = createFileRoute(
-  '/$lang/_content/courses/$courseId/$chapterName-$chapterId',
+  '/$lang/_content/courses/$courseSlug/_$courseSlug/$chapterName-$chapterId',
 )({
   // params: {
   //   parse: (params) => ({
   //     lang: z.string().parse(params.lang),
-  //     courseId: z.string().parse(params.courseId),
+  //     courseId: z.string().parse(params.courseSlug),
   //     chapterId: z.string().parse(params.chapterId),
   //   }),
   //   stringify: ({ lang, courseId, chapterId }) => ({
@@ -60,7 +63,7 @@ export const Route = createFileRoute(
   // },
   component: CourseChapter,
   params: {
-    parse: (params) => {
+    parse: (params: Record<string, string>) => {
       const paramNameId = params['chapterName-$chapterId'];
       const { id, name } = getNameAndIdFromUrl(paramNameId);
 
@@ -68,7 +71,7 @@ export const Route = createFileRoute(
         chapterId: z.string().parse(id),
         chapterName: z.string().parse(name),
         'chapterName-$chapterId': `${name}-${id}`,
-        courseId: z.string().parse(params.courseId),
+        courseId: z.string().parse(params.courseSlug),
         lang: z.string().parse(params.lang),
       };
     },
@@ -462,10 +465,8 @@ function shuffleArray<T>(array: T[]): T[] {
 function CourseChapter() {
   const { i18n, t } = useTranslation();
   const params = Route.useParams();
-  const { session, courses } = useContext(AppContext);
-  const isLoggedIn = !!session;
 
-  const course = courses?.find((c) => c.id === params.courseId);
+  const { course, courseProgress, isLoggedIn } = useContext(CourseContext);
 
   const [isContentExpanded, setIsContentExpanded] = useState(true);
 
@@ -479,7 +480,7 @@ function CourseChapter() {
 
   const { data: chapters } = useQuery(
     trpc.content.getCourseChapters.queryOptions({
-      id: params.courseId,
+      id: params.courseSlug,
       language: i18n.language,
     }),
   );
@@ -508,7 +509,7 @@ function CourseChapter() {
   const { data: proofreading } = useQuery(
     trpc.content.getProofreading.queryOptions(
       {
-        courseId: params.courseId,
+        courseId: params.courseSlug,
         language: i18n.language,
       },
       { enabled: !course?.requiresPayment },
@@ -651,6 +652,7 @@ function CourseChapter() {
       layoutSize="max"
       title={`${course?.name || ''} - ${chapter?.title || ''}`}
       hideTitle
+      tabs={isLoggedIn && course ? getTabs(course, courseProgress?.[0]) : []}
     >
       {proofreading ? (
         <ProofreadingProgress
@@ -695,7 +697,7 @@ function CourseChapter() {
             <div>
               <Link
                 to={'/courses/$courseId'}
-                params={{ courseId: params.courseId }}
+                params={{ courseId: params.courseSlug }}
                 className="text-newOrange-1 hover:underline"
               >
                 {t('courses.details.premiumContentNeedsPaymentAction')}
