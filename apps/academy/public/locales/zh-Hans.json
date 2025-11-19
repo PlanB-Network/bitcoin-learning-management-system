@@ -19,7 +19,8 @@
     "missionTitle": "我们的任务",
     "storyContent": "Plan ₿网络是一个旨在全球范围内支持比特币教育的倡议。它是各种热衷于比特币的公司的相遇之处。这些公司专注于教育、开源软件、点对点网络和社区意识。他们共同决定建立Plan ₿网络，并为比特币生态系统提供适合的工具以助其成长。在这里你可以找到我们2023年的演示报告。",
     "storyTitle": "我们的故事",
-    "title": "关于Plan ₿网络"
+    "title": "关于Plan ₿网络",
+    "readManifesto": "阅读我们的宣言"
   },
   "accessType": {
     "hybrid": "线下与线上",
@@ -375,7 +376,6 @@
     "liveClasses": {
       "allOtherTitle": "所有其他的直播课程",
       "liveClasses": "直播课程",
-      "secondaryTitle": "在以比特币为重点的公司中提高就业能力。",
       "title": "Plan ₿官方年度计划"
     }
   },
