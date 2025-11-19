@@ -4,19 +4,12 @@ This directory contains comprehensive documentation for the Bitcoin Learning Man
 
 ## Documentation Overview
 
-- [Architecture](./architecture.md) - Overview of the system architecture, applications, and shared packages
-- [Code Structure](./code-structure.md) - Detailed explanation of code organization patterns and conventions
-- [Reusable Components](./reusable-components.md) - Guide to reusable components and features across the platform
-- [Reusable Web Components](./reusable-web-components.md) - Specific components from the web app that can be reused in the contribute app
-- [Translation Panel](./translation-panel.md) - In-depth guide to the admin translation panel (functional specs, UI/UX, architecture, data flow)
-- [Data Architecture](./data-architecture.md) - Database schema, relationships, and data access patterns
-- [Cursor Rules](./cursor-rules.md) - Development rules and patterns for building consistent apps within the BLMS ecosystem
-
 ## System Architecture
 
 The BLMS is built as a monorepo using pnpm workspaces, consisting of multiple applications:
 
-- **Web Application** (`apps/academy`) - The main user-facing application for accessing educational content
+- **Academy Application** (`apps/academy`) - The main user-facing application for accessing educational content
+- **Network Application** (`apps/network`) - planb.network app
 - **API Application** (`apps/api`) - Backend services and endpoints for both web and contribute applications
 - **Contribute Application** (`apps/contribute`) - Platform for contributors to manage and translate content
 
