@@ -1,0 +1,873 @@
+import { formatNameForURL } from '@blms/shared';
+import type { CourseChapterResponse, JoinedQuizQuestion } from '@blms/types';
+import { Button, cn, Loader, TextTag } from '@blms/ui';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
+import {
+  lazy,
+  memo,
+  Suspense,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
+import { useTranslation } from 'react-i18next';
+import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
+import { FaArrowRightLong } from 'react-icons/fa6';
+import { IoIosArrowForward } from 'react-icons/io';
+import { TbCheck } from 'react-icons/tb';
+import { z } from 'zod';
+import OrangePill from '#src/assets/icons/orange_pill_color.svg';
+import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
+import { AuthModalState } from '#src/components/AuthModals/props.ts';
+import { PageLayout } from '#src/components/page-layout.tsx';
+import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
+import { useDisclosure } from '#src/hooks/use-disclosure.ts';
+import { useGreater } from '#src/hooks/use-greater.js';
+import { CourseContext } from '#src/providers/courseContext.tsx';
+import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
+import {
+  addSpaceToCourseIndex,
+  COURSES_WITH_INLINE_LATEX_SUPPORT,
+  goToChapterParameters,
+} from '#src/utils/courses.js';
+import { cdnUrl, compose, trpc } from '#src/utils/index.js';
+import { capitalizeFirstWord, joinWords } from '#src/utils/string.js';
+import { ClassDetails } from '../../-components/class-details.tsx';
+import { LiveVideo } from '../../-components/live-video.tsx';
+import { NavigationPanel } from '../../-components/navigation-panel.tsx';
+import QuizzCard, {
+  type Question,
+} from '../../-components/quizz/quizz-card.tsx';
+import { CourseConclusion } from '../-components/course-conclusion/course-conclusion.tsx';
+import { CourseExamWorkflow } from '../-components/course-exam/course-exam-workflow.tsx';
+import { CourseReviewComponent } from '../-components/course-review-component.tsx';
+import { SingleTrialExamWorkflow } from '../-components/single-trial-exam/single-trial-exam-workflow.tsx';
+import { getTabs } from '../-utils/get-tabs.tsx';
+
+export const Route = createFileRoute(
+  '/$lang/_course/courses/$courseSlug/_$courseSlug/$chapterName-$chapterId',
+)({
+  // params: {
+  //   parse: (params) => ({
+  //     lang: z.string().parse(params.lang),
+  //     courseId: z.string().parse(params.courseSlug),
+  //     chapterId: z.string().parse(params.chapterId),
+  //   }),
+  //   stringify: ({ lang, courseId, chapterId }) => ({
+  //     lang: lang,
+  //     courseId: `${courseId}`,
+  //     chapterId: `${chapterId}`,
+  //   }),
+  // },
+  component: CourseChapter,
+  params: {
+    parse: (params: Record<string, string>) => {
+      const paramNameId = params['chapterName-$chapterId'];
+      const { id, name } = getNameAndIdFromUrl(paramNameId);
+
+      return {
+        chapterId: z.string().parse(id),
+        chapterName: z.string().parse(name),
+        'chapterName-$chapterId': `${name}-${id}`,
+        courseId: z.string().parse(params.courseSlug),
+        lang: z.string().parse(params.lang),
+      };
+    },
+    stringify: ({ lang, courseId, chapterName, chapterId }) => ({
+      'chapterName-$chapterId': `${chapterName}-${chapterId}`,
+      courseId: `${courseId}`,
+      lang: lang,
+    }),
+  },
+});
+
+const CoursesMarkdownBody = lazy(
+  () => import('#src/components/Markdown/courses-markdown-body.tsx'),
+);
+
+const TimelineSmall = ({
+  chapter,
+}: {
+  chapter: CourseChapterResponse;
+  professor: string;
+}) => {
+  const { t } = useTranslation();
+
+  return (
+    <div className="mb-0 w-full max-w-5xl sm:hidden mt-4">
+      <Link
+        to={`/courses/${chapter.course.name}-${chapter.course.id}`}
+        className="w-full flex justify-center items-center mb-4"
+      >
+        <h1 className="px-5 title-medium-sb-18px text-black max-md:text-center">
+          {chapter.course.name}
+        </h1>
+      </Link>
+      <div className="flex flex-col">
+        <div className="flex items-center justify-center gap-3">
+          <div className="h-0 grow border-t border-gray-300 min-w-8" />
+          <span className="body-12px text-newBlack-1 text-center max-w-[225px]">
+            {t('courses.part.count', {
+              count: chapter.part.partIndex,
+              total: chapter.course.parts?.length,
+            })}{' '}
+            : {chapter.part.title}
+          </span>
+
+          <div className="h-0 grow border-t border-gray-300 min-w-8" />
+        </div>
+
+        <div
+          className={cn(
+            'flex items-center justify-between rounded-lg bg-newGray-6 px-2.5 py-1 mt-2.5 mb-3 gap-4',
+          )}
+        >
+          {/*
+           * TODO: Refactor nav logic : edge cases (first chapter, course root) make this messy
+           * goToChapterParameters always returns a chapterId, even when not needed ?
+           */}
+          <Link
+            to={
+              chapter.part.partIndex === 1 && chapter.chapterIndex === 1
+                ? '/courses/$courseId'
+                : '/courses/$courseId/$chapterId'
+            }
+            params={goToChapterParameters(chapter, 'previous')}
+            className="flex size-6 items-center justify-center rounded-full bg-darkOrange-5/60 shrink-0"
+          >
+            <BiChevronLeft className="size-4 text-white" />
+          </Link>
+          <h2 className="text-center title-small-med-16px text-headerDark">
+            {chapter.part.partIndex}.{chapter.chapterIndex}. {chapter.title}
+          </h2>
+
+          {/* TODO : see above */}
+          <Link
+            to={
+              chapter.part.partIndex === chapter.course.parts.length &&
+              chapter.chapterIndex === chapter.part.chapters.length
+                ? '/courses/$courseId'
+                : '/courses/$courseId/$chapterId'
+            }
+            params={goToChapterParameters(chapter, 'next')}
+            className="flex size-6 items-center justify-center rounded-full bg-darkOrange-5/60 shrink-0"
+          >
+            <BiChevronRight className="size-4 text-white" />
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const TimelineBig = ({
+  chapter,
+  professor,
+}: {
+  chapter: CourseChapterResponse;
+  professor: string;
+}) => {
+  const { t } = useTranslation();
+
+  const isFirstChapter =
+    chapter.chapterIndex === 1 && chapter.part.partIndex === 1;
+
+  const isLastChapter =
+    chapter.chapterIndex === chapter.part.chapters.length &&
+    chapter.part.partIndex === chapter.course.parts.length;
+
+  return (
+    <div className="mb-0 w-full max-w-[1102px] max-sm:hidden mt-10 px-5 md:px-2">
+      <h1 className="flex items-center gap-5">
+        <TextTag size="base" variant="grey" mode="light" className="uppercase">
+          {addSpaceToCourseIndex(chapter.course.index)}
+        </TextTag>
+        <Link
+          to={`/courses/${formatNameForURL(chapter.course.name)}-${chapter.course.id}`}
+          className="text-black hover:text-darkOrange-5 display-small-32px"
+        >
+          {chapter.course.name}
+        </Link>
+      </h1>
+      <div className="font-body flex flex-col justify-between text-xl text-black leading-relaxed tracking-015px mt-6">
+        <span className="label-medium-med-16px text-newBlack-2">
+          {t('courses.part.count', {
+            count: chapter.part.partIndex,
+            total: chapter.course.parts.length,
+          })}{' '}
+          : {chapter.part.title}
+        </span>
+        <span className="body-16px text-newBlack-5">{professor}</span>
+      </div>
+      <div className="mt-5 flex h-4 flex-row justify-between space-x-3 rounded-full">
+        {chapter.course.parts.map((currentPart, partIndex) => {
+          const firstPart = currentPart.partIndex === 1;
+          const lastPart =
+            currentPart.partIndex === chapter.course.parts.length;
+
+          return (
+            // biome-ignore lint/suspicious/noArrayIndexKey: explanation
+            <div className="flex h-4 grow flex-row" key={partIndex}>
+              {currentPart.chapters.map((currentChapter, chapterIndex) => {
+                const firstChapter = currentChapter.chapterIndex === 1;
+                const lastChapter =
+                  currentChapter.chapterIndex === currentPart.chapters.length;
+
+                if (
+                  currentPart.partIndex !== chapter.part.partIndex ||
+                  currentChapter.chapterIndex !== chapter.chapterIndex
+                ) {
+                  return (
+                    <Link
+                      className="border-white h-4 grow border-l-[1.5px] first:border-l-0"
+                      to={'/courses/$courseId/$chapterId'}
+                      params={{
+                        chapterId: currentChapter.chapterId,
+                        courseId: chapter.course.id,
+                      }}
+                      // biome-ignore lint/suspicious/noArrayIndexKey: explanation
+                      key={chapterIndex}
+                    >
+                      <div
+                        className={compose(
+                          'h-4 grow',
+                          currentPart.partIndex < chapter.part.partIndex ||
+                            (currentPart.partIndex === chapter.part.partIndex &&
+                              currentChapter.chapterIndex <
+                                chapter.chapterIndex)
+                            ? 'bg-darkOrange-5'
+                            : 'bg-darkOrange-1',
+                          firstPart && firstChapter ? 'rounded-l-full' : '',
+                          lastPart && lastChapter ? 'rounded-r-full' : '',
+                        )}
+                      />
+                    </Link>
+                  );
+                }
+
+                return (
+                  <div
+                    className="border-white relative flex grow overflow-visible border-l-[1.5px] first:border-l-0"
+                    // biome-ignore lint/suspicious/noArrayIndexKey: explanation
+                    key={chapterIndex}
+                  >
+                    <div
+                      className={compose(
+                        'h-4 w-1/2 bg-darkOrange-5',
+                        firstPart && firstChapter ? 'rounded-l-full' : '',
+                      )}
+                    />
+                    <div
+                      className={compose(
+                        'h-4 w-1/2 bg-darkOrange-1',
+                        lastPart && lastChapter ? 'rounded-r-full' : '',
+                      )}
+                    />
+                    <img
+                      src={OrangePill}
+                      className={compose(
+                        'absolute inset-0 bottom-0 left-0 m-auto h-8 w-full',
+                      )}
+                      alt="Progress pill"
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          );
+        })}
+      </div>
+      <div className="flex items-center justify-center gap-10 mt-10 text-center leading-normal tracking-015px">
+        {!isFirstChapter && (
+          <Link
+            to={
+              isFirstChapter
+                ? '/courses/$courseId'
+                : '/courses/$courseId/$chapterId'
+            }
+            params={goToChapterParameters(chapter, 'previous')}
+            className="basis-1/4 truncate text-newGray-1 hover:font-medium"
+          >
+            {goToChapterParameters(chapter, 'previous').chapterName}
+          </Link>
+        )}
+
+        <div className="flex gap-10 items-center text-newBlack-1 font-medium">
+          {!isFirstChapter && (
+            <Link
+              to={
+                isFirstChapter
+                  ? '/courses/$courseId'
+                  : '/courses/$courseId/$chapterId'
+              }
+              params={goToChapterParameters(chapter, 'previous')}
+            >
+              <span>&lt;</span>
+            </Link>
+          )}
+          <span>
+            {chapter.part.partIndex}.{chapter.chapterIndex}. {chapter.title}
+          </span>
+          {!isLastChapter && (
+            <Link
+              to={
+                isLastChapter
+                  ? '/courses/$courseId'
+                  : '/courses/$courseId/$chapterId'
+              }
+              params={goToChapterParameters(chapter, 'next')}
+            >
+              <span>&gt;</span>
+            </Link>
+          )}
+        </div>
+
+        {!isLastChapter && (
+          <Link
+            to={
+              isLastChapter
+                ? '/courses/$courseId'
+                : '/courses/$courseId/$chapterId'
+            }
+            params={goToChapterParameters(chapter, 'next')}
+            className="basis-1/4 truncate text-newGray-1 hover:font-medium"
+          >
+            {goToChapterParameters(chapter, 'next').chapterName}
+          </Link>
+        )}
+      </div>
+      <div className="mt-2 bg-neutral-100 h-px" />
+    </div>
+  );
+};
+
+const Header = ({ chapter }: { chapter: CourseChapterResponse }) => {
+  return (
+    <div>
+      <h2 className="mt-2.5 text-black desktop-h4 max-sm:hidden">
+        {chapter.part.partIndex}.{chapter.chapterIndex}. {chapter.title}
+      </h2>
+    </div>
+  );
+};
+
+const BottomButton = ({ chapter }: { chapter: CourseChapterResponse }) => {
+  const { t } = useTranslation();
+
+  const completeChapterMutation = useMutation(
+    trpc.user.courses.completeChapter.mutationOptions(),
+  );
+
+  const completeChapter = () => {
+    completeChapterMutation.mutate({
+      chapterId: chapter.chapterId,
+      courseId: chapter.course.id,
+      language: chapter.language,
+    });
+  };
+
+  const isLastChapter =
+    chapter.chapterIndex === chapter.part.chapters.length &&
+    chapter.part.partIndex === chapter.course.parts.length;
+
+  return (
+    <Link
+      className="group flex w-fit !mt-4 md:!mt-8 mx-auto md:ml-auto"
+      to={
+        isLastChapter ? '/courses/$courseId' : '/courses/$courseId/$chapterId'
+      }
+      params={goToChapterParameters(chapter, 'next')}
+    >
+      {isLastChapter ? (
+        <Button variant="primary" size="l" onClick={completeChapter}>
+          <span>{t('courses.chapter.finishCourse')}</span>
+          <FaArrowRightLong
+            className={cn(
+              'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 lg:group-hover:max-w-96 lg:group-hover:opacity-100',
+              'lg:group-hover:ml-3',
+            )}
+          />
+        </Button>
+      ) : (
+        <Button
+          variant="primary"
+          size="l"
+          onClick={completeChapter}
+          className="max-md:min-w-[262px]"
+        >
+          <span>{t('courses.chapter.next')}</span>
+          <FaArrowRightLong
+            className={cn(
+              'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 lg:group-hover:max-w-96 lg:group-hover:opacity-100',
+              'lg:group-hover:ml-3',
+            )}
+          />
+        </Button>
+      )}
+    </Link>
+  );
+};
+
+const MarkdownContent = memo(
+  ({ chapter }: { chapter: CourseChapterResponse }) => {
+    return (
+      <Suspense fallback={<Loader size={'s'} />}>
+        <CoursesMarkdownBody
+          content={chapter.rawContent}
+          assetPrefix={cdnUrl(`courses/${chapter.course.index}`)}
+          supportInlineLatex={COURSES_WITH_INLINE_LATEX_SUPPORT.includes(
+            chapter.course.id,
+          )}
+        />
+      </Suspense>
+    );
+  },
+);
+
+function getRandomQuestions(
+  questionArray: Question[],
+  count: number,
+): Question[] {
+  if (count >= questionArray.length) {
+    return questionArray;
+  }
+
+  const shuffledArray = shuffleArray([...questionArray]);
+  return shuffledArray.slice(0, count);
+}
+
+function mapQuizzToQuestions(quizzArray: JoinedQuizQuestion[]): Question[] {
+  return quizzArray.map((quizz) => {
+    const answers = [quizz.answer, ...quizz.wrongAnswers];
+    const shuffledAnswers = shuffleArray(answers);
+    const correctAnswer = shuffledAnswers.indexOf(quizz.answer);
+
+    return {
+      answers: shuffledAnswers,
+      correctAnswer,
+      explanation: quizz.explanation as string,
+      question: quizz.question,
+    };
+  });
+}
+
+function shuffleArray<T>(array: T[]): T[] {
+  const newArray = [...array];
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  }
+  return newArray;
+}
+
+function CourseChapter() {
+  const { i18n, t } = useTranslation();
+  const params = Route.useParams();
+
+  const { course, courseProgress, isLoggedIn } = useContext(CourseContext);
+
+  const [isContentExpanded, setIsContentExpanded] = useState(true);
+
+  const {
+    open: openAuthModal,
+    isOpen: isAuthModalOpen,
+    close: closeAuthModal,
+  } = useDisclosure();
+
+  const navigate = useNavigate();
+
+  const { data: chapters } = useQuery(
+    trpc.content.getCourseChapters.queryOptions({
+      id: params.courseSlug,
+      language: i18n.language,
+    }),
+  );
+
+  const {
+    data: chapter,
+    isFetched,
+    isError,
+    error,
+  } = useQuery(
+    trpc.content.getCourseChapter.queryOptions(
+      {
+        chapterId: params.chapterId,
+        language: i18n.language,
+      },
+      {
+        refetchOnWindowFocus: false,
+      },
+    ),
+  );
+
+  const completeChapterAutoMutation = useMutation(
+    trpc.user.courses.completeChapter.mutationOptions(),
+  );
+
+  const { data: proofreading } = useQuery(
+    trpc.content.getProofreading.queryOptions(
+      {
+        courseId: params.courseSlug,
+        language: i18n.language,
+      },
+      { enabled: !course?.requiresPayment },
+    ),
+  );
+
+  const { data: quizzArray } = useQuery(
+    trpc.content.getCourseChapterQuizQuestions.queryOptions({
+      chapterId: params.chapterId,
+      language: i18n.language,
+    }),
+  );
+
+  const questionsArray: Question[] = useMemo(() => {
+    if (quizzArray === undefined) {
+      return [];
+    }
+
+    const temp = mapQuizzToQuestions(quizzArray);
+    return getRandomQuestions(temp, 5);
+  }, [quizzArray]);
+
+  const sections: string[] = useMemo(() => {
+    if (chapter === undefined) {
+      return [];
+    }
+
+    const regex = /^### (.+)$/gm;
+
+    const sections: string[] = [];
+
+    let match: any;
+    // biome-ignore lint/suspicious/noAssignInExpressions: explanation
+    while ((match = regex.exec(chapter.rawContent)) !== null) {
+      sections.push(match[1]);
+    }
+
+    return sections;
+  }, [chapter]);
+
+  let isAroundLiveTime = false;
+
+  const now = new Date(Date.now());
+  if (chapter?.startDate && chapter.endDate) {
+    const chapterStartDate = new Date(chapter.startDate.getTime());
+    const oneHourBeforeStart = new Date(chapterStartDate);
+    oneHourBeforeStart.setHours(oneHourBeforeStart.getHours() - 1);
+
+    const twoDaysAfterStart = new Date(chapterStartDate);
+    twoDaysAfterStart.setDate(twoDaysAfterStart.getDate() + 2);
+
+    if (now >= oneHourBeforeStart && now <= twoDaysAfterStart) {
+      isAroundLiveTime = true;
+    }
+  }
+
+  const isSpecialChapter =
+    chapter?.isCourseReview ||
+    chapter?.isCourseExam ||
+    chapter?.isCourseConclusion ||
+    chapter?.isSingleTrialExam;
+
+  let displayClassDetails = false;
+  let displayLiveSection = false;
+  let displayLiveVideo = false;
+  let displayQuiz = true;
+  let displayNext = true;
+
+  if (chapter?.startDate && chapter.endDate) {
+    // const isMarkdownAvailable = chapter.rawContent && chapter.rawContent.length > 0 ? true : false;
+    const chapterStartDate = new Date(chapter.startDate.getTime());
+    const chapterEndDate = new Date(chapter.endDate.getTime());
+
+    displayClassDetails =
+      (chapter.isInPerson || false || chapter.isOnline || false) &&
+      chapterEndDate > now;
+    displayLiveSection = Boolean(chapter.isOnline);
+    displayLiveVideo =
+      displayLiveSection && chapterStartDate.setHours(0, 0, 0, 0) <= Date.now();
+    displayQuiz = false;
+
+    if (now > chapterStartDate) {
+      displayNext = true;
+    } else {
+      displayNext = false;
+    }
+  }
+
+  let computerProfessor = '';
+  if (chapter) {
+    (() => {
+      // biome-ignore lint/suspicious/noImplicitAnyLet: explanation
+      let professors;
+      professors = chapter.course.mainProfessors;
+      if (chapter.professors && chapter.professors.length > 0) {
+        professors = chapter.professors;
+      }
+
+      computerProfessor = joinWords(
+        professors
+          .map((p) => p.name)
+          .filter((name): name is string => name !== undefined),
+      );
+    })();
+  }
+
+  const isScreenSm = useGreater('sm');
+
+  const isOriginalLanguage =
+    i18n.language === chapter?.course?.originalLanguage;
+
+  useEffect(() => {
+    setIsContentExpanded(isScreenSm ? isScreenSm : false);
+  }, [isScreenSm]);
+
+  useEffect(() => {
+    if (
+      chapter?.course &&
+      params.chapterName !== formatNameForURL(chapter.title)
+    ) {
+      navigate({
+        replace: true,
+        to: `/courses/${chapter.courseId}/${formatNameForURL(chapter.title)}-${chapter.chapterId}`,
+      });
+    }
+  }, [chapter, isFetched, navigate, params.chapterName]);
+
+  useEffect(() => {
+    if (isLoggedIn && isAroundLiveTime && chapter) {
+      completeChapterAutoMutation.mutate({
+        chapterId: chapter.chapterId,
+        courseId: chapter.course.id,
+        language: i18n.language,
+      });
+    }
+  }, [chapter, isLoggedIn, isAroundLiveTime]);
+
+  return (
+    <PageLayout
+      layoutSize="max"
+      title={`${course?.name || ''} - ${chapter?.title || ''}`}
+      hideTitle
+      tabs={isLoggedIn && course ? getTabs(course, courseProgress?.[0]) : []}
+    >
+      {proofreading ? (
+        <ProofreadingProgress
+          isOriginalLanguage={isOriginalLanguage}
+          mode="light"
+          proofreadingData={{
+            contributors: proofreading.contributorNames,
+            reward: proofreading.reward,
+          }}
+        />
+      ) : (
+        <></>
+      )}
+
+      <div className="text-black flex flex-col grow">
+        {!isFetched && (
+          <div className="flex flex-col flex-1 items-center size-full">
+            <Loader size={'s'} />
+          </div>
+        )}
+
+        {isFetched && isError && error.data?.code === 'UNAUTHORIZED' && (
+          <div className="flex flex-col flex-1 items-center size-full">
+            <div>{t('courses.details.premiumContentNeedsLogin')}</div>
+            <div>
+              <Button
+                size="l"
+                mode="light"
+                variant="primary"
+                className="mt-4"
+                onClick={openAuthModal}
+              >
+                {t('auth.signIn')}
+              </Button>
+            </div>
+          </div>
+        )}
+
+        {isFetched && isError && error.data?.code === 'FORBIDDEN' && (
+          <div className="flex flex-col flex-1 items-center size-full">
+            <div>{t('courses.details.premiumContentNeedsPayment')}</div>
+            <div>
+              <Link
+                to={'/courses/$courseId'}
+                params={{ courseId: params.courseSlug }}
+                className="text-newOrange-1 hover:underline"
+              >
+                {t('courses.details.premiumContentNeedsPaymentAction')}
+              </Link>
+            </div>
+          </div>
+        )}
+
+        {isFetched && !isError && !chapter && (
+          <div className="flex size-full flex-col items-start px-2 py-6 sm:items-center sm:py-10">
+            {t('underConstruction.itemNotFoundOrTranslated', {
+              item: t('words.chapter'),
+            })}
+          </div>
+        )}
+        {chapter && (
+          <div className="flex size-full flex-col items-center">
+            {/* Desktop */}
+            <TimelineBig chapter={chapter} professor={computerProfessor} />
+            {/* Mobile */}
+            <TimelineSmall chapter={chapter} professor={computerProfessor} />
+
+            {displayClassDetails && (
+              <ClassDetails
+                course={chapter.course}
+                chapter={chapter}
+                professor={computerProfessor}
+              />
+            )}
+
+            <div className="flex w-full flex-col items-center justify-center lg:max-w-[1102px] lg:items-stretch lg:justify-stretch">
+              {!chapter.isCourseExam && !chapter.isSingleTrialExam && (
+                <div
+                  className="text-blue-950 w-full space-y-5 break-words md:px-2 mt-3 md:mt-8 md:grow md:space-y-4 md:overflow-hidden pb-2 md:pb-0"
+                  id="headerChapter"
+                >
+                  <Header chapter={chapter} />
+                </div>
+              )}
+              <div className="flex w-full max-lg:flex-col items-center justify-center lg:max-w-[1102px] lg:items-stretch lg:justify-stretch">
+                <div className="text-blue-950 flex flex-col w-full gap-5 break-words md:px-2 md:mt-8 md:grow md:gap-4 md:overflow-hidden pb-2">
+                  {!chapter.isCourseExam &&
+                    !chapter.isSingleTrialExam &&
+                    sections.length > 0 && (
+                      <div
+                        className={cn(
+                          'flex flex-col self-stretch rounded-[10px] lg:rounded-[20px] p-4 lg:p-5 bg-header',
+                          isContentExpanded ? '' : 'h-auto',
+                        )}
+                      >
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setIsContentExpanded(!isContentExpanded)
+                          }
+                          className="flex cursor-pointer items-center text-darkOrange-5 gap-2 lg:gap-4"
+                        >
+                          <IoIosArrowForward
+                            className={cn(
+                              'size-4 lg:size-5',
+                              isContentExpanded
+                                ? 'rotate-90 transition-transform'
+                                : 'transition-transform',
+                            )}
+                          />
+                          <span className="subtitle-small-caps-14px lg:subtitle-medium-caps-18px">
+                            {t('courses.details.objectivesTitle')}
+                          </span>
+                        </button>
+                        {isContentExpanded && (
+                          <div className="mt-4 lg:mt-4 text-sm md:text-base">
+                            <ul className="flex flex-col gap-1.5">
+                              {sections.map((goal: string) => (
+                                <li
+                                  className="flex items-center gap-2.5 text-black "
+                                  key={goal}
+                                >
+                                  <TbCheck className="shrink-0 size-[18px] lg:size-6" />
+                                  <span className="body-14px lg:label-large-20px">
+                                    {capitalizeFirstWord(goal)}
+                                  </span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  {chapter.isCourseReview && (
+                    <div className="mx-4">
+                      <CourseReviewComponent
+                        courseId={chapter.courseId}
+                        chapter={chapter}
+                        chapterId={chapter.chapterId}
+                        formDisabled={!isLoggedIn}
+                      />
+                    </div>
+                  )}
+                  {chapter.isCourseExam && (
+                    <CourseExamWorkflow chapter={chapter} />
+                  )}
+                  {chapter.isCourseConclusion && (
+                    <CourseConclusion chapter={chapter} />
+                  )}
+                  {chapter.isSingleTrialExam && (
+                    <SingleTrialExamWorkflow chapter={chapter} />
+                  )}
+                  {displayLiveSection &&
+                    chapter.liveUrl &&
+                    chapter.startDate && (
+                      <LiveVideo
+                        url={chapter.liveUrl}
+                        chatUrl={chapter.chatUrl}
+                        displayVideo={displayLiveVideo}
+                      />
+                    )}
+                  {!isSpecialChapter && displayLiveSection && displayNext && (
+                    <div className="mb-8">
+                      <BottomButton chapter={chapter} />
+                    </div>
+                  )}
+                  <MarkdownContent chapter={chapter} />
+                  {!isSpecialChapter && displayQuiz && (
+                    <div className="md:!mt-5">
+                      {questionsArray && questionsArray.length > 0 && (
+                        <>
+                          <span className="text-darkOrange-5 title-medium-sb-18px md:font-normal md:text-2xl">
+                            Quiz
+                          </span>
+                          <QuizzCard
+                            name={chapter.course.index}
+                            chapter={`${chapter.part.partIndex.toString()}.${chapter.chapterIndex.toString()}`}
+                            questions={questionsArray}
+                          />
+                        </>
+                      )}
+                    </div>
+                  )}
+
+                  {!isSpecialChapter && !displayLiveSection && displayNext && (
+                    <BottomButton chapter={chapter} />
+                  )}
+                </div>
+
+                {!chapter.isCourseExam &&
+                  !chapter.isCourseConclusion &&
+                  !chapter.isSingleTrialExam && (
+                    <div className="ml-10 mt-7 shrink-0 max-2xl:hidden w-60">
+                      {chapters && (
+                        <NavigationPanel
+                          course={chapter.course}
+                          chapters={chapters}
+                          currentChapter={chapter}
+                        />
+                      )}
+                    </div>
+                  )}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {isAuthModalOpen && (
+          <AuthModal
+            isOpen={isAuthModalOpen}
+            onClose={closeAuthModal}
+            initialState={AuthModalState.SignIn}
+          />
+        )}
+      </div>
+    </PageLayout>
+  );
+}

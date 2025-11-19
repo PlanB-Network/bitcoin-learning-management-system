@@ -1,0 +1,277 @@
+import { Button, Person } from '@blms/ui';
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { useTranslation } from 'react-i18next';
+
+import Corporates from '#src/assets/about/corporates.webp?no-inline';
+import PpAjelex from '#src/assets/people/ajelex.webp?no-inline';
+import PpAsi0 from '#src/assets/people/asi0.webp?no-inline';
+import Ct01 from '#src/assets/people/contributors/01.webp?no-inline';
+import Ct02 from '#src/assets/people/contributors/02.webp?no-inline';
+import Ct03 from '#src/assets/people/contributors/03.webp?no-inline';
+import Ct04 from '#src/assets/people/contributors/04.webp?no-inline';
+import Ct05 from '#src/assets/people/contributors/05.webp?no-inline';
+import Ct06 from '#src/assets/people/contributors/06.webp?no-inline';
+import Ct07 from '#src/assets/people/contributors/07.webp?no-inline';
+import Ct08 from '#src/assets/people/contributors/08.webp?no-inline';
+import Ct09 from '#src/assets/people/contributors/09.webp?no-inline';
+import Ct10 from '#src/assets/people/contributors/10.webp?no-inline';
+import Ct11 from '#src/assets/people/contributors/11.webp?no-inline';
+import Ct12 from '#src/assets/people/contributors/12.webp?no-inline';
+import Ct13 from '#src/assets/people/contributors/13.webp?no-inline';
+import Ct14 from '#src/assets/people/contributors/14.webp?no-inline';
+import Ct15 from '#src/assets/people/contributors/15.webp?no-inline';
+import Ct16 from '#src/assets/people/contributors/16.webp?no-inline';
+import Ct17 from '#src/assets/people/contributors/17.webp?no-inline';
+import Ct18 from '#src/assets/people/contributors/18.webp?no-inline';
+import Ct19 from '#src/assets/people/contributors/19.webp?no-inline';
+import Ct20 from '#src/assets/people/contributors/20.webp?no-inline';
+import Ct21 from '#src/assets/people/contributors/21.webp?no-inline';
+import PpDavid from '#src/assets/people/david.webp?no-inline';
+import PpFanis from '#src/assets/people/fanis.webp?no-inline';
+import PpGiacomo from '#src/assets/people/giacomo.webp?no-inline';
+import PpGibson from '#src/assets/people/gibson.webp?no-inline';
+import PpJim from '#src/assets/people/jim.webp?no-inline';
+import PpLoic from '#src/assets/people/loic.webp?no-inline';
+import PpPierre from '#src/assets/people/pierre.webp?no-inline';
+import PpRogzy from '#src/assets/people/rogzy.webp?no-inline';
+import PpTheom from '#src/assets/people/theo_m.webp?no-inline';
+import PpTheop from '#src/assets/people/theo_p.webp?no-inline';
+import PpTodd from '#src/assets/people/todd.webp?no-inline';
+import { AboutUs } from '#src/components/about-us.tsx';
+import { PageLayout } from '#src/components/page-layout.tsx';
+
+const Mission = () => {
+  const { t } = useTranslation();
+
+  return (
+    <>
+      <div className="flex flex-col gap-6 mt-8">
+        <div>
+          <h2 className="text-3xl font-semibold uppercase">
+            {t('about.missionTitle')}
+          </h2>
+          <p className="mt-2 text-gray-400">{t('about.missionContent1')}</p>
+          <p className="mt-2 text-gray-400">{t('about.missionContent2')}</p>
+        </div>
+        <div>
+          <h2 className="text-3xl font-semibold uppercase">
+            {t('about.commitmentTitle')}
+          </h2>
+          <p className="mt-2 whitespace-pre-line text-gray-400">
+            {t('about.commitmentContent')}
+          </p>
+        </div>
+        <div>
+          <h2 className="text-3xl font-semibold uppercase">
+            {t('about.storyTitle')}
+          </h2>
+          <p className="mt-2 whitespace-pre-line text-gray-400">
+            {t('about.storyContent')}{' '}
+            <a
+              className="inline"
+              href="https://youtu.be/niKsUKrV4pU?si=0H9jLJBteDmlsOaH"
+            >
+              https://youtu.be/niKsUKrV4pU?si=0H9jLJBteDmlsOaH
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-6 w-full self-center">
+        <Link to={'/manifesto'}>
+          <Button variant="primary" className="self-start">
+            {t('about.readManifesto')}
+          </Button>
+        </Link>
+      </div>
+    </>
+  );
+};
+
+const Corporate = () => {
+  const { t } = useTranslation();
+
+  return (
+    <div className="mt-20 grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <div>
+        <h2 className="text-3xl font-semibold uppercase">
+          {t('about.corporateTitle')}
+        </h2>
+        <p className="mt-2 text-gray-400">{t('about.corporateContent')}</p>
+        <p className="mt-2">
+          {t('about.corporateContact')}{' '}
+          <a href="mailto:contact@planb.network">contact@planb.network</a>
+        </p>
+      </div>
+      <div className="mx-auto px-16">
+        <img
+          src={Corporates}
+          className="mt-4 w-full max-w-md"
+          alt={t('')}
+          loading="lazy"
+        />
+      </div>
+    </div>
+  );
+};
+
+const CoreTeam = () => {
+  const { t } = useTranslation();
+
+  return (
+    <>
+      <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <div>
+          <h2 className="text-3xl font-semibold uppercase">
+            {t('about.coreTeamTitle')}
+          </h2>
+          <p className="mt-2 text-gray-400">{t('about.coreTeamContent')}</p>
+        </div>
+      </div>
+      <div className="mt-6 grid w-full grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="flex flex-col gap-6">
+          <Person
+            name="Giacomo"
+            job={t('about.coreTeamGiacomoRole')}
+            picture={PpGiacomo}
+          />
+          <Person
+            name="Asi0"
+            job={t('about.coreTeamAsioRole')}
+            picture={PpAsi0}
+          />
+        </div>
+        <div className="flex flex-col gap-6">
+          <Person
+            name="Rogzy"
+            job={t('about.coreTeamRogzyRole')}
+            picture={PpRogzy}
+          />
+          <Person
+            name="Ajelex"
+            job={t('about.coreTeamAjelexRole')}
+            picture={PpAjelex}
+          />
+        </div>
+      </div>
+    </>
+  );
+};
+
+const Professors = () => {
+  const { t } = useTranslation();
+
+  return (
+    <div className="mt-20 flex w-full  gap-6">
+      <div>
+        <h2 className="text-3xl font-semibold uppercase">
+          {t('words.professors')}
+        </h2>
+        <div className="mt-6 flex flex-wrap gap-4">
+          <img
+            className="w-24 rounded-lg"
+            src={PpFanis}
+            alt=""
+            loading="lazy"
+          />
+          <img className="w-24 rounded-lg" src={PpJim} alt="" loading="lazy" />
+          <img className="w-24 rounded-lg" src={PpLoic} alt="" loading="lazy" />
+          <img
+            className="w-24 rounded-lg"
+            src={PpTheom}
+            alt=""
+            loading="lazy"
+          />
+          <img
+            className="w-24 rounded-lg"
+            src={PpDavid}
+            alt=""
+            loading="lazy"
+          />
+          <img
+            className="w-24 rounded-lg"
+            src={PpPierre}
+            alt=""
+            loading="lazy"
+          />
+          <img
+            className="w-24 rounded-lg"
+            src={PpGibson}
+            alt=""
+            loading="lazy"
+          />
+          <img
+            className="w-24 rounded-lg"
+            src={PpTheop}
+            alt=""
+            loading="lazy"
+          />
+          <img className="w-24 rounded-lg" src={PpTodd} alt="" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ActiveContributors = () => {
+  const { t } = useTranslation();
+  const css = 'w-24 h-24 rounded-full';
+
+  return (
+    <div className="mt-20 flex w-full flex-col gap-4">
+      <h2 className="text-3xl font-semibold uppercase">
+        {t('about.activeContributors')}
+      </h2>
+      <div className="mt-6 flex w-full flex-wrap justify-center gap-4 place-self-center">
+        <img className={css} src={Ct01} alt="" loading="lazy" />
+        <img className={css} src={Ct02} alt="" loading="lazy" />
+        <img className={css} src={Ct03} alt="" loading="lazy" />
+        <img className={css} src={Ct04} alt="" loading="lazy" />
+        <img className={css} src={Ct05} alt="" loading="lazy" />
+        <img className={css} src={Ct06} alt="" loading="lazy" />
+        <img className={css} src={Ct07} alt="" loading="lazy" />
+        <img className={css} src={Ct08} alt="" loading="lazy" />
+        <img className={css} src={Ct09} alt="" loading="lazy" />
+        <img className={css} src={Ct10} alt="" loading="lazy" />
+        <img className={css} src={Ct11} alt="" loading="lazy" />
+        <img className={css} src={Ct12} alt="" loading="lazy" />
+        <img className={css} src={Ct13} alt="" loading="lazy" />
+        <img className={css} src={Ct14} alt="" loading="lazy" />
+        <img className={css} src={Ct15} alt="" loading="lazy" />
+        <img className={css} src={Ct16} alt="" loading="lazy" />
+        <img className={css} src={Ct17} alt="" loading="lazy" />
+        <img className={css} src={Ct18} alt="" loading="lazy" />
+        <img className={css} src={Ct19} alt="" loading="lazy" />
+        <img className={css} src={Ct20} alt="" loading="lazy" />
+        <img className={css} src={Ct21} alt="" loading="lazy" />
+      </div>
+    </div>
+  );
+};
+
+export const Route = createFileRoute('/$lang/_misc/about')({
+  component: About,
+});
+
+function About() {
+  const { t } = useTranslation();
+
+  return (
+    <PageLayout
+      title={t('about.title')}
+      description={t('about.description')}
+      layoutSize="wide"
+    >
+      <div className="flex flex-col items-center">
+        <Mission />
+        <div className="mt-12">
+          <AboutUs />
+        </div>
+        <Corporate />
+        <CoreTeam />
+        <Professors />
+        <ActiveContributors />
+      </div>
+    </PageLayout>
+  );
+}

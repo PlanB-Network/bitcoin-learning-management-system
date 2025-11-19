@@ -7,7 +7,7 @@ import {
   HorizontalCourseCardDesktop,
 } from '#src/patterns/course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
-import { TutorialCard } from '#src/routes/$lang/_content/tutorials/-components/tutorial-card.tsx';
+import { TutorialCard } from '#src/routes/$lang/tutorials/-components/tutorial-card.tsx';
 import { getCourse, getTutorial } from '../utils/link-preview.tsx';
 
 const linkStyles = cva('text-base tracking-wide', {

@@ -7,7 +7,7 @@ import { cva } from 'class-variance-authority';
 import { t } from 'i18next';
 import { TbChevronRight, TbClock } from 'react-icons/tb';
 import HalfFilledStar from '#src/assets/courses/half-filled-star.svg?react';
-import { CourseLevelTag } from '#src/routes/$lang/_content/courses/-components/course-level.tsx';
+import { CourseLevelTag } from '#src/routes/$lang/_course/courses/-components/course-level.tsx';
 import { assetUrl, resourceImgUrl, trpc } from '#src/utils/index.js';
 import { normalizeString } from '#src/utils/string.ts';
 

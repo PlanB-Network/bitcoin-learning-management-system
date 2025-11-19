@@ -1,0 +1,134 @@
+import { Button } from '@blms/ui';
+import { useMutation } from '@tanstack/react-query';
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { z } from 'zod';
+import { PageLayout } from '#src/components/page-layout.tsx';
+import { AppContext } from '#src/providers/context.js';
+import { trpc } from '#src/utils/trpc.js';
+
+enum ValidationStatus {
+  VALIDATING,
+  SUCCESS,
+  ERROR,
+}
+
+export const Route = createFileRoute('/$lang/_misc/validate-email/$token')({
+  component: ValidateEmailPage,
+  params: {
+    parse: (params) => ({
+      lang: z.string().parse(params.lang),
+      token: z.string().parse(params.token),
+    }),
+    stringify: ({ lang, token }) => ({
+      lang: lang,
+      token: `${token}`,
+    }),
+  },
+});
+
+function ValidateEmailPage() {
+  const { t } = useTranslation();
+
+  const params = Route.useParams();
+  const token = params.token;
+
+  const { user, setUser } = useContext(AppContext);
+
+  const [validationStatus, setValidationStatus] = useState<ValidationStatus>(
+    ValidationStatus.VALIDATING,
+  );
+
+  const hasValidated = useRef(false);
+
+  // Call the API to validate the email change
+  const validateEmail = useMutation(
+    trpc.user.validateEmailChange.mutationOptions({
+      onError: () => {
+        setValidationStatus(ValidationStatus.ERROR);
+      },
+      onSuccess: ({ email }) => {
+        if (email) {
+          setValidationStatus(ValidationStatus.SUCCESS);
+          if (user) {
+            setUser({ ...user, email });
+          }
+        } else {
+          setValidationStatus(ValidationStatus.ERROR);
+        }
+      },
+    }),
+  );
+
+  useEffect(() => {
+    if (!hasValidated.current) {
+      console.log('Validating email', token);
+      validateEmail.mutate({ token });
+      hasValidated.current = true;
+    }
+  }, [token, validateEmail]);
+
+  const validationMessages = {
+    [ValidationStatus.VALIDATING]: (
+      <div>
+        <h1 className="mb-10 text-4xl font-bold lg:text-5xl">
+          {t('auth.emailValidation.validatingEmail')}
+        </h1>
+        <p className="my-8">{t('auth.emailValidation.wontTakeLong')}</p>
+      </div>
+    ),
+    [ValidationStatus.SUCCESS]: (
+      <div>
+        <h1 className="mb-10 text-4xl font-bold lg:text-5xl">
+          {t('auth.emailValidation.emailValidated')}
+        </h1>
+        <p className="my-8">
+          {t('auth.emailValidation.successfullyValidated')}
+        </p>
+        <p>
+          <Button asChild className="w-fit">
+            <Link className="cursor-pointer" to={user ? '/my-courses' : '/'}>
+              {user
+                ? t('dashboard.goToDashboard')
+                : t('dashboard.goToHomepage')}
+            </Link>
+          </Button>
+        </p>
+      </div>
+    ),
+    [ValidationStatus.ERROR]: (
+      <div>
+        <h1 className="mb-10 text-4xl font-bold lg:text-5xl">
+          {t('auth.emailValidation.errorValidatingEmail')}
+        </h1>
+        <p className="my-8 max-w-2xl">
+          {t('auth.emailValidation.errorValidatingEmailDescription')}
+        </p>
+        <p>
+          <Button asChild className="w-fit">
+            <Link className="cursor-pointer" to={user ? '/my-courses' : '/'}>
+              {user
+                ? t('dashboard.goToDashboard')
+                : t('dashboard.goToHomepage')}
+            </Link>
+          </Button>
+        </p>
+      </div>
+    ),
+  };
+
+  return (
+    <PageLayout
+      layoutSize="wide"
+      title={t('auth.emailValidation.validatingEmail')}
+      hideTitle
+    >
+      <div className="font-primary flex size-full flex-col items-center space-y-16 p-10">
+        <section className="max-w-4xl flex min-h-[50vh] flex-col items-center justify-center">
+          {validationMessages[validationStatus]}
+        </section>
+      </div>
+    </PageLayout>
+  );
+}
