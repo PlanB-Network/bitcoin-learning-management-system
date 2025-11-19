@@ -20,6 +20,8 @@ import {
   StudentGroup,
   TeachingFormat,
   TokenType,
+  TranslationJobStatus,
+  TranslationJobType,
   TranslationStatus,
   UserPermission,
   UserRole,
@@ -2266,6 +2268,16 @@ export const assignmentStatusEnum = pgNativeEnum(
   AssignmentStatus,
 );
 
+// Job tracking enums
+export const translationJobTypeEnum = pgNativeEnum(
+  'translation_job_type',
+  TranslationJobType,
+);
+export const translationJobStatusEnum = pgNativeEnum(
+  'translation_job_status',
+  TranslationJobStatus,
+);
+
 // Content schema extensions for translations
 export const contentCourseTranslations = content.table(
   'course_translations',
@@ -2546,6 +2558,8 @@ export const contentCourseUploads = content.table(
       }),
     pptxFileUrl: t.text(), // S3 URL for PowerPoint file
     textFileUrl: t.text(), // S3 URL for directory (txt files) or archive
+    pptxFileHash: t.text(), // SHA256 hash of PPTX file for deduplication
+    textFileHash: t.text(), // SHA256 hash of text file for deduplication
     uploadSuccess: t.boolean().default(false).notNull(),
     errorMessage: t.text(), // Store error details if upload fails
     createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
@@ -2613,5 +2627,40 @@ export const contentCourseTranslationSlides = content.table(
       ],
       name: 'course_translation_slides_to_translation_chapters_fk',
     }).onDelete('cascade'),
+  }),
+);
+
+// Translation jobs table for tracking upload and translation progress
+// Replaces in-memory LRU cache for persistence and recovery
+export const contentTranslationJobs = content.table(
+  'translation_jobs',
+  (t) => ({
+    id: t.uuid().defaultRandom().primaryKey().notNull(),
+    courseId: t
+      .varchar({ length: 100 })
+      .notNull()
+      .references(() => contentCourses.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
+    type: translationJobTypeEnum().notNull(), // 'upload' or 'translation'
+    status: translationJobStatusEnum()
+      .default(TranslationJobStatus.Pending)
+      .notNull(),
+    languages: t.varchar({ length: 10 }).array(), // Target languages for translation
+    progress: t.text(), // Human-readable progress message
+    error: t.text(), // Error message if failed
+    taskId: t.text(), // Language Toolkit task ID for translation jobs
+    uploadId: t.uuid(), // Reference to upload result
+    totalFiles: t.integer(), // Total number of files to process
+    processedFiles: t.integer(), // Number of files processed so far
+    currentFile: t.text(), // Current file being processed
+    startedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    completedAt: t.timestamp({ withTimezone: true }),
+    lastUpdate: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  }),
+  (table) => ({
+    // Unique constraint: only one active job per course and type
+    courseTypeUnique: unique().on(table.courseId, table.type),
   }),
 );

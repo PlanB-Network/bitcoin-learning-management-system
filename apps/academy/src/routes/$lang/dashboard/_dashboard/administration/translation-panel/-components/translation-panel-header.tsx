@@ -4,7 +4,13 @@ import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { useTranslationPanelNavigation } from '#src/hooks/use-translation-panel-navigation.ts';
 
 interface TranslationPanelHeaderProps {
-  activeTab?: 'requests' | 'content' | 'users' | 'reports' | 'translate';
+  activeTab?:
+    | 'requests'
+    | 'content'
+    | 'users'
+    | 'reports'
+    | 'translate'
+    | 'jobs';
   showTabs?: boolean;
   children?: React.ReactNode;
   isUserDetailsPage?: boolean;
@@ -138,6 +144,9 @@ export const TranslationPanelHeader = ({
             </TabsTrigger>
             <TabsTrigger value="translate" size={isMobile ? 's' : 'm'}>
               {t('dashboard.adminPanel.translationPanel.tabs.translate')}
+            </TabsTrigger>
+            <TabsTrigger value="jobs" size={isMobile ? 's' : 'm'}>
+              Jobs
             </TabsTrigger>
           </TabsList>
           {children}

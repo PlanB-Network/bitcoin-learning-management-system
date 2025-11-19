@@ -69,6 +69,77 @@ export const SelectLanguagesModal = ({
     }
   }, [isOpen, course.id]);
 
+  // Auto-recover ongoing jobs when modal opens
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const checkOngoingJobs = async () => {
+      try {
+        // Check for ongoing upload job
+        const uploadJobResponse = await fetch(
+          `/api/upload-job-status/${course.id}`,
+          { method: 'GET', credentials: 'include' },
+        );
+
+        if (uploadJobResponse.ok) {
+          const uploadJob = await uploadJobResponse.json();
+
+          if (
+            uploadJob.status === 'starting' ||
+            uploadJob.status === 'processing' ||
+            uploadJob.status === 'converting'
+          ) {
+            console.log(
+              '[Upload] Found ongoing upload job, showing progress...',
+            );
+            setState((prev) => ({
+              ...prev,
+              uploadProgress: {
+                progress: uploadJob.progress || 'Upload in progress...',
+                totalFiles: uploadJob.totalFiles,
+                processedFiles: uploadJob.processedFiles,
+                currentFile: uploadJob.currentFile,
+              },
+            }));
+            return;
+          }
+        }
+
+        // Check for ongoing translation job
+        const translationJobResponse = await fetch(
+          `/api/translation-job-status/${course.id}`,
+          { method: 'GET', credentials: 'include' },
+        );
+
+        if (translationJobResponse.ok) {
+          const translationJob = await translationJobResponse.json();
+
+          if (
+            translationJob.status === 'starting' ||
+            translationJob.status === 'polling' ||
+            translationJob.status === 'processing'
+          ) {
+            console.log(
+              '[Translation] Found ongoing translation job, showing progress...',
+            );
+            setState((prev) => ({
+              ...prev,
+              uploadProgress: {
+                progress:
+                  translationJob.progress || 'Translation in progress...',
+              },
+            }));
+          }
+        }
+      } catch (error) {
+        console.error('[Jobs] Error checking ongoing jobs:', error);
+        // Silent failure - don't bother user with recovery errors
+      }
+    };
+
+    checkOngoingJobs();
+  }, [isOpen, course.id]);
+
   // Use LANGUAGES_MAP directly for language names
   const getLanguageName = useCallback((code: string): string => {
     return LANGUAGES_MAP[code] || code;
@@ -168,16 +239,17 @@ export const SelectLanguagesModal = ({
 
   /**
    * Poll upload job status until completion or failure
+   * Uses courseId as job identifier for recovery
    */
   const pollUploadJobStatus = useCallback(
-    async (jobId: string): Promise<{ uploadId: string } | null> => {
+    async (courseId: string): Promise<{ uploadId: string } | null> => {
       const maxAttempts = 120; // 10 minutes max (120 * 5s)
       const pollInterval = 5000; // 5 seconds
 
       for (let attempt = 0; attempt < maxAttempts; attempt++) {
         try {
           const statusResponse = await fetch(
-            `/api/upload-job-status/${jobId}`,
+            `/api/upload-job-status/${courseId}`,
             {
               method: 'GET',
               credentials: 'include',
@@ -233,6 +305,70 @@ export const SelectLanguagesModal = ({
       throw new Error(
         'Upload timed out after 10 minutes. Please try with smaller files.',
       );
+    },
+    [],
+  );
+
+  /**
+   * Poll translation job status after upload completes
+   */
+  const pollTranslationStatus = useCallback(
+    async (courseId: string): Promise<void> => {
+      const maxAttempts = 120; // 10 minutes max
+      const pollInterval = 5000; // 5 seconds
+
+      for (let attempt = 0; attempt < maxAttempts; attempt++) {
+        try {
+          const statusResponse = await fetch(
+            `/api/translation-job-status/${courseId}`,
+            {
+              method: 'GET',
+              credentials: 'include',
+            },
+          );
+
+          if (!statusResponse.ok) {
+            if (statusResponse.status === 404) {
+              // No translation job yet, might still be starting
+              await new Promise((resolve) => setTimeout(resolve, pollInterval));
+              continue;
+            }
+            throw new Error(
+              `Status check failed: ${statusResponse.statusText}`,
+            );
+          }
+
+          const jobStatus = await statusResponse.json();
+
+          // Update progress message for translation
+          setState((prev) => ({
+            ...prev,
+            uploadProgress: {
+              progress: jobStatus.progress || 'Translating...',
+            },
+          }));
+
+          if (jobStatus.status === 'completed') {
+            console.log('[Translation] Job completed successfully');
+            return;
+          }
+
+          if (jobStatus.status === 'failed') {
+            throw new Error(jobStatus.error || 'Translation failed');
+          }
+
+          // Still processing
+          console.log(
+            `[Translation] Job ${jobStatus.status} (${jobStatus.progress || 'processing...'})`,
+          );
+          await new Promise((resolve) => setTimeout(resolve, pollInterval));
+        } catch (error) {
+          console.error('[Translation] Error polling job status:', error);
+          throw error;
+        }
+      }
+
+      throw new Error('Translation timed out after 10 minutes.');
     },
     [],
   );
@@ -307,12 +443,16 @@ export const SelectLanguagesModal = ({
       }
 
       const uploadJobResponse = await uploadResponse.json();
-      const { jobId } = uploadJobResponse;
 
-      console.log('[Upload] Job started with ID:', jobId);
+      console.log(
+        '[Upload] Job started for course:',
+        course.id,
+        'Status:',
+        uploadJobResponse.status,
+      );
 
-      // Step 2: Poll upload job status until completion
-      const uploadResult = await pollUploadJobStatus(jobId);
+      // Step 2: Poll upload job status until completion (using courseId)
+      const uploadResult = await pollUploadJobStatus(course.id);
 
       if (!uploadResult) {
         throw new Error('Upload job did not return upload ID');
@@ -323,10 +463,14 @@ export const SelectLanguagesModal = ({
         uploadResult.uploadId,
       );
 
-      // Clear upload progress after successful completion
-      setState((prev) => ({ ...prev, uploadProgress: null }));
-
       // Step 3: Start translation (returns immediately)
+      setState((prev) => ({
+        ...prev,
+        uploadProgress: {
+          progress: 'Starting translation...',
+        },
+      }));
+
       const translationResponse = await fetch(
         `/api/start-translation/${uploadResult.uploadId}`,
         {
@@ -358,24 +502,46 @@ export const SelectLanguagesModal = ({
           ) || `Translation failed: ${errorMessage}`,
           { color: 'warning' },
         );
+        setState((prev) => ({ ...prev, uploadProgress: null }));
         return;
       }
 
       await translationResponse.json();
+      console.log('[Translation] Translation started, polling status...');
 
-      // Show unified success message
-      const successMessage =
-        t(
-          'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.uploadAndTranslationStarted',
-        ) ||
-        'Files uploaded and translation started! The process may take several minutes for large courses. You can close this modal and check back later.';
+      // Step 4: Poll translation status until completion
+      try {
+        await pollTranslationStatus(course.id);
 
-      customToast(successMessage, { color: 'success' });
+        // Clear progress and show success
+        setState((prev) => ({ ...prev, uploadProgress: null }));
 
-      if (onSuccess) {
-        onSuccess();
-      } else {
-        onClose();
+        customToast(
+          t(
+            'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.translationCompleted',
+          ) || 'Translation completed successfully!',
+          { color: 'success' },
+        );
+
+        if (onSuccess) {
+          onSuccess();
+        } else {
+          onClose();
+        }
+      } catch (translationError) {
+        setState((prev) => ({ ...prev, uploadProgress: null }));
+
+        const errorMessage =
+          translationError instanceof Error
+            ? translationError.message
+            : 'Translation failed';
+
+        customToast(
+          t(
+            'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.translationFailed',
+          ) || errorMessage,
+          { color: 'warning' },
+        );
       }
     } catch (error) {
       console.error('Error in translation process:', error);
@@ -403,6 +569,7 @@ export const SelectLanguagesModal = ({
     t,
     isValidUrl,
     pollUploadJobStatus,
+    pollTranslationStatus,
   ]);
 
   // Determine if translation can start (for button disabled state)

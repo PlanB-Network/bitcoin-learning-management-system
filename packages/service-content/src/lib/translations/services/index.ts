@@ -20,6 +20,7 @@ export {
   createUpdateCourseTranslationSlide,
 } from './get-translation-slides.js';
 export * from './get-translations.js';
+export * from './translation-jobs.js';
 export * from './update-translations.js';
 export {
   createResetTranslationsToTodo,

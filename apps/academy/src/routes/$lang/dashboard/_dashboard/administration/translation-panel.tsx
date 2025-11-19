@@ -11,6 +11,7 @@ import { useContext, useEffect } from 'react';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { AppContext } from '#src/providers/context.js';
 import { ContentManagementTab } from '#src/routes/$lang/dashboard/_dashboard/administration/-components/content-management-tab.tsx';
+import { JobsTab } from '#src/routes/$lang/dashboard/_dashboard/administration/-components/jobs-tab.tsx';
 import { TranslateTab } from '#src/routes/$lang/dashboard/_dashboard/administration/-components/translate-tab.tsx';
 import { TranslationPanelHeader } from '#src/routes/$lang/dashboard/_dashboard/administration/translation-panel/-components/translation-panel-header.tsx';
 import { ReportsTab } from './-components/reports-tab.tsx';
@@ -81,6 +82,10 @@ function DashboardAdministrationTranslationPanel() {
 
           <TabsContent value="translate" className="mt-6">
             <TranslateTab />
+          </TabsContent>
+
+          <TabsContent value="jobs" className="mt-6">
+            <JobsTab />
           </TabsContent>
         </TranslationPanelHeader>
       </div>

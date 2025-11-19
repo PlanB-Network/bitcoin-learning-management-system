@@ -1,21 +1,23 @@
-import { randomUUID } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import {
   createCreateCourseTranslationUpload,
   createDeleteCourseTranslationUploadsByCourseId,
+  createGetActiveTranslationJobs,
+  createGetAllTranslationJobs,
   createGetCourseTranslationUploadById,
   createGetCourseTranslationUploads,
   createGetPartAndChapterIds,
+  createGetTranslationJob,
   createInsertCourseTranslationSlide,
   createResetTranslationsToTodo,
   createSetTranslationsReadyForReview,
   createStartTranslations,
   createUpdateCourseTranslationUpload,
+  createUpsertTranslationJob,
 } from '@blms/service-content';
 import type { Router } from 'express';
 import formidable from 'formidable';
-import { LRUCache } from 'lru-cache';
 import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest, InternalServerError } from '#src/errors.js';
 import { expressAuthMiddleware } from '#src/middlewares/auth.js';
@@ -44,25 +46,6 @@ const ALLOWED_DOWNLOAD_HOSTNAMES = (
   .split(',')
   .map((h) => h.trim())
   .filter(Boolean);
-
-// In-memory LRU cache for upload job status (no persistence needed for temporary jobs)
-interface UploadJobStatus {
-  jobId: string;
-  courseId: string;
-  status: 'processing' | 'completed' | 'failed';
-  progress?: string;
-  error?: string;
-  uploadId?: string;
-  uploadCount?: number;
-  totalFiles?: number;
-  processedFiles?: number;
-  currentFile?: string;
-}
-
-const uploadJobs = new LRUCache<string, UploadJobStatus>({
-  max: 100, // Max 100 concurrent upload jobs
-  ttl: 1000 * 60 * 60, // 1 hour TTL
-});
 
 const receiveUploadForm = (req: any): Promise<UploadFormData> => {
   return new Promise<UploadFormData>((resolve, reject) => {
@@ -268,6 +251,16 @@ export const createRestTranslationUploadRoutes = async (
     dependencies as any,
   );
 
+  // Translation job services
+  const upsertTranslationJob = createUpsertTranslationJob(dependencies as any);
+  const getTranslationJob = createGetTranslationJob(dependencies as any);
+  const getAllTranslationJobs = createGetAllTranslationJobs(
+    dependencies as any,
+  );
+  const getActiveTranslationJobs = createGetActiveTranslationJobs(
+    dependencies as any,
+  );
+
   /**
    * Delete all S3 files for a course in English language
    */
@@ -305,6 +298,7 @@ export const createRestTranslationUploadRoutes = async (
 
   /**
    * Background task to start translation and poll for results
+   * Tracks progress in translationJobs cache for recovery and status checking
    */
   async function startAndPollTranslation(
     dependencies: Dependencies,
@@ -320,6 +314,12 @@ export const createRestTranslationUploadRoutes = async (
     try {
       console.log(`[Translation] Starting translation for course ${courseId}`);
 
+      // Track job status (persist to DB)
+      await upsertTranslationJob(courseId, 'translation', 'starting', {
+        languages,
+        progress: 'Requesting translation from Language Toolkit...',
+      });
+
       const taskId = await dependencies.languageToolkit.translateCourse({
         course_id: courseId,
         source_lang: 'en',
@@ -332,16 +332,29 @@ export const createRestTranslationUploadRoutes = async (
 
       console.log(`[Translation] Got taskId ${taskId}, starting polling`);
 
-      // Poll with longer timeout for background processing (up to 10 minutes)
+      // Update status with taskId (persist to DB)
+      await upsertTranslationJob(courseId, 'translation', 'polling', {
+        languages,
+        progress: 'Translation in progress...',
+        taskId,
+      });
+
+      // Poll without timeout - translation can take as long as needed
       const manifest = await dependencies.languageToolkit.pollTask(taskId, {
         intervalMs: 5000, // Check every 5 seconds
-        maxAttempts: 120, // Maximum 10 minutes (120 * 5s)
+        maxAttempts: Number.MAX_SAFE_INTEGER, // No timeout - poll until completed or failed
       });
 
       if (manifest) {
         console.log(
           `[Translation] Received manifest for course ${courseId}, inserting slides into database...`,
         );
+
+        await upsertTranslationJob(courseId, 'translation', 'processing', {
+          languages,
+          progress: 'Inserting translated slides into database...',
+          taskId,
+        });
 
         await insertSlidesFromManifest(
           manifest,
@@ -357,6 +370,14 @@ export const createRestTranslationUploadRoutes = async (
         const langList = languages.map((l) => l.toLowerCase());
         await setReadyService(courseId, langList);
 
+        // Mark as completed (persist to DB)
+        await upsertTranslationJob(courseId, 'translation', 'completed', {
+          languages,
+          progress: 'Translation completed successfully!',
+          taskId,
+          completedAt: new Date(),
+        });
+
         console.log(
           `[Translation] ✓ Successfully completed translation for course ${courseId}, languages: ${languages.join(', ')}`,
         );
@@ -369,6 +390,12 @@ export const createRestTranslationUploadRoutes = async (
         courseId,
         error,
       );
+
+      // Mark as failed (persist to DB)
+      await upsertTranslationJob(courseId, 'translation', 'failed', {
+        languages,
+        error: error instanceof Error ? error.message : 'Unknown error',
+      });
 
       // Only reset status if it's a real translation failure, not a parsing error
       const shouldResetStatus =
@@ -448,28 +475,22 @@ export const createRestTranslationUploadRoutes = async (
 
   /**
    * Background task to process file upload with ConvertAPI
-   * Includes progress tracking for better UX
+   * Includes progress tracking for better UX - persisted to DB
    */
   async function processFileUploadInBackground(
-    jobId: string,
     uid: string,
     courseId: string,
     languages: string[],
     initialFiles: formidable.File[],
   ) {
     try {
-      console.log(
-        `[Upload] Starting background upload job ${jobId} for course ${courseId}`,
-      );
+      console.log(`[Upload] Starting background upload for course ${courseId}`);
 
       // Count total files (PPTX + TXT)
       const totalFiles = initialFiles.length;
 
-      // Update status to processing with initial progress
-      uploadJobs.set(jobId, {
-        jobId,
-        courseId,
-        status: 'processing',
+      // Update status to processing with initial progress (persist to DB)
+      await upsertTranslationJob(courseId, 'upload', 'processing', {
         progress: 'Preparing files for upload...',
         totalFiles,
         processedFiles: 0,
@@ -486,10 +507,7 @@ export const createRestTranslationUploadRoutes = async (
 
       // If no new files, return existing upload info
       if (!filesProvided) {
-        uploadJobs.set(jobId, {
-          jobId,
-          courseId,
-          status: 'completed',
+        await upsertTranslationJob(courseId, 'upload', 'completed', {
           uploadId: `existing-${courseId}`,
           progress: 'Using existing uploads',
         });
@@ -498,10 +516,7 @@ export const createRestTranslationUploadRoutes = async (
 
       // Delete old uploads if they exist
       if (filesProvided && existingUploads.length > 0) {
-        uploadJobs.set(jobId, {
-          jobId,
-          courseId,
-          status: 'processing',
+        await upsertTranslationJob(courseId, 'upload', 'processing', {
           progress: 'Cleaning up old uploads...',
           totalFiles,
           processedFiles: 0,
@@ -578,10 +593,7 @@ export const createRestTranslationUploadRoutes = async (
           const pptFile = group.pptx;
           const base = path.basename(pptFile.originalFilename ?? 'upload.pptx');
 
-          uploadJobs.set(jobId, {
-            jobId,
-            courseId,
-            status: 'processing',
+          await upsertTranslationJob(courseId, 'upload', 'processing', {
             progress: `Uploading PPTX for chapter ${chapterIndex}...`,
             totalFiles,
             processedFiles,
@@ -613,10 +625,7 @@ export const createRestTranslationUploadRoutes = async (
           processedFiles++;
 
           // Convert PPTX to PNG
-          uploadJobs.set(jobId, {
-            jobId,
-            courseId,
-            status: 'processing',
+          await upsertTranslationJob(courseId, 'upload', 'converting', {
             progress: `Converting PPTX to images for chapter ${chapterIndex}...`,
             totalFiles,
             processedFiles,
@@ -637,10 +646,7 @@ export const createRestTranslationUploadRoutes = async (
         for (const txt of group.txts) {
           const baseTxt = path.basename(txt.originalFilename ?? 'slide.txt');
 
-          uploadJobs.set(jobId, {
-            jobId,
-            courseId,
-            status: 'processing',
+          await upsertTranslationJob(courseId, 'upload', 'processing', {
             progress: `Uploading text file for chapter ${chapterIndex}...`,
             totalFiles,
             processedFiles,
@@ -682,33 +688,29 @@ export const createRestTranslationUploadRoutes = async (
       const uploadId =
         uploadResults.length > 0 ? uploadResults[0].id : `existing-${courseId}`;
 
-      // Mark as completed
-      uploadJobs.set(jobId, {
-        jobId,
-        courseId,
-        status: 'completed',
+      // Mark as completed (persist to DB)
+      await upsertTranslationJob(courseId, 'upload', 'completed', {
         uploadId,
-        uploadCount: uploadResults.length,
         totalFiles,
         processedFiles,
         progress: 'Upload completed successfully!',
+        completedAt: new Date(),
       });
 
-      console.log(`[Upload] ✓ Job ${jobId} completed successfully`);
+      console.log(
+        `[Upload] ✓ Job for course ${courseId} completed successfully`,
+      );
     } catch (error) {
-      console.error(`[Upload] Job ${jobId} failed:`, error);
+      console.error(`[Upload] Job for course ${courseId} failed:`, error);
 
-      // Mark as failed
-      uploadJobs.set(jobId, {
-        jobId,
-        courseId,
-        status: 'failed',
+      // Mark as failed (persist to DB)
+      await upsertTranslationJob(courseId, 'upload', 'failed', {
         error: error instanceof Error ? error.message : 'Unknown error',
       });
     }
   }
 
-  // Endpoint 1: Upload files only (returns immediately with jobId)
+  // Endpoint 1: Upload files only (returns immediately with courseId as job identifier)
   router.post(
     '/upload-translation-files',
     expressAuthMiddleware,
@@ -719,21 +721,31 @@ export const createRestTranslationUploadRoutes = async (
       }
 
       receiveUploadForm(req)
-        .then(({ courseId, languages, files: initialFiles }) => {
-          // Generate unique job ID
-          const jobId = randomUUID();
+        .then(async ({ courseId, languages, files: initialFiles }) => {
+          // Check if a job is already in progress for this course
+          const existingJob = await getTranslationJob(courseId, 'upload');
+          if (existingJob && existingJob.status === 'processing') {
+            // Return existing job status (allow recovery)
+            console.log(
+              `[Upload] Job already in progress for course ${courseId}, returning existing status`,
+            );
+            return res.status(200).json({
+              courseId,
+              status: existingJob.status,
+              progress: existingJob.progress,
+              totalFiles: existingJob.totalFiles,
+              processedFiles: existingJob.processedFiles,
+              message: 'Upload already in progress. Polling existing job.',
+            });
+          }
 
-          // Initialize job status
-          uploadJobs.set(jobId, {
-            jobId,
-            courseId,
-            status: 'processing',
+          // Initialize job status with courseId as key (persist to DB)
+          await upsertTranslationJob(courseId, 'upload', 'starting', {
             progress: 'Starting upload...',
           });
 
           // Start background processing (fire and forget)
           processFileUploadInBackground(
-            jobId,
             uid,
             courseId,
             languages,
@@ -742,13 +754,12 @@ export const createRestTranslationUploadRoutes = async (
             console.error('[Upload] Background upload failed:', error);
           });
 
-          // Return immediately with jobId
+          // Return immediately with courseId (acts as job ID)
           res.status(202).json({
-            jobId,
             courseId,
-            status: 'processing',
+            status: 'starting',
             message:
-              'Upload started successfully. Use /upload-job-status/:jobId to check progress.',
+              'Upload started successfully. Use /upload-job-status/:courseId to check progress.',
           });
         })
         .catch(next);
@@ -807,18 +818,19 @@ export const createRestTranslationUploadRoutes = async (
   );
 
   // Endpoint to check upload job status (for polling during background upload)
+  // Uses courseId as the job identifier for recovery and duplicate prevention
   router.get(
-    '/upload-job-status/:jobId',
+    '/upload-job-status/:courseId',
     expressAuthMiddleware,
     async (req, res, next) => {
-      const { jobId } = req.params;
+      const { courseId } = req.params;
 
-      if (!jobId) {
-        return next(new BadRequest('Job ID is required'));
+      if (!courseId) {
+        return next(new BadRequest('Course ID is required'));
       }
 
       try {
-        const job = uploadJobs.get(jobId);
+        const job = await getTranslationJob(courseId, 'upload');
 
         if (!job) {
           return res.status(404).json({
@@ -933,4 +945,299 @@ export const createRestTranslationUploadRoutes = async (
       }
     },
   );
+
+  // Endpoint to check translation job status (for polling and recovery)
+  router.get(
+    '/translation-job-status/:courseId',
+    expressAuthMiddleware,
+    async (req, res, next) => {
+      const { courseId } = req.params;
+
+      if (!courseId) {
+        return next(new BadRequest('Course ID is required'));
+      }
+
+      try {
+        const job = await getTranslationJob(courseId, 'translation');
+
+        if (!job) {
+          return res.status(404).json({
+            error: 'Job not found',
+            message:
+              'Translation job not found. It may have expired or never existed.',
+          });
+        }
+
+        res.json(job);
+      } catch (error) {
+        console.error('[Translation] Error checking job status:', error);
+        next(new InternalServerError('Failed to check translation job status'));
+      }
+    },
+  );
+
+  // Endpoint to retry translation without re-uploading files
+  router.post(
+    '/retry-translation/:courseId',
+    expressAuthMiddleware,
+    async (req, res, next) => {
+      const uid = req.session.uid;
+      const { courseId } = req.params;
+      const { languages } = req.body;
+
+      if (!uid) {
+        return next(new InternalServerError('User session missing'));
+      }
+
+      if (!courseId || !languages || !Array.isArray(languages)) {
+        return next(
+          new BadRequest('Course ID and languages array are required'),
+        );
+      }
+
+      try {
+        // Check if a translation job is already in progress (check DB)
+        const existingJob = await getTranslationJob(courseId, 'translation');
+        if (
+          existingJob &&
+          (existingJob.status === 'starting' ||
+            existingJob.status === 'polling' ||
+            existingJob.status === 'processing')
+        ) {
+          return res.status(200).json({
+            courseId,
+            status: existingJob.status,
+            progress: existingJob.progress,
+            message: 'Translation already in progress.',
+          });
+        }
+
+        // Since we now assume all files are in English, we hardcode the original language
+        const originalLanguage = 'en';
+
+        // Start translations for selected languages
+        await startTranslations({ courseId, languages });
+
+        console.log(
+          `[Translation] Retrying translation for course ${courseId}, languages: ${languages.join(', ')}`,
+        );
+
+        // Start async translation and polling in background (fire and forget)
+        startAndPollTranslation(
+          dependencies,
+          courseId,
+          languages,
+          originalLanguage,
+          setReadyService,
+          resetToTodoService,
+        ).catch((error) => {
+          console.error('[Translation] Background translation failed:', error);
+        });
+
+        res.status(202).json({
+          courseId,
+          languages,
+          status: 'starting',
+          message:
+            'Translation retry started successfully. Use /translation-job-status/:courseId to check progress.',
+        });
+      } catch (error) {
+        next(error);
+      }
+    },
+  );
+
+  // Endpoint to get all translation jobs (for admin jobs dashboard)
+  router.get(
+    '/translation-jobs',
+    expressAuthMiddleware,
+    async (req, res, next) => {
+      try {
+        const limit = Number(req.query.limit) || 50;
+        const offset = Number(req.query.offset) || 0;
+
+        const jobs = await getAllTranslationJobs(limit, offset);
+
+        res.json({
+          jobs,
+          limit,
+          offset,
+          total: jobs.length,
+        });
+      } catch (error) {
+        console.error('[Translation] Error getting all jobs:', error);
+        next(new InternalServerError('Failed to get translation jobs'));
+      }
+    },
+  );
+
+  /**
+   * Start job watchdog to monitor and fail stale jobs
+   * Runs every 2 minutes and marks jobs as failed if not updated in 15 minutes
+   */
+  const startJobWatchdog = () => {
+    const STALE_THRESHOLD = 15 * 60 * 1000; // 15 minutes
+
+    const checkStaleJobs = async () => {
+      try {
+        const activeJobs = await getActiveTranslationJobs();
+
+        for (const job of activeJobs) {
+          const lastUpdateTime = new Date(job.lastUpdate).getTime();
+          const timeSinceUpdate = Date.now() - lastUpdateTime;
+
+          if (timeSinceUpdate > STALE_THRESHOLD) {
+            console.log(
+              `[Watchdog] Marking stale job as failed: ${job.courseId} (${job.type}) - no update for ${Math.floor(timeSinceUpdate / 60000)}min`,
+            );
+
+            await upsertTranslationJob(job.courseId, job.type, 'failed', {
+              error: `Job stale - no update in ${Math.floor(timeSinceUpdate / 60000)} minutes. Possibly server restarted.`,
+            });
+          }
+        }
+      } catch (error) {
+        console.error('[Watchdog] Error checking stale jobs:', error);
+      }
+    };
+
+    // Run immediately on startup
+    checkStaleJobs();
+
+    // Then run every 2 minutes
+    const interval = setInterval(checkStaleJobs, 2 * 60 * 1000);
+
+    console.log('[Watchdog] Job watchdog started (checks every 2 minutes)');
+
+    return () => clearInterval(interval);
+  };
+
+  /**
+   * Resume polling on an existing translation task (after server restart)
+   */
+  const resumeTranslationPolling = async (
+    courseId: string,
+    languages: string[],
+    taskId: string,
+    originalLanguage: string,
+  ) => {
+    try {
+      console.log(`[Recovery] Resuming polling for task ${taskId}`);
+
+      await upsertTranslationJob(courseId, 'translation', 'polling', {
+        languages,
+        taskId,
+        progress: 'Resumed polling after server restart...',
+      });
+
+      // Resume polling on existing taskId (don't create new task)
+      const manifest = await dependencies.languageToolkit.pollTask(taskId, {
+        intervalMs: 5000,
+        maxAttempts: Number.MAX_SAFE_INTEGER,
+      });
+
+      if (manifest) {
+        console.log(
+          `[Recovery] Received manifest for course ${courseId}, inserting slides...`,
+        );
+
+        await upsertTranslationJob(courseId, 'translation', 'processing', {
+          languages,
+          taskId,
+          progress: 'Inserting translated slides into database...',
+        });
+
+        await insertSlidesFromManifest(
+          manifest,
+          courseId,
+          originalLanguage,
+          dependencies,
+        );
+
+        const langList = languages.map((l) => l.toLowerCase());
+        await setReadyService(courseId, langList);
+
+        await upsertTranslationJob(courseId, 'translation', 'completed', {
+          languages,
+          taskId,
+          progress: 'Translation completed successfully!',
+          completedAt: new Date(),
+        });
+
+        console.log(
+          `[Recovery] ✓ Successfully recovered translation for course ${courseId}`,
+        );
+      }
+    } catch (error) {
+      console.error('[Recovery] Failed to recover translation:', error);
+
+      await upsertTranslationJob(courseId, 'translation', 'failed', {
+        languages,
+        error: error instanceof Error ? error.message : 'Recovery failed',
+      });
+
+      const shouldResetStatus =
+        error instanceof Error &&
+        !error.message.includes('Zod') &&
+        !error.message.includes('parsing');
+
+      if (shouldResetStatus) {
+        await resetToTodoService(courseId, languages);
+      }
+    }
+  };
+
+  /**
+   * Recover orphaned translation jobs after server restart
+   * Resume polling for jobs that were in 'polling' status
+   */
+  const recoverOrphanedJobs = async () => {
+    try {
+      console.log('[Recovery] Checking for orphaned translation jobs...');
+
+      const activeJobs = await getActiveTranslationJobs();
+
+      for (const job of activeJobs) {
+        // Only recover translation jobs with taskId (not uploads)
+        if (job.type === 'translation' && job.taskId) {
+          const timeSinceUpdate =
+            Date.now() - new Date(job.lastUpdate).getTime();
+
+          // If job was updated recently (< 5 min), it might still be running
+          if (timeSinceUpdate < 5 * 60 * 1000) {
+            console.log(
+              `[Recovery] Resuming translation job for course ${job.courseId} with taskId ${job.taskId}`,
+            );
+
+            // Resume polling on existing taskId (don't create new LT task)
+            resumeTranslationPolling(
+              job.courseId,
+              job.languages || [],
+              job.taskId,
+              'en',
+            ).catch((error) => {
+              console.error(
+                `[Recovery] Failed to recover job for course ${job.courseId}:`,
+                error,
+              );
+            });
+          } else {
+            console.log(
+              `[Recovery] Job for course ${job.courseId} is too old (${Math.floor(timeSinceUpdate / 60000)}min), watchdog will handle it`,
+            );
+          }
+        }
+      }
+
+      console.log('[Recovery] Job recovery completed');
+    } catch (error) {
+      console.error('[Recovery] Error during job recovery:', error);
+    }
+  };
+
+  // Start watchdog and recovery on module initialization
+  startJobWatchdog();
+  recoverOrphanedJobs();
+
+  return router;
 };

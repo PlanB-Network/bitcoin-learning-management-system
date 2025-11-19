@@ -44,3 +44,24 @@ export enum AssignmentStatus {
   Completed = 'completed',
   Rejected = 'rejected',
 }
+
+/**
+ * Type of translation job (upload or translation processing)
+ */
+export enum TranslationJobType {
+  Upload = 'upload',
+  Translation = 'translation',
+}
+
+/**
+ * Status for translation job tracking
+ */
+export enum TranslationJobStatus {
+  Pending = 'pending',
+  Starting = 'starting',
+  Processing = 'processing',
+  Polling = 'polling',
+  Converting = 'converting',
+  Completed = 'completed',
+  Failed = 'failed',
+}

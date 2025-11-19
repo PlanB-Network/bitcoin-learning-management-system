@@ -78,6 +78,8 @@ export interface CourseTranslationUpload {
   chapterId: string;
   pptxFileUrl: string | null;
   textFileUrl: string | null;
+  pptxFileHash: string | null;
+  textFileHash: string | null;
   uploadSuccess: boolean;
   errorMessage: string | null;
   createdAt: Date;
