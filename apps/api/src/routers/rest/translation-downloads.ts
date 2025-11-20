@@ -1163,12 +1163,25 @@ export const createRestTranslationDownloadRoutes = async (
         );
 
         // Discover PPTX file with optional suffix
-        const discoveredKey = await discoverFileByExtension(
+        let discoveredKey = await discoverFileByExtension(
           dependencies.s3,
           directoryPath,
           'pptx',
           suffix,
         );
+
+        // Fallback: if proofread version not found, use original file
+        if (!discoveredKey && suffix === 'proofread') {
+          console.log(
+            `[Download] Proofread PPTX not found for slide ${slideId}, falling back to original`,
+          );
+          discoveredKey = await discoverFileByExtension(
+            dependencies.s3,
+            directoryPath,
+            'pptx',
+            undefined, // No suffix - get original
+          );
+        }
 
         if (!discoveredKey) {
           res.status(404).send('PPTX file not found');
@@ -1606,6 +1619,36 @@ export const createRestTranslationDownloadRoutes = async (
               });
             } catch {
               // ignore
+            }
+          }
+        }
+
+        // Final fallback: if proofread version not found, try without suffix
+        if (!discoveredKey && suffix === 'proofread') {
+          console.log(
+            `[PNG Discovery] Proofread PNG not found for slide ${slideId}, trying without suffix`,
+          );
+          const tryDirs = [
+            directoryPath,
+            alternateDirectoryPath,
+            `contribute/${courseId}/${language}/${partId}/${chapterId}/pptx/`,
+          ].filter(Boolean) as string[];
+
+          for (const dir of tryDirs) {
+            const key = await discoverFileByExtension(
+              dependencies.s3,
+              dir,
+              'png',
+              undefined, // No suffix - get original
+              indexNum,
+            );
+            if (key) {
+              console.log('[PNG Discovery] Fallback to original PNG', {
+                dir,
+                key,
+              });
+              discoveredKey = key;
+              break;
             }
           }
         }
