@@ -70,7 +70,16 @@ const PresentationMarkdownBody = ({
           </ul>
         ),
       }}
-      remarkPlugins={[remarkGfm, rehypeUnwrapImages, remarkMath]}
+      remarkPlugins={[
+        remarkGfm,
+        rehypeUnwrapImages,
+        [
+          remarkMath,
+          {
+            singleDollarTextMath: false,
+          },
+        ],
+      ]}
       rehypePlugins={[rehypeMathjax]}
       urlTransform={(src) =>
         src.startsWith('http') ? src : `${assetPrefix}/${src}`
