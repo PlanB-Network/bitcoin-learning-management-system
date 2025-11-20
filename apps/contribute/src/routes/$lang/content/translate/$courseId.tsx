@@ -9,6 +9,7 @@ import {
   createFileRoute,
   Link,
   Outlet,
+  useLocation,
   useNavigate,
 } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
@@ -49,9 +50,13 @@ function ProofreadCoursePage() {
     return localStorage.getItem('targetLanguage') || 'fr';
   });
 
-  // Check if we have a chapterId in params (which means we're on a chapter route)
-  const chapterId = 'chapterId' in params ? params.chapterId : undefined;
-  const isOnChapterRoute = Boolean(chapterId);
+  // Check if we're on a chapter route by looking at the URL
+  // TanStack Router doesn't pass child route params to parent, so check URL directly
+  const location = useLocation();
+  const urlSegments = location.pathname.split('/').filter(Boolean);
+  // URL pattern: /:lang/content/translate/:courseId/:chapterId
+  // So if we have 5+ segments and the 5th is a UUID, we're on chapter route
+  const isOnChapterRoute = urlSegments.length >= 5 && urlSegments[4].length > 0;
 
   // Calculate progress using slide counts for more granular accuracy
   const totalChapters = chapterProgress.length;
@@ -234,21 +239,13 @@ function ProofreadCoursePage() {
     })) || [];
 
   // Debug logging
-  console.log('ProofreadCoursePage params:', params);
-  console.log('Current URL:', window.location.pathname);
-  console.log('chapterId from params:', chapterId);
-  console.log('isOnChapterRoute:', isOnChapterRoute);
+  console.log('ProofreadCoursePage - isOnChapterRoute:', isOnChapterRoute);
+  console.log('ProofreadCoursePage - URL:', location.pathname);
 
   // If we're on a chapter route, just render the outlet
   if (isOnChapterRoute) {
-    console.log('Rendering outlet for chapter route');
     return <Outlet />;
   }
-
-  console.log('Rendering course page content');
-  console.log('Transformed parts for ChaptersTable:', transformedParts);
-  console.log('Number of parts:', transformedParts.length);
-  console.log('Chapter progress data:', chapterProgress);
 
   if (loading) {
     return (
