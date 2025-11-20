@@ -204,7 +204,7 @@ export const createChapterAssignmentsQuery = (
       assigner_id = EXCLUDED.assigner_id,
       assigned_at = NOW(),
       status = CASE
-        WHEN users.translation_chapter_assignments.status IN ('completed', 'reviewed', 'published')
+        WHEN users.translation_chapter_assignments.status = 'completed'
         THEN users.translation_chapter_assignments.status
         ELSE 'assigned'::assignment_status
       END
@@ -278,7 +278,7 @@ export const updateChapterAssignmentsQuery = (
       assigner_id = EXCLUDED.assigner_id,
       assigned_at = NOW(),
       status = CASE
-        WHEN users.translation_chapter_assignments.status IN ('completed', 'reviewed', 'published')
+        WHEN users.translation_chapter_assignments.status = 'completed'
         THEN users.translation_chapter_assignments.status
         ELSE 'assigned'::assignment_status
       END
