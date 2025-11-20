@@ -35,7 +35,7 @@ export const Route = createFileRoute(
 function Syllabus() {
   const { t } = useTranslation();
 
-  const { course, courseProgress, isLoggedIn } = useContext(CourseContext);
+  const { course, courseProgress } = useContext(CourseContext);
 
   const completedChapters = courseProgress?.[0]?.chapters ?? [];
 

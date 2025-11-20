@@ -20,7 +20,7 @@ function Ratings() {
 
   const params = Route.useParams();
 
-  const { course, courseProgress, isLoggedIn } = useContext(CourseContext);
+  const { course, courseProgress } = useContext(CourseContext);
 
   const courseId = params.courseSlug;
 

@@ -32,7 +32,7 @@ export const Route = createFileRoute(
 
 function CourseRetakeExam() {
   const params = Route.useParams();
-  const { course, courseProgress, isLoggedIn } = useContext(CourseContext);
+  const { course, courseProgress } = useContext(CourseContext);
 
   const { data: examResults, isFetched: isExamResultsFetched } = useQuery(
     trpc.user.courses.getAllUserCourseExamResults.queryOptions({

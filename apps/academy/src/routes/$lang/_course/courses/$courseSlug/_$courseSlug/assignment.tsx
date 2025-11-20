@@ -84,7 +84,7 @@ function Assignment() {
   const { user } = useContext(AppContext);
   const { courses } = useContext(AppContext);
 
-  const { course, isLoggedIn } = useContext(CourseContext);
+  const { course } = useContext(CourseContext);
 
   const courseId = params.courseSlug;
 
