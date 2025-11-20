@@ -41,7 +41,7 @@ function Ratings() {
       hideTitle
       layoutSize="max"
       overTitle={course ? <CourseTitle course={course} /> : undefined}
-      tabs={isLoggedIn && course ? getTabs(course, courseProgress?.[0]) : []}
+      tabs={course ? getTabs(course, courseProgress?.[0]) : []}
     >
       {course && reviewChapterId && (
         <section className="flex flex-col mt-4 md:mt-10 w-full">

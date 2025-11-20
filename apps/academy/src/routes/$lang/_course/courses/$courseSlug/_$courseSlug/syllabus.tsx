@@ -49,7 +49,7 @@ function Syllabus() {
       hideTitle
       layoutSize="max"
       overTitle={course ? <CourseTitle course={course} /> : undefined}
-      tabs={isLoggedIn && course ? getTabs(course, courseProgress?.[0]) : []}
+      tabs={course ? getTabs(course, courseProgress?.[0]) : []}
     >
       {course && (
         <div className="flex flex-col w-fit">

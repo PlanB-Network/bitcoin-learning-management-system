@@ -101,7 +101,7 @@ function SummerSchool() {
       hideTitle
       layoutSize="max"
       overTitle={course ? <CourseTitle course={course} /> : undefined}
-      tabs={isLoggedIn && course ? getTabs(course, courseProgress?.[0]) : []}
+      tabs={course ? getTabs(course, courseProgress?.[0]) : []}
     >
       <div className="flex flex-col gap-4 md:gap-8 w-full max-w-[1000px]">
         <section className="flex flex-col md:mt-8 w-full gap-4 md:gap-8">

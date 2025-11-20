@@ -1,13 +1,21 @@
 import { cn } from '@blms/ui';
 import { Link, useRouterState } from '@tanstack/react-router';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbDotsVertical } from 'react-icons/tb';
+import { AppContext } from '#src/providers/context.tsx';
 
 export interface Tab {
   id: string;
   label: string;
   href: string;
+  onlyForLoggedIn?: boolean;
 }
 
 export const SecondaryNavbar = ({ tabs }: { tabs: Tab[] }) => {
@@ -29,6 +37,9 @@ const SecondaryNavbarDesktop = ({ tabs }: { tabs: Tab[] }) => {
   const { t, i18n } = useTranslation();
   const routerState = useRouterState();
   const pathname = routerState.location.pathname;
+
+  const { session } = useContext(AppContext);
+  const isLoggedIn = !!session;
 
   const [overflowIndex, setOverflowIndex] = useState(tabs.length);
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
@@ -95,23 +106,7 @@ const SecondaryNavbarDesktop = ({ tabs }: { tabs: Tab[] }) => {
     setIsPopoverOpen(false);
   }, [pathname]);
 
-  const activeTab = tabs.reduce<Tab | null>((best, tab) => {
-    const tabPath = `/${i18n.language}${tab.href}`;
-
-    if (tab.id === 'courseChapter') {
-      const chapterPathPattern = new RegExp(
-        `^/${i18n.language}/courses/[0-9a-fA-F-]{36}/[a-z0-9-]+-[0-9a-fA-F-]{8}-[0-9a-fA-F-]{4}-[0-9a-fA-F-]{4}-[0-9a-fA-F-]{4}-[0-9a-fA-F-]{12}(?:/|$)`,
-      );
-      if (chapterPathPattern.test(pathname)) return tab;
-    }
-
-    if (pathname === tabPath || pathname.startsWith(tabPath + '/')) {
-      if (!best || tabPath.length > `/${i18n.language}${best.href}`.length) {
-        return tab;
-      }
-    }
-    return best;
-  }, null);
+  const activeTab = getActiveTab(tabs, i18n.language, pathname);
 
   const visibleTabs = tabs.slice(0, overflowIndex);
   const overflowTabs = tabs.slice(overflowIndex);
@@ -150,7 +145,11 @@ const SecondaryNavbarDesktop = ({ tabs }: { tabs: Tab[] }) => {
                 isActive
                   ? 'text-newBlack-1 label-strong'
                   : 'label text-newBlack-3 group-hover:text-newBlack-1',
+                tab.onlyForLoggedIn && !isLoggedIn
+                  ? 'pointer-events-none opacity-50'
+                  : '',
               )}
+              disabled={tab.onlyForLoggedIn && !isLoggedIn}
             >
               {t(tab.label)}
               <div
@@ -223,18 +222,13 @@ const SecondaryNavbarMobile = ({ tabs }: { tabs: Tab[] }) => {
   const routerState = useRouterState();
   const pathname = routerState.location.pathname;
 
+  const { session } = useContext(AppContext);
+  const isLoggedIn = !!session;
+
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
 
-  const activeTab = tabs.reduce<Tab | null>((best, tab) => {
-    const tabPath = `/${i18n.language}${tab.href}`;
-    if (pathname === tabPath || pathname.startsWith(tabPath + '/')) {
-      if (!best || tabPath.length > `/${i18n.language}${best.href}`.length) {
-        return tab;
-      }
-    }
-    return best;
-  }, null);
+  const activeTab = getActiveTab(tabs, i18n.language, pathname);
 
   const elRef = useRef<HTMLDivElement | null>(null);
   const dragging = useRef(false);
@@ -358,8 +352,12 @@ const SecondaryNavbarMobile = ({ tabs }: { tabs: Tab[] }) => {
                 isActive
                   ? 'text-newBlack-1 body-base-bold'
                   : 'body-base text-newBlack-3 group-hover:text-newBlack-1',
+                tab.onlyForLoggedIn && !isLoggedIn
+                  ? 'pointer-events-none opacity-50'
+                  : '',
               )}
               onDragStart={(e: React.DragEvent) => e.preventDefault()}
+              disabled={tab.onlyForLoggedIn && !isLoggedIn}
             >
               {t(tab.label)}
               <div
@@ -374,4 +372,28 @@ const SecondaryNavbarMobile = ({ tabs }: { tabs: Tab[] }) => {
       </div>
     </div>
   );
+};
+
+const getActiveTab = (
+  tabs: Tab[],
+  language: string,
+  pathname: string,
+): Tab | null => {
+  return tabs.reduce<Tab | null>((best, tab) => {
+    const tabPath = `/${language}${tab.href}`;
+
+    if (tab.id === 'courseChapter') {
+      const chapterPathPattern = new RegExp(
+        `^/${language}/courses/[0-9a-fA-F-]{36}/[a-z0-9-]+-[0-9a-fA-F-]{8}-[0-9a-fA-F-]{4}-[0-9a-fA-F-]{4}-[0-9a-fA-F-]{4}-[0-9a-fA-F-]{12}(?:/|$)`,
+      );
+      if (chapterPathPattern.test(pathname)) return tab;
+    }
+
+    if (pathname === tabPath || pathname.startsWith(`${tabPath}/`)) {
+      if (!best || tabPath.length > `/${language}${best.href}`.length) {
+        return tab;
+      }
+    }
+    return best;
+  }, null);
 };

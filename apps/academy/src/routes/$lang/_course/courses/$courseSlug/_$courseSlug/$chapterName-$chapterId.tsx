@@ -652,7 +652,7 @@ function CourseChapter() {
       layoutSize="max"
       title={`${course?.name || ''} - ${chapter?.title || ''}`}
       hideTitle
-      tabs={isLoggedIn && course ? getTabs(course, courseProgress?.[0]) : []}
+      tabs={course ? getTabs(course, courseProgress?.[0]) : []}
     >
       {proofreading ? (
         <ProofreadingProgress

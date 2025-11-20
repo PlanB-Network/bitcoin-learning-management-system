@@ -324,7 +324,7 @@ function Assignment() {
       hideTitle
       layoutSize="max"
       overTitle={course ? <CourseTitle course={course} /> : undefined}
-      tabs={isLoggedIn && course ? getTabs(course, courseProgress) : []}
+      tabs={course ? getTabs(course, courseProgress) : []}
     >
       <section className="flex flex-col mt-4 md:mt-8 w-full max-w-[1000px] gap-4 md:gap-8">
         {!hasSubmittedWork && (

@@ -41,11 +41,13 @@ export const getTabs = (
       id: 'courseChapter',
       label: 'words.course',
       href: nextChapterHref,
+      onlyForLoggedIn: false,
     },
     {
       id: 'syllabus',
       label: 'words.syllabus',
       href: `/courses/${courseId}/syllabus`,
+      onlyForLoggedIn: false,
     },
   ];
 
@@ -54,6 +56,7 @@ export const getTabs = (
       id: 'retakeExam',
       label: 'courses.exam.scoreAndDiploma',
       href: `/courses/${courseId}/retake-exam`,
+      onlyForLoggedIn: true,
     });
   }
 
@@ -62,6 +65,7 @@ export const getTabs = (
       id: 'singleTrialExam',
       label: 'courses.exam.scoreAndDiploma',
       href: `/courses/${courseId}/single-trial-exam`,
+      onlyForLoggedIn: true,
     });
   }
 
@@ -78,6 +82,7 @@ export const getTabs = (
       id: 'summerSchool',
       label: 'dashboard.course.summerSchool',
       href: `/courses/${courseId}/summer-school`,
+      onlyForLoggedIn: true,
     });
   }
 
@@ -86,6 +91,7 @@ export const getTabs = (
       id: 'ratings',
       label: 'words.ratings',
       href: `/courses/${courseId}/ratings`,
+      onlyForLoggedIn: true,
     });
   }
 

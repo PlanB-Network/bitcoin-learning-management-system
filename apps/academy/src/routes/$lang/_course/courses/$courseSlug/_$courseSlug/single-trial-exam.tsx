@@ -126,7 +126,7 @@ function SingleTrialExam() {
       hideTitle
       layoutSize="max"
       overTitle={course ? <CourseTitle course={course} /> : undefined}
-      tabs={isLoggedIn && course ? getTabs(course, currentCourseProgress) : []}
+      tabs={course ? getTabs(course, currentCourseProgress) : []}
     >
       {course && (
         <section className="flex flex-col mt-6 md:mt-10 w-full max-w-[1000px] gap-6">
