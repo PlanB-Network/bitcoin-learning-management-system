@@ -615,7 +615,7 @@ export const SelectLanguagesModal = ({
         <div className="w-full space-y-6 py-8">
           {/* Spinner */}
           <div className="flex justify-center">
-            <Loader size="xl" />
+            <Loader size="s" />
           </div>
 
           {/* Progress message */}

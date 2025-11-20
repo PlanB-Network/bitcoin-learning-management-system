@@ -194,6 +194,13 @@ export const JobsTab = () => {
     (job) => job.status === 'completed' || job.status === 'failed',
   );
 
+  // Helper to check if a translation job exists for a course
+  const hasTranslationJob = (courseId: string) => {
+    return jobs.some(
+      (job) => job.type === 'translation' && job.courseId === courseId,
+    );
+  };
+
   return (
     <div className="space-y-6">
       {/* Info banner */}
@@ -400,7 +407,8 @@ export const JobsTab = () => {
                           {/* Start Translation button for completed upload jobs */}
                           {job.status === 'completed' &&
                             job.type === 'upload' &&
-                            job.uploadId && (
+                            job.uploadId &&
+                            !hasTranslationJob(job.courseId) && (
                               <button
                                 type="button"
                                 onClick={() =>
