@@ -502,6 +502,7 @@ export const createRestTranslationUploadRoutes = async (
 
       // Update status to processing with initial progress (persist to DB)
       await upsertTranslationJob(courseId, 'upload', 'processing', {
+        languages,
         progress: 'Preparing files for upload...',
         totalFiles,
         processedFiles: 0,
@@ -519,6 +520,7 @@ export const createRestTranslationUploadRoutes = async (
       // If no new files, return existing upload info
       if (!filesProvided) {
         await upsertTranslationJob(courseId, 'upload', 'completed', {
+          languages,
           uploadId: `existing-${courseId}`,
           progress: 'Using existing uploads',
         });
@@ -528,6 +530,7 @@ export const createRestTranslationUploadRoutes = async (
       // Delete old uploads if they exist
       if (filesProvided && existingUploads.length > 0) {
         await upsertTranslationJob(courseId, 'upload', 'processing', {
+          languages,
           progress: 'Cleaning up old uploads...',
           totalFiles,
           processedFiles: 0,
@@ -605,6 +608,7 @@ export const createRestTranslationUploadRoutes = async (
           const base = path.basename(pptFile.originalFilename ?? 'upload.pptx');
 
           await upsertTranslationJob(courseId, 'upload', 'processing', {
+            languages,
             progress: `Uploading PPTX for chapter ${chapterIndex}...`,
             totalFiles,
             processedFiles,
@@ -637,6 +641,7 @@ export const createRestTranslationUploadRoutes = async (
 
           // Convert PPTX to PNG
           await upsertTranslationJob(courseId, 'upload', 'converting', {
+            languages,
             progress: `Converting PPTX to images for chapter ${chapterIndex}...`,
             totalFiles,
             processedFiles,
@@ -658,6 +663,7 @@ export const createRestTranslationUploadRoutes = async (
           const baseTxt = path.basename(txt.originalFilename ?? 'slide.txt');
 
           await upsertTranslationJob(courseId, 'upload', 'processing', {
+            languages,
             progress: `Uploading text file for chapter ${chapterIndex}...`,
             totalFiles,
             processedFiles,
@@ -701,6 +707,7 @@ export const createRestTranslationUploadRoutes = async (
 
       // Mark as completed (persist to DB)
       await upsertTranslationJob(courseId, 'upload', 'completed', {
+        languages,
         uploadId,
         totalFiles,
         processedFiles,
@@ -716,6 +723,7 @@ export const createRestTranslationUploadRoutes = async (
 
       // Mark as failed (persist to DB)
       await upsertTranslationJob(courseId, 'upload', 'failed', {
+        languages,
         error: error instanceof Error ? error.message : 'Unknown error',
       });
     }
@@ -752,6 +760,7 @@ export const createRestTranslationUploadRoutes = async (
 
           // Initialize job status with courseId as key (persist to DB)
           await upsertTranslationJob(courseId, 'upload', 'starting', {
+            languages,
             progress: 'Starting upload...',
           });
 
