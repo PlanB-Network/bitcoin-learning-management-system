@@ -1,4 +1,10 @@
-import { cn } from '@blms/ui';
+import {
+  cn,
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@blms/ui';
 import { Link, useRouterState } from '@tanstack/react-router';
 import {
   useContext,
@@ -137,28 +143,47 @@ const SecondaryNavbarDesktop = ({ tabs }: { tabs: Tab[] }) => {
           const isActive = activeTab?.id === tab.id;
 
           return (
-            <Link
-              key={tab.id}
-              to={tab.href}
-              className={cn(
-                'relative pb-2 group text-nowrap',
-                isActive
-                  ? 'text-newBlack-1 label-strong'
-                  : 'label text-newBlack-3 group-hover:text-newBlack-1',
-                tab.onlyForLoggedIn && !isLoggedIn
-                  ? 'pointer-events-none opacity-50'
-                  : '',
-              )}
-              disabled={tab.onlyForLoggedIn && !isLoggedIn}
-            >
-              {t(tab.label)}
-              <div
-                className={cn(
-                  'absolute bottom-0 left-0 h-1 w-full rounded-full bg-orange-100 scale-x-0 group-hover:scale-x-100 transition-transform origin-center duration-75',
-                  isActive && 'scale-x-100 bg-orange-500',
-                )}
-              />
-            </Link>
+            <TooltipProvider key={tab.id}>
+              <Tooltip key={tab.id} delayDuration={0}>
+                <TooltipTrigger asChild>
+                  <Link
+                    key={tab.id}
+                    to={tab.href}
+                    disabled={tab.onlyForLoggedIn && !isLoggedIn}
+                    className={cn(
+                      'relative pb-2 group text-nowrap',
+                      isActive
+                        ? 'text-newBlack-1 label-strong'
+                        : 'label text-newBlack-3 group-hover:text-newBlack-1',
+                      tab.onlyForLoggedIn && !isLoggedIn
+                        ? 'cursor-default opacity-20'
+                        : '',
+                    )}
+                  >
+                    {t(tab.label)}
+                    <div
+                      className={cn(
+                        'absolute bottom-0 left-0 h-1 w-full rounded-full bg-orange-100 scale-x-0 ',
+                        tab.onlyForLoggedIn && !isLoggedIn
+                          ? ''
+                          : 'group-hover:scale-x-100 transition-transform origin-center duration-75',
+                        isActive && 'scale-x-100 bg-orange-500',
+                      )}
+                    />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent
+                  sideOffset={5}
+                  side={'bottom'}
+                  className={
+                    'flex flex-col items-center text-base w-fit px-4 text-start bg-yellow-50 rounded-full border-0'
+                  }
+                  hidden={!tab.onlyForLoggedIn || isLoggedIn}
+                >
+                  <span className="text-xs">{t('courses.navbarHover')}</span>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           );
         })}
 
@@ -353,7 +378,7 @@ const SecondaryNavbarMobile = ({ tabs }: { tabs: Tab[] }) => {
                   ? 'text-newBlack-1 body-base-bold'
                   : 'body-base text-newBlack-3 group-hover:text-newBlack-1',
                 tab.onlyForLoggedIn && !isLoggedIn
-                  ? 'pointer-events-none opacity-50'
+                  ? 'pointer-events-none opacity-20'
                   : '',
               )}
               onDragStart={(e: React.DragEvent) => e.preventDefault()}
