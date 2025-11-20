@@ -444,6 +444,11 @@ export const SelectLanguagesModal = ({
 
       const uploadJobResponse = await uploadResponse.json();
 
+      // Defensive check: ensure we have a courseId
+      if (!course.id) {
+        throw new Error('Invalid course object: missing ID');
+      }
+
       console.log(
         '[Upload] Job started for course:',
         course.id,
@@ -588,6 +593,12 @@ export const SelectLanguagesModal = ({
     setFolderUrl('');
     onClose();
   }, [onClose, state.uploadProgress]);
+
+  // Defensive check after all hooks: ensure course has required fields
+  if (!course?.id) {
+    console.error('[SelectLanguagesModal] Invalid course object:', course);
+    return null;
+  }
 
   return (
     <CommonModal

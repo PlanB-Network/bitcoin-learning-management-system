@@ -58,6 +58,31 @@ const formatRelativeTime = (timestamp: string) => {
   return date.toLocaleDateString();
 };
 
+async function startTranslation(uploadId: string, languages: string[]) {
+  if (!confirm('Start translation for this course?')) return;
+
+  try {
+    const response = await fetch(`/api/start-translation/${uploadId}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ languages }),
+      credentials: 'include',
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to start translation');
+    }
+
+    alert(
+      'Translation started successfully! Check the Jobs tab to monitor progress.',
+    );
+  } catch (error) {
+    alert(
+      error instanceof Error ? error.message : 'Failed to start translation',
+    );
+  }
+}
+
 async function retryTranslation(courseId: string, languages: string[]) {
   if (!confirm('Retry translation for this course?')) return;
 
@@ -371,30 +396,53 @@ export const JobsTab = () => {
                           : '-'}
                       </td>
                       <td className="px-4 py-3 text-sm">
-                        {job.status === 'failed' &&
-                          job.type === 'translation' && (
+                        <div className="flex items-center gap-2">
+                          {/* Start Translation button for completed upload jobs */}
+                          {job.status === 'completed' &&
+                            job.type === 'upload' &&
+                            job.uploadId && (
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  startTranslation(
+                                    job.uploadId!,
+                                    job.languages || [],
+                                  )
+                                }
+                                className="text-green-600 hover:text-green-700 text-xs font-medium"
+                              >
+                                Start Translation
+                              </button>
+                            )}
+
+                          {/* Retry button for failed translation jobs */}
+                          {job.status === 'failed' &&
+                            job.type === 'translation' && (
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  retryTranslation(
+                                    job.courseId,
+                                    job.languages || [],
+                                  )
+                                }
+                                className="text-orange-600 hover:text-orange-700 text-xs font-medium"
+                              >
+                                Retry
+                              </button>
+                            )}
+
+                          {/* Error details button */}
+                          {job.error && (
                             <button
                               type="button"
-                              onClick={() =>
-                                retryTranslation(
-                                  job.courseId,
-                                  job.languages || [],
-                                )
-                              }
-                              className="text-orange-600 hover:text-orange-700 text-xs font-medium"
+                              onClick={() => alert(job.error)}
+                              className="text-gray-600 hover:text-gray-700 text-xs font-medium"
                             >
-                              Retry
+                              Error
                             </button>
                           )}
-                        {job.error && (
-                          <button
-                            type="button"
-                            onClick={() => alert(job.error)}
-                            className="text-gray-600 hover:text-gray-700 text-xs font-medium ml-2"
-                          >
-                            Error
-                          </button>
-                        )}
+                        </div>
                       </td>
                     </tr>
                   );
