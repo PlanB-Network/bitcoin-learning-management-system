@@ -6,7 +6,7 @@ import {
   cn,
 } from '@blms/ui';
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { useContext, useState } from 'react';
+import { type ReactNode, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbChevronDown, TbChevronRight } from 'react-icons/tb';
 import ReactPlayer from 'react-player';
@@ -450,6 +450,36 @@ function FAQ() {
           answer="Early-bird registrations submitted before December 31st, 2025, will benefit from a reduced rate of $450. From December to March, the registration fee will increase to $900. The participation at the Summer School requires an additional fee of $3,500 to cover the tuition and accommodation expenses."
         />
         <FAQQuestion
+          question="Do I need any prior knowledge to enroll in this course?"
+          answer={
+            <p>
+              No, you don't need prior knowledge of Bitcoin to enroll in the
+              program, as the course begins with Bitcoin fundamentals. If you
+              choose the Developer track, you'll need some basic coding
+              experience. If you're new to coding and want to prepare, we
+              strongly recommend either our{' '}
+              <Link
+                to={
+                  '/courses/javascript-and-nodejs-fundamentals-bbf08a64-84ca-11f0-9d7a-c3c481a45799'
+                }
+                className="underline text-blue-500"
+              >
+                self-paced course
+              </Link>{' '}
+              or our{' '}
+              <Link
+                to={
+                  '/courses/javascript-nodejs-development-from-zero-8fa3c2e1-9d7b-4e8f-a6c1-2b5d8e9f3a7c'
+                }
+                className="underline text-blue-500"
+              >
+                live course
+              </Link>
+              .
+            </p>
+          }
+        />
+        <FAQQuestion
           question="Can I have access to lectures that I cannot attend?"
           answer="Yes, you will have access to all lecture recordings. You may miss the interaction and the possibility to ask your questions directly to the lecturer, but all the knowledge will still be accessible to you. These recordings are even accessible after the end of the program if you want to re-watch lectures in the future."
         />
@@ -481,7 +511,7 @@ function FAQQuestion({
   answer,
 }: {
   question: string;
-  answer: string;
+  answer: ReactNode;
 }) {
   return (
     <Collapsible>
