@@ -20,7 +20,7 @@
     ]
   },
   "name": "blms",
-  "packageManager": "pnpm@10.22.0",
+  "packageManager": "pnpm@10.23.0",
   "workspaces": [
     "packages/*",
     "apps/*"
