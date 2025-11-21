@@ -1,5 +1,6 @@
 /// <reference types="vite-plugin-svgr/client" />
 
+import assert from 'node:assert';
 import { builtinModules } from 'node:module';
 import { tanstackRouter } from '@tanstack/router-plugin/vite';
 import react from '@vitejs/plugin-react';
@@ -25,6 +26,13 @@ const nativeModules = [
   ...pearsModules,
   ...builtinModules.flatMap((m) => [m, `@${m}`, `@types/${m}`]),
 ];
+
+// Ensure that pear-related env variables are loaded
+assert(process.env.VITE_PEAR_SOURCE_KEY, 'VITE_PEAR_SOURCE_KEY is not defined');
+assert(
+  process.env.VITE_PEAR_ENVIRONMENT,
+  'VITE_PEAR_ENVIRONMENT is not defined',
+);
 
 export default defineConfig({
   assetsInclude: [UI_PACKAGE_ASSETS],
