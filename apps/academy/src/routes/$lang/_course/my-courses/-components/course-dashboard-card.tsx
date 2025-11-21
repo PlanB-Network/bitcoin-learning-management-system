@@ -209,7 +209,7 @@ export const CourseDashboardCard = ({
                   </Link>
                   <Link
                     className="max-md:flex-1 max-md:basis-[calc(50%-0.3125rem)] md:w-full"
-                    to={`/courses/${course.id}/syllabus`}
+                    to={`/courses/${course.id}`}
                   >
                     <ButtonWithArrow
                       variant="outline"
