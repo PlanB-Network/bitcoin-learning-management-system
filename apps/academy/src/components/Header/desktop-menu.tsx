@@ -3,22 +3,22 @@ import {
   TbLayoutSidebar,
   TbLayoutSidebarLeftExpandFilled,
 } from 'react-icons/tb';
-import PlanBLogoBlack from '../../../assets/logo/planb_logo_horizontal_black.svg?react';
-import { MetaElements } from '../meta-elements.tsx';
+import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
+import { MetaElements } from './meta-elements.tsx';
 
-export interface FlyingMenuProps {
+export interface DesktopMenuProps {
   onClickLogin: () => void;
   onClickRegister: () => void;
   isSidebarOpen: boolean;
   setIsSidebarOpen: (open: boolean) => void;
 }
 
-export const FlyingMenu = ({
+export const DesktopMenu = ({
   onClickRegister,
   onClickLogin,
   isSidebarOpen,
   setIsSidebarOpen,
-}: FlyingMenuProps) => {
+}: DesktopMenuProps) => {
   return (
     <nav className="flex w-full flex-row items-center justify-between max-lg:hidden">
       <div className="flex items-center gap-4 px-4 py-3">

@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { AuthModal } from '../AuthModals/auth-modal.tsx';
 import { AuthModalState } from '../AuthModals/props.ts';
-import { FlyingMenu } from './FlyingMenu/flying-menu.tsx';
-import { MobileMenu } from './MobileMenu/mobile-menu.tsx';
+import { DesktopMenu } from './desktop-menu.tsx';
+import { MobileMenu } from './mobile-menu.tsx';
 
 interface HeaderProps {
   isSidebarOpen: boolean;
@@ -32,7 +32,7 @@ export const Header = ({ isSidebarOpen, setIsSidebarOpen }: HeaderProps) => {
         'pt-if-pear fixed left-1/2 top-0 z-40 flex w-full -translate-x-1/2 flex-row justify-between py-3 px-4 bg-header',
       )}
     >
-      <FlyingMenu
+      <DesktopMenu
         onClickLogin={() => {
           setAuthMode(AuthModalState.Register);
           openAuthModal();

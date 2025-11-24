@@ -3,12 +3,12 @@ import { Link } from '@tanstack/react-router';
 import { useContext, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbMenu, TbX } from 'react-icons/tb';
-import { SideBar } from '#src/components/main-layout.tsx';
+import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
 import { AppContext } from '#src/providers/context.js';
-import PlanBLogoBlack from '../../../assets/logo/planb_logo_horizontal_black.svg?react';
-import { LanguageSelectorMobile } from '../language-selector.tsx';
-import { UserRoleAvatar } from '../meta-elements.tsx';
-import { NotificationsPanel } from '../notifications-panel.tsx';
+import { SideBarContent } from '../sidebar-content.tsx';
+import { LanguageSelectorMobile } from './language-selector.tsx';
+import { UserRoleAvatar } from './meta-elements.tsx';
+import { NotificationsPanel } from './notifications-panel.tsx';
 
 export interface MobileMenuProps {
   onClickLogin: () => void;
@@ -61,7 +61,6 @@ export const MobileMenu = ({
         <Link to="/" className="w-fit">
           <PlanBLogoBlack className="h-5 w-auto" />
         </Link>
-
         <div className="flex items-center gap-2">
           {isLoggedIn ? (
             <div className="flex items-center gap-3">
@@ -99,7 +98,7 @@ export const MobileMenu = ({
             className="cursor-pointer text-neutral-500 stroke-2 size-8 shrink-0"
           />
         </div>
-        <SideBar isSidebarOpen={true} />
+        <SideBarContent isSidebarOpen={true} />
         <LanguageSelectorMobile isMobileMenuOpen={isMobileMenuOpen} />
       </nav>
     </>
