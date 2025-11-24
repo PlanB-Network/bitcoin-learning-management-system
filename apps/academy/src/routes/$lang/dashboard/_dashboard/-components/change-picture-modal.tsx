@@ -1,8 +1,3 @@
-import { t } from 'i18next';
-import { useMemo, useRef, useState } from 'react';
-import { Cropper, type ReactCropperElement } from 'react-cropper';
-import 'cropperjs/dist/cropper.css';
-
 import {
   BasicModal,
   Button,
@@ -10,7 +5,17 @@ import {
   SegmentedControl,
   SegmentedControlItem,
 } from '@blms/ui';
-
+import type { CropperSelection as CropperSelectionElement } from 'cropperjs';
+import {
+  CropperCanvas,
+  CropperGrid,
+  CropperHandle,
+  CropperImage,
+  CropperSelection,
+  CropperShade,
+} from 'cropperjs-react-wrapper';
+import { t } from 'i18next';
+import { useMemo, useRef, useState } from 'react';
 import spinner from '#src/assets/icons/spinner.svg';
 
 interface Props {
@@ -28,14 +33,15 @@ enum Tabs {
 export const ChangePictureModal = (props: Props) => {
   const [image, setImage] = useState<string | undefined>();
   const [cropData, setCropData] = useState('');
-  const cropperRef = useRef<ReactCropperElement>(null);
+  const selectionRef = useRef<CropperSelectionElement>(null);
   const [activeTab, setActiveTab] = useState<Tabs>(Tabs.CROP);
   const [loading, setLoading] = useState(false);
 
-  const getCropData = () => {
-    const cropper = cropperRef.current?.cropper;
-    if (cropper && image) {
-      setCropData(cropper.getCroppedCanvas().toDataURL());
+  const getCropData = async () => {
+    const selection = selectionRef.current;
+    if (selection && image) {
+      const canvas = await selection.$toCanvas();
+      setCropData(canvas.toDataURL());
     }
   };
 
@@ -62,11 +68,15 @@ export const ChangePictureModal = (props: Props) => {
     }
   };
 
-  const validateChange = () => {
-    cropperRef.current?.cropper
-      ?.getCroppedCanvas()
-      .toBlob(sendBlobAsFile, 'image/png');
+  const validateChange = async () => {
+    const selection = selectionRef.current;
+    if (selection) {
+      const canvas = await selection.$toCanvas();
+      canvas.toBlob(sendBlobAsFile, 'image/png');
+    }
   };
+
+  const selectColor = 'rgba(51, 153, 255, 0.9)';
 
   return (
     <BasicModal
@@ -98,31 +108,44 @@ export const ChangePictureModal = (props: Props) => {
 
         {/* Cropper */}
         <div className={cn(activeTab === Tabs.PREVIEW && 'hidden')}>
-          <div className="size-96 p-2 mx-auto">
+          <div className="size-96 p-2 mx-auto flex-1">
             {image && (
-              <Cropper
-                className="cropper border rounded size-full"
-                initialAspectRatio={1}
-                aspectRatio={1}
-                src={image}
-                viewMode={1}
-                minCropBoxHeight={10}
-                minCropBoxWidth={10}
-                background={true}
-                responsive={false}
-                restore={false}
-                movable={false}
-                scalable={false}
-                zoomable={false}
-                autoCropArea={1}
-                checkOrientation={false}
-                ref={cropperRef}
-                guides={true}
-                ready={() => {
-                  const cropper = cropperRef.current?.cropper;
-                  if (cropper) cropper.zoomTo(0.5);
-                }}
-              />
+              <CropperCanvas
+                background
+                className="h-full w-full object-contain border rounded"
+              >
+                <CropperImage
+                  src={image}
+                  alt="Picture"
+                  scalable={true}
+                  translatable={true}
+                  onReady={(image) => {
+                    image.$center('contain');
+                    image.$addStyles('h-12');
+                  }}
+                />
+                <CropperShade />
+                <CropperSelection
+                  initialCoverage={0.8}
+                  aspectRatio={1}
+                  movable
+                  resizable
+                  zoomable
+                  bounded
+                  ref={selectionRef}
+                >
+                  <CropperGrid role="grid" covered bordered />
+                  <CropperHandle action="move" themeColor="rgba(0, 0, 0, 0)" />
+                  <CropperHandle action="n-resize" themeColor={selectColor} />
+                  <CropperHandle action="e-resize" themeColor={selectColor} />
+                  <CropperHandle action="s-resize" themeColor={selectColor} />
+                  <CropperHandle action="w-resize" themeColor={selectColor} />
+                  <CropperHandle action="ne-resize" themeColor={selectColor} />
+                  <CropperHandle action="nw-resize" themeColor={selectColor} />
+                  <CropperHandle action="se-resize" themeColor={selectColor} />
+                  <CropperHandle action="sw-resize" themeColor={selectColor} />
+                </CropperSelection>
+              </CropperCanvas>
             )}
           </div>
         </div>

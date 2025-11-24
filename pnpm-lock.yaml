@@ -105,8 +105,11 @@ importers:
         specifier: ^0.7.1
         version: 0.7.1
       cropperjs:
-        specifier: 1.6.2
-        version: 1.6.2
+        specifier: 2.1.0
+        version: 2.1.0
+      cropperjs-react-wrapper:
+        specifier: ^1.0.0
+        version: 1.0.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       d3:
         specifier: ^7.9.0
         version: 7.9.0
@@ -158,9 +161,6 @@ importers:
       react-big-calendar:
         specifier: ^1.19.4
         version: 1.19.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      react-cropper:
-        specifier: ^2.3.3
-        version: 2.3.3(react@19.2.0)
       react-dom:
         specifier: 19.2.0
         version: 19.2.0(react@19.2.0)
@@ -1401,6 +1401,39 @@ packages:
     engines: {node: '>=20.0.0', yarn: '>=1.22.18'}
     peerDependencies:
       storybook: ^0.0.0-0 || ^9.0.0 || ^9.1.0-0 || ^9.2.0-0 || ^10.0.0-0 || ^10.1.0-0 || ^10.2.0-0 || ^10.3.0-0
+
+  '@cropper/element-canvas@2.1.0':
+    resolution: {integrity: sha512-el+rfJpZxsD2q5XxDBA4fRczcrOqB65Lb7roqXOq8LKufwf4bPWA9C6DjNJJahh/TP94dsLIEy3tSkgRMDv3Aw==}
+
+  '@cropper/element-crosshair@2.1.0':
+    resolution: {integrity: sha512-0V589dAx8uZAfvJwdINLn76gfPQEafPH94ukjJ76uX0FCUovLaAVX+VRD/MDSYn0Mza/xejzmL9Dhd1DfemvmA==}
+
+  '@cropper/element-grid@2.1.0':
+    resolution: {integrity: sha512-dEnk0rO+vp553LMvsPYgfrqVFcYXeVFrgFeavBYYEhAXtO40p7kN4rmLYLMMjaN+T/Mx2BATv6kUQpALKy2HLw==}
+
+  '@cropper/element-handle@2.1.0':
+    resolution: {integrity: sha512-8BklWA4C/2GGAULupIWleSnGutECvYt3vx9flodqDfZpDEozws4LgLqmmzVuQmVkRVUdLnXdtx28kjgWLtzkHg==}
+
+  '@cropper/element-image@2.1.0':
+    resolution: {integrity: sha512-mXOV8ixJvG0XtTxLebYAKDjEkFbFOQnsF02hXPZk1yQSV0J+LLhN7a2NePrtKnoTsEV19fhhX3UorMoyGGxvzg==}
+
+  '@cropper/element-selection@2.1.0':
+    resolution: {integrity: sha512-mtFtBl6HIa/s9TWohXw+Z5eJoeYTqylrIcHvS7oVv0uM7IyeRwBW65Q7z+KtLfq/LW+2Sw/XDyvR+VN/DawBPw==}
+
+  '@cropper/element-shade@2.1.0':
+    resolution: {integrity: sha512-zMdyqbb0lc0Vd1oj2Z1miIZvhyZG41OXMHvrNt0hNwblh0dVdrvtw48lnFDgRv+672vt2CNx7Q04GuvCQfPlgg==}
+
+  '@cropper/element-viewer@2.1.0':
+    resolution: {integrity: sha512-XnxlQuqHitd1FOFZ6E0yXAF5NYd/LyIvONLLHI9p1rJw747WYKUPxQaSYtFKF7IOizJu/8mMj++Zc1dZ5ZP3YQ==}
+
+  '@cropper/element@2.1.0':
+    resolution: {integrity: sha512-2zELddqHQNmlvkPoiYzE5nxEjPE+C8nXoTPuvV3FvLp3YjBinc7qb73Icg9UXP0o9qC4+h9q96JgGo0AyMO/Ng==}
+
+  '@cropper/elements@2.1.0':
+    resolution: {integrity: sha512-qvzlYDn3VQgPPpsCu6Gi1XUO0v3vpXQFSjjxcVijbXeNsl/eiKrN7H9/CEiRgi5vr8kXfd7ZvgYxBjUBbH+y+w==}
+
+  '@cropper/utils@2.1.0':
+    resolution: {integrity: sha512-wLtpZ4/UWgo+fGmG8NBWge8x5ehjfDe9ovleDfLy8kpwFaw43XXOEXQtRL1UNr0u4JZxaeO8FcXcolRWUUrlRQ==}
 
   '@date-fns/tz@1.4.1':
     resolution: {integrity: sha512-P5LUNhtbj6YfI3iJjw5EL9eUAG6OitD0W3fWQcpQjDRc/QIsL0tRNuO1PcDvPccWL1fSTXXdE1ds+l95DV/OFA==}
@@ -4364,8 +4397,14 @@ packages:
     resolution: {integrity: sha512-B/CJj5yL3sjtlun6RtYHvoSB26EmQ2NUmhq9ZiJSyKIM4K/fqfh9aelDFlIayD2YMeFZqWLi9hHV+c+pq2Djkw==}
     engines: {node: '>=18.x'}
 
-  cropperjs@1.6.2:
-    resolution: {integrity: sha512-nhymn9GdnV3CqiEHJVai54TULFAE3VshJTXSqSJKa8yXAKyBKDWdhHarnlIPrshJ0WMFTGuFvG02YjLXfPiuOA==}
+  cropperjs-react-wrapper@1.0.0:
+    resolution: {integrity: sha512-E5O+5QeF+6QahG2ytNjgChXpN2kPQ3vfs8wpyYo7vtK8cY2fJPY+CzAP6Op2zBlzXok4BBniQSCdF/aq5NHKqA==}
+    peerDependencies:
+      react: '>=18'
+      react-dom: '>=18'
+
+  cropperjs@2.1.0:
+    resolution: {integrity: sha512-SsSDqdVRl+mjbIBkGWlk1gCGcc+HzBqCbH5EQ+1tkAFUdxq2KUGukXF1RqhmvXrrdrX7PDwSUkWgXS7E36KvGQ==}
 
   cross-env@10.1.0:
     resolution: {integrity: sha512-GsYosgnACZTADcmEyJctkJIoqAhHjttw7RsFrVoJNXbsWWqaq6Ym+7kZjq6mS45O0jij6vtiReppKQEtqWy6Dw==}
@@ -6415,11 +6454,6 @@ packages:
       react: ^16.14.0 || ^17 || ^18 || ^19
       react-dom: ^16.14.0 || ^17 || ^18 || ^19
 
-  react-cropper@2.3.3:
-    resolution: {integrity: sha512-zghiEYkUb41kqtu+2jpX2Ntigf+Jj1dF9ew4lAobPzI2adaPE31z0p+5TcWngK6TvmWQUwK3lj4G+NDh1PDQ1w==}
-    peerDependencies:
-      react: '>=17.0.2'
-
   react-day-picker@9.11.1:
     resolution: {integrity: sha512-l3ub6o8NlchqIjPKrRFUCkTUEq6KwemQlfv3XZzzwpUeGwmDJ+0u0Upmt38hJyd7D/vn2dQoOoLV/qAp0o3uUw==}
     engines: {node: '>=18'}
@@ -8410,6 +8444,72 @@ snapshots:
     transitivePeerDependencies:
       - '@chromatic-com/cypress'
       - '@chromatic-com/playwright'
+
+  '@cropper/element-canvas@2.1.0':
+    dependencies:
+      '@cropper/element': 2.1.0
+      '@cropper/utils': 2.1.0
+
+  '@cropper/element-crosshair@2.1.0':
+    dependencies:
+      '@cropper/element': 2.1.0
+      '@cropper/utils': 2.1.0
+
+  '@cropper/element-grid@2.1.0':
+    dependencies:
+      '@cropper/element': 2.1.0
+      '@cropper/utils': 2.1.0
+
+  '@cropper/element-handle@2.1.0':
+    dependencies:
+      '@cropper/element': 2.1.0
+      '@cropper/utils': 2.1.0
+
+  '@cropper/element-image@2.1.0':
+    dependencies:
+      '@cropper/element': 2.1.0
+      '@cropper/element-canvas': 2.1.0
+      '@cropper/utils': 2.1.0
+
+  '@cropper/element-selection@2.1.0':
+    dependencies:
+      '@cropper/element': 2.1.0
+      '@cropper/element-canvas': 2.1.0
+      '@cropper/element-image': 2.1.0
+      '@cropper/utils': 2.1.0
+
+  '@cropper/element-shade@2.1.0':
+    dependencies:
+      '@cropper/element': 2.1.0
+      '@cropper/element-canvas': 2.1.0
+      '@cropper/element-selection': 2.1.0
+      '@cropper/utils': 2.1.0
+
+  '@cropper/element-viewer@2.1.0':
+    dependencies:
+      '@cropper/element': 2.1.0
+      '@cropper/element-canvas': 2.1.0
+      '@cropper/element-image': 2.1.0
+      '@cropper/element-selection': 2.1.0
+      '@cropper/utils': 2.1.0
+
+  '@cropper/element@2.1.0':
+    dependencies:
+      '@cropper/utils': 2.1.0
+
+  '@cropper/elements@2.1.0':
+    dependencies:
+      '@cropper/element': 2.1.0
+      '@cropper/element-canvas': 2.1.0
+      '@cropper/element-crosshair': 2.1.0
+      '@cropper/element-grid': 2.1.0
+      '@cropper/element-handle': 2.1.0
+      '@cropper/element-image': 2.1.0
+      '@cropper/element-selection': 2.1.0
+      '@cropper/element-shade': 2.1.0
+      '@cropper/element-viewer': 2.1.0
+
+  '@cropper/utils@2.1.0': {}
 
   '@date-fns/tz@1.4.1': {}
 
@@ -11405,7 +11505,16 @@ snapshots:
       '@types/luxon': 3.7.1
       luxon: 3.7.2
 
-  cropperjs@1.6.2: {}
+  cropperjs-react-wrapper@1.0.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+    dependencies:
+      cropperjs: 2.1.0
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
+
+  cropperjs@2.1.0:
+    dependencies:
+      '@cropper/elements': 2.1.0
+      '@cropper/utils': 2.1.0
 
   cross-env@10.1.0:
     dependencies:
@@ -13907,11 +14016,6 @@ snapshots:
       react-dom: 19.2.0(react@19.2.0)
       react-overlays: 5.2.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       uncontrollable: 7.2.1(react@19.2.0)
-
-  react-cropper@2.3.3(react@19.2.0):
-    dependencies:
-      cropperjs: 1.6.2
-      react: 19.2.0
 
   react-day-picker@9.11.1(react@19.2.0):
     dependencies:

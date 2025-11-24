@@ -41,7 +41,8 @@
         "@trpc/tanstack-react-query": "^11.7.1",
         "b4a": "^1.7.3",
         "class-variance-authority": "^0.7.1",
-        "cropperjs": "1.6.2",
+        "cropperjs": "2.1.0",
+        "cropperjs-react-wrapper": "^0.0.3",
         "d3": "^7.9.0",
         "date-fns": "^4.1.0",
         "date-fns-tz": "^3.2.0",
@@ -59,7 +60,6 @@
         "qrcode.react": "^4.2.0",
         "react": "19.2.0",
         "react-big-calendar": "^1.19.4",
-        "react-cropper": "^2.3.3",
         "react-dom": "19.2.0",
         "react-helmet-async": "^2.0.5",
         "react-hook-form": "^7.66.0",
@@ -337,7 +337,7 @@
         "@trpc/server": "^11.7.1",
         "gray-matter": "^4.0.3",
         "js-yaml": "^4.1.0",
-        "marked": "^16.4.1",
+        "marked": "^17.0.0",
         "remove-markdown": "^0.6.2",
         "typesense": "~2.1.0",
         "uuid": "^13.0.0",
@@ -663,6 +663,28 @@
     "@bufbuild/protobuf": ["@bufbuild/protobuf@2.9.0", "", {}, "sha512-rnJenoStJ8nvmt9Gzye8nkYd6V22xUAnu4086ER7h1zJ508vStko4pMvDeQ446ilDTFpV5wnoc5YS7XvMwwMqA=="],
 
     "@chromatic-com/storybook": ["@chromatic-com/storybook@4.1.2", "", { "dependencies": { "@neoconfetti/react": "^1.0.0", "chromatic": "^12.0.0", "filesize": "^10.0.12", "jsonfile": "^6.1.0", "strip-ansi": "^7.1.0" }, "peerDependencies": { "storybook": "^0.0.0-0 || ^9.0.0 || ^9.1.0-0 || ^9.2.0-0 || ^10.0.0-0 || ^10.1.0-0 || ^10.2.0-0 || ^10.3.0-0" } }, "sha512-QAWGtHwib0qsP5CcO64aJCF75zpFgpKK3jNpxILzQiPK3sVo4EmnVGJVdwcZWpWrGdH8E4YkncGoitw4EXzKMg=="],
+
+    "@cropper/element": ["@cropper/element@2.1.0", "", { "dependencies": { "@cropper/utils": "^2.1.0" } }, "sha512-2zELddqHQNmlvkPoiYzE5nxEjPE+C8nXoTPuvV3FvLp3YjBinc7qb73Icg9UXP0o9qC4+h9q96JgGo0AyMO/Ng=="],
+
+    "@cropper/element-canvas": ["@cropper/element-canvas@2.1.0", "", { "dependencies": { "@cropper/element": "^2.1.0", "@cropper/utils": "^2.1.0" } }, "sha512-el+rfJpZxsD2q5XxDBA4fRczcrOqB65Lb7roqXOq8LKufwf4bPWA9C6DjNJJahh/TP94dsLIEy3tSkgRMDv3Aw=="],
+
+    "@cropper/element-crosshair": ["@cropper/element-crosshair@2.1.0", "", { "dependencies": { "@cropper/element": "^2.1.0", "@cropper/utils": "^2.1.0" } }, "sha512-0V589dAx8uZAfvJwdINLn76gfPQEafPH94ukjJ76uX0FCUovLaAVX+VRD/MDSYn0Mza/xejzmL9Dhd1DfemvmA=="],
+
+    "@cropper/element-grid": ["@cropper/element-grid@2.1.0", "", { "dependencies": { "@cropper/element": "^2.1.0", "@cropper/utils": "^2.1.0" } }, "sha512-dEnk0rO+vp553LMvsPYgfrqVFcYXeVFrgFeavBYYEhAXtO40p7kN4rmLYLMMjaN+T/Mx2BATv6kUQpALKy2HLw=="],
+
+    "@cropper/element-handle": ["@cropper/element-handle@2.1.0", "", { "dependencies": { "@cropper/element": "^2.1.0", "@cropper/utils": "^2.1.0" } }, "sha512-8BklWA4C/2GGAULupIWleSnGutECvYt3vx9flodqDfZpDEozws4LgLqmmzVuQmVkRVUdLnXdtx28kjgWLtzkHg=="],
+
+    "@cropper/element-image": ["@cropper/element-image@2.1.0", "", { "dependencies": { "@cropper/element": "^2.1.0", "@cropper/element-canvas": "^2.1.0", "@cropper/utils": "^2.1.0" } }, "sha512-mXOV8ixJvG0XtTxLebYAKDjEkFbFOQnsF02hXPZk1yQSV0J+LLhN7a2NePrtKnoTsEV19fhhX3UorMoyGGxvzg=="],
+
+    "@cropper/element-selection": ["@cropper/element-selection@2.1.0", "", { "dependencies": { "@cropper/element": "^2.1.0", "@cropper/element-canvas": "^2.1.0", "@cropper/element-image": "^2.1.0", "@cropper/utils": "^2.1.0" } }, "sha512-mtFtBl6HIa/s9TWohXw+Z5eJoeYTqylrIcHvS7oVv0uM7IyeRwBW65Q7z+KtLfq/LW+2Sw/XDyvR+VN/DawBPw=="],
+
+    "@cropper/element-shade": ["@cropper/element-shade@2.1.0", "", { "dependencies": { "@cropper/element": "^2.1.0", "@cropper/element-canvas": "^2.1.0", "@cropper/element-selection": "^2.1.0", "@cropper/utils": "^2.1.0" } }, "sha512-zMdyqbb0lc0Vd1oj2Z1miIZvhyZG41OXMHvrNt0hNwblh0dVdrvtw48lnFDgRv+672vt2CNx7Q04GuvCQfPlgg=="],
+
+    "@cropper/element-viewer": ["@cropper/element-viewer@2.1.0", "", { "dependencies": { "@cropper/element": "^2.1.0", "@cropper/element-canvas": "^2.1.0", "@cropper/element-image": "^2.1.0", "@cropper/element-selection": "^2.1.0", "@cropper/utils": "^2.1.0" } }, "sha512-XnxlQuqHitd1FOFZ6E0yXAF5NYd/LyIvONLLHI9p1rJw747WYKUPxQaSYtFKF7IOizJu/8mMj++Zc1dZ5ZP3YQ=="],
+
+    "@cropper/elements": ["@cropper/elements@2.1.0", "", { "dependencies": { "@cropper/element": "^2.1.0", "@cropper/element-canvas": "^2.1.0", "@cropper/element-crosshair": "^2.1.0", "@cropper/element-grid": "^2.1.0", "@cropper/element-handle": "^2.1.0", "@cropper/element-image": "^2.1.0", "@cropper/element-selection": "^2.1.0", "@cropper/element-shade": "^2.1.0", "@cropper/element-viewer": "^2.1.0" } }, "sha512-qvzlYDn3VQgPPpsCu6Gi1XUO0v3vpXQFSjjxcVijbXeNsl/eiKrN7H9/CEiRgi5vr8kXfd7ZvgYxBjUBbH+y+w=="],
+
+    "@cropper/utils": ["@cropper/utils@2.1.0", "", {}, "sha512-wLtpZ4/UWgo+fGmG8NBWge8x5ehjfDe9ovleDfLy8kpwFaw43XXOEXQtRL1UNr0u4JZxaeO8FcXcolRWUUrlRQ=="],
 
     "@date-fns/tz": ["@date-fns/tz@1.4.1", "", {}, "sha512-P5LUNhtbj6YfI3iJjw5EL9eUAG6OitD0W3fWQcpQjDRc/QIsL0tRNuO1PcDvPccWL1fSTXXdE1ds+l95DV/OFA=="],
 
@@ -1762,7 +1784,9 @@
 
     "cron": ["cron@4.3.3", "", { "dependencies": { "@types/luxon": "~3.7.0", "luxon": "~3.7.0" } }, "sha512-B/CJj5yL3sjtlun6RtYHvoSB26EmQ2NUmhq9ZiJSyKIM4K/fqfh9aelDFlIayD2YMeFZqWLi9hHV+c+pq2Djkw=="],
 
-    "cropperjs": ["cropperjs@1.6.2", "", {}, "sha512-nhymn9GdnV3CqiEHJVai54TULFAE3VshJTXSqSJKa8yXAKyBKDWdhHarnlIPrshJ0WMFTGuFvG02YjLXfPiuOA=="],
+    "cropperjs": ["cropperjs@2.1.0", "", { "dependencies": { "@cropper/elements": "^2.1.0", "@cropper/utils": "^2.1.0" } }, "sha512-SsSDqdVRl+mjbIBkGWlk1gCGcc+HzBqCbH5EQ+1tkAFUdxq2KUGukXF1RqhmvXrrdrX7PDwSUkWgXS7E36KvGQ=="],
+
+    "cropperjs-react-wrapper": ["cropperjs-react-wrapper@0.0.3", "", { "dependencies": { "cropperjs": "^2.1.0" }, "peerDependencies": { "react": ">=18", "react-dom": ">=18" } }, "sha512-U2JBM/hM0X2+4fDh6FN0fdEJw57gOykAgiQyTQdi7NN/M3bpFtPTdH9XNsKwTbQePk6vb2iCkQaS/rVKyj1Jjw=="],
 
     "cross-env": ["cross-env@10.1.0", "", { "dependencies": { "@epic-web/invariant": "^1.0.0", "cross-spawn": "^7.0.6" }, "bin": { "cross-env": "dist/bin/cross-env.js", "cross-env-shell": "dist/bin/cross-env-shell.js" } }, "sha512-GsYosgnACZTADcmEyJctkJIoqAhHjttw7RsFrVoJNXbsWWqaq6Ym+7kZjq6mS45O0jij6vtiReppKQEtqWy6Dw=="],
 
@@ -2366,7 +2390,7 @@
 
     "markdown-table": ["markdown-table@3.0.4", "", {}, "sha512-wiYz4+JrLyb/DqW2hkFJxP7Vd7JuTDm77fvbM8VfEQdmSMqcImWeeRbHwZjBjIFki/VaMK2BhFi7oUUZeM5bqw=="],
 
-    "marked": ["marked@16.4.1", "", { "bin": { "marked": "bin/marked.js" } }, "sha512-ntROs7RaN3EvWfy3EZi14H4YxmT6A5YvywfhO+0pm+cH/dnSQRmdAmoFIc3B9aiwTehyk7pESH4ofyBY+V5hZg=="],
+    "marked": ["marked@17.0.1", "", { "bin": { "marked": "bin/marked.js" } }, "sha512-boeBdiS0ghpWcSwoNm/jJBwdpFaMnZWRzjA6SkUMYb40SVaN1x7mmfGKp0jvexGcx+7y2La5zRZsYFZI6Qpypg=="],
 
     "math-intrinsics": ["math-intrinsics@1.1.0", "", {}, "sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g=="],
 
@@ -2729,8 +2753,6 @@
     "react": ["react@19.2.0", "", {}, "sha512-tmbWg6W31tQLeB5cdIBOicJDJRR2KzXsV7uSK9iNfLWQ5bIZfxuPEHp7M8wiHyHnn0DD1i7w3Zmin0FtkrwoCQ=="],
 
     "react-big-calendar": ["react-big-calendar@1.19.4", "", { "dependencies": { "@babel/runtime": "^7.20.7", "clsx": "^1.2.1", "date-arithmetic": "^4.1.0", "dayjs": "^1.11.7", "dom-helpers": "^5.2.1", "globalize": "^0.1.1", "invariant": "^2.2.4", "lodash": "^4.17.21", "lodash-es": "^4.17.21", "luxon": "^3.2.1", "memoize-one": "^6.0.0", "moment": "^2.29.4", "moment-timezone": "^0.5.40", "prop-types": "^15.8.1", "react-overlays": "^5.2.1", "uncontrollable": "^7.2.1" }, "peerDependencies": { "react": "^16.14.0 || ^17 || ^18 || ^19", "react-dom": "^16.14.0 || ^17 || ^18 || ^19" } }, "sha512-FrvbDx2LF6JAWFD96LU1jjloppC5OgIvMYUYIPzAw5Aq+ArYFPxAjLqXc4DyxfsQDN0TJTMuS/BIbcSB7Pg0YA=="],
-
-    "react-cropper": ["react-cropper@2.3.3", "", { "dependencies": { "cropperjs": "^1.5.13" }, "peerDependencies": { "react": ">=17.0.2" } }, "sha512-zghiEYkUb41kqtu+2jpX2Ntigf+Jj1dF9ew4lAobPzI2adaPE31z0p+5TcWngK6TvmWQUwK3lj4G+NDh1PDQ1w=="],
 
     "react-day-picker": ["react-day-picker@9.11.1", "", { "dependencies": { "@date-fns/tz": "^1.4.1", "date-fns": "^4.1.0", "date-fns-jalali": "^4.1.0-0" }, "peerDependencies": { "react": ">=16.8.0" } }, "sha512-l3ub6o8NlchqIjPKrRFUCkTUEq6KwemQlfv3XZzzwpUeGwmDJ+0u0Upmt38hJyd7D/vn2dQoOoLV/qAp0o3uUw=="],
 
