@@ -1458,6 +1458,7 @@
     "watchLecture": "Watch the lecture replay"
   },
   "menu": {
+    "educatorContent": "Educator content",
     "getStarted": "Get started",
     "login": "Log in",
     "signIn": "Sign in"

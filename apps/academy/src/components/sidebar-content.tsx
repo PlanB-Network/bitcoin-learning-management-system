@@ -11,6 +11,7 @@ import BookCover from '#src/assets/icons/pixelated/navbar/book_cover.svg?react';
 import BookOpen from '#src/assets/icons/pixelated/navbar/book_open.svg?react';
 import Calendar from '#src/assets/icons/pixelated/navbar/calendar.svg?react';
 import Discount from '#src/assets/icons/pixelated/navbar/discount.svg?react';
+import EducatorContent from '#src/assets/icons/pixelated/navbar/educator_content.svg?react';
 import Location from '#src/assets/icons/pixelated/navbar/location.svg?react';
 import Luggage from '#src/assets/icons/pixelated/navbar/luggage.svg?react';
 import Medal from '#src/assets/icons/pixelated/navbar/medal.svg?react';
@@ -192,7 +193,8 @@ export const SideBarContent = ({
               isActive={window.location.pathname.includes('certifications')}
               isSidebarOpen={isSidebarOpen}
             />
-            {isLoggedIn && (
+
+            {isLoggedIn ? (
               <SideBarItem
                 icon={Calendar}
                 iconColor="blue"
@@ -202,7 +204,7 @@ export const SideBarContent = ({
                 isSidebarOpen={isSidebarOpen}
                 className="lg:hidden"
               />
-            )}
+            ) : null}
             {user?.boughtCourses.some((courseId) =>
               COURSES_CAREER_ACCESS.includes(courseId),
             ) ? (
@@ -214,6 +216,21 @@ export const SideBarContent = ({
                 isActive={window.location.pathname.includes('/career-portal')}
                 isSidebarOpen={isSidebarOpen}
               />
+            ) : null}
+            {process.env.NODE_ENV === 'development' ? (
+              <>
+                <div className="w-full max-w-[209px] mx-auto h-px bg-[#E8E8E8]" />
+                <SideBarItem
+                  icon={EducatorContent}
+                  iconColor="blue"
+                  label={t('menu.educatorContent')}
+                  link="/educator-content"
+                  isActive={window.location.pathname.includes(
+                    'educator-content',
+                  )}
+                  isSidebarOpen={isSidebarOpen}
+                />
+              </>
             ) : null}
           </div>
         </>
