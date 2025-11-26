@@ -54,7 +54,7 @@ export const TUTORIALS_CATEGORIES = [
     image: privacySvg,
     name: 'privacy',
     route: '/tutorials/privacy',
-    subcategories: ['on-chain', 'analysis'],
+    subcategories: ['on-chain', 'explorer'],
   },
   {
     image: computerSecuritySvg,

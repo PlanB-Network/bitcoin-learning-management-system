@@ -1735,7 +1735,6 @@
       "title": "Privacy"
     },
     "subCategories": {
-      "analysis": "Analysis",
       "authentication": "Authentication",
       "backup": "Backup",
       "bitcoin": "Bitcoin",
@@ -1744,6 +1743,7 @@
       "content": "Content",
       "data": "Data",
       "desktop": "Desktop",
+      "explorer": "Explorer",
       "hardware": "Hardware",
       "lightning-network": "Lightning network",
       "mobile": "Mobile",
