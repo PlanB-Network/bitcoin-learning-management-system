@@ -2076,6 +2076,7 @@ export const contentVideosLocalized = content.table(
 export const couponCode = content.table(
   'coupon_code',
   (t) => ({
+    id: t.uuid().primaryKey().defaultRandom(),
     code: t.varchar({ length: 20 }).notNull(),
     createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
     deletedAt: t.timestamp({ withTimezone: true }),
@@ -2085,12 +2086,10 @@ export const couponCode = content.table(
     uid: t.uuid().references(() => usersAccounts.uid, {
       onDelete: 'cascade',
     }),
-    uses: t.integer().default(0).notNull(), // Paranoid delete
+    uses: t.integer().default(0).notNull(),
   }),
   (table) => ({
-    pk: primaryKey({
-      columns: [table.code, table.itemId],
-    }),
+    uniqueCodeItem: unique().on(table.code, table.itemId),
   }),
 );
 

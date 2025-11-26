@@ -1,6 +1,6 @@
 import { UserRole } from '@blms/constants';
 import {
-  createGetCouponCode,
+  createGetCouponById,
   createListEventsAndCourses,
   generateCouponSvg,
 } from '@blms/service-content';
@@ -12,11 +12,11 @@ import { z } from 'zod';
 import type { Dependencies } from '#src/dependencies.js';
 import { Unauthorized } from '#src/errors.js';
 
-const expectedImageQuery = z.object({ code: z.string() });
-const expectedImagesQuery = z.object({ codes: z.string() });
+const expectedImageQuery = z.object({ id: z.string() });
+const expectedImagesQuery = z.object({ ids: z.string() });
 
 interface ImageQuery {
-  code: string;
+  id: string;
 }
 
 const zipStream = (zip: JSZip) => {
@@ -50,10 +50,10 @@ export const createRestCouponsRoutes = (
     next();
   };
 
-  const getCouponCode = createGetCouponCode(dependencies);
+  const getCouponById = createGetCouponById(dependencies);
   const listEventsAndCourses = createListEventsAndCourses(dependencies);
-  const getCouponCodeSvg = async ({ code }: ImageQuery) => {
-    const couponCode = await getCouponCode(code);
+  const getCouponCodeSvg = async ({ id }: ImageQuery) => {
+    const couponCode = await getCouponById(id);
     if (!couponCode) {
       return null;
     }
@@ -140,10 +140,10 @@ export const createRestCouponsRoutes = (
 
     const eventsAndCourses = await listEventsAndCourses();
 
-    const codes = parsedQuery.data.codes.split(',');
+    const ids = parsedQuery.data.ids.split(',');
     const couponCodes = await Promise.all(
-      codes.map(async (code) => {
-        const couponCode = await getCouponCode(code);
+      ids.map(async (id) => {
+        const couponCode = await getCouponById(id);
         if (!couponCode) {
           return null;
         }

@@ -110,7 +110,9 @@ function AdminCoupons() {
   const [formMaxUses, setFormMaxUses] = useState<number>(1);
 
   const [codeCopied, setCodeCopied] = useState(false);
-  const [generatedCodes, setGeneratedCodes] = useState<string[] | null>(null);
+  const [generatedCodes, setGeneratedCodes] = useState<CouponCode[] | null>(
+    null,
+  );
 
   const [preventDoubleClick, setPreventDoubleClick] = useState(false);
 
@@ -119,7 +121,7 @@ function AdminCoupons() {
     trpc.content.createCouponCode.mutationOptions({
       onSuccess: (response) => {
         console.log('Coupon code created', response);
-        setGeneratedCodes(response.map((coupon) => coupon.code));
+        setGeneratedCodes(response);
       },
     }),
   );
@@ -348,7 +350,7 @@ function AdminCoupons() {
                         size="s"
                         onClick={() => {
                           console.log('View coupon code', coupon);
-                          setGeneratedCodes([coupon.code]);
+                          setGeneratedCodes([coupon]);
                           modal.open();
                         }}
                       >
@@ -384,12 +386,12 @@ function AdminCoupons() {
             {coupons.data?.map((coupon) => {
               return (
                 <CouponCard
-                  key={coupon.code + coupon.itemId}
+                  key={coupon.id}
                   coupon={coupon}
                   itemName={itemsMap.get(coupon.itemId)?.name ?? null}
                   onViewClick={() => {
                     console.log('View coupon code', coupon);
-                    setGeneratedCodes([coupon.code]);
+                    setGeneratedCodes([coupon]);
                     modal.open();
                   }}
                   onDeleteClick={() => {
@@ -636,15 +638,15 @@ function AdminCoupons() {
               <img
                 className="my-4 w-full"
                 alt="Coupon code"
-                src={`/api/coupon-image.png?code=${generatedCodes[0]}`}
+                src={`/api/coupon-image.png?id=${generatedCodes[0].id}`}
               />
 
               <div className="my-4">
                 <form
                   action={
                     generatedCodes.length > 1
-                      ? `/api/coupons.zip?codes=${generatedCodes.join(',')}`
-                      : `/api/coupon-image.png?code=${generatedCodes[0]}`
+                      ? `/api/coupons.zip?ids=${generatedCodes.map((c) => c.id).join(',')}`
+                      : `/api/coupon-image.png?id=${generatedCodes[0].id}`
                   }
                   method="POST"
                   target="_blank"
@@ -669,7 +671,7 @@ function AdminCoupons() {
                       className="group"
                       onClick={() => {
                         navigator.clipboard.writeText(
-                          generatedCodes.join('\n'),
+                          generatedCodes.map((c) => c.code).join('\n'),
                         );
                         setCodeCopied(true);
                         setTimeout(() => setCodeCopied(false), 2000);
@@ -691,8 +693,8 @@ function AdminCoupons() {
                     </button>
                   )}
                 </li>
-                {generatedCodes.map((code) => (
-                  <li key={code}>{code}</li>
+                {generatedCodes.map((coupon) => (
+                  <li key={coupon.id}>{coupon.code}</li>
                 ))}
               </ul>
             </div>

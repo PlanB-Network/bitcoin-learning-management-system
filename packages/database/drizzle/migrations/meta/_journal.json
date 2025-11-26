@@ -981,6 +981,13 @@
       "when": 1763559016417,
       "tag": "0139_demonic_beast",
       "breakpoints": true
+    },
+    {
+      "idx": 140,
+      "version": "7",
+      "when": 1764176782741,
+      "tag": "0140_free_proemial_gods",
+      "breakpoints": true
     }
   ]
 }

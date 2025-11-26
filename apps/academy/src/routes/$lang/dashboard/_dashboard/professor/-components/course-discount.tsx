@@ -56,7 +56,9 @@ export const CourseDiscount = ({ courseId }: { courseId: string }) => {
   const [formMaxUses, setFormMaxUses] = useState<number>(1);
 
   const [codeCopied, setCodeCopied] = useState(false);
-  const [generatedCodes, setGeneratedCodes] = useState<string[] | null>(null);
+  const [generatedCodes, setGeneratedCodes] = useState<CouponCode[] | null>(
+    null,
+  );
 
   const [preventDoubleClick, setPreventDoubleClick] = useState(false);
 
@@ -64,7 +66,7 @@ export const CourseDiscount = ({ courseId }: { courseId: string }) => {
   const createCouponCode = useMutation(
     trpc.content.createCouponCodeTeacher.mutationOptions({
       onSuccess: (response) => {
-        setGeneratedCodes(response.map((coupon) => coupon.code));
+        setGeneratedCodes(response);
       },
     }),
   );
@@ -209,7 +211,7 @@ export const CourseDiscount = ({ courseId }: { courseId: string }) => {
                       variant="primary"
                       size="s"
                       onClick={() => {
-                        setGeneratedCodes([coupon.code]);
+                        setGeneratedCodes([coupon]);
                         modal.open();
                       }}
                     >
@@ -245,10 +247,10 @@ export const CourseDiscount = ({ courseId }: { courseId: string }) => {
           {coupons.data?.map((coupon) => {
             return (
               <CouponCard
-                key={coupon.code}
+                key={coupon.id}
                 coupon={coupon}
                 onViewClick={() => {
-                  setGeneratedCodes([coupon.code]);
+                  setGeneratedCodes([coupon]);
                   modal.open();
                 }}
                 onDeleteClick={() => {
@@ -420,15 +422,15 @@ export const CourseDiscount = ({ courseId }: { courseId: string }) => {
             <img
               className="my-4 w-full"
               alt="Coupon code"
-              src={`/api/coupon-image.png?code=${generatedCodes[0]}`}
+              src={`/api/coupon-image.png?id=${generatedCodes[0].id}`}
             />
 
             <div className="my-4">
               <form
                 action={
                   generatedCodes.length > 1
-                    ? `/api/coupons.zip?codes=${generatedCodes.join(',')}`
-                    : `/api/coupon-image.png?code=${generatedCodes[0]}`
+                    ? `/api/coupons.zip?ids=${generatedCodes.map((c) => c.id).join(',')}`
+                    : `/api/coupon-image.png?id=${generatedCodes[0].id}`
                 }
                 method="POST"
                 target="_blank"
@@ -452,7 +454,9 @@ export const CourseDiscount = ({ courseId }: { courseId: string }) => {
                     type="button"
                     className="group"
                     onClick={() => {
-                      navigator.clipboard.writeText(generatedCodes.join('\n'));
+                      navigator.clipboard.writeText(
+                        generatedCodes.map((c) => c.code).join('\n'),
+                      );
                       setCodeCopied(true);
                       setTimeout(() => setCodeCopied(false), 2000);
                     }}
@@ -473,8 +477,8 @@ export const CourseDiscount = ({ courseId }: { courseId: string }) => {
                   </button>
                 )}
               </li>
-              {generatedCodes.map((code) => (
-                <li key={code}>{code}</li>
+              {generatedCodes.map((coupon) => (
+                <li key={coupon.id}>{coupon.code}</li>
               ))}
             </ul>
           </div>
