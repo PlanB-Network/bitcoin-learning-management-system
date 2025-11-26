@@ -73,6 +73,10 @@
       "cache": false,
       "persistent": true
     },
+    "watch-types": {
+      "cache": false,
+      "persistent": true
+    },
     "generate-types": {},
     "test": {
       "dependsOn": ["^test"]

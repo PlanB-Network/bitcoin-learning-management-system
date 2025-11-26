@@ -60,3 +60,5 @@ Language-Toolkit
 my-scripts
 
 .corestore*
+
+.claude/

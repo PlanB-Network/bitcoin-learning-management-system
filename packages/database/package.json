@@ -33,7 +33,8 @@
     "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.json | head -n 12 > performance.log",
     "type-check": "tsc --build",
     "db:populate-slides": "tsx ./scripts/populate-slides.ts",
-    "db:populate-slides:local": "dotenv -e ../../.env -- tsx ./scripts/populate-slides.ts"
+    "db:populate-slides:local": "dotenv -e ../../.env -- tsx ./scripts/populate-slides.ts",
+    "watch-types": "tsc --emitDeclarationOnly -p tsconfig.json --watch --preserveWatchOutput"
   },
   "type": "module",
   "types": "./src/index.ts",
