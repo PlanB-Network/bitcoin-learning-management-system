@@ -53,7 +53,8 @@ export const createRestCouponsRoutes = (
   const getCouponById = createGetCouponById(dependencies);
   const listEventsAndCourses = createListEventsAndCourses(dependencies);
   const getCouponCodeSvg = async ({ id }: ImageQuery) => {
-    const couponCode = await getCouponById(id);
+    // Admin endpoint - allow viewing even if coupon is fully used
+    const couponCode = await getCouponById(id, { rejectIfUsed: false });
     if (!couponCode) {
       return null;
     }
@@ -143,7 +144,8 @@ export const createRestCouponsRoutes = (
     const ids = parsedQuery.data.ids.split(',');
     const couponCodes = await Promise.all(
       ids.map(async (id) => {
-        const couponCode = await getCouponById(id);
+        // Admin endpoint - allow viewing even if coupon is fully used
+        const couponCode = await getCouponById(id, { rejectIfUsed: false });
         if (!couponCode) {
           return null;
         }
