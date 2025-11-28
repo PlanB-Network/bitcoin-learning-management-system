@@ -1,10 +1,4 @@
-import {
-  Button,
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-  cn,
-} from '@blms/ui';
+import { Button, cn } from '@blms/ui';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { type ReactNode, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -513,21 +507,26 @@ function FAQQuestion({
   question: string;
   answer: ReactNode;
 }) {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <Collapsible>
-      <CollapsibleTrigger className="group title-small font-medium text-brown-800 text-left pl-6 py-3 bg-brown-50 border border-brown-100 rounded-sm w-full mb-1">
-        <div className="flex flex-row items-center justify-between">
-          {question}
-          <TbChevronDown
-            size={24}
-            className="text-brown-400 mr-6 group-data-[state=open]:rotate-0 group-data-[state=closed]:-rotate-180 shrink-0 transition-transform ease-in-out"
-          />
-        </div>
-        <CollapsibleContent className="mt-6 body-base">
-          {answer}
-        </CollapsibleContent>
-      </CollapsibleTrigger>
-    </Collapsible>
+    <details
+      className="mb-1 text-brown-800 text-left bg-brown-50   pl-6 py-3  border border-brown-100 rounded-sm "
+      onToggle={(e) => setIsOpen((e.currentTarget as HTMLDetailsElement).open)}
+    >
+      <summary className="title-small font-medium w-full cursor-pointer flex items-center justify-between">
+        {question}
+        <TbChevronDown
+          size={24}
+          className={cn(
+            'text-brown-400 mr-6 shrink-0 transition-transform ease-in-out',
+            isOpen ? 'rotate-0' : '-rotate-180',
+          )}
+        />
+      </summary>
+
+      <div className="mt-6 body-base">{answer}</div>
+    </details>
   );
 }
 
