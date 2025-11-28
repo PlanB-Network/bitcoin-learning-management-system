@@ -1,0 +1,1 @@
+ALTER TABLE "content"."tutorials_localized" ADD COLUMN "last_sync" timestamp with time zone DEFAULT now() NOT NULL;

@@ -1,7 +1,6 @@
 import { firstRow, sql } from '@blms/database';
 import type { ChangedAsset, ChangedFile, Tutorial } from '@blms/types';
 import matter from 'gray-matter';
-
 import type { Language } from '../../const.js';
 import type { Dependencies } from '../../dependencies.js';
 import type { ChangedContent } from '../../types.js';
@@ -11,7 +10,6 @@ import {
   separateContentFiles,
   yamlToObject,
 } from '../../utils.js';
-
 import { createProcessMainFile, type TutorialMain } from './main.js';
 
 interface TutorialDetails {
@@ -156,19 +154,21 @@ export const createUpdateTutorials = ({
 
             await transaction`
           INSERT INTO content.tutorials_localized (
-            tutorial_id, language, title, description, raw_content
+            tutorial_id, language, title, description, raw_content, last_sync
           )
           VALUES (
             ${id},
             ${file.language?.toLowerCase()},
             ${header.data.name},
             ${header.data.description},
-            ${header.content.trim()}
+            ${header.content.trim()},
+            NOW()
           )
           ON CONFLICT (tutorial_id, language) DO UPDATE SET
             title = EXCLUDED.title,
             description = EXCLUDED.description,
-            raw_content = EXCLUDED.raw_content
+            raw_content = EXCLUDED.raw_content,
+            last_sync = NOW()
         `;
           } catch (error) {
             errors.push(
@@ -191,6 +191,10 @@ export const createDeleteTutorials = ({
     try {
       await postgres.exec(
         sql`DELETE FROM content.tutorials WHERE last_sync < ${sync_date}
+      `,
+      );
+      await postgres.exec(
+        sql`DELETE FROM content.tutorials_localized WHERE last_sync < ${sync_date}
       `,
       );
     } catch {

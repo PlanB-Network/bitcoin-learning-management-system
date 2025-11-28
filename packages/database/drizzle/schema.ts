@@ -1539,6 +1539,7 @@ export const contentTutorialsLocalized = content.table(
   (t) => ({
     description: t.text(),
     language: t.varchar({ length: 10 }).notNull(),
+    lastSync: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
     rawContent: t.text().notNull(),
     title: t.text().notNull(),
     tutorialId: t

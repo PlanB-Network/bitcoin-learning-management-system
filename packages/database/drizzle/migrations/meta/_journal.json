@@ -988,6 +988,13 @@
       "when": 1764176782741,
       "tag": "0140_free_proemial_gods",
       "breakpoints": true
+    },
+    {
+      "idx": 141,
+      "version": "7",
+      "when": 1764321088929,
+      "tag": "0141_bouncy_pyro",
+      "breakpoints": true
     }
   ]
 }
