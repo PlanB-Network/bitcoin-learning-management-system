@@ -24,6 +24,7 @@ export interface Tutorial {
 export interface TutorialLocalized {
   description: string | null;
   language: string;
+  lastSync: Date;
   rawContent: string;
   title: string;
   tutorialId: string;

@@ -1,10 +1,16 @@
 import { sql } from '@blms/database';
+import type {
+  AdminUserManagement,
+  AllUsers,
+  AvailableContributor,
+  ServiceTranslationAssignment,
+} from '@blms/types';
 
 /**
  * Query to get available contributors
  */
 export const getAvailableContributorsQuery = () => {
-  return sql`
+  return sql<AvailableContributor[]>`
     SELECT
       ua.uid,
       ua.username,
@@ -20,7 +26,7 @@ export const getAvailableContributorsQuery = () => {
  * Query to get all users for admin management
  */
 export const getAllUsersQuery = () => {
-  return sql`
+  return sql<AllUsers[]>`
     SELECT
       ua.uid,
       ua.username,
@@ -42,7 +48,7 @@ export const getAllUsersQuery = () => {
  * Query to get admin user management data
  */
 export const getAdminUserManagementQuery = () => {
-  return sql`
+  return sql<AdminUserManagement[]>`
     SELECT
       ua.uid,
       ua.username,
@@ -163,7 +169,7 @@ export const createTranslationAssignmentQuery = (
   assigneeId: string,
   assignerId: string,
 ) => {
-  return sql`
+  return sql<ServiceTranslationAssignment[]>`
     INSERT INTO users.translation_assignments (course_id, language, assignee_id, assigner_id, status)
     VALUES (${courseId}, LOWER(${language}), ${assigneeId}, ${assignerId}, 'assigned')
     RETURNING
@@ -230,7 +236,7 @@ export const updateAssignmentQuery = (
   newAssigneeId: string,
   assignerId: string,
 ) => {
-  return sql`
+  return sql<ServiceTranslationAssignment[]>`
     UPDATE users.translation_assignments
     SET
       assignee_id = ${newAssigneeId},
