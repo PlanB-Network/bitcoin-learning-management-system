@@ -1,10 +1,15 @@
 import { sql } from '@blms/database';
 import type { Dependencies } from '#src/dependencies.js';
 
+export type CourseCoordinatorInfo = {
+  email: string;
+  displayName: string;
+};
+
 export const createTeacherNotificationsService = async (ctx: Dependencies) => {
   const getCourseCoordinatorsInfos = async (courseId: string) => {
     const result = await ctx.postgres.exec(
-      sql`
+      sql<CourseCoordinatorInfo[]>`
         SELECT ua.email, ua.display_name
         FROM content.course_professors cp
         JOIN users.accounts ua ON cp.professor_id = ua.professor_id
