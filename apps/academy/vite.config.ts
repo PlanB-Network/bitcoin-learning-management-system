@@ -57,7 +57,11 @@ export default defineConfig({
       autoCodeSplitting: false,
       target: 'react',
     }),
-    react(),
+    react({
+      babel: {
+        plugins: ['babel-plugin-react-compiler'],
+      },
+    }),
 
     // Useful for analyzing bundle size
     // visualizer({
