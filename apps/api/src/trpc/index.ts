@@ -2,13 +2,10 @@ import type { UserPermission, UserRole } from '@blms/constants';
 import type { LogContext } from '@blms/types';
 import { initTRPC } from '@trpc/server';
 import type { CreateExpressContextOptions } from '@trpc/server/adapters/express';
-import * as dotenv from 'dotenv';
 import superjson from 'superjson';
 import { ZodError } from 'zod';
 
 import type { Dependencies } from '../dependencies.js';
-
-dotenv.config();
 
 export interface InnerContext {
   dependencies: Dependencies & LogContext;

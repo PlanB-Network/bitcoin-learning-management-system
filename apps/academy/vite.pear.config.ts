@@ -27,6 +27,8 @@ const nativeModules = [
   ...builtinModules.flatMap((m) => [m, `@${m}`, `@types/${m}`]),
 ];
 
+process.loadEnvFile('../../.env');
+
 // Ensure that pear-related env variables are loaded
 assert(process.env.VITE_PEAR_SOURCE_KEY, 'VITE_PEAR_SOURCE_KEY is not defined');
 assert(

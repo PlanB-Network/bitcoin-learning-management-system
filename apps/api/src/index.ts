@@ -2,7 +2,6 @@ import 'express-session';
 
 import { pathToFileURL } from 'node:url';
 import type { SessionData as ApiSessionDAta, LogContext } from '@blms/types';
-import * as dotenv from 'dotenv';
 
 import { startDependencies } from './dependencies.js';
 import { startServer } from './server.js';
@@ -18,8 +17,6 @@ declare global {
 declare module 'express-session' {
   interface SessionData extends ApiSessionDAta {}
 }
-
-dotenv.config();
 
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 

@@ -52,12 +52,6 @@ You may want to run the project locally to test your changes. Here is how to do 
 - Node.js
 - PostgreSQL
 
-#### Install global dependencies
-
-```bash
-npm i -g pnpm dotenv-cli
-```
-
 ##### MacOS only
 
 ```bash
@@ -89,6 +83,18 @@ docker run -d --restart=always -p 8080:80 \
   -v ./docker/cdn/nginx.conf:/etc/nginx/nginx.conf:ro \
   --name cdn-server \
   nginx:alpine
+```
+
+#### Start a local instance of typesense (linux)
+```bash
+docker run -d \
+  --name typesense \
+  -p 8108:8108 \
+  -e TYPESENSE_API_KEY=abcd \
+  -e TYPESENSE_DATA_DIR=/usr/share/typesense/data \
+  -e GLOG_minloglevel=2 \
+  -v typesense-data-volume:/usr/share/typesense/data \
+  typesense/typesense:28.0
 ```
 
 ## Development - Manage the database
