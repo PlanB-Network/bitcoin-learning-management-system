@@ -29,7 +29,9 @@ export const EventCard = ({ event }: EventCardProps) => {
     ? event.bookOnline
       ? `${t('words.online')} | ${event.addressLine1}`
       : event.addressLine1
-    : t('words.online');
+    : event.bookOnline
+      ? t('words.online')
+      : event.addressLine1 || t('words.online');
 
   const GeneralInfos = () => {
     return (
