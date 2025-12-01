@@ -70,6 +70,7 @@ services:
       - ./packages/schemas/src:/home/node/packages/schemas/src
       - ./packages/types/src:/home/node/packages/types/src
       - ./packages/service-user/src:/home/node/packages/service-user/src
+      - ./.env:/home/node/.env
       - cdn:$CDN_PATH
       - sync:${SYNC_PATH:-/tmp/sync}
       - ${OTS_PGP_KEY_PATH:-./key.asc}:/tmp/key.asc:ro
