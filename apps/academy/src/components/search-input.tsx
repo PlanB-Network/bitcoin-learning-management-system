@@ -6,19 +6,22 @@ export const SearchInput = ({
   searchTerm,
   setSearchTerm,
   className,
+  fullWidthOnMobile = false,
 }: {
   searchTerm: string;
   setSearchTerm: (term: string) => void;
   className?: string;
+  fullWidthOnMobile?: boolean;
 }) => {
   const { t } = useTranslation();
 
   return (
     <div
       className={cn(
-        'relative h-9 lg:h-11 w-full transition-[min-width] ease-in-out min-w-0 max-w-40 lg:max-w-56 focus-within:min-w-[200px]',
+        'relative h-9 lg:h-11 w-full transition-[min-width] ease-in-out min-w-0 lg:max-w-56 focus-within:min-w-[200px]',
         searchTerm && 'min-w-[200px]',
         className,
+        fullWidthOnMobile ? 'max-w-full sm:max-w-40' : 'max-w-40',
       )}
     >
       <input

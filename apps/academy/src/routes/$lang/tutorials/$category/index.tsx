@@ -1,10 +1,18 @@
-import { Loader, SegmentedControl, SegmentedControlItem } from '@blms/ui';
+import {
+  CategorySwitcher,
+  CategorySwitcherBar,
+  EmptyState,
+  Loader,
+  SegmentedControl,
+  SegmentedControlItem,
+} from '@blms/ui';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 import { CategoryIcon } from '#src/components/category-icon.js';
 import { PageLayout } from '#src/components/page-layout.tsx';
+import { SearchInput } from '#src/components/search-input.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import {
   extractSubCategories,
@@ -42,6 +50,8 @@ function TutorialCategory() {
   const [currentSubCategory, setCurrentSubCategory] = useState<
     string | undefined
   >();
+
+  const [searchTerm, setSearchTerm] = useState('');
 
   const { tutorials: allTutorials } = useContext(AppContext);
   const isFetched = allTutorials && allTutorials.length > 0;
@@ -84,6 +94,20 @@ function TutorialCategory() {
     window.location.hash = value;
   };
 
+  const filteredTutorials = allTutorials
+    ?.filter((tutorial) => {
+      const matchesCategory = tutorial.category === tutorialCategory?.name;
+      const matchesSubCategory =
+        tutorial.subcategory === (currentSubCategory ?? subCategories[0]);
+
+      const matchesSearch = tutorial.title
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
+
+      return matchesCategory && matchesSubCategory && matchesSearch;
+    })
+    .sort((a, b) => b.likeCount - a.likeCount);
+
   return (
     <PageLayout
       layoutSize="base"
@@ -97,13 +121,20 @@ function TutorialCategory() {
       tabs={tutorialsTabs}
     >
       {!isFetched && <Loader size={'s'} />}
+
+      <SearchInput
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        className="ml-auto mb-4"
+        fullWidthOnMobile
+      />
       {allTutorials && subCategories.length > 0 && (
         <>
           <SegmentedControl
             variant="outline"
             value={currentSubCategory ?? subCategories[0]}
             defaultValue={subCategories[0]}
-            className="w-full max-md:mt-4 mt-2"
+            className="w-full mt-2 max-md:hidden"
           >
             {subCategories.map((subCategory) => (
               <SegmentedControlItem
@@ -116,18 +147,35 @@ function TutorialCategory() {
               </SegmentedControlItem>
             ))}
           </SegmentedControl>
-          <div className="mt-6 md:mt-2 flex flex-col">
-            {[...allTutorials]
-              .filter(
-                (tutorial) =>
-                  tutorial.category === tutorialCategory?.name &&
-                  tutorial.subcategory ===
-                    (currentSubCategory ?? subCategories[0]),
-              )
-              .sort((a, b) => b.likeCount - a.likeCount)
-              .map((tutorial) => (
-                <TutorialCard key={tutorial.id} tutorial={tutorial} />
+
+          <div className="w-full md:hidden">
+            <CategorySwitcherBar>
+              {subCategories.map((subCategory) => (
+                <CategorySwitcher
+                  key={subCategory}
+                  onClick={() => {
+                    handleTabChange(subCategory);
+                  }}
+                  isActive={subCategory === currentSubCategory}
+                  text={t([
+                    `tutorials.subCategories.${subCategory}`,
+                    subCategory,
+                  ])}
+                  size="s"
+                  inactiveBackgroundColor="bg-neutral-50"
+                />
               ))}
+            </CategorySwitcherBar>
+          </div>
+
+          <div className="mt-5 md:mt-2 flex flex-col">
+            {filteredTutorials && filteredTutorials.length > 0 ? (
+              filteredTutorials.map((tutorial) => (
+                <TutorialCard key={tutorial.id} tutorial={tutorial} />
+              ))
+            ) : (
+              <EmptyState title={t('tutorials.noTutorialsFound')} />
+            )}
           </div>
         </>
       )}

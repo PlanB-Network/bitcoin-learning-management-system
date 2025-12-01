@@ -1,9 +1,10 @@
 import { Loader } from '@blms/ui';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { t } from 'i18next';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { TbChevronRight } from 'react-icons/tb';
 import { PageLayout } from '#src/components/page-layout.tsx';
+import { SearchInput } from '#src/components/search-input.tsx';
 import { AppContext } from '#src/providers/context.js';
 import { TUTORIALS_CATEGORIES } from '#src/services/utils.tsx';
 import { TutorialCard } from './-components/tutorial-card.tsx';
@@ -13,6 +14,8 @@ export const Route = createFileRoute('/$lang/tutorials/')({
 });
 
 function TutorialExplorer() {
+  const [searchTerm, setSearchTerm] = useState('');
+
   const { tutorials } = useContext(AppContext);
   const isFetchedTutorials = tutorials && tutorials.length > 0;
 
@@ -23,8 +26,26 @@ function TutorialExplorer() {
       tabs={tutorialsTabs}
     >
       {!isFetchedTutorials && <Loader size={'s'} />}
-      <div className="flex flex-col gap-6 md:gap-12 w-full mt-4 md:mt-0">
+      <SearchInput
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        className="ml-auto mb-4"
+        fullWidthOnMobile
+      />
+      <div className="flex flex-col gap-6 md:gap-12 w-full">
         {TUTORIALS_CATEGORIES.map((category) => {
+          const filteredTutorials = tutorials
+            ?.filter(
+              (tutorial) =>
+                tutorial.category.toLowerCase() === category.name &&
+                tutorial.title.toLowerCase().includes(searchTerm.toLowerCase()),
+            )
+            .sort((a, b) => b.likeCount - a.likeCount);
+
+          if (!filteredTutorials || filteredTutorials.length === 0) {
+            return null;
+          }
+
           return (
             <section key={category.name} className="flex flex-col gap-2 w-full">
               <div className="flex w-full justify-between items-center md:px-2">
@@ -40,16 +61,9 @@ function TutorialExplorer() {
                 </Link>
               </div>
               <div className="flex flex-col w-full md:gap-2">
-                {tutorials
-                  ?.filter(
-                    (tutorial) =>
-                      tutorial.category.toLowerCase() === category.name,
-                  )
-                  .sort((a, b) => b.likeCount - a.likeCount)
-                  .slice(0, 4)
-                  .map((tutorial) => (
-                    <TutorialCard key={tutorial.id} tutorial={tutorial} />
-                  ))}
+                {filteredTutorials.slice(0, 4).map((tutorial) => (
+                  <TutorialCard key={tutorial.id} tutorial={tutorial} />
+                ))}
               </div>
             </section>
           );
