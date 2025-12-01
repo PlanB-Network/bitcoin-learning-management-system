@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom/client';
 
 import { AppProvider } from './providers/app.tsx';
 import './utils/i18n';
-import OrangePill from '#src/assets/icons/footer_pill.webp?no-inline';
+import OrangePill from '#src/assets/icons/loading_pill.svg';
 
 import '../../../packages/ui/src/styles/global.css';
 import { isPearApp } from './env.ts';
@@ -74,7 +74,7 @@ root.render(
       fallback={
         <img
           src={OrangePill}
-          className="w-[200px] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+          className="w-[100px] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
           loading="lazy"
           alt="Orange pill"
         />
