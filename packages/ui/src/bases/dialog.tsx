@@ -154,7 +154,7 @@ const BasicModal = ({
             {title}
           </DialogTitle>
           <DialogPrimitive.Close>
-            <TbX className="size-7 md:size-8 shrink-0 mx-4 text-neutral-400 p-1 bg-neutral-100 rounded-lg" />
+            <TbX className="size-7 md:size-8 shrink-0 mx-4 text-neutral-400 p-1 hover:bg-neutral-100 rounded-lg" />
             <span className="sr-only">Close</span>
           </DialogPrimitive.Close>
         </div>
