@@ -18,6 +18,7 @@ import { LANGUAGES } from '../utils/i18n.ts';
 import { AuthModalProvider } from './auth.tsx';
 import { AppContextProvider } from './context.tsx';
 import { ConversionRateProvider } from './conversionRateContext.tsx';
+import { GlossaryProvider } from './glossaryContext.tsx';
 import { NotificationsProvider } from './userNotificationsContext.tsx';
 
 interface LangContext {
@@ -157,17 +158,19 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
             <AppContextProvider>
               <NotificationsProvider>
                 <ConversionRateProvider>
-                  <AuthModalProvider>
-                    <RouterProvider router={router} context={{ i18n }} />
-                    <PageMeta
-                      title={SITE_NAME}
-                      description="Let's build together the Bitcoin educational layer"
-                      type="website"
-                      imageSrc="/share-default.png"
-                    />
-                    <ToastContainer autoClose={5000} />
-                    {children}
-                  </AuthModalProvider>
+                  <GlossaryProvider>
+                    <AuthModalProvider>
+                      <RouterProvider router={router} context={{ i18n }} />
+                      <PageMeta
+                        title={SITE_NAME}
+                        description="Let's build together the Bitcoin educational layer"
+                        type="website"
+                        imageSrc="/share-default.png"
+                      />
+                      <ToastContainer autoClose={5000} />
+                      {children}
+                    </AuthModalProvider>
+                  </GlossaryProvider>
                 </ConversionRateProvider>
               </NotificationsProvider>
             </AppContextProvider>

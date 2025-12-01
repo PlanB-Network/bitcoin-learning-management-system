@@ -80,7 +80,9 @@ const CoursesMarkdownBody = ({
       ]}
       rehypePlugins={[rehypeMathjax]}
       urlTransform={(src) =>
-        src.startsWith('http') ? src : `${assetPrefix}/${src}`
+        src.startsWith('http') || src.startsWith('/')
+          ? src
+          : `${assetPrefix}/${src}`
       }
     >
       {content}
