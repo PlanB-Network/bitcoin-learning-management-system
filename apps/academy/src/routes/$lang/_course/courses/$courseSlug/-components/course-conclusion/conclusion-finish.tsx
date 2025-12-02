@@ -47,7 +47,7 @@ export const ConclusionFinish = ({
       ) : (
         <DiplomaSelfPaced examResults={examResults} course={course} />
       )}
-      {course.topic === 'protocol' ? <Labs /> : null}
+      {/* {course.topic === 'protocol' ? <Labs /> : null} */}
       <OtherCourses course={course} />
       {session?.user && (
         <Link to="/my-courses" className="max-md:hidden mt-8 inline-flex">
@@ -365,38 +365,39 @@ const DiplomaTeacherLed = ({ course }: { course: CourseResponse }) => {
   );
 };
 
-const Labs = () => {
-  return (
-    <>
-      <DividerSimple className="my-5 md:mt-3 md:mb-8" />
-      <section className="w-full flex flex-col gap-4 md:gap-5">
-        <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
-          {t('labs.planBLabs')}
-        </h4>
+// TODO : section disabled for now, might need to kill it later
+// const Labs = () => {
+//   return (
+//     <>
+//       <DividerSimple className="my-5 md:mt-3 md:mb-8" />
+//       <section className="w-full flex flex-col gap-4 md:gap-5">
+//         <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
+//           {t('labs.planBLabs')}
+//         </h4>
 
-        <p className="label-large-20px md:display-small-32px text-black">
-          {t('labs.presentation.subtitle')}
-        </p>
+//         <p className="label-large-20px md:display-small-32px text-black">
+//           {t('labs.presentation.subtitle')}
+//         </p>
 
-        <p className="text-newBlack-1 md:text-justify body-16px md:subtitle-medium-16px whitespace-pre-line">
-          {t('labs.description1')}
-        </p>
+//         <p className="text-newBlack-1 md:text-justify body-16px md:subtitle-medium-16px whitespace-pre-line">
+//           {t('labs.description1')}
+//         </p>
 
-        <p className="text-newBlack-1 md:text-justify body-16px md:subtitle-medium-16px whitespace-pre-line">
-          {t('labs.description2')}
-        </p>
+//         <p className="text-newBlack-1 md:text-justify body-16px md:subtitle-medium-16px whitespace-pre-line">
+//           {t('labs.description2')}
+//         </p>
 
-        <div className="flex flex-col md:flex-row gap-6 lg:gap-12">
-          <Link to="/plan-b-labs">
-            <ButtonWithArrow variant="primary">
-              {t('labs.presentation.link')}
-            </ButtonWithArrow>
-          </Link>
-        </div>
-      </section>
-    </>
-  );
-};
+//         <div className="flex flex-col md:flex-row gap-6 lg:gap-12">
+//           <Link to="/plan-b-labs">
+//             <ButtonWithArrow variant="primary">
+//               {t('labs.presentation.link')}
+//             </ButtonWithArrow>
+//           </Link>
+//         </div>
+//       </section>
+//     </>
+//   );
+// };
 
 const OtherCourses = ({ course }: { course: CourseResponse }) => {
   const { courses: allCourses } = useContext(AppContext);
