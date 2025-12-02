@@ -63,7 +63,9 @@
       "invalidCredentials": "Informasi login tidak valid",
       "usernameRegex": "Nama pengguna hanya boleh mengandung huruf, angka, tanda garis bawah (_), tanda titik (.), dan tanda hubung (-).",
       "usernameRequired": "Nama pengguna diperlukan.",
-      "usernameTooShort": "Nama pengguna harus mengandung setidaknya lima karakter."
+      "usernameTooShort": "Nama pengguna harus mengandung setidaknya lima karakter.",
+      "oldPasswordRequired": "Diperlukan kata sandi lama",
+      "passwordTooShort": "Kata sandi terlalu pendek"
     },
     "forgottenPassword": "Lupa kata sandi?",
     "headerAccountCreated": "Akun berhasil dibuat",
@@ -91,7 +93,11 @@
     "trackProgress": "Buat akun atau masuk untuk tetap mengikuti progres anda",
     "tryAgain": "Coba lagi",
     "loginNotAvailable1": "Fitur login belum tersedia di aplikasi desktop untuk saat ini.",
-    "loginNotAvailable2": "Anda dapat mengunjungi situs web kami untuk masuk dan mengakses akun Anda."
+    "loginNotAvailable2": "Anda dapat mengunjungi situs web kami untuk masuk dan mengakses akun Anda.",
+    "forgotPassword": "Lupa kata sandi?",
+    "login": "Masuk",
+    "oldPassword": "Kata sandi lama",
+    "signUp": "Daftar"
   },
   "bCert": {
     "bCertDescription": "₿-CERT merupakan ujian yang diakui secara internasional untuk mengukur tingkat pemahaman Anda tentang Bitcoin dan topik-topik yang berkaitan. Bila Anda lulus dengan skor di atas 80%, Anda akan mendapat sertifikat ₿-CERT, yang dapat berfungsi sebagai bukti atas kemampuan dan pengetahuan Anda dalam industri Bitcoin, dapat memberi Anda peluang untuk masuk ke perusahaan dan jabatan tertentu dalam industri tersebut.",
@@ -380,8 +386,14 @@
     "liveClasses": {
       "allOtherTitle": "Semua kelas langsung/ online lainnya",
       "liveClasses": "Kelas online",
-      "title": "Program tahunan resmi Plan ₿"
-    }
+      "title": "Program tahunan resmi Plan ₿",
+      "program": {
+        "goal": "Kuasai industri Bitcoin bersama Giacomo Zucco dalam program selama 5 bulan yang menggabungkan teori, studi kasus nyata, dan kesempatan jaringan eksklusif.",
+        "semester": "Semester",
+        "title": "Plan ₿ Program"
+      }
+    },
+    "navbarHover": "Daftar untuk membuka kunci"
   },
   "dashboard": {
     "adminPanel": {
@@ -1177,7 +1189,8 @@
       "save": "Simpan",
       "saving": "Menyimpan…",
       "securitySettings": "Pengaturan keamanan",
-      "username": "Nama pengguna"
+      "username": "Nama pengguna",
+      "emailOrUsername": "Email atau nama pengguna"
     },
     "teacher": {
       "courses": {
@@ -1437,7 +1450,10 @@
     "watchLecture": "Tonton tayangan ulang perkuliahan"
   },
   "menu": {
-    "login": "Masuk"
+    "login": "Masuk",
+    "educatorContent": "Konten pendidik",
+    "getStarted": "Mulai",
+    "signIn": "Masuk"
   },
   "movies": {
     "checkTheMovie": "Periksa filmnya"
@@ -1675,7 +1691,6 @@
       "title": "Privasi"
     },
     "subCategories": {
-      "analysis": "Analisis",
       "authentication": "Otentikasi",
       "backup": "Backup",
       "bitcoin": "Bitcoin",
@@ -1693,7 +1708,8 @@
       "peer-to-peer": "Peer-to-peer",
       "point-of-sale": "Point of sale",
       "pool": "Pool",
-      "resource": "Sumber"
+      "resource": "Sumber",
+      "explorer": "Penjelajah"
     },
     "wallet": {
       "title": "Dompet"
@@ -1892,7 +1908,10 @@
     "legal": "Hukum",
     "list": "Daftar",
     "planBNetwork": "Plan ₿ Network",
-    "session": "Sesi"
+    "session": "Sesi",
+    "confirmation": "Konfirmasi",
+    "optional": "Opsional",
+    "syllabus": "Silabus"
   },
   "youtubeChannels": {
     "view": "Lihat Saluran Youtube",
