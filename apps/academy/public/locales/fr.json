@@ -386,7 +386,10 @@
     "liveClasses": {
       "allOtherTitle": "Tous les autres cours en direct",
       "liveClasses": "Cours en direct",
-      "title": "Programmes annuels officiels de Plan ₿"
+      "title": "Programmes annuels officiels de Plan ₿",
+      "program": {
+        "goal": "Maîtrisez l'industrie du Bitcoin avec Giacomo Zucco grâce à un programme de 5 mois qui mêle théorie, études de cas réels et opportunités de réseautage exclusives."
+      }
     }
   },
   "dashboard": {
@@ -1683,7 +1686,6 @@
       "title": "Confidentialité"
     },
     "subCategories": {
-      "analysis": "Analyse",
       "authentication": "Authentification",
       "backup": "Sauvegarde",
       "bitcoin": "Bitcoin",

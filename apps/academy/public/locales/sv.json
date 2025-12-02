@@ -1593,7 +1593,6 @@
       "title": "Integritet"
     },
     "subCategories": {
-      "analysis": "Analys",
       "authentication": "Autentisering",
       "backup": "Backup",
       "bitcoin": "Bitcoin",
