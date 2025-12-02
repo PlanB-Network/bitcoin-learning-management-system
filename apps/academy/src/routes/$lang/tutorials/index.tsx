@@ -1,4 +1,4 @@
-import { Loader } from '@blms/ui';
+import { EmptyState, Loader } from '@blms/ui';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useContext, useState } from 'react';
@@ -19,6 +19,10 @@ function TutorialExplorer() {
   const { tutorials } = useContext(AppContext);
   const isFetchedTutorials = tutorials && tutorials.length > 0;
 
+  const filteredSearchTutorials = tutorials?.filter((tutorial) =>
+    tutorial.title.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
+
   return (
     <PageLayout
       layoutSize="base"
@@ -33,41 +37,46 @@ function TutorialExplorer() {
         fullWidthOnMobile
       />
       <div className="flex flex-col gap-6 md:gap-12 w-full">
-        {TUTORIALS_CATEGORIES.map((category) => {
-          const filteredTutorials = tutorials
-            ?.filter(
-              (tutorial) =>
-                tutorial.category.toLowerCase() === category.name &&
-                tutorial.title.toLowerCase().includes(searchTerm.toLowerCase()),
-            )
-            .sort((a, b) => b.likeCount - a.likeCount);
+        {filteredSearchTutorials && filteredSearchTutorials?.length > 0 ? (
+          TUTORIALS_CATEGORIES.map((category) => {
+            const filteredTutorials = filteredSearchTutorials
+              ?.filter(
+                (tutorial) => tutorial.category.toLowerCase() === category.name,
+              )
+              .sort((a, b) => b.likeCount - a.likeCount);
 
-          if (!filteredTutorials || filteredTutorials.length === 0) {
-            return null;
-          }
+            if (!filteredTutorials || filteredTutorials.length === 0) {
+              return null;
+            }
 
-          return (
-            <section key={category.name} className="flex flex-col gap-2 w-full">
-              <div className="flex w-full justify-between items-center md:px-2">
-                <span className="flex display-small md:display-base">
-                  {t(`tutorials.${category.name}.title`)}
-                </span>
-                <Link
-                  to={`/tutorials/${category.name}`}
-                  className="body-base-bold text-orange-500 flex items-center gap-2"
-                >
-                  {t('words.seeAll')}
-                  <TbChevronRight size={16} />
-                </Link>
-              </div>
-              <div className="flex flex-col w-full md:gap-2">
-                {filteredTutorials.slice(0, 4).map((tutorial) => (
-                  <TutorialCard key={tutorial.id} tutorial={tutorial} />
-                ))}
-              </div>
-            </section>
-          );
-        })}
+            return (
+              <section
+                key={category.name}
+                className="flex flex-col gap-2 w-full"
+              >
+                <div className="flex w-full justify-between items-center md:px-2">
+                  <span className="flex display-small md:display-base">
+                    {t(`tutorials.${category.name}.title`)}
+                  </span>
+                  <Link
+                    to={`/tutorials/${category.name}`}
+                    className="body-base-bold text-orange-500 flex items-center gap-2"
+                  >
+                    {t('words.seeAll')}
+                    <TbChevronRight size={16} />
+                  </Link>
+                </div>
+                <div className="flex flex-col w-full md:gap-2">
+                  {filteredTutorials.slice(0, 4).map((tutorial) => (
+                    <TutorialCard key={tutorial.id} tutorial={tutorial} />
+                  ))}
+                </div>
+              </section>
+            );
+          })
+        ) : (
+          <EmptyState title={t('tutorials.noTutorialsFound')} />
+        )}
       </div>
     </PageLayout>
   );
