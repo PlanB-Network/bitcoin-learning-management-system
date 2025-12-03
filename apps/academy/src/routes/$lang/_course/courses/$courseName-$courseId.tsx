@@ -637,10 +637,14 @@ function CourseDetails() {
           <BuyCourseButton
             format={course.format === 'hybrid' ? 'inperson' : course.format}
           >
-            <>
-              <FaLock className="mr-2" />
-              {t('courses.details.buyCourse')}
-            </>
+            {course.inpersonPriceDollars || course.onlinePriceDollars ? (
+              <>
+                <FaLock className="mr-2" />
+                {t('courses.details.buyCourse')}
+              </>
+            ) : (
+              <>{t('words.enroll')}</>
+            )}
           </BuyCourseButton>
         )}
       </>
