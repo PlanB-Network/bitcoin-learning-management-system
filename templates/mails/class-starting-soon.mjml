@@ -81,7 +81,7 @@
         </mj-text>
         <mj-text padding="0" >
           See you in class!<br />
-          The Plan ₿ Biz School 2025 team<br/>
+          The {{courseName}} team<br/>
           Plan ₿ Network
         </mj-text>
       </mj-column>
@@ -91,7 +91,7 @@
     <mj-section padding-top="20px" padding-bottom="40px">
       <mj-column>
         <mj-text align="center" font-size="12px" line-height="14px" font-weight="400" css-class="footer-text" padding="0 25px">
-          You are receiving this email because you have an account on planb.network.<br />If you would like to change your email preferences, please click <a href="{{unsubscribeLink}}" style="color: #000000; text-decoration: underline;">here</a>
+          You are receiving this email because you have an account on planb.academy.<br />If you would like to change your email preferences, please click <a href="{{unsubscribeLink}}" style="color: #000000; text-decoration: underline;">here</a>
         </mj-text>
       </mj-column>
     </mj-section>

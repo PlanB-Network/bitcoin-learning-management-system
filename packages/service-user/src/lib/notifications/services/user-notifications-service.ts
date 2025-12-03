@@ -32,7 +32,7 @@ export const createUserNotificationsService = async (ctx: Dependencies) => {
     return result.map((row) => row.uid);
   };
 
-  const getUidsByEvent = async (eventId: string) => {
+  const getUidsByEvent = async (eventId: string, isEmail?: boolean) => {
     const bookedEventsUids = await ctx.postgres
       .exec(
         sql`
@@ -41,7 +41,7 @@ export const createUserNotificationsService = async (ctx: Dependencies) => {
         JOIN users.account_settings uas ON ue.uid = uas.uid
         WHERE ue.event_id = ${eventId}
         AND ue.booked = TRUE
-        AND uas.platform_notify_events = TRUE
+        AND ${isEmail ? sql`uas.email_notify_courses = TRUE` : sql`uas.platform_notify_events = TRUE`}
         `,
       )
       .then((result) => {
@@ -56,7 +56,7 @@ export const createUserNotificationsService = async (ctx: Dependencies) => {
       JOIN users.account_settings uas ON ep.uid = uas.uid
       WHERE ep.event_id = ${eventId}
       AND ep.payment_status = 'paid'
-      AND uas.platform_notify_events = TRUE
+      AND ${isEmail ? sql`uas.email_notify_courses = TRUE` : sql`uas.platform_notify_events = TRUE`}
       `,
       )
       .then((result) => {

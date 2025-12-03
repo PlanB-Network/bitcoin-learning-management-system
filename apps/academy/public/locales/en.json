@@ -1191,6 +1191,7 @@
       "emailOrUsername": "Email or username",
       "notificationSettings": {
         "coursesOption": "Updates about courses you enrolled in",
+        "coursesEventsOption": "Updates about courses you enrolled in and events you booked",
         "description": "You can customize your notification settings below. ",
         "emailPreferencesDescription": "Here you can choose the types of emails you'd like to receive from us. These preferences only apply to the email address associated with this link.",
         "emailPreferencesSavedSuccessfully": "Your email preferences were updated successfully.",

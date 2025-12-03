@@ -1,0 +1,86 @@
+<mjml>
+  <mj-head>
+    <mj-font name="Rubik" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" />
+    <mj-font name="IBM Plex Sans" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" />
+    <mj-attributes>
+      <mj-all font-family="'IBM Plex Sans', Rubik, Arial, sans-serif" color="#000000" />
+      <mj-text font-size="16px" line-height="24px" letter-spacing="0.10px" />
+      <mj-button border-radius="16px" background-color="#FF5C00" color="#ffffff" font-weight="500" font-size="20px" font-family="Rubik, Arial, sans-serif" />
+    </mj-attributes>
+    <mj-style>
+      .main-title div {
+        font-size: 24px !important;
+        font-weight: 400 !important;
+        line-height: 32px !important;
+        font-family: 'IBM Plex Sans', Rubik, Arial, sans-serif !important;
+      }
+    </mj-style>
+  </mj-head>
+  <mj-body>
+
+    <!-- Logo -->
+    <mj-section padding-top="40px" padding-bottom="20px">
+      <mj-column>
+        <mj-image src="http://cdn.mcauto-images-production.sendgrid.net/1320c1d7e5304d1f/4fc3540f-18ed-4e56-acc9-11251f854028/558x104.png" alt="Logo" width="264px" align="center" padding="0" />
+      </mj-column>
+    </mj-section>
+
+    <!-- Header -->
+    <mj-section padding-top="20px" padding-bottom="16px">
+      <mj-column>
+        <mj-text align="center" padding-bottom="10px" css-class="main-title">
+          Event reminder
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Content -->
+    <mj-section>
+      <mj-column width="90%">
+        <mj-text padding='0'>
+          Hello,
+          <br/><br/>
+          This is a reminder that your upcoming event, <strong>{{eventName}}</strong>, is taking place tomorrow!
+          <br/><br/>
+          <strong>Event details:</strong>
+        </mj-text>
+
+        <mj-text padding='0'>
+          <ul>
+            <li style="padding-bottom: 5px;"><strong>Date:</strong> {{eventDate}}</li>
+            <li style="padding-bottom: 5px;"><strong>Time:</strong> {{eventTime}}</li>
+            <li style="padding-bottom: 5px;"><strong>Location:</strong> {{eventLocation}}</li>
+            <li style="padding-bottom: 5px;"><strong>Link:</strong> <a href="{{eventLink}}" style="color:#FF5C00; text-decoration:none;">{{eventLink}}</a></li>
+          </ul>
+        </mj-text>
+
+        <mj-text padding='0'>
+          Please note that a ticket is required for in-person events. You can access your ticket by logging into your account and visiting your <a href="{{myTicketsLink}}" style="color:#FF5C00; text-decoration:none;">My Tickets</a> section on planb.academy.
+          <br/><br/>
+          If you have any questions, feel free to reach out.
+          <br/>
+          We look forward to seeing you there.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Contact & signature -->
+    <mj-section padding-top="0px" padding-bottom="15px">
+      <mj-column width="90%">
+        <mj-text font-weight="400" padding="0">
+          Best regards,<br />
+          The Plan ₿ Academy team
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Footer -->
+    <mj-section padding-top="30px" padding-bottom="30px">
+      <mj-column>
+        <mj-text align="center" font-size="12px" line-height="14px" font-weight="400" css-class="footer-text" padding="0 25px">
+          You are receiving this email because you have an account on planb.academy.<br />If you would like to change your email preferences, please click <a href="{{unsubscribeLink}}" style="color: #000000; text-decoration: underline;">here</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

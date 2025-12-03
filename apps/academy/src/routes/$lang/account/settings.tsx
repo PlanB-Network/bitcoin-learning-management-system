@@ -251,7 +251,7 @@ const NotificationSettings = () => {
                 options={[
                   {
                     label: t(
-                      'dashboard.profile.notificationSettings.coursesOption',
+                      'dashboard.profile.notificationSettings.coursesEventsOption',
                     ),
                     value: 'courses',
                   },
