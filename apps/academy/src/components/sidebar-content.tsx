@@ -58,7 +58,11 @@ export const SideBarContent = ({
     user?.professorId &&
     user?.professorCourses
       .map((course) => courses.find((c) => c.id === course))
-      .filter((c) => c !== undefined);
+      .filter((c) => c !== undefined)
+      .sort(
+        (a, b) =>
+          (b.publishedAt?.getTime() ?? 0) - (a.publishedAt?.getTime() ?? 0),
+      );
 
   const path = window.location.pathname;
   const isOnAdminPage = path.includes('/dashboard/administration');
