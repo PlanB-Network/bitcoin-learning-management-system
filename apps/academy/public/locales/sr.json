@@ -63,9 +63,11 @@
       "invalidCredentials": "Nevalidni kredencijali",
       "usernameRegex": "Korisničko ime može sadržati samo slova, brojeve, donje crte(_), tačke( .) i crtice ( -).",
       "usernameRequired": "Korisničko ime je obavezno.",
-      "usernameTooShort": "Korisničko ime mora sadržati najmanje 5 karaktera."
+      "usernameTooShort": "Korisničko ime mora sadržati najmanje 5 karaktera.",
+      "oldPasswordRequired": "Potrebna je stara lozinka",
+      "passwordTooShort": "Lozinka je prekratka"
     },
-    "forgottenPassword": "Zaboravili ste lozinku?",
+    "forgottenPassword": "Da li ste zaboravili lozinku?",
     "headerAccountCreated": "Nalog je kreiran",
     "invalidToken": "Neispravan token",
     "invalidTokenExplain": {
@@ -91,7 +93,11 @@
     "trackProgress": "Kreirajte nalog ili se prijavite da biste pratili svoj napredak",
     "tryAgain": "Pokušajte ponovo",
     "loginNotAvailable1": "Funkcije za prijavljivanje još uvek nisu dostupne na desktop aplikaciji.",
-    "loginNotAvailable2": "Možete posetiti našu web stranicu kako biste se prijavili i pristupili svom nalogu."
+    "loginNotAvailable2": "Možete posetiti našu web stranicu kako biste se prijavili i pristupili svom nalogu.",
+    "forgotPassword": "Zaboravljena lozinka?",
+    "login": "Prijava",
+    "oldPassword": "Stara lozinka",
+    "signUp": "Registruj se"
   },
   "bCert": {
     "bCertDescription": "₿-CERT je vrhunski Bitcoin test osmišljen da proceni tvoje znanje o Bitcoinu i povezanim temama.\n\nOstvari više od 80% poena i osvoji svoj ₿-CERT sertifikat koji dokazuje tvoju stručnost u Bitcoin industriji i otvara ti vrata ka poslovima u toj oblasti.",
@@ -131,7 +137,8 @@
     "noConferences": "Još uvek nisu dodate konferencije za {{year}}.",
     "pageTitle": "Reprize konferencija",
     "planBConferences": "Plan B konferencije",
-    "topics": "Teme"
+    "topics": "Teme",
+    "conferencesGenesis": "Konferencije od Genesis Bloka"
   },
   "courses": {
     "chapter": {
@@ -376,11 +383,17 @@
     "liveClasses": {
       "allOtherTitle": "Svi ostali časovi uživo",
       "liveClasses": "Časovi uživo",
-      "title": "Plan ₿ zvanični godišnji programi"
+      "title": "Predvodi promenu. Usavrši Bitkoin.",
+      "program": {
+        "goal": "Ovladajte Bitcoin industrijom sa Giacomo-m Zucco-m u programu koji traje 5 meseci i kombinuje teoriju, studije stvarnih slučajeva i ekskluzivne mogućnosti za umrežavanje.",
+        "semester": "Semestar",
+        "title": "Plan ₿ Program"
+      }
     },
     "noCoursesFound": "Nijedan kurs nije pronađen",
     "plusXMore": "+{{count}} više",
-    "tryAdjustingFilters": "Pokušajte da prilagodite svoje filtere"
+    "tryAdjustingFilters": "Pokušajte da prilagodite svoje filtere",
+    "navbarHover": "Prijavite se za otključavanje"
   },
   "dashboard": {
     "adminPanel": {
@@ -1139,7 +1152,8 @@
       "verify": "Proverite autentičnost diplome",
       "whereYouAre": "Hajde da vidimo gde ste!",
       "yourCertificate": "Vaš sertifikat",
-      "yourProgress": "Vaš napredak :"
+      "yourProgress": "Vaš napredak :",
+      "noCourseStarted": "Još niste započeli nijedan kurs koji možete sami proći"
     },
     "profile": {
       "cancel": "Otkaži",
@@ -1175,7 +1189,8 @@
       "save": "Sačuvaj",
       "saving": "Čuvanje…",
       "securitySettings": "Podešavanja bezbednosti",
-      "username": "Korisničko ime"
+      "username": "Korisničko ime",
+      "emailOrUsername": "Email ili korisničko ime"
     },
     "teacher": {
       "courses": {
@@ -1435,7 +1450,10 @@
     "watchLecture": "Pogledajte reprizu predavanja"
   },
   "menu": {
-    "login": "Prijavi se"
+    "login": "Prijavi se",
+    "educatorContent": "Obrazovni sadržaj",
+    "getStarted": "Započni",
+    "signIn": "Prijavi se"
   },
   "movies": {
     "checkTheMovie": "Pogledaj film"
@@ -1690,12 +1708,15 @@
       "peer-to-peer": "Od korisnika do korisnika",
       "point-of-sale": "Prodajno mesto",
       "pool": "Bazen",
-      "resource": "Resurs"
+      "resource": "Resurs",
+      "explorer": "Istraživač"
     },
     "wallet": {
       "title": "Novčanik"
     },
-    "writtenBy": "Ovaj tutorijal je napisao-la"
+    "writtenBy": "Ovaj tutorijal je napisao-la",
+    "onThisPage": "Na ovoj stranici",
+    "noTutorialsFound": "Nismo mogli da pronađemo nijedan tutorijal koji se podudara sa vašom pretragom."
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1888,7 +1909,10 @@
     "week": "Nedelja",
     "weight": "Težina",
     "address": "Adresa",
-    "session": "Sesija"
+    "session": "Sesija",
+    "confirmation": "Potvrda",
+    "optional": "Opciono",
+    "syllabus": "Nastavni plan i program"
   },
   "youtubeChannels": {
     "view": "Pogledajte Youtube kanal",

@@ -19,7 +19,8 @@
     "missionTitle": "私たちのミッション",
     "storyContent": "Plan ₿ Network は、世界中のビットコイン教育を支援するイニシアチブです。 教育、オープンソースソフトウェア、ピアツーピアネットワーク、共同体意識などを持ったさまざまな情熱的なビットコイン企業の集合体です。 彼らはともに Plan ₿ Network を構築し、ビットコインエコシステムが成長するための最適なツールを提供することを決定しました。 私たちが2023年にリリースしたプレゼンテーションはこちらからご覧いただけます。",
     "storyTitle": "私たちのストーリー",
-    "title": "Plan ₿ Network について"
+    "title": "Plan ₿ Network について",
+    "readManifesto": "私たちのマニフェストを読む"
   },
   "accessType": {
     "hybrid": "直接参加とオンライン",
@@ -62,7 +63,9 @@
       "invalidCredentials": "無効な認証情報",
       "usernameRegex": "ユーザー名にはアルファベット、数字、アンダーバー（_）、ドット（.）ハイフン（-）のみ使用できます。",
       "usernameRequired": "ユーザー名は必須です。",
-      "usernameTooShort": "ユーザー名は5文字以上にしてください。"
+      "usernameTooShort": "ユーザー名は5文字以上にしてください。",
+      "oldPasswordRequired": "古いパスワードが必要",
+      "passwordTooShort": "パスワードが短すぎます"
     },
     "forgottenPassword": "パスワードをお忘れですか？",
     "headerAccountCreated": "アカウントが作成されました",
@@ -90,7 +93,11 @@
     "trackProgress": "アカウントを作成するか、ログインして進捗状況を確認してください",
     "tryAgain": "再トライ",
     "loginNotAvailable1": "デスクトップアプリでは、現時点でログイン機能をご利用いただけません。",
-    "loginNotAvailable2": "ウェブサイトにアクセスしてログインすることで、アカウントをご利用いただけます。"
+    "loginNotAvailable2": "ウェブサイトにアクセスしてログインすることで、アカウントをご利用いただけます。",
+    "forgotPassword": "パスワードを忘れましたか？",
+    "login": "ログイン",
+    "oldPassword": "古いパスワード",
+    "signUp": "サインアップ"
   },
   "bCert": {
     "bCertDescription": "₿-CERT は、ビットコインとその派生トピックに関するあなたのレベルを評価する国際的に認められた試験です。 ₿-CERT 認定証を取得することで、ビットコイン業界におけるスキルと知識を証明することができます。",
@@ -104,7 +111,10 @@
     "verify": "認定証の信頼性を確認する",
     "hostSessionConditions": "手順は以下の通りです：\n\n1. <0>憲章</0>を読む – コミュニティが必須の開催条件を満たしていることを確認してください\n2. 計画とスケジュール設定 – 条件を満たしている場合、日程を選びセッションを設定してください\n3. イベントを公開する   – 参加者が参加できるようPlan ₿ Networkプラットフォームに追加するため、ご連絡ください",
     "noTestSessions": "現在、試験セッションは利用できません",
-    "wantHostSession": "あなたの地域で₿-CERT試験セッションを開催してみませんか？"
+    "wantHostSession": "あなたの地域で₿-CERT試験セッションを開催してみませんか？",
+    "certificates": "証明書",
+    "chooseCourse": "コースを選ぶ",
+    "noDiplomasAvailable": "まだ学位は利用できません"
   },
   "bet": {
     "educationalContent": {
@@ -127,7 +137,8 @@
     "noConferences": "{{year}}年のカンファレンスはまだ追加されていません。",
     "pageTitle": "カンファレンス集",
     "planBConferences": "Plan ₿ カンファレンス",
-    "topics": "トピックス"
+    "topics": "トピックス",
+    "conferencesGenesis": "ジェネシスブロック以降のカンファレンス"
   },
   "courses": {
     "chapter": {
@@ -371,7 +382,18 @@
     "courseSelector": "コース選択ツール",
     "noCoursesFound": "該当するコースが見つかりませんでした",
     "plusXMore": "+{{count}}件以上",
-    "tryAdjustingFilters": "検索条件を変更してみてください"
+    "tryAdjustingFilters": "検索条件を変更してみてください",
+    "liveClasses": {
+      "program": {
+        "title": "プラン ₿ プログラム",
+        "goal": "ジャコモ・ズッコとの5ヶ月プログラムでビットコイン業界を修得し、理論、実際のケーススタディ、そして独占的なネットワーキングの機会を組み合わせます。",
+        "semester": "学期"
+      },
+      "title": "変革を主導。ビットコインを修得。",
+      "allOtherTitle": "他のすべてのライブクラス",
+      "liveClasses": "ライブクラス"
+    },
+    "navbarHover": "登録してロックを解除"
   },
   "dashboard": {
     "adminPanel": {
@@ -607,7 +629,11 @@
         },
         "pendingTranslationRequests": "校正待ちのリクエスト",
         "tabs": {
-          "requests": "リクエスト"
+          "requests": "リクエスト",
+          "contentManagement": "コンテンツ管理",
+          "reports": "レポート",
+          "translate": "翻訳",
+          "userManagement": "ユーザー管理"
         },
         "toggle": {
           "pendingRequest": "保留中のリクエスト",
@@ -615,8 +641,96 @@
         },
         "translate": {
           "selectLanguagesModal": {
-            "timeoutError": "翻訳リクエストがタイムアウトしました。コースコンテンツが大きすぎる可能性があります。再度お試しいただくか、サポートまでお問い合わせください。"
-          }
+            "timeoutError": "翻訳リクエストがタイムアウトしました。コースコンテンツが大きすぎる可能性があります。再度お試しいただくか、サポートまでお問い合わせください。",
+            "audioFile": "オーディオファイル",
+            "audioFileInfo": "対応フォーマット: MP3、WAV、M4A (最大 50MB)",
+            "audioFileTooLarge": "オーディオファイルが大きすぎます。最大サイズは50MBです。",
+            "cancel": "キャンセル",
+            "chooseAudioFile": "オーディオを選択",
+            "chooseFolder": "フォルダーを選択",
+            "choosePptxFile": "PPTXを選択",
+            "chooseZip": "ZIPを選択",
+            "course": "コース：",
+            "englishFilesRequired": "すべてのアップロードファイルが英語のみであることを確認してください",
+            "existingUploadsInfo": "オリジナルのファイルはすでにアップロード済みです。再度追加することなく翻訳を開始できます。新しいファイルをアップロードすると、既存のものが上書きされます。",
+            "folderUrl": "フォルダURL",
+            "invalidAudioFile": "有効なオーディオファイルを選択してください。",
+            "invalidPptxFile": "有効なPowerPoint（.pptx）ファイルを選択してください。",
+            "missingFilesError": "翻訳を始める前に、翻訳ファイルをアップロードするか、URLを提供してください。",
+            "networkError": "ネットワークエラーが発生しました。接続を確認して、もう一度お試しください。",
+            "noAudioFileSelected": "オーディオファイルが選択されていません",
+            "noFolderSelected": "フォルダが選択されていません",
+            "noLanguagesAvailable": "翻訳可能な言語はありません。",
+            "noPptxFileSelected": "PowerPointファイルが選択されていません",
+            "noZipSelected": "ZIPが選択されていません",
+            "originalLanguage": "原文言語：",
+            "overwriteWarning": "既存のファイルは置き換えられます。",
+            "pptxFile": "PowerPointファイル",
+            "pptxFileInfo": ".pptxファイルのみがサポートされています（最大100MB）",
+            "pptxFileTooLarge": "PowerPointファイルが大きすぎます。最大サイズは100MBです。",
+            "processingStarted": "翻訳が始まりました！大量のコースには数分かかることがあります。",
+            "selectLanguages": "翻訳する言語を選択してください：",
+            "title": "翻訳する言語を選択",
+            "translationFailed": "翻訳に失敗しました。ログを確認し、再度お試しください。",
+            "uploadAndTranslationStarted": "ファイルがアップロードされ、翻訳が開始されました！大規模なコースの場合、処理には数分かかる場合があります。",
+            "uploadError": "アップロードに失敗しました。ファイルを確認し、再度お試しください。",
+            "uploadFiles": "サポートファイルのアップロード (オプション)",
+            "uploadFolder": "フォルダのアップロード (PPTX + TXT)",
+            "useEnglishLabel": "すでに英語に翻訳されたコースです。ソースとして英語版を使用しますか？",
+            "startSuccess": "翻訳が正常に開始されました！",
+            "startTranslation": "翻訳を開始する",
+            "startingTranslation": "ファイルをアップロード中...",
+            "startingTranslationStep": "翻訳を開始しています...",
+            "uploadTimeoutError": "アップロードは10分後にタイムアウトしました。より小さなファイルで試すか、接続を確認してください。",
+            "uploadingFiles": "ファイルをアップロード中..."
+          },
+          "actions": {
+            "translate": "翻訳"
+          },
+          "backToCourse": "コースに戻る",
+          "changeSpeed": "再生速度を変更",
+          "chapterTitle": "章のタイトル",
+          "compare": "比較",
+          "compareDisabledTooltip": "校正版は利用できません",
+          "compareTooltip": "原文と校正版を比較",
+          "comparison": {
+            "backToChapter": "章に戻る",
+            "originalVersion": "原文",
+            "translatedVersion": "翻訳版"
+          },
+          "description": "コースを特定言語に翻訳を開始します。",
+          "forward15Seconds": "15秒進める",
+          "imageNotFound": "画像が見つかりません",
+          "language": "言語",
+          "loadingPresentation": "プレゼンテーションを読み込み中...",
+          "noContentAvailable": "利用可能なコンテンツはありません",
+          "noCourses": "現在、翻訳が必要なコースはありません。",
+          "noOriginalContent": "オリジナルコンテンツなし",
+          "noPngSlides": "このプレゼンテーションのPNGスライドは利用可能ではありません",
+          "noSlidesFound": "スライドが見つかりません",
+          "originalContent": "オリジナルコンテンツ",
+          "pause": "一時停止",
+          "play": "再生",
+          "presentations": "プレゼンテーション",
+          "rewind15Seconds": "15秒巻き戻す",
+          "slideNavigation": {
+            "next": "次",
+            "previous": "前",
+            "slideCounter": "{{current}} / {{total}}"
+          },
+          "slideNotAvailable": "スライド {{slideNumber}} は利用できません",
+          "slideNotFound": "スライドが見つかりません",
+          "table": {
+            "actions": "アクション",
+            "course": "コース",
+            "index": "インデックス",
+            "todoLanguages": "翻訳する言語",
+            "totalLanguages": "全言語"
+          },
+          "textContent": "文字内容",
+          "title": "コースを翻訳する",
+          "translateTo": "翻訳先",
+          "unknownContributor": "不明"
         },
         "noResultsFound": "該当する結果が見つかりませんでした",
         "reports": {
@@ -676,19 +790,53 @@
           "readyForReview": "レビューの準備が整いました",
           "underReview": "レビュー中",
           "completed": "完了済み",
-          "assigned": "アサイン済み"
+          "assigned": "アサイン済み",
+          "inProgress": "進行中",
+          "todo": "やること"
         },
         "userManagement": {
           "actions": {
-            "viewDetails": "詳細を見る"
+            "viewDetails": "詳細を見る",
+            "backToList": "ユーザーリストに戻る",
+            "backToUsers": "ユーザーに戻る"
           },
           "status": {
             "readyForReview": "レビューの準備が整いました",
             "reviewed": "レビュー済み",
-            "underReview": "レビュー中"
-          }
+            "underReview": "レビュー中",
+            "published": "公開済み",
+            "rejected": "拒否された",
+            "todo": "やること"
+          },
+          "addContributor": "投稿者を追加",
+          "chapters": "章",
+          "contributorInformation": "投稿者情報",
+          "courses": "コース",
+          "modal": {
+            "assignments": "割り当て履歴",
+            "noAssignments": "割り当ては見つかりませんでした",
+            "title": "ユーザー詳細",
+            "userInfo": "ユーザー情報"
+          },
+          "noUsers": "寄稿者が見つかりません",
+          "table": {
+            "actions": "アクション",
+            "assignedCourses": "割り当てられたコース",
+            "language": "言語",
+            "startDate": "開始日",
+            "username": "ユーザ名"
+          },
+          "title": "寄稿者"
         },
-        "searchPlaceholder": "検索中..."
+        "searchPlaceholder": "検索中...",
+        "table": {
+          "actions": "アクション",
+          "course": "コース",
+          "index": "インデックス",
+          "language": "言語",
+          "username": "ユーザ名"
+        },
+        "title": "管理翻訳パネル"
       }
     },
     "announcements": {
@@ -908,63 +1056,82 @@
       "assignment": "課題",
       "assignmentCompletedDescription": "プロジェクト課題の提出が完了し、現在レビュー中です。\n採点後、こちらで成績を確認できます。",
       "assignmentCompletedTitle": "課題完了",
-      "assignmentTitle": "",
+      "assignmentTitle": "プロジェクトの割り当て",
       "completionDiploma": "修了証書",
       "completionExamInfo": "この機能を利用するには、試験を完了する必要があります。",
       "conclusionHeadline": "以下は、あなたが学んだことの要約です。 もし見逃してしまった章があったり、正しく検証されていない章がある場合は、今すぐ戻って学習するか、完了ボタンを押してください。",
       "conclusionNotReleased": "結果は、授業の最終日にお知らせします。",
-      "confirmList": "",
-      "confirmNoEditable": "",
-      "confirmNoEditableFile": "",
-      "confirmSubmission": "",
-      "congratulationsPassed": "",
+      "confirmList": "確認リスト",
+      "confirmNoEditable": "一度確認されると、この設定リストは編集できなくなります。",
+      "confirmNoEditableFile": "送信後、あなたのファイルを編集することはできなくなります。",
+      "confirmSubmission": "送信の確認",
+      "congratulationsPassed": "おめでとうございます！あなたは無事にパスしました！",
       "coordinator": "コースコーディネーター",
       "courseCalendar": "コースカレンダー",
-      "diplomaReleaseDescription": "",
-      "diplomaReleaseTitle": "",
-      "examScore": "",
+      "diplomaReleaseDescription": "すべてのクラスが完了し次第、コースの成功した完了のためのディプロマが授与されます。ディプロマは、最後のクラスと結論の章が完了した後、ここでダウンロードできるようになります。",
+      "diplomaReleaseTitle": "ディプロマ発行",
+      "examScore": "得点:",
       "exams": "試験",
       "feedbacks": "ここでは、あなたがこのコースにつけた評価やフィードバックを確認・編集することができます。",
-      "fileUploaded": "",
-      "finalGradeSummary": "",
-      "finalScore": "",
+      "fileUploaded": "あなたの作業は成功裏にアップロードされました！",
+      "finalGradeSummary": "最終成績の要約",
+      "finalScore": "最終スコア",
       "generalInformation": "一般情報",
-      "individualWork": "",
-      "isSubmissionFinal": "",
-      "joinTelegramGroup": "",
-      "keepEditing": "",
-      "keepMovingForward": "",
-      "leastPreferred": "",
-      "listSaved": "",
-      "listSavedComeTomorrow": "",
-      "mostPreferred": "",
-      "mustBePdf": "",
-      "notSelectedAssignment": "",
-      "projectRankingInstructions": "",
-      "ranking": "",
-      "rankingInstructions": "",
-      "rankingOnly24Hours": "",
-      "rankProjectPreferences": "",
+      "individualWork": "個人の作業",
+      "isSubmissionFinal": "あなたの提出は最終的なものですか？",
+      "joinTelegramGroup": "Telegram Groupに参加する",
+      "keepEditing": "編集を続ける",
+      "keepMovingForward": "今回は合格できませんでしたが、一歩一歩が進歩を生みます。\n学習の旅を前進させてください！",
+      "leastPreferred": "最も好ましくない",
+      "listSaved": "あなたの好みのリストが保存されました。",
+      "listSavedComeTomorrow": "あなたの好みのリストが保存されました。\n明日ここに戻って、どのプロジェクトが割り当てられたかを発見してください。",
+      "mostPreferred": "最も好ましい",
+      "mustBePdf": "あなたのファイルはPDFでなければなりません。追加のファイルを提出する必要がある場合は、PDF内に関連するリンクを挿入してください。",
+      "notSelectedAssignment": "残念ながら、あなたはプロジェクトの割り当てに参加するために選ばれませんでした。\nコースの講義を引き続きフォローすることができます。",
+      "projectRankingInstructions": "プロジェクトランキングの手順:",
+      "ranking": "ランキング",
+      "rankingInstructions": "提案されたプロジェクトをあなたの好みに応じて順番に並べてください（番号1があなたの最先端の選択）。このランキングにより、最も適したプロジェクトをあなたに割り当てることができます。スコアが高い学生は、選択が最初に考慮されます。",
+      "rankingOnly24Hours": "ランキングポータルは24時間だけ開放され、6月2日の00:00から23:59（UTC+2）です。",
+      "rankProjectPreferences": "あなたのプロジェクトの好みをランク付けする",
       "ratingsAndFeedbacks": "評価とフィードバック",
-      "readAssignment": "",
-      "saveList": "",
+      "readAssignment": "課題についてもっと読む",
+      "saveList": "リストを保存",
       "shareOnSocials": "SNSで共有する：",
-      "submissionInstructions": "",
-      "submitBefore": "",
+      "submissionInstructions": "提出指示",
+      "submitBefore": "作業は{{date}}の{{hour}}までに提出する必要があります。締め切り後の提出は採点されません。",
       "submitReviewInfo": "この機能を利用するには、レビューを投稿する必要があります。",
-      "submitYourWork": "",
-      "summerSchool": "",
-      "surePreferenceList": "",
-      "thresholdToPass": "",
-      "tweetText": "@planb_network の{{courseIndex}}コースを完了し、最終試験で100点中{{score}}点を獲得。修了証書がもらえて、とても嬉しいです！ {{emoji}} #PBNDiploma\n\n{{certificateUrl}}"
+      "submitYourWork": "あなたの作業を提出してください",
+      "summerSchool": "サマースクール",
+      "surePreferenceList": "お選びのリストが確定ですか？",
+      "thresholdToPass": "合格ライン：{{threshold}}%",
+      "tweetText": "@planb_network の{{courseIndex}}コースを完了し、最終試験で100点中{{score}}点を獲得。修了証書がもらえて、とても嬉しいです！ {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
+      "assignmentNotAccessible": "割り当ては既に開始され、もうアクセスできません。",
+      "assignmentScore": "割り当てスコア",
+      "tweetTextCourseDiploma": "@planb_networkで{{courseCoordinator}}によって教えられたコース{{courseName}}を完了し、卒業証書を獲得したことをとても嬉しく思います！\n#PBNDiploma\n\n{{certificateUrl}}",
+      "viewScoreSummary": "スコア概要を見る",
+      "wellDoneCompleting": "このコースを完了し、合格したことお見事!　こちらがふさわしい卒業証書です",
+      "yourProjectAssignment": "あなたのプロジェクト課題"
     },
     "credentials": {
       "beingGraded": "あなたの試験は採点中です。 結果は1～2週間後にアナウンスします。",
       "courseDiplomas": "コース修了証書",
-      "globalCertifications": "グローバル認証"
+      "globalCertifications": "グローバル認証",
+      "bCertResults": {
+        "score020": "あなたの旅が始まりました！全てのエキスパートはここからスタートしました",
+        "score100": "完璧なスコア！あなたは佐藤さん、それともただの天才？",
+        "score2140": "基本が身につきました！進歩が早いですね、続けてください！",
+        "score4160": "しっかりした基盤があります！上級クラスに進む準備ができています",
+        "score6180": "頑張っていますね！技能を磨き続け、ビットコインをマスターしましょう",
+        "score8199": "素晴らしい理解力を持っています！複雑なビットコインのトピックも簡単に扱えます"
+      },
+      "completeACourse": "初めてのコースを完了して卒業証書を受け取られるように作業を完成させましょう ",
+      "detailedScore": "詳細なスコア",
+      "exploreBCert": "₿-CERTの探索",
+      "getGlobalRecognition": "₿-CERT証書で世界的な認知を得ましょう",
+      "noCertificatesAvailable": "利用可能な証明書はありません"
     },
-    "goToDashboard": "",
-    "goToHomepage": "",
+    "goToDashboard": "ダッシュボードに移動",
+    "goToHomepage": "ホームページに移動",
     "logout": "ログアウト",
     "myCourses": {
       "completeAll": "すべてを完了する",
@@ -985,7 +1152,8 @@
       "verify": "修了証書の真正性を確認する",
       "whereYouAre": "あなたがどこにいるのか見てみましょう！",
       "yourCertificate": "認定証",
-      "yourProgress": "あなたの進捗状況："
+      "yourProgress": "あなたの進捗状況：",
+      "noCourseStarted": "まだ自己学習のコースを始めていません"
     },
     "profile": {
       "cancel": "キャンセル",
@@ -995,24 +1163,24 @@
       "edit": "編集",
       "email": "メールアドレス",
       "emailChangeConfirmation": "メールアドレス変更の確認メールが送信されましたので、受信トレイをご確認ください。",
-      "emailChangeRateLimitError": "",
+      "emailChangeRateLimitError": "あなたは最近メールアドレスを更新しました。再試行する前に数分間お待ちください。",
       "notificationSettings": {
         "coursesOption": "登録したコースに関する最新情報",
         "description": "通知設定は以下でカスタマイズできます。 ",
-        "emailPreferencesDescription": "",
-        "emailPreferencesSavedSuccessfully": "",
-        "emailPreferencesTitle": "",
+        "emailPreferencesDescription": "こちらでは、我々から受け取りたいメールの種類を選択できます。これらの設定は、このリンクに関連付けられたメールアドレスにのみ適用されます。",
+        "emailPreferencesSavedSuccessfully": "あなたのメールの設定が正常に更新されました。",
+        "emailPreferencesTitle": "プラン₿ネットワークのメール設定を管理します",
         "emailTitle": "どのような通知をメールで受け取りたいですか？",
         "emailWarning": "警告！あなたのアカウントにEメールアドレスがリンクされていません。プロフィール欄に追加してください。",
         "eventsOption": "予約したイベントの最新情報",
         "generalOption": "Plan ₿ Network に関する一般情報とニュース",
-        "goToProfile": "",
-        "loadEmailSettingsError": "",
-        "loadEmailSettingsErrorDescription": "",
-        "loadEmailSettingsErrorManage": "",
+        "goToProfile": "プロフィールへ行く",
+        "loadEmailSettingsError": "申し訳ありませんが、あなたのメールの設定を読み込むことができませんでした。",
+        "loadEmailSettingsErrorDescription": "使用されたリンクが正しいことを確認してください。",
+        "loadEmailSettingsErrorManage": "アカウントにアクセス可能な場合は、ダッシュボード内で直接設定を管理することも可能です。",
         "none": "なし",
         "platformTitle": "このプラットフォームでどのような通知を受け取りたいですか？",
-        "settingsSaved": "",
+        "settingsSaved": "設定は正常に保存されました！",
         "title": "通知設定"
       },
       "password": "パスワード",
@@ -1021,7 +1189,8 @@
       "save": "保存",
       "saving": "保存中…",
       "securitySettings": "セキュリティ設定",
-      "username": "ユーザー名"
+      "username": "ユーザー名",
+      "emailOrUsername": "メールアドレスまたはユーザー名"
     },
     "teacher": {
       "courses": {
@@ -1038,45 +1207,62 @@
           "typePlaceholder": "種類を1つ選択"
         },
         "announcements": "アナウンス",
-        "announcementsIntroduction": "",
-        "announcementsPast": "",
-        "announcementsPastDescription": "",
-        "announcementsUpcoming": "",
-        "announcementsUpcomingDescription": "",
-        "assignment": "",
+        "announcementsIntroduction": "クラススケジュールの自動通知に加えて、生徒に対する追加のアナウンスを書き込み、スケジュール設定することも可能です。例えば、物流の変更や最終的な更新について生徒に知らせることができます。\n生徒は、この通知をプラットフォーム上、またはメールで受け取ります（このオプション機能を有効にした場合）。",
+        "announcementsPast": "過去のアナウンス",
+        "announcementsPastDescription": "下記にはすでに公開されたアナウンスが一覧されています。この一覧は1ヶ月経つと消去されます。",
+        "announcementsUpcoming": "予定のアナウンス",
+        "announcementsUpcomingDescription": "下記には、あなたが書き込み、スケジュール設定した未来のアナウンスがあります。",
+        "assignment": "割り当て",
         "assignmentGrade": {
-          "alertDescription": "",
-          "alertTitle": "",
-          "confirmPublication": "",
-          "confirmPublicationDescription": "",
-          "confirmPublicationTitle": "",
-          "description": "",
-          "grade100": "",
-          "gradesPublished": "",
-          "missingGradesDescription": "",
-          "missingGradesTitle": "",
-          "publishAllGrades": "",
-          "studentDisplayName": "",
-          "title": ""
+          "alertDescription": "全ての成績が入力された後、\"全ての成績を公開\"をクリックして一度に全てを公開してください。\n公開する前に成績を確認してください、公開後は編集できなくなります。 ",
+          "alertTitle": "課題の採点",
+          "confirmPublication": "公開の確認",
+          "confirmPublicationDescription": "成績が公開されると、もう戻ることはできません。公開後は編集できなくなるからです。",
+          "confirmPublicationTitle": "エラーが無いことを確認しましたか？",
+          "description": "学生は課題のグループごとに並び替えられます。",
+          "grade100": "成績 (/100)",
+          "gradesPublished": "成績が公開されています。",
+          "missingGradesDescription": "成績が公開されている場合、欠けている成績は0/100で置き換えられます。",
+          "missingGradesTitle": "まだ{{count}}の成績がありません！",
+          "publishAllGrades": "すべての成績を公開",
+          "studentDisplayName": "学生（表示名）",
+          "title": "課題の成績",
+          "courseAssignment": "コースの課題"
         },
-        "assignmentStudents": "",
+        "assignmentStudents": "プロジェクト課題",
         "courseDetails": "コース詳細",
         "courseLongDescription": "序文",
         "courseModification": "コースの編集にヘルプが必要な場合は、こちらの<0>チュートリアル</0>をご覧ください。",
         "curriculum": "コースカリキュラム",
         "curriculumDescription": "このコースの現在のカリキュラムは以下の通りです。",
-        "deleteAnnouncementTitle": "",
-        "deleteAnnouncementWarning": "",
+        "deleteAnnouncementTitle": "この告知を削除してもよろしいですか？",
+        "deleteAnnouncementWarning": "この変更は元に戻すことができません",
         "editOnGithub": "Githubで編集する",
         "examResults": "試験結果",
         "makeModifications": "編集が必要ですか？",
-        "noPastAnnouncement": "",
-        "noWrittenAnnouncement": "",
+        "noPastAnnouncement": "現在、過去のお知らせはありません。",
+        "noWrittenAnnouncement": "現在、書面による発表はありません。",
         "objectives": "目的",
         "quickRecap": "ここでは、このコースに関する一般的な情報をご覧いただけます。",
         "reviews": "レビュー",
-        "summerStudents": "",
-        "writeAnnouncement": ""
+        "summerStudents": "サマースクール",
+        "writeAnnouncement": "アナウンスを書く",
+        "amountPaid": "支払い額",
+        "averageAttempts": "平均試行回数",
+        "averageDuration": "平均所要時間",
+        "averageScore": "平均得点",
+        "exportExamData": "試験のデータをエクスポート",
+        "finalAverageResults": "最終的な平均結果",
+        "finalScore": "最終スコア",
+        "lastActive": "最終活動日",
+        "medianScore": "中央値得点",
+        "noExamLinked": "現在このコースに関連した試験はありません。試験を作成したい場合は、お問い合わせください。",
+        "overview": "概要",
+        "questionsInExam": "試験の問題",
+        "studentsGraduated": "卒業生",
+        "successRate": "合格率",
+        "thresholdToPass": "合格ライン",
+        "totalQuestions": "全問題数"
       },
       "profile": {
         "billingInformation": "請求情報",
@@ -1107,6 +1293,29 @@
       "tutorials": {
         "tutorialAnalyticsDescription": "ここでは、あなたが作成し、プラットフォーム上で公開したチュートリアル分析を見つけることができます。",
         "yourTutorials": "あなたのチュートリアル"
+      },
+      "discount": {
+        "description": "ここでは、このコースの割引コードを生成し管理することができます - 奨学金などのための一回限りの使用、またはマーケティングキャンペーンのための多回使用が可能です。"
+      }
+    },
+    "professor": {
+      "courses": {
+        "overview": {
+          "announceChange": "変更を発表する",
+          "attendanceList": "出席リスト",
+          "courseEnded": "このコースは終了しました。",
+          "courseNotStarted": "このコースはまだ始まっていません。",
+          "enrolledStudents": "登録生",
+          "hasEnrolled": "登録しました",
+          "hasGraduated": "{{score}}%のスコアで卒業しました",
+          "hasLeftReview": "レビューを残しました",
+          "hasLeftReviewAndComment": "レビューとコメントを残しました",
+          "notifyStudents": "何か変わりましたか？あなたの生徒に通知してください。",
+          "overallPerformance": "全体的なパフォーマンス",
+          "recentActivity": "最近の活動",
+          "studentsRegistered": "登録生徒",
+          "upcomingClass": "次回のクラス"
+        }
       }
     }
   },
@@ -1120,7 +1329,8 @@
       "purchased": "購入済み",
       "unlimited": "無制限",
       "visitWebsite": "ウェブサイト",
-      "watchReplay": "リプレイを見る"
+      "watchReplay": "リプレイを見る",
+      "buyLecture": "レクチャーを購入"
     },
     "main": {
       "upcomingEvents": "今後開催のイベント"
@@ -1133,12 +1343,12 @@
       "address": "住所",
       "back_events": "イベントに戻る",
       "book_seat": "座席を予約する",
-      "callout_book_online": "",
-      "callout_book_physical": "",
-      "callout_book_replay": "",
-      "callout_purchase_online": "",
-      "callout_purchase_physical": "",
-      "callout_purchase_replay": "",
+      "callout_book_online": "あなたはこのイベントへのオンラインアクセスを予約しようとしています。",
+      "callout_book_physical": "あなたはこのイベントへの<highlight>対面アクセス</highlight>を予約しようとしています。",
+      "callout_book_replay": "あなたはこのイベントの再生ビデオへのアクセスを予約しようとしています。",
+      "callout_purchase_online": "あなたはこのイベントへの<highlight>オンラインアクセス</highlight>を購入しようとしています。",
+      "callout_purchase_physical": "あなたはこのイベントへの<highlight>対面アクセス</highlight>を購入しようとしています。",
+      "callout_purchase_replay": "あなたはこのイベントの再生ビデオへのアクセスを購入しようとしています。",
       "date": "日付",
       "description_free_physical": "会場の詳細をご確認ください。\nご予約確定後、確認チケットとイベント会場で提示するQRコードを発行いたします。",
       "description_online": "開催日時をご確認ください。\n時間になりましたら、プラットフォームにログインし、イベントページからライブストリーミングにアクセスしてください。",
@@ -1146,13 +1356,45 @@
       "download_ticket": "チケットをダウンロードする",
       "language": "言語",
       "limitation": "制限",
-      "limitedSeats": "",
+      "limitedSeats": "席は限られています。出席できない場合は予約をキャンセルしてください。",
       "max_capacity": "最大座席数",
       "payment_successful": "無事に予約できました！",
       "time": "時間"
     },
     "tcDisclaimer": "会場へのアクセス目的で、私の情報が主催者と共有されることに同意します。",
-    "tcMustBeAccepted": "購入に進むには、条件に同意する必要があります"
+    "tcMustBeAccepted": "購入に進むには、条件に同意する必要があります",
+    "addEvent": "イベントを追加",
+    "calendar": {
+      "inXMonths": "{{number}}ヶ月後",
+      "lastMonth": "先月",
+      "nextMonth": "来月",
+      "noEventsFound": "イベントが見つかりません",
+      "thisMonth": "今月",
+      "today": "今日",
+      "xMonthsAgo": "{{number}}ヶ月前"
+    },
+    "eventInfos": {
+      "eventBooked": "イベント予約済み",
+      "eventType": "イベントタイプ",
+      "numberOfSpots": "スポットの数",
+      "onlineAndInPerson": "オンラインと対面",
+      "secureYourSpot": "あなたの席を確保しましょう",
+      "sessionBooked": "セッションが予約されました",
+      "whatsPlanned": "予定されている内容"
+    },
+    "myTickets": "私のチケット",
+    "planBWeek": {
+      "pageTitle": "Plan ₿ Week の計画"
+    },
+    "types": {
+      "plurals": {
+        "conference": "会議",
+        "exam": "試験",
+        "lecture": "講義",
+        "meetup": "ミートアップ",
+        "workshop": "ワークショップ"
+      }
+    }
   },
   "filters": {
     "topics": "トピック"
@@ -1160,7 +1402,8 @@
   "glossary": {
     "definition": "説明",
     "relatedWords": "関連用語：",
-    "term": "用語"
+    "term": "用語",
+    "showMoreWords": "もっと言葉を表示する"
   },
   "home": {
     "aboutUsSection": {
@@ -1195,8 +1438,8 @@
     "description2": "あなたの研究分野に合ったラボに参加し、学習経験を高めましょう！",
     "planBLabs": "Plan ₿ ラボ",
     "presentation": {
-      "link": "",
-      "subtitle": ""
+      "link": "Plan ₿ Labs を発見する",
+      "subtitle": "ラボに参加して学び、話し合い、成長しましょう！"
     },
     "title": "継続的な学習のための実践的でインタラクティブな授業"
   },
@@ -1207,7 +1450,10 @@
     "watchLecture": "レクチャー集を見る"
   },
   "menu": {
-    "login": "ログイン"
+    "login": "ログイン",
+    "educatorContent": "教育者向けコンテンツ",
+    "getStarted": "始める",
+    "signIn": "サインイン"
   },
   "notFound": {
     "here": "コチラ",
@@ -1216,52 +1462,53 @@
   },
   "notification": {
     "types": {
-      "assignment": "",
-      "calendar": "",
-      "celebration": "",
-      "general": "",
-      "warning": ""
+      "assignment": "割り当て",
+      "calendar": "カレンダーアラート",
+      "celebration": "祝賀",
+      "general": "一般情報",
+      "warning": "警告"
     }
   },
   "notifications": {
-    "bCertResults": "",
-    "blogNotTranslated": "",
-    "bookYourSeat": "",
-    "calendar_5m": "",
-    "calendar_5m_online_event": "",
-    "calendar_24h": "",
-    "calendar_24h_in_person_event": "",
-    "calendar_48h_online_event": "",
-    "dashboardDescription": "",
-    "daysAgo": "",
-    "markAsRead": "",
-    "monthsAgo": "",
-    "noRecentNotifications": "",
-    "notifications": "",
-    "noUnreadNotifications": "",
-    "planBNews": "",
-    "read": "",
-    "results": "",
-    "select": "",
-    "selectAll": "",
-    "today": "",
-    "unread": "",
-    "upcomingEvent": "",
-    "weeksAgo": "",
-    "yearsAgo": "",
-    "yesterday": ""
+    "bCertResults": "あなたの₿-CERTの結果が出ました！",
+    "blogNotTranslated": "申し訳ありません、この新しいブログ投稿はまだあなたの現在の言語に翻訳されていません。",
+    "bookYourSeat": "対面での参加をご希望の場合は、席を予約してください！",
+    "calendar_5m": "クラスは5分後に始まります！今すぐ参加するにはここをクリックしてください。",
+    "calendar_5m_online_event": "もう時間です！{{eventName}}が5分後に始まります。今すぐ参加するにはここをクリックしてください！",
+    "calendar_24h": "次のクラスは明日、{{ formattedTime }}からになります。",
+    "calendar_24h_in_person_event": "イベント{{eventName}}は明日、{{formattedTime}}から{{addressLine}}で行われます。参加するためにはチケットをダウンロードしてください！",
+    "calendar_48h_online_event": "{{eventName}}が間もなく始まります！{{date}}に予定されています、{{formattedTime}}から。 ",
+    "dashboardDescription": "これが最新の通知です。これらは、あなたが確認した後1か月で自動的に削除されます。",
+    "daysAgo": "{{days}} 日前",
+    "markAsRead": "既読にする",
+    "monthsAgo": "{{months}} か月{{s}} 前",
+    "noRecentNotifications": "現在、最近の通知はありません。",
+    "notifications": "通知",
+    "noUnreadNotifications": "未読の通知はもうありません",
+    "planBNews": "Plan ₿ ニュース",
+    "read": "読む",
+    "results": "あなたの₿-CERTの結果が出ました！",
+    "select": "選択",
+    "selectAll": "全て選択",
+    "today": "今日",
+    "unread": "未読",
+    "upcomingEvent": "今後のイベント",
+    "weeksAgo": "{{weeks}} 週間{{s}} 前",
+    "yearsAgo": "{{years}} 年{{s}} 前",
+    "yesterday": "昨日",
+    "newVersionAvailable": "Plan ₿ Networkのプラットフォームの新バージョンが利用可能になりました。ページを更新してください。"
   },
   "payment": {
     "haveReductionCode": "割引コードをお持ちですか？",
-    "insertReductionCode": "",
+    "insertReductionCode": "割引コードを入力してください",
     "payByCard": "クレジットカードで支払う",
     "payWithBitcoin": "ビットコインで支払う",
-    "taxesMayApply": "",
+    "taxesMayApply": "チェックアウト時に税金が適用される場合があります",
     "terms": "払い戻しの詳細については、<0>利用規約</0>をご覧ください",
     "total": "合計"
   },
   "placeholders": {
-    "selectTimeZone": ""
+    "selectTimeZone": "タイムゾーンを選択"
   },
   "professors": {
     "navigationTitles": {
@@ -1301,22 +1548,26 @@
       "contact": "お問い合わせ",
       "legalNotice": "法的通知",
       "privacyPolicy": "プライバシーとポリシー",
-      "termsOfSale": "販売規約"
+      "termsOfSale": "販売規約",
+      "notFound": "法的情報が見つかりません"
     }
   },
   "resources": {
     "bet": {
-      "title": "教育用ツールキット"
+      "title": "教育用ツールキット",
+      "addEducationKit": "教育キットを追加"
     },
     "books": {
-      "title": "ライブラリー"
+      "title": "ライブラリー",
+      "addBook": "本を追加"
     },
     "channels": {
       "noYoutubeChannels": "現在、選択した言語のYoutubeチャンネルはありません。",
       "title": "Youtubeチャンネル"
     },
     "conferences": {
-      "title": "カンファレンス集"
+      "title": "カンファレンス集",
+      "addConference": "カンファレンスのリプレイを追加"
     },
     "glossary": {
       "title": "用語集"
@@ -1341,14 +1592,18 @@
     "pageSubtitlePodcast": "<0>他のポッドキャスト</0>を見る",
     "podcasts": {
       "noPodcasts": "現在、選択した言語のポッドキャストはありません。",
-      "title": "ポッドキャスト"
+      "title": "ポッドキャスト",
+      "addPodcast": "ポッドキャストを追加",
+      "checkThePodcast": "ポッドキャストを確認"
     },
     "projects": {
-      "title": "プロジェクト"
+      "title": "プロジェクト",
+      "addProjects": "プロジェクトを追加"
     },
     "searchFilterName": "名前で検索する",
     "toggleLabelAll": "すべて",
-    "toggleLabelSelectedLanguage": "選択された言語"
+    "toggleLabelSelectedLanguage": "選択された言語",
+    "pageSubtitleMovies": "あなたが気に入るかもしれない<0>他の映画</0>"
   },
   "search": {
     "all": "すべて",
@@ -1389,7 +1644,9 @@
     "tutorial": "チュートリアル",
     "tutorials": "チュートリアル",
     "youtube_channel": "Youtubeチャンネル",
-    "youtube_channels": "Youtubeチャンネル"
+    "youtube_channels": "Youtubeチャンネル",
+    "noResults": "結果なし",
+    "resultsFound": "{{count}} の結果が見つかりました"
   },
   "settings": {
     "changeDisplayName": "表示名の変更",
@@ -1399,19 +1656,20 @@
   },
   "tutorials": {
     "business": {
-      "title": ""
+      "title": "ビジネス"
     },
     "computer-security": {
-      "title": ""
+      "title": "コンピューターの安全性"
     },
     "contribution": {
-      "title": ""
+      "title": "寄稿"
     },
     "details": {
       "author": "著者：",
       "ratingSuccess": "評価をありがとう！",
       "source": "オリジナル・ソース：",
-      "tutorialName": "チュートリアル名"
+      "tutorialName": "チュートリアル名",
+      "didThisWork": "これはあなたにとって上手くいきましたか？"
     },
     "exchange": {
       "title": "取引所"
@@ -1430,29 +1688,32 @@
       "title": "プライバシー"
     },
     "subCategories": {
-      "authentication": "",
-      "backup": "",
-      "bitcoin": "",
-      "centralized": "",
-      "communication": "",
-      "content": "",
-      "data": "",
-      "desktop": "",
-      "hardware": "",
-      "lightning-network": "",
-      "mobile": "",
-      "on-chain": "",
-      "operating system": "",
-      "others": "",
-      "peer-to-peer": "",
-      "point-of-sale": "",
-      "pool": "",
-      "resource": ""
+      "authentication": "認証",
+      "backup": "バックアップ",
+      "bitcoin": "ビットコイン",
+      "centralized": "集中化",
+      "communication": "コミュニケーション",
+      "content": "コンテンツ",
+      "data": "データ",
+      "desktop": "デスクトップ",
+      "hardware": "ハードウェア",
+      "lightning-network": "ライトニングネットワーク",
+      "mobile": "モバイル",
+      "on-chain": "オンチェーン",
+      "operating system": "オペレーティングシステム",
+      "others": "その他",
+      "peer-to-peer": "ピアツーピア",
+      "point-of-sale": "販売時点",
+      "pool": "プール",
+      "resource": "リソース",
+      "explorer": "エクスプローラー"
     },
     "wallet": {
       "title": "ウォレット"
     },
-    "writtenBy": "このチュートリアルの作者："
+    "writtenBy": "このチュートリアルの作者：",
+    "noTutorialsFound": "あなたの検索に一致するチュートリアルは見つかりませんでした。",
+    "onThisPage": "このページで"
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1478,7 +1739,7 @@
     "bitcoin": "ビットコイン",
     "book": "書籍",
     "business": "ビジネス",
-    "calendar": "",
+    "calendar": "カレンダー",
     "cancel": "キャンセル",
     "careerPortal": "キャリアポータル",
     "category": "カテゴリー",
@@ -1487,17 +1748,17 @@
     "chapter": "章",
     "chapters": "章",
     "close": "閉じる",
-    "company": "",
+    "company": "会社",
     "conference": "カンファレンス",
     "congrats": "おめでとう！",
-    "continue": "",
+    "continue": "続ける",
     "country": "国",
     "course": "コース",
     "courseId": "コースID",
     "courses": "コース",
     "credits": "クレジット",
     "date": "日付",
-    "day": "",
+    "day": "日",
     "delete": "削除",
     "description": "説明",
     "details": "詳細",
@@ -1539,7 +1800,7 @@
     "linkedin": "Linkedin",
     "location": "エリア",
     "members": " メンバー",
-    "mentor": "",
+    "mentor": "メンター",
     "mining": "マイニング",
     "movie": "動画",
     "name": "名称",
@@ -1547,14 +1808,14 @@
     "newsletter": "ニュースレター",
     "next": "次",
     "no": "いいえ",
-    "notApplicable": "",
+    "notApplicable": "該当なし",
     "on": "オン",
     "onChainAddress": "オンチェーンアドレス",
     "online": "オンライン",
     "overview": "概要",
     "paid": "プレミアム",
     "part": "節",
-    "password": "",
+    "password": "パスワード",
     "podcast": "ポッドキャスト",
     "previous": "前",
     "price": "価格",
@@ -1570,10 +1831,10 @@
     "resources": "リソース",
     "role": "役割",
     "save": "保存",
-    "saving": "",
+    "saving": "保存中...",
     "search": "検索",
     "security": "セキュリティ",
-    "selectedAmount": "",
+    "selectedAmount": "{{amount}}が選択されました",
     "skip": "スキップ",
     "socialStudies": "社会科",
     "startHere": "ここから開始する！",
@@ -1585,8 +1846,8 @@
     "telegram": "Telegram",
     "ticket": "チケット",
     "time": "時間",
-    "timeZone": "",
-    "title": "",
+    "timeZone": "タイムゾーン",
+    "title": "タイトル",
     "to": "へ",
     "topics": "トピック",
     "total": "合計",
@@ -1598,19 +1859,120 @@
     "user": "ユーザー",
     "username": "ユーザー名",
     "users": "ユーザー",
-    "video": "",
+    "video": "ビデオ",
     "view": "表示",
     "viewMore": "もっと見る",
     "wallets": "ウォレット",
     "yes": "はい",
     "filters": "フィルター",
-    "resetFilters": "フィルターをリセット"
+    "resetFilters": "フィルターをリセット",
+    "aboutUs": "私たちについて",
+    "academy": "アカデミー",
+    "account": "アカウント",
+    "actions": "アクション",
+    "address": "住所",
+    "booking": "予約",
+    "certifications": "認定",
+    "completed": "完了",
+    "confirmation": "確認",
+    "discover": "発見",
+    "enrolled": "登録済み",
+    "full": "満員",
+    "info": "情報",
+    "invoices": "請求書",
+    "legal": "法的",
+    "list": "リスト",
+    "map": "地図",
+    "month": "月",
+    "none": "なし",
+    "optional": "オプション",
+    "planBNetwork": "計画 ₿ ネットワーク",
+    "practice": "練習",
+    "pricing": "価格",
+    "questions": "質問",
+    "rating": "評価",
+    "resetAll": "すべてリセット",
+    "results": "結果",
+    "resume": "履歴書",
+    "review": "レビュー",
+    "sats": "Sats",
+    "searchTripleDot": "検索...",
+    "seeAll": "すべて見る",
+    "session": "セッション",
+    "settings": "設定",
+    "share": "共有",
+    "structure": "構造",
+    "syllabus": "シラバス",
+    "taxes": "税金",
+    "theory": "理論",
+    "topic": "トピック",
+    "type": "タイプ",
+    "viewAll": "すべてを見る",
+    "week": "週",
+    "weight": "重量"
   },
   "youtubeChannels": {
     "view": "Youtubeチャンネルを見る",
     "watchTrailer": "予告編を見る"
   },
   "account": {
-    "account": "アカウント"
+    "account": "アカウント",
+    "myTeacherProfile": "私の先生のプロフィール"
+  },
+  "footer": {
+    "FOSSOpenContent": "FOSSおよびオープンコンテンツ",
+    "proudlyPartOf": "<0>Plan ₿ Network</0>の一部として誇らしく参加"
+  },
+  "months": {
+    "april": "4月",
+    "august": "8月",
+    "december": "12月",
+    "february": "2月",
+    "january": "1月",
+    "july": "7月",
+    "june": "6月",
+    "march": "3月",
+    "may": "5月",
+    "november": "11月",
+    "october": "10月",
+    "september": "9月"
+  },
+  "movies": {
+    "checkTheMovie": "映画を確認する"
+  },
+  "navbar": {
+    "bookings": "予約",
+    "career": "キャリア",
+    "careers": "キャリア",
+    "discountCode": "割引コード",
+    "learnAnytimeDescription": "自己ペースのコース",
+    "learnAnytimeTitle": "いつでも学習",
+    "liveClassesDescription": "教師主導のコース",
+    "liveClassesTitle": "ライブクラス",
+    "manageCourses": "コースの管理",
+    "myCourses": "マイコース",
+    "tabs": {
+      "admin": "管理者",
+      "learn": "学ぶ",
+      "teach": "教える"
+    },
+    "translationPanel": "翻訳パネル",
+    "tutorials": "チュートリアル",
+    "tutorialsAnalytics": "チュートリアル分析",
+    "userRolesAllocation": "ユーザーロールの割り当て"
+  },
+  "videoSelector": {
+    "player": {
+      "pears": "洋梨 🍐",
+      "peertube": "PeerTube",
+      "player": "プレイヤー",
+      "rumble": "ランブル",
+      "youtube": "YouTube"
+    },
+    "language": {
+      "AI": "AI翻訳",
+      "language": "言語",
+      "original": "原文言語"
+    }
   }
 }

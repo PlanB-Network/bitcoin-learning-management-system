@@ -19,10 +19,11 @@
     "missionTitle": "Misiunea noastră",
     "storyContent": "PlanB network este o inițiativă care susține educația Bitcoin la nivel mondial. Este intersectarea diverselor companii pasionate de Bitcoin, concentrate pe educație, software open-source, rețele peer-to-peer și sentimentul de comunitate. Împreună, au decis să construiască PlanB network și să ofere ecosistemului Bitcoin instrumentele potrivite pentru a crește. Prezentarea noastră de lansare În 2023 este disponibilă aici.",
     "storyTitle": "Povestea noastră",
-    "title": "Despre Plan B Network"
+    "title": "Despre Plan B Network",
+    "readManifesto": "Citiți manifestul nostru"
   },
   "accessType": {
-    "hybrid": "",
+    "hybrid": "În persoană și online",
     "online": "Online",
     "physical": "În persoană",
     "replay": "Reluare"
@@ -44,17 +45,17 @@
     "emailAddress": "Adresă de email",
     "emailTip": "E-mailul nu este obligatoriu, dar poate fi util în cazul unei parole uitate!",
     "emailValidation": {
-      "emailChangeValidated": "",
-      "emailValidated": "",
-      "errorValidatingEmail": "",
-      "errorValidatingEmailChange": "",
-      "errorValidatingEmailChangeDescription": "",
-      "errorValidatingEmailDescription": "",
-      "successfullyChanged": "",
-      "successfullyValidated": "",
-      "validatingEmail": "",
-      "validatingEmailChange": "",
-      "wontTakeLong": ""
+      "emailChangeValidated": "Schimbarea de email a fost validată",
+      "emailValidated": "Email validat",
+      "errorValidatingEmail": "Eroare la validarea emailului",
+      "errorValidatingEmailChange": "Eroare la validarea schimbării emailului",
+      "errorValidatingEmailChangeDescription": "A apărut o eroare în timpul validării schimbării emailului, se pare că link-ul a expirat sau a fost deja folosit. Vă rugăm să încercați din nou.",
+      "errorValidatingEmailDescription": "A apărut o eroare în timpul validării emailului, se pare că link-ul a expirat sau a fost deja utilizat. Vă rugăm să încercați din nou.",
+      "successfullyChanged": "Emailul dvs. a fost schimbat cu succes în {{email}}.",
+      "successfullyValidated": "Emailul dvs. a fost validat cu succes.",
+      "validatingEmail": "Validarea emailului",
+      "validatingEmailChange": "Validarea schimbării emailului",
+      "wontTakeLong": "Nu va dura mult ..."
     },
     "errors": {
       "displayNameTooShort": "Numele trebuie să conțină cel puțin 2 caractere.",
@@ -62,7 +63,9 @@
       "invalidCredentials": "Credențiale invalide",
       "usernameRegex": "Username-ul poate conține doar litere, cifre, _, . și -.",
       "usernameRequired": "Username-ul este necesar.",
-      "usernameTooShort": "Username-ul trebuie să conțină cel puțin 5 caractere."
+      "usernameTooShort": "Username-ul trebuie să conțină cel puțin 5 caractere.",
+      "oldPasswordRequired": "Este necesară parola veche",
+      "passwordTooShort": "Parola este prea scurtă"
     },
     "forgottenPassword": "Ți-ai uitat parola?",
     "headerAccountCreated": "Cont creat",
@@ -88,7 +91,13 @@
     "sendLink": "Trimite-mi un link",
     "signIn": "Înregistrează-te",
     "trackProgress": "Creează un cont sau autentifică-te pentru a urmări progresul tău",
-    "tryAgain": "Încearcă din nou"
+    "tryAgain": "Încearcă din nou",
+    "forgotPassword": "Ați uitat parola?",
+    "login": "Autentificare",
+    "loginNotAvailable1": "Funcțiile de autentificare nu sunt încă disponibile în aplicația de desktop.",
+    "loginNotAvailable2": "Puteți vizita site-ul nostru pentru a vă conecta și a accesa contul.",
+    "oldPassword": "Parolă veche",
+    "signUp": "Înregistrați-vă"
   },
   "bCert": {
     "bCertDescription": "Certificatul ₿ este un examen recunoscut internațional care evaluează stăpânirea ta asupra Bitcoin și a subiectelor derivate din acesta. Acest certificat îți va permite să îți dovedești abilitățile și cunoștințele în industria Bitcoin, oferindu-ți acces la cele mai bune companii și poziții de muncă excelente.",
@@ -99,7 +108,13 @@
     "organizeExam": "Organizează un examen",
     "pageTitle": "Treceți Certificatul ₿",
     "tweetText": "Bucuros că ai obținut Certificatul B @planb_network cu un scor de {{score}}/100 la examenul final! {{emoji}}\n\n{{certificateUrl}}",
-    "verify": "Verifică autenticitatea certificatului tău"
+    "verify": "Verifică autenticitatea certificatului tău",
+    "certificates": "Certificate",
+    "chooseCourse": "Alegeți cursul",
+    "hostSessionConditions": "Iată cum:\n\n1. Citiți <0>Carta</0> - Asigurați-vă că comunitatea dumneavoastră îndeplinește condițiile obligatorii de găzduire\n2. Planificați & Programați - Dacă vă calificați, selectați o dată și pregătiți sesiunea\n3. Publicați evenimentul - Contactați-ne pentru a-l adăuga pe platforma de rețea Plan ₿, astfel încât alții să se poată alătura",
+    "noDiplomasAvailable": "Niciun diplomă disponibilă încă",
+    "noTestSessions": "Nu sunt disponibile sesiuni de testare în acest moment",
+    "wantHostSession": "Doriți să găzduiți o sesiune de testare ₿-CERT la hub-ul local?"
   },
   "bet": {
     "educationalContent": {
@@ -122,7 +137,8 @@
     "noConferences": "încă nu au fost adăugate conferințe pentru {{year}} .",
     "pageTitle": "Repetiții ale conferinței",
     "planBConferences": "Conferințe Plan B",
-    "topics": "Subiecte"
+    "topics": "Subiecte",
+    "conferencesGenesis": "Conferințe de la Blocul Genesis"
   },
   "courses": {
     "chapter": {
@@ -153,7 +169,7 @@
     },
     "details": {
       "associatedProfessors": "Profesori asociați",
-      "attendInPersonWarning": "",
+      "attendInPersonWarning": "Dacă intenționați să participați la acest curs în persoană, asigurați-vă că vă rezervați locul. Oricum, lecția va fi transmisă în direct și disponibilă pentru redare.",
       "buyCourse": "Cumpărați cursul",
       "buyInPersonCourse": "Cumpărați cursul în persoană",
       "buyOnlineCourse": "Cumpărați cursul online",
@@ -191,7 +207,7 @@
       "certificateAvailable": "Va fi disponibil aproximativ 8 ore după trimitere.",
       "certificateGeneration": "Certificatul tău este în curs de ",
       "certificatePageOtherCourses": "Alte cursuri conexe",
-      "completed": "",
+      "completed": "Examen finalizat!",
       "congratulations": "Felicitări, ai ajuns la sfârșitul acestui curs!",
       "congratulationsPassed": "Felicitări, ai <0>trecut</0> examenul final !",
       "courseDiploma": "Diplomă de curs",
@@ -199,7 +215,7 @@
       "dontGiveUpTryAgain": "Nu renunța!\nPoți încerca din nou după 24 de ore.",
       "dontWorry": "Nu vă faceți griji în legătură cu greșelile; acest test ajută la consolidarea învățării dumneavoastră. Dacă nu îl treceți, îl puteți relua după 24 de ore.",
       "dontWorryRetake": "Nu-ți face griji, poți da din nou examenul după 24 de ore.",
-      "examAvailabilityDetails": "",
+      "examAvailabilityDetails": "Dacă examenul nu este trecut în timpul perioadei sale de disponibilitate pe platformă, studentul va primi automat o notă de 0.",
       "examCertificateCompletionText": "Plan ₿ Network are plăcerea de a-l felicita pe {{username}} pentru obținerea diplomei cursului \"{{courseName}}”.",
       "examDetails": "Examenul are {{nb}} de întrebări cu variante multiple de răspuns, fiecare cu un singur răspuns corect. Îți poți schimba răspunsurile oricând înainte de a le trimite, atâta timp cât cronometrul este în funcțiune.",
       "examNotPassed": "Trebuie să susții examenul final și să obții un scor de peste 80% pentru a-ți primi diploma și a finaliza cursul în întregime. Această diplomă va fi <0>marcată temporal</0> pentru a-i asigura autenticitatea.",
@@ -207,7 +223,7 @@
       "failed": "Eșuat",
       "failedDiploma": "Trebuie să obții peste 80% la examenul final pentru a-ți primi diploma și a finaliza cursul în întregime. Poți relua examenul după 24 de ore.",
       "finalExam": "Examen final",
-      "finalScore": "",
+      "finalScore": "Scor final",
       "findInformationChapter": "Găsiți mai multe informații în acest capitol :",
       "futureProof": "Rezistent în timp: Diploma ta este permanent protejată și întotdeauna validă.",
       "getCertificate": "Obțineți certificatul",
@@ -217,9 +233,9 @@
       "goodLuck": "Succes!",
       "instantVerification": "Verificare instantanee: Angajatorii pot verifica cu ușurință autenticitatea și data emiterii diplomei tale.",
       "instructions": "Instrucțiuni:",
-      "nbMinutes": "",
-      "nbQuestions": "",
-      "nextChapter": "",
+      "nbMinutes": "{{nb}} minute",
+      "nbQuestions": "{{nb}} întrebări",
+      "nextChapter": "Capitolul următor",
       "noGoBack": "Nu, întoarce-te înapoi",
       "notTranslatedYet": "Ne pare rău, dar funcția de examen final nu este încă disponibilă în limba selectată de dvs. Puteți alege să treceți la o altă limbă pentru a continua.",
       "oneMinuteLeft": "Mai aveți doar 1 minut rămas",
@@ -228,32 +244,32 @@
       "passRate": "Procentul de trecere este de 80%.",
       "planBTimeStamp": "La Plan ₿ Network, vă securizăm diploma folosind tehnologia de marcare a timpului cu sprijinul blockchainului.",
       "quitWithoutSubmitting": "Hopa, se pare că ai părăsit pagina fără a trimite răspunsurile tale. Acest lucru anulează testul.",
-      "readyToTest": "",
+      "readyToTest": "Gata să îți testezi cunoștințele?",
       "receiveDiploma": "Primește-ți diploma",
       "results": {
-        "correct": "",
-        "incorrect": "",
-        "questions": "",
-        "time": ""
+        "correct": "Răspunsuri corecte",
+        "incorrect": "Răspunsuri incorecte",
+        "questions": "Întrebări răspunse",
+        "time": "Timp utilizat"
       },
       "retakeExam": "Redați examenul",
       "retakeInstructions": "Aveți 20 de minute pentru a răspunde la 40 de întrebări, fiecare cu un singur răspuns corect. Puteți naviga între întrebări și puteți trimite răspunsurile la sfârșit.",
       "sameRules": "Ești pe punctul de a da din nou examenul final. Regulile rămân neschimbate.",
       "score": "Punctaj",
-      "singleAttempt": "",
-      "singleAttemptAvailability": "",
-      "singleAttemptPrecaution": "",
+      "singleAttempt": "Examen cu o singură încercare",
+      "singleAttemptAvailability": "Acest examen este disponibil online începând de la {{date}}",
+      "singleAttemptPrecaution": "Înainte de a începe, te rugăm să te asiguri că conexiunea ta este stabilă. Deoarece acesta este un examen cu o singură încercare, dacă te deconectezi, nu vei putea încerca din nou.",
       "skipExam": "Sari peste examen",
       "skipExamDescription": "De asemenea, poți sări peste examen și să treci direct la concluzie, făcând clic pe butonul de mai jos.",
       "skipExamGoConclusion": "Sari peste examen, mergi la concluzie",
       "skipGoConclusion": "Sari, mergi la concluzie",
-      "solidEffort": "",
+      "solidEffort": "Felicitări pentru finalizarea cursului, ai depus un efort semnificativ.\nDeși nu ai trecut de această dată, fiecare pas contribuie la progres.\nContinuă să avansezi în călătoria ta de învățare!",
       "startExam": "Începe examenul",
       "submit": "Trimite",
       "successDiploma": "Felicitări! Ai trecut cu succes examenul.\nDiploma ta este disponibilă în dashboard-ul studentului. A fost <0>marcat temporal</0> pentru a-i asigura autenticitatea.",
-      "successDiplomaTeacherLed": "",
+      "successDiplomaTeacherLed": "Felicitări! Ai trecut cu succes cursul. \nDiploma ta este acum disponibilă în tabloul de bord al studentului.",
       "successDiplomaTimeStamped": "Felicitări! Ai trecut cu succes examenul.\nDiploma ta va fi disponibilă în dashboard-ul tău de student aproximativ 10 ore după momentul în care ai dat examenul. Această întârziere se datorează tehnologiei de <0>timestamp</0>, care asigură autenticitatea acesteia.",
-      "successfulPassedThreshold": "",
+      "successfulPassedThreshold": "Felicitări pentru finalizarea cursului.\nAi reușit să atingi pragul de promovare pentru acest curs și acum ești absolvent. \nPoți găsi diploma în tabloul tău de bord.",
       "sureSubmit": "Ești sigur că vrei să îți trimiți examenul?",
       "takeExam": "Dă examenul",
       "tamperProof": "Imposibil de falsificat: Blockchain asigură că nimeni nu poate modifica sau falsifica acreditarea ta.",
@@ -269,14 +285,17 @@
       "tryAgain": "Încearcă din nou",
       "tryOneMoreTime": "Hai să încercăm încă o dată!",
       "verifyDisplayName": "Înainte de a începe, vă rugăm să verificați numele dvs. de mai jos, deoarece acesta va fi folosit pentru a genera diploma dvs.",
-      "weight": "",
+      "weight": "Greutate: {{weight}}%",
       "whyTimeStamp": "Marcarea timpului pe diploma ta:\nDe ce este important",
       "wishTryAgain": "Dacă doriți să încercați din nou, examenul va fi disponibil în 24 de ore.",
-      "yesSubmit": "Da, trimite"
+      "yesSubmit": "Da, trimite",
+      "examResults": "Rezultatele examenului",
+      "scoreAndDiploma": "Scor & Diplomă"
     },
     "explorer": {
       "goal": "Obiectiv:",
-      "seeCourse": "Vezi cursul"
+      "seeCourse": "Vezi cursul",
+      "discover": "Descoperă"
     },
     "format": {
       "hybrid": "În persoană/online",
@@ -357,7 +376,24 @@
       "writeThoughts": "Aici poți să-ți scrii gândurile",
       "yesOfCourse": "da, desigur",
       "yesVeryMuch": "da, foarte mult"
-    }
+    },
+    "allCourses": "Toate cursurile",
+    "continueLeftOff": "Continuați de unde ați lăsat",
+    "courseSelector": "Selector de cursuri",
+    "noCoursesFound": "Nu s-au găsit cursuri",
+    "liveClasses": {
+      "allOtherTitle": "Toate celelalte cursuri live",
+      "liveClasses": "Cursuri live",
+      "program": {
+        "goal": "Stăpânește industria Bitcoin cu Giacomo Zucco într-un program de 5 luni care combină teoria, studiile de caz reale și oportunitățile exclusive de networking.",
+        "semester": "Semestru",
+        "title": "Plan ₿ Program"
+      },
+      "title": "Condu schimbarea. Stăpânește Bitcoin."
+    },
+    "navbarHover": "Înscrie-te pentru a debloca",
+    "plusXMore": "+{{count}} mai multe",
+    "tryAdjustingFilters": "Încearcă să-ți ajustezi filtrele"
   },
   "dashboard": {
     "adminPanel": {
@@ -374,17 +410,19 @@
         "profession": "Profesie",
         "resultsRemaining": "Au mai rămas {{results}} rezultate",
         "seeMore": "Vezi mai mult",
-        "viewCV": "Vizualizează CV"
+        "viewCV": "Vizualizează CV",
+        "candidateFile": "Fișier candidat",
+        "file": "Fișier"
       },
       "confirmRemoval": "Confirmați eliminarea",
       "coupons": {
-        "cancel": "",
-        "close": "",
-        "delete": "",
-        "deleteDiscountCodeConfirm": "",
-        "deleteDiscountCodeWarning": "",
+        "cancel": "Anulează",
+        "close": "Închide",
+        "delete": "Șterge",
+        "deleteDiscountCodeConfirm": "Ești sigur că vrei să ștergi acest cod de reducere?",
+        "deleteDiscountCodeWarning": "Odată ce acest cod este șters, nu va mai funcționa. Această schimbare este ireversibilă",
         "discountCode": "Cod de reducere",
-        "discountCodeCopied": "",
+        "discountCodeCopied": "Codul de reducere a fost copiat",
         "discountCodeExplanation": "Atenție, acest cod ține cont de majuscule.",
         "discountCodePlaceholder": "Lasă gol pentru generarea automată",
         "discountMultiUse": "Multi-utilizare",
@@ -392,8 +430,8 @@
         "discountType": "Ce tip de cod de reducere?",
         "discountValue": "Procent de reducere",
         "discountValueExplanation": "Introdu un număr în pași de 5 (de exemplu, 5, 10, 15... până la 100)",
-        "downloadImage": "",
-        "downloadImages": "",
+        "downloadImage": "Descarcă imaginea",
+        "downloadImages": "Descarcă imaginile",
         "explanation": "Generează și gestionează coduri de reducere pentru evenimente și cursuri - fie de unică folosință pentru burse sau cazuri similare, fie de folosință multiplă pentru campanii de marketing.",
         "filters": {
           "all": "Totul",
@@ -411,26 +449,26 @@
         "generatedCode": "Cod generat",
         "generatedCodes": "Coduri generate",
         "generateNew": "Generează un cod nou",
-        "generateNewCodes": "",
+        "generateNewCodes": "Generează noi coduri",
         "maximumNumberOfUse": "Numărul maxim de utilizări",
         "mobileSort": {
-          "az": "",
-          "highLow": "",
-          "lowHigh": "",
-          "sortBy": "",
-          "za": ""
+          "az": "A-z",
+          "highLow": "Ridicat - Jos",
+          "lowHigh": "Jos - Ridicat",
+          "sortBy": "Sortează după",
+          "za": "z-A"
         },
-        "noCouponsFound": "",
+        "noCouponsFound": "Nu s-au găsit cupoane.",
         "numberOfCodes": "Câte coduri dorești să generezi?",
         "productCourse": "Curs",
         "productEvent": "Eveniment",
         "selectCourse": "Selectează cursul",
         "selectEvent": "Selectează evenimentul",
         "tableHead": {
-          "actions": "",
+          "actions": "Acțiuni",
           "code": "Cod",
           "discount": "Reducere",
-          "maxUses": "",
+          "maxUses": "Număr max. de utilizări",
           "name": "Nume",
           "owner": "Proprietar",
           "type": "Tip",
@@ -460,16 +498,355 @@
       "type": "Tip",
       "upcomingBookings": "Rezervările viitoare",
       "upcomingBookingsSubtitle": "Aici puteți descărca lista de participanți pentru toate evenimentele în persoană.",
-      "userRolesAllocation": "Alocarea rolurilor utilizatorilor"
+      "userRolesAllocation": "Alocarea rolurilor utilizatorilor",
+      "translation": "Panou de traducere",
+      "translationPanel": {
+        "actions": {
+          "accept": "Acceptă",
+          "delete": "Șterge",
+          "reject": "Respinge"
+        },
+        "addContributor": {
+          "addLanguage": "Adaugă o altă limbă",
+          "assign": "Atribuie",
+          "assignedLanguages": "Limbi deja atribuite",
+          "assigning": "Atribuire în curs...",
+          "assignmentSuccess": "Contributorii au fost atribuiți cu succes!",
+          "confirm": "Confirmă",
+          "findContributor": "Găsește un contributor",
+          "language": "Limbă",
+          "noUsers": "Niciun utilizator disponibil",
+          "searchUsers": "Căutare utilizatori...",
+          "title": "Adaugă Contributor",
+          "selectLanguage": "Selectează o limbă",
+          "selectedUsers": "Utilizatori selectați:"
+        },
+        "admin": "ADMINISTRATOR",
+        "comingSoon": {
+          "courses": "Vizualizarea cursurilor în curând",
+          "coverage": "Vizualizarea acoperirii lingvistice în curând"
+        },
+        "contentManagement": {
+          "actions": {
+            "assign": "Atribuie",
+            "backToContentManagement": "Înapoi la gestionarea conținutului",
+            "reassign": "Realoca",
+            "view": "Vizualizare"
+          },
+          "assignModal": {
+            "assign": "Atribuie",
+            "assigning": "Atribuire în curs...",
+            "assigningCourse": "Atribuirea cursului:",
+            "assignmentSuccess": "Cursul a fost atribuit cu succes!",
+            "cancel": "Anulează",
+            "chooseContributor": "Alegeți un contributor...",
+            "courseInfo": "Informații despre curs",
+            "selectContributor": "Selectați Contribuitorul",
+            "title": "Atribuirea cursului către contribuitor"
+          },
+          "description": "Gestionați traducerile cursului și atribuiți-le contributorilor",
+          "noCourses": "Nu sunt disponibile cursuri",
+          "noCoursesFiltered": "Niciun curs care să corespundă filtrelor dvs",
+          "notAssigned": "Neatribuit",
+          "reassignModal": {
+            "cancel": "Anulează",
+            "chooseNewContributor": "Alegeți un nou contributor...",
+            "courseInfo": "Informații despre curs",
+            "currentlyAssignedTo": "În prezent atribuit către:",
+            "reassign": "Realoca",
+            "reassigning": "Se reatribuie...",
+            "reassigningCourse": "Se reatribuie cursul:",
+            "reassignmentSuccess": "Cursul a fost reatribuit cu succes!",
+            "selectNewContributor": "Selectează un nou contribuitor",
+            "title": "Realocați cursul către un nou contribuitor",
+            "warning": {
+              "description": "Capitolele deja revizuite nu vor fi realocate.",
+              "title": "Notă importantă"
+            }
+          },
+          "status": {
+            "assigned": "Atribuit",
+            "notAssigned": "Neatribuit",
+            "readyForReview": "Gata pentru revizuire",
+            "underReview": "În revizuire"
+          },
+          "table": {
+            "actions": "Acțiuni",
+            "contributor": "Contribuitor",
+            "course": "Curs",
+            "index": "Index",
+            "language": "Limbă",
+            "progress": "Progres",
+            "status": "Stare"
+          },
+          "title": "Gestionare conținut"
+        },
+        "courseDetails": {
+          "actions": "Acțiuni",
+          "assignedTo": "Atribuit către",
+          "chapterIndex": "Capitol",
+          "courseIndex": "Index curs",
+          "courseInformation": "Informații despre curs",
+          "courseName": "Nume curs",
+          "currentContributor": "Contribuitorul curent",
+          "errorLoadingDetails": "Eroare la încărcarea detaliilor cursului",
+          "language": "Limbă",
+          "noChapters": "Nu există capitole disponibile pentru acest curs",
+          "noContributor": "Niciun contribuitor asignat",
+          "partTitle": "Partea {{index}}: {{title}}",
+          "progress": "Progres",
+          "status": "Stare",
+          "translationStatus": "Starea traducerii",
+          "chapterTitle": "Titlu",
+          "chaptersAndProgress": "Capitole și progres",
+          "chaptersCompleted": "capitole finalizate"
+        },
+        "courseNotFound": "Cursul nu a fost găsit",
+        "messages": {
+          "noPendingRequests": "Nu mai există cereri de corectură în așteptare.",
+          "noPendingRequestsSearch": "Nu există cereri de corectură care să corespundă cu \"{{query}}\".",
+          "noRejectedRequests": "Nu există cereri de corectură respinse.",
+          "noRejectedRequestsSearch": "Nu există cereri de corectură respinse care să corespundă cu \"{{query}}\"."
+        },
+        "modal": {
+          "cancel": "Anulează",
+          "close": "Închide",
+          "contributor": "Contribuitor",
+          "course": "Curs",
+          "doYouWantToAcceptRequest": "Dorești să accepți această cerere de traducere?",
+          "language": "Limbă",
+          "provideRejectionReason": "Vă rugăm să furnizați un motiv pentru respingerea acestei cereri",
+          "reasonForRejection": "Motivul respingerii",
+          "reasonPlaceholder": "Scrieți explicatia dumneavoastră aici...",
+          "rejecting": "Respingând...",
+          "requestAcceptedMessage": "Contribuitorul a fost notificat și acum poate începe să lucreze la traducere.",
+          "requestAcceptedSuccess": "Ai acceptat cererea de traducere!",
+          "requestRejectedSuccess": "Cerere respinsă cu succes",
+          "submitRejection": "Trimite",
+          "acceptRequest": "Acceptă Cererea",
+          "acceptTranslationRequest": "Acceptă Cererea de Corectură",
+          "accepting": "Acceptând..."
+        },
+        "noResultsFound": "Nu s-au găsit rezultate",
+        "pendingTranslationRequests": "Cereri de corectură în așteptare",
+        "reports": {
+          "chooseYear": "Pe ce an doriți să-l luați în considerare?",
+          "comingSoon": {
+            "courses": "Vizualizarea cursurilor în curând",
+            "coverage": "Vizualizarea acoperirii lingvistice în curând"
+          },
+          "contributors": {
+            "assignedCourses": "Cursuri alocate",
+            "completedCourses": "Cursuri finalizate",
+            "languages": "Limbi",
+            "startDate": "Data de început",
+            "title": "Colaboratori",
+            "totalReward": "Recompensă totală",
+            "username": "Nume de utilizator"
+          },
+          "courses": {
+            "contributor": "Contribuitor",
+            "filterByCourse": "Filtrează după curs",
+            "lastUpdated": "Ultima actualizare",
+            "progress": "Progres %"
+          },
+          "dateFilter": "Filtrare după dată",
+          "downloadData": "Descărcați Datele",
+          "filterByLanguage": "Filtrează după limbă",
+          "fromMonth": "De la",
+          "fromMonthPlaceholder": "Din care lună?",
+          "generalReport": "Raport general",
+          "languageCoverage": {
+            "completed": "Finalizat",
+            "inProgress": "În desfășurare",
+            "notStarted": "Nu a început",
+            "totalCourses": "Cursuri totale"
+          },
+          "languagesProofread": "Limbi corectate",
+          "noContributors": "Niciun contribuitor găsit",
+          "noCourses": "Nu s-au găsit cursuri",
+          "noLanguages": "Nicio limbă găsită",
+          "proofreadCourses": "Cursuri corectate",
+          "table": {
+            "contributor": "Contribuitor",
+            "lastUpdated": "Ultima actualizare",
+            "progress": "Progres %"
+          },
+          "tabs": {
+            "contributors": "Colaboratori",
+            "courses": "Cursuri",
+            "coverage": "Acoperirea limbii"
+          },
+          "toMonth": "La",
+          "toMonthPlaceholder": "În ce lună?",
+          "totalLanguages": "Total limbi",
+          "year": "An"
+        },
+        "searchPlaceholder": "Caută...",
+        "status": {
+          "assigned": "Atribuit",
+          "completed": "Finalizat",
+          "inProgress": "În progres",
+          "readyForReview": "Gata pentru revizuire",
+          "todo": "De făcut",
+          "underReview": "În revizuire"
+        },
+        "table": {
+          "actions": "Acțiuni",
+          "course": "Curs",
+          "index": "Index",
+          "language": "Limbă",
+          "username": "Nume de utilizator"
+        },
+        "tabs": {
+          "contentManagement": "Gestionarea conținutului",
+          "reports": "Rapoarte",
+          "requests": "Solicitări",
+          "translate": "Traducere",
+          "userManagement": "Gestionarea utilizatorilor"
+        },
+        "title": "Panou de traducere pentru admin",
+        "toggle": {
+          "pendingRequest": "Solicitare în așteptare",
+          "rejectedRequests": "Solicitări respinse"
+        },
+        "translate": {
+          "actions": {
+            "translate": "Traducere"
+          },
+          "backToCourse": "Înapoi la curs",
+          "changeSpeed": "Schimba viteza de redare",
+          "chapterTitle": "Titlul capitolului",
+          "compare": "Compară",
+          "compareDisabledTooltip": "Versiunea de corectură nu este disponibilă",
+          "compareTooltip": "Comparați versiunea originală și cea de corectură",
+          "comparison": {
+            "backToChapter": "Înapoi la capitol",
+            "originalVersion": "Versiunea originală",
+            "translatedVersion": "Versiunea tradusă"
+          },
+          "description": "Începeți să traduceți cursuri în limbi specifice.",
+          "forward15Seconds": "Înainte cu 15 secunde",
+          "imageNotFound": "Imaginea nu a fost găsită",
+          "language": "Limbă",
+          "loadingPresentation": "Se încarcă prezentarea...",
+          "noContentAvailable": "Niciun conținut disponibil",
+          "noCourses": "Nu există cursuri care să necesite traducere în acest moment.",
+          "noOriginalContent": "Fără conținut original",
+          "noPngSlides": "Nu există diapozitive PNG disponibile pentru această prezentare",
+          "noSlidesFound": "Nu au fost găsite diapozitive",
+          "originalContent": "Conținut original",
+          "pause": "Pauză",
+          "play": "Redare",
+          "presentations": "Prezentări",
+          "rewind15Seconds": "Rewind cu 15 secunde",
+          "selectLanguagesModal": {
+            "audioFile": "Fișier Audio",
+            "audioFileInfo": "Formate suportate: MP3, WAV, M4A (Max 50MB)",
+            "audioFileTooLarge": "Fișierul audio este prea mare. Dimensiunea maximă este de 50MB.",
+            "cancel": "Anulează",
+            "chooseAudioFile": "Selectați Audio",
+            "chooseFolder": "Selectați dosarul",
+            "choosePptxFile": "Selectați PPTX",
+            "chooseZip": "Selectați ZIP",
+            "course": "Curs:",
+            "englishFilesRequired": "Vă rugăm să vă asigurați că toate fișierele încărcate sunt numai în engleză",
+            "existingUploadsInfo": "Fișierele originale au fost deja încărcate. Puteți începe traducerea fără să le adăugați din nou. Încărcarea de noi fișiere va suprascrie cele existente.",
+            "folderUrl": "URL Dosar",
+            "invalidAudioFile": "Vă rugăm să selectați un fișier audio valid.",
+            "invalidPptxFile": "Vă rugăm să selectați un fișier PowerPoint (.pptx) valid.",
+            "missingFilesError": "Vă rugăm să încărcați fișierele de traducere sau să furnizați un URL înainte de a începe traducerea.",
+            "networkError": "A apărut o eroare de rețea. Vă rugăm să verificați conexiunea și să încercați din nou.",
+            "noAudioFileSelected": "Nu a fost selectat niciun fișier audio",
+            "noFolderSelected": "Nu a fost selectat niciun dosar",
+            "noLanguagesAvailable": "Nicio limbă disponibilă pentru traducere.",
+            "noPptxFileSelected": "Nu a fost selectat niciun fișier PowerPoint",
+            "noZipSelected": "Nu a fost selectat niciun ZIP",
+            "originalLanguage": "Limba originală:",
+            "overwriteWarning": "Fișierele existente vor fi înlocuite.",
+            "pptxFile": "Fișier PowerPoint",
+            "pptxFileInfo": "Sunt acceptate numai fișiere .pptx (Max 100MB)",
+            "pptxFileTooLarge": "Fișierul PowerPoint este prea mare. Dimensiunea maximă este de 100MB.",
+            "processingStarted": "Traducerea a început! Procesul poate dura mai multe minute pentru cursurile mari.",
+            "selectLanguages": "Selectează limbile pentru traducere:",
+            "timeoutError": "Solicitarea de traducere a expirat. Conținutul cursului poate fi prea mare. Te rugăm să încerci din nou sau să contactezi suportul.",
+            "title": "Selectează Limbile pentru Traducere",
+            "translationFailed": "Traducerea a eșuat. Te rugăm să verifici jurnalele și să încerci din nou.",
+            "uploadAndTranslationStarted": "Fișierele au fost încărcate și traducerea a început! Procesul poate dura câteva minute pentru cursuri mari.",
+            "uploadError": "Încărcarea a eșuat. Verifică-ți fișierele și încearcă din nou.",
+            "uploadFiles": "Încarcă Fișiere de Suport (Opțional)",
+            "uploadFolder": "Încarcă folderul (PPTX + TXT)",
+            "useEnglishLabel": "Cursul a fost deja tradus în engleză. Să se folosească versiunea în engleză ca sursă?",
+            "startSuccess": "Traducerea a început cu succes!",
+            "startTranslation": "Începe Traducerea",
+            "startingTranslation": "Se încarcă fișierele...",
+            "startingTranslationStep": "Se începe traducerea...",
+            "uploadTimeoutError": "Încărcarea a expirat după 10 minute. Te rugăm să încerci cu fișiere mai mici sau verifică-ți conexiunea.",
+            "uploadingFiles": "Se încarcă fișierele..."
+          },
+          "slideNotAvailable": "Slide-ul {{slideNumber}} nu este disponibil",
+          "slideNavigation": {
+            "next": "Următorul",
+            "previous": "Anterior",
+            "slideCounter": "{{current}} / {{total}}"
+          },
+          "slideNotFound": "Slide-ul nu a fost găsit",
+          "table": {
+            "actions": "Acțiuni",
+            "course": "Curs",
+            "index": "Index",
+            "todoLanguages": "Limbi de tradus",
+            "totalLanguages": "Total limbi"
+          },
+          "textContent": "Conținut text",
+          "title": "Cursuri de traducere",
+          "translateTo": "Traducere în",
+          "unknownContributor": "Necunoscut"
+        },
+        "userManagement": {
+          "actions": {
+            "backToList": "Înapoi la lista de utilizatori",
+            "backToUsers": "Înapoi la utilizatori",
+            "viewDetails": "Vezi detalii"
+          },
+          "addContributor": "Adăugare contribuitor",
+          "chapters": "Capitole",
+          "contributorInformation": "Informații contribuitor",
+          "courses": "Cursuri",
+          "modal": {
+            "assignments": "Istoric asignări",
+            "noAssignments": "Nu s-au găsit asignări",
+            "title": "Detalii utilizator",
+            "userInfo": "Informații utilizator"
+          },
+          "noUsers": "Niciun contribuitor găsit",
+          "status": {
+            "published": "Publicat",
+            "readyForReview": "Gata pentru revizuire",
+            "rejected": "Respins",
+            "reviewed": "Revizuit",
+            "todo": "De făcut",
+            "underReview": "În revizuire"
+          },
+          "table": {
+            "actions": "Acțiune",
+            "assignedCourses": "Cursuri alocate",
+            "language": "Limbă",
+            "startDate": "Data de început",
+            "username": "Nume de utilizator"
+          },
+          "title": "Colaboratori"
+        }
+      }
     },
     "announcements": {
       "groups": {
-        "active": "",
-        "all": "",
-        "summer": ""
+        "active": "Studenți selectați pentru Proiectul de Lucrare",
+        "all": "Toți studenții înregistrați",
+        "summer": "Studenți selectați pentru Școala de vară"
       },
-      "pickADate": "",
-      "publicationDate": ""
+      "pickADate": "Alegeți o dată",
+      "publicationDate": "Data publicării"
     },
     "backToDashboard": "Înapoi la dashboard",
     "booking": {
@@ -491,8 +868,8 @@
     },
     "calendar": {
       "eventType": {
-        "class": "",
-        "event": ""
+        "class": "Clase",
+        "event": "Evenimente"
       },
       "personalCalendar": "Calendar personal"
     },
@@ -675,67 +1052,86 @@
       "yourRoles": "Posturile tale de muncă"
     },
     "course": {
-      "announcement": "",
-      "assignment": "",
-      "assignmentCompletedDescription": "",
-      "assignmentCompletedTitle": "",
-      "assignmentTitle": "",
+      "announcement": "Anunț",
+      "assignment": "Alocare",
+      "assignmentCompletedDescription": "Proiectul tău a fost trimis cu succes și este în curs de revizuire. Nota ta va fi vizibilă aici după calificare.",
+      "assignmentCompletedTitle": "Alocare finalizată",
+      "assignmentTitle": "Alocare de proiect",
       "completionDiploma": "Diplomă de absolvire",
       "completionExamInfo": "Aici puteți găsi informații referitoare la examenul de absolvire de la sfârșitul acestui curs.",
       "conclusionHeadline": "Iată un rezumat a ceea ce ai învățat. Dacă unele capitole au fost omise sau nu au fost validate corespunzător, acum este momentul să o faci, fie întorcându-te să înveți, fie apăsând pe butonul de completare.",
-      "conclusionNotReleased": "",
-      "confirmList": "",
-      "confirmNoEditable": "",
-      "confirmNoEditableFile": "",
-      "confirmSubmission": "",
-      "congratulationsPassed": "",
+      "conclusionNotReleased": "Concluzia va fi deblocată în ziua ultimei clase.",
+      "confirmList": "Confirmare listă",
+      "confirmNoEditable": "Odată confirmată, această listă de preferințe nu va mai fi editabilă.",
+      "confirmNoEditableFile": "Odată trimis, nu veți mai putea edita fișierul dumneavoastră.",
+      "confirmSubmission": "Confirmare trimitere",
+      "congratulationsPassed": "Felicitări! Ați trecut cu succes!",
       "coordinator": "Coordonator de curs",
-      "courseCalendar": "",
-      "diplomaReleaseDescription": "",
-      "diplomaReleaseTitle": "",
-      "examScore": "",
-      "exams": "",
+      "courseCalendar": "Calendarul cursului",
+      "diplomaReleaseDescription": "Odată ce toate cursurile sunt finalizate, veți primi un diploma pentru finalizarea cu succes a cursului. Diplomele vor fi disponibile pentru descărcare aici după ultima clasă și finalizarea capitolului de concluzie.",
+      "diplomaReleaseTitle": "Eliberare diplomă",
+      "examScore": "Scor:",
+      "exams": "Examene",
       "feedbacks": "Un capitol la sfârșitul cursului este dedicat feedback-urilor. Dacă doriți să vă dați feedback-ul acum, puteți să o faceți aici.",
-      "fileUploaded": "",
-      "finalGradeSummary": "",
-      "finalScore": "",
-      "generalInformation": "",
-      "individualWork": "",
-      "isSubmissionFinal": "",
-      "joinTelegramGroup": "",
-      "keepEditing": "",
-      "keepMovingForward": "",
-      "leastPreferred": "",
-      "listSaved": "",
-      "listSavedComeTomorrow": "",
-      "mostPreferred": "",
-      "mustBePdf": "",
-      "notSelectedAssignment": "",
-      "projectRankingInstructions": "",
-      "ranking": "",
-      "rankingInstructions": "",
-      "rankingOnly24Hours": "",
-      "rankProjectPreferences": "",
+      "fileUploaded": "Lucrarea dumneavoastră a fost încărcată cu succes!",
+      "finalGradeSummary": "Rezumat nota finală",
+      "finalScore": "Scor final",
+      "generalInformation": "Informații generale",
+      "individualWork": "Lucrare individuală",
+      "isSubmissionFinal": "Este finală trimiterea dumneavoastră?",
+      "joinTelegramGroup": "Alăturați-vă grupului Telegram",
+      "keepEditing": "Continuați editarea",
+      "keepMovingForward": "Deși nu ați trecut de această dată, fiecare pas construiește progres.\nContinuați să avansați în călătoria dumneavoastră de învățare!",
+      "leastPreferred": "Cel mai puțin preferat",
+      "listSaved": "Lista dumneavoastră de preferințe este salvată.",
+      "listSavedComeTomorrow": "Lista dvs. de preferințe este salvată. \nReveniți aici mâine pentru a descoperi la ce Proiect ați fost asignat.",
+      "mostPreferred": "Cel mai preferat",
+      "mustBePdf": "Fișierul tău trebuie să fie un PDF. Dacă trebuie să trimiți un fișier suplimentar, te rugăm să inserezi link-ul aferent în PDF-ul tău.",
+      "notSelectedAssignment": "Din păcate, nu ai fost selectat să participi la Proiectul de Sarcini.\nÎncă poți continua să urmărești lecturile cursului.",
+      "projectRankingInstructions": "Instrucțiuni pentru Clasificarea Proiectelor:",
+      "ranking": "Clasificare",
+      "rankingInstructions": "Ordonează proiectele propuse în funcție de preferințele tale (numărul 1 fiind alegerea ta de top). Această clasificare ne va permite să îți atribuim proiectul cel mai potrivit. Studenții cu scoruri mai mari vor avea selecția lor considerată în primul rând.",
+      "rankingOnly24Hours": "Portalul de clasificare va fi deschis doar 24 de ore, pe 2 iunie, de la 00:00 la 23:59 (UTC+2).",
+      "rankProjectPreferences": "Evaluează-ți preferințele de proiect",
       "ratingsAndFeedbacks": "Evaluări și feedback-uri",
-      "readAssignment": "",
-      "saveList": "",
+      "readAssignment": "Citește mai multe despre sarcina",
+      "saveList": "Salvează lista",
       "shareOnSocials": "Share pe rețelele sociale:",
-      "submissionInstructions": "",
-      "submitBefore": "",
+      "submissionInstructions": "Instrucțiuni pentru trimitere",
+      "submitBefore": "Trebuie să trimiți lucrarea ta înainte de {{date}} la {{hour}}. Lucrările primite după acest termen nu vor fi evaluate.",
       "submitReviewInfo": "Trebuie să trimiți o recenzie pentru a avea acces la această funcție.",
-      "submitYourWork": "",
-      "summerSchool": "",
-      "surePreferenceList": "",
-      "thresholdToPass": "",
-      "tweetText": "Bucuros că am finalizat cursul {{courseIndex}} la @planb_network și mi-am obținut certificatul cu un scor de {{score}}/100 la examenul final! {{emoji}}\n\n{{certificateUrl}}"
+      "submitYourWork": "Trimite-ți lucrarea",
+      "summerSchool": "Școala de Vară",
+      "surePreferenceList": "Ești sigur în legătură cu lista ta de preferințe?",
+      "thresholdToPass": "Pragul pentru a trece: {{threshold}}%",
+      "tweetText": "Bucuros că am finalizat cursul {{courseIndex}} la @planb_network și mi-am obținut certificatul cu un scor de {{score}}/100 la examenul final! {{emoji}}\n\n{{certificateUrl}}",
+      "assignmentNotAccessible": "Alocarea a început deja și nu mai este accesibilă.",
+      "assignmentScore": "Nota alocării",
+      "tweetTextCourseDiploma": "Încântat să fi terminat cursul {{courseName}}, predat de {{courseCoordinator}} pe @planb_network și să fi obținut diploma mea!\n#DiplomaPBN\n\n{{certificateUrl}}",
+      "viewScoreSummary": "Vezi rezumatul punctajului",
+      "wellDoneCompleting": "Felicitări pentru finalizarea și trecerea acestui curs! \nIată-ți diploma bine meritată",
+      "yourProjectAssignment": "Sarcina proiectului tău"
     },
     "credentials": {
       "beingGraded": "Examenul tău este în curs de corectare. Rezultatele ar trebui să fie disponibile în 1 sau 2 săptămâni.",
       "courseDiplomas": "Diplome de curs",
-      "globalCertifications": "Certificări globale"
+      "globalCertifications": "Certificări globale",
+      "bCertResults": {
+        "score020": "Ți-ai început călătoria! Fiecare expert a început odată de aici",
+        "score100": "Scor perfect! Ești tu Satoshi, sau pur și simplu genial?",
+        "score2140": "Ai învățat deja bazele! Continuă, te îmbunătățești repede!",
+        "score4160": "Bază solidă! Ești gata pentru clase avansate",
+        "score6180": "Te descurci de minune! Continuă să îți rafinezi abilitățile și să stăpânești Bitcoin",
+        "score8199": "Bună înțelegere! Te descurci cu ușurință la subiecte complexe legate de Bitcoin"
+      },
+      "completeACourse": "Finalizează primul curs pentru a primi un diploma ",
+      "detailedScore": "Scor detaliat",
+      "exploreBCert": "Explorează ₿-CERT",
+      "getGlobalRecognition": "Obține recunoașterea globală cu un certificat ₿-CERT",
+      "noCertificatesAvailable": "Nu există certificate disponibile"
     },
-    "goToDashboard": "",
-    "goToHomepage": "",
+    "goToDashboard": "Du-te la tabloul de bord",
+    "goToHomepage": "Du-te la pagina principală",
     "logout": "Deconectează-te",
     "myCourses": {
       "completeAll": "Finalizează tot",
@@ -756,7 +1152,8 @@
       "verify": "Verificați autenticitatea diplomei dvs.",
       "whereYouAre": "Să vedem unde te afli!",
       "yourCertificate": "Certificatul tău",
-      "yourProgress": "Progresul tău :"
+      "yourProgress": "Progresul tău :",
+      "noCourseStarted": "Nu ai început încă niciun curs la alegerea ta"
     },
     "profile": {
       "cancel": "Anulează",
@@ -766,88 +1163,106 @@
       "edit": "Editare",
       "email": "Email",
       "emailChangeConfirmation": "Un e-mail de confirmare pentru schimbarea adresei de e-mail a fost trimis, vă rugăm să verificați inbox-ul pentru a confirma.",
-      "emailChangeRateLimitError": "",
+      "emailChangeRateLimitError": "V-ați actualizat recent adresa de e-mail. Vă rugăm să așteptați câteva minute înainte de a încerca din nou.",
       "notificationSettings": {
-        "coursesOption": "",
-        "description": "",
-        "emailPreferencesDescription": "",
-        "emailPreferencesSavedSuccessfully": "",
-        "emailPreferencesTitle": "",
-        "emailTitle": "",
-        "emailWarning": "",
-        "eventsOption": "",
-        "generalOption": "",
-        "goToProfile": "",
-        "loadEmailSettingsError": "",
-        "loadEmailSettingsErrorDescription": "",
-        "loadEmailSettingsErrorManage": "",
-        "none": "",
-        "platformTitle": "",
-        "settingsSaved": "",
-        "title": ""
+        "coursesOption": "Actualizări despre cursurile în care v-ați înscris",
+        "description": "Puteți personaliza setările de notificare de mai jos. ",
+        "emailPreferencesDescription": "Aici puteți alege tipurile de e-mailuri pe care doriți să le primiți de la noi. Aceste preferințe se aplică doar adresei de e-mail asociate acestei link.",
+        "emailPreferencesSavedSuccessfully": "Preferințele dvs. de e-mail au fost actualizate cu succes.",
+        "emailPreferencesTitle": "Gestionați preferințele de e-mail pentru rețeaua Plan ₿",
+        "emailTitle": "Ce tipuri de notificări ați dori să primiți prin e-mail?",
+        "emailWarning": "Atenție! Nici o adresă de e-mail nu este legată de contul dvs. Vă rugăm să o adăugați în secțiunea dvs. de profil.",
+        "eventsOption": "Actualizări despre evenimentele pe care le-ați rezervat",
+        "generalOption": "Informații generale și știri despre rețeaua Plan ₿",
+        "goToProfile": "Du-te la Profil",
+        "loadEmailSettingsError": "Ne pare rău, nu am putut încărca preferințele dvs. de e-mail.",
+        "loadEmailSettingsErrorDescription": "Asigurați-vă că linkul pe care l-ați utilizat este corect.",
+        "loadEmailSettingsErrorManage": "Dacă aveți acces la contul dvs., puteți gestiona, de asemenea, setările direct din tabloul de bord:",
+        "none": "Niciunul",
+        "platformTitle": "Ce tipuri de notificări doriți să primiți pe această platformă?",
+        "settingsSaved": "Setările dvs. au fost salvate cu succes!",
+        "title": "Setări notificări"
       },
       "password": "Parolă",
       "preview": "Previzualizare",
       "profilePicture": "Fotografie de profil",
       "save": "Salvează",
       "saving": "Salvare…",
-      "securitySettings": "",
-      "username": "Username"
+      "securitySettings": "Setări de securitate",
+      "username": "Username",
+      "emailOrUsername": "E-mail sau nume de utilizator"
     },
     "teacher": {
       "courses": {
-        "allStudents": "",
+        "allStudents": "Toți studenții",
         "announcementModal": {
-          "contentLabel": "",
-          "contentPlaceholder": "",
-          "create": "",
-          "dateRequired": "",
-          "editAnnouncement": "",
-          "groupLabel": "",
-          "title": "",
-          "typeLabel": "",
-          "typePlaceholder": ""
+          "contentLabel": "Textul anunțului",
+          "contentPlaceholder": "Vă rugăm să tastați aici.",
+          "create": "Creați anunț",
+          "dateRequired": "Data este necesară",
+          "editAnnouncement": "Editați anunțul",
+          "groupLabel": "Selectați grupul de studenți către care doriți să vă adresați",
+          "title": "Scrieți un anunț",
+          "typeLabel": "Ce tip de anunț este acesta?",
+          "typePlaceholder": "Selectați un tip"
         },
-        "announcements": "",
-        "announcementsIntroduction": "",
-        "announcementsPast": "",
-        "announcementsPastDescription": "",
-        "announcementsUpcoming": "",
-        "announcementsUpcomingDescription": "",
-        "assignment": "",
+        "announcements": "Anunțuri",
+        "announcementsIntroduction": "În afara notificărilor automate despre orarele clasei, aveți opțiunea de a scrie și programa anunțuri suplimentare pentru elevii dvs. De exemplu, îi puteți informa despre schimbări logistice sau actualizări de ultim moment.\nElevii vor primi aceste notificări pe platformă, dar și prin e-mail (dacă activează această funcție opțională).",
+        "announcementsPast": "Anunțuri anterioare",
+        "announcementsPastDescription": "Mai jos sunt enumerate anunțurile deja publicate. Lista va fi ștearsă după o lună.",
+        "announcementsUpcoming": "Anunțuri viitoare",
+        "announcementsUpcomingDescription": "Mai jos sunt anunțurile viitoare pe care le-ați scris și programat.",
+        "assignment": "Alocare",
         "assignmentGrade": {
-          "alertDescription": "",
-          "alertTitle": "",
-          "confirmPublication": "",
-          "confirmPublicationDescription": "",
-          "confirmPublicationTitle": "",
-          "description": "",
-          "grade100": "",
-          "gradesPublished": "",
-          "missingGradesDescription": "",
-          "missingGradesTitle": "",
-          "publishAllGrades": "",
-          "studentDisplayName": "",
-          "title": ""
+          "alertDescription": "După ce toate notele au fost introduse, faceți clic pe \"Publică toate notele\" pentru a le publica pe toate deodată.\nVerificați notele înainte de acest lucru, deoarece odată publicate, nu vor mai putea fi editate. ",
+          "alertTitle": "Calificarea temelor",
+          "confirmPublication": "Confirmare publicare",
+          "confirmPublicationDescription": "După publicarea notelor, nu se mai poate reveni deoarece acestea nu vor mai putea fi editate.",
+          "confirmPublicationTitle": "Ați verificat dacă nu există nicio eroare?",
+          "description": "Elevii sunt ordonați pe grupe de teme.",
+          "grade100": "Notă (/100)",
+          "gradesPublished": "Notele sunt publicate.",
+          "missingGradesDescription": "Dacă notele sunt publicate, notele lipsă vor fi înlocuite cu 0/100.",
+          "missingGradesTitle": "Încă lipsesc {{count}} note!",
+          "publishAllGrades": "Publicați toate notele",
+          "studentDisplayName": "Elev (Nume de afișare)",
+          "title": "Note de tema",
+          "courseAssignment": "Alocare curs"
         },
-        "assignmentStudents": "",
+        "assignmentStudents": "Alocare proiect",
         "courseDetails": "Detalii despre curs",
         "courseLongDescription": "Descriere introductivă",
         "courseModification": "Dacă aveți nevoie de ajutor pentru a edita ceva în curs, vă rugăm să verificați acest <0>tutorial</0>.",
         "curriculum": "Program de cursuri",
         "curriculumDescription": "Iată programul actual al acestui curs.",
-        "deleteAnnouncementTitle": "",
-        "deleteAnnouncementWarning": "",
+        "deleteAnnouncementTitle": "Sigur doriți să ștergeți acest anunț?",
+        "deleteAnnouncementWarning": "Această modificare este ireversibilă",
         "editOnGithub": "Editează pe Github",
         "examResults": "Rezultatele examenelor",
         "makeModifications": "Trebuie să faceți modificări?",
-        "noPastAnnouncement": "",
-        "noWrittenAnnouncement": "",
+        "noPastAnnouncement": "NU AVEȚI niciun anunț anterior în acest moment.",
+        "noWrittenAnnouncement": "Nu aveți niciun anunț scris în acest moment.",
         "objectives": "Obiective",
         "quickRecap": "Aici puteți găsi toate informațiile generale referitoare la acest curs.",
         "reviews": "Recenzii",
-        "summerStudents": "",
-        "writeAnnouncement": ""
+        "summerStudents": "Școala de Vară",
+        "writeAnnouncement": "Scrieți un anunț",
+        "amountPaid": "Suma plătită",
+        "averageAttempts": "Media încercărilor",
+        "averageDuration": "Durata medie",
+        "averageScore": "Scorul mediu",
+        "exportExamData": "Exportați datele examenului",
+        "finalAverageResults": "Rezultatele medii finale",
+        "finalScore": "Scor final",
+        "lastActive": "Ultima activitate",
+        "medianScore": "Scorul median",
+        "noExamLinked": "În prezent nu există niciun examen asociat acestui curs. Dacă doriți să creați un examen, vă rugăm să ne contactați.",
+        "overview": "Prezentare generală",
+        "questionsInExam": "Întrebările din examen",
+        "studentsGraduated": "Studenții absolvitori",
+        "successRate": "Rata de succes",
+        "thresholdToPass": "Pragul de trecere",
+        "totalQuestions": "Numărul total de întrebări"
       },
       "profile": {
         "billingInformation": "Informații de facturare",
@@ -878,6 +1293,29 @@
       "tutorials": {
         "tutorialAnalyticsDescription": "Aici poți găsi analize privind tutorialele pe care le-ai creat și publicat pe platformă.",
         "yourTutorials": "Tutorialele tale"
+      },
+      "discount": {
+        "description": "Aici puteți genera și gestiona coduri de reducere pentru acest curs - fie pentru o singură utilizare pentru burse sau cazuri similare, fie pentru campanii de marketing multi-utilizare."
+      }
+    },
+    "professor": {
+      "courses": {
+        "overview": {
+          "announceChange": "Anunță o schimbare",
+          "attendanceList": "Lista de prezență",
+          "courseEnded": "Acest curs s-a încheiat.",
+          "courseNotStarted": "Acest curs nu a început încă.",
+          "enrolledStudents": "Studenți înscriși",
+          "hasEnrolled": "s-a înscris",
+          "hasGraduated": "a absolvit cu o notă de {{score}}%",
+          "hasLeftReview": "a lăsat un review",
+          "hasLeftReviewAndComment": "a lăsat un review și un comentariu",
+          "notifyStudents": "S-a schimbat ceva? Anunțați-vă studenții.",
+          "overallPerformance": "Performanța generală",
+          "recentActivity": "Activitate recentă",
+          "studentsRegistered": "Studenți înregistrați",
+          "upcomingClass": "Clasă viitoare"
+        }
       }
     }
   },
@@ -891,7 +1329,8 @@
       "purchased": "Cumpărat",
       "unlimited": "nelimitat",
       "visitWebsite": "Vizitează site-ul web",
-      "watchReplay": "Urmărește reluarea"
+      "watchReplay": "Urmărește reluarea",
+      "buyLecture": "Cumpără lecție"
     },
     "main": {
       "upcomingEvents": "Evenimente viitoare"
@@ -923,7 +1362,39 @@
       "time": "Timp"
     },
     "tcDisclaimer": "Sunt de acord ca informațiile mele să fie împărtășite organizatorilor în scopul accesului la locație.",
-    "tcMustBeAccepted": "Trebuie să accepți termenii și condițiile pentru a continua"
+    "tcMustBeAccepted": "Trebuie să accepți termenii și condițiile pentru a continua",
+    "myTickets": "Biletele mele",
+    "eventInfos": {
+      "whatsPlanned": "Ce este planificat",
+      "eventBooked": "Eveniment rezervat",
+      "eventType": "Tipul evenimentului",
+      "numberOfSpots": "Numărul de locuri",
+      "onlineAndInPerson": "Online și în persoană",
+      "secureYourSpot": "Asigurați-vă locul",
+      "sessionBooked": "Sesiune rezervată"
+    },
+    "addEvent": "Adaugă eveniment",
+    "calendar": {
+      "inXMonths": "În {{number}} luni",
+      "lastMonth": "Luna trecută",
+      "nextMonth": "Luna viitoare",
+      "noEventsFound": "Niciun eveniment găsit",
+      "thisMonth": "Luna aceasta",
+      "today": "Astăzi",
+      "xMonthsAgo": "Acum {{number}} luni"
+    },
+    "planBWeek": {
+      "pageTitle": "Planificați ₿ Săptămână"
+    },
+    "types": {
+      "plurals": {
+        "conference": "conferințe",
+        "exam": "examene",
+        "lecture": "prelegeri",
+        "meetup": "întâlniri",
+        "workshop": "ateliere"
+      }
+    }
   },
   "filters": {
     "topics": "Subiecte"
@@ -931,7 +1402,8 @@
   "glossary": {
     "definition": "Definiție",
     "relatedWords": "Cuvinte asociate:",
-    "term": "Termen"
+    "term": "Termen",
+    "showMoreWords": "Arată mai multe cuvinte"
   },
   "home": {
     "aboutUsSection": {
@@ -978,7 +1450,10 @@
     "watchLecture": "Urmărește reluarea prelegerii"
   },
   "menu": {
-    "login": "Autentificare"
+    "login": "Autentificare",
+    "educatorContent": "Conținut pentru educatori",
+    "getStarted": "Începe",
+    "signIn": "Conectează-te"
   },
   "notFound": {
     "here": "Aici",
@@ -987,52 +1462,53 @@
   },
   "notification": {
     "types": {
-      "assignment": "",
-      "calendar": "",
-      "celebration": "",
-      "general": "",
-      "warning": ""
+      "assignment": "Alocare",
+      "calendar": "Alertă de calendar",
+      "celebration": "Celebrare",
+      "general": "Informații generale",
+      "warning": "Avertisment"
     }
   },
   "notifications": {
-    "bCertResults": "",
-    "blogNotTranslated": "",
-    "bookYourSeat": "",
-    "calendar_5m": "",
-    "calendar_5m_online_event": "",
-    "calendar_24h": "",
-    "calendar_24h_in_person_event": "",
-    "calendar_48h_online_event": "",
-    "dashboardDescription": "",
-    "daysAgo": "",
-    "markAsRead": "",
-    "monthsAgo": "",
-    "noRecentNotifications": "",
-    "notifications": "",
-    "noUnreadNotifications": "",
-    "planBNews": "",
-    "read": "",
-    "results": "",
-    "select": "",
-    "selectAll": "",
-    "today": "",
-    "unread": "",
-    "upcomingEvent": "",
-    "weeksAgo": "",
-    "yearsAgo": "",
-    "yesterday": ""
+    "bCertResults": "Rezultatele tale ₿-CERT au fost publicate!",
+    "blogNotTranslated": "Ne pare rău, această nouă postare pe blog încă nu a fost tradusă în limba dumneavoastră curentă.",
+    "bookYourSeat": "Rezervați-vă locul dacă doriți să participați în persoană!",
+    "calendar_5m": "Clasa începe în 5 minute! Faceți clic aici pentru a vă alătura acum.",
+    "calendar_5m_online_event": "E timpul! {{eventName}} începe în 5 minute. Faceți clic aici pentru a vă alătura acum!",
+    "calendar_24h": "Următoarea clasă va fi mâine de la {{ formattedTime }}.",
+    "calendar_24h_in_person_event": "Evenimentul {{eventName}} va avea loc mâine, de la {{formattedTime}} la {{addressLine}}. Asigurați-vă că descărcați biletul pentru a participa!",
+    "calendar_48h_online_event": "{{eventName}} se apropie curând! Este programat pentru {{date}}, de la {{formattedTime}}. ",
+    "dashboardDescription": "Iată ultimele dumneavoastră notificări. Acestea sunt eliminate automat la o lună după ce le-ați văzut.",
+    "daysAgo": "Acum {{days}} zile",
+    "markAsRead": "Marchează ca citit",
+    "monthsAgo": "Acum {{months}} lună{{s}}",
+    "noRecentNotifications": "Nu aveți notificări recente în acest moment.",
+    "notifications": "Notificări",
+    "noUnreadNotifications": "Nu mai sunt notificări necitite",
+    "planBNews": "Știri Plan ₿",
+    "read": "Citește",
+    "results": "Rezultatele tale ₿-CERT au fost publicate!",
+    "select": "Selectează",
+    "selectAll": "Selectează tot",
+    "today": "Astăzi",
+    "unread": "Necitit",
+    "upcomingEvent": "Eveniment viitor",
+    "weeksAgo": "Acum {{weeks}} săptămână{{s}}",
+    "yearsAgo": "Acum {{years}} an{{s}}",
+    "yesterday": "Ieri",
+    "newVersionAvailable": "O nouă versiune a platformei Plan ₿ Network este disponibilă. Vă rugăm să actualizați pagina pentru a actualiza."
   },
   "payment": {
     "haveReductionCode": "Ai un cod de reducere ?",
     "insertReductionCode": "Introdu codul tău de reducere",
     "payByCard": "Plătește cu cardul",
     "payWithBitcoin": "Plătește cu Bitcoin",
-    "taxesMayApply": "",
+    "taxesMayApply": "Taxele pot fi aplicate la finalizarea comenzii",
     "terms": "Consultați <0>termenii și condițiile</0> noastre generale pentru detalii despre rambursare",
     "total": "Total"
   },
   "placeholders": {
-    "selectTimeZone": ""
+    "selectTimeZone": "Selectează fusul orar"
   },
   "professors": {
     "navigationTitles": {
@@ -1072,22 +1548,26 @@
       "contact": "Contact",
       "legalNotice": "Notă legală",
       "privacyPolicy": "Politica de privacy",
-      "termsOfSale": "Termeni de vânzare"
+      "termsOfSale": "Termeni de vânzare",
+      "notFound": "Informațiile legale nu au fost găsite"
     }
   },
   "resources": {
     "bet": {
-      "title": "Instrumente educaționale"
+      "title": "Instrumente educaționale",
+      "addEducationKit": "Adaugă kitul educațional"
     },
     "books": {
-      "title": "Bibliotecă"
+      "title": "Bibliotecă",
+      "addBook": "Adaugă carte"
     },
     "channels": {
       "noYoutubeChannels": "În prezent, nu există canale Youtube pentru limba selectată.",
       "title": "Canale de Youtube"
     },
     "conferences": {
-      "title": "Reluări de conferințe"
+      "title": "Reluări de conferințe",
+      "addConference": "Adaugă reluarea conferinței"
     },
     "glossary": {
       "title": "Glosar"
@@ -1112,14 +1592,18 @@
     "pageSubtitlePodcast": "<0>Alte podcasturi</0> care s-ar putea să îți placă",
     "podcasts": {
       "noPodcasts": "În prezent, nu există podcasturi pentru limba selectată.",
-      "title": "Podcasturi"
+      "title": "Podcasturi",
+      "addPodcast": "Adaugă podcast",
+      "checkThePodcast": "Verifică podcast"
     },
     "projects": {
-      "title": "Proiecte"
+      "title": "Proiecte",
+      "addProjects": "Adaugă proiect"
     },
     "searchFilterName": "Căutare după nume",
     "toggleLabelAll": "Totul",
-    "toggleLabelSelectedLanguage": "Limba selectată"
+    "toggleLabelSelectedLanguage": "Limba selectată",
+    "pageSubtitleMovies": "Alte filme pe care s-ar putea să le îți placă"
   },
   "search": {
     "all": "Totul",
@@ -1160,7 +1644,9 @@
     "tutorial": "Tutorial",
     "tutorials": "Tutoriale",
     "youtube_channel": "Canal Youtube",
-    "youtube_channels": "Canale Youtube"
+    "youtube_channels": "Canale Youtube",
+    "noResults": "Niciun rezultat",
+    "resultsFound": "Au fost găsite {{count}} rezultate"
   },
   "settings": {
     "changeDisplayName": "Schimbă numele afișat",
@@ -1182,7 +1668,8 @@
       "author": "Autor:",
       "ratingSuccess": "Mulțumesc pentru evaluarea ta!",
       "source": "Sursa originală :",
-      "tutorialName": "Numele tutorialului"
+      "tutorialName": "Numele tutorialului",
+      "didThisWork": "A funcționat bine pentru tine?"
     },
     "exchange": {
       "title": "Exchange"
@@ -1218,12 +1705,15 @@
       "peer-to-peer": "Peer-to-peer",
       "point-of-sale": "Punct de vânzare",
       "pool": "Pool",
-      "resource": "Resursă"
+      "resource": "Resursă",
+      "explorer": "Explorator"
     },
     "wallet": {
       "title": "Portofel"
     },
-    "writtenBy": "Acest tutorial a fost scris de"
+    "writtenBy": "Acest tutorial a fost scris de",
+    "noTutorialsFound": "Nu am putut găsi niciun tutorial care să se potrivească cu căutarea dumneavoastră.",
+    "onThisPage": "Pe această pagină"
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1249,7 +1739,7 @@
     "bitcoin": "Bitcoin",
     "book": "Carte",
     "business": "Business",
-    "calendar": "",
+    "calendar": "Calendar",
     "cancel": "Anulează",
     "careerPortal": "Portalul carierei",
     "category": "Categorie",
@@ -1258,17 +1748,17 @@
     "chapter": "Capitol",
     "chapters": "Capitole",
     "close": "Închide",
-    "company": "",
+    "company": "Companie",
     "conference": "Conferință",
     "congrats": "Felicitări!",
-    "continue": "",
+    "continue": "Continuați",
     "country": "Țară",
     "course": "Curs",
     "courseId": "ID curs",
     "courses": "Cursuri",
     "credits": "Credite",
     "date": "Data",
-    "day": "",
+    "day": "Zi",
     "delete": "Șterge",
     "description": "Descriere",
     "details": "Detalii",
@@ -1310,7 +1800,7 @@
     "linkedin": "Linkedin",
     "location": "Locație",
     "members": " Membri",
-    "mentor": "",
+    "mentor": "Mentor",
     "mining": "Mining",
     "movie": "Film",
     "name": "Nume",
@@ -1318,14 +1808,14 @@
     "newsletter": "newsletter",
     "next": "Următorul",
     "no": "Nu",
-    "notApplicable": "",
+    "notApplicable": "Nu este aplicabil",
     "on": "pe",
     "onChainAddress": "Adresă On chain",
     "online": "Online",
     "overview": "Prezentare generală",
     "paid": "Plătit",
     "part": "Parte",
-    "password": "",
+    "password": "Parolă",
     "podcast": "Podcast",
     "previous": "Anterior",
     "price": "Preț",
@@ -1341,10 +1831,10 @@
     "resources": "Resurse",
     "role": "Rol",
     "save": "Salvează",
-    "saving": "",
+    "saving": "Salvare...",
     "search": "Caută",
     "security": "Securitate",
-    "selectedAmount": "",
+    "selectedAmount": "{{amount}} selectat",
     "skip": "Sări",
     "socialStudies": "Studii sociale",
     "startHere": "Începe aici!",
@@ -1356,8 +1846,8 @@
     "telegram": "Telegram",
     "ticket": "Bilet",
     "time": "Timp",
-    "timeZone": "",
-    "title": "",
+    "timeZone": "Fus orar",
+    "title": "Titlu",
     "to": "la",
     "topics": "Subiecte",
     "total": "Total",
@@ -1369,14 +1859,120 @@
     "user": "Utilizator",
     "username": "Username",
     "users": "Utilizatori",
-    "video": "",
+    "video": "Video",
     "view": "Vizualizare",
     "viewMore": "Vezi mai mult",
     "wallets": "Portofele",
-    "yes": "Da"
+    "yes": "Da",
+    "aboutUs": "Despre noi",
+    "academy": "Academie",
+    "account": "Cont",
+    "actions": "Acțiuni",
+    "address": "Adresă",
+    "booking": "Rezervare",
+    "certifications": "Certificări",
+    "completed": "Finalizat",
+    "confirmation": "Confirmare",
+    "discover": "Descoperă",
+    "enrolled": "Înscris",
+    "filters": "Filtre",
+    "full": "Complet",
+    "info": "Info",
+    "invoices": "Facturi",
+    "legal": "Juridic",
+    "list": "Listă",
+    "map": "Hartă",
+    "month": "Lună",
+    "none": "Niciunul",
+    "optional": "Opțional",
+    "planBNetwork": "Plan ₿ Rețea",
+    "practice": "Practică",
+    "pricing": "Prețuri",
+    "questions": "Întrebări",
+    "rating": "Evaluare",
+    "resetAll": "Resetează tot",
+    "resetFilters": "Resetează filtrele",
+    "results": "Rezultate",
+    "resume": "Rezumat",
+    "review": "Recenzie",
+    "sats": "Sats",
+    "searchTripleDot": "Caută...",
+    "seeAll": "Vezi tot",
+    "session": "Sesiune",
+    "settings": "Setări",
+    "share": "Distribuie",
+    "structure": "Structură",
+    "syllabus": "Silabă",
+    "taxes": "taxe",
+    "theory": "Teorie",
+    "topic": "Subiect",
+    "type": "Tip",
+    "viewAll": "Vezi toate",
+    "week": "Săptămână",
+    "weight": "Greutate"
   },
   "youtubeChannels": {
     "view": "Vezi canalul Youtube",
     "watchTrailer": "Vizionează trailerul"
+  },
+  "account": {
+    "account": "Cont",
+    "myTeacherProfile": "Profilul meu de profesor"
+  },
+  "footer": {
+    "FOSSOpenContent": "FOSS și conținut deschis",
+    "proudlyPartOf": "Mândri că facem parte din <0>Rețeaua Plan ₿</0>"
+  },
+  "months": {
+    "april": "Aprilie",
+    "august": "August",
+    "december": "Decembrie",
+    "february": "Februarie",
+    "january": "Ianuarie",
+    "july": "Iulie",
+    "june": "Iunie",
+    "march": "Martie",
+    "may": "Mai",
+    "november": "Noiembrie",
+    "october": "Octombrie",
+    "september": "Septembrie"
+  },
+  "movies": {
+    "checkTheMovie": "Verifică filmul"
+  },
+  "navbar": {
+    "bookings": "Rezervări",
+    "career": "Carieră",
+    "careers": "Cariere",
+    "discountCode": "Coduri de reducere",
+    "learnAnytimeDescription": "Cursuri la propriul ritm",
+    "learnAnytimeTitle": "Învață oricând",
+    "liveClassesDescription": "Cursuri conduse de profesor",
+    "liveClassesTitle": "Cursuri live",
+    "manageCourses": "Gestionează cursurile",
+    "myCourses": "Cursurile mele",
+    "tabs": {
+      "admin": "Admin",
+      "learn": "Învață",
+      "teach": "Predă"
+    },
+    "translationPanel": "Panou de traducere",
+    "tutorials": "Tutoriale",
+    "tutorialsAnalytics": "Analitica tutorialelor",
+    "userRolesAllocation": "Alocare roluri utilizator"
+  },
+  "videoSelector": {
+    "language": {
+      "AI": "Traducere AI",
+      "language": "Limbă",
+      "original": "Limba originală"
+    },
+    "player": {
+      "pears": "Pere 🍐",
+      "peertube": "Peertube",
+      "player": "Player",
+      "rumble": "Rumble",
+      "youtube": "Youtube"
+    }
   }
 }

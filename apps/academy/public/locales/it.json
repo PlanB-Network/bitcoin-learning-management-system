@@ -63,7 +63,9 @@
       "invalidCredentials": "Credenziali non valide",
       "usernameRegex": "Il nome utente può contenere solo lettere, cifre, trattini bassi(_), punti (.) , e trattini (-).",
       "usernameRequired": "È richiesto il nome utente.",
-      "usernameTooShort": "Il nome utente deve contenere almeno 5 caratteri."
+      "usernameTooShort": "Il nome utente deve contenere almeno 5 caratteri.",
+      "oldPasswordRequired": "Vecchia password richiesta",
+      "passwordTooShort": "La password è troppo corta"
     },
     "forgottenPassword": "Hai dimenticato la password?",
     "headerAccountCreated": "Account creato",
@@ -91,7 +93,11 @@
     "trackProgress": "Crea un account o accedi per tenere traccia dei tuoi progressi",
     "tryAgain": "Prova ancora",
     "loginNotAvailable1": "Le funzionalità di accesso non sono ancora disponibili nell'app per desktop.",
-    "loginNotAvailable2": "Puoi visitare il nostro sito web per autenticarti e accedere al tuo account."
+    "loginNotAvailable2": "Puoi visitare il nostro sito web per autenticarti e accedere al tuo account.",
+    "forgotPassword": "Hai dimenticato la password?",
+    "login": "Accesso",
+    "oldPassword": "Vecchia password",
+    "signUp": "Registrati"
   },
   "bCert": {
     "bCertDescription": "Il ₿-CERT è il massimo test su Bitcoin creato per valutare il livello di conoscenze su Bitcoin e i relativi argomenti. Se superi l'80% di risposte esatte, otterrai un certificato ₿-CERT che può provare le tue conoscenze nell'industria Bitcoin, aprendo le porte a varie opportunità di lavoro nel campo.",
@@ -131,7 +137,8 @@
     "noConferences": "Non sono state ancora aggiunte conferenze per il {{year}}.",
     "pageTitle": "Registrazioni conferenze",
     "planBConferences": "Conferenze di Plan ₿",
-    "topics": "Argomenti"
+    "topics": "Argomenti",
+    "conferencesGenesis": "Conferenze dal Genesis Block"
   },
   "courses": {
     "chapter": {
@@ -379,8 +386,14 @@
     "liveClasses": {
       "allOtherTitle": "Altre lezioni live",
       "liveClasses": "Corsi Live",
-      "title": "Programma annuale ufficiale di Plan ₿"
-    }
+      "title": "Programma annuale ufficiale di Plan ₿",
+      "program": {
+        "goal": "Domina l'industria del Bitcoin con Giacomo Zucco in un programma di 5 mesi che combina teoria, studi di caso reali e opportunità esclusive di networking.",
+        "semester": "Semestre",
+        "title": "Piano ₿ Programma"
+      }
+    },
+    "navbarHover": "Registrati per sbloccare"
   },
   "dashboard": {
     "adminPanel": {
@@ -1106,7 +1119,16 @@
       "completeACourse": "Completa un corso per ottenere il tuo primo diploma!",
       "exploreBCert": "Esplora il ₿-CERT",
       "getGlobalRecognition": "Ottieni un riconoscimento globale con un certificato ₿-CERT",
-      "noCertificatesAvailable": "Nessun certificato disponibile"
+      "noCertificatesAvailable": "Nessun certificato disponibile",
+      "bCertResults": {
+        "score020": "Hai intrapreso il tuo viaggio! Ogni esperto è partito da qui",
+        "score100": "Punteggio perfetto! Sei Satoshi, o semplicemente geniale?",
+        "score2140": "Hai capito i fondamentali! Continua così, stai migliorando rapidamente!",
+        "score4160": "Fondamenti solidi! Sei pronto per le lezioni avanzate",
+        "score6180": "Stai andando alla grande! Continua a perfezionare le tue competenze e a padroneggiare Bitcoin",
+        "score8199": "Ottima comprensione! Gestisci con facilità temi complessi del Bitcoin"
+      },
+      "detailedScore": "Punteggio dettagliato"
     },
     "goToDashboard": "Vai alla dashboard",
     "goToHomepage": "Vai alla homepage",
@@ -1130,7 +1152,8 @@
       "verify": "Verifica l'autenticità del tuo diploma",
       "whereYouAre": "Vediamo a che punto sei!",
       "yourCertificate": "Il tuo certificato",
-      "yourProgress": "I tuoi progressi:"
+      "yourProgress": "I tuoi progressi:",
+      "noCourseStarted": "Non hai ancora iniziato alcun corso fai-da-te"
     },
     "profile": {
       "cancel": "Annulla",
@@ -1166,7 +1189,8 @@
       "save": "Salva",
       "saving": "Salvataggio in corso…",
       "securitySettings": "Impostazioni di sicurezza",
-      "username": "Nome utente"
+      "username": "Nome utente",
+      "emailOrUsername": "Email o nome utente"
     },
     "teacher": {
       "courses": {
@@ -1354,7 +1378,8 @@
       "numberOfSpots": "Numero di posti",
       "onlineAndInPerson": "Online e in presenza",
       "secureYourSpot": "Assicura il tuo posto",
-      "whatsPlanned": "Cosa è previsto"
+      "whatsPlanned": "Cosa è previsto",
+      "sessionBooked": "Sessione prenotata"
     },
     "types": {
       "plurals": {
@@ -1425,7 +1450,10 @@
     "watchLecture": "Guarda la replica della lezione"
   },
   "menu": {
-    "login": "Accedi"
+    "login": "Accedi",
+    "educatorContent": "Contenuto dell'educatore",
+    "getStarted": "Inizia",
+    "signIn": "Accedi"
   },
   "movies": {
     "checkTheMovie": "Scopri il film"
@@ -1680,12 +1708,15 @@
       "peer-to-peer": "Peer-to-peer",
       "point-of-sale": "Point of sale",
       "pool": "Pool",
-      "resource": "Risorse"
+      "resource": "Risorse",
+      "explorer": "Esploratore"
     },
     "wallet": {
       "title": "Wallet"
     },
-    "writtenBy": "Questo tutorial è stato realizzato da"
+    "writtenBy": "Questo tutorial è stato realizzato da",
+    "onThisPage": "Su questa pagina",
+    "noTutorialsFound": "Non abbiamo trovato nessun tutorial corrispondente alla tua ricerca."
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1876,7 +1907,12 @@
     "discover": "Scopri",
     "enrolled": "Iscritto",
     "filters": "Filtri",
-    "list": "Lista"
+    "list": "Lista",
+    "address": "Indirizzo",
+    "confirmation": "Conferma",
+    "optional": "Opzionale",
+    "session": "Sessione",
+    "syllabus": "Programma"
   },
   "youtubeChannels": {
     "view": "Vai al canale Youtube",

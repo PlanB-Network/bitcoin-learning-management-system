@@ -63,7 +63,9 @@
       "invalidCredentials": "Credenciais inválidas",
       "usernameRegex": "O nome de utilizador só pode conter letras, números, underscores (_), pontos (.) e hífens (-).",
       "usernameRequired": "O nome de utilizador é obrigatório.",
-      "usernameTooShort": "O nome de utilizador deve conter pelo menos 5 caracteres."
+      "usernameTooShort": "O nome de utilizador deve conter pelo menos 5 caracteres.",
+      "oldPasswordRequired": "Senha antiga necessária",
+      "passwordTooShort": "A senha é muito curta"
     },
     "forgottenPassword": "Esqueceu-se da palavra-passe?",
     "headerAccountCreated": "Conta criada",
@@ -91,7 +93,11 @@
     "trackProgress": "Crie conta ou faça login para acompanhar o seu progresso",
     "tryAgain": "Tente novamente",
     "loginNotAvailable1": "As funcionalidades de login ainda não estão disponíveis no aplicativo de desktop.",
-    "loginNotAvailable2": "Você pode visitar o nosso site para fazer login e acessar a sua conta."
+    "loginNotAvailable2": "Você pode visitar o nosso site para fazer login e acessar a sua conta.",
+    "forgotPassword": "Esqueceu a senha?",
+    "login": "Entrar",
+    "oldPassword": "Senha antiga",
+    "signUp": "Inscrever-se"
   },
   "bCert": {
     "bCertDescription": "O ₿-CERT é o exame final de Bitcoin concebido para avaliar o seu conhecimento sobre Bitcoin e temas relacionados. Se obter mais de 80%, recebe o certificado ₿-CERT que valida a sua especialização na indústria Bitcoin, abrindo portas para várias posições de trabalho na área.",
@@ -377,11 +383,17 @@
     "liveClasses": {
       "allOtherTitle": "Todas as outras aulas ao vivo",
       "liveClasses": "Aulas ao vivo",
-      "title": "Programas anuais oficiais da Plan ₿"
+      "title": "Programas anuais oficiais da Plan ₿",
+      "program": {
+        "goal": "Domine a indústria do Bitcoin com Giacomo Zucco em um programa de 5 meses que combina teoria, estudos de caso reais e oportunidades exclusivas de networking.",
+        "semester": "Semestre",
+        "title": "Plano ₿ Programa"
+      }
     },
     "noCoursesFound": "Nenhum curso encontrado",
     "plusXMore": "+{{count}} outros",
-    "tryAdjustingFilters": "Tente ajustar os seus filtros"
+    "tryAdjustingFilters": "Tente ajustar os seus filtros",
+    "navbarHover": "Inscreva-se para desbloquear"
   },
   "dashboard": {
     "adminPanel": {
@@ -1177,7 +1189,8 @@
       "save": "Salvar",
       "saving": "Salvando…",
       "securitySettings": "Configurações de segurança",
-      "username": "Nome de Utilizador"
+      "username": "Nome de Utilizador",
+      "emailOrUsername": "Email ou nome de usuário"
     },
     "teacher": {
       "courses": {
@@ -1437,7 +1450,10 @@
     "watchLecture": "Assista à repetição da palestra"
   },
   "menu": {
-    "login": "Entrar"
+    "login": "Entrar",
+    "educatorContent": "Conteúdo do educador",
+    "getStarted": "Começar",
+    "signIn": "Entrar"
   },
   "notFound": {
     "here": "Aqui",
@@ -1689,13 +1705,15 @@
       "peer-to-peer": "Peer-to-peer",
       "point-of-sale": "Ponto de venda",
       "pool": "Grupo (pool)",
-      "resource": "Recurso"
+      "resource": "Recurso",
+      "explorer": "Explorador"
     },
     "wallet": {
       "title": "Carteira (Wallet)"
     },
     "writtenBy": "Este tutorial foi escrito por",
-    "onThisPage": "Nesta página"
+    "onThisPage": "Nesta página",
+    "noTutorialsFound": "Não conseguimos encontrar nenhum tutorial correspondente à sua pesquisa."
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1888,7 +1906,10 @@
     "type": "Tipo",
     "viewAll": "Ver tudo",
     "week": "Semana",
-    "weight": "Peso"
+    "weight": "Peso",
+    "confirmation": "Confirmação",
+    "optional": "Opcional",
+    "syllabus": "Programa de estudos"
   },
   "youtubeChannels": {
     "view": "Ver Canal do Youtube",

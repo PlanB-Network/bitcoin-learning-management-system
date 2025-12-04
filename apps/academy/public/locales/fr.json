@@ -388,9 +388,12 @@
       "liveClasses": "Cours en direct",
       "title": "Programmes annuels officiels de Plan ₿",
       "program": {
-        "goal": "Maîtrisez l'industrie du Bitcoin avec Giacomo Zucco grâce à un programme de 5 mois qui mêle théorie, études de cas réels et opportunités de réseautage exclusives."
+        "goal": "Maîtrisez l'industrie du Bitcoin avec Giacomo Zucco grâce à un programme de 5 mois qui mêle théorie, études de cas réels et opportunités de réseautage exclusives.",
+        "semester": "Semestre",
+        "title": "Plan ₿ Programme"
       }
-    }
+    },
+    "navbarHover": "Inscrivez-vous pour débloquer"
   },
   "dashboard": {
     "adminPanel": {
@@ -1448,7 +1451,9 @@
   },
   "menu": {
     "login": "Se connecter",
-    "getStarted": "Commencer"
+    "getStarted": "Commencer",
+    "educatorContent": "Contenu éducateur",
+    "signIn": "Se connecter"
   },
   "movies": {
     "checkTheMovie": "Regarder le film"
@@ -1703,13 +1708,15 @@
       "peer-to-peer": "Pair-à-pair",
       "point-of-sale": "Terminal de paiement",
       "pool": "Pool",
-      "resource": "Ressource"
+      "resource": "Ressource",
+      "explorer": "Explorateur"
     },
     "wallet": {
       "title": "Portefeuille"
     },
     "writtenBy": "Ce tutoriel a été écrit par",
-    "onThisPage": "Sur cette page"
+    "onThisPage": "Sur cette page",
+    "noTutorialsFound": "Nous n'avons trouvé aucun tutoriel correspondant à votre recherche."
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1918,7 +1925,8 @@
     "address": "Adresse",
     "session": "Session",
     "confirmation": "Confirmation",
-    "optional": "Facultatif"
+    "optional": "Facultatif",
+    "syllabus": "Syllabus"
   },
   "youtubeChannels": {
     "view": "Voir la chaîne Youtube",

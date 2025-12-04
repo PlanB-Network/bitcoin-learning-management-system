@@ -19,7 +19,8 @@
     "missionTitle": "Onze missie",
     "storyContent": "Plan ₿ Network is een initiatief dat wereldwijd Bitcoin-educatie ondersteunt. Het is een samenwerking tussen verschillende gepassioneerde Bitcoin-bedrijven die zich richten op educatie, open-source software, peer-to-peer netwerken en gemeenschapsgevoel. Samen hebben ze besloten om het Plan ₿ Network op te richten en het Bitcoin-ecosysteem de juiste tools te bieden om te groeien. Onze presentatie van de release in 2023 is hier beschikbaar.",
     "storyTitle": "Ons verhaal",
-    "title": "Over Plan ₿ Network"
+    "title": "Over Plan ₿ Network",
+    "readManifesto": "Lees ons manifest"
   },
   "accessType": {
     "hybrid": "Fysiek & online",
@@ -62,7 +63,9 @@
       "invalidCredentials": "Ongeldige inloggegevens",
       "usernameRegex": "De gebruikersnaam mag alleen letters, cijfers, underscores (_), punten (.) en streepjes (-) bevatten.",
       "usernameRequired": "Gebruikersnaam is vereist.",
-      "usernameTooShort": "Gebruikersnaam moet minstens 5 tekens bevatten."
+      "usernameTooShort": "Gebruikersnaam moet minstens 5 tekens bevatten.",
+      "oldPasswordRequired": "Oud wachtwoord vereist",
+      "passwordTooShort": "Wachtwoord is te kort"
     },
     "forgottenPassword": "Bent je je wachtwoord vergeten?",
     "headerAccountCreated": "Account aangemaakt",
@@ -90,7 +93,11 @@
     "trackProgress": "Maak een account aan of log in om je voortgang bij te houden",
     "tryAgain": "Probeer het opnieuw",
     "loginNotAvailable1": "Inlogfuncties zijn nog niet beschikbaar in de desktop app.",
-    "loginNotAvailable2": "Je kunt onze website bezoeken om in te loggen en toegang te krijgen tot je account."
+    "loginNotAvailable2": "Je kunt onze website bezoeken om in te loggen en toegang te krijgen tot je account.",
+    "forgotPassword": "Wachtwoord vergeten?",
+    "login": "Inloggen",
+    "oldPassword": "Oud wachtwoord",
+    "signUp": "Aanmelden"
   },
   "bCert": {
     "bCertDescription": "De ₿-CERT is de ultieme Bitcoin-test, ontworpen om je kennis van Bitcoin en gerelateerde onderwerpen te evalueren. \n\nAls je meer dan 80% scoort, verdien je een ₿-CERT certificaat dat je expertise binnen de Bitcoin-industrie aantoont en deuren kan openen naar verschillende functions in het veld.",
@@ -104,7 +111,10 @@
     "verify": "Verifieer de echtheid van je certificaat",
     "hostSessionConditions": "Zo doe je dat:\n\n1. Lees het <0>Handvest</0> - Zorg ervoor dat jouw gemeenschap voldoet aan de verplichte hostingvoorwaarden\n2. Plan & Rooster - Als je in aanmerking komt, kies dan een datum en stel de sessie in\n3. Publiceer je evenement - Neem contact met ons op om het toe te voegen aan het Plan ₿ Network platform, zodat mensen kunnen deelnemen",
     "noTestSessions": "Momenteel zijn er geen test sessies beschikbaar",
-    "wantHostSession": "Wil je een ₿-CERT testsessie hosten bij jouw lokale hub?"
+    "wantHostSession": "Wil je een ₿-CERT testsessie hosten bij jouw lokale hub?",
+    "certificates": "Certificaten",
+    "chooseCourse": "Kies cursus",
+    "noDiplomasAvailable": "Nog geen diploma's beschikbaar"
   },
   "bet": {
     "educationalContent": {
@@ -127,7 +137,8 @@
     "noConferences": "Nog geen conferenties toegevoegd voor {{year}}.",
     "pageTitle": "Conferentie herhalingen",
     "planBConferences": "Plan ₿ conferenties",
-    "topics": "Onderwerpen"
+    "topics": "Onderwerpen",
+    "conferencesGenesis": "Conferenties sinds Genesis Block"
   },
   "courses": {
     "chapter": {
@@ -372,11 +383,17 @@
     "liveClasses": {
       "allOtherTitle": "Alle andere live lessen",
       "liveClasses": "Live lessen",
-      "title": "Plan ₿ officiële jaarlijkse programma's"
+      "title": "Plan ₿ officiële jaarlijkse programma's",
+      "program": {
+        "goal": "Beheers de Bitcoin-industrie met Giacomo Zucco in een 5-maanden durend programma dat theorie, echte casestudies en exclusieve netwerkmogelijkheden combineert.",
+        "semester": "Semester",
+        "title": "Plan ₿ Programma"
+      }
     },
     "noCoursesFound": "Geen cursussen gevonden",
     "plusXMore": "+{{count}} meer",
-    "tryAdjustingFilters": "Probeer je filters aan te passen"
+    "tryAdjustingFilters": "Probeer je filters aan te passen",
+    "navbarHover": "Meld je aan om te ontgrendelen"
   },
   "dashboard": {
     "adminPanel": {
@@ -1102,7 +1119,16 @@
       "completeACourse": "Voltooi een cursus om je eerste diploma te behalen!",
       "exploreBCert": "Verken ₿-CERT",
       "getGlobalRecognition": "Krijg wereldwijde erkenning met een ₿-CERT certificaat",
-      "noCertificatesAvailable": "Geen certificaten beschikbaar"
+      "noCertificatesAvailable": "Geen certificaten beschikbaar",
+      "bCertResults": {
+        "score020": "Je bent begonnen aan je reis! Elke expert is ooit hier begonnen",
+        "score100": "Perfecte score! Ben je Satoshi, of gewoon briljant?",
+        "score2140": "Je hebt de basis! Ga zo door, je verbetert snel!",
+        "score4160": "Solide basis! Je bent klaar voor geavanceerde lessen",
+        "score6180": "Je doet het geweldig! Blijf je vaardigheden verfijnen en beheers Bitcoin",
+        "score8199": "Geweldig begrip! Je gaat moeiteloos om met complexe Bitcoin-onderwerpen"
+      },
+      "detailedScore": "Gedetailleerde score"
     },
     "goToDashboard": "Ga naar dashboard",
     "goToHomepage": "Ga naar homepage",
@@ -1126,7 +1152,8 @@
       "verify": "Verifieer de echtheid van het diploma",
       "whereYouAre": "Laten we kijken waar je staat!",
       "yourCertificate": "Jouw certificaat",
-      "yourProgress": "Je voortgang:"
+      "yourProgress": "Je voortgang:",
+      "noCourseStarted": "Je bent nog geen zelfstudiecursussen begonnen"
     },
     "profile": {
       "cancel": "Annuleren",
@@ -1162,7 +1189,8 @@
       "save": "Opslaan",
       "saving": "Opslaan…",
       "securitySettings": "Beveiligingsinstellingen",
-      "username": "Gebruikersnaam"
+      "username": "Gebruikersnaam",
+      "emailOrUsername": "E-mail of gebruikersnaam"
     },
     "teacher": {
       "courses": {
@@ -1351,7 +1379,8 @@
       "numberOfSpots": "Aantal plekken",
       "onlineAndInPerson": "Online en fysiek",
       "secureYourSpot": "Reserveer je plek",
-      "whatsPlanned": "Wat staat er gepland"
+      "whatsPlanned": "Wat staat er gepland",
+      "sessionBooked": "Sessie geboekt"
     },
     "myTickets": "Mijn tickets",
     "planBWeek": {
@@ -1437,7 +1466,10 @@
     "thanks": "Grote dank gaat uit naar onze geweldige proeflezers!"
   },
   "menu": {
-    "login": "Inloggen"
+    "login": "Inloggen",
+    "educatorContent": "Educatieve inhoud",
+    "getStarted": "Beginnen",
+    "signIn": "Aanmelden"
   },
   "notifications": {
     "calendar_48h_online_event": "Het evenement {{eventName}} komt er snel aan! Het is gepland op {{date}}, vanaf {{formattedTime}}. ",
@@ -1572,7 +1604,8 @@
       "contact": "Contact",
       "legalNotice": "Juridische kennisgeving",
       "privacyPolicy": "Privacybeleid",
-      "termsOfSale": "Verkoopvoorwaarden"
+      "termsOfSale": "Verkoopvoorwaarden",
+      "notFound": "Juridische informatie niet gevonden"
     }
   },
   "search": {
@@ -1614,7 +1647,9 @@
     "tutorial": "Tutorial",
     "tutorials": "Tutorials",
     "youtube_channel": "Youtube kanaal",
-    "youtube_channels": "Youtube kanalen"
+    "youtube_channels": "Youtube kanalen",
+    "noResults": "Geen resultaten",
+    "resultsFound": "{{count}} resultaten gevonden"
   },
   "settings": {
     "changeDisplayName": "Weergavenaam wijzigen",
@@ -1668,7 +1703,8 @@
       "operating system": "Besturingssysteem",
       "peer-to-peer": "Peer-to-peer",
       "pool": "Pool",
-      "resource": "Bron"
+      "resource": "Bron",
+      "explorer": "Verkenner"
     },
     "wallet": {
       "title": "Wallet"
@@ -1678,7 +1714,9 @@
       "shortDescription": "Tools voor back-ups en het behoud van privacy",
       "title": "Privacy"
     },
-    "writtenBy": "Deze tutorial is geschreven door"
+    "writtenBy": "Deze tutorial is geschreven door",
+    "noTutorialsFound": "We konden geen tutorial vinden die overeenkomt met uw zoekopdracht.",
+    "onThisPage": "Op deze pagina"
   },
   "underConstruction": {
     "p1": "Een konijn is in een gat gevallen. Door dit onverwachte avontuur is deze pagina momenteel nog in aanbouw. Onze excuses voor het ongemak. Ons team is druk bezig om deze pagina af te maken. Wil je meehelpen, aarzel dan niet om hier te klikken:",
@@ -1865,7 +1903,16 @@
     "theory": "Theoretisch",
     "topic": "Onderwerp",
     "type": "Type",
-    "viewAll": "Bekijk alles"
+    "viewAll": "Bekijk alles",
+    "aboutUs": "Over ons",
+    "address": "Adres",
+    "confirmation": "Bevestiging",
+    "legal": "Wettelijk",
+    "list": "Lijst",
+    "optional": "Optioneel",
+    "planBNetwork": "Plan ₿ Netwerk",
+    "session": "Sessie",
+    "syllabus": "Syllabus"
   },
   "videoSelector": {
     "language": {
@@ -1920,6 +1967,12 @@
     },
     "translationPanel": "Vertaalomgeving",
     "tutorials": "Tutorials",
-    "userRolesAllocation": "Toewijzing van gebruikersrollen"
+    "userRolesAllocation": "Toewijzing van gebruikersrollen",
+    "careers": "Carrières",
+    "tutorialsAnalytics": "Analyse van tutorials"
+  },
+  "footer": {
+    "FOSSOpenContent": "FOSS & Open inhoud",
+    "proudlyPartOf": "Met trots deel van <0>Plan ₿ Netwerk</0>"
   }
 }

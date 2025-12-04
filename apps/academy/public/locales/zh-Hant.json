@@ -19,7 +19,8 @@
     "missionTitle": "我們的願景",
     "storyContent": "PlanB Network 是一項支持比特幣教育的全球性倡議。這是一個由多家熱衷於推動比特幣教育的公司所組成的跨界聯盟，專注於教育、開源軟體、點對點網路及社群建立。他們共同決定打造 PlanB Network，為比特幣生態系提供適當的成長工具。我們的 2023 年發佈簡報可在此查閱。",
     "storyTitle": "我們的故事",
-    "title": "關於Plan B"
+    "title": "關於Plan B",
+    "readManifesto": "閱讀我們的宣言"
   },
   "accessType": {
     "hybrid": "線下與線上",
@@ -62,7 +63,9 @@
       "invalidCredentials": "無效的憑證",
       "usernameRegex": "使用者名稱只能包含字母、數字、_、. 和 -。",
       "usernameRequired": "使用者名稱必填。",
-      "usernameTooShort": "使用者名稱必須至少包含5個字符。"
+      "usernameTooShort": "使用者名稱必須至少包含5個字符。",
+      "oldPasswordRequired": "需要舊密碼",
+      "passwordTooShort": "密碼過短"
     },
     "forgottenPassword": "忘記您的密碼嗎？",
     "headerAccountCreated": "帳號已創建",
@@ -90,7 +93,11 @@
     "trackProgress": "建立帳號或登入以追蹤您的進度",
     "tryAgain": "再試一次",
     "loginNotAvailable1": "桌面應用程式目前尚未提供登入功能。",
-    "loginNotAvailable2": "您可以造訪我們的網站登入並進入您的帳戶。"
+    "loginNotAvailable2": "您可以造訪我們的網站登入並進入您的帳戶。",
+    "forgotPassword": "忘記密碼？",
+    "login": "登入",
+    "oldPassword": "舊密碼",
+    "signUp": "註冊"
   },
   "bCert": {
     "bCertDescription": "比特幣 ₿ 證書是一項國際公認的考試，用來評估您在比特幣及其相關主題上的知識水平。\n\n超過 80% 正確率能取得證書並證明您在比特幣行業中的技能和知識，並為您進入該行業的公司和職位提供機會。",
@@ -104,7 +111,10 @@
     "verify": "驗證您的證書真實性",
     "hostSessionConditions": "操作步驟如下：\n\n1. 閱讀 <0>章節</0> – 確保您的社群符合必須的主辦條件\n2. 規劃與安排 – 如果符合資格，選擇日期並設定會議\n3. 發布您的活動 –聯繫我們，將活動加入到 Plan ₿ Network 平台，讓更多人參與",
     "noTestSessions": "目前沒有可用的測驗時段",
-    "wantHostSession": "想在當地舉辦一場 ₿-CERT 測驗嗎？"
+    "wantHostSession": "想在當地舉辦一場 ₿-CERT 測驗嗎？",
+    "certificates": "證書",
+    "chooseCourse": "選擇課程",
+    "noDiplomasAvailable": "尚無可用的畢業證書"
   },
   "bet": {
     "educationalContent": {
@@ -127,7 +137,8 @@
     "noConferences": "暫無{{year}}的會議。",
     "pageTitle": "會議回放",
     "planBConferences": "Plan B 研討會",
-    "topics": "主題"
+    "topics": "主題",
+    "conferencesGenesis": "自創世區塊以來的會議"
   },
   "courses": {
     "chapter": {
@@ -375,8 +386,14 @@
     "liveClasses": {
       "allOtherTitle": "所有其他的直播課程",
       "liveClasses": "直播課程",
-      "title": "Plan ₿官方年度活動"
-    }
+      "title": "Plan ₿官方年度活動",
+      "program": {
+        "goal": "在共計五個月的課程中，與Giacomo Zucco一起精通比特幣行業。該課程融合了理論、實際案例研究，以及獨家的網路交流機會。",
+        "semester": "學期",
+        "title": "計劃 ₿ 程式"
+      }
+    },
+    "navbarHover": "註冊以解鎖"
   },
   "dashboard": {
     "adminPanel": {
@@ -1102,7 +1119,16 @@
       "completeACourse": "完成一門課程以獲得您的第一個證書！",
       "exploreBCert": "探索 ₿-CERT",
       "getGlobalRecognition": "透過 ₿-CERT 獲得全球認可",
-      "noCertificatesAvailable": "無可用證書"
+      "noCertificatesAvailable": "無可用證書",
+      "bCertResults": {
+        "score020": "您已開始探索旅程！每個專家都曾從這裡開始",
+        "score100": "滿分！你是Satoshi，還是簡直聰明絕頂？",
+        "score2140": "你已掌握了基礎！繼續努力，你的進步速度很快！",
+        "score4160": "穩固的基礎！你已經準備好進行高級課程了",
+        "score6180": "你做得很好！繼續提升你的技能並精通比特幣",
+        "score8199": "了不起的理解力！您能輕鬆處理複雜的比特幣話題"
+      },
+      "detailedScore": "詳細分數"
     },
     "goToDashboard": "前往儀表板",
     "goToHomepage": "前往首頁",
@@ -1126,7 +1152,8 @@
       "verify": "驗證您的文憑真實性",
       "whereYouAre": "讓我們看看你在哪裡！",
       "yourCertificate": "您的證書",
-      "yourProgress": "你的進度："
+      "yourProgress": "你的進度：",
+      "noCourseStarted": "您還沒有開始任何自學課程"
     },
     "profile": {
       "cancel": "取消",
@@ -1162,7 +1189,8 @@
       "save": "儲存",
       "saving": "儲存中…",
       "securitySettings": "安全設定",
-      "username": "使用者名稱"
+      "username": "使用者名稱",
+      "emailOrUsername": "電子郵件或用戶名"
     },
     "teacher": {
       "courses": {
@@ -1360,7 +1388,8 @@
       "numberOfSpots": "座位數量",
       "onlineAndInPerson": "線上和實體",
       "secureYourSpot": "確保您的位置",
-      "whatsPlanned": "計劃內容"
+      "whatsPlanned": "計劃內容",
+      "sessionBooked": "已預約的會話"
     },
     "myTickets": "我的票券",
     "planBWeek": {
@@ -1421,7 +1450,10 @@
     "watchLecture": "觀看講座重播"
   },
   "menu": {
-    "login": "登入"
+    "login": "登入",
+    "educatorContent": "教育者內容",
+    "getStarted": "開始使用",
+    "signIn": "登入"
   },
   "movies": {
     "checkTheMovie": "查看此電影"
@@ -1519,7 +1551,8 @@
       "contact": "聯繫",
       "legalNotice": "法律通知",
       "privacyPolicy": "隱私政策",
-      "termsOfSale": "銷售條款"
+      "termsOfSale": "銷售條款",
+      "notFound": "找不到法律資訊"
     }
   },
   "resources": {
@@ -1614,7 +1647,9 @@
     "tutorial": "教學",
     "tutorials": "教學",
     "youtube_channel": "Youtube 頻道",
-    "youtube_channels": "Youtube 頻道"
+    "youtube_channels": "Youtube 頻道",
+    "noResults": "無結果",
+    "resultsFound": "找到{{count}}個結果"
   },
   "settings": {
     "changeDisplayName": "更改顯示名稱",
@@ -1673,12 +1708,15 @@
       "peer-to-peer": "點對點",
       "point-of-sale": "銷售點",
       "pool": "礦池",
-      "resource": "資源"
+      "resource": "資源",
+      "explorer": "探索者"
     },
     "wallet": {
       "title": "錢包"
     },
-    "writtenBy": "本課程由以下人員撰寫"
+    "writtenBy": "本課程由以下人員撰寫",
+    "noTutorialsFound": "我們找不到任何符合您搜尋的教學。",
+    "onThisPage": "在此頁面上"
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1865,7 +1903,16 @@
     "week": "週",
     "weight": "權重",
     "discover": "了解更多",
-    "seeAll": "查看全部"
+    "seeAll": "查看全部",
+    "aboutUs": "關於我們",
+    "address": "地址",
+    "confirmation": "確認",
+    "legal": "法律",
+    "list": "列表",
+    "optional": "可選的",
+    "planBNetwork": "Plan ₿ Network",
+    "session": "會議",
+    "syllabus": "課程大綱"
   },
   "youtubeChannels": {
     "view": "查看Youtube頻道",
@@ -1892,7 +1939,9 @@
     "tutorials": "教學指南",
     "userRolesAllocation": "用戶角色分配",
     "liveClassesDescription": "由教师主导的课程",
-    "liveClassesTitle": "直播課程"
+    "liveClassesTitle": "直播課程",
+    "careers": "職業生涯",
+    "tutorialsAnalytics": "教程分析"
   },
   "videoSelector": {
     "language": {
@@ -1921,5 +1970,9 @@
     "november": "十一月",
     "october": "十月",
     "september": "九月"
+  },
+  "footer": {
+    "FOSSOpenContent": "FOSS和開放內容",
+    "proudlyPartOf": "我們自豪地成為<0>Plan ₿ Network</0>的一部分"
   }
 }

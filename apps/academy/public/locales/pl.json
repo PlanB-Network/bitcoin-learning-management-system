@@ -19,7 +19,8 @@
     "missionTitle": "Nasza misja",
     "storyContent": "Sieć PlanB to inicjatywa mająca na celu wspieranie edukacji na temat Bitcoina na całym świecie. Jest to połączenie różnych, pełnych pasji firm z branży Bitcoin skupionych na edukacji, oprogramowaniu open-source, sieciach peer-to-peer i poczuciu wspólnoty. Razem postanowiły one stworzyć sieć PlanB i oferować ekosystemowi Bitcoina odpowiednie narzędzia do rozwoju. Nasza prezentacja na rok 2023 jest dostępna tutaj.",
     "storyTitle": "Nasza historia",
-    "title": "O sieci PlanB"
+    "title": "O sieci PlanB",
+    "readManifesto": "Przeczytaj nasz manifest"
   },
   "accessType": {
     "hybrid": "Stacjonarne i online",
@@ -62,7 +63,9 @@
       "invalidCredentials": "Nieprawidłowe dane uwierzytelniające",
       "usernameRegex": "Nazwa użytkownika może zawierać tylko litery, cyfry, _, . i -.",
       "usernameRequired": "Wymagana jest nazwa użytkownika.",
-      "usernameTooShort": "Nazwa użytkownika musi zawierać co najmniej 5 znaków."
+      "usernameTooShort": "Nazwa użytkownika musi zawierać co najmniej 5 znaków.",
+      "oldPasswordRequired": "Wymagane jest stare hasło",
+      "passwordTooShort": "Hasło jest zbyt krótkie"
     },
     "forgottenPassword": "Nie pamiętasz hasła?",
     "headerAccountCreated": "Konto zostało stworzone",
@@ -90,7 +93,11 @@
     "trackProgress": "Stwórz konto lub login, aby śledzić swoje postępy",
     "tryAgain": "Spróbuj ponownie",
     "loginNotAvailable1": "Funkcje logowania nie są jeszcze dostępne w aplikacji na komputer.",
-    "loginNotAvailable2": "Możesz odwiedzić naszą stronę internetową, aby się zalogować i uzyskać dostęp do swojego konta."
+    "loginNotAvailable2": "Możesz odwiedzić naszą stronę internetową, aby się zalogować i uzyskać dostęp do swojego konta.",
+    "forgotPassword": "Zapomniałeś hasła?",
+    "login": "Zaloguj się",
+    "oldPassword": "Stare hasło",
+    "signUp": "Zarejestruj się"
   },
   "bCert": {
     "bCertDescription": "₿-CERT to międzynarodowo uznawany egzamin oceniający Twój poziom wiedzy na temat Bitcoina i tematów pokrewnych. Ten rozpoznawany w branży Bitcoin certyfikat potwierdzi poziom Twoich umiejętności i wiedzy , dając Ci dostęp do najlepszych firm i stanowisk.",
@@ -104,7 +111,10 @@
     "verify": "Sprawdź autentyczność swojego certyfikatu",
     "hostSessionConditions": "Oto jak to zrobić:\n\n1. Przeczytaj <0>Kartę</0> - Upewnij się, że twoja społeczność spełnia obowiązkowe warunki hostingu\n2. Zaplanuj termin - Jeśli się kwalifikujesz, wybierz datę i zorganizuj sesję\n3. Opublikuj swoje wydarzenie - Skontaktuj się z nami w celu dodania go do platformy Plan ₿ Network, aby ludzie mogli wziąć w nim udział",
     "noTestSessions": "Obecnie brak dostępnych sesji egzaminacyjnych",
-    "wantHostSession": "Chcesz zorganizować sesję egzaminacyjną ₿-CERT w swoim lokalnym centrum?"
+    "wantHostSession": "Chcesz zorganizować sesję egzaminacyjną ₿-CERT w swoim lokalnym centrum?",
+    "certificates": "Certyfikaty",
+    "chooseCourse": "Wybierz kurs",
+    "noDiplomasAvailable": "Jeszcze nie dostępne żadne dyplomy"
   },
   "bet": {
     "educationalContent": {
@@ -127,7 +137,8 @@
     "noConferences": "Nie dodano jeszcze konferencji na rok {{year}}.",
     "pageTitle": "Powtórki z konferencji",
     "planBConferences": "Konferencje sieci Plan B",
-    "topics": "Tematy"
+    "topics": "Tematy",
+    "conferencesGenesis": "Konferencje od Genesis Block"
   },
   "courses": {
     "chapter": {
@@ -373,8 +384,16 @@
     "plusXMore": "+{{count}} więcej",
     "tryAdjustingFilters": "Spróbuj dostosować swoje filtry",
     "liveClasses": {
-      "liveClasses": "Zajęcia na żywo"
-    }
+      "liveClasses": "Zajęcia na żywo",
+      "allOtherTitle": "Wszystkie pozostałe zajęcia na żywo",
+      "program": {
+        "goal": "Opanuj branżę Bitcoin razem z Giacomo Zucco w 5-miesięcznym programie, który łączy teorię, studia przypadków oraz wyłączne możliwości nawiązania kontaktów.",
+        "semester": "Semestr",
+        "title": "Plan ₿ Program"
+      },
+      "title": "Prowadź zmianę. Opanuj Bitcoin."
+    },
+    "navbarHover": "Zarejestruj się, aby odblokować"
   },
   "dashboard": {
     "adminPanel": {
@@ -1100,7 +1119,16 @@
       "completeACourse": "Ukończ kurs, aby zdobyć swój pierwszy dyplom!",
       "exploreBCert": "Odkryj ₿-CERT",
       "getGlobalRecognition": "Zdobądź globalne uznanie dzięki certyfikatowi ₿-CERT",
-      "noCertificatesAvailable": "Brak dostępnych certyfikatów"
+      "noCertificatesAvailable": "Brak dostępnych certyfikatów",
+      "bCertResults": {
+        "score020": "Rozpocząłeś swoją podróż! Każdy ekspert kiedyś zaczynał od tego miejsca",
+        "score100": "Perfekcyjny wynik! Czy jesteś Satoshi, czy po prostu genialny?",
+        "score2140": "Masz podstawy! Kontynuuj, robisz szybkie postępy!",
+        "score4160": "Solidna podstawa! Jesteś gotowy na zaawansowane kursy",
+        "score6180": "Świetnie ci idzie! Kontynuuj doskonalenie umiejętności i mistrzostwo w Bitcoinie",
+        "score8199": "Doskonałe zrozumienie! Bez trudu radzisz sobie z skomplikowanymi tematami dotyczącymi Bitcoina"
+      },
+      "detailedScore": "Szczegółowy wynik"
     },
     "goToDashboard": "Powrót do pulpitu ucznia",
     "goToHomepage": "Przejdź do strony głównej",
@@ -1124,7 +1152,8 @@
       "verify": "Sprawdź autentyczność dyplomu",
       "whereYouAre": "Zobaczmy, na jakim jesteś etapie!",
       "yourCertificate": "Twój certyfikat",
-      "yourProgress": "Twój postęp:"
+      "yourProgress": "Twój postęp:",
+      "noCourseStarted": "Jeszcze nie rozpocząłeś żadnych kursów samodzielnej nauki"
     },
     "profile": {
       "cancel": "Anuluj",
@@ -1160,7 +1189,8 @@
       "save": "Zapisz",
       "saving": "Zapisywanie…",
       "securitySettings": "Ustawienia bezpieczeństwa",
-      "username": "Nazwa użytkownika"
+      "username": "Nazwa użytkownika",
+      "emailOrUsername": "E-mail lub nazwa użytkownika"
     },
     "teacher": {
       "courses": {
@@ -1349,7 +1379,8 @@
       "numberOfSpots": "Liczba miejsc",
       "onlineAndInPerson": "Online i stacjonarnie",
       "secureYourSpot": "Zagwarantuj sobie miejsce",
-      "whatsPlanned": "Co jest w planie"
+      "whatsPlanned": "Co jest w planie",
+      "sessionBooked": "Sesja zarezerwowana"
     },
     "myTickets": "Moje bilety",
     "planBWeek": {
@@ -1419,7 +1450,10 @@
     "watchLecture": "Obejrzyj powtórkę wykładu"
   },
   "menu": {
-    "login": "Zaloguj się"
+    "login": "Zaloguj się",
+    "educatorContent": "Treści dla edukatorów",
+    "getStarted": "Rozpocznij",
+    "signIn": "Zaloguj się"
   },
   "movies": {
     "checkTheMovie": "Zobacz film"
@@ -1517,7 +1551,8 @@
       "contact": "Kontakt",
       "legalNotice": "Informacja prawna",
       "privacyPolicy": "Polityka prywatności",
-      "termsOfSale": "Warunki sprzedaży"
+      "termsOfSale": "Warunki sprzedaży",
+      "notFound": "Nie znaleziono informacji prawnych"
     }
   },
   "resources": {
@@ -1570,7 +1605,8 @@
     },
     "searchFilterName": "Szukaj według nazwy",
     "toggleLabelAll": "Wszystkie",
-    "toggleLabelSelectedLanguage": "Wybrany język"
+    "toggleLabelSelectedLanguage": "Wybrany język",
+    "pageSubtitleMovies": "<0>Inne filmy</0>, które mogą ci się spodobać"
   },
   "search": {
     "all": "Wszystkie",
@@ -1611,7 +1647,9 @@
     "tutorial": "Tutorial",
     "tutorials": "Tutoriali",
     "youtube_channel": "Kanał na Youtube",
-    "youtube_channels": "Kanały na Youtube"
+    "youtube_channels": "Kanały na Youtube",
+    "noResults": "Brak wyników",
+    "resultsFound": "Znaleziono {{count}} wyników"
   },
   "settings": {
     "changeDisplayName": "Zmień wyświetlaną nazwę",
@@ -1633,7 +1671,8 @@
       "author": "Autor:",
       "ratingSuccess": "Dziękujemy za twoją ocenę!",
       "source": "Źródło oryginalne:",
-      "tutorialName": "Nazwa tutoriala"
+      "tutorialName": "Nazwa tutoriala",
+      "didThisWork": "Czy to dobrze dla ciebie działa?"
     },
     "exchange": {
       "title": "Giełda"
@@ -1669,12 +1708,15 @@
       "peer-to-peer": "Peer-to-peer",
       "point-of-sale": "Punkt handlowy",
       "pool": "Pula wydobywcza",
-      "resource": "Materiał"
+      "resource": "Materiał",
+      "explorer": "Eksplorator"
     },
     "wallet": {
       "title": "Portfele"
     },
-    "writtenBy": "Ten tutorial został napisany przez"
+    "writtenBy": "Ten tutorial został napisany przez",
+    "noTutorialsFound": "Nie mogliśmy znaleźć żadnego poradnika pasującego do Twojego wyszukiwania.",
+    "onThisPage": "Na tej stronie"
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1859,7 +1901,18 @@
     "viewAll": "Zobacz wszystko",
     "week": "Tydzień",
     "practice": "Ćwiczenia",
-    "weight": "Waga"
+    "weight": "Waga",
+    "aboutUs": "O nas",
+    "address": "Adres",
+    "confirmation": "Potwierdzenie",
+    "discover": "Odkryj",
+    "legal": "Prawo",
+    "list": "Lista",
+    "optional": "Opcjonalny",
+    "planBNetwork": "Plan ₿ Sieć",
+    "seeAll": "Zobacz wszystko",
+    "session": "Sesja",
+    "syllabus": "Program nauczania"
   },
   "youtubeChannels": {
     "view": "Zobacz kanał na Youtube",
@@ -1900,7 +1953,9 @@
     },
     "translationPanel": "Panel tłumaczeń",
     "tutorials": "Tutoriale",
-    "userRolesAllocation": "Przydział ról użytkowników"
+    "userRolesAllocation": "Przydział ról użytkowników",
+    "careers": "Kariera",
+    "tutorialsAnalytics": "Analiza tutoriali"
   },
   "videoSelector": {
     "language": {
@@ -1912,7 +1967,12 @@
       "peertube": "Peertube",
       "player": "Player",
       "rumble": "Rumble",
-      "youtube": "Youtube"
+      "youtube": "Youtube",
+      "pears": "Gruszki 🍐"
     }
+  },
+  "footer": {
+    "FOSSOpenContent": "FOSS & Treści otwarte",
+    "proudlyPartOf": "Z dumą jesteśmy częścią <0>Sieci planu ₿</0>"
   }
 }

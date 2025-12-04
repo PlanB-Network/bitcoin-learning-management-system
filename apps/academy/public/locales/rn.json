@@ -63,7 +63,9 @@
       "invalidCredentials": "Amakuru ya konti siyo",
       "usernameRegex": "Izina rikoreshwa rishobora kugira gusa indome, ibiharuro, agashushanyo(_), akaburungu (.) hamwe n’agakwego (-).",
       "usernameRequired": "Izina rikoreshwa rirakenewe.",
-      "usernameTooShort": "Izina rikoreshwa ritegezwa kugira nimiburiburi indome 5."
+      "usernameTooShort": "Izina rikoreshwa ritegezwa kugira nimiburiburi indome 5.",
+      "oldPasswordRequired": "Ibijambo bya mbere bijyanye n'ibanga bikozweho",
+      "passwordTooShort": "Ijambobanga rigufite amabara make"
     },
     "forgottenPassword": "Woba wibagiye ijambo kabanga ryawe?",
     "headerAccountCreated": "Konti yakozwe",
@@ -91,7 +93,11 @@
     "trackProgress": "Kora ikonti canke winjire kugira ukurikirane intambwe ugezeko",
     "tryAgain": "Subira ugerageze",
     "loginNotAvailable1": "Ibikorwa vyo kwinjira ntibiraboneka mu porogaramu ya desktop ubu.",
-    "loginNotAvailable2": "Urashobora kuraba ubuga rwacu kugira winjire kandi ukabona konti yawe."
+    "loginNotAvailable2": "Urashobora kuraba ubuga rwacu kugira winjire kandi ukabona konti yawe.",
+    "forgotPassword": "Wibagiwe ijambobanga?",
+    "login": "Injira",
+    "oldPassword": "Ibijambo bya mbere n'ibanga",
+    "signUp": "Iyandikishe"
   },
   "bCert": {
     "bCertDescription": "₿-CERT ni ikibazo ca nyuma ku bijanye na Bitcoin, cagenewe gupima ubumenyi bwawe kuri Bitcoin n’ivyerekeye ico gisata.\nRonka amanota arenga 80% uce uronka impamyabushobozi ya ₿-CERT, yerekana ubumenyi bwawe mu bijanye na Bitcoin kandi ikwugururira amarembo y’akazi muri ico gisata.",
@@ -131,7 +137,8 @@
     "noConferences": "Nta nama yashizweho mu mwaka wa {{year}} ubu.",
     "pageTitle": "Gusubira kuraba inama",
     "planBConferences": "Inama za Plan ₿",
-    "topics": "Ivyotuvugako"
+    "topics": "Ivyotuvugako",
+    "conferencesGenesis": "Inama zo kubera inyuma y'Imyuka ya Jenesi"
   },
   "courses": {
     "chapter": {
@@ -376,11 +383,17 @@
     "liveClasses": {
       "allOtherTitle": "Ivyigwa vyose bindi vy'ikibiriraho",
       "liveClasses": "Ishure ry'ikibiriraho",
-      "title": "Porogaramu zumwaka zizwi n'amategeko za Plan ₿"
+      "title": "Porogaramu zumwaka zizwi n'amategeko za Plan ₿",
+      "program": {
+        "goal": "Mastera urwanda rw'Bitcoin na Giacomo Zucco mu kigero cya mezi 5, gitangira kubera kwigisha, kubungabunga abasomyi n'amakuru arenga, no kuganira agateramo kukwiyumiliza.",
+        "semester": "Igihembwe",
+        "title": "Agaciro ₿ Programu"
+      }
     },
     "noCoursesFound": "Ntacirwa catowe",
     "plusXMore": "+{{count}} ibindi",
-    "tryAdjustingFilters": "Gerageza guhindura uburyo bwo guhitamwo"
+    "tryAdjustingFilters": "Gerageza guhindura uburyo bwo guhitamwo",
+    "navbarHover": "Iyandikishe kugirango wemeze"
   },
   "dashboard": {
     "adminPanel": {
@@ -1106,7 +1119,16 @@
       "completeACourse": "Uzuza icirwa cawe cambere kugira uronke diplome. ",
       "exploreBCert": "Menya ₿-CERT",
       "getGlobalRecognition": "Bona icubahiro mpuzamakungu ukoresheje impamyabumenyi ya ₿-CERT",
-      "noCertificatesAvailable": "Nta mpamyabumenyi ihari"
+      "noCertificatesAvailable": "Nta mpamyabumenyi ihari",
+      "bCertResults": {
+        "score020": "Usanze wibutse ku rugendo rwo! Umwirukeneye wese yatangiye ku ruhande rwawe",
+        "score100": "Icyuma gikomeye! Niba uwo muntu wiboze we, canke ukoresha bitcoin cyane?",
+        "score2140": "Urasezerana cyane! Rusa ubitegerezwa, uri gushyira cyane!",
+        "score4160": "Icyandika cyiza! Uzamwaka amasomo yo ku mwiherero kuva ubu",
+        "score6180": "Uri ukora cyiza! Komeza kubyiruka ubuhanga bwawe no kudashye kubera Bitcoin",
+        "score8199": "Urupapuro rwiza! Warafite amakuru menshi yo ku byerekeye Bitcoin"
+      },
+      "detailedScore": "Inshuro yiboneye"
     },
     "goToDashboard": "Genda ku rubaho(dashboard)",
     "goToHomepage": "Genda ku rupapuro rw’itanguriro",
@@ -1130,7 +1152,8 @@
       "verify": "Ihweze ukuri kw'Impamyabumenyi",
       "whereYouAre": "Reka turabe aho ugeze !",
       "yourCertificate": "Impamyabumenyi yawe",
-      "yourProgress": "Intambwe umaze guterera :"
+      "yourProgress": "Intambwe umaze guterera :",
+      "noCourseStarted": "Urasanze utangaje amasomo yose y'umwanzuro ubu"
     },
     "profile": {
       "cancel": "Hagarika",
@@ -1166,7 +1189,8 @@
       "save": "Shingura",
       "saving": "Biriko birashingurwa…",
       "securitySettings": "Ihinyanyuriro ry’umutekano",
-      "username": "Izina ry’uwukoresha"
+      "username": "Izina ry’uwukoresha",
+      "emailOrUsername": "Imeyeli canke izina ry'umukozi"
     },
     "teacher": {
       "courses": {
@@ -1354,7 +1378,8 @@
       "numberOfSpots": "Igitigiri c'ibibanza",
       "onlineAndInPerson": "Ku murongo hamwe n'ikibiriraho",
       "secureYourSpot": "Bikisha ikibanza cawe",
-      "whatsPlanned": "Ibitegekanijwe"
+      "whatsPlanned": "Ibitegekanijwe",
+      "sessionBooked": "Сессия забронирована"
     },
     "planBWeek": {
       "pageTitle": "Iyinga ya Plan ₿"
@@ -1425,7 +1450,10 @@
     "watchLecture": "Raba ibisubirwamwo vy’inyigisho"
   },
   "menu": {
-    "login": "Injira"
+    "login": "Injira",
+    "educatorContent": "Содержимое образователей",
+    "getStarted": "Начать",
+    "signIn": "Ukoreshereza"
   },
   "movies": {
     "checkTheMovie": "Reba amareresi"
@@ -1680,12 +1708,15 @@
       "peer-to-peer": "Hagati y’abantu babiri ku giti cabo (Peer-to-peer)",
       "point-of-sale": "Icicaro co kugurishiriza (Point of Sale)",
       "pool": "Ihuriro (Pool)",
-      "resource": "Inkomoko"
+      "resource": "Inkomoko",
+      "explorer": "Исследователь"
     },
     "wallet": {
       "title": "Ingodo(Wallet)"
     },
-    "writtenBy": "Iyi nyigisho yanditswe na"
+    "writtenBy": "Iyi nyigisho yanditswe na",
+    "onThisPage": "На этой странице",
+    "noTutorialsFound": "Ntidushoboye kugera ku rutonde rwo amasomo adafite ibyo dutegereje."
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1875,7 +1906,13 @@
     "topic": "Ijambo ngenderwako",
     "type": "Ubwoko",
     "viewAll": "Raba vyose",
-    "week": "Indwi"
+    "week": "Indwi",
+    "address": "Adiresi",
+    "confirmation": "Kwemeza",
+    "list": "Список",
+    "optional": "Дополнительный",
+    "session": "Сессия",
+    "syllabus": "Программа курса"
   },
   "youtubeChannels": {
     "view": "Raba umuhora wa Youtube",

@@ -19,13 +19,14 @@
     "missionTitle": "Sứ mệnh của chúng tôi",
     "storyContent": "PlanB Network là một sáng kiến ra đời để hỗ trợ việc mở rộng giáo dục về Bitcoin trên phạm vi toàn cầu. Nó là giao điểm của nhiều công ty có đam mê tập trung vào giao dục, phần mềm mã nguồn mở, mạng lưới ngang hàng và ý thức cộng đồng. Cùng nhau, họ đã quyết định xây dựng nên PlanB Network để mang đến một công cụ hữu ích cho sự phát triển của hệ sinh thái Bitcoin. Bài trình chiếu về năm 2023 của chúng tôi có tại đây.",
     "storyTitle": "Câu chuyện về chúng tôi",
-    "title": "Về PlanB Network"
+    "title": "Về PlanB Network",
+    "readManifesto": "Đọc tuyên ngôn của chúng tôi"
   },
   "accessType": {
-    "hybrid": "",
-    "online": "",
-    "physical": "",
-    "replay": ""
+    "hybrid": "Trực tiếp & trực tuyến",
+    "online": "Trực tuyến",
+    "physical": "Trực tiếp",
+    "replay": "Xem lại"
   },
   "auth": {
     "accountCreated": "Tài khoản của bạn đã được tạo, {{userName}}!",
@@ -44,17 +45,17 @@
     "emailAddress": "Địa chỉ email",
     "emailTip": "Không bắt buộc phải có email, nhưng nó có thể hữu ích trong trường hợp bị quên mật khẩu!",
     "emailValidation": {
-      "emailChangeValidated": "",
-      "emailValidated": "",
-      "errorValidatingEmail": "",
-      "errorValidatingEmailChange": "",
-      "errorValidatingEmailChangeDescription": "",
-      "errorValidatingEmailDescription": "",
-      "successfullyChanged": "",
-      "successfullyValidated": "",
-      "validatingEmail": "",
-      "validatingEmailChange": "",
-      "wontTakeLong": ""
+      "emailChangeValidated": "Đã xác nhận thay đổi email",
+      "emailValidated": "Đã xác nhận email",
+      "errorValidatingEmail": "Lỗi xác nhận email",
+      "errorValidatingEmailChange": "Lỗi xác nhận thay đổi email",
+      "errorValidatingEmailChangeDescription": "Đã xảy ra lỗi trong quá trình xác nhận thay đổi email của bạn, dường như đường link đã hết hạn hoặc đã được sử dụng. Vui lòng thử lại.",
+      "errorValidatingEmailDescription": "Đã xảy ra lỗi trong quá trình xác nhận email của bạn, dường như đường link đã hết hạn hoặc đã được sử dụng. Vui lòng thử lại.",
+      "successfullyChanged": "Email của bạn đã được thay đổi thành công thành {{email}}.",
+      "successfullyValidated": "Email của bạn đã được xác nhận thành công.",
+      "validatingEmail": "Đang xác nhận email",
+      "validatingEmailChange": "Đang xác nhận thay đổi email",
+      "wontTakeLong": "Việc này sẽ không mất nhiều thời gian..."
     },
     "errors": {
       "displayNameTooShort": "Tên hiển thị phải có ít nhất hai ký tự.",
@@ -62,7 +63,9 @@
       "invalidCredentials": "Thông tin đăng nhập không hợp lệ",
       "usernameRegex": "Tên người dùng chỉ được bao gồm chữ cái, chữ số, _, . và -",
       "usernameRequired": "Tên người dùng là bắt buộc",
-      "usernameTooShort": "Tên người dùng phải có ít nhất 5 ký tự"
+      "usernameTooShort": "Tên người dùng phải có ít nhất 5 ký tự",
+      "oldPasswordRequired": "Yêu cầu mật khẩu cũ",
+      "passwordTooShort": "Mật khẩu quá ngắn"
     },
     "forgottenPassword": "Bạn quên mật khẩu của mình?",
     "headerAccountCreated": "Tài khoản đã được tạo",
@@ -88,7 +91,13 @@
     "sendLink": "Gửi một đường link",
     "signIn": "Đăng nhập",
     "trackProgress": "Tạo tài khoản hoặc đăng nhập để theo dõi tiến độ của bạn",
-    "tryAgain": "Thử lại"
+    "tryAgain": "Thử lại",
+    "forgotPassword": "Quên mật khẩu?",
+    "login": "Đăng nhập",
+    "loginNotAvailable1": "Tính năng đăng nhập chưa có sẵn trên ứng dụng máy tính để bàn.",
+    "loginNotAvailable2": "Bạn có thể truy cập trang web của chúng tôi để đăng nhập và truy cập tài khoản của bạn.",
+    "oldPassword": "Mật khẩu cũ",
+    "signUp": "Đăng ký"
   },
   "bCert": {
     "bCertDescription": "Chứng chỉ ₿-CERT là một bài thi được công nhận toàn cầu dùng để đánh giá sự thành thạo của bạn liên quan tới Bitcoin và các chủ đề liên quan. Chứng chỉ này có thể chứng minh cho kỹ năng và hiểu biết của bạn trong ngành công nghiệp Bitcoin, cho phép bạn được tiếp cận tới các công ty và cơ hội việc làm tốt nhất.",
@@ -99,7 +108,13 @@
     "organizeExam": "Tổ chức một kỳ thi",
     "pageTitle": "Đạt Chứng chỉ ₿-CERT",
     "tweetText": "Rất tuyệt vì đã đạt được Chứng chỉ ₿-CERT tại @planb_network với số điểm {{score}}/100! {{emoji}} #BCertificate\n\n{{certificateUrl}}",
-    "verify": "Xác minh tính xác thực đối với chứng chỉ của bạn"
+    "verify": "Xác minh tính xác thực đối với chứng chỉ của bạn",
+    "certificates": "Chứng chỉ",
+    "chooseCourse": "Chọn khóa học",
+    "hostSessionConditions": "Dưới đây là cách thực hiện:\n\n1. Đọc <0>Hiến chương</0> - Đảm bảo cộng đồng của bạn đáp ứng các điều kiện chủ trì bắt buộc\n2. Lập kế hoạch & lịch trình - Nếu bạn đủ điều kiện, chọn một ngày và thiết lập phiên họp\n3. Công bố sự kiện của bạn - Liên hệ với chúng tôi để thêm nó vào nền tảng Plan ₿ Network để mọi người có thể tham gia",
+    "noDiplomasAvailable": "Chưa có bằng cấp nào",
+    "noTestSessions": "Hiện tại không có phiên kiểm tra nào",
+    "wantHostSession": "Muốn tổ chức phiên kiểm tra ₿-CERT tại trung tâm cục bộ của bạn?"
   },
   "bet": {
     "educationalContent": {
@@ -122,7 +137,8 @@
     "noConferences": "Chưa có hội nghị nào được thêm cho {{year}} cả.",
     "pageTitle": "Những bản xem lại của các hội nghị",
     "planBConferences": "Hội nghị Plan B",
-    "topics": "Các chủ đề"
+    "topics": "Các chủ đề",
+    "conferencesGenesis": "Hội nghị từ Genesis Block"
   },
   "courses": {
     "chapter": {
@@ -152,20 +168,20 @@
       "unlockFeatures2": "Vui lòng chú ý rằng chúng tôi không thu thập bất kỳ thông tin cá nhân nào, cũng như sử dụng cookies."
     },
     "details": {
-      "associatedProfessors": "",
-      "attendInPersonWarning": "",
+      "associatedProfessors": "Giáo sư hợp tác",
+      "attendInPersonWarning": "Nếu bạn dự định tham dự lớp học này trực tiếp, hãy đảm bảo đặt chỗ của bạn. Trong mọi trường hợp, bài học sẽ được truyền trực tuyến và có sẵn để xem lại.",
       "buyCourse": "Mua khoá học",
       "buyInPersonCourse": "Mua khoá học trực tiếp",
       "buyOnlineCourse": "Mua khoá học online",
       "collaborativeEffort": "Tất cả nội dung trên nền tảng là kết quả của sự phối hợp: mỗi bài học, bài dịch và duyệt lại được tạo ra nhờ các đóng góp viên. Vì lý do này, chúng tôi luôn tìm kiếm những người hiệu đính để duyệt lại các nội dung ở nhiều ngôn ngữ khác nhau. Nếu bạn muốn tham gia vào quá trình hiệu đính, vui lòng liên hệ với chúng tôi qua nhóm <0>Telegram</0> và đọc <1>hướng dẫn</1> của chúng tôi.\n\nChúng tôi xin được nhắc lại rằng nội dung này là mã nguồn mở theo giấy phép <2>CC BY-SA</2>  - do đó nó có thể được chia sẻ, sử dụng thoải mái, chỉ cần bạn trích dẫn đầy đủ nguồn.",
-      "coordinatedBy": "",
+      "coordinatedBy": "Khóa học này được điều phối bởi",
       "courseAddedToDashboard": "Khoá học này đã được thêm vào bảng điều khiển học viên của bạn",
       "curriculum": "Chương trình giảng dạy",
       "description": "Mô tả",
       "hasBeenProofreadBy": "Khoá học này đã được hiệu đính bởi",
       "hasNotBeenProofread": "Khoá học này vẫn chưa được hiệu đính",
       "inPersonAccess": "Bạn cần tải về vé của mình để tham dự trực tiếp vào lớp học.",
-      "learning": "",
+      "learning": "Lộ trình học tập",
       "mobile": {
         "hours": "{{hours}} giờ"
       },
@@ -191,7 +207,7 @@
       "certificateAvailable": "Nó sẽ có sẵn khoảng 10 tiếng đồng hồ sau khi nộp lên.",
       "certificateGeneration": "Chứng chỉ của bạn đang được ",
       "certificatePageOtherCourses": "Các khoá học liên quan khác",
-      "completed": "",
+      "completed": "Đã hoàn thành kỳ thi!",
       "congratulations": "Chúc mừng, bạn đã kết thúc khoá học!",
       "congratulationsPassed": "Chúc mừng, bạn đã <0>passed</0> bài ki��m tra cuối!",
       "courseDiploma": "Chứng chỉ khoá học",
@@ -199,7 +215,7 @@
       "dontGiveUpTryAgain": "Đừng bỏ cuộc!\nBạn có thể thử lại sau 24 giờ.",
       "dontWorry": "Đừng lo lăng về các lỗi; bài kiểm tra này nhằm mục đích cải thiện việc học tập của bạn. Nếu chưa vượt qua được, bạn có thể thực hiện lại sau 24 giờ.",
       "dontWorryRetake": "Đừng lo lắng, bạn có thể thực hiện lại bài kiểm tra sau 24 giờ.",
-      "examAvailabilityDetails": "",
+      "examAvailabilityDetails": "Nếu kỳ thi không được vượt qua trong thời gian có sẵn trên nền tảng, sinh viên sẽ tự động nhận điểm 0.",
       "examCertificateCompletionText": "Plan ₿ Network rất vinh hạnh được chúc mừng {{username}} vì đã nhận được chứng chỉ của khoá học “{{courseName}}”.",
       "examDetails": "Bài kiểm tra có {{nb}} câu hỏi trắc nghiệm nhiều lựa chọn, mỗi câu hỏi có một lựa chọn đúng. Bạn có thể thay đổi câu trả lời của mình vào bất kỳ thời điểm nào trước khi nộp bài, miễn là thời gian làm bài chưa kết thúc.",
       "examNotPassed": "Bạn cần tham gia bài kiểm tra cuối khoá và đạt trên 80% để nhận được bằng tốt nghiệp và hoàn thành khoá học. Bằng tốt nghiệp này sẽ <0>được gán nhãn thời gian</0> để đảm bảo tính xác thực.",
@@ -207,7 +223,7 @@
       "failed": "Rớt",
       "failedDiploma": "Bạn cần đạt trên 80% điểm của bài kiểm tra cuối khoá để nhận được bằng tốt nghiệp và hoàn thành khoá học. Bạn có thể làm lại bài kiểm tra sau 24 giờ.",
       "finalExam": "Bài kiểm tra cuối",
-      "finalScore": "",
+      "finalScore": "Điểm số cuối cùng",
       "findInformationChapter": "Tìm thêm thông tin về chương này:",
       "futureProof": "Bảo chứng tương lai: Bằng cấp của bạn được bảo vệ vĩnh viễn và luôn có giá trị.",
       "getCertificate": "Nhận chứng chỉ của tôi",
@@ -217,9 +233,9 @@
       "goodLuck": "Chúc bạn may mắn!",
       "instantVerification": "Xác thực nhanh chóng: Nhà tuyển dụng có thể dễ dàng xác minh tính xác thực của bằng cấp và ngày cấp.",
       "instructions": "Hướng dẫn:",
-      "nbMinutes": "",
-      "nbQuestions": "",
-      "nextChapter": "",
+      "nbMinutes": "{{nb}} phút",
+      "nbQuestions": "{{nb}} câu hỏi",
+      "nextChapter": "Chương tiếp theo",
       "noGoBack": "Không, quay lại",
       "notTranslatedYet": "Chúng tôi xin lỗi, nhưng bài kiểm tra cuối đang không khả dụng với ngôn ngữ mà bạn đã chọn. Bạn có thể chuyển sang ngôn ngữ khác để tiếp tục.",
       "oneMinuteLeft": "Bạn chỉ còn 1 phút",
@@ -228,32 +244,32 @@
       "passRate": "Tỷ lệ đậu là 80%.",
       "planBTimeStamp": "Tại Plan ₿ Network, chúng tôi bảo mật chứng chỉ của bạn bằng cách sử dụng công nghệ gán nhãn thời gian được hỗ trợ bởi blockchain.",
       "quitWithoutSubmitting": "Ui, có vẻ như bạn đã rời khoải trang mà quên nộp bài. Điều này đã huỷ bài thi của bạn.",
-      "readyToTest": "",
+      "readyToTest": "Sẵn lòng kiểm tra kiến thức của bạn chưa?",
       "receiveDiploma": "Nhận bằng tốt nghiệp của bạn",
       "results": {
-        "correct": "",
-        "incorrect": "",
-        "questions": "",
-        "time": ""
+        "correct": "Câu trả lời đúng",
+        "incorrect": "Câu trả lời sai",
+        "questions": "Câu trả lời đã trả lời",
+        "time": "Thời gian sử dụng"
       },
       "retakeExam": "Thực hiện lại bài kiểm tra",
       "retakeInstructions": "Bạn có 20 phút để trả lời 40 câu hỏi, mỗi câu hỏi sẽ chỉ có một đáp án đúng. Bạn có thể di chuyển qua lại giữa các câu hỏi và nộp bài thi của mình khi làm xong.",
       "sameRules": "Bạn chuẩn bị thực hiện lại bài kiểm tra. Các quy tắc vẫn như vậy.",
       "score": "Điểm của bạn là",
-      "singleAttempt": "",
-      "singleAttemptAvailability": "",
-      "singleAttemptPrecaution": "",
+      "singleAttempt": "Kỳ thi một lần thử",
+      "singleAttemptAvailability": "Kỳ thi này có sẵn trực tuyến từ {{date}}",
+      "singleAttemptPrecaution": "Trước khi bắt đầu, hãy đảm bảo rằng kết nối của bạn ổn định. Vì đây là kỳ thi một lần thử, nếu bạn bị mất kết nối, bạn sẽ không thể thử lại.",
       "skipExam": "Bỏ qua bài kiểm tra",
       "skipExamDescription": "Bạn cũng có thể bỏ qua bài kiểm tra và đi thẳng đến phần kết luận bằng cách nhấp vào nút bên dưới.",
       "skipExamGoConclusion": "Bỏ qua bài kiểm tra, đi tới phần kết luận",
       "skipGoConclusion": "Bỏ qua, đi tới phần kết luận",
-      "solidEffort": "",
+      "solidEffort": "Xin chúc mừng vì đã hoàn thành khóa học, bạn đã cố gắng hết sức.\nDù bạn không qua được lần này, nhưng mỗi bước tiến đều mang lại tiến bộ.\nHãy tiếp tục hành trình học tập của bạn!",
       "startExam": "Bắt đầu bài kiểm tra",
       "submit": "Nộp bài",
       "successDiploma": "Chúc mừng! Bạn đã vượt qua bài kiểm tra thành công.\nBằng tốt nghiệp của bạn đang có sẵn trên bảng điều khiển học viên. Nó đã được <0>gán nhãn thời gian</0> để đảm bảo tính xác thực.",
-      "successDiplomaTeacherLed": "",
+      "successDiplomaTeacherLed": "Xin chúc mừng! Bạn đã vượt qua khóa học thành công. \nBằng cấp của bạn giờ đây có sẵn trong trang tổng quan học viên của bạn.",
       "successDiplomaTimeStamped": "Chúc mừng! Bạn đã vượt qua bài kiểm tra thành công.\nBằng tốt nghiệp của bạn sẽ có sẵn trên bảng điều khiển học viên trong khoảng 10 giờ sau khi bạn hoàn thành bài kiểm tra. Việc chậm trễ này là công nghệ <0>gán nhãn thời gian</0> nhằm đảm bảo tính xác thực của bằng tốt nghiệp.",
-      "successfulPassedThreshold": "",
+      "successfulPassedThreshold": "Xin chúc mừng vì đã hoàn thành khóa học.\nBạn đã thành công khi đạt đến ngưỡng qua môn cho khóa học này và bạn đã tốt nghiệp. \nBạn có thể tìm bằng cấp của mình trong trang tổng quan của bạn.",
       "sureSubmit": "Bạn có chắc là muốn nộp bài?",
       "takeExam": "Làm bài kiểm tra",
       "tamperProof": "Chống giả mạo: Blockchain đảm bảo rằng không ai có thể thay đổi hoặc làm giả chứng chỉ của bạn.",
@@ -269,19 +285,22 @@
       "tryAgain": "Thử lại",
       "tryOneMoreTime": "Hãy thử thêm một lần nữa!",
       "verifyDisplayName": "Trước khi bắt đầu, vui lòng xác nhận lại tên hiển thị của bạn phía dưới, bởi vì nó sẽ được sử dụng để cấp chứng chỉ cho bạn.",
-      "weight": "",
+      "weight": "Trọng số: {{weight}}%",
       "whyTimeStamp": "Gán nhãn thời gian cho chứng chỉ của bạn:\nTại sao điều đó lại quan trọng",
       "wishTryAgain": "Bạn có thể thực hiện lại bài thi sau 24 giờ.",
-      "yesSubmit": "Vâng, nộp bài"
+      "yesSubmit": "Vâng, nộp bài",
+      "examResults": "Kết quả kỳ thi",
+      "scoreAndDiploma": "Điểm số & Bằng cấp"
     },
     "explorer": {
-      "goal": "",
-      "seeCourse": "Xem khoá học"
+      "goal": "Mục tiêu:",
+      "seeCourse": "Xem khoá học",
+      "discover": "Khám phá"
     },
     "format": {
-      "hybrid": "",
-      "inperson": "",
-      "online": ""
+      "hybrid": "Trực tiếp/Trực tuyến",
+      "inperson": "Trực tiếp",
+      "online": "Trực tuyến"
     },
     "part": {
       "count": "Phần số {{count}}/{{total}}"
@@ -291,10 +310,10 @@
       "back_course": "Quay trở lại khoá học",
       "book_description": "Vui long xem lại chi tiết địa điểm đã được cung cấp.\nMột khi quá trình đặt chỗ được xử lý, chúng tôi sẽ cung cấp cho bạn vé xác nhận và mã QR để bạn xuất trình tại sự kiện.",
       "checkoutError": "Một lỗi đã xảy ra trong quá trình thanh toán.\nVui lòng thử lại.",
-      "courseType": "",
+      "courseType": "Loại khóa học",
       "date": "Ngày",
       "duration": "Thời lượng",
-      "hybridDescription": "",
+      "hybridDescription": "Vui lòng xem lại thông tin chi tiết về khóa học được cung cấp.\nMỗi bài học diễn ra trực tiếp vào các ngày và địa điểm được chỉ định. Tất cả các lớp học luôn được truyền trực tuyến trực tiếp và ghi âm để xem lại.\n\nViệc tham gia trực tiếp được quản lý từng bài học, vì vậy chúng tôi rất mong bạn đặt chỗ mỗi lần bạn muốn tham dự trực tiếp.",
       "inPersonCallout": "Bạn đang chuẩn bị mua quyền truy cập <strong>trực tiếp</strong> khoá học này.",
       "inPersonDescription": "Mỗi phần học trực tiếp sẽ diễn ra vào thời gian và địa điểm cụ thể và nội dung cũng được phát trực tuyến trên nền tảng.\nViệc thanh toán này sẽ cấp quyền truy cập cho bạn vào cả các lớp học trực tiếp và trực tuyến.\nĐừng quên đặt trước chỗ ngồi cho các lớp học mà bạn muốn tham dự trực tiếp.",
       "invoiceId": "Tx ID",
@@ -357,11 +376,28 @@
       "writeThoughts": "Bạn có thể viết suy nghĩ của mình ở đây",
       "yesOfCourse": "vâng, tất nhiên",
       "yesVeryMuch": "vâng, rất nhiều"
-    }
+    },
+    "allCourses": "Tất cả các khóa học",
+    "continueLeftOff": "Tiếp tục nơi bạn đã dừng lại",
+    "courseSelector": "Bộ chọn khóa học",
+    "liveClasses": {
+      "allOtherTitle": "Tất cả các lớp học trực tiếp khác",
+      "liveClasses": "Lớp học trực tiếp",
+      "program": {
+        "goal": "Nắm vững ngành công nghiệp Bitcoin cùng Giacomo Zucco trong chương trình kéo dài 5 tháng kết hợp lý thuyết, nghiên cứu trường hợp thực tế và cơ hội mạng lưới độc quyền.",
+        "semester": "Học kỳ",
+        "title": "Chương trình ₿"
+      },
+      "title": "Dẫn dắt Thay đổi. Thành thạo Bitcoin."
+    },
+    "navbarHover": "Đăng ký để mở khóa",
+    "noCoursesFound": "Không tìm thấy khóa học",
+    "plusXMore": "+{{count}} thêm",
+    "tryAdjustingFilters": "Thử điều chỉnh bộ lọc của bạn"
   },
   "dashboard": {
     "adminPanel": {
-      "accessGranted": "",
+      "accessGranted": "Đã cấp quyền truy cập",
       "bookings": "Đặt chỗ",
       "bookingsPanel": "Bảng điều khiển đặt chỗ",
       "careers": {
@@ -374,77 +410,79 @@
         "profession": "Chuyên môn",
         "resultsRemaining": "{{results}} kết quả còn lại",
         "seeMore": "Xem thêm",
-        "viewCV": "Xem CV"
+        "viewCV": "Xem CV",
+        "candidateFile": "Hồ sơ ứng viên",
+        "file": "Hồ sơ"
       },
       "confirmRemoval": "Xác nhận việc loại bỏ",
       "coupons": {
-        "cancel": "",
-        "close": "",
-        "delete": "",
-        "deleteDiscountCodeConfirm": "",
-        "deleteDiscountCodeWarning": "",
-        "discountCode": "",
-        "discountCodeCopied": "",
-        "discountCodeExplanation": "",
-        "discountCodePlaceholder": "",
-        "discountMultiUse": "",
-        "discountSingleUse": "",
-        "discountType": "",
-        "discountValue": "",
-        "discountValueExplanation": "",
-        "downloadImage": "",
-        "downloadImages": "",
-        "explanation": "",
+        "cancel": "Hủy",
+        "close": "Đóng",
+        "delete": "Xóa",
+        "deleteDiscountCodeConfirm": "Bạn có chắc bạn muốn xoá mã giảm giá này không?",
+        "deleteDiscountCodeWarning": "Khi mã này bị xóa, nó sẽ không còn hoạt động nữa. Thay đổi này không thể hoàn tác",
+        "discountCode": "Mã giảm giá",
+        "discountCodeCopied": "Đã sao chép mã giảm giá",
+        "discountCodeExplanation": "Cảnh báo mã này phân biệt chữ hoa chữ thường.",
+        "discountCodePlaceholder": "Để trống để tự động tạo",
+        "discountMultiUse": "Đa dụng",
+        "discountSingleUse": "Dùng một lần",
+        "discountType": "Loại mã giảm giá nào?",
+        "discountValue": "Phần trăm giảm giá",
+        "discountValueExplanation": "Nhập một số tăng lên theo 5 (ví dụ: 5, 10, 15... lên tới 100)",
+        "downloadImage": "Tải hình ảnh",
+        "downloadImages": "Tải hình ảnh",
+        "explanation": "Tạo và quản lý mã giảm giá cho sự kiện và khóa học - dùng một lần cho học bổng hoặc trường hợp tương tự, hoặc đa dụng cho các chiến dịch tiếp thị.",
         "filters": {
-          "all": "",
-          "courses": "",
-          "events": "",
-          "multiUse": "",
-          "singleUse": ""
+          "all": "Tất cả",
+          "courses": "Các khóa học",
+          "events": "Sự kiện",
+          "multiUse": "Đa dụng",
+          "singleUse": "Dùng một lần"
         },
-        "forWhat": "",
-        "forWhichCourse": "",
-        "forWhichEvent": "",
-        "generateCode": "",
-        "generateCodes": "",
-        "generateDiscountCode": "",
-        "generatedCode": "",
-        "generatedCodes": "",
-        "generateNew": "",
-        "generateNewCodes": "",
-        "maximumNumberOfUse": "",
+        "forWhat": "Dành cho loại sản phẩm nào?",
+        "forWhichCourse": "Dành cho khóa học nào?",
+        "forWhichEvent": "Dành cho sự kiện nào?",
+        "generateCode": "Tạo mã",
+        "generateCodes": "Tạo mã",
+        "generateDiscountCode": "Tạo một mã giảm giá",
+        "generatedCode": "Mã đã tạo",
+        "generatedCodes": "Mã đã tạo",
+        "generateNew": "Tạo mã mới",
+        "generateNewCodes": "Tạo mã mới",
+        "maximumNumberOfUse": "Số lần sử dụng tối đa",
         "mobileSort": {
-          "az": "",
-          "highLow": "",
-          "lowHigh": "",
-          "sortBy": "",
-          "za": ""
+          "az": "A-z",
+          "highLow": "Cao - Thấp",
+          "lowHigh": "Thấp - Cao",
+          "sortBy": "Sắp xếp theo",
+          "za": "z-A"
         },
-        "noCouponsFound": "",
-        "numberOfCodes": "",
-        "productCourse": "",
-        "productEvent": "",
-        "selectCourse": "",
-        "selectEvent": "",
+        "noCouponsFound": "Không tìm thấy phiếu giảm giá nào.",
+        "numberOfCodes": "Bạn muốn tạo bao nhiêu mã?",
+        "productCourse": "Khóa học",
+        "productEvent": "Sự kiện",
+        "selectCourse": "Chọn khoá học",
+        "selectEvent": "Chọn sự kiện",
         "tableHead": {
-          "actions": "",
-          "code": "",
-          "discount": "",
-          "maxUses": "",
-          "name": "",
-          "owner": "",
-          "type": "",
-          "uses": ""
+          "actions": "Hành động",
+          "code": "Mã",
+          "discount": "Giảm giá",
+          "maxUses": "Số lần sử dụng tối đa",
+          "name": "Tên",
+          "owner": "Chủ sở hữu",
+          "type": "Loại",
+          "uses": "Đã sử dụng"
         }
       },
-      "coursesIndexes": "",
+      "coursesIndexes": "Chỉ mục khóa học",
       "date": "Thời gian",
-      "deleteRole": "",
-      "discountCodes": "",
+      "deleteRole": "Xóa vai trò",
+      "discountCodes": "Mã giảm giá",
       "downloadList": "Danh sách tải về",
-      "editRole": "",
+      "editRole": "Chỉnh sửa vai trò",
       "githubLink": "Đường dẫn Github",
-      "hasAccessTo": "",
+      "hasAccessTo": "Có quyền truy cập vào:",
       "listOfParticipants": "Danh sách những người tham gia",
       "nameOfEvent": "Tên của sự kiện",
       "participants": "Người tham gia",
@@ -453,23 +491,362 @@
       "searchByNameOrCategory": "Tìm kiếm theo tên hoặc chuyên mục",
       "seeOrEdit": "Xem hoặc chỉnh sửa",
       "selectProfessor": "Lựa chọn giáo sư",
-      "selectRole": "",
+      "selectRole": "Chọn vai trò",
       "tutorialAnalytics": "Phân tích hướng dẫn",
       "tutorialAnalyticsDescription": "Bạn có thể kiểm tra và so sánh tất cả hướng dẫn trên giao thức tại đây.",
       "tutorialsManagementPanel": "Bảng điều khiển quản lý các hướng dẫn",
       "type": "Loại",
       "upcomingBookings": "Các đặt chỗ sắp tới",
       "upcomingBookingsSubtitle": "Bạn có thể tải về danh sách những người tham dự tất cả các sự kiện trực tiếp tại đây.",
-      "userRolesAllocation": "Phân bổ vai trò người dùng"
+      "userRolesAllocation": "Phân bổ vai trò người dùng",
+      "translation": "Bảng dịch thuật",
+      "translationPanel": {
+        "actions": {
+          "accept": "Chấp nhận",
+          "delete": "Xóa",
+          "reject": "Từ chối"
+        },
+        "addContributor": {
+          "addLanguage": "Thêm một ngôn ngữ khác",
+          "assign": "Giao",
+          "assignedLanguages": "Ngôn ngữ đã được giao",
+          "assigning": "Đang giao...",
+          "assignmentSuccess": "Đã gán thành công cho người đóng góp!",
+          "confirm": "Xác nhận",
+          "findContributor": "Tìm người đóng góp",
+          "language": "Ngôn ngữ",
+          "noUsers": "Không có người dùng",
+          "searchUsers": "Tìm người dùng...",
+          "title": "Thêm người đóng góp",
+          "selectLanguage": "Chọn một ngôn ngữ",
+          "selectedUsers": "Người dùng đã chọn:"
+        },
+        "admin": "QUẢN TRỊ",
+        "comingSoon": {
+          "courses": "Sắp có giao diện xem khóa học",
+          "coverage": "Chế độ xem phạm vi ngôn ngữ sắp tới"
+        },
+        "contentManagement": {
+          "actions": {
+            "assign": "Giao",
+            "backToContentManagement": "Quay lại quản lý nội dung",
+            "reassign": "Chuyển nhượng",
+            "view": "Xem"
+          },
+          "assignModal": {
+            "assign": "Giao",
+            "assigning": "Đang giao...",
+            "assigningCourse": "Đang giao khóa học:",
+            "assignmentSuccess": "Giao khóa học thành công!",
+            "cancel": "Hủy",
+            "chooseContributor": "Chọn một người đóng góp...",
+            "courseInfo": "Thông tin Khóa học",
+            "selectContributor": "Chọn Người đóng góp",
+            "title": "Giao Khóa học cho Người đóng góp"
+          },
+          "description": "Quản lý bản dịch khóa học và giao cho người đóng góp",
+          "noCourses": "Không có khóa học nào",
+          "noCoursesFiltered": "Không có khóa học nào phù hợp với bộ lọc của bạn",
+          "notAssigned": "Chưa được giao",
+          "reassignModal": {
+            "cancel": "Hủy",
+            "chooseNewContributor": "Chọn một người đóng góp mới...",
+            "courseInfo": "Thông tin Khóa học",
+            "currentlyAssignedTo": "Hiện đang được giao cho:",
+            "reassign": "Chuyển nhượng",
+            "reassigning": "Đang gán lại...",
+            "reassigningCourse": "Đang gán lại khóa học:",
+            "reassignmentSuccess": "Gán lại khóa học thành công!",
+            "selectNewContributor": "Chọn Đóng góp mới",
+            "title": "Gán Khóa học cho Đóng góp mới",
+            "warning": {
+              "description": "Các chương đã được xem xét sẽ không được gán lại.",
+              "title": "Lưu ý quan trọng"
+            }
+          },
+          "status": {
+            "assigned": "Đã gán",
+            "notAssigned": "Chưa được giao",
+            "readyForReview": "Sẵn sàng để xem xét",
+            "underReview": "Đang xem xét"
+          },
+          "table": {
+            "actions": "Hành động",
+            "contributor": "Người đóng góp",
+            "course": "Khóa học",
+            "index": "Chỉ mục",
+            "language": "Ngôn ngữ",
+            "progress": "Tiến trình",
+            "status": "Trạng thái"
+          },
+          "title": "Quản lý nội dung"
+        },
+        "courseDetails": {
+          "actions": "Hành động",
+          "assignedTo": "Đã gán cho",
+          "chapterIndex": "Chương",
+          "courseIndex": "Chỉ mục Khóa học",
+          "courseInformation": "Thông tin Khóa học",
+          "courseName": "Tên khóa học",
+          "currentContributor": "Người đóng góp hiện tại",
+          "errorLoadingDetails": "Lỗi tải thông tin chi tiết khóa học",
+          "language": "Ngôn ngữ",
+          "noChapters": "Không có chương nào cho khóa học này",
+          "noContributor": "Không có người đóng góp nào được gán",
+          "partTitle": "Phần {{index}}: {{title}}",
+          "progress": "Tiến trình",
+          "status": "Trạng thái",
+          "translationStatus": "Trạng thái dịch",
+          "chapterTitle": "Tiêu đề",
+          "chaptersAndProgress": "Chương và Tiến trình",
+          "chaptersCompleted": "các chương đã hoàn thành"
+        },
+        "courseNotFound": "Không tìm thấy khóa học",
+        "messages": {
+          "noPendingRequests": "Không còn yêu cầu hiệu đính nào chưa giải quyết.",
+          "noPendingRequestsSearch": "Không có yêu cầu hiệu đính nào phù hợp với \"{{query}}\".",
+          "noRejectedRequests": "Không có yêu cầu hiệu đính nào bị từ chối.",
+          "noRejectedRequestsSearch": "Không có yêu cầu hiệu đính nào bị từ chối phù hợp với \"{{query}}\"."
+        },
+        "modal": {
+          "cancel": "Hủy",
+          "close": "Đóng",
+          "contributor": "Người đóng góp",
+          "course": "Khóa học",
+          "doYouWantToAcceptRequest": "Bạn có muốn chấp nhận yêu cầu dịch này không?",
+          "language": "Ngôn ngữ",
+          "provideRejectionReason": "Vui lòng cung cấp lý do từ chối yêu cầu này",
+          "reasonForRejection": "Lý do từ chối",
+          "reasonPlaceholder": "Viết giải thích của bạn ở đây...",
+          "rejecting": "Từ chối...",
+          "requestAcceptedMessage": "Người đóng góp đã được thông báo và bây giờ có thể bắt đầu làm việc trên việc dịch.",
+          "requestAcceptedSuccess": "Bạn đã chấp nhận yêu cầu dịch!",
+          "requestRejectedSuccess": "Yêu cầu từ chối thành công",
+          "submitRejection": "Gửi",
+          "acceptRequest": "Chấp nhận Yêu cầu",
+          "acceptTranslationRequest": "Chấp nhận Yêu cầu Hiệu đính",
+          "accepting": "Đang chấp nhận..."
+        },
+        "noResultsFound": "Không tìm thấy kết quả",
+        "pendingTranslationRequests": "Yêu cầu biên tập chưa được duyệt",
+        "reports": {
+          "chooseYear": "Bạn muốn xem xét năm nào?",
+          "comingSoon": {
+            "courses": "Sắp có giao diện xem khóa học",
+            "coverage": "Chế độ xem phạm vi ngôn ngữ sắp tới"
+          },
+          "contributors": {
+            "assignedCourses": "Các khóa học đã được giao",
+            "completedCourses": "Các khóa học đã hoàn thành",
+            "languages": "Ngôn ngữ",
+            "startDate": "Ngày bắt đầu",
+            "title": "Những người đóng góp",
+            "totalReward": "Tổng phần thưởng",
+            "username": "Tên người dùng"
+          },
+          "courses": {
+            "contributor": "Người đóng góp",
+            "filterByCourse": "Lọc theo khóa học",
+            "lastUpdated": "Cập nhật lần cuối",
+            "progress": "Tiến trình %"
+          },
+          "dateFilter": "Lọc theo ngày",
+          "downloadData": "Tải xuống dữ liệu",
+          "filterByLanguage": "Lọc theo ngôn ngữ",
+          "fromMonth": "Từ",
+          "fromMonthPlaceholder": "Từ tháng nào?",
+          "generalReport": "Báo cáo chung",
+          "languageCoverage": {
+            "completed": "Đã hoàn thành",
+            "inProgress": "Đang tiến hành",
+            "notStarted": "Chưa bắt đầu",
+            "totalCourses": "Tổng số khóa học"
+          },
+          "languagesProofread": "Ngôn ngữ đã hiệu đính",
+          "noContributors": "Không tìm thấy người đóng góp",
+          "noCourses": "Không tìm thấy khóa học",
+          "noLanguages": "Không tìm thấy ngôn ngữ",
+          "proofreadCourses": "Các khóa học đã hiệu đính",
+          "table": {
+            "contributor": "Người đóng góp",
+            "lastUpdated": "Cập nhật lần cuối",
+            "progress": "Tiến trình %"
+          },
+          "tabs": {
+            "contributors": "Những người đóng góp",
+            "courses": "Các khóa học",
+            "coverage": "Phạm vi ngôn ngữ"
+          },
+          "toMonth": "Đến",
+          "toMonthPlaceholder": "Đến tháng nào?",
+          "totalLanguages": "Tổng số ngôn ngữ",
+          "year": "Năm"
+        },
+        "searchPlaceholder": "Tìm kiếm...",
+        "status": {
+          "assigned": "Đã gán",
+          "completed": "Đã hoàn thành",
+          "inProgress": "Đang tiến hành",
+          "readyForReview": "Sẵn sàng để xem xét",
+          "todo": "Cần làm",
+          "underReview": "Đang xem xét"
+        },
+        "table": {
+          "actions": "Hành động",
+          "course": "Khóa học",
+          "index": "Chỉ mục",
+          "language": "Ngôn ngữ",
+          "username": "Tên người dùng"
+        },
+        "tabs": {
+          "contentManagement": "Quản lý nội dung",
+          "reports": "Báo cáo",
+          "requests": "Yêu cầu",
+          "translate": "Dịch",
+          "userManagement": "Quản lý người dùng"
+        },
+        "title": "Bảng dịch của quản trị viên",
+        "toggle": {
+          "pendingRequest": "Yêu cầu đang chờ",
+          "rejectedRequests": "Yêu cầu đã bị từ chối"
+        },
+        "translate": {
+          "actions": {
+            "translate": "Dịch"
+          },
+          "backToCourse": "Quay lại khóa học",
+          "changeSpeed": "Thay đổi tốc độ phát lại",
+          "chapterTitle": "Tiêu đề chương",
+          "compare": "So sánh",
+          "compareDisabledTooltip": "Phiên bản đã kiểm đọc không có sẵn",
+          "compareTooltip": "So sánh bản gốc và bản đã kiểm đọc",
+          "comparison": {
+            "backToChapter": "Quay lại chương",
+            "originalVersion": "Phiên bản gốc",
+            "translatedVersion": "Phiên bản đã dịch"
+          },
+          "description": "Bắt đầu dịch các khóa học sang các ngôn ngữ cụ thể.",
+          "forward15Seconds": "Tiếp tục 15 giây",
+          "imageNotFound": "Không tìm thấy hình ảnh",
+          "language": "Ngôn ngữ",
+          "loadingPresentation": "Đang tải bài thuyết trình...",
+          "noContentAvailable": "Không có nội dung nào",
+          "noCourses": "Hiện tại không cần dịch khóa học nào.",
+          "noOriginalContent": "Không có nội dung gốc",
+          "noPngSlides": "Không có slide PNG nào cho bài thuyết trình này",
+          "noSlidesFound": "Không tìm thấy slide",
+          "originalContent": "Nội dung gốc",
+          "pause": "Tạm dừng",
+          "play": "Chơi",
+          "presentations": "Bài thuyết trình",
+          "rewind15Seconds": "Quay lại 15 giây",
+          "selectLanguagesModal": {
+            "audioFile": "Tập tin âm thanh",
+            "audioFileInfo": "Định dạng được hỗ trợ: MP3, WAV, M4A (Tối đa 50MB)",
+            "audioFileTooLarge": "Tập tin âm thanh quá lớn. Dung lượng tối đa là 50MB.",
+            "cancel": "Hủy",
+            "chooseAudioFile": "Chọn Audio",
+            "chooseFolder": "Chọn thư mục",
+            "choosePptxFile": "Chọn PPTX",
+            "chooseZip": "Chọn ZIP",
+            "course": "Khóa học:",
+            "englishFilesRequired": "Vui lòng đảm bảo rằng tất cả các tệp đã tải lên đều ở tiếng Anh",
+            "existingUploadsInfo": "Các tệp gốc đã được tải lên. Bạn có thể bắt đầu dịch mà không cần thêm chúng lại. Tải lên các tệp mới sẽ ghi đè lên những tệp đã tồn tại.",
+            "folderUrl": "URL của thư mục",
+            "invalidAudioFile": "Vui lòng chọn một tệp audio hợp lệ.",
+            "invalidPptxFile": "Vui lòng chọn một tệp PowerPoint (.pptx) hợp lệ.",
+            "missingFilesError": "Vui lòng tải lên các tệp dịch hoặc cung cấp URL trước khi bắt đầu dịch.",
+            "networkError": "Đã xảy ra lỗi mạng. Vui lòng kiểm tra kết nối của bạn và thử lại.",
+            "noAudioFileSelected": "Không có tệp audio nào được chọn",
+            "noFolderSelected": "Không có thư mục nào được chọn",
+            "noLanguagesAvailable": "Không có ngôn ngữ nào có sẵn để dịch.",
+            "noPptxFileSelected": "Không có tệp PowerPoint nào được chọn",
+            "noZipSelected": "Không có ZIP nào được chọn",
+            "originalLanguage": "Ngôn ngữ gốc:",
+            "overwriteWarning": "Các tệp đang tồn tại sẽ được thay thế.",
+            "pptxFile": "Tệp PowerPoint",
+            "pptxFileInfo": "Chỉ hỗ trợ các tệp .pptx (Tối đa 100MB)",
+            "pptxFileTooLarge": "Tệp PowerPoint quá lớn. Kích thước tối đa là 100MB.",
+            "processingStarted": "Đã bắt đầu dịch! Quá trình có thể mất nhiều phút đối với các khóa học lớn.",
+            "selectLanguages": "Chọn ngôn ngữ để dịch:",
+            "timeoutError": "Yêu cầu dịch đã hết thời gian. Nội dung khóa học có thể quá lớn. Vui lòng thử lại hoặc liên hệ hỗ trợ.",
+            "title": "Chọn Ngôn ngữ để Dịch",
+            "translationFailed": "Dịch thất bại. Vui lòng kiểm tra nhật ký và thử lại.",
+            "uploadAndTranslationStarted": "Tệp đã được tải lên và bắt đầu dịch! Quá trình có thể mất nhiều phút đối với các khóa học lớn.",
+            "uploadError": "Tải lên thất bại. Vui lòng kiểm tra lại tệp của bạn và thử lại.",
+            "uploadFiles": "Tải lên Tệp hỗ trợ (Tùy chọn)",
+            "uploadFolder": "Tải lên thư mục (PPTX + TXT)",
+            "useEnglishLabel": "Khóa học đã được dịch sang tiếng Anh. Sử dụng phiên bản tiếng Anh làm nguồn?",
+            "startSuccess": "Bắt đầu dịch thành công!",
+            "startTranslation": "Bắt đầu dịch",
+            "startingTranslation": "Đang tải lên tệp...",
+            "startingTranslationStep": "Bắt đầu dịch...",
+            "uploadTimeoutError": "Việc tải lên đã hết thời gian sau 10 phút. Vui lòng thử với các tệp nhỏ hơn hoặc kiểm tra kết nối của bạn.",
+            "uploadingFiles": "Đang tải lên tệp..."
+          },
+          "slideNavigation": {
+            "next": "Tiếp theo",
+            "previous": "Trước đó",
+            "slideCounter": "{{current}} / {{total}}"
+          },
+          "slideNotAvailable": "Slide {{slideNumber}} không có sẵn",
+          "slideNotFound": "Không tìm thấy slide",
+          "table": {
+            "actions": "Hành động",
+            "course": "Khóa học",
+            "index": "Chỉ mục",
+            "todoLanguages": "Ngôn ngữ cần dịch",
+            "totalLanguages": "Tổng số ngôn ngữ"
+          },
+          "textContent": "Nội dung văn bản",
+          "title": "Dịch các khóa học",
+          "translateTo": "Dịch sang",
+          "unknownContributor": "Không rõ"
+        },
+        "userManagement": {
+          "status": {
+            "todo": "Cần làm",
+            "published": "Đã xuất bản",
+            "readyForReview": "Sẵn sàng để xem xét",
+            "rejected": "Đã từ chối",
+            "reviewed": "Đã xem xét",
+            "underReview": "Đang xem xét"
+          },
+          "actions": {
+            "backToList": "Quay lại danh sách người dùng",
+            "backToUsers": "Quay lại người dùng",
+            "viewDetails": "Xem chi tiết"
+          },
+          "addContributor": "Thêm người đóng góp",
+          "chapters": "Chương",
+          "contributorInformation": "Thông tin nhà đóng góp",
+          "courses": "Các khóa học",
+          "modal": {
+            "assignments": "Lịch sử phân công",
+            "noAssignments": "Không tìm thấy phân công",
+            "title": "Thông tin người dùng",
+            "userInfo": "Thông tin người dùng"
+          },
+          "noUsers": "Không tìm thấy người đóng góp",
+          "table": {
+            "actions": "Hành động",
+            "assignedCourses": "Các khóa học đã được giao",
+            "language": "Ngôn ngữ",
+            "startDate": "Ngày bắt đầu",
+            "username": "Tên người dùng"
+          },
+          "title": "Những người đóng góp"
+        }
+      }
     },
     "announcements": {
       "groups": {
-        "active": "",
-        "all": "",
-        "summer": ""
+        "active": "Sinh viên được chọn cho Dự án Bài tập",
+        "all": "Tất cả sinh viên đã đăng ký",
+        "summer": "Sinh viên được chọn cho Trường hè"
       },
-      "pickADate": "",
-      "publicationDate": ""
+      "pickADate": "Chọn một ngày",
+      "publicationDate": "Ngày xuất bản"
     },
     "backToDashboard": "Quay lại bảng điều khiển",
     "booking": {
@@ -491,8 +868,8 @@
     },
     "calendar": {
       "eventType": {
-        "class": "",
-        "event": ""
+        "class": "Các lớp",
+        "event": "Sự kiện"
       },
       "personalCalendar": "Lịch cá nhân"
     },
@@ -501,8 +878,8 @@
       "acceptTermsAndConditions": "Tôi đã đọc và chấp nhận các điều khoản",
       "add": "Thêm",
       "allowReceivingEmails": "Tôi đồng ý nhận email từ Plan ₿ Network về các cơ hội việc làm trong tương lai",
-      "applicationComplete": "",
-      "applicationIncomplete": "",
+      "applicationComplete": "Đơn của bạn đã <highlight>Hoàn tất</highlight>",
+      "applicationIncomplete": "Đơn của bạn <highlight>Chưa hoàn tất</highlight>",
       "applicationSaved": "Đơn của bạn đã được lưu lại!",
       "availability": "Sự khả dụng của bạn",
       "availabilityStart": "Khi nào bạn có thể bắt đầu?",
@@ -675,67 +1052,86 @@
       "yourRoles": "Vị trí công việc của bạn"
     },
     "course": {
-      "announcement": "",
-      "assignment": "",
-      "assignmentCompletedDescription": "",
-      "assignmentCompletedTitle": "",
-      "assignmentTitle": "",
+      "announcement": "Thông báo",
+      "assignment": "Bài tập",
+      "assignmentCompletedDescription": "Bài tập dự án của bạn đã được nộp thành công và đang được xem xét.\nĐiểm số của bạn sẽ hiển thị ở đây sau khi chấm điểm.",
+      "assignmentCompletedTitle": "Bài tập đã hoàn thành",
+      "assignmentTitle": "Bài tập dự án",
       "completionDiploma": "Chứng chỉ hoàn thành",
       "completionExamInfo": "Bạn cần hoàn thành bài kiểm tra để có thể truy cập vào tính năng này.",
       "conclusionHeadline": "Đây là bản tòm tắt của những gì bạn đã học được. Nếu một số chương bị bỏ sót hoặc không được xác thực đúng cách, bây giờ là lúc để làm điều đó, hoặc là quay lại để học, hoặc là nhấp vào nút hoàn thành.",
-      "conclusionNotReleased": "",
-      "confirmList": "",
-      "confirmNoEditable": "",
-      "confirmNoEditableFile": "",
-      "confirmSubmission": "",
-      "congratulationsPassed": "",
-      "coordinator": "",
-      "courseCalendar": "",
-      "diplomaReleaseDescription": "",
-      "diplomaReleaseTitle": "",
-      "examScore": "",
-      "exams": "",
+      "conclusionNotReleased": "Kết luận sẽ được mở khóa vào ngày cuối cùng của lớp học.",
+      "confirmList": "Xác nhận danh sách",
+      "confirmNoEditable": "Một khi đã xác nhận, bạn sẽ không thể chỉnh sửa danh sách sở thích này nữa.",
+      "confirmNoEditableFile": "Một khi nộp, bạn sẽ không còn khả năng chỉnh sửa tệp của mình nữa.",
+      "confirmSubmission": "Xác nhận nộp bài",
+      "congratulationsPassed": "Chúc mừng! Bạn đã vượt qua thành công!",
+      "coordinator": "Người điều phối khóa học",
+      "courseCalendar": "Lịch trình khóa học",
+      "diplomaReleaseDescription": "Sau khi tất cả các lớp học đã hoàn thành, bạn sẽ được trao bằng cho việc hoàn thành thành công khóa học. Bằng sẽ có thể tải xuống tại đây sau lớp học cuối cùng và hoàn thành chương kết luận.",
+      "diplomaReleaseTitle": "Phát hành bằng",
+      "examScore": "Điểm:",
+      "exams": "Bài thi",
       "feedbacks": "Tại đây, bạn có thể kiểm tra và chỉnh sửa các xếp hạng và phản hồi mà bạn đã đưa ra cho khoá học này.",
-      "fileUploaded": "",
-      "finalGradeSummary": "",
-      "finalScore": "",
-      "generalInformation": "",
-      "individualWork": "",
-      "isSubmissionFinal": "",
-      "joinTelegramGroup": "",
-      "keepEditing": "",
-      "keepMovingForward": "",
-      "leastPreferred": "",
-      "listSaved": "",
-      "listSavedComeTomorrow": "",
-      "mostPreferred": "",
-      "mustBePdf": "",
-      "notSelectedAssignment": "",
-      "projectRankingInstructions": "",
-      "ranking": "",
-      "rankingInstructions": "",
-      "rankingOnly24Hours": "",
-      "rankProjectPreferences": "",
+      "fileUploaded": "Công việc của bạn đã được tải lên thành công!",
+      "finalGradeSummary": "Tóm tắt điểm số cuối kỳ",
+      "finalScore": "Điểm số cuối cùng",
+      "generalInformation": "Thông tin chung",
+      "individualWork": "Công việc cá nhân",
+      "isSubmissionFinal": "Bài nộp của bạn đã hoàn tất chưa?",
+      "joinTelegramGroup": "Tham gia nhóm Telegram",
+      "keepEditing": "Tiếp tục chỉnh sửa",
+      "keepMovingForward": "Mặc dù bạn đã không vượt qua lần này, nhưng mỗi bước điều đó tạo nên sự tiến bộ. Hãy tiếp tục hành trình học tập của bạn!",
+      "leastPreferred": "Ít ưa thích nhất",
+      "listSaved": "Danh sách ưa thích của bạn đã được lưu.",
+      "listSavedComeTomorrow": "Danh sách ưa thích của bạn đã được lưu. \nHãy quay lại đây vào ngày mai để phát hiện Dự án bạn đã được giao.",
+      "mostPreferred": "Ưa thích nhất",
+      "mustBePdf": "Tệp của bạn phải là PDF. Nếu bạn cần gửi thêm tệp, vui lòng chèn liên kết liên quan vào bên trong PDF của bạn.",
+      "notSelectedAssignment": "Rất tiếc, bạn đã không được chọn để tham gia vào việc gán Dự án.\nBạn vẫn có thể tiếp tục theo dõi các bài giảng của khóa học.",
+      "projectRankingInstructions": "Hướng dẫn Xếp hạng Dự án:",
+      "ranking": "Xếp hạng",
+      "rankingInstructions": "Sắp xếp các dự án đề xuất theo sở thích của bạn (số 1 là lựa chọn hàng đầu của bạn). Xếp hạng này sẽ giúp chúng tôi phân công cho bạn dự án phù hợp nhất. Sinh viên có điểm cao hơn sẽ được xem xét lựa chọn trước.",
+      "rankingOnly24Hours": "Cổng xếp hạng sẽ chỉ mở trong vòng 24 giờ, từ 00:00 đến 23:59 ngày 2 tháng 6 (UTC+2).",
+      "rankProjectPreferences": "Xếp hạng sở thích dự án của bạn",
       "ratingsAndFeedbacks": "Các xếp hạng và phản hồi",
-      "readAssignment": "",
-      "saveList": "",
+      "readAssignment": "Đọc thêm về việc gán công việc",
+      "saveList": "Lưu danh sách",
       "shareOnSocials": "Chia sẻ trên mạng xã hội:",
-      "submissionInstructions": "",
-      "submitBefore": "",
+      "submissionInstructions": "Hướng dẫn nộp bài",
+      "submitBefore": "Bạn phải nộp công việc của mình trước {{date}} lúc {{hour}}. Công việc nộp sau hạn này sẽ không được chấm điểm.",
       "submitReviewInfo": "Bạn phải nộp một đánh giá để có quyền truy cập vào tính năng này.",
-      "submitYourWork": "",
-      "summerSchool": "",
-      "surePreferenceList": "",
-      "thresholdToPass": "",
-      "tweetText": "Vui mừng vì đã hoàn thành khoá học {{courseIndex}} tại @planb_network và nhận được chứng chỉ của tôi với điểm số {{score}}/100 ở bài kiểm tra cuối khoá! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}"
+      "submitYourWork": "Nộp công việc của bạn",
+      "summerSchool": "Trường hè",
+      "surePreferenceList": "Bạn có chắc chắn về danh sách ưu tiên của mình không?",
+      "thresholdToPass": "Ngưỡng vượt qua: {{threshold}}%",
+      "tweetText": "Vui mừng vì đã hoàn thành khoá học {{courseIndex}} tại @planb_network và nhận được chứng chỉ của tôi với điểm số {{score}}/100 ở bài kiểm tra cuối khoá! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
+      "assignmentNotAccessible": "Bài tập đã bắt đầu và không còn truy cập được nữa.",
+      "assignmentScore": "Điểm số bài tập",
+      "tweetTextCourseDiploma": "Phấn khích khi đã hoàn thành khóa học {{courseName}}, được dạy bởi {{courseCoordinator}} trên @planb_network và đã nhận được bằng của tôi!\n#PBNDiploma\n\n{{certificateUrl}}",
+      "viewScoreSummary": "Xem tổng kết điểm số",
+      "wellDoneCompleting": "Chúc mừng bạn đã hoàn thành và vượt qua khóa học này!\nĐây là tấm bằng xứng đáng của bạn",
+      "yourProjectAssignment": "Bài tập dự án của bạn"
     },
     "credentials": {
       "beingGraded": "Bài kiểm tra của bạn đang được chấm điểm. Các kết quả sẽ có trong khoảng 1 hoặc 2 tuần.",
       "courseDiplomas": "Các chứng chỉ khoá học",
-      "globalCertifications": "Các chứng chỉ toàn cầu"
+      "globalCertifications": "Các chứng chỉ toàn cầu",
+      "bCertResults": {
+        "score020": "Bạn đã bắt đầu hành trình của mình! Mọi chuyên gia đều từng bắt đầu từ đây",
+        "score100": "Điểm tuyệt đối! Bạn có phải là Satoshi, hay chỉ đơn giản là tài năng?",
+        "score2140": "Bạn đã nắm vững những kiến thức cơ bản! Hãy tiếp tục, bạn đang tiến bộ nhanh chóng!",
+        "score4160": "Vững chắc! Bạn đã sẵn sàng cho các lớp nâng cao",
+        "score6180": "Bạn đang làm rất tốt! Hãy tiếp tục nâng cao kỹ năng và thạo về Bitcoin",
+        "score8199": "Hiểu biết tốt! Bạn điều khiển các chủ đề Bitcoin phức tạp một cách dễ dàng"
+      },
+      "completeACourse": "Hãy hoàn thành khóa học đầu tiên để nhận bằng ",
+      "detailedScore": "Điểm chi tiết",
+      "exploreBCert": "Khám phá ₿-CERT",
+      "getGlobalRecognition": "Nhận sự công nhận toàn cầu với chứng chỉ ₿-CERT",
+      "noCertificatesAvailable": "Không có chứng chỉ nào khả dụng"
     },
-    "goToDashboard": "",
-    "goToHomepage": "",
+    "goToDashboard": "Đi đến bảng điều khiển",
+    "goToHomepage": "Đi đến trang chủ",
     "logout": "Đăng xuất",
     "myCourses": {
       "completeAll": "Hoàn thành tất cả",
@@ -756,7 +1152,8 @@
       "verify": "Xác minh tính xác thực chứng chỉ của bạn",
       "whereYouAre": "Hãy xem bạn đang ở đâu!",
       "yourCertificate": "Chứng chỉ của bạn",
-      "yourProgress": "Tiến độ của bạn:"
+      "yourProgress": "Tiến độ của bạn:",
+      "noCourseStarted": "Bạn chưa bắt đầu bất kỳ khóa học tự học nào"
     },
     "profile": {
       "cancel": "Huỷ",
@@ -766,88 +1163,106 @@
       "edit": "Chỉnh sửa",
       "email": "Email",
       "emailChangeConfirmation": "Một email xác nhận việc thay đổi email của bạn đã được gửi đi, vui lòng kiểm tra hộp thư đến để xác nhận.",
-      "emailChangeRateLimitError": "",
+      "emailChangeRateLimitError": "Bạn vừa mới cập nhật email. Vui lòng chờ vài phút trước khi thử lại.",
       "notificationSettings": {
-        "coursesOption": "",
-        "description": "",
-        "emailPreferencesDescription": "",
-        "emailPreferencesSavedSuccessfully": "",
-        "emailPreferencesTitle": "",
-        "emailTitle": "",
-        "emailWarning": "",
-        "eventsOption": "",
-        "generalOption": "",
-        "goToProfile": "",
-        "loadEmailSettingsError": "",
-        "loadEmailSettingsErrorDescription": "",
-        "loadEmailSettingsErrorManage": "",
-        "none": "",
-        "platformTitle": "",
-        "settingsSaved": "",
-        "title": ""
+        "coursesOption": "Cập nhật về các khóa học bạn đã đăng ký",
+        "description": "Bạn có thể tùy chỉnh cài đặt thông báo dưới đây. ",
+        "emailPreferencesDescription": "Ở đây, bạn có thể chọn các loại email bạn muốn chúng tôi gửi cho bạn. Những cài đặt này chỉ áp dụng cho địa chỉ email liên quan đến liên kết này.",
+        "emailPreferencesSavedSuccessfully": "Sở thích email của bạn đã được cập nhật thành công.",
+        "emailPreferencesTitle": "Quản lý tùy chỉnh email về Mạng lưới Plan ₿ của bạn",
+        "emailTitle": "Bạn muốn nhận loại thông báo nào qua email?",
+        "emailWarning": "Cảnh báo! Không có địa chỉ email nào được liên kết với tài khoản của bạn. Vui lòng thêm nó trong mục hồ sơ của bạn.",
+        "eventsOption": "Cập nhật về các sự kiện bạn đã đặt",
+        "generalOption": "Thông tin chung và tin tức về Mạng lưới Plan ₿",
+        "goToProfile": "Chuyển đến Hồ sơ",
+        "loadEmailSettingsError": "Xin lỗi, chúng tôi không thể tải tùy chỉnh email của bạn.",
+        "loadEmailSettingsErrorDescription": "Vui lòng đảm bảo rằng liên kết bạn đã sử dụng là đúng.",
+        "loadEmailSettingsErrorManage": "Nếu bạn có quyền truy cập vào tài khoản của mình, bạn cũng có thể quản lý cài đặt ngay trên bảng điều khiển của mình:",
+        "none": "Không",
+        "platformTitle": "Bạn muốn nhận loại thông báo nào trên nền tảng này?",
+        "settingsSaved": "Cài đặt của bạn đã được lưu thành công!",
+        "title": "Cài đặt thông báo"
       },
       "password": "Mật khẩu",
       "preview": "Xem trước",
       "profilePicture": "Ảnh hồ sơ",
       "save": "Lưu lại",
       "saving": "Đang lưu…",
-      "securitySettings": "",
-      "username": "Tên người dùng"
+      "securitySettings": "Cài đặt bảo mật",
+      "username": "Tên người dùng",
+      "emailOrUsername": "Email hoặc tên đăng nhập"
     },
     "teacher": {
       "courses": {
-        "allStudents": "",
+        "allStudents": "Tất cả sinh viên",
         "announcementModal": {
-          "contentLabel": "",
-          "contentPlaceholder": "",
-          "create": "",
-          "dateRequired": "",
-          "editAnnouncement": "",
-          "groupLabel": "",
-          "title": "",
-          "typeLabel": "",
-          "typePlaceholder": ""
+          "contentLabel": "Nội dung của thông báo",
+          "contentPlaceholder": "Vui lòng gõ ở đây.",
+          "create": "Tạo thông báo",
+          "dateRequired": "Yêu cầu phải có ngày",
+          "editAnnouncement": "Chỉnh sửa thông báo",
+          "groupLabel": "Chọn nhóm sinh viên bạn muốn nhắc đến",
+          "title": "Viết một thông báo",
+          "typeLabel": "Đây là loại thông báo gì?",
+          "typePlaceholder": "Chọn một loại"
         },
-        "announcements": "",
-        "announcementsIntroduction": "",
-        "announcementsPast": "",
-        "announcementsPastDescription": "",
-        "announcementsUpcoming": "",
-        "announcementsUpcomingDescription": "",
-        "assignment": "",
+        "announcements": "Thông báo",
+        "announcementsIntroduction": "Ngoài các thông báo tự động về lịch học, bạn còn có tùy chọn để viết và lên lịch thông báo thêm cho sinh viên của mình. Ví dụ, bạn có thể thông báo cho họ về các thay đổi logistic hoặc cập nhật vào phút cuối.\nSinh viên sẽ nhận được các thông báo này trên nền tảng, và cũng qua email (nếu họ kích hoạt tính năng tùy chọn này).",
+        "announcementsPast": "Thông báo trước",
+        "announcementsPastDescription": "Dưới đây là danh sách các thông báo đã được công bố. Danh sách này sẽ được xóa sau một tháng.",
+        "announcementsUpcoming": "Thông báo sắp tới",
+        "announcementsUpcomingDescription": "Dưới đây là những thông báo tương lai mà bạn đã viết và lên lịch.",
+        "assignment": "Bài tập",
         "assignmentGrade": {
-          "alertDescription": "",
-          "alertTitle": "",
-          "confirmPublication": "",
-          "confirmPublicationDescription": "",
-          "confirmPublicationTitle": "",
-          "description": "",
-          "grade100": "",
-          "gradesPublished": "",
-          "missingGradesDescription": "",
-          "missingGradesTitle": "",
-          "publishAllGrades": "",
-          "studentDisplayName": "",
-          "title": ""
+          "alertDescription": "Sau khi tất cả các điểm đã được gõ vào, nhấp vào \"Đăng tất cả các điểm\" để đăng tất cả chúng cùng một lúc.\nVui lòng kiểm tra lại các điểm trước, vì chúng sẽ không thể chỉnh sửa được nữa sau khi đã được đăng. ",
+          "alertTitle": "Chấm điểm bài tập",
+          "confirmPublication": "Xác nhận việc công bố",
+          "confirmPublicationDescription": "Sau khi điểm số được công bố, không thể quay lại bởi vì chúng sẽ không còn có thể chỉnh sửa nữa.",
+          "confirmPublicationTitle": "Bạn đã xác minh xem không có lỗi chưa?",
+          "description": "Sinh viên được sắp xếp theo nhóm bài tập.",
+          "grade100": "Điểm (/100)",
+          "gradesPublished": "Điểm đã được công bố.",
+          "missingGradesDescription": "Nếu điểm được công bố, những điểm bị thiếu sẽ được thay thế bằng 0/100.",
+          "missingGradesTitle": "Vẫn còn thiếu {{count}} điểm!",
+          "publishAllGrades": "Công bố tất cả các điểm",
+          "studentDisplayName": "Học viên (Tên hiển thị)",
+          "title": "Điểm bài tập",
+          "courseAssignment": "Bài tập của khoá học"
         },
-        "assignmentStudents": "",
+        "assignmentStudents": "Bài tập dự án",
         "courseDetails": "Chi tiết khoá học",
         "courseLongDescription": "Mô tả giới thiệu",
         "courseModification": "Nếu bạn cần hỗ trợ để chỉnh sửa vài thứ của khoá học, vui lòng kiểm tra <0>tutorial</0>.",
         "curriculum": "Chương trình học",
         "curriculumDescription": "Đây là chương trình hiện tại của khoá học này.",
-        "deleteAnnouncementTitle": "",
-        "deleteAnnouncementWarning": "",
+        "deleteAnnouncementTitle": "Bạn có chắc chắn muốn xóa thông báo này không?",
+        "deleteAnnouncementWarning": "Thay đổi này không thể hoàn tác",
         "editOnGithub": "Chỉnh sửa trên Github",
         "examResults": "Kết quả của kỳ thi",
         "makeModifications": "Có cần phải sửa đổi không?",
-        "noPastAnnouncement": "",
-        "noWrittenAnnouncement": "",
+        "noPastAnnouncement": "Bạn KHÔNG CÓ thông báo nào trong quá khứ vào lúc này.",
+        "noWrittenAnnouncement": "Bạn không có thông báo nào được viết vào lúc này.",
         "objectives": "Các mục tiêu",
         "quickRecap": "Bạn có thẻ tìm thấy tất cả thông tin chung về khoá học này tại đây.",
         "reviews": "Duyệt lại",
-        "summerStudents": "",
-        "writeAnnouncement": ""
+        "summerStudents": "Trường hè",
+        "writeAnnouncement": "Viết một thông báo",
+        "amountPaid": "Số tiền đã thanh toán",
+        "averageAttempts": "Số lần thử trung bình",
+        "averageDuration": "Thời gian trung bình",
+        "averageScore": "Điểm trung bình",
+        "exportExamData": "Xuất dữ liệu kỳ thi",
+        "finalAverageResults": "Kết quả trung bình cuối cùng",
+        "finalScore": "Điểm số cuối cùng",
+        "lastActive": "Lần hoạt động cuối",
+        "medianScore": "Điểm trung vị",
+        "noExamLinked": "Hiện tại không có kỳ thi nào liên kết với khóa học này. Nếu bạn muốn tạo một kỳ thi, vui lòng liên hệ với chúng tôi.",
+        "overview": "Tổng quan",
+        "questionsInExam": "Câu hỏi trong kỳ thi",
+        "studentsGraduated": "Sinh viên tốt nghiệp",
+        "successRate": "Tỷ lệ thành công",
+        "thresholdToPass": "Ngưỡng để qua",
+        "totalQuestions": "Tổng số câu hỏi"
       },
       "profile": {
         "billingInformation": "Thông tin thanh toán",
@@ -878,6 +1293,29 @@
       "tutorials": {
         "tutorialAnalyticsDescription": "Ở đây, bạn có thể tìm thấy các phân tích dựa trên các hướng dẫn bạn đã tạo ra và xuất bản trên nền tảng.",
         "yourTutorials": "Các hướng dẫn của bạn"
+      },
+      "discount": {
+        "description": "Ở đây bạn có thể tạo và quản lý các mã giảm giá cho khóa học này - dùng một lần cho học bổng hoặc các trường hợp tương tự, hoặc dùng nhiều lần cho các chiến dịch tiếp thị."
+      }
+    },
+    "professor": {
+      "courses": {
+        "overview": {
+          "announceChange": "Thông báo một thay đổi",
+          "attendanceList": "Danh sách điểm danh",
+          "courseEnded": "Khóa học này đã kết thúc.",
+          "courseNotStarted": "Khóa học này chưa bắt đầu.",
+          "enrolledStudents": "Học viên đã đăng ký",
+          "hasEnrolled": "đã đăng ký",
+          "hasGraduated": "đã tốt nghiệp với điểm số là {{score}}%",
+          "hasLeftReview": "đã để lại một đánh giá",
+          "hasLeftReviewAndComment": "đã để lại một đánh giá và một bình luận",
+          "notifyStudents": "Đã có thay đổi gì? Thông báo cho học viên của bạn.",
+          "overallPerformance": "Hiệu suất tổng thể",
+          "recentActivity": "Hoạt động gần đây",
+          "studentsRegistered": "Học viên đã đăng ký",
+          "upcomingClass": "Lớp sắp học"
+        }
       }
     }
   },
@@ -891,7 +1329,8 @@
       "purchased": "Đã thanh toán",
       "unlimited": "không giới hạn",
       "visitWebsite": "Thăm website",
-      "watchReplay": "Xem bản phát lại"
+      "watchReplay": "Xem bản phát lại",
+      "buyLecture": "Mua bài giảng"
     },
     "main": {
       "upcomingEvents": "Những sự kiện sắp tới"
@@ -904,12 +1343,12 @@
       "address": "Địa chỉ",
       "back_events": "Quan lại các sự kiện",
       "book_seat": "Đặt chỗ",
-      "callout_book_online": "",
-      "callout_book_physical": "",
-      "callout_book_replay": "",
-      "callout_purchase_online": "",
-      "callout_purchase_physical": "",
-      "callout_purchase_replay": "",
+      "callout_book_online": "Bạn đang sắp đặt truy cập trực tuyến vào sự kiện này.",
+      "callout_book_physical": "Bạn đang sắp đặt <highlight>truy cập trực tiếp</highlight> vào sự kiện này.",
+      "callout_book_replay": "Bạn đang sắp đặt truy cập vào video phát lại của sự kiện này.",
+      "callout_purchase_online": "Bạn đang sắp mua <highlight>truy cập trực tuyến</highlight> vào sự kiện này.",
+      "callout_purchase_physical": "Bạn đang sắp mua <highlight>truy cập trực tiếp</highlight> vào sự kiện này.",
+      "callout_purchase_replay": "Bạn đang sắp mua quyền truy cập vào video phát lại của sự kiện này.",
       "date": "Ngày",
       "description_free_physical": "Vui lòng xem lại chi tiết địa chỉ đã được cung cấp.\nMột khi việc đặt chỗ hoàn tất, chúng tôi sẽ cung cấp cho bạn vé xác nhận và mã QR để bạn xuất trình tại sự kiện.",
       "description_online": "Vui lòng xem lại ngày và giờ của sự kiện.\nKhi thời gian đến, đăng nhập vào nền tảng để truy cập vào các buổi phát trực tuyến trên trang sự kiện.",
@@ -917,13 +1356,45 @@
       "download_ticket": "Tải về vé của bạn",
       "language": "Ngôn ngữ được nói",
       "limitation": "Giới hạn",
-      "limitedSeats": "",
+      "limitedSeats": "Số lượng chỗ ngồi có hạn. Vui lòng hủy đặt chỗ nếu bạn không thể tham dự.",
       "max_capacity": "Sức chứa tối đa của",
       "payment_successful": "Đặt chỗ thành công !",
       "time": "Thời gian"
     },
-    "tcDisclaimer": "",
-    "tcMustBeAccepted": ""
+    "tcDisclaimer": "Tôi đồng ý rằng thông tin của tôi có thể được chia sẻ với các nhà tổ chức cho mục đích truy cập địa điểm.",
+    "tcMustBeAccepted": "Bạn phải chấp nhận các điều khoản và điều kiện để tiếp tục",
+    "addEvent": "Thêm sự kiện",
+    "calendar": {
+      "inXMonths": "Trong {{number}} tháng",
+      "lastMonth": "Tháng trước",
+      "nextMonth": "Tháng sau",
+      "noEventsFound": "Không tìm thấy sự kiện nào",
+      "thisMonth": "Tháng này",
+      "today": "Hôm nay",
+      "xMonthsAgo": "{{number}} tháng trước"
+    },
+    "eventInfos": {
+      "eventBooked": "Đã đặt sự kiện",
+      "eventType": "Loại sự kiện",
+      "numberOfSpots": "Số chỗ",
+      "onlineAndInPerson": "Trực tuyến và trực tiếp",
+      "secureYourSpot": "Đảm bảo chỗ của bạn",
+      "sessionBooked": "Đã đặt phiên",
+      "whatsPlanned": "Kế hoạch gì"
+    },
+    "myTickets": "Vé của tôi",
+    "planBWeek": {
+      "pageTitle": "Lên kế hoạch ₿ Tuần"
+    },
+    "types": {
+      "plurals": {
+        "conference": "hội nghị",
+        "exam": "kỳ thi",
+        "lecture": "bài giảng",
+        "meetup": "buổi gặp gỡ",
+        "workshop": "các hội thảo"
+      }
+    }
   },
   "filters": {
     "topics": "Các chủ đề"
@@ -931,7 +1402,8 @@
   "glossary": {
     "definition": "Định nghĩa",
     "relatedWords": "Các từ liên quan:",
-    "term": "Thuật ngữ"
+    "term": "Thuật ngữ",
+    "showMoreWords": "Hiển thị thêm từ vựng"
   },
   "home": {
     "aboutUsSection": {
@@ -961,15 +1433,15 @@
     "underConstructionImage": "Hình minh hoạ một số chú thỏ đang làm việc trên công trường"
   },
   "labs": {
-    "coordinatedBy": "",
-    "description1": "",
-    "description2": "",
-    "planBLabs": "",
+    "coordinatedBy": "Phòng thí nghiệm này được điều phối bởi",
+    "description1": "Plan ₿ Labs là những nhóm học được thiết kế để cung cấp cho sinh viên những lớp học thực hành và tương tác đều đặn. Thông qua những nhóm học này, sinh viên và giáo sư tham gia vào những cuộc thảo luận, tranh luận về những nghiên cứu mới nhất, giải quyết những thách thức thực tế và ứng dụng các khái niệm lý thuyết.",
+    "description2": "Tham gia Phòng thí nghiệm phù hợp với lĩnh vực học của bạn và cải thiện trải nghiệm học tập của bạn!",
+    "planBLabs": "Plan ₿ Labs",
     "presentation": {
-      "link": "",
-      "subtitle": ""
+      "link": "Khám phá Plan ₿ Labs",
+      "subtitle": "Tham gia vào một phòng thí nghiệm để học hỏi, thảo luận và phát triển!"
     },
-    "title": ""
+    "title": "Các lớp học thực hành và tương tác cho việc học tập liên tục"
   },
   "lectures": {
     "buyVideoToUnlock": "Mua video để mở khoá nó",
@@ -978,7 +1450,10 @@
     "watchLecture": "Xem lại bài giảng"
   },
   "menu": {
-    "login": "Đăng nhập"
+    "login": "Đăng nhập",
+    "educatorContent": "Nội dung giáo dục",
+    "getStarted": "Bắt đầu",
+    "signIn": "Đăng nhập"
   },
   "notFound": {
     "here": "Tại đây",
@@ -987,52 +1462,53 @@
   },
   "notification": {
     "types": {
-      "assignment": "",
-      "calendar": "",
-      "celebration": "",
-      "general": "",
-      "warning": ""
+      "assignment": "Bài tập",
+      "calendar": "Cảnh báo lịch",
+      "celebration": "Kỷ niệm",
+      "general": "Thông tin chung",
+      "warning": "Cảnh báo"
     }
   },
   "notifications": {
-    "bCertResults": "",
-    "blogNotTranslated": "",
-    "bookYourSeat": "",
-    "calendar_5m": "",
-    "calendar_5m_online_event": "",
-    "calendar_24h": "",
-    "calendar_24h_in_person_event": "",
-    "calendar_48h_online_event": "",
-    "dashboardDescription": "",
-    "daysAgo": "",
-    "markAsRead": "",
-    "monthsAgo": "",
-    "noRecentNotifications": "",
-    "notifications": "",
-    "noUnreadNotifications": "",
-    "planBNews": "",
-    "read": "",
-    "results": "",
-    "select": "",
-    "selectAll": "",
-    "today": "",
-    "unread": "",
-    "upcomingEvent": "",
-    "weeksAgo": "",
-    "yearsAgo": "",
-    "yesterday": ""
+    "bCertResults": "Kết quả ₿-CERT của bạn đã ra!",
+    "blogNotTranslated": "Xin lỗi, bài blog mới này chưa được dịch trong ngôn ngữ hiện tại của bạn.",
+    "bookYourSeat": "Đặt chỗ của bạn nếu bạn muốn tham dự trực tiếp!",
+    "calendar_5m": "Lớp học sẽ bắt đầu trong 5 phút! Nhấp vào đây để tham gia ngay.",
+    "calendar_5m_online_event": "Đã đến lúc! Sự kiện {{eventName}} sẽ bắt đầu trong 5 phút. Nhấp vào đây để tham gia ngay!",
+    "calendar_24h": "Lớp học tiếp theo sẽ là ngày mai từ {{ formattedTime }}.",
+    "calendar_24h_in_person_event": "Sự kiện {{eventName}} sẽ diễn ra ngày mai, từ {{formattedTime}} tại {{addressLine}}. Hãy chắc chắn tải vé của bạn để tham dự!",
+    "calendar_48h_online_event": "Sự kiện {{eventName}} sắp diễn ra! Nó được lên lịch cho {{date}}, từ {{formattedTime}}. ",
+    "dashboardDescription": "Đây là thông báo mới nhất của bạn. Chúng sẽ tự động bị xóa một tháng sau khi bạn đã xem chúng.",
+    "daysAgo": "{{days}} ngày trước",
+    "markAsRead": "Đánh dấu đã đọc",
+    "monthsAgo": "{{months}} tháng{{s}} trước",
+    "noRecentNotifications": "Bạn chưa có thông báo gần đây vào thời điểm này.",
+    "notifications": "Thông báo",
+    "noUnreadNotifications": "Không còn thông báo chưa đọc nữa",
+    "planBNews": "Tin tức Plan ₿",
+    "read": "Đọc",
+    "results": "Kết quả ₿-CERT của bạn đã ra!",
+    "select": "Chọn",
+    "selectAll": "Chọn tất cả",
+    "today": "Hôm nay",
+    "unread": "Chưa đọc",
+    "upcomingEvent": "Sự kiện sắp tới",
+    "weeksAgo": "{{weeks}} tuần{{s}} trước",
+    "yearsAgo": "{{years}} năm{{s}} trước",
+    "yesterday": "Hôm qua",
+    "newVersionAvailable": "Một phiên bản mới của nền tảng Plan ₿ Network đã sẵn sàng. Vui lòng làm mới trang để cập nhật."
   },
   "payment": {
     "haveReductionCode": "Bạn có mã giảm giá?",
-    "insertReductionCode": "",
+    "insertReductionCode": "Nhập mã giảm giá của bạn",
     "payByCard": "Thanh toán bằng thẻ",
     "payWithBitcoin": "Thanh toán bằng Bitcoin",
-    "taxesMayApply": "",
+    "taxesMayApply": "Thuế có thể được áp dụng khi thanh toán",
     "terms": "Xem <0>điều khoản chung</0> của chúng tôi và chi tiết về điều kiện hoàn trả",
     "total": "Tổng cộng"
   },
   "placeholders": {
-    "selectTimeZone": ""
+    "selectTimeZone": "Chọn múi giờ"
   },
   "professors": {
     "navigationTitles": {
@@ -1072,22 +1548,26 @@
       "contact": "Liên hệ",
       "legalNotice": "Thông báo pháp lý",
       "privacyPolicy": "Chính sách riêng tư",
-      "termsOfSale": "Điều khoản bán hàng"
+      "termsOfSale": "Điều khoản bán hàng",
+      "notFound": "Không tìm thấy thông tin pháp lý"
     }
   },
   "resources": {
     "bet": {
-      "title": "Công cụ giáo dục"
+      "title": "Công cụ giáo dục",
+      "addEducationKit": "Thêm bộ dụng cụ giáo dục"
     },
     "books": {
-      "title": "Thư viện"
+      "title": "Thư viện",
+      "addBook": "Thêm sách"
     },
     "channels": {
       "noYoutubeChannels": "Hiện tại không có kênh Youtube nào cho ngôn ngữ bạn lựa chọn.",
       "title": "Các kênh Youtube"
     },
     "conferences": {
-      "title": "Bản xem lại các hội nghị"
+      "title": "Bản xem lại các hội nghị",
+      "addConference": "Thêm lại hội nghị"
     },
     "glossary": {
       "title": "Bảng thuật ngữ"
@@ -1112,21 +1592,25 @@
     "pageSubtitlePodcast": "<0>Các kênh podcast khác</0> có thể bạn thích",
     "podcasts": {
       "noPodcasts": "Hiện tại không có kênh podcast nào theo ngôn ngữ bạn chọn.",
-      "title": "Các podcast"
+      "title": "Các podcast",
+      "addPodcast": "Thêm podcast",
+      "checkThePodcast": "Kiểm tra podcast"
     },
     "projects": {
-      "title": "Các dự án"
+      "title": "Các dự án",
+      "addProjects": "Thêm dự án"
     },
     "searchFilterName": "Tìm kiếm theo tên",
     "toggleLabelAll": "Tất cả",
-    "toggleLabelSelectedLanguage": "Ngôn ngữ được chọn"
+    "toggleLabelSelectedLanguage": "Ngôn ngữ được chọn",
+    "pageSubtitleMovies": "<0>Phim khác</0> bạn có thể thích"
   },
   "search": {
     "all": "Tất cả",
     "book": "Sách",
     "books": "Các cuốn sách",
     "categories": "Danh mục",
-    "conference": "",
+    "conference": "Hội nghị",
     "conference_replay": "Xem lại hội nghị",
     "conference_replays": "Bản xem lại các hội nghị",
     "course": "Khoá học",
@@ -1160,7 +1644,9 @@
     "tutorial": "Hướng dẫn",
     "tutorials": "Các hướng dẫn",
     "youtube_channel": "Kênh Youtube",
-    "youtube_channels": "Các kênh Youtube"
+    "youtube_channels": "Các kênh Youtube",
+    "noResults": "Không có kết quả",
+    "resultsFound": "Tìm thấy {{count}} kết quả"
   },
   "settings": {
     "changeDisplayName": "Thay đổi tên hiển thị",
@@ -1170,19 +1656,20 @@
   },
   "tutorials": {
     "business": {
-      "title": ""
+      "title": "Kinh doanh"
     },
     "computer-security": {
-      "title": ""
+      "title": "Bảo mật máy tính"
     },
     "contribution": {
-      "title": ""
+      "title": "Đóng góp"
     },
     "details": {
       "author": "Tác giả: ",
       "ratingSuccess": "Cảm ơn xếp hạng của bạn!",
       "source": "Nguồn chính thức:",
-      "tutorialName": "Tên hướng dẫn"
+      "tutorialName": "Tên hướng dẫn",
+      "didThisWork": "Việc này có hoạt động tốt cho bạn không?"
     },
     "exchange": {
       "title": "Sàn giao dịch"
@@ -1201,29 +1688,32 @@
       "title": "Riêng tư"
     },
     "subCategories": {
-      "authentication": "",
-      "backup": "",
-      "bitcoin": "",
-      "centralized": "",
-      "communication": "",
-      "content": "",
-      "data": "",
-      "desktop": "",
-      "hardware": "",
-      "lightning-network": "",
-      "mobile": "",
-      "on-chain": "",
-      "operating system": "",
-      "others": "",
-      "peer-to-peer": "",
-      "point-of-sale": "",
-      "pool": "",
-      "resource": ""
+      "authentication": "Xác thực",
+      "backup": "Sao lưu",
+      "bitcoin": "Bitcoin",
+      "centralized": "Tập trung",
+      "communication": "Giao tiếp",
+      "content": "Nội dung",
+      "data": "Dữ liệu",
+      "desktop": "Máy tính để bàn",
+      "hardware": "Phần cứng",
+      "lightning-network": "Mạng lưới sét",
+      "mobile": "Di động",
+      "on-chain": "Trên chuỗi",
+      "operating system": "Hệ điều hành",
+      "others": "Khác",
+      "peer-to-peer": "Ngang hàng",
+      "point-of-sale": "Điểm bán hàng",
+      "pool": "Bể bơi",
+      "resource": "Nguồn lực",
+      "explorer": "Thám hiểm"
     },
     "wallet": {
       "title": "Ví"
     },
-    "writtenBy": "Hướng dẫn này đã được viết bởi"
+    "writtenBy": "Hướng dẫn này đã được viết bởi",
+    "noTutorialsFound": "Chúng tôi không thể tìm thấy bất kỳ hướng dẫn nào phù hợp với tìm kiếm của bạn.",
+    "onThisPage": "Trên trang này"
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1249,7 +1739,7 @@
     "bitcoin": "Bitcoin",
     "book": "Sách",
     "business": "Kinh doanh",
-    "calendar": "",
+    "calendar": "Lịch",
     "cancel": "Huỷ",
     "careerPortal": "Cổng thông tin nghề nghiệp",
     "category": "Danh mục",
@@ -1258,17 +1748,17 @@
     "chapter": "Chương",
     "chapters": "Các chương",
     "close": "Đóng",
-    "company": "",
+    "company": "Công ty",
     "conference": "Hội nghị",
     "congrats": "Chúc mừng!",
-    "continue": "",
+    "continue": "Tiếp tục",
     "country": "Đất nước",
     "course": "Khoá học",
     "courseId": "ID của khoá học",
     "courses": "Các khoá học",
     "credits": "Tín dụng",
     "date": "Ngày",
-    "day": "",
+    "day": "Ngày",
     "delete": "Xoá",
     "description": "Mô tả",
     "details": "Chi tiết",
@@ -1310,7 +1800,7 @@
     "linkedin": "LinkedIn",
     "location": "Địa điểm",
     "members": " Các thành viên",
-    "mentor": "",
+    "mentor": "Người hướng dẫn",
     "mining": "Đào",
     "movie": "Phim",
     "name": "Tên",
@@ -1318,14 +1808,14 @@
     "newsletter": "Bản tin",
     "next": "Tiếp theo",
     "no": "Không",
-    "notApplicable": "",
+    "notApplicable": "Không áp dụng",
     "on": "trên",
     "onChainAddress": "Địa chỉ on-chain",
     "online": "Trực tuyến",
     "overview": "Tổng quan",
     "paid": "Đã thanh toán",
     "part": "Phần",
-    "password": "",
+    "password": "Mật khẩu",
     "podcast": "Podcast",
     "previous": "Phía trước",
     "price": "Giá",
@@ -1340,11 +1830,11 @@
     "required": "Bắt buộc",
     "resources": "Các nguồn tài nguyên",
     "role": "Vai trò",
-    "save": "",
-    "saving": "",
+    "save": "Lưu",
+    "saving": "Đang lưu...",
     "search": "Tìm kiếm",
     "security": "Bảo mật",
-    "selectedAmount": "",
+    "selectedAmount": "{{amount}} đã chọn",
     "skip": "Bỏ qua",
     "socialStudies": "Nghiên cứu xã hội",
     "startHere": "Bắt đầu tại đây!",
@@ -1356,8 +1846,8 @@
     "telegram": "Telegram",
     "ticket": "Vé",
     "time": "Thời gian",
-    "timeZone": "",
-    "title": "",
+    "timeZone": "Múi giờ",
+    "title": "Tiêu đề",
     "to": "tới",
     "topics": "Các chủ đề",
     "total": "Tất cả",
@@ -1369,14 +1859,120 @@
     "user": "Người dùng",
     "username": "Username",
     "users": "Người dùng",
-    "video": "",
+    "video": "Video",
     "view": "Xem",
     "viewMore": "Xem thêm",
     "wallets": "Các ví",
-    "yes": "Vâng"
+    "yes": "Vâng",
+    "type": "Loại",
+    "aboutUs": "Về chúng tôi",
+    "academy": "Học viện",
+    "account": "Tài khoản",
+    "actions": "Hành động",
+    "address": "Địa chỉ",
+    "booking": "Đặt chỗ",
+    "certifications": "Chứng chỉ",
+    "completed": "Đã hoàn thành",
+    "confirmation": "Xác nhận",
+    "discover": "Khám phá",
+    "enrolled": "Đã đăng ký",
+    "filters": "Bộ lọc",
+    "full": "Đầy đủ",
+    "info": "Thông tin",
+    "invoices": "Hóa đơn",
+    "legal": "Pháp lý",
+    "list": "Danh sách",
+    "map": "Bản đồ",
+    "month": "Tháng",
+    "none": "Không",
+    "optional": "Tùy chọn",
+    "planBNetwork": "Kế hoạch ₿ Mạng lưới",
+    "practice": "Thực hành",
+    "pricing": "Giá cả",
+    "questions": "Câu hỏi",
+    "rating": "Đánh giá",
+    "resetAll": "Đặt lại tất cả",
+    "resetFilters": "Đặt lại bộ lọc",
+    "results": "Kết quả",
+    "resume": "Tiếp tục",
+    "review": "Đánh giá",
+    "sats": "Sats",
+    "searchTripleDot": "Tìm kiếm...",
+    "seeAll": "Xem tất cả",
+    "session": "Phiên",
+    "settings": "Cài đặt",
+    "share": "Chia sẻ",
+    "structure": "Cấu trúc",
+    "syllabus": "Syllabus",
+    "taxes": "thuế",
+    "theory": "Lí thuyết",
+    "topic": "Chủ đề",
+    "viewAll": "Xem tất cả",
+    "week": "Tuần",
+    "weight": "Khối lượng"
   },
   "youtubeChannels": {
     "view": "Xem kênh Youtube",
     "watchTrailer": "Xem trailer"
+  },
+  "account": {
+    "account": "Tài khoản",
+    "myTeacherProfile": "Hồ sơ giáo viên của tôi"
+  },
+  "footer": {
+    "FOSSOpenContent": "FOSS & Nội dung mở",
+    "proudlyPartOf": "Tự hào là một phần của <0>Mạng lưới Plan ₿</0>"
+  },
+  "months": {
+    "april": "Tháng 4",
+    "august": "Tháng 8",
+    "december": "Tháng 12",
+    "february": "Tháng 2",
+    "january": "Tháng 1",
+    "july": "Tháng 7",
+    "june": "Tháng 6",
+    "march": "Tháng 3",
+    "may": "Tháng Năm",
+    "november": "Tháng Mười Một",
+    "october": "Tháng Mười",
+    "september": "Tháng Chín"
+  },
+  "movies": {
+    "checkTheMovie": "Kiểm tra phim"
+  },
+  "navbar": {
+    "bookings": "Đặt chỗ",
+    "career": "Ngành nghề",
+    "careers": "Sự nghiệp",
+    "discountCode": "Mã giảm giá",
+    "learnAnytimeDescription": "Các khóa học tự định tốc độ",
+    "learnAnytimeTitle": "Học bất cứ khi nào",
+    "liveClassesDescription": "Các khóa học do giáo viên hướng dẫn",
+    "liveClassesTitle": "Lớp học trực tiếp",
+    "manageCourses": "Quản lý các khóa học",
+    "myCourses": "Các khóa học của tôi",
+    "tabs": {
+      "admin": "Quản trị",
+      "learn": "Học",
+      "teach": "Dạy"
+    },
+    "translationPanel": "Bảng dịch thuật",
+    "tutorials": "Hướng dẫn",
+    "tutorialsAnalytics": "Số liệu phân tích hướng dẫn",
+    "userRolesAllocation": "Phân bổ vai trò người dùng"
+  },
+  "videoSelector": {
+    "language": {
+      "AI": "Dịch bằng AI",
+      "language": "Ngôn ngữ",
+      "original": "Ngôn ngữ gốc"
+    },
+    "player": {
+      "pears": "Lê 🍐",
+      "peertube": "Peertube",
+      "player": "Người chơi",
+      "rumble": "Sôi động",
+      "youtube": "Youtube"
+    }
   }
 }
