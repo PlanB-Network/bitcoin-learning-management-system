@@ -22,7 +22,9 @@ export const createSendEventReminderEmail = (
     const { postgres, config } = dependencies;
 
     try {
-      const event = await getEventMinimalInfoQuery(eventId).then(firstRow);
+      const event = await postgres
+        .exec(getEventMinimalInfoQuery(eventId))
+        .then(firstRow);
       if (!event) {
         console.error(`No event found with ID: ${eventId}`);
         return;
