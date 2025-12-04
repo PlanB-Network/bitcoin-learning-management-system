@@ -63,7 +63,9 @@
       "invalidCredentials": "证件无效",
       "usernameRegex": "用户名只能包含字母、数字、_、. 和 -",
       "usernameRequired": "您需要输入用户名",
-      "usernameTooShort": "用户名必须至少包含5个字符。"
+      "usernameTooShort": "用户名必须至少包含5个字符。",
+      "oldPasswordRequired": "需要旧密码",
+      "passwordTooShort": "密码太短"
     },
     "forgottenPassword": "忘记了您的密码？",
     "headerAccountCreated": "创建的账户",
@@ -91,7 +93,11 @@
     "trackProgress": "创造账户或登录以跟踪您的进展",
     "tryAgain": "再试一次",
     "loginNotAvailable1": "登录功能在桌面应用程序中尚未可用。",
-    "loginNotAvailable2": "您可以访问我们的网站进行登录并访问您的帐户。"
+    "loginNotAvailable2": "您可以访问我们的网站进行登录并访问您的帐户。",
+    "forgotPassword": "忘记密码？",
+    "login": "登录",
+    "oldPassword": "旧密码",
+    "signUp": "注册"
   },
   "bCert": {
     "bCertDescription": "₿-CERT是一项国际认证的考试，用于评估您对比特币及其衍生主题的了解程度。如果您的得分大于80%，您会获得₿-CERT证书，它将使您能够在比特币行业中证明自己的技能和知识，是进入该行业公司和职位的准入证。",
@@ -105,7 +111,10 @@
     "verify": "验证您的证书的真实性",
     "hostSessionConditions": "操作步骤如下：\n\n1. 请阅读<0>宪章</0> - 确保您的社区满足主办条件\n2. 计划和安排 - 如果您符合资格，请选择日期并准备活动\n3. 发布您的活动 - 与我们联系，将其添加到Plan ₿ Network平台，以便人们可以加入",
     "noTestSessions": "当前没有可参加的考试",
-    "wantHostSession": "想要在您的当地中心组织₿-CERT考试吗？"
+    "wantHostSession": "想要在您的当地中心组织₿-CERT考试吗？",
+    "certificates": "证书",
+    "chooseCourse": "选择课程",
+    "noDiplomasAvailable": "尚未有可用的文凭"
   },
   "bet": {
     "educationalContent": {
@@ -128,7 +137,8 @@
     "noConferences": "尚未为{{year}}添加大会。",
     "pageTitle": "大会回放",
     "planBConferences": "Plan ₿大会",
-    "topics": "主题"
+    "topics": "主题",
+    "conferencesGenesis": "自创世区块以来的会议"
   },
   "courses": {
     "chapter": {
@@ -376,8 +386,14 @@
     "liveClasses": {
       "allOtherTitle": "所有其他的直播课程",
       "liveClasses": "直播课程",
-      "title": "Plan ₿官方年度计划"
-    }
+      "title": "Plan ₿官方年度计划",
+      "program": {
+        "goal": "在Giacomo Zucco的帮助下，通过五个月的程序，结合理论，真实案例研究和独家社交机会，掌握比特币行业。",
+        "semester": "学期",
+        "title": "计划₿课程"
+      }
+    },
+    "navbarHover": "注册以解锁"
   },
   "dashboard": {
     "adminPanel": {
@@ -1103,7 +1119,16 @@
       "completeACourse": "完成课程以获得您的第一个证书！",
       "exploreBCert": "探索₿-CERT",
       "getGlobalRecognition": "通过₿-CERT获得全球认可",
-      "noCertificatesAvailable": "暂无证书"
+      "noCertificatesAvailable": "暂无证书",
+      "bCertResults": {
+        "score020": "您已开始您的旅程！所有的专家都曾从这里开始",
+        "score100": "得分满分！你是中本聪，还是只是天才？",
+        "score2140": "你已经掌握了基础知识！继续前进，你的进步很快！",
+        "score4160": "坚实的基础！你准备好参加高级课程了",
+        "score6180": "你做得很好！继续精练你的技能并掌握比特币",
+        "score8199": "理解深刻！你轻松处理复杂的比特币主题"
+      },
+      "detailedScore": "详细得分"
     },
     "goToDashboard": "前往仪表板",
     "goToHomepage": "前往主页",
@@ -1127,7 +1152,8 @@
       "verify": "验证您的文凭的真实性",
       "whereYouAre": "查看您的进度吧！",
       "yourCertificate": "您的证书",
-      "yourProgress": "您的进展："
+      "yourProgress": "您的进展：",
+      "noCourseStarted": "您还没有开始任何自我学习课程"
     },
     "profile": {
       "cancel": "取消",
@@ -1163,7 +1189,8 @@
       "save": "保存",
       "saving": "保存中…",
       "securitySettings": "安全设置",
-      "username": "用户名"
+      "username": "用户名",
+      "emailOrUsername": "电子邮件或用户名"
     },
     "teacher": {
       "courses": {
@@ -1351,7 +1378,8 @@
       "numberOfSpots": "座位数量",
       "onlineAndInPerson": "线上和线下",
       "secureYourSpot": "锁定您的座位",
-      "whatsPlanned": "已计划的活动"
+      "whatsPlanned": "已计划的活动",
+      "sessionBooked": "已预订会议"
     },
     "planBWeek": {
       "pageTitle": "Plan ₿ 周"
@@ -1422,7 +1450,10 @@
     "watchLecture": "查看讲课回放"
   },
   "menu": {
-    "login": "登录"
+    "login": "登录",
+    "educatorContent": "教育者内容",
+    "getStarted": "开始使用",
+    "signIn": "登录"
   },
   "movies": {
     "checkTheMovie": "检查电影"
@@ -1520,7 +1551,8 @@
       "contact": "联系信息",
       "legalNotice": "法律声明",
       "privacyPolicy": "隐私政策",
-      "termsOfSale": "销售条款"
+      "termsOfSale": "销售条款",
+      "notFound": "找不到法律信息"
     }
   },
   "resources": {
@@ -1615,7 +1647,9 @@
     "tutorial": "教程",
     "tutorials": "教程",
     "youtube_channel": "YouTube频道",
-    "youtube_channels": "YouTube频道"
+    "youtube_channels": "YouTube频道",
+    "noResults": "无结果",
+    "resultsFound": "找到 {{count}} 个结果"
   },
   "settings": {
     "changeDisplayName": "更改显示名称",
@@ -1674,12 +1708,15 @@
       "peer-to-peer": "点对点",
       "point-of-sale": "销售点",
       "pool": "矿池",
-      "resource": "资源"
+      "resource": "资源",
+      "explorer": "探索者"
     },
     "wallet": {
       "title": "钱包"
     },
-    "writtenBy": "本教程作者："
+    "writtenBy": "本教程作者：",
+    "noTutorialsFound": "我们无法找到与您的搜索匹配的教程。",
+    "onThisPage": "在此页面上"
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1866,7 +1903,16 @@
     "certifications": "认证",
     "resetFilters": "重置筛选条件",
     "discover": "了解更多",
-    "seeAll": "查看全部"
+    "seeAll": "查看全部",
+    "aboutUs": "关于我们",
+    "address": "地址",
+    "confirmation": "确认",
+    "legal": "法律",
+    "list": "列表",
+    "optional": "可选",
+    "planBNetwork": "Plan ₿ 网络",
+    "session": "会议",
+    "syllabus": "教学大纲"
   },
   "youtubeChannels": {
     "view": "查看YouTube频道",
@@ -1903,7 +1949,9 @@
     "tutorials": "教程",
     "userRolesAllocation": "用户角色分配",
     "liveClassesDescription": "由教师主导的课程",
-    "liveClassesTitle": "直播课程"
+    "liveClassesTitle": "直播课程",
+    "careers": "职业生涯",
+    "tutorialsAnalytics": "教程分析"
   },
   "videoSelector": {
     "language": {
@@ -1922,5 +1970,9 @@
   "account": {
     "account": "账户",
     "myTeacherProfile": "我的教师简介"
+  },
+  "footer": {
+    "FOSSOpenContent": "自由软件与开放内容",
+    "proudlyPartOf": "自豪地成为 <0>Plan ₿ 网络</0>的一部分"
   }
 }

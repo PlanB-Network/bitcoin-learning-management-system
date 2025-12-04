@@ -63,7 +63,9 @@
       "invalidCredentials": "Sifa za kuingia hazijulikani",
       "usernameRegex": "Jina la mtumiaji linaweza tu kuwa na herufi, tarakimu, mistari chini (_), vituo kamili (.) na deshi (-).",
       "usernameRequired": "Jina la mtumiaji linahitajika.",
-      "usernameTooShort": "Jina la mtumiaji lazima liwe na angalau vibambo 5."
+      "usernameTooShort": "Jina la mtumiaji lazima liwe na angalau vibambo 5.",
+      "oldPasswordRequired": "Nywila ya zamani inahitajika",
+      "passwordTooShort": "Nenosiri ni fupi mno"
     },
     "forgottenPassword": "Je, umesahau nenosiri lako?",
     "headerAccountCreated": "Akaunti imeundwa",
@@ -91,7 +93,11 @@
     "trackProgress": "Unda akaunti au ingia kwenye akaunti yako ili kufuatilia maendeleo yako",
     "tryAgain": "Jaribu tena",
     "loginNotAvailable1": "Vipengele vya kuingia havipo kwenye programu ya kompyuta bado.",
-    "loginNotAvailable2": "Unaweza kutembelea tovuti yetu kuingia na kufikia akaunti yako."
+    "loginNotAvailable2": "Unaweza kutembelea tovuti yetu kuingia na kufikia akaunti yako.",
+    "forgotPassword": "Umesahau nywila?",
+    "login": "Ingia",
+    "oldPassword": "Nywila ya zamani",
+    "signUp": "Jisajili"
   },
   "bCert": {
     "bCertDescription": "₿-CERT ni mtihani wa mwisho wa Bitcoin uliobuniwa kutathmini ufahamu wako wa Bitcoin na mada zinazohusiana. Ikiwa utapata alama zaidi ya 80%, utapata cheti cha ₿-CERT ambacho kinaweza kuthibitisha ujuzi wako katika sekta ya Bitcoin, kufungua milango kwa nafasi mbalimbali za kazi katika uwanja huo.",
@@ -131,7 +137,8 @@
     "noConferences": "Hakuna mikutano iliyoongezwa kwa {{year}} bado.",
     "pageTitle": "Marudio ya mkutano",
     "planBConferences": "Mikutano ya Plan ₿",
-    "topics": "Mada"
+    "topics": "Mada",
+    "conferencesGenesis": "Mikutano tangu Block ya Genesis"
   },
   "courses": {
     "chapter": {
@@ -376,11 +383,17 @@
     "liveClasses": {
       "allOtherTitle": "Darasa zote zingine za moja kwa moja",
       "liveClasses": "Darasa za moja kwa moja",
-      "title": "Plan ₿ rasmi wa mipango ya kila mwaka"
+      "title": "Plan ₿ rasmi wa mipango ya kila mwaka",
+      "program": {
+        "goal": "Iwe mtaalamu wa sekta ya Bitcoin na Giacomo Zucco katika programu ya miezi 5 ambayo inaunganisha nadharia, masomo ya kesi halisi, na fursa za mtandao zisizo na kikomo.",
+        "semester": "Semista",
+        "title": "Mpango ₿ Programu"
+      }
     },
     "noCoursesFound": "Hakuna kozi zinazopatikana",
     "plusXMore": "+{{count}} zaidi",
-    "tryAdjustingFilters": "Jaribu kurekebisha vichujio vyako"
+    "tryAdjustingFilters": "Jaribu kurekebisha vichujio vyako",
+    "navbarHover": "Jisajili ili kufungua"
   },
   "dashboard": {
     "adminPanel": {
@@ -1106,7 +1119,16 @@
       "completeACourse": "Kamilisha kozi ili upate diploma yako ya kwanza!",
       "exploreBCert": "Chunguza ₿-CERT",
       "getGlobalRecognition": "Pata utambuzi wa kimataifa na cheti cha ₿-CERT",
-      "noCertificatesAvailable": "Hakuna vyeti vinavyopatikana"
+      "noCertificatesAvailable": "Hakuna vyeti vinavyopatikana",
+      "bCertResults": {
+        "score020": "Umeanza safari yako! Kila mtaalamu alianza hapa",
+        "score100": "Alama kamili! Je, wewe ni Satoshi, au unaakili?",
+        "score2140": "Umeanza vizuri! Endelea hivyo, unaendelea kuboresha kwa kasi!",
+        "score4160": "Msingi madhubuti! Uko tayari kwa madarasa ya hali ya juu",
+        "score6180": "Unafanya vizuri! Endelea kuboresha stadi zako na kumudu Bitcoin",
+        "score8199": "Uelewa mzuri! Unashughulikia mada ngumu za Bitcoin kwa urahisi"
+      },
+      "detailedScore": "Alama za kina"
     },
     "goToDashboard": "Nenda kwenye dashibodi",
     "goToHomepage": "Nenda kwenye ukurasa wa kwanza",
@@ -1130,7 +1152,8 @@
       "verify": "Thibitisha uhalali wa diploma",
       "whereYouAre": "Hebu tuone ulipo!",
       "yourCertificate": "Cheti chako",
-      "yourProgress": "Maendeleo yako :"
+      "yourProgress": "Maendeleo yako :",
+      "noCourseStarted": "Bado haujaanza kozi zozote za kujifunza kwa kasi yako"
     },
     "profile": {
       "cancel": "Ghairi",
@@ -1166,7 +1189,8 @@
       "save": "Hifadhi",
       "saving": "Inahifadhi…",
       "securitySettings": "Mipangilio ya usalama",
-      "username": "Jina la mtumiaji"
+      "username": "Jina la mtumiaji",
+      "emailOrUsername": "Barua pepe au jina la mtumiaji"
     },
     "teacher": {
       "courses": {
@@ -1355,7 +1379,8 @@
       "numberOfSpots": "Idadi ya sehemu",
       "onlineAndInPerson": "Kwa mtandao na ana kwa ana",
       "secureYourSpot": "Weka nafasi yako",
-      "whatsPlanned": "Nini kilichopangwa"
+      "whatsPlanned": "Nini kilichopangwa",
+      "sessionBooked": "Kikao kimehifadhiwa"
     },
     "myTickets": "Tiketi zangu",
     "planBWeek": {
@@ -1425,7 +1450,10 @@
     "watchLecture": "Tazama marudio ya mhadhara"
   },
   "menu": {
-    "login": "Ingia ndani"
+    "login": "Ingia ndani",
+    "educatorContent": "Yaliyomo ya mwalimu",
+    "getStarted": "Anza",
+    "signIn": "Ingia"
   },
   "movies": {
     "checkTheMovie": "Kagua filamu"
@@ -1680,12 +1708,15 @@
       "peer-to-peer": "Kwa rika-kwa-rika",
       "point-of-sale": "Nukta ya mauzo",
       "pool": "bwawa",
-      "resource": "Rasilimali"
+      "resource": "Rasilimali",
+      "explorer": "Mpelelezi"
     },
     "wallet": {
       "title": "Wallet"
     },
-    "writtenBy": "Mwongozo huu umeandikwa na"
+    "writtenBy": "Mwongozo huu umeandikwa na",
+    "onThisPage": "Kwenye ukurasa huu",
+    "noTutorialsFound": "Hatukuweza kupata mafunzo yoyote yanayolingana na utafutaji wako."
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1876,7 +1907,12 @@
     "aboutUs": "Kuhusu Sisi",
     "legal": "Sheria",
     "list": "Orodha",
-    "planBNetwork": "Plan ₿ Mtandao"
+    "planBNetwork": "Plan ₿ Mtandao",
+    "address": "Anwani",
+    "confirmation": "Uthibitisho",
+    "optional": "Hiari",
+    "session": "Kikao",
+    "syllabus": "Mtaala"
   },
   "youtubeChannels": {
     "view": "Tazama Channel ya Youtube",

@@ -63,7 +63,9 @@
       "invalidCredentials": "Ugyldige legitimasjonsopplysninger",
       "usernameRegex": "Brukernavnet kan bare inneholde bokstaver, tall, understreker (_), punktum (.) og bindestreker (-).",
       "usernameRequired": "Brukernavn er obligatorisk.",
-      "usernameTooShort": "Brukernavnet må inneholde minst 5 tegn."
+      "usernameTooShort": "Brukernavnet må inneholde minst 5 tegn.",
+      "oldPasswordRequired": "Gammelt passord kreves",
+      "passwordTooShort": "Passordet er for kort"
     },
     "forgottenPassword": "Glemt passordet ditt?",
     "headerAccountCreated": "Konto opprettet",
@@ -91,7 +93,11 @@
     "trackProgress": "Opprett en konto eller logg inn for å holde oversikt over fremdriften din",
     "tryAgain": "Prøv igjen",
     "loginNotAvailable1": "Innloggingsfunksjoner er ennå ikke tilgjengelige i skrivebordsappen.",
-    "loginNotAvailable2": "Du kan besøke nettstedet vårt for å logge inn og få tilgang til kontoen din."
+    "loginNotAvailable2": "Du kan besøke nettstedet vårt for å logge inn og få tilgang til kontoen din.",
+    "forgotPassword": "Glemt passord?",
+    "login": "Logg inn",
+    "oldPassword": "Gammelt passord",
+    "signUp": "Registrer deg"
   },
   "bCert": {
     "bCertDescription": "₿-CERT er en internasjonalt anerkjent eksamen for å vurdere din forberedelse på Bitcoin og relaterte emner. Dette sertifikatet vil gjøre det mulig for deg å bevise dine ferdigheter og kunnskaper i Bitcoin-industrien, og gir deg tilgang til selskaper og stillinger i den industrien.",
@@ -131,7 +137,8 @@
     "noConferences": "Ingen konferanser lagt til for {{year}} ennå.",
     "pageTitle": "Konferanseopptak",
     "planBConferences": "Plan B-konferanser",
-    "topics": "Emner"
+    "topics": "Emner",
+    "conferencesGenesis": "Konferanser siden Genesis Block"
   },
   "courses": {
     "chapter": {
@@ -376,11 +383,17 @@
     "liveClasses": {
       "allOtherTitle": "Alle andre aktive klasser",
       "liveClasses": "Aktive klasser",
-      "title": "Plan ₿ offisielle årlige programmer"
+      "title": "Plan ₿ offisielle årlige programmer",
+      "program": {
+        "goal": "Behersk Bitcoin-industrien med Giacomo Zucco i et 5-måneders program som blander teori, ekte case-studier og eksklusive nettverksmuligheter.",
+        "semester": "Semester",
+        "title": "Plan ₿ Program"
+      }
     },
     "noCoursesFound": "Ingen kurs funnet",
     "plusXMore": "+{{count}} mer",
-    "tryAdjustingFilters": "Prøv å justere filterene dine"
+    "tryAdjustingFilters": "Prøv å justere filterene dine",
+    "navbarHover": "Registrer deg for å låse opp"
   },
   "dashboard": {
     "adminPanel": {
@@ -1106,7 +1119,16 @@
       "completeACourse": "Fullfør et kurs for å få ditt første diplom!",
       "exploreBCert": "Utforsk ₿-CERT",
       "getGlobalRecognition": "Få global anerkjennelse med et ₿-CERT sertifikat",
-      "noCertificatesAvailable": "Ingen sertifikater tilgjengelige"
+      "noCertificatesAvailable": "Ingen sertifikater tilgjengelige",
+      "bCertResults": {
+        "score020": "Du har begynt på reisen din! Hver ekspert startet en gang herfra",
+        "score100": "Perfekt poengsum! Er du Satoshi, eller bare genial?",
+        "score2140": "Du har det grunnleggende! Fortsett, du forbedrer deg raskt!",
+        "score4160": "Solid base! Du er klar for avanserte klasser",
+        "score6180": "Du gjør det bra! Fortsett å finjustere ferdighetene dine og beherske Bitcoin",
+        "score8199": "Godt grep! Du håndterer komplekse Bitcoin-emner med letthet"
+      },
+      "detailedScore": "Detaljert poengsum"
     },
     "goToDashboard": "Gå til skrivebordet",
     "goToHomepage": "Gå til hjemmeside",
@@ -1130,7 +1152,8 @@
       "verify": "Bekreft ektheten av ditt diplom",
       "whereYouAre": "La oss se hvor du er!",
       "yourCertificate": "Ditt sertifikat",
-      "yourProgress": "Din fremgang :"
+      "yourProgress": "Din fremgang :",
+      "noCourseStarted": "Du har ikke startet noen selv-paced kurs ennå"
     },
     "profile": {
       "cancel": "Avbryt",
@@ -1166,7 +1189,8 @@
       "save": "Lagre",
       "saving": "Lagrer…",
       "securitySettings": "Sikkerhetsinnstillinger",
-      "username": "Brukernavn"
+      "username": "Brukernavn",
+      "emailOrUsername": "E-post eller brukernavn"
     },
     "teacher": {
       "courses": {
@@ -1355,7 +1379,8 @@
       "numberOfSpots": "Antall plasser",
       "onlineAndInPerson": "På nett og personlig oppmøte",
       "secureYourSpot": "Sikre din plass",
-      "whatsPlanned": "Hva er planlagt"
+      "whatsPlanned": "Hva er planlagt",
+      "sessionBooked": "Økt booket"
     },
     "myTickets": "Mine billetter",
     "planBWeek": {
@@ -1425,7 +1450,10 @@
     "watchLecture": "Se forelesningsopptaket"
   },
   "menu": {
-    "login": "Logg inn"
+    "login": "Logg inn",
+    "educatorContent": "Lærerinnhold",
+    "getStarted": "Kom i gang",
+    "signIn": "Logg inn"
   },
   "movies": {
     "checkTheMovie": "Se filmen"
@@ -1680,12 +1708,15 @@
       "peer-to-peer": "Peer-to-peer",
       "point-of-sale": "Salgspunkt",
       "pool": "Pool",
-      "resource": "Ressurs"
+      "resource": "Ressurs",
+      "explorer": "Utforsker"
     },
     "wallet": {
       "title": "Lommebok"
     },
-    "writtenBy": "Dette kurset er skrevet av"
+    "writtenBy": "Dette kurset er skrevet av",
+    "onThisPage": "På denne siden",
+    "noTutorialsFound": "Vi kunne ikke finne noen opplæring som stemmer overens med søket ditt."
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1875,7 +1906,13 @@
     "type": "Type",
     "viewAll": "Se alle",
     "week": "Uke",
-    "weight": "Vekt"
+    "weight": "Vekt",
+    "address": "Adresse",
+    "confirmation": "Bekreftelse",
+    "list": "Liste",
+    "optional": "Valgfritt",
+    "session": "Økt",
+    "syllabus": "Pensum"
   },
   "youtubeChannels": {
     "view": "Se på Youtube-kanalen",

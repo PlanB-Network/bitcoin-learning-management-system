@@ -19,7 +19,8 @@
     "missionTitle": "Naše mise",
     "storyContent": "Plan ₿ Network je iniciativa zaměřená na podporu celosvětového vzdělávání o Bitcoinu. Jedná se o spojení rozlišných Bitcoin firem zaměřených na vzdělávání, open-source software, peer-to-peer sítě a smyslem pro komunitu. Společně se rozhodli vybudovat síť Plan ₿ a nabídnout bitcoinovému ekosystému ty správné nástroje k růstu. Naše prezentace k vydání v roce 2023 je dostupná zde.",
     "storyTitle": "Náš příběh",
-    "title": "O Plan ₿ Network"
+    "title": "O Plan ₿ Network",
+    "readManifesto": "Přečtěte si náš manifest"
   },
   "accessType": {
     "hybrid": "Osobně & online",
@@ -62,7 +63,9 @@
       "invalidCredentials": "Neplatné přihlašovací údaje",
       "usernameRegex": "Uživatelské jméno může obsahovat pouze písmena, podtržítka (_), tečky (.) a pomlčky (-).",
       "usernameRequired": "Uživatelské jméno je povinné.",
-      "usernameTooShort": "Uživatelské jméno musí být alespoň 5 znaků dlouhé."
+      "usernameTooShort": "Uživatelské jméno musí být alespoň 5 znaků dlouhé.",
+      "oldPasswordRequired": "Je nutná stará hesla",
+      "passwordTooShort": "Heslo je příliš krátké"
     },
     "forgottenPassword": "Zapomněli jste heslo?",
     "headerAccountCreated": "Účet vytvořen",
@@ -88,7 +91,13 @@
     "sendLink": "Odeslat odkaz",
     "signIn": "Přihlásit se",
     "trackProgress": "Vytvořte si účet nebo se přihlaste, abyste mohli sledovat svůj pokrok",
-    "tryAgain": "Zkuste to znovu"
+    "tryAgain": "Zkuste to znovu",
+    "forgotPassword": "Zapomněli jste heslo?",
+    "login": "Přihlásit se",
+    "loginNotAvailable1": "Funkce přihlášení zatím nejsou dostupné v desktopové aplikaci.",
+    "loginNotAvailable2": "Pro přihlášení a přístup k vašemu účtu můžete navštívit naše webové stránky.",
+    "oldPassword": "Staré heslo",
+    "signUp": "Registrace"
   },
   "bCert": {
     "bCertDescription": "₿-CERT je nejvyšší test znalostí Bitcoinu, který hodnotí vaše znalosti o Bitcoinu a souvisejících tématech. Pokud získáte více než 80%, získáte certifikát ₿-CERT, který může prokázat vaši odbornost v oblasti Bitcoinu a otevřít tak dveře k různým pracovním pozicím v tomto oboru.",
@@ -99,7 +108,13 @@
     "organizeExam": "Zorganizujte sezení",
     "pageTitle": "Složte test ₿-CERT",
     "tweetText": "Jsem nadšený, že jsem prošel ₿-CERT na @planb_network s výsledkem {{score}}/100! {{emoji}} #BCERT\n\n{{certificateUrl}}",
-    "verify": "Ověřte pravost vašeho certifikátu"
+    "verify": "Ověřte pravost vašeho certifikátu",
+    "certificates": "Certifikáty",
+    "chooseCourse": "Vybrat kurz",
+    "hostSessionConditions": "Jak na to:\n\n1. Přečtěte si <0>Listinu</0> – Ujistěte se, že vaše komunita splňuje povinné podmínky pro hostitelství\n2. Plánujte & Harmonogram – Pokud splňujete požadavky, vyberte datum a zorganizujte sezení\n3. Zveřejněte svou akci – Kontaktujte nás, abychom ji přidali na platformu Plan ₿ Network, aby se lidé mohli přidat.",
+    "noDiplomasAvailable": "Zatím nejsou dostupné žádné diplomy",
+    "noTestSessions": "Momentálně nejsou k dispozici žádné testovací seance",
+    "wantHostSession": "Chcete hostit testovací seance ₿-CERT ve svém místním centru?"
   },
   "bet": {
     "educationalContent": {
@@ -122,7 +137,8 @@
     "noConferences": "Pro rok {{year}} zatím nebyly přidány žádné konference.",
     "pageTitle": "Nahrávky z konference",
     "planBConferences": "Plan B konference",
-    "topics": "Témata"
+    "topics": "Témata",
+    "conferencesGenesis": "Konference od Genesis Block"
   },
   "courses": {
     "chapter": {
@@ -207,7 +223,7 @@
       "failed": "Selhal",
       "failedDiploma": "Musíte získat více než 80% na závěrečné zkoušce, abyste získali diplom a úplně dokončili kurz. Zkoušku můžete opakovat po 24 hodinách.",
       "finalExam": "Závěrečná zkouška",
-      "finalScore": "",
+      "finalScore": "Konečné skóre",
       "findInformationChapter": "Více informací najdete v této kapitole:",
       "futureProof": "Navždy platný: Váš diplom je trvale chráněn a vždy platný.",
       "getCertificate": "Získejte svůj diplom",
@@ -247,13 +263,13 @@
       "skipExamDescription": "Můžete také přeskočit zkoušku a přejít přímo k závěru kliknutím na tlačítko níže.",
       "skipExamGoConclusion": "Přeskočit zkoušku, přejít k závěru",
       "skipGoConclusion": "Přeskočit, přejít na závěr",
-      "solidEffort": "",
+      "solidEffort": "Gratulujeme k absolvování kurzu, vynaložili jste solidní úsilí.\nTentokrát jste sice neprošli, ale každý krok posouvá pokrok.\nPokračujte v cestě za učením!",
       "startExam": "Začít zkoušku",
       "submit": "Odeslat",
       "successDiploma": "Gratuluji! Úspěšně jste složil zkoušku. \nVáš diplom je k dispozici na vašem studentském portálu. Byl <0>časově označen</0> pro zajištění jeho autenticity.",
-      "successDiplomaTeacherLed": "",
+      "successDiplomaTeacherLed": "Gratulujeme! Úspěšně jste prošli kursem. \nVáš diplom je nyní dostupný na vašem studentském dashboardu.",
       "successDiplomaTimeStamped": "Gratuluji! Úspěšně jste složil zkoušku. \nVáš diplom bude k dispozici ve vašem studentském portálu asi 10 hodin po okamžiku, kdy jste zkoušku složil. Toto zpoždění je způsobeno technologií <0>časového razítka</0>, která zaručuje jeho pravost.",
-      "successfulPassedThreshold": "",
+      "successfulPassedThreshold": "Gratulujeme k dokončení kurzu.\nÚspěšně jste splnili procházející prah pro tento kurz a nyní jste absolvovali. \nSvůj diplom najdete na vašem dashboardu.",
       "sureSubmit": "Jste si jisti, že chcete odevzdat svou zkoušku?",
       "takeExam": "Složte test",
       "tamperProof": "Neporušitelné: Blockchain zajišťuje, že nikdo nemůže změnit nebo padělat vaše credenciály.",
@@ -272,11 +288,14 @@
       "weight": "Hmotnost: {{weight}}%",
       "whyTimeStamp": "Časové razítko vašeho diplomu:\nProč je to důležité",
       "wishTryAgain": "Pokud si přejete zkoušku zopakovat, bude k dispozici za 24 hodin.",
-      "yesSubmit": "Ano, odeslat"
+      "yesSubmit": "Ano, odeslat",
+      "examResults": "Výsledky zkoušek",
+      "scoreAndDiploma": "Skóre & Diplom"
     },
     "explorer": {
       "goal": "CÍL:",
-      "seeCourse": "Objevte kurz"
+      "seeCourse": "Objevte kurz",
+      "discover": "Objevte"
     },
     "format": {
       "hybrid": "Osobně/online",
@@ -357,7 +376,24 @@
       "writeThoughts": "Zde můžete napsat své myšlenky",
       "yesOfCourse": "ano, samozřejmě",
       "yesVeryMuch": "ano, velmi moc"
-    }
+    },
+    "liveClasses": {
+      "liveClasses": "Živé třídy",
+      "program": {
+        "goal": "Ovládněte průmysl Bitcoin s Giacomem Zucco v pětiměsíčním programu, který kombinuje teorii, skutečné případové studie a výhradní možnosti networkingu.",
+        "semester": "Semestr",
+        "title": "Plán ₿ Program"
+      },
+      "title": "Vedět změnu. Mistr Bitcoin.",
+      "allOtherTitle": "Všechny ostatní živé třídy"
+    },
+    "navbarHover": "Zaregistrujte se, abyste odemkli",
+    "noCoursesFound": "Nebyly nalezeny žádné kurzy",
+    "allCourses": "Všechny kurzy",
+    "continueLeftOff": "Pokračujte tam, kde jste skončili",
+    "courseSelector": "Výběr kurzu",
+    "plusXMore": "+{{count}} více",
+    "tryAdjustingFilters": "Zkuste upravit své filtry"
   },
   "dashboard": {
     "adminPanel": {
@@ -374,7 +410,9 @@
         "profession": "Profese",
         "resultsRemaining": "Zbývá {{results}} výsledků",
         "seeMore": "Vidět více",
-        "viewCV": "Zobrazit životopis"
+        "viewCV": "Zobrazit životopis",
+        "candidateFile": "Soubor kandidáta",
+        "file": "Soubor"
       },
       "confirmRemoval": "Potvrdit odstranění",
       "coupons": {
@@ -460,7 +498,346 @@
       "type": "Typ",
       "upcomingBookings": "Nadcházející rezervace",
       "upcomingBookingsSubtitle": "Zde si můžete stáhnout seznam účastníků všech prezenčních akcí.",
-      "userRolesAllocation": "Přidělení uživatelských rolí"
+      "userRolesAllocation": "Přidělení uživatelských rolí",
+      "translation": "Panel překladu",
+      "translationPanel": {
+        "actions": {
+          "accept": "Přijmout",
+          "delete": "Smazat",
+          "reject": "Odmítnout"
+        },
+        "addContributor": {
+          "addLanguage": "Přidat další jazyk",
+          "assign": "Přiřadit",
+          "assignedLanguages": "Již přiřazené jazyky",
+          "assigning": "Přiřazování...",
+          "assignmentSuccess": "Přiřazení přispěvatelů bylo úspěšné!",
+          "confirm": "Potvrdit",
+          "findContributor": "Najděte přispěvatele",
+          "language": "Jazyk",
+          "noUsers": "Žádní uživatelé k dispozici",
+          "searchUsers": "Vyhledávání uživatelů...",
+          "title": "Přidat přispěvatele",
+          "selectLanguage": "Vyberte jazyk",
+          "selectedUsers": "Vybraní uživatelé:"
+        },
+        "admin": "ADMIN",
+        "comingSoon": {
+          "courses": "Náhled kurzu bude brzy k dispozici",
+          "coverage": "Náhled pokrytí jazyků bude brzy k dispozici"
+        },
+        "contentManagement": {
+          "actions": {
+            "assign": "Přiřadit",
+            "backToContentManagement": "Zpět na správu obsahu",
+            "reassign": "Přeřadit",
+            "view": "Zobrazit"
+          },
+          "assignModal": {
+            "assign": "Přiřadit",
+            "assigning": "Přiřazování...",
+            "assigningCourse": "Přiřazování kurzu:",
+            "assignmentSuccess": "Kurz byl úspěšně přiřazen!",
+            "cancel": "Zrušit",
+            "chooseContributor": "Vyberte přispěvatele...",
+            "courseInfo": "Informace o kurzu",
+            "selectContributor": "Vybrat přispěvatele",
+            "title": "Přiřaďte kurz přispěvateli"
+          },
+          "description": "Spravujte překlady kursu a přiřazujte je přispěvatelům",
+          "noCourses": "Žádné kurzy nejsou k dispozici",
+          "noCoursesFiltered": "Žádné kurzy neodpovídají vašim filtrům",
+          "notAssigned": "Není přiřazeno",
+          "reassignModal": {
+            "cancel": "Zrušit",
+            "chooseNewContributor": "Vyberte nového přispěvatele...",
+            "courseInfo": "Informace o kurzu",
+            "currentlyAssignedTo": "Aktuálně přiřazeno:",
+            "reassign": "Přeřadit",
+            "reassigning": "Přeřazování...",
+            "reassigningCourse": "Přeřazování kurzu:",
+            "reassignmentSuccess": "Kurz byl úspěšně přeřazen!",
+            "selectNewContributor": "Vyberte nového přispěvatele",
+            "title": "Přeřaďte kurz na nového přispěvatele",
+            "warning": {
+              "description": "Kapitoly, které již byly recenzovány, nebudou znovu přiděleny.",
+              "title": "Důležitá poznámka"
+            }
+          },
+          "status": {
+            "assigned": "Přiřazeno",
+            "notAssigned": "Není přiřazeno",
+            "readyForReview": "Připraveno k recenzi",
+            "underReview": "Pod revizí"
+          },
+          "table": {
+            "actions": "Akce",
+            "contributor": "Přispěvatel",
+            "course": "Kurz",
+            "index": "Index",
+            "language": "Jazyk",
+            "progress": "Pokrok",
+            "status": "Stav"
+          },
+          "title": "Správa obsahu"
+        },
+        "courseDetails": {
+          "actions": "Akce",
+          "assignedTo": "Přiřazeno:",
+          "chapterIndex": "Kapitola",
+          "courseIndex": "Index kurzu",
+          "courseInformation": "Informace o kurzu",
+          "courseName": "Název kurzu",
+          "currentContributor": "Současný přispěvatel",
+          "errorLoadingDetails": "Chyba při načítání detailů kurzu",
+          "language": "Jazyk",
+          "noChapters": "Pro tento kurz nejsou k dispozici žádné kapitoly",
+          "noContributor": "Není přiřazen žádný přispěvatel",
+          "partTitle": "Část {{index}}: {{title}}",
+          "progress": "Pokrok",
+          "status": "Stav",
+          "translationStatus": "Stav překladu",
+          "chapterTitle": "Název",
+          "chaptersAndProgress": "Kapitoly a postup",
+          "chaptersCompleted": "dokončené kapitoly"
+        },
+        "courseNotFound": "Kurz nebyl nalezen",
+        "messages": {
+          "noPendingRequests": "Žádné další nevyřízené požadavky na korekturu.",
+          "noPendingRequestsSearch": "Žádné požadavky na korekturu odpovídající \"{{query}}\".",
+          "noRejectedRequests": "Nejsou žádné zamítnuté požadavky na korekturu.",
+          "noRejectedRequestsSearch": "Žádné zamítnuté požadavky na korekturu odpovídají \"{{query}}\"."
+        },
+        "modal": {
+          "cancel": "Zrušit",
+          "close": "Zavřít",
+          "contributor": "Přispěvatel",
+          "course": "Kurz",
+          "doYouWantToAcceptRequest": "Chcete přijmout tento požadavek na překlad?",
+          "language": "Jazyk",
+          "provideRejectionReason": "Prosím, uveďte důvod pro odmítnutí tohoto požadavku",
+          "reasonForRejection": "Důvod pro odmítnutí",
+          "reasonPlaceholder": "Sem napište své vysvětlení...",
+          "rejecting": "Odmítání...",
+          "requestAcceptedMessage": "Přispěvatel byl upozorněn a nyní může začít pracovat na překladu.",
+          "requestAcceptedSuccess": "Přijali jste požadavek na překlad!",
+          "requestRejectedSuccess": "Požadavek byl úspěšně odmítnut",
+          "submitRejection": "Odeslat",
+          "acceptRequest": "Přijmout požadavek",
+          "acceptTranslationRequest": "Přijmout požadavek na korekturu",
+          "accepting": "Přijímání..."
+        },
+        "noResultsFound": "Nebyly nalezeny žádné výsledky",
+        "pendingTranslationRequests": "Nevyřízené požadavky na korekturu",
+        "reports": {
+          "chooseYear": "Který rok chcete vzít v úvahu?",
+          "comingSoon": {
+            "courses": "Náhled kurzu bude brzy k dispozici",
+            "coverage": "Náhled pokrytí jazyků bude brzy k dispozici"
+          },
+          "contributors": {
+            "assignedCourses": "Přidělené kurzy",
+            "completedCourses": "Dokončené kurzy",
+            "languages": "Jazyky",
+            "startDate": "Datum zahájení",
+            "title": "Přispěvatelé",
+            "totalReward": "Celková odměna",
+            "username": "Uživatelské jméno"
+          },
+          "courses": {
+            "contributor": "Přispěvatel",
+            "filterByCourse": "Filtrovat podle kurzu",
+            "lastUpdated": "Poslední aktualizace",
+            "progress": "Průběh %"
+          },
+          "dateFilter": "Filtr podle data",
+          "downloadData": "Stáhnout data",
+          "filterByLanguage": "Filtrovat podle jazyka",
+          "fromMonth": "Od",
+          "fromMonthPlaceholder": "Od kterého měsíce?",
+          "generalReport": "Obecná zpráva",
+          "languageCoverage": {
+            "completed": "Dokončeno",
+            "inProgress": "V průběhu",
+            "notStarted": "Nezahájeno",
+            "totalCourses": "Celkový počet kurzů"
+          },
+          "languagesProofread": "Jazyky korektury",
+          "noContributors": "Nenalezeni žádní přispěvatelé",
+          "noCourses": "Nebyly nalezeny žádné kurzy",
+          "noLanguages": "Nenalezeny žádné jazyky",
+          "proofreadCourses": "Kurzy k přečtení",
+          "table": {
+            "contributor": "Přispěvatel",
+            "lastUpdated": "Poslední aktualizace",
+            "progress": "Průběh %"
+          },
+          "tabs": {
+            "contributors": "Přispěvatelé",
+            "courses": "Kurzy",
+            "coverage": "Pokrytí jazyků"
+          },
+          "toMonth": "Do",
+          "toMonthPlaceholder": "Do jakého měsíce?",
+          "totalLanguages": "Celkový počet jazyků",
+          "year": "Rok"
+        },
+        "searchPlaceholder": "Hledat...",
+        "status": {
+          "assigned": "Přiřazeno",
+          "completed": "Dokončeno",
+          "inProgress": "V průběhu",
+          "readyForReview": "Připraveno k recenzi",
+          "todo": "K udělání",
+          "underReview": "Pod revizí"
+        },
+        "table": {
+          "actions": "Akce",
+          "course": "Kurz",
+          "index": "Index",
+          "language": "Jazyk",
+          "username": "Uživatelské jméno"
+        },
+        "tabs": {
+          "contentManagement": "Správa obsahu",
+          "reports": "Zprávy",
+          "requests": "Žádosti",
+          "translate": "Přeložit",
+          "userManagement": "Správa uživatelů"
+        },
+        "title": "Administrační panel pro překlad",
+        "toggle": {
+          "pendingRequest": "Čekající žádosti",
+          "rejectedRequests": "Zamítnuté žádosti"
+        },
+        "translate": {
+          "actions": {
+            "translate": "Přeložit"
+          },
+          "backToCourse": "Zpět na kurz",
+          "changeSpeed": "Změnit rychlost přehrávání",
+          "chapterTitle": "Název kapitoly",
+          "compare": "Porovnat",
+          "compareDisabledTooltip": "Verze pro korekturu není k dispozici",
+          "compareTooltip": "Porovnat originální a korigované verze",
+          "comparison": {
+            "backToChapter": "Zpět na kapitolu",
+            "originalVersion": "Původní verze",
+            "translatedVersion": "Přeložená verze"
+          },
+          "description": "Začněte překládat kurzy do specifických jazyků.",
+          "forward15Seconds": "Posunout o 15 sekund dopředu",
+          "imageNotFound": "Obrázek nebyl nalezen",
+          "language": "Jazyk",
+          "loadingPresentation": "Načítání prezentace...",
+          "noContentAvailable": "Nejsou k dispozici žádné obsahy",
+          "noCourses": "V současné době není třeba překládat žádné kurzy.",
+          "noOriginalContent": "Žádný původní obsah",
+          "noPngSlides": "Pro tuto prezentaci nejsou k dispozici žádné slajdy ve formátu PNG",
+          "noSlidesFound": "Nenalezeny žádné slajdy",
+          "originalContent": "Původní obsah",
+          "pause": "Pauza",
+          "play": "Přehrát",
+          "presentations": "Prezentace",
+          "rewind15Seconds": "Přetočit o 15 sekund zpět",
+          "selectLanguagesModal": {
+            "audioFile": "Zvukový soubor",
+            "audioFileInfo": "Podporované formáty: MP3, WAV, M4A (max. 50 MB)",
+            "audioFileTooLarge": "Zvukový soubor je příliš velký. Maximální velikost je 50 MB.",
+            "cancel": "Zrušit",
+            "chooseAudioFile": "Vybrat audio",
+            "chooseFolder": "Vybrat složku",
+            "choosePptxFile": "Vybrat PPTX",
+            "chooseZip": "Vybrat ZIP",
+            "course": "Kurz:",
+            "englishFilesRequired": "Ujistěte se, že všechny nahrané soubory jsou výhradně v angličtině",
+            "existingUploadsInfo": "Původní soubory již byly nahrány. Můžete začít překládat bez nich znovu přidáváte. Nahrání nových souborů přepíše existující.",
+            "folderUrl": "URL adresa složky",
+            "invalidAudioFile": "Vyberte platný zvukový soubor.",
+            "invalidPptxFile": "Vyberte platný soubor PowerPoint (.pptx).",
+            "missingFilesError": "Před zahájením překladu nahrajte soubory překladu nebo poskytněte URL.",
+            "networkError": "Došlo k chybě sítě. Zkontrolujte své připojení a zkuste to znovu.",
+            "noAudioFileSelected": "Nebyl vybrán žádný zvukový soubor",
+            "noFolderSelected": "Nebyla vybrána žádná složka",
+            "noLanguagesAvailable": "Pro překlad nejsou k dispozici žádné jazyky.",
+            "noPptxFileSelected": "Nebyl vybrán žádný soubor PowerPoint",
+            "noZipSelected": "Nebyl vybrán žádný ZIP",
+            "originalLanguage": "Původní jazyk:",
+            "overwriteWarning": "Stávající soubory budou nahrazeny.",
+            "pptxFile": "Soubor PowerPoint",
+            "pptxFileInfo": "Podporovány jsou pouze soubory .pptx (max. 100 MB)",
+            "pptxFileTooLarge": "Soubor PowerPoint je příliš velký. Maximální velikost je 100 MB.",
+            "processingStarted": "Překlad začal! Proces může trvat několik minut u rozsáhlých kurzů.",
+            "selectLanguages": "Vyberte jazyky k překladu:",
+            "timeoutError": "Požadavek na překlad vypršel. Obsah kurzu může být příliš velký. Zkuste to prosím znovu nebo kontaktujte podporu.",
+            "title": "Vyberte jazyky k překladu",
+            "translationFailed": "Překlad se nezdařil. Zkontrolujte prosím záznamy a zkuste to znovu.",
+            "uploadAndTranslationStarted": "Soubory byly nahrány a překlad byl zahájen! Proces může trvat několik minut pro rozsáhlé kurzy.",
+            "uploadError": "Nahrávání se nezdařilo. Zkontrolujte prosím vaše soubory a zkuste to znovu.",
+            "uploadFiles": "Nahrajte podpůrné soubory (volitelné)",
+            "uploadFolder": "Nahrát složku (PPTX + TXT)",
+            "useEnglishLabel": "Kurz již byl přeložen do angličtiny. Použít anglickou verzi jako zdroj?",
+            "startSuccess": "Překlad úspěšně začal!",
+            "startTranslation": "Začít překlad",
+            "startingTranslation": "Nahrávání souborů...",
+            "startingTranslationStep": "Začíná se překládat...",
+            "uploadTimeoutError": "Nahrání vypršelo po 10 minutách. Zkuste prosím nahrát menší soubory nebo zkontrolujte své připojení.",
+            "uploadingFiles": "Nahrávání souborů..."
+          },
+          "slideNavigation": {
+            "next": "Další",
+            "previous": "Předchozí",
+            "slideCounter": "{{current}} / {{total}}"
+          },
+          "slideNotAvailable": "Snímek {{slideNumber}} není dostupný",
+          "slideNotFound": "Snímek nenalezen",
+          "table": {
+            "actions": "Akce",
+            "course": "Kurz",
+            "index": "Index",
+            "todoLanguages": "Jazyky k překladu",
+            "totalLanguages": "Celkový počet jazyků"
+          },
+          "textContent": "Textový obsah",
+          "title": "Překládat kurzy",
+          "translateTo": "Přeložit do",
+          "unknownContributor": "Neznámý"
+        },
+        "userManagement": {
+          "actions": {
+            "backToList": "Zpět na seznam uživatelů",
+            "backToUsers": "Zpět k uživatelům",
+            "viewDetails": "Zobrazit detaily"
+          },
+          "addContributor": "Přidat přispěvatele",
+          "chapters": "Kapitoly",
+          "contributorInformation": "Informace o přispěvateli",
+          "courses": "Kurzy",
+          "modal": {
+            "assignments": "Historie úkolů",
+            "noAssignments": "Nenalezeny žádné úkoly",
+            "title": "Detaily uživatele",
+            "userInfo": "Informace o uživateli"
+          },
+          "noUsers": "Nenalezeni žádní přispěvatelé",
+          "status": {
+            "published": "Publikováno",
+            "readyForReview": "Připraveno k recenzi",
+            "rejected": "Odmítnuto",
+            "reviewed": "Recenzováno",
+            "todo": "K udělání",
+            "underReview": "Pod revizí"
+          },
+          "table": {
+            "actions": "Akce",
+            "assignedCourses": "Přidělené kurzy",
+            "language": "Jazyk",
+            "startDate": "Datum zahájení",
+            "username": "Uživatelské jméno"
+          },
+          "title": "Přispěvatelé"
+        }
+      }
     },
     "announcements": {
       "groups": {
@@ -727,12 +1104,31 @@
       "summerSchool": "Letní škola",
       "surePreferenceList": "Jste si jisti, že váš seznam preferencí je definitivní?",
       "thresholdToPass": "Prahová hodnota k překonání: {{threshold}}%",
-      "tweetText": "Nadšený z toho, že jsem dokončil kurz {{courseIndex}} na @planb_network a získal jsem diplom s hodnocením {{score}}/100 na závěrečné zkoušce! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}"
+      "tweetText": "Nadšený z toho, že jsem dokončil kurz {{courseIndex}} na @planb_network a získal jsem diplom s hodnocením {{score}}/100 na závěrečné zkoušce! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
+      "assignmentNotAccessible": "Úkol již byl zahájen a již není přístupný.",
+      "assignmentScore": "Skóre úkolu",
+      "tweetTextCourseDiploma": "Nadšený z toho, že jsem dokončil kurz {{courseName}}, který vyučoval {{courseCoordinator}} na @planb_network a získal jsem svůj diplom!\n#PBNDiploma\n\n{{certificateUrl}}",
+      "viewScoreSummary": "Zobrazit souhrn skóre",
+      "wellDoneCompleting": "Dobrá práce na dokončení a složení tohoto kurzu!\nZde je váš zasloužený diplom",
+      "yourProjectAssignment": "Vaše úkol projektu"
     },
     "credentials": {
       "beingGraded": "Vaše zkouška je právě hodnocena. Výsledky by měly být k dispozici za 1 nebo 2 týdny.",
       "courseDiplomas": "Diplomy z kurzů",
-      "globalCertifications": "Globální certifikace"
+      "globalCertifications": "Globální certifikace",
+      "bCertResults": {
+        "score020": "Vyrazil jste na svou cestu! Každý odborník kdysi začínal odtud",
+        "score100": "Perfektní skóre! Jste Satoshi, nebo jen geniální?",
+        "score2140": "Máte základy! Pokračujte, rychle se zlepšujete!",
+        "score4160": "Solidní základ! Jste připraven na pokročilé kurzy",
+        "score6180": "Jde vám to skvěle! Pokračujte v zdokonalování svých dovedností a ovládání Bitcoinu",
+        "score8199": "Skvělé porozumění! Zvládáte složitá témata o Bitcoinu s lehkostí"
+      },
+      "completeACourse": "Dokončete svůj první kurz a obdržíte diplom ",
+      "detailedScore": "Podrobné skóre",
+      "exploreBCert": "Prozkoumejte ₿-CERT",
+      "getGlobalRecognition": "Získejte globální uznání s certifikátem ₿-CERT",
+      "noCertificatesAvailable": "Žádné certifikáty nejsou k dispozici"
     },
     "goToDashboard": "Přejděte na portál",
     "goToHomepage": "Přejděte na domovskou stránku",
@@ -756,7 +1152,8 @@
       "verify": "Ověřte si pravost diplomu",
       "whereYouAre": "Podívejme se, kde jsi!",
       "yourCertificate": "Tvůj certifikát",
-      "yourProgress": "Tvůj pokrok :"
+      "yourProgress": "Tvůj pokrok :",
+      "noCourseStarted": "Ještě jste nezačal žádné kurzy vlastním tempem"
     },
     "profile": {
       "cancel": "Zrušit",
@@ -792,7 +1189,8 @@
       "save": "Uložit",
       "saving": "Ukládání…",
       "securitySettings": "Nastavení zabezpečení",
-      "username": "Uživatelské jméno"
+      "username": "Uživatelské jméno",
+      "emailOrUsername": "E-mail nebo uživatelské jméno"
     },
     "teacher": {
       "courses": {
@@ -828,7 +1226,8 @@
           "missingGradesTitle": "Stále chybí {{count}} známek!",
           "publishAllGrades": "Zveřejnit všechny známky",
           "studentDisplayName": "Student (zobrazované jméno)",
-          "title": "Známky za úkoly"
+          "title": "Známky za úkoly",
+          "courseAssignment": "Přiřazení kurzu"
         },
         "assignmentStudents": "Zadání projektů",
         "courseDetails": "Detaily kurzu",
@@ -847,7 +1246,23 @@
         "quickRecap": "Zde naleznete veškeré obecné informace týkající se tohoto kurzu.",
         "reviews": "Recenze",
         "summerStudents": "Letní škola",
-        "writeAnnouncement": "Napište oznámení"
+        "writeAnnouncement": "Napište oznámení",
+        "amountPaid": "Zaplacená částka",
+        "averageAttempts": "Průměrný počet pokusů",
+        "averageDuration": "Průměrná doba trvání",
+        "averageScore": "Průměrné skóre",
+        "exportExamData": "Exportovat data zkoušek",
+        "finalAverageResults": "Konečné průměrné výsledky",
+        "finalScore": "Konečné skóre",
+        "lastActive": "Naposledy aktivní",
+        "medianScore": "Střední skóre",
+        "noExamLinked": "K tomuto kurzu momentálně není připojena žádná zkouška. Pokud chcete vytvořit zkoušku, kontaktujte nás, prosím.",
+        "overview": "Přehled",
+        "questionsInExam": "Otázky v examinaci",
+        "studentsGraduated": "Absolventi",
+        "successRate": "Úspěšnost",
+        "thresholdToPass": "Práh pro úspěšné složení",
+        "totalQuestions": "Celkový počet otázek"
       },
       "profile": {
         "billingInformation": "Fakturační údaje",
@@ -878,6 +1293,29 @@
       "tutorials": {
         "tutorialAnalyticsDescription": "Zde najdete analýzy tutoriálů, které jste vytvořili a publikovali na platformě.",
         "yourTutorials": "Vaše tutoriály"
+      },
+      "discount": {
+        "description": "Zde můžete generovat a spravovat slevové kódy pro tento kurz - jednorázové pro stipendia nebo podobné případy, nebo vícekrát použitelné pro marketingové kampaně."
+      }
+    },
+    "professor": {
+      "courses": {
+        "overview": {
+          "announceChange": "Ohlásit změnu",
+          "attendanceList": "Seznam účastníků",
+          "courseEnded": "Tento kurz skončil.",
+          "courseNotStarted": "Tento kurz ještě nezačal.",
+          "enrolledStudents": "Zapsaní studenti",
+          "hasEnrolled": "je zapsán",
+          "hasGraduated": "absolvoval s hodnocením {{score}}%",
+          "hasLeftReview": "zanechal recenzi",
+          "hasLeftReviewAndComment": "zanechal recenzi a komentář",
+          "notifyStudents": "Došlo k nějaké změně? Informujte své studenty.",
+          "overallPerformance": "Celkový výkon",
+          "recentActivity": "Nedávná aktivita",
+          "studentsRegistered": "Registrovaní studenti",
+          "upcomingClass": "Nadcházející hodina"
+        }
       }
     }
   },
@@ -891,7 +1329,8 @@
       "purchased": "Koupené",
       "unlimited": "neomezeno",
       "visitWebsite": "Navštívit webové stránky",
-      "watchReplay": "Sledovat záznam"
+      "watchReplay": "Sledovat záznam",
+      "buyLecture": "Koupit přednášku"
     },
     "main": {
       "upcomingEvents": "Nadcházející události"
@@ -923,7 +1362,39 @@
       "time": "Čas"
     },
     "tcDisclaimer": "Souhlasím se sdílením mých údajů s organizátory za účelem přístupu do místa konání.",
-    "tcMustBeAccepted": "Pro pokračování musíte přijmout obchodní podmínky"
+    "tcMustBeAccepted": "Pro pokračování musíte přijmout obchodní podmínky",
+    "addEvent": "Přidat událost",
+    "calendar": {
+      "inXMonths": "Za {{number}} měsíce",
+      "lastMonth": "Minulý měsíc",
+      "nextMonth": "Příští měsíc",
+      "noEventsFound": "Nebyly nalezeny žádné události",
+      "thisMonth": "Tento měsíc",
+      "today": "Dnes",
+      "xMonthsAgo": "Před {{number}} měsíci"
+    },
+    "eventInfos": {
+      "eventBooked": "Událost rezervována",
+      "eventType": "Typ události",
+      "numberOfSpots": "Počet míst",
+      "onlineAndInPerson": "Online i osobně",
+      "secureYourSpot": "Zajištěte si své místo",
+      "sessionBooked": "Sesse rezervována",
+      "whatsPlanned": "Co je naplánováno"
+    },
+    "myTickets": "Moje lístky",
+    "planBWeek": {
+      "pageTitle": "Plán ₿ Týden"
+    },
+    "types": {
+      "plurals": {
+        "conference": "konference",
+        "exam": "zkoušky",
+        "lecture": "přednášky",
+        "meetup": "setkání",
+        "workshop": "workshopy"
+      }
+    }
   },
   "filters": {
     "topics": "Témata"
@@ -931,7 +1402,8 @@
   "glossary": {
     "definition": "Definice",
     "relatedWords": "Související slova:",
-    "term": "Pojem"
+    "term": "Pojem",
+    "showMoreWords": "Zobrazit více slov"
   },
   "home": {
     "aboutUsSection": {
@@ -978,7 +1450,10 @@
     "watchLecture": "Podívejte se na záznam přednášky"
   },
   "menu": {
-    "login": "Přihlašte se"
+    "login": "Přihlašte se",
+    "signIn": "Přihlásit se",
+    "educatorContent": "Obsah pro vyučující",
+    "getStarted": "Začít"
   },
   "notFound": {
     "here": "Zde",
@@ -1020,7 +1495,8 @@
     "upcomingEvent": "Nadcházející událost",
     "weeksAgo": "před {{weeks}} týdny",
     "yearsAgo": "před {{years}} roky",
-    "yesterday": "Včera"
+    "yesterday": "Včera",
+    "newVersionAvailable": "Je dostupná nová verze platformy Plan ₿ Network. Aktualizaci proveďte obnovením stránky."
   },
   "payment": {
     "haveReductionCode": "Máte slevový kód?",
@@ -1072,22 +1548,26 @@
       "contact": "Kontakt",
       "legalNotice": "Právní upozornění",
       "privacyPolicy": "Zásady ochrany osobních údajů",
-      "termsOfSale": "Podmínky prodeje"
+      "termsOfSale": "Podmínky prodeje",
+      "notFound": "Právní informace nebyly nalezeny"
     }
   },
   "resources": {
     "bet": {
-      "title": "Vzdělávací nástroje"
+      "title": "Vzdělávací nástroje",
+      "addEducationKit": "Přidat vzdělávací sadu"
     },
     "books": {
-      "title": "Knihovna"
+      "title": "Knihovna",
+      "addBook": "Přidat knihu"
     },
     "channels": {
       "noYoutubeChannels": "Pro vybraný jazyk momentálně nejsou k dispozici žádné YouTube kanály.",
       "title": "Youtube kanály"
     },
     "conferences": {
-      "title": "Záznamy z konferencí"
+      "title": "Záznamy z konferencí",
+      "addConference": "Přidat záznam z konference"
     },
     "glossary": {
       "title": "Slovníček pojmů"
@@ -1112,14 +1592,18 @@
     "pageSubtitlePodcast": "<0>Další podcasty</0>, které by se vám mohly líbit",
     "podcasts": {
       "noPodcasts": "Pro vybraný jazyk momentálně nejsou k dispozici žádné podcasty.",
-      "title": "Podcasty"
+      "title": "Podcasty",
+      "addPodcast": "Přidat podcast",
+      "checkThePodcast": "Zkontrolujte podcast"
     },
     "projects": {
-      "title": "Projekty"
+      "title": "Projekty",
+      "addProjects": "Přidat projekt"
     },
     "searchFilterName": "Vyhledat podle názvu",
     "toggleLabelAll": "Vše",
-    "toggleLabelSelectedLanguage": "Vybrané jazyky"
+    "toggleLabelSelectedLanguage": "Vybrané jazyky",
+    "pageSubtitleMovies": "<0>Další filmy</0>, které se vám mohou líbit"
   },
   "search": {
     "all": "Vše",
@@ -1160,7 +1644,9 @@
     "tutorial": "Tutoriál",
     "tutorials": "Tutoriály",
     "youtube_channel": "Youtube kanál",
-    "youtube_channels": "Youtube kanály"
+    "youtube_channels": "Youtube kanály",
+    "noResults": "Žádné výsledky",
+    "resultsFound": "Nalezeno {{count}} výsledků"
   },
   "settings": {
     "changeDisplayName": "Změnit zobrazované jméno",
@@ -1182,7 +1668,8 @@
       "author": "Autor:",
       "ratingSuccess": "Děkujeme za vaše hodnocení!",
       "source": "Původní zdroj:",
-      "tutorialName": "Název tutoriálu"
+      "tutorialName": "Název tutoriálu",
+      "didThisWork": "Vyšlo vám to dobře?"
     },
     "exchange": {
       "title": "Směnárna"
@@ -1218,12 +1705,15 @@
       "peer-to-peer": "Peer-to-peer",
       "point-of-sale": "Moment prodeje",
       "pool": "Pool",
-      "resource": "Zdroj"
+      "resource": "Zdroj",
+      "explorer": "Průzkumník"
     },
     "wallet": {
       "title": "Peněženka"
     },
-    "writtenBy": "Tento tutoriál napsal/a"
+    "writtenBy": "Tento tutoriál napsal/a",
+    "noTutorialsFound": "Nenašli jsme žádný návod odpovídající vašemu hledání.",
+    "onThisPage": "Na této stránce"
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1373,10 +1863,116 @@
     "view": "Zobrazit",
     "viewMore": "Zobrazit více",
     "wallets": "Peněženky",
-    "yes": "Ano"
+    "yes": "Ano",
+    "map": "Mapa",
+    "address": "Adresa",
+    "booking": "Rezervace",
+    "certifications": "Certifikáty",
+    "completed": "Dokončeno",
+    "confirmation": "Potvrzení",
+    "discover": "Objevte",
+    "enrolled": "Zapsán",
+    "filters": "Filtry",
+    "full": "Plný",
+    "info": "Informace",
+    "invoices": "Faktury",
+    "legal": "Právní",
+    "list": "Seznam",
+    "month": "Měsíc",
+    "none": "Žádný",
+    "optional": "Volitelné",
+    "planBNetwork": "Plán ₿ sítě",
+    "practice": "Praxe",
+    "pricing": "Ceny",
+    "questions": "Otázky",
+    "rating": "Hodnocení",
+    "resetAll": "Obnovit vše",
+    "resetFilters": "Obnovit filtry",
+    "results": "Výsledky",
+    "resume": "Životopis",
+    "review": "Recenze",
+    "sats": "Sats",
+    "searchTripleDot": "Hledat...",
+    "seeAll": "Zobrazit vše",
+    "session": "Síť",
+    "settings": "Nastavení",
+    "share": "Sdílet",
+    "structure": "Struktura",
+    "syllabus": "Sylabus",
+    "taxes": "daně",
+    "theory": "Teorie",
+    "topic": "Téma",
+    "type": "Typ",
+    "viewAll": "Zobrazit vše",
+    "week": "Týden",
+    "weight": "Hmotnost",
+    "aboutUs": "O nás",
+    "academy": "Akademie",
+    "account": "Účet",
+    "actions": "Akce"
   },
   "youtubeChannels": {
     "view": "Zobrazit YouTube kanál",
     "watchTrailer": "Podívejte se na upoutávku"
+  },
+  "account": {
+    "myTeacherProfile": "Můj profil učitele",
+    "account": "Účet"
+  },
+  "months": {
+    "april": "Duben",
+    "august": "Srpen",
+    "december": "Prosinec",
+    "february": "Únor",
+    "january": "Leden",
+    "july": "Červenec",
+    "june": "červen",
+    "march": "březen",
+    "may": "květen",
+    "november": "listopad",
+    "october": "říjen",
+    "september": "září"
+  },
+  "footer": {
+    "FOSSOpenContent": "FOSS & Open content",
+    "proudlyPartOf": "S hrdostí součástí <0>Plan ₿ Network</0>"
+  },
+  "movies": {
+    "checkTheMovie": "Zkontrolujte film"
+  },
+  "navbar": {
+    "bookings": "Rezervace",
+    "career": "Kariéra",
+    "careers": "Kariéra",
+    "discountCode": "Slevové kódy",
+    "learnAnytimeDescription": "Kurzy vlastním tempem",
+    "learnAnytimeTitle": "Učte se kdykoliv",
+    "liveClassesDescription": "Kurzy vedené učitelem",
+    "liveClassesTitle": "Živé třídy",
+    "manageCourses": "Spravovat kurzy",
+    "myCourses": "Mé kurzy",
+    "tabs": {
+      "admin": "Administrátor",
+      "learn": "Učit se",
+      "teach": "Učit"
+    },
+    "translationPanel": "Panel překladu",
+    "tutorials": "Návody",
+    "tutorialsAnalytics": "Analýzy tutoriálů",
+    "userRolesAllocation": "Přiřazení uživatelských rolí"
+  },
+  "videoSelector": {
+    "language": {
+      "AI": "AI překlad",
+      "language": "Jazyk",
+      "original": "Původní jazyk"
+    },
+    "player": {
+      "pears": "Hrušky 🍐",
+      "peertube": "Peertube",
+      "player": "Přehrávač",
+      "rumble": "Rumble",
+      "youtube": "Youtube"
+    }
   }
 }

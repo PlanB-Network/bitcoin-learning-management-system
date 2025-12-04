@@ -1715,7 +1715,8 @@
       "title": "Dompet"
     },
     "writtenBy": "Tutorial ini ditulis oleh",
-    "onThisPage": "Di halaman ini"
+    "onThisPage": "Di halaman ini",
+    "noTutorialsFound": "Kami tidak dapat menemukan tutorial apa pun yang cocok dengan pencarian Anda."
   },
   "underConstruction": {
     "github": "GitHub",

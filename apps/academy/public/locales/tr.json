@@ -63,7 +63,9 @@
       "invalidCredentials": "Geçersiz hesap bilgileri",
       "usernameRegex": "Kullanıcı adı yalnızca harfler, rakamlar, _, . ve - içerebilir.",
       "usernameRequired": "Kullanıcı adı gereklidir.",
-      "usernameTooShort": "Kullanıcı adı en az 5 karakter içermelidir."
+      "usernameTooShort": "Kullanıcı adı en az 5 karakter içermelidir.",
+      "oldPasswordRequired": "Eski şifre gereklidir",
+      "passwordTooShort": "Şifre çok kısa"
     },
     "forgottenPassword": "Şifrenizi mi unuttunuz?",
     "headerAccountCreated": "Hesap oluşturuldu",
@@ -91,7 +93,11 @@
     "trackProgress": "İlerlemelerinizi takip etmek için giriş yapın veya bir hesap oluşturun",
     "tryAgain": "Tekrar deneyin",
     "loginNotAvailable1": "Masaüstü uygulamasında henüz giriş özellikleri mevcut değil.",
-    "loginNotAvailable2": "Web sitemizi ziyaret ederek hesabınıza giriş yapabilir ve erişim sağlayabilirsiniz."
+    "loginNotAvailable2": "Web sitemizi ziyaret ederek hesabınıza giriş yapabilir ve erişim sağlayabilirsiniz.",
+    "forgotPassword": "Şifrenizi mi unuttunuz?",
+    "login": "Giriş",
+    "oldPassword": "Eski şifre",
+    "signUp": "Kaydol"
   },
   "bCert": {
     "bCertDescription": "B-sertifikası, Bitcoin ve bağlantılı konular hakkındaki seviyenizi değerlendirmek için uluslararası olarak tanınan bir sınavdır. Bu sertifika, Bitcoin endüstrisi arasında yeteneklerinizi ve bilginizi kanıtlamanızı sağlar, size bu endüstrideki şirketlere ve pozisyonlara erişim imkanı verir.",
@@ -105,7 +111,10 @@
     "verify": "Belgenizin geçerliliğini kontrol edin",
     "certificates": "Sertifikalar",
     "chooseCourse": "Kurs seçin",
-    "hostSessionConditions": "Nasıl yapılır:\n\n1. <0>Tüzüğü</0> Okuyun - Topluluğunuzun zorunlu ev sahipliği koşullarını karşıladığından emin olun\n2. Planlama & Programlama - Eğer uygunluğunuz varsa, bir tarih seçin ve oturumu ayarlayın\n3. Etkinliğinizi Yayınlayın - İnsanların katılabilmesi için Plan ₿ Network platformuna eklememiz için bizimle iletişime geçin"
+    "hostSessionConditions": "Nasıl yapılır:\n\n1. <0>Tüzüğü</0> Okuyun - Topluluğunuzun zorunlu ev sahipliği koşullarını karşıladığından emin olun\n2. Planlama & Programlama - Eğer uygunluğunuz varsa, bir tarih seçin ve oturumu ayarlayın\n3. Etkinliğinizi Yayınlayın - İnsanların katılabilmesi için Plan ₿ Network platformuna eklememiz için bizimle iletişime geçin",
+    "noDiplomasAvailable": "Henüz diploma yok",
+    "noTestSessions": "Şu anda kullanılabilir test oturumu yok",
+    "wantHostSession": "Yerel merkezinizde ₿-CERT test oturumu düzenlemek ister misiniz?"
   },
   "bet": {
     "educationalContent": {
@@ -128,7 +137,8 @@
     "noConferences": "Henüz {{year}} için eklenmiş konferans yok.",
     "pageTitle": "Konferans tekrarları",
     "planBConferences": "Plan ₿ konferansları",
-    "topics": "Konular"
+    "topics": "Konular",
+    "conferencesGenesis": "Genesis Block'tan bu yana konferanslar"
   },
   "courses": {
     "chapter": {
@@ -284,7 +294,8 @@
     },
     "explorer": {
       "goal": "Hedef:",
-      "seeCourse": "Kursu keşfedin"
+      "seeCourse": "Kursu keşfedin",
+      "discover": "Keşfet"
     },
     "format": {
       "hybrid": "Yüz yüze/online",
@@ -365,7 +376,24 @@
       "writeThoughts": "Burada düşüncelerinizi yazabilirsiniz",
       "yesOfCourse": "evet, tabii ki",
       "yesVeryMuch": "evet, çok fazla"
-    }
+    },
+    "allCourses": "Tüm kurslar",
+    "continueLeftOff": "Kaldığınız yerden devam edin",
+    "courseSelector": "Kurs seçici",
+    "noCoursesFound": "Hiç kurs bulunamadı",
+    "liveClasses": {
+      "allOtherTitle": "Diğer tüm canlı dersler",
+      "liveClasses": "Canlı dersler",
+      "program": {
+        "goal": "Giacomo Zucco ile teorik, gerçek durum çalışmaları ve özel ağ oluşturma fırsatlarının harmanlandığı 5 aylık programda Bitcoin endüstrisini hâkim olun.",
+        "semester": "Dönem",
+        "title": "Plan ₿ Programı"
+      },
+      "title": "Değişimi öncülük et. Bitcoin'i hâkim ol."
+    },
+    "navbarHover": "Kilidi açmak için kaydolun",
+    "plusXMore": "+{{count}} daha fazla",
+    "tryAdjustingFilters": "Filtrelerinizi ayarlamayı deneyin"
   },
   "dashboard": {
     "adminPanel": {
@@ -697,7 +725,17 @@
             "startingTranslation": "Başlıyor...",
             "title": "Çeviri yapılacak dilleri seçin",
             "uploadFiles": "Destekleyici Dosyaları Yükle (opsyonel)",
-            "uploadFolder": "Klasör yükle (PPTX + TXT)"
+            "uploadFolder": "Klasör yükle (PPTX + TXT)",
+            "englishFilesRequired": "Lütfen yüklediğiniz tüm dosyaların sadece İngilizce olduğundan emin olun",
+            "networkError": "Ağ hatası oluştu. Lütfen bağlantınızı kontrol edin ve tekrar deneyin.",
+            "processingStarted": "Çeviri başladı! İşlem, büyük kurslar için birkaç dakika sürebilir.",
+            "timeoutError": "Çeviri isteği zaman aşımına uğradı. Kurs içeriği çok büyük olabilir. Lütfen tekrar deneyin veya destek ile iletişime geçin.",
+            "translationFailed": "Çeviri başarısız oldu. Lütfen logları kontrol edin ve tekrar deneyin.",
+            "uploadAndTranslationStarted": "Dosyalar yüklendi ve çeviri başladı! İşlem, büyük kurslar için birkaç dakika sürebilir.",
+            "uploadError": "Yükleme başarısız oldu. Lütfen dosyalarınızı kontrol edin ve tekrar deneyin.",
+            "startingTranslationStep": "Çeviri başlıyor...",
+            "uploadTimeoutError": "Yükleme 10 dakika sonra zaman aşımına uğradı. Lütfen daha küçük dosyalarla deneyin veya bağlantınızı kontrol edin.",
+            "uploadingFiles": "Dosyalar yükleniyor..."
           },
           "unknownContributor": "Bilinmeyen",
           "slideNavigation": {
@@ -1077,7 +1115,20 @@
     "credentials": {
       "beingGraded": "Sınavınız notlandırılıyor. Sonuçlar 1 veya 2 hafta içinde mevcut olacaktır.",
       "courseDiplomas": "Diploma kursları",
-      "globalCertifications": "Sertifikalar"
+      "globalCertifications": "Sertifikalar",
+      "bCertResults": {
+        "score6180": "Harika gidiyorsunuz! Becerilerinizi mükemmelleştirin ve Bitcoin'i ustalaştırın",
+        "score020": "Yolculuğunuza başladınız! Her uzman bir zamanlar buradan başladı",
+        "score100": "Mükemmel skor! Satoshi misiniz, yoksa sadece briliant mısınız?",
+        "score2140": "Temelleri kaptınız! Devam edin, hızla gelişiyorsunuz!",
+        "score4160": "Sağlam bir temel! İleri seviye dersler için hazırsınız",
+        "score8199": "Mükemmel anlayış! Kompleks Bitcoin konularını rahatlıkla hallediyorsunuz"
+      },
+      "completeACourse": "Bir diplomaya sahip olmak için ilk kursunuzu tamamlayın ",
+      "detailedScore": "Detaylı skor",
+      "exploreBCert": "₿-CERT'i Keşfedin",
+      "getGlobalRecognition": "₿-CERT sertifikası ile global tanınırlık elde edin",
+      "noCertificatesAvailable": "Kullanılabilir sertifika yok"
     },
     "goToDashboard": "Gösterge paneline git",
     "goToHomepage": "Ana sayfaya git",
@@ -1101,7 +1152,8 @@
       "verify": "Diploma doğruluğunu doğrulayın",
       "whereYouAre": "Bakalım neredesin!",
       "yourCertificate": "Sertifikanız",
-      "yourProgress": "İlerlemeniz :"
+      "yourProgress": "İlerlemeniz :",
+      "noCourseStarted": "Henüz herhangi bir kendiliğinden ilerleyen kursa başlamadınız"
     },
     "profile": {
       "cancel": "İptal",
@@ -1137,7 +1189,8 @@
       "save": "Kaydet",
       "saving": "Kaydediliyor…",
       "securitySettings": "Güvenlik ayarları",
-      "username": "Kullanıcı Adı"
+      "username": "Kullanıcı Adı",
+      "emailOrUsername": "Eposta veya kullanıcı adı"
     },
     "teacher": {
       "courses": {
@@ -1207,7 +1260,9 @@
         "thresholdToPass": "Geçiş eşiği",
         "totalQuestions": "Toplam soru sayısı",
         "overview": "Genel Bakış",
-        "successRate": "Başarı oranı"
+        "successRate": "Başarı oranı",
+        "amountPaid": "Ödenen miktar",
+        "lastActive": "Son aktif olunan"
       },
       "profile": {
         "billingInformation": "Fatura bilgisi",
@@ -1274,7 +1329,8 @@
       "purchased": "Satın alındı",
       "unlimited": "sınırsız",
       "visitWebsite": "Web sitesini ziyaret edin",
-      "watchReplay": "Replay izle"
+      "watchReplay": "Replay izle",
+      "buyLecture": "Ders satın al"
     },
     "main": {
       "upcomingEvents": "Gelecek etkinlikler"
@@ -1318,6 +1374,26 @@
     },
     "planBWeek": {
       "pageTitle": "Plan ₿ Haftası"
+    },
+    "addEvent": "Etkinlik ekle",
+    "eventInfos": {
+      "eventBooked": "Etkinlik rezerve edildi",
+      "eventType": "Etkinlik türü",
+      "numberOfSpots": "Konumların sayısı",
+      "onlineAndInPerson": "Çevrimiçi ve yüz yüze",
+      "secureYourSpot": "Yerinizi güvenceye alın",
+      "sessionBooked": "Oturum rezerve edildi",
+      "whatsPlanned": "Neler planlandı"
+    },
+    "myTickets": "Biletlerim",
+    "types": {
+      "plurals": {
+        "conference": "konferanslar",
+        "exam": "sınavlar",
+        "lecture": "dersler",
+        "meetup": "buluşmalar",
+        "workshop": "atölye çalışmaları"
+      }
     }
   },
   "filters": {
@@ -1326,7 +1402,8 @@
   "glossary": {
     "definition": "Tanım",
     "relatedWords": "İlgili kelimeler:",
-    "term": "Dönem"
+    "term": "Dönem",
+    "showMoreWords": "Daha fazla kelime göster"
   },
   "home": {
     "aboutUsSection": {
@@ -1373,7 +1450,10 @@
     "watchLecture": "Dersin tekrarını izleyin"
   },
   "menu": {
-    "login": "Giriş Yap"
+    "login": "Giriş Yap",
+    "educatorContent": "Eğitimci içeriği",
+    "getStarted": "Başla",
+    "signIn": "Oturum aç"
   },
   "notFound": {
     "here": "Burada",
@@ -1468,22 +1548,26 @@
       "contact": "İletişim",
       "legalNotice": "Hukuki bildirim",
       "privacyPolicy": "Gizlilik politikası",
-      "termsOfSale": "Satış Şartları"
+      "termsOfSale": "Satış Şartları",
+      "notFound": "Hukuki bilgiler bulunamadı"
     }
   },
   "resources": {
     "bet": {
-      "title": "Eğitim Araç Seti"
+      "title": "Eğitim Araç Seti",
+      "addEducationKit": "Eğitim seti ekle"
     },
     "books": {
-      "title": "Kütüphane"
+      "title": "Kütüphane",
+      "addBook": "Kitap ekle"
     },
     "channels": {
       "noYoutubeChannels": "Seçilen dil için şu anda herhangi bir Youtube kanalı bulunmamaktadır.",
       "title": "Youtube Kanalları"
     },
     "conferences": {
-      "title": "Konferans tekrarları"
+      "title": "Konferans tekrarları",
+      "addConference": "Konferans tekrarını ekle"
     },
     "glossary": {
       "title": "Sözlük"
@@ -1508,14 +1592,18 @@
     "pageSubtitlePodcast": "<0>Hoşunuza gidebilecek diğer podcastler </0>",
     "podcasts": {
       "noPodcasts": "Seçilen dil için şu anda hiç podcast bulunmamaktadır.",
-      "title": "Podcast'ler"
+      "title": "Podcast'ler",
+      "addPodcast": "Podcast ekle",
+      "checkThePodcast": "Podcasti kontrol et"
     },
     "projects": {
-      "title": "Projeler"
+      "title": "Projeler",
+      "addProjects": "Proje ekle"
     },
     "searchFilterName": "İsimle ara",
     "toggleLabelAll": "Hepsi",
-    "toggleLabelSelectedLanguage": "Seçilen dil"
+    "toggleLabelSelectedLanguage": "Seçilen dil",
+    "pageSubtitleMovies": "Hoşunuza gidebilecek <0>diğer filmler</0>"
   },
   "search": {
     "all": "Hepsi",
@@ -1556,7 +1644,9 @@
     "tutorial": "Öğretici içerik",
     "tutorials": "Öğretici içerikler",
     "youtube_channel": "Youtube kanalı",
-    "youtube_channels": "Youtube kanalları"
+    "youtube_channels": "Youtube kanalları",
+    "noResults": "Sonuç yok",
+    "resultsFound": "{{count}} sonuç bulundu"
   },
   "settings": {
     "changeDisplayName": "Görünen adı değiştir",
@@ -1578,7 +1668,8 @@
       "author": "Yazar:",
       "ratingSuccess": "Değerlendirmeniz için teşekkürler!",
       "source": "Orjinal kaynak :",
-      "tutorialName": "Öğretici içerik ismi"
+      "tutorialName": "Öğretici içerik ismi",
+      "didThisWork": "Bu sizin için iyi çalıştı mı?"
     },
     "exchange": {
       "title": "Borsa"
@@ -1614,12 +1705,15 @@
       "peer-to-peer": "Eşten eşe (peer-to-peer)",
       "point-of-sale": "Satış noktası",
       "pool": "Havuz",
-      "resource": "Kaynak"
+      "resource": "Kaynak",
+      "explorer": "Keşfet"
     },
     "wallet": {
       "title": "Cüzdan"
     },
-    "writtenBy": "Bu ders şu kişi tarafından yazılmıştır"
+    "writtenBy": "Bu ders şu kişi tarafından yazılmıştır",
+    "noTutorialsFound": "Aramanızla eşleşen herhangi bir öğretici bulamadık.",
+    "onThisPage": "Bu sayfada"
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1783,7 +1877,39 @@
     "structure": "Yapı",
     "taxes": "vergiler",
     "week": "Hafta",
-    "weight": "Ağırlık"
+    "weight": "Ağırlık",
+    "account": "Hesap",
+    "aboutUs": "Hakkımızda",
+    "address": "Adres",
+    "booking": "Rezervasyon",
+    "certifications": "Sertifikalar",
+    "completed": "Tamamlandı",
+    "confirmation": "Onay",
+    "discover": "Keşfet",
+    "enrolled": "Kayıtlı",
+    "filters": "Filtreler",
+    "full": "Tam",
+    "invoices": "Faturalar",
+    "legal": "Yasal",
+    "list": "Liste",
+    "map": "Harita",
+    "optional": "İsteğe Bağlı",
+    "planBNetwork": "Plan ₿ Network",
+    "practice": "Pratik",
+    "pricing": "Fiyatlandırma",
+    "resetAll": "Hepsini sıfırla",
+    "resetFilters": "Filtreleri sıfırla",
+    "resume": "Özgeçmiş",
+    "sats": "Sats",
+    "searchTripleDot": "Ara...",
+    "seeAll": "Hepsini gör",
+    "session": "Oturum",
+    "settings": "Ayarlar",
+    "syllabus": "Müfredat",
+    "theory": "Teori",
+    "topic": "Konu",
+    "type": "Yazın",
+    "viewAll": "Tümünü gör"
   },
   "youtubeChannels": {
     "view": "Youtube Kanalını Görüntüle",
@@ -1813,7 +1939,8 @@
       "peertube": "Peertube",
       "player": "Oyuncu",
       "rumble": "Rumble",
-      "youtube": "Youtube"
+      "youtube": "Youtube",
+      "pears": "Armutlar 🍐"
     }
   },
   "navbar": {
@@ -1831,10 +1958,21 @@
     },
     "translationPanel": "Çeviri paneli",
     "tutorials": "Eğitimler",
-    "userRolesAllocation": "Kullanıcı rollerinin tahsisi"
+    "userRolesAllocation": "Kullanıcı rollerinin tahsisi",
+    "careers": "Kariyerler",
+    "liveClassesDescription": "Öğretmen-önderliğindeki kurslar",
+    "liveClassesTitle": "Canlı dersler",
+    "tutorialsAnalytics": "Eğitim analitikleri"
   },
   "account": {
     "account": "Hesap",
     "myTeacherProfile": "Doçent profilim"
+  },
+  "footer": {
+    "FOSSOpenContent": "FOSS & Açık içerik",
+    "proudlyPartOf": "Gururla <0>Plan ₿ Network</0>'in bir parçası"
+  },
+  "movies": {
+    "checkTheMovie": "Filmi kontrol et"
   }
 }

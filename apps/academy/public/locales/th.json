@@ -19,7 +19,8 @@
     "missionTitle": "ภารกิจของเรา",
     "storyContent": "เครือข่าย PlanB เป็นโครงการริเริ่มเพื่อสนับสนุนการศึกษาในด้าน Bitcoin ในระดับโลก มันคือการรวมตัวกันของ บริษัทที่เกี่ยวกับด้าน Bitcoin หลากหลายบริษัท ที่เต็มไปด้วยความหลงไหล ที่มุ่งความสนใจไปยังในด้านการศึกษา ด้านซอฟต์แวร์โอเพ่นซอร์ส ด้านระบบเครือข่ายแบบ peer-to-peer และรวมเข้ากับความรู้สึกที่เป็นชุมชน พวกเขาได้ตัดสินใจสร้างเครือข่าย PlanB ร่วมกัน และนำเสนอเครื่องมือที่เหมาะสมให้กับระบบนิเวศของตัว Bitcoin เพื่อที่จะได้เติบโตขึ้น โดยสามารถดู พรีเซ็นเทชั่น เวอร์ชันของเราในปี 2023 ได้ที่นี่",
     "storyTitle": "เรื่องราวของเรา",
-    "title": "เกี่ยวกับเรา เครือข่าย Plan B"
+    "title": "เกี่ยวกับเรา เครือข่าย Plan B",
+    "readManifesto": "อ่านแถลงการณ์ของเรา"
   },
   "accessType": {
     "hybrid": "เข้าเรียนในสถานที่จริง& ออนไลน์",
@@ -62,7 +63,9 @@
       "invalidCredentials": "ข้อมูลประจำตัวไม่ถูกต้อง",
       "usernameRegex": "ชื่อผู้ใช้สามารถใช้ได้เฉพาะ ตัวอักษร ตัวเลข, _, . และ - ได้เท่านั้น",
       "usernameRequired": "ต้องมีชื่อผู้ใช้",
-      "usernameTooShort": "ชื่อผู้ใช้ต้องมีอักขระอย่างน้อย 5 ตัว"
+      "usernameTooShort": "ชื่อผู้ใช้ต้องมีอักขระอย่างน้อย 5 ตัว",
+      "oldPasswordRequired": "ต้องการรหัสผ่านเดิม",
+      "passwordTooShort": "รหัสผ่านสั้นเกินไป"
     },
     "forgottenPassword": "ลืมรหัสผ่าน?",
     "headerAccountCreated": "สร้างบัญชีแล้ว",
@@ -88,7 +91,13 @@
     "sendLink": "ส่งลิงค์ให้ฉัน",
     "signIn": "ลงชื่อเข้าใช้",
     "trackProgress": "สร้างบัญชีหรือเข้าสู่ระบบเพื่อบันทึกความคืบหน้าของคุณ",
-    "tryAgain": "กรุณาลองอีกครั้ง"
+    "tryAgain": "กรุณาลองอีกครั้ง",
+    "forgotPassword": "ลืมรหัสผ่าน?",
+    "login": "เข้าสู่ระบบ",
+    "loginNotAvailable1": "ฟีเจอร์การเข้าสู่ระบบยังไม่สามารถใช้งานในแอปพลิเคชันบนเดสก์ท็อปได้ในขณะนี้",
+    "loginNotAvailable2": "คุณสามารถเยี่ยมชมเว็บไซต์ของเราเพื่อเข้าสู่ระบบและเข้าถึงบัญชีของคุณ",
+    "oldPassword": "รหัสผ่านเดิม",
+    "signUp": "สมัครสมาชิก"
   },
   "bCert": {
     "bCertDescription": "ใบรับรอง ₿ นั้นถือเป็นข้อรสอบที่ได้รับการยอมรับในระดับสากลที่ประเมินความชำนาญของคุณในด้าน Bitcoin และหัวข้อที่เกี่ยวข้อง โดยใบรับรองนี้จะช่วยให้คุณสามารถพิสูจน์ทักษะและความรู้ของคุณในอุตสาหกรรมที่เกี่ยวข้องกับ Bitcoin ได้ และทำให้คุณสามารถเข้าถึงบริษัทที่ดีที่สุดและตำแหน่งงานที่ยอดเยี่ยม",
@@ -99,7 +108,13 @@
     "organizeExam": "จัดการสอบ",
     "pageTitle": "สอบผ่านใบรับรอง ₿",
     "tweetText": "ตื่นเต้นมาก ได้ใบรับรอง ₿ จาก @planb_network แล้ว ด้วยคะแนน {{score}}/100! {{emoji}} #BCert\n\n{{certificateUrl}}",
-    "verify": "ตรวจสอบความถูกต้องของใบรับรองของคุณ"
+    "verify": "ตรวจสอบความถูกต้องของใบรับรองของคุณ",
+    "certificates": "ใบรับรอง",
+    "chooseCourse": "เลือกหลักสูตร",
+    "hostSessionConditions": "นี่คือวิธีการ:\n\n1. อ่าน <0>พันธกรณี</0> - ตรวจสอบว่าชุมชนของคุณมีเงื่อนไขในการเป็นเจ้าภาพที่จำเป็นหรือไม่\n2. วางแผน & ตารางเวลา - ถ้าคุณมีคุณสมบัติ กำหนดวันที่และจัดตั้งเซสชัน\n3. เผยแพร่กิจกรรมของคุณ – ติดต่อเราเพื่อเพิ่มมันเข้าไปในแพลตฟอร์ม Plan ₿ Network ซึ่งเป็นที่รวมของผู้ที่ต้องการเข้าร่วม",
+    "noDiplomasAvailable": "ยังไม่มีปริญญาให้บริการในขณะนี้",
+    "noTestSessions": "ขณะนี้ยังไม่มีเซสชั่นทดสอบที่มีอยู่",
+    "wantHostSession": "ต้องการจัดเซสชั่นการทดสอบ ₿-CERT ที่ศูนย์ชุมชนท้องถิ่นของคุณหรือไม่?"
   },
   "bet": {
     "educationalContent": {
@@ -122,7 +137,8 @@
     "noConferences": "ยังไม่มีงานประชุมเพิ่มสำหรับปี {{year}}",
     "pageTitle": "วิดีโอย้อนหลัง ของงานประชุม",
     "planBConferences": "งานประชุมของ Plan B",
-    "topics": "หัวข้อ"
+    "topics": "หัวข้อ",
+    "conferencesGenesis": "การประชุมตั้งแต่บล็อกเจเนซิส"
   },
   "courses": {
     "chapter": {
@@ -207,7 +223,7 @@
       "failed": "ไม่ผ่าน",
       "failedDiploma": "คุณต้องได้คะแนนมากกว่า 80% ในการสอบไฟนอลเพื่อรับใบปริญญาและเรียนจบหลักสูตร คุณสามารถสอบใหม่ได้หลังจากผ่านไป 24 ชั่วโมง",
       "finalExam": "ข้อสอบไฟนอล",
-      "finalScore": "",
+      "finalScore": "คะแนนสุดท้าย",
       "findInformationChapter": "ค้นหาข้อมูลเพิ่มเติมในบทนี้:",
       "futureProof": "รองรับอนาคต: วุฒิการศึกษาของคุณได้รับการรับรองอย่างถาวรและมีผลตลอดไป",
       "getCertificate": "รับใบรับรองของฉัน",
@@ -247,13 +263,13 @@
       "skipExamDescription": "คุณสามารถข้ามการสอบและไปยังส่วนสรุปได้เลย โดยคลิกที่ปุ่มด้านล่าง",
       "skipExamGoConclusion": "ข้ามการสอบ และไปส่วนสรุป",
       "skipGoConclusion": "ข้ามไปยังส่วนสรุป",
-      "solidEffort": "",
+      "solidEffort": "ยินดีด้วยที่คุณได้เสร็จสิ้นคอร์สนี้ คุณได้ทำงานอย่างหนัก\nถึงแม้คุณจะไม่ผ่านครั้งนี้ แต่ทุกขั้นตอนที่คุณทำนั้นสร้างความก้าวหน้าขึ้น\nต่อเนื่องในการเดินทางการเรียนรู้ของคุณ!",
       "startExam": "เริ่มการสอบ",
       "submit": "ส่ง",
       "successDiploma": "ยินดีด้วย! คุณผ่านการสอบเรียบร้อยแล้ว\nใบปริญญาของคุณอยู่ในแดชบอร์ดนักเรียนของคุณแล้ว และได้รับการ<0>ประทับตราเวลา</0>เพื่อรับรองความแท้จริง",
-      "successDiplomaTeacherLed": "",
+      "successDiplomaTeacherLed": "ยินดีด้วย! คุณผ่านคอร์สเรียบร้อยแล้ว \nใบปริญญาของคุณดูได้ในแดชบอร์ดของนักเรียน",
       "successDiplomaTimeStamped": "ยินดีด้วย! คุณผ่านการสอบเรียบร้อยแล้ว\nใบปริญญาของคุณจะโผล่ในแดชบอร์ดนักเรียนของคุณหลังจากที่คุณสอบประมาณ 10 ชั่วโมง โดยความล่าช้านี้เกิดจากเทคโนโลยีในการ<0>ประทับตราเวลา</0> ซึ่งใช้เพื่อทำให้แน่ใจว่าใบปริณญาเป็นของแท้",
-      "successfulPassedThreshold": "",
+      "successfulPassedThreshold": "ยินดีด้วยที่คุณได้เสร็จสิ้นคอร์ส\nคุณได้รับการยอมรับอย่างเรียบร้อยในคอร์สนี้และตอนนี้คุณจบแล้ว \nคุณสามารถหาใบปริญญาของคุณในแดชบอร์ดของคุณ",
       "sureSubmit": "คุณแน่ใจว่าจะส่งข้อสอบของคุณแล้วใช่ไหม?",
       "takeExam": "ทำการสอบ",
       "tamperProof": "ป้องกันการแก้ไข: การใช้บล็อกเชนทำให้รับประกันว่าจะไม่มีใครสามารถแก้ไขหรือปลอมแปลงข้อมูลของคุณได้",
@@ -272,11 +288,14 @@
       "weight": "น้ำหนัก: {{weight}}%",
       "whyTimeStamp": "การบันทึกเวลาในปริญญาของคุณ:\nเหตุผลที่มันเป็นสิ่งที่สำคัญ",
       "wishTryAgain": "คุณสามารถสอบใหม่ได้ หลังจากผ่านไป 24 ชั่วโมง",
-      "yesSubmit": "ใช่ ยืนยันการส่ง"
+      "yesSubmit": "ใช่ ยืนยันการส่ง",
+      "examResults": "ผลการสอบ",
+      "scoreAndDiploma": "คะแนน & ใบปริญญา"
     },
     "explorer": {
       "goal": "เป้าหมาย:",
-      "seeCourse": "ดูหลักสูตร"
+      "seeCourse": "ดูหลักสูตร",
+      "discover": "ค้นพบ"
     },
     "format": {
       "hybrid": "เข้าเรียนในสถานที่จริง/ออนไลน์",
@@ -357,7 +376,24 @@
       "writeThoughts": "สามารถเขียนความคิดเห็นของคุณได้ที่นี่",
       "yesOfCourse": "ใช่ แน่นอน",
       "yesVeryMuch": "ใช่ ประมาณนั้น"
-    }
+    },
+    "allCourses": "หลักสูตรทั้งหมด",
+    "continueLeftOff": "ดำเนินการต่อจากสิ่งที่คุณเลิกไว้",
+    "courseSelector": "เลือกคอร์ส",
+    "liveClasses": {
+      "allOtherTitle": "คลาสสดอื่น ๆ ทั้งหมด",
+      "liveClasses": "คลาสสด",
+      "program": {
+        "goal": "เรียนรู้ด้านอุตสาหกรรม Bitcoin ไปกับ Giacomo Zucco ในโปรแกรมระยะเวลา 5 เดือนที่ผสมผสานทฤษฎี, การศึกษากรณีจริง, และโอกาสในการสร้างเครือข่ายที่ไม่มีใครเหมือน",
+        "semester": "ภาคการศึกษา",
+        "title": "แผนประกอบโปรแกรม ₿"
+      },
+      "title": "สร้างการเปลี่ยนแปลง ทุ่มเทให้เป็นผู้เชี่ยวชาญ Bitcoin"
+    },
+    "navbarHover": "สมัครเพื่อปลดล็อก",
+    "noCoursesFound": "ไม่พบคอร์ส",
+    "plusXMore": "+{{count}} ที่เพิ่มเติม",
+    "tryAdjustingFilters": "ลองปรับแต่งตัวกรองของคุณ"
   },
   "dashboard": {
     "adminPanel": {
@@ -374,7 +410,9 @@
         "profession": "วิชาชีพ",
         "resultsRemaining": "มีผลลัพธ์เหลืออยู่ {{results}} รายการ",
         "seeMore": "ดูเพิ่มเติม",
-        "viewCV": "ดูประวัติย่อ"
+        "viewCV": "ดูประวัติย่อ",
+        "candidateFile": "ไฟล์ผู้สมัครเข้ามา",
+        "file": "ไฟล์"
       },
       "confirmRemoval": "ยืนยันการลบ",
       "coupons": {
@@ -460,7 +498,346 @@
       "type": "ประเภท",
       "upcomingBookings": "การจองที่กำลังจะมาถึง",
       "upcomingBookingsSubtitle": "คุณสามารถดาวน์โหลดรายชื่อผู้เข้าร่วมการสัมมนาในสถานที่จริงทั้งหมด ได้ที่นี่",
-      "userRolesAllocation": "การจัดสรรหน้าที่ ผู้ใช้งาน"
+      "userRolesAllocation": "การจัดสรรหน้าที่ ผู้ใช้งาน",
+      "translation": "แผงการแปล",
+      "translationPanel": {
+        "actions": {
+          "accept": "ยอมรับ",
+          "delete": "ลบ",
+          "reject": "ปฏิเสธ"
+        },
+        "addContributor": {
+          "addLanguage": "เพิ่มภาษาอื่น",
+          "assign": "มอบหมาย",
+          "assignedLanguages": "ภาษาที่ได้มอบหมายแล้ว",
+          "assigning": "กำลังมอบหมาย...",
+          "assignmentSuccess": "มอบหมายผู้มีส่วนร่วมเรียบร้อยแล้ว!",
+          "confirm": "ยืนยัน",
+          "findContributor": "ค้นหาผู้มีส่วนร่วม",
+          "language": "ภาษา",
+          "noUsers": "ไม่มีผู้ใช้งานที่ว่าง",
+          "searchUsers": "ค้นหาผู้ใช้...",
+          "title": "เพิ่มผู้มีส่วนร่วม",
+          "selectLanguage": "เลือกภาษา",
+          "selectedUsers": "ผู้ใช้ที่เลือก:"
+        },
+        "admin": "ผู้ดูแลระบบ",
+        "comingSoon": {
+          "courses": "มุมมองคอร์สเร็วๆ นี้",
+          "coverage": "มุมมองทราบความครอบคลุมภาษาเร็วๆ นี้"
+        },
+        "contentManagement": {
+          "actions": {
+            "assign": "มอบหมาย",
+            "backToContentManagement": "ย้อนกลับไปที่การจัดการเนื้อหา",
+            "reassign": "มอบหมายใหม่",
+            "view": "ดู"
+          },
+          "assignModal": {
+            "assign": "มอบหมาย",
+            "assigning": "กำลังมอบหมาย...",
+            "assigningCourse": "กำหนดคอร์ส:",
+            "assignmentSuccess": "ทำการกำหนดคอร์สเรียบร้อยแล้ว!",
+            "cancel": "ยกเลิก",
+            "chooseContributor": "เลือกผู้สนับสนุน...",
+            "courseInfo": "ข้อมูลคอร์ส",
+            "selectContributor": "เลือกผู้สนับสนุน",
+            "title": "กำหนดคอร์สให้ผู้สนับสนุน"
+          },
+          "description": "จัดการการแปลคอร์สและกำหนดให้กับผู้สนับสนุน",
+          "noCourses": "ไม่มีคอร์สที่มีให้",
+          "noCoursesFiltered": "ไม่มีคอร์สที่ตรงกับตัวกรองของคุณ",
+          "notAssigned": "ไม่ได้รับมอบหมาย",
+          "reassignModal": {
+            "cancel": "ยกเลิก",
+            "chooseNewContributor": "เลือกผู้สนับสนุนใหม่...",
+            "courseInfo": "ข้อมูลคอร์ส",
+            "currentlyAssignedTo": "ได้รับมอบหมายในขณะนี้ให้:",
+            "reassign": "มอบหมายใหม่",
+            "reassigning": "กำลังปรับมอบหมาย...",
+            "reassigningCourse": "ปรับมอบหมายคอร์ส:",
+            "reassignmentSuccess": "ปรับมอบหมายคอร์สเรียบร้อยแล้ว!",
+            "selectNewContributor": "เลือกผู้สนับสนุนใหม่",
+            "title": "มอบหมายคอร์สเรียนใหม่ให้ผู้สนับสนุน",
+            "warning": {
+              "description": "บทที่ได้รับการตรวจสอบแล้วจะไม่ถูกมอบหมายใหม่",
+              "title": "หมายเหตุสำคัญ"
+            }
+          },
+          "status": {
+            "assigned": "ได้รับการมอบหมาย",
+            "notAssigned": "ไม่ได้รับมอบหมาย",
+            "readyForReview": "พร้อมสำหรับการตรวจสอบ",
+            "underReview": "อยู่ระหว่างการตรวจสอบ"
+          },
+          "table": {
+            "actions": "การดำเนินการ",
+            "contributor": "ผู้สนับสนุน",
+            "course": "หลักสูตร",
+            "index": "ดัชนี",
+            "language": "ภาษา",
+            "progress": "ความคืบหน้า",
+            "status": "สถานะ"
+          },
+          "title": "การจัดการเนื้อหา"
+        },
+        "courseDetails": {
+          "actions": "การดำเนินการ",
+          "assignedTo": "มอบหมายให้",
+          "chapterIndex": "บท",
+          "courseIndex": "ดัชนีคอร์สเรียน",
+          "courseInformation": "ข้อมูลคอร์ส",
+          "courseName": "ชื่อคอร์สเรียน",
+          "currentContributor": "ผู้สนับสนุนปัจจุบัน",
+          "errorLoadingDetails": "ผิดพลาดในการโหลดรายละเอียดคอร์สเรียน",
+          "language": "ภาษา",
+          "noChapters": "ไม่มีบทเรียนสำหรับคอร์สนี้",
+          "noContributor": "ไม่มีผู้สนับสนุนที่ได้รับการมอบหมาย",
+          "partTitle": "ส่วน {{index}}: {{title}}",
+          "progress": "ความคืบหน้า",
+          "status": "สถานะ",
+          "translationStatus": "สถานะการแปล",
+          "chapterTitle": "ชื่อ",
+          "chaptersAndProgress": "บทและความคืบหน้า",
+          "chaptersCompleted": "เสร็จสิ้นบทแล้ว"
+        },
+        "courseNotFound": "ไม่พบหลักสูตร",
+        "messages": {
+          "noPendingRequests": "ไม่มีคำขอตรวจสอบการแปลที่รอดำเนินการอีกต่อไป",
+          "noPendingRequestsSearch": "ไม่มีคำขอตรวจสอบการแปลที่ตรงกับ \"{{query}}\"",
+          "noRejectedRequests": "ไม่มีคำขอตรวจสอบการแปลที่ถูกปฏิเสธ",
+          "noRejectedRequestsSearch": "ไม่มีคำขอตรวจสอบการแปลที่ถูกปฏิเสธและตรงกับ \"{{query}}\""
+        },
+        "modal": {
+          "cancel": "ยกเลิก",
+          "close": "ปิด",
+          "contributor": "ผู้สนับสนุน",
+          "course": "หลักสูตร",
+          "doYouWantToAcceptRequest": "คุณต้องการยอมรับคำขอการแปลนี้หรือไม่?",
+          "language": "ภาษา",
+          "provideRejectionReason": "โปรดให้เหตุผลสำหรับการปฏิเสธคำขอนี้",
+          "reasonForRejection": "เหตุผลของการปฏิเสธ",
+          "reasonPlaceholder": "เขียนคำอธิบายของคุณที่นี่...",
+          "rejecting": "กำลังปฏิเสธ...",
+          "requestAcceptedMessage": "ได้แจ้งให้ผู้สร้างสรรค์ทราบและเขาสามารถเริ่มทำงานบนการแปลได้เลยตอนนี้",
+          "requestAcceptedSuccess": "คุณได้ยอมรับคำขอการแปล!",
+          "requestRejectedSuccess": "คำขอถูกปฏิเสธอย่างสำเร็จ",
+          "submitRejection": "ส่ง",
+          "acceptRequest": "ยอมรับคำขอ",
+          "acceptTranslationRequest": "ยอมรับคำขอตรวจสอบการแปล",
+          "accepting": "กำลังยอมรับ..."
+        },
+        "noResultsFound": "ไม่พบผลลัพธ์",
+        "pendingTranslationRequests": "คำขอตรวจสอบการแปลที่มีการรอดำเนินการ",
+        "reports": {
+          "chooseYear": "คุณต้องการพิจารณาปีใด?",
+          "comingSoon": {
+            "courses": "มุมมองคอร์สเร็วๆ นี้",
+            "coverage": "มุมมองทราบความครอบคลุมภาษาเร็วๆ นี้"
+          },
+          "contributors": {
+            "assignedCourses": "หลักสูตรที่ได้รับมอบหมาย",
+            "completedCourses": "หลักสูตรที่เสร็จสิ้น",
+            "languages": "ภาษา",
+            "startDate": "วันที่เริ่มต้น",
+            "title": "ผู้มีส่วนเข้ามาช่วย",
+            "totalReward": "รางวัลรวม",
+            "username": "ชื่อผู้ใช้"
+          },
+          "courses": {
+            "contributor": "ผู้สนับสนุน",
+            "filterByCourse": "กรองตามหลักสูตร",
+            "lastUpdated": "อัปเดตล่าสุด",
+            "progress": "เปอร์เซ็นต์การดำเนินการ"
+          },
+          "dateFilter": "กรองตามวันที่",
+          "downloadData": "ดาวน์โหลดข้อมูล",
+          "filterByLanguage": "กรองตามภาษา",
+          "fromMonth": "จาก",
+          "fromMonthPlaceholder": "ต้องการพิจารณาเดือนใด?",
+          "generalReport": "รายงานทั่วไป",
+          "languageCoverage": {
+            "completed": "เสร็จสิ้น",
+            "inProgress": "กำลังดำเนินการ",
+            "notStarted": "ยังไม่เริ่ม",
+            "totalCourses": "หลักสูตรทั้งหมด"
+          },
+          "languagesProofread": "ภาษาที่ผ่านการตรวจสอบ",
+          "noContributors": "ไม่พบผู้สนับสนุน",
+          "noCourses": "ไม่พบคอร์ส",
+          "noLanguages": "ไม่พบภาษา",
+          "proofreadCourses": "หลักสูตรที่ตรวจสอบแล้ว",
+          "table": {
+            "contributor": "ผู้สนับสนุน",
+            "lastUpdated": "อัปเดตล่าสุด",
+            "progress": "เปอร์เซ็นต์การดำเนินการ"
+          },
+          "tabs": {
+            "contributors": "ผู้มีส่วนเข้ามาช่วย",
+            "courses": "คอร์ส",
+            "coverage": "การครอบคลุมภาษา"
+          },
+          "toMonth": "ถึง",
+          "toMonthPlaceholder": "ถึงเดือนใด?",
+          "totalLanguages": "ภาษารวม",
+          "year": "ปี"
+        },
+        "searchPlaceholder": "ค้นหา...",
+        "status": {
+          "assigned": "ได้รับการมอบหมาย",
+          "completed": "เสร็จสิ้น",
+          "inProgress": "กำลังดำเนินการ",
+          "readyForReview": "พร้อมสำหรับการตรวจสอบ",
+          "todo": "ที่จะทำ",
+          "underReview": "อยู่ระหว่างการตรวจสอบ"
+        },
+        "table": {
+          "actions": "การดำเนินการ",
+          "course": "หลักสูตร",
+          "index": "ดัชนี",
+          "language": "ภาษา",
+          "username": "ชื่อผู้ใช้"
+        },
+        "tabs": {
+          "contentManagement": "การจัดการเนื้อหา",
+          "reports": "รายงาน",
+          "requests": "คำขอ",
+          "translate": "แปลภาษา",
+          "userManagement": "การจัดการผู้ใช้"
+        },
+        "title": "แผงการแปลของผู้ดูแล",
+        "toggle": {
+          "pendingRequest": "คำขอที่รอการดำเนินการ",
+          "rejectedRequests": "คำขอที่ถูกปฏิเสธ"
+        },
+        "translate": {
+          "actions": {
+            "translate": "แปลภาษา"
+          },
+          "backToCourse": "กลับไปที่หลักสูตร",
+          "changeSpeed": "เปลี่ยนความเร็วการเล่น",
+          "chapterTitle": "ชื่อบท",
+          "compare": "เปรียบเทียบ",
+          "compareDisabledTooltip": "ไม่มีรุ่นที่ตรวจสอบข้อความ",
+          "compareTooltip": "เปรียบเทียบรุ่นดั้งเดิมและรุ่นที่ตรวจสอบข้อความ",
+          "comparison": {
+            "backToChapter": "กลับไปยังบท",
+            "originalVersion": "รุ่นดั้งเดิม",
+            "translatedVersion": "รุ่นที่แปลแล้ว"
+          },
+          "description": "เริ่มการแปลหลักสูตรเป็นภาษาที่เฉพาะเจาะจง",
+          "forward15Seconds": "เลื่อนไป 15 วินาที",
+          "imageNotFound": "ไม่พบภาพ",
+          "language": "ภาษา",
+          "loadingPresentation": "กำลังโหลดสไลด์การนำเสนอ...",
+          "noContentAvailable": "ไม่มีเนื้อหาที่มีอยู่",
+          "noCourses": "ไม่มีรายวิชาที่ต้องการการแปลในขณะนี้",
+          "noOriginalContent": "ไม่มีเนื้อหาดั้งเดิม",
+          "noPngSlides": "ไม่มีสไลด์ PNG ที่สามารถใช้ได้สำหรับการนำเสนอนี้",
+          "noSlidesFound": "ไม่พบสไลด์",
+          "originalContent": "เนื้อหาดั้งเดิม",
+          "pause": "หยุดชั่วคราว",
+          "play": "เล่น",
+          "presentations": "การนำเสนอ",
+          "rewind15Seconds": "ถอยหลัง 15 วินาที",
+          "selectLanguagesModal": {
+            "audioFile": "ไฟล์เสียง",
+            "audioFileInfo": "รูปแบบที่รองรับ: MP3, WAV, M4A (สูงสุด 50MB)",
+            "audioFileTooLarge": "ไฟล์เสียงมีขนาดใหญ่เกินไป ขนาดสูงสุดคือ 50MB",
+            "cancel": "ยกเลิก",
+            "chooseAudioFile": "เลือกไฟล์เสียง",
+            "chooseFolder": "เลือกโฟลเดอร์",
+            "choosePptxFile": "เลือก PPTX",
+            "chooseZip": "เลือก ZIP",
+            "course": "หลักสูตร:",
+            "englishFilesRequired": "โปรดตรวจสอบให้แน่ใจว่าไฟล์ที่อัปโหลดทั้งหมดเป็นภาษาอังกฤษเท่านั้น",
+            "existingUploadsInfo": "ไฟล์ดั้งเดิมได้ถูกอัปโหลดแล้ว คุณสามารถเริ่มการแปลได้โดยไม่ต้องเพิ่มพวกเขาอีก การอัปโหลดไฟล์ใหม่จะเขียนทับไฟล์ที่มีอยู่",
+            "folderUrl": "URL ของโฟลเดอร์",
+            "invalidAudioFile": "กรุณาเลือกไฟล์เสียงที่ถูกต้อง",
+            "invalidPptxFile": "กรุณาเลือกไฟล์ PowerPoint (.pptx) ที่ถูกต้อง",
+            "missingFilesError": "กรุณาอัพโหลดไฟล์การแปลหรือให้ URL ก่อนเริ่มการแปล",
+            "networkError": "เกิดข้อผิดพลาดในเครือข่าย กรุณาตรวจสอบการเชื่อมต่อของคุณและลองใหม่",
+            "noAudioFileSelected": "ไม่ได้เลือกไฟล์เสียง",
+            "noFolderSelected": "ไม่มีโฟลเดอร์ที่เลือก",
+            "noLanguagesAvailable": "ไม่มีภาษาที่สามารถแปลได้",
+            "noPptxFileSelected": "ไม่ได้เลือกไฟล์ PowerPoint",
+            "noZipSelected": "ไม่ได้เลือกไฟล์ ZIP",
+            "originalLanguage": "ภาษาต้นฉบับ:",
+            "overwriteWarning": "ไฟล์ที่มีอยู่แล้วจะถูกแทนที่",
+            "pptxFile": "ไฟล์ PowerPoint",
+            "pptxFileInfo": "รองรับเฉพาะไฟล์ .pptx สูงสุด 100MB",
+            "pptxFileTooLarge": "ไฟล์ PowerPoint มีขนาดใหญ่เกินไป ขนาดสูงสุดคือ 100MB.",
+            "processingStarted": "เริ่มการแปลแล้ว! กระบวนการนี้อาจใช้เวลาหลายนาทีสำหรับคอร์สที่ใหญ่",
+            "selectLanguages": "เลือกภาษาที่จะแปล:",
+            "timeoutError": "การร้องขอการแปลหมดเวลา อาจเนื่องจากเนื้อหาของหลักสูตรมีขนาดใหญ่เกินไป กรุณาลองใหม่หรือติดต่อฝ่ายสนับสนุน",
+            "title": "เลือกภาษาที่จะแปล",
+            "translationFailed": "การแปลไม่สำเร็จ กรุณาตรวจสอบบันทึกการทำงานแล้วลองใหม่",
+            "uploadAndTranslationStarted": "ไฟล์ถูกอัพโหลดและเริ่มต้นการแปล! กระบวนการอาจใช้เวลาหลายนาทีสำหรับหลักสูตรที่มีขนาดใหญ่",
+            "uploadError": "การอัพโหลดไม่สำเร็จ กรุณาตรวจสอบไฟล์ของคุณแล้วลองใหม่",
+            "uploadFiles": "อัพโหลดไฟล์สนับสนุน (ไม่จำเป็นต้องมี)",
+            "uploadFolder": "อัพโหลดโฟลเดอร์ (PPTX + TXT)",
+            "useEnglishLabel": "หลักสูตรนี้ถูกแปลเป็นภาษาอังกฤษแล้ว คุณต้องการใช้เวอร์ชั่นภาษาอังกฤษเป็นแหล่งที่มาหรือไม่?",
+            "startSuccess": "การแปลเริ่มเรียบร้อยแล้ว!",
+            "startTranslation": "เริ่มการแปล",
+            "startingTranslation": "กำลังอัพโหลดไฟล์...",
+            "startingTranslationStep": "กำลังเริ่มการแปล...",
+            "uploadTimeoutError": "การอัพโหลดหมดเวลาหลังจาก 10 นาที กรุณาลองอัพโหลดไฟล์ขนาดเล็กลงหรือตรวจสอบการเชื่อมต่อของคุณ",
+            "uploadingFiles": "กำลังอัพโหลดไฟล์..."
+          },
+          "slideNavigation": {
+            "next": "ถัดไป",
+            "previous": "ก่อนหน้า",
+            "slideCounter": "{{current}} / {{total}}"
+          },
+          "slideNotAvailable": "สไลด์ {{slideNumber}} ไม่พร้อมใช้งาน",
+          "slideNotFound": "ไม่พบสไลด์",
+          "table": {
+            "actions": "การดำเนินการ",
+            "course": "หลักสูตร",
+            "index": "ดัชนี",
+            "todoLanguages": "ภาษาที่จะแปล",
+            "totalLanguages": "ภาษาทั้งหมด"
+          },
+          "textContent": "เนื้อหาข้อความ",
+          "title": "แปลคอร์ส",
+          "translateTo": "แปลเป็น",
+          "unknownContributor": "ไม่ทราบ"
+        },
+        "userManagement": {
+          "actions": {
+            "backToList": "กลับไปที่รายการผู้ใช้",
+            "backToUsers": "กลับสู่ผู้ใช้",
+            "viewDetails": "ดูรายละเอียด"
+          },
+          "addContributor": "เพิ่มผู้มีส่วนร่วม",
+          "chapters": "บท",
+          "contributorInformation": "ข้อมูลผู้มีส่วนร่วม",
+          "courses": "คอร์ส",
+          "modal": {
+            "assignments": "ประวัติการมอบหมาย",
+            "noAssignments": "ไม่พบการมอบหมาย",
+            "title": "รายละเอียดผู้ใช้",
+            "userInfo": "ข้อมูลผู้ใช้"
+          },
+          "noUsers": "ไม่พบผู้สนับสนุน",
+          "status": {
+            "published": "เผยแพร่แล้ว",
+            "readyForReview": "พร้อมสำหรับการตรวจสอบ",
+            "rejected": "ถูกปฏิเสธ",
+            "reviewed": "ทบทวนแล้ว",
+            "todo": "ที่จะทำ",
+            "underReview": "อยู่ระหว่างการตรวจสอบ"
+          },
+          "table": {
+            "actions": "การกระทำ",
+            "assignedCourses": "หลักสูตรที่ได้รับมอบหมาย",
+            "language": "ภาษา",
+            "startDate": "วันที่เริ่มต้น",
+            "username": "ชื่อผู้ใช้"
+          },
+          "title": "ผู้มีส่วนเข้ามาช่วย"
+        }
+      }
     },
     "announcements": {
       "groups": {
@@ -679,7 +1056,7 @@
       "assignment": "งานมอบหมาย",
       "assignmentCompletedDescription": "โปรเจคที่มอบหมายให้คุณได้ถูกส่งเรียบร้อยแล้วและกำลังอยู่ในระหว่างการตรวจสอบ\n คุณจะสามารถดูเกรดของคุณที่นี่หลังจากการให้เกรดในวันที่ 23 มิถุนายน",
       "assignmentCompletedTitle": "งานที่มอบหมายเสร็จสิ้นแล้ว",
-      "assignmentTitle": "",
+      "assignmentTitle": "การบ้านของโครงการ",
       "completionDiploma": "ใบปริญญาสำเร็จการศึกษา",
       "completionExamInfo": "คุณจำเป็นต้องสอบผ่านเพื่อเข้าถึงฟีเจอร์นี้",
       "conclusionHeadline": "นี่คือสรุปของสิ่งที่คุณได้เรียนรู้ หากมีบางบทที่คุณได้ข้ามไปหรือยังไม่ได้รับการยืนยันอย่างถูกต้อง ตอนนี้เป็นเวลาที่ดีที่สุดในการทำเช่นนั้น ไม่ว่าจะเป็นการกลับไปเรียนหรือกดปุ่มเรียนเสร็จ",
@@ -688,23 +1065,23 @@
       "confirmNoEditable": "รายการที่ชอบจะไม่สามารถแก้ไขได้อีก เมื่อยืนยันแล้ว",
       "confirmNoEditableFile": "คุณจะไม่สามารถแก้ไขไฟล์ของคุณได้อีก เมื่อคุณส่งแล้ว",
       "confirmSubmission": "ยืนยันการส่ง",
-      "congratulationsPassed": "",
+      "congratulationsPassed": "ยินดีด้วย! คุณได้ผ่านเรียบร้อยแล้ว!",
       "coordinator": "ผู้ประสานงานหลักสูตร",
       "courseCalendar": "ปฏิทินหลักสูตร",
-      "diplomaReleaseDescription": "",
-      "diplomaReleaseTitle": "",
+      "diplomaReleaseDescription": "เมื่อคุณสำเร็จทุกรายวิชาแล้ว คุณจะได้รับปริญญานิพนธ์เพื่อยืนยันว่าคุณได้สำเร็จคอร์สด้วยประสิทธิภาพ ปริญญานิพนธ์จะสามารถดาวน์โหลดได้ที่นี่หลังจากรายวิชาสุดท้ายและการสรุปบท",
+      "diplomaReleaseTitle": "การออกปริญญา",
       "examScore": "คะแนน:",
       "exams": "การสอบ",
       "feedbacks": "คุณสามารถตรวจสอบและแก้ไขคะแนนและความคิดเห็นที่คุณได้ให้กับหลักสูตรนี้ได้ที่นี่",
       "fileUploaded": "งานของคุณถูกอัปโหลดเรียบร้อยแล้ว!",
-      "finalGradeSummary": "",
-      "finalScore": "",
+      "finalGradeSummary": "สรุปเกรดปลายภาค",
+      "finalScore": "คะแนนสุดท้าย",
       "generalInformation": "ข้อมูลทั่วไป",
-      "individualWork": "",
+      "individualWork": "งานส่วนบุคคล",
       "isSubmissionFinal": "การส่งของคุณเป็นที่สุดแล้วหรือไม่?",
       "joinTelegramGroup": "เข้าร่วมกลุ่ม Telegram",
       "keepEditing": "ทำการแก้ไขต่อ",
-      "keepMovingForward": "",
+      "keepMovingForward": "ทั้งนี้ แม้ว่าคุณจะไม่ผ่านในครั้งนี้ แต่ทุกขั้นตอนที่คุณได้ทำก็เป็นการส่งเสริมความสำเร็จ ดังนั้น ตั้งใจทำต่อไปในการเดินทางการเรียนรู้ของคุณ!",
       "leastPreferred": "ไม่ชอบที่สุด",
       "listSaved": "รายการที่คุณต้องการได้รับการบันทึกแล้ว",
       "listSavedComeTomorrow": "รายการที่คุณต้องการได้รับการบันทึกแล้ว\nกลับมาที่นี่ใหม่ในวันพรุ่งนี้เพื่อค้นหาโครงการที่คุณได้รับมอบหมาย",
@@ -712,27 +1089,46 @@
       "mustBePdf": "ไฟล์ของคุณต้องอยู่ในรูปแบบ PDF หากคุณต้องส่งไฟล์เพิ่มเติม โปรดรวมลิงค์ไปยังไฟล์นั้นใน PDF ของคุณ",
       "notSelectedAssignment": "ขออภัย, คุณไม่ได้รับการเลือกเพื่อเข้าร่วมในการรับมอบหมายโครงการ\nคุณยังคงสามารถติดตามบรรยายในหลักสูตรได้",
       "projectRankingInstructions": "คำแนะนำการจัดอันดับโครงการ:",
-      "ranking": "",
+      "ranking": "การจัดอันดับ",
       "rankingInstructions": "จัดเรียงโครงการที่เสนอตามความชอบของคุณ (หมายเลข 1 คือตัวเลือกที่คุณชอบที่สุด) การจัดอันดับนี้จะช่วยให้เราสามารถมอบหมายโครงการที่เหมาะสมที่สุดให้กับคุณ ผู้เรียนที่มีคะแนนสูงกว่าจะได้รับการพิจารณาเลือกเป็นคนแรก",
       "rankingOnly24Hours": "พอร์ทัลจัดอันดับจะเปิดแค่เพียง 24 ชั่วโมงในวันที่ 2 มิถุนายน ตั้งแต่เวลา 00:00 ถึง 23:59 (UTC+2) เท่านั้น",
       "rankProjectPreferences": "จัดอันดับความชอบโครงการของคุณ",
       "ratingsAndFeedbacks": "คะแนนและความคิดเห็น",
       "readAssignment": "อ่านงานที่ได้รับมอบหมาย",
-      "saveList": "",
+      "saveList": "บันทึกรายชื่อ",
       "shareOnSocials": "แชร์บนโซเชียล :",
-      "submissionInstructions": "",
-      "submitBefore": "",
+      "submissionInstructions": "คำแนะนำสำหรับการส่งงาน",
+      "submitBefore": "คุณต้องส่งงานของคุณก่อน {{date}} เวลา {{hour}}. งานที่ส่งมาหลังจากเวลานี้จะไม่ได้รับการตรวจ",
       "submitReviewInfo": "คุณจำเป็นต้องความคิดเห็นเพื่อเข้าถึงฟีเจอร์นี้",
-      "submitYourWork": "",
-      "summerSchool": "",
-      "surePreferenceList": "",
-      "thresholdToPass": "",
-      "tweetText": "ตื่นเต้นมาก ผ่านหลักสูตร {{courseIndex}} ที่ @planb_network แล้ว และได้รับปริญญาด้วยคะแนนจากการสอบ {{score}}/! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}"
+      "submitYourWork": "ส่งงานของคุณ",
+      "summerSchool": "โรงเรียนฤดูร้อน",
+      "surePreferenceList": "คุณแน่ใจว่าชอบรายการนี้หรือไม่?",
+      "thresholdToPass": "เกณฑ์การผ่าน: {{threshold}}%",
+      "tweetText": "ตื่นเต้นมาก ผ่านหลักสูตร {{courseIndex}} ที่ @planb_network แล้ว และได้รับปริญญาด้วยคะแนนจากการสอบ {{score}}/! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
+      "assignmentNotAccessible": "การบ้านได้เริ่มต้นแล้วและไม่สามารถเข้าถึงได้อีก",
+      "assignmentScore": "คะแนนการบ้าน",
+      "tweetTextCourseDiploma": "สุขใจที่ได้สำเร็จคอร์ส {{courseName}}, ซึ่งสอนโดย {{courseCoordinator}} บน @planb_network และได้รับปริญญานิพนธ์ของฉัน!\n#PBNDiploma\n\n{{certificateUrl}}",
+      "viewScoreSummary": "ดูสรุปคะแนน",
+      "wellDoneCompleting": "ยินดีด้วยที่คุณได้ทำการผ่านและสำเร็จการเรียนหลักสูตรนี้! \nนี่คือใบปริญญาที่คุณคู่ควร",
+      "yourProjectAssignment": "การมอบหมายโปรเจ็คของคุณ"
     },
     "credentials": {
       "beingGraded": "ข้อสอบของคุณกำลังถูกตรวจ ผลสอบจะปรากฎใน 1 หรือ 2 สัปดาห์",
       "courseDiplomas": "ปริญญาบัตรหลักสูตร",
-      "globalCertifications": "ใบรับรองระดับโลก"
+      "globalCertifications": "ใบรับรองระดับโลก",
+      "bCertResults": {
+        "score020": "คุณได้เริ่มต้นการเดินทางของคุณแล้ว! ทุกคนที่เป็นผู้เชี่ยวชาญต่างเริ่มต้นจากที่นี่",
+        "score100": "คะแนนเต็ม! คุณคือ Satoshi หรือเพียงแค่มีความสามารถอย่างยอดเยี่ยม?",
+        "score2140": "คุณเข้าใจพื้นฐานแล้ว! ทำต่อไป, คุณกำลังเพิ่มประสิทธิภาพอย่างรวดเร็ว!",
+        "score4160": "ฐานที่มั่นคง! คุณพร้อมสำหรับคลาสขั้นสูงแล้ว",
+        "score6180": "คุณทำได้ดีมาก! คุณควรทำการเพิ่มความชำนาญและบริหารมาเตอร์ Bitcoin ของคุณ",
+        "score8199": "มีความรู้เรื่อง Bitcoin ที่ซับซ้อนและยากต่อการจับใจได้ดี"
+      },
+      "completeACourse": "สำเร็จหลักสูตรแรกของคุณเพื่อรับใบปริญญา ",
+      "detailedScore": "คะแนนโดยละเอียด",
+      "exploreBCert": "สำรวจ ₿-CERT",
+      "getGlobalRecognition": "ได้รับการยอมรับระดับโลกด้วยใบรับรอง ₿-CERT",
+      "noCertificatesAvailable": "ไม่มีใบรับรองให้บริการ"
     },
     "goToDashboard": "ไปที่แดชบอร์ด",
     "goToHomepage": "ไปที่หน้าแรก",
@@ -756,7 +1152,8 @@
       "verify": "ตรวจสอบความถูกต้องของประกาศนียบัตรของคุณ",
       "whereYouAre": "มาดูความคืบหน้าของคุณกัน !",
       "yourCertificate": "ใบรับรองของคุณ",
-      "yourProgress": "ความคืบหน้าของคุณ:"
+      "yourProgress": "ความคืบหน้าของคุณ:",
+      "noCourseStarted": "คุณยังไม่ได้เริ่มการเรียนหลักสูตรแบบเรียนได้ตามสะดวก"
     },
     "profile": {
       "cancel": "ยกเลิก",
@@ -766,88 +1163,106 @@
       "edit": "แก้ไข",
       "email": "อีเมล์",
       "emailChangeConfirmation": "อีเมลยืนยันสำหรับการเปลี่ยนแปลงอีเมลของคุณได้ถูกส่งไปแล้ว กรุณาตรวจสอบกล่องจดหมายเข้าของคุณเพื่อยืนยัน",
-      "emailChangeRateLimitError": "",
+      "emailChangeRateLimitError": "คุณได้อัปเดตอีเมลของคุณเมื่อเร็วๆ นี้ โปรดรอสักครู่ก่อนลองอีกครั้ง",
       "notificationSettings": {
         "coursesOption": "อัปเดตเกี���ยวกับหลักสูตรที่คุณลงทะเบียนเรียน",
         "description": "คุณสามารถปรับแต่งการตั้งค่าการแจ้งเตือนของคุณด้านล่างนี้ ",
-        "emailPreferencesDescription": "",
+        "emailPreferencesDescription": "ที่นี่คุณสามารถเลือกประเภทของอีเมลที่คุณต้องการรับจากเรา ค่าเหล่านี้จะถูกใช้เฉพาะกับที่อยู่อีเมลที่เชื่อมโยงกับลิงค์นี้",
         "emailPreferencesSavedSuccessfully": "การตั้งค่าอีเมลของคุณได้รับการอัปเดตเรียบร้อยแล้ว",
         "emailPreferencesTitle": "จัดการการตั้งค่าอีเมลในเครือข่าย Plan ₿ ของคุณ",
         "emailTitle": "คุณต้องการรับการแจ้งเตือนประเภทใดผ่านทางอีเมล์บ้าง?",
         "emailWarning": "คำเตือน! ไม่มีที่อยู่อีเมลที่เชื่อมโยงกับบัญชีของคุณ กรุณาเพิ่มในส่วนข้อมูลส่วนตัวของคุณ",
         "eventsOption": "อัปเดตที่เกี่ยวกับกิจกรรมที่คุณจองไว้",
-        "generalOption": "",
-        "goToProfile": "",
-        "loadEmailSettingsError": "",
-        "loadEmailSettingsErrorDescription": "",
-        "loadEmailSettingsErrorManage": "",
-        "none": "",
-        "platformTitle": "",
-        "settingsSaved": "",
-        "title": ""
+        "generalOption": "ข้อมูลทั่วไปและข่าวสารเกี่ยวกับ Plan ₿ Network",
+        "goToProfile": "ไปที่โปรไฟล์",
+        "loadEmailSettingsError": "ขออภัย เราไม่สามารถโหลดการตั้งค่าการรับอีเมลของคุณ",
+        "loadEmailSettingsErrorDescription": "โปรดตรวจสอบว่าลิงค์ที่คุณใช้ถูกต้อง",
+        "loadEmailSettingsErrorManage": "หากคุณสามารถเข้าถึงบัญชีของคุณ คุณสามารถจัดการตั้งค่าได้โดยตรงในแดชบอร์ดของคุณ:",
+        "none": "ไม่มี",
+        "platformTitle": "คุณต้องการรับการแจ้งเตือนประเภทใดบนแพลตฟอร์มนี้?",
+        "settingsSaved": "การตั้งค่าของคุณได้รับการบันทึกอย่างสำเร็จ!",
+        "title": "การตั้งค่าการแจ้งเตือน"
       },
       "password": "รหัสผ่าน",
       "preview": "ดูตัวอย่าง",
       "profilePicture": "รูปโปรไฟล์",
       "save": "บันทึก",
       "saving": "กำลังบันทึก…",
-      "securitySettings": "",
-      "username": "ชื่อผู้ใช้"
+      "securitySettings": "การตั้งค่าความปลอดภัย",
+      "username": "ชื่อผู้ใช้",
+      "emailOrUsername": "อีเมลหรือชื่อผู้ใช้"
     },
     "teacher": {
       "courses": {
-        "allStudents": "",
+        "allStudents": "นักเรียนทั้งหมด",
         "announcementModal": {
-          "contentLabel": "",
-          "contentPlaceholder": "",
-          "create": "",
-          "dateRequired": "",
-          "editAnnouncement": "",
-          "groupLabel": "",
-          "title": "",
-          "typeLabel": "",
-          "typePlaceholder": ""
+          "contentLabel": "ข้อความประกาศ",
+          "contentPlaceholder": "กรุณาพิมพ์ที่นี่",
+          "create": "สร้างการประกาศ",
+          "dateRequired": "จำเป็นต้องมีวันที่",
+          "editAnnouncement": "แก้ไขประกาศ",
+          "groupLabel": "เลือกกลุ่มนักเรียนที่คุณต้องการทักทาย",
+          "title": "เขียนประกาศ",
+          "typeLabel": "ประกาศประเภทใด",
+          "typePlaceholder": "เลือกหนึ่งประเภท"
         },
-        "announcements": "",
-        "announcementsIntroduction": "",
-        "announcementsPast": "",
-        "announcementsPastDescription": "",
-        "announcementsUpcoming": "",
-        "announcementsUpcomingDescription": "",
-        "assignment": "",
+        "announcements": "ประกาศ",
+        "announcementsIntroduction": "นอกจากการแจ้งเตือนอัตโนมัติเกี่ยวกับตารางการสอน คุณมีตัวเลือกในการเขียนและวางตารางประกาศเพิ่มเติมสำหรับนักเรียนของคุณ ยกตัวอย่างเช่น คุณสามารถแจ้งให้พวกเข้ารู้เกี่ยวกับการเปลี่ยนแปลงด้านโลจิสติกหรือการอัปเดตในขณะสุดท้าย\nนักเรียนจะได้รับการแจ้งเตือนเหล่านี้บนแพลตฟอร์ม และยังผ่านทางอีเมล (ถ้าพวกเขาเปิดใช้คุณสมบัติตัวเลือกนี้)",
+        "announcementsPast": "ประกาศในอดีต",
+        "announcementsPastDescription": "ด้านล่างนี้คือการประกาศที่ได้รับการเผยแพร่แล้ว รายการนี้จะถูกล้างหลังจากหนึ่งเดือน",
+        "announcementsUpcoming": "ประกาศที่จะมาถึง",
+        "announcementsUpcomingDescription": "ด้านล่างนี้คือการประกาศในอนาคตที่คุณเขียนและวางตารางไว้",
+        "assignment": "การมอบหมาย",
         "assignmentGrade": {
-          "alertDescription": "",
-          "alertTitle": "",
-          "confirmPublication": "",
-          "confirmPublicationDescription": "",
-          "confirmPublicationTitle": "",
-          "description": "",
-          "grade100": "",
-          "gradesPublished": "",
-          "missingGradesDescription": "",
-          "missingGradesTitle": "",
-          "publishAllGrades": "",
-          "studentDisplayName": "",
-          "title": ""
+          "alertDescription": "หลังจากที่ทุกเกรดถูกกรอกเข้าไปแล้ว คลิกที่ \"เผยแพร่เกรดทั้งหมด\" เพื่อเผยแพร่เกรดทั้งหมดในครั้งเดียว\nกรุณาตรวจสอบเกรดก่อน เพราะเกรดจะไม่สามารถแก้ไขได้อีกหลังจากที่ได้รับการเผยแพร่ ",
+          "alertTitle": "การให้เกรดการบ้าน",
+          "confirmPublication": "ยืนยันการเผยแพร่",
+          "confirmPublicationDescription": "หลังจากการเผยแพร่เกรดแล้ว คุณจะไม่สามารถกลับไปแก้ไขได้",
+          "confirmPublicationTitle": "คุณได้ตรวจสอบให้แน่ใจว่าไม่มีข้อผิดพลาดแล้วหรือไม่?",
+          "description": "นักเรียนถูกจัดเรียงตามกลุ่มการบ้าน",
+          "grade100": "เกรด (/100)",
+          "gradesPublished": "เกรดได้รับการเผยแพร่",
+          "missingGradesDescription": "ถ้าเกรดถูกเผยแพร่แล้ว เกรดที่ยังไม่มีจะถูกแทนที่ด้วย 0/100",
+          "missingGradesTitle": "ยังมีเกรด {{count}} ที่ยังขาดอยู่!",
+          "publishAllGrades": "เผยแพร่เกรดทั้งหมด",
+          "studentDisplayName": "นักเรียน (ชื่อที่แสดง)",
+          "title": "เกรดการบ้าน",
+          "courseAssignment": "การบ้านของรายวิชา"
         },
-        "assignmentStudents": "",
+        "assignmentStudents": "การมอบหมายโครงการ",
         "courseDetails": "รายละเอียดของหลักสูตร",
         "courseLongDescription": "คำอธิบายเบื้องต้น",
         "courseModification": "หากคุณต้องการความช่วยเหลือในการแก้ไขบางอย่างในตัวหลักสูตร กรุณาดูได้ที่ <0>บทสอน</0> นี้",
         "curriculum": "รายละเอียดหลักสูตร",
         "curriculumDescription": "นี่คือรายละเอียดของหลักสูตรนี้",
-        "deleteAnnouncementTitle": "",
-        "deleteAnnouncementWarning": "",
+        "deleteAnnouncementTitle": "คุณแน่ใจหรือไม่ว่าต้องการลบประกาศนี้?",
+        "deleteAnnouncementWarning": "การเปลี่ยนแปลงนี้ไม่สามารถย้อนกลับได้",
         "editOnGithub": "แก้ไขบน Github",
         "examResults": "ผลการสอบ",
         "makeModifications": "ต้องการทำการปรับเปลี่ยนใช่ไหม?",
-        "noPastAnnouncement": "",
-        "noWrittenAnnouncement": "",
+        "noPastAnnouncement": "คุณไม่มีประกาศในอดีตในขณะนี้",
+        "noWrittenAnnouncement": "คุณไม่มีประกาศที่เขียนไว้ในขณะนี้",
         "objectives": "วัตถุประสงค์",
         "quickRecap": "คุณสามารถหาข้อมูลทั่วไปทั้งหมดเกี่ยวกับหลักสูตรนี้ได้ที่นี่",
         "reviews": "รีวิว",
-        "summerStudents": "",
-        "writeAnnouncement": ""
+        "summerStudents": "โรงเรียนฤดูร้อน",
+        "writeAnnouncement": "เขียนประกาศ",
+        "finalAverageResults": "ผลคะแนนเฉลี่ยสุดท้าย",
+        "finalScore": "คะแนนสุดท้าย",
+        "lastActive": "เป็นที่ใช้งานล่าสุด",
+        "amountPaid": "จำนวนที่จ่าย",
+        "averageAttempts": "ค่าเฉลี่ยของครั้งที่พยายาม",
+        "averageDuration": "เวลาเฉลี่ย",
+        "averageScore": "คะแนนเฉลี่ย",
+        "exportExamData": "ส่งออกข้อมูลการสอบ",
+        "medianScore": "คะแนนมัธยฐาน",
+        "noExamLinked": "ปัจจุบันไม่มีการสอบที่เชื่อมต่อกับหลักสูตรนี้ หากคุณต้องการสร้างการสอบ โปรดติดต่อเรา",
+        "overview": "ภาพรวม",
+        "questionsInExam": "คำถามในการสอบ",
+        "studentsGraduated": "นักเรียนสำเร็จการศึกษา",
+        "successRate": "อัตราความสำเร็จ",
+        "thresholdToPass": "ขีดคร่อมที่ส่งผ่าน",
+        "totalQuestions": "จำนวนคำถามทั้งหมด"
       },
       "profile": {
         "billingInformation": "ข้อมูลการเรียกเก็บเงิน",
@@ -878,6 +1293,29 @@
       "tutorials": {
         "tutorialAnalyticsDescription": "คุณสามารถดูข้อมูลการวิเคราะห์เกี่ยวกับบทเรียนที่คุณสร้างและเผยแพร่บนแพลตฟอร์มได้ที่นี่",
         "yourTutorials": "บทช่วยสอนของคุณ"
+      },
+      "discount": {
+        "description": "ที่นี่คุณสามารถสร้างและจัดการโค้ดส่วนลดสำหรับหลักสูตรนี้ - สำหรับการใช้งานครั้งเดียวสำหรับทุนการศึกษาหรือกรณีที่คล้ายกัน หรือสำหรับการใช้งานหลายครั้งสำหรับแคมเปญการตลาด"
+      }
+    },
+    "professor": {
+      "courses": {
+        "overview": {
+          "announceChange": "ประกาศการเปลี่ยนแปลง",
+          "attendanceList": "รายชื่อผู้เข้าร่วม",
+          "courseEnded": "หลักสูตรนี้จบแล้ว.",
+          "courseNotStarted": "หลักสูตรนี้ยังไม่ได้เริ่มต้น.",
+          "enrolledStudents": "นักศึกษาที่ลงทะเบียน",
+          "hasEnrolled": "ได้ลงทะเบียนแล้ว",
+          "hasGraduated": "ได้จบการศึกษาด้วยคะแนน {{score}}%",
+          "hasLeftReview": "ได้ทิ้งรีวิว",
+          "hasLeftReviewAndComment": "ได้ทิ้งรีวิวและความคิดเห็น",
+          "notifyStudents": "มีอะไรเปลี่ยนแปลงหรือไม่? โปรดประกาศให้นักเรียนของคุณทราบ",
+          "overallPerformance": "การทำงานโดยรวม",
+          "recentActivity": "กิจกรรมล่าสุด",
+          "studentsRegistered": "นักเรียนที่ลงทะเบียน",
+          "upcomingClass": "ชั้นเรียนที่จะมาถึง"
+        }
       }
     }
   },
@@ -891,7 +1329,8 @@
       "purchased": "ซื้อแล้ว",
       "unlimited": "ไม่จำกัด",
       "visitWebsite": "เยี่ยมชมเว็บไซต์",
-      "watchReplay": "ดูวิดีโอย้อนหลัง"
+      "watchReplay": "ดูวิดีโอย้อนหลัง",
+      "buyLecture": "ซื้อบทเรียน"
     },
     "main": {
       "upcomingEvents": "กิจกรรมที่กำลังจะมาถึง"
@@ -904,12 +1343,12 @@
       "address": "ที่อยู่",
       "back_events": "กลับสู่กิจกรรม",
       "book_seat": "จองที่นั่ง",
-      "callout_book_online": "",
-      "callout_book_physical": "",
-      "callout_book_replay": "",
-      "callout_purchase_online": "",
-      "callout_purchase_physical": "",
-      "callout_purchase_replay": "",
+      "callout_book_online": "คุณกำลังจะจองสิทธิ์เข้าชมออนไลน์สำหรับกิจกรรมนี้.",
+      "callout_book_physical": "คุณกำลังจะจอง <highlight>สิทธิ์เข้าร่วมด้วยตัวจริง</highlight> ในกิจกรรมนี้.",
+      "callout_book_replay": "คุณกำลังจะจองสิทธิ์เข้าชมวิดีโอสรุปของกิจกรรมนี้.",
+      "callout_purchase_online": "คุณกำลังจะซื้อ <highlight>สิทธิ์เข้าชมออนไลน์</highlight> สำหรับกิจกรรมนี้.",
+      "callout_purchase_physical": "คุณกำลังจะซื้อ <highlight>สิทธิ์เข้าร่วมด้วยตัวจริง</highlight> ในกิจกรรมนี้.",
+      "callout_purchase_replay": "คุณกำลังจะซื้อสิทธิ์เข้าชมวิดีโอสรุปของกิจกรรมนี้.",
       "date": "วันที่",
       "description_free_physical": "โปรดตรวจสอบรายละเอียดสถานที่ที่ให้มา\nเมื่อการจองของคุณได้รับการดำเนินการแล้ว เราจะส่งบัตรยืนยันและรหัส QR ให้คุณเพื่อให้คุณนำไปแสดงในงาน",
       "description_online": "โปรดตรวจสอบวันที่และเวลาของกิจกรรมที่ได้รับ\nเมื่อถึงเวลางาน กรุณาเข้าสู่ระบบเพื่อเข้าถึงการถ่ายทอดสดผ่านทางหน้ากิจกรรม",
@@ -917,13 +1356,45 @@
       "download_ticket": "ดาวน์โหลดบัตรของคุณ",
       "language": "ภาษา",
       "limitation": "ข้อจำกัด",
-      "limitedSeats": "",
+      "limitedSeats": "ที่นั่งจำกัด หากคุณไม่สามารถเข้าร่วมได้ โปรดยกเลิกการจองของคุณ.",
       "max_capacity": "ความจุสูงสุดของ",
       "payment_successful": "การจองสำเร็จแล้ว!",
       "time": "เวลา"
     },
     "tcDisclaimer": "ฉันรับทราบว่าข้อมูลของฉันจะถูกแบ่งปันกับผู้จัดงานเพื่อวัตถุประสงค์ในการใช้เข้าถึงสถานที่จัดงาน",
-    "tcMustBeAccepted": "คุณต้องยอมรับข้อตกลงเพื่อดำเนินการซื้อต่อ"
+    "tcMustBeAccepted": "คุณต้องยอมรับข้อตกลงเพื่อดำเนินการซื้อต่อ",
+    "myTickets": "ตั๋วของฉัน",
+    "addEvent": "เพิ่มกิจกรรม",
+    "calendar": {
+      "inXMonths": "ใน {{number}} เดือน",
+      "lastMonth": "เดือนที่ผ่านมา",
+      "nextMonth": "เดือนหน้า",
+      "noEventsFound": "ไม่พบกิจกรรม",
+      "thisMonth": "เดือนนี้",
+      "today": "วันนี้",
+      "xMonthsAgo": "{{number}} เดือนที่ผ่านมา"
+    },
+    "eventInfos": {
+      "eventBooked": "จองเหตุการณ์แล้ว",
+      "eventType": "ประเภทกิจกรรม",
+      "numberOfSpots": "จำนวนที่ว่าง",
+      "onlineAndInPerson": "ออนไลน์และจริง",
+      "secureYourSpot": "รักษาที่นั่งของคุณ",
+      "sessionBooked": "จองเซสชั่นแล้ว",
+      "whatsPlanned": "ที่วางแผน"
+    },
+    "planBWeek": {
+      "pageTitle": "วางแผน ₿ สัปดาห์"
+    },
+    "types": {
+      "plurals": {
+        "conference": "การประชุม",
+        "exam": "การสอบ",
+        "lecture": "การบรรยาย",
+        "meetup": "การพบปะกัน",
+        "workshop": "การประชุมเชิงปฏิบัติการ"
+      }
+    }
   },
   "filters": {
     "topics": "หัวข้อ"
@@ -931,7 +1402,8 @@
   "glossary": {
     "definition": "คำนิยาม",
     "relatedWords": "คำที่เกี่ยวข้อง:",
-    "term": "คำศัพท์"
+    "term": "คำศัพท์",
+    "showMoreWords": "แสดงคำหลักเพิ่มเติม"
   },
   "home": {
     "aboutUsSection": {
@@ -978,7 +1450,10 @@
     "watchLecture": "ดูการบรรยายย้อนหลัง"
   },
   "menu": {
-    "login": "เข้าสู่ระบบ"
+    "login": "เข้าสู่ระบบ",
+    "educatorContent": "เนื้อหาของนักบริการการศึกษา",
+    "getStarted": "เริ่มต้น",
+    "signIn": "ลงชื่อเข้าใช้"
   },
   "notFound": {
     "here": "ที่ตรงนี้",
@@ -987,52 +1462,53 @@
   },
   "notification": {
     "types": {
-      "assignment": "",
-      "calendar": "",
-      "celebration": "",
-      "general": "",
-      "warning": ""
+      "assignment": "การมอบหมาย",
+      "calendar": "การแจ้งเตือนปฏิทิน",
+      "celebration": "การฉลอง",
+      "general": "ข้อมูลทั่วไป",
+      "warning": "การเตือน"
     }
   },
   "notifications": {
-    "bCertResults": "",
-    "blogNotTranslated": "",
-    "bookYourSeat": "",
-    "calendar_5m": "",
-    "calendar_5m_online_event": "",
-    "calendar_24h": "",
-    "calendar_24h_in_person_event": "",
-    "calendar_48h_online_event": "",
-    "dashboardDescription": "",
-    "daysAgo": "",
-    "markAsRead": "",
-    "monthsAgo": "",
-    "noRecentNotifications": "",
-    "notifications": "",
-    "noUnreadNotifications": "",
-    "planBNews": "",
-    "read": "",
-    "results": "",
-    "select": "",
-    "selectAll": "",
-    "today": "",
-    "unread": "",
-    "upcomingEvent": "",
-    "weeksAgo": "",
-    "yearsAgo": "",
-    "yesterday": ""
+    "bCertResults": "ผลลัพธ์  ₿-CERT ของคุณออกแล้ว!",
+    "blogNotTranslated": "ขออภัย, โพสต์บล็อกใหม่นี้ยังไม่ได้ถูกแปลเป็นภาษาที่คุณใช้ในปัจจุบัน",
+    "bookYourSeat": "จองที่นั่งของคุณหากคุณต้องการเข้าร่วมด้วยตัวเอง!",
+    "calendar_5m": "คลาสจะเริ่มในอีก 5 นาที! คลิกที่นี่เพื่อเข้าร่วมเดี๋ยวนี้",
+    "calendar_5m_online_event": "ถึงเวลาแล้ว! {{eventName}} จะเริ่มในอีก 5 นาที คลิกที่นี่เพื่อเข้าร่วมเดี๋ยวนี้!",
+    "calendar_24h": "คลาสถัดไปจะเริ่มวันพรุ่งนี้ตั้งแต่ {{ formattedTime }}",
+    "calendar_24h_in_person_event": "กิจกรรม {{eventName}} จะจัดขึ้นวันพรุ่งนี้ตั้งแต่ {{formattedTime}} ณ {{addressLine}} อย่าลืมดาวน์โหลดบัตรเพื่อเข้าร่วม!",
+    "calendar_48h_online_event": "{{eventName}} กำลังจะถึงในไม่ช้า! ตารางเวลาคือ {{date}}, ตั้งแต่ {{formattedTime}}. ",
+    "dashboardDescription": "นี่คือการแจ้งเตือนล่าสุดของคุณ มันจะถูกนำออกโดยอัตโนมัติหลังจากที่คุณได้รับมันเป็นเวลาหนึ่งเดือน",
+    "daysAgo": "{{days}} วันที่แล้ว",
+    "markAsRead": "ทำเครื่องหมายว่าอ่านแล้ว",
+    "monthsAgo": "{{months}} เดือน{{s}} ที่แล้ว",
+    "noRecentNotifications": "คุณไม่มีการแจ้งเตือนที่ระบบได้รับเรียนใหม่ในเวลานี้",
+    "notifications": "การแจ้งเตือน",
+    "noUnreadNotifications": "ไม่มีการแจ้งเตือนที่ยังไม่ได้อ่านเพิ่มเติม",
+    "planBNews": "ข่าว Plan ₿",
+    "read": "อ่าน",
+    "results": "ผลลัพธ์  ₿-CERT ของคุณออกแล้ว!",
+    "select": "เลือก",
+    "selectAll": "เลือกทั้งหมด",
+    "today": "วันนี้",
+    "unread": "ยังไม่ได้อ่าน",
+    "upcomingEvent": "เหตุการณ์ที่จะมาถึง",
+    "weeksAgo": "{{weeks}} สัปดาห์{{s}} ที่ผ่านมา",
+    "yearsAgo": "{{years}} ปี{{s}} ที่ผ่านมา",
+    "yesterday": "เมื่อวานนี้",
+    "newVersionAvailable": "เวอร์ชันใหม่ของแพลตฟอร์ม Plan ₿ Network พร้อมใช้งานแล้ว กรุณารีเฟรชหน้าเพื่ออัพเดท"
   },
   "payment": {
     "haveReductionCode": "มีรหัสลดราคาหรือไม่?",
-    "insertReductionCode": "",
+    "insertReductionCode": "ใส่รหัสลดราคาของคุณ",
     "payByCard": "ชำระด้วยบัตร",
     "payWithBitcoin": "ชำระด้วยบิตคอยน์",
-    "taxesMayApply": "",
+    "taxesMayApply": "อาจมีการเรียกเก็บภาษีเมื่อชำระเงิน",
     "terms": "ดู<0>ข้อกำหนดทั่วไป</0>และเงื่อนไขของเราสำหรับรายละเอียดในการคืนเงิน",
     "total": "รวมทั้งหมด"
   },
   "placeholders": {
-    "selectTimeZone": ""
+    "selectTimeZone": "เลือกเขตเวลา"
   },
   "professors": {
     "navigationTitles": {
@@ -1051,18 +1527,18 @@
     }
   },
   "projects": {
-    "noRelatedEvents": "",
-    "otherCommunities": "",
-    "related": "",
-    "relatedEvents": ""
+    "noRelatedEvents": "ขณะนี้ไม่มีเหตุการณ์ที่จะมาถึงที่เกี่ยวข้องกับผู้สอนนี้",
+    "otherCommunities": "สำรวจแผน ₿ สังคม",
+    "related": "ที่เกี่ยวข้อง",
+    "relatedEvents": "เหตุการณ์ที่จะมาถึงที่เกี่ยวข้อง"
   },
   "proofreading": {
     "completed": "ตรวจแก้ไขคำผิดเสร็จสิ้น",
     "description": "เนื้อหาต้นฉบับได้รับการแปลโดย AI แล้ว แต่จำเป็นต้องมีการตรวจสอบจากมนุษย์เพื่อให้มั่นใจในถูกต้อง",
-    "descriptionOriginalLanguage": "",
+    "descriptionOriginalLanguage": "แม้ว่าเนื้อหานี้จะเป็นภาษาต้นฉบับ แต่ยังต้องการการตรวจสอบอย่างละเอียดจากคนเพื่อทำให้แน่ใจว่าความถูกต้องทางภาษา",
     "inProgress": "กำลังดำเนินการ ตรวจแก้ไขคำผิด",
     "reviewEarn": "มาช่วยรีวิวและรับ Sat กัน",
-    "rewardsText": "",
+    "rewardsText": "*รางวัลอาจแตกต่างขึ้นอยู่กับอัตราแลกเปลี่ยน $",
     "status": "สถานะในการตรวจแก้ไขคำผิด",
     "thanks": "ขอขอบคุณผู้ที่ให้คำแนะนำ!"
   },
@@ -1072,32 +1548,36 @@
       "contact": "ติดต่อ",
       "legalNotice": "คำเตือนทางกฎหมาย",
       "privacyPolicy": "นโยบายความเป็นส่วนตัว",
-      "termsOfSale": "เงื่อนไขในการขาย"
+      "termsOfSale": "เงื่อนไขในการขาย",
+      "notFound": "ไม่พบข้อมูลทางกฎหมาย"
     }
   },
   "resources": {
     "bet": {
-      "title": ""
+      "title": "ชุดการศึกษา",
+      "addEducationKit": "เพิ่มชุดการศึกษา"
     },
     "books": {
-      "title": ""
+      "title": "หนังสือ",
+      "addBook": "เพิ่มหนังสือ"
     },
     "channels": {
       "noYoutubeChannels": "ขณะนี้ยังไม่มีช่อง Youtube ในภาษาที่คุณเลือก",
       "title": "ช่อง Youtube"
     },
     "conferences": {
-      "title": ""
+      "title": "การเล่นซ้ำการประชุม",
+      "addConference": "เพิ่มการเล่นการประชุมซ้ำ"
     },
     "glossary": {
-      "title": ""
+      "title": "คำศัพท์"
     },
     "lectures": {
-      "title": ""
+      "title": "การเล่นบันทึกการบรรยายซ้ำ"
     },
     "movies": {
-      "noMovies": "",
-      "title": ""
+      "noMovies": "ปัจจุบันไม่มีภาพยนตร์หรือสารคดีสำหรับภาษาที่เลือก",
+      "title": "ภาพยนตร์"
     },
     "newsletter": {
       "check": "มาดูจดหมายข่าวกัน"
@@ -1112,55 +1592,61 @@
     "pageSubtitlePodcast": "<0>พ็อดคาสท์อื่นๆ</0> ที่คุณอาจชอบ:",
     "podcasts": {
       "noPodcasts": "ขณะนี้ยังไม่มีพ็อดคาสท์ในภาษาที่คุณเลือก",
-      "title": "รายการพอดคาสท์"
+      "title": "รายการพอดคาสท์",
+      "addPodcast": "เพิ่ม podcast",
+      "checkThePodcast": "ตรวจสอบ podcast"
     },
     "projects": {
-      "title": ""
+      "title": "โปรเจค",
+      "addProjects": "เพิ่มโปรเจค"
     },
     "searchFilterName": "ค้นหาด้วยชื่อ",
     "toggleLabelAll": "ทั้งหมด",
-    "toggleLabelSelectedLanguage": "ภาษาที่เลือก"
+    "toggleLabelSelectedLanguage": "ภาษาที่เลือก",
+    "pageSubtitleMovies": "<0>ภาพยนตร์อื่นๆ</0> ที่คุณอาจชอบ"
   },
   "search": {
-    "all": "",
-    "book": "",
-    "books": "",
-    "categories": "",
-    "conference": "",
-    "conference_replay": "",
-    "conference_replays": "",
-    "course": "",
-    "course_chapter": "",
-    "course_part": "",
-    "courses": "",
-    "event": "",
+    "all": "ทั้งหมด",
+    "book": "หนังสือ",
+    "books": "หนังสือ",
+    "categories": "หมวดหมู่",
+    "conference": "การประชุม",
+    "conference_replay": "ดูคลิปการประชุมที่ผ่านมา",
+    "conference_replays": "การเล่นซ้ำการประชุม",
+    "course": "หลักสูตร",
+    "course_chapter": "บทเรียน",
+    "course_part": "ส่วนของคอร์ส",
+    "courses": "คอร์ส",
+    "event": "เหตุการณ์",
     "events": "กิจกรรม",
     "explorer": {
       "title": "พอร์ทัลการค้นหา"
     },
     "glossary_word": "คำศัพท์อธิบาย",
-    "glossary_words": "",
-    "lecture_replay": "",
-    "lecture_replays": "",
-    "loadMoreResults": "",
-    "newsletter": "",
-    "newsletters": "",
-    "podcast": "",
-    "podcasts": "",
-    "professor": "",
-    "professors": "",
-    "project": "",
-    "projects": "",
-    "resultEmpty": "",
-    "resultError": "",
-    "results": "",
-    "resultsRemaining": "",
-    "search": "",
-    "startSearch": "",
-    "tutorial": "",
-    "tutorials": "",
-    "youtube_channel": "",
-    "youtube_channels": ""
+    "glossary_words": "คำศัพท์ในพจนานุกรม",
+    "lecture_replay": "ดูคลิปเสวนาที่ผ่านมา",
+    "lecture_replays": "การเล่นบันทึกการบรรยายซ้ำ",
+    "loadMoreResults": "ดูผลลัพธ์เพิ่มเติม",
+    "newsletter": "จดหมายข่าว",
+    "newsletters": "จดหมายข่าว",
+    "podcast": "พอดคาสต์",
+    "podcasts": "พอดคาสต์",
+    "professor": "ศาสตราจารย์",
+    "professors": "ศาสตราจารย์",
+    "project": "โปรเจค",
+    "projects": "โปรเจค",
+    "resultEmpty": "อ๊ะ! เราไม่พบสิ่งที่ตรงกับการค้นหาของคุณ ตรวจสอบการสะกดคำของคุณ ลองใช้คำหลักที่แตกต่างกัน หรือเลือกหมวดหมู่อื่น",
+    "resultError": "เกิดข้อผิดพลาดบางอย่าง กรุณาลองอีกครั้ง",
+    "results": "ผลลัพธ์",
+    "resultsRemaining": "ผลลัพธ์ {{count}} รายการที่เหลืออยู่",
+    "search": "ค้นหา",
+    "startSearch": "เริ่มการค้นหาของคุณ",
+    "tutorial": "การสอน",
+    "tutorials": "แนะนำการใช้งาน",
+    "youtube_channel": "ช่อง Youtube",
+    "youtube_channels": "ช่อง Youtube",
+    "noResults": "ไม่มีผลลัพธ์",
+    "resultsFound": "พบผลลัพธ์ {{count}} รายการ"
   },
   "settings": {
     "changeDisplayName": "เปลี่ยนชื่อที่แสดง",
@@ -1170,25 +1656,26 @@
   },
   "tutorials": {
     "business": {
-      "title": ""
+      "title": "ธุรกิจ"
     },
     "computer-security": {
-      "title": ""
+      "title": "ความปลอดภัยของคอมพิวเตอร์"
     },
     "contribution": {
-      "title": ""
+      "title": "การสนับสนุน"
     },
     "details": {
       "author": "ผู้เขียน ",
       "ratingSuccess": "ขอบคุณสำหรับการให้คะแนนของคุณ! มันจะถูกนำไปใช้ในการพัฒนาให้ดีขึ้น",
       "source": "แหล่งข้อมูลดั้งเดิม:",
-      "tutorialName": "ชื่อบทช่วยสอน"
+      "tutorialName": "ชื่อบทช่วยสอน",
+      "didThisWork": "การทำงานนี้เหมาะสมกับคุณหรือไม่?"
     },
     "exchange": {
       "title": "ตลาดซื้อขายแลกเปลี่ยน"
     },
-    "hasBeenProofreadBy": "",
-    "hasNotBeenProofread": "",
+    "hasBeenProofreadBy": "บทเรียนนี้ได้รับการตรวจสอบจาก",
+    "hasNotBeenProofread": "บทเรียนนี้ยังไม่ได้รับการตรวจสอบ",
     "mining": {
       "title": "การขุด"
     },
@@ -1201,29 +1688,32 @@
       "title": "ความเป็นส่วนตัว"
     },
     "subCategories": {
-      "authentication": "",
-      "backup": "",
-      "bitcoin": "",
-      "centralized": "",
-      "communication": "",
-      "content": "",
-      "data": "",
-      "desktop": "",
-      "hardware": "",
-      "lightning-network": "",
-      "mobile": "",
-      "on-chain": "",
-      "operating system": "",
-      "others": "",
-      "peer-to-peer": "",
-      "point-of-sale": "",
-      "pool": "",
-      "resource": ""
+      "authentication": "การเข้าสู่ระบบ",
+      "backup": "การสำรองข้อมูล",
+      "bitcoin": "บิตคอยน์",
+      "centralized": "การกลาง",
+      "communication": "การสื่อสาร",
+      "content": "เนื้อหา",
+      "data": "ข้อมูล",
+      "desktop": "หน้าจอคอมพิวเตอร์",
+      "hardware": "ฮาร์ดแวร์",
+      "lightning-network": "เครือข่ายไลท์นิ่ง",
+      "mobile": "มือถือ",
+      "on-chain": "ออนเชน",
+      "operating system": "ระบบปฏิบัติการ",
+      "others": "อื่นๆ",
+      "peer-to-peer": "ทีมงานเพียร์ทูเพียร์",
+      "point-of-sale": "จุดขาย",
+      "pool": "พูล",
+      "resource": "ทรัพยากร",
+      "explorer": "โปรแกรมสำรวจ"
     },
     "wallet": {
       "title": "กระเป๋าเงิน"
     },
-    "writtenBy": ""
+    "writtenBy": "บทสอนนี้ได้ถูกเขียนโดย",
+    "noTutorialsFound": "เราไม่พบบทแนะนำใดๆ ที่ตรงตามการค้นหาของคุณ",
+    "onThisPage": "บนหน้านี้"
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1249,27 +1739,27 @@
     "bitcoin": "บิตคอยน์",
     "book": "หนังสือ",
     "business": "ธุรกิจ",
-    "calendar": "",
+    "calendar": "ปฏิทิน",
     "cancel": "ยกเลิก",
-    "careerPortal": "",
+    "careerPortal": "พอร์ทัลสำหรับการหางาน",
     "category": "หมวดหมู่",
     "channel": "ช่อง",
-    "channels": "",
+    "channels": "ช่อง",
     "chapter": "บทที่",
     "chapters": "บท",
     "close": "ปิด",
-    "company": "",
+    "company": "บริษัท",
     "conference": "งานประชุม",
-    "congrats": "",
-    "continue": "",
-    "country": "",
+    "congrats": "ยินดีด้วย!",
+    "continue": "ดำเนินการต่อ",
+    "country": "ประเทศ",
     "course": "คอร์ส",
     "courseId": "รหัสคอร์ส",
     "courses": "คอร์สต่างๆ",
-    "credits": "",
+    "credits": "เครดิต",
     "date": "วันที่",
-    "day": "",
-    "delete": "",
+    "day": "วัน",
+    "delete": "ลบ",
     "description": "คำอธิบาย",
     "details": "รายละเอียด",
     "diploma": "ประกาศนียบัตร",
@@ -1278,12 +1768,12 @@
     "download": "ดาวน์โหลด",
     "duration": "ช่วงระยะเวลา",
     "edit": "แก้ไข",
-    "email": "",
+    "email": "อีเมล",
     "events": "กิจกรรม",
-    "exam": "",
+    "exam": "การสอบ",
     "filter": "กรอง",
     "free": "ฟรี",
-    "github": "",
+    "github": "Github",
     "glossary": "คลังคำศัพท์",
     "goal": "จุดมุ่งหมาย",
     "grade": "เกรด",
@@ -1293,71 +1783,71 @@
     "inperson": "ด้วยตนเอง",
     "intermediate": "ระดับกลาง",
     "invoice": "ใบแจ้งหนี้",
-    "language": "",
-    "lecture": "",
+    "language": "ภาษา",
+    "lecture": "การบรรยาย",
     "lectures": "การบรรยาย",
     "level": {
       "advanced": "ขั้นสูง",
       "beginner": "เริ่มต้น",
       "beginnerFriendly": "เป็นมิตรกับผู้เริ่มต้น",
-      "expert": "",
+      "expert": "ผู้เชี่ยวชาญ",
       "intermediate": "ปานกลาง",
       "level": "ระดับ",
       "levels": "ระดับ"
     },
     "lightningInvoice": "ใบแจ้งหนี้ Lightning",
     "likes": "ชอบ",
-    "linkedin": "",
+    "linkedin": "ลิงก์ดิ้น",
     "location": "สถานที่ตั้ง",
     "members": " สมาชิก",
-    "mentor": "",
+    "mentor": "พี่เลี้ยง",
     "mining": "การขุด",
-    "movie": "",
-    "name": "",
+    "movie": "ภาพยนตร์",
+    "name": "ชื่อ",
     "network": "เครือข่าย",
     "newsletter": "จดหมายข่าว",
-    "next": "",
-    "no": "",
-    "notApplicable": "",
+    "next": "ถัดไป",
+    "no": "ไม่",
+    "notApplicable": "ไม่เกี่ยวข้อง",
     "on": "บน",
     "onChainAddress": "ที่อยู่บนเชน",
     "online": "ออนไลน์",
     "overview": "ภาพรวม",
     "paid": "จ่ายแล้ว",
     "part": "ส่วนที่",
-    "password": "",
+    "password": "รหัสผ่าน",
     "podcast": "รายการพอดคาสท์",
-    "previous": "",
+    "previous": "ก่อนหน้า",
     "price": "ราคา",
     "professor": "อาจารย์",
     "professors": "เหล่าอาจารย์",
     "progress": "ความคืบหน้า",
-    "project": "",
-    "projects": "",
+    "project": "โปรเจค",
+    "projects": "โปรเจค",
     "protocol": "โปรโตคอล",
     "ratings": "คะแนน",
     "register": "สมัครสมาชิก",
     "required": "จำเป็น",
     "resources": "แหล่งข้อมูล",
     "role": "บทบาท",
-    "save": "",
-    "saving": "",
+    "save": "บันทึก",
+    "saving": "กำลังบันทึก...",
     "search": "ค้นหา",
     "security": "ด้านความปลอดภัย",
-    "selectedAmount": "",
-    "skip": "",
+    "selectedAmount": "เลือก {{amount}}",
+    "skip": "ข้าม",
     "socialStudies": "งานศึกษาด้านสังคม",
     "startHere": "เริ่มที่นี่!",
     "status": "สถานะ",
     "student": "ผู้เรียน",
     "students": "ผู้เรียน",
-    "submit": "",
+    "submit": "ส่ง",
     "teacher": "ผู้สอน",
-    "telegram": "",
+    "telegram": "Telegram",
     "ticket": "ตั๋ว",
     "time": "เวลา",
-    "timeZone": "",
-    "title": "",
+    "timeZone": "เขตเวลา",
+    "title": "ชื่อ",
     "to": "ถึง",
     "topics": "หัวข้อ",
     "total": "รวมทั้งหมด",
@@ -1369,14 +1859,120 @@
     "user": "ผู้ใช้งาน",
     "username": "ชื่อผู้ใช้",
     "users": "ผู้ใช้งาน",
-    "video": "",
+    "video": "วิดีโอ",
     "view": "วิว",
     "viewMore": "ดูเพิ่มเติม",
     "wallets": "กระเป๋าเงินต่างๆ",
-    "yes": ""
+    "yes": "ใช่",
+    "map": "แผนที่",
+    "aboutUs": "เกี่ยวกับเรา",
+    "academy": "วิทยาลัย",
+    "account": "บัญชี",
+    "actions": "การดำเนินการ",
+    "address": "ที่อยู่",
+    "booking": "การจอง",
+    "certifications": "การรับรอง",
+    "completed": "เสร็จสิ้น",
+    "confirmation": "การยืนยัน",
+    "discover": "ค้นพบ",
+    "enrolled": "ลงทะเบียน",
+    "filters": "ฟิลเตอร์",
+    "full": "เต็ม",
+    "info": "ข้อมูล",
+    "invoices": "ใบแจ้งหนี้",
+    "legal": "ทางกฎหมาย",
+    "list": "รายการ",
+    "month": "เดือน",
+    "none": "ไม่มี",
+    "optional": "ทางเลือก",
+    "planBNetwork": "แผน โครงข่าย",
+    "practice": "การปฏิบัติ",
+    "pricing": "การกำหนดราคา",
+    "questions": "คำถาม",
+    "rating": "การให้คะแนน",
+    "resetAll": "รีเซ็ตทั้งหมด",
+    "resetFilters": "รีเซ็ตฟิลเตอร์",
+    "results": "ผลลัพธ์",
+    "resume": "เรซูเม่",
+    "review": "ทบทวน",
+    "sats": "สถิติ",
+    "searchTripleDot": "ค้นหา...",
+    "seeAll": "ดูทั้งหมด",
+    "session": "เซสชัน",
+    "settings": "การตั้งค่า",
+    "share": "แชร์",
+    "structure": "โครงสร้าง",
+    "syllabus": "หลักสูตร",
+    "taxes": "ภาษี",
+    "theory": "ทฤษฎี",
+    "topic": "หัวข้อ",
+    "type": "พิมพ์",
+    "viewAll": "ดูทั้งหมด",
+    "week": "สัปดาห์",
+    "weight": "น้ำหนัก"
   },
   "youtubeChannels": {
     "view": "ดูช่อง Youtube",
     "watchTrailer": "ดูตัวอย่างคลิป"
+  },
+  "account": {
+    "account": "บัญชี",
+    "myTeacherProfile": "โปรไฟล์ครูของฉัน"
+  },
+  "navbar": {
+    "tutorials": "แนะนำการใช้งาน",
+    "tutorialsAnalytics": "การวิเคราะห์บทเรียน",
+    "userRolesAllocation": "การจัดสรรบทบาทของผู้ใช้",
+    "myCourses": "หลักสูตรของฉัน",
+    "tabs": {
+      "admin": "ผู้ดูแลระบบ",
+      "learn": "เรียนรู้",
+      "teach": "สอน"
+    },
+    "translationPanel": "แผงการแปล",
+    "bookings": "การจอง",
+    "career": "อาชีพ",
+    "careers": "อาชีพ",
+    "discountCode": "รหัสส่วนลด",
+    "learnAnytimeDescription": "หลักสูตรที่สามารถเรียนได้ตามสะดวก",
+    "learnAnytimeTitle": "เรียนได้ทุกเวลา",
+    "liveClassesDescription": "หลักสูตรที่มีครูสอน",
+    "liveClassesTitle": "คลาสสด",
+    "manageCourses": "จัดการหลักสูตร"
+  },
+  "footer": {
+    "FOSSOpenContent": "FOSS และเนื้อหาที่เปิด",
+    "proudlyPartOf": "ภูมิใจที่เป็นส่วนหนึ่งของ <0>เครือข่าย Plan ₿</0>"
+  },
+  "months": {
+    "april": "เมษายน",
+    "august": "สิงหาคม",
+    "december": "ธันวาคม",
+    "february": "กุมภาพันธ์",
+    "january": "มกราคม",
+    "july": "กรกฎาคม",
+    "june": "มิถุนายน",
+    "march": "มีนาคม",
+    "may": "พฤษภาคม",
+    "november": "พฤศจิกายน",
+    "october": "ตุลาคม",
+    "september": "กันยายน"
+  },
+  "movies": {
+    "checkTheMovie": "ตรวจสอบหนัง"
+  },
+  "videoSelector": {
+    "language": {
+      "AI": "การแปลด้วย AI",
+      "language": "ภาษา",
+      "original": "ภาษาต้นฉบับ"
+    },
+    "player": {
+      "pears": "ลูกแพร์ 🍐",
+      "peertube": "พีร์ทูบ",
+      "player": "ผู้เล่น",
+      "rumble": "รัมเบิล",
+      "youtube": "ยูทูบ"
+    }
   }
 }

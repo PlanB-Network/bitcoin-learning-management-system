@@ -19,7 +19,8 @@
     "missionTitle": "Vårt uppdrag",
     "storyContent": "Plan ₿ Network är ett initiativ som stödjer Bitcoin-utbildning runt om i världen. Det är en samverkan av olika entusiastiska Bitcoin-företag med fokus på utbildning, open source-software, peer-to-peer-nätverk, samt känslan av gemenskap. Tillsammans har de bestämt sig för att bygga upp Plan ₿ Network och erbjuda Bitcoin-ekosystemet de rätta verktygen för att växa. Vår lanseringspresentation år 2023 är tillgänglig här.",
     "storyTitle": "Vår historia",
-    "title": "Om Plan ₿ Network"
+    "title": "Om Plan ₿ Network",
+    "readManifesto": "Läs vårt manifest"
   },
   "accessType": {
     "hybrid": "På plats och online",
@@ -62,7 +63,9 @@
       "invalidCredentials": "Ogiltigt lösenord",
       "usernameRegex": "Användarnamnet kan endast innehålla bokstäver, siffror, understreck (_), punkter (.) och bindestreck (-).",
       "usernameRequired": "Användarnamn är obligatoriskt.",
-      "usernameTooShort": "Användarnamnet måste innehålla minst 5 tecken."
+      "usernameTooShort": "Användarnamnet måste innehålla minst 5 tecken.",
+      "oldPasswordRequired": "Gammalt lösenord krävs",
+      "passwordTooShort": "Lösenordet är för kort"
     },
     "forgottenPassword": "Har du glömt ditt lösenord?",
     "headerAccountCreated": "Kontot har skapats",
@@ -90,7 +93,11 @@
     "trackProgress": "Skapa ett konto eller logga in för att hålla koll på dina framsteg",
     "tryAgain": "Försök igen",
     "loginNotAvailable1": "Inloggningsfunktioner är ännu inte tillgängliga i skrivbordsappen.",
-    "loginNotAvailable2": "Du kan besöka vår webbplats för att logga in och få tillgång till ditt konto."
+    "loginNotAvailable2": "Du kan besöka vår webbplats för att logga in och få tillgång till ditt konto.",
+    "signUp": "Registrera dig",
+    "forgotPassword": "Glömt lösenord?",
+    "login": "Logga in",
+    "oldPassword": "Gammalt lösenord"
   },
   "bCert": {
     "bCertDescription": "₿-CERT är ett internationellt erkänt prov för att bedöma din kunskapsnivå inom Bitcoin och dess relaterade ämnen. Detta certifikat kommer att göra det möjligt för dig att bevisa dina färdigheter och kunskaper inom Bitcoin-industrin.",
@@ -101,7 +108,13 @@
     "organizeExam": "Arrangera ett prov",
     "pageTitle": "Bli godkänd på ₿-CERT",
     "tweetText": "Överlycklig över att ha klarat ₿-CERT på @planb_network med ett resultat på {{score}}/100! {{emoji}}\n\n{{certificateUrl}}",
-    "verify": "Verifiera äktheten av ditt certifikat"
+    "verify": "Verifiera äktheten av ditt certifikat",
+    "certificates": "Certifikat",
+    "chooseCourse": "Välj kurs",
+    "hostSessionConditions": "Så här gör du:\n\n1. Läs <0>Stadgan</0> – Se till att din gemenskap uppfyller de obligatoriska värdvillkoren\n2. Planera & schemalägg – Om du kvalificerar dig, välj ett datum och ställ in sessionen\n3. Publicera ditt evenemang – Kontakta oss för att lägga till det på Plan ₿ Network-plattformen så att folk kan ansluta",
+    "noDiplomasAvailable": "Inga diplom tillgängliga ännu",
+    "noTestSessions": "Inga testsessioner tillgängliga för närvarande",
+    "wantHostSession": "Vill du vara värd för en ₿-CERT testsession på ditt lokala hub?"
   },
   "bet": {
     "educationalContent": {
@@ -124,7 +137,8 @@
     "noConferences": "Inga konferenser tillagda för {{year}} ännu.",
     "pageTitle": "Inspelningar av konferenser",
     "planBConferences": "Plan ₿-konferenser",
-    "topics": "Ämnen"
+    "topics": "Ämnen",
+    "conferencesGenesis": "Konferenser sedan Genesis Block"
   },
   "courses": {
     "chapter": {
@@ -280,7 +294,8 @@
     },
     "explorer": {
       "goal": "Mål:",
-      "seeCourse": "Utforska kursen"
+      "seeCourse": "Utforska kursen",
+      "discover": "Upptäck"
     },
     "format": {
       "hybrid": "På plats/online",
@@ -361,7 +376,24 @@
       "writeThoughts": "Här kan du skriva dina kommentarer",
       "yesOfCourse": "ja, självklart",
       "yesVeryMuch": "ja, väldigt mycket"
-    }
+    },
+    "allCourses": "Alla kurser",
+    "continueLeftOff": "Fortsätt där du slutade",
+    "courseSelector": "Kursväljare",
+    "liveClasses": {
+      "allOtherTitle": "Alla andra liveklasser",
+      "liveClasses": "Liveklasser",
+      "program": {
+        "goal": "Behärska Bitcoin-industrin med Giacomo Zucco i ett 5 månaders program som blandar teori, verkliga fallstudier, och exklusiva nätverksmöjligheter.",
+        "semester": "Termin",
+        "title": "Plan ₿ Program"
+      },
+      "title": "Led förändringen. Behärska Bitcoin."
+    },
+    "navbarHover": "Registrera dig för att låsa upp",
+    "noCoursesFound": "Inga kurser hittades",
+    "plusXMore": "+{{count}} fler",
+    "tryAdjustingFilters": "Prova att justera dina filter"
   },
   "dashboard": {
     "adminPanel": {
@@ -715,7 +747,17 @@
             "invalidPptxFile": "Vänligen välj en giltig PowerPoint (.pptx) fil.",
             "noLanguagesAvailable": "Inga språk tillgängliga för översättning.",
             "pptxFileInfo": "Endast .pptx-filer stöds (Max 100MB)",
-            "useEnglishLabel": "Kursen har redan översatts till engelska. Använd den engelska versionen som källa?"
+            "useEnglishLabel": "Kursen har redan översatts till engelska. Använd den engelska versionen som källa?",
+            "englishFilesRequired": "Se till att alla uppladdade filer endast är på engelska",
+            "networkError": "Ett nätverksfel inträffade. Kontrollera din anslutning och försök igen.",
+            "processingStarted": "Översättningen har börjat! Processen kan ta flera minuter för stora kurser.",
+            "timeoutError": "Översättningsbegäran fick timeout. Kursinnehållet kan vara för stort. Försök igen eller kontakta support.",
+            "translationFailed": "Översättning misslyckades. Kontrollera loggarna och försök igen.",
+            "uploadAndTranslationStarted": "Filer uppladdade och översättning påbörjat! Processen kan ta flera minuter för stora kurser.",
+            "uploadError": "Uppladdning misslyckades. Kontrollera dina filer och försök igen.",
+            "startingTranslationStep": "Påbörjar översättning...",
+            "uploadTimeoutError": "Uppladdning fick timeout efter 10 minuter. Försök med mindre filer eller kontrollera din anslutning.",
+            "uploadingFiles": "Laddar upp filer..."
           },
           "table": {
             "actions": "Åtgärder",
@@ -1073,7 +1115,20 @@
     "credentials": {
       "beingGraded": "Ditt prov är under betygsättning. Resultatet bör vara tillgängligt om 1 eller 2 veckor.",
       "courseDiplomas": "Kursdiplom",
-      "globalCertifications": "Globala certifieringar"
+      "globalCertifications": "Globala certifieringar",
+      "bCertResults": {
+        "score020": "Du har påbörjat din resa! Varje expert började en gång härifrån",
+        "score100": "Full pott! Är du Satoshi, eller bara briljant?",
+        "score2140": "Du har grunderna i ordning! Fortsätt så här, du blir bättre snabbt!",
+        "score4160": "Solid grund! Du är redo för avancerade klasser",
+        "score6180": "Du gör det bra! Fortsätt att finslipa dina färdigheter och bli bättre på Bitcoin",
+        "score8199": "Bra grepp! Du hanterar komplexa Bitcoin-ämnen med lätthet"
+      },
+      "completeACourse": "Slutför din första kurs för att få ett diplom ",
+      "detailedScore": "Detaljerad poäng",
+      "exploreBCert": "Utforska ₿-CERT",
+      "getGlobalRecognition": "Få global erkännande med ett ₿-CERT certifikat",
+      "noCertificatesAvailable": "Inga certifikat tillgängliga"
     },
     "goToDashboard": "Gå till instrumentpanelen",
     "goToHomepage": "Gå till startsidan",
@@ -1097,7 +1152,8 @@
       "verify": "Verifiera äktheten av ditt diplom",
       "whereYouAre": "Låt oss se hur långt du har kommit!",
       "yourCertificate": "Ditt certifikat",
-      "yourProgress": "Dina framsteg:"
+      "yourProgress": "Dina framsteg:",
+      "noCourseStarted": "Du har ännu inte påbörjat några självständiga kurser"
     },
     "profile": {
       "cancel": "Avbryt",
@@ -1133,7 +1189,8 @@
       "save": "Spara",
       "saving": "Sparar…",
       "securitySettings": "Säkerhetsinställningar",
-      "username": "Användarnamn"
+      "username": "Användarnamn",
+      "emailOrUsername": "E-post eller användarnamn"
     },
     "teacher": {
       "courses": {
@@ -1203,7 +1260,9 @@
         "studentsGraduated": "Examinerade studenter",
         "successRate": "Framgångsfrekvens",
         "thresholdToPass": "Gräns för att bli godkänd",
-        "totalQuestions": "Totalt antal frågor"
+        "totalQuestions": "Totalt antal frågor",
+        "amountPaid": "Betalat belopp",
+        "lastActive": "Senast aktiv"
       },
       "profile": {
         "billingInformation": "Betalningsinformation",
@@ -1270,7 +1329,8 @@
       "purchased": "Köpt",
       "unlimited": "obegränsat",
       "visitWebsite": "Besök hemsida",
-      "watchReplay": "Titta på inspelning"
+      "watchReplay": "Titta på inspelning",
+      "buyLecture": "Köp föreläsning"
     },
     "main": {
       "upcomingEvents": "Kommande events"
@@ -1314,6 +1374,26 @@
     },
     "planBWeek": {
       "pageTitle": "Plan ₿ vecka"
+    },
+    "myTickets": "Mina biljetter",
+    "types": {
+      "plurals": {
+        "workshop": "workshops",
+        "conference": "konferenser",
+        "exam": "examen",
+        "lecture": "föreläsningar",
+        "meetup": "träffar"
+      }
+    },
+    "addEvent": "Lägg till evenemang",
+    "eventInfos": {
+      "eventBooked": "Evenemang bokat",
+      "eventType": "Evenemangstyp",
+      "numberOfSpots": "Antal platser",
+      "onlineAndInPerson": "Online och personligen",
+      "secureYourSpot": "Säkra din plats",
+      "sessionBooked": "Session bokad",
+      "whatsPlanned": "Vad är planerat"
     }
   },
   "filters": {
@@ -1322,7 +1402,8 @@
   "glossary": {
     "definition": "Definition",
     "relatedWords": "Relaterade ord:",
-    "term": "Term"
+    "term": "Term",
+    "showMoreWords": "Visa fler ord"
   },
   "home": {
     "aboutUsSection": {
@@ -1369,7 +1450,10 @@
     "watchLecture": "Titta på inspelningen av föreläsningen"
   },
   "menu": {
-    "login": "Logga in"
+    "login": "Logga in",
+    "educatorContent": "Utbildningsinnehåll",
+    "getStarted": "Kom igång",
+    "signIn": "Logga in"
   },
   "notFound": {
     "here": "Här",
@@ -1464,22 +1548,26 @@
       "contact": "Kontakt",
       "legalNotice": "Juridiska notiser",
       "privacyPolicy": "Integritetspolicy",
-      "termsOfSale": "Köpvillkor"
+      "termsOfSale": "Köpvillkor",
+      "notFound": "Juridisk information hittades inte"
     }
   },
   "resources": {
     "bet": {
-      "title": "Utbildningskit"
+      "title": "Utbildningskit",
+      "addEducationKit": "Lägg till utbildningskit"
     },
     "books": {
-      "title": "Bibliotek"
+      "title": "Bibliotek",
+      "addBook": "Lägg till bok"
     },
     "channels": {
       "noYoutubeChannels": "Det finns för närvarande inga Youtube-kanaler för det valda språket.",
       "title": "Youtube-kanaler"
     },
     "conferences": {
-      "title": "Inspelningar av konferenser"
+      "title": "Inspelningar av konferenser",
+      "addConference": "Lägg till konferensrepris"
     },
     "glossary": {
       "title": "Ordlista"
@@ -1504,14 +1592,18 @@
     "pageSubtitlePodcast": "<0>Andra podcasts</0> som du kanske gillar",
     "podcasts": {
       "noPodcasts": "Det finns för närvarande inga podcasts för det valda språket.",
-      "title": "Podcasts"
+      "title": "Podcasts",
+      "addPodcast": "Lägg till podcast",
+      "checkThePodcast": "Kontrollera podcasten"
     },
     "projects": {
-      "title": "Projekt"
+      "title": "Projekt",
+      "addProjects": "Lägg till projekt"
     },
     "searchFilterName": "Sök via namn",
     "toggleLabelAll": "Alla",
-    "toggleLabelSelectedLanguage": "Valt språk"
+    "toggleLabelSelectedLanguage": "Valt språk",
+    "pageSubtitleMovies": "<0>Andra filmer</0> du kanske gillar"
   },
   "search": {
     "all": "Alla",
@@ -1552,7 +1644,9 @@
     "tutorial": "Tutorial",
     "tutorials": "Tutorials",
     "youtube_channel": "Youtube-kanal",
-    "youtube_channels": "Youtube-kanaler"
+    "youtube_channels": "Youtube-kanaler",
+    "noResults": "Inga resultat",
+    "resultsFound": "{{count}} resultat hittades"
   },
   "settings": {
     "changeDisplayName": "Ändra visningsnamn",
@@ -1574,7 +1668,8 @@
       "author": "Författare:",
       "ratingSuccess": "Tack för ditt betyg!",
       "source": "Ursprunglig källa:",
-      "tutorialName": "Namn på tutorial"
+      "tutorialName": "Namn på tutorial",
+      "didThisWork": "Fungerade detta bra för dig?"
     },
     "exchange": {
       "title": "Börser"
@@ -1610,12 +1705,15 @@
       "peer-to-peer": "Peer-to-peer",
       "point-of-sale": "Point of sale",
       "pool": "Pool",
-      "resource": "Resurs"
+      "resource": "Resurs",
+      "explorer": "Utforskare"
     },
     "wallet": {
       "title": "Plånbok"
     },
-    "writtenBy": "Denna tutorial har skrivits av"
+    "writtenBy": "Denna tutorial har skrivits av",
+    "noTutorialsFound": "Vi kunde inte hitta någon handledning som matchar din sökning.",
+    "onThisPage": "På denna sida"
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1779,7 +1877,39 @@
     "structure": "Struktur",
     "taxes": "skatter",
     "week": "Vecka",
-    "weight": "Vikt"
+    "weight": "Vikt",
+    "aboutUs": "Om oss",
+    "account": "Konto",
+    "address": "Adress",
+    "booking": "Bokning",
+    "certifications": "Certifikat",
+    "completed": "Slutförd",
+    "confirmation": "Bekräftelse",
+    "discover": "Upptäck",
+    "enrolled": "Inskriven",
+    "filters": "Filter",
+    "full": "Fullt",
+    "invoices": "Fakturor",
+    "legal": "Juridisk",
+    "list": "Lista",
+    "map": "Karta",
+    "optional": "Valfri",
+    "planBNetwork": "Plan ₿ Nätverk",
+    "practice": "Praktik",
+    "pricing": "Prissättning",
+    "resetAll": "Återställ allt",
+    "resetFilters": "Återställ filter",
+    "resume": "Återuppta",
+    "sats": "Sats",
+    "searchTripleDot": "Sök...",
+    "seeAll": "Se alla",
+    "session": "Session",
+    "settings": "Inställningar",
+    "syllabus": "Kursplan",
+    "theory": "Teori",
+    "topic": "Ämne",
+    "type": "Skriv",
+    "viewAll": "Visa alla"
   },
   "youtubeChannels": {
     "view": "Visa Youtube-kanal",
@@ -1795,7 +1925,8 @@
       "peertube": "Peertube",
       "player": "Spelare",
       "rumble": "Rumble",
-      "youtube": "Youtube"
+      "youtube": "Youtube",
+      "pears": "Päron 🍐"
     }
   },
   "months": {
@@ -1827,6 +1958,21 @@
     },
     "translationPanel": "Översättningspanel",
     "tutorials": "Tutorials",
-    "userRolesAllocation": "Tilldelning av användarroller"
+    "userRolesAllocation": "Tilldelning av användarroller",
+    "careers": "Karriärer",
+    "liveClassesDescription": "Lärarledda kurser",
+    "liveClassesTitle": "Liveklasser",
+    "tutorialsAnalytics": "Analys av handledningar"
+  },
+  "account": {
+    "account": "Konto",
+    "myTeacherProfile": "Min lärarprofil"
+  },
+  "footer": {
+    "FOSSOpenContent": "FOSS & Öppet innehåll",
+    "proudlyPartOf": "Stolt del av <0>Plan ₿ Network</0>"
+  },
+  "movies": {
+    "checkTheMovie": "Kolla på filmen"
   }
 }

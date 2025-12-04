@@ -63,7 +63,9 @@
       "invalidCredentials": "Ungültige Anmeldedaten",
       "usernameRegex": "Der Benutzername darf nur Buchstaben, Ziffern, Unterstriche (_), Punkte (.) und Bindestriche (-) enthalten.",
       "usernameRequired": "Benutzername erforderlich.",
-      "usernameTooShort": "Der Benutzername muss mindestens 5 Zeichen enthalten."
+      "usernameTooShort": "Der Benutzername muss mindestens 5 Zeichen enthalten.",
+      "oldPasswordRequired": "Altes Passwort erforderlich",
+      "passwordTooShort": "Passwort ist zu kurz"
     },
     "forgottenPassword": "Haben Sie Ihr Passwort vergessen?",
     "headerAccountCreated": "Konto erstellt",
@@ -91,7 +93,11 @@
     "trackProgress": "Erstellen Sie ein Konto oder melden Sie sich an, um Ihre Fortschritte zu verfolgen",
     "tryAgain": "erneut versuchen",
     "loginNotAvailable1": "Login-Funktionen sind in der Desktop-Anwendung noch nicht verfügbar.",
-    "loginNotAvailable2": "Du kannst unsere Website aufrufen, um dich anzumelden und auf dein Konto zuzugreifen."
+    "loginNotAvailable2": "Du kannst unsere Website aufrufen, um dich anzumelden und auf dein Konto zuzugreifen.",
+    "forgotPassword": "Passwort vergessen?",
+    "login": "Anmeldung",
+    "oldPassword": "Altes Passwort",
+    "signUp": "Anmelden"
   },
   "bCert": {
     "bCertDescription": "Das ₿ Zertifikat ist eine international anerkannte Prüfung, die Ihre Beherrschung von Bitcoin und den davon abgeleiteten Themen bewertet. Dieses Zertifikat ermöglicht es Ihnen, Ihre Fähigkeiten und Kenntnisse in der Bitcoin-Branche nachzuweisen, und gibt Ihnen Zugang zu den besten Unternehmen und hervorragenden Arbeitsstelle.",
@@ -131,7 +137,8 @@
     "noConferences": "Bisher wurden keine Konferenzen für {{year}} hinzugefügt.",
     "pageTitle": "Wiederholungen von Konferenzen",
     "planBConferences": "Plan B Konferenzen",
-    "topics": "Themen"
+    "topics": "Themen",
+    "conferencesGenesis": "Konferenzen seit dem Genesis Block"
   },
   "courses": {
     "chapter": {
@@ -379,8 +386,14 @@
     "liveClasses": {
       "allOtherTitle": "Alle anderen Live-Lektionen",
       "liveClasses": "Live-Unterricht",
-      "title": "Plan ₿ offizielle Jahresprogramme"
-    }
+      "title": "Plan ₿ offizielle Jahresprogramme",
+      "program": {
+        "goal": "Beherrschen Sie die Bitcoin-Branche mit Giacomo Zucco in einem 5-monatigen Programm, das Theorie, Praxisbeispiele und exklusive Netzwerkmöglichkeiten verbindet.",
+        "semester": "Semester",
+        "title": "Plan ₿ Programm"
+      }
+    },
+    "navbarHover": "Anmelden zum Freischalten"
   },
   "dashboard": {
     "adminPanel": {
@@ -1109,8 +1122,13 @@
       "noCertificatesAvailable": "Keine Zertifikate verfügbar",
       "bCertResults": {
         "score020": "Du hast deine Reise begonnen! Jeder Experte hat einmal von vorne angefangen",
-        "score100": "Die volle Punktzahl! Bist du Satoshi oder einfach nur genial?"
-      }
+        "score100": "Die volle Punktzahl! Bist du Satoshi oder einfach nur genial?",
+        "score2140": "Du hast die Grundlagen! Mach weiter, du verbesserst dich schnell!",
+        "score4160": "Solide Basis! Du bist bereit für fortgeschrittene Kurse",
+        "score6180": "Du machst das großartig! Weiterhin deine Fähigkeiten verfeinern und Bitcoin meistern",
+        "score8199": "Tolles Verständnis! Du bewältigst komplexe Bitcoin-Themen mit Leichtigkeit"
+      },
+      "detailedScore": "Detaillierte Punktzahl"
     },
     "goToDashboard": "Gehe zum Dashboard",
     "goToHomepage": "Gehe zur Startseite",
@@ -1134,7 +1152,8 @@
       "verify": "Überprüfung der Echtheit des Diploms",
       "whereYouAre": "Zeigen Sie uns, wo Sie stehen!",
       "yourCertificate": "Ihr Zertifikat",
-      "yourProgress": "Ihr Fortschritt :"
+      "yourProgress": "Ihr Fortschritt :",
+      "noCourseStarted": "Du hast noch keine Selbstlernkurse begonnen"
     },
     "profile": {
       "cancel": "Absagen",
@@ -1170,7 +1189,8 @@
       "save": "Speichern",
       "saving": "Speichern…",
       "securitySettings": "Sicherheitseinstellungen",
-      "username": "Benutzername"
+      "username": "Benutzername",
+      "emailOrUsername": "E-Mail oder Benutzername"
     },
     "teacher": {
       "courses": {
@@ -1309,7 +1329,8 @@
       "purchased": "Gekauft",
       "unlimited": "unbegrenzt",
       "visitWebsite": "Zur Website gehen",
-      "watchReplay": "Replay anschauen"
+      "watchReplay": "Replay anschauen",
+      "buyLecture": "Vorlesung kaufen"
     },
     "main": {
       "upcomingEvents": "Kommende Veranstaltungen"
@@ -1358,7 +1379,8 @@
       "numberOfSpots": "Anzahl der Plätze",
       "onlineAndInPerson": "Online und persönlich",
       "secureYourSpot": "Sichere deinen Platz",
-      "whatsPlanned": "Was ist geplant"
+      "whatsPlanned": "Was ist geplant",
+      "sessionBooked": "Sitzung gebucht"
     },
     "myTickets": "Meine Tickets",
     "planBWeek": {
@@ -1380,7 +1402,8 @@
   "glossary": {
     "definition": "Definition",
     "relatedWords": "Verwandte Wörter:",
-    "term": "Begriff"
+    "term": "Begriff",
+    "showMoreWords": "Mehr Wörter anzeigen"
   },
   "home": {
     "aboutUsSection": {
@@ -1427,7 +1450,10 @@
     "watchLecture": "Sehen Sie sich die Aufzeichnung der Vorlesung an"
   },
   "menu": {
-    "login": "Anmelden"
+    "login": "Anmelden",
+    "educatorContent": "Bildungsinhalt",
+    "getStarted": "Loslegen",
+    "signIn": "Anmelden"
   },
   "notFound": {
     "here": "Hier",
@@ -1522,22 +1548,26 @@
       "contact": "Kontakt",
       "legalNotice": "Rechtliche Hinweise",
       "privacyPolicy": "Datenschutzrichtlinie",
-      "termsOfSale": "Verkaufsbedingungen"
+      "termsOfSale": "Verkaufsbedingungen",
+      "notFound": "Rechtliche Informationen nicht gefunden"
     }
   },
   "resources": {
     "bet": {
-      "title": "Bildungs-Toolkit"
+      "title": "Bildungs-Toolkit",
+      "addEducationKit": "Erziehungskit hinzufügen"
     },
     "books": {
-      "title": "Bibliothek"
+      "title": "Bibliothek",
+      "addBook": "Buch hinzufügen"
     },
     "channels": {
       "noYoutubeChannels": "Derzeit gibt es keine Youtube-Kanäle für die gewählte Sprache.",
       "title": "Youtube-Kanäle"
     },
     "conferences": {
-      "title": "Wiederholungen von Konferenzen"
+      "title": "Wiederholungen von Konferenzen",
+      "addConference": "Konferenz-Wiederholung hinzufügen"
     },
     "glossary": {
       "title": "Glossar"
@@ -1562,14 +1592,18 @@
     "pageSubtitlePodcast": "<0>Other podcasts</0> die Ihnen gefallen könnten",
     "podcasts": {
       "noPodcasts": "Derzeit gibt es keine Podcasts für die ausgewählte Sprache.",
-      "title": "Podcasts"
+      "title": "Podcasts",
+      "addPodcast": "Podcast hinzufügen",
+      "checkThePodcast": "Überprüfen Sie den Podcast"
     },
     "projects": {
-      "title": "Projekte"
+      "title": "Projekte",
+      "addProjects": "Projekt hinzufügen"
     },
     "searchFilterName": "Suche nach Name",
     "toggleLabelAll": "Alle",
-    "toggleLabelSelectedLanguage": "Ausgewählte Sprache"
+    "toggleLabelSelectedLanguage": "Ausgewählte Sprache",
+    "pageSubtitleMovies": "<0>Andere Filme</0>, die Ihnen vielleicht gefallen"
   },
   "search": {
     "all": "Alle",
@@ -1610,7 +1644,9 @@
     "tutorial": "Tutorial",
     "tutorials": "Anleitungen",
     "youtube_channel": "Youtube-Kanal",
-    "youtube_channels": "Youtube Kanäle"
+    "youtube_channels": "Youtube Kanäle",
+    "noResults": "Keine Ergebnisse",
+    "resultsFound": "{{count}} Ergebnisse gefunden"
   },
   "settings": {
     "changeDisplayName": "Namen ändern",
@@ -1632,7 +1668,8 @@
       "author": "Verfasser:",
       "ratingSuccess": "Vielen Dank für Ihre Bewertung!",
       "source": "Ursprüngliche Quelle:",
-      "tutorialName": "Name des Tutorials"
+      "tutorialName": "Name des Tutorials",
+      "didThisWork": "Hat das gut für Sie funktioniert?"
     },
     "exchange": {
       "title": "Austausch"
@@ -1668,12 +1705,15 @@
       "peer-to-peer": "Peer-to-peer",
       "point-of-sale": "Point of Sale",
       "pool": "Pool",
-      "resource": "Ressource"
+      "resource": "Ressource",
+      "explorer": "Entdecker"
     },
     "wallet": {
       "title": "Wallet"
     },
-    "writtenBy": "Dieses Lernprogramm wurde geschrieben von"
+    "writtenBy": "Dieses Lernprogramm wurde geschrieben von",
+    "noTutorialsFound": "Wir konnten kein Tutorial finden, das zu Ihrer Suche passt.",
+    "onThisPage": "Auf dieser Seite"
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1858,7 +1898,18 @@
     "type": "Typ",
     "viewAll": "Alle anzeigen",
     "week": "Woche",
-    "weight": "Gewicht"
+    "weight": "Gewicht",
+    "aboutUs": "Über uns",
+    "address": "Adresse",
+    "confirmation": "Bestätigung",
+    "discover": "Entdecken",
+    "legal": "Rechtliches",
+    "list": "Liste",
+    "optional": "Optional",
+    "planBNetwork": "Plan ₿ Netzwerk",
+    "seeAll": "Alle anzeigen",
+    "session": "Sitzung",
+    "syllabus": "Lehrplan"
   },
   "youtubeChannels": {
     "view": "Youtube-Kanal ansehen",
@@ -1899,7 +1950,9 @@
     },
     "translationPanel": "Übersetzungsbereich",
     "tutorials": "Anleitungen",
-    "userRolesAllocation": "Zuweisung von Benutzerrollen"
+    "userRolesAllocation": "Zuweisung von Benutzerrollen",
+    "careers": "Karriere",
+    "tutorialsAnalytics": "Tutorials Analytik"
   },
   "videoSelector": {
     "language": {
@@ -1911,7 +1964,15 @@
       "peertube": "Peertube",
       "player": "Player",
       "rumble": "Rumble",
-      "youtube": "Youtube"
+      "youtube": "Youtube",
+      "pears": "Birnen 🍐"
     }
+  },
+  "movies": {
+    "checkTheMovie": "Überprüfen Sie den Film"
+  },
+  "footer": {
+    "FOSSOpenContent": "FOSS & Open Content",
+    "proudlyPartOf": "Stolzes Mitglied des <0>Plan ₿ Netzwerks</0>"
   }
 }

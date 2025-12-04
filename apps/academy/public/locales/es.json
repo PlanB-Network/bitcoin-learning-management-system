@@ -19,7 +19,8 @@
     "missionTitle": "Nuestra misión",
     "storyContent": "La Plan ₿ Network es una iniciativa para apoyar la educación de Bitcoin en todo el mundo. Es el cruce de varias empresas apasionadas por Bitcoin centradas en la educación, el software de código abierto, las redes peer-to-peer y el sentido de comunidad. Juntos, han decidido construir Plan ₿ Network y ofrecer al ecosistema de Bitcoin las herramientas adecuadas para crecer.",
     "storyTitle": "Nuestra historia",
-    "title": "Sobre Plan ₿ Network"
+    "title": "Sobre Plan ₿ Network",
+    "readManifesto": "Lee nuestro manifiesto"
   },
   "accessType": {
     "hybrid": "Presencial y en Línea",
@@ -62,7 +63,9 @@
       "invalidCredentials": "Credenciales inválidas",
       "usernameRegex": "El nombre de usuario solo puede contener letras, dígitos, guiones bajos (_), puntos (.) y guiones (-).",
       "usernameRequired": "El nombre de usuario es requerido.",
-      "usernameTooShort": "El nombre de usuario debe tener al menos 5 caracteres."
+      "usernameTooShort": "El nombre de usuario debe tener al menos 5 caracteres.",
+      "oldPasswordRequired": "Se requiere contraseña anterior",
+      "passwordTooShort": "La contraseña es demasiado corta"
     },
     "forgottenPassword": "¿Olvidaste tu contraseña?",
     "headerAccountCreated": "Cuenta creada",
@@ -90,7 +93,11 @@
     "trackProgress": "Crea una cuenta o inicia sesión para llevar un seguimiento de tu progreso",
     "tryAgain": "Inténtalo de nuevo",
     "loginNotAvailable1": "Las funciones de inicio de sesión aún no están disponibles en la aplicación de escritorio.",
-    "loginNotAvailable2": "Puedes visitar nuestro sitio web para iniciar sesión y acceder a tu cuenta."
+    "loginNotAvailable2": "Puedes visitar nuestro sitio web para iniciar sesión y acceder a tu cuenta.",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "login": "Iniciar sesión",
+    "oldPassword": "Contraseña anterior",
+    "signUp": "Regístrate"
   },
   "bCert": {
     "bCertDescription": "El ₿-CERT es un examen reconocido internacionalmente para evaluar tu preparación sobre Bitcoin y sus temas derivados.\nObtén un puntaje mayor a 80% para ganar tu certificado ₿-CERT que te permitirá demostrar tus conocimientos en la industria de Bitcoin, dándote acceso a puestos de trabajo en la industria.",
@@ -104,7 +111,10 @@
     "verify": "Verifica la autenticidad de tu certificado",
     "hostSessionConditions": "Aquí encuentras cómo:\n\n1. Lee la <0>Carta</0> - Asegúrate de que tu comunidad cumple con las condiciones obligatorias de alojamiento\n2. Planifica y Programa - Si cumples los requisitos, elige una fecha y organiza la sesión\n3. Publica Tu Evento - Contáctanos para agregarlo a la plataforma de Plan ₿ Network para que las personas puedan unirse",
     "noTestSessions": "No hay sesiones de prueba disponibles actualmente",
-    "wantHostSession": "¿Quieres organizar una sesión de examen ₿-CERT en tu hub local?"
+    "wantHostSession": "¿Quieres organizar una sesión de examen ₿-CERT en tu hub local?",
+    "certificates": "Certificados",
+    "chooseCourse": "Elige curso",
+    "noDiplomasAvailable": "Aún no hay diplomas disponibles"
   },
   "bet": {
     "educationalContent": {
@@ -127,7 +137,8 @@
     "noConferences": "Aún no se han añadido conferencias para {{year}}.",
     "pageTitle": "Repeticiones de conferencias",
     "planBConferences": "Conferencias de Plan B",
-    "topics": "Temas"
+    "topics": "Temas",
+    "conferencesGenesis": "Conferencias desde el Bloque Génesis"
   },
   "courses": {
     "chapter": {
@@ -375,8 +386,14 @@
     "liveClasses": {
       "allOtherTitle": "Todas las demás clases en vivo",
       "liveClasses": "Clases en vivo",
-      "title": "Programas anuales oficiales de Plan ₿"
-    }
+      "title": "Programas anuales oficiales de Plan ₿",
+      "program": {
+        "goal": "Domina la industria del Bitcoin con Giacomo Zucco en un programa de 5 meses que combina teoría, estudios de casos reales y oportunidades de networking exclusivas.",
+        "semester": "Semestre",
+        "title": "Plan ₿ Programa"
+      }
+    },
+    "navbarHover": "Regístrate para desbloquear"
   },
   "dashboard": {
     "adminPanel": {
@@ -1102,7 +1119,16 @@
       "completeACourse": "¡Completa un curso para obtener tu primer diploma!",
       "exploreBCert": "Explorar ₿-CERT",
       "getGlobalRecognition": "Obtén reconocimiento global con un certificado ₿-CERT",
-      "noCertificatesAvailable": "No hay certificados disponibles"
+      "noCertificatesAvailable": "No hay certificados disponibles",
+      "bCertResults": {
+        "score020": "¡Has comenzado tu viaje! Todo experto alguna vez empezó desde aquí",
+        "score100": "¡Puntuación perfecta! ¿Eres Satoshi, o simplemente brillante?",
+        "score2140": "¡Tienes lo básico! Sigue adelante, ¡mejoras rápidamente!",
+        "score4160": "¡Base sólida! Estás listo para las clases avanzadas",
+        "score6180": "¡Lo estás haciendo genial! Sigue perfeccionando tus habilidades y dominando Bitcoin",
+        "score8199": "¡Excelente comprensión! Manejas temas complejos de Bitcoin con facilidad"
+      },
+      "detailedScore": "Puntuación detallada"
     },
     "goToDashboard": "Ir al panel de control",
     "goToHomepage": "Ir a la página principal",
@@ -1126,7 +1152,8 @@
       "verify": "Verifica la autenticidad de tu diploma",
       "whereYouAre": "¡Veamos dónde estás!",
       "yourCertificate": "Tu certificado",
-      "yourProgress": "Tu progreso:"
+      "yourProgress": "Tu progreso:",
+      "noCourseStarted": "Aún no has comenzado ningún curso de autoaprendizaje"
     },
     "profile": {
       "cancel": "Cancelar",
@@ -1162,7 +1189,8 @@
       "save": "Guardar",
       "saving": "Guardando…",
       "securitySettings": "Configuración de seguridad",
-      "username": "Nombre de usuario"
+      "username": "Nombre de usuario",
+      "emailOrUsername": "Correo electrónico o nombre de usuario"
     },
     "teacher": {
       "courses": {
@@ -1351,7 +1379,8 @@
       "numberOfSpots": "Número de espacios",
       "onlineAndInPerson": "En línea y en persona",
       "secureYourSpot": "Asegura tu lugar",
-      "whatsPlanned": "Lo planeado"
+      "whatsPlanned": "Lo planeado",
+      "sessionBooked": "Sesión reservada"
     },
     "myTickets": "Mis entradas",
     "planBWeek": {
@@ -1421,7 +1450,10 @@
     "watchLecture": "Ver la repetición de la conferencia"
   },
   "menu": {
-    "login": "Iniciar Sesión"
+    "login": "Iniciar Sesión",
+    "educatorContent": "Contenido educativo",
+    "getStarted": "Comenzar",
+    "signIn": "Iniciar sesión"
   },
   "movies": {
     "checkTheMovie": "Revisa la película"
@@ -1519,7 +1551,8 @@
       "contact": "Contacto",
       "legalNotice": "Aviso legal",
       "privacyPolicy": "Política de privacidad",
-      "termsOfSale": "Términos de venta"
+      "termsOfSale": "Términos de venta",
+      "notFound": "Informaciones legales no encontradas"
     }
   },
   "resources": {
@@ -1614,7 +1647,9 @@
     "tutorial": "Tutorial",
     "tutorials": "Tutoriales",
     "youtube_channel": "Canal de Youtube",
-    "youtube_channels": "Canales de Youtube"
+    "youtube_channels": "Canales de Youtube",
+    "noResults": "Sin resultados",
+    "resultsFound": "Se encontraron {{count}} resultados"
   },
   "settings": {
     "changeDisplayName": "Cambiar nombre para mostrar",
@@ -1673,12 +1708,15 @@
       "peer-to-peer": "Peer-to-peer",
       "point-of-sale": "Punto de venta",
       "pool": "Pool",
-      "resource": "Recursos"
+      "resource": "Recursos",
+      "explorer": "Explorador"
     },
     "wallet": {
       "title": "Billetera"
     },
-    "writtenBy": "Este tutorial ha sido escrito por"
+    "writtenBy": "Este tutorial ha sido escrito por",
+    "noTutorialsFound": "No pudimos encontrar ningún tutorial que coincida con tu búsqueda.",
+    "onThisPage": "En esta página"
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1865,7 +1903,16 @@
     "week": "Semana",
     "weight": "Peso",
     "seeAll": "Ver todo",
-    "discover": "Descubrir"
+    "discover": "Descubrir",
+    "confirmation": "Confirmación",
+    "legal": "Legal",
+    "list": "Lista",
+    "optional": "Opcional",
+    "planBNetwork": "Plan ₿ Network",
+    "session": "Sesión",
+    "syllabus": "Programa",
+    "aboutUs": "Sobre nosotros",
+    "address": "Dirección"
   },
   "youtubeChannels": {
     "view": "Ver Canal de Youtube",
@@ -1906,7 +1953,9 @@
     },
     "translationPanel": "Panel de traducción",
     "tutorials": "Tutoriales",
-    "userRolesAllocation": "Asignación de roles de usuario"
+    "userRolesAllocation": "Asignación de roles de usuario",
+    "tutorialsAnalytics": "Analíticas de tutoriales",
+    "careers": "Carreras"
   },
   "videoSelector": {
     "language": {
@@ -1921,5 +1970,9 @@
       "youtube": "Youtube",
       "pears": "Pears 🍐"
     }
+  },
+  "footer": {
+    "FOSSOpenContent": "FOSS y contenido abierto",
+    "proudlyPartOf": "Orgullosamente parte de <0>Plan ₿ Network</0>"
   }
 }

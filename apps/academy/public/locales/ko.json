@@ -19,7 +19,8 @@
     "missionTitle": "우리의 사명",
     "storyContent": "Plan ₿ Network는 전 세계적으로 비트코인 교육을 지원하는 프로젝트입니다. 교육, 오픈 소스 소프트웨어, P2P 네트워크, 그리고 커뮤니티의 감각에 초점을 맞춘 다양한 열정적인 비트코인 기업들의 교차점입니다. 이들은 함께 Plan ₿ Network를 구축하고 비트코인 생태계의 성장을 위한 적절한 도구를 제공하기로 결정했습니다. 우리의 2023 릴리즈 프레젠테이션은 여기에서 확인 가능합니다.",
     "storyTitle": "우리의 이야기",
-    "title": "플랜 ₿ 네트워크 소개"
+    "title": "플랜 ₿ 네트워크 소개",
+    "readManifesto": "우리의 선언문을 읽어보세요"
   },
   "accessType": {
     "hybrid": "대면 및 온라인",
@@ -62,7 +63,9 @@
       "invalidCredentials": "입력한 로그인 정보가 올바르지 않습니다",
       "usernameRegex": "사용자 이름에는 문자, 숫자, 밑줄 (_), 마침표 (.), 하이픈 (-)만 사용할 수 있습니다.",
       "usernameRequired": "사용자 이름이 필요합니다.",
-      "usernameTooShort": "사용자 이름은 최소 5자 이상 포함해야 합니다."
+      "usernameTooShort": "사용자 이름은 최소 5자 이상 포함해야 합니다.",
+      "oldPasswordRequired": "이전 비밀번호 필요",
+      "passwordTooShort": "비밀번호가 너무 짧습니다"
     },
     "forgottenPassword": "비밀번호를 잊으셨나요?",
     "headerAccountCreated": "계정이 생성되었습니다",
@@ -90,7 +93,11 @@
     "trackProgress": "계정을 생성하거나 로그인하여 진행 상황을 확인하세요.",
     "tryAgain": "다시 시도해보세요",
     "loginNotAvailable1": "데스크톱 앱에서는 아직 로그인 기능을 사용할 수 없습니다.",
-    "loginNotAvailable2": "저희 웹사이트를 방문하셔서 로그인하고 계정에 접근할 수 있습니다."
+    "loginNotAvailable2": "저희 웹사이트를 방문하셔서 로그인하고 계정에 접근할 수 있습니다.",
+    "forgotPassword": "비밀번호를 잊으셨나요?",
+    "login": "로그인",
+    "oldPassword": "이전 비밀번호",
+    "signUp": "가입하기"
   },
   "bCert": {
     "bCertDescription": "₿-인증서는 비트코인 및 관련 주제에 대한 이해 수준을 평가하는 국제적으로 인정받은 시험입니다. 이 인증서를 취득하면 비트코인 산업에서의 기술과 지식을 입증할 수 있습니다.",
@@ -104,7 +111,10 @@
     "verify": "₿-CERT 인증서의 진위성을 확인하세요",
     "noTestSessions": "현재 사용가능한 테스트 세션이 없습니다.",
     "wantHostSession": "지역 허브에서 ₿-CERT 테스트 세션을 열고 싶으신가요?",
-    "hostSessionConditions": "방법:\n\n1. 다음 조건을 <0>읽어보세요</0> –커뮤니티가 필수 호스팅 조건을 충족하는지 확인하세요.\n2. 계획 & 일정 – 자격을 충족한다면 해당 날짜를 선택하고 세션 설정을 하세요.\n3. 당신의 이벤트를 공개하세요. 사람들이 Plan ₿ Network 플랫폼에서 보고 참석하게 하기 위해 우리에게 연락하세요."
+    "hostSessionConditions": "방법:\n\n1. 다음 조건을 <0>읽어보세요</0> –커뮤니티가 필수 호스팅 조건을 충족하는지 확인하세요.\n2. 계획 & 일정 – 자격을 충족한다면 해당 날짜를 선택하고 세션 설정을 하세요.\n3. 당신의 이벤트를 공개하세요. 사람들이 Plan ₿ Network 플랫폼에서 보고 참석하게 하기 위해 우리에게 연락하세요.",
+    "certificates": "자격증",
+    "chooseCourse": "강의 선택",
+    "noDiplomasAvailable": "아직 사용 가능한 학위가 없습니다"
   },
   "bet": {
     "educationalContent": {
@@ -127,7 +137,8 @@
     "noConferences": "아직 {{year}}에 대한 컨퍼런스가 추가되지 않았습니다.",
     "pageTitle": "컨퍼런스 리플레이",
     "planBConferences": "플랜 ₿ 컨퍼런스들",
-    "topics": "주제들"
+    "topics": "주제들",
+    "conferencesGenesis": "창세 블록 이후의 회의"
   },
   "courses": {
     "chapter": {
@@ -371,12 +382,18 @@
     "liveClasses": {
       "allOtherTitle": "다른 모든 실시간 수업들",
       "liveClasses": "실시간 수업들",
-      "title": "Plan ₿ 공식 연간 프로그램"
+      "title": "Plan ₿ 공식 연간 프로그램",
+      "program": {
+        "goal": "이론, 실제 사례 연구, 그리고 독점 네트워킹 기회를 결합한 5개월 프로그램에서 자코모 즈코와 함께 비트코인 산업을 마스터하세요",
+        "semester": "학기",
+        "title": "계획 ₿ 프로그램"
+      }
     },
     "courseSelector": "강좌 선택기",
     "noCoursesFound": "필터에 맞는 강좌가 없습니다.",
     "plusXMore": "+{{count}} 개 더 보기",
-    "tryAdjustingFilters": "필터를 조정해보시겠어요?"
+    "tryAdjustingFilters": "필터를 조정해보시겠어요?",
+    "navbarHover": "잠금을 해제하려면 가입하세요"
   },
   "dashboard": {
     "adminPanel": {
@@ -1102,7 +1119,16 @@
       "completeACourse": "첫 번째 디플로마를 얻기 위한 과정을 완료하세요!",
       "exploreBCert": "₿-CERT 탐색하기",
       "getGlobalRecognition": "₿-CERT 자격증으로 글로벌 세계에서 인정받으세요",
-      "noCertificatesAvailable": "자격증이 없습니다"
+      "noCertificatesAvailable": "자격증이 없습니다",
+      "bCertResults": {
+        "score020": "당신은 이미 여정을 시작했습니다! 모든 전문가는 여기서부터 시작했습니다",
+        "score100": "완벽한 점수! 당신은 사토시인가요, 아니면 그냥 뛰어난가요?",
+        "score2140": "기초를 잘 익히셨습니다! 계속해서 빠르게 향상시켜가세요!",
+        "score4160": "탄탄한 기초! 당신은 고급 수업을 준비할 준비가 되었습니다",
+        "score6180": "잘하고 있어! 당신의 기술을 계속 정련하고 비트코인을 숙달해가세요",
+        "score8199": "훌륭한 이해력! 복잡한 비트코인 주제도 쉽게 다룹니다."
+      },
+      "detailedScore": "상세 점수"
     },
     "goToDashboard": "대시보드로 이동하기",
     "goToHomepage": "홈페이지로 이동하기",
@@ -1126,7 +1152,8 @@
       "verify": "디플로마 진위성 확인하기",
       "whereYouAre": "진행 상황을 확인해 보세요!",
       "yourCertificate": "당신의 증명서",
-      "yourProgress": "진행 상황 :"
+      "yourProgress": "진행 상황 :",
+      "noCourseStarted": "아직 자율 학습 코스를 시작하지 않았습니다."
     },
     "profile": {
       "cancel": "취소",
@@ -1162,7 +1189,8 @@
       "save": "저장",
       "saving": "저장 중…",
       "securitySettings": "보안 설정",
-      "username": "사용자 이름"
+      "username": "사용자 이름",
+      "emailOrUsername": "이메일 또는 사용자 이름"
     },
     "teacher": {
       "courses": {
@@ -1351,7 +1379,8 @@
       "numberOfSpots": "장소 수",
       "onlineAndInPerson": "온라인 및 대면",
       "secureYourSpot": "자리를 확보하십시오",
-      "whatsPlanned": "무슨 계획이 있나요"
+      "whatsPlanned": "무슨 계획이 있나요",
+      "sessionBooked": "세션 예약 완료"
     },
     "myTickets": "내 티켓",
     "planBWeek": {
@@ -1421,7 +1450,10 @@
     "watchLecture": "강의 리플레이 보기"
   },
   "menu": {
-    "login": "로그인"
+    "login": "로그인",
+    "educatorContent": "교육자 콘텐츠",
+    "getStarted": "시작하기",
+    "signIn": "로그인"
   },
   "movies": {
     "checkTheMovie": "영상을 확인하십시오"
@@ -1519,7 +1551,8 @@
       "contact": "연락처 정보",
       "legalNotice": "법적 고지",
       "privacyPolicy": "개인정보 처리방침",
-      "termsOfSale": "판매 약관"
+      "termsOfSale": "판매 약관",
+      "notFound": "법적 정보를 찾을 수 없습니다"
     }
   },
   "resources": {
@@ -1614,7 +1647,9 @@
     "tutorial": "튜토리얼",
     "tutorials": "튜토리얼",
     "youtube_channel": "유튜브 채널",
-    "youtube_channels": "유튜브 채널"
+    "youtube_channels": "유튜브 채널",
+    "noResults": "결과 없음",
+    "resultsFound": "{{count}}개의 결과가 있습니다."
   },
   "settings": {
     "changeDisplayName": "디스플레이 이름 변경",
@@ -1673,12 +1708,15 @@
       "peer-to-peer": "P2P",
       "point-of-sale": "POS",
       "pool": "마이닝 풀",
-      "resource": "자료"
+      "resource": "자료",
+      "explorer": "탐색기"
     },
     "wallet": {
       "title": "지갑"
     },
-    "writtenBy": "이 튜토리얼의 저자:"
+    "writtenBy": "이 튜토리얼의 저자:",
+    "noTutorialsFound": "우리는 검색하신 튜토리얼을 찾을 수 없었습니다.",
+    "onThisPage": "이 페이지에서"
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1865,7 +1903,16 @@
     "theory": "이론",
     "topic": "주제",
     "type": "유형",
-    "viewAll": "모두 보기"
+    "viewAll": "모두 보기",
+    "aboutUs": "회사 소개",
+    "address": "주소",
+    "confirmation": "확인",
+    "legal": "법률",
+    "list": "목록",
+    "optional": "선택 사항",
+    "planBNetwork": "Plan ₿ 네트워크",
+    "session": "세션",
+    "syllabus": "강의 계획서"
   },
   "youtubeChannels": {
     "view": "유튜브 채널 보기",
@@ -1920,6 +1967,12 @@
     "manageCourses": "강의 관리",
     "myCourses": "내 수업들",
     "translationPanel": "번역 패널",
-    "userRolesAllocation": "사용자 역할 할당"
+    "userRolesAllocation": "사용자 역할 할당",
+    "careers": "커리어",
+    "tutorialsAnalytics": "튜토리얼 분석"
+  },
+  "footer": {
+    "FOSSOpenContent": "FOSS & 오픈 콘텐츠",
+    "proudlyPartOf": "<0>Plan ₿ Network</0>의 일부로 자랑스럽습니다"
   }
 }

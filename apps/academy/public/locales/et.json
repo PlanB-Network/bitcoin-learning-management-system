@@ -63,7 +63,9 @@
       "invalidCredentials": "Vigased sisselogimisandmed",
       "usernameRegex": "Kasutajanimi võib sisaldada ainult tähti, numbreid, _, . ja -.",
       "usernameRequired": "Kasutajanimi on nõutud.",
-      "usernameTooShort": "Kasutajanimi peab sisaldama vähemalt 5 tähemärki."
+      "usernameTooShort": "Kasutajanimi peab sisaldama vähemalt 5 tähemärki.",
+      "oldPasswordRequired": "Vana parool on nõutav",
+      "passwordTooShort": "Parool on liiga lühike"
     },
     "forgottenPassword": "Unustasid oma parooli?",
     "headerAccountCreated": "Konto loodud",
@@ -91,7 +93,11 @@
     "trackProgress": "Loo konto või logi sisse, et oma edusammudel järge pidada",
     "tryAgain": "Proovi uuesti",
     "loginNotAvailable1": "Sisselogimise funktsioonid pole veel töölauarakenduses saadaval.",
-    "loginNotAvailable2": "Saate külastada meie veebisaiti, et sisse logida ja oma kontole juurde pääseda."
+    "loginNotAvailable2": "Saate külastada meie veebisaiti, et sisse logida ja oma kontole juurde pääseda.",
+    "forgotPassword": "Unustasid parooli?",
+    "login": "Logi sisse",
+    "oldPassword": "Vana parool",
+    "signUp": "Registreeru"
   },
   "bCert": {
     "bCertDescription": "₿-CERT on ülim Bitcoini test, mis on loodud teie Bitcoini ja sellega seotud teemade tundmise hindamiseks.\n\nSooritage üle 80%, et teenida ₿-CERT sertifikaat, mis tõestab teie asjatundlikkust Bitcoini valdkonnas ja avab uksed töökohtadele selles valdkonnas.",
@@ -131,7 +137,8 @@
     "noConferences": "Aastaks {{year}} pole veel konverentse lisatud.",
     "pageTitle": "Konverentsi kordused",
     "planBConferences": "Plan B konverentsid",
-    "topics": "Teemad"
+    "topics": "Teemad",
+    "conferencesGenesis": "Konverentsid alates Genesis Blockist"
   },
   "courses": {
     "chapter": {
@@ -376,11 +383,17 @@
     "liveClasses": {
       "liveClasses": "Reaalajas toimuvad tunnid",
       "allOtherTitle": "Kõik teised reaalajas toimuvad tunnid",
-      "title": "Plaan ₿ ametlikud aastaprogrammid"
+      "title": "Plaan ₿ ametlikud aastaprogrammid",
+      "program": {
+        "goal": "Valitse Bitcoin'i tööstus Giacomo Zucco abil 5-kuulises programmis, mis ühendab teooriat, reaalseid juhtumiuuringuid ja eksklusiivseid võrgustumisvõimalusi.",
+        "semester": "Semester",
+        "title": "Plaan ₿ Programm"
+      }
     },
     "noCoursesFound": "Kursusi ei leitud",
     "tryAdjustingFilters": "Proovige oma filtreid kohandada",
-    "continueLeftOff": "Jätka sealt, kus pooleli jäid"
+    "continueLeftOff": "Jätka sealt, kus pooleli jäid",
+    "navbarHover": "Registreeru avamiseks"
   },
   "dashboard": {
     "adminPanel": {
@@ -1106,7 +1119,16 @@
       "exploreBCert": "Uurige ₿-CERTi kohta",
       "noCertificatesAvailable": "Ühtegi sertifikaati pole saadaval",
       "getGlobalRecognition": "Saavuta ülemaailmne tunnustus ₿-CERT sertifikaadiga",
-      "completeACourse": "Lõpeta esimene kursus diplomi saamiseks "
+      "completeACourse": "Lõpeta esimene kursus diplomi saamiseks ",
+      "bCertResults": {
+        "score020": "Oled alustanud oma teekonda! Iga ekspert alustas kord siit",
+        "score100": "Täiuslik skoor! Kas sa oled Satoshi, või lihtsalt geniaalne?",
+        "score2140": "Sul on põhitõed olemas! Jätka samas vaimus, sa paraned kiiresti!",
+        "score4160": "Kindel alus! Oled valmis edasijõudnud tundideks",
+        "score6180": "Sa toimetad suurepäraselt! Jätka oma oskuste täiustamist ja Bitcoin'i valitsemist",
+        "score8199": "Suurepärane arusaam! Sa hallad keerulisi Bitcoin'i teemasid kergusega"
+      },
+      "detailedScore": "Detailne skoor"
     },
     "goToDashboard": "Mine töölauale",
     "goToHomepage": "Mine avalehele",
@@ -1130,7 +1152,8 @@
       "verify": "Kinnita diplomite autentsus",
       "whereYouAre": "Vaatame, kaugele jõudnud oled!",
       "yourCertificate": "Sinu sertifikaat",
-      "yourProgress": "Teie edenemine:"
+      "yourProgress": "Teie edenemine:",
+      "noCourseStarted": "Sa pole veel alustanud ühtegi isetempo kursust"
     },
     "profile": {
       "cancel": "Tühista",
@@ -1166,7 +1189,8 @@
       "save": "Salvesta",
       "saving": "Salvestamine…",
       "securitySettings": "Turvaseaded",
-      "username": "Kasutajanimi"
+      "username": "Kasutajanimi",
+      "emailOrUsername": "E-post või kasutajanimi"
     },
     "teacher": {
       "courses": {
@@ -1363,7 +1387,8 @@
       "whatsPlanned": "Mis on plaanis?",
       "numberOfSpots": "Kohtade arv",
       "onlineAndInPerson": "Internetis ja kohapeal",
-      "secureYourSpot": "Kindlusta oma koht"
+      "secureYourSpot": "Kindlusta oma koht",
+      "sessionBooked": "Seanss broneeritud"
     },
     "addEvent": "Lisa sündmus",
     "myTickets": "Minu piletid",
@@ -1425,7 +1450,10 @@
     "watchLecture": "Vaata loengu kordust"
   },
   "menu": {
-    "login": "Logi sisse"
+    "login": "Logi sisse",
+    "educatorContent": "Haridussisu",
+    "getStarted": "Alusta",
+    "signIn": "Logi sisse"
   },
   "movies": {
     "checkTheMovie": "Vaata filmi"
@@ -1680,12 +1708,15 @@
       "peer-to-peer": "Kasutajalt kasutajale",
       "point-of-sale": "Müügipunkti süsteem",
       "pool": "ühikskaevandus",
-      "resource": "Materjal"
+      "resource": "Materjal",
+      "explorer": "Uurija"
     },
     "wallet": {
       "title": "Rahakott"
     },
-    "writtenBy": "Selle õpetuse on kirjutanud"
+    "writtenBy": "Selle õpetuse on kirjutanud",
+    "onThisPage": "Sellel lehel",
+    "noTutorialsFound": "Me ei leidnud ühtegi õpetust, mis vastaks teie otsingule."
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1890,7 +1921,12 @@
     "resetFilters": "Lähtesta filtrid",
     "seeAll": "Vaata kõiki",
     "aboutUs": "Meist",
-    "planBNetwork": "Plaan ₿ võrk"
+    "planBNetwork": "Plaan ₿ võrk",
+    "address": "Aadress",
+    "confirmation": "Kinnitus",
+    "optional": "Valikuline",
+    "session": "Seanss",
+    "syllabus": "Õppekava"
   },
   "youtubeChannels": {
     "view": "Vaata Youtube'i kanalit",

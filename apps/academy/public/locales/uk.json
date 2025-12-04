@@ -19,7 +19,8 @@
     "missionTitle": "Наша місія",
     "storyContent": "Plan ₿ Network - це ініціатива, яка підтримує освіту в сфері Біткоїна в усьому світі. Це результат співпраці кількох відданих Біткоїн-компаній, зосереджених на освіті, відкритому програмному забезпеченні, однорангових мережах та відчутті спільноти. Разом вони вирішили створити Plan ₿ Network та надати екосистемі Біткоїна необхідні інструменти для зростання. Презентацію нашого релізу за 2023 рік можна переглянути тут.",
     "storyTitle": "Наша історія",
-    "title": "Про Plan ₿ Network"
+    "title": "Про Plan ₿ Network",
+    "readManifesto": "Прочитайте наш маніфест"
   },
   "accessType": {
     "hybrid": "Очно та онлайн",
@@ -44,17 +45,17 @@
     "emailAddress": "Електронна адреса",
     "emailTip": "Електронна пошта не є обов'язковою, але може бути корисною у випадку, якщо ви забули пароль!",
     "emailValidation": {
-      "emailChangeValidated": "",
-      "emailValidated": "",
-      "errorValidatingEmail": "",
-      "errorValidatingEmailChange": "",
-      "errorValidatingEmailChangeDescription": "",
-      "errorValidatingEmailDescription": "",
-      "successfullyChanged": "",
-      "successfullyValidated": "",
-      "validatingEmail": "",
-      "validatingEmailChange": "",
-      "wontTakeLong": ""
+      "emailChangeValidated": "Зміну електронної пошти підтверджено",
+      "emailValidated": "Електронну пошту підтверджено",
+      "errorValidatingEmail": "Помилка підтвердження електронної пошти",
+      "errorValidatingEmailChange": "Помилка підтвердження зміни електронної пошти",
+      "errorValidatingEmailChangeDescription": "Сталася помилка під час підтвердження зміни вашої електронної пошти, здається, посилання вже використано або воно втратило силу. Будь ласка, спробуйте ще раз.",
+      "errorValidatingEmailDescription": "Сталася помилка під час підтвердження вашої електронної пошти, здається, посилання вже використано або воно втратило силу. Будь ласка, спробуйте ще раз.",
+      "successfullyChanged": "Вашу електронну пошту успішно змінено на {{email}}.",
+      "successfullyValidated": "Вашу електронну пошту успішно підтверджено.",
+      "validatingEmail": "Підтвердження електронної пошти",
+      "validatingEmailChange": "Підтвердження зміни електронної пошти",
+      "wontTakeLong": "Це не займе багато часу..."
     },
     "errors": {
       "displayNameTooShort": "Ім'я для відображення повинно містити принаймні 2 символи.",
@@ -62,7 +63,9 @@
       "invalidCredentials": "Недійсні облікові дані",
       "usernameRegex": "Ім'я користувача може містити лише літери, цифри, _, . та -.",
       "usernameRequired": "Ім'я користувача обов'язкове.",
-      "usernameTooShort": "Ім'я користувача повинно містити принаймні 5 символів."
+      "usernameTooShort": "Ім'я користувача повинно містити принаймні 5 символів.",
+      "oldPasswordRequired": "Потрібно ввести старий пароль",
+      "passwordTooShort": "Пароль занадто короткий"
     },
     "forgottenPassword": "Забули свій пароль?",
     "headerAccountCreated": "Обліковий запис створено",
@@ -88,7 +91,13 @@
     "sendLink": "Надішліть посилання",
     "signIn": "Увійти",
     "trackProgress": "Створіть обліковий запис або увійдіть, щоб відстежувати свій прогрес",
-    "tryAgain": "Спробуйте ще раз"
+    "tryAgain": "Спробуйте ще раз",
+    "forgotPassword": "Забули пароль?",
+    "login": "Увійти",
+    "loginNotAvailable1": "Функції входу в систему ще недоступні в десктопній програмі.",
+    "loginNotAvailable2": "Ви можете відвідати наш сайт, щоб увійти в систему та отримати доступ до свого рахунку.",
+    "oldPassword": "Старий пароль",
+    "signUp": "Зареєструватися"
   },
   "bCert": {
     "bCertDescription": "Сертифікат ₿ (₿-CERT) - це міжнародно визнаний іспит, який оцінює ваше володіння Біткоїном та похідними темами. Якщо ви наберете більше ніж 80% правильних відповідей - ви отримаєте сертифікат, який підтвердить ваші навички та знання в Біткоїн-індустрії, що відкриє вам доступ до найкращих компаній та робочих місць.",
@@ -99,7 +108,13 @@
     "organizeExam": "Організувати сесію",
     "pageTitle": "Зробити тестування ₿-CERT",
     "tweetText": "Захоплений тим, що я успішно склав ₿-CERT у @planb_network з результатом {{score}}/100! {{emoji}} #BCERT\n\n{{certificateUrl}}",
-    "verify": "Перевірте автентичність вашого сертифікату"
+    "verify": "Перевірте автентичність вашого сертифікату",
+    "certificates": "Сертифікати",
+    "chooseCourse": "Вибрати курс",
+    "hostSessionConditions": "Ось як:\n\n1. Прочитайте <0> Хартію </0> - Переконайтеся, що ваша спільнота відповідає обов'язковим умовам проведення\n2. Плануйте та розставляйте графік - якщо ви відповідаєте критеріям, виберіть дату та організуйте сесію\n3. Опублікуйте свою подію - зв'яжіться з нами, щоб додати її до платформи Plan ₿ Network, щоб люди могли приєднатися",
+    "noDiplomasAvailable": "Дипломи ще не доступні",
+    "noTestSessions": "Тестові сесії в даний час не доступні",
+    "wantHostSession": "Хочете провести тестову сесію ₿-CERT у своєму місцевому центрі?"
   },
   "bet": {
     "educationalContent": {
@@ -122,7 +137,8 @@
     "noConferences": "Жодних конференцій для {{year}} ще не додано.",
     "pageTitle": "Повтори конференцій",
     "planBConferences": "Конференції Plan B",
-    "topics": "Теми"
+    "topics": "Теми",
+    "conferencesGenesis": "Конференції з моменту Genesis Block"
   },
   "courses": {
     "chapter": {
@@ -152,20 +168,20 @@
       "unlockFeatures2": "Будь ласка, зверніть увагу, що ми не збираємо жодних особистих даних і не використовуємо файли cookie."
     },
     "details": {
-      "associatedProfessors": "",
-      "attendInPersonWarning": "",
+      "associatedProfessors": "Пов'язані професори",
+      "attendInPersonWarning": "Якщо ви плануєте відвідувати цей клас вживу, не забудьте зарезервувати місце. У будь-якому випадку урок буде транслюватись в режимі реального часу і його можна буде переглянути пізніше.",
       "buyCourse": "Купити курс",
       "buyInPersonCourse": "Купити курс особисто",
       "buyOnlineCourse": "Купити онлайн-курс",
       "collaborativeEffort": "Кожен контент на платформі є результатом спільної роботи: кожен урок, переклад та редагування стають можливими завдяки роботі учасників. З цієї причини ми завжди шукаємо коректорів, які можуть переглядати наш контент на багатьох мовах. Якщо ви хочете взяти участь у процесі коректури, будь ласка, ��верніться до нашої групи в <0>Telegram</0> та прочитайте наш <1>посібник</1>.\n\nНагадуємо вам, що цей контент є відкритим джерелом - ліцензованим за <2>CC BY-SA</2> - тому його можна вільно поширювати та використовувати, дотримуючись умови зазначення авторства оригінального джерела.",
-      "coordinatedBy": "",
+      "coordinatedBy": "Цей курс координується",
       "courseAddedToDashboard": "Цей курс було додано до вашої студентської панелі керування",
       "curriculum": "Навчальний план",
       "description": "Опис",
       "hasBeenProofreadBy": "Цей курс перевірено",
       "hasNotBeenProofread": "Цей курс ще не перевірено",
       "inPersonAccess": "Вам потрібно завантажити свій квиток, щоб отримати доступ до очного заняття.",
-      "learning": "",
+      "learning": "Трактат навчання",
       "mobile": {
         "hours": "{{hours}} годин"
       },
@@ -191,7 +207,7 @@
       "certificateAvailable": "Буде доступно приблизно через 8 годин після подання.",
       "certificateGeneration": "Ваш сертифікат видається ",
       "certificatePageOtherCourses": "Інші пов'язані курси",
-      "completed": "",
+      "completed": "Екзамен пройдений!",
       "congratulations": "Вітаємо, ви завершили цей курс!",
       "congratulationsPassed": "Вітаємо, ви <0>пройшли</0> фінальний екзамен!",
       "courseDiploma": "Диплом про проходження курсу",
@@ -199,7 +215,7 @@
       "dontGiveUpTryAgain": "Не здавайся! \nТи можеш спробувати знову через 24 години.",
       "dontWorry": "Не хвилюйтеся через помилки; цей тест допомагає закріпити ваші знання. Якщо ви не складете його, ви зможете перескласти через 24 години.",
       "dontWorryRetake": "Не хвилюйтеся, ви можете перескласти іспит через 24 години.",
-      "examAvailabilityDetails": "",
+      "examAvailabilityDetails": "Якщо екзамен не складено протягом періоду його доступності на платформі, студент автоматично отримає оцінку 0.",
       "examCertificateCompletionText": "Мережа Plan ₿ рада вітати {{username}} з отриманням диплома курсу \"{{courseName}}\".",
       "examDetails": "Іспит містить 40 тестових питань з кількома варіантами відповідей, кожне з яких має одну правильну відповідь. Ви можете змінювати свої відповіді в будь-який час до подання, доки таймер працює.",
       "examNotPassed": "Вам потрібно скласти фінальний екзамен і набрати більше 80% балів, щоб отримати свій диплом і повністю завершити курс. Цей диплом буде <0>позначено часом</0>, щоб гарантувати його автентичність.",
@@ -207,7 +223,7 @@
       "failed": "Не вдалося",
       "failedDiploma": "Вам потрібно набрати понад 80% на фінальному іспиті, щоб отримати диплом і повністю завершити курс. Ви можете перездати іспит через 24 години.",
       "finalExam": "Фінальний іспит",
-      "finalScore": "",
+      "finalScore": "Кінцевий бал",
       "findInformationChapter": "Знайдіть більше інформації в цьому розділі:",
       "futureProof": "Майбутнє в безпеці: Ваш диплом постійно захищений і завжди дійсний.",
       "getCertificate": "Отримайте мій сертифікат",
@@ -217,9 +233,9 @@
       "goodLuck": "Удачі!",
       "instantVerification": "Миттєва перевірка: Роботодавці можуть легко перевірити автентичність та дату видачі вашого диплому.",
       "instructions": "Інструкції:",
-      "nbMinutes": "",
-      "nbQuestions": "",
-      "nextChapter": "",
+      "nbMinutes": "{{nb}} хвилин",
+      "nbQuestions": "{{nb}} питань",
+      "nextChapter": "Наступний розділ",
       "noGoBack": "Ні, поверніться назад",
       "notTranslatedYet": "Нам дуже шкода, але функція фінального іспиту ще не доступна на обраній вами мові. Ви можете вибрати іншу мову, щоб продовжити.",
       "oneMinuteLeft": "У вас залишилася лише 1 хвилина",
@@ -228,32 +244,32 @@
       "passRate": "Прохідний бал становить 80%.",
       "planBTimeStamp": "У мережі Plan ₿ ми захищаємо ваш ступінь за допомогою технології часового маркування, підтриманої блокчейном.",
       "quitWithoutSubmitting": "Ой, здається, ви залишили сторінку, не надіславши свої відповіді. Це скасовує тест.",
-      "readyToTest": "",
+      "readyToTest": "Готові перевірити свої знання?",
       "receiveDiploma": "Отримайте свій диплом",
       "results": {
-        "correct": "",
-        "incorrect": "",
-        "questions": "",
-        "time": ""
+        "correct": "Правильні відповіді",
+        "incorrect": "Неправильні відповіді",
+        "questions": "Відповіли на питання",
+        "time": "Час, використаний"
       },
       "retakeExam": "Перездати екзамен",
       "retakeInstructions": "У вас є 20 хвилин, щоб відповісти на 40 питань, кожне з яких має лише одну правильну відповідь. Ви можете перемикатися між питаннями та надсилати свої відповіді в кінці.",
       "sameRules": "Ви збираєтеся знову складати іспит. Правила залишаються тими ж.",
       "score": "Результат",
-      "singleAttempt": "",
-      "singleAttemptAvailability": "",
-      "singleAttemptPrecaution": "",
+      "singleAttempt": "Екзамен з одної спроби",
+      "singleAttemptAvailability": "Цей екзамен доступний онлайн з {{date}}",
+      "singleAttemptPrecaution": "Перед початком переконайтесь, що ваше з'єднання стабільне. Оскільки це екзамен з одної спроби, якщо ви втратите з'єднання, ви не зможете спробувати знову.",
       "skipExam": "Пропустити іспит",
       "skipExamDescription": "Ви також можете пропустити іспит і перейти безпосередньо до висновку, натиснувши кнопку нижче.",
       "skipExamGoConclusion": "Пропустити іспит, перейти до завершення",
       "skipGoConclusion": "Пропустити, перейти до висновку",
-      "solidEffort": "",
+      "solidEffort": "Вітаємо з завершенням курсу, ви доклали солідних зусиль.\nХоча ви цього разу не пройшли, кожен крок призводить до прогресу.\nПродовжуйте рухатись уперед у своєму навчальному шляху!",
       "startExam": "Почати іспит",
       "submit": "Надіслати",
       "successDiploma": "Вітаємо! Ви успішно склали екзамен. \nВаш диплом доступний у вашій студентській панелі. Він був <0>проставлений часом</0>, щоб гарантувати його автентичність.",
-      "successDiplomaTeacherLed": "",
+      "successDiplomaTeacherLed": "Вітаємо! Ви успішно склали курс. \nВаш диплом тепер доступний у вашому студентському дашборді.",
       "successDiplomaTimeStamped": "Вітаємо! Ви успішно склали екзамен. \nВаш диплом буде доступний у вашому студентському дашборді приблизно через 10 годин після того, як ви склали екзамен. Ця затримка пов'язана з технологією <0>відмітки часу</0>, яка гарантує його автентичність.",
-      "successfulPassedThreshold": "",
+      "successfulPassedThreshold": "Вітаємо з успішним завершенням курсу.\nВи успішно досягнули порогу проходження для цього курсу і тепер є випускником. \nВи можете знайти свій диплом у вашому дашборді.",
       "sureSubmit": "Ви впевнені, що будете складати іспит?",
       "takeExam": "Складіть екзамен",
       "tamperProof": "Захист від втручання: Блокчейн гарантує, що ніхто не може змінити або підробити ваші облікові дані.",
@@ -269,19 +285,22 @@
       "tryAgain": "Спробуйте ще раз",
       "tryOneMoreTime": "Спробуємо ще раз!",
       "verifyDisplayName": "Перед початком, будь ласка, перевірте ваше ім'я для відображення нижче, оскільки воно буде використовуватися для генерації вашого диплому.",
-      "weight": "",
+      "weight": "Вага: {{weight}}%",
       "whyTimeStamp": "Часове маркування вашого ступеня:\nЧому це важливо",
       "wishTryAgain": "Якщо ви бажаєте спробувати знову, іспит буде доступний через 24 години.",
-      "yesSubmit": "Так, надіслати"
+      "yesSubmit": "Так, надіслати",
+      "examResults": "Результати екзамену",
+      "scoreAndDiploma": "Оцінка & Диплом"
     },
     "explorer": {
-      "goal": "",
-      "seeCourse": "Переглянути курс"
+      "goal": "Мета:",
+      "seeCourse": "Переглянути курс",
+      "discover": "Відкрийте для себе"
     },
     "format": {
-      "hybrid": "",
-      "inperson": "",
-      "online": ""
+      "hybrid": "Офлайн/онлайн",
+      "inperson": "Офлайн",
+      "online": "Онлайн"
     },
     "part": {
       "count": "Частина {{count}}"
@@ -291,10 +310,10 @@
       "back_course": "Повернутися до курсу",
       "book_description": "Будь ласка, ознайомтеся з інформацією про місце проведення заходу.\nПісля того, як ваше бронювання буде оброблено, ми надішлемо вам квиток-підтвердження та QR-код, який ви зможете пред'явити на заході.",
       "checkoutError": "Під час оформлення замовлення сталася помилка.\nБудь ласка, спробуйте ще раз.",
-      "courseType": "",
+      "courseType": "Тип курсу",
       "date": "Дата",
       "duration": "Тривалість",
-      "hybridDescription": "",
+      "hybridDescription": "Будь ласка, ознайомтеся з наданими деталями курсу.\nУроки відбуваються особисто за вказаними датами та місцями. Всі заняття завжди транслюються в режимі реального часу та записуються для перегляду в запису.\n\nОсобиста участь керується за кожним уроком, тому ми просимо вас бронювати своє місце кожен раз, коли ви бажаєте відвідати особисто.",
       "inPersonCallout": "Ви збираєтеся придбати <strong>особистий</strong> доступ до цього курсу.",
       "inPersonDescription": "Кожне заняття відбувається особисто в зазначені дати та в зазначених місцях, а також транслюється в режимі реального часу на платформі. \nЦя покупка надасть вам доступ до занять як особисто, так і онлайн.\nНе забудьте зарезервувати місце для занять, які ви хочете відвідати особисто.",
       "invoiceId": "ID транзакції",
@@ -357,11 +376,28 @@
       "writeThoughts": "Тут ви можете записати свої думки",
       "yesOfCourse": "так, звичайно",
       "yesVeryMuch": "так, дуже"
-    }
+    },
+    "allCourses": "Всі курси",
+    "continueLeftOff": "Продовжуйте з того місця, де ви залишились",
+    "courseSelector": "Вибір курсу",
+    "liveClasses": {
+      "allOtherTitle": "Всі інші живі заняття",
+      "liveClasses": "Прямі заняття",
+      "program": {
+        "goal": "Оволодійте індустрією Bitcoin разом з Giacomo Zucco за п'ятимісячну програму, яка поєднує теорію, студії реальних випадків та ексклюзивні можливості для мережевого зв'язку.",
+        "semester": "Семестр",
+        "title": "План ₿ Програма"
+      },
+      "title": "Сприймай зміни. Освоюй Bitcoin."
+    },
+    "navbarHover": "Зареєструйтесь для розблокування",
+    "noCoursesFound": "Курси не знайдені",
+    "plusXMore": "Ще {{count}}",
+    "tryAdjustingFilters": "Спробуйте скоригувати ваші фільтри"
   },
   "dashboard": {
     "adminPanel": {
-      "accessGranted": "",
+      "accessGranted": "Доступ надано",
       "bookings": "Бронювання",
       "bookingsPanel": "Панель бронювань",
       "careers": {
@@ -374,77 +410,79 @@
         "profession": "Професія",
         "resultsRemaining": "Залишилося {{results}} результатів",
         "seeMore": "Дивитися більше",
-        "viewCV": "Переглянути резюме"
+        "viewCV": "Переглянути резюме",
+        "candidateFile": "Досьє кандидата",
+        "file": "Файл"
       },
       "confirmRemoval": "Підтвердіть видалення",
       "coupons": {
-        "cancel": "",
-        "close": "",
-        "delete": "",
-        "deleteDiscountCodeConfirm": "",
-        "deleteDiscountCodeWarning": "",
-        "discountCode": "",
-        "discountCodeCopied": "",
-        "discountCodeExplanation": "",
-        "discountCodePlaceholder": "",
-        "discountMultiUse": "",
-        "discountSingleUse": "",
-        "discountType": "",
-        "discountValue": "",
-        "discountValueExplanation": "",
-        "downloadImage": "",
-        "downloadImages": "",
-        "explanation": "",
+        "cancel": "Відмінити",
+        "close": "Закрити",
+        "delete": "Видалити",
+        "deleteDiscountCodeConfirm": "Ви впевнені, що хочете видалити цей дисконтний код?",
+        "deleteDiscountCodeWarning": "Якщо цею код буде видалено, він більше не буде працювати. Ця зміна є незмінною",
+        "discountCode": "Промокод",
+        "discountCodeCopied": "Промокод скопійовано",
+        "discountCodeExplanation": "Увага, цей код чутливий до регістру.",
+        "discountCodePlaceholder": "Залиште порожнє для автоматичного створення",
+        "discountMultiUse": "Многоразове використання",
+        "discountSingleUse": "Одноразове використання",
+        "discountType": "Який тип промо-коду?",
+        "discountValue": "Відсоток знижки",
+        "discountValueExplanation": "Введіть число кратне 5 (наприклад, 5, 10, 15... до 100)",
+        "downloadImage": "Завантажити зображення",
+        "downloadImages": "Завантажити зображення",
+        "explanation": "Створюйте і керуйте промо-кодами для подій та курсів - єдиноразовими для стипендій або подібних випадків, або многоразовими для маркетингових кампаній.",
         "filters": {
-          "all": "",
-          "courses": "",
-          "events": "",
-          "multiUse": "",
-          "singleUse": ""
+          "all": "Всі",
+          "courses": "Курси",
+          "events": "Події",
+          "multiUse": "Многоразове використання",
+          "singleUse": "Одноразове використання"
         },
-        "forWhat": "",
-        "forWhichCourse": "",
-        "forWhichEvent": "",
-        "generateCode": "",
-        "generateCodes": "",
-        "generateDiscountCode": "",
-        "generatedCode": "",
-        "generatedCodes": "",
-        "generateNew": "",
-        "generateNewCodes": "",
-        "maximumNumberOfUse": "",
+        "forWhat": "На який вид продукту?",
+        "forWhichCourse": "На який курс?",
+        "forWhichEvent": "Для якого заходу?",
+        "generateCode": "Генерувати код",
+        "generateCodes": "Генерувати коди",
+        "generateDiscountCode": "Сформувати код знижки",
+        "generatedCode": "Згенерований код",
+        "generatedCodes": "Згенеровані коди",
+        "generateNew": "Генерувати новий код",
+        "generateNewCodes": "Генерувати нові коди",
+        "maximumNumberOfUse": "Максимальна кількість використань",
         "mobileSort": {
-          "az": "",
-          "highLow": "",
-          "lowHigh": "",
-          "sortBy": "",
-          "za": ""
+          "az": "А-я",
+          "highLow": "Від високого до низького",
+          "lowHigh": "Від низького до високого",
+          "sortBy": "Сортувати за",
+          "za": "я-А"
         },
-        "noCouponsFound": "",
-        "numberOfCodes": "",
-        "productCourse": "",
-        "productEvent": "",
-        "selectCourse": "",
-        "selectEvent": "",
+        "noCouponsFound": "Купони не знайдено.",
+        "numberOfCodes": "Скільки кодів ви хочете згенерувати?",
+        "productCourse": "Курс",
+        "productEvent": "Захід",
+        "selectCourse": "Обрати курс",
+        "selectEvent": "Обрати захід",
         "tableHead": {
-          "actions": "",
-          "code": "",
-          "discount": "",
-          "maxUses": "",
-          "name": "",
-          "owner": "",
-          "type": "",
-          "uses": ""
+          "actions": "Дії",
+          "code": "Код",
+          "discount": "Знижка",
+          "maxUses": "Макс. використань",
+          "name": "Ім'я",
+          "owner": "Власник",
+          "type": "Тип",
+          "uses": "Використано"
         }
       },
-      "coursesIndexes": "",
+      "coursesIndexes": "Індекси курсів",
       "date": "Дата",
-      "deleteRole": "",
-      "discountCodes": "",
+      "deleteRole": "Видалити роль",
+      "discountCodes": "Коди знижок",
       "downloadList": "Завантажити список",
-      "editRole": "",
+      "editRole": "Редагувати роль",
       "githubLink": "Посилання на Github",
-      "hasAccessTo": "",
+      "hasAccessTo": "Має доступ до:",
       "listOfParticipants": "Список учасників",
       "nameOfEvent": "Назва події",
       "participants": "Учасники",
@@ -453,23 +491,362 @@
       "searchByNameOrCategory": "Пошук за назвою або категорією",
       "seeOrEdit": "Переглянути або відредагувати",
       "selectProfessor": "Вибрати професора",
-      "selectRole": "",
+      "selectRole": "Вибрати роль",
       "tutorialAnalytics": "Підручник з аналітики",
       "tutorialAnalyticsDescription": "Тут ви можете перевірити та порівняти всі підручники на платформі.",
       "tutorialsManagementPanel": "Панель керування навчальними матеріалами",
       "type": "Тип",
       "upcomingBookings": "Найближчі бронювання",
       "upcomingBookingsSubtitle": "Тут ви можете завантажити список учасників усіх очних заходів.",
-      "userRolesAllocation": "Розподіл ролей користувачів"
+      "userRolesAllocation": "Розподіл ролей користувачів",
+      "translation": "Панель перекладу",
+      "translationPanel": {
+        "actions": {
+          "accept": "Прийняти",
+          "delete": "Видалити",
+          "reject": "Відхилити"
+        },
+        "addContributor": {
+          "addLanguage": "Додати ще одну мову",
+          "assign": "Призначити",
+          "assignedLanguages": "Вже призначені мови",
+          "assigning": "Призначення...",
+          "assignmentSuccess": "Внески від учасників успішно призначені!",
+          "confirm": "Підтвердити",
+          "findContributor": "Знайти учасника",
+          "language": "Мова",
+          "noUsers": "Немає доступних користувачів",
+          "searchUsers": "Знайдіть користувачів...",
+          "title": "Додати учасника",
+          "selectLanguage": "Оберіть мову",
+          "selectedUsers": "Вибрані користувачі:"
+        },
+        "admin": "АДМІН",
+        "comingSoon": {
+          "courses": "Подання курсів незабаром",
+          "coverage": "Подання покриття мовами незабаром"
+        },
+        "contentManagement": {
+          "actions": {
+            "assign": "Призначити",
+            "backToContentManagement": "Повернутися до управління контентом",
+            "reassign": "Перепризначити",
+            "view": "Переглянути"
+          },
+          "assignModal": {
+            "assign": "Призначити",
+            "assigning": "Призначення...",
+            "assigningCourse": "Призначення курсу:",
+            "assignmentSuccess": "Курс успішно призначено!",
+            "cancel": "Відмінити",
+            "chooseContributor": "Вибрати учасника...",
+            "courseInfo": "Інформація про курс",
+            "selectContributor": "Вибрати учасника",
+            "title": "Призначити курс учаснику"
+          },
+          "description": "Керування перекладами курсу та призначення учасників",
+          "noCourses": "Курсів немає в наявності",
+          "noCoursesFiltered": "Немає курсів, що відповідають вашим фільтрам",
+          "notAssigned": "Не призначено",
+          "reassignModal": {
+            "cancel": "Відмінити",
+            "chooseNewContributor": "Вибрати нового учасника...",
+            "courseInfo": "Інформація про курс",
+            "currentlyAssignedTo": "Наразі призначено до:",
+            "reassign": "Перепризначити",
+            "reassigning": "Призначаємо...",
+            "reassigningCourse": "Перепризначення курсу:",
+            "reassignmentSuccess": "Курс успішно перепризначено!",
+            "selectNewContributor": "Вибрати нового учасника",
+            "title": "Перепризначити курс новому учаснику",
+            "warning": {
+              "description": "Розділи, які вже переглянуто, не будуть перепризначені.",
+              "title": "Важлива Примітка"
+            }
+          },
+          "status": {
+            "assigned": "Призначено",
+            "notAssigned": "Не призначено",
+            "readyForReview": "Готово до перегляду",
+            "underReview": "На перегляді"
+          },
+          "table": {
+            "actions": "Дії",
+            "contributor": "Учасник",
+            "course": "Курс",
+            "index": "Індекс",
+            "language": "Мова",
+            "progress": "Прогрес",
+            "status": "Статус"
+          },
+          "title": "Управління контентом"
+        },
+        "courseDetails": {
+          "actions": "Дії",
+          "assignedTo": "Призначено",
+          "chapterIndex": "Розділ",
+          "courseIndex": "Індекс курсів",
+          "courseInformation": "Інформація про курс",
+          "courseName": "Назва курсу",
+          "currentContributor": "Поточний учасник",
+          "errorLoadingDetails": "Помилка завантаження деталей курсу",
+          "language": "Мова",
+          "noChapters": "Немає доступних глав для цього курсу",
+          "noContributor": "Немає призначеного учасника",
+          "partTitle": "Частина {{index}}: {{title}}",
+          "progress": "Прогрес",
+          "status": "Статус",
+          "translationStatus": "Статус перекладу",
+          "chapterTitle": "Назва",
+          "chaptersAndProgress": "Розділи та прогрес",
+          "chaptersCompleted": "розділів завершено"
+        },
+        "courseNotFound": "Курс не знайдено",
+        "messages": {
+          "noPendingRequests": "Більше немає очікуючих запитів на коректуру.",
+          "noPendingRequestsSearch": "Немає запитів на коректуру, що відповідають \"{{query}}\".",
+          "noRejectedRequests": "Немає відхилених запитів на коректуру.",
+          "noRejectedRequestsSearch": "Немає відхиленіх запитів на коректуру, що відповідають \"{{query}}\"."
+        },
+        "modal": {
+          "cancel": "Відмінити",
+          "close": "Закрити",
+          "contributor": "Учасник",
+          "course": "Курс",
+          "doYouWantToAcceptRequest": "Ви хочете прийняти це замовлення на переклад?",
+          "language": "Мова",
+          "provideRejectionReason": "Будь ласка, поясніть причину відмови від цього замовлення",
+          "reasonForRejection": "Причина відхилення",
+          "reasonPlaceholder": "Напишіть своє пояснення тут...",
+          "rejecting": "Відхилення...",
+          "requestAcceptedMessage": "Автору повідомлено, тепер він може приступити до перекладу.",
+          "requestAcceptedSuccess": "Ви прийняли замовлення на переклад!",
+          "requestRejectedSuccess": "Замовлення успішно відхилено",
+          "submitRejection": "Надіслати",
+          "acceptRequest": "Прийняти запит",
+          "acceptTranslationRequest": "Прийняти замовлення на корекцію",
+          "accepting": "Приймається..."
+        },
+        "noResultsFound": "Результатів не знайдено",
+        "pendingTranslationRequests": "Очікуючі замовлення на корекцію",
+        "reports": {
+          "chooseYear": "Який рік ви хочете врахувати?",
+          "comingSoon": {
+            "courses": "Подання курсів незабаром",
+            "coverage": "Подання покриття мовами незабаром"
+          },
+          "contributors": {
+            "assignedCourses": "Призначені курси",
+            "completedCourses": "Завершені курси",
+            "languages": "Мови",
+            "startDate": "Дата початку",
+            "title": "Учасники",
+            "totalReward": "Загальна нагорода",
+            "username": "Ім'я користувача"
+          },
+          "courses": {
+            "contributor": "Учасник",
+            "filterByCourse": "Фільтрувати за курсом",
+            "lastUpdated": "Останнє оновлення",
+            "progress": "Прогресс %"
+          },
+          "dateFilter": "Фільтр по даті",
+          "downloadData": "Завантажити Дані",
+          "filterByLanguage": "Фільтрувати за мовою",
+          "fromMonth": "Від",
+          "fromMonthPlaceholder": "З якого місяця?",
+          "generalReport": "Загальний Звіт",
+          "languageCoverage": {
+            "completed": "Завершено",
+            "inProgress": "В процесі",
+            "notStarted": "Не розпочато",
+            "totalCourses": "Всього курсів"
+          },
+          "languagesProofread": "Мови, що були вичитані",
+          "noContributors": "Учасників не знайдено",
+          "noCourses": "Курси не знайдені",
+          "noLanguages": "Мов не знайдено",
+          "proofreadCourses": "Вичитані курси",
+          "table": {
+            "contributor": "Учасник",
+            "lastUpdated": "Останнє оновлення",
+            "progress": "Прогресс %"
+          },
+          "tabs": {
+            "contributors": "Учасники",
+            "courses": "Курси",
+            "coverage": "Покриття мовами"
+          },
+          "toMonth": "До",
+          "toMonthPlaceholder": "До якого місяця?",
+          "totalLanguages": "Всього мов",
+          "year": "Рік"
+        },
+        "searchPlaceholder": "Пошук...",
+        "status": {
+          "assigned": "Призначено",
+          "completed": "Завершено",
+          "inProgress": "В процесі",
+          "readyForReview": "Готово для огляду",
+          "todo": "Виконати",
+          "underReview": "На перегляді"
+        },
+        "table": {
+          "actions": "Дії",
+          "course": "Курс",
+          "index": "Індекс",
+          "language": "Мова",
+          "username": "Ім'я користувача"
+        },
+        "tabs": {
+          "contentManagement": "Управління контентом",
+          "reports": "Звіти",
+          "requests": "Запити",
+          "translate": "Перекласти",
+          "userManagement": "Управління користувачами"
+        },
+        "title": "Панель адміністратора для перекладу",
+        "toggle": {
+          "pendingRequest": "Очікує на розгляд",
+          "rejectedRequests": "Відхилені запити"
+        },
+        "translate": {
+          "actions": {
+            "translate": "Перекласти"
+          },
+          "backToCourse": "Повернутися до курсу",
+          "changeSpeed": "Змінити швидкість відтворення",
+          "chapterTitle": "Назва глави",
+          "compare": "Порівняти",
+          "compareDisabledTooltip": "Версія для коректури не доступна",
+          "compareTooltip": "Порівняйте оригінальну та кореговану версії",
+          "comparison": {
+            "backToChapter": "Назад до глави",
+            "originalVersion": "Оригінальна версія",
+            "translatedVersion": "Перекладена версія"
+          },
+          "description": "Почніть перекладати курси на конкретні мови.",
+          "forward15Seconds": "Вперед на 15 секунд",
+          "imageNotFound": "Зображення не знайдено",
+          "language": "Мова",
+          "loadingPresentation": "Завантаження презентації...",
+          "noContentAvailable": "Вміст недоступний",
+          "noCourses": "Наразі немає курсів, які потребують перекладу.",
+          "noOriginalContent": "Немає оригінального контенту",
+          "noPngSlides": "Немає слайдів у форматі PNG для цієї презентації",
+          "noSlidesFound": "Слайди не знайдено",
+          "originalContent": "Оригінальний контент",
+          "pause": "Пауза",
+          "play": "Відтворити",
+          "presentations": "Презентації",
+          "rewind15Seconds": "Перемотати на 15 секунд назад",
+          "selectLanguagesModal": {
+            "audioFile": "Аудіофайл",
+            "audioFileInfo": "Підтримувані формати: MP3, WAV, M4A (максимум 50MB)",
+            "audioFileTooLarge": "Аудіофайл занадто великий. Максимальний розмір - 50MB.",
+            "cancel": "Відмінити",
+            "chooseAudioFile": "Вибрати аудіо",
+            "chooseFolder": "Вибрати папку",
+            "choosePptxFile": "Вибрати PPTX",
+            "chooseZip": "Вибрати ZIP",
+            "course": "Курс:",
+            "englishFilesRequired": "Будь ласка, переконайтеся, що всі завантажені файли є лише англійською мовою",
+            "existingUploadsInfo": "Оригінальні файли вже завантажено. Ви можете почати переклад без повторного додавання. Завантаження нових файлів перезапише існуючі.",
+            "folderUrl": "URL папки",
+            "invalidAudioFile": "Будь ласка, виберіть дійсний аудіофайл.",
+            "invalidPptxFile": "Будь ласка, виберіть дійсний файл PowerPoint (.pptx).",
+            "missingFilesError": "Будь ласка, завантажте файли для перекладу або надайте URL перед початком перекладу.",
+            "networkError": "Виникла помилка мережі. Будь ласка, перевірте своє з'єднання та спробуйте ще раз.",
+            "noAudioFileSelected": "Аудіофайл не вибрано",
+            "noFolderSelected": "Папку не вибрано",
+            "noLanguagesAvailable": "Немає доступних мов для перекладу.",
+            "noPptxFileSelected": "Не вибрано файл PowerPoint",
+            "noZipSelected": "Не вибрано ZIP",
+            "originalLanguage": "Оригінальна мова:",
+            "overwriteWarning": "Існуючі файли будуть замінені.",
+            "pptxFile": "Файл PowerPoint",
+            "pptxFileInfo": "Підтримуються лише .pptx файли (максимум 100 МБ)",
+            "pptxFileTooLarge": "Файл PowerPoint завеликий. Максимальний розмір - 100МБ.",
+            "processingStarted": "Переклад почався! Процес може зайняти кілька хвилин для великих курсів.",
+            "selectLanguages": "Виберіть мови для перекладу:",
+            "timeoutError": "Час запиту на переклад вичерпався. Вміст курсу, мабуть, занадто великий. Спробуйте ще раз або зверніться до служби підтримки.",
+            "title": "Виберіть мови для перекладу",
+            "translationFailed": "Переклад не вдався. Будь ласка, перевірте журнали та спробуйте знову.",
+            "uploadAndTranslationStarted": "Файли завантажено, а переклад почався! Процес може зайняти декілька хвилин для великих курсів.",
+            "uploadError": "Завантаження не вдалося. Будь ласка, перевірте ваші файли та спробуйте знову.",
+            "uploadFiles": "Завантажте додаткові файли (необов'язково)",
+            "uploadFolder": "Завантажте папку (PPTX + TXT)",
+            "useEnglishLabel": "Курс вже був перекладений англійською. Використовувати англійську версію як джерело?",
+            "startSuccess": "Переклад успішно почався!",
+            "startTranslation": "Почати переклад",
+            "startingTranslation": "Завантаження файлів...",
+            "startingTranslationStep": "Починається переклад...",
+            "uploadTimeoutError": "Завантаження перервано через 10 хвилин. Будь ласка, спробуйте з меншими файлами або перевірте своє з'єднання.",
+            "uploadingFiles": "Завантаження файлів..."
+          },
+          "slideNavigation": {
+            "next": "Далі",
+            "previous": "Попередній",
+            "slideCounter": "{{current}} / {{total}}"
+          },
+          "slideNotAvailable": "Слайд {{slideNumber}} недоступний",
+          "slideNotFound": "Слайд не знайдено",
+          "table": {
+            "actions": "Дії",
+            "course": "Курс",
+            "index": "Індекс",
+            "todoLanguages": "Мови для перекладу",
+            "totalLanguages": "Всього мов"
+          },
+          "textContent": "Текстовий контент",
+          "title": "Перекладіть курси",
+          "translateTo": "Перекласти на",
+          "unknownContributor": "Невідомо"
+        },
+        "userManagement": {
+          "actions": {
+            "backToList": "Повернутися до списку користувачів",
+            "backToUsers": "Повернутися до користувачів",
+            "viewDetails": "Подивитися деталі"
+          },
+          "addContributor": "Додати учасника",
+          "chapters": "Розділи",
+          "contributorInformation": "Інформація про учасника",
+          "courses": "Курси",
+          "modal": {
+            "assignments": "Історія завдань",
+            "noAssignments": "Завдань не знайдено",
+            "title": "Деталі користувача",
+            "userInfo": "Інформація про користувача"
+          },
+          "noUsers": "Учасників не знайдено",
+          "status": {
+            "published": "Опубліковано",
+            "readyForReview": "Готово для огляду",
+            "rejected": "Відхилено",
+            "reviewed": "Рецензовано",
+            "todo": "Виконати",
+            "underReview": "На перегляді"
+          },
+          "table": {
+            "actions": "Дія",
+            "assignedCourses": "Призначені курси",
+            "language": "Мова",
+            "startDate": "Дата початку",
+            "username": "Ім'я користувача"
+          },
+          "title": "Учасники"
+        }
+      }
     },
     "announcements": {
       "groups": {
-        "active": "",
-        "all": "",
-        "summer": ""
+        "active": "Студенти, вибрані для проектного завдання",
+        "all": "Всі зареєстровані студенти",
+        "summer": "Студенти, вибрані для літньої школи"
       },
-      "pickADate": "",
-      "publicationDate": ""
+      "pickADate": "Оберіть дату",
+      "publicationDate": "Дата публікації"
     },
     "backToDashboard": "Повернутися до панелі керування",
     "booking": {
@@ -491,8 +868,8 @@
     },
     "calendar": {
       "eventType": {
-        "class": "",
-        "event": ""
+        "class": "Заняття",
+        "event": "Події"
       },
       "personalCalendar": "Особистий календар"
     },
@@ -501,8 +878,8 @@
       "acceptTermsAndConditions": "Я ознайомився і приймаю умови та положення",
       "add": "Додати",
       "allowReceivingEmails": "Я згоден отримувати електронні листи від Plan ₿ Network про потенційні можливості працевлаштування",
-      "applicationComplete": "",
-      "applicationIncomplete": "",
+      "applicationComplete": "Вашу заявку <highlight>Завершено</highlight>",
+      "applicationIncomplete": "Вашу заявку <highlight>Не завершено</highlight>",
       "applicationSaved": "Вашу заявку збережено!",
       "availability": "Ваша готовність",
       "availabilityStart": "Коли ви можете почати?",
@@ -675,67 +1052,86 @@
       "yourRoles": "Ваші посади"
     },
     "course": {
-      "announcement": "",
-      "assignment": "",
-      "assignmentCompletedDescription": "",
-      "assignmentCompletedTitle": "",
-      "assignmentTitle": "",
+      "announcement": "Оголошення",
+      "assignment": "Завдання",
+      "assignmentCompletedDescription": "Ваше проектне завдання успішно відправлено і перебуває на перевірці. \nВаша оцінка буде видна тут після оцінювання.",
+      "assignmentCompletedTitle": "Завдання виконано",
+      "assignmentTitle": "Проектне завдання",
       "completionDiploma": "Диплом про закінчення",
       "completionExamInfo": "Тут ви можете знайти інформацію, пов'язану з випускним іспитом в кінці курсу.",
       "conclusionHeadline": "Ось підсумок того, що ви вивчили. Якщо деякі розділи були пропущені або не пройдені належним чином, зараз саме час це зробити, або повернувшись до них, або натиснувши на кнопку «Завершити».",
-      "conclusionNotReleased": "",
-      "confirmList": "",
-      "confirmNoEditable": "",
-      "confirmNoEditableFile": "",
-      "confirmSubmission": "",
-      "congratulationsPassed": "",
-      "coordinator": "",
-      "courseCalendar": "",
-      "diplomaReleaseDescription": "",
-      "diplomaReleaseTitle": "",
-      "examScore": "",
-      "exams": "",
+      "conclusionNotReleased": "Висновок буде розблоковано в день останнього заняття.",
+      "confirmList": "Підтвердити список",
+      "confirmNoEditable": "Після підтвердження, цей список побажань вже не можна буде редагувати.",
+      "confirmNoEditableFile": "Після надсилання ви більше не зможете редагувати свій файл.",
+      "confirmSubmission": "Підтвердіть надсилання",
+      "congratulationsPassed": "Вітаємо! Ви успішно пройшли!",
+      "coordinator": "Координатор курсу",
+      "courseCalendar": "Календар курсу",
+      "diplomaReleaseDescription": "Після завершення усіх занять вам буде вручено диплом про успішне завершення курсу. Дипломи будуть доступні для завантаження тут після останнього заняття та завершення висновкового розділу.",
+      "diplomaReleaseTitle": "Видача дипломів",
+      "examScore": "Рахунок:",
+      "exams": "Екзамени",
       "feedbacks": "Розділ в кінці курсу присвячений відгукам. Якщо ви бажаєте зараз залишити свій відгук, ви можете зробити це тут.",
-      "fileUploaded": "",
-      "finalGradeSummary": "",
-      "finalScore": "",
-      "generalInformation": "",
-      "individualWork": "",
-      "isSubmissionFinal": "",
-      "joinTelegramGroup": "",
-      "keepEditing": "",
-      "keepMovingForward": "",
-      "leastPreferred": "",
-      "listSaved": "",
-      "listSavedComeTomorrow": "",
-      "mostPreferred": "",
-      "mustBePdf": "",
-      "notSelectedAssignment": "",
-      "projectRankingInstructions": "",
-      "ranking": "",
-      "rankingInstructions": "",
-      "rankingOnly24Hours": "",
-      "rankProjectPreferences": "",
+      "fileUploaded": "Вашу роботу успішно завантажено!",
+      "finalGradeSummary": "Резюме остаточного оцінювання",
+      "finalScore": "Кінцевий бал",
+      "generalInformation": "Загальна інформація",
+      "individualWork": "Індивідуальна робота",
+      "isSubmissionFinal": "Чи є ваше подання остаточним?",
+      "joinTelegramGroup": "Приєднатися до групи в Телеграмі",
+      "keepEditing": "Продовжити редагування",
+      "keepMovingForward": "Хоча ви цього разу не пройшли, кожен крок сприяє прогресу.\nПродовжуйте рухатися вперед у своєму навчальному шляху!",
+      "leastPreferred": "Найменш бажаний",
+      "listSaved": "Ваш список переваг збережено.",
+      "listSavedComeTomorrow": "Ваш список вподобань збережено. \nПоверніться сюди завтра, щоб дізнатись, до якого проекту ви були призначені.",
+      "mostPreferred": "Найбільш бажаний",
+      "mustBePdf": "Ваш файл повинен бути у форматі PDF. Якщо вам потрібно подати додатковий файл, будь ласка, вставте відповідне посилання всередину вашого PDF.",
+      "notSelectedAssignment": "На жаль, ви не були відібрані для участі в призначенні проекту.\nВи все ще можете продовжувати слідувати лекціям курсу.",
+      "projectRankingInstructions": "Інструкції по ранжуванню проектів:",
+      "ranking": "Ранжування",
+      "rankingInstructions": "Впорядкуйте запропоновані проекти відповідно до своїх вподобань (номер 1 - це ваш вибір номер один). Це ранжування дозволить нам призначити вам найбільш підходящий проект. Студенти з вищими балами будуть розглянуті спочатку.",
+      "rankingOnly24Hours": "Портал для ранжування буде відкрито лише протягом 24 годин, 2 червня з 00:00 до 23:59 (UTC+2).",
+      "rankProjectPreferences": "Ранжуйте свої вподобання щодо проектів",
       "ratingsAndFeedbacks": "Рейтинги та відгуки",
-      "readAssignment": "",
-      "saveList": "",
+      "readAssignment": "Детальніше про призначення",
+      "saveList": "Зберегти список",
       "shareOnSocials": "Поділитися в соцмережах:",
-      "submissionInstructions": "",
-      "submitBefore": "",
+      "submissionInstructions": "Інструкції по поданню",
+      "submitBefore": "Ви повинні подати свою роботу до {{date}} о {{hour}}. Роботи, подані після цього терміну, оцінюватися не будуть.",
       "submitReviewInfo": "Вам потрібно надіслати відгук, щоб отримати доступ до цієї функції.",
-      "submitYourWork": "",
-      "summerSchool": "",
-      "surePreferenceList": "",
-      "thresholdToPass": "",
-      "tweetText": "Захоплений тим, що завершив {{courseIndex}} у мережі Plan ₿ і отримав свій сертифікат з балом {{score}}/100 на фінальному іспиті! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}"
+      "submitYourWork": "Подати вашу роботу",
+      "summerSchool": "Літня школа",
+      "surePreferenceList": "Ви впевнені у своєму списку вподобань?",
+      "thresholdToPass": "Прохідний бал: {{threshold}}%",
+      "tweetText": "Захоплений тим, що завершив {{courseIndex}} у мережі Plan ₿ і отримав свій сертифікат з балом {{score}}/100 на фінальному іспиті! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
+      "assignmentNotAccessible": "Завдання вже розпочато і більше не доступне.",
+      "assignmentScore": "Оцінка за завдання",
+      "tweetTextCourseDiploma": "Захоплений від завершення курсу {{courseName}}, який викладав {{courseCoordinator}} на @planb_network і отримання мого диплома!\n#PBNDiploma\n\n{{certificateUrl}}",
+      "viewScoreSummary": "Переглянути резюме оцінки",
+      "wellDoneCompleting": "Чудово, що ви завершили цей курс і його успішно здалі! \nЦе ваш заслужений диплом",
+      "yourProjectAssignment": "Призначення вашого проекту"
     },
     "credentials": {
       "beingGraded": "Ваш іспит оцінюється. Результати мають бути доступні через 1 або 2 тижні.",
       "courseDiplomas": "Дипломи курсів",
-      "globalCertifications": "Світові сертифікати"
+      "globalCertifications": "Світові сертифікати",
+      "bCertResults": {
+        "score020": "Ви розпочали свою подорож! Кожен експерт колись починає звідси",
+        "score100": "Ідеальний результат! Ви Сатоші, чи просто геній?",
+        "score2140": "Ви засвоїли основи! Продовжуйте в тому ж дусі, ви швидко робите прогрес!",
+        "score4160": "Міцна база! Ви готові до продвинутих курсів",
+        "score6180": "Ви чудово справляєтеся! Продовжуйте вдосконалювати свої навички та освоювати Bitcoin",
+        "score8199": "Відмінне розуміння! Ви легко впораєтеся зі складними питаннями Bitcoin"
+      },
+      "completeACourse": "Завершіть свій перший курс, щоб отримати диплом ",
+      "detailedScore": "Детальний результат",
+      "exploreBCert": "Дослідіть ₿-CERT",
+      "getGlobalRecognition": "Отримайте світове визнання з сертифікатом ₿-CERT",
+      "noCertificatesAvailable": "Сертифікати відсутні"
     },
-    "goToDashboard": "",
-    "goToHomepage": "",
+    "goToDashboard": "Перейти до інформаційної панелі",
+    "goToHomepage": "На головну сторінку",
     "logout": "Вийти з системи",
     "myCourses": {
       "completeAll": "Закінчити все",
@@ -756,7 +1152,8 @@
       "verify": "Перевірте автентичність вашого диплому",
       "whereYouAre": "Давай подивимося, де ти знаходишся!",
       "yourCertificate": "Ваш сертификат",
-      "yourProgress": "Ваш прогрес:"
+      "yourProgress": "Ваш прогрес:",
+      "noCourseStarted": "Ви ще не розпочали жодних курсів, які ви вивчаєте самостійно"
     },
     "profile": {
       "cancel": "Скасувати",
@@ -766,88 +1163,106 @@
       "edit": "Редагувати",
       "email": "Електронна пошта",
       "emailChangeConfirmation": "Лист з підтвердженням зміни вашої електронної пошти було відправлено, будь ласка, перевірте свою поштову скриньку, щоб підтвердити.",
-      "emailChangeRateLimitError": "",
+      "emailChangeRateLimitError": "Ви нещодавно оновили свій email. Будь ласка, зачекайте кілька хвилин перед повторною спробою.",
       "notificationSettings": {
-        "coursesOption": "",
-        "description": "",
-        "emailPreferencesDescription": "",
-        "emailPreferencesSavedSuccessfully": "",
-        "emailPreferencesTitle": "",
-        "emailTitle": "",
-        "emailWarning": "",
-        "eventsOption": "",
-        "generalOption": "",
-        "goToProfile": "",
-        "loadEmailSettingsError": "",
-        "loadEmailSettingsErrorDescription": "",
-        "loadEmailSettingsErrorManage": "",
-        "none": "",
-        "platformTitle": "",
-        "settingsSaved": "",
-        "title": ""
+        "coursesOption": "Оновлення щодо курсів, на які ви записалися",
+        "description": "Ви можете налаштувати параметри сповіщень нижче. ",
+        "emailPreferencesDescription": "Тут ви можете вибрати типи електронних листів, які би ви хотіли отримувати від нас. Ці налаштування застосовуються тільки до електронної адреси, пов'язаної з цим посиланням.",
+        "emailPreferencesSavedSuccessfully": "Ваші налаштування електронної пошти були успішно оновлені.",
+        "emailPreferencesTitle": "Керуйте налаштуваннями електронної пошти мережі Plan ₿",
+        "emailTitle": "Які типи сповіщень ви б хотіли отримувати електронною поштою?",
+        "emailWarning": "Увага! Немає електронної адреси, пов'язаної з вашим обліковим записом. Будь ласка, додайте її в розділі вашого профілю.",
+        "eventsOption": "Оновлення щодо подій, на які ви забронювали місце",
+        "generalOption": "Загальна інформація та новини про мережу Plan ₿",
+        "goToProfile": "Перейти до профілю",
+        "loadEmailSettingsError": "Вибачте, ми не змогли завантажити налаштування вашої електронної пошти.",
+        "loadEmailSettingsErrorDescription": "Повідомте, що ви скористались правильним посиланням.",
+        "loadEmailSettingsErrorManage": "Якщо у вас є доступ до свого облікового запису, ви також можете налаштувати налаштування безпосередньо у своїй інформаційній панелі:",
+        "none": "Немає",
+        "platformTitle": "Які типи сповіщень ви хотіли б отримувати на цій платформі?",
+        "settingsSaved": "Ваші налаштування були успішно збережені!",
+        "title": "Налаштування сповіщень"
       },
       "password": "Пароль",
       "preview": "Попередній перегляд",
       "profilePicture": "Фото профілю",
       "save": "Зберегти",
       "saving": "Збереження…",
-      "securitySettings": "",
-      "username": "Ім'я користувача"
+      "securitySettings": "Налаштування безпеки",
+      "username": "Ім'я користувача",
+      "emailOrUsername": "Email або ім'я користувача"
     },
     "teacher": {
       "courses": {
-        "allStudents": "",
+        "allStudents": "Всі студенти",
         "announcementModal": {
-          "contentLabel": "",
-          "contentPlaceholder": "",
-          "create": "",
-          "dateRequired": "",
-          "editAnnouncement": "",
-          "groupLabel": "",
-          "title": "",
-          "typeLabel": "",
-          "typePlaceholder": ""
+          "contentLabel": "Текст оголошення",
+          "contentPlaceholder": "Будь ласка, введіть тут.",
+          "create": "Створити оголошення",
+          "dateRequired": "Дата є обов'язковою",
+          "editAnnouncement": "Редагувати оголошення",
+          "groupLabel": "Виберіть групу студентів, до яких ви хочете звернутися",
+          "title": "Напишіть оголошення",
+          "typeLabel": "Який тип оголошення це?",
+          "typePlaceholder": "Виберіть один тип"
         },
-        "announcements": "",
-        "announcementsIntroduction": "",
-        "announcementsPast": "",
-        "announcementsPastDescription": "",
-        "announcementsUpcoming": "",
-        "announcementsUpcomingDescription": "",
-        "assignment": "",
+        "announcements": "Оголошення",
+        "announcementsIntroduction": "Додатково до автоматичних сповіщень про розклади класів, у вас є можливість писати та планувати додаткові оголошення для ваших студентів. Наприклад, ви можете інформувати їх про логістичні зміни або оновлення в останню хвилину.\nСтуденти отримають ці сповіщення на платформі, а також електронною поштою (якщо вони активують цю додаткову функцію).",
+        "announcementsPast": "Минулі оголошення",
+        "announcementsPastDescription": "Нижче наведено список уже опублікованих оголошень. Список буде очищено через місяць.",
+        "announcementsUpcoming": "Майбутні оголошення",
+        "announcementsUpcomingDescription": "Нижче наведено майбутні оголошення, які ви написали та запланували.",
+        "assignment": "Завдання",
         "assignmentGrade": {
-          "alertDescription": "",
-          "alertTitle": "",
-          "confirmPublication": "",
-          "confirmPublicationDescription": "",
-          "confirmPublicationTitle": "",
-          "description": "",
-          "grade100": "",
-          "gradesPublished": "",
-          "missingGradesDescription": "",
-          "missingGradesTitle": "",
-          "publishAllGrades": "",
-          "studentDisplayName": "",
-          "title": ""
+          "alertDescription": "Після того, як всі оцінки будуть введені, натисніть на \"Опублікувати всі оцінки\", щоб опублікувати їх всіх одразу.\nБудь ласка, перевірте аркуш оцінок завчасно, бо після їх публікації вони вже не будуть доступні для редагування. ",
+          "alertTitle": "Оцінювання завдань",
+          "confirmPublication": "Підтвердити публікацію",
+          "confirmPublicationDescription": "Після публікації оцінок немає можливості повернутися назад, оскільки вони більше не будуть доступні для редагування.",
+          "confirmPublicationTitle": "Ви перевірили, що немає помилок?",
+          "description": "Студенти розташовані за групами завдань.",
+          "grade100": "Оцінка (/100)",
+          "gradesPublished": "Оцінки опубліковано.",
+          "missingGradesDescription": "Якщо оцінки опубліковано, ті оцінки, яких немає, будуть замінені на 0/100.",
+          "missingGradesTitle": "Ще {{count}} оцінок відсутні!",
+          "publishAllGrades": "Опублікувати всі оцінки",
+          "studentDisplayName": "Студент (Ім'я для відображення)",
+          "title": "Оцінки за завданнями",
+          "courseAssignment": "Завдання курсу"
         },
-        "assignmentStudents": "",
+        "assignmentStudents": "Проектне завдання",
         "courseDetails": "Деталі курсу",
         "courseLongDescription": "Вступний опис",
         "courseModification": "Якщо вам потрібна допомога для редагування чогось у курсі, будь ласка, перевірте цей <0>посібник</0>.",
         "curriculum": "Програма курсу",
         "curriculumDescription": "Ось поточна програма цього курсу.",
-        "deleteAnnouncementTitle": "",
-        "deleteAnnouncementWarning": "",
+        "deleteAnnouncementTitle": "Ви впевнені, що хочете видалити це оголошення?",
+        "deleteAnnouncementWarning": "Ця зміна є незворотньою",
         "editOnGithub": "Редагувати на Github",
         "examResults": "Результати іспитів",
         "makeModifications": "Потрібно внести зміни?",
-        "noPastAnnouncement": "",
-        "noWrittenAnnouncement": "",
+        "noPastAnnouncement": "У ВАС НЕМАЄ минулих оголошень на даний момент.",
+        "noWrittenAnnouncement": "У вас немає письмових оголошень на даний момент.",
         "objectives": "Цілі",
         "quickRecap": "Тут ви можете знайти всю загальну інформацію щодо цього курсу.",
         "reviews": "Відгуки",
-        "summerStudents": "",
-        "writeAnnouncement": ""
+        "summerStudents": "Літня школа",
+        "writeAnnouncement": "Напишіть оголошення",
+        "amountPaid": "Сума, що була сплачена",
+        "averageAttempts": "Середня кількість спроб",
+        "averageDuration": "Середня тривалість",
+        "averageScore": "Середній бал",
+        "exportExamData": "Експортувати дані екзамену",
+        "finalAverageResults": "Підсумкові середні результати",
+        "finalScore": "Кінцевий бал",
+        "lastActive": "Останній активний",
+        "medianScore": "Медіанний бал",
+        "noExamLinked": "На даний момент до цього курсу не прикріплено жодного екзамену. Якщо ви хочете створити екзамен, будь ласка, зв'яжіться з нами.",
+        "overview": "Огляд",
+        "questionsInExam": "Питання в екзамені",
+        "studentsGraduated": "Студенти випускаються",
+        "successRate": "Ступінь успішності",
+        "thresholdToPass": "Поріг проходження",
+        "totalQuestions": "Загальна кількість питань"
       },
       "profile": {
         "billingInformation": "Інформація про оплату",
@@ -878,6 +1293,29 @@
       "tutorials": {
         "tutorialAnalyticsDescription": "Тут ви можете знайти аналітику по навчальним матеріалам, які ви створили та опублікували на платформі.",
         "yourTutorials": "Ваші навчальні посібники"
+      },
+      "discount": {
+        "description": "Тут ви можете створювати та керувати дисконтними кодами для цього курсу - як одноразові для стипендій або подібних випадків, так і багаторазові для маркетингових кампаній."
+      }
+    },
+    "professor": {
+      "courses": {
+        "overview": {
+          "announceChange": "Оголосіть зміну",
+          "attendanceList": "Список відвідування",
+          "courseEnded": "Цей курс вже закінчився.",
+          "courseNotStarted": "Цей курс ще не розпочався.",
+          "enrolledStudents": "Зареєстровані студенти",
+          "hasEnrolled": "зареєструвався",
+          "hasGraduated": "закінчив з оцінкою {{score}}%",
+          "hasLeftReview": "залишив відгук",
+          "hasLeftReviewAndComment": "залишив відгук та коментар",
+          "notifyStudents": "Щось змінилося? Повідомте своїх студентів.",
+          "overallPerformance": "Загальна продуктивність",
+          "recentActivity": "Остання активність",
+          "studentsRegistered": "Зареєстровані студенти",
+          "upcomingClass": "Майбутній клас"
+        }
       }
     }
   },
@@ -891,7 +1329,8 @@
       "purchased": "Куплено",
       "unlimited": "необмежений",
       "visitWebsite": "Відвідати веб-сайт",
-      "watchReplay": "Дивитися повтор"
+      "watchReplay": "Дивитися повтор",
+      "buyLecture": "Купити лекцію"
     },
     "main": {
       "upcomingEvents": "Майбутні події"
@@ -904,12 +1343,12 @@
       "address": "Адреса",
       "back_events": "Назад до подій",
       "book_seat": "Забронювати місце",
-      "callout_book_online": "",
-      "callout_book_physical": "",
-      "callout_book_replay": "",
-      "callout_purchase_online": "",
-      "callout_purchase_physical": "",
-      "callout_purchase_replay": "",
+      "callout_book_online": "Ви збираєтесь забронювати онлайн-доступ до цього заходу.",
+      "callout_book_physical": "Ви збираєтесь забронювати <highlight>доступ на місці</highlight> до цього заходу.",
+      "callout_book_replay": "Ви збираєтесь забронювати доступ до відео цього заходу.",
+      "callout_purchase_online": "Ви збираєтесь придбати <highlight>онлайн-доступ</highlight> до цього заходу.",
+      "callout_purchase_physical": "Ви збираєтесь придбати <highlight>доступ на місці</highlight> до цього заходу.",
+      "callout_purchase_replay": "Ви збираєтесь придбати доступ до відео цього заходу.",
       "date": "Дата",
       "description_free_physical": "Будь ласка, ознайомтеся з наданою інформацією про місце проведення заходу.\nПісля підтвердження бронювання ми надішлемо вам квиток-підтвердження та QR-код, який ви зможете пред'явити на заході.",
       "description_online": "Будь ласка, перегляньте дату та час проведення заходу.\nКоли настане час, увійдіть на платформу, щоб отримати доступ до прямої трансляції через сторінку заходу.",
@@ -917,13 +1356,45 @@
       "download_ticket": "Завантажте ваш квиток",
       "language": "Мова",
       "limitation": "Обмеження",
-      "limitedSeats": "",
+      "limitedSeats": "Місця обмежені. Будь ласка, скасуйте своє бронювання, якщо ви не можете прибути.",
       "max_capacity": "Максимальна ємність",
       "payment_successful": "Бронювання успішне!",
       "time": "Час"
     },
-    "tcDisclaimer": "",
-    "tcMustBeAccepted": ""
+    "tcDisclaimer": "Я погоджуюсь, що моя інформація може бути передана організаторам для доступу на місце проведення.",
+    "tcMustBeAccepted": "Ви повинні прийняти умови та положення, щоб продовжити",
+    "calendar": {
+      "inXMonths": "За {{number}} місяці",
+      "lastMonth": "Минулого місяця",
+      "nextMonth": "Наступного місяця",
+      "noEventsFound": "Подій не знайдено",
+      "thisMonth": "Цього місяця",
+      "today": "Сьогодні",
+      "xMonthsAgo": "{{number}} місяців тому"
+    },
+    "addEvent": "Додати подію",
+    "eventInfos": {
+      "eventBooked": "Подію заброньовано",
+      "eventType": "Тип події",
+      "numberOfSpots": "Кількість місць",
+      "onlineAndInPerson": "Онлайн та офлайн",
+      "secureYourSpot": "Забронюйте своє місце",
+      "sessionBooked": "Сеанс заброньовано",
+      "whatsPlanned": "Що заплановано"
+    },
+    "myTickets": "Мої квитки",
+    "planBWeek": {
+      "pageTitle": "Тиждень плану ₿"
+    },
+    "types": {
+      "plurals": {
+        "conference": "конференції",
+        "exam": "екзамени",
+        "lecture": "лекції",
+        "meetup": "зустрічі",
+        "workshop": "семінари"
+      }
+    }
   },
   "filters": {
     "topics": "Теми"
@@ -931,7 +1402,8 @@
   "glossary": {
     "definition": "Визначення",
     "relatedWords": "Пов'язані слова:",
-    "term": "Термін"
+    "term": "Термін",
+    "showMoreWords": "Показати більше слів"
   },
   "home": {
     "aboutUsSection": {
@@ -961,15 +1433,15 @@
     "underConstructionImage": "Ілюстрація декількох кроликів, які працюють на будівельному майданчику"
   },
   "labs": {
-    "coordinatedBy": "",
-    "description1": "",
-    "description2": "",
-    "planBLabs": "",
+    "coordinatedBy": "Ця лабораторія координується",
+    "description1": "Plan ₿ Labs - це навчальні групи, що забезпечують студентам регулярні практичні та інтерактивні заняття. Через ці навчальні групи студенти та професори беруть участь у дискусіях, обговорюють останні дослідження, розв'язують реальні проблеми та застосовують теоретичні концепції.",
+    "description2": "Приєднайтесь до лабораторії, яка відповідає вашому напрямку навчання, та покращте свій досвід навчання!",
+    "planBLabs": "Plan ₿ Labs",
     "presentation": {
-      "link": "",
-      "subtitle": ""
+      "link": "Познайомтесь з Plan ₿ Labs",
+      "subtitle": "Приєднуйтесь до лабораторії, щоб вчитись, обговорювати та розвиватись!"
     },
-    "title": ""
+    "title": "Практичні та інтерактивні заняття для безперервного навчання"
   },
   "lectures": {
     "buyVideoToUnlock": "Придбайте відео, щоб розблокувати його",
@@ -978,7 +1450,10 @@
     "watchLecture": "Перегляньте запис лекції"
   },
   "menu": {
-    "login": "Увійти"
+    "login": "Увійти",
+    "educatorContent": "Контент для освітян",
+    "getStarted": "Розпочати",
+    "signIn": "Увійти в систему"
   },
   "notFound": {
     "here": "Тут",
@@ -987,52 +1462,53 @@
   },
   "notification": {
     "types": {
-      "assignment": "",
-      "calendar": "",
-      "celebration": "",
-      "general": "",
-      "warning": ""
+      "assignment": "Завдання",
+      "calendar": "Сповіщення календаря",
+      "celebration": "Святкування",
+      "general": "Загальна інформація",
+      "warning": "Попередження"
     }
   },
   "notifications": {
-    "bCertResults": "",
-    "blogNotTranslated": "",
-    "bookYourSeat": "",
-    "calendar_5m": "",
-    "calendar_5m_online_event": "",
-    "calendar_24h": "",
-    "calendar_24h_in_person_event": "",
-    "calendar_48h_online_event": "",
-    "dashboardDescription": "",
-    "daysAgo": "",
-    "markAsRead": "",
-    "monthsAgo": "",
-    "noRecentNotifications": "",
-    "notifications": "",
-    "noUnreadNotifications": "",
-    "planBNews": "",
-    "read": "",
-    "results": "",
-    "select": "",
-    "selectAll": "",
-    "today": "",
-    "unread": "",
-    "upcomingEvent": "",
-    "weeksAgo": "",
-    "yearsAgo": "",
-    "yesterday": ""
+    "bCertResults": "Ваші результати ₿-CERT вже доступні!",
+    "blogNotTranslated": "Вибачте, цей новий блог-пост ще не перекладено вашою поточною мовою.",
+    "bookYourSeat": "Забронюйте своє місце, якщо хочете взяти участь особисто!",
+    "calendar_5m": "Заняття починається через 5 хвилин! Натисніть тут, щоб приєднатися зараз.",
+    "calendar_5m_online_event": "Пора! {{eventName}} починається через 5 хвилин. Натисніть тут, щоб приєднатися зараз!",
+    "calendar_24h": "Наступне заняття відбудеться завтра з {{ formattedTime }}.",
+    "calendar_24h_in_person_event": "Захід {{eventName}} відбудеться завтра, з {{formattedTime}} в {{addressLine}}. Не забудьте завантажити свій квиток для участі!",
+    "calendar_48h_online_event": "Зустріч {{eventName}} наближається! Вона запланована на {{date}}, з {{formattedTime}}. ",
+    "dashboardDescription": "Ось ваши останні сповіщення. Вони автоматично видаляються через місяць після того, як ви їх побачили.",
+    "daysAgo": "{{days}} днів тому",
+    "markAsRead": "Позначити як прочитане",
+    "monthsAgo": "{{months}} місяць{{s}} тому",
+    "noRecentNotifications": "У вас немає жодних останніх сповіщень на даний момент.",
+    "notifications": "Сповіщення",
+    "noUnreadNotifications": "Більше непрочитаних сповіщень немає.",
+    "planBNews": "Новини плану ₿",
+    "read": "Читати",
+    "results": "Ваші результати ₿-CERT вже доступні!",
+    "select": "Вибрати",
+    "selectAll": "Вибрати все",
+    "today": "Сьогодні",
+    "unread": "Не прочитане",
+    "upcomingEvent": "Майбутня подія",
+    "weeksAgo": "{{weeks}} тиждень{{s}} тому",
+    "yearsAgo": "{{years}} рік{{s}} тому",
+    "yesterday": "Вчора",
+    "newVersionAvailable": "Доступна нова версія платформи Plan ₿ Network. Будь ласка, оновіть сторінку."
   },
   "payment": {
     "haveReductionCode": "Маєте код знижки?",
-    "insertReductionCode": "",
+    "insertReductionCode": "Вставте свій код знижки",
     "payByCard": "Оплата карткою",
     "payWithBitcoin": "Платіть біткоїнами",
-    "taxesMayApply": "",
+    "taxesMayApply": "Податки можуть бути застосовані при оформленні замовлення",
     "terms": "Дивіться наші <0>загальні умови</0> та умови повернення коштів для отримання деталей",
     "total": "Всього"
   },
   "placeholders": {
-    "selectTimeZone": ""
+    "selectTimeZone": "Вибрати часовий пояс"
   },
   "professors": {
     "navigationTitles": {
@@ -1053,7 +1529,7 @@
   "projects": {
     "noRelatedEvents": "Наразі немає найближчих подій, пов'язаних з цим викладачем.",
     "otherCommunities": "Досліджуйте спільноти Plan B",
-    "related": "",
+    "related": "Пов'язане",
     "relatedEvents": "Пов'язані майбутні події"
   },
   "proofreading": {
@@ -1072,22 +1548,26 @@
       "contact": "Контакт",
       "legalNotice": "Юридичне повідомлення",
       "privacyPolicy": "Політика конфіденційності",
-      "termsOfSale": "Умови продажу"
+      "termsOfSale": "Умови продажу",
+      "notFound": "Юридична інформація не знайдена"
     }
   },
   "resources": {
     "bet": {
-      "title": "Інструментарій для навчання"
+      "title": "Інструментарій для навчання",
+      "addEducationKit": "Додати навчальний набір"
     },
     "books": {
-      "title": "Бібліотека"
+      "title": "Бібліотека",
+      "addBook": "Додати книгу"
     },
     "channels": {
       "noYoutubeChannels": "Наразі немає каналів Youtube для обраної мови.",
       "title": "Канали YouTube"
     },
     "conferences": {
-      "title": "Повторні трансляції конференцій"
+      "title": "Повторні трансляції конференцій",
+      "addConference": "Додати повтор конференції"
     },
     "glossary": {
       "title": "Глосарій"
@@ -1112,21 +1592,25 @@
     "pageSubtitlePodcast": "<0>Інші подкасти</0>, які можуть вам сподобатися",
     "podcasts": {
       "noPodcasts": "Наразі немає подкастів для обраної мови.",
-      "title": "Подкасти"
+      "title": "Подкасти",
+      "addPodcast": "Додати подкаст",
+      "checkThePodcast": "Перевірте подкаст"
     },
     "projects": {
-      "title": "Проєкти"
+      "title": "Проєкти",
+      "addProjects": "Додати проект"
     },
     "searchFilterName": "Пошук за назвою",
     "toggleLabelAll": "Всі",
-    "toggleLabelSelectedLanguage": "Обрана мова"
+    "toggleLabelSelectedLanguage": "Обрана мова",
+    "pageSubtitleMovies": "<0>Інші фільми</0>, які вам можуть сподобатися"
   },
   "search": {
     "all": "Всі",
     "book": "Книга",
     "books": "Книги",
     "categories": "Категорії",
-    "conference": "",
+    "conference": "Конференція",
     "conference_replay": "Запис конференції",
     "conference_replays": "Повтори конференцій",
     "course": "Курс",
@@ -1160,7 +1644,9 @@
     "tutorial": "Навчальний посібник",
     "tutorials": "Навчальні матеріали",
     "youtube_channel": "Канал Youtube",
-    "youtube_channels": "Канали YouTube"
+    "youtube_channels": "Канали YouTube",
+    "noResults": "Немає результатів",
+    "resultsFound": "Знайдено {{count}} результатів"
   },
   "settings": {
     "changeDisplayName": "Змінити ім'я відображення",
@@ -1170,19 +1656,20 @@
   },
   "tutorials": {
     "business": {
-      "title": ""
+      "title": "Бізнес"
     },
     "computer-security": {
-      "title": ""
+      "title": "Комп'ютерна безпека"
     },
     "contribution": {
-      "title": ""
+      "title": "Внесок"
     },
     "details": {
       "author": "Автор:",
       "ratingSuccess": "Дякую за вашу оцінку!",
       "source": "Оригінальне джерело :",
-      "tutorialName": "Назва підручника"
+      "tutorialName": "Назва підручника",
+      "didThisWork": "Чи вдалося вам це?"
     },
     "exchange": {
       "title": "Обмін"
@@ -1201,29 +1688,32 @@
       "title": "Приватність"
     },
     "subCategories": {
-      "authentication": "",
-      "backup": "",
-      "bitcoin": "",
-      "centralized": "",
-      "communication": "",
-      "content": "",
-      "data": "",
-      "desktop": "",
-      "hardware": "",
-      "lightning-network": "",
-      "mobile": "",
-      "on-chain": "",
-      "operating system": "",
-      "others": "",
-      "peer-to-peer": "",
-      "point-of-sale": "",
-      "pool": "",
-      "resource": ""
+      "authentication": "Аутентифікація",
+      "backup": "Резервне копіювання",
+      "bitcoin": "Біткойн",
+      "centralized": "Централізовано",
+      "communication": "Комунікація",
+      "content": "Контент",
+      "data": "Дані",
+      "desktop": "Робочий стіл",
+      "hardware": "Обладнання",
+      "lightning-network": "Мережа Lightning",
+      "mobile": "Мобільний",
+      "on-chain": "On-chain",
+      "operating system": "Операційна система",
+      "others": "Інше",
+      "peer-to-peer": "Peer-to-peer",
+      "point-of-sale": "Точка продажу",
+      "pool": "Пул",
+      "resource": "Ресурс",
+      "explorer": "Експлорер"
     },
     "wallet": {
       "title": "Гаманець"
     },
-    "writtenBy": "Цей підручник був написаний"
+    "writtenBy": "Цей підручник був написаний",
+    "noTutorialsFound": "Ми не змогли знайти жодного підручника, який відповідав би вашому пошуку.",
+    "onThisPage": "На цій сторінці"
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1249,7 +1739,7 @@
     "bitcoin": "Біткоїн",
     "book": "Книга",
     "business": "Бізнес",
-    "calendar": "",
+    "calendar": "Календар",
     "cancel": "Скасувати",
     "careerPortal": "Портал кар'єри",
     "category": "Категорія",
@@ -1258,17 +1748,17 @@
     "chapter": "Розділ",
     "chapters": "Розділи",
     "close": "Закрити",
-    "company": "",
+    "company": "Компанія",
     "conference": "Конференція",
     "congrats": "Вітаємо!",
-    "continue": "",
+    "continue": "Продовжити",
     "country": "Країна",
     "course": "Курс",
     "courseId": "ID курсу",
     "courses": "Курси",
     "credits": "Кредити",
     "date": "Дата",
-    "day": "",
+    "day": "День",
     "delete": "Видалити",
     "description": "Опис",
     "details": "Деталі",
@@ -1310,7 +1800,7 @@
     "linkedin": "Linkedin",
     "location": "Місцезнаходження",
     "members": " Члени",
-    "mentor": "",
+    "mentor": "Наставник",
     "mining": "Майнінг",
     "movie": "Фільм",
     "name": "Ім'я",
@@ -1318,14 +1808,14 @@
     "newsletter": "Бюлетень",
     "next": "Наступний",
     "no": "Ні",
-    "notApplicable": "",
+    "notApplicable": "Не застосовується",
     "on": "на",
     "onChainAddress": "Адреса на блокчейні",
     "online": "Онлайн",
     "overview": "Огляд",
     "paid": "Оплачено",
     "part": "Частина",
-    "password": "",
+    "password": "Пароль",
     "podcast": "Подкаст",
     "previous": "Попередній",
     "price": "Ціна",
@@ -1340,11 +1830,11 @@
     "required": "Потрібно",
     "resources": "Ресурси",
     "role": "Роль",
-    "save": "",
-    "saving": "",
+    "save": "Зберегти",
+    "saving": "Збереження...",
     "search": "Пошук",
     "security": "Безпека",
-    "selectedAmount": "",
+    "selectedAmount": "{{amount}} вибрано",
     "skip": "Пропустити",
     "socialStudies": "Соціальні дослідження",
     "startHere": "Почніть тут!",
@@ -1356,8 +1846,8 @@
     "telegram": "Telegram",
     "ticket": "Квиток",
     "time": "Час",
-    "timeZone": "",
-    "title": "",
+    "timeZone": "Часовий пояс",
+    "title": "Назва",
     "to": "до",
     "topics": "Теми",
     "total": "Всього",
@@ -1369,14 +1859,120 @@
     "user": "Користувач",
     "username": "Ім'я користувача",
     "users": "Користувачі",
-    "video": "",
+    "video": "Відео",
     "view": "Перегляд",
     "viewMore": "Докладніше",
     "wallets": "Гаманці",
-    "yes": "Так"
+    "yes": "Так",
+    "aboutUs": "Про нас",
+    "academy": "Академія",
+    "account": "Рахунок",
+    "actions": "Дії",
+    "address": "Адреса",
+    "booking": "Бронювання",
+    "certifications": "Сертифікати",
+    "completed": "Завершено",
+    "confirmation": "Підтвердження",
+    "discover": "Відкрийте для себе",
+    "enrolled": "Зареєстровано",
+    "filters": "Фільтри",
+    "full": "Повний",
+    "info": "Інформація",
+    "invoices": "Рахунки-фактури",
+    "legal": "Юридична інформація",
+    "list": "Список",
+    "map": "Карта",
+    "month": "Місяць",
+    "none": "Немає",
+    "optional": "Необов'язково",
+    "planBNetwork": "План ₿ Мережа",
+    "practice": "Практика",
+    "pricing": "Ціни",
+    "questions": "Питання",
+    "rating": "Рейтинг",
+    "resetAll": "Скинути все",
+    "resetFilters": "Скинути фільтри",
+    "results": "Результати",
+    "resume": "Резюме",
+    "review": "Огляд",
+    "sats": "Сатоші",
+    "searchTripleDot": "Пошук...",
+    "seeAll": "Дивитись все",
+    "session": "Сесія",
+    "settings": "Параметри",
+    "share": "Поділитися",
+    "structure": "Структура",
+    "syllabus": "Навчальний план",
+    "taxes": "податки",
+    "theory": "Теорія",
+    "topic": "Тема",
+    "type": "Тип",
+    "viewAll": "Дивитися всі",
+    "week": "Тиждень",
+    "weight": "Вага"
   },
   "youtubeChannels": {
     "view": "Переглянути канал Youtube",
     "watchTrailer": "Дивитися трейлер"
+  },
+  "account": {
+    "account": "Рахунок",
+    "myTeacherProfile": "Профіль мого вчителя"
+  },
+  "footer": {
+    "FOSSOpenContent": "Вільне програмне забезпечення та відкритий контент",
+    "proudlyPartOf": "З гордістю є частиною <0>Мережі Plan ₿</0>"
+  },
+  "months": {
+    "april": "Квітень",
+    "august": "Серпень",
+    "december": "Грудень",
+    "february": "Лютий",
+    "january": "Січень",
+    "july": "Липень",
+    "june": "Червень",
+    "march": "Березень",
+    "may": "Травень",
+    "november": "Листопад",
+    "october": "Жовтень",
+    "september": "Вересень"
+  },
+  "movies": {
+    "checkTheMovie": "Перевірте фільм"
+  },
+  "navbar": {
+    "bookings": "Бронювання",
+    "career": "Кар'єра",
+    "careers": "Кар'єри",
+    "discountCode": "Коди знижок",
+    "learnAnytimeDescription": "Курси за власним темпом",
+    "learnAnytimeTitle": "Вчитися в будь-який час",
+    "liveClassesDescription": "Курси з вчителем",
+    "liveClassesTitle": "Прямі заняття",
+    "manageCourses": "Керування курсами",
+    "myCourses": "Мої курси",
+    "tabs": {
+      "admin": "Адмін",
+      "learn": "Навчатися",
+      "teach": "Вчити"
+    },
+    "translationPanel": "Панель перекладу",
+    "tutorials": "Підручники",
+    "tutorialsAnalytics": "Аналітика підручників",
+    "userRolesAllocation": "Розподіл ролей користувачів"
+  },
+  "videoSelector": {
+    "language": {
+      "AI": "Переклад AI",
+      "language": "Мова",
+      "original": "Оригінальна мова"
+    },
+    "player": {
+      "pears": "Груші 🍐",
+      "peertube": "Peertube",
+      "player": "Гравець",
+      "rumble": "Rumble",
+      "youtube": "Youtube"
+    }
   }
 }
