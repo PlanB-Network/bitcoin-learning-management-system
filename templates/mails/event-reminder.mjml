@@ -50,16 +50,12 @@
             <li style="padding-bottom: 5px;"><strong>Date:</strong> {{eventDate}}</li>
             <li style="padding-bottom: 5px;"><strong>Time:</strong> {{eventTime}}</li>
             <li style="padding-bottom: 5px;"><strong>Location:</strong> {{eventLocation}}</li>
-            <li style="padding-bottom: 5px;"><strong>Link:</strong> <a href="{{eventLink}}" style="color:#FF5C00; text-decoration:none;">{{eventLink}}</a></li>
+            <li style="padding-bottom: 5px;"><strong>Link:</strong> <a href="{{eventLink}}">{{eventLink}}</a></li>
           </ul>
         </mj-text>
 
         <mj-text padding='0'>
-          Please note that a ticket is required for in-person events. You can access your ticket by logging into your account and visiting your <a href="{{myTicketsLink}}" style="color:#FF5C00; text-decoration:none;">My Tickets</a> section on planb.academy.
-          <br/><br/>
-          If you have any questions, feel free to reach out.
-          <br/>
-          We look forward to seeing you there.
+          Please note that a ticket is required for in-person events. You can access your ticket by logging into your account and visiting your <a href="{{myTicketsLink}}">bookings</a> section on planb.academy.
         </mj-text>
       </mj-column>
     </mj-section>
