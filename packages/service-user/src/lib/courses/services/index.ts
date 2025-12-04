@@ -33,6 +33,7 @@ export * from './send-course-daily-new-students-email.js';
 export * from './send-course-starting-soon-email.js';
 export * from './send-course-weekly-recap-email.js';
 export * from './send-course-welcome-email.js';
+export * from './send-event-reminder-email.js';
 export * from './send-self-paced-course-monthly-recap.js';
 export * from './set-assignment-grades-published.js';
 export * from './start-course.js';

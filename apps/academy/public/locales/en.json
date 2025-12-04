@@ -1190,6 +1190,7 @@
       "emailChangeRateLimitError": "You've recently updated your email. Please wait a few minutes before trying again.",
       "emailOrUsername": "Email or username",
       "notificationSettings": {
+        "coursesEventsOption": "Updates about your courses and your events",
         "coursesOption": "Updates about courses you enrolled in",
         "description": "You can customize your notification settings below. ",
         "emailPreferencesDescription": "Here you can choose the types of emails you'd like to receive from us. These preferences only apply to the email address associated with this link.",

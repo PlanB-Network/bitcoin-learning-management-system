@@ -21,6 +21,7 @@ import {
   createSendCoordinatorNewStudentsDailyRecapEmail,
   createSendCourseStartingSoonEmail,
   createSendCourseWeeklyRecapEmail,
+  createSendEventReminderEmail,
   createSendSelfPacedCourseMonthlySummaryEmail,
   createStartCourse,
   createTeacherNotificationsService,
@@ -137,7 +138,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
     });
   }
 
-  // Every 5 minutes, check for online events that are starting in 48 hours / 5 minutes OR inperson events starting in 24 hours and send a notification to people who booked these events
+  // Every 5 minutes, check for online events that are starting in 48 hours / 5 minutes OR inperson events starting in 24 hours and send a notification to people who booked these events.
   {
     const getUpcomingEventsInfos = createGetUpcomingEventsInfos(ctx);
     const insertUserNotifications = createInsertUserNotifications(ctx);
@@ -214,6 +215,59 @@ export const registerCronTasks = async (ctx: Dependencies) => {
           uids,
         });
       }
+    });
+  }
+
+  // Every hour, send a mail reminder for events happening in 24 hours.
+  {
+    const getUpcomingEventsInfos = createGetUpcomingEventsInfos(ctx);
+    const sendEventStartingSoonEmail = createSendEventReminderEmail(ctx);
+
+    ctx.crons.addTask('1hour', async () => {
+      console.log('[cron] Starting event reminder email cron job');
+      const now = new Date();
+
+      now.setMinutes(0, 0, 0);
+
+      const notificationStartDate = new Date(
+        now.getTime() + 24 * 60 * 60 * 1000,
+      );
+      const notificationEndDate = new Date(now.getTime() + 25 * 60 * 60 * 1000);
+
+      const upcomingEvents = await getUpcomingEventsInfos();
+      if (upcomingEvents.length === 0) return;
+
+      const eventsInNotificationWindow = upcomingEvents.filter((event) => {
+        if (!event.startDate) return false;
+        const startDate = new Date(event.startDate);
+
+        return (
+          startDate >= notificationStartDate && startDate < notificationEndDate
+        );
+      });
+
+      for (const event of eventsInNotificationWindow) {
+        try {
+          const uids = await userNotificationsService.getUidsByEvent(
+            event.id,
+            true,
+          );
+
+          if (uids.length === 0) continue;
+
+          console.log(
+            `Sending reminders for event ${event.id} to ${uids.length} users.`,
+          );
+          await sendEventStartingSoonEmail({ uids, eventId: event.id });
+        } catch (err) {
+          console.error(
+            `[cron] Failed to process reminder for event ${event.id}:`,
+            err,
+          );
+        }
+      }
+
+      console.log('[cron] Finished event reminder email cron job');
     });
   }
 
