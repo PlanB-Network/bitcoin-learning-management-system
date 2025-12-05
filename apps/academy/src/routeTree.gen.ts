@@ -89,7 +89,6 @@ import { Route as LangCourseCoursesCourseSlugCourseSlugSyllabusRouteImport } fro
 import { Route as LangCourseCoursesCourseSlugCourseSlugSummerSchoolRouteImport } from './routes/$lang/_course/courses/$courseSlug/_$courseSlug/summer-school';
 import { Route as LangCourseCoursesCourseSlugCourseSlugSingleTrialExamRouteImport } from './routes/$lang/_course/courses/$courseSlug/_$courseSlug/single-trial-exam';
 import { Route as LangCourseCoursesCourseSlugCourseSlugRetakeExamRouteImport } from './routes/$lang/_course/courses/$courseSlug/_$courseSlug/retake-exam';
-import { Route as LangCourseCoursesCourseSlugCourseSlugRatingsRouteImport } from './routes/$lang/_course/courses/$courseSlug/_$courseSlug/ratings';
 import { Route as LangCourseCoursesCourseSlugCourseSlugAssignmentRouteImport } from './routes/$lang/_course/courses/$courseSlug/_$courseSlug/assignment';
 import { Route as LangCourseCoursesCourseSlugCourseSlugChapterNameChapterIdRouteImport } from './routes/$lang/_course/courses/$courseSlug/_$courseSlug/$chapterName-$chapterId';
 import { Route as LangDashboardDashboardProfessorManageCoursesCourseIdStudentsRouteImport } from './routes/$lang/dashboard/_dashboard/professor/manage-courses/$courseId/students';
@@ -559,12 +558,6 @@ const LangCourseCoursesCourseSlugCourseSlugRetakeExamRoute =
     path: '/retake-exam',
     getParentRoute: () => LangCourseCoursesCourseSlugCourseSlugRoute,
   } as any);
-const LangCourseCoursesCourseSlugCourseSlugRatingsRoute =
-  LangCourseCoursesCourseSlugCourseSlugRatingsRouteImport.update({
-    id: '/ratings',
-    path: '/ratings',
-    getParentRoute: () => LangCourseCoursesCourseSlugCourseSlugRoute,
-  } as any);
 const LangCourseCoursesCourseSlugCourseSlugAssignmentRoute =
   LangCourseCoursesCourseSlugCourseSlugAssignmentRouteImport.update({
     id: '/assignment',
@@ -753,7 +746,6 @@ export interface FileRoutesByFullPath {
   '/$lang/tutorials/$category/$subcategory/$name-$id': typeof LangTutorialsCategorySubcategoryNameIdRoute;
   '/$lang/courses/$courseSlug/$chapterName-$chapterId': typeof LangCourseCoursesCourseSlugCourseSlugChapterNameChapterIdRoute;
   '/$lang/courses/$courseSlug/assignment': typeof LangCourseCoursesCourseSlugCourseSlugAssignmentRoute;
-  '/$lang/courses/$courseSlug/ratings': typeof LangCourseCoursesCourseSlugCourseSlugRatingsRoute;
   '/$lang/courses/$courseSlug/retake-exam': typeof LangCourseCoursesCourseSlugCourseSlugRetakeExamRoute;
   '/$lang/courses/$courseSlug/single-trial-exam': typeof LangCourseCoursesCourseSlugCourseSlugSingleTrialExamRoute;
   '/$lang/courses/$courseSlug/summer-school': typeof LangCourseCoursesCourseSlugCourseSlugSummerSchoolRoute;
@@ -847,7 +839,6 @@ export interface FileRoutesByTo {
   '/$lang/tutorials/$category/$subcategory/$name-$id': typeof LangTutorialsCategorySubcategoryNameIdRoute;
   '/$lang/courses/$courseSlug/$chapterName-$chapterId': typeof LangCourseCoursesCourseSlugCourseSlugChapterNameChapterIdRoute;
   '/$lang/courses/$courseSlug/assignment': typeof LangCourseCoursesCourseSlugCourseSlugAssignmentRoute;
-  '/$lang/courses/$courseSlug/ratings': typeof LangCourseCoursesCourseSlugCourseSlugRatingsRoute;
   '/$lang/courses/$courseSlug/retake-exam': typeof LangCourseCoursesCourseSlugCourseSlugRetakeExamRoute;
   '/$lang/courses/$courseSlug/single-trial-exam': typeof LangCourseCoursesCourseSlugCourseSlugSingleTrialExamRoute;
   '/$lang/courses/$courseSlug/summer-school': typeof LangCourseCoursesCourseSlugCourseSlugSummerSchoolRoute;
@@ -945,7 +936,6 @@ export interface FileRoutesById {
   '/$lang/tutorials/$category/$subcategory/$name-$id': typeof LangTutorialsCategorySubcategoryNameIdRoute;
   '/$lang/_course/courses/$courseSlug/_$courseSlug/$chapterName-$chapterId': typeof LangCourseCoursesCourseSlugCourseSlugChapterNameChapterIdRoute;
   '/$lang/_course/courses/$courseSlug/_$courseSlug/assignment': typeof LangCourseCoursesCourseSlugCourseSlugAssignmentRoute;
-  '/$lang/_course/courses/$courseSlug/_$courseSlug/ratings': typeof LangCourseCoursesCourseSlugCourseSlugRatingsRoute;
   '/$lang/_course/courses/$courseSlug/_$courseSlug/retake-exam': typeof LangCourseCoursesCourseSlugCourseSlugRetakeExamRoute;
   '/$lang/_course/courses/$courseSlug/_$courseSlug/single-trial-exam': typeof LangCourseCoursesCourseSlugCourseSlugSingleTrialExamRoute;
   '/$lang/_course/courses/$courseSlug/_$courseSlug/summer-school': typeof LangCourseCoursesCourseSlugCourseSlugSummerSchoolRoute;
@@ -1042,7 +1032,6 @@ export interface FileRouteTypes {
     | '/$lang/tutorials/$category/$subcategory/$name-$id'
     | '/$lang/courses/$courseSlug/$chapterName-$chapterId'
     | '/$lang/courses/$courseSlug/assignment'
-    | '/$lang/courses/$courseSlug/ratings'
     | '/$lang/courses/$courseSlug/retake-exam'
     | '/$lang/courses/$courseSlug/single-trial-exam'
     | '/$lang/courses/$courseSlug/summer-school'
@@ -1136,7 +1125,6 @@ export interface FileRouteTypes {
     | '/$lang/tutorials/$category/$subcategory/$name-$id'
     | '/$lang/courses/$courseSlug/$chapterName-$chapterId'
     | '/$lang/courses/$courseSlug/assignment'
-    | '/$lang/courses/$courseSlug/ratings'
     | '/$lang/courses/$courseSlug/retake-exam'
     | '/$lang/courses/$courseSlug/single-trial-exam'
     | '/$lang/courses/$courseSlug/summer-school'
@@ -1233,7 +1221,6 @@ export interface FileRouteTypes {
     | '/$lang/tutorials/$category/$subcategory/$name-$id'
     | '/$lang/_course/courses/$courseSlug/_$courseSlug/$chapterName-$chapterId'
     | '/$lang/_course/courses/$courseSlug/_$courseSlug/assignment'
-    | '/$lang/_course/courses/$courseSlug/_$courseSlug/ratings'
     | '/$lang/_course/courses/$courseSlug/_$courseSlug/retake-exam'
     | '/$lang/_course/courses/$courseSlug/_$courseSlug/single-trial-exam'
     | '/$lang/_course/courses/$courseSlug/_$courseSlug/summer-school'
@@ -1883,13 +1870,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangCourseCoursesCourseSlugCourseSlugRetakeExamRouteImport;
       parentRoute: typeof LangCourseCoursesCourseSlugCourseSlugRoute;
     };
-    '/$lang/_course/courses/$courseSlug/_$courseSlug/ratings': {
-      id: '/$lang/_course/courses/$courseSlug/_$courseSlug/ratings';
-      path: '/ratings';
-      fullPath: '/$lang/courses/$courseSlug/ratings';
-      preLoaderRoute: typeof LangCourseCoursesCourseSlugCourseSlugRatingsRouteImport;
-      parentRoute: typeof LangCourseCoursesCourseSlugCourseSlugRoute;
-    };
     '/$lang/_course/courses/$courseSlug/_$courseSlug/assignment': {
       id: '/$lang/_course/courses/$courseSlug/_$courseSlug/assignment';
       path: '/assignment';
@@ -2089,7 +2069,6 @@ const LangDashboardRouteWithChildren = LangDashboardRoute._addFileChildren(
 interface LangCourseCoursesCourseSlugCourseSlugRouteChildren {
   LangCourseCoursesCourseSlugCourseSlugChapterNameChapterIdRoute: typeof LangCourseCoursesCourseSlugCourseSlugChapterNameChapterIdRoute;
   LangCourseCoursesCourseSlugCourseSlugAssignmentRoute: typeof LangCourseCoursesCourseSlugCourseSlugAssignmentRoute;
-  LangCourseCoursesCourseSlugCourseSlugRatingsRoute: typeof LangCourseCoursesCourseSlugCourseSlugRatingsRoute;
   LangCourseCoursesCourseSlugCourseSlugRetakeExamRoute: typeof LangCourseCoursesCourseSlugCourseSlugRetakeExamRoute;
   LangCourseCoursesCourseSlugCourseSlugSingleTrialExamRoute: typeof LangCourseCoursesCourseSlugCourseSlugSingleTrialExamRoute;
   LangCourseCoursesCourseSlugCourseSlugSummerSchoolRoute: typeof LangCourseCoursesCourseSlugCourseSlugSummerSchoolRoute;
@@ -2102,8 +2081,6 @@ const LangCourseCoursesCourseSlugCourseSlugRouteChildren: LangCourseCoursesCours
       LangCourseCoursesCourseSlugCourseSlugChapterNameChapterIdRoute,
     LangCourseCoursesCourseSlugCourseSlugAssignmentRoute:
       LangCourseCoursesCourseSlugCourseSlugAssignmentRoute,
-    LangCourseCoursesCourseSlugCourseSlugRatingsRoute:
-      LangCourseCoursesCourseSlugCourseSlugRatingsRoute,
     LangCourseCoursesCourseSlugCourseSlugRetakeExamRoute:
       LangCourseCoursesCourseSlugCourseSlugRetakeExamRoute,
     LangCourseCoursesCourseSlugCourseSlugSingleTrialExamRoute:

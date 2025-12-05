@@ -17,11 +17,6 @@ export const getTabs = (
   const isSelectedForSummerSchool =
     courseProgress?.isSelectedForFinalLesson ?? false;
 
-  const reviewChapterId =
-    course.parts
-      .flatMap((part) => part.chapters)
-      ?.find((c) => c?.isCourseReview)?.chapterId ?? null;
-
   const courseHaveRetakeExam = course.parts.some((p) =>
     p.chapters.some((c) => c?.isCourseExam),
   );
@@ -82,15 +77,6 @@ export const getTabs = (
       id: 'summerSchool',
       label: 'dashboard.course.summerSchool',
       href: `/courses/${courseId}/summer-school`,
-      onlyForLoggedIn: true,
-    });
-  }
-
-  if (reviewChapterId) {
-    tabs.push({
-      id: 'ratings',
-      label: 'words.ratings',
-      href: `/courses/${courseId}/ratings`,
       onlyForLoggedIn: true,
     });
   }
