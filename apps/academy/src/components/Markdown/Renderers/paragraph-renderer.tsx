@@ -31,7 +31,7 @@ export const ParagraphRenderer: React.FC<ParagraphRendererProps> = (props) => {
   const { children, intent, header } = props;
   const { i18n } = useTranslation();
 
-  const renderChild = async (child: React.ReactNode) => {
+  const renderChild = (child: React.ReactNode) => {
     if (typeof child === 'string') {
       if (child.includes(':::tradingview')) {
         const str = child
