@@ -1,3 +1,4 @@
+import { TeachingFormat } from '@blms/constants';
 import type { CourseProgressExtended, CourseResponse } from '@blms/types';
 import type { Tab } from '#src/components/ui/secondary-navbar.tsx';
 
@@ -27,6 +28,8 @@ export const getTabs = (
 
   const courseHaveAssignments = course.hasAssignment;
 
+  const courseIsSelfPaced = course.teachingFormat === TeachingFormat.SelfPaced;
+
   const isBizSchool =
     courseId === 'c762773a-9017-4129-bc0e-06adf86050ef' ||
     courseId === '576ac496-a4fd-471a-b022-e0da1ab89a29';
@@ -49,7 +52,9 @@ export const getTabs = (
   if (courseHaveRetakeExam) {
     tabs.push({
       id: 'retakeExam',
-      label: 'courses.exam.scoreAndDiploma',
+      label: courseIsSelfPaced
+        ? 'words.diploma'
+        : 'courses.exam.scoreAndDiploma',
       href: `/courses/${courseId}/retake-exam`,
       onlyForLoggedIn: true,
     });
@@ -58,7 +63,9 @@ export const getTabs = (
   if (courseHaveSingleTrialExamOrAssignment) {
     tabs.push({
       id: 'singleTrialExam',
-      label: 'courses.exam.scoreAndDiploma',
+      label: courseIsSelfPaced
+        ? 'words.diploma'
+        : 'courses.exam.scoreAndDiploma',
       href: `/courses/${courseId}/single-trial-exam`,
       onlyForLoggedIn: true,
     });
