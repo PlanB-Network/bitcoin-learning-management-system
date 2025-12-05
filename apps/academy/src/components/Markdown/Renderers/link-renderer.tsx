@@ -71,7 +71,7 @@ export const LinkRenderer: React.FC<LinkRendererProps> = (props) => {
     }
   }
 
-  // Auto-detect glossary links (both relative and absolute URLs)
+  // Detect glossary links (both relative and absolute URLs)
   const relativePath = href?.replace('https://planb.academy', '');
   const isGlossaryLink = relativePath?.startsWith('/resources/glossary/');
 
@@ -91,9 +91,6 @@ export const LinkRenderer: React.FC<LinkRendererProps> = (props) => {
   );
 };
 
-/**
- * Glossary link with tooltip showing definition
- */
 const GlossaryLink: React.FC<{ href: string; children: React.ReactNode }> = ({
   href,
   children,
@@ -102,10 +99,9 @@ const GlossaryLink: React.FC<{ href: string; children: React.ReactNode }> = ({
   const { glossaryMap } = useGlossary();
   const [mobileModalOpen, setMobileModalOpen] = useState(false);
 
-  // Extract term from URL: /resources/glossary/private-key -> private-key
+  // Extract term from URL
   const termSlug = href.split('/resources/glossary/')[1];
 
-  // Try to find the term in glossary map
   // Convert slug to possible term formats (private-key -> private key)
   const termFromSlug = termSlug?.replaceAll('-', ' ').toLowerCase();
   const glossaryWord = glossaryMap.get(termFromSlug ?? '');
@@ -121,7 +117,6 @@ const GlossaryLink: React.FC<{ href: string; children: React.ReactNode }> = ({
     </a>
   );
 
-  // If no glossary word found, just render the link
   if (!glossaryWord) {
     return link;
   }
