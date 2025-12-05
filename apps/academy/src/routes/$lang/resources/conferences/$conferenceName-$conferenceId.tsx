@@ -8,7 +8,6 @@ import { useTranslation } from 'react-i18next';
 import { TbBrandX, TbLink } from 'react-icons/tb';
 import { z } from 'zod';
 import { PageLayout } from '#src/components/page-layout.tsx';
-import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { resourceImgUrl, trpc } from '#src/utils/index.ts';
@@ -85,13 +84,6 @@ function Conference() {
     trpc.content.getConference.queryOptions({
       id: params.conferenceId,
       language: i18n.language ?? 'en',
-    }),
-  );
-
-  const { data: proofreading } = useQuery(
-    trpc.content.getProofreading.queryOptions({
-      language: i18n.language,
-      resourceId: params.conferenceId,
     }),
   );
 
@@ -178,19 +170,6 @@ function Conference() {
       )}
       {conference && (
         <>
-          {proofreading ? (
-            <ProofreadingProgress
-              mode="light"
-              proofreadingData={{
-                contributors: proofreading.contributorNames,
-                reward: proofreading.reward,
-              }}
-              isOriginalLanguage={false}
-            />
-          ) : (
-            <></>
-          )}
-
           <ResourceDetails
             title={conference.name}
             imgSrc={resourceImgUrl(conference)}

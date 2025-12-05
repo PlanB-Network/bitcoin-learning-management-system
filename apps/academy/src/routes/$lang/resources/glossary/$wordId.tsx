@@ -6,7 +6,6 @@ import React, { Suspense, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 import { PageLayout } from '#src/components/page-layout.tsx';
-import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { SearchInput } from '#src/components/search-input.tsx';
 import { cdnUrl } from '#src/utils/index.js';
 import { trpc } from '#src/utils/trpc.js';
@@ -54,18 +53,6 @@ function GlossaryWord() {
     }),
   );
 
-  const { data: proofreading } = useQuery(
-    trpc.content.getProofreading.queryOptions(
-      {
-        language: i18n.language,
-        resourceId: glossaryWord?.id,
-      },
-      {
-        enabled: isFetched,
-      },
-    ),
-  );
-
   const handleLetterSelection = (letter: string) => {
     setSelectedLetter(letter === selectedLetter ? null : letter);
   };
@@ -83,8 +70,6 @@ function GlossaryWord() {
       document.body.scrollTo({ behavior: 'smooth', top: 0 });
     }
   }, [glossaryWord, glossaryWords, isFetched]);
-  const isOriginalLanguage =
-    glossaryWord?.language === glossaryWord?.originalLanguage;
   return (
     <PageLayout
       title={isFetched ? glossaryWord?.term : t('resources.glossary.title')}
@@ -94,18 +79,6 @@ function GlossaryWord() {
       {!isFetched && <Loader size={'s'} />}
       {isFetched && (
         <>
-          {proofreading ? (
-            <ProofreadingProgress
-              isOriginalLanguage={isOriginalLanguage}
-              mode="light"
-              proofreadingData={{
-                contributors: proofreading.contributorNames,
-                reward: proofreading.reward,
-              }}
-            />
-          ) : (
-            <></>
-          )}
           <div className="flex flex-col w-full md:mt-4 mt-2">
             <Suspense fallback={<Loader size={'s'} />}>
               <GlossaryMarkdownBody

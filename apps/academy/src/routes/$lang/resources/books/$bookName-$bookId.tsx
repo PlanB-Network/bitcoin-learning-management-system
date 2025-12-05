@@ -6,7 +6,6 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 import { PageLayout } from '#src/components/page-layout.tsx';
-import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { assetUrl, trpc } from '#src/utils/index.js';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
@@ -47,13 +46,6 @@ function Book() {
   );
   const navigate = useNavigate();
 
-  const { data: proofreading } = useQuery(
-    trpc.content.getProofreading.queryOptions({
-      language: i18n.language,
-      resourceId: params.bookId,
-    }),
-  );
-
   const { data: suggestedBooks, isFetched: isFetchedSuggestedBooks } = useQuery(
     trpc.content.getBooks.queryOptions({}),
   );
@@ -89,16 +81,6 @@ function Book() {
       )}
       {book && (
         <div className="w-full">
-          {proofreading ? (
-            <ProofreadingProgress
-              isOriginalLanguage={true}
-              mode="light"
-              proofreadingData={{
-                contributors: proofreading.contributorNames,
-                reward: proofreading.reward,
-              }}
-            />
-          ) : null}
           <ResourceDetails
             title={book.title}
             subtitle={`${book.author} • ${book.publicationYear}`}

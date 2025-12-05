@@ -22,7 +22,6 @@ import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { PageLayout } from '#src/components/page-layout.tsx';
-import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { useGreater } from '#src/hooks/use-greater.js';
 import { CourseContext } from '#src/providers/courseContext.tsx';
@@ -506,16 +505,6 @@ function CourseChapter() {
     trpc.user.courses.completeChapter.mutationOptions(),
   );
 
-  const { data: proofreading } = useQuery(
-    trpc.content.getProofreading.queryOptions(
-      {
-        courseId: params.courseSlug,
-        language: i18n.language,
-      },
-      { enabled: !course?.requiresPayment },
-    ),
-  );
-
   const { data: quizzArray } = useQuery(
     trpc.content.getCourseChapterQuizQuestions.queryOptions({
       chapterId: params.chapterId,
@@ -618,9 +607,6 @@ function CourseChapter() {
 
   const isScreenSm = useGreater('sm');
 
-  const isOriginalLanguage =
-    i18n.language === chapter?.course?.originalLanguage;
-
   useEffect(() => {
     setIsContentExpanded(isScreenSm ? isScreenSm : false);
   }, [isScreenSm]);
@@ -654,19 +640,6 @@ function CourseChapter() {
       hideTitle
       tabs={course ? getTabs(course, courseProgress?.[0]) : []}
     >
-      {proofreading ? (
-        <ProofreadingProgress
-          isOriginalLanguage={isOriginalLanguage}
-          mode="light"
-          proofreadingData={{
-            contributors: proofreading.contributorNames,
-            reward: proofreading.reward,
-          }}
-        />
-      ) : (
-        <></>
-      )}
-
       <div className="text-black flex flex-col grow">
         {!isFetched && (
           <div className="flex flex-col flex-1 items-center size-full">

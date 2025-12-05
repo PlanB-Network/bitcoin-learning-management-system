@@ -8,7 +8,6 @@ import { TbBrandGithub, TbBrandX, TbLink } from 'react-icons/tb';
 import { z } from 'zod';
 import Nostr from '#src/assets/icons/nostr.svg?react';
 import { PageLayout } from '#src/components/page-layout.tsx';
-import { ProofreadingProgress } from '#src/components/proofreading-progress.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
 import { CourseCard } from '#src/patterns/course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
@@ -98,13 +97,6 @@ function Project() {
     }),
   );
 
-  const { data: proofreading } = useQuery(
-    trpc.content.getProofreading.queryOptions({
-      language: i18n.language,
-      resourceId: params.projectId,
-    }),
-  );
-
   const filteredCommunities = communities
     ? communities
         .filter(
@@ -138,7 +130,6 @@ function Project() {
       });
     }
   }, [project, isFetched, navigateTo404, navigate, params.projectName]);
-  const isOriginalLanguage = project?.language === project?.originalLanguage;
 
   return (
     <PageLayout
@@ -157,17 +148,6 @@ function Project() {
       )}
       {project && (
         <>
-          {proofreading ? (
-            <ProofreadingProgress
-              isOriginalLanguage={isOriginalLanguage}
-              mode="light"
-              proofreadingData={{
-                contributors: proofreading.contributorNames,
-                reward: proofreading.reward,
-              }}
-            />
-          ) : null}
-
           <ResourceDetails
             title={project.name}
             imgSrc={resourceImgUrl(project, 'logo.webp')}

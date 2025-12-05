@@ -14,10 +14,7 @@ import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
 import { AuthModalState } from '#src/components/AuthModals/props.js';
 import { AuthorCard } from '#src/components/author-card.tsx';
 import { PageLayout } from '#src/components/page-layout.tsx';
-import {
-  ProofreadingDesktop,
-  ProofreadingProgress,
-} from '#src/components/proofreading-progress.js';
+import { ProofreadingDesktop } from '#src/components/proofreading-progress.js';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
 import { AppContext } from '#src/providers/context.js';
@@ -429,7 +426,6 @@ function TutorialDetails() {
       </div>
     );
   };
-  const isOriginalLanguage = tutorial?.language === tutorial?.originalLanguage;
 
   return (
     <PageLayout
@@ -448,18 +444,6 @@ function TutorialDetails() {
             item: t('words.tutorial'),
           })}
         </div>
-      )}
-      {proofreading ? (
-        <ProofreadingProgress
-          isOriginalLanguage={isOriginalLanguage}
-          mode="light"
-          proofreadingData={{
-            contributors: proofreading.contributorNames,
-            reward: proofreading.reward,
-          }}
-        />
-      ) : (
-        <></>
       )}
       {tutorial && (
         <>
