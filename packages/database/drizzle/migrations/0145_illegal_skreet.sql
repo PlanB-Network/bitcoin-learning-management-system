@@ -1,0 +1,1 @@
+ALTER TYPE "public"."educator_content_status" ADD VALUE 'rejected';

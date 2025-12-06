@@ -10,6 +10,8 @@ import {
   CoursePaymentFormat,
   CoursePaymentMethod,
   CourseType,
+  EducatorContentStatus,
+  EducatorContentType,
   EventType,
   ExamType,
   GeneralPaymentItem,
@@ -213,11 +215,11 @@ export const usersCareerLanguages = users.table(
       }),
     level: careerLanguageLevelEnum().notNull(),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.careerProfileId, table.languageCode],
     }),
-  }),
+  ],
 );
 
 export const usersCareerRoles = users.table(
@@ -239,11 +241,11 @@ export const usersCareerRoles = users.table(
         onUpdate: 'cascade',
       }),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.careerProfileId, table.roleId],
     }),
-  }),
+  ],
 );
 
 export const usersCareerCompanySizes = users.table(
@@ -258,11 +260,11 @@ export const usersCareerCompanySizes = users.table(
       }),
     size: careerCompanySizeEnum().notNull(),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.careerProfileId, table.size],
     }),
-  }),
+  ],
 );
 
 export const usersLanguages = users.table('languages', (t) => ({
@@ -310,11 +312,11 @@ export const contentBlogsLocalized = content.table(
     rawContent: t.text().notNull(),
     title: t.text().notNull(),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.blogId, table.language],
     }),
-  }),
+  ],
 );
 
 export const contentBlogTags = content.table(
@@ -329,11 +331,11 @@ export const contentBlogTags = content.table(
       .notNull()
       .references(() => contentTags.id, { onDelete: 'cascade' }),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.blogId, table.tagId],
     }),
-  }),
+  ],
 );
 
 // LUD4 PUBLIC KEYS (LNURL)
@@ -413,11 +415,11 @@ export const usersBCertificateResults = users.table(
       .notNull()
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.uid, table.bCertificateExam, table.category],
     }),
-  }),
+  ],
 );
 
 export const usersBCertificateTimestamps = users.table(
@@ -443,11 +445,11 @@ export const usersBCertificateTimestamps = users.table(
       .notNull()
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.uid, table.bCertificateExam],
     }),
-  }),
+  ],
 );
 
 // RESOURCES
@@ -486,11 +488,11 @@ export const contentResourceTags = content.table(
       .notNull()
       .references(() => contentTags.id, { onDelete: 'cascade' }),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.resourceId, table.tagId],
     }),
-  }),
+  ],
 );
 
 // BET
@@ -527,11 +529,11 @@ export const contentBetViewUrl = content.table(
     language: t.text().notNull(),
     viewUrl: t.text().notNull(),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.betId, table.language],
     }),
-  }),
+  ],
 );
 
 export const contentBetLocalized = content.table(
@@ -550,11 +552,11 @@ export const contentBetLocalized = content.table(
     // Per translation
     name: t.text().notNull(),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.betId, table.language],
     }),
-  }),
+  ],
 );
 
 // BOOKS
@@ -601,11 +603,11 @@ export const contentBooksLocalized = content.table(
     title: t.text().notNull(),
     translator: t.text(),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.bookId, table.language],
     }),
-  }),
+  ],
 );
 
 // PROJECTS
@@ -645,11 +647,11 @@ export const contentProjectsLocalized = content.table(
       .notNull(),
     language: t.varchar({ length: 10 }).notNull(),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.id, table.language],
     }),
-  }),
+  ],
 );
 
 /**
@@ -740,9 +742,7 @@ export const contentLegals = content.table(
     name: t.varchar({ length: 255 }).notNull(),
     path: t.varchar({ length: 255 }).unique().notNull(),
   }),
-  (table) => ({
-    unqName: unique().on(table.name),
-  }),
+  (table) => [unique().on(table.name)],
 );
 
 export const contentLegalsLocalized = content.table(
@@ -756,11 +756,11 @@ export const contentLegalsLocalized = content.table(
     rawContent: t.text().notNull(),
     title: t.text().notNull(),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.id, table.language],
     }),
-  }),
+  ],
 );
 
 // MOVIES
@@ -874,11 +874,11 @@ export const contentGlossaryWordsLocalized = content.table(
     // Per translation
     term: t.text().notNull(),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.glossaryWordId, table.language],
     }),
-  }),
+  ],
 );
 
 // YOUTUBE CHANNELS
@@ -997,11 +997,11 @@ export const contentCoursesLocalized = content.table(
     objectives: t.text().array().notNull(),
     rawDescription: t.text().notNull(),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.courseId, table.language],
     }),
-  }),
+  ],
 );
 
 export const contentCourseParts = content.table(
@@ -1018,11 +1018,11 @@ export const contentCourseParts = content.table(
     partId: t.uuid().unique().notNull(),
     partIndex: t.integer().notNull(),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.courseId, table.partId],
     }),
-  }),
+  ],
 );
 
 export const contentCoursePartsLocalized = content.table(
@@ -1043,8 +1043,8 @@ export const contentCoursePartsLocalized = content.table(
       .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
     title: t.text().notNull(),
   }),
-  (table) => ({
-    fkCoursePartsLocalizedToCourseLocalized: foreignKey({
+  (table) => [
+    foreignKey({
       columns: [table.courseId, table.language],
       foreignColumns: [
         contentCoursesLocalized.courseId,
@@ -1052,15 +1052,15 @@ export const contentCoursePartsLocalized = content.table(
       ],
       name: 'course_parts_localized_to_course_localized_fk',
     }).onDelete('cascade'),
-    fkCoursePartsLocalizedToCourseParts: foreignKey({
+    foreignKey({
       columns: [table.courseId, table.partId],
       foreignColumns: [contentCourseParts.courseId, contentCourseParts.partId],
       name: 'course_parts_localized_to_course_parts_fk',
     }).onDelete('cascade'),
-    pk: primaryKey({
+    primaryKey({
       columns: [table.courseId, table.partId, table.language],
     }),
-  }),
+  ],
 );
 
 export const contentCourseChapters = content.table(
@@ -1081,16 +1081,16 @@ export const contentCourseChapters = content.table(
       .notNull()
       .references(() => contentCourseParts.partId, { onDelete: 'cascade' }),
   }),
-  (table) => ({
-    fkCourseChaptersToCourseParts: foreignKey({
+  (table) => [
+    foreignKey({
       columns: [table.courseId, table.partId],
       foreignColumns: [contentCourseParts.courseId, contentCourseParts.partId],
       name: 'course_chapters_to_course_parts_fk',
     }).onDelete('cascade'),
-    pk: primaryKey({
+    primaryKey({
       columns: [table.chapterId],
     }),
-  }),
+  ],
 );
 
 export const contentCourseChaptersLocalized = content.table(
@@ -1137,8 +1137,8 @@ export const contentCourseChaptersLocalized = content.table(
     timezone: t.text(),
     title: t.text().notNull(),
   }),
-  (table) => ({
-    fkCourseChaptersLocalizedToCourseLocalized: foreignKey({
+  (table) => [
+    foreignKey({
       columns: [table.courseId, table.language],
       foreignColumns: [
         contentCoursesLocalized.courseId,
@@ -1146,10 +1146,10 @@ export const contentCourseChaptersLocalized = content.table(
       ],
       name: 'course_chapters_localized_to_course_localized_fk',
     }).onDelete('cascade'),
-    pk: primaryKey({
+    primaryKey({
       columns: [table.courseId, table.chapterId, table.language],
     }),
-  }),
+  ],
 );
 
 export const contentCourseTags = content.table(
@@ -1167,11 +1167,11 @@ export const contentCourseTags = content.table(
       .notNull()
       .references(() => contentTags.id, { onDelete: 'cascade' }),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.courseId, table.tagId],
     }),
-  }),
+  ],
 );
 
 export const contentCoursesAssignment = content.table(
@@ -1244,11 +1244,11 @@ export const usersCoursePayment = users.table(
       .notNull()
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.uid, table.courseId, table.paymentId],
     }),
-  }),
+  ],
 );
 
 // COURSES PROGRESS
@@ -1278,13 +1278,13 @@ export const usersCourseUserChapter = users.table(
       .notNull()
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
   }),
-  (table) => ({
-    courseIdIdx: index().on(table.courseId),
-    pk: primaryKey({
+  (table) => [
+    index().on(table.courseId),
+    primaryKey({
       columns: [table.uid, table.courseId, table.chapterId],
     }),
-    uidIdx: index().on(table.uid),
-  }),
+    index().on(table.uid),
+  ],
 );
 
 export const usersCourseProgress = users.table(
@@ -1321,11 +1321,11 @@ export const usersCourseProgress = users.table(
       .notNull()
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.uid, table.courseId],
     }),
-  }),
+  ],
 );
 
 export const usersCourseReview = users.table(
@@ -1353,11 +1353,11 @@ export const usersCourseReview = users.table(
       .notNull()
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.uid, table.courseId],
     }),
-  }),
+  ],
 );
 
 // EVENTS
@@ -1399,6 +1399,84 @@ export const contentEvents = content.table('events', (t) => ({
   websiteUrl: t.text(),
 }));
 
+export const educatorContentTypeEnum = pgNativeEnum(
+  'educator_content_type',
+  EducatorContentType,
+);
+
+export const educatorContentStatusEnum = pgNativeEnum(
+  'educator_content_status',
+  EducatorContentStatus,
+);
+
+export const contentEducatorContents = content.table(
+  'educator_contents',
+  (t) => ({
+    id: t.uuid().primaryKey().defaultRandom().notNull(),
+    type: educatorContentTypeEnum().notNull(),
+    status: educatorContentStatusEnum()
+      .default(EducatorContentStatus.Draft)
+      .notNull(),
+    cover: t.uuid(),
+    language: t.varchar({ length: 10 }).notNull().default('en'),
+    title: t.text().notNull(),
+    description: t.text(),
+    originalId: t.uuid(),
+    publishedAt: t.timestamp(),
+    uid: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
+    downloads: t.integer().default(0).notNull(),
+  }),
+  (table) => [
+    foreignKey({
+      columns: [table.originalId],
+      foreignColumns: [table.id],
+      name: 'educator_contents_original_id_fk',
+    })
+      .onDelete('cascade')
+      .onUpdate('cascade'),
+  ],
+);
+
+export const contentEducatorContentLinks = content.table(
+  'educator_content_links',
+  (t) => ({
+    id: t.uuid().primaryKey().defaultRandom().notNull(),
+    educatorContentId: t
+      .uuid()
+      .notNull()
+      .references(() => contentEducatorContents.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
+    url: t.text().notNull(),
+    label: t.varchar({ length: 255 }),
+  }),
+);
+
+export const contentEducatorContentFiles = content.table(
+  'educator_content_files',
+  (t) => ({
+    id: t.uuid().primaryKey().defaultRandom().notNull(),
+    educatorContentId: t
+      .uuid()
+      .notNull()
+      .references(() => contentEducatorContents.id, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
+    // S3 Object Key
+    path: t.text().notNull(),
+
+    // Metadata
+    name: t.text().notNull(),
+    mimeType: t.varchar({ length: 100 }).notNull(),
+    size: t.integer().notNull(), // In bytes
+  }),
+);
+
 export const contentEventTags = content.table(
   'event_tags',
   (t) => ({
@@ -1414,11 +1492,11 @@ export const contentEventTags = content.table(
       .notNull()
       .references(() => contentTags.id, { onDelete: 'cascade' }),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.eventId, table.tagId],
     }),
-  }),
+  ],
 );
 
 export const contentEventLanguages = content.table(
@@ -1433,11 +1511,11 @@ export const contentEventLanguages = content.table(
       }),
     language: t.varchar({ length: 10 }).notNull(),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.eventId, table.language],
     }),
-  }),
+  ],
 );
 
 export const usersUserEvent = users.table(
@@ -1457,13 +1535,13 @@ export const usersUserEvent = users.table(
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
     withPhysical: t.boolean().default(false),
   }),
-  (table) => ({
-    eventIdIdx: index().on(table.eventId),
-    pk: primaryKey({
+  (table) => [
+    index().on(table.eventId),
+    primaryKey({
       columns: [table.uid, table.eventId],
     }),
-    uidIdx: index().on(table.uid),
-  }),
+    index().on(table.uid),
+  ],
 );
 
 export const usersEventPayment = users.table(
@@ -1495,11 +1573,11 @@ export const usersEventPayment = users.table(
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
     withPhysical: t.boolean().default(false),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.uid, table.eventId, table.paymentId],
     }),
-  }),
+  ],
 );
 
 // TUTORIALS
@@ -1549,11 +1627,11 @@ export const contentTutorialsLocalized = content.table(
         onDelete: 'cascade',
       }),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.tutorialId, table.language],
     }),
-  }),
+  ],
 );
 
 export const contentTutorialTags = content.table(
@@ -1570,11 +1648,11 @@ export const contentTutorialTags = content.table(
         onDelete: 'cascade',
       }),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.tutorialId, table.tagId],
     }),
-  }),
+  ],
 );
 
 export const contentTutorialLikesDislikes = content.table(
@@ -1592,11 +1670,11 @@ export const contentTutorialLikesDislikes = content.table(
       .notNull()
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }), // true = liked, false = disliked
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.tutorialId, table.uid],
     }),
-  }),
+  ],
 );
 
 // QUIZZES AND EXAMS
@@ -1648,11 +1726,11 @@ export const contentQuizQuestionsLocalized = content.table(
       .references(() => contentQuizQuestions.id, { onDelete: 'cascade' }),
     wrongAnswers: t.text().array().notNull(),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.quizQuestionId, table.language],
     }),
-  }),
+  ],
 );
 
 export const contentQuizAnswers = content.table(
@@ -1666,11 +1744,11 @@ export const contentQuizAnswers = content.table(
       .notNull()
       .references(() => contentQuizQuestions.id, { onDelete: 'cascade' }),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.quizQuestionId, table.order],
     }),
-  }),
+  ],
 );
 
 export const contentQuizAnswersLocalized = content.table(
@@ -1681,8 +1759,8 @@ export const contentQuizAnswersLocalized = content.table(
     quizQuestionId: t.uuid().notNull(),
     text: t.text().notNull(),
   }),
-  (table) => ({
-    parent: foreignKey({
+  (table) => [
+    foreignKey({
       columns: [table.quizQuestionId, table.order],
       foreignColumns: [
         contentQuizAnswers.quizQuestionId,
@@ -1690,10 +1768,10 @@ export const contentQuizAnswersLocalized = content.table(
       ],
       name: 'quiz_answers_localized_to_quiz_answers_fk',
     }).onDelete('cascade'),
-    pk: primaryKey({
+    primaryKey({
       columns: [table.quizQuestionId, table.order, table.language],
     }),
-  }),
+  ],
 );
 
 export const contentQuizQuestionTags = content.table(
@@ -1708,11 +1786,11 @@ export const contentQuizQuestionTags = content.table(
       .notNull()
       .references(() => contentTags.id, { onDelete: 'cascade' }),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.quizQuestionId, table.tagId],
     }),
-  }),
+  ],
 );
 
 export const usersExamQuestions = users.table('exam_questions', (t) => ({
@@ -1823,11 +1901,11 @@ export const usersQuizAttempts = users.table(
       .notNull()
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.uid, table.chapterId],
     }),
-  }),
+  ],
 );
 
 export const generalPaymentItemEnum = pgNativeEnum(
@@ -1859,11 +1937,11 @@ export const usersGeneralPayment = users.table(
       .notNull()
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.uid, table.item, table.paymentId],
     }),
-  }),
+  ],
 );
 
 // LABS
@@ -1961,11 +2039,11 @@ export const contentProfessorsLocalized = content.table(
       }),
     shortBio: t.text(),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.professorId, table.language],
     }),
-  }),
+  ],
 );
 
 export const contentProfessorTags = content.table(
@@ -1983,11 +2061,11 @@ export const contentProfessorTags = content.table(
       .notNull()
       .references(() => contentTags.id, { onDelete: 'cascade' }),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.professorId, table.tagId],
     }),
-  }),
+  ],
 );
 
 export const contentCourseProfessors = content.table(
@@ -2005,11 +2083,11 @@ export const contentCourseProfessors = content.table(
       onUpdate: 'cascade',
     }),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.courseId, table.professorId],
     }),
-  }),
+  ],
 );
 
 export const contentCourseChaptersLocalizedProfessors = content.table(
@@ -2033,8 +2111,8 @@ export const contentCourseChaptersLocalizedProfessors = content.table(
       onUpdate: 'cascade',
     }),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [
         table.professorId,
         table.courseId,
@@ -2042,7 +2120,7 @@ export const contentCourseChaptersLocalizedProfessors = content.table(
         table.language,
       ],
     }),
-  }),
+  ],
 );
 
 export const contentVideos = content.table('videos', (t) => ({
@@ -2067,11 +2145,11 @@ export const contentVideosLocalized = content.table(
     language: t.varchar({ length: 10 }).notNull(),
     provider: videoProviderEnum().notNull(),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.id, table.language, table.provider],
     }),
-  }),
+  ],
 );
 
 export const couponCode = content.table(
@@ -2089,9 +2167,7 @@ export const couponCode = content.table(
     }),
     uses: t.integer().default(0).notNull(),
   }),
-  (table) => ({
-    uniqueCodeItem: unique().on(table.code, table.itemId),
-  }),
+  (table) => [unique().on(table.code, table.itemId)],
 );
 
 /**
@@ -2178,11 +2254,11 @@ export const contentProofreadingContributor = content.table(
         onDelete: 'cascade',
       }),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.proofreadingId, table.contributorId],
     }),
-  }),
+  ],
 );
 
 export const notificationTypeEnum = pgNativeEnum(
@@ -2294,11 +2370,11 @@ export const contentCourseTranslations = content.table(
     createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
     updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.courseId, table.language],
     }),
-  }),
+  ],
 );
 
 export const contentCourseTranslationChapters = content.table(
@@ -2328,12 +2404,12 @@ export const contentCourseTranslationChapters = content.table(
     createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
     updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.courseId, table.language, table.partId, table.chapterId],
     }),
     // Foreign key to course_translations using composite key
-    translationFK: foreignKey({
+    foreignKey({
       columns: [table.courseId, table.language],
       foreignColumns: [
         contentCourseTranslations.courseId,
@@ -2341,7 +2417,7 @@ export const contentCourseTranslationChapters = content.table(
       ],
       name: 'course_translation_chapters_to_translations_fk',
     }).onDelete('cascade'),
-  }),
+  ],
 );
 
 // Users schema extensions for translation assignments and reviews
@@ -2376,14 +2452,10 @@ export const usersTranslationAssignments = users.table(
     completedAt: t.timestamp({ withTimezone: true }),
     rejectionReason: t.text(),
   }),
-  (table) => ({
-    uniqueAssignment: unique().on(
-      table.courseId,
-      table.language,
-      table.assigneeId,
-    ),
+  (table) => [
+    unique().on(table.courseId, table.language, table.assigneeId),
     // Foreign key to course_translations using composite key
-    translationFK: foreignKey({
+    foreignKey({
       columns: [table.courseId, table.language],
       foreignColumns: [
         contentCourseTranslations.courseId,
@@ -2391,7 +2463,7 @@ export const usersTranslationAssignments = users.table(
       ],
       name: 'translation_assignments_to_translations_fk',
     }).onDelete('cascade'),
-  }),
+  ],
 );
 
 export const usersTranslationChapterAssignments = users.table(
@@ -2437,8 +2509,8 @@ export const usersTranslationChapterAssignments = users.table(
     completedAt: t.timestamp({ withTimezone: true }),
     rejectionReason: t.text(),
   }),
-  (table) => ({
-    uniqueAssignment: unique().on(
+  (table) => [
+    unique().on(
       table.courseId,
       table.language,
       table.partId,
@@ -2446,7 +2518,7 @@ export const usersTranslationChapterAssignments = users.table(
       table.assigneeId,
     ),
     // Foreign key to course_translation_chapters using composite key
-    translationChapterFK: foreignKey({
+    foreignKey({
       columns: [table.courseId, table.language, table.partId, table.chapterId],
       foreignColumns: [
         contentCourseTranslationChapters.courseId,
@@ -2456,7 +2528,7 @@ export const usersTranslationChapterAssignments = users.table(
       ],
       name: 'translation_chapter_assignments_to_translation_chapters_fk',
     }).onDelete('cascade'),
-  }),
+  ],
 );
 
 export const usersTranslationReviews = users.table(
@@ -2482,14 +2554,10 @@ export const usersTranslationReviews = users.table(
     createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
     updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   }),
-  (table) => ({
-    uniqueTranslationReviewer: unique().on(
-      table.courseId,
-      table.language,
-      table.reviewerId,
-    ),
+  (table) => [
+    unique().on(table.courseId, table.language, table.reviewerId),
     // Foreign key to course_translations using composite key
-    translationFK: foreignKey({
+    foreignKey({
       columns: [table.courseId, table.language],
       foreignColumns: [
         contentCourseTranslations.courseId,
@@ -2497,7 +2565,7 @@ export const usersTranslationReviews = users.table(
       ],
       name: 'translation_reviews_to_translations_fk',
     }).onDelete('cascade'),
-  }),
+  ],
 );
 
 export const usersReviewerLanguages = users.table(
@@ -2517,11 +2585,11 @@ export const usersReviewerLanguages = users.table(
       }),
     proficiencyLevel: t.integer().default(1).notNull(),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [table.reviewerId, table.languageCode],
     }),
-  }),
+  ],
 );
 
 // Content upload table for course materials
@@ -2606,8 +2674,8 @@ export const contentCourseTranslationSlides = content.table(
     createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
     updatedAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   }),
-  (table) => ({
-    pk: primaryKey({
+  (table) => [
+    primaryKey({
       columns: [
         table.courseId,
         table.language,
@@ -2617,7 +2685,7 @@ export const contentCourseTranslationSlides = content.table(
       ],
     }),
     // Foreign key to course_translation_chapters using composite key
-    translationChapterFK: foreignKey({
+    foreignKey({
       columns: [table.courseId, table.language, table.partId, table.chapterId],
       foreignColumns: [
         contentCourseTranslationChapters.courseId,
@@ -2627,7 +2695,7 @@ export const contentCourseTranslationSlides = content.table(
       ],
       name: 'course_translation_slides_to_translation_chapters_fk',
     }).onDelete('cascade'),
-  }),
+  ],
 );
 
 // Translation jobs table for tracking upload and translation progress
@@ -2659,8 +2727,8 @@ export const contentTranslationJobs = content.table(
     completedAt: t.timestamp({ withTimezone: true }),
     lastUpdate: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   }),
-  (table) => ({
+  (table) => [
     // Unique constraint: only one active job per course and type
-    courseTypeUnique: unique().on(table.courseId, table.type),
-  }),
+    unique().on(table.courseId, table.type),
+  ],
 );

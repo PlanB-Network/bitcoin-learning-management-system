@@ -9,6 +9,7 @@ export type * from './channels.js';
 export type * from './conference.js';
 export type * from './coupon.js';
 export type * from './course.js';
+export type * from './educator-content.js';
 export type * from './event.js';
 export type * from './glossary.js';
 export type * from './lab.js';
