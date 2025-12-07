@@ -3,6 +3,10 @@ import fs from 'node:fs';
 import type { Readable } from 'node:stream';
 import { NoSuchKey } from '@blms/s3';
 import {
+  createGetEducatorContent,
+  createIncrementEducatorContentDownloads,
+} from '@blms/service-content';
+import {
   createExamTimestampService,
   createSetProfilePicture,
 } from '@blms/service-user';
@@ -122,6 +126,60 @@ const receivePdf = (req: Request) => {
   });
 };
 
+const receiveGenericFile = (req: Request) => {
+  return new Promise<{
+    stream: Readable;
+    mimetype: string;
+    originalFilename: string;
+  }>((resolve, reject) => {
+    const form = formidable({
+      multiples: false,
+    });
+
+    try {
+      form.parse<never, 'file'>(req, (err, _, files) => {
+        if (err) {
+          throw new InternalServerError('Failed to parse form data');
+        }
+
+        if (files.file?.length !== 1) {
+          throw new BadRequest('Invalid number of files');
+        }
+
+        const [file] = files.file;
+
+        // Sanity check
+        if (!req.session.uid) {
+          throw new InternalServerError('Missing session uid');
+        }
+
+        if (!file.mimetype) {
+          throw new InternalServerError('Missing file mimetype');
+        }
+
+        if (!file.originalFilename) {
+          throw new InternalServerError('Missing file name');
+        }
+
+        // Size limit (50MB)
+        if (file.size > 50 * 1024 * 1024) {
+          throw new BadRequest('File too large');
+        }
+
+        const fileStream = fs.createReadStream(file.filepath);
+        resolve({
+          stream: fileStream,
+          mimetype: file.mimetype,
+          originalFilename: file.originalFilename,
+        });
+      });
+    } catch (error) {
+      req.log('Error:', error);
+      reject(error);
+    }
+  });
+};
+
 export const createRestFilesRoutes = async (
   dependencies: Dependencies,
   router: Router,
@@ -151,6 +209,100 @@ export const createRestFilesRoutes = async (
         .catch(next);
     },
   );
+
+  router.post(
+    '/educator-content/cover',
+    expressAuthMiddleware,
+    (req, res, next) => {
+      const uid = req.session.uid;
+
+      // Sanity check
+      if (!uid) {
+        throw new InternalServerError('Missing session uid');
+      }
+
+      receiveImage(req, { width: 1200, height: 630, fit: 'cover' })
+        .then((stream) => {
+          const id = randomUUID();
+
+          return dependencies.s3
+            .upload(`contribute/cover/${id}`, stream, {
+              contentType: 'image/webp',
+            })
+            .then(() => id);
+        })
+        .then((fileId) => res.json({ id: fileId }))
+        .catch(next);
+    },
+  );
+
+  router.post(
+    '/educator-content/file',
+    expressAuthMiddleware,
+    (req, res, next) => {
+      const uid = req.session.uid;
+
+      // Sanity check
+      if (!uid) {
+        throw new InternalServerError('Missing session uid');
+      }
+
+      receiveGenericFile(req)
+        .then(({ stream, mimetype }) => {
+          const id = randomUUID();
+
+          return dependencies.s3
+            .upload(`contribute/educator-content/${id}`, stream, {
+              contentType: mimetype,
+            })
+            .then(() => id);
+        })
+        .then((fileId) => res.json({ id: fileId }))
+        .catch(next);
+    },
+  );
+
+  router.get('/educator-content/download-all/:id', async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const getEducatorContent = createGetEducatorContent(dependencies as any);
+      const content = await getEducatorContent(undefined, undefined, id);
+      const item = content[0];
+
+      if (!item || !item.files || item.files.length === 0) {
+        res.status(404).send('No files found');
+        return;
+      }
+
+      // Increment download count
+      const incrementDownloads = createIncrementEducatorContentDownloads(
+        dependencies as any,
+      );
+      await incrementDownloads(item.id);
+      const zip = new JSZip();
+      await Promise.all(
+        item.files.map(async (file) => {
+          const blob = await dependencies.s3.getBlob(
+            `contribute/educator-content/${file.path}`,
+          );
+          if (blob) {
+            zip.file(file.name, blob);
+          }
+        }),
+      );
+
+      res.setHeader('Content-Type', 'application/zip');
+      res.setHeader(
+        'Content-Disposition',
+        `attachment; filename="${item.title
+          .replace(/[^a-z0-9]/gi, '_')
+          .toLowerCase()}_files.zip"`,
+      );
+      zipStream(zip).pipe(res);
+    } catch (error) {
+      next(error);
+    }
+  });
 
   router.post('/career/cvs/:key', expressAuthMiddleware, (req, res, next) => {
     const { key } = req.params;
