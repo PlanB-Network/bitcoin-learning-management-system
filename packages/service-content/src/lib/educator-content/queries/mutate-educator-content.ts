@@ -105,7 +105,7 @@ export const updateEducatorContentQuery = (
         published_at = CASE WHEN ${input.status} = 'published' THEN NOW() ELSE published_at END
       WHERE id = ${input.id}
       ${input.uid ? sql`AND uid = ${input.uid}` : sql``}
-      RETURNING id, type, cover, language, title, description, uid, status
+      RETURNING id, type, cover, language, title, description, uid, status, original_id
     ),
     deleted_links AS (
       DELETE FROM content.educator_content_links
@@ -180,6 +180,12 @@ export const updateEducatorContentQuery = (
         WHERE if.educator_content_id = uc.id
       ) AS files
     FROM updated_content uc
-    GROUP BY uc.id, uc.type, uc.cover, uc.language, uc.title, uc.description, uc.uid, uc.status
+    GROUP BY uc.id, uc.type, uc.cover, uc.language, uc.title, uc.description, uc.uid, uc.status, uc.original_id
+  `;
+};
+export const deleteEducatorContentQuery = (id: string) => {
+  return sql`
+    DELETE FROM content.educator_contents
+    WHERE id = ${id}
   `;
 };

@@ -6,6 +6,7 @@ export const getEducatorContentQuery = (
   status?: string,
   id?: string,
   uid?: string,
+  originalId?: string,
 ) => {
   return sql<JoinedEducatorContent[]>`
     SELECT
@@ -59,6 +60,7 @@ export const getEducatorContentQuery = (
       AND ${status ? sql`ec.status = ${status}` : sql`TRUE`}
       AND ${id ? sql`ec.id = ${id}` : sql`TRUE`}
       AND ${uid ? sql`ec.uid = ${uid}` : sql`TRUE`}
+      AND ${originalId ? sql`ec.original_id = ${originalId}` : sql`TRUE`}
     GROUP BY ec.id, u.display_name
   `;
 };

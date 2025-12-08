@@ -1,7 +1,9 @@
 import { EducatorContentStatus, EducatorContentType } from '@blms/constants';
+import type { JoinedEducatorContent } from '@blms/types';
 import {
   BasicModal,
   Button,
+  cn,
   customToast,
   Field,
   FieldError,
@@ -23,10 +25,11 @@ import { useNavigate } from '@tanstack/react-router';
 import { useEffect, useRef, useState } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { BiPlus, BiTrash } from 'react-icons/bi';
+import { BiPlus, BiTrash, BiUpload } from 'react-icons/bi';
 import { BsFileEarmarkCheckFill, BsX } from 'react-icons/bs';
 import { z } from 'zod';
 import {
+  getEducatorContentCoverUrl,
   uploadEducatorContentCover,
   uploadEducatorContentFile,
 } from '#src/services/content.js';
@@ -37,7 +40,7 @@ import { EducatorContentSuccessModal } from './educator-content-success-modal.ts
 interface Props {
   isOpen: boolean;
   onClose: () => void;
-  initialData?: any; // Using any for now to avoid strict type issues with JoinedEducatorContent vs form values
+  initialData?: JoinedEducatorContent;
 }
 
 export const EducatorContentModal = ({
@@ -53,6 +56,10 @@ export const EducatorContentModal = ({
   const [newFiles, setNewFiles] = useState<File[]>([]);
   const [existingFiles, setExistingFiles] = useState<any[]>([]);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const [isCoverDragActive, setIsCoverDragActive] = useState(false);
+  const [isFilesDragActive, setIsFilesDragActive] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
   const coverInputRef = useRef<HTMLInputElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -61,7 +68,7 @@ export const EducatorContentModal = ({
 
   const formSchema = z.object({
     title: z.string().min(1, t('educatorContent.titleRequired')),
-    description: z.string().min(1, t('forms.required')),
+    description: z.string().min(1, t('educatorContent.descriptionRequired')),
     language: z.string().min(1, t('educatorContent.languageRequired')),
     type: z
       .enum(EducatorContentType)
@@ -92,16 +99,22 @@ export const EducatorContentModal = ({
 
   const prevIsOpen = useRef(isOpen);
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   useEffect(() => {
     if (isOpen && !prevIsOpen.current) {
       // Modal just opened
       if (initialData) {
         form.reset({
           title: initialData.title,
-          description: initialData.description,
+          description: initialData.description || '',
           language: initialData.language,
           type: initialData.type as EducatorContentType,
-          links: initialData.links || [],
+          links:
+            initialData.links?.map((link) => ({
+              ...link,
+              label: link.label || undefined,
+            })) || [],
         });
         setExistingFiles(initialData.files || []);
       } else {
@@ -117,13 +130,11 @@ export const EducatorContentModal = ({
       setCoverImage(null);
       setNewFiles([]);
       setIsSuccessModalOpen(false);
+      setImageError(false);
+      setIsSubmitting(false);
     } else if (isOpen && initialData && prevIsOpen.current) {
       // Modal is open and initialData changed (e.g. background update)
-      // Optional: decide if we want to update form values live.
-      // For now, let's NOT automatically overwrite form if user might be typing,
-      // UNLESS we want to reflect the "fresh" data after validation.
-      // But the loop issue was caused by setIsSuccessModalOpen(false) running here.
-      // So simply removing that call from this path fixes the loop.
+      setImageError(false);
     }
     prevIsOpen.current = isOpen;
   }, [isOpen, initialData, form]);
@@ -144,97 +155,164 @@ export const EducatorContentModal = ({
           queryKey: trpc.content.getEducatorContents.queryKey(),
         });
         setIsSuccessModalOpen(true);
+        setIsSubmitting(false);
       },
       onError: (error: any) => {
         customToast(error.message, { mode: 'light', color: 'warning' });
+        setIsSubmitting(false);
       },
     }),
   );
 
   const updateContentMutation = useMutation(
     trpc.content.updateEducatorContent.mutationOptions({
-      onSuccess: (data) => {
-        const newId = (data as any)?.[0]?.id;
-        if (newId) {
-          setCreatedContentId(newId);
-        }
+      onSuccess: () => {
         queryClient.invalidateQueries({
           queryKey: trpc.content.getEducatorContents.queryKey(),
         });
         setIsSuccessModalOpen(true);
+        setIsSubmitting(false);
       },
       onError: (error: any) => {
         customToast(error.message, { mode: 'light', color: 'warning' });
+        setIsSubmitting(false);
       },
     }),
   );
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    const uploadedFiles =
-      newFiles.length > 0
-        ? await Promise.all(
-            newFiles.map((file) =>
-              uploadEducatorContentFile(file).then((res) => ({
-                path: res.id,
-                name: file.name,
-                mime_type: file.type,
-                size: file.size,
-              })),
-            ),
-          )
-        : [];
+    setIsSubmitting(true);
+    try {
+      const uploadedFiles = [];
 
-    const allFiles = [
-      ...existingFiles.map((f) => ({
-        path: f.path,
-        name: f.name,
-        mime_type: f.mime_type || f.mimeType,
-        size: f.size,
-      })),
-      ...uploadedFiles,
-    ];
+      if (newFiles.length > 0) {
+        for (const file of newFiles) {
+          try {
+            const res = await uploadEducatorContentFile(file);
+            uploadedFiles.push({
+              path: res.id,
+              name: file.name,
+              mime_type: file.type,
+              size: file.size,
+            });
+          } catch (error) {
+            console.error('File upload failed', error);
+            throw new Error(`Failed to upload file: ${file.name}`);
+          }
+        }
+      }
 
-    const coverPath = coverImage
-      ? await uploadEducatorContentCover(coverImage).then((res) => res.id)
-      : initialData?.cover || undefined;
+      const allFiles = [
+        ...existingFiles.map((f) => ({
+          path: f.path,
+          name: f.name,
+          mime_type: f.mime_type || f.mimeType,
+          size: f.size,
+        })),
+        ...uploadedFiles,
+      ];
 
-    const commonData = {
-      ...values,
-      cover: coverPath,
-      files: allFiles,
-      links: (values.links?.filter((l) => l.url && l.label) || []) as Array<{
-        url: string;
-        label: string;
-      }>,
-    };
+      const coverPath = coverImage
+        ? await uploadEducatorContentCover(coverImage).then((res) => res.id)
+        : initialData?.cover || undefined;
 
-    if (isEditing) {
-      if (isPublished) {
-        // Create new draft linked to original
-        createContentMutation.mutate({
-          ...commonData,
-          status: EducatorContentStatus.Draft,
-          originalId: initialData.id,
-        } as any);
+      const commonData = {
+        ...values,
+        cover: coverPath,
+        files: allFiles,
+        links: (values.links?.filter((l) => l.url && l.label) || []) as Array<{
+          url: string;
+          label: string;
+        }>,
+      };
+
+      if (isEditing) {
+        if (isPublished) {
+          // Create new draft linked to original
+          await createContentMutation.mutateAsync({
+            ...commonData,
+            status: EducatorContentStatus.Draft,
+            originalId: initialData.id,
+          } as any);
+        } else {
+          // Update existing draft/rejected
+          await updateContentMutation.mutateAsync({
+            ...commonData,
+            id: initialData.id,
+            status: EducatorContentStatus.Draft,
+          } as any);
+        }
       } else {
-        // Update existing draft/rejected
-        updateContentMutation.mutate({
+        // Create new content
+        await createContentMutation.mutateAsync({
           ...commonData,
-          id: initialData.id,
           status: EducatorContentStatus.Draft,
         } as any);
       }
-    } else {
-      // Create new content
-      createContentMutation.mutate({
-        ...commonData,
-        status: EducatorContentStatus.Draft,
-      } as any);
+    } catch (error: any) {
+      customToast(error.message, { mode: 'light', color: 'warning' });
+      setIsSubmitting(false);
     }
   };
 
-  const isLoading =
-    createContentMutation.isPending || updateContentMutation.isPending;
+  const isLoading = isSubmitting;
+
+  // Drag and drop handlers
+  const [previewUrl, setPreviewUrl] = useState<string>('');
+  const activePreviewUrlRef = useRef<string>('');
+
+  useEffect(() => {
+    if (coverImage) {
+      const url = URL.createObjectURL(coverImage);
+      setPreviewUrl(url);
+      activePreviewUrlRef.current = url;
+      setImageError(false);
+      return () => URL.revokeObjectURL(url);
+    }
+    const defaultUrl = getEducatorContentCoverUrl(initialData?.cover) || '';
+    setPreviewUrl(defaultUrl);
+    activePreviewUrlRef.current = defaultUrl;
+    setImageError(false);
+  }, [coverImage, initialData?.cover]);
+
+  const handleDrag = (
+    e: React.DragEvent,
+    setIsDragActive: (active: boolean) => void,
+  ) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === 'dragenter' || e.type === 'dragover') {
+      setIsDragActive(true);
+    } else if (e.type === 'dragleave') {
+      // Prevent flickering when dragging over child elements
+      if (
+        e.relatedTarget &&
+        (e.currentTarget as HTMLElement).contains(e.relatedTarget as Node)
+      ) {
+        return;
+      }
+      setIsDragActive(false);
+    }
+  };
+
+  const handleCoverDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsCoverDragActive(false);
+    setImageError(false);
+
+    if (e.dataTransfer.files?.[0]) {
+      const file = e.dataTransfer.files[0];
+      if (file.type.startsWith('image/')) {
+        setCoverImage(file);
+      } else {
+        customToast(t('educatorContent.onlyImages'), {
+          mode: 'light',
+          color: 'warning',
+        });
+      }
+    }
+  };
 
   if (isSuccessModalOpen) {
     return (
@@ -392,36 +470,77 @@ export const EducatorContentModal = ({
 
         <div className="space-y-4">
           <h3 className="font-semibold">{t('educatorContent.imageCover')}</h3>
-          <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center text-center">
-            <p className="mb-4 text-sm text-gray-500">
-              {t('educatorContent.dropCover')}
-            </p>
+          <div
+            className={cn(
+              'border-2 border-dashed rounded-xl p-8 flex flex-col items-center justify-center text-center transition-colors relative overflow-hidden',
+              isCoverDragActive
+                ? 'border-primary-400 bg-primary-50'
+                : 'border-newGray-400 bg-white',
+            )}
+            onDragEnter={(e) => handleDrag(e, setIsCoverDragActive)}
+            onDragLeave={(e) => handleDrag(e, setIsCoverDragActive)}
+            onDragOver={(e) => handleDrag(e, setIsCoverDragActive)}
+            onDrop={handleCoverDrop}
+          >
+            {previewUrl && !imageError ? (
+              <>
+                <div className="w-full h-48 mb-4 relative rounded-lg overflow-hidden">
+                  <img
+                    src={previewUrl}
+                    alt="Cover preview"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      if (e.currentTarget.src === activePreviewUrlRef.current) {
+                        setImageError(true);
+                      }
+                    }}
+                  />
+                </div>
+                <Button
+                  type="button"
+                  variant="primary"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    coverInputRef.current?.click();
+                  }}
+                  className="w-32 z-10"
+                >
+                  {t('forms.replace')}
+                </Button>
+              </>
+            ) : (
+              <>
+                <div className="bg-white border rounded shadow-sm p-2 mb-4">
+                  <BiUpload size={24} className="text-gray-400" />
+                </div>
+                <p className="mb-2 text-sm font-medium text-gray-900">
+                  {t('educatorContent.dropCover')}
+                </p>
+                <p className="text-xs text-gray-500 mb-6">
+                  {t('educatorContent.browseImages')}
+                </p>
+                <Button
+                  type="button"
+                  variant="primary"
+                  onClick={() => coverInputRef.current?.click()}
+                  className="w-32"
+                >
+                  {t('forms.browse')}
+                </Button>
+              </>
+            )}
             <input
               type="file"
               accept="image/*"
               ref={coverInputRef}
               className="hidden"
               onChange={(e) => {
-                if (e.target.files?.[0]) setCoverImage(e.target.files[0]);
+                if (e.target.files?.[0]) {
+                  setCoverImage(e.target.files[0]);
+                  setImageError(false);
+                }
               }}
             />
-            <Button
-              type="button"
-              variant="secondary"
-              onClick={() => coverInputRef.current?.click()}
-            >
-              {coverImage || initialData?.cover
-                ? t('words.replace')
-                : t('words.browse')}
-            </Button>
-            {coverImage && (
-              <p className="mt-2 text-sm text-green-600">{coverImage.name}</p>
-            )}
-            {!coverImage && initialData?.cover && (
-              <p className="mt-2 text-sm text-gray-500">
-                Current cover present
-              </p>
-            )}
           </div>
         </div>
 
@@ -475,10 +594,56 @@ export const EducatorContentModal = ({
 
         <div className="space-y-4">
           <h3 className="font-semibold">{t('educatorContent.uploadFiles')}</h3>
-          <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center text-center">
-            <p className="mb-4 text-sm text-gray-500">
+          <div
+            className={cn(
+              'border-2 border-dashed rounded-xl p-8 flex flex-col items-center justify-center text-center transition-colors',
+              isFilesDragActive
+                ? 'border-primary-400 bg-primary-50'
+                : 'border-newGray-400 bg-white',
+            )}
+            onDragEnter={(e) => handleDrag(e, setIsFilesDragActive)}
+            onDragLeave={(e) => handleDrag(e, setIsFilesDragActive)}
+            onDragOver={(e) => handleDrag(e, setIsFilesDragActive)}
+            onDrop={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setIsFilesDragActive(false);
+              if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                const droppedFiles = Array.from(e.dataTransfer.files);
+                const validFiles = droppedFiles.filter((file) => {
+                  if (file.size > 50 * 1024 * 1024) {
+                    customToast(t('educatorContent.fileTooLarge'), {
+                      mode: 'light',
+                      color: 'warning',
+                    });
+                    return false;
+                  }
+                  return true;
+                });
+                setNewFiles((prev) => [...prev, ...validFiles]);
+              }
+            }}
+          >
+            <div className="bg-white border rounded shadow-sm p-2 mb-4">
+              <BiUpload size={24} className="text-gray-400" />
+            </div>
+            <p className="mb-2 text-sm font-medium text-gray-900">
               {t('educatorContent.dropFiles')}
             </p>
+            <p className="text-xs text-gray-500 mb-6">
+              {t('educatorContent.browseFiles')}
+            </p>
+            <Button
+              type="button"
+              variant="primary"
+              onClick={(e) => {
+                e.stopPropagation();
+                fileInputRef.current?.click();
+              }}
+              className="w-32"
+            >
+              {t('forms.browse')}
+            </Button>
             <input
               type="file"
               ref={fileInputRef}
@@ -486,23 +651,26 @@ export const EducatorContentModal = ({
               multiple
               onChange={(e) => {
                 if (e.target.files) {
-                  setNewFiles((prev) => [
-                    ...prev,
-                    ...Array.from(e.target.files!),
-                  ]);
+                  const selectedFiles = Array.from(e.target.files);
+                  const validFiles = selectedFiles.filter((file) => {
+                    if (file.size > 50 * 1024 * 1024) {
+                      customToast(t('educatorContent.fileTooLarge'), {
+                        mode: 'light',
+                        color: 'warning',
+                      });
+                      return false;
+                    }
+                    return true;
+                  });
+                  setNewFiles((prev) => [...prev, ...validFiles]);
                 }
               }}
             />
-            <Button
-              type="button"
-              variant="secondary"
-              onClick={() => fileInputRef.current?.click()}
-            >
-              {t('words.browse')}
-            </Button>
-            <p className="mt-2 text-xs text-gray-400">
-              Supported file types: .png, .pdf, .jpg
-            </p>
+          </div>
+
+          <div className="flex justify-between items-center mt-2 mb-4 text-xs text-gray-400">
+            {/* <p>Supported file types: .png, .pdf, .jpg</p> */}
+            <p>Max file size: 50MB</p>
           </div>
 
           {(existingFiles.length > 0 || newFiles.length > 0) && (
@@ -512,11 +680,11 @@ export const EducatorContentModal = ({
                   key={`existing-${file.name}-${index}`}
                   className="flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg shadow-sm"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                  <div className="flex items-center gap-3 overflow-hidden">
+                    <div className="w-8 h-8 rounded-full bg-green-100 shrink-0 flex items-center justify-center text-green-600">
                       <BsFileEarmarkCheckFill size={16} />
                     </div>
-                    <span className="text-sm font-medium text-gray-700">
+                    <span className="text-sm font-medium text-gray-700 truncate">
                       {file.name} (Existing)
                     </span>
                   </div>
@@ -527,7 +695,7 @@ export const EducatorContentModal = ({
                         prev.filter((_, i) => i !== index),
                       );
                     }}
-                    className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+                    className="p-1 hover:bg-gray-100 rounded-full transition-colors shrink-0"
                   >
                     <BsX size={20} className="text-gray-400" />
                   </button>
@@ -538,11 +706,11 @@ export const EducatorContentModal = ({
                   key={`new-${file.name}-${index}`}
                   className="flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg shadow-sm"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                  <div className="flex items-center gap-3 overflow-hidden">
+                    <div className="w-8 h-8 rounded-full bg-blue-100 shrink-0 flex items-center justify-center text-blue-600">
                       <BsFileEarmarkCheckFill size={16} />
                     </div>
-                    <span className="text-sm font-medium text-gray-700">
+                    <span className="text-sm font-medium text-gray-700 truncate">
                       {file.name} (New)
                     </span>
                   </div>
@@ -551,7 +719,7 @@ export const EducatorContentModal = ({
                     onClick={() => {
                       setNewFiles((prev) => prev.filter((_, i) => i !== index));
                     }}
-                    className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+                    className="p-1 hover:bg-gray-100 rounded-full transition-colors shrink-0"
                   >
                     <BsX size={20} className="text-gray-400" />
                   </button>
@@ -568,12 +736,9 @@ export const EducatorContentModal = ({
           disabled={isLoading}
         >
           {isLoading
-            ? t('words.loading')
+            ? t('educatorContent.uploading')
             : isEditing
-              ? t(
-                  'educatorContent.editAndRequireApproval',
-                  'Edit and require approval',
-                )
+              ? t('educatorContent.editAndRequireApproval')
               : t('educatorContent.uploadForReview')}
         </Button>
       </form>

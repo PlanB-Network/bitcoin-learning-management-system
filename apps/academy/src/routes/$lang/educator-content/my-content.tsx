@@ -3,10 +3,11 @@ import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link, useParams } from '@tanstack/react-router';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { TbChevronRight } from 'react-icons/tb';
+import { TbChevronRight, TbDownload } from 'react-icons/tb';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { getEducatorContentCoverUrl } from '#src/services/content.js';
 import { trpc } from '#src/utils/trpc.js';
@@ -44,6 +45,8 @@ function MyContent() {
       },
     ),
   );
+
+  const isMobile = useSmaller('lg');
 
   const handleAddContentClick = () => {
     if (isLoggedIn) {
@@ -122,10 +125,10 @@ function MyContent() {
               to="/$lang/educator-content/$id"
               params={{ lang: i18n.language, id: item.id }}
               key={item.id}
-              className="flex items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-pointer"
+              className="flex gap-2 md:gap-6 items-center pr-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-pointer"
             >
               {/* Thumbnail */}
-              <div className="w-16 h-16 bg-gray-200 rounded mr-4 shrink-0 overflow-hidden flex items-center justify-center">
+              <div className="w-48 h-24 bg-gray-200 rounded-lg shrink-0 overflow-hidden flex items-center justify-center">
                 {item.cover ? (
                   <img
                     src={getEducatorContentCoverUrl(item.cover) || ''}
@@ -137,10 +140,13 @@ function MyContent() {
                 )}
               </div>
               {/* Content */}
-              <div className="grow">
-                <h3 className="font-semibold text-lg">{item.title}</h3>
-                <div className="text-xs text-gray-400 mt-1 flex gap-2 capitalize">
-                  <span>{item.type}</span>
+              <div className="grow flex flex-col justify-center gap-2">
+                <h3 className="font-semibold text-xl text-gray-900">
+                  {item.title}
+                </h3>
+                <div className="text-sm text-gray-500 flex items-center gap-2">
+                  <TbDownload size={16} />
+                  <span>{item.downloads}</span>
                 </div>
               </div>
               {/* Status */}
@@ -155,8 +161,8 @@ function MyContent() {
                 </span>
               </div>
               {/* Arrow */}
-              <div className="text-gray-400">
-                <TbChevronRight size={24} />
+              <div className="text-neutral-300">
+                <TbChevronRight size={isMobile ? 16 : 24} />
               </div>
             </Link>
           ))}
