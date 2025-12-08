@@ -41,12 +41,14 @@ interface Props {
   isOpen: boolean;
   onClose: () => void;
   initialData?: JoinedEducatorContent;
+  isAdmin?: boolean;
 }
 
 export const EducatorContentModal = ({
   isOpen,
   onClose,
   initialData,
+  isAdmin = false,
 }: Props) => {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
@@ -180,6 +182,22 @@ export const EducatorContentModal = ({
     }),
   );
 
+  const adminUpdateContentMutation = useMutation(
+    trpc.content.adminUpdateEducatorContent.mutationOptions({
+      onSuccess: () => {
+        queryClient.invalidateQueries({
+          queryKey: trpc.content.getEducatorContents.queryKey(),
+        });
+        onClose();
+        setIsSubmitting(false);
+      },
+      onError: (error: any) => {
+        customToast(error.message, { mode: 'light', color: 'warning' });
+        setIsSubmitting(false);
+      },
+    }),
+  );
+
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsSubmitting(true);
     try {
@@ -226,7 +244,12 @@ export const EducatorContentModal = ({
         }>,
       };
 
-      if (isEditing) {
+      if (isAdmin && isEditing) {
+        await adminUpdateContentMutation.mutateAsync({
+          ...commonData,
+          id: initialData.id,
+        } as any);
+      } else if (isEditing) {
         if (isPublished) {
           // Create new draft linked to original
           await createContentMutation.mutateAsync({
@@ -338,7 +361,7 @@ export const EducatorContentModal = ({
       onOpenChange={onClose}
       title={
         isEditing
-          ? t('educatorContent.editMaterial', 'Edit Material')
+          ? t('educatorContent.editMaterial')
           : t('educatorContent.addMaterial')
       }
       contentClassName="max-w-[600px]"
@@ -738,7 +761,9 @@ export const EducatorContentModal = ({
           {isLoading
             ? t('educatorContent.uploading')
             : isEditing
-              ? t('educatorContent.editAndRequireApproval')
+              ? isAdmin
+                ? t('words.edit')
+                : t('educatorContent.editAndRequireApproval')
               : t('educatorContent.uploadForReview')}
         </Button>
       </form>

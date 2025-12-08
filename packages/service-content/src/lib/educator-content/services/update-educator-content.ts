@@ -8,7 +8,9 @@ import {
 } from '../queries/mutate-educator-content.js';
 
 export const createUpdateEducatorContent = ({ postgres }: Dependencies) => {
-  return async (input: Partial<JoinedEducatorContent> & { id: string }) => {
+  return async (
+    input: Partial<JoinedEducatorContent> & { id: string; uid?: string },
+  ) => {
     const [content] = await postgres.exec(
       updateEducatorContentQuery(input as any),
     );

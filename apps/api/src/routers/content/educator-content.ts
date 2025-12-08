@@ -11,6 +11,7 @@ import {
 import type { JoinedEducatorContent } from '@blms/types';
 import { z } from 'zod';
 import {
+  adminProcedure,
   professorProcedure,
   publicProcedure,
   studentProcedure,
@@ -121,6 +122,47 @@ export const educatorContentRouter = createTRPCRouter({
       return updateEducatorContent({
         ...input,
         uid: ctx.user.uid,
+        cover: input.cover ?? undefined,
+        description: input.description ?? undefined,
+      } as any);
+    }),
+
+  adminUpdateEducatorContent: adminProcedure
+    .input(
+      z.object({
+        id: z.string(),
+        type: z.enum(EducatorContentType).optional(),
+        cover: z.string().optional(),
+        language: z.string().optional(),
+        title: z.string().optional(),
+        description: z.string().optional(),
+        status: z.enum(EducatorContentStatus).optional(),
+        links: z
+          .array(
+            z.object({
+              url: z.string(),
+              label: z.string(),
+            }),
+          )
+          .optional(),
+        files: z
+          .array(
+            z.object({
+              path: z.string(),
+              name: z.string(),
+              mime_type: z.string(),
+              size: z.number(),
+            }),
+          )
+          .optional(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      const updateEducatorContent = createUpdateEducatorContent(
+        ctx.dependencies,
+      );
+      return updateEducatorContent({
+        ...input,
         cover: input.cover ?? undefined,
         description: input.description ?? undefined,
       } as any);

@@ -1,22 +1,35 @@
-import { EducatorContentStatus } from '@blms/constants';
+import { EducatorContentStatus, EducatorContentType } from '@blms/constants';
 import {
   Button,
+  cn,
   Dialog,
   DialogContent,
   DialogTitle,
+  DropdownMenu,
+  EmptyState,
   Loader,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
+  SegmentedControl,
+  SegmentedControlItem,
 } from '@blms/ui';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
-import { useState } from 'react';
-import { TbCheck, TbTrash } from 'react-icons/tb';
+import { capitalize } from 'lodash-es';
+import { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import {
+  TbAdjustmentsHorizontal,
+  TbCheck,
+  TbSearch,
+  TbTrash,
+  TbX,
+} from 'react-icons/tb';
 
 import { PageLayout } from '#src/components/page-layout.tsx';
+import { SearchInput } from '#src/components/search-input.tsx';
+
+import { EducatorContentModal } from '#src/routes/$lang/educator-content/-components/educator-content-modal.tsx';
 import { getEducatorContentCoverUrl } from '#src/services/content.js';
+import { getLanguageName, LANGUAGES } from '#src/utils/i18n.ts';
 import { trpc } from '#src/utils/trpc.js';
 
 export const Route = createFileRoute(
@@ -26,8 +39,21 @@ export const Route = createFileRoute(
 });
 
 function AdminEducatorContent() {
+  const { t } = useTranslation();
+
   const [selectedContent, setSelectedContent] = useState<any>(null);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [currentTab, setCurrentTab] = useState('review');
+
+  // Filters state
+  const [selectedType, setSelectedType] = useState<EducatorContentType | 'all'>(
+    'all',
+  );
+  const [selectedLanguage, setSelectedLanguage] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [sortBy, setSortBy] = useState<'recent' | 'downloads'>('recent');
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const { data: draftContent, isLoading: isLoadingDraft } = useQuery(
     trpc.content.getEducatorContents.queryOptions({
@@ -82,6 +108,68 @@ function AdminEducatorContent() {
     }
   };
 
+  const newContent = useMemo(
+    () => draftContent?.filter((item) => !item.originalId) || [],
+    [draftContent],
+  );
+
+  const modifiedContent = useMemo(
+    () => draftContent?.filter((item) => item.originalId) || [],
+    [draftContent],
+  );
+
+  const filteredPublishedContent = useMemo(() => {
+    if (!publishedContent) return [];
+    const filtered = publishedContent.filter((item) => {
+      const matchesType = selectedType === 'all' || item.type === selectedType;
+      const matchesLanguage =
+        selectedLanguage === 'all' || item.language === selectedLanguage;
+      const matchesSearch =
+        item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.description?.toLowerCase().includes(searchQuery.toLowerCase());
+
+      return matchesType && matchesLanguage && matchesSearch;
+    });
+
+    return filtered.sort((a, b) => {
+      if (sortBy === 'recent') {
+        const dateA = a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
+        const dateB = b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
+        return dateB - dateA;
+      }
+      if (sortBy === 'downloads') {
+        return (b.downloads || 0) - (a.downloads || 0);
+      }
+      return 0;
+    });
+  }, [publishedContent, selectedType, selectedLanguage, searchQuery, sortBy]);
+
+  const types = [
+    {
+      id: 'all',
+      name: 'All',
+      onClick: () => setSelectedType('all'),
+    },
+    ...Object.values(EducatorContentType).map((type) => ({
+      id: type,
+      name: capitalize(type),
+      onClick: () => setSelectedType(type),
+    })),
+  ];
+
+  const languages = [
+    {
+      id: 'all',
+      name: 'All',
+      onClick: () => setSelectedLanguage('all'),
+    },
+    ...LANGUAGES.map((lang) => ({
+      id: lang,
+      name: capitalize(getLanguageName(lang)),
+      onClick: () => setSelectedLanguage(lang),
+    })),
+  ];
+
   const ContentList = ({
     items,
     isDraft,
@@ -89,7 +177,7 @@ function AdminEducatorContent() {
     items: any[];
     isDraft: boolean;
   }) => (
-    <div className="flex flex-col gap-4 mt-6">
+    <div className="flex flex-col gap-4">
       {items?.map((item) => (
         <div
           key={item.id}
@@ -115,15 +203,19 @@ function AdminEducatorContent() {
           <div>
             {isDraft ? (
               <Button
-                variant="outline"
+                variant="tertiary"
                 size="s"
                 onClick={() => handlePreview(item)}
               >
                 {item.originalId ? 'Preview changes' : 'Preview for approval'}
               </Button>
             ) : (
-              <Button variant="outline" size="s" disabled>
-                Approved
+              <Button
+                variant="tertiary"
+                size="s"
+                onClick={() => handlePreview(item)}
+              >
+                Edit
               </Button>
             )}
           </div>
@@ -137,71 +229,155 @@ function AdminEducatorContent() {
       <div className="w-full flex flex-col gap-6">
         <h1 className="text-2xl font-bold">Review Educator Content</h1>
 
-        <Tabs defaultValue="review" className="w-full">
-          <TabsList className="w-full justify-start border-b border-gray-200 bg-transparent p-0">
-            <TabsTrigger
-              value="review"
-              className="data-[state=active]:border-b-2 data-[state=active]:border-orange-500 data-[state=active]:text-orange-500 rounded-none px-4 py-2"
-            >
-              To review
-              {draftContent && draftContent.length > 0 && (
-                <span className="ml-2 bg-orange-500 text-white text-xs rounded-full px-2 py-0.5">
-                  {draftContent.length}
-                </span>
-              )}
-            </TabsTrigger>
-            <TabsTrigger
-              value="approved"
-              className="data-[state=active]:border-b-2 data-[state=active]:border-orange-500 data-[state=active]:text-orange-500 rounded-none px-4 py-2"
-            >
-              Approved
-            </TabsTrigger>
-          </TabsList>
+        <SegmentedControl
+          variant="outline"
+          value={currentTab}
+          onValueChange={setCurrentTab}
+          className="w-full"
+        >
+          <SegmentedControlItem value="review" className="w-full">
+            To review
+            {draftContent && draftContent.length > 0 && (
+              <span className="ml-2 bg-orange-500 text-white text-xs rounded-full px-2 py-0.5">
+                {draftContent.length}
+              </span>
+            )}
+          </SegmentedControlItem>
+          <SegmentedControlItem value="approved" className="w-full">
+            Approved
+          </SegmentedControlItem>
+        </SegmentedControl>
 
-          <TabsContent value="review">
-            {isLoadingDraft ? (
-              <Loader />
-            ) : (
-              <div className="flex flex-col gap-8">
-                {/* New Content Section */}
-                <div className="flex flex-col gap-4">
+        {currentTab === 'review' ? (
+          isLoadingDraft ? (
+            <Loader />
+          ) : (
+            <div className="flex flex-col gap-8">
+              {!newContent.length && !modifiedContent.length && (
+                <EmptyState title={t('educatorContent.noContentToReview')} />
+              )}
+              {/* New Content Section */}
+              {newContent.length > 0 && (
+                <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-green-500" />
-                    <h2 className="text-xl font-semibold">New</h2>
+                    <h2 className="title-medium">New</h2>
                   </div>
-                  <ContentList
-                    items={
-                      draftContent?.filter((item) => !item.originalId) || []
-                    }
-                    isDraft={true}
-                  />
+                  <ContentList items={newContent} isDraft={true} />
                 </div>
+              )}
 
-                {/* Modified Content Section */}
-                <div className="flex flex-col gap-4">
+              {/* Modified Content Section */}
+              {modifiedContent.length > 0 && (
+                <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-orange-500" />
-                    <h2 className="text-xl font-semibold">Modified</h2>
+                    <h2 className="title-medium">Modified</h2>
                   </div>
-                  <ContentList
-                    items={
-                      draftContent?.filter((item) => item.originalId) || []
-                    }
-                    isDraft={true}
-                  />
+                  <ContentList items={modifiedContent} isDraft={true} />
                 </div>
-              </div>
-            )}
-          </TabsContent>
+              )}
+            </div>
+          )
+        ) : isLoadingPublished ? (
+          <Loader />
+        ) : (
+          <>
+            {/* Mobile Search filter */}
+            <div
+              className={cn(
+                'flex items-center gap-2 w-full justify-end my-2 mb-6 lg:hidden',
+              )}
+            >
+              <SearchInput
+                searchTerm={searchQuery}
+                setSearchTerm={setSearchQuery}
+              />
+              <button
+                onClick={() => setIsFilterOpen((prev) => !prev)}
+                className="p-2 rounded-lg bg-neutral-50 text-neutral-400 flex items-center gap-2"
+                type="button"
+              >
+                <span className="body-base">{t('words.filters')}</span>
+                {isFilterOpen ? (
+                  <TbX size={16} />
+                ) : (
+                  <TbAdjustmentsHorizontal size={16} />
+                )}
+              </button>
+            </div>
 
-          <TabsContent value="approved">
-            {isLoadingPublished ? (
-              <Loader />
-            ) : (
-              <ContentList items={publishedContent || []} isDraft={false} />
-            )}
-          </TabsContent>
-        </Tabs>
+            {/* Filters */}
+            <div
+              className={cn(
+                'lg:ml-auto flex max-lg:flex-col gap-1 lg:gap-2 lg:max-w-190 lg:w-full',
+                'max-lg:p-2 max-lg:rounded-lg max-lg:w-full max-lg:max-w-90',
+                'max-lg:mx-auto lg:mt-4 mt-8 mb-8',
+                isFilterOpen ? '' : 'max-lg:hidden',
+              )}
+            >
+              <div className="lg:hidden flex justify-between items-center w-full mb-1 px-1">
+                <span className="body-small-bold text-neutral-700">
+                  {t('words.filters')}
+                </span>
+              </div>
+              <DropdownMenu
+                activeItem={
+                  types.find((t) => t.id === selectedType)?.name || 'Type'
+                }
+                itemsList={types.filter((t) => t.id !== selectedType)}
+                variant="light"
+                placeholder="Type"
+                forcePlaceholder={selectedType === 'all'}
+              />
+              <DropdownMenu
+                activeItem={
+                  languages.find((l) => l.id === selectedLanguage)?.name ||
+                  'Language'
+                }
+                itemsList={languages.filter((l) => l.id !== selectedLanguage)}
+                variant="light"
+                placeholder="Language"
+                forcePlaceholder={selectedLanguage === 'all'}
+              />
+              <SearchInput
+                searchTerm={searchQuery}
+                setSearchTerm={setSearchQuery}
+                className="max-lg:hidden"
+              />
+            </div>
+
+            <div className="flex w-full justify-end items-center gap-2 max-lg:hidden mb-6">
+              <span className="text-sm text-gray-500">Sort by</span>
+              <button
+                type="button"
+                onClick={() =>
+                  setSortBy((prev) =>
+                    prev === 'recent' ? 'downloads' : 'recent',
+                  )
+                }
+                className="text-sm font-medium text-gray-900 hover:text-orange-500 transition-colors"
+              >
+                {sortBy === 'recent' ? 'Most Recent' : 'Most Downloaded'}
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              {filteredPublishedContent &&
+              filteredPublishedContent.length === 0 ? (
+                <EmptyState
+                  title={t('educatorContent.noResultsTitle')}
+                  description={t('educatorContent.NoResultsDescription')}
+                  icon={TbSearch}
+                />
+              ) : null}
+              <ContentList
+                items={filteredPublishedContent || []}
+                isDraft={false}
+              />
+            </div>
+          </>
+        )}
 
         {/* Preview Modal */}
         <Dialog open={isPreviewOpen} onOpenChange={setIsPreviewOpen}>
@@ -302,7 +478,10 @@ function AdminEducatorContent() {
               <Button
                 variant="outline"
                 className="w-full"
-                onClick={() => setIsPreviewOpen(false)}
+                onClick={() => {
+                  setIsPreviewOpen(false);
+                  setIsEditModalOpen(true);
+                }}
               >
                 Edit
               </Button>
@@ -325,6 +504,16 @@ function AdminEducatorContent() {
             </div>
           </DialogContent>
         </Dialog>
+
+        {/* Edit Modal */}
+        {selectedContent && (
+          <EducatorContentModal
+            isOpen={isEditModalOpen}
+            onClose={() => setIsEditModalOpen(false)}
+            initialData={selectedContent}
+            isAdmin={true}
+          />
+        )}
       </div>
     </PageLayout>
   );

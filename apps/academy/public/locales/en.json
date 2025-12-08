@@ -1342,6 +1342,8 @@
     "dropCover": "Drop the cover image here",
     "dropFiles": "Drop files here",
     "editAndRequireApproval": "Edit and require approval",
+    "editMaterial": "Edit educator content",
+    "noContentToReview": "No content to review",
     "fileTooLarge": "File too large (max 50MB)",
     "imageCover": "Cover Image",
     "languagePlaceholder": "Select",
