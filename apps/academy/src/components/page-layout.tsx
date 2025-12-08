@@ -55,6 +55,38 @@ export const PageLayout = ({
 
   const navbarHeight = tabs.length > 0 || backLink ? (isMobile ? 37 : 48) : 0;
 
+  const ActionButtons = () => (
+    <div className="flex items-center gap-1">
+      {actionButtons.map((button, index) => {
+        if (typeof button === 'object' && button !== null && 'text' in button) {
+          return (
+            // biome-ignore lint/suspicious/noArrayIndexKey: <N/A>
+            <div key={index}>
+              {button.href ? (
+                <Button variant="newTertiary" size={'s'} asChild rounded>
+                  <Link to={button.href} target="_blank" rel="noreferrer">
+                    {button.text}
+                  </Link>
+                </Button>
+              ) : (
+                <Button
+                  variant="newTertiary"
+                  size={'s'}
+                  onClick={button.onClick}
+                  rounded
+                >
+                  {button.text}
+                </Button>
+              )}
+            </div>
+          );
+        }
+        // biome-ignore lint/suspicious/noArrayIndexKey: <N/A>
+        return <div key={index}>{button}</div>;
+      })}
+    </div>
+  );
+
   return (
     <MainLayout>
       <PageMeta title={title} description={description} />
@@ -73,64 +105,46 @@ export const PageLayout = ({
           style={{ willChange: 'left, right' }}
         >
           {tabs.length > 0 && <SecondaryNavbar tabs={tabs} />}
+
           {backLink && (
-            <Link
-              className="w-fit flex items-center pl-3 pr-4 py-2 mt-1.5 ml-1 text-neutral-500 body-base-bold hover:bg-neutral-50 hover:text-black rounded-full"
-              to={backLink.href}
-            >
-              <TbChevronLeft size={24} className="shrink-0" />
-              {backLink.text}
-            </Link>
+            <div className="flex w-full items-center justify-between pr-4 md:pr-6">
+              <Link
+                className="w-fit flex items-center pl-3 pr-4 py-2 mt-1.5 ml-1 text-neutral-500 body-base-bold hover:bg-neutral-50 hover:text-black rounded-full"
+                to={backLink.href}
+              >
+                <TbChevronLeft size={24} className="shrink-0" />
+                {backLink.text}
+              </Link>
+
+              {actionButtons.length > 0 && (
+                <div className="mt-1.5">
+                  <ActionButtons />
+                </div>
+              )}
+            </div>
           )}
         </div>
-        {actionButtons && actionButtons.length > 0 ? (
+
+        {!backLink && actionButtons && actionButtons.length > 0 ? (
           <div
             className="flex items-center gap-1 ml-auto py-2 px-6"
             style={{ marginTop: navbarHeight }}
           >
-            {actionButtons.map((button, index) => {
-              if (
-                typeof button === 'object' &&
-                button !== null &&
-                'text' in button
-              ) {
-                return (
-                  // biome-ignore lint/suspicious/noArrayIndexKey: <N/A>
-                  <div key={index}>
-                    {button.href ? (
-                      <Button variant="newTertiary" size={'s'} asChild rounded>
-                        <Link to={button.href} target="_blank" rel="noreferrer">
-                          {button.text}
-                        </Link>
-                      </Button>
-                    ) : (
-                      <Button
-                        variant="newTertiary"
-                        size={'s'}
-                        onClick={button.onClick}
-                        rounded
-                      >
-                        {button.text}
-                      </Button>
-                    )}
-                  </div>
-                );
-              }
-
-              // biome-ignore lint/suspicious/noArrayIndexKey: <N/A>
-              return <div key={index}>{button}</div>;
-            })}
+            <ActionButtons />
           </div>
         ) : null}
       </>
+
       <div
         className={cn(
           'flex h-fit justify-center px-3 md:px-12 pb-16 md:pb-40 mx-auto w-full',
           layoutSizeClassesMap[layoutSize],
           className,
-          actionButtons.length > 0 ? '' : 'pt-4 md:pt-12',
+          !backLink && actionButtons.length > 0 ? '' : 'pt-4 md:pt-12',
         )}
-        style={{ marginTop: actionButtons.length > 0 ? 0 : navbarHeight }}
+        style={{
+          marginTop: !backLink && actionButtons.length > 0 ? 0 : navbarHeight,
+        }}
       >
         <div className={cn('w-full')}>
           {overTitle}
