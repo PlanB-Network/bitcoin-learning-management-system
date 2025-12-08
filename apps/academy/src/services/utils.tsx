@@ -8,6 +8,7 @@ import librarySvg from '#src/assets/resources/library.svg';
 import movieSvg from '#src/assets/resources/movie.svg';
 import podcastSvg from '#src/assets/resources/podcast.svg';
 import projectSvg from '#src/assets/resources/project.svg';
+import researchPaperSvg from '#src/assets/resources/research-paper.svg';
 import toolkitSvg from '#src/assets/resources/toolkit.svg';
 import youtubeSvg from '#src/assets/resources/youtube.svg';
 import businessSvg from '#src/assets/tutorials/business.svg';
@@ -94,6 +95,11 @@ export const RESOURCES_CATEGORIES = [
   {
     image: youtubeSvg,
     name: 'channels',
+    unreleased: false,
+  },
+  {
+    image: researchPaperSvg,
+    name: 'papers',
     unreleased: false,
   },
   {

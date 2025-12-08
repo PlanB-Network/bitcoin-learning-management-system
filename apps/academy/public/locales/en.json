@@ -1684,6 +1684,26 @@
     "pageSubtitleChannels": "<0>Other Youtube channels</0> you may like",
     "pageSubtitleMovies": "<0>Other movies</0> you may like",
     "pageSubtitlePodcast": "<0>Other podcasts</0> you may like",
+    "papers": {
+      "accessPaper": "Access paper",
+      "addPaper": "Add paper",
+      "citations": "Citations (.bib)",
+      "downloadCitations": "Download citations",
+      "papers": "Papers",
+      "publisher": "Publisher",
+      "showMorePapers": "Show more papers",
+      "title": "Research papers",
+      "types": {
+        "PhD Thesis": "PhD Thesis",
+        "academic": "Academic",
+        "book": "Book",
+        "conference": "Conference",
+        "journal": "Journal",
+        "pre-print": "Pre-print",
+        "thesis": "Thesis",
+        "whitepaper": "Whitepaper"
+      }
+    },
     "podcasts": {
       "addPodcast": "Add podcast",
       "checkThePodcast": "Check the podcast",
@@ -1963,6 +1983,7 @@
     "ratings": "Ratings",
     "register": "Register",
     "required": "Required",
+    "researchPaper": "Research paper",
     "resetAll": "Reset all",
     "resetFilters": "Reset filters",
     "resources": "Resources",

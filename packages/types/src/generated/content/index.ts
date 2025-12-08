@@ -16,6 +16,7 @@ export type * from './lab.js';
 export type * from './legals.js';
 export type * from './movie.js';
 export type * from './newsletters.js';
+export type * from './papers.js';
 export type * from './podcast.js';
 export type * from './professor.js';
 export type * from './professors2.js';

@@ -1,55 +1,37 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { HorizontalCard } from '#src/composites/Cards/horizontal-card.tsx';
 
-const buttonVariants = [
-  'primary',
-  'secondary',
-  'tertiary',
-  'outline',
-  'outlineWhite',
-  'ghost',
-  'transparent',
-] as const;
-
 const meta: Meta<typeof HorizontalCard> = {
+  title: 'Composites/Cards/horizontal-card',
+  component: HorizontalCard,
+  tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
   args: {
-    buttonLink: '/course/bitcoin',
-    buttonText: 'Start Learning',
-    buttonVariant: 'primary',
-    languages: ['en', 'fr'],
-    subtitle: 'Learn the fundamentals',
     title: 'Bitcoin 101',
+    subtitle: 'Learn the fundamentals of the decentralized currency.',
+    link: 'https://planb.academy',
+    thumbnail: 'https://placehold.co/80x80',
   },
   argTypes: {
-    buttonLink: {
+    title: {
       control: 'text',
-    },
-    buttonText: {
-      control: 'text',
-    },
-    buttonVariant: {
-      control: { type: 'select' },
-      options: buttonVariants,
-    },
-    className: {
-      control: 'text',
-    },
-    languages: {
-      control: 'object',
     },
     subtitle: {
       control: 'text',
     },
-    title: {
+    link: {
+      control: 'text',
+    },
+    thumbnail: {
+      control: 'text',
+      description: 'URL for the image source',
+    },
+    className: {
       control: 'text',
     },
   },
-  component: HorizontalCard,
-  parameters: {
-    layout: 'centered',
-  },
-  tags: ['autodocs'],
-  title: 'Composites/Cards/horizontal-card',
 };
 
 export default meta;
@@ -62,38 +44,24 @@ export const Default: Story = {
 
 export const WithoutSubtitle: Story = {
   args: {
-    buttonText: 'Begin Course',
-    languages: ['en', 'es', 'de'],
-    subtitle: undefined,
     title: 'Advanced Economics',
+    subtitle: undefined,
+    thumbnail: 'https://placehold.co/150x150',
   },
 };
 
-export const NoButton: Story = {
+export const LongSubtitle: Story = {
   args: {
-    buttonLink: undefined,
-    buttonText: undefined,
-    languages: ['en', 'fr'],
-    subtitle: 'Lightning Network Basics',
-    title: 'Coming Soon',
+    title: 'History of Money',
+    subtitle:
+      'This is a very long subtitle to demonstrate the line-clamp functionality. It should automatically truncate after two lines of text on desktop screens, keeping the layout clean and consistent regardless of the content length.',
   },
 };
 
-export const DisabledButton: Story = {
+export const CustomStyling: Story = {
   args: {
-    buttonLink: undefined,
-    buttonText: 'Locked',
-    languages: ['en'],
-    subtitle: 'Requires payment',
-    title: 'Premium Course',
-  },
-};
-
-export const MultipleLanguages: Story = {
-  args: {
-    buttonText: 'Explore',
-    languages: ['en', 'fr', 'es', 'de', 'ja'],
-    subtitle: 'Available in many languages',
-    title: 'Global Economics',
+    title: 'Highlighted Card',
+    subtitle: 'This card has a custom background color applied via className.',
+    className: 'bg-neutral-100 border border-neutral-200',
   },
 };

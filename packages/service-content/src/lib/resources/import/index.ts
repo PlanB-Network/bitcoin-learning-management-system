@@ -12,6 +12,7 @@ import { createProcessChangedConference } from './categories/conferences.js';
 import { createProcessChangedGlossaryWord } from './categories/glossary.js';
 import { createProcessChangedMovie } from './categories/movies.js';
 import { createProcessChangedNewsletter } from './categories/newsletters.js';
+import { createProcessChangedPaper } from './categories/papers.js';
 import { createProcessChangedPodcast } from './categories/podcasts.js';
 import { createProcessChangedProject } from './categories/projects.js';
 import { createProcessChangedYoutubeChannel } from './categories/youtubeChannels.js';
@@ -110,7 +111,7 @@ export const groupByResource = (files: ChangedFile[], errors: string[]) => {
 };
 
 export const createUpdateResources = (
-  dependencies: Pick<Dependencies, 'postgres'>,
+  dependencies: Pick<Dependencies, 'postgres' | 's3'>,
 ) => {
   return async (resource: ChangedResource, errors: string[]) => {
     const mapHandlers = {
@@ -123,6 +124,7 @@ export const createUpdateResources = (
       newsletters: createProcessChangedNewsletter,
       podcasts: createProcessChangedPodcast,
       projects: createProcessChangedProject,
+      papers: createProcessChangedPaper,
     } as const;
 
     const handler = mapHandlers[resource.category];

@@ -38,6 +38,7 @@ import { Route as LangMiscAboutRouteImport } from './routes/$lang/_misc/about';
 import { Route as LangTutorialsCategoryIndexRouteImport } from './routes/$lang/tutorials/$category/index';
 import { Route as LangResourcesProjectsIndexRouteImport } from './routes/$lang/resources/projects/index';
 import { Route as LangResourcesPodcastsIndexRouteImport } from './routes/$lang/resources/podcasts/index';
+import { Route as LangResourcesPapersIndexRouteImport } from './routes/$lang/resources/papers/index';
 import { Route as LangResourcesNewslettersIndexRouteImport } from './routes/$lang/resources/newsletters/index';
 import { Route as LangResourcesMoviesIndexRouteImport } from './routes/$lang/resources/movies/index';
 import { Route as LangResourcesLecturesIndexRouteImport } from './routes/$lang/resources/lectures/index';
@@ -57,6 +58,7 @@ import { Route as LangCourseLearnAnytimeIndexRouteImport } from './routes/$lang/
 import { Route as LangCourseCoursesIndexRouteImport } from './routes/$lang/_course/courses/index';
 import { Route as LangResourcesProjectsProjectNameProjectIdRouteImport } from './routes/$lang/resources/projects/$projectName-$projectId';
 import { Route as LangResourcesPodcastsPodcastNamePodcastIdRouteImport } from './routes/$lang/resources/podcasts/$podcastName-$podcastId';
+import { Route as LangResourcesPapersPaperTitlePaperIdRouteImport } from './routes/$lang/resources/papers/$paperTitle-$paperId';
 import { Route as LangResourcesNewslettersNewsletterNameNewsletterIdRouteImport } from './routes/$lang/resources/newsletters/$newsletterName-$newsletterId';
 import { Route as LangResourcesMoviesMovieTitleMovieIdRouteImport } from './routes/$lang/resources/movies/$movieTitle-$movieId';
 import { Route as LangResourcesLecturesLectureNameLectureIdRouteImport } from './routes/$lang/resources/lectures/$lectureName-$lectureId';
@@ -265,6 +267,12 @@ const LangResourcesPodcastsIndexRoute =
     path: '/$lang/resources/podcasts/',
     getParentRoute: () => rootRouteImport,
   } as any);
+const LangResourcesPapersIndexRoute =
+  LangResourcesPapersIndexRouteImport.update({
+    id: '/$lang/resources/papers/',
+    path: '/$lang/resources/papers/',
+    getParentRoute: () => rootRouteImport,
+  } as any);
 const LangResourcesNewslettersIndexRoute =
   LangResourcesNewslettersIndexRouteImport.update({
     id: '/$lang/resources/newsletters/',
@@ -370,6 +378,12 @@ const LangResourcesPodcastsPodcastNamePodcastIdRoute =
   LangResourcesPodcastsPodcastNamePodcastIdRouteImport.update({
     id: '/$lang/resources/podcasts/$podcastName-$podcastId',
     path: '/$lang/resources/podcasts/$podcastName-$podcastId',
+    getParentRoute: () => rootRouteImport,
+  } as any);
+const LangResourcesPapersPaperTitlePaperIdRoute =
+  LangResourcesPapersPaperTitlePaperIdRouteImport.update({
+    id: '/$lang/resources/papers/$paperTitle-$paperId',
+    path: '/$lang/resources/papers/$paperTitle-$paperId',
     getParentRoute: () => rootRouteImport,
   } as any);
 const LangResourcesNewslettersNewsletterNameNewsletterIdRoute =
@@ -735,6 +749,7 @@ export interface FileRoutesByFullPath {
   '/$lang/resources/lectures/$lectureName-$lectureId': typeof LangResourcesLecturesLectureNameLectureIdRoute;
   '/$lang/resources/movies/$movieTitle-$movieId': typeof LangResourcesMoviesMovieTitleMovieIdRoute;
   '/$lang/resources/newsletters/$newsletterName-$newsletterId': typeof LangResourcesNewslettersNewsletterNameNewsletterIdRoute;
+  '/$lang/resources/papers/$paperTitle-$paperId': typeof LangResourcesPapersPaperTitlePaperIdRoute;
   '/$lang/resources/podcasts/$podcastName-$podcastId': typeof LangResourcesPodcastsPodcastNamePodcastIdRoute;
   '/$lang/resources/projects/$projectName-$projectId': typeof LangResourcesProjectsProjectNameProjectIdRoute;
   '/$lang/courses': typeof LangCourseCoursesIndexRoute;
@@ -754,6 +769,7 @@ export interface FileRoutesByFullPath {
   '/$lang/resources/lectures': typeof LangResourcesLecturesIndexRoute;
   '/$lang/resources/movies': typeof LangResourcesMoviesIndexRoute;
   '/$lang/resources/newsletters': typeof LangResourcesNewslettersIndexRoute;
+  '/$lang/resources/papers': typeof LangResourcesPapersIndexRoute;
   '/$lang/resources/podcasts': typeof LangResourcesPodcastsIndexRoute;
   '/$lang/resources/projects': typeof LangResourcesProjectsIndexRoute;
   '/$lang/tutorials/$category': typeof LangTutorialsCategoryIndexRoute;
@@ -832,6 +848,7 @@ export interface FileRoutesByTo {
   '/$lang/resources/lectures/$lectureName-$lectureId': typeof LangResourcesLecturesLectureNameLectureIdRoute;
   '/$lang/resources/movies/$movieTitle-$movieId': typeof LangResourcesMoviesMovieTitleMovieIdRoute;
   '/$lang/resources/newsletters/$newsletterName-$newsletterId': typeof LangResourcesNewslettersNewsletterNameNewsletterIdRoute;
+  '/$lang/resources/papers/$paperTitle-$paperId': typeof LangResourcesPapersPaperTitlePaperIdRoute;
   '/$lang/resources/podcasts/$podcastName-$podcastId': typeof LangResourcesPodcastsPodcastNamePodcastIdRoute;
   '/$lang/resources/projects/$projectName-$projectId': typeof LangResourcesProjectsProjectNameProjectIdRoute;
   '/$lang/courses': typeof LangCourseCoursesIndexRoute;
@@ -850,6 +867,7 @@ export interface FileRoutesByTo {
   '/$lang/resources/lectures': typeof LangResourcesLecturesIndexRoute;
   '/$lang/resources/movies': typeof LangResourcesMoviesIndexRoute;
   '/$lang/resources/newsletters': typeof LangResourcesNewslettersIndexRoute;
+  '/$lang/resources/papers': typeof LangResourcesPapersIndexRoute;
   '/$lang/resources/podcasts': typeof LangResourcesPodcastsIndexRoute;
   '/$lang/resources/projects': typeof LangResourcesProjectsIndexRoute;
   '/$lang/tutorials/$category': typeof LangTutorialsCategoryIndexRoute;
@@ -930,6 +948,7 @@ export interface FileRoutesById {
   '/$lang/resources/lectures/$lectureName-$lectureId': typeof LangResourcesLecturesLectureNameLectureIdRoute;
   '/$lang/resources/movies/$movieTitle-$movieId': typeof LangResourcesMoviesMovieTitleMovieIdRoute;
   '/$lang/resources/newsletters/$newsletterName-$newsletterId': typeof LangResourcesNewslettersNewsletterNameNewsletterIdRoute;
+  '/$lang/resources/papers/$paperTitle-$paperId': typeof LangResourcesPapersPaperTitlePaperIdRoute;
   '/$lang/resources/podcasts/$podcastName-$podcastId': typeof LangResourcesPodcastsPodcastNamePodcastIdRoute;
   '/$lang/resources/projects/$projectName-$projectId': typeof LangResourcesProjectsProjectNameProjectIdRoute;
   '/$lang/_course/courses/': typeof LangCourseCoursesIndexRoute;
@@ -949,6 +968,7 @@ export interface FileRoutesById {
   '/$lang/resources/lectures/': typeof LangResourcesLecturesIndexRoute;
   '/$lang/resources/movies/': typeof LangResourcesMoviesIndexRoute;
   '/$lang/resources/newsletters/': typeof LangResourcesNewslettersIndexRoute;
+  '/$lang/resources/papers/': typeof LangResourcesPapersIndexRoute;
   '/$lang/resources/podcasts/': typeof LangResourcesPodcastsIndexRoute;
   '/$lang/resources/projects/': typeof LangResourcesProjectsIndexRoute;
   '/$lang/tutorials/$category/': typeof LangTutorialsCategoryIndexRoute;
@@ -1030,6 +1050,7 @@ export interface FileRouteTypes {
     | '/$lang/resources/lectures/$lectureName-$lectureId'
     | '/$lang/resources/movies/$movieTitle-$movieId'
     | '/$lang/resources/newsletters/$newsletterName-$newsletterId'
+    | '/$lang/resources/papers/$paperTitle-$paperId'
     | '/$lang/resources/podcasts/$podcastName-$podcastId'
     | '/$lang/resources/projects/$projectName-$projectId'
     | '/$lang/courses'
@@ -1049,6 +1070,7 @@ export interface FileRouteTypes {
     | '/$lang/resources/lectures'
     | '/$lang/resources/movies'
     | '/$lang/resources/newsletters'
+    | '/$lang/resources/papers'
     | '/$lang/resources/podcasts'
     | '/$lang/resources/projects'
     | '/$lang/tutorials/$category'
@@ -1127,6 +1149,7 @@ export interface FileRouteTypes {
     | '/$lang/resources/lectures/$lectureName-$lectureId'
     | '/$lang/resources/movies/$movieTitle-$movieId'
     | '/$lang/resources/newsletters/$newsletterName-$newsletterId'
+    | '/$lang/resources/papers/$paperTitle-$paperId'
     | '/$lang/resources/podcasts/$podcastName-$podcastId'
     | '/$lang/resources/projects/$projectName-$projectId'
     | '/$lang/courses'
@@ -1145,6 +1168,7 @@ export interface FileRouteTypes {
     | '/$lang/resources/lectures'
     | '/$lang/resources/movies'
     | '/$lang/resources/newsletters'
+    | '/$lang/resources/papers'
     | '/$lang/resources/podcasts'
     | '/$lang/resources/projects'
     | '/$lang/tutorials/$category'
@@ -1224,6 +1248,7 @@ export interface FileRouteTypes {
     | '/$lang/resources/lectures/$lectureName-$lectureId'
     | '/$lang/resources/movies/$movieTitle-$movieId'
     | '/$lang/resources/newsletters/$newsletterName-$newsletterId'
+    | '/$lang/resources/papers/$paperTitle-$paperId'
     | '/$lang/resources/podcasts/$podcastName-$podcastId'
     | '/$lang/resources/projects/$projectName-$projectId'
     | '/$lang/_course/courses/'
@@ -1243,6 +1268,7 @@ export interface FileRouteTypes {
     | '/$lang/resources/lectures/'
     | '/$lang/resources/movies/'
     | '/$lang/resources/newsletters/'
+    | '/$lang/resources/papers/'
     | '/$lang/resources/podcasts/'
     | '/$lang/resources/projects/'
     | '/$lang/tutorials/$category/'
@@ -1323,6 +1349,7 @@ export interface RootRouteChildren {
   LangResourcesLecturesLectureNameLectureIdRoute: typeof LangResourcesLecturesLectureNameLectureIdRoute;
   LangResourcesMoviesMovieTitleMovieIdRoute: typeof LangResourcesMoviesMovieTitleMovieIdRoute;
   LangResourcesNewslettersNewsletterNameNewsletterIdRoute: typeof LangResourcesNewslettersNewsletterNameNewsletterIdRoute;
+  LangResourcesPapersPaperTitlePaperIdRoute: typeof LangResourcesPapersPaperTitlePaperIdRoute;
   LangResourcesPodcastsPodcastNamePodcastIdRoute: typeof LangResourcesPodcastsPodcastNamePodcastIdRoute;
   LangResourcesProjectsProjectNameProjectIdRoute: typeof LangResourcesProjectsProjectNameProjectIdRoute;
   LangCourseCoursesIndexRoute: typeof LangCourseCoursesIndexRoute;
@@ -1341,6 +1368,7 @@ export interface RootRouteChildren {
   LangResourcesLecturesIndexRoute: typeof LangResourcesLecturesIndexRoute;
   LangResourcesMoviesIndexRoute: typeof LangResourcesMoviesIndexRoute;
   LangResourcesNewslettersIndexRoute: typeof LangResourcesNewslettersIndexRoute;
+  LangResourcesPapersIndexRoute: typeof LangResourcesPapersIndexRoute;
   LangResourcesPodcastsIndexRoute: typeof LangResourcesPodcastsIndexRoute;
   LangResourcesProjectsIndexRoute: typeof LangResourcesProjectsIndexRoute;
   LangTutorialsCategoryIndexRoute: typeof LangTutorialsCategoryIndexRoute;
@@ -1553,6 +1581,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangResourcesPodcastsIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
+    '/$lang/resources/papers/': {
+      id: '/$lang/resources/papers/';
+      path: '/$lang/resources/papers';
+      fullPath: '/$lang/resources/papers';
+      preLoaderRoute: typeof LangResourcesPapersIndexRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     '/$lang/resources/newsletters/': {
       id: '/$lang/resources/newsletters/';
       path: '/$lang/resources/newsletters';
@@ -1684,6 +1719,13 @@ declare module '@tanstack/react-router' {
       path: '/$lang/resources/podcasts/$podcastName-$podcastId';
       fullPath: '/$lang/resources/podcasts/$podcastName-$podcastId';
       preLoaderRoute: typeof LangResourcesPodcastsPodcastNamePodcastIdRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    '/$lang/resources/papers/$paperTitle-$paperId': {
+      id: '/$lang/resources/papers/$paperTitle-$paperId';
+      path: '/$lang/resources/papers/$paperTitle-$paperId';
+      fullPath: '/$lang/resources/papers/$paperTitle-$paperId';
+      preLoaderRoute: typeof LangResourcesPapersPaperTitlePaperIdRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/resources/newsletters/$newsletterName-$newsletterId': {
@@ -2233,6 +2275,8 @@ const rootRouteChildren: RootRouteChildren = {
     LangResourcesMoviesMovieTitleMovieIdRoute,
   LangResourcesNewslettersNewsletterNameNewsletterIdRoute:
     LangResourcesNewslettersNewsletterNameNewsletterIdRoute,
+  LangResourcesPapersPaperTitlePaperIdRoute:
+    LangResourcesPapersPaperTitlePaperIdRoute,
   LangResourcesPodcastsPodcastNamePodcastIdRoute:
     LangResourcesPodcastsPodcastNamePodcastIdRoute,
   LangResourcesProjectsProjectNameProjectIdRoute:
@@ -2253,6 +2297,7 @@ const rootRouteChildren: RootRouteChildren = {
   LangResourcesLecturesIndexRoute: LangResourcesLecturesIndexRoute,
   LangResourcesMoviesIndexRoute: LangResourcesMoviesIndexRoute,
   LangResourcesNewslettersIndexRoute: LangResourcesNewslettersIndexRoute,
+  LangResourcesPapersIndexRoute: LangResourcesPapersIndexRoute,
   LangResourcesPodcastsIndexRoute: LangResourcesPodcastsIndexRoute,
   LangResourcesProjectsIndexRoute: LangResourcesProjectsIndexRoute,
   LangTutorialsCategoryIndexRoute: LangTutorialsCategoryIndexRoute,
