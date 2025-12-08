@@ -1,5 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import type { Readable } from 'node:stream';
 import { NoSuchKey } from '@blms/s3';
 import {
@@ -116,7 +118,18 @@ const receivePdf = (req: Request) => {
           throw new BadRequest('File too large');
         }
 
-        const fileStream = fs.createReadStream(file.filepath);
+        // Validate file is within the OS temp directory (formidable default)
+        const tempDir = os.tmpdir();
+        let resolvedPath: string;
+        try {
+          resolvedPath = fs.realpathSync(path.resolve(file.filepath));
+        } catch (_e) {
+          throw new BadRequest('Invalid file path');
+        }
+        if (!resolvedPath.startsWith(path.resolve(tempDir))) {
+          throw new BadRequest('Disallowed file path');
+        }
+        const fileStream = fs.createReadStream(resolvedPath);
         resolve(fileStream);
       });
     } catch (error) {
@@ -166,7 +179,19 @@ const receiveGenericFile = (req: Request) => {
           throw new BadRequest('File too large');
         }
 
-        const fileStream = fs.createReadStream(file.filepath);
+        // Validate file is within the OS temp directory (formidable default)
+        const tempDir = os.tmpdir();
+        let resolvedPath: string;
+        try {
+          resolvedPath = fs.realpathSync(path.resolve(file.filepath));
+        } catch (_e) {
+          throw new BadRequest('Invalid file path');
+        }
+        if (!resolvedPath.startsWith(path.resolve(tempDir))) {
+          throw new BadRequest('Disallowed file path');
+        }
+        const fileStream = fs.createReadStream(resolvedPath);
+
         resolve({
           stream: fileStream,
           mimetype: file.mimetype,
