@@ -441,7 +441,6 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
                                   'hidden',
                                 !editingUsers[user.uid] && 'cursor-not-allowed',
                               )}
-                              mode="light"
                             >
                               <SelectValue
                                 placeholder={t(
@@ -484,7 +483,6 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
                                   !editingUsers[user.uid] &&
                                     'cursor-not-allowed',
                                 )}
-                                mode="light"
                               >
                                 <SelectValue
                                   placeholder={t(
@@ -778,7 +776,6 @@ const StudentMobileCard = ({
             'w-full',
             !editingUsers[user.uid] && 'cursor-not-allowed',
           )}
-          mode="light"
         >
           <SelectValue placeholder={t('dashboard.adminPanel.selectRole')} />
         </SelectTrigger>
@@ -804,7 +801,6 @@ const StudentMobileCard = ({
               'w-full',
               !editingUsers[user.uid] && 'cursor-not-allowed',
             )}
-            mode="light"
           >
             <SelectValue
               placeholder={t('dashboard.adminPanel.selectProfessor')}

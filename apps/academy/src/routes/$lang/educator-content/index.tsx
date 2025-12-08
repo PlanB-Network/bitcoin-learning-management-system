@@ -1,17 +1,280 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { EducatorContentStatus, EducatorContentType } from '@blms/constants';
+import type { JoinedEducatorContent } from '@blms/types';
+import { cn, DropdownMenu, EmptyState, Loader } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { capitalize } from 'lodash-es';
+import { useContext, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import {
+  TbAdjustmentsHorizontal,
+  TbChevronRight,
+  TbDownload,
+  TbSearch,
+  TbX,
+} from 'react-icons/tb';
+import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { PageLayout } from '#src/components/page-layout.tsx';
+import { SearchInput } from '#src/components/search-input.tsx';
+import { useDisclosure } from '#src/hooks/use-disclosure.ts';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { AppContext } from '#src/providers/context.tsx';
+import { getEducatorContentCoverUrl } from '#src/services/content.js';
+import { getLanguageName, LANGUAGES } from '#src/utils/i18n.ts';
+import { trpc } from '#src/utils/trpc.js';
+import { EducatorContentModal } from './-components/educator-content-modal.tsx';
 
 export const Route = createFileRoute('/$lang/educator-content/')({
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
+  const { session } = useContext(AppContext);
+  const isLoggedIn = !!session?.user;
+
+  const {
+    open: openAuthModal,
+    isOpen: isAuthModalOpen,
+    close: closeAuthModal,
+  } = useDisclosure();
+
+  const {
+    open: openAddContentModal,
+    isOpen: isAddContentModalOpen,
+    close: closeAddContentModal,
+  } = useDisclosure();
+
+  const { data: content, isLoading } = useQuery(
+    trpc.content.getEducatorContents.queryOptions({
+      status: EducatorContentStatus.Published,
+    }),
+  );
+
+  const isMobile = useSmaller('lg');
+
+  const [selectedType, setSelectedType] = useState<EducatorContentType | 'all'>(
+    'all',
+  );
+  const [selectedLanguage, setSelectedLanguage] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [sortBy, setSortBy] = useState<'recent' | 'downloads'>('recent');
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  const filteredContent = useMemo(() => {
+    if (!content) return [];
+    const filtered = content.filter((item) => {
+      const matchesType = selectedType === 'all' || item.type === selectedType;
+      const matchesLanguage =
+        selectedLanguage === 'all' || item.language === selectedLanguage;
+      const matchesSearch =
+        item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.description?.toLowerCase().includes(searchQuery.toLowerCase());
+
+      return matchesType && matchesLanguage && matchesSearch;
+    });
+
+    return filtered.sort((a, b) => {
+      if (sortBy === 'recent') {
+        const dateA = a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
+        const dateB = b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
+        return dateB - dateA;
+      }
+      if (sortBy === 'downloads') {
+        return (b.downloads || 0) - (a.downloads || 0);
+      }
+      return 0;
+    });
+  }, [content, selectedType, selectedLanguage, searchQuery, sortBy]);
+
+  const handleAddContentClick = () => {
+    if (isLoggedIn) {
+      openAddContentModal();
+    } else {
+      openAuthModal();
+    }
+  };
+
+  const types = [
+    {
+      id: 'all',
+      name: 'All',
+      onClick: () => setSelectedType('all'),
+    },
+    ...Object.values(EducatorContentType).map((type) => ({
+      id: type,
+      name: capitalize(type),
+      onClick: () => setSelectedType(type),
+    })),
+  ];
+
+  const languages = [
+    {
+      id: 'all',
+      name: 'All',
+      onClick: () => setSelectedLanguage('all'),
+    },
+    ...LANGUAGES.map((lang) => ({
+      id: lang,
+      name: capitalize(getLanguageName(lang)),
+      onClick: () => setSelectedLanguage(lang),
+    })),
+  ];
 
   return (
-    <PageLayout title={t('menu.educatorContent')} layoutSize="wide">
-      Educator content page coming soon!
+    <PageLayout
+      title="Educator content"
+      subtitle="Where bitcoin educators and communities share and reuse teaching resources"
+      layoutSize="wide"
+      actionButtons={[
+        {
+          text: t('educatorContent.addMaterial'),
+          onClick: handleAddContentClick,
+        },
+      ]}
+      tabs={
+        isLoggedIn
+          ? [
+              {
+                id: 'educator-content',
+                label: t('menu.educatorContent'),
+                href: '/educator-content',
+              },
+              {
+                id: 'my-content',
+                label: t('educatorContent.myContent'),
+                href: '/educator-content/my-content',
+              },
+            ]
+          : []
+      }
+    >
+      {isLoading && <Loader />}
+
+      {/* Mobile Search filter */}
+      <div
+        className={cn(
+          'flex items-center gap-2 w-full justify-end my-2 mb-6 lg:hidden',
+        )}
+      >
+        <SearchInput searchTerm={searchQuery} setSearchTerm={setSearchQuery} />
+        <button
+          onClick={() => setIsFilterOpen((prev) => !prev)}
+          className="p-2 rounded-lg bg-neutral-50 text-neutral-400 flex items-center gap-2"
+          type="button"
+        >
+          <span className="body-base">{t('words.filters')}</span>
+          {isFilterOpen ? (
+            <TbX size={16} />
+          ) : (
+            <TbAdjustmentsHorizontal size={16} />
+          )}
+        </button>
+      </div>
+
+      {/* Filters */}
+      <div
+        className={cn(
+          'lg:ml-auto flex max-lg:flex-col gap-1 lg:gap-2 lg:max-w-190 lg:w-full',
+          'max-lg:p-2 max-lg:rounded-lg max-lg:w-full max-lg:max-w-90',
+          'max-lg:mx-auto lg:mt-4 mt-8 mb-8',
+          isFilterOpen ? '' : 'max-lg:hidden',
+        )}
+      >
+        <div className="lg:hidden flex justify-between items-center w-full mb-1 px-1">
+          <span className="body-small-bold text-neutral-700">
+            {t('words.filters')}
+          </span>
+        </div>
+
+        <DropdownMenu
+          activeItem={types.find((t) => t.id === selectedType)?.name || 'Type'}
+          itemsList={types.filter((t) => t.id !== selectedType)}
+          variant="light"
+          placeholder="Type"
+          forcePlaceholder={selectedType === 'all'}
+        />
+
+        <DropdownMenu
+          activeItem={
+            languages.find((l) => l.id === selectedLanguage)?.name || 'Language'
+          }
+          itemsList={languages.filter((l) => l.id !== selectedLanguage)}
+          variant="light"
+          placeholder="Language"
+          forcePlaceholder={selectedLanguage === 'all'}
+        />
+
+        <SearchInput
+          searchTerm={searchQuery}
+          setSearchTerm={setSearchQuery}
+          className="max-lg:hidden"
+        />
+      </div>
+
+      <div className="flex w-full justify-end items-center gap-2 max-lg:hidden mb-6">
+        <span className="text-sm text-gray-500">Sort by</span>
+        <button
+          type="button"
+          onClick={() =>
+            setSortBy((prev) => (prev === 'recent' ? 'downloads' : 'recent'))
+          }
+          className="text-sm font-medium text-gray-900 hover:text-orange-500 transition-colors"
+        >
+          {sortBy === 'recent' ? 'Most Recent' : 'Most Downloaded'}
+        </button>
+      </div>
+
+      <div className="flex flex-col gap-3">
+        {filteredContent && filteredContent.length === 0 ? (
+          <EmptyState
+            title={t('educatorContent.noResultsTitle')}
+            description={t('educatorContent.NoResultsDescription')}
+            icon={TbSearch}
+          />
+        ) : null}
+        {filteredContent?.map((item: JoinedEducatorContent) => (
+          <Link
+            to="/$lang/educator-content/$id"
+            params={{ lang: i18n.language, id: item.id }}
+            key={item.id}
+            className="flex gap-2 md:gap-6 items-center pr-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-pointer"
+          >
+            {/* Thumbnail */}
+            <div className="w-48 h-24 bg-gray-200 rounded-lg shrink-0 overflow-hidden flex items-center justify-center">
+              {item.cover ? (
+                <img
+                  src={getEducatorContentCoverUrl(item.cover) || ''}
+                  alt={item.title}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <span className="text-xs text-gray-500">No Cover</span>
+              )}
+            </div>
+            {/* Content */}
+            <div className="grow flex flex-col justify-center gap-2">
+              <h3 className="font-semibold text-xl text-gray-900">
+                {item.title}
+              </h3>
+              <div className="text-sm text-gray-500 flex items-center gap-2">
+                <TbDownload size={16} />
+                <span>{item.downloads}</span>
+              </div>
+            </div>
+            {/* Arrow */}
+            <div className="text-neutral-300">
+              <TbChevronRight size={isMobile ? 16 : 24} />
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      <AuthModal isOpen={isAuthModalOpen} onClose={closeAuthModal} />
+      <EducatorContentModal
+        isOpen={isAddContentModalOpen}
+        onClose={closeAddContentModal}
+      />
     </PageLayout>
   );
 }

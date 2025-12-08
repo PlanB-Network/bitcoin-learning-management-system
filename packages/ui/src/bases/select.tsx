@@ -15,7 +15,7 @@ const SelectTrigger = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> & {
     mode?: 'light' | 'dark';
   }
->(({ className, children, mode = 'dark', ...props }, ref) => (
+>(({ className, children, mode = 'light', ...props }, ref) => (
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(

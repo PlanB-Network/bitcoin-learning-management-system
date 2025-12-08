@@ -18,9 +18,6 @@ export const PageHeader = ({
     <div
       className={cn('flex flex-col', hideOnMobile && 'max-md:hidden', 'px-0')}
     >
-      {subtitle && (
-        <h1 className="title-base text-black max-md:mb-2 mb-1">{subtitle}</h1>
-      )}
       {link ? (
         <Link to={link}>
           <PageTitle title={title} />
@@ -28,6 +25,12 @@ export const PageHeader = ({
       ) : (
         <PageTitle title={title} />
       )}
+      {subtitle && (
+        <h1 className="body-large text-neutral-500 max-md:hidden">
+          {subtitle}
+        </h1>
+      )}
+      <div className="h-0 mb-2 md:mb-6" />
       {description && (
         <p className={cn('body-small md:body-large text-neutral-600')}>
           {description}
@@ -39,8 +42,6 @@ export const PageHeader = ({
 
 export const PageTitle = ({ title }: { title: string }) => {
   return (
-    <h2 className={cn('display-base md:display-large text-black mb-2 md:mb-6')}>
-      {title}
-    </h2>
+    <h2 className={cn('display-base md:display-large text-black')}>{title}</h2>
   );
 };

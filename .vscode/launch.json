@@ -1,22 +1,22 @@
 {
   "configurations": [
-    {
-      "cwd": "${workspaceFolder}",
-      "localRoot": "${workspaceFolder}",
-      "name": "Run all (Local)",
-      "request": "launch",
-      "restart": true,
-      "runtimeArgs": ["pnpm", "run", "dev"],
-      "runtimeExecutable": "pnpm",
-      "type": "node"
-    },
-    {
-      "name": "Debug Web (Chrome)",
-      "request": "launch",
-      "type": "chrome",
-      "url": "http://localhost:8181",
-      "webRoot": "${workspaceFolder}/apps/academy/src"
-    }
+    // {
+    //   "cwd": "${workspaceFolder}",
+    //   "localRoot": "${workspaceFolder}",
+    //   "name": "Run all (Local)",
+    //   "request": "launch",
+    //   "restart": true,
+    //   "runtimeArgs": ["pnpm", "run", "dev"],
+    //   "runtimeExecutable": "pnpm",
+    //   "type": "node"
+    // },
+    // {
+    //   "name": "Debug Web (Chrome)",
+    //   "request": "launch",
+    //   "type": "chrome",
+    //   "url": "http://localhost:8181",
+    //   "webRoot": "${workspaceFolder}/apps/academy/src"
+    // }
   ],
   "version": "0.2.0"
 }
