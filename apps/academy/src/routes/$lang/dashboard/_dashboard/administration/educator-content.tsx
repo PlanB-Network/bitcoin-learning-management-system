@@ -52,7 +52,6 @@ function AdminEducatorContent() {
   );
   const [selectedLanguage, setSelectedLanguage] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [sortBy, setSortBy] = useState<'recent' | 'downloads'>('recent');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const { data: draftContent, isLoading: isLoadingDraft } = useQuery(
@@ -91,6 +90,11 @@ function AdminEducatorContent() {
     }),
   );
 
+  const handleEdit = (content: any) => {
+    setSelectedContent(content);
+    setIsEditModalOpen(true);
+  };
+
   const handlePreview = (content: any) => {
     setSelectedContent(content);
     setIsPreviewOpen(true);
@@ -120,7 +124,7 @@ function AdminEducatorContent() {
 
   const filteredPublishedContent = useMemo(() => {
     if (!publishedContent) return [];
-    const filtered = publishedContent.filter((item) => {
+    return publishedContent.filter((item) => {
       const matchesType = selectedType === 'all' || item.type === selectedType;
       const matchesLanguage =
         selectedLanguage === 'all' || item.language === selectedLanguage;
@@ -130,19 +134,7 @@ function AdminEducatorContent() {
 
       return matchesType && matchesLanguage && matchesSearch;
     });
-
-    return filtered.sort((a, b) => {
-      if (sortBy === 'recent') {
-        const dateA = a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
-        const dateB = b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
-        return dateB - dateA;
-      }
-      if (sortBy === 'downloads') {
-        return (b.downloads || 0) - (a.downloads || 0);
-      }
-      return 0;
-    });
-  }, [publishedContent, selectedType, selectedLanguage, searchQuery, sortBy]);
+  }, [publishedContent, selectedType, selectedLanguage, searchQuery]);
 
   const types = [
     {
@@ -196,9 +188,6 @@ function AdminEducatorContent() {
           </div>
           <div className="grow">
             <h3 className="font-semibold text-lg">{item.title}</h3>
-            <div className="text-xs text-gray-400 mt-1 flex gap-2 capitalize">
-              <span>{item.type}</span>
-            </div>
           </div>
           <div>
             {isDraft ? (
@@ -213,7 +202,7 @@ function AdminEducatorContent() {
               <Button
                 variant="tertiary"
                 size="s"
-                onClick={() => handlePreview(item)}
+                onClick={() => handleEdit(item)}
               >
                 Edit
               </Button>
@@ -345,21 +334,6 @@ function AdminEducatorContent() {
                 setSearchTerm={setSearchQuery}
                 className="max-lg:hidden"
               />
-            </div>
-
-            <div className="flex w-full justify-end items-center gap-2 max-lg:hidden mb-6">
-              <span className="text-sm text-gray-500">Sort by</span>
-              <button
-                type="button"
-                onClick={() =>
-                  setSortBy((prev) =>
-                    prev === 'recent' ? 'downloads' : 'recent',
-                  )
-                }
-                className="text-sm font-medium text-gray-900 hover:text-orange-500 transition-colors"
-              >
-                {sortBy === 'recent' ? 'Most Recent' : 'Most Downloaded'}
-              </button>
             </div>
 
             <div className="flex flex-col gap-3">
