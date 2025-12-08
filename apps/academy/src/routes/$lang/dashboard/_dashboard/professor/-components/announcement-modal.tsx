@@ -219,7 +219,7 @@ export const AnnouncementModal = ({
                 </FieldLabel>
 
                 <Select onValueChange={field.onChange} value={field.value}>
-                  <SelectTrigger mode="light" className="md:w-96">
+                  <SelectTrigger className="md:w-96">
                     <SelectValue
                       placeholder={t(
                         'dashboard.teacher.courses.announcementModal.typePlaceholder',
@@ -420,10 +420,7 @@ export const AnnouncementModal = ({
                       }
                     }}
                   >
-                    <SelectTrigger
-                      mode="light"
-                      className="dark:bg-transparent dark:border-newGray-4 border shadow-none w-fit"
-                    >
+                    <SelectTrigger className="dark:bg-transparent dark:border-newGray-4 border shadow-none w-fit">
                       <SelectValue />
                     </SelectTrigger>
 
@@ -468,10 +465,7 @@ export const AnnouncementModal = ({
                       field.onChange(selectedValue);
                     }}
                   >
-                    <SelectTrigger
-                      mode="light"
-                      className="dark:bg-transparent dark:border-newGray-4 border shadow-none"
-                    >
+                    <SelectTrigger className="dark:bg-transparent dark:border-newGray-4 border shadow-none">
                       <SelectValue
                         placeholder={t('placeholders.selectTimeZone')}
                       />

@@ -39,7 +39,7 @@ const buttonVariants = cva(
           'bg-primary text-white disabled:!bg-darkOrange-1 disabled:!text-darkOrange-3',
         secondary: 'bg-orange-50 text-orange-500',
         tertiary:
-          'border bg-newGray-5 text-newGray-1 border-newGray-3 disabled:!bg-newGray-5 disabled:!text-newGray-4 disabled:border-newGray-4 dark:bg-newBlack-3 dark:text-newGray-4 dark:border-newGray-1 dark:disabled:bg-newBlack-2 dark:disabled:text-newBlack-4 dark:disabled:border-newBlack-4',
+          'bg-neutral-50 text-black border-newGray-3 disabled:!bg-newGray-5 disabled:!text-newGray-4 disabled:border-newGray-4 dark:bg-newBlack-3 dark:text-newGray-4 dark:border-newGray-1 dark:disabled:bg-newBlack-2 dark:disabled:text-newBlack-4 dark:disabled:border-newBlack-4',
         newTertiary:
           'bg-neutral-50 text-black hover:bg-neutral-100 focus-visible:border-5 focus-visible:border-neutral-100 disabled:opacity-30',
         transparent: 'bg-white/30 text-white',

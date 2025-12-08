@@ -130,7 +130,6 @@ const NotificationsTable = () => {
             {isMobile && !isInSelectAllMode && (
               <Button
                 variant="tertiary"
-                mode="light"
                 size={'xs'}
                 className="w-fit"
                 onClick={() => setIsInSelectAllMode(true)}
@@ -430,7 +429,6 @@ const MultiSelectionTool = ({
       <div className="w-px bg-newGray-1 self-stretch" />
       <Button
         variant="tertiary"
-        mode="light"
         size={isMobile ? 'xs' : 's'}
         onClick={handleAction}
         disabled={!selectedIds.length}

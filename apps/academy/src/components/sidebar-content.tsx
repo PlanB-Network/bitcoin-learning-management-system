@@ -11,7 +11,8 @@ import BookCover from '#src/assets/icons/pixelated/navbar/book_cover.svg?react';
 import BookOpen from '#src/assets/icons/pixelated/navbar/book_open.svg?react';
 import Calendar from '#src/assets/icons/pixelated/navbar/calendar.svg?react';
 import Discount from '#src/assets/icons/pixelated/navbar/discount.svg?react';
-import EducatorContent from '#src/assets/icons/pixelated/navbar/educator_content.svg?react';
+import EducatorContentBlue from '#src/assets/icons/pixelated/navbar/educator_content_blue.svg?react';
+import EducatorContentOrange from '#src/assets/icons/pixelated/navbar/educator_content_orange.svg?react';
 import Location from '#src/assets/icons/pixelated/navbar/location.svg?react';
 import Luggage from '#src/assets/icons/pixelated/navbar/luggage.svg?react';
 import Medal from '#src/assets/icons/pixelated/navbar/medal.svg?react';
@@ -161,6 +162,7 @@ export const SideBarContent = ({
           </div>
 
           <div className="w-full max-w-[209px] mx-auto h-px bg-[#E8E8E8]" />
+
           <div className="flex flex-col gap-1">
             <SideBarItem
               icon={TasksList}
@@ -221,22 +223,26 @@ export const SideBarContent = ({
                 isSidebarOpen={isSidebarOpen}
               />
             ) : null}
-            {process.env.NODE_ENV === 'development' ? (
-              <>
-                <div className="w-full max-w-[209px] mx-auto h-px bg-[#E8E8E8]" />
+          </div>
+
+          {process.env.NODE_ENV === 'development' ? (
+            <>
+              <div className="w-full max-w-[209px] mx-auto h-px bg-[#E8E8E8]" />
+              <div className="flex flex-col gap-1">
                 <SideBarItem
-                  icon={EducatorContent}
+                  icon={EducatorContentBlue}
                   iconColor="blue"
                   label={t('menu.educatorContent')}
                   link="/educator-content"
-                  isActive={window.location.pathname.includes(
-                    'educator-content',
-                  )}
+                  isActive={
+                    window.location.pathname.includes('/educator-content') &&
+                    !window.location.pathname.includes('/dashboard')
+                  }
                   isSidebarOpen={isSidebarOpen}
                 />
-              </>
-            ) : null}
-          </div>
+              </div>
+            </>
+          ) : null}
         </>
       )}
 
@@ -386,6 +392,17 @@ export const SideBarContent = ({
             link="/dashboard/administration/coupons"
             isActive={window.location.pathname.includes(
               '/dashboard/administration/coupons',
+            )}
+            isSidebarOpen={isSidebarOpen}
+            isMain
+          />
+          <SideBarItem
+            icon={EducatorContentOrange}
+            iconColor="orange"
+            label={t('menu.educatorContent')}
+            link="/dashboard/administration/educator-content"
+            isActive={window.location.pathname.includes(
+              '/dashboard/administration/educator-content',
             )}
             isSidebarOpen={isSidebarOpen}
             isMain

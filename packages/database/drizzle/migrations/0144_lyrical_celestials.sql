@@ -1,0 +1,1 @@
+ALTER TABLE "content"."educator_contents" ADD COLUMN "downloads" integer DEFAULT 0 NOT NULL;

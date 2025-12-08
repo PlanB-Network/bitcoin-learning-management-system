@@ -93,7 +93,6 @@ export const AuthModal = ({
           </BasicModal>
         )}
 
-      {/* Password Reset Dialog */}
       <PasswordReset
         isOpen={isOpen && currentState === AuthModalState.PasswordReset}
         onClose={onClose}

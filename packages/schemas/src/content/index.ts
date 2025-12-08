@@ -6,6 +6,7 @@ export * from './channels.js';
 export * from './conference.js';
 export * from './coupon.js';
 export * from './course.js';
+export * from './educator-content.js';
 export * from './event.js';
 export * from './glossary.js';
 export * from './lab.js';

@@ -1,0 +1,1 @@
+ALTER TABLE "content"."educator_contents" ADD COLUMN "published_at" timestamp;

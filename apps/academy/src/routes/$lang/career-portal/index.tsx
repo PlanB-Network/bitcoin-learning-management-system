@@ -602,7 +602,7 @@ function CareerPortal() {
                         setSelectedLanguage(value);
                       }}
                     >
-                      <SelectTrigger className="w-full" mode="light">
+                      <SelectTrigger className="w-full">
                         <SelectValue
                           placeholder={t(
                             'dashboard.careerPortal.selectLanguage',
@@ -787,7 +787,7 @@ function CareerPortal() {
                         setSelectedRole(value);
                       }}
                     >
-                      <SelectTrigger className="w-full" mode="light">
+                      <SelectTrigger className="w-full">
                         <SelectValue
                           placeholder={t(
                             'dashboard.careerPortal.selectJobTitle',
@@ -1720,7 +1720,6 @@ const FormSelect = ({
           >
             <SelectTrigger
               className={cn('w-full max-w-xs md:max-w-[268px]', className)}
-              mode="light"
             >
               <SelectValue placeholder={label} />
             </SelectTrigger>

@@ -11,3 +11,17 @@ export enum EventType {
   Exam = 'exam',
   Meetup = 'meetup',
 }
+
+export enum EducatorContentType {
+  Presentation = 'presentation',
+  Workshop = 'workshop',
+  Booklet = 'booklet',
+  Flyer = 'flyer',
+  Sticker = 'sticker',
+}
+
+export enum EducatorContentStatus {
+  Draft = 'draft',
+  Published = 'published',
+  Rejected = 'rejected',
+}

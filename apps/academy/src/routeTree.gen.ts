@@ -24,6 +24,8 @@ import { Route as LangAccountIndexRouteImport } from './routes/$lang/account/ind
 import { Route as LangEventsPlanBWeekRouteImport } from './routes/$lang/events/plan-b-week';
 import { Route as LangEventsMyTicketsRouteImport } from './routes/$lang/events/my-tickets';
 import { Route as LangEventsEventIdRouteImport } from './routes/$lang/events/$eventId';
+import { Route as LangEducatorContentMyContentRouteImport } from './routes/$lang/educator-content/my-content';
+import { Route as LangEducatorContentIdRouteImport } from './routes/$lang/educator-content/$id';
 import { Route as LangDashboardDashboardRouteImport } from './routes/$lang/dashboard/_dashboard';
 import { Route as LangCertificationsCertificatesRouteImport } from './routes/$lang/certifications/certificates';
 import { Route as LangCertificationsBCertRouteImport } from './routes/$lang/certifications/b-cert';
@@ -81,6 +83,7 @@ import { Route as LangDashboardDashboardProfessorTutorialsRouteImport } from './
 import { Route as LangDashboardDashboardAdministrationTutorialsRouteImport } from './routes/$lang/dashboard/_dashboard/administration/tutorials';
 import { Route as LangDashboardDashboardAdministrationTranslationPanelRouteImport } from './routes/$lang/dashboard/_dashboard/administration/translation-panel';
 import { Route as LangDashboardDashboardAdministrationRoleRouteImport } from './routes/$lang/dashboard/_dashboard/administration/role';
+import { Route as LangDashboardDashboardAdministrationEducatorContentRouteImport } from './routes/$lang/dashboard/_dashboard/administration/educator-content';
 import { Route as LangDashboardDashboardAdministrationCouponsRouteImport } from './routes/$lang/dashboard/_dashboard/administration/coupons';
 import { Route as LangDashboardDashboardAdministrationCareersRouteImport } from './routes/$lang/dashboard/_dashboard/administration/careers';
 import { Route as LangDashboardDashboardAdministrationBookingsRouteImport } from './routes/$lang/dashboard/_dashboard/administration/bookings';
@@ -178,6 +181,17 @@ const LangEventsMyTicketsRoute = LangEventsMyTicketsRouteImport.update({
 const LangEventsEventIdRoute = LangEventsEventIdRouteImport.update({
   id: '/$lang/events/$eventId',
   path: '/$lang/events/$eventId',
+  getParentRoute: () => rootRouteImport,
+} as any);
+const LangEducatorContentMyContentRoute =
+  LangEducatorContentMyContentRouteImport.update({
+    id: '/$lang/educator-content/my-content',
+    path: '/$lang/educator-content/my-content',
+    getParentRoute: () => rootRouteImport,
+  } as any);
+const LangEducatorContentIdRoute = LangEducatorContentIdRouteImport.update({
+  id: '/$lang/educator-content/$id',
+  path: '/$lang/educator-content/$id',
   getParentRoute: () => rootRouteImport,
 } as any);
 const LangDashboardDashboardRoute = LangDashboardDashboardRouteImport.update({
@@ -511,6 +525,12 @@ const LangDashboardDashboardAdministrationRoleRoute =
     path: '/administration/role',
     getParentRoute: () => LangDashboardDashboardRoute,
   } as any);
+const LangDashboardDashboardAdministrationEducatorContentRoute =
+  LangDashboardDashboardAdministrationEducatorContentRouteImport.update({
+    id: '/administration/educator-content',
+    path: '/administration/educator-content',
+    getParentRoute: () => LangDashboardDashboardRoute,
+  } as any);
 const LangDashboardDashboardAdministrationCouponsRoute =
   LangDashboardDashboardAdministrationCouponsRouteImport.update({
     id: '/administration/coupons',
@@ -680,6 +700,8 @@ export interface FileRoutesByFullPath {
   '/$lang/certifications/b-cert': typeof LangCertificationsBCertRoute;
   '/$lang/certifications/certificates': typeof LangCertificationsCertificatesRoute;
   '/$lang/dashboard': typeof LangDashboardDashboardRouteWithChildren;
+  '/$lang/educator-content/$id': typeof LangEducatorContentIdRoute;
+  '/$lang/educator-content/my-content': typeof LangEducatorContentMyContentRoute;
   '/$lang/events/$eventId': typeof LangEventsEventIdRoute;
   '/$lang/events/my-tickets': typeof LangEventsMyTicketsRoute;
   '/$lang/events/plan-b-week': typeof LangEventsPlanBWeekRoute;
@@ -739,6 +761,7 @@ export interface FileRoutesByFullPath {
   '/$lang/dashboard/administration/bookings': typeof LangDashboardDashboardAdministrationBookingsRoute;
   '/$lang/dashboard/administration/careers': typeof LangDashboardDashboardAdministrationCareersRoute;
   '/$lang/dashboard/administration/coupons': typeof LangDashboardDashboardAdministrationCouponsRoute;
+  '/$lang/dashboard/administration/educator-content': typeof LangDashboardDashboardAdministrationEducatorContentRoute;
   '/$lang/dashboard/administration/role': typeof LangDashboardDashboardAdministrationRoleRoute;
   '/$lang/dashboard/administration/translation-panel': typeof LangDashboardDashboardAdministrationTranslationPanelRouteWithChildren;
   '/$lang/dashboard/administration/tutorials': typeof LangDashboardDashboardAdministrationTutorialsRoute;
@@ -774,6 +797,8 @@ export interface FileRoutesByTo {
   '/$lang/certifications/b-cert': typeof LangCertificationsBCertRoute;
   '/$lang/certifications/certificates': typeof LangCertificationsCertificatesRoute;
   '/$lang/dashboard': typeof LangDashboardDashboardIndexRoute;
+  '/$lang/educator-content/$id': typeof LangEducatorContentIdRoute;
+  '/$lang/educator-content/my-content': typeof LangEducatorContentMyContentRoute;
   '/$lang/events/$eventId': typeof LangEventsEventIdRoute;
   '/$lang/events/my-tickets': typeof LangEventsMyTicketsRoute;
   '/$lang/events/plan-b-week': typeof LangEventsPlanBWeekRoute;
@@ -832,6 +857,7 @@ export interface FileRoutesByTo {
   '/$lang/dashboard/administration/bookings': typeof LangDashboardDashboardAdministrationBookingsRoute;
   '/$lang/dashboard/administration/careers': typeof LangDashboardDashboardAdministrationCareersRoute;
   '/$lang/dashboard/administration/coupons': typeof LangDashboardDashboardAdministrationCouponsRoute;
+  '/$lang/dashboard/administration/educator-content': typeof LangDashboardDashboardAdministrationEducatorContentRoute;
   '/$lang/dashboard/administration/role': typeof LangDashboardDashboardAdministrationRoleRoute;
   '/$lang/dashboard/administration/translation-panel': typeof LangDashboardDashboardAdministrationTranslationPanelRouteWithChildren;
   '/$lang/dashboard/administration/tutorials': typeof LangDashboardDashboardAdministrationTutorialsRoute;
@@ -869,6 +895,8 @@ export interface FileRoutesById {
   '/$lang/certifications/certificates': typeof LangCertificationsCertificatesRoute;
   '/$lang/dashboard': typeof LangDashboardRouteWithChildren;
   '/$lang/dashboard/_dashboard': typeof LangDashboardDashboardRouteWithChildren;
+  '/$lang/educator-content/$id': typeof LangEducatorContentIdRoute;
+  '/$lang/educator-content/my-content': typeof LangEducatorContentMyContentRoute;
   '/$lang/events/$eventId': typeof LangEventsEventIdRoute;
   '/$lang/events/my-tickets': typeof LangEventsMyTicketsRoute;
   '/$lang/events/plan-b-week': typeof LangEventsPlanBWeekRoute;
@@ -929,6 +957,7 @@ export interface FileRoutesById {
   '/$lang/dashboard/_dashboard/administration/bookings': typeof LangDashboardDashboardAdministrationBookingsRoute;
   '/$lang/dashboard/_dashboard/administration/careers': typeof LangDashboardDashboardAdministrationCareersRoute;
   '/$lang/dashboard/_dashboard/administration/coupons': typeof LangDashboardDashboardAdministrationCouponsRoute;
+  '/$lang/dashboard/_dashboard/administration/educator-content': typeof LangDashboardDashboardAdministrationEducatorContentRoute;
   '/$lang/dashboard/_dashboard/administration/role': typeof LangDashboardDashboardAdministrationRoleRoute;
   '/$lang/dashboard/_dashboard/administration/translation-panel': typeof LangDashboardDashboardAdministrationTranslationPanelRouteWithChildren;
   '/$lang/dashboard/_dashboard/administration/tutorials': typeof LangDashboardDashboardAdministrationTutorialsRoute;
@@ -966,6 +995,8 @@ export interface FileRouteTypes {
     | '/$lang/certifications/b-cert'
     | '/$lang/certifications/certificates'
     | '/$lang/dashboard'
+    | '/$lang/educator-content/$id'
+    | '/$lang/educator-content/my-content'
     | '/$lang/events/$eventId'
     | '/$lang/events/my-tickets'
     | '/$lang/events/plan-b-week'
@@ -1025,6 +1056,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/administration/bookings'
     | '/$lang/dashboard/administration/careers'
     | '/$lang/dashboard/administration/coupons'
+    | '/$lang/dashboard/administration/educator-content'
     | '/$lang/dashboard/administration/role'
     | '/$lang/dashboard/administration/translation-panel'
     | '/$lang/dashboard/administration/tutorials'
@@ -1060,6 +1092,8 @@ export interface FileRouteTypes {
     | '/$lang/certifications/b-cert'
     | '/$lang/certifications/certificates'
     | '/$lang/dashboard'
+    | '/$lang/educator-content/$id'
+    | '/$lang/educator-content/my-content'
     | '/$lang/events/$eventId'
     | '/$lang/events/my-tickets'
     | '/$lang/events/plan-b-week'
@@ -1118,6 +1152,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/administration/bookings'
     | '/$lang/dashboard/administration/careers'
     | '/$lang/dashboard/administration/coupons'
+    | '/$lang/dashboard/administration/educator-content'
     | '/$lang/dashboard/administration/role'
     | '/$lang/dashboard/administration/translation-panel'
     | '/$lang/dashboard/administration/tutorials'
@@ -1154,6 +1189,8 @@ export interface FileRouteTypes {
     | '/$lang/certifications/certificates'
     | '/$lang/dashboard'
     | '/$lang/dashboard/_dashboard'
+    | '/$lang/educator-content/$id'
+    | '/$lang/educator-content/my-content'
     | '/$lang/events/$eventId'
     | '/$lang/events/my-tickets'
     | '/$lang/events/plan-b-week'
@@ -1214,6 +1251,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/_dashboard/administration/bookings'
     | '/$lang/dashboard/_dashboard/administration/careers'
     | '/$lang/dashboard/_dashboard/administration/coupons'
+    | '/$lang/dashboard/_dashboard/administration/educator-content'
     | '/$lang/dashboard/_dashboard/administration/role'
     | '/$lang/dashboard/_dashboard/administration/translation-panel'
     | '/$lang/dashboard/_dashboard/administration/tutorials'
@@ -1250,6 +1288,8 @@ export interface RootRouteChildren {
   LangCertificationsBCertRoute: typeof LangCertificationsBCertRoute;
   LangCertificationsCertificatesRoute: typeof LangCertificationsCertificatesRoute;
   LangDashboardRoute: typeof LangDashboardRouteWithChildren;
+  LangEducatorContentIdRoute: typeof LangEducatorContentIdRoute;
+  LangEducatorContentMyContentRoute: typeof LangEducatorContentMyContentRoute;
   LangEventsEventIdRoute: typeof LangEventsEventIdRoute;
   LangEventsMyTicketsRoute: typeof LangEventsMyTicketsRoute;
   LangEventsPlanBWeekRoute: typeof LangEventsPlanBWeekRoute;
@@ -1406,6 +1446,20 @@ declare module '@tanstack/react-router' {
       path: '/$lang/events/$eventId';
       fullPath: '/$lang/events/$eventId';
       preLoaderRoute: typeof LangEventsEventIdRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    '/$lang/educator-content/my-content': {
+      id: '/$lang/educator-content/my-content';
+      path: '/$lang/educator-content/my-content';
+      fullPath: '/$lang/educator-content/my-content';
+      preLoaderRoute: typeof LangEducatorContentMyContentRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    '/$lang/educator-content/$id': {
+      id: '/$lang/educator-content/$id';
+      path: '/$lang/educator-content/$id';
+      fullPath: '/$lang/educator-content/$id';
+      preLoaderRoute: typeof LangEducatorContentIdRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/dashboard/_dashboard': {
@@ -1814,6 +1868,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangDashboardDashboardAdministrationRoleRouteImport;
       parentRoute: typeof LangDashboardDashboardRoute;
     };
+    '/$lang/dashboard/_dashboard/administration/educator-content': {
+      id: '/$lang/dashboard/_dashboard/administration/educator-content';
+      path: '/administration/educator-content';
+      fullPath: '/$lang/dashboard/administration/educator-content';
+      preLoaderRoute: typeof LangDashboardDashboardAdministrationEducatorContentRouteImport;
+      parentRoute: typeof LangDashboardDashboardRoute;
+    };
     '/$lang/dashboard/_dashboard/administration/coupons': {
       id: '/$lang/dashboard/_dashboard/administration/coupons';
       path: '/administration/coupons';
@@ -2000,6 +2061,7 @@ interface LangDashboardDashboardRouteChildren {
   LangDashboardDashboardAdministrationBookingsRoute: typeof LangDashboardDashboardAdministrationBookingsRoute;
   LangDashboardDashboardAdministrationCareersRoute: typeof LangDashboardDashboardAdministrationCareersRoute;
   LangDashboardDashboardAdministrationCouponsRoute: typeof LangDashboardDashboardAdministrationCouponsRoute;
+  LangDashboardDashboardAdministrationEducatorContentRoute: typeof LangDashboardDashboardAdministrationEducatorContentRoute;
   LangDashboardDashboardAdministrationRoleRoute: typeof LangDashboardDashboardAdministrationRoleRoute;
   LangDashboardDashboardAdministrationTranslationPanelRoute: typeof LangDashboardDashboardAdministrationTranslationPanelRouteWithChildren;
   LangDashboardDashboardAdministrationTutorialsRoute: typeof LangDashboardDashboardAdministrationTutorialsRoute;
@@ -2023,6 +2085,8 @@ const LangDashboardDashboardRouteChildren: LangDashboardDashboardRouteChildren =
       LangDashboardDashboardAdministrationCareersRoute,
     LangDashboardDashboardAdministrationCouponsRoute:
       LangDashboardDashboardAdministrationCouponsRoute,
+    LangDashboardDashboardAdministrationEducatorContentRoute:
+      LangDashboardDashboardAdministrationEducatorContentRoute,
     LangDashboardDashboardAdministrationRoleRoute:
       LangDashboardDashboardAdministrationRoleRoute,
     LangDashboardDashboardAdministrationTranslationPanelRoute:
@@ -2122,6 +2186,8 @@ const rootRouteChildren: RootRouteChildren = {
   LangCertificationsBCertRoute: LangCertificationsBCertRoute,
   LangCertificationsCertificatesRoute: LangCertificationsCertificatesRoute,
   LangDashboardRoute: LangDashboardRouteWithChildren,
+  LangEducatorContentIdRoute: LangEducatorContentIdRoute,
+  LangEducatorContentMyContentRoute: LangEducatorContentMyContentRoute,
   LangEventsEventIdRoute: LangEventsEventIdRoute,
   LangEventsMyTicketsRoute: LangEventsMyTicketsRoute,
   LangEventsPlanBWeekRoute: LangEventsPlanBWeekRoute,

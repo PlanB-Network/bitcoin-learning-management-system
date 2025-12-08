@@ -458,6 +458,10 @@
   @apply text-sm font-medium leading-[143%] tracking-[-0.14px];
 }
 
+@utility caption-extra-small {
+  @apply text-xs font-normal leading-[143%] tracking-[-0.12px];
+}
+
 @utility caption-small {
   @apply text-sm font-normal leading-[143%] tracking-[-0.14px];
 }

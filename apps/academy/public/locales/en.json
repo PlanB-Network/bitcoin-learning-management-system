@@ -1324,6 +1324,36 @@
       }
     }
   },
+  "educatorContent": {
+    "addMaterial": "Add educator content",
+    "addMoreUrls": "Add more URLs",
+    "descriptionHelper": "Describe the resource content to help others understand its content and find it",
+    "descriptionPlaceholder": "Brief description of the educational material",
+    "detail": {
+      "createdBy": "Created by",
+      "downloadAll": "Download all",
+      "view": "View"
+    },
+    "dropCover": "Drop cover image here or",
+    "dropFiles": "Drop files here or",
+    "imageCover": "Cover Image",
+    "languagePlaceholder": "Select",
+    "languageRequired": "Select the resource language",
+    "myContent": "My content",
+    "NoResultsDescription": "Try adjusting your search filters",
+    "noResultsTitle": "No educator content found",
+    "resourceDetails": "Resource Details",
+    "resourceType": "Resource Type",
+    "shareLinks": "Share Links",
+    "success": "Educator content added successfully!",
+    "successSubtitle": "It will go through a review process before being displayed.",
+    "successTitle": "Educator content successfully uploaded",
+    "titleHelper": "It should reflect the content and purpose of your resource. Keep it concise but informative.",
+    "titleRequired": "The title cannot be empty",
+    "typeRequired": "Specify what type of resource it is",
+    "uploadFiles": "Upload Files",
+    "uploadForReview": "Upload for review"
+  },
   "events": {
     "addEvent": "Add event",
     "calendar": {
@@ -1838,6 +1868,7 @@
     "dislikes": "Dislikes",
     "displayName": "Display name",
     "download": "Download",
+    "downloads": "Downloads",
     "duration": "Duration",
     "edit": "Edit",
     "email": "Email",
