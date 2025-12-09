@@ -2023,5 +2023,19 @@
   "youtubeChannels": {
     "view": "View Youtube Channel",
     "watchTrailer": "Watch the trailer"
+  },
+  "mentor": {
+    "title": "PlanBot",
+    "openChat": "Ask PlanBot",
+    "close": "Close",
+    "expand": "Expand",
+    "collapse": "Collapse",
+    "reset": "New conversation",
+    "welcome": "Ask me anything about Bitcoin!",
+    "placeholder": "Ask a question...",
+    "thinking": "Thinking",
+    "error": "An error occurred. Please try again.",
+    "sources": "Go further",
+    "loginRequired": "Create an account to chat with PlanBot!"
   }
 }

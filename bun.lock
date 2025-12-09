@@ -1,5 +1,6 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "blms",
@@ -42,7 +43,7 @@
         "b4a": "^1.7.3",
         "class-variance-authority": "^0.7.1",
         "cropperjs": "2.1.0",
-        "cropperjs-react-wrapper": "^0.0.3",
+        "cropperjs-react-wrapper": "^1.0.0",
         "d3": "^7.9.0",
         "date-fns": "^4.1.0",
         "date-fns-tz": "^3.2.0",
@@ -1786,7 +1787,7 @@
 
     "cropperjs": ["cropperjs@2.1.0", "", { "dependencies": { "@cropper/elements": "^2.1.0", "@cropper/utils": "^2.1.0" } }, "sha512-SsSDqdVRl+mjbIBkGWlk1gCGcc+HzBqCbH5EQ+1tkAFUdxq2KUGukXF1RqhmvXrrdrX7PDwSUkWgXS7E36KvGQ=="],
 
-    "cropperjs-react-wrapper": ["cropperjs-react-wrapper@0.0.3", "", { "dependencies": { "cropperjs": "^2.1.0" }, "peerDependencies": { "react": ">=18", "react-dom": ">=18" } }, "sha512-U2JBM/hM0X2+4fDh6FN0fdEJw57gOykAgiQyTQdi7NN/M3bpFtPTdH9XNsKwTbQePk6vb2iCkQaS/rVKyj1Jjw=="],
+    "cropperjs-react-wrapper": ["cropperjs-react-wrapper@1.0.0", "", { "dependencies": { "cropperjs": "^2.1.0" }, "peerDependencies": { "react": ">=18", "react-dom": ">=18" } }, "sha512-E5O+5QeF+6QahG2ytNjgChXpN2kPQ3vfs8wpyYo7vtK8cY2fJPY+CzAP6Op2zBlzXok4BBniQSCdF/aq5NHKqA=="],
 
     "cross-env": ["cross-env@10.1.0", "", { "dependencies": { "@epic-web/invariant": "^1.0.0", "cross-spawn": "^7.0.6" }, "bin": { "cross-env": "dist/bin/cross-env.js", "cross-env-shell": "dist/bin/cross-env-shell.js" } }, "sha512-GsYosgnACZTADcmEyJctkJIoqAhHjttw7RsFrVoJNXbsWWqaq6Ym+7kZjq6mS45O0jij6vtiReppKQEtqWy6Dw=="],
 

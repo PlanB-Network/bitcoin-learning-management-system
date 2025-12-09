@@ -4,6 +4,7 @@ import process from 'node:process';
 import type { PostgresClientConfig } from '@blms/database';
 import type {
   GitHubSyncConfig,
+  GroqConfig,
   OpenTimestampsConfig,
   S3Config,
   SendGridConfig,
@@ -143,4 +144,8 @@ export const typesense: TypesenseConfig = {
   nodes: getenv('TYPESENSE_NODES', 'http://typesense:8108')
     .split(',')
     .map((url) => ({ url })),
+};
+
+export const groq: GroqConfig = {
+  apiKey: getenv('GROQ_API_KEY', ''),
 };

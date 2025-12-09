@@ -1,4 +1,6 @@
 {
+  "name": "blms",
+  "version": "0.0.0",
   "devDependencies": {
     "@biomejs/biome": "2.3.4",
     "@types/mocha": "^10.0.10",
@@ -18,12 +20,7 @@
       "biome check --no-errors-on-unmatched --files-ignore-unknown=true --diagnostic-level=warn"
     ]
   },
-  "name": "blms",
   "packageManager": "pnpm@10.24.0",
-  "workspaces": [
-    "packages/*",
-    "apps/*"
-  ],
   "private": true,
   "scripts": {
     "build": "turbo run build --cache-dir=.turbo",
@@ -68,5 +65,8 @@
     "type-check": "turbo run type-check"
   },
   "type": "module",
-  "version": "0.0.0"
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ]
 }

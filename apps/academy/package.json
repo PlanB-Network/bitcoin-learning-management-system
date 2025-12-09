@@ -91,6 +91,7 @@
     "check-types": "tsc --noEmit --project tsconfig.app.json",
     "clear": "rm -rf ./dist && rm -f *.tsbuildinfo",
     "dev": "vite serve --mode development",
+    "dev:bun": "bun --bun x vite serve --mode development",
     "pear:build": "npx vite build --config vite.pear.config.ts",
     "postpear:build": "cd dist && npm i",
     "pear:run": "pear run --dev ./dist",

@@ -45,6 +45,7 @@ export interface EnvConfig {
   typesense: TypesenseConfig;
   opentimestamps: OpenTimestampsConfig;
   swissBitcoinPay: SwissBitcoinPayConfig;
+  groq: GroqConfig;
   protectSyncRoute: boolean;
 }
 
@@ -69,4 +70,8 @@ export interface S3Config {
 export interface SwissBitcoinPayConfig {
   apiKey: string | null;
   proxyUrl: string | null;
+}
+
+export interface GroqConfig {
+  apiKey: string;
 }

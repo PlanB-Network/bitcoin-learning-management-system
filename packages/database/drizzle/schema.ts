@@ -2732,3 +2732,32 @@ export const contentTranslationJobs = content.table(
     unique().on(table.courseId, table.type),
   ],
 );
+
+// Mentor chat messages for AI assistant conversations
+export const usersMentorMessages = users.table(
+  'mentor_messages',
+  (t) => ({
+    id: t.uuid().defaultRandom().primaryKey().notNull(),
+    uid: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
+    // Generic session key (e.g., "chapter:btc101-ch1:en", "tutorial:xyz:fr")
+    sessionKey: t.varchar({ length: 255 }).notNull(),
+    // "user", "assistant", or "RESET" (special marker to clear context)
+    role: t.varchar({ length: 20 }).notNull(),
+    content: t.text().notNull(),
+    createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  }),
+  (table) => ({
+    // Index for fast lookup of user's messages in a session
+    sessionIdx: index('mentor_messages_session_idx').on(
+      table.uid,
+      table.sessionKey,
+      table.createdAt,
+    ),
+  }),
+);

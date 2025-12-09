@@ -1975,5 +1975,19 @@
   "footer": {
     "FOSSOpenContent": "FOSS & Contenu libre",
     "proudlyPartOf": "Fièrement membre de <0>Plan ₿ Network</0>"
+  },
+  "mentor": {
+    "title": "PlanBot",
+    "openChat": "Poser une question à PlanBot",
+    "close": "Fermer",
+    "expand": "Agrandir",
+    "collapse": "Réduire",
+    "reset": "Nouvelle conversation",
+    "welcome": "Pose-moi une question sur Bitcoin !",
+    "placeholder": "Pose une question...",
+    "thinking": "Réflexion en cours",
+    "error": "Une erreur s'est produite. Veuillez réessayer.",
+    "sources": "Pour aller plus loin",
+    "loginRequired": "Crée un compte pour discuter avec PlanBot !"
   }
 }
