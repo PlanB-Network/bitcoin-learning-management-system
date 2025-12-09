@@ -8,6 +8,7 @@ import {
   createRejectEducatorContent,
   createUpdateEducatorContent,
 } from '@blms/service-content';
+import { createSendEducatorContentApprovedEmail } from '@blms/service-user';
 import type { JoinedEducatorContent } from '@blms/types';
 import { z } from 'zod';
 import {
@@ -168,7 +169,7 @@ export const educatorContentRouter = createTRPCRouter({
       } as any);
     }),
 
-  approveEducatorContent: professorProcedure
+  approveEducatorContent: adminProcedure
     .input(
       z.object({
         id: z.string(),
@@ -178,7 +179,27 @@ export const educatorContentRouter = createTRPCRouter({
       const approveEducatorContent = createApproveEducatorContent(
         ctx.dependencies,
       );
-      return approveEducatorContent(input.id);
+      const getEducatorContent = createGetEducatorContent(ctx.dependencies);
+      const sendEducatorContentApprovedEmail =
+        createSendEducatorContentApprovedEmail(ctx.dependencies);
+
+      const [content] = await getEducatorContent(
+        undefined,
+        undefined,
+        input.id,
+      );
+
+      if (!content) {
+        throw new Error('Content not found');
+      }
+
+      await approveEducatorContent(input.id, content.originalId ?? undefined);
+
+      await sendEducatorContentApprovedEmail({
+        title: content.title,
+        userId: content.uid,
+        language: content.language,
+      });
     }),
 
   rejectEducatorContent: professorProcedure

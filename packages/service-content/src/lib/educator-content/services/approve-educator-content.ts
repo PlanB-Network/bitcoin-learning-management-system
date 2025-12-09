@@ -3,20 +3,11 @@ import {
   approveEducatorContentQuery,
   mergeEducatorContentQuery,
 } from '../queries/approve-educator-content.js';
-import { getEducatorContentQuery } from '../queries/get-educator-content.js';
 
 export const createApproveEducatorContent = ({ postgres }: Dependencies) => {
-  return async (id: string) => {
-    const [content] = await postgres.exec(
-      getEducatorContentQuery(undefined, undefined, id),
-    );
-
-    if (!content) {
-      throw new Error('Content not found');
-    }
-
-    if (content.originalId) {
-      await postgres.exec(mergeEducatorContentQuery(id, content.originalId));
+  return async (id: string, originalId?: string) => {
+    if (originalId) {
+      await postgres.exec(mergeEducatorContentQuery(id, originalId));
       return;
     }
 
