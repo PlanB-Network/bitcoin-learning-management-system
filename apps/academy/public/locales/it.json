@@ -64,7 +64,7 @@
       "usernameRegex": "Il nome utente può contenere solo lettere, cifre, trattini bassi(_), punti (.) , e trattini (-).",
       "usernameRequired": "È richiesto il nome utente.",
       "usernameTooShort": "Il nome utente deve contenere almeno 5 caratteri.",
-      "oldPasswordRequired": "Vecchia password richiesta",
+      "oldPasswordRequired": "È richiesta la vecchia password",
       "passwordTooShort": "La password è troppo corta"
     },
     "forgottenPassword": "Hai dimenticato la password?",
@@ -95,12 +95,12 @@
     "loginNotAvailable1": "Le funzionalità di accesso non sono ancora disponibili nell'app per desktop.",
     "loginNotAvailable2": "Puoi visitare il nostro sito web per autenticarti e accedere al tuo account.",
     "forgotPassword": "Hai dimenticato la password?",
-    "login": "Accesso",
+    "login": "Accedi",
     "oldPassword": "Vecchia password",
     "signUp": "Registrati"
   },
   "bCert": {
-    "bCertDescription": "Il ₿-CERT è il massimo test su Bitcoin creato per valutare il livello di conoscenze su Bitcoin e i relativi argomenti. Se superi l'80% di risposte esatte, otterrai un certificato ₿-CERT che può provare le tue conoscenze nell'industria Bitcoin, aprendo le porte a varie opportunità di lavoro nel campo.",
+    "bCertDescription": "Il ₿-CERT è il test finale creato per valutare il livello di conoscenze su Bitcoin e gli argomenti correlati. Se superi l'80% di risposte esatte, otterrai un certificato ₿-CERT che può provare le tue conoscenze nell'industria Bitcoin, aprendo le porte a varie opportunità di lavoro nel campo.",
     "bookExam": "Prenota una sessione di test",
     "challengeYourself": "Sfida te stesso e dimostra il tuo livello",
     "download": "Scarica il certificato",
@@ -138,7 +138,7 @@
     "pageTitle": "Registrazioni conferenze",
     "planBConferences": "Conferenze di Plan ₿",
     "topics": "Argomenti",
-    "conferencesGenesis": "Conferenze dal Genesis Block"
+    "conferencesGenesis": "Conferenze a partire dal Genesis Block"
   },
   "courses": {
     "chapter": {
@@ -218,10 +218,10 @@
       "examAvailabilityDetails": "Se l'esame non viene superato durante il periodo di disponibilità sulla piattaforma, lo studente riceverà automaticamente il punteggio 0.",
       "examCertificateCompletionText": "Plan ₿ Network è felice di congratularsi con {{username}} per aver ottenuto il certificato del corso \"{{courseName}}\".",
       "examDetails": "L'esame ha {{nb}} domande a scelta multipla che prevedono una sola risposta corretta. Puoi cambiare le tue risposte in qualsiasi momento prima di inviare il test, finché il timer è in funzione.",
-      "examNotPassed": "Devi sostenere l'esame finale e ottenere un punteggio superiore all'80% per ottenere il tuo diploma e completare completamente il corso. Questo diploma sarà <0>timbrato</0> per garantirne l'autenticità.",
+      "examNotPassed": "Devi sostenere l'esame finale e ottenere un punteggio superiore all'80% per avere il diploma e completare totalmente il corso. Questo diploma avrà un <0>timestamp</0> per garantirne l'autenticità.",
       "explanations": "Spiegazioni:",
       "failed": "Non superato",
-      "failedDiploma": "Devi ottenere più dell'80% all'esame finale per ottenere il tuo diploma e completare interamente il corso. Puoi ripetere l'esame dopo 24 ore.",
+      "failedDiploma": "Devi ottenere più dell'80% all'esame finale per ottenere il diploma e completare interamente il corso. Puoi ripetere l'esame dopo 24 ore.",
       "finalExam": "Esame finale",
       "finalScore": "Punteggio finale",
       "findInformationChapter": "Trova ulteriori informazioni in questo capitolo:",
@@ -237,7 +237,7 @@
       "nbQuestions": "{{nb}} domande",
       "nextChapter": "Prossimo capitolo",
       "noGoBack": "No, torna indietro",
-      "notTranslatedYet": "Ci dispiace, ma l'esame finale non è ancora disponibile nella lingua da te selezionata. Potresti scegliere un'altra lingua per continuare.",
+      "notTranslatedYet": "Ci dispiace, ma l'esame finale non è ancora disponibile nella lingua da te selezionata. Puoi scegliere un'altra lingua per continuare.",
       "oneMinuteLeft": "Ti resta solo 1 minuto",
       "oopsFailed": "Ops, sembra che tu <0>non abbia superato</0> l'esame finale.",
       "passed": "Superato",
@@ -345,7 +345,7 @@
       "difficulty": "Difficoltà",
       "displayOutOf": "visualizzati su",
       "editReview": "Modifica i commenti",
-      "faithful": "Coerente con l'obiettivo?",
+      "faithful": "In linea con l'obiettivo?",
       "feedback": "Feedback",
       "feedbackDescription1": "Ti chiediamo gentilmente di valutare qui sotto la tua esperienza con il corso.",
       "feedbackDescription2": "Ricorda che gli insegnanti non avranno accesso alle valutazioni individuali.",
@@ -373,12 +373,12 @@
       "veryGood": "molto buono",
       "whatStudentsSay": "Cosa dicono gli studenti su questo corso",
       "whatStudentsSayPasEdition": "Cosa dicono gli studenti delle edizioni passate",
-      "writeThoughts": "Qui puoi scrivere i tuoi pensieri",
+      "writeThoughts": "Qui puoi scrivere la tua opinione",
       "yesOfCourse": "sì, certo",
       "yesVeryMuch": "sì, molto"
     },
     "allCourses": "Tutti i corsi",
-    "continueLeftOff": "Continua da dove hai lasciato",
+    "continueLeftOff": "Riprendi da dove hai interrotto",
     "courseSelector": "Ricerca corsi",
     "noCoursesFound": "Nessun corso trovato. Prova a modificare i tuoi filtri.",
     "plusXMore": "+ altri {{count}}",
@@ -388,9 +388,9 @@
       "liveClasses": "Corsi Live",
       "title": "Programma annuale ufficiale di Plan ₿",
       "program": {
-        "goal": "Domina l'industria del Bitcoin con Giacomo Zucco in un programma di 5 mesi che combina teoria, studi di caso reali e opportunità esclusive di networking.",
+        "goal": "Diventa un esperto nell'industria Bitcoin con un programma di 5 mesi coordinato da Giacomo Zucco, che combina teoria, casi studio reali ed esclusive opportunità di networking.",
         "semester": "Semestre",
-        "title": "Piano ₿ Programma"
+        "title": "Plan ₿ Program"
       }
     },
     "navbarHover": "Registrati per sbloccare"
@@ -1081,7 +1081,7 @@
       "isSubmissionFinal": "La tua presentazione è definitiva?",
       "joinTelegramGroup": "Unisciti al gruppo Telegram",
       "keepEditing": "Continua a modificare",
-      "keepMovingForward": "Anche se questa volta non hai superato il corso, ogni passo contribuisce al progresso. \nContinua ad avanzare nel tuo viaggio di apprendimento!",
+      "keepMovingForward": "Anche se questa volta non hai superato il corso, ogni passo contribuisce al tuo progresso. \nContinua a progredire nel tuo percorso di apprendimento!",
       "leastPreferred": "Meno preferito",
       "listSaved": "La tua lista di preferenze è stata salvata.",
       "listSavedComeTomorrow": "Le tue preferenze sono state salvate. \nTorna qui domani per scoprire quale progetto ti è stato assegnato.",
@@ -1113,20 +1113,20 @@
       "yourProjectAssignment": "Il tuo progetto"
     },
     "credentials": {
-      "beingGraded": "Il tuo esame è in fase di correzione. I risultati dovrebbero essere disponibili tra 1 o 2 settimane.",
+      "beingGraded": "Il tuo esame è in fase di correzione. I risultati dovrebbero essere disponibili dopo 1 o 2 settimane dal test.",
       "courseDiplomas": "Diplomi dei corsi",
       "globalCertifications": "Certificati",
       "completeACourse": "Completa un corso per ottenere il tuo primo diploma!",
       "exploreBCert": "Esplora il ₿-CERT",
-      "getGlobalRecognition": "Ottieni un riconoscimento globale con un certificato ₿-CERT",
+      "getGlobalRecognition": "Ottieni un riconoscimento globale con un certificato del test ₿-CERT",
       "noCertificatesAvailable": "Nessun certificato disponibile",
       "bCertResults": {
         "score020": "Hai intrapreso il tuo viaggio! Ogni esperto è partito da qui",
-        "score100": "Punteggio perfetto! Sei Satoshi, o semplicemente geniale?",
+        "score100": "Punteggio perfetto! Sei Satoshi, o sei semplicemente geniale?",
         "score2140": "Hai capito i fondamentali! Continua così, stai migliorando rapidamente!",
-        "score4160": "Fondamenti solidi! Sei pronto per le lezioni avanzate",
+        "score4160": "Hai delle basi solide! Sei pronto per le lezioni avanzate",
         "score6180": "Stai andando alla grande! Continua a perfezionare le tue competenze e a padroneggiare Bitcoin",
-        "score8199": "Ottima comprensione! Gestisci con facilità temi complessi del Bitcoin"
+        "score8199": "Ottima comprensione! Gestisci con facilità temi complessi relativi a Bitcoin"
       },
       "detailedScore": "Punteggio dettagliato"
     },
@@ -1137,7 +1137,7 @@
       "completeAll": "Completa tutto",
       "completed": "Completato",
       "detailsAndCertificate": "Dettagli & certificati",
-      "done": "Fatto",
+      "done": "Completato",
       "download": "Scarica il diploma",
       "duration": "Durata:",
       "inProgress": "In svolgimento",
@@ -1153,7 +1153,7 @@
       "whereYouAre": "Vediamo a che punto sei!",
       "yourCertificate": "Il tuo certificato",
       "yourProgress": "I tuoi progressi:",
-      "noCourseStarted": "Non hai ancora iniziato alcun corso fai-da-te"
+      "noCourseStarted": "Non hai ancora iniziato alcun corso online"
     },
     "profile": {
       "cancel": "Annulla",
@@ -1181,7 +1181,8 @@
         "none": "Nessuna",
         "platformTitle": "Quali tipi di notifiche vuoi ricevere su questa piattaforma?",
         "settingsSaved": "Le tue impostazioni sono state salvate con successo!",
-        "title": "Configurazione delle notifiche"
+        "title": "Configurazione delle notifiche",
+        "coursesEventsOption": "Aggiornamenti sui corsi e gli eventi che stai seguendo"
       },
       "password": "Password",
       "preview": "Anteprima",
@@ -1390,7 +1391,7 @@
         "workshop": "workshop"
       }
     },
-    "addEvent": "Aggiungi evento",
+    "addEvent": "Aggiungi un evento",
     "myTickets": "I miei biglietti",
     "planBWeek": {
       "pageTitle": "Plan ₿ Week"
@@ -1451,7 +1452,7 @@
   },
   "menu": {
     "login": "Accedi",
-    "educatorContent": "Contenuto dell'educatore",
+    "educatorContent": "Contenuti per gli educatori",
     "getStarted": "Inizia",
     "signIn": "Accedi"
   },
@@ -1715,8 +1716,8 @@
       "title": "Wallet"
     },
     "writtenBy": "Questo tutorial è stato realizzato da",
-    "onThisPage": "Su questa pagina",
-    "noTutorialsFound": "Non abbiamo trovato nessun tutorial corrispondente alla tua ricerca."
+    "onThisPage": "In questa pagina",
+    "noTutorialsFound": "Nessun tutorial corrisponde alla tua ricerca."
   },
   "underConstruction": {
     "github": "GitHub",
@@ -1728,7 +1729,7 @@
   },
   "words": {
     "abstract": "Estratto",
-    "access": "Accedi",
+    "access": "Accesso",
     "action": "Azione",
     "admin": "Amministratore",
     "admins": "Amministratori",
@@ -1912,7 +1913,8 @@
     "confirmation": "Conferma",
     "optional": "Opzionale",
     "session": "Sessione",
-    "syllabus": "Programma"
+    "syllabus": "Programma",
+    "enroll": "Iscriviti"
   },
   "youtubeChannels": {
     "view": "Vai al canale Youtube",
@@ -1959,7 +1961,7 @@
   },
   "footer": {
     "FOSSOpenContent": "FOSS & Contenuti open-source",
-    "proudlyPartOf": "Sono orgoglioso di far parte di <0>Plan ₿ Network</0>"
+    "proudlyPartOf": "Orgogliosi di far parte di<0>Plan ₿ Network</0>"
   },
   "months": {
     "april": "Aprile",

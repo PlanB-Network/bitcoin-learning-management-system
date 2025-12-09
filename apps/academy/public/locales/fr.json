@@ -418,7 +418,7 @@
       "coupons": {
         "cancel": "Annuler",
         "close": "Fermer",
-        "delete": "Supprimer",
+        "delete": "Supprime",
         "deleteDiscountCodeConfirm": "Êtes-vous sûr de vouloir supprimer ce code de réduction ?",
         "deleteDiscountCodeWarning": "Une fois ce code supprimé, il ne sera plus fonctionnel. Ce changement est irréversible",
         "discountCode": "Code de réduction",
@@ -477,7 +477,7 @@
       },
       "coursesIndexes": "Indices des cours",
       "date": "Date",
-      "deleteRole": "Supprimer le rôle",
+      "deleteRole": "Supprime le rôle",
       "discountCodes": "Codes de réduction",
       "downloadList": "Télécharger la liste",
       "editRole": "Modifier le rôle",
@@ -503,7 +503,7 @@
       "translationPanel": {
         "actions": {
           "accept": "Accepter",
-          "delete": "Supprimer",
+          "delete": "Supprime",
           "reject": "Rejeter"
         },
         "addContributor": {
@@ -913,7 +913,7 @@
       "cvUpload": "Téléchargez votre CV",
       "cvUploadLabel": "Téléchargement de CV",
       "cvUploadSubtitle": "Téléchargez votre CV pour présenter vos compétences et expériences aux employeurs potentiels.",
-      "deleteCareerProfile": "Supprimer le profil de carrière",
+      "deleteCareerProfile": "Supprime le profil de carrière",
       "deleteCareerProfileTitle": "Êtes-vous sûr de vouloir supprimer votre profil de carrière ?",
       "description": "En tant qu'étudiant du Plan ₿ Network, vous faites partie d'une vaste communauté qui peut soutenir votre croissance professionnelle. Dans cette section, vous pouvez soumettre votre CV et partager vos aspirations de carrière. Nous travaillerons en étroite collaboration avec nos partenaires industriels pour faire correspondre votre profil avec des opportunités d'emploi potentielles, vous aidant à franchir la prochaine étape de votre parcours professionnel.",
       "emailAddress": "Adresse e-mail",
@@ -1778,7 +1778,7 @@
     "credits": "Crédits",
     "date": "Date",
     "day": "Jour",
-    "delete": "Supprimé",
+    "delete": "Supprime",
     "description": "Description",
     "details": "Détails",
     "diploma": "Diplôme",

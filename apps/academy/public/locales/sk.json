@@ -1016,7 +1016,28 @@
       "motivationLetterSubLabel": "Môžete nižšie napísať niekoľko slov, ktorými popíšete svoje skúsenosti a motiváciu.",
       "motivationSubtitle": "Môžete svoju žiadosť obohatiť o prezentáciu, ktorá nám poskytne viac kontextu o vás a vašom hľadaní práce.",
       "noFileSelected": "Nebol vybraný žiadny súbor",
-      "other": "Ostatné"
+      "other": "Ostatné",
+      "partTime": "Čiastočný úväzok",
+      "personalInformation": "Osobné informácie",
+      "personalInformationSubtitle": "Prosím, uveďte svoje celé meno a bydlisko.",
+      "provideValidEmail": "Prosím, uveďte platný email.",
+      "remoteWorkPreference": "Ste ochotný pracovať na diaľku?",
+      "remoteWorkPreferences": {
+        "no": "Radšej nie",
+        "sometimes": "Občas, prečo nie",
+        "yes": "Áno, s potešením"
+      },
+      "roleLevel": "Úroveň skúseností",
+      "roleLevelSubLabel": "Vyberte úroveň, ktorá najlepšie zodpovedá vašim schopnostiam.",
+      "roleLevels": {
+        "junior": "Junior (1 až 3 roky)",
+        "mid": "Stredná úroveň (3 až 5 rokov)",
+        "senior": "Senior (5+ rokov)",
+        "student": "Študent (0 rokov)"
+      },
+      "roleRequired": "Pridajte aspoň jednu rolu.",
+      "seeOrEditProfile": "Zobraziť alebo upraviť profil",
+      "selectJobTitle": "Vyberte názov pracovnej pozície"
     }
   }
 }
