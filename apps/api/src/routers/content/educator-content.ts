@@ -7,6 +7,7 @@ import {
   createIncrementEducatorContentDownloads,
   createRejectEducatorContent,
   createUpdateEducatorContent,
+  createUpdateEducatorContentAsAdmin,
 } from '@blms/service-content';
 import { createSendEducatorContentApprovedEmail } from '@blms/service-user';
 import type { JoinedEducatorContent } from '@blms/types';
@@ -158,7 +159,7 @@ export const educatorContentRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      const updateEducatorContent = createUpdateEducatorContent(
+      const updateEducatorContent = createUpdateEducatorContentAsAdmin(
         ctx.dependencies,
       );
       return updateEducatorContent({
