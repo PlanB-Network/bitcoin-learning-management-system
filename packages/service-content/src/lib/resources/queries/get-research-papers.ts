@@ -38,6 +38,8 @@ export const getResearchPapersQuery = () => {
       rp.topics,
       rp.type,
       rp.paper_url,
-      rp.bib_url
+      rp.bib_url,
+      r.last_updated,
+      r.last_commit
   `;
 };

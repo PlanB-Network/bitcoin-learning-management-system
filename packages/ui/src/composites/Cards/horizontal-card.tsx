@@ -28,8 +28,6 @@ export const HorizontalCard = ({
         'w-full flex items-center justify-between p-2 hover:bg-neutral-50 rounded-2xl gap-4',
         className,
       )}
-      target={'_blank'}
-      rel={'noopener noreferrer'}
     >
       <div className="flex gap-6 items-center">
         <Image

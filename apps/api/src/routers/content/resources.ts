@@ -162,7 +162,6 @@ export const resourcesRouter = createTRPCRouter({
 
   // Research papers
   getResearchPaper: createGetResourceProcedure()
-    .input(z.object({ id: z.string() }))
     .output<Parser<JoinedResearchPaper>>(joinedResearchPaperSchema)
     .query(({ ctx, input }) => {
       return createGetResearchPaper(ctx.dependencies)(input.id);

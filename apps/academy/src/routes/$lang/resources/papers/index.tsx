@@ -1,7 +1,7 @@
 import { formatNameForURL } from '@blms/shared';
 import { Button, HorizontalCard, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
-import { createFileRoute, Link } from '@tanstack/react-router';
+import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbChevronsDown } from 'react-icons/tb';
@@ -30,7 +30,7 @@ function ResearchPapers() {
   );
 
   const sortedPapers = papers
-    ? papers.sort((a, b) => a.title.localeCompare(b.title))
+    ? [...papers].sort((a, b) => a.title.localeCompare(b.title))
     : [];
 
   const filteredPapers = sortedPapers.filter((paper) => {
@@ -62,27 +62,19 @@ function ResearchPapers() {
           />
           <div className="w-full flex flex-col gap-1 sm:gap-2">
             {filteredPapers.slice(0, shownPapersCount).map((paper) => (
-              <Link
-                to={`/resources/papers/${formatNameForURL(paper.title)}-${paper.id}`}
-                params={{
-                  paperId: paper.id.toString(),
-                }}
+              <HorizontalCard
                 key={paper.id}
-                className="max-sm:w-full"
-              >
-                <HorizontalCard
-                  title={paper.title}
-                  subtitle={`${paper.authors.join(', ')}${
-                    paper.publicationDate
-                      ? ` • ${new Date(paper.publicationDate).getFullYear()}`
-                      : ''
-                  }`}
-                  link={paper.paperUrl}
-                  thumbnail={PaperImage}
-                  hideMobileThumbnail
-                  hideThumbnailBorder
-                />
-              </Link>
+                title={paper.title}
+                subtitle={`${paper.authors.join(', ')}${
+                  paper.publicationDate
+                    ? ` • ${new Date(paper.publicationDate).getFullYear()}`
+                    : ''
+                }`}
+                link={`/resources/papers/${formatNameForURL(paper.title)}-${paper.id}`}
+                thumbnail={PaperImage}
+                hideMobileThumbnail
+                hideThumbnailBorder
+              />
             ))}
           </div>
 

@@ -53,7 +53,7 @@ function Paper() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (paper && params.paperName !== formatNameForURL(paper.title)) {
+    if (paper && params.paperTitle !== formatNameForURL(paper.title)) {
       navigate({
         replace: true,
         to: `/resources/papers/${formatNameForURL(paper.title)}-${paper.id}`,
@@ -180,7 +180,9 @@ function Paper() {
                 <p className="body-base-bold px-1">{t('words.details')}</p>
                 <div className="bg-white p-3 rounded-2xl">
                   <ListElement2 icon={TbFileInfo} leftText={t('words.type')}>
-                    {t(`resources.papers.types.${paper.type}` || paper.type)}
+                    {t(`resources.papers.types.${paper.type}`, {
+                      defaultValue: paper.type,
+                    })}
                   </ListElement2>
                   <ListElement2
                     icon={TbBuildingCommunity}
