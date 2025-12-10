@@ -44,6 +44,7 @@ function AdminEducatorContent() {
   const [selectedLanguage, setSelectedLanguage] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [isUnpublishMode, setIsUnpublishMode] = useState(false);
 
   const { data: draftContent, isLoading: isLoadingDraft } = useQuery(
     trpc.content.getEducatorContents.queryOptions({
@@ -81,12 +82,19 @@ function AdminEducatorContent() {
     }),
   );
 
-  const handleEdit = (content: any) => {
-    setSelectedContent(content);
-    setIsEditModalOpen(true);
-  };
+  const unpublishMutation = useMutation(
+    trpc.content.unpublishEducatorContent.mutationOptions({
+      onSuccess: () => {
+        queryClient.invalidateQueries({
+          queryKey: trpc.content.getEducatorContents.queryKey(),
+        });
+        setIsPreviewOpen(false);
+      },
+    }),
+  );
 
-  const handlePreview = (content: any) => {
+  const handlePreview = (content: any, isDraft: boolean) => {
+    setIsUnpublishMode(!isDraft);
     setSelectedContent(content);
     setIsPreviewOpen(true);
   };
@@ -100,6 +108,12 @@ function AdminEducatorContent() {
   const handleReject = () => {
     if (selectedContent) {
       rejectMutation.mutate({ id: String(selectedContent.id) });
+    }
+  };
+
+  const handleUnpublish = () => {
+    if (selectedContent) {
+      unpublishMutation.mutate({ id: String(selectedContent.id) });
     }
   };
 
@@ -174,7 +188,9 @@ function AdminEducatorContent() {
                 className="w-full h-full object-cover"
               />
             ) : (
-              <span className="text-xs text-gray-500">No Cover</span>
+              <span className="text-xs text-gray-500">
+                {t('educatorContent.noCover')}
+              </span>
             )}
           </div>
           <div className="grow">
@@ -185,7 +201,7 @@ function AdminEducatorContent() {
               <Button
                 variant="tertiary"
                 size="s"
-                onClick={() => handlePreview(item)}
+                onClick={() => handlePreview(item, isDraft)}
               >
                 {item.originalId ? 'Preview changes' : 'Preview for approval'}
               </Button>
@@ -193,9 +209,9 @@ function AdminEducatorContent() {
               <Button
                 variant="tertiary"
                 size="s"
-                onClick={() => handleEdit(item)}
+                onClick={() => handlePreview(item, isDraft)}
               >
-                Edit
+                {t('words.open')}
               </Button>
             )}
           </div>
@@ -207,8 +223,6 @@ function AdminEducatorContent() {
   return (
     <PageLayout title="Review Educator Content" layoutSize="wide">
       <div className="w-full flex flex-col gap-6">
-        <h1 className="text-2xl font-bold">Review Educator Content</h1>
-
         <SegmentedControl
           variant="outline"
           value={currentTab}
@@ -351,12 +365,15 @@ function AdminEducatorContent() {
           content={selectedContent}
           onApprove={handleApprove}
           onReject={handleReject}
+          onUnpublish={handleUnpublish}
+          isUnpublishMode={isUnpublishMode}
           onEdit={() => {
             setIsPreviewOpen(false);
             setIsEditModalOpen(true);
           }}
           isApprovePending={approveMutation.isPending}
           isRejectPending={rejectMutation.isPending}
+          isUnpublishPending={unpublishMutation.isPending}
         />
 
         {/* Edit Modal */}

@@ -1362,7 +1362,8 @@
     "status": {
       "draft": "Pending",
       "published": "Live",
-      "rejected": "Not accepted"
+      "rejected": "Not accepted",
+      "unpublished": "Unpublished"
     },
     "success": "Educator content added successfully!",
     "successSubtitle": "It will go through a review process before being displayed.",
@@ -1984,6 +1985,7 @@
     "on": "on",
     "onChainAddress": "On chain address",
     "online": "Online",
+    "open": "Open",
     "optional": "Optional",
     "overview": "Overview",
     "paid": "Premium",

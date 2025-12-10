@@ -52,6 +52,7 @@ function MyContent() {
       draft: 0,
       published: 1,
       rejected: 2,
+      unpublished: 3,
     };
 
     return [...content].sort((a, b) => {
@@ -79,6 +80,8 @@ function MyContent() {
         return 'bg-gray-100 text-gray-600';
       case 'rejected':
         return 'bg-orange-100 text-orange-800';
+      case 'unpublished':
+        return 'bg-blue-100 text-blue-800';
       default:
         return 'bg-gray-100 text-gray-600';
     }
@@ -92,6 +95,8 @@ function MyContent() {
         return t('educatorContent.status.draft');
       case 'rejected':
         return t('educatorContent.status.rejected');
+      case 'unpublished':
+        return t('educatorContent.status.unpublished');
       default:
         return status;
     }

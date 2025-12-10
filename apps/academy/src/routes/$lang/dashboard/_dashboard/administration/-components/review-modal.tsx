@@ -18,15 +18,18 @@ import {
 } from '#src/services/content.js';
 import { getLanguageName } from '#src/utils/i18n.ts';
 
-interface ReviewModalProps {
+interface RootReviewModalProps {
   content: JoinedEducatorContent;
   isOpen: boolean;
   onClose: () => void;
   onApprove: () => void;
   onReject: () => void;
   onEdit: () => void;
+  onUnpublish: () => void;
   isApprovePending?: boolean;
   isRejectPending?: boolean;
+  isUnpublishPending?: boolean;
+  isUnpublishMode?: boolean;
 }
 
 export const ReviewModal = ({
@@ -36,9 +39,12 @@ export const ReviewModal = ({
   onApprove,
   onReject,
   onEdit,
+  onUnpublish,
   isApprovePending,
   isRejectPending,
-}: ReviewModalProps) => {
+  isUnpublishPending,
+  isUnpublishMode,
+}: RootReviewModalProps) => {
   const { t } = useTranslation();
 
   const isMobile = useSmaller('lg');
@@ -60,7 +66,7 @@ export const ReviewModal = ({
     <BasicModal
       open={isOpen}
       onOpenChange={onClose}
-      title="Review for approval"
+      title={isUnpublishMode ? 'View content' : 'Review for approval'}
       contentClassName="max-w-xl"
     >
       <div className="flex flex-col gap-6 text-left items-stretch w-full">
@@ -89,7 +95,6 @@ export const ReviewModal = ({
             </p>
           </div>
         </div>
-
         {/* Stats Cards */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           <StatCard
@@ -108,7 +113,6 @@ export const ReviewModal = ({
             icon={TbFile}
           />
         </div>
-
         {/* Files and Links List */}
         <div className="bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm">
           <div className="flex flex-col divide-y divide-gray-100">
@@ -163,10 +167,9 @@ export const ReviewModal = ({
             ))}
           </div>
         </div>
-
         {/* Download All */}
         {content.files && content.files.length > 0 && (
-          <div className="flex justify-end">
+          <div className="flex justify-end px-6 mt-4">
             <Button
               variant="primary"
               size={isMobile ? 's' : 'm'}
@@ -181,7 +184,6 @@ export const ReviewModal = ({
             </Button>
           </div>
         )}
-
         {/* Action Buttons */}
         <div className="flex flex-col gap-3 mt-2 w-full">
           <Button
@@ -192,23 +194,35 @@ export const ReviewModal = ({
             Edit
           </Button>
 
-          <Button
-            className="w-full justify-center bg-red-6 relative"
-            onClick={onReject}
-            disabled={isRejectPending}
-          >
-            <span>Reject</span>
-            <TbTrash className="absolute right-4 opacity-60" />
-          </Button>
-
-          <Button
-            className="w-full justify-center bg-green-600 relative"
-            onClick={onApprove}
-            disabled={isApprovePending}
-          >
-            <span>Approve content and publish</span>
-            <TbCheck className="absolute right-4 opacity-60" />
-          </Button>
+          {isUnpublishMode ? (
+            <Button
+              className="w-full justify-center bg-red-6 relative"
+              onClick={onUnpublish}
+              disabled={isUnpublishPending}
+            >
+              <span>Unpublish</span>
+              <TbTrash className="absolute right-4 opacity-60" />
+            </Button>
+          ) : (
+            <>
+              <Button
+                className="w-full justify-center bg-red-6 relative"
+                onClick={onReject}
+                disabled={isRejectPending}
+              >
+                <span>Reject</span>
+                <TbTrash className="absolute right-4 opacity-60" />
+              </Button>
+              <Button
+                className="w-full justify-center bg-green-600 relative"
+                onClick={onApprove}
+                disabled={isApprovePending}
+              >
+                <span>Approve content and publish</span>
+                <TbCheck className="absolute right-4 opacity-60" />
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </BasicModal>

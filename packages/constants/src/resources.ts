@@ -24,4 +24,5 @@ export enum EducatorContentStatus {
   Draft = 'draft',
   Published = 'published',
   Rejected = 'rejected',
+  Unpublished = 'unpublished',
 }

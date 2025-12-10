@@ -6,6 +6,7 @@ import {
   createGetEducatorContent,
   createIncrementEducatorContentDownloads,
   createRejectEducatorContent,
+  createUnpublishEducatorContent,
   createUpdateEducatorContent,
   createUpdateEducatorContentAsAdmin,
 } from '@blms/service-content';
@@ -226,5 +227,18 @@ export const educatorContentRouter = createTRPCRouter({
         ctx.dependencies,
       );
       return incrementDownloads(input.id);
+    }),
+
+  unpublishEducatorContent: adminProcedure
+    .input(
+      z.object({
+        id: z.string(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      const unpublishEducatorContent = createUnpublishEducatorContent(
+        ctx.dependencies,
+      );
+      return unpublishEducatorContent(input.id);
     }),
 });

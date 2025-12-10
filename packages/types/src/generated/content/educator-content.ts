@@ -4,7 +4,7 @@
 export interface EducatorContent {
   id: string;
   type: 'presentation' | 'workshop' | 'booklet' | 'flyer' | 'sticker';
-  status: 'draft' | 'published' | 'rejected';
+  status: 'draft' | 'published' | 'rejected' | 'unpublished';
   cover: string | null;
   language: string;
   title: string;
@@ -34,7 +34,7 @@ export interface EducatorContentFile {
 export interface JoinedEducatorContent {
   id: string;
   type: 'presentation' | 'workshop' | 'booklet' | 'flyer' | 'sticker';
-  status: 'draft' | 'published' | 'rejected';
+  status: 'draft' | 'published' | 'rejected' | 'unpublished';
   cover: string | null;
   language: string;
   title: string;
