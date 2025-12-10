@@ -164,15 +164,19 @@ export const createRestMentorRoutes = (
         context += searchContext;
       }
 
+      // Build source list for LLM to reference
+      const sourceList = sources
+        .map((s, i) => `[${i + 1}] ${s.title}`)
+        .join('\n');
+
       // Build system prompt
       const systemPrompt = `You are PlanBot, a helpful AI mentor for PlanB Academy, an educational platform about Bitcoin.
 The user is reading a course in "${language}" but may ask questions in any language.
 
 CRITICAL: You MUST reply in the same language as the user's question (not the course language). Do NOT mention or comment on the language detection, just answer directly.
 
-${context ? `Reference material:\n${context}\n\n` : ''}Be clear, pedagogical, concise but complete. If you don't know, say so.`;
-
-      console.log('[mentor] Built system prompt and context.', systemPrompt);
+${context ? `Reference material:\n${context}\n\n` : ''}Be clear, pedagogical, concise but complete. If you don't know, say so.
+${sourceList ? `\nAvailable sources you can reference:\n${sourceList}\n\nIf your answer uses information from a specific source, cite it at the END of your response using the format: [Sources: 1, 3] (only include numbers of sources you actually used). If you don't use any source or the question is simple/conversational, don't include any sources.` : ''}`;
 
       // Build messages array with history
       const messages: Array<{ role: string; content: string }> = [
@@ -213,9 +217,6 @@ ${context ? `Reference material:\n${context}\n\n` : ''}Be clear, pedagogical, co
       res.setHeader('Connection', 'keep-alive');
       res.setHeader('X-Accel-Buffering', 'no');
       res.flushHeaders();
-
-      // Send sources first
-      res.write(`data: ${JSON.stringify({ type: 'sources', sources })}\n\n`);
 
       // Call Groq API with streaming
       const groqResponse = await fetch(
@@ -296,11 +297,30 @@ ${context ? `Reference material:\n${context}\n\n` : ''}Be clear, pedagogical, co
         reader.releaseLock();
       }
 
-      // Save assistant response to DB
-      if (fullResponse) {
+      // Extract cited sources from response (format: [Sources: 1, 3])
+      const sourceMatch = fullResponse.match(/\[Sources?:\s*([\d,\s]+)\]/i);
+      let citedSources: Array<{ title: string; link: string }> = [];
+      if (sourceMatch) {
+        const citedNumbers = sourceMatch[1]
+          .split(',')
+          .map((n) => Number.parseInt(n.trim(), 10))
+          .filter((n) => !Number.isNaN(n) && n >= 1 && n <= sources.length);
+        citedSources = citedNumbers.map((n) => sources[n - 1]);
+      }
+
+      // Send sources (only the ones actually cited)
+      res.write(
+        `data: ${JSON.stringify({ type: 'sources', sources: citedSources })}\n\n`,
+      );
+
+      // Save assistant response to DB (without source citation)
+      const cleanResponse = fullResponse
+        .replace(/\[Sources?:\s*[\d,\s]+\]/gi, '')
+        .trim();
+      if (cleanResponse) {
         await dependencies.postgres.exec(sql`
           INSERT INTO users.mentor_messages (uid, session_key, role, content)
-          VALUES (${uid}, ${sessionKey}, 'assistant', ${fullResponse})
+          VALUES (${uid}, ${sessionKey}, 'assistant', ${cleanResponse})
         `);
       }
 

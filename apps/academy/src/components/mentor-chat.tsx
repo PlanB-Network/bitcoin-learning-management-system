@@ -207,7 +207,15 @@ export const MentorChat = ({ chapterId, language }: MentorChatProps) => {
               setMessages((prev) =>
                 prev.map((msg) =>
                   msg.id === mentorMessageId
-                    ? { ...msg, sources, isStreaming: false }
+                    ? {
+                        ...msg,
+                        // Remove source citation from displayed content
+                        content: msg.content
+                          .replace(/\[Sources?:\s*[\d,\s]+\]/gi, '')
+                          .trim(),
+                        sources,
+                        isStreaming: false,
+                      }
                     : msg,
                 ),
               );
