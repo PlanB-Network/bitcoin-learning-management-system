@@ -229,7 +229,7 @@ function RouteComponent() {
         {filteredContent && filteredContent.length === 0 ? (
           <EmptyState
             title={t('educatorContent.noResultsTitle')}
-            description={t('educatorContent.n')}
+            description={t('educatorContent.noResultsDescription')}
             icon={TbSearch}
           />
         ) : null}
