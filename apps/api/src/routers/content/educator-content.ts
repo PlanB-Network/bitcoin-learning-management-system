@@ -13,7 +13,6 @@ import type { JoinedEducatorContent } from '@blms/types';
 import { z } from 'zod';
 import {
   adminProcedure,
-  professorProcedure,
   publicProcedure,
   studentProcedure,
 } from '#src/procedures/index.js';
@@ -202,7 +201,7 @@ export const educatorContentRouter = createTRPCRouter({
       });
     }),
 
-  rejectEducatorContent: professorProcedure
+  rejectEducatorContent: adminProcedure
     .input(
       z.object({
         id: z.string(),

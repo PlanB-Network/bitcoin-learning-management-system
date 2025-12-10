@@ -9,8 +9,20 @@ import {
 
 export const createUpdateEducatorContent = ({ postgres }: Dependencies) => {
   return async (
-    input: Partial<JoinedEducatorContent> & { id: string; uid?: string },
+    input: Partial<JoinedEducatorContent> & { id: string; uid: string },
   ) => {
+    const [existing] = await postgres.exec(
+      getEducatorContentQuery(undefined, undefined, input.id),
+    );
+
+    if (!existing) {
+      throw new Error('Content not found');
+    }
+
+    if (existing.uid !== input.uid) {
+      throw new Error('Not authorized');
+    }
+
     const [content] = await postgres.exec(
       updateEducatorContentQuery(input as any),
     );
