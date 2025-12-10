@@ -13,6 +13,7 @@ export * from './lab.js';
 export * from './legals.js';
 export * from './movie.js';
 export * from './newsletters.js';
+export * from './papers.js';
 export * from './podcast.js';
 export * from './professor.js';
 export * from './professors2.js';

@@ -8,6 +8,7 @@ import {
   joinedNewsletterSchema,
   joinedPodcastSchema,
   joinedProjectSchema,
+  joinedResearchPaperSchema,
   joinedYoutubeChannelSchema,
 } from '@blms/schemas';
 import {
@@ -28,6 +29,8 @@ import {
   createGetPodcasts,
   createGetProject,
   createGetProjects,
+  createGetResearchPaper,
+  createGetResearchPapers,
   createGetYoutubeChannel,
   createGetYoutubeChannels,
   createSearch,
@@ -42,6 +45,7 @@ import type {
   JoinedNewsletter,
   JoinedPodcast,
   JoinedProject,
+  JoinedResearchPaper,
   JoinedYoutubeChannel,
 } from '@blms/types';
 import { z } from 'zod';
@@ -155,6 +159,19 @@ export const resourcesRouter = createTRPCRouter({
     .query(({ ctx, input }) => {
       return createGetPodcast(ctx.dependencies)(input.id);
     }),
+
+  // Research papers
+  getResearchPaper: createGetResourceProcedure()
+    .output<Parser<JoinedResearchPaper>>(joinedResearchPaperSchema)
+    .query(({ ctx, input }) => {
+      return createGetResearchPaper(ctx.dependencies)(input.id);
+    }),
+  getResearchPapers: createGetResourcesProcedure()
+    .output<Parser<JoinedResearchPaper[]>>(joinedResearchPaperSchema.array())
+    .query(({ ctx }) => {
+      return createGetResearchPapers(ctx.dependencies)();
+    }),
+
   // Podcasts
   getPodcasts: createGetResourcesProcedure()
     .output<Parser<JoinedPodcast[]>>(joinedPodcastSchema.array())

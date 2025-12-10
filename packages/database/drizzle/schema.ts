@@ -910,6 +910,32 @@ export const contentYoutubeChannels = content.table(
   }),
 );
 
+// RESEARCH PAPERS
+
+export const contentResearchPapers = content.table('research_papers', (t) => ({
+  id: t.uuid().unique().notNull(),
+  resourceId: t
+    .uuid()
+    .primaryKey()
+    .notNull()
+    .references(() => contentResources.id, {
+      onDelete: 'cascade',
+      onUpdate: 'cascade',
+    }),
+
+  title: t.text().notNull(),
+  abstract: t.text().notNull(),
+  authors: t.text().array().notNull(),
+  publicationDate: t.text(),
+  source: t.text().notNull(),
+  language: t.text().notNull(),
+  topics: t.varchar({ length: 255 }).array(),
+  type: t.text().notNull(),
+
+  paperUrl: t.text().notNull(),
+  bibUrl: t.text().notNull(),
+}));
+
 // COURSES
 
 export const courseFormatEnum = pgNativeEnum('course_format', CourseFormat);

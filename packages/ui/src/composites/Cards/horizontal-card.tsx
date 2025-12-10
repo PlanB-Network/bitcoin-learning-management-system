@@ -1,66 +1,60 @@
-import type { ButtonProps } from '@blms/ui';
-import { Button, cn, Flag } from '@blms/ui';
+import { cn, Image } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
-import { FaArrowRightLong } from 'react-icons/fa6';
+import { TbChevronRight } from 'react-icons/tb';
 
 interface HorizontalCardProps {
   title: string;
   subtitle?: string;
-  buttonText?: string;
-  buttonVariant?: ButtonProps['variant'];
-  buttonLink?: string;
-  languages: string[] | null;
+  link: string;
+  thumbnail: string;
   className?: string;
+  hideMobileThumbnail?: boolean;
+  hideThumbnailBorder?: boolean;
 }
 
 export const HorizontalCard = ({
   title,
   subtitle,
-  buttonText,
-  buttonVariant = 'primary',
-  buttonLink,
-  languages,
+  link,
+  thumbnail,
   className,
+  hideMobileThumbnail,
+  hideThumbnailBorder,
 }: HorizontalCardProps) => {
   return (
-    <div
+    <Link
+      to={link}
       className={cn(
-        'flex justify-between w-full bg-newBlack-2 p-2 rounded-lg gap-2 border border-newBlack-4',
+        'w-full flex items-center justify-between p-2 hover:bg-neutral-50 rounded-2xl gap-4',
         className,
       )}
     >
-      <div className="flex flex-col justify-between gap-1 px-1">
-        <h4 className="mobile-subtitle1 text-white capitalize">{title}</h4>
-        {subtitle && (
-          <span className="mobile-caption1 text-newGray-4">{subtitle}</span>
-        )}
-      </div>
-
-      <div className="flex flex-col justify-between min-w-fit gap-2">
-        <div className="flex items-center gap-2.5 ml-auto py-2">
-          {languages?.slice(0, 2).map((language) => (
-            <Flag code={language} size="l" key={language} />
-          ))}
+      <div className="flex gap-6 items-center">
+        <Image
+          src={thumbnail}
+          alt={title}
+          breakpoints={{ default: 96, md: 160 }}
+          loading="lazy"
+          className={cn(
+            'object-cover [overflow-clip-margin:unset] aspect-square rounded-lg md:rounded-2xl size-12 md:size-20',
+            hideMobileThumbnail && 'max-md:hidden',
+            hideThumbnailBorder
+              ? 'border-0'
+              : 'border-[0.5px] border-neutral-100',
+          )}
+        />
+        <div className="flex flex-col gap-0.5">
+          <span className="body-base-bold md:subtitle-base text-black">
+            {title}
+          </span>
+          {subtitle && (
+            <span className="body-base text-neutral-500 line-clamp-1">
+              {subtitle}
+            </span>
+          )}
         </div>
-        {buttonText &&
-          (buttonLink ? (
-            <Link to={buttonLink}>
-              <Button variant={buttonVariant} className="w-fit" size="s">
-                {buttonText}
-                <FaArrowRightLong
-                  className={cn(
-                    'opacity-0 max-w-0 inline-flex whitespace-nowrap transition-[max-width_opacity] overflow-hidden ease-in-out duration-150 group-hover:max-w-96 group-hover:opacity-100',
-                    'group-hover:ml-3',
-                  )}
-                />
-              </Button>
-            </Link>
-          ) : (
-            <Button variant={buttonVariant} disabled className="w-fit" size="s">
-              {buttonText}
-            </Button>
-          ))}
       </div>
-    </div>
+      <TbChevronRight className="text-neutral-300 shrink-0" size={20} />
+    </Link>
   );
 };

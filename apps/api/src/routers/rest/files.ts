@@ -489,6 +489,7 @@ export const createRestFilesRoutes = async (
         'user-files',
         'cvs',
         'contribute',
+        'resources',
       ];
       if (!allowedBuckets.includes(dir)) {
         res.status(401).send('Unauthorized');

@@ -18,6 +18,8 @@ export { createGetProject } from './get-project.js';
 // Metadata requests
 export { createGetProjectMeta } from './get-project-meta.js';
 export { createGetProjects } from './get-projects.js';
+export { createGetResearchPaper } from './get-research-paper.js';
+export { createGetResearchPapers } from './get-research-papers.js';
 export { createGetYoutubeChannel } from './get-youtube-channel.js';
 export { createGetYoutubeChannels } from './get-youtube-channels.js';
 export { createGetProjectsLocations } from './projects-locations.get.js';
