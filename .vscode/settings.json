@@ -37,6 +37,7 @@
     "fontkit",
     "getenv",
     "Giacomo",
+    "groq",
     "healthcheck",
     "hyperdht",
     "hyperdrive",

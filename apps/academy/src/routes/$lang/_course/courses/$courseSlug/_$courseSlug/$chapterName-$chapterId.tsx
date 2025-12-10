@@ -21,6 +21,7 @@ import { z } from 'zod';
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
+import { MentorChat } from '#src/components/mentor-chat.tsx';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { useGreater } from '#src/hooks/use-greater.js';
@@ -839,6 +840,10 @@ function CourseChapter() {
             onClose={closeAuthModal}
             initialState={AuthModalState.SignIn}
           />
+        )}
+
+        {chapter && (
+          <MentorChat chapterId={chapter.chapterId} language={i18n.language} />
         )}
       </div>
     </PageLayout>
