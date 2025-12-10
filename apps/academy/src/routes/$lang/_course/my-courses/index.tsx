@@ -108,14 +108,22 @@ function DashboardCourses() {
 
   if (!session) {
     return (
-      <PageLayout title={t('navbar.myCourses')} layoutSize="max">
+      <PageLayout
+        title={t('navbar.myCourses')}
+        layoutSize="max"
+        showBecomeTeacherButton
+      >
         <Loader size="s" />
       </PageLayout>
     );
   }
 
   return (
-    <PageLayout title={t('navbar.myCourses')} layoutSize="max">
+    <PageLayout
+      title={t('navbar.myCourses')}
+      layoutSize="max"
+      showBecomeTeacherButton
+    >
       {hasInProgressProfessorLedCourses && (
         <>
           <h2 className="title-base md:title-large max-md:mt-4">

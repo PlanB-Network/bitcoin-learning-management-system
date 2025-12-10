@@ -90,6 +90,7 @@ function CourseSelector() {
       ]}
       title={t('courses.courseSelector')}
       hideTitle
+      showBecomeTeacherButton
     >
       {!filteredCourses && <Loader size={'s'} />}
 

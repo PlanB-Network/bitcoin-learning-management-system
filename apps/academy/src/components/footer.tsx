@@ -2,6 +2,7 @@ import { cn, DividerSimple } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { Trans, useTranslation } from 'react-i18next';
 import { BsGithub, BsLinkedin, BsTwitterX, BsYoutube } from 'react-icons/bs';
+import { TbArrowUpRight } from 'react-icons/tb';
 import Nostr from '#src/assets/icons/nostr.svg?react';
 import Rumble from '#src/assets/icons/rumble.svg?react';
 import PlanBLogoBlack from '../assets/logo/planb_logo_horizontal_black.svg';
@@ -45,7 +46,11 @@ const SOCIAL_LINKS = [
   },
 ];
 
-export const Footer = () => {
+export const Footer = ({
+  showBecomeTeacherButton,
+}: {
+  showBecomeTeacherButton?: boolean;
+}) => {
   const { t } = useTranslation();
 
   const backgroundClass = 'bg-white text-newBlack-2';
@@ -62,6 +67,14 @@ export const Footer = () => {
     <footer className="pt-3 md:pt-6 w-full">
       {/* Desktop */}
       <div className={cn('w-full max-md:hidden', backgroundClass)}>
+        {showBecomeTeacherButton && (
+          <>
+            <div className="flex justify-center py-4.5">
+              <BecomeTeacherButton />
+            </div>
+            <div className="w-full h-6 bg-header" />
+          </>
+        )}
         <div className="flex w-full flex-col max-w-[1644px] mx-auto px-6">
           <SocialNetworksDesktop />
           <PartPlanBNetwork />
@@ -90,6 +103,14 @@ export const Footer = () => {
 
       {/* Mobile */}
       <div className={cn('flex w-full flex-col md:hidden', backgroundClass)}>
+        {showBecomeTeacherButton && (
+          <>
+            <div className="flex justify-center py-4.5">
+              <BecomeTeacherButton />
+            </div>
+            <div className="w-full h-px bg-header" />
+          </>
+        )}
         <div className="flex flex-col w-full p-4 pb-0 pt-6 gap-6">
           <div className="w-full flex flex-col justify-center gap-6">
             <img
@@ -238,5 +259,24 @@ const PartPlanBNetwork = () => {
         </a>
       </Trans>
     </p>
+  );
+};
+
+const BecomeTeacherButton = () => {
+  return (
+    <Link
+      to="/become-teacher"
+      className="flex items-center p-1 bg-neutral-50 border border-neutral-100 rounded-full gap-1"
+    >
+      <div className="flex justify-center items-center bg-green-200 rounded-full size-4">
+        <span className=" text-green-700 font-semibold text-[8px]">T</span>
+      </div>
+      <span className="body-extra-small text-neutral-500">
+        <Trans i18nKey="footer.becomeATeacher">
+          <span className="font-semibold">teacher</span>
+        </Trans>
+      </span>
+      <TbArrowUpRight size={12} className="text-neutral-500" />
+    </Link>
   );
 };

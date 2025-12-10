@@ -26,6 +26,7 @@ interface Props {
     | React.ReactNode[];
   layoutSize?: 'small' | 'base' | 'wide' | 'max';
   icon?: IconType | ReactNode;
+  showBecomeTeacherButton?: boolean;
 }
 
 export const PageLayout = ({
@@ -42,6 +43,7 @@ export const PageLayout = ({
   actionButtons = [],
   layoutSize = 'max',
   icon: Icon,
+  showBecomeTeacherButton,
 }: Props) => {
   const { isSidebarOpen } = useContext(AppContext);
   const isMobile = useSmaller('lg') || window.innerWidth < 1024;
@@ -88,7 +90,7 @@ export const PageLayout = ({
   );
 
   return (
-    <MainLayout>
+    <MainLayout showBecomeTeacherButton={showBecomeTeacherButton}>
       <PageMeta title={title} description={description} />
       {/** biome-ignore lint/complexity/noUselessFragments: <N/A> */}
       <>
