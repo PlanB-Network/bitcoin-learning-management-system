@@ -225,24 +225,20 @@ export const SideBarContent = ({
             ) : null}
           </div>
 
-          {process.env.NODE_ENV === 'development' ? (
-            <>
-              <div className="w-full max-w-[209px] mx-auto h-px bg-[#E8E8E8]" />
-              <div className="flex flex-col gap-1">
-                <SideBarItem
-                  icon={EducatorContentBlue}
-                  iconColor="blue"
-                  label={t('menu.educatorContent')}
-                  link="/educator-content"
-                  isActive={
-                    window.location.pathname.includes('/educator-content') &&
-                    !window.location.pathname.includes('/dashboard')
-                  }
-                  isSidebarOpen={isSidebarOpen}
-                />
-              </div>
-            </>
-          ) : null}
+          <div className="w-full max-w-[209px] mx-auto h-px bg-[#E8E8E8]" />
+          <div className="flex flex-col gap-1">
+            <SideBarItem
+              icon={EducatorContentBlue}
+              iconColor="blue"
+              label={t('menu.educatorContent')}
+              link="/educator-content"
+              isActive={
+                window.location.pathname.includes('/educator-content') &&
+                !window.location.pathname.includes('/dashboard')
+              }
+              isSidebarOpen={isSidebarOpen}
+            />
+          </div>
         </>
       )}
 
