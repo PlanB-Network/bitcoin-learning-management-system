@@ -1329,6 +1329,7 @@
     "addMoreUrls": "Add more URLs",
     "browseFiles": "or browse files",
     "browseImages": "or browse images",
+    "contentNotFound": "Content not found",
     "currentCoverPresent": "Current cover present",
     "descriptionHelper": "Describe the resource content to help others understand its content and find it",
     "descriptionPlaceholder": "Brief description of the educational material",
@@ -1343,18 +1344,26 @@
     "dropFiles": "Drop files here",
     "editAndRequireApproval": "Edit and require approval",
     "editMaterial": "Edit educator content",
-    "noContentToReview": "No content to review",
     "fileTooLarge": "File too large (max 50MB)",
     "imageCover": "Cover Image",
     "languagePlaceholder": "Select",
     "languageRequired": "Select the resource language",
+    "loginMessage": "Please log in to view your content.",
     "myContent": "My content",
-    "NoResultsDescription": "Try adjusting your search filters",
+    "noContent": "You haven't uploaded any content yet.",
+    "noContentToReview": "No content to review",
+    "noCover": "No Cover",
+    "noResultsDescription": "Try adjusting your search filters",
     "noResultsTitle": "No educator content found",
     "onlyImages": "Only image files are allowed",
     "resourceDetails": "Resource Details",
     "resourceType": "Resource Type",
     "shareLinks": "Share Links",
+    "status": {
+      "draft": "Pending",
+      "published": "Live",
+      "rejected": "Not accepted"
+    },
     "success": "Educator content added successfully!",
     "successSubtitle": "It will go through a review process before being displayed.",
     "successTitle": "Educator content successfully uploaded",
@@ -1504,6 +1513,20 @@
     "lecturePartCourse": "This lecture replay is part of the <0>{{courseTitle}}</0> course.\nDive into the full course to master the entire concept and unlock your full potential!",
     "watchLecture": "Watch the lecture replay"
   },
+  "mentor": {
+    "close": "Close",
+    "collapse": "Collapse",
+    "error": "An error occurred. Please try again.",
+    "expand": "Expand",
+    "loginRequired": "Create an account to chat with PlanBot!",
+    "openChat": "Ask PlanBot",
+    "placeholder": "Ask a question...",
+    "reset": "New conversation",
+    "sources": "Go further",
+    "thinking": "Thinking",
+    "title": "PlanBot",
+    "welcome": "Ask me anything about Bitcoin!"
+  },
   "menu": {
     "educatorContent": "Educator content",
     "getStarted": "Get started",
@@ -1640,7 +1663,7 @@
     "legalSections": {
       "contact": "Contact",
       "legalNotice": "Legal notice",
-      "notFound": "Legal informations not found",
+      "notFound": "Legal information not found",
       "privacyPolicy": "Privacy policy",
       "termsOfSale": "Terms of sale"
     }
@@ -2023,19 +2046,5 @@
   "youtubeChannels": {
     "view": "View Youtube Channel",
     "watchTrailer": "Watch the trailer"
-  },
-  "mentor": {
-    "title": "PlanBot",
-    "openChat": "Ask PlanBot",
-    "close": "Close",
-    "expand": "Expand",
-    "collapse": "Collapse",
-    "reset": "New conversation",
-    "welcome": "Ask me anything about Bitcoin!",
-    "placeholder": "Ask a question...",
-    "thinking": "Thinking",
-    "error": "An error occurred. Please try again.",
-    "sources": "Go further",
-    "loginRequired": "Create an account to chat with PlanBot!"
   }
 }

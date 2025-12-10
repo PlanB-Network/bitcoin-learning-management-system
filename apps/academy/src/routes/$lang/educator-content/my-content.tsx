@@ -1,7 +1,7 @@
 import { cn, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link, useParams } from '@tanstack/react-router';
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbChevronRight, TbDownload } from 'react-icons/tb';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
@@ -46,6 +46,21 @@ function MyContent() {
     ),
   );
 
+  const sortedContent = useMemo(() => {
+    if (!content) return [];
+    const statusOrder: Record<string, number> = {
+      draft: 0,
+      published: 1,
+      rejected: 2,
+    };
+
+    return [...content].sort((a, b) => {
+      const orderA = statusOrder[a.status] ?? 99;
+      const orderB = statusOrder[b.status] ?? 99;
+      return orderA - orderB;
+    });
+  }, [content]);
+
   const isMobile = useSmaller('lg');
 
   const handleAddContentClick = () => {
@@ -72,11 +87,11 @@ function MyContent() {
   const getStatusLabel = (status: string) => {
     switch (status) {
       case 'published':
-        return 'Live';
-      case 'pending':
-        return 'Pending';
+        return t('educatorContent.status.published');
+      case 'draft':
+        return t('educatorContent.status.draft');
       case 'rejected':
-        return 'Not accepted';
+        return t('educatorContent.status.rejected');
       default:
         return status;
     }
@@ -107,7 +122,7 @@ function MyContent() {
     >
       {!isLoggedIn ? (
         <div className="flex flex-col items-center justify-center py-12">
-          <p className="text-lg mb-4">Please log in to view your content.</p>
+          <p className="text-lg mb-4">{t('educatorContent.loginMessage')}</p>
           <button
             type="button"
             onClick={openAuthModal}
@@ -120,7 +135,7 @@ function MyContent() {
         <Loader />
       ) : (
         <div className="flex flex-col gap-4 mt-6">
-          {content?.map((item) => (
+          {sortedContent?.map((item) => (
             <Link
               to="/$lang/educator-content/$id"
               params={{ lang: i18n.language, id: item.id }}
@@ -136,7 +151,9 @@ function MyContent() {
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <span className="text-xs text-gray-500">No Cover</span>
+                  <span className="text-xs text-gray-500">
+                    {t('educatorContent.noCover')}
+                  </span>
                 )}
               </div>
               {/* Content */}
@@ -168,7 +185,7 @@ function MyContent() {
           ))}
           {content?.length === 0 && (
             <div className="text-center py-12 text-gray-500">
-              You haven't uploaded any content yet.
+              {t('educatorContent.noContent')}
             </div>
           )}
         </div>

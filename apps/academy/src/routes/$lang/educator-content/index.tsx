@@ -229,7 +229,7 @@ function RouteComponent() {
         {filteredContent && filteredContent.length === 0 ? (
           <EmptyState
             title={t('educatorContent.noResultsTitle')}
-            description={t('educatorContent.NoResultsDescription')}
+            description={t('educatorContent.n')}
             icon={TbSearch}
           />
         ) : null}
@@ -249,7 +249,9 @@ function RouteComponent() {
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <span className="text-xs text-gray-500">No Cover</span>
+                <span className="text-xs text-gray-500">
+                  {t('educatorContent.noCover')}
+                </span>
               )}
             </div>
             {/* Content */}

@@ -2,9 +2,6 @@ import { EducatorContentStatus, EducatorContentType } from '@blms/constants';
 import {
   Button,
   cn,
-  Dialog,
-  DialogContent,
-  DialogTitle,
   DropdownMenu,
   EmptyState,
   Loader,
@@ -16,17 +13,11 @@ import { createFileRoute } from '@tanstack/react-router';
 import { capitalize } from 'lodash-es';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-  TbAdjustmentsHorizontal,
-  TbCheck,
-  TbSearch,
-  TbTrash,
-  TbX,
-} from 'react-icons/tb';
+import { TbAdjustmentsHorizontal, TbSearch, TbX } from 'react-icons/tb';
 
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { SearchInput } from '#src/components/search-input.tsx';
-
+import { ReviewModal } from '#src/routes/$lang/dashboard/_dashboard/administration/-components/review-modal.tsx';
 import { EducatorContentModal } from '#src/routes/$lang/educator-content/-components/educator-content-modal.tsx';
 import { getEducatorContentCoverUrl } from '#src/services/content.js';
 import { getLanguageName, LANGUAGES } from '#src/utils/i18n.ts';
@@ -341,7 +332,7 @@ function AdminEducatorContent() {
               filteredPublishedContent.length === 0 ? (
                 <EmptyState
                   title={t('educatorContent.noResultsTitle')}
-                  description={t('educatorContent.NoResultsDescription')}
+                  description={t('educatorContent.noResultsDescription')}
                   icon={TbSearch}
                 />
               ) : null}
@@ -354,130 +345,19 @@ function AdminEducatorContent() {
         )}
 
         {/* Preview Modal */}
-        <Dialog open={isPreviewOpen} onOpenChange={setIsPreviewOpen}>
-          <DialogContent className="max-w-4xl p-6 bg-white rounded-lg">
-            <div className="flex justify-between items-center mb-6">
-              <DialogTitle className="text-xl font-bold">
-                Review for approval
-              </DialogTitle>
-              <button
-                type="button"
-                onClick={() => setIsPreviewOpen(false)}
-                className="text-gray-500 hover:text-gray-700"
-              >
-                ✕
-              </button>
-            </div>
-
-            {selectedContent && (
-              <div className="border rounded-lg p-6 mb-6">
-                <div className="flex gap-6">
-                  <div className="w-48 h-48 bg-gray-100 rounded-lg shrink-0 overflow-hidden">
-                    {selectedContent.cover && (
-                      <img
-                        src={
-                          getEducatorContentCoverUrl(selectedContent.cover) ||
-                          ''
-                        }
-                        alt={selectedContent.title}
-                        className="w-full h-full object-cover"
-                      />
-                    )}
-                  </div>
-                  <div className="grow">
-                    <h1 className="text-3xl font-bold mb-2">
-                      {selectedContent.title}
-                    </h1>
-                    <p className="text-gray-600 mb-4">
-                      {selectedContent.description}
-                    </p>
-
-                    <div className="grid grid-cols-3 gap-4 mb-6">
-                      <div className="bg-gray-50 p-3 rounded">
-                        <span className="text-xs text-gray-500 block">
-                          LANGUAGE
-                        </span>
-                        <span className="font-medium capitalize">
-                          {selectedContent.language}
-                        </span>
-                      </div>
-                      <div className="bg-gray-50 p-3 rounded">
-                        <span className="text-xs text-gray-500 block">
-                          TYPE
-                        </span>
-                        <span className="font-medium capitalize">
-                          {selectedContent.type}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col gap-2">
-                      {selectedContent.files?.map((file: any) => (
-                        <div
-                          key={file.id}
-                          className="flex justify-between items-center border p-3 rounded"
-                        >
-                          <span>{file.name}</span>
-                          <Button
-                            variant="outline"
-                            size="s"
-                            onClick={() => window.open(file.path, '_blank')}
-                          >
-                            Download
-                          </Button>
-                        </div>
-                      ))}
-                      {selectedContent.links?.map((link: any) => (
-                        <div
-                          key={link.id}
-                          className="flex justify-between items-center border p-3 rounded"
-                        >
-                          <span>{link.label}</span>
-                          <Button
-                            variant="outline"
-                            size="s"
-                            onClick={() => window.open(link.url, '_blank')}
-                          >
-                            Open
-                          </Button>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            <div className="flex justify-between gap-4">
-              <Button
-                variant="outline"
-                className="w-full"
-                onClick={() => {
-                  setIsPreviewOpen(false);
-                  setIsEditModalOpen(true);
-                }}
-              >
-                Edit
-              </Button>
-              <Button
-                className="w-full bg-red-6 hover:bg-red-7 text-white"
-                onClick={handleReject}
-                disabled={rejectMutation.isPending}
-              >
-                <TbTrash className="mr-2" />
-                Reject
-              </Button>
-              <Button
-                className="w-full bg-green-600 hover:bg-green-700 text-white"
-                onClick={handleApprove}
-                disabled={approveMutation.isPending}
-              >
-                <TbCheck className="mr-2" />
-                Approve content and publish
-              </Button>
-            </div>
-          </DialogContent>
-        </Dialog>
+        <ReviewModal
+          isOpen={isPreviewOpen}
+          onClose={() => setIsPreviewOpen(false)}
+          content={selectedContent}
+          onApprove={handleApprove}
+          onReject={handleReject}
+          onEdit={() => {
+            setIsPreviewOpen(false);
+            setIsEditModalOpen(true);
+          }}
+          isApprovePending={approveMutation.isPending}
+          isRejectPending={rejectMutation.isPending}
+        />
 
         {/* Edit Modal */}
         {selectedContent && (

@@ -59,7 +59,7 @@ function EducatorContentDetail() {
   }
 
   if (!item) {
-    return <div>Content not found</div>;
+    return <div>{t('educatorContent.contentNotFound')}</div>;
   }
 
   const handleDownload = (path: string) => {
@@ -106,7 +106,9 @@ function EducatorContentDetail() {
                 className="w-full h-full object-cover border border-neutral-100 rounded-2xl"
               />
             ) : (
-              <span className="text-gray-400">No Cover</span>
+              <span className="text-gray-400">
+                {t('educatorContent.noCover')}
+              </span>
             )}
           </div>
 
