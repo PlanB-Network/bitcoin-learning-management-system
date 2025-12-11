@@ -2,7 +2,6 @@ import { cn, DividerSimple } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { Trans, useTranslation } from 'react-i18next';
 import { BsGithub, BsLinkedin, BsTwitterX, BsYoutube } from 'react-icons/bs';
-import { TbArrowUpRight } from 'react-icons/tb';
 import Nostr from '#src/assets/icons/nostr.svg?react';
 import Rumble from '#src/assets/icons/rumble.svg?react';
 import PlanBLogoBlack from '../assets/logo/planb_logo_horizontal_black.svg';
@@ -266,7 +265,7 @@ const BecomeTeacherButton = () => {
   return (
     <Link
       to="/become-teacher"
-      className="flex items-center p-1 bg-neutral-50 border border-neutral-100 rounded-full gap-1"
+      className="flex items-center px-5 py-3 bg-neutral-50 border border-neutral-100 rounded-full gap-1"
     >
       <div className="flex justify-center items-center bg-green-200 rounded-full size-4">
         <span className=" text-green-700 font-semibold text-[8px]">T</span>
@@ -276,7 +275,6 @@ const BecomeTeacherButton = () => {
           <span className="font-semibold">teacher</span>
         </Trans>
       </span>
-      <TbArrowUpRight size={12} className="text-neutral-500" />
     </Link>
   );
 };

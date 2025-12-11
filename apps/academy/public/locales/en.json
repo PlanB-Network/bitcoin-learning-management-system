@@ -121,10 +121,16 @@
     "wantHostSession": "Want to host a ₿-CERT test session at your local hub?"
   },
   "becomeTeacher": {
+    "activeBitcoinLearners": "active bitcoin learners",
+    "bitcoinOnly": "Bitcoin-only",
+    "bookCall": "Book a 30-min call to become a teacher",
     "description": "If you’re a passionate Bitcoiner who loves teaching and wants to make a real impact in your local community, you can host your own course on our learning platform.",
     "enhanceExperience": "<0>Enhance your students’ learning experience</0> with the platform tools",
+    "globalReach": "Global reach",
     "hostOwnCourse": "<0>Host your own course</0>, online or in-person",
+    "inspireLearners": "Inspire a community of learners",
     "joinMission": "<0>Join the mission</0> as a true Bitcoin educator",
+    "superiorAmount": ">{{amount}}",
     "teachWhatYouLove": "<0>Teach what you love</0>",
     "title": "Teach Bitcoin and inspire others"
   },
