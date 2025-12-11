@@ -1326,7 +1326,7 @@
   },
   "educatorContent": {
     "addMaterial": "Add educator content",
-    "addMoreUrls": "Add more URLs",
+    "addMoreLinks": "Add more links",
     "browseFiles": "or browse files",
     "browseImages": "or browse images",
     "contentNotFound": "Content not found",
@@ -1370,6 +1370,13 @@
     "successTitle": "Educator content successfully uploaded",
     "titleHelper": "It should reflect the content and purpose of your resource. Keep it concise but informative.",
     "titleRequired": "The title cannot be empty",
+    "types": {
+      "presentation": "Presentation",
+      "workshop": "Workshop",
+      "booklet": "Booklet",
+      "flyer": "Flyer",
+      "sticker": "Sticker"
+    },
     "typeRequired": "Specify what type of resource it is",
     "uploadFiles": "Upload Files",
     "uploadForReview": "Upload for review",

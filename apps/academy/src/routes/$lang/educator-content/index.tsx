@@ -51,6 +51,19 @@ function RouteComponent() {
     }),
   );
 
+  const { data: userContent } = useQuery(
+    trpc.content.getEducatorContents.queryOptions(
+      {
+        uid: session?.user?.uid,
+      },
+      {
+        enabled: isLoggedIn,
+      },
+    ),
+  );
+
+  const hasCreatedContent = userContent && userContent.length > 0;
+
   const isMobile = useSmaller('lg');
 
   const [selectedType, setSelectedType] = useState<EducatorContentType | 'all'>(
@@ -98,12 +111,12 @@ function RouteComponent() {
   const types = [
     {
       id: 'all',
-      name: 'All',
+      name: t('words.all'),
       onClick: () => setSelectedType('all'),
     },
     ...Object.values(EducatorContentType).map((type) => ({
       id: type,
-      name: capitalize(type),
+      name: t(`educatorContent.types.${type}`),
       onClick: () => setSelectedType(type),
     })),
   ];
@@ -111,7 +124,7 @@ function RouteComponent() {
   const languages = [
     {
       id: 'all',
-      name: 'All',
+      name: t('words.all'),
       onClick: () => setSelectedLanguage('all'),
     },
     ...LANGUAGES.map((lang) => ({
@@ -125,7 +138,7 @@ function RouteComponent() {
     <PageLayout
       title="Educator content"
       subtitle="Where bitcoin educators and communities share and reuse teaching resources"
-      layoutSize="wide"
+      layoutSize="base"
       actionButtons={[
         {
           text: t('educatorContent.addMaterial'),
@@ -140,11 +153,15 @@ function RouteComponent() {
                 label: t('menu.educatorContent'),
                 href: '/educator-content',
               },
-              {
-                id: 'my-content',
-                label: t('educatorContent.myContent'),
-                href: '/educator-content/my-content',
-              },
+              ...(hasCreatedContent
+                ? [
+                    {
+                      id: 'my-content',
+                      label: t('educatorContent.myContent'),
+                      href: '/educator-content/my-content',
+                    },
+                  ]
+                : []),
             ]
           : []
       }
@@ -175,7 +192,7 @@ function RouteComponent() {
       {/* Filters */}
       <div
         className={cn(
-          'lg:ml-auto flex max-lg:flex-col gap-1 lg:gap-2 lg:max-w-190 lg:w-full',
+          'flex lg:justify-end max-lg:flex-col gap-1 lg:gap-2',
           'max-lg:p-2 max-lg:rounded-lg max-lg:w-full max-lg:max-w-90',
           'max-lg:mx-auto lg:mt-4 mt-8 mb-8',
           isFilterOpen ? '' : 'max-lg:hidden',
@@ -193,8 +210,8 @@ function RouteComponent() {
           variant="light"
           placeholder="Type"
           forcePlaceholder={selectedType === 'all'}
+          className="w-full lg:w-44"
         />
-
         <DropdownMenu
           activeItem={
             languages.find((l) => l.id === selectedLanguage)?.name || 'Language'
@@ -203,8 +220,8 @@ function RouteComponent() {
           variant="light"
           placeholder="Language"
           forcePlaceholder={selectedLanguage === 'all'}
+          className="w-full lg:w-40"
         />
-
         <SearchInput
           searchTerm={searchQuery}
           setSearchTerm={setSearchQuery}
@@ -238,36 +255,41 @@ function RouteComponent() {
             to="/$lang/educator-content/$id"
             params={{ lang: i18n.language, id: item.id }}
             key={item.id}
-            className="flex gap-2 md:gap-6 items-center pr-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-pointer"
+            className="flex w-full justify-between gap-2 md:gap-6 items-center pr-4 bg-white rounded-lg hover:bg-neutral-50 cursor-pointer"
           >
-            {/* Thumbnail */}
-            <div className="w-48 h-24 bg-gray-200 rounded-lg shrink-0 overflow-hidden flex items-center justify-center">
-              {item.cover ? (
-                <img
-                  src={getEducatorContentCoverUrl(item.cover) || ''}
-                  alt={item.title}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <span className="text-xs text-gray-500">
-                  {t('educatorContent.noCover')}
-                </span>
-              )}
-            </div>
-            {/* Content */}
-            <div className="grow flex flex-col justify-center gap-2">
-              <h3 className="font-semibold text-xl text-gray-900">
-                {item.title}
-              </h3>
-              <div className="text-sm text-gray-500 flex items-center gap-2">
-                <TbDownload size={16} />
-                <span>{item.downloads}</span>
+            <div className="flex gap-3 md:gap-6 items-center">
+              {/* Thumbnail */}
+              <div className="w-48 h-24 bg-gray-200 rounded-lg shrink-0 overflow-hidden flex items-center justify-center">
+                {item.cover ? (
+                  <img
+                    src={getEducatorContentCoverUrl(item.cover) || ''}
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <span className="text-xs text-gray-500">
+                    {t('educatorContent.noCover')}
+                  </span>
+                )}
+              </div>
+
+              {/* Content */}
+              <div className="grow flex flex-col justify-center gap-2">
+                <h3 className="font-semibold text-xl text-gray-900">
+                  {item.title}
+                </h3>
+                <div className="text-sm text-gray-500 flex items-center gap-2">
+                  <TbDownload size={16} />
+                  <span>{item.downloads}</span>
+                </div>
               </div>
             </div>
+
             {/* Arrow */}
-            <div className="text-neutral-300">
-              <TbChevronRight size={isMobile ? 16 : 24} />
-            </div>
+            <TbChevronRight
+              className="text-neutral-300 shrink-0"
+              size={isMobile ? 16 : 24}
+            />
           </Link>
         ))}
       </div>

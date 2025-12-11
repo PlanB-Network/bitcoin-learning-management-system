@@ -105,7 +105,7 @@ function MyContent() {
   return (
     <PageLayout
       title="My content"
-      layoutSize="wide"
+      layoutSize="base"
       actionButtons={[
         {
           text: t('educatorContent.addMaterial'),
@@ -145,46 +145,53 @@ function MyContent() {
               to="/$lang/educator-content/$id"
               params={{ lang: i18n.language, id: item.id }}
               key={item.id}
-              className="flex gap-2 md:gap-6 items-center pr-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-pointer"
+              className="flex w-full justify-between gap-2 md:gap-6 items-center pr-4 bg-white rounded-lg hover:bg-neutral-50 cursor-pointer"
             >
-              {/* Thumbnail */}
-              <div className="w-48 h-24 bg-gray-200 rounded-lg shrink-0 overflow-hidden flex items-center justify-center">
-                {item.cover ? (
-                  <img
-                    src={getEducatorContentCoverUrl(item.cover) || ''}
-                    alt={item.title}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <span className="text-xs text-gray-500">
-                    {t('educatorContent.noCover')}
-                  </span>
-                )}
-              </div>
-              {/* Content */}
-              <div className="grow flex flex-col justify-center gap-2">
-                <h3 className="font-semibold text-xl text-gray-900">
-                  {item.title}
-                </h3>
-                <div className="text-sm text-gray-500 flex items-center gap-2">
-                  <TbDownload size={16} />
-                  <span>{item.downloads}</span>
+              <div className="flex gap-3 md:gap-6 items-center">
+                {/* Thumbnail */}
+                <div className="w-28 h-21 md:w-48 md:h-24 bg-gray-200 rounded-lg shrink-0 overflow-hidden flex items-center justify-center">
+                  {item.cover ? (
+                    <img
+                      src={getEducatorContentCoverUrl(item.cover) || ''}
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <span className="text-xs text-gray-500">
+                      {t('educatorContent.noCover')}
+                    </span>
+                  )}
+                </div>
+
+                {/* Content */}
+                <div className="grow flex flex-col justify-center gap-2">
+                  <h3 className="font-semibold text-xl text-gray-900">
+                    {item.title}
+                  </h3>
+                  <div className="text-sm text-gray-500 flex items-center gap-2">
+                    <TbDownload size={16} />
+                    <span>{item.downloads}</span>
+                  </div>
                 </div>
               </div>
-              {/* Status */}
-              <div className="mr-4">
-                <span
-                  className={cn(
-                    'px-3 py-1 rounded-full text-xs font-medium',
-                    getStatusColor(item.status),
-                  )}
-                >
-                  {getStatusLabel(item.status)}
-                </span>
-              </div>
-              {/* Arrow */}
-              <div className="text-neutral-300">
-                <TbChevronRight size={isMobile ? 16 : 24} />
+
+              <div className="flex">
+                {/* Status */}
+                <div className="mr-4 max-lg:hidden">
+                  <span
+                    className={cn(
+                      'px-3 py-1 rounded-full text-xs font-medium',
+                      getStatusColor(item.status),
+                    )}
+                  >
+                    {getStatusLabel(item.status)}
+                  </span>
+                </div>
+                {/* Arrow */}
+                <TbChevronRight
+                  className="text-neutral-300 shrink-0"
+                  size={isMobile ? 16 : 24}
+                />
               </div>
             </Link>
           ))}

@@ -144,7 +144,11 @@ const BasicModal = ({
         className={cn('w-full max-w-[min(90%,496px)]', contentClassName)}
         showCloseButton={false}
       >
-        <div className="w-full flex justify-between items-center bg-neutral-50 border-b border-b-neutral-100">
+        <div
+          className={cn(
+            'w-full flex justify-between items-center bg-neutral-50 border-b border-b-neutral-100 sticky top-0 z-10',
+          )}
+        >
           <div className="w-6.5 md:w-9.5 self-end mx-6 shrink-0">
             {showPill && (
               <img src={CroppedPill} alt="Cropped Pill" className="w-full" />

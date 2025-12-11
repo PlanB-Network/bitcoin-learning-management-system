@@ -3,7 +3,7 @@ import type { JoinedEducatorContent } from '@blms/types';
 
 export const createEducatorContentQuery = (
   input: Omit<JoinedEducatorContent, 'id' | 'links' | 'files'> & {
-    links?: { url: string; label: string }[];
+    links?: { url: string }[];
     files?: { path: string; name: string; mime_type: string; size: number }[];
     status?: string;
     originalId?: string | null;
@@ -21,15 +21,14 @@ export const createEducatorContentQuery = (
       ),
       inserted_links AS (
         INSERT INTO content.educator_content_links (
-          educator_content_id, url, label
+          educator_content_id, url
         )
         SELECT
           ic.id,
-          l.url,
-          l.label
+          l.url
         FROM inserted_content ic,
-        json_to_recordset(${sql.json(input.links || [])}::json) AS l(url text, label text)
-        RETURNING id, educator_content_id, url, label
+        json_to_recordset(${sql.json(input.links || [])}::json) AS l(url text)
+        RETURNING id, educator_content_id, url
       ),
       inserted_files AS (
         INSERT INTO content.educator_content_files (
@@ -53,8 +52,7 @@ export const createEducatorContentQuery = (
               json_build_object(
                 'id', il.id,
                 'educatorContentId', il.educator_content_id,
-                'url', il.url,
-                'label', il.label
+                'url', il.url
               )
             ),
             '[]'
@@ -87,7 +85,7 @@ export const createEducatorContentQuery = (
 export const updateEducatorContentQuery = (
   input: Partial<JoinedEducatorContent> & {
     id: string;
-    links?: { url: string; label: string }[];
+    links?: { url: string }[];
     files?: { path: string; name: string; mime_type: string; size: number }[];
     uid?: string;
   },
@@ -114,16 +112,15 @@ export const updateEducatorContentQuery = (
     ),
     inserted_links AS (
       INSERT INTO content.educator_content_links (
-        educator_content_id, url, label
+        educator_content_id, url
       )
       SELECT
         ${input.id},
-        l.url,
-        l.label
+        l.url
       FROM
-      json_to_recordset(${sql.json(input.links || [])}::json) AS l(url text, label text)
+      json_to_recordset(${sql.json(input.links || [])}::json) AS l(url text)
       WHERE EXISTS (SELECT 1 FROM updated_content)
-      RETURNING id, educator_content_id, url, label
+      RETURNING id, educator_content_id, url
     ),
     deleted_files AS (
       DELETE FROM content.educator_content_files
@@ -153,8 +150,7 @@ export const updateEducatorContentQuery = (
             json_build_object(
               'id', il.id,
               'educatorContentId', il.educator_content_id,
-              'url', il.url,
-              'label', il.label
+              'url', il.url
             )
           ),
           '[]'

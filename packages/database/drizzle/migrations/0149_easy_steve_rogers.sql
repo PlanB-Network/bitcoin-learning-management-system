@@ -1,0 +1,1 @@
+ALTER TABLE "content"."educator_content_links" DROP COLUMN "label";

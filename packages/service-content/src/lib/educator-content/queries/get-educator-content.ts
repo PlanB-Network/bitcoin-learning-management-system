@@ -28,8 +28,7 @@ export const getEducatorContentQuery = (
             json_build_object(
               'id', ecl.id,
               'educatorContentId', ecl.educator_content_id,
-              'url', ecl.url,
-              'label', ecl.label
+              'url', ecl.url
             )
           ),
           '[]'
@@ -62,5 +61,6 @@ export const getEducatorContentQuery = (
       AND ${uid ? sql`ec.uid = ${uid}` : sql`TRUE`}
       AND ${originalId ? sql`ec.original_id = ${originalId}` : sql`TRUE`}
     GROUP BY ec.id, u.display_name
+    LIMIT 1000
   `;
 };

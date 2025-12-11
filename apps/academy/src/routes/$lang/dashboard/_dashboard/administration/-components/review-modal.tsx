@@ -50,7 +50,7 @@ export const ReviewModal = ({
   const isMobile = useSmaller('lg');
 
   const sortedLinks = content?.links?.sort((a, b) =>
-    (a.label || '').localeCompare(b.label || ''),
+    (a.url || '').localeCompare(b.url || ''),
   );
   const sortedFiles = content?.files?.sort((a, b) =>
     (a.name || '').localeCompare(b.name || ''),
@@ -127,7 +127,7 @@ export const ReviewModal = ({
                   rel="noopener noreferrer"
                   className="body-small md:body-base decoration-orange-500 text-orange-500 underline truncate"
                 >
-                  {link.label}
+                  {link.url}
                 </a>
                 <a
                   href={link.url}

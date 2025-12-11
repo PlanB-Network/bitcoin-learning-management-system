@@ -57,7 +57,6 @@ export const educatorContentRouter = createTRPCRouter({
           .array(
             z.object({
               url: z.string(),
-              label: z.string(),
             }),
           )
           .optional(),
@@ -101,7 +100,6 @@ export const educatorContentRouter = createTRPCRouter({
           .array(
             z.object({
               url: z.string(),
-              label: z.string(),
             }),
           )
           .optional(),
@@ -143,7 +141,6 @@ export const educatorContentRouter = createTRPCRouter({
           .array(
             z.object({
               url: z.string(),
-              label: z.string(),
             }),
           )
           .optional(),

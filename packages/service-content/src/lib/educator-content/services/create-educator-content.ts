@@ -10,7 +10,7 @@ import {
 export const createCreateEducatorContent = ({ postgres }: Dependencies) => {
   return async (
     input: Omit<JoinedEducatorContent, 'id' | 'links' | 'files'> & {
-      links?: { url: string; label: string }[];
+      links?: { url: string }[];
       files?: { path: string; name: string; mime_type: string; size: number }[];
     },
   ) => {

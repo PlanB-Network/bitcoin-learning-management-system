@@ -178,7 +178,7 @@ function AdminEducatorContent() {
       {items?.map((item) => (
         <div
           key={item.id}
-          className="flex items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100"
+          className="flex items-center p-4 bg-white rounded-lg border border-gray-100"
         >
           <div className="w-16 h-16 bg-gray-200 rounded mr-4 shrink-0 overflow-hidden flex items-center justify-center">
             {item.cover ? (

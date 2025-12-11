@@ -19,7 +19,6 @@ export interface EducatorContentLink {
   id: string;
   educatorContentId: string;
   url: string;
-  label: string | null;
 }
 
 export interface EducatorContentFile {

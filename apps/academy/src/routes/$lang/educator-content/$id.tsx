@@ -70,7 +70,7 @@ function EducatorContentDetail() {
   };
 
   const sortedLinks = item?.links?.sort((a, b) =>
-    (a.label || '').localeCompare(b.label || ''),
+    (a.url || '').localeCompare(b.url || ''),
   );
   const sortedFiles = item?.files?.sort((a, b) =>
     (a.name || '').localeCompare(b.name || ''),
@@ -106,7 +106,7 @@ function EducatorContentDetail() {
                 className="w-full h-full object-cover border border-neutral-100 rounded-2xl"
               />
             ) : (
-              <span className="text-gray-400">
+              <span className="text-gray-500 bg-gray-200 w-full h-full text-center my-auto flex items-center justify-center">
                 {t('educatorContent.noCover')}
               </span>
             )}
@@ -161,7 +161,7 @@ function EducatorContentDetail() {
                   rel="noopener noreferrer"
                   className="body-small md:body-base decoration-orange-500 text-orange-500 underline truncate"
                 >
-                  {link.label}
+                  {link.url}
                 </a>
                 <a
                   href={link.url}

@@ -1478,7 +1478,6 @@ export const contentEducatorContentLinks = content.table(
         onUpdate: 'cascade',
       }),
     url: t.text().notNull(),
-    label: t.varchar({ length: 255 }),
   }),
 );
 

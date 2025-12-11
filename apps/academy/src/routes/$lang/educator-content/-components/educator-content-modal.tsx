@@ -82,7 +82,6 @@ export const EducatorContentModal = ({
       .array(
         z.object({
           url: z.string().optional(),
-          label: z.string().optional(),
         }),
       )
       .optional(),
@@ -112,11 +111,7 @@ export const EducatorContentModal = ({
           description: initialData.description || '',
           language: initialData.language,
           type: initialData.type as EducatorContentType,
-          links:
-            initialData.links?.map((link) => ({
-              ...link,
-              label: link.label || undefined,
-            })) || [],
+          links: initialData.links?.map((link) => ({ ...link })) || [],
         });
         setExistingFiles(initialData.files || []);
       } else {
@@ -238,9 +233,8 @@ export const EducatorContentModal = ({
         ...values,
         cover: coverPath,
         files: allFiles,
-        links: (values.links?.filter((l) => l.url && l.label) || []) as Array<{
+        links: (values.links?.filter((l) => l.url) || []) as Array<{
           url: string;
-          label: string;
         }>,
       };
 
@@ -583,18 +577,6 @@ export const EducatorContentModal = ({
                   </Field>
                 )}
               />
-              <Controller
-                control={form.control}
-                name={`links.${index}.label`}
-                render={({ field, fieldState }) => (
-                  <Field className="flex-1" data-invalid={fieldState.invalid}>
-                    <Input placeholder="Label" {...field} />
-                    {fieldState.invalid && (
-                      <FieldError errors={[fieldState.error]} />
-                    )}
-                  </Field>
-                )}
-              />
               <Button
                 type="button"
                 variant="ghost"
@@ -609,9 +591,9 @@ export const EducatorContentModal = ({
             type="button"
             variant="outline"
             className="w-full"
-            onClick={() => append({ url: '', label: '' })}
+            onClick={() => append({ url: '' })}
           >
-            <BiPlus className="mr-2" /> {t('educatorContent.addMoreUrls')}
+            <BiPlus className="mr-2" /> {t('educatorContent.addMoreLinks')}
           </Button>
         </div>
 
