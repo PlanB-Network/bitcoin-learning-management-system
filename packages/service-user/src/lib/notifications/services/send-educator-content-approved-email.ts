@@ -30,7 +30,7 @@ export const createSendEducatorContentApprovedEmail = (
       }
 
       const sendEmail = createSendEmail({ config });
-      const subject = `Your content "${title}" has been approved!`;
+      const subject = `Your educator content "${title}" is live!`;
 
       await sendEmail({
         data: {
@@ -40,8 +40,7 @@ export const createSendEducatorContentApprovedEmail = (
         },
         email: userEmail,
         subject: subject,
-        // TODO: Replace with actual SendGrid template ID for "Educator Content Approved"
-        template: 'd-placeholder-educator-content-approved',
+        template: 'd-2eed756bce434e0aa6867796d12ef96d',
       });
     } catch (error) {
       console.error(
