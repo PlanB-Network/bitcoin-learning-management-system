@@ -57,7 +57,7 @@ function ResearchPapers() {
           <SearchInput
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
-            className="ml-auto max-sm:mt-1 mt-2 mb-6 sm:mb-4"
+            className="ml-auto max-sm:mt-4 mt-2 mb-6 sm:mb-4"
             fullWidthOnMobile
           />
           <div className="w-full flex flex-col gap-1 sm:gap-2">

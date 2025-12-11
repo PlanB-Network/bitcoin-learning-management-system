@@ -69,6 +69,7 @@ function Projects() {
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
             className="ml-auto"
+            fullWidthOnMobile
           />
           <div className="flex flex-col gap-2 md:gap-5 w-full">
             {categories.map((category, index) => {
