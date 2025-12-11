@@ -30,7 +30,7 @@ export const createSendEducatorContentApprovedEmail = (
       }
 
       const sendEmail = createSendEmail({ config });
-      const subject = `Your educator content "${title}" is live!`;
+      const subject = `Your educator content -${title}- is live!`;
 
       await sendEmail({
         data: {
