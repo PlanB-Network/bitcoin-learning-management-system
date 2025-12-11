@@ -405,8 +405,9 @@ function EventDetails() {
                         icon={TbPodium}
                         leftText={t('events.eventInfos.eventType')}
                       >
-                        {event.type.charAt(0).toUpperCase() +
-                          event.type.slice(1)}
+                        {t(`events.types.singular.${event.type}`, {
+                          defaultValue: event.type,
+                        })}
                       </ListElement2>
                     )}
                     {event.availableSeats !== null && event.bookInPerson && (

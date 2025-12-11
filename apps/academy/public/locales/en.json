@@ -1472,6 +1472,13 @@
         "lecture": "lectures",
         "meetup": "meetups",
         "workshop": "workshops"
+      },
+      "singular": {
+        "conference": "Conference",
+        "exam": "Exam",
+        "lecture": "Lecture",
+        "meetup": "Meetup",
+        "workshop": "Workshop"
       }
     }
   },
