@@ -1,5 +1,5 @@
 {
-  "id": "1ff80391-09e2-4d2f-9063-65d74845e2d6",
+  "id": "29612aa2-7ba8-460a-957b-0affdc832057",
   "prevId": "738cabfa-4135-4278-8bd6-1b6454fb0f26",
   "version": "7",
   "dialect": "postgresql",
@@ -2744,6 +2744,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true
+        },
+        "label": {
+          "name": "label",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -7125,6 +7131,126 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
+    "users.course_highlights": {
+      "name": "course_highlights",
+      "schema": "users",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "uid": {
+          "name": "uid",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "chapter_id": {
+          "name": "chapter_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "text": {
+          "name": "text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "start_offset": {
+          "name": "start_offset",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "end_offset": {
+          "name": "end_offset",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "start_container_path": {
+          "name": "start_container_path",
+          "type": "varchar(500)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "end_container_path": {
+          "name": "end_container_path",
+          "type": "varchar(500)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "course_highlights_chapter_idx": {
+          "name": "course_highlights_chapter_idx",
+          "columns": [
+            {
+              "expression": "uid",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "chapter_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "course_highlights_uid_accounts_uid_fk": {
+          "name": "course_highlights_uid_accounts_uid_fk",
+          "tableFrom": "course_highlights",
+          "tableTo": "accounts",
+          "schemaTo": "users",
+          "columnsFrom": [
+            "uid"
+          ],
+          "columnsTo": [
+            "uid"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "course_highlights_chapter_id_course_chapters_chapter_id_fk": {
+          "name": "course_highlights_chapter_id_course_chapters_chapter_id_fk",
+          "tableFrom": "course_highlights",
+          "tableTo": "course_chapters",
+          "schemaTo": "content",
+          "columnsFrom": [
+            "chapter_id"
+          ],
+          "columnsTo": [
+            "chapter_id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "users.course_payment": {
       "name": "course_payment",
       "schema": "users",
@@ -9538,8 +9664,7 @@
       "values": [
         "draft",
         "published",
-        "rejected",
-        "unpublished"
+        "rejected"
       ]
     },
     "public.educator_content_type": {

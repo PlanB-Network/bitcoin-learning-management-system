@@ -2787,3 +2787,41 @@ export const usersMentorMessages = users.table(
     ),
   }),
 );
+
+// COURSE HIGHLIGHTS
+
+export const usersCourseHighlights = users.table(
+  'course_highlights',
+  (t) => ({
+    id: t.uuid().defaultRandom().primaryKey().notNull(),
+    uid: t
+      .uuid()
+      .notNull()
+      .references(() => usersAccounts.uid, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
+    chapterId: t
+      .uuid()
+      .notNull()
+      .references(() => contentCourseChapters.chapterId, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
+    // The highlighted text content
+    text: t.text().notNull(),
+    // Position data for restoring the highlight
+    startOffset: t.integer().notNull(),
+    endOffset: t.integer().notNull(),
+    startContainerPath: t.varchar({ length: 500 }).notNull(),
+    endContainerPath: t.varchar({ length: 500 }).notNull(),
+    createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+  }),
+  (table) => ({
+    // Index for fast lookup of user's highlights in a chapter
+    chapterIdx: index('course_highlights_chapter_idx').on(
+      table.uid,
+      table.chapterId,
+    ),
+  }),
+);

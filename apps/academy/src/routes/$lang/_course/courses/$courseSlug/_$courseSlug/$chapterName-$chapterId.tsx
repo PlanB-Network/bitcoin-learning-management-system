@@ -21,6 +21,7 @@ import { z } from 'zod';
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
+import { HighlightableContent } from '#src/components/highlightable-content.tsx';
 import { MentorChat } from '#src/components/mentor-chat.tsx';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
@@ -411,17 +412,28 @@ const BottomButton = ({ chapter }: { chapter: CourseChapterResponse }) => {
 };
 
 const MarkdownContent = memo(
-  ({ chapter }: { chapter: CourseChapterResponse }) => {
+  ({
+    chapter,
+    isLoggedIn,
+  }: {
+    chapter: CourseChapterResponse;
+    isLoggedIn: boolean;
+  }) => {
     return (
-      <Suspense fallback={<Loader size={'s'} />}>
-        <CoursesMarkdownBody
-          content={chapter.rawContent}
-          assetPrefix={cdnUrl(`courses/${chapter.course.index}`)}
-          supportInlineLatex={COURSES_WITH_INLINE_LATEX_SUPPORT.includes(
-            chapter.course.id,
-          )}
-        />
-      </Suspense>
+      <HighlightableContent
+        chapterId={chapter.chapterId}
+        isLoggedIn={isLoggedIn}
+      >
+        <Suspense fallback={<Loader size={'s'} />}>
+          <CoursesMarkdownBody
+            content={chapter.rawContent}
+            assetPrefix={cdnUrl(`courses/${chapter.course.index}`)}
+            supportInlineLatex={COURSES_WITH_INLINE_LATEX_SUPPORT.includes(
+              chapter.course.id,
+            )}
+          />
+        </Suspense>
+      </HighlightableContent>
     );
   },
 );
@@ -793,7 +805,7 @@ function CourseChapter() {
                       <BottomButton chapter={chapter} />
                     </div>
                   )}
-                  <MarkdownContent chapter={chapter} />
+                  <MarkdownContent chapter={chapter} isLoggedIn={isLoggedIn} />
                   {!isSpecialChapter && displayQuiz && (
                     <div className="md:!mt-5">
                       {questionsArray && questionsArray.length > 0 && (

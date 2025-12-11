@@ -55,6 +55,7 @@ import { userCalendarRouter } from './calendar.js';
 import { userCareerRouter } from './career.js';
 import { userCoursesRouter } from './courses.js';
 import { userEventsRouter } from './events.js';
+import { userHighlightsRouter } from './highlights.js';
 import { userNotificationsRouter } from './notifications.js';
 import { userTranslationRouter } from './translation.js';
 import { userTutorialsRouter } from './tutorials.js';
@@ -186,6 +187,7 @@ export const userRouter = createTRPCRouter({
     ),
   courses: userCoursesRouter,
   events: userEventsRouter,
+  highlights: userHighlightsRouter,
 
   getAccountSettings: studentProcedure
     .input(z.void())
