@@ -46,7 +46,7 @@ export const NavigationPanel: React.FC<Props> = ({
       ([entry]) => {
         setIsFixed(!entry.isIntersecting);
       },
-      { threshold: 0, rootMargin: '-96px 0px 0px 0px' },
+      { threshold: 0, rootMargin: '-128px 0px 0px 0px' },
     );
     if (sentinelRef.current) observer.observe(sentinelRef.current);
     return () => observer.disconnect();
@@ -59,7 +59,7 @@ export const NavigationPanel: React.FC<Props> = ({
       <aside
         className={cn(
           'bg-white z-10 w-full max-w-[240px] max-h-[80lvh] rounded-2xl border border-neutral-100 p-4 overflow-y-auto scrollbar-light transition-all duration-300',
-          isFixed ? 'fixed top-24' : 'relative',
+          isFixed ? 'fixed top-32' : 'relative',
         )}
       >
         <ul className="flex flex-col gap-2">
