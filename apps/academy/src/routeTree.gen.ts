@@ -34,6 +34,7 @@ import { Route as LangAccountSettingsRouteImport } from './routes/$lang/account/
 import { Route as LangAccountInvoicesRouteImport } from './routes/$lang/account/invoices';
 import { Route as LangMiscUnderConstructionRouteImport } from './routes/$lang/_misc/under-construction';
 import { Route as LangMiscManifestoRouteImport } from './routes/$lang/_misc/manifesto';
+import { Route as LangMiscBecomeTeacherRouteImport } from './routes/$lang/_misc/become-teacher';
 import { Route as LangMiscAboutRouteImport } from './routes/$lang/_misc/about';
 import { Route as LangTutorialsCategoryIndexRouteImport } from './routes/$lang/tutorials/$category/index';
 import { Route as LangResourcesProjectsIndexRouteImport } from './routes/$lang/resources/projects/index';
@@ -236,6 +237,11 @@ const LangMiscUnderConstructionRoute =
 const LangMiscManifestoRoute = LangMiscManifestoRouteImport.update({
   id: '/$lang/_misc/manifesto',
   path: '/$lang/manifesto',
+  getParentRoute: () => rootRouteImport,
+} as any);
+const LangMiscBecomeTeacherRoute = LangMiscBecomeTeacherRouteImport.update({
+  id: '/$lang/_misc/become-teacher',
+  path: '/$lang/become-teacher',
   getParentRoute: () => rootRouteImport,
 } as any);
 const LangMiscAboutRoute = LangMiscAboutRouteImport.update({
@@ -706,6 +712,7 @@ const LangDashboardDashboardAdministrationTranslationPanelChapterChapterIdRoute 
 export interface FileRoutesByFullPath {
   '/$lang': typeof LangIndexRoute;
   '/$lang/about': typeof LangMiscAboutRoute;
+  '/$lang/become-teacher': typeof LangMiscBecomeTeacherRoute;
   '/$lang/manifesto': typeof LangMiscManifestoRoute;
   '/$lang/under-construction': typeof LangMiscUnderConstructionRoute;
   '/$lang/account/invoices': typeof LangAccountInvoicesRoute;
@@ -805,6 +812,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/$lang': typeof LangIndexRoute;
   '/$lang/about': typeof LangMiscAboutRoute;
+  '/$lang/become-teacher': typeof LangMiscBecomeTeacherRoute;
   '/$lang/manifesto': typeof LangMiscManifestoRoute;
   '/$lang/under-construction': typeof LangMiscUnderConstructionRoute;
   '/$lang/account/invoices': typeof LangAccountInvoicesRoute;
@@ -904,6 +912,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport;
   '/$lang/': typeof LangIndexRoute;
   '/$lang/_misc/about': typeof LangMiscAboutRoute;
+  '/$lang/_misc/become-teacher': typeof LangMiscBecomeTeacherRoute;
   '/$lang/_misc/manifesto': typeof LangMiscManifestoRoute;
   '/$lang/_misc/under-construction': typeof LangMiscUnderConstructionRoute;
   '/$lang/account/invoices': typeof LangAccountInvoicesRoute;
@@ -1007,6 +1016,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/$lang'
     | '/$lang/about'
+    | '/$lang/become-teacher'
     | '/$lang/manifesto'
     | '/$lang/under-construction'
     | '/$lang/account/invoices'
@@ -1106,6 +1116,7 @@ export interface FileRouteTypes {
   to:
     | '/$lang'
     | '/$lang/about'
+    | '/$lang/become-teacher'
     | '/$lang/manifesto'
     | '/$lang/under-construction'
     | '/$lang/account/invoices'
@@ -1204,6 +1215,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/$lang/'
     | '/$lang/_misc/about'
+    | '/$lang/_misc/become-teacher'
     | '/$lang/_misc/manifesto'
     | '/$lang/_misc/under-construction'
     | '/$lang/account/invoices'
@@ -1306,6 +1318,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   LangIndexRoute: typeof LangIndexRoute;
   LangMiscAboutRoute: typeof LangMiscAboutRoute;
+  LangMiscBecomeTeacherRoute: typeof LangMiscBecomeTeacherRoute;
   LangMiscManifestoRoute: typeof LangMiscManifestoRoute;
   LangMiscUnderConstructionRoute: typeof LangMiscUnderConstructionRoute;
   LangAccountInvoicesRoute: typeof LangAccountInvoicesRoute;
@@ -1544,6 +1557,13 @@ declare module '@tanstack/react-router' {
       path: '/$lang/manifesto';
       fullPath: '/$lang/manifesto';
       preLoaderRoute: typeof LangMiscManifestoRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    '/$lang/_misc/become-teacher': {
+      id: '/$lang/_misc/become-teacher';
+      path: '/$lang/become-teacher';
+      fullPath: '/$lang/become-teacher';
+      preLoaderRoute: typeof LangMiscBecomeTeacherRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/_misc/about': {
@@ -2220,6 +2240,7 @@ const LangCourseCoursesCourseSlugRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   LangIndexRoute: LangIndexRoute,
   LangMiscAboutRoute: LangMiscAboutRoute,
+  LangMiscBecomeTeacherRoute: LangMiscBecomeTeacherRoute,
   LangMiscManifestoRoute: LangMiscManifestoRoute,
   LangMiscUnderConstructionRoute: LangMiscUnderConstructionRoute,
   LangAccountInvoicesRoute: LangAccountInvoicesRoute,

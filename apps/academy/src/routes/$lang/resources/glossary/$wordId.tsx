@@ -112,6 +112,7 @@ function GlossaryWord() {
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
               className="ml-auto"
+              fullWidthOnMobile
             />
             <AlphabetGlossary
               onLetterSelect={handleLetterSelection}

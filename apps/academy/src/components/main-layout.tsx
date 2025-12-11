@@ -11,11 +11,13 @@ import { SideBarContent } from './sidebar-content.tsx';
 interface MainLayoutProps {
   children: JSX.Element | JSX.Element[];
   showFooter?: boolean;
+  showBecomeTeacherButton?: boolean;
 }
 
 export const MainLayout = ({
   children,
   showFooter = true,
+  showBecomeTeacherButton,
 }: MainLayoutProps) => {
   const { t } = useTranslation();
 
@@ -148,7 +150,9 @@ export const MainLayout = ({
           <main className="mt-if-pear flex grow flex-col bg-white min-h-[calc(100vh-64px)] lg:min-h-[calc(100vh-72px)] w-full relative">
             {children}
           </main>
-          {showFooter && <Footer />}
+          {showFooter && (
+            <Footer showBecomeTeacherButton={showBecomeTeacherButton} />
+          )}
 
           <ScrollToTopButton />
         </div>

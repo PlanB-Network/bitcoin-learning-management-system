@@ -59,6 +59,7 @@ function Movies() {
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
         className="ml-auto max-sm:mt-4 mt-2 mb-4 sm:mb-6"
+        fullWidthOnMobile
       />
       <div className="flex flex-col">
         <SelectedLanguageSwitcher

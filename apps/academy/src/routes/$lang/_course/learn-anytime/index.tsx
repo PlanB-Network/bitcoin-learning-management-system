@@ -233,7 +233,7 @@ function AllCourses() {
 
   if (!courses) {
     return (
-      <PageLayout title={t('courses.allCourses')}>
+      <PageLayout title={t('courses.allCourses')} showBecomeTeacherButton>
         <Loader size="s" />
       </PageLayout>
     );
@@ -251,6 +251,7 @@ function AllCourses() {
       ]}
       title={t('courses.allCourses')}
       hideTitle
+      showBecomeTeacherButton
     >
       {inProgressCourses.length !== 0 && (
         <div className="flex flex-col w-full gap-4 mb-6 md:mb-12">

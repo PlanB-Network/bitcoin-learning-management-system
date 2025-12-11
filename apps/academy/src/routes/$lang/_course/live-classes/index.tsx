@@ -87,6 +87,7 @@ function AllCourses() {
       <PageLayout
         title={t('courses.liveClasses.liveClasses')}
         layoutSize="wide"
+        showBecomeTeacherButton
       >
         <Loader size="s" />
       </PageLayout>
@@ -94,7 +95,11 @@ function AllCourses() {
   }
 
   return (
-    <PageLayout title={t('courses.liveClasses.liveClasses')} layoutSize="wide">
+    <PageLayout
+      title={t('courses.liveClasses.liveClasses')}
+      layoutSize="wide"
+      showBecomeTeacherButton
+    >
       {inProgressCourses.length !== 0 && (
         <div className="flex flex-col w-full gap-4 mb-6 md:mb-12">
           <p className="text-black title-base md:title-medium">
