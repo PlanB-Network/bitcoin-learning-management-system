@@ -4,7 +4,7 @@ import { cn, DropdownMenu, EmptyState, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { capitalize } from 'lodash-es';
-import { useContext, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   TbAdjustmentsHorizontal,
@@ -15,6 +15,7 @@ import {
 } from 'react-icons/tb';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { PageLayout } from '#src/components/page-layout.tsx';
+import { Pagination } from '#src/components/pagination.tsx';
 import { SearchInput } from '#src/components/search-input.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
@@ -27,6 +28,8 @@ import { EducatorContentModal } from './-components/educator-content-modal.tsx';
 export const Route = createFileRoute('/$lang/educator-content/')({
   component: RouteComponent,
 });
+
+const ITEMS_PER_PAGE = 10;
 
 function RouteComponent() {
   const { i18n, t } = useTranslation();
@@ -73,9 +76,16 @@ function RouteComponent() {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<'recent' | 'downloads'>('recent');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedType, selectedLanguage, searchQuery, sortBy]);
 
   const filteredContent = useMemo(() => {
     if (!content) return [];
+
+    // 1. Filter
     const filtered = content.filter((item) => {
       const matchesType = selectedType === 'all' || item.type === selectedType;
       const matchesLanguage =
@@ -87,6 +97,7 @@ function RouteComponent() {
       return matchesType && matchesLanguage && matchesSearch;
     });
 
+    // 2. Sort
     return filtered.sort((a, b) => {
       if (sortBy === 'recent') {
         const dateA = a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
@@ -99,6 +110,13 @@ function RouteComponent() {
       return 0;
     });
   }, [content, selectedType, selectedLanguage, searchQuery, sortBy]);
+
+  const totalPages = Math.ceil(filteredContent.length / ITEMS_PER_PAGE);
+
+  const paginatedContent = useMemo(() => {
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    return filteredContent.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  }, [filteredContent, currentPage]);
 
   const handleAddContentClick = () => {
     if (isLoggedIn) {
@@ -250,7 +268,7 @@ function RouteComponent() {
             icon={TbSearch}
           />
         ) : null}
-        {filteredContent?.map((item: JoinedEducatorContent) => (
+        {paginatedContent?.map((item: JoinedEducatorContent) => (
           <Link
             to="/$lang/educator-content/$id"
             params={{ lang: i18n.language, id: item.id }}
@@ -292,6 +310,14 @@ function RouteComponent() {
             />
           </Link>
         ))}
+
+        <div className="mt-8">
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+          />
+        </div>
       </div>
 
       <AuthModal isOpen={isAuthModalOpen} onClose={closeAuthModal} />

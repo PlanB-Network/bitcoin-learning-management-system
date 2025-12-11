@@ -11,11 +11,11 @@ import {
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { capitalize } from 'lodash-es';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbAdjustmentsHorizontal, TbSearch, TbX } from 'react-icons/tb';
-
 import { PageLayout } from '#src/components/page-layout.tsx';
+import { Pagination } from '#src/components/pagination.tsx';
 import { SearchInput } from '#src/components/search-input.tsx';
 import { ReviewModal } from '#src/routes/$lang/dashboard/_dashboard/administration/-components/review-modal.tsx';
 import { EducatorContentModal } from '#src/routes/$lang/educator-content/-components/educator-content-modal.tsx';
@@ -28,6 +28,8 @@ export const Route = createFileRoute(
 )({
   component: AdminEducatorContent,
 });
+
+const ITEMS_PER_PAGE = 10;
 
 function AdminEducatorContent() {
   const { t } = useTranslation();
@@ -45,6 +47,11 @@ function AdminEducatorContent() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isUnpublishMode, setIsUnpublishMode] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedType, selectedLanguage, searchQuery]);
 
   const { data: draftContent, isLoading: isLoadingDraft } = useQuery(
     trpc.content.getEducatorContents.queryOptions({
@@ -140,6 +147,18 @@ function AdminEducatorContent() {
       return matchesType && matchesLanguage && matchesSearch;
     });
   }, [publishedContent, selectedType, selectedLanguage, searchQuery]);
+
+  const totalPages = Math.ceil(
+    filteredPublishedContent.length / ITEMS_PER_PAGE,
+  );
+
+  const paginatedPublishedContent = useMemo(() => {
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    return filteredPublishedContent.slice(
+      startIndex,
+      startIndex + ITEMS_PER_PAGE,
+    );
+  }, [filteredPublishedContent, currentPage]);
 
   const types = [
     {
@@ -351,9 +370,16 @@ function AdminEducatorContent() {
                 />
               ) : null}
               <ContentList
-                items={filteredPublishedContent || []}
+                items={paginatedPublishedContent || []}
                 isDraft={false}
               />
+              <div className="mt-8">
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={setCurrentPage}
+                />
+              </div>
             </div>
           </>
         )}
