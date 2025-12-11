@@ -164,7 +164,7 @@ function RouteComponent() {
         },
       ]}
       tabs={
-        isLoggedIn
+        isLoggedIn && hasCreatedContent
           ? [
               {
                 id: 'educator-content',
@@ -273,11 +273,11 @@ function RouteComponent() {
             to="/$lang/educator-content/$id"
             params={{ lang: i18n.language, id: item.id }}
             key={item.id}
-            className="flex w-full justify-between gap-2 md:gap-6 items-center pr-4 bg-white rounded-lg hover:bg-neutral-50 cursor-pointer"
+            className="flex w-full justify-between gap-2 md:gap-6 items-center pr-4 bg-white rounded-2xl hover:bg-neutral-50 cursor-pointer"
           >
             <div className="flex gap-3 md:gap-6 items-center">
               {/* Thumbnail */}
-              <div className="w-48 h-24 bg-gray-200 rounded-lg shrink-0 overflow-hidden flex items-center justify-center">
+              <div className="w-32 h-24 bg-gray-200 rounded-lg md:rounded-2xl shrink-0 overflow-hidden flex items-center justify-center">
                 {item.cover ? (
                   <img
                     src={getEducatorContentCoverUrl(item.cover) || ''}
@@ -293,9 +293,7 @@ function RouteComponent() {
 
               {/* Content */}
               <div className="grow flex flex-col justify-center gap-2">
-                <h3 className="font-semibold text-xl text-gray-900">
-                  {item.title}
-                </h3>
+                <h3 className="title-base text-gray-900">{item.title}</h3>
                 <div className="text-sm text-gray-500 flex items-center gap-2">
                   <TbDownload size={16} />
                   <span>{item.downloads}</span>

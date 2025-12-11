@@ -197,6 +197,7 @@ export const educatorContentRouter = createTRPCRouter({
         title: content.title,
         userId: content.uid,
         language: content.language,
+        id: content.id,
       });
     }),
 

@@ -7,6 +7,7 @@ interface SendEducatorContentApprovedEmailParams {
   title: string;
   userId: string;
   language: string;
+  id: string;
 }
 
 export const createSendEducatorContentApprovedEmail = (
@@ -16,6 +17,7 @@ export const createSendEducatorContentApprovedEmail = (
     title,
     userId,
     language,
+    id,
   }: SendEducatorContentApprovedEmailParams): Promise<void> => {
     const { postgres, config } = dependencies;
     try {
@@ -35,7 +37,7 @@ export const createSendEducatorContentApprovedEmail = (
       await sendEmail({
         data: {
           title: title,
-          link: `${config.domainUrl}/${language}/educator-content`,
+          link: `${config.domainUrl}/${language}/educator-content/${id}`,
           subject: subject,
         },
         email: userEmail,

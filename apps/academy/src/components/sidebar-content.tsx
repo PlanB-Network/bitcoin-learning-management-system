@@ -512,7 +512,7 @@ export const SideBarItem = ({
 
   const wrapperClassName = cn(
     'flex flex-col hover:bg-white rounded-lg',
-    isMain ? 'p-3' : 'px-3 py-2 lg:py-3',
+    isMain ? 'p-3' : 'px-3 py-2',
     isActive ? 'bg-white' : 'bg-transparent',
     isSidebarOpen ? (isMain ? 'gap-3' : 'gap-3 lg:gap-4') : 'gap-0',
     className,
@@ -524,7 +524,7 @@ export const SideBarItem = ({
         <div
           className={cn(
             'shrink-0 flex items-center justify-center rounded-sm',
-            isMain ? 'size-7' : 'size-7 lg:size-6.5',
+            isMain ? 'size-7' : 'size-7 lg:size-6',
           )}
         >
           <IconComponent

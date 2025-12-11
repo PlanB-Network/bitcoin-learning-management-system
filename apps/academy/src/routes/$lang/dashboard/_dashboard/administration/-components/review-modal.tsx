@@ -103,14 +103,14 @@ export const ReviewModal = ({
             icon={TbUserCircle}
           />
           <StatCard
-            label={t('words.language')}
-            value={capitalize(getLanguageName(content.language))}
-            icon={TbLanguage}
-          />
-          <StatCard
             label={t('words.category')}
             value={content.type ? capitalize(content.type) : 'Unknown'}
             icon={TbFile}
+          />
+          <StatCard
+            label={t('words.language')}
+            value={capitalize(getLanguageName(content.language))}
+            icon={TbLanguage}
           />
         </div>
         {/* Files and Links List */}

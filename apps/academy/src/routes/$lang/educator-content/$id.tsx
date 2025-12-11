@@ -98,7 +98,7 @@ function EducatorContentDetail() {
         {/* Header */}
         <div className="grid grid-cols-[auto_1fr] gap-4 md:flex">
           {/* Image */}
-          <div className="w-20 h-20 md:w-40 md:h-40 shrink-0 flex items-center justify-center">
+          <div className="w-22 h-[66px] md:w-50 md:h-[150px] shrink-0 flex items-center justify-center">
             {item.cover ? (
               <img
                 src={getEducatorContentCoverUrl(item.cover) || ''}
@@ -111,9 +111,8 @@ function EducatorContentDetail() {
               </span>
             )}
           </div>
-
           {/* Info */}
-          <div className="contents md:flex md:flex-col md:h-40 md:gap-4">
+          <div className="contents md:flex md:flex-col md:gap-4">
             <h1 className="display-small md:display-large font-semibold text-black self-center md:self-auto">
               {item.title}
             </h1>
@@ -131,14 +130,14 @@ function EducatorContentDetail() {
             icon={TbUserCircle}
           />
           <StatCard
-            label={t('words.language')}
-            value={capitalize(getLanguageName(item.language))}
-            icon={TbLanguage}
-          />
-          <StatCard
             label={t('words.category')}
             value={item.type ? capitalize(item.type) : 'Unknown'}
             icon={TbFile}
+          />
+          <StatCard
+            label={t('words.language')}
+            value={capitalize(getLanguageName(item.language))}
+            icon={TbLanguage}
           />
           <StatCard
             label={t('words.downloads')}

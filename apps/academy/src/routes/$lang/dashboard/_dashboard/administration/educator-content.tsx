@@ -1,6 +1,6 @@
 import { EducatorContentStatus, EducatorContentType } from '@blms/constants';
 import {
-  Button,
+  buttonVariants,
   cn,
   DropdownMenu,
   EmptyState,
@@ -13,10 +13,16 @@ import { createFileRoute } from '@tanstack/react-router';
 import { capitalize } from 'lodash-es';
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { TbAdjustmentsHorizontal, TbSearch, TbX } from 'react-icons/tb';
+import {
+  TbAdjustmentsHorizontal,
+  TbChevronRight,
+  TbSearch,
+  TbX,
+} from 'react-icons/tb';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { Pagination } from '#src/components/pagination.tsx';
 import { SearchInput } from '#src/components/search-input.tsx';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { ReviewModal } from '#src/routes/$lang/dashboard/_dashboard/administration/-components/review-modal.tsx';
 import { EducatorContentModal } from '#src/routes/$lang/educator-content/-components/educator-content-modal.tsx';
 import { getEducatorContentCoverUrl } from '#src/services/content.js';
@@ -192,52 +198,65 @@ function AdminEducatorContent() {
   }: {
     items: any[];
     isDraft: boolean;
-  }) => (
-    <div className="flex flex-col gap-4">
-      {items?.map((item) => (
-        <div
-          key={item.id}
-          className="flex items-center p-4 bg-white rounded-lg border border-gray-100"
-        >
-          <div className="w-16 h-16 bg-gray-200 rounded mr-4 shrink-0 overflow-hidden flex items-center justify-center">
-            {item.cover ? (
-              <img
-                src={getEducatorContentCoverUrl(item.cover) || ''}
-                alt={item.title}
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <span className="text-xs text-gray-500">
-                {t('educatorContent.noCover')}
-              </span>
-            )}
-          </div>
-          <div className="grow">
-            <h3 className="font-semibold text-lg">{item.title}</h3>
-          </div>
-          <div>
-            {isDraft ? (
-              <Button
-                variant="tertiary"
-                size="s"
-                onClick={() => handlePreview(item, isDraft)}
-              >
-                {item.originalId ? 'Preview changes' : 'Preview for approval'}
-              </Button>
-            ) : (
-              <Button
-                variant="tertiary"
-                size="s"
-                onClick={() => handlePreview(item, isDraft)}
-              >
-                {t('words.open')}
-              </Button>
-            )}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
+  }) => {
+    const isMobile = useSmaller('lg');
+
+    return (
+      <div className="flex flex-col gap-4">
+        {items?.map((item) => {
+          return (
+            <button
+              type="button"
+              key={item.id}
+              className="flex items-center p-4 w-full text-left bg-white rounded-2xl hover:bg-neutral-50 cursor-pointer"
+              onClick={() => handlePreview(item, isDraft)}
+            >
+              <div className="w-16 h-16 bg-gray-200 rounded-lg mr-4 shrink-0 overflow-hidden flex items-center justify-center">
+                {item.cover ? (
+                  <img
+                    src={getEducatorContentCoverUrl(item.cover) || ''}
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <span className="text-xs text-gray-500">
+                    {t('educatorContent.noCover')}
+                  </span>
+                )}
+              </div>
+              <div className="grow">
+                <h3 className="title-base">{item.title}</h3>
+              </div>
+              <div>
+                {isDraft ? (
+                  <div className="flex items-center gap-2">
+                    <span
+                      className={cn(
+                        buttonVariants({ variant: 'tertiary', size: 's' }),
+                      )}
+                    >
+                      {item.originalId
+                        ? 'Preview changes'
+                        : 'Preview for approval'}
+                    </span>
+                    <TbChevronRight
+                      className="text-neutral-300 shrink-0"
+                      size={isMobile ? 16 : 24}
+                    />
+                  </div>
+                ) : (
+                  <TbChevronRight
+                    className="text-neutral-300 shrink-0"
+                    size={isMobile ? 16 : 24}
+                  />
+                )}
+              </div>
+            </button>
+          );
+        })}
+      </div>
+    );
+  };
 
   return (
     <PageLayout title="Review Educator Content" layoutSize="wide">

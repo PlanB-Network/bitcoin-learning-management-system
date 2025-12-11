@@ -70,7 +70,10 @@ export const EducatorContentModal = ({
 
   const formSchema = z.object({
     title: z.string().min(1, t('educatorContent.titleRequired')),
-    description: z.string().min(1, t('educatorContent.descriptionRequired')),
+    description: z
+      .string()
+      .min(1, t('educatorContent.descriptionRequired'))
+      .max(350, t('educatorContent.descriptionTooLong')),
     language: z.string().min(1, t('educatorContent.languageRequired')),
     type: z
       .enum(EducatorContentType)
@@ -194,6 +197,14 @@ export const EducatorContentModal = ({
   );
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    if (!coverImage && !initialData?.cover) {
+      customToast(t('educatorContent.coverRequired'), {
+        mode: 'light',
+        color: 'warning',
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       const uploadedFiles = [];
@@ -406,8 +417,21 @@ export const EducatorContentModal = ({
                 <Textarea
                   id={field.name}
                   placeholder={t('educatorContent.descriptionPlaceholder')}
+                  maxLength={350}
                   {...field}
                 />
+                <div className="flex justify-end mt-1">
+                  <span
+                    className={cn(
+                      'text-xs',
+                      field.value.length >= 350
+                        ? 'text-red-500'
+                        : 'text-gray-400',
+                    )}
+                  >
+                    {field.value.length}/350
+                  </span>
+                </div>
                 {fieldState.invalid && (
                   <FieldError errors={[fieldState.error]} />
                 )}

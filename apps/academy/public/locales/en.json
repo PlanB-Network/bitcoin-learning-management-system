@@ -1344,10 +1344,12 @@
     "browseFiles": "or browse files",
     "browseImages": "or browse images",
     "contentNotFound": "Content not found",
+    "coverRequired": "The cover image is mandatory",
     "currentCoverPresent": "Current cover present",
     "descriptionHelper": "Describe the resource content to help others understand its content and find it",
     "descriptionPlaceholder": "Brief description of the educational material",
     "descriptionRequired": "The description cannot be empty",
+    "descriptionTooLong": "The description cannot exceed 350 characters",
     "detail": {
       "createdBy": "Created by",
       "downloadAll": "Download all",
