@@ -81,7 +81,7 @@ function SingleBlogDetail() {
                 />
               </Suspense>
             </div>
-            <div className="max-w-[300px] mx-auto lg:max-w-[336px] flex-1">
+            <div className="max-md:w-full max-w-[400px] mx-auto lg:max-w-[336px] flex-1">
               <BlogSidebar
                 currentBlogId={blog.id}
                 currentCategory={blog.category}

@@ -49,7 +49,7 @@ const BlogSidebar: React.FC<BlogSidebarProps> = ({
     .slice(0, 10);
 
   return (
-    <div className="mx-auto p-2.5 rounded-2xl">
+    <div className="mx-auto md:p-2.5 rounded-2xl">
       <div className="flex flex-row items-center py-5 gap-5 border-b border-newGray-4">
         <Image
           className="size-[35px] ml-2.5"
@@ -68,14 +68,14 @@ const BlogSidebar: React.FC<BlogSidebarProps> = ({
           <li key={blog.id} className="flex flex-row items-center">
             <Link
               to={`/news/article/${formatNameForURL(blog.title)}-${blog.id}`}
-              className="flex items-center justify-between py-3 text-start lg:px-2.5 w-full max-w-[354px] cursor-pointer"
+              className="flex items-center justify-between py-3 text-start lg:px-2.5 w-full cursor-pointer"
             >
-              <div className="flex flex-row items-center max-w-[280px] lg:max-w-[380px]">
+              <div className="flex flex-row items-center truncate">
                 <p className="subtitle-medium-16px text-gray-600 min-w-[77px]">
                   {formatMonthAndYear(new Date(blog.date))}
                 </p>
                 <TbChevronRight size={20} className="" />
-                <p className="subtitle-medium-med-16px truncate min-w-[183px] max-w-52">
+                <p className="subtitle-medium-med-16px truncate">
                   {blog.title}
                 </p>
               </div>
