@@ -1051,6 +1051,13 @@
       "when": 1765442682742,
       "tag": "0149_easy_steve_rogers",
       "breakpoints": true
+    },
+    {
+      "idx": 150,
+      "version": "7",
+      "when": 1765544464764,
+      "tag": "0150_small_inertia",
+      "breakpoints": true
     }
   ]
 }

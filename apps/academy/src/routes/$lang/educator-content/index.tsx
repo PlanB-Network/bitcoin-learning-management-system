@@ -277,7 +277,7 @@ function RouteComponent() {
           >
             <div className="flex gap-3 md:gap-6 items-center">
               {/* Thumbnail */}
-              <div className="w-32 h-24 bg-gray-200 rounded-lg md:rounded-2xl shrink-0 overflow-hidden flex items-center justify-center">
+              <div className="w-28 h-21 md:w-32 md:h-24 bg-gray-200 rounded-lg md:rounded-2xl shrink-0 overflow-hidden flex items-center justify-center">
                 {item.cover ? (
                   <img
                     src={getEducatorContentCoverUrl(item.cover) || ''}
@@ -293,7 +293,9 @@ function RouteComponent() {
 
               {/* Content */}
               <div className="grow flex flex-col justify-center gap-2">
-                <h3 className="title-base text-gray-900">{item.title}</h3>
+                <h3 className="title-small md:title-base text-gray-900">
+                  {item.title}
+                </h3>
                 <div className="text-sm text-gray-500 flex items-center gap-2">
                   <TbDownload size={16} />
                   <span>{item.downloads}</span>

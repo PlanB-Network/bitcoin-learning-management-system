@@ -2,7 +2,7 @@ import { Button, Loader } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { createFileRoute, useParams } from '@tanstack/react-router';
 import { capitalize } from 'lodash-es';
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   TbDownload,
@@ -30,6 +30,7 @@ function EducatorContentDetail() {
   const { id } = useParams({ from: '/$lang/educator-content/$id' });
   const { t } = useTranslation();
   const { session } = useContext(AppContext);
+  const hasIncrementedDownload = useRef(false);
 
   const {
     open: openEditModal,
@@ -44,7 +45,7 @@ function EducatorContentDetail() {
   );
 
   const incrementDownloadsMutation = useMutation(
-    (trpc.content as any).incrementDownloads.mutationOptions({
+    trpc.content.incrementDownloads.mutationOptions({
       onSuccess: () => {
         // Optimistically update or invalidate query
       },
@@ -62,10 +63,15 @@ function EducatorContentDetail() {
     return <div>{t('educatorContent.contentNotFound')}</div>;
   }
 
-  const handleDownload = (path: string) => {
-    if (item) {
-      (incrementDownloadsMutation as any).mutate({ id: item.id as string });
+  const handleIncrementDownload = () => {
+    if (item && !hasIncrementedDownload.current) {
+      incrementDownloadsMutation.mutate({ id: item.id as string });
+      hasIncrementedDownload.current = true;
     }
+  };
+
+  const handleDownload = (path: string) => {
+    handleIncrementDownload();
     window.open(getEducatorContentFileUrl(path), '_blank');
   };
 
@@ -159,6 +165,7 @@ function EducatorContentDetail() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="body-small md:body-base decoration-orange-500 text-orange-500 underline truncate"
+                  onClick={handleIncrementDownload}
                 >
                   {link.url}
                 </a>
@@ -167,6 +174,7 @@ function EducatorContentDetail() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="no-underline shrink-0"
+                  onClick={handleIncrementDownload}
                 >
                   <Button variant="tertiary" size="m" className="gap-4">
                     <span>{t('educatorContent.detail.view')}</span>
@@ -204,6 +212,7 @@ function EducatorContentDetail() {
               variant="primary"
               size="l"
               onClick={() => {
+                handleIncrementDownload();
                 window.open(
                   `/api/educator-content/download-all/${item.id}`,
                   '_blank',

@@ -4,10 +4,8 @@ import os from 'node:os';
 import path from 'node:path';
 import type { Readable } from 'node:stream';
 import { NoSuchKey } from '@blms/s3';
-import {
-  createGetEducatorContent,
-  createIncrementEducatorContentDownloads,
-} from '@blms/service-content';
+import { createGetEducatorContent } from '@blms/service-content';
+
 import {
   createExamTimestampService,
   createSetProfilePicture,
@@ -306,11 +304,11 @@ export const createRestFilesRoutes = async (
         return;
       }
 
-      // Increment download count
-      const incrementDownloads = createIncrementEducatorContentDownloads(
-        dependencies as any,
-      );
-      await incrementDownloads(item.id);
+      if (!item || !item.files || item.files.length === 0) {
+        res.status(404).send('No files found');
+        return;
+      }
+
       const zip = new JSZip();
       await Promise.all(
         item.files.map(async (file) => {

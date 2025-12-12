@@ -13,11 +13,12 @@ export enum EventType {
 }
 
 export enum EducatorContentType {
-  Presentation = 'presentation',
-  Workshop = 'workshop',
   Booklet = 'booklet',
   Flyer = 'flyer',
+  Game = 'game',
+  Presentation = 'presentation',
   Sticker = 'sticker',
+  Workshop = 'workshop',
 }
 
 export enum EducatorContentStatus {
