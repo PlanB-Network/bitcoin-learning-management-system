@@ -177,8 +177,12 @@ function MyContent() {
                     >
                       {getStatusLabel(item.status)}
                     </span>
-                    <TbDownload size={16} />
-                    <span>{item.downloads}</span>
+                    {item.downloads > 0 ? (
+                      <>
+                        <TbDownload size={16} />
+                        <span>{item.downloads}</span>
+                      </>
+                    ) : null}
                   </div>
                 </div>
               </div>

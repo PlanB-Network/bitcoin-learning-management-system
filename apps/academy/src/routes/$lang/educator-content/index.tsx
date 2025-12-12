@@ -296,10 +296,12 @@ function RouteComponent() {
                 <h3 className="title-small md:title-base text-gray-900">
                   {item.title}
                 </h3>
-                <div className="text-sm text-gray-500 flex items-center gap-2">
-                  <TbDownload size={16} />
-                  <span>{item.downloads}</span>
-                </div>
+                {item.downloads > 0 ? (
+                  <div className="text-sm text-gray-500 flex items-center gap-2">
+                    <TbDownload size={16} />
+                    <span>{item.downloads}</span>
+                  </div>
+                ) : null}
               </div>
             </div>
 

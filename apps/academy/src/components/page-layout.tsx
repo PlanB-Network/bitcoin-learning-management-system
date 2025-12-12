@@ -129,7 +129,7 @@ export const PageLayout = ({
 
         {!backLink && actionButtons && actionButtons.length > 0 ? (
           <div
-            className="flex items-center gap-1 ml-auto py-2 px-6"
+            className="flex items-center gap-1 ml-auto py-2 px-2 md:px-6"
             style={{ marginTop: navbarHeight }}
           >
             <ActionButtons />
