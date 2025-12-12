@@ -525,7 +525,7 @@ export const EducatorContentModal = ({
           >
             {previewUrl && !imageError ? (
               <>
-                <div className="w-full h-48 mb-4 relative rounded-lg overflow-hidden">
+                <div className="w-full aspect-4/3 mb-4 relative rounded-lg overflow-hidden">
                   <img
                     src={previewUrl}
                     alt="Cover preview"

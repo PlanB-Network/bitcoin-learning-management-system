@@ -35,9 +35,16 @@ const zipStream = (zip: JSZip) => {
   });
 };
 
-const receiveImage = (req: Request, resizeOptions = defaultResizeOptions) => {
+const receiveImage = (
+  req: Request,
+  resizeOptions: ResizeOptions | null = defaultResizeOptions,
+) => {
   return new Promise<Readable>((resolve, reject) => {
-    const sharpStream = sharp().resize(resizeOptions).webp();
+    let sharpStream = sharp();
+    if (resizeOptions) {
+      sharpStream = sharpStream.resize(resizeOptions);
+    }
+    sharpStream = sharpStream.webp();
 
     const form = formidable({
       fileWriteStreamHandler: () => sharpStream,
@@ -246,7 +253,7 @@ export const createRestFilesRoutes = async (
         throw new InternalServerError('Missing session uid');
       }
 
-      receiveImage(req, { width: 1200, height: 630, fit: 'cover' })
+      receiveImage(req)
         .then((stream) => {
           const id = randomUUID();
 
