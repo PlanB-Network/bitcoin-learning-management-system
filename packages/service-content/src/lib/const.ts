@@ -20,6 +20,7 @@ export type ContentType = (typeof supportedContentTypes)[number];
 // https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
 // https://typesense.org/docs/guide/locale.html#commonly-used-languages
 export const ISO_639_LANGUAGES = {
+  bg: 'bg',
   cs: 'cs',
   de: 'de',
   en: 'en',

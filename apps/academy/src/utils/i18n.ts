@@ -8,6 +8,7 @@ import { initReactI18next } from 'react-i18next';
 import { build } from '../env.ts';
 
 export const LANGUAGES = [
+  'bg',
   'cs',
   'de',
   'en',

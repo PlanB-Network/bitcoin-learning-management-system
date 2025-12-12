@@ -1,4 +1,5 @@
 export const LANGUAGES_MAP: { [key: string]: string } = {
+  bg: 'български',
   cs: 'Čeština',
   de: 'Deutsch',
   en: 'English',
