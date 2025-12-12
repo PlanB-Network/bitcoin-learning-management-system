@@ -1362,6 +1362,7 @@
     "editMaterial": "Edit educator content",
     "fileTooLarge": "File too large (max 50MB)",
     "imageCover": "Cover Image",
+    "imageError": "An error occurred while uploading the image",
     "languagePlaceholder": "Select",
     "languageRequired": "Select the resource language",
     "loginMessage": "Please log in to view your content.",

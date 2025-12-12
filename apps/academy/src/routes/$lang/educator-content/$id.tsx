@@ -176,7 +176,7 @@ function EducatorContentDetail() {
                   className="no-underline shrink-0"
                   onClick={handleIncrementDownload}
                 >
-                  <Button variant="tertiary" size="m" className="gap-4">
+                  <Button variant="tertiary" size="s" className="gap-4">
                     <span>{t('educatorContent.detail.view')}</span>
                     <TbExternalLink />
                   </Button>
@@ -193,7 +193,7 @@ function EducatorContentDetail() {
                 </span>
                 <Button
                   variant="tertiary"
-                  size="m"
+                  size="s"
                   className="gap-4 shrink-0"
                   onClick={() => handleDownload(file.path)}
                 >
@@ -210,7 +210,7 @@ function EducatorContentDetail() {
           <div className="flex justify-end">
             <Button
               variant="primary"
-              size="l"
+              size="s"
               onClick={() => {
                 handleIncrementDownload();
                 window.open(

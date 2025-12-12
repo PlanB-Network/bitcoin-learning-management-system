@@ -61,6 +61,9 @@ export const EducatorContentModal = ({
   const [isCoverDragActive, setIsCoverDragActive] = useState(false);
   const [isFilesDragActive, setIsFilesDragActive] = useState(false);
   const [imageError, setImageError] = useState(false);
+  const [isFilesDropSuccess, setIsFilesDropSuccess] = useState(false);
+  const [isCoverDropError, setIsCoverDropError] = useState(false);
+  const [isFilesDropError, setIsFilesDropError] = useState(false);
 
   const coverInputRef = useRef<HTMLInputElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -132,6 +135,9 @@ export const EducatorContentModal = ({
       setIsSuccessModalOpen(false);
       setImageError(false);
       setIsSubmitting(false);
+      setIsFilesDropSuccess(false);
+      setIsCoverDropError(false);
+      setIsFilesDropError(false);
     } else if (isOpen && initialData && prevIsOpen.current) {
       // Modal is open and initialData changed (e.g. background update)
       setImageError(false);
@@ -288,6 +294,8 @@ export const EducatorContentModal = ({
   // Drag and drop handlers
   const [previewUrl, setPreviewUrl] = useState<string>('');
   const activePreviewUrlRef = useRef<string>('');
+  const coverDragCounter = useRef(0);
+  const filesDragCounter = useRef(0);
 
   useEffect(() => {
     if (coverImage) {
@@ -303,30 +311,43 @@ export const EducatorContentModal = ({
     setImageError(false);
   }, [coverImage, initialData?.cover]);
 
-  const handleDrag = (
+  const handleDragEnter = (
     e: React.DragEvent,
+    counterRef: React.MutableRefObject<number>,
     setIsDragActive: (active: boolean) => void,
   ) => {
     e.preventDefault();
     e.stopPropagation();
-    if (e.type === 'dragenter' || e.type === 'dragover') {
+    counterRef.current += 1;
+    if (e.dataTransfer.items && e.dataTransfer.items.length > 0) {
       setIsDragActive(true);
-    } else if (e.type === 'dragleave') {
-      // Prevent flickering when dragging over child elements
-      if (
-        e.relatedTarget &&
-        (e.currentTarget as HTMLElement).contains(e.relatedTarget as Node)
-      ) {
-        return;
-      }
+    }
+  };
+
+  const handleDragLeave = (
+    e: React.DragEvent,
+    counterRef: React.MutableRefObject<number>,
+    setIsDragActive: (active: boolean) => void,
+  ) => {
+    e.preventDefault();
+    e.stopPropagation();
+    counterRef.current -= 1;
+    if (counterRef.current === 0) {
       setIsDragActive(false);
     }
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    e.dataTransfer.dropEffect = 'copy';
   };
 
   const handleCoverDrop = (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
     setIsCoverDragActive(false);
+    coverDragCounter.current = 0;
     setImageError(false);
 
     if (e.dataTransfer.files?.[0]) {
@@ -338,6 +359,37 @@ export const EducatorContentModal = ({
           mode: 'light',
           color: 'warning',
         });
+        setIsCoverDropError(true);
+        setTimeout(() => setIsCoverDropError(false), 500);
+      }
+    }
+  };
+
+  const handleFilesDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsFilesDragActive(false);
+    filesDragCounter.current = 0;
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      const droppedFiles = Array.from(e.dataTransfer.files);
+      const validFiles = droppedFiles.filter((file) => {
+        if (file.size > 50 * 1024 * 1024) {
+          customToast(t('educatorContent.fileTooLarge'), {
+            mode: 'light',
+            color: 'warning',
+          });
+          return false;
+        }
+        return true;
+      });
+      setNewFiles((prev) => [...prev, ...validFiles]);
+      if (validFiles.length > 0) {
+        setIsFilesDropSuccess(true);
+        setTimeout(() => setIsFilesDropSuccess(false), 500);
+      }
+      if (validFiles.length < droppedFiles.length) {
+        setIsFilesDropError(true);
+        setTimeout(() => setIsFilesDropError(false), 500);
       }
     }
   };
@@ -514,13 +566,20 @@ export const EducatorContentModal = ({
           <div
             className={cn(
               'border-2 border-dashed rounded-xl p-8 flex flex-col items-center justify-center text-center transition-colors relative overflow-hidden',
-              isCoverDragActive
-                ? 'border-primary-400 bg-primary-50'
-                : 'border-newGray-400 bg-white',
+              isCoverDragActive ? 'duration-0' : 'duration-1000',
+              isCoverDropError
+                ? 'border-red-400 bg-red-50'
+                : isCoverDragActive
+                  ? 'border-primary-400 bg-neutral-100'
+                  : 'border-newGray-400 bg-white',
             )}
-            onDragEnter={(e) => handleDrag(e, setIsCoverDragActive)}
-            onDragLeave={(e) => handleDrag(e, setIsCoverDragActive)}
-            onDragOver={(e) => handleDrag(e, setIsCoverDragActive)}
+            onDragEnter={(e) =>
+              handleDragEnter(e, coverDragCounter, setIsCoverDragActive)
+            }
+            onDragLeave={(e) =>
+              handleDragLeave(e, coverDragCounter, setIsCoverDragActive)
+            }
+            onDragOver={handleDragOver}
             onDrop={handleCoverDrop}
           >
             {previewUrl && !imageError ? (
@@ -532,6 +591,10 @@ export const EducatorContentModal = ({
                     className="w-full h-full object-cover"
                     onError={(e) => {
                       if (e.currentTarget.src === activePreviewUrlRef.current) {
+                        customToast(t('educatorContent.imageError'), {
+                          mode: 'light',
+                          color: 'warning',
+                        });
                         setImageError(true);
                       }
                     }}
@@ -554,10 +617,20 @@ export const EducatorContentModal = ({
                 <div className="bg-white border rounded shadow-sm p-2 mb-4">
                   <BiUpload size={24} className="text-gray-400" />
                 </div>
-                <p className="mb-2 text-sm font-medium text-gray-900">
+                <p
+                  className={cn(
+                    'mb-2 text-sm font-medium',
+                    isCoverDragActive ? 'text-primary-900' : 'text-gray-900',
+                  )}
+                >
                   {t('educatorContent.dropCover')}
                 </p>
-                <p className="text-xs text-gray-500 mb-6">
+                <p
+                  className={cn(
+                    'text-xs mb-6',
+                    isCoverDragActive ? 'text-primary-700' : 'text-gray-500',
+                  )}
+                >
                   {t('educatorContent.browseImages')}
                 </p>
                 <Button
@@ -626,40 +699,41 @@ export const EducatorContentModal = ({
           <div
             className={cn(
               'border-2 border-dashed rounded-xl p-8 flex flex-col items-center justify-center text-center transition-colors',
-              isFilesDragActive
-                ? 'border-primary-400 bg-primary-50'
-                : 'border-newGray-400 bg-white',
+              isFilesDragActive ? 'duration-0' : 'duration-1000',
+              isFilesDropError
+                ? 'border-red-4 bg-red-2'
+                : isFilesDropSuccess
+                  ? 'border-green-400 bg-green-100'
+                  : isFilesDragActive
+                    ? 'border-primary-400 bg-neutral-100'
+                    : 'border-newGray-400 bg-white',
             )}
-            onDragEnter={(e) => handleDrag(e, setIsFilesDragActive)}
-            onDragLeave={(e) => handleDrag(e, setIsFilesDragActive)}
-            onDragOver={(e) => handleDrag(e, setIsFilesDragActive)}
-            onDrop={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setIsFilesDragActive(false);
-              if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-                const droppedFiles = Array.from(e.dataTransfer.files);
-                const validFiles = droppedFiles.filter((file) => {
-                  if (file.size > 50 * 1024 * 1024) {
-                    customToast(t('educatorContent.fileTooLarge'), {
-                      mode: 'light',
-                      color: 'warning',
-                    });
-                    return false;
-                  }
-                  return true;
-                });
-                setNewFiles((prev) => [...prev, ...validFiles]);
-              }
-            }}
+            onDragEnter={(e) =>
+              handleDragEnter(e, filesDragCounter, setIsFilesDragActive)
+            }
+            onDragLeave={(e) =>
+              handleDragLeave(e, filesDragCounter, setIsFilesDragActive)
+            }
+            onDragOver={handleDragOver}
+            onDrop={handleFilesDrop}
           >
             <div className="bg-white border rounded shadow-sm p-2 mb-4">
               <BiUpload size={24} className="text-gray-400" />
             </div>
-            <p className="mb-2 text-sm font-medium text-gray-900">
+            <p
+              className={cn(
+                'mb-2 text-sm font-medium',
+                isFilesDragActive ? 'text-primary-900' : 'text-gray-900',
+              )}
+            >
               {t('educatorContent.dropFiles')}
             </p>
-            <p className="text-xs text-gray-500 mb-6">
+            <p
+              className={cn(
+                'text-xs mb-6',
+                isFilesDragActive ? 'text-primary-700' : 'text-gray-500',
+              )}
+            >
               {t('educatorContent.browseFiles')}
             </p>
             <Button
