@@ -15,7 +15,7 @@ import {
   CropperShade,
 } from 'cropperjs-react-wrapper';
 import { t } from 'i18next';
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import spinner from '#src/assets/icons/spinner.svg';
 
 interface Props {
@@ -44,6 +44,14 @@ export const ChangePictureModal = (props: Props) => {
       setCropData(canvas.toDataURL());
     }
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (selectionRef.current) {
+        selectionRef.current.initialCoverage = 0.3;
+      }
+    }, 500);
+  });
 
   useMemo(() => {
     setLoading(false);
@@ -108,7 +116,7 @@ export const ChangePictureModal = (props: Props) => {
 
         {/* Cropper */}
         <div className={cn(activeTab === Tabs.PREVIEW && 'hidden')}>
-          <div className="size-96 p-2 mx-auto flex-1">
+          <div className="max-w-full size-96 p-2 mx-auto flex-1">
             {image && (
               <CropperCanvas
                 background
@@ -125,12 +133,15 @@ export const ChangePictureModal = (props: Props) => {
                   }}
                 />
                 <CropperShade />
+                <CropperHandle action="select" plain />
                 <CropperSelection
-                  initialCoverage={0.8}
+                  initialCoverage={0.2}
                   aspectRatio={1}
                   movable
                   resizable
                   zoomable
+                  keyboard
+                  outlined
                   bounded
                   ref={selectionRef}
                 >
