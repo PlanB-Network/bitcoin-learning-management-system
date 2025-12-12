@@ -251,7 +251,7 @@ export const createRestFilesRoutes = async (
         throw new InternalServerError('Missing session uid');
       }
 
-      receiveImage(req)
+      receiveImage(req, null)
         .then((stream) => {
           const id = randomUUID();
 
