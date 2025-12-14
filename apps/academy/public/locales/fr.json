@@ -1181,7 +1181,8 @@
         "none": "Aucun",
         "platformTitle": "Quels types de notifications souhaitez-vous recevoir sur cette plateforme ?",
         "settingsSaved": "Vos paramètres ont été enregistrés avec succès !",
-        "title": "Paramètres de notification"
+        "title": "Paramètres de notification",
+        "coursesEventsOption": "Mises à jour concernant vos cours et vos événements"
       },
       "password": "Mot de passe",
       "preview": "Aperçu",
@@ -1393,6 +1394,13 @@
         "lecture": "séminaires",
         "meetup": "meetups",
         "workshop": "ateliers"
+      },
+      "singular": {
+        "conference": "Conférence",
+        "exam": "Examen",
+        "lecture": "Cours magistral",
+        "meetup": "Meetup",
+        "workshop": "Atelier pratique"
       }
     }
   },
@@ -1607,7 +1615,27 @@
     "searchFilterName": "Recherche par nom",
     "toggleLabelAll": "Tout",
     "toggleLabelSelectedLanguage": "Langue sélectionnée",
-    "pageSubtitleMovies": "<0>D'autres films</0> que vous pourriez aimer"
+    "pageSubtitleMovies": "<0>D'autres films</0> que vous pourriez aimer",
+    "papers": {
+      "accessPaper": "Accéder à l’article",
+      "addPaper": "Ajouter un article",
+      "citations": "Références bibliographiques (.bib)",
+      "downloadCitations": "Télécharger les références",
+      "papers": "Articles",
+      "publisher": "Éditeur",
+      "showMorePapers": "Afficher plus d’articles",
+      "title": "Articles de recherche",
+      "types": {
+        "academic": "Académique",
+        "book": "Livre",
+        "conference": "Conférence",
+        "journal": "Revue",
+        "PhD Thesis": "Thèse de doctorat",
+        "pre-print": "Prépublication",
+        "thesis": "Thèse",
+        "whitepaper": "Livre blanc"
+      }
+    }
   },
   "search": {
     "all": "Tout",
@@ -1927,7 +1955,11 @@
     "session": "Session",
     "confirmation": "Confirmation",
     "optional": "Facultatif",
-    "syllabus": "Syllabus"
+    "syllabus": "Syllabus",
+    "downloads": "Téléchargements",
+    "enroll": "S’inscrire",
+    "open": "Ouvrir",
+    "researchPaper": "Article de recherche"
   },
   "youtubeChannels": {
     "view": "Voir la chaîne Youtube",
@@ -1974,7 +2006,8 @@
   },
   "footer": {
     "FOSSOpenContent": "FOSS & Contenu libre",
-    "proudlyPartOf": "Fièrement membre de <0>Plan ₿ Network</0>"
+    "proudlyPartOf": "Fièrement membre de <0>Plan ₿ Network</0>",
+    "becomeATeacher": "Devenez <0>enseignant</0>"
   },
   "mentor": {
     "title": "PlanBot",
@@ -1989,5 +2022,85 @@
     "error": "Une erreur s'est produite. Veuillez réessayer.",
     "sources": "Pour aller plus loin",
     "loginRequired": "Crée un compte pour discuter avec PlanBot !"
+  },
+  "becomeTeacher": {
+    "activeBitcoinLearners": "apprenants actifs sur Bitcoin",
+    "bitcoinOnly": "Bitcoin-only",
+    "bookCall": "Réservez un appel de 30 minutes pour devenir enseignant",
+    "description": "Si vous êtes un Bitcoiner passionné, que vous aimez transmettre vos connaissances et que vous souhaitez avoir un réel impact au sein de votre communauté locale, vous pouvez proposer votre propre cours sur notre plateforme de formation.",
+    "enhanceExperience": "<0>Améliorez l’expérience d’apprentissage de vos étudiants</0> grâce aux outils de la plateforme",
+    "globalReach": "Portée mondiale",
+    "hostOwnCourse": "<0>Organisez votre propre cours</0>, en ligne ou en présentiel",
+    "inspireLearners": "Inspirez une communauté d’apprenants",
+    "joinMission": "<0>Rejoignez la mission</0> en tant que véritable éducateur Bitcoin",
+    "superiorAmount": ">{{amount}}",
+    "teachWhatYouLove": "<0>Enseignez ce que vous aimez</0>",
+    "title": "Enseignez Bitcoin et inspirez les autres"
+  },
+  "educatorContent": {
+    "addMaterial": "Ajouter du contenu pédagogique",
+    "addMoreLinks": "Ajouter plus de liens",
+    "browseFiles": "ou parcourir les fichiers",
+    "browseImages": "ou parcourir les images",
+    "contentNotFound": "Contenu introuvable",
+    "coverRequired": "L’image de couverture est obligatoire",
+    "currentCoverPresent": "Image de couverture actuelle présente",
+    "descriptionHelper": "Décrivez le contenu de la ressource afin d’aider les autres à le comprendre et à la trouver",
+    "descriptionPlaceholder": "Brève description du matériel pédagogique",
+    "descriptionRequired": "La description ne peut pas être vide",
+    "descriptionTooLong": "La description ne peut pas dépasser 350 caractères",
+    "detail": {
+      "createdBy": "Créé par",
+      "downloadAll": "Télécharger tout",
+      "view": "Voir"
+    },
+    "done": "Fait",
+    "dropCover": "Déposez l'image de couverture ici",
+    "dropFiles": "Déposez les fichiers ici",
+    "editAndRequireApproval": "Modifier et soumettre à approbation",
+    "editMaterial": "Modifier le contenu pédagogique",
+    "fileTooLarge": "Fichier trop volumineux (50 Mo maximum)",
+    "imageCover": "Image de couverture",
+    "imageError": "Une erreur est survenue lors du téléversement de l’image",
+    "languagePlaceholder": "Sélectionner",
+    "languageRequired": "Sélectionnez la langue de la ressource",
+    "loginMessage": "Veuillez vous connecter pour consulter votre contenu.",
+    "myContent": "Mon contenu",
+    "noContent": "Vous n’avez encore téléversé aucun contenu.",
+    "noContentToReview": "Aucun contenu à examiner",
+    "noCover": "Aucune image de couverture",
+    "noResultsDescription": "Essayez d’ajuster vos filtres de recherche",
+    "noResultsTitle": "Aucun contenu pédagogique trouvé",
+    "onlyImages": "Seuls les fichiers image sont autorisés",
+    "resourceDetails": "Détails des ressources",
+    "resourceType": "Type de ressource",
+    "shareLinks": "Partager les liens",
+    "status": {
+      "draft": "En attente",
+      "published": "En direct",
+      "rejected": "Non accepté",
+      "unpublished": "Non publié"
+    },
+    "success": "Contenu pédagogique ajouté avec succès !",
+    "successSubtitle": "Il passera par un processus de validation avant d’être affiché.",
+    "successTitle": "Contenu pédagogique téléversé avec succès",
+    "titleHelper": "Il doit refléter le contenu et l’objectif de votre ressource. Restez concis tout en étant informatif.",
+    "titleRequired": "Le titre ne peut pas être vide",
+    "typeRequired": "Précisez le type de ressource",
+    "types": {
+      "booklet": "Livret",
+      "flyer": "Flyer",
+      "game": "Jeu",
+      "presentation": "Présentation",
+      "sticker": "Autocollant",
+      "workshop": "Atelier pratique"
+    },
+    "uploadFiles": "Téléverser des fichiers",
+    "uploadForReview": "Téléverser pour validation",
+    "uploading": "Téléversement en cours..."
+  },
+  "forms": {
+    "browse": "Parcourir",
+    "replace": "Remplacer"
   }
 }
