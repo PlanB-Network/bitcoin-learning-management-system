@@ -22,7 +22,7 @@ import { trpc } from '../../utils/trpc.ts';
 interface RegisterFormData {
   username: string;
   password: string;
-  email: string | null;
+  email: string;
   university?: string | null;
 }
 
@@ -39,13 +39,7 @@ export const Register = ({ redirectTo }: RegisterProps) => {
   const password = new PasswordValidator().is().min(10);
 
   const registerSchema = z.object({
-    email: z
-      .union([
-        z.literal(''),
-        z.string().email({ message: t('auth.errors.emailInvalid') }),
-      ])
-      .transform((data) => data || null)
-      .nullable(),
+    email: z.string().email({ message: t('auth.errors.emailInvalid') }),
     password: z.string().superRefine((pwd, ctx) => {
       const result = password.validate(pwd, { details: true });
       if (Array.isArray(result) && result.length > 0) {
@@ -123,7 +117,7 @@ export const Register = ({ redirectTo }: RegisterProps) => {
               <FieldLabel htmlFor={field.name} required>
                 {t('dashboard.profile.username')}
               </FieldLabel>
-              <Input {...field} id={field.name} placeholder="username" />
+              <Input {...field} id={field.name} placeholder="nakamoto2008" />
               {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>
           )}
@@ -134,17 +128,14 @@ export const Register = ({ redirectTo }: RegisterProps) => {
           control={methods.control}
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
-              <FieldLabel
-                htmlFor={field.name}
-                optionalText={`(${t('words.optional').toLowerCase()})`}
-              >
+              <FieldLabel htmlFor={field.name} required>
                 {t('words.email')}
               </FieldLabel>
               <Input
                 {...field}
                 id={field.name}
                 type="email"
-                placeholder="email"
+                placeholder="nakamoto@proton.me"
                 value={field.value ?? ''}
               />
               {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
