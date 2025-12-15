@@ -8,6 +8,7 @@ import SandClockEmpty from '#src/assets/icons/sandClock/sand_clock_empty.svg';
 import { EXAM_QUESTION_DURATION_SECONDS } from '#src/utils/courses.ts';
 import { formatSecondsToMinutes } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
+import { formatTextCodeblock } from '../../../-components/quizz/quizz-card-question.tsx';
 
 export const ExamSession = ({
   startedAt,
@@ -252,7 +253,7 @@ export const ExamSession = ({
                 )}
               >
                 <p className="body-medium-16px md:subtitle-large-med-20px text-newBlack-1">
-                  {questionIndex + 1}. {q.text}
+                  {questionIndex + 1}. {formatTextCodeblock(q.text)}
                 </p>
                 <section className="flex flex-col gap-2.5 md:gap-4 w-full">
                   {q.answers.map((answer, answerIndex) => (
@@ -277,13 +278,13 @@ export const ExamSession = ({
                       </span>
                       <p
                         className={cn(
-                          'label-small-12px md:body-16px text-newBlack-1 text-start w-full flex items-center px-1 md:px-4 border-l border-newBlack-1 max-md:py-0.5 bg-white lg:group-hover:bg-newGray-4',
+                          'label-small-12px md:body-16px text-newBlack-1 text-start w-full px-1 md:px-4 border-l border-newBlack-1 py-1 min-h-12 md:py-3 bg-white lg:group-hover:bg-newGray-4',
                           selectedAnswers[questionIndex].index ===
                             answerIndex &&
                             '!bg-darkOrange-1 lg:group-hover:!bg-darkOrange-0',
                         )}
                       >
-                        {answer.text}
+                        {formatTextCodeblock(answer.text)}
                       </p>
                     </button>
                   ))}

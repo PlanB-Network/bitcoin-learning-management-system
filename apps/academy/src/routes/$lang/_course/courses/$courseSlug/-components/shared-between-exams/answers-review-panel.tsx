@@ -4,6 +4,7 @@ import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useState } from 'react';
 import { CompletedExamAnswer } from '../../../-components/quizz/completed-exam-answer.tsx';
+import { formatTextCodeblock } from '../../../-components/quizz/quizz-card-question.tsx';
 export const AnswersReviewPanel = ({
   examResults,
   hasBackground,
@@ -51,7 +52,7 @@ export const AnswersReviewPanel = ({
       <article className="flex flex-col md:border-t border-newBlack-5 md:px-5 gap-4 w-full md:pt-5">
         <h3 className="body-medium-16px md:subtitle-medium-med-16px text-newBlack-1">
           {selectedQuestion + 1} .{' '}
-          {examResults.questions[selectedQuestion].text}
+          {formatTextCodeblock(examResults.questions[selectedQuestion].text)}
         </h3>
 
         <section className="flex flex-col gap-2.5 md:gap-4 w-full md:p-2.5">
