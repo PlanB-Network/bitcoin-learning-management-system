@@ -83,7 +83,9 @@ export const AnswersReviewPanel = ({
             {t('courses.exam.explanations')}
           </h5>
           <p className="text-newBlack-1 body-12px md:body-16px text-justify">
-            {examResults.questions[selectedQuestion].explanation}
+            {formatTextCodeblock(
+              examResults.questions[selectedQuestion].explanation,
+            )}
           </p>
         </section>
 
