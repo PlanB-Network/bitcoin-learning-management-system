@@ -134,7 +134,7 @@ const CalComButton = () => {
       data-cal-origin="https://cal.planb.network"
       data-cal-config='{"layout":"month_view","theme":"light"}'
       size={isMobile ? 'm' : 'l'}
-      className="mt-10 md:mt-14 mx-auto"
+      className="mt-10 md:mt-14 mx-auto text-wrap! max-w-full"
     >
       {t('becomeTeacher.bookCall')}
     </Button>
