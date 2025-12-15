@@ -17,52 +17,53 @@
     </mj-style>
   </mj-head>
   <mj-body>
+    <mj-wrapper padding-left="25px" padding-right="25px">
+      <!-- Logo -->
+      <mj-section padding-top="40px" padding-bottom="20px">
+        <mj-column>
+          <mj-image src="http://cdn.mcauto-images-production.sendgrid.net/1320c1d7e5304d1f/4fc3540f-18ed-4e56-acc9-11251f854028/558x104.png" alt="Logo" width="264px" align="center" padding="0" />
+        </mj-column>
+      </mj-section>
 
-    <!-- Logo -->
-    <mj-section padding-top="40px" padding-bottom="20px">
-      <mj-column>
-        <mj-image src="http://cdn.mcauto-images-production.sendgrid.net/1320c1d7e5304d1f/4fc3540f-18ed-4e56-acc9-11251f854028/558x104.png" alt="Logo" width="264px" align="center" padding="0" />
-      </mj-column>
-    </mj-section>
+      <!-- Header -->
+      <mj-section padding-top="20px" padding-bottom="16px">
+        <mj-column>
+          <mj-text align="center" padding-bottom="10px" css-class="main-title">
+            New registration for your course
+          </mj-text>
+        </mj-column>
+      </mj-section>
 
-    <!-- Header -->
-    <mj-section padding-top="20px" padding-bottom="16px">
-      <mj-column>
-        <mj-text align="center" padding-bottom="10px" css-class="main-title">
-          New registration for your course
-        </mj-text>
-      </mj-column>
-    </mj-section>
+      <!-- Text -->
+      <mj-section padding-top="30px" padding-bottom="42px">
+        <mj-column width="90%">
+          <mj-text font-weight="400" padding="0">
+            Hi {{teacherName}},<br/><br/>Good news! {{newStudentsCount}} new student(s) have registered for your course {{courseName}}.<br/>You can view their details in your dashboard.
+          </mj-text>
+        </mj-column>
+      </mj-section>
 
-    <!-- Text -->
-    <mj-section padding-top="30px" padding-bottom="42px">
-      <mj-column width="90%">
-        <mj-text font-weight="400" padding="0">
-          Hi {{teacherName}},<br/><br/>Good news! {{newStudentsCount}} new student(s) have registered for your course {{courseName}}.<br/>You can view their details in your dashboard.
-        </mj-text>
-      </mj-column>
-    </mj-section>
+      <!-- Dashboard -->
+      <mj-section padding-top="0px" padding-bottom="42px">
+        <mj-column width="90%">
+          <mj-button href="{{dashboardLink}}" align="left" padding="0" inner-padding="14px 18px">
+            Go to dashboard
+          </mj-button>
+        </mj-column>
+      </mj-section>
 
-    <!-- Dashboard -->
-    <mj-section padding-top="0px" padding-bottom="42px">
-      <mj-column width="90%">
-        <mj-button href="{{dashboardLink}}" align="left" padding="0" inner-padding="14px 18px">
-          Go to dashboard
-        </mj-button>
-      </mj-column>
-    </mj-section>
-
-    <!-- Signature -->
-    <mj-section padding-top="0px" padding-bottom="0px">
-      <mj-column width="90%">
-        <mj-text font-weight="400" padding="0" padding-bottom="20px">
-          Thanks for teaching with us!
-        </mj-text>
-        <mj-text font-weight="400" padding="0">
-          Best regards,<br />
-          The Plan ₿ Network Team
-        </mj-text>
-      </mj-column>
-    </mj-section>
+      <!-- Signature -->
+      <mj-section padding-top="0px" padding-bottom="0px">
+        <mj-column width="90%">
+          <mj-text font-weight="400" padding="0" padding-bottom="20px">
+            Thanks for teaching with us!
+          </mj-text>
+          <mj-text font-weight="400" padding="0">
+            Best regards,<br />
+            The Plan ₿ Network Team
+          </mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
   </mj-body>
 </mjml>

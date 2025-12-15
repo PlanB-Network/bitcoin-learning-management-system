@@ -17,7 +17,7 @@
     </mj-style>
   </mj-head>
   <mj-body>
-
+  <mj-wrapper padding-left="25px" padding-right="25px">
     <!-- Logo -->
     <mj-section padding-top="40px" padding-bottom="20px">
       <mj-column>
@@ -70,5 +70,7 @@
         </mj-text>
       </mj-column>
     </mj-section>
+
+    </mj-wrapper>
   </mj-body>
 </mjml>

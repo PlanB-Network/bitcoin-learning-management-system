@@ -17,49 +17,50 @@
     </mj-style>
   </mj-head>
   <mj-body>
+    <mj-wrapper padding-left="25px" padding-right="25px">
+      <!-- Logo -->
+      <mj-section padding-top="40px" padding-bottom="20px">
+        <mj-column>
+          <mj-image src="http://cdn.mcauto-images-production.sendgrid.net/1320c1d7e5304d1f/4fc3540f-18ed-4e56-acc9-11251f854028/558x104.png" alt="Logo" width="264px" align="center" padding="0" />
+        </mj-column>
+      </mj-section>
 
-    <!-- Logo -->
-    <mj-section padding-top="40px" padding-bottom="20px">
-      <mj-column>
-        <mj-image src="http://cdn.mcauto-images-production.sendgrid.net/1320c1d7e5304d1f/4fc3540f-18ed-4e56-acc9-11251f854028/558x104.png" alt="Logo" width="264px" align="center" padding="0" />
-      </mj-column>
-    </mj-section>
+      <!-- Header -->
+      <mj-section padding-top="20px" padding-bottom="16px">
+        <mj-column>
+          <mj-text align="center" padding-bottom="10px" css-class="main-title">
+            Confirmation of booking
+          </mj-text>
+        </mj-column>
+      </mj-section>
 
-    <!-- Header -->
-    <mj-section padding-top="20px" padding-bottom="16px">
-      <mj-column>
-        <mj-text align="center" padding-bottom="10px" css-class="main-title">
-          Confirmation of booking
-        </mj-text>
-      </mj-column>
-    </mj-section>
+      <!-- Content -->
+      <mj-section padding-top="30px" padding-bottom="30px">
+        <mj-column width="90%">
+          <mj-text font-weight="400" padding="0">
+            Thank you for your booking!<br/><br/>You are now all set to attend the {{eventName}} on {{formatDate eventDate "D MMMM YYYY"}}.<br/><br/>Log in to your account to access your booking details.
+          </mj-text>
+        </mj-column>
+      </mj-section>
 
-    <!-- Content -->
-    <mj-section padding-top="30px" padding-bottom="30px">
-      <mj-column width="90%">
-        <mj-text font-weight="400" padding="0">
-          Thank you for your booking!<br/><br/>You are now all set to attend the {{eventName}} on {{formatDate eventDate "D MMMM YYYY"}}.<br/><br/>Log in to your account to access your booking details.
-        </mj-text>
-      </mj-column>
-    </mj-section>
+      <!-- Link -->
+      <mj-section padding-top="0px" padding-bottom="30px">
+        <mj-column width="90%">
+          <mj-button href="{{ticketDownloadLink}}" align="left" padding="0" inner-padding="14px 18px">
+            Download ticket
+          </mj-button>
+        </mj-column>
+      </mj-section>
 
-    <!-- Link -->
-    <mj-section padding-top="0px" padding-bottom="30px">
-      <mj-column width="90%">
-        <mj-button href="{{ticketDownloadLink}}" align="left" padding="0" inner-padding="14px 18px">
-          Download ticket
-        </mj-button>
-      </mj-column>
-    </mj-section>
-
-    <!-- Contact & signature -->
-    <mj-section padding-top="0px" padding-bottom="15px">
-      <mj-column width="90%">
-        <mj-text font-weight="400" padding="0">
-          Best regards,<br />
-          The Plan ₿ Academy team
-        </mj-text>
-      </mj-column>
-    </mj-section>
+      <!-- Contact & signature -->
+      <mj-section padding-top="0px" padding-bottom="15px">
+        <mj-column width="90%">
+          <mj-text font-weight="400" padding="0">
+            Best regards,<br />
+            The Plan ₿ Academy team
+          </mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
   </mj-body>
 </mjml>

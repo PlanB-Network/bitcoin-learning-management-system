@@ -38,63 +38,63 @@
 
   </mj-head>
   <mj-body>
+    <mj-wrapper padding-left="25px" padding-right="25px">
+      <!-- Logo -->
+      <mj-section padding-top="40px" padding-bottom="20px">
+        <mj-column>
+          <mj-image src="http://cdn.mcauto-images-production.sendgrid.net/1320c1d7e5304d1f/4fc3540f-18ed-4e56-acc9-11251f854028/558x104.png" alt="Plan B Network Logo" width="264px" align="center" padding="0" />
+        </mj-column>
+      </mj-section>
 
-    <!-- Logo -->
-    <mj-section padding-top="40px" padding-bottom="20px">
-      <mj-column>
-        <mj-image src="http://cdn.mcauto-images-production.sendgrid.net/1320c1d7e5304d1f/4fc3540f-18ed-4e56-acc9-11251f854028/558x104.png" alt="Plan B Network Logo" width="264px" align="center" padding="0" />
-      </mj-column>
-    </mj-section>
+      <!-- Header -->
+      <mj-section padding-top="0px" padding-bottom="16px">
+        <mj-column>
+          <mj-text align="center" padding-bottom="16px" css-class="main-title">
+            {{courseName}}
+          </mj-text>
+          <mj-text align="center" padding="0" css-class="sub-title">
+            class starts in 5 minutes
+          </mj-text>
+        </mj-column>
+      </mj-section>
 
-    <!-- Header -->
-    <mj-section padding-top="0px" padding-bottom="16px">
-      <mj-column>
-        <mj-text align="center" padding-bottom="16px" css-class="main-title">
-          {{courseName}}
-        </mj-text>
-        <mj-text align="center" padding="0" css-class="sub-title">
-          class starts in 5 minutes
-        </mj-text>
-      </mj-column>
-    </mj-section>
-
-    <!-- Main -->
-    <mj-section padding-top="10px" padding-bottom="0">
-      <mj-column width="90%">
-        <mj-text align="center" padding="0" padding-bottom="20px">
-          Hello,<br/>This is a quick reminder that your class is starting in 5 minutes!
-        </mj-text>
-        <mj-button href="{{joinClassLink}}" align="center" padding-bottom="50px">
-          Join class now
-        </mj-button>
-        <mj-text align="center" padding="0" padding-bottom="20px">
-          In case the button is not working, you can copy/paste the following URL in your browser : {{joinClassLink}}
-        </mj-text>
-      </mj-column>
-    </mj-section>
-
-    <!-- Contact & signature -->
-    <mj-section padding-top="0" padding-bottom="15px">
+      <!-- Main -->
+      <mj-section padding-top="10px" padding-bottom="0">
         <mj-column width="90%">
-        <mj-text padding="0" padding-bottom="10px">
-          If you encounter any issue, please reach out at <a href="mailto:contact@planb.network" style="color: #000000; text-decoration: underline;">contact@planb.network</a>.
-        </mj-text>
-        <mj-text padding="0" >
-          See you in class!<br />
-          The {{courseName}} team<br/>
-          Plan ₿ Network
-        </mj-text>
-      </mj-column>
-    </mj-section>
+          <mj-text align="center" padding="0" padding-bottom="20px">
+            Hello,<br/>This is a quick reminder that your class is starting in 5 minutes!
+          </mj-text>
+          <mj-button href="{{joinClassLink}}" align="center" padding-bottom="50px">
+            Join class now
+          </mj-button>
+          <mj-text align="center" padding="0" padding-bottom="20px">
+            In case the button is not working, you can copy/paste the following URL in your browser : {{joinClassLink}}
+          </mj-text>
+        </mj-column>
+      </mj-section>
 
-    <!-- Footer -->
-    <mj-section padding-top="20px" padding-bottom="40px">
-      <mj-column>
-        <mj-text align="center" font-size="12px" line-height="14px" font-weight="400" css-class="footer-text" padding="0 25px">
-          You are receiving this email because you have an account on planb.academy.<br />If you would like to change your email preferences, please click <a href="{{unsubscribeLink}}" style="color: #000000; text-decoration: underline;">here</a>
-        </mj-text>
-      </mj-column>
-    </mj-section>
+      <!-- Contact & signature -->
+      <mj-section padding-top="0" padding-bottom="15px">
+          <mj-column width="90%">
+          <mj-text padding="0" padding-bottom="10px">
+            If you encounter any issue, please reach out at <a href="mailto:contact@planb.network" style="color: #000000; text-decoration: underline;">contact@planb.network</a>.
+          </mj-text>
+          <mj-text padding="0" >
+            See you in class!<br />
+            The {{courseName}} team<br/>
+            Plan ₿ Network
+          </mj-text>
+        </mj-column>
+      </mj-section>
 
+      <!-- Footer -->
+      <mj-section padding-top="20px" padding-bottom="40px">
+        <mj-column>
+          <mj-text align="center" font-size="12px" line-height="14px" font-weight="400" css-class="footer-text" padding="0 25px">
+            You are receiving this email because you have an account on planb.academy.<br />If you would like to change your email preferences, please click <a href="{{unsubscribeLink}}" style="color: #000000; text-decoration: underline;">here</a>
+          </mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
   </mj-body>
 </mjml>
