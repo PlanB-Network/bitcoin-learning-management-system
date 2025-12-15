@@ -432,31 +432,33 @@ function EventDetails() {
                 </section>
 
                 {/* Pricing */}
-                <section className="flex flex-col w-full gap-2">
-                  <p className="body-base-bold">{t('words.pricing')}</p>
-                  <div className="bg-white p-4 rounded-xl">
-                    <ListElement2 icon={TbTag} leftText={t('words.price')}>
-                      <div className="flex flex-col">
-                        <span>
-                          {dollarPrice && dollarPrice !== 0 ? (
-                            <>
-                              ${dollarPrice} <TaxesSpan />
-                            </>
-                          ) : (
-                            t('words.free')
-                          )}
-                        </span>
-                        {dollarPrice &&
-                        dollarPrice > 0 &&
-                        conversionRate != null ? (
-                          <span className="text-darkOrange-4">
-                            {satsPrice} sats
+                {event?.priceDollars !== null && (
+                  <section className="flex flex-col w-full gap-2">
+                    <p className="body-base-bold">{t('words.pricing')}</p>
+                    <div className="bg-white p-4 rounded-xl">
+                      <ListElement2 icon={TbTag} leftText={t('words.price')}>
+                        <div className="flex flex-col">
+                          <span>
+                            {dollarPrice && dollarPrice !== 0 ? (
+                              <>
+                                ${dollarPrice} <TaxesSpan />
+                              </>
+                            ) : (
+                              t('words.free')
+                            )}
                           </span>
-                        ) : null}
-                      </div>
-                    </ListElement2>
-                  </div>
-                </section>
+                          {dollarPrice &&
+                          dollarPrice > 0 &&
+                          conversionRate != null ? (
+                            <span className="text-darkOrange-4">
+                              {satsPrice} sats
+                            </span>
+                          ) : null}
+                        </div>
+                      </ListElement2>
+                    </div>
+                  </section>
+                )}
 
                 {(event.websiteUrl ||
                   (event.bookInPerson &&
