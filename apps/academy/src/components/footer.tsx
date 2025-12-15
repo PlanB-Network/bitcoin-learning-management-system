@@ -265,10 +265,12 @@ const BecomeTeacherButton = () => {
   return (
     <Link
       to="/become-teacher"
-      className="flex items-center px-5 py-3 bg-neutral-50 border border-neutral-100 rounded-full gap-1"
+      className="flex items-center p-1 pr-2 bg-neutral-50 border border-neutral-100 rounded-full gap-1 md:gap-2"
     >
-      <div className="flex justify-center items-center bg-green-200 rounded-full size-4">
-        <span className=" text-green-700 font-semibold text-[8px]">T</span>
+      <div className="flex justify-center items-center bg-green-200 rounded-full size-4 md:size-6">
+        <span className=" text-green-700 md:body-base-bold max-md:text-[10px] max-md:font-semibold">
+          T
+        </span>
       </div>
       <span className="body-extra-small text-neutral-500">
         <Trans i18nKey="footer.becomeATeacher">
