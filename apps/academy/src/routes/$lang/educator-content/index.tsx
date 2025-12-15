@@ -183,6 +183,7 @@ function RouteComponent() {
             ]
           : []
       }
+      showBecomeTeacherButton
     >
       {isLoading && <Loader />}
 

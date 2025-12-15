@@ -31,6 +31,7 @@ function Certificates() {
           href: '/certifications/b-cert',
         },
       ]}
+      showBecomeTeacherButton
     >
       <SegmentedControl
         variant="outline"

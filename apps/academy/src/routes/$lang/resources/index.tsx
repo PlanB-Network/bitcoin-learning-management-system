@@ -17,6 +17,7 @@ function Resources() {
       title={t('words.resources')}
       tabs={resourcesTabs}
       layoutSize="base"
+      showBecomeTeacherButton
     >
       {RESOURCES_CATEGORIES.map((category) => (
         <Link

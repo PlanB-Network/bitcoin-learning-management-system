@@ -28,6 +28,7 @@ function TutorialExplorer() {
       layoutSize="base"
       title={t('words.tutorials')}
       tabs={tutorialsTabs}
+      showBecomeTeacherButton
     >
       {!isFetchedTutorials && <Loader size={'s'} />}
       <SearchInput

@@ -54,6 +54,7 @@ function Events() {
             ]
           : []
       }
+      showBecomeTeacherButton
     >
       {!isFetched && <Loader size={'s'} />}
       {events && (
