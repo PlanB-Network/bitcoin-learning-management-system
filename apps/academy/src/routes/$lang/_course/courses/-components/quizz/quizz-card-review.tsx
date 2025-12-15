@@ -4,6 +4,7 @@ import { FaPlay } from 'react-icons/fa6';
 import { QuizzHeader } from './-components/quizz-header.tsx';
 import { CompletedExamAnswer } from './completed-exam-answer.tsx';
 import PieChart from './pie-chart.tsx';
+import { formatTextCodeblock } from './quizz-card-question.tsx';
 import QuizzResultMessage from './quizz-result-message.tsx';
 
 interface QuizzCardReviewProps {
@@ -71,10 +72,12 @@ export default function QuizzCardReview({
               size={window.innerWidth < 768 ? 10 : 24}
               className="max-md:mt-1 shrink-0"
             />
-            <span className="body-14px md:label-large-20px">{question}</span>
+            <span className="body-14px md:label-large-20px">
+              {formatTextCodeblock(question)}
+            </span>
           </div>
           <p className="text-newBlack-4 label-small-12px md:body-14px border-l border-newBlack-1 my-2.5 px-1 md:px-2.5">
-            {explanation}
+            {formatTextCodeblock(explanation)}
           </p>
           <div className="flex flex-col gap-5">
             {answers.map((answer, answerIndex) => (

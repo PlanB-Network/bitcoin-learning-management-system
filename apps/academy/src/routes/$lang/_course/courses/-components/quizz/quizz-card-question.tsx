@@ -2,7 +2,7 @@ import { cn } from '@blms/ui';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaPlay } from 'react-icons/fa6';
-
+import { CodeRenderer } from '#src/components/Markdown/Renderers/code-renderer.tsx';
 import { QuizzHeader } from './-components/quizz-header.tsx';
 
 interface QuizzCardQuestionProps {
@@ -55,7 +55,9 @@ export default function QuizzCardQuestion({
             size={window.innerWidth < 768 ? 10 : 24}
             className="max-md:mt-1 shrink-0"
           />
-          <span className="body-14px md:label-large-20px">{question}</span>
+          <span className="body-14px md:label-large-20px">
+            {formatTextCodeblock(question)}
+          </span>
         </div>
         <div className="flex flex-col items-start gap-3 self-stretch pl-0 md:gap-5 md:pl-7">
           {answers.map((question, index) => (
@@ -82,7 +84,7 @@ export default function QuizzCardQuestion({
                 </span>
                 <span
                   className={cn(
-                    'label-small-12px md:body-16px text-newBlack-1 text-start w-full flex items-center px-1 md:px-4 border-l border-newBlack-1 py-1 min-h-12 md:py-3',
+                    'label-small-12px md:body-16px text-newBlack-1 text-start w-full px-1 md:px-4 border-l border-newBlack-1 py-1 min-h-12 md:py-3',
                     index === clickedAnswer
                       ? clickedAnswer === correctAnswer
                         ? 'bg-green-200 !font-semibold'
@@ -90,7 +92,7 @@ export default function QuizzCardQuestion({
                       : 'bg-white md:group-hover:bg-newGray-5',
                   )}
                 >
-                  {question}
+                  {formatTextCodeblock(question)}
                 </span>
               </div>
             </button>
@@ -100,3 +102,18 @@ export default function QuizzCardQuestion({
     </>
   );
 }
+
+export const formatTextCodeblock = (text: string) => {
+  if (!text) return null;
+  return text.split(/`([^`]+)`/g).map((part, index) => {
+    if (index % 2 === 1) {
+      return (
+        // biome-ignore lint/suspicious/noArrayIndexKey: <N/A>
+        <CodeRenderer key={index} highContrast>
+          {part}
+        </CodeRenderer>
+      );
+    }
+    return part;
+  });
+};

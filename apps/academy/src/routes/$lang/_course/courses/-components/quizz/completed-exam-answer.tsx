@@ -1,4 +1,5 @@
 import { cn } from '@blms/ui';
+import { formatTextCodeblock } from './quizz-card-question.tsx';
 
 interface CompletedExamAnswersProps {
   answer: string;
@@ -34,7 +35,7 @@ export const CompletedExamAnswer = ({
       </span>
       <p
         className={cn(
-          'label-small-12px md:body-16px text-newBlack-1 text-start w-full flex items-center px-1 md:px-4 border-l border-newBlack-1 max-md:py-0.5 bg-white',
+          'label-small-12px md:body-16px text-newBlack-1 text-start w-full px-1 md:px-4 border-l border-newBlack-1 py-1 min-h-12 md:py-3 bg-white',
           answerOrder === correctAnswer
             ? answerOrder === selectedAnswer
               ? 'bg-green-200 !font-semibold'
@@ -44,7 +45,7 @@ export const CompletedExamAnswer = ({
               : 'bg-white group-hover:bg-newGray-5',
         )}
       >
-        {answer}
+        {formatTextCodeblock(answer)}
       </p>
     </div>
   );

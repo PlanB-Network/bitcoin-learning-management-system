@@ -1,4 +1,4 @@
-import { CopyButton } from '@blms/ui';
+import { CopyButton, cn } from '@blms/ui';
 import type React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -6,10 +6,12 @@ import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 interface CodeRendererProps extends React.HTMLAttributes<HTMLParagraphElement> {
   children?: React.ReactNode;
   className?: string;
+  highContrast?: boolean;
 }
 export const CodeRenderer: React.FC<CodeRendererProps> = ({
   children,
   className,
+  highContrast,
 }) => {
   const childrenText = String(children).replace(/\n$/, '');
 
@@ -41,9 +43,10 @@ export const CodeRenderer: React.FC<CodeRendererProps> = ({
     </div>
   ) : (
     <code
-      className={
-        'bg-[#fafafa] text-[#383A42] text-left whitespace-pre break-normal leading-normal p-0.5 overflow-auto rounded-[0.3em] font-mono'
-      }
+      className={cn(
+        'text-left whitespace-pre break-normal leading-normal overflow-auto rounded-[0.3em] font-mono',
+        highContrast ? 'bg-black/15 p-px' : 'bg-[#fafafa] text-[#383A42] p-0.5',
+      )}
     >
       {children}
     </code>
