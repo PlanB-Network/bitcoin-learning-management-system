@@ -25,7 +25,7 @@ export const ProjectEvents = ({ events }: ProjectEventsProps) => {
       </span>
 
       {sortedEvents.length > 0 && (
-        <div className="flex flex-wrap justify-center gap-2 lg:gap-6">
+        <div className="flex flex-wrap gap-2 lg:gap-6">
           {sortedEvents?.map((event) => (
             <EventCard event={event} key={event.name} />
           ))}

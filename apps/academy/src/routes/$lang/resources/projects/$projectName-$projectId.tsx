@@ -194,7 +194,7 @@ function Project() {
             {project.description}
           </p>
 
-          {project.category === 'communities' && (
+          {filteredEvents.length > 0 && (
             <ProjectEvents events={filteredEvents} />
           )}
 
