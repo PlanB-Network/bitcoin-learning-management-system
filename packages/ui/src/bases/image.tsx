@@ -31,6 +31,10 @@ export const Image = ({
 
   if (!src || (hideWhenError && isError)) return null;
 
+  if (src.startsWith('data:')) {
+    return <img {...props} src={src} onError={() => setIsError(true)} />;
+  }
+
   const srcHasQuery = src?.includes('?');
 
   const breakpointsEntries = Object.entries(breakpoints);
