@@ -1,11 +1,17 @@
 import { UserRole } from '@blms/constants';
 import { canAccess } from '@blms/shared';
-import { Button, Loader } from '@blms/ui';
+import { Button, cn, Loader } from '@blms/ui';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import type { ChangeEvent } from 'react';
 import { useContext, useEffect, useState } from 'react';
-import { TbLogout } from 'react-icons/tb';
+import {
+  TbAlertCircleFilled,
+  TbLogout,
+  TbPencil,
+  TbPlus,
+  TbUserHexagon,
+} from 'react-icons/tb';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
@@ -69,9 +75,10 @@ function Account() {
   return (
     <PageLayout
       layoutSize="small"
-      title={t('account.account')}
+      title={t('account.profile')}
+      hideTitle
       tabs={[
-        { id: 'account', label: t('words.account'), href: '/account' },
+        { id: 'account', label: t('account.profile'), href: '/account' },
         ...(user?.professorId && canAccess(UserRole.Professor)(user)
           ? [
               {
@@ -93,110 +100,124 @@ function Account() {
         },
       ]}
     >
-      <div className="flex w-full flex-col text-black">
-        <div className="flex flex-col">
-          <label htmlFor="usernameId">{t('dashboard.profile.username')}</label>
-          <input
-            id="usernameId"
-            type="text"
-            value={user?.username}
-            disabled
-            className="rounded-md bg-[#e9e9e9] px-4 py-1 text-gray-400 border border-gray-400/10"
+      <div className="flex flex-col w-full justify-center items-center">
+        <div className="relative w-fit">
+          <img
+            src={pictureUrl ?? SignInIconLight}
+            alt="Profile"
+            className="rounded-full size-30"
           />
-        </div>
-        <div className="mt-6">
-          <label htmlFor="displayName">
-            {t('dashboard.profile.displayName')}
-          </label>
-          <div className="flex max-lg:flex-col lg:items-center gap-4">
-            <input
-              id="displayName"
-              type="text"
-              value={user?.displayName || ''}
-              disabled
-              className="rounded-md bg-[#e9e9e9] px-4 py-1 text-gray-400 border border-gray-400/10 grow"
-            />
-            <Button
-              variant="outline"
-              size="s"
-              onClick={openChangeDisplayNameModal}
-              className="h-[34px] px-3 w-fit"
+          <div className="absolute bottom-0.5 right-0.5">
+            <button
+              className="p-2 border-3 border-white bg-orange-400 text-white rounded-full size-9 flex items-center justify-center shrink-0"
+              type="button"
             >
-              {t('dashboard.profile.edit')}
-            </Button>
-          </div>
-        </div>
-        <div className="mt-6">
-          <div className="flex flex-col">
-            <label htmlFor="emailId">{t('dashboard.profile.email')}</label>
-
-            <div className="flex max-lg:flex-col lg:items-center gap-4">
-              <input
-                id="emailId"
-                type="text"
-                value={user?.email ?? ''}
-                disabled
-                className="rounded-md bg-[#e9e9e9] px-4 py-1 text-gray-400 border border-gray-400/10 grow"
-              />
-
-              <Button
-                variant="outline"
-                size="s"
-                onClick={changeEmailModal.open}
-                className="h-[34px] px-3 w-fit"
-              >
-                {t('dashboard.profile.edit')}
-              </Button>
-            </div>
-          </div>
-
-          {/* Confirmation message */}
-          <div>
-            {emailSent && (
-              <div className="mt-6 text-green-500">
-                {t('dashboard.profile.emailChangeConfirmation')}
-              </div>
-            )}
-            {emailError && (
-              <div className="mt-6 text-red-5">
-                {t(`dashboard.profile.${emailError}`)}
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Profile Picture Zone */}
-        <div className="mt-6 flex flex-col">
-          <label htmlFor="profilePictureFile">
-            {t('dashboard.profile.profilePicture')}
-          </label>
-
-          <div className="mt-2 max-md:flex-col flex gap-8 lg:items-end">
-            <img
-              src={pictureUrl ?? SignInIconLight}
-              alt="Profile"
-              className="rounded-full size-32"
+              <label htmlFor="profilePictureFile" className="cursor-pointer">
+                <TbPlus size={16} />
+              </label>
+            </button>
+            <input
+              className="hidden"
+              type="file"
+              name="file"
+              id="profilePictureFile"
+              accept="image/*"
+              onChange={onFileChange}
             />
-
-            <div>
-              <Button variant="outline" size="m" className="p-0">
-                <label
-                  htmlFor="profilePictureFile"
-                  className="px-2.5 py-1.5 cursor-pointer"
+          </div>
+        </div>
+        <span className="title-base md:title-medium text-center mt-2">
+          {user?.displayName}
+        </span>
+        <section className="flex flex-col w-full mt-4 md:mt-12 gap-3">
+          <h2 className="flex items-center gap-1 text-neutral-700 body-small-bold">
+            <TbUserHexagon size={16} className="text-neutral-400 shrink-0" />
+            {t('words.details')}
+          </h2>
+          <div className="flex flex-col w-full border border-neutral-100 rounded-2xl">
+            {/* Display Name */}
+            <div className="flex items-center justify-between w-full p-4 border-b border-neutral-100 gap-2">
+              <span className="body-base-bold text-neutral-700 shrink-0">
+                {t('dashboard.profile.displayName')}
+              </span>
+              <div className="flex items-center gap-2 min-w-0">
+                <span className="body-base text-neutral-700 truncate">
+                  {user?.displayName}
+                </span>
+                <TbPencil
+                  size={16}
+                  onClick={openChangeDisplayNameModal}
+                  className="shrink-0 text-neutral-300 cursor-pointer"
                 >
                   {t('dashboard.profile.edit')}
-                </label>
-              </Button>
-              <input
-                className="hidden"
-                type="file"
-                name="file"
-                id="profilePictureFile"
-                accept="image/*"
-                onChange={onFileChange}
-              />
+                </TbPencil>
+              </div>
+            </div>
+            {/* Username */}
+            <div className="flex items-center justify-between w-full p-4 border-b border-neutral-100 gap-2">
+              <span className="body-base-bold text-neutral-700 shrink-0">
+                {t('dashboard.profile.username')}
+              </span>
+              <span className="body-base text-neutral-700 min-w-0 truncate">
+                {user?.username}
+              </span>
+            </div>
+            {/* Email */}
+            <div className="flex items-center justify-between w-full p-4 gap-2">
+              <div className="flex flex-col shrink-0">
+                <div className="flex items-center gap-1">
+                  {!user?.currentEmailChecked || !user?.email ? (
+                    <TbAlertCircleFilled size={24} className="text-yellow-5" />
+                  ) : null}
+                  <span className="body-base-bold text-neutral-700">
+                    {t('dashboard.profile.email')}
+                  </span>
+                </div>
+                {!user?.currentEmailChecked && user?.email ? (
+                  <span className="body-small text-yellow-6">
+                    {t('dashboard.profile.verifyYourEmail')}
+                  </span>
+                ) : null}
+              </div>
+              {user?.email ? (
+                <div className="flex items-center gap-2 min-w-0">
+                  <span
+                    className={cn(
+                      'body-base truncate',
+                      user?.currentEmailChecked
+                        ? 'text-neutral-700'
+                        : 'text-yellow-6',
+                    )}
+                  >
+                    {user?.email}
+                  </span>
+                  <TbPencil
+                    size={16}
+                    onClick={changeEmailModal.open}
+                    className="shrink-0 text-neutral-300 cursor-pointer"
+                  />
+                </div>
+              ) : (
+                <Button size="s" onClick={changeEmailModal.open}>
+                  {t('dashboard.profile.addEmail')}
+                </Button>
+              )}
             </div>
           </div>
+        </section>
+
+        {/* Confirmation message */}
+        <div>
+          {emailSent && (
+            <div className="mt-3 text-green-500">
+              {t('dashboard.profile.emailChangeConfirmation')}
+            </div>
+          )}
+          {emailError && (
+            <div className="mt-3 text-red-5">
+              {t(`dashboard.profile.${emailError}`)}
+            </div>
+          )}
         </div>
 
         <Button
@@ -204,7 +225,7 @@ function Account() {
           onClick={async () => {
             await logout();
           }}
-          className="flex items-center gap-2 mt-8 md:mt-12 w-full"
+          className="flex items-center gap-2 mt-12 w-full"
         >
           {t('dashboard.logout')}
           <TbLogout size={16} />

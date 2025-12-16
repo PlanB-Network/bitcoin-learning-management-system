@@ -37,6 +37,7 @@ export interface UserAccountSettings {
 export interface UserDetails {
   certificateName: string | null;
   contributorId: string;
+  currentEmailChecked: boolean;
   displayName: string | null;
   email: string | null;
   permissions: UserPermission[] | null;

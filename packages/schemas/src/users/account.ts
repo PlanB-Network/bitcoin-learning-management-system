@@ -20,6 +20,7 @@ export const userDetailsSchema = userAccountSchema
   .pick({
     certificateName: true,
     contributorId: true,
+    currentEmailChecked: true,
     displayName: true,
     email: true,
     permissions: true,

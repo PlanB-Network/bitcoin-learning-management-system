@@ -30,7 +30,8 @@
   },
   "account": {
     "account": "Account",
-    "myTeacherProfile": "My teacher profile"
+    "myTeacherProfile": "My teacher profile",
+    "profile": "Profile"
   },
   "auth": {
     "accountCreated": "Your account has been created, {{userName}}!",
@@ -1194,6 +1195,7 @@
       }
     },
     "profile": {
+      "addEmail": "Add email",
       "cancel": "Cancel",
       "change": "Change",
       "crop": "Crop",
@@ -1229,7 +1231,8 @@
       "save": "Save",
       "saving": "Saving…",
       "securitySettings": "Security settings",
-      "username": "Username"
+      "username": "Username",
+      "verifyYourEmail": "Verify your email"
     },
     "teacher": {
       "courses": {
