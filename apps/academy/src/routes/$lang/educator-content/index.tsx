@@ -149,13 +149,13 @@ function RouteComponent() {
       id: lang,
       name: capitalize(getLanguageName(lang)),
       onClick: () => setSelectedLanguage(lang),
-    })),
+    })).sort((a, b) => a.name.localeCompare(b.name)),
   ];
 
   return (
     <PageLayout
       title="Educator content"
-      subtitle="Where bitcoin educators and communities share and reuse teaching resources"
+      subtitle="Where Bitcoin educators and communities share and reuse resources"
       layoutSize="base"
       actionButtons={[
         {

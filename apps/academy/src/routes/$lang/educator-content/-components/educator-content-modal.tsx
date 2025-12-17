@@ -72,7 +72,10 @@ export const EducatorContentModal = ({
   const isPublished = initialData?.status === EducatorContentStatus.Published;
 
   const formSchema = z.object({
-    title: z.string().min(1, t('educatorContent.titleRequired')),
+    title: z
+      .string()
+      .min(1, t('educatorContent.titleRequired'))
+      .max(60, t('educatorContent.titleTooLong')),
     description: z
       .string()
       .min(1, t('educatorContent.descriptionRequired'))

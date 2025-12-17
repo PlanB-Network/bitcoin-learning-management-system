@@ -1353,6 +1353,7 @@
     "descriptionPlaceholder": "Brief description of the educational material",
     "descriptionRequired": "The description cannot be empty",
     "descriptionTooLong": "The description cannot exceed 350 characters",
+    "titleTooLong": "The title cannot exceed 60 characters",
     "detail": {
       "createdBy": "Created by",
       "downloadAll": "Download all",
@@ -1392,9 +1393,11 @@
     "titleRequired": "The title cannot be empty",
     "typeRequired": "Specify what type of resource it is",
     "types": {
+      "art": "Art",
       "booklet": "Booklet",
       "flyer": "Flyer",
       "game": "Game",
+      "other": "Other",
       "presentation": "Presentation",
       "sticker": "Sticker",
       "workshop": "Workshop"
