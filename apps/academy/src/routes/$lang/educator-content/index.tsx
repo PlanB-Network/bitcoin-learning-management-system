@@ -132,11 +132,17 @@ function RouteComponent() {
       name: t('words.all'),
       onClick: () => setSelectedType('all'),
     },
-    ...Object.values(EducatorContentType).map((type) => ({
-      id: type,
-      name: t(`educatorContent.types.${type}`),
-      onClick: () => setSelectedType(type),
-    })),
+    ...Object.values(EducatorContentType)
+      .sort((a, b) => {
+        if (a === EducatorContentType.Other) return 1;
+        if (b === EducatorContentType.Other) return -1;
+        return a.localeCompare(b);
+      })
+      .map((type) => ({
+        id: type,
+        name: t(`educatorContent.types.${type}`),
+        onClick: () => setSelectedType(type),
+      })),
   ];
 
   const languages = [

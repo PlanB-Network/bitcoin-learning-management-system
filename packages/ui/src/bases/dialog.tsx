@@ -154,7 +154,7 @@ const BasicModal = ({
               <img src={CroppedPill} alt="Cropped Pill" className="w-full" />
             )}
           </div>
-          <DialogTitle className="whitespace-pre-line subtitle-small md:subtitle-base px-4 py-3">
+          <DialogTitle className="whitespace-pre-line subtitle-small md:subtitle-base px-4 py-3 min-h-10 md:min-h-12">
             {title}
           </DialogTitle>
           <DialogPrimitive.Close>

@@ -1392,6 +1392,7 @@
     "titleHelper": "It should reflect the content and purpose of your resource. Keep it concise but informative.",
     "titleRequired": "The title cannot be empty",
     "typeRequired": "Specify what type of resource it is",
+    "urlInvalid": "The link must be a valid URL",
     "types": {
       "art": "Art",
       "booklet": "Booklet",

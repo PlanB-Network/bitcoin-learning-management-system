@@ -90,7 +90,12 @@ export const EducatorContentModal = ({
     links: z
       .array(
         z.object({
-          url: z.string().optional(),
+          url: z
+            .string()
+            .optional()
+            .refine((val) => !val || z.string().url().safeParse(val).success, {
+              message: t('educatorContent.urlInvalid'),
+            }),
         }),
       )
       .optional(),
@@ -440,9 +445,7 @@ export const EducatorContentModal = ({
             name="title"
             render={({ field, fieldState }) => (
               <Field data-invalid={fieldState.invalid} className="gap-0">
-                <FieldLabel htmlFor={field.name} required>
-                  {t('words.title')}
-                </FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t('words.title')}</FieldLabel>
                 <p className="text-xs text-gray-500 mb-2">
                   {t('educatorContent.titleHelper')}
                 </p>
@@ -462,8 +465,11 @@ export const EducatorContentModal = ({
             control={form.control}
             name="description"
             render={({ field, fieldState }) => (
-              <Field data-invalid={fieldState.invalid} className="gap-0">
-                <FieldLabel htmlFor={field.name} required>
+              <Field
+                data-invalid={fieldState.invalid}
+                className="gap-0 relative"
+              >
+                <FieldLabel htmlFor={field.name}>
                   {t('words.description')}
                 </FieldLabel>
                 <p className="text-xs text-gray-500 mb-2">
@@ -475,7 +481,7 @@ export const EducatorContentModal = ({
                   maxLength={350}
                   {...field}
                 />
-                <div className="flex justify-end mt-1">
+                <div className="flex justify-end mt-1 absolute bottom-0">
                   <span
                     className={cn(
                       'text-xs',
@@ -507,7 +513,7 @@ export const EducatorContentModal = ({
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
-                    <SelectTrigger id={field.name}>
+                    <SelectTrigger id={field.name} ref={field.ref}>
                       <SelectValue
                         placeholder={t('educatorContent.languagePlaceholder')}
                       />
@@ -540,21 +546,28 @@ export const EducatorContentModal = ({
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                   className="flex flex-col gap-1"
+                  ref={field.ref}
                 >
-                  {Object.values(EducatorContentType).map((type) => (
-                    <div
-                      key={type}
-                      className="flex items-center space-x-3 space-y-0"
-                    >
-                      <RadioGroupItem value={type} id={type} />
-                      <label
-                        htmlFor={type}
-                        className="font-normal capitalize cursor-pointer"
+                  {Object.values(EducatorContentType)
+                    .sort((a, b) => {
+                      if (a === EducatorContentType.Other) return 1;
+                      if (b === EducatorContentType.Other) return -1;
+                      return a.localeCompare(b);
+                    })
+                    .map((type) => (
+                      <div
+                        key={type}
+                        className="flex items-center space-x-3 space-y-0"
                       >
-                        {type}
-                      </label>
-                    </div>
-                  ))}
+                        <RadioGroupItem value={type} id={type} />
+                        <label
+                          htmlFor={type}
+                          className="font-normal capitalize cursor-pointer"
+                        >
+                          {type}
+                        </label>
+                      </div>
+                    ))}
                 </RadioGroup>
                 {fieldState.invalid && (
                   <FieldError errors={[fieldState.error]} />
