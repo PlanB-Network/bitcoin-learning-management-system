@@ -1860,10 +1860,15 @@
     "youtube_channels": "Youtube channels"
   },
   "settings": {
+    "addEmail": "Add email",
+    "addEmailContinue": "Add email to continue",
     "changeDisplayName": "Change display name",
     "changeEmail": "Change email",
     "changePassword": "Change password",
-    "changeProfilePicture": "Change profile picture"
+    "changeProfilePicture": "Change profile picture",
+    "emailSentDescription": "Verify your email and reload this page to continue.",
+    "emailSentTitle": "We've sent you an email",
+    "verifyEmail": "Verify email"
   },
   "tutorials": {
     "business": {
