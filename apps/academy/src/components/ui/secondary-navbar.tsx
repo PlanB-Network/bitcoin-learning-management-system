@@ -21,6 +21,7 @@ export interface Tab {
   id: string;
   label: string;
   href: string;
+  notificationAmount?: number;
   onlyForLoggedIn?: boolean;
 }
 
@@ -131,9 +132,14 @@ const SecondaryNavbarDesktop = ({ tabs }: { tabs: Tab[] }) => {
             ref={(el) => {
               tabRefs.current[index] = el;
             }}
-            className="label-strong text-nowrap"
+            className="flex items-center label-strong text-nowrap"
           >
             {t(tab.label)}
+            {tab.notificationAmount && tab.notificationAmount > 0 ? (
+              <span className="size-5 flex items-center justify-center body-extra-small-bold rounded-full ml-1">
+                {tab.notificationAmount}
+              </span>
+            ) : null}
           </span>
         ))}
       </div>
@@ -151,7 +157,7 @@ const SecondaryNavbarDesktop = ({ tabs }: { tabs: Tab[] }) => {
                     to={tab.href}
                     disabled={tab.onlyForLoggedIn && !isLoggedIn}
                     className={cn(
-                      'relative pb-2 group text-nowrap',
+                      'flex items-center relative pb-2 group text-nowrap',
                       isActive
                         ? 'text-newBlack-1 label-strong'
                         : 'label text-newBlack-3 group-hover:text-newBlack-1',
@@ -170,6 +176,11 @@ const SecondaryNavbarDesktop = ({ tabs }: { tabs: Tab[] }) => {
                         isActive && 'scale-x-100 bg-orange-500',
                       )}
                     />
+                    {tab.notificationAmount && tab.notificationAmount > 0 ? (
+                      <span className="bg-orange-500 size-5 flex items-center justify-center body-extra-small-bold text-white rounded-full ml-1">
+                        {tab.notificationAmount}
+                      </span>
+                    ) : null}
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent
@@ -373,7 +384,7 @@ const SecondaryNavbarMobile = ({ tabs }: { tabs: Tab[] }) => {
               key={tab.id}
               to={tab.href}
               className={cn(
-                'relative pb-2 group text-nowrap',
+                'flex items-center relative pb-2 group text-nowrap',
                 isActive
                   ? 'text-newBlack-1 body-base-bold'
                   : 'body-base text-newBlack-3 group-hover:text-newBlack-1',
@@ -385,6 +396,11 @@ const SecondaryNavbarMobile = ({ tabs }: { tabs: Tab[] }) => {
               disabled={tab.onlyForLoggedIn && !isLoggedIn}
             >
               {t(tab.label)}
+              {tab.notificationAmount && tab.notificationAmount > 0 ? (
+                <span className="bg-orange-500 size-5 flex items-center justify-center body-extra-small-bold text-white rounded-full ml-1">
+                  {tab.notificationAmount}
+                </span>
+              ) : null}
               <div
                 className={cn(
                   'absolute bottom-0 left-0 h-0.5 w-full rounded-full bg-orange-100 scale-x-0 group-hover:scale-x-100 transition-transform origin-center duration-75',

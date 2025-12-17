@@ -9,6 +9,7 @@ import { PageLayout } from '#src/components/page-layout.tsx';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
 import { BillingSection } from './-components/billing-section.tsx';
+import { showEmailProfileNotificationNavbar } from './index.tsx';
 
 export const Route = createFileRoute('/$lang/account/invoices')({
   component: Invoices,
@@ -42,7 +43,14 @@ function Invoices() {
       layoutSize="wide"
       title={t('words.invoices')}
       tabs={[
-        { id: 'account', label: t('words.account'), href: '/account' },
+        {
+          id: 'account',
+          label: t('account.profile'),
+          href: '/account',
+          notificationAmount: showEmailProfileNotificationNavbar(user)
+            ? 1
+            : undefined,
+        },
         ...(user?.professorId && canAccess(UserRole.Professor)(user)
           ? [
               {

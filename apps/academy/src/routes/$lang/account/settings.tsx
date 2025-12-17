@@ -23,6 +23,7 @@ import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.ts';
 import { ChangePasswordModal } from '../dashboard/_dashboard/-components/change-password-modal.tsx';
+import { showEmailProfileNotificationNavbar } from './index.tsx';
 
 export const Route = createFileRoute('/$lang/account/settings')({
   component: AccountSettings,
@@ -53,7 +54,14 @@ function AccountSettings() {
       layoutSize="base"
       title={t('words.settings')}
       tabs={[
-        { id: 'account', label: t('words.account'), href: '/account' },
+        {
+          id: 'account',
+          label: t('account.profile'),
+          href: '/account',
+          notificationAmount: showEmailProfileNotificationNavbar(user)
+            ? 1
+            : undefined,
+        },
         ...(user?.professorId && canAccess(UserRole.Professor)(user)
           ? [
               {

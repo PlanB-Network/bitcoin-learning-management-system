@@ -1,5 +1,6 @@
 import { UserRole } from '@blms/constants';
 import { canAccess } from '@blms/shared';
+import type { UserDetails } from '@blms/types';
 import { Button, cn, Loader } from '@blms/ui';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
@@ -78,7 +79,14 @@ function Account() {
       title={t('account.profile')}
       hideTitle
       tabs={[
-        { id: 'account', label: t('account.profile'), href: '/account' },
+        {
+          id: 'account',
+          label: t('account.profile'),
+          href: '/account',
+          notificationAmount: showEmailProfileNotificationNavbar(user)
+            ? 1
+            : undefined,
+        },
         ...(user?.professorId && canAccess(UserRole.Professor)(user)
           ? [
               {
@@ -262,3 +270,9 @@ function Account() {
     </PageLayout>
   );
 }
+
+export const showEmailProfileNotificationNavbar = (
+  user: UserDetails | null | undefined,
+) => {
+  return user?.email === null || user?.currentEmailChecked === false;
+};

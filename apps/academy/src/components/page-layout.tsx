@@ -19,7 +19,12 @@ interface Props {
   link?: string;
   children?: ReactNode;
   className?: string;
-  tabs?: { id: string; label: string; href: string }[];
+  tabs?: {
+    id: string;
+    label: string;
+    href: string;
+    notificationAmount?: number;
+  }[];
   backLink?: { text: string; href: string };
   actionButtons?:
     | { text: string; onClick?: () => void; href?: string }[]

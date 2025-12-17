@@ -16,6 +16,7 @@ import { PageLayout } from '#src/components/page-layout.tsx';
 import { AppContext } from '#src/providers/context.js';
 import { isUUID, resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { MakeModificationBlock } from '../dashboard/_dashboard/professor/-components/make-modification.tsx';
+import { showEmailProfileNotificationNavbar } from './index.tsx';
 
 export const Route = createFileRoute('/$lang/account/teacher-profile')({
   component: ProfessorProfile,
@@ -60,7 +61,14 @@ function ProfessorProfile() {
       layoutSize="base"
       title={t('account.myTeacherProfile')}
       tabs={[
-        { id: 'account', label: t('words.account'), href: '/account' },
+        {
+          id: 'account',
+          label: t('account.profile'),
+          href: '/account',
+          notificationAmount: showEmailProfileNotificationNavbar(user)
+            ? 1
+            : undefined,
+        },
         ...(user?.professorId && canAccess(UserRole.Professor)(user)
           ? [
               {
