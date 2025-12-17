@@ -125,7 +125,7 @@ const SecondaryNavbarDesktop = ({ tabs }: { tabs: Tab[] }) => {
       ref={containerRef}
     >
       {/* Do not remove - necessary for overflow behavior */}
-      <div className="absolute opacity-0 -z-50 overflow-hidden gap-6">
+      <div className="absolute opacity-0 -z-50 overflow-hidden gap-6 flex">
         {tabs.map((tab, index) => (
           <span
             key={tab.id}
