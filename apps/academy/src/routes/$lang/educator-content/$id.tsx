@@ -55,14 +55,6 @@ function EducatorContentDetail() {
   const item = content?.[0];
   const isOwner = session?.user?.uid === item?.uid;
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (!item) {
-    return <div>{t('educatorContent.contentNotFound')}</div>;
-  }
-
   const handleIncrementDownload = () => {
     if (item && !hasIncrementedDownload.current) {
       incrementDownloadsMutation.mutate({ id: item.id as string });
@@ -100,130 +92,136 @@ function EducatorContentDetail() {
           : []
       }
     >
-      <div className="flex flex-col gap-6">
-        {/* Header */}
-        <div className="grid grid-cols-[auto_1fr] gap-4 md:flex">
-          {/* Image */}
-          <div className="w-22 h-[66px] md:w-50 md:h-[150px] shrink-0 flex items-center justify-center">
-            {item.cover ? (
-              <img
-                src={getEducatorContentCoverUrl(item.cover) || ''}
-                alt={item.title}
-                className="w-full h-full object-cover border border-neutral-100 rounded-2xl"
-              />
-            ) : (
-              <span className="text-gray-500 bg-gray-200 w-full h-full text-center my-auto flex items-center justify-center">
-                {t('educatorContent.noCover')}
-              </span>
-            )}
-          </div>
-          {/* Info */}
-          <div className="contents md:flex md:flex-col md:gap-4 md:min-w-0">
-            <h1 className="display-small md:display-large font-semibold text-black self-center md:self-auto truncate min-w-0">
-              {item.title}
-            </h1>
-            <p className="body-small text-neutral-700 col-span-2 md:w-auto">
-              {item.description}
-            </p>
-          </div>
-        </div>
-
-        {/* Stats Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          <StatCard
-            label={t('educatorContent.detail.createdBy')}
-            value={item.displayName ?? 'Unknown'}
-            icon={TbUserCircle}
-          />
-          <StatCard
-            label={t('words.category')}
-            value={item.type ? capitalize(item.type) : 'Unknown'}
-            icon={TbFile}
-          />
-          <StatCard
-            label={t('words.language')}
-            value={capitalize(getLanguageName(item.language))}
-            icon={TbLanguage}
-          />
-          <StatCard
-            label={t('words.downloads')}
-            value={item.downloads.toString()}
-            icon={TbDownload}
-          />
-        </div>
-
-        {/* Files and Links List */}
-        <div className="bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm">
-          <div className="flex flex-col divide-y divide-gray-100">
-            {sortedLinks?.map((link) => (
-              <div
-                key={link.url}
-                className="flex items-center justify-between py-2 px-4 hover:bg-gray-50 transition-colors gap-4"
-              >
-                <a
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="body-small md:body-base decoration-orange-500 text-orange-500 underline truncate"
-                  onClick={handleIncrementDownload}
-                >
-                  {link.url}
-                </a>
-                <a
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="no-underline shrink-0"
-                  onClick={handleIncrementDownload}
-                >
-                  <Button variant="tertiary" size="s" className="gap-4">
-                    <span>{t('educatorContent.detail.view')}</span>
-                    <TbExternalLink />
-                  </Button>
-                </a>
-              </div>
-            ))}
-            {sortedFiles?.map((file) => (
-              <div
-                key={file.path}
-                className="flex items-center justify-between py-2 px-4 hover:bg-gray-50 transition-colors gap-4"
-              >
-                <span className="body-small md:body-base text-gray-700 truncate">
-                  {file.name}
+      {item ? (
+        <div className="flex flex-col gap-6">
+          {/* Header */}
+          <div className="grid grid-cols-[auto_1fr] gap-4 md:flex">
+            {/* Image */}
+            <div className="w-22 h-[66px] md:w-50 md:h-[150px] shrink-0 flex items-center justify-center">
+              {item.cover ? (
+                <img
+                  src={getEducatorContentCoverUrl(item.cover) || ''}
+                  alt={item.title}
+                  className="w-full h-full object-cover border border-neutral-100 rounded-2xl"
+                />
+              ) : (
+                <span className="text-gray-500 bg-gray-200 w-full h-full text-center my-auto flex items-center justify-center">
+                  {t('educatorContent.noCover')}
                 </span>
-                <Button
-                  variant="tertiary"
-                  size="s"
-                  className="gap-4 shrink-0"
-                  onClick={() => handleDownload(file.path)}
-                >
-                  <span>{t('words.download')}</span>
-                  <TbDownload />
-                </Button>
-              </div>
-            ))}
+              )}
+            </div>
+            {/* Info */}
+            <div className="contents md:flex md:flex-col md:gap-4 md:min-w-0">
+              <h1 className="display-small md:display-large font-semibold text-black self-center md:self-auto truncate min-w-0">
+                {item.title}
+              </h1>
+              <p className="body-small text-neutral-700 col-span-2 md:w-auto">
+                {item.description}
+              </p>
+            </div>
           </div>
-        </div>
 
-        {/* Download All */}
-        {item.files && item.files.length > 0 && (
-          <div className="flex justify-end">
-            <Button
-              variant="primary"
-              size="s"
-              onClick={() => {
-                handleIncrementDownload();
-                window.open(
-                  `/api/educator-content/download-all/${item.id}`,
-                  '_blank',
-                );
-              }}
-            >
-              <span>{t('educatorContent.detail.downloadAll')}</span>
-            </Button>
+          {/* Stats Cards */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <StatCard
+              label={t('educatorContent.detail.createdBy')}
+              value={item.displayName ?? 'Unknown'}
+              icon={TbUserCircle}
+            />
+            <StatCard
+              label={t('words.category')}
+              value={item.type ? capitalize(item.type) : 'Unknown'}
+              icon={TbFile}
+            />
+            <StatCard
+              label={t('words.language')}
+              value={capitalize(getLanguageName(item.language))}
+              icon={TbLanguage}
+            />
+            <StatCard
+              label={t('words.downloads')}
+              value={item.downloads.toString()}
+              icon={TbDownload}
+            />
           </div>
-        )}
-      </div>
+
+          {/* Files and Links List */}
+          <div className="bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm">
+            <div className="flex flex-col divide-y divide-gray-100">
+              {sortedLinks?.map((link) => (
+                <div
+                  key={link.url}
+                  className="flex items-center justify-between py-2 px-4 hover:bg-gray-50 transition-colors gap-4"
+                >
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="body-small md:body-base decoration-orange-500 text-orange-500 underline truncate"
+                    onClick={handleIncrementDownload}
+                  >
+                    {link.url}
+                  </a>
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="no-underline shrink-0"
+                    onClick={handleIncrementDownload}
+                  >
+                    <Button variant="tertiary" size="s" className="gap-4">
+                      <span>{t('educatorContent.detail.view')}</span>
+                      <TbExternalLink />
+                    </Button>
+                  </a>
+                </div>
+              ))}
+              {sortedFiles?.map((file) => (
+                <div
+                  key={file.path}
+                  className="flex items-center justify-between py-2 px-4 hover:bg-gray-50 transition-colors gap-4"
+                >
+                  <span className="body-small md:body-base text-gray-700 truncate">
+                    {file.name}
+                  </span>
+                  <Button
+                    variant="tertiary"
+                    size="s"
+                    className="gap-4 shrink-0"
+                    onClick={() => handleDownload(file.path)}
+                  >
+                    <span>{t('words.download')}</span>
+                    <TbDownload />
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Download All */}
+          {item.files && item.files.length > 0 && (
+            <div className="flex justify-end">
+              <Button
+                variant="primary"
+                size="s"
+                onClick={() => {
+                  handleIncrementDownload();
+                  window.open(
+                    `/api/educator-content/download-all/${item.id}`,
+                    '_blank',
+                  );
+                }}
+              >
+                <span>{t('educatorContent.detail.downloadAll')}</span>
+              </Button>
+            </div>
+          )}
+        </div>
+      ) : isLoading ? (
+        <Loader />
+      ) : (
+        <div>Content not found</div>
+      )}
 
       <EducatorContentModal
         isOpen={isEditModalOpen}

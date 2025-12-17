@@ -185,143 +185,155 @@ function RouteComponent() {
       }
       showBecomeTeacherButton
     >
-      {isLoading && <Loader />}
-
-      {/* Mobile Search filter */}
-      <div
-        className={cn(
-          'flex items-center gap-2 w-full justify-end my-2 mb-6 lg:hidden',
-        )}
-      >
-        <SearchInput searchTerm={searchQuery} setSearchTerm={setSearchQuery} />
-        <button
-          onClick={() => setIsFilterOpen((prev) => !prev)}
-          className="p-2 rounded-lg bg-neutral-50 text-neutral-400 flex items-center gap-2"
-          type="button"
-        >
-          <span className="body-base">{t('words.filters')}</span>
-          {isFilterOpen ? (
-            <TbX size={16} />
-          ) : (
-            <TbAdjustmentsHorizontal size={16} />
-          )}
-        </button>
-      </div>
-
-      {/* Filters */}
-      <div
-        className={cn(
-          'flex lg:justify-end max-lg:flex-col gap-1 lg:gap-2',
-          'max-lg:p-2 max-lg:rounded-lg max-lg:w-full max-lg:max-w-90',
-          'max-lg:mx-auto lg:mt-4 mt-8 mb-8',
-          isFilterOpen ? '' : 'max-lg:hidden',
-        )}
-      >
-        <div className="lg:hidden flex justify-between items-center w-full mb-1 px-1">
-          <span className="body-small-bold text-neutral-700">
-            {t('words.filters')}
-          </span>
-        </div>
-
-        <DropdownMenu
-          activeItem={types.find((t) => t.id === selectedType)?.name || 'Type'}
-          itemsList={types.filter((t) => t.id !== selectedType)}
-          variant="light"
-          placeholder="Type"
-          forcePlaceholder={selectedType === 'all'}
-          className="w-full lg:w-44"
-        />
-        <DropdownMenu
-          activeItem={
-            languages.find((l) => l.id === selectedLanguage)?.name || 'Language'
-          }
-          itemsList={languages.filter((l) => l.id !== selectedLanguage)}
-          variant="light"
-          placeholder="Language"
-          forcePlaceholder={selectedLanguage === 'all'}
-          className="w-full lg:w-40"
-        />
-        <SearchInput
-          searchTerm={searchQuery}
-          setSearchTerm={setSearchQuery}
-          className="max-lg:hidden"
-        />
-      </div>
-
-      <div className="flex w-full justify-end items-center gap-2 max-lg:hidden mb-6">
-        <span className="text-sm text-gray-500">Sort by</span>
-        <button
-          type="button"
-          onClick={() =>
-            setSortBy((prev) => (prev === 'recent' ? 'downloads' : 'recent'))
-          }
-          className="text-sm font-medium text-gray-900 hover:text-orange-500 transition-colors"
-        >
-          {sortBy === 'recent' ? 'Most Recent' : 'Most Downloaded'}
-        </button>
-      </div>
-
-      <div className="flex flex-col gap-3">
-        {filteredContent && filteredContent.length === 0 ? (
-          <EmptyState
-            title={t('educatorContent.noResultsTitle')}
-            description={t('educatorContent.noResultsDescription')}
-            icon={TbSearch}
-          />
-        ) : null}
-        {paginatedContent?.map((item: JoinedEducatorContent) => (
-          <Link
-            to="/$lang/educator-content/$id"
-            params={{ lang: i18n.language, id: item.id }}
-            key={item.id}
-            className="flex w-full justify-between gap-2 md:gap-6 items-center pr-4 bg-white rounded-2xl hover:bg-neutral-50 cursor-pointer"
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          {/* Mobile Search filter */}
+          <div
+            className={cn(
+              'flex items-center gap-2 w-full justify-end my-2 mb-6 lg:hidden',
+            )}
           >
-            <div className="flex gap-3 md:gap-6 items-center">
-              {/* Thumbnail */}
-              <div className="w-28 h-21 md:w-32 md:h-24 bg-gray-200 rounded-lg md:rounded-2xl shrink-0 overflow-hidden flex items-center justify-center">
-                {item.cover ? (
-                  <img
-                    src={getEducatorContentCoverUrl(item.cover) || ''}
-                    alt={item.title}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <span className="text-xs text-gray-500">
-                    {t('educatorContent.noCover')}
-                  </span>
-                )}
-              </div>
+            <SearchInput
+              searchTerm={searchQuery}
+              setSearchTerm={setSearchQuery}
+            />
+            <button
+              onClick={() => setIsFilterOpen((prev) => !prev)}
+              className="p-2 rounded-lg bg-neutral-50 text-neutral-400 flex items-center gap-2"
+              type="button"
+            >
+              <span className="body-base">{t('words.filters')}</span>
+              {isFilterOpen ? (
+                <TbX size={16} />
+              ) : (
+                <TbAdjustmentsHorizontal size={16} />
+              )}
+            </button>
+          </div>
 
-              {/* Content */}
-              <div className="grow flex flex-col justify-center gap-2">
-                <h3 className="title-small md:title-base text-gray-900">
-                  {item.title}
-                </h3>
-                {item.downloads > 0 ? (
-                  <div className="text-sm text-gray-500 flex items-center gap-2">
-                    <TbDownload size={16} />
-                    <span>{item.downloads}</span>
-                  </div>
-                ) : null}
-              </div>
+          {/* Filters */}
+          <div
+            className={cn(
+              'flex lg:justify-end max-lg:flex-col gap-1 lg:gap-2',
+              'max-lg:p-2 max-lg:rounded-lg max-lg:w-full max-lg:max-w-90',
+              'max-lg:mx-auto lg:mt-4 mt-8 mb-8',
+              isFilterOpen ? '' : 'max-lg:hidden',
+            )}
+          >
+            <div className="lg:hidden flex justify-between items-center w-full mb-1 px-1">
+              <span className="body-small-bold text-neutral-700">
+                {t('words.filters')}
+              </span>
             </div>
 
-            {/* Arrow */}
-            <TbChevronRight
-              className="text-neutral-300 shrink-0"
-              size={isMobile ? 16 : 24}
+            <DropdownMenu
+              activeItem={
+                types.find((t) => t.id === selectedType)?.name || 'Type'
+              }
+              itemsList={types.filter((t) => t.id !== selectedType)}
+              variant="light"
+              placeholder="Type"
+              forcePlaceholder={selectedType === 'all'}
+              className="w-full lg:w-44"
             />
-          </Link>
-        ))}
+            <DropdownMenu
+              activeItem={
+                languages.find((l) => l.id === selectedLanguage)?.name ||
+                'Language'
+              }
+              itemsList={languages.filter((l) => l.id !== selectedLanguage)}
+              variant="light"
+              placeholder="Language"
+              forcePlaceholder={selectedLanguage === 'all'}
+              className="w-full lg:w-40"
+            />
+            <SearchInput
+              searchTerm={searchQuery}
+              setSearchTerm={setSearchQuery}
+              className="max-lg:hidden"
+            />
+          </div>
 
-        <div className="mt-8">
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={setCurrentPage}
-          />
-        </div>
-      </div>
+          <div className="flex w-full justify-end items-center gap-2 max-lg:hidden mb-6">
+            <span className="text-sm text-gray-500">Sort by</span>
+            <button
+              type="button"
+              onClick={() =>
+                setSortBy((prev) =>
+                  prev === 'recent' ? 'downloads' : 'recent',
+                )
+              }
+              className="text-sm font-medium text-gray-900 hover:text-orange-500 transition-colors"
+            >
+              {sortBy === 'recent' ? 'Most Recent' : 'Most Downloaded'}
+            </button>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            {filteredContent && filteredContent.length === 0 ? (
+              <EmptyState
+                title={t('educatorContent.noResultsTitle')}
+                description={t('educatorContent.noResultsDescription')}
+                icon={TbSearch}
+              />
+            ) : null}
+            {paginatedContent?.map((item: JoinedEducatorContent) => (
+              <Link
+                to="/$lang/educator-content/$id"
+                params={{ lang: i18n.language, id: item.id }}
+                key={item.id}
+                className="flex w-full justify-between gap-2 md:gap-6 items-center pr-4 bg-white rounded-2xl hover:bg-neutral-50 cursor-pointer"
+              >
+                <div className="flex gap-3 md:gap-6 items-center">
+                  {/* Thumbnail */}
+                  <div className="w-28 h-21 md:w-32 md:h-24 bg-gray-200 rounded-lg md:rounded-2xl shrink-0 overflow-hidden flex items-center justify-center">
+                    {item.cover ? (
+                      <img
+                        src={getEducatorContentCoverUrl(item.cover) || ''}
+                        alt={item.title}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <span className="text-xs text-gray-500">
+                        {t('educatorContent.noCover')}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Content */}
+                  <div className="grow flex flex-col justify-center gap-2">
+                    <h3 className="title-small md:title-base text-gray-900">
+                      {item.title}
+                    </h3>
+                    {item.downloads > 0 ? (
+                      <div className="text-sm text-gray-500 flex items-center gap-2">
+                        <TbDownload size={16} />
+                        <span>{item.downloads}</span>
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+
+                {/* Arrow */}
+                <TbChevronRight
+                  className="text-neutral-300 shrink-0"
+                  size={isMobile ? 16 : 24}
+                />
+              </Link>
+            ))}
+
+            <div className="mt-8">
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
+              />
+            </div>
+          </div>
+        </>
+      )}
 
       <AuthModal isOpen={isAuthModalOpen} onClose={closeAuthModal} />
       <EducatorContentModal
