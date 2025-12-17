@@ -2,7 +2,7 @@ import { Button, Loader } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { createFileRoute, useParams } from '@tanstack/react-router';
 import { capitalize } from 'lodash-es';
-import { useContext, useRef } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   TbDownload,
@@ -13,6 +13,7 @@ import {
 } from 'react-icons/tb';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import {
   getEducatorContentCoverUrl,
@@ -31,6 +32,23 @@ function EducatorContentDetail() {
   const { t } = useTranslation();
   const { session } = useContext(AppContext);
   const hasIncrementedDownload = useRef(false);
+  const isMobile = useSmaller('md') || window.innerWidth < 768;
+  const [isCoverOpen, setIsCoverOpen] = useState(false);
+
+  if (isCoverOpen) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsCoverOpen(false);
+    };
+
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, []);
 
   const {
     open: openEditModal,
@@ -99,17 +117,48 @@ function EducatorContentDetail() {
             {/* Image */}
             <div className="w-22 h-[66px] md:w-50 md:h-[150px] shrink-0 flex items-center justify-center">
               {item.cover ? (
-                <img
-                  src={getEducatorContentCoverUrl(item.cover) || ''}
-                  alt={item.title}
-                  className="w-full h-full object-cover border border-neutral-100 rounded-2xl"
-                />
+                <button
+                  type="button"
+                  className="w-full h-full p-0 bg-transparent border-0 cursor-zoom-in focus:outline-none"
+                  onClick={() => (isMobile ? undefined : setIsCoverOpen(true))}
+                  aria-label={`Open cover image: ${item.title}`}
+                >
+                  <img
+                    src={getEducatorContentCoverUrl(item.cover) || ''}
+                    alt={item.title}
+                    className="w-full h-full object-cover border border-neutral-100 rounded-2xl"
+                  />
+                </button>
               ) : (
-                <span className="text-gray-500 bg-gray-200 w-full h-full text-center my-auto flex items-center justify-center">
+                <span className="text-gray-500 bg-gray-200 w-full h-full text-center my-auto flex items-center justify-center rounded-2xl">
                   {t('educatorContent.noCover')}
                 </span>
               )}
             </div>
+
+            {isCoverOpen && item.cover && (
+              <div
+                className="fixed inset-0 z-9999 flex items-center justify-center bg-black/60"
+                onClick={() => setIsCoverOpen(false)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Escape') setIsCoverOpen(false);
+                }}
+                role="dialog"
+                aria-label="Close image overlay"
+              >
+                <div
+                  className="relative m-2 md:m-5"
+                  role="dialog"
+                  aria-modal="true"
+                >
+                  <img
+                    src={getEducatorContentCoverUrl(item.cover) || ''}
+                    alt={item.title}
+                    className="mx-auto rounded-lg max-w-[min(1920px,100%)] max-h-[80vh] cursor-zoom-out bg-white"
+                  />
+                </div>
+              </div>
+            )}
             {/* Info */}
             <div className="contents md:flex md:flex-col md:gap-4 md:min-w-0">
               <h1 className="display-small md:display-medium font-semibold text-black self-center md:self-auto wrap-break-words min-w-0">

@@ -1,7 +1,7 @@
 import type { JoinedEducatorContent } from '@blms/types';
 import { BasicModal, Button } from '@blms/ui';
 import { capitalize } from 'lodash-es';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   TbCheck,
@@ -48,8 +48,24 @@ export const ReviewModal = ({
 }: RootReviewModalProps) => {
   const { t } = useTranslation();
   const [isConfirmingUnpublish, setIsConfirmingUnpublish] = useState(false);
+  const [isCoverOpen, setIsCoverOpen] = useState(false);
 
   const isMobile = useSmaller('lg');
+
+  if (isCoverOpen) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsCoverOpen(false);
+    };
+
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, []);
 
   const sortedLinks = content?.links?.sort((a, b) =>
     (a.url || '').localeCompare(b.url || ''),
@@ -77,19 +93,50 @@ export const ReviewModal = ({
       <div className="flex flex-col gap-6 text-left items-stretch w-full">
         {/* Main Content Info */}
         <div className="flex flex-col md:flex-row gap-4 items-center md:items-start text-center md:text-left">
-          <div className="w-40 h-40 bg-gray-100 rounded-lg shrink-0 overflow-hidden border border-gray-100">
+          <div className="w-40 h-30 md:w-48 md:h-36 bg-gray-100 rounded-lg md:rounded-2xl shrink-0 overflow-hidden border border-gray-100">
             {content.cover ? (
-              <img
-                src={getEducatorContentCoverUrl(content.cover) || ''}
-                alt={content.title}
-                className="w-full h-full object-cover"
-              />
+              <button
+                type="button"
+                className="w-full h-full p-0 bg-transparent border-0 cursor-zoom-in focus:outline-none"
+                onClick={() => (isMobile ? undefined : setIsCoverOpen(true))}
+                aria-label={`Open cover image: ${content.title}`}
+              >
+                <img
+                  src={getEducatorContentCoverUrl(content.cover) || ''}
+                  alt={content.title}
+                  className="w-full h-full object-cover"
+                />
+              </button>
             ) : (
               <div className="w-full h-full flex items-center justify-center text-gray-300">
                 <span className="text-xs">No Cover</span>
               </div>
             )}
           </div>
+
+          {isCoverOpen && content.cover && (
+            <div
+              className="fixed inset-0 z-9999 flex items-center justify-center bg-black/60"
+              onClick={() => setIsCoverOpen(false)}
+              onKeyDown={(e) => {
+                if (e.key === 'Escape') setIsCoverOpen(false);
+              }}
+              role="dialog"
+              aria-label="Close image overlay"
+            >
+              <div
+                className="relative m-2 md:m-5"
+                role="dialog"
+                aria-modal="true"
+              >
+                <img
+                  src={getEducatorContentCoverUrl(content.cover) || ''}
+                  alt={content.title}
+                  className="mx-auto rounded-lg max-w-[min(1920px,100%)] max-h-[80vh] cursor-zoom-out bg-white"
+                />
+              </div>
+            </div>
+          )}
           <div className="flex flex-col gap-1 self-start text-start min-w-0 w-full">
             <h2 className="display-base md:display-large min-w-0 wrap-break-words">
               {content.title}
