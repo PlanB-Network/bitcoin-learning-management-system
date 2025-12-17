@@ -8,6 +8,7 @@ import { IoSend } from 'react-icons/io5';
 import { AuthModalState } from '#src/components/AuthModals/props.js';
 import { useAuthModal } from '#src/providers/auth.js';
 import { AppContext } from '#src/providers/context.js';
+import { isTestnetOrDevelopmentEnvironment } from '#src/utils/misc.js';
 
 interface MentorChatProps {
   chapterId?: string;
@@ -27,6 +28,7 @@ export const MentorChat = ({ chapterId, language }: MentorChatProps) => {
   const { session } = useContext(AppContext);
   const { openAuthModal } = useAuthModal();
   const isLoggedIn = !!session?.user;
+  const isEnabled = isTestnetOrDevelopmentEnvironment();
 
   const [isOpen, setIsOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -239,6 +241,11 @@ export const MentorChat = ({ chapterId, language }: MentorChatProps) => {
       setIsLoading(false);
     }
   };
+
+  // Only show on testnet or development environment
+  if (!isEnabled) {
+    return null;
+  }
 
   return (
     <>
