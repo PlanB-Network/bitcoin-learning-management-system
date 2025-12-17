@@ -118,8 +118,8 @@ function EducatorContentDetail() {
             )}
           </div>
           {/* Info */}
-          <div className="contents md:flex md:flex-col md:gap-4">
-            <h1 className="display-small md:display-large font-semibold text-black self-center md:self-auto">
+          <div className="contents md:flex md:flex-col md:gap-4 md:min-w-0">
+            <h1 className="display-small md:display-large font-semibold text-black self-center md:self-auto truncate min-w-0">
               {item.title}
             </h1>
             <p className="body-small text-neutral-700 col-span-2 md:w-auto">

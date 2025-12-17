@@ -3,7 +3,15 @@
 
 export interface EducatorContent {
   id: string;
-  type: 'booklet' | 'flyer' | 'game' | 'presentation' | 'sticker' | 'workshop';
+  type:
+    | 'art'
+    | 'booklet'
+    | 'flyer'
+    | 'game'
+    | 'other'
+    | 'presentation'
+    | 'sticker'
+    | 'workshop';
   status: 'draft' | 'published' | 'rejected' | 'unpublished';
   cover: string | null;
   language: string;
@@ -32,7 +40,15 @@ export interface EducatorContentFile {
 
 export interface JoinedEducatorContent {
   id: string;
-  type: 'booklet' | 'flyer' | 'game' | 'presentation' | 'sticker' | 'workshop';
+  type:
+    | 'art'
+    | 'booklet'
+    | 'flyer'
+    | 'game'
+    | 'other'
+    | 'presentation'
+    | 'sticker'
+    | 'workshop';
   status: 'draft' | 'published' | 'rejected' | 'unpublished';
   cover: string | null;
   language: string;

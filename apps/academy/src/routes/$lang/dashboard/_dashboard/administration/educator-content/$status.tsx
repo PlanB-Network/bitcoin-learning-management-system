@@ -9,7 +9,7 @@ import {
   SegmentedControlItem,
 } from '@blms/ui';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { capitalize } from 'lodash-es';
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -19,6 +19,7 @@ import {
   TbSearch,
   TbX,
 } from 'react-icons/tb';
+import { z } from 'zod';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { Pagination } from '#src/components/pagination.tsx';
 import { SearchInput } from '#src/components/search-input.tsx';
@@ -30,20 +31,36 @@ import { getLanguageName, LANGUAGES } from '#src/utils/i18n.ts';
 import { trpc } from '#src/utils/trpc.js';
 
 export const Route = createFileRoute(
-  '/$lang/dashboard/_dashboard/administration/educator-content',
+  '/$lang/dashboard/_dashboard/administration/educator-content/$status',
 )({
   component: AdminEducatorContent,
+  params: {
+    parse: (params) => ({
+      status: z
+        .enum(['review', 'approved'])
+        .catch('review')
+        .parse(params.status),
+      lang: z.string().parse((params as any).lang),
+    }),
+    stringify: ({ lang, status }) => ({
+      status: `${status}`,
+      lang: lang,
+    }),
+  },
 });
 
 const ITEMS_PER_PAGE = 10;
 
 function AdminEducatorContent() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const params = Route.useParams();
+
+  const currentTab = params.status;
 
   const [selectedContent, setSelectedContent] = useState<any>(null);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [currentTab, setCurrentTab] = useState('review');
 
   // Filters state
   const [selectedType, setSelectedType] = useState<EducatorContentType | 'all'>(
@@ -264,7 +281,15 @@ function AdminEducatorContent() {
         <SegmentedControl
           variant="outline"
           value={currentTab}
-          onValueChange={setCurrentTab}
+          onValueChange={(value) => {
+            navigate({
+              to: '/$lang/dashboard/administration/educator-content/$status',
+              params: {
+                lang: params.lang,
+                status: value as 'review' | 'approved',
+              },
+            });
+          }}
           className="w-full"
         >
           <SegmentedControlItem value="review" className="w-full">

@@ -20,7 +20,7 @@
       "biome check --no-errors-on-unmatched --files-ignore-unknown=true --diagnostic-level=warn"
     ]
   },
-  "packageManager": "pnpm@10.25.0",
+  "packageManager": "pnpm@10.26.0",
   "private": true,
   "scripts": {
     "build": "turbo run build --cache-dir=.turbo",
