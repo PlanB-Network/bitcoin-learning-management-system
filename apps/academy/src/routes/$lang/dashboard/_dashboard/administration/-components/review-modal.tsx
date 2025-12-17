@@ -67,7 +67,7 @@ export const ReviewModal = ({
       open={isOpen}
       onOpenChange={onClose}
       title={isUnpublishMode ? 'View content' : 'Review for approval'}
-      contentClassName="max-w-xl"
+      contentClassName="max-w-xl md:max-w-3xl"
     >
       <div className="flex flex-col gap-6 text-left items-stretch w-full">
         {/* Main Content Info */}
@@ -85,12 +85,12 @@ export const ReviewModal = ({
               </div>
             )}
           </div>
-          <div className="flex flex-col gap-1 self-start text-start">
-            <h2 className="display-large">{content.title}</h2>
+          <div className="flex flex-col gap-1 self-start text-start min-w-0 w-full">
+            <h2 className="display-large min-w-0 truncate">{content.title}</h2>
             <span className="body-small text-neutral-800">
               {content.displayName}
             </span>
-            <p className="body-small text-neutral-700 mt-1">
+            <p className="body-small text-neutral-700 mt-1 min-w-0 truncate">
               {content.description}
             </p>
           </div>
