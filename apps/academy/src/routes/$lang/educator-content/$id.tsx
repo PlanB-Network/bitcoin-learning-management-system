@@ -80,9 +80,18 @@ function EducatorContentDetail() {
     }
   };
 
-  const handleDownload = (path: string) => {
+  const handleDownload = (path: string, filename?: string) => {
     handleIncrementDownload();
-    window.open(getEducatorContentFileUrl(path), '_blank');
+    const url = getEducatorContentFileUrl(path);
+    // First trigger the download
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename || path.split('/').pop() || 'download';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    // Then open in a new tab
+    window.open(url, '_blank');
   };
 
   const sortedLinks = item?.links?.sort((a, b) =>
@@ -237,7 +246,7 @@ function EducatorContentDetail() {
                     variant="tertiary"
                     size="s"
                     className="gap-4 shrink-0"
-                    onClick={() => handleDownload(file.path)}
+                    onClick={() => handleDownload(file.path, file.name)}
                   >
                     <span>{t('words.download')}</span>
                     <TbDownload />
@@ -255,10 +264,13 @@ function EducatorContentDetail() {
                 size="s"
                 onClick={() => {
                   handleIncrementDownload();
-                  window.open(
-                    `/api/educator-content/download-all/${item.id}`,
-                    '_blank',
-                  );
+                  const url = `/api/educator-content/download-all/${item.id}`;
+                  const link = document.createElement('a');
+                  link.href = url;
+                  link.download = `${item.title || 'educator-content'}.zip`;
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
                 }}
               >
                 <span>{t('educatorContent.detail.downloadAll')}</span>
