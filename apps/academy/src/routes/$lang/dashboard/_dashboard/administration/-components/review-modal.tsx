@@ -1,6 +1,7 @@
 import type { JoinedEducatorContent } from '@blms/types';
 import { BasicModal, Button } from '@blms/ui';
 import { capitalize } from 'lodash-es';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   TbCheck,
@@ -46,6 +47,7 @@ export const ReviewModal = ({
   isUnpublishMode,
 }: RootReviewModalProps) => {
   const { t } = useTranslation();
+  const [isConfirmingUnpublish, setIsConfirmingUnpublish] = useState(false);
 
   const isMobile = useSmaller('lg');
 
@@ -65,7 +67,10 @@ export const ReviewModal = ({
   return (
     <BasicModal
       open={isOpen}
-      onOpenChange={onClose}
+      onOpenChange={() => {
+        onClose();
+        setIsConfirmingUnpublish(false);
+      }}
       title={isUnpublishMode ? 'View content' : 'Review for approval'}
       contentClassName="max-w-xl md:max-w-3xl"
     >
@@ -199,10 +204,21 @@ export const ReviewModal = ({
           {isUnpublishMode ? (
             <Button
               className="w-full justify-center bg-red-6 relative"
-              onClick={onUnpublish}
+              onClick={() => {
+                if (isConfirmingUnpublish) {
+                  onUnpublish();
+                  setIsConfirmingUnpublish(false);
+                } else {
+                  setIsConfirmingUnpublish(true);
+                }
+              }}
               disabled={isUnpublishPending}
             >
-              <span>Unpublish</span>
+              <span>
+                {isConfirmingUnpublish
+                  ? 'Unpublish (are you sure?)'
+                  : 'Unpublish'}
+              </span>
               <TbTrash className="absolute right-4 opacity-60" />
             </Button>
           ) : (
