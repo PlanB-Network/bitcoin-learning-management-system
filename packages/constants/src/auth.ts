@@ -20,6 +20,7 @@ export enum UserPermission {
   Bookings = 'admin:bookings',
   Career = 'admin:career',
   Courses = 'admin:courses',
+  EducatorContent = 'admin:educatorContent',
   Quizzes = 'admin:quizzes',
   Coupons = 'admin:coupons',
   Tutorials = 'admin:tutorials',

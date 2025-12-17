@@ -1,4 +1,8 @@
-import { EducatorContentStatus, EducatorContentType } from '@blms/constants';
+import {
+  EducatorContentStatus,
+  EducatorContentType,
+  UserPermission,
+} from '@blms/constants';
 import { joinedEducatorContentSchema } from '@blms/schemas';
 import {
   createApproveEducatorContent,
@@ -13,6 +17,7 @@ import {
 import { createSendEducatorContentApprovedEmail } from '@blms/service-user';
 import type { JoinedEducatorContent } from '@blms/types';
 import { z } from 'zod';
+import { checkPermissions } from '#src/middlewares/auth.js';
 import {
   adminProcedure,
   publicProcedure,
@@ -128,6 +133,7 @@ export const educatorContentRouter = createTRPCRouter({
     }),
 
   adminUpdateEducatorContent: adminProcedure
+    .use(checkPermissions(UserPermission.EducatorContent))
     .input(
       z.object({
         id: z.string(),
@@ -168,6 +174,7 @@ export const educatorContentRouter = createTRPCRouter({
     }),
 
   approveEducatorContent: adminProcedure
+    .use(checkPermissions(UserPermission.EducatorContent))
     .input(
       z.object({
         id: z.string(),
@@ -202,6 +209,7 @@ export const educatorContentRouter = createTRPCRouter({
     }),
 
   rejectEducatorContent: adminProcedure
+    .use(checkPermissions(UserPermission.EducatorContent))
     .input(
       z.object({
         id: z.string(),
@@ -228,6 +236,7 @@ export const educatorContentRouter = createTRPCRouter({
     }),
 
   unpublishEducatorContent: adminProcedure
+    .use(checkPermissions(UserPermission.EducatorContent))
     .input(
       z.object({
         id: z.string(),

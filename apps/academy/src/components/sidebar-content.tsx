@@ -1,4 +1,4 @@
-import { UserRole } from '@blms/constants';
+import { UserPermission, UserRole } from '@blms/constants';
 import { COURSES_CAREER_ACCESS, canAccess } from '@blms/shared';
 import { cn, SegmentedControl, SegmentedControlItem } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
@@ -392,17 +392,19 @@ export const SideBarContent = ({
             isSidebarOpen={isSidebarOpen}
             isMain
           />
-          <SideBarItem
-            icon={EducatorContentOrange}
-            iconColor="orange"
-            label={t('menu.educatorContent')}
-            link="/dashboard/administration/educator-content"
-            isActive={window.location.pathname.includes(
-              '/dashboard/administration/educator-content',
-            )}
-            isSidebarOpen={isSidebarOpen}
-            isMain
-          />
+          {canAccess(UserRole.Admin, UserPermission.EducatorContent)(user) ? (
+            <SideBarItem
+              icon={EducatorContentOrange}
+              iconColor="orange"
+              label={t('menu.educatorContent')}
+              link="/dashboard/administration/educator-content"
+              isActive={window.location.pathname.includes(
+                '/dashboard/administration/educator-content',
+              )}
+              isSidebarOpen={isSidebarOpen}
+              isMain
+            />
+          ) : null}
         </div>
       )}
 

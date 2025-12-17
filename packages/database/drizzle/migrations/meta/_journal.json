@@ -1065,6 +1065,20 @@
       "when": 1765959382632,
       "tag": "0151_crazy_matthew_murdock",
       "breakpoints": true
+    },
+    {
+      "idx": 152,
+      "version": "7",
+      "when": 1765976824813,
+      "tag": "0152_cold_mimic",
+      "breakpoints": true
+    },
+    {
+      "idx": 153,
+      "version": "7",
+      "when": 1765977524604,
+      "tag": "0153_handy_goliath",
+      "breakpoints": true
     }
   ]
 }
