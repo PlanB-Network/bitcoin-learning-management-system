@@ -86,11 +86,13 @@ export const ReviewModal = ({
             )}
           </div>
           <div className="flex flex-col gap-1 self-start text-start min-w-0 w-full">
-            <h2 className="display-large min-w-0 truncate">{content.title}</h2>
+            <h2 className="display-large min-w-0 wrap-break-words">
+              {content.title}
+            </h2>
             <span className="body-small-bold text-neutral-800">
               {content.displayName}
             </span>
-            <p className="body-small text-neutral-700 mt-1 min-w-0 truncate">
+            <p className="body-small text-neutral-700 mt-1 min-w-0 wrap-break-words">
               {content.description}
             </p>
           </div>
