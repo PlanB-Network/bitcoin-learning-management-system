@@ -2,6 +2,7 @@ import { cn, DividerSimple } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { Trans, useTranslation } from 'react-i18next';
 import { BsGithub, BsLinkedin, BsTwitterX, BsYoutube } from 'react-icons/bs';
+import { TbBrandDiscordFilled } from 'react-icons/tb';
 import Nostr from '#src/assets/icons/nostr.svg?react';
 import Rumble from '#src/assets/icons/rumble.svg?react';
 import PlanBLogoBlack from '../assets/logo/planb_logo_horizontal_black.svg';
@@ -30,6 +31,12 @@ const SOCIAL_LINKS = [
     icon: BsLinkedin,
     isReactIcon: true,
     label: 'Linkedin',
+  },
+  {
+    href: 'https://discord.gg/q9CFPmRNAD',
+    icon: TbBrandDiscordFilled,
+    isReactIcon: true,
+    label: 'Discord',
   },
   {
     href: 'https://rumble.com/user/planb_network',
