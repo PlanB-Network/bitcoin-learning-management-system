@@ -160,8 +160,8 @@ function RouteComponent() {
 
   return (
     <PageLayout
-      title="Educator content"
-      subtitle="Where Bitcoin educators and communities share and reuse resources"
+      title={t('educatorContent.pageTitle')}
+      subtitle={t('educatorContent.pageSubtitle')}
       layoutSize="base"
       actionButtons={[
         {
@@ -240,7 +240,7 @@ function RouteComponent() {
               }
               itemsList={types.filter((t) => t.id !== selectedType)}
               variant="light"
-              placeholder="Type"
+              placeholder={t('educatorContent.typePlaceholder')}
               forcePlaceholder={selectedType === 'all'}
               className="w-full lg:w-44"
             />
@@ -251,7 +251,7 @@ function RouteComponent() {
               }
               itemsList={languages.filter((l) => l.id !== selectedLanguage)}
               variant="light"
-              placeholder="Language"
+              placeholder={t('educatorContent.languagePlaceholderFilter')}
               forcePlaceholder={selectedLanguage === 'all'}
               className="w-full lg:w-40"
             />
@@ -263,7 +263,9 @@ function RouteComponent() {
           </div>
 
           <div className="flex w-full justify-end items-center gap-2 max-lg:hidden mb-6">
-            <span className="text-sm text-gray-500">Sort by</span>
+            <span className="text-sm text-gray-500">
+              {t('educatorContent.sortBy')}
+            </span>
             <button
               type="button"
               onClick={() =>
@@ -273,7 +275,9 @@ function RouteComponent() {
               }
               className="text-sm font-medium text-gray-900 hover:text-orange-500 transition-colors"
             >
-              {sortBy === 'recent' ? 'Most Recent' : 'Most Downloaded'}
+              {sortBy === 'recent'
+                ? t('educatorContent.sortMostRecent')
+                : t('educatorContent.sortMostDownloaded')}
             </button>
           </div>
 

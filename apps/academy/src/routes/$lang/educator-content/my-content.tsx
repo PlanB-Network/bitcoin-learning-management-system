@@ -104,7 +104,7 @@ function MyContent() {
 
   return (
     <PageLayout
-      title="My content"
+      title={t('educatorContent.myContent')}
       layoutSize="base"
       actionButtons={[
         {

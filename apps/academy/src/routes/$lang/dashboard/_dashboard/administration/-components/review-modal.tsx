@@ -87,7 +87,11 @@ export const ReviewModal = ({
         onClose();
         setIsConfirmingUnpublish(false);
       }}
-      title={isUnpublishMode ? 'View content' : 'Review for approval'}
+      title={
+        isUnpublishMode
+          ? t('educatorContent.reviewModal.viewContent')
+          : t('educatorContent.reviewModal.reviewForApproval')
+      }
       contentClassName="max-w-xl md:max-w-3xl"
     >
       <div className="flex flex-col gap-6 text-left items-stretch w-full">
@@ -109,7 +113,9 @@ export const ReviewModal = ({
               </button>
             ) : (
               <div className="w-full h-full flex items-center justify-center text-gray-300">
-                <span className="text-xs">No Cover</span>
+                <span className="text-xs">
+                  {t('educatorContent.reviewModal.noCover')}
+                </span>
               </div>
             )}
           </div>
@@ -153,12 +159,18 @@ export const ReviewModal = ({
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           <StatCard
             label={t('educatorContent.detail.createdBy')}
-            value={content.displayName ?? 'Unknown'}
+            value={
+              content.displayName ?? t('educatorContent.reviewModal.unknown')
+            }
             icon={TbUserCircle}
           />
           <StatCard
             label={t('words.category')}
-            value={content.type ? capitalize(content.type) : 'Unknown'}
+            value={
+              content.type
+                ? capitalize(content.type)
+                : t('educatorContent.reviewModal.unknown')
+            }
             icon={TbFile}
           />
           <StatCard
@@ -245,7 +257,7 @@ export const ReviewModal = ({
             className="w-full justify-center"
             onClick={onEdit}
           >
-            Edit
+            {t('educatorContent.reviewModal.edit')}
           </Button>
 
           {isUnpublishMode ? (
@@ -263,8 +275,8 @@ export const ReviewModal = ({
             >
               <span>
                 {isConfirmingUnpublish
-                  ? 'Unpublish (are you sure?)'
-                  : 'Unpublish'}
+                  ? t('educatorContent.reviewModal.unpublishConfirm')
+                  : t('educatorContent.reviewModal.unpublish')}
               </span>
               <TbTrash className="absolute right-4 opacity-60" />
             </Button>
@@ -275,7 +287,7 @@ export const ReviewModal = ({
                 onClick={onReject}
                 disabled={isRejectPending}
               >
-                <span>Reject</span>
+                <span>{t('educatorContent.reviewModal.reject')}</span>
                 <TbTrash className="absolute right-4 opacity-60" />
               </Button>
               <Button
@@ -283,7 +295,9 @@ export const ReviewModal = ({
                 onClick={onApprove}
                 disabled={isApprovePending}
               >
-                <span>Approve content and publish</span>
+                <span>
+                  {t('educatorContent.reviewModal.approveAndPublish')}
+                </span>
                 <TbCheck className="absolute right-4 opacity-60" />
               </Button>
             </>
@@ -304,7 +318,7 @@ function StatCard({
   icon?: React.ElementType;
 }) {
   return (
-    <div className="bg-neutral-50 rounded-2xl p-2 md:p-6 flex flex-col items-center justify-center text-center gap-3">
+    <div className="bg-neutral-50 rounded-2xl p-2 md:p-6 flex flex-col items-center justify-center text-center gap-3 min-w-0 w-full">
       <div className="flex items-center gap-2 text-gray-400">
         {Icon && <Icon className="size-4" />}
         <span className="caption-extra-small uppercase">{label}</span>

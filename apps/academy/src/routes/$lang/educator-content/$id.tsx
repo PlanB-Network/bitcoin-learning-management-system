@@ -183,12 +183,18 @@ function EducatorContentDetail() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             <StatCard
               label={t('educatorContent.detail.createdBy')}
-              value={item.displayName ?? 'Unknown'}
+              value={
+                item.displayName ?? t('educatorContent.reviewModal.unknown')
+              }
               icon={TbUserCircle}
             />
             <StatCard
               label={t('words.category')}
-              value={item.type ? capitalize(item.type) : 'Unknown'}
+              value={
+                item.type
+                  ? capitalize(item.type)
+                  : t('educatorContent.reviewModal.unknown')
+              }
               icon={TbFile}
             />
             <StatCard
@@ -281,7 +287,7 @@ function EducatorContentDetail() {
       ) : isLoading ? (
         <Loader />
       ) : (
-        <div>Content not found</div>
+        <div>{t('educatorContent.contentNotFound')}</div>
       )}
 
       <EducatorContentModal

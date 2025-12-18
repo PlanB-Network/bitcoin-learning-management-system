@@ -1349,6 +1349,7 @@
     "contentNotFound": "Content not found",
     "coverPreview": "Cover preview",
     "coverRequired": "The cover image is mandatory",
+    "linkOrFileRequired": "Please add at least one link or upload a file",
     "currentCoverPresent": "Current cover present",
     "descriptionHelper": "Describe the resource content to help others understand its content and find it",
     "descriptionPlaceholder": "Describe the resource content to help others understand its content and find it",
@@ -1358,6 +1359,26 @@
       "createdBy": "Created by",
       "downloadAll": "Download all",
       "view": "View"
+    },
+    "reviewModal": {
+      "approveAndPublish": "Approve content and publish",
+      "edit": "Edit",
+      "noCover": "No Cover",
+      "reject": "Reject",
+      "reviewForApproval": "Review for approval",
+      "unknown": "Unknown",
+      "unpublish": "Unpublish",
+      "unpublishConfirm": "Unpublish (are you sure?)",
+      "viewContent": "View content"
+    },
+    "adminPanel": {
+      "approved": "Approved",
+      "modified": "Modified",
+      "new": "New",
+      "pageTitle": "Review Educator Content",
+      "previewChanges": "Preview changes",
+      "previewForApproval": "Preview for approval",
+      "toReview": "To review"
     },
     "done": "Done",
     "dropCover": "Drop the cover image here",
@@ -1377,6 +1398,8 @@
     "noContent": "You haven't uploaded any content yet.",
     "noContentToReview": "No content to review",
     "noCover": "No Cover",
+    "pageSubtitle": "Where Bitcoin educators and communities share and reuse resources",
+    "pageTitle": "Educator content",
     "noResultsDescription": "Try adjusting your search filters",
     "noResultsTitle": "No educator content found",
     "onlyImages": "Only image files are allowed",
@@ -1409,7 +1432,12 @@
     "uploadFiles": "Or upload Files",
     "uploadForReview": "Upload for review",
     "uploading": "Uploading...",
-    "urlInvalid": "The link must be a valid URL"
+    "urlInvalid": "The link must be a valid URL",
+    "sortBy": "Sort by",
+    "sortMostRecent": "Most Recent",
+    "sortMostDownloaded": "Most Downloaded",
+    "typePlaceholder": "Type",
+    "languagePlaceholderFilter": "Language"
   },
   "events": {
     "addEvent": "Add event",

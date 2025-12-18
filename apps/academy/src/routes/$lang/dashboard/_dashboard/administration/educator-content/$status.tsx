@@ -186,7 +186,7 @@ function AdminEducatorContent() {
   const types = [
     {
       id: 'all',
-      name: 'All',
+      name: t('words.all'),
       onClick: () => setSelectedType('all'),
     },
     ...Object.values(EducatorContentType)
@@ -205,7 +205,7 @@ function AdminEducatorContent() {
   const languages = [
     {
       id: 'all',
-      name: 'All',
+      name: t('words.all'),
       onClick: () => setSelectedLanguage('all'),
     },
     ...LANGUAGES.map((lang) => ({
@@ -259,8 +259,8 @@ function AdminEducatorContent() {
                       )}
                     >
                       {item.originalId
-                        ? 'Preview changes'
-                        : 'Preview for approval'}
+                        ? t('educatorContent.adminPanel.previewChanges')
+                        : t('educatorContent.adminPanel.previewForApproval')}
                     </span>
                     <TbChevronRight
                       className="text-neutral-300 shrink-0"
@@ -282,7 +282,10 @@ function AdminEducatorContent() {
   };
 
   return (
-    <PageLayout title="Review Educator Content" layoutSize="wide">
+    <PageLayout
+      title={t('educatorContent.adminPanel.pageTitle')}
+      layoutSize="wide"
+    >
       <div className="w-full flex flex-col gap-6">
         <SegmentedControl
           variant="outline"
@@ -299,7 +302,7 @@ function AdminEducatorContent() {
           className="w-full"
         >
           <SegmentedControlItem value="review" className="w-full">
-            To review
+            {t('educatorContent.adminPanel.toReview')}
             {draftContent && draftContent.length > 0 && (
               <span className="ml-2 bg-orange-500 text-white text-xs rounded-full px-2 py-0.5">
                 {draftContent.length}
@@ -307,7 +310,7 @@ function AdminEducatorContent() {
             )}
           </SegmentedControlItem>
           <SegmentedControlItem value="approved" className="w-full">
-            Approved
+            {t('educatorContent.adminPanel.approved')}
           </SegmentedControlItem>
         </SegmentedControl>
 
@@ -324,7 +327,9 @@ function AdminEducatorContent() {
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-green-500" />
-                    <h2 className="title-medium">New</h2>
+                    <h2 className="title-medium">
+                      {t('educatorContent.adminPanel.new')}
+                    </h2>
                   </div>
                   <ContentList items={newContent} isDraft={true} />
                 </div>
@@ -335,7 +340,9 @@ function AdminEducatorContent() {
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-orange-500" />
-                    <h2 className="title-medium">Modified</h2>
+                    <h2 className="title-medium">
+                      {t('educatorContent.adminPanel.modified')}
+                    </h2>
                   </div>
                   <ContentList items={modifiedContent} isDraft={true} />
                 </div>
@@ -390,7 +397,7 @@ function AdminEducatorContent() {
                 }
                 itemsList={types.filter((t) => t.id !== selectedType)}
                 variant="light"
-                placeholder="Type"
+                placeholder={t('educatorContent.typePlaceholder')}
                 forcePlaceholder={selectedType === 'all'}
               />
               <DropdownMenu
@@ -400,7 +407,7 @@ function AdminEducatorContent() {
                 }
                 itemsList={languages.filter((l) => l.id !== selectedLanguage)}
                 variant="light"
-                placeholder="Language"
+                placeholder={t('educatorContent.languagePlaceholderFilter')}
                 forcePlaceholder={selectedLanguage === 'all'}
               />
               <SearchInput
