@@ -100,7 +100,7 @@
     "signUp": "Daftar"
   },
   "bCert": {
-    "bCertDescription": "₿-CERT merupakan ujian yang diakui secara internasional untuk mengukur tingkat pemahaman Anda tentang Bitcoin dan topik-topik yang berkaitan. Bila Anda lulus dengan skor di atas 80%, Anda akan mendapat sertifikat ₿-CERT, yang dapat berfungsi sebagai bukti atas kemampuan dan pengetahuan Anda dalam industri Bitcoin, dapat memberi Anda peluang untuk masuk ke perusahaan dan jabatan tertentu dalam industri tersebut.",
+    "bCertDescription": "₿-CERT adalah tes Bitcoin terakhir yang dirancang untuk mengevaluasi pengetahuan Anda tentang Bitcoin dan topik terkaitnya.\n\nDapatkan sertifikat ₿-CERT Anda dan buktikan keahlian Anda di industri Bitcoin, membuka pintu ke posisi kerja di bidang ini.",
     "bookExam": "Jadwalkan sesi ujian",
     "challengeYourself": "Mari tantang diri Anda dan buktikan tingkat kemampuan anda",
     "download": "Unduh sertifikat",
@@ -1181,7 +1181,8 @@
         "none": "Tidak ada",
         "platformTitle": "Jenis notifikasi apa yang ingin Anda terima di platform ini?",
         "settingsSaved": "Pengaturan Anda berhasil disimpan!",
-        "title": "Pengaturan pemberitahuan"
+        "title": "Pengaturan pemberitahuan",
+        "coursesEventsOption": "Pembaruan tentang kursus dan acara Anda"
       },
       "password": "Kata sandi",
       "preview": "Pratampil",
@@ -1190,7 +1191,9 @@
       "saving": "Menyimpan…",
       "securitySettings": "Pengaturan keamanan",
       "username": "Nama pengguna",
-      "emailOrUsername": "Email atau nama pengguna"
+      "emailOrUsername": "Email atau nama pengguna",
+      "addEmail": "Tambahkan email",
+      "verifyYourEmail": "Verifikasi email Anda"
     },
     "teacher": {
       "courses": {
@@ -1370,6 +1373,13 @@
         "conference": "konferensi",
         "exam": "ujian",
         "lecture": "kuliah"
+      },
+      "singular": {
+        "meetup": "Pertemuan",
+        "workshop": "Workshop",
+        "conference": "Konferensi",
+        "exam": "Ujian",
+        "lecture": "Kuliah"
       }
     },
     "addEvent": "Tambahkan acara",
@@ -1403,7 +1413,8 @@
     "definition": "Definisi",
     "relatedWords": "Kata terkait :",
     "term": "Istilah",
-    "showMoreWords": "Tampilkan lebih banyak kata"
+    "showMoreWords": "Tampilkan lebih banyak kata",
+    "learnMore": "Pelajari lebih lanjut"
   },
   "home": {
     "aboutUsSection": {
@@ -1606,7 +1617,27 @@
     "searchFilterName": "Cari berdasarkan nama",
     "toggleLabelAll": "Semua",
     "toggleLabelSelectedLanguage": "Bahasa yang dipilih",
-    "pageSubtitleMovies": "<0>Film lainnya</0> yang mungkin Anda suka"
+    "pageSubtitleMovies": "<0>Film lainnya</0> yang mungkin Anda suka",
+    "papers": {
+      "accessPaper": "Akses kertas",
+      "addPaper": "Tambah kertas",
+      "citations": "Sitat (.bib)",
+      "downloadCitations": "Unduh sitat",
+      "publisher": "Penerbit",
+      "showMorePapers": "Tampilkan lebih banyak kertas",
+      "title": "Kertas penelitian",
+      "types": {
+        "academic": "Akademik",
+        "journal": "Jurnal",
+        "pre-print": "Pra-cetak",
+        "thesis": "Tesis",
+        "whitepaper": "Kertas putih",
+        "PhD Thesis": "Tesis PhD",
+        "book": "Buku",
+        "conference": "Konferensi"
+      },
+      "papers": "Kertas"
+    }
   },
   "search": {
     "all": "Semua",
@@ -1912,7 +1943,11 @@
     "session": "Sesi",
     "confirmation": "Konfirmasi",
     "optional": "Opsional",
-    "syllabus": "Silabus"
+    "syllabus": "Silabus",
+    "researchPaper": "Kertas penelitian",
+    "open": "Buka",
+    "enroll": "Daftar",
+    "downloads": "Unduh"
   },
   "youtubeChannels": {
     "view": "Lihat Saluran Youtube",
@@ -1920,7 +1955,8 @@
   },
   "account": {
     "account": "Akun",
-    "myTeacherProfile": "Profil guru"
+    "myTeacherProfile": "Profil guru",
+    "profile": "Profil"
   },
   "months": {
     "april": "April",
@@ -1973,6 +2009,104 @@
   },
   "footer": {
     "FOSSOpenContent": "FOSS & Konten Terbuka",
-    "proudlyPartOf": "Bangga menjadi bagian dari <0>Plan ₿ Network</0>"
+    "proudlyPartOf": "Bangga menjadi bagian dari <0>Plan ₿ Network</0>",
+    "becomeATeacher": "Menjadi Seorang <0>Guru</0>"
+  },
+  "educatorContent": {
+    "urlInvalid": "Tautan harus berupa URL yang valid",
+    "types": {
+      "game": "Game",
+      "sticker": "Stiker",
+      "art": "Seni",
+      "booklet": "Buku kecil",
+      "flyer": "Brosur",
+      "workshop": "Workshop",
+      "other": "Lainnya",
+      "presentation": "Presentasi"
+    },
+    "contentNotFound": "Konten tidak ditemukan",
+    "success": "Konten pendidik berhasil ditambahkan!",
+    "successTitle": "Konten pendidik berhasil diunggah",
+    "titleTooLong": "Judul tidak boleh lebih dari 60 karakter",
+    "editAndRequireApproval": "Edit dan memerlukan persetujuan",
+    "editMaterial": "Edit konten pendidik",
+    "fileTooLarge": "File terlalu besar (maks 50MB)",
+    "imageCover": "Gambar Sampul",
+    "imageError": "Terjadi kesalahan saat mengunggah gambar",
+    "languageRequired": "Pilih bahasa sumber",
+    "loginMessage": "Silakan masuk untuk melihat konten Anda.",
+    "myContent": "Konten saya",
+    "shareLinks": "Bagikan Tautan",
+    "status": {
+      "draft": "Tertunda",
+      "published": "Langsung",
+      "rejected": "Tidak diterima",
+      "unpublished": "Tidak dipublikasikan"
+    },
+    "successSubtitle": "Ini akan melalui proses review sebelum ditampilkan.",
+    "titleHelper": "Ini harus mencerminkan konten dan tujuan dari sumber daya Anda. Jaga agar ringkas tetapi informatif.",
+    "titleRequired": "Judul tidak boleh kosong",
+    "typeRequired": "Tentukan jenis sumber daya apa ini",
+    "uploadForReview": "Unggah untuk ditinjau",
+    "addMaterial": "Tambahkan konten pendidik",
+    "addMoreLinks": "Tambahkan lebih banyak tautan",
+    "browseFiles": "atau telusuri file",
+    "browseImages": "atau telusuri gambar",
+    "coverRequired": "Gambar sampul wajib ada",
+    "currentCoverPresent": "Sampul saat ini ada",
+    "descriptionHelper": "Jelaskan konten sumber daya untuk membantu orang lain memahami kontennya dan menemukannya",
+    "descriptionPlaceholder": "Deskripsi singkat tentang materi pendidikan",
+    "descriptionTooLong": "Deskripsi tidak boleh melebihi 350 karakter",
+    "dropCover": "Jatuhkan gambar sampul di sini",
+    "dropFiles": "Jatuhkan file di sini",
+    "noContent": "Anda belum mengunggah konten apa pun.",
+    "noContentToReview": "Tidak ada konten untuk ditinjau",
+    "noCover": "Tidak ada sampul",
+    "noResultsDescription": "Coba sesuaikan filter pencarian Anda",
+    "noResultsTitle": "Tidak ada konten pendidik ditemukan",
+    "onlyImages": "Hanya file gambar yang diizinkan",
+    "resourceType": "Jenis Sumber Daya",
+    "descriptionRequired": "Deskripsi tidak boleh kosong",
+    "detail": {
+      "createdBy": "Dibuat oleh",
+      "downloadAll": "Unduh semua",
+      "view": "Lihat"
+    },
+    "uploadFiles": "Unggah File",
+    "uploading": "Mengunggah...",
+    "languagePlaceholder": "Pilih",
+    "done": "Selesai"
+  },
+  "forms": {
+    "browse": "Telusuri",
+    "replace": "Gantikan"
+  },
+  "mentor": {
+    "reset": "Percakapan baru",
+    "sources": "Lanjutkan",
+    "thinking": "Berfikir",
+    "title": "PlanBot",
+    "welcome": "Tanyakan saya apa saja tentang Bitcoin!",
+    "collapse": "Ciutkan",
+    "error": "Terjadi kesalahan. Silakan coba lagi.",
+    "expand": "Perluas",
+    "loginRequired": "Buat akun untuk mengobrol dengan PlanBot!",
+    "openChat": "Tanya PlanBot",
+    "placeholder": "Ajukan pertanyaan...",
+    "close": "Tutup"
+  },
+  "becomeTeacher": {
+    "description": "Jika Anda seorang Bitcoiner yang bersemangat yang suka mengajar dan ingin membuat dampak nyata di komunitas lokal Anda, Anda dapat menyelenggarakan kursus Anda sendiri di platform belajar kami.",
+    "enhanceExperience": "<0>Perkaya pengalaman belajar siswa Anda</0> dengan alat-alat platform",
+    "globalReach": "Jangkauan global",
+    "hostOwnCourse": "<0>Selenggarakan kursus Anda sendiri</0>, secara online atau tatap muka",
+    "inspireLearners": "Inspirasikan komunitas pelajar",
+    "joinMission": "<0>Bergabung dengan misi</0> sebagai pendidik Bitcoin sejati",
+    "superiorAmount": ">{{amount}}",
+    "teachWhatYouLove": "<0>Ajarkan apa yang Anda cintai</0>",
+    "title": "Ajarkan Bitcoin dan inspirasi orang lain",
+    "activeBitcoinLearners": "Pelajar Bitcoin yang aktif",
+    "bitcoinOnly": "Hanya-Bitcoin",
+    "bookCall": "Pesan panggilan selama 30 menit untuk menjadi guru"
   }
 }

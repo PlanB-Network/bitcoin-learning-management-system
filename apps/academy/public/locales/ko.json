@@ -1181,7 +1181,8 @@
         "none": "없음",
         "platformTitle": "이 플랫폼에서 어떤 유형의 알림을 받고 싶으신가요?",
         "settingsSaved": "설정이 성공적으로 저장되었습니다!",
-        "title": "알림 설정"
+        "title": "알림 설정",
+        "coursesEventsOption": "당신의 강좌와 이벤트에 대한 업데이트"
       },
       "password": "비밀번호",
       "preview": "미리보기",
@@ -1190,7 +1191,9 @@
       "saving": "저장 중…",
       "securitySettings": "보안 설정",
       "username": "사용자 이름",
-      "emailOrUsername": "이메일 또는 사용자 이름"
+      "emailOrUsername": "이메일 또는 사용자 이름",
+      "addEmail": "이메일 추가",
+      "verifyYourEmail": "이메일을 인증하십시오"
     },
     "teacher": {
       "courses": {
@@ -1393,6 +1396,13 @@
         "lecture": "강의들",
         "meetup": "모임들",
         "workshop": "워크숍들"
+      },
+      "singular": {
+        "exam": "시험",
+        "lecture": "강의",
+        "conference": "컨퍼런스",
+        "meetup": "모임",
+        "workshop": "작업실"
       }
     }
   },
@@ -1403,7 +1413,8 @@
     "definition": "정의",
     "relatedWords": "관련 단어:",
     "term": "용어",
-    "showMoreWords": "더 많은 단어를 보여주세요"
+    "showMoreWords": "더 많은 단어를 보여주세요",
+    "learnMore": "더 알아보기"
   },
   "home": {
     "aboutUsSection": {
@@ -1606,7 +1617,27 @@
     "searchFilterName": "이름으로 검색",
     "toggleLabelAll": "모두",
     "toggleLabelSelectedLanguage": "선택한 언어",
-    "pageSubtitleMovies": "<0>다른 영화</0>가 좋을 수도 있습니다"
+    "pageSubtitleMovies": "<0>다른 영화</0>가 좋을 수도 있습니다",
+    "papers": {
+      "types": {
+        "book": "책",
+        "conference": "컨퍼런스",
+        "PhD Thesis": "박사논문",
+        "academic": "학회",
+        "journal": "저널",
+        "pre-print": "사전 인쇄",
+        "thesis": "논문",
+        "whitepaper": "백서"
+      },
+      "accessPaper": "문서 접근",
+      "addPaper": "문서 추가",
+      "citations": "인용 (.bib)",
+      "downloadCitations": "인용 다운로드",
+      "papers": "논문들",
+      "publisher": "출판사",
+      "showMorePapers": "더 많은 논문 보기",
+      "title": "연구 논문"
+    }
   },
   "search": {
     "all": "모두",
@@ -1912,7 +1943,11 @@
     "optional": "선택 사항",
     "planBNetwork": "Plan ₿ 네트워크",
     "session": "세션",
-    "syllabus": "강의 계획서"
+    "syllabus": "강의 계획서",
+    "downloads": "다운로드",
+    "researchPaper": "연구 논문",
+    "open": "열기",
+    "enroll": "등록"
   },
   "youtubeChannels": {
     "view": "유튜브 채널 보기",
@@ -1920,7 +1955,8 @@
   },
   "account": {
     "account": "계정",
-    "myTeacherProfile": "선생님의 프로필"
+    "myTeacherProfile": "선생님의 프로필",
+    "profile": "프로필"
   },
   "videoSelector": {
     "language": {
@@ -1973,6 +2009,104 @@
   },
   "footer": {
     "FOSSOpenContent": "FOSS & 오픈 콘텐츠",
-    "proudlyPartOf": "<0>Plan ₿ Network</0>의 일부로 자랑스럽습니다"
+    "proudlyPartOf": "<0>Plan ₿ Network</0>의 일부로 자랑스럽습니다",
+    "becomeATeacher": "<0>선생님</0>이 되십시오"
+  },
+  "educatorContent": {
+    "done": "완료",
+    "types": {
+      "other": "기타",
+      "presentation": "프레젠테이션",
+      "sticker": "스티커",
+      "workshop": "작업실",
+      "art": "예술",
+      "booklet": "소책자",
+      "flyer": "전단지",
+      "game": "게임"
+    },
+    "languagePlaceholder": "선택",
+    "detail": {
+      "view": "보기",
+      "createdBy": "작성자",
+      "downloadAll": "모두 다운로드"
+    },
+    "urlInvalid": "링크는 유효한 URL이어야 합니다",
+    "uploadFiles": "파일 업로드",
+    "uploadForReview": "리뷰를 위한 업로드",
+    "uploading": "업로드 중...",
+    "contentNotFound": "콘텐츠를 찾을 수 없습니다",
+    "titleTooLong": "제목은 60자를 초과할 수 없습니다",
+    "dropCover": "표지 이미지를 이곳에 놓으십시오",
+    "dropFiles": "파일을 이곳에 놓으십시오",
+    "editAndRequireApproval": "편집하고 승인을 요구",
+    "editMaterial": "교육자 콘텐츠 편집",
+    "fileTooLarge": "파일이 너무 큽니다 (최대 50MB)",
+    "imageCover": "표지 이미지",
+    "imageError": "이미지 업로드 중 오류가 발생했습니다",
+    "titleRequired": "제목은 비워 둘 수 없습니다",
+    "typeRequired": "리소스의 유형을 지정하세요",
+    "addMaterial": "교육자 콘텐츠 추가",
+    "addMoreLinks": "링크 더 추가하기",
+    "browseFiles": "또는 파일 탐색",
+    "browseImages": "또는 이미지 탐색",
+    "coverRequired": "표지 이미지는 필수입니다",
+    "currentCoverPresent": "현재 표지 존재",
+    "descriptionHelper": "다른 사람들이 내용을 이해하고 찾을 수 있도록 리소스 내용을 설명하십시오",
+    "descriptionTooLong": "설명은 350자를 초과할 수 없습니다",
+    "languageRequired": "리소스 언어 선택",
+    "loginMessage": "로그인하여 콘텐츠를 확인하세요.",
+    "myContent": "내 콘텐츠",
+    "noContent": "아직 콘텐츠를 업로드하지 않았습니다.",
+    "noContentToReview": "검토할 콘텐츠가 없습니다",
+    "noCover": "커버 없음",
+    "noResultsDescription": "검색 필터를 조절해보세요",
+    "noResultsTitle": "교육자 콘텐츠를 찾을 수 없습니다",
+    "onlyImages": "이미지 파일만 허용됩니다",
+    "resourceType": "자원 유형",
+    "shareLinks": "링크 공유",
+    "status": {
+      "draft": "대기 중",
+      "published": "라이브",
+      "rejected": "받아들여지지 않음",
+      "unpublished": "발행되지 않음"
+    },
+    "success": "교육자 콘텐츠가 성공적으로 추가되었습니다!",
+    "successSubtitle": "표시되기 전에 검토 과정을 거칠 것입니다.",
+    "successTitle": "교육자 콘텐츠가 성공적으로 업로드되었습니다",
+    "titleHelper": "자원의 콘텐츠와 목적을 반영해야 합니다. 짧지만 정보적으로 유지하세요.",
+    "descriptionPlaceholder": "교육자료의 간단한 설명",
+    "descriptionRequired": "설명은 비워 둘 수 없습니다"
+  },
+  "mentor": {
+    "close": "닫기",
+    "collapse": "접기",
+    "error": "오류가 발생했습니다. 다시 시도해 주세요.",
+    "expand": "펼치기",
+    "loginRequired": "PlanBot과 채팅하기 위해 계정을 생성하세요!",
+    "openChat": "PlanBot에게 묻기",
+    "placeholder": "질문하기...",
+    "reset": "새 대화",
+    "sources": "더 나아가기",
+    "thinking": "생각 중",
+    "welcome": "비트코인에 대해 무엇이든 물어보세요!",
+    "title": "플랜봇"
+  },
+  "forms": {
+    "browse": "찾아보기",
+    "replace": "교체"
+  },
+  "becomeTeacher": {
+    "teachWhatYouLove": "<0>자신이 사랑하는 것을 가르치세요</0>",
+    "title": "비트코인을 가르치고 다른 사람들에게 영감을 주세요",
+    "activeBitcoinLearners": "비트코인을 적극적으로 배우는 학습자들",
+    "bitcoinOnly": "비트코인 전용",
+    "bookCall": "교사가 되기 위해 30분 통화 예약하기",
+    "description": "비트코인에 열정을 가진 사람이고 가르치는 것을 사랑하며 귀하의 지역 커뮤니티에 실질적인 영향을 미치고 싶다면, 우리의 학습 플랫폼에서 직접 과정을 개설할 수 있습니다.",
+    "enhanceExperience": "플랫폼 도구를 활용하여 <0>학생들의 학습 경험을 향상시키십시오</0>",
+    "globalReach": "전 세계적인 확산",
+    "hostOwnCourse": "<0>자신만의 과정을 개설하십시오</0>, 온라인이든 오프라인이든",
+    "inspireLearners": "학습자 커뮤니티를 고무시키세요",
+    "joinMission": "진정한 비트코인 교육자로써 <0>미션에 참여하십시오</0>",
+    "superiorAmount": ">{{amount}}"
   }
 }

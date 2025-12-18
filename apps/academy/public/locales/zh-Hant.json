@@ -100,7 +100,7 @@
     "signUp": "註冊"
   },
   "bCert": {
-    "bCertDescription": "比特幣 ₿ 證書是一項國際公認的考試，用來評估您在比特幣及其相關主題上的知識水平。\n\n超過 80% 正確率能取得證書並證明您在比特幣行業中的技能和知識，並為您進入該行業的公司和職位提供機會。",
+    "bCertDescription": "₿-CERT是最終的比特幣測試，旨在評估您對比特幣及其相關話題的知識。 \n\n獲得您的₿-CERT證書，證明您在比特幣行業的專業知識，為您在該領域的工作崗位敞開大門。",
     "bookExam": "預約考試時段",
     "challengeYourself": "挑戰自己並展現你的實力",
     "download": "下載證書",
@@ -1181,7 +1181,8 @@
         "none": "無",
         "platformTitle": "您希望在此平台上收到哪些類型的通知？",
         "settingsSaved": "您的設定已成功保存！",
-        "title": "通知設定"
+        "title": "通知設定",
+        "coursesEventsOption": "關於您的課程和活動的更新"
       },
       "password": "密碼",
       "preview": "預覽",
@@ -1190,7 +1191,9 @@
       "saving": "儲存中…",
       "securitySettings": "安全設定",
       "username": "使用者名稱",
-      "emailOrUsername": "電子郵件或用戶名"
+      "emailOrUsername": "電子郵件或用戶名",
+      "addEmail": "新增電子郵件",
+      "verifyYourEmail": "驗證您的電子郵件"
     },
     "teacher": {
       "courses": {
@@ -1370,6 +1373,13 @@
         "lecture": "講座",
         "meetup": "聚會",
         "workshop": "工作坊"
+      },
+      "singular": {
+        "meetup": "聚會",
+        "workshop": "工作坊",
+        "conference": "研討會",
+        "exam": "考試",
+        "lecture": "講座"
       }
     },
     "calendar": {
@@ -1403,7 +1413,8 @@
     "definition": "定義",
     "relatedWords": "相關詞彙：",
     "term": "術語",
-    "showMoreWords": "顯示更多"
+    "showMoreWords": "顯示更多",
+    "learnMore": "了解更多"
   },
   "home": {
     "aboutUsSection": {
@@ -1606,7 +1617,27 @@
     "searchFilterName": "按名稱搜索",
     "toggleLabelAll": "所有",
     "toggleLabelSelectedLanguage": "選擇的語言",
-    "pageSubtitleMovies": "你可能會喜歡的<0>其他電影</0>"
+    "pageSubtitleMovies": "你可能會喜歡的<0>其他電影</0>",
+    "papers": {
+      "downloadCitations": "下載引用",
+      "papers": "論文",
+      "accessPaper": "訪問文章",
+      "addPaper": "添加文章",
+      "citations": "引用 (.bib)",
+      "publisher": "出版商",
+      "title": "研究論文",
+      "types": {
+        "PhD Thesis": "博士論文",
+        "academic": "學術",
+        "journal": "期刊",
+        "pre-print": "預印本",
+        "thesis": "論文",
+        "whitepaper": "白皮書",
+        "book": "書籍",
+        "conference": "研討會"
+      },
+      "showMorePapers": "顯示更多論文"
+    }
   },
   "search": {
     "all": "所有",
@@ -1912,7 +1943,11 @@
     "optional": "可選的",
     "planBNetwork": "Plan ₿ Network",
     "session": "會議",
-    "syllabus": "課程大綱"
+    "syllabus": "課程大綱",
+    "downloads": "下載",
+    "enroll": "註冊",
+    "open": "打開",
+    "researchPaper": "研究報告"
   },
   "youtubeChannels": {
     "view": "查看Youtube頻道",
@@ -1920,7 +1955,8 @@
   },
   "account": {
     "account": "帳戶",
-    "myTeacherProfile": "我的教師簡介"
+    "myTeacherProfile": "我的教師簡介",
+    "profile": "個人資料"
   },
   "navbar": {
     "tabs": {
@@ -1973,6 +2009,104 @@
   },
   "footer": {
     "FOSSOpenContent": "FOSS和開放內容",
-    "proudlyPartOf": "我們自豪地成為<0>Plan ₿ Network</0>的一部分"
+    "proudlyPartOf": "我們自豪地成為<0>Plan ₿ Network</0>的一部分",
+    "becomeATeacher": "成為一名<0>教師</0>"
+  },
+  "becomeTeacher": {
+    "teachWhatYouLove": "<0>教授您熱愛的</0>",
+    "title": "教授比特幣並激勵他人",
+    "activeBitcoinLearners": "積極學習比特幣的學員",
+    "bitcoinOnly": "僅比特幣",
+    "bookCall": "預約一次30分鐘的通話，成為一名教師",
+    "description": "如果您是一位對教學充滿熱情的比特幣愛好者，並且希望在您的當地社區產生實際影響，那麼您可以在我們的學習平台上開設您自己的課程。",
+    "enhanceExperience": "使用平台工具<0>提升您的學生的學習體驗</0>",
+    "globalReach": "全球範圍",
+    "hostOwnCourse": "<0>主持您自己的課程</0>，線上或親自",
+    "inspireLearners": "激發一個學習者社區",
+    "joinMission": "作為一名真正的比特幣教育者<0>加入使命</0>",
+    "superiorAmount": ">{{amount}}"
+  },
+  "educatorContent": {
+    "addMaterial": "增加教育者內容",
+    "addMoreLinks": "加入更多的連結",
+    "browseFiles": "或瀏覽檔案",
+    "browseImages": "或瀏覽圖片",
+    "coverRequired": "封面圖像是必須的",
+    "currentCoverPresent": "當前封面顯示",
+    "descriptionTooLong": "描述不能超過350個字符",
+    "detail": {
+      "downloadAll": "全部下載",
+      "createdBy": "創建者",
+      "view": "檢視"
+    },
+    "urlInvalid": "鏈接必須是有效的URL",
+    "types": {
+      "booklet": "小冊子",
+      "flyer": "傳單",
+      "game": "遊戲",
+      "presentation": "演示文稿",
+      "sticker": "貼紙",
+      "workshop": "工作坊",
+      "art": "藝術",
+      "other": "其他"
+    },
+    "uploadFiles": "上傳檔案",
+    "uploadForReview": "上傳以供審核",
+    "uploading": "正在上傳...",
+    "contentNotFound": "找不到內容",
+    "descriptionHelper": "描述資源內容以幫助他人理解其內容並找到它",
+    "descriptionPlaceholder": "教育材料的簡短描述",
+    "descriptionRequired": "描述不能為空",
+    "noContent": "您尚未上傳任何內容。",
+    "noContentToReview": "无内容待审查",
+    "titleTooLong": "標題不能超過60個字符",
+    "dropCover": "在此處放置封面圖片",
+    "dropFiles": "在此處放置檔案",
+    "editAndRequireApproval": "編輯並需要批准",
+    "editMaterial": "編輯教育者內容",
+    "fileTooLarge": "文件過大 (最大50MB)",
+    "imageCover": "封面圖像",
+    "imageError": "上傳圖片時發生錯誤",
+    "languageRequired": "選擇資源語言",
+    "loginMessage": "請登入以查看您的內容。",
+    "myContent": "我的內容",
+    "noCover": "無封面",
+    "noResultsDescription": "嘗試調整您的搜索篩選器",
+    "noResultsTitle": "找不到教育工作者的內容",
+    "onlyImages": "只允許影像檔案",
+    "resourceType": "資源類型",
+    "shareLinks": "分享鏈接",
+    "status": {
+      "draft": "待定",
+      "published": "直播中",
+      "rejected": "未被接受",
+      "unpublished": "未發布"
+    },
+    "success": "教育者的內容已成功新增！",
+    "successSubtitle": "在顯示之前，需要進行審核這個過程。",
+    "successTitle": "教育者的內容已成功上傳",
+    "titleHelper": "這應該反映您的資源的內容和目的。保持簡潔但提供足夠的資訊。",
+    "titleRequired": "標題不能為空",
+    "typeRequired": "指明它是何種資源",
+    "done": "完成",
+    "languagePlaceholder": "選擇"
+  },
+  "mentor": {
+    "collapse": "摺疊",
+    "error": "發生錯誤。請再試一次。",
+    "expand": "展開",
+    "loginRequired": "創建賬戶與PlanBot聊天！",
+    "openChat": "向PlanBot提問",
+    "placeholder": "提出問題…",
+    "reset": "新的對話",
+    "thinking": "思考中",
+    "title": "計劃機器人",
+    "welcome": "關於比特幣，你可以問我任何問題！",
+    "sources": "更進一步",
+    "close": "關閉"
+  },
+  "forms": {
+    "browse": "瀏覽",
+    "replace": "替換"
   }
 }

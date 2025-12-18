@@ -1181,7 +1181,8 @@
         "none": "Không",
         "platformTitle": "Bạn muốn nhận loại thông báo nào trên nền tảng này?",
         "settingsSaved": "Cài đặt của bạn đã được lưu thành công!",
-        "title": "Cài đặt thông báo"
+        "title": "Cài đặt thông báo",
+        "coursesEventsOption": "Cập nhật về các khóa học và sự kiện của bạn"
       },
       "password": "Mật khẩu",
       "preview": "Xem trước",
@@ -1190,7 +1191,9 @@
       "saving": "Đang lưu…",
       "securitySettings": "Cài đặt bảo mật",
       "username": "Tên người dùng",
-      "emailOrUsername": "Email hoặc tên đăng nhập"
+      "emailOrUsername": "Email hoặc tên đăng nhập",
+      "addEmail": "Thêm email",
+      "verifyYourEmail": "Xác minh email của bạn"
     },
     "teacher": {
       "courses": {
@@ -1393,6 +1396,13 @@
         "lecture": "bài giảng",
         "meetup": "buổi gặp gỡ",
         "workshop": "các hội thảo"
+      },
+      "singular": {
+        "meetup": "Cuộc họp",
+        "workshop": "Phân xưởng",
+        "conference": "Hội nghị",
+        "exam": "Bài thi",
+        "lecture": "Bài giảng"
       }
     }
   },
@@ -1403,7 +1413,8 @@
     "definition": "Định nghĩa",
     "relatedWords": "Các từ liên quan:",
     "term": "Thuật ngữ",
-    "showMoreWords": "Hiển thị thêm từ vựng"
+    "showMoreWords": "Hiển thị thêm từ vựng",
+    "learnMore": "Tìm hiểu thêm"
   },
   "home": {
     "aboutUsSection": {
@@ -1603,7 +1614,27 @@
     "searchFilterName": "Tìm kiếm theo tên",
     "toggleLabelAll": "Tất cả",
     "toggleLabelSelectedLanguage": "Ngôn ngữ được chọn",
-    "pageSubtitleMovies": "<0>Phim khác</0> bạn có thể thích"
+    "pageSubtitleMovies": "<0>Phim khác</0> bạn có thể thích",
+    "papers": {
+      "accessPaper": "Truy cập bài viết",
+      "addPaper": "Thêm bài viết",
+      "citations": "Trích dẫn (.bib)",
+      "downloadCitations": "Tải về trích dẫn",
+      "papers": "Bài viết",
+      "publisher": "Nhà xuất bản",
+      "showMorePapers": "Hiển thị thêm bài viết",
+      "title": "Bài viết nghiên cứu",
+      "types": {
+        "pre-print": "Bản in trước",
+        "thesis": "Luận văn",
+        "whitepaper": "Sách trắng",
+        "PhD Thesis": "Luận văn Tiến sĩ",
+        "academic": "Học thuật",
+        "journal": "Tạp chí",
+        "book": "Sách",
+        "conference": "Hội nghị"
+      }
+    }
   },
   "search": {
     "all": "Tất cả",
@@ -1909,7 +1940,11 @@
     "topic": "Chủ đề",
     "viewAll": "Xem tất cả",
     "week": "Tuần",
-    "weight": "Khối lượng"
+    "weight": "Khối lượng",
+    "open": "Mở",
+    "researchPaper": "Bài viết nghiên cứu",
+    "enroll": "Đăng ký",
+    "downloads": "Tải xuống"
   },
   "youtubeChannels": {
     "view": "Xem kênh Youtube",
@@ -1917,11 +1952,13 @@
   },
   "account": {
     "account": "Tài khoản",
-    "myTeacherProfile": "Hồ sơ giáo viên của tôi"
+    "myTeacherProfile": "Hồ sơ giáo viên của tôi",
+    "profile": "Hồ sơ"
   },
   "footer": {
     "FOSSOpenContent": "FOSS & Nội dung mở",
-    "proudlyPartOf": "Tự hào là một phần của <0>Mạng lưới Plan ₿</0>"
+    "proudlyPartOf": "Tự hào là một phần của <0>Mạng lưới Plan ₿</0>",
+    "becomeATeacher": "Trở thành <0>Giáo viên</0>"
   },
   "months": {
     "april": "Tháng 4",
@@ -1974,5 +2011,102 @@
       "rumble": "Sôi động",
       "youtube": "Youtube"
     }
+  },
+  "becomeTeacher": {
+    "joinMission": "<0>Tham gia sứ mệnh</0> như một giáo viên Bitcoin thật sự",
+    "superiorAmount": ">{{amount}}",
+    "teachWhatYouLove": "<0>Dạy những gì bạn yêu thích</0>",
+    "title": "Dạy Bitcoin và làm cho người khác cảm thấy hứng thú",
+    "activeBitcoinLearners": "Những người học Bitcoin tích cực",
+    "bitcoinOnly": "Chỉ Bitcoin",
+    "bookCall": "Đặt lịch hẹn cho cuộc gọi 30 phút để trở thành giáo viên",
+    "description": "Nếu bạn là một người đam mê Bitcoin, yêu thích việc giảng dạy và muốn tạo ra tác động thực sự trong cộng đồng địa phương của mình, bạn có thể tổ chức khóa học riêng của mình trên nền tảng học tập của chúng tôi.",
+    "enhanceExperience": "<0>Nâng cao trải nghiệm học tập của học sinh</0> với các công cụ trên nền tảng",
+    "globalReach": "Phạm vi toàn cầu",
+    "hostOwnCourse": "<0>Tổ chức khóa học của bạn</0>, trực tuyến hoặc trực tiếp",
+    "inspireLearners": "Đem lại cảm hứng cho cộng đồng người học"
+  },
+  "educatorContent": {
+    "resourceType": "Loại nguồn",
+    "urlInvalid": "Liên kết phải là URL hợp lệ",
+    "types": {
+      "booklet": "Sách xỏ lỗ",
+      "flyer": "Tờ rơi",
+      "game": "Trò chơi",
+      "sticker": "Decal",
+      "workshop": "Phân xưởng",
+      "art": "Nghệ thuật",
+      "other": "Khác",
+      "presentation": "Bài thuyết trình"
+    },
+    "uploadFiles": "Tải lên tập tin",
+    "uploadForReview": "Tải lên để xem xét",
+    "uploading": "Đang tải lên...",
+    "browseFiles": "hoặc duyệt qua các tệp",
+    "browseImages": "hoặc duyệt qua các hình ảnh",
+    "detail": {
+      "createdBy": "Được tạo bởi",
+      "downloadAll": "Tải xuống tất cả",
+      "view": "Xem"
+    },
+    "languageRequired": "Chọn ngôn ngữ nguồn",
+    "myContent": "Nội dung của tôi",
+    "successTitle": "Nội dung giáo viên đã được tải lên thành công",
+    "titleTooLong": "Tiêu đề không được vượt quá 60 ký tự",
+    "dropCover": "Kéo hình ảnh bìa đến đây",
+    "dropFiles": "Kéo tệp đến đây",
+    "editAndRequireApproval": "Chỉnh sửa và yêu cầu phê duyệt",
+    "editMaterial": "Chỉnh sửa nội dung giáo dục",
+    "fileTooLarge": "Tệp quá lớn (tối đa 50MB)",
+    "imageCover": "Ảnh bìa",
+    "imageError": "Đã xảy ra lỗi trong quá trình tải lên hình ảnh",
+    "loginMessage": "Vui lòng đăng nhập để xem nội dung của bạn.",
+    "noContent": "Bạn chưa tải lên bất kỳ nội dung nào.",
+    "noContentToReview": "Không có nội dung để xem xét",
+    "noCover": "Không có bìa",
+    "noResultsDescription": "Thử điều chỉnh bộ lọc tìm kiếm của bạn",
+    "noResultsTitle": "Không tìm thấy nội dung giáo viên",
+    "onlyImages": "Chỉ cho phép file hình ảnh",
+    "shareLinks": "Chia sẻ liên kết",
+    "status": {
+      "draft": "Đang chờ",
+      "published": "Trực tuyến",
+      "rejected": "Không được chấp nhận",
+      "unpublished": "Chưa được xuất bản"
+    },
+    "success": "Nội dung giáo viên được thêm thành công!",
+    "successSubtitle": "Nó sẽ trải qua quá trình xem xét trước khi được hiển thị.",
+    "titleHelper": "Nó nên phản ánh nội dung và mục đích của nguồn của bạn. Hãy giữ ngắn gọn nhưng thông tin.",
+    "titleRequired": "Tiêu đề không được để trống",
+    "typeRequired": "Chỉ định đó là loại nguồn nào",
+    "addMaterial": "Thêm nội dung giáo dục",
+    "addMoreLinks": "Thêm nhiều liên kết hơn",
+    "contentNotFound": "Không tìm thấy nội dung",
+    "coverRequired": "Ảnh bìa là bắt buộc",
+    "currentCoverPresent": "Bìa hiện tại",
+    "descriptionHelper": "Mô tả nội dung nguồn tài nguyên để giúp người khác hiểu nội dung và tìm kiếm nó",
+    "descriptionPlaceholder": "Mô tả ngắn gọn về tài liệu giáo dục",
+    "descriptionRequired": "Mô tả không được để trống",
+    "descriptionTooLong": "Mô tả không được vượt quá 350 ký tự",
+    "languagePlaceholder": "Chọn",
+    "done": "Xong"
+  },
+  "mentor": {
+    "collapse": "Thu gọn",
+    "error": "Đã xảy ra lỗi. Vui lòng thử lại.",
+    "expand": "Mở rộng",
+    "thinking": "Đang suy nghĩ",
+    "title": "PlanBot",
+    "welcome": "Hãy hỏi tôi bất cứ điều gì về Bitcoin!",
+    "loginRequired": "Tạo một tài khoản để trò chuyện với PlanBot!",
+    "openChat": "Hỏi PlanBot",
+    "placeholder": "Đặt một câu hỏi...",
+    "reset": "Cuộc trò chuyện mới",
+    "sources": "Tiếp tục",
+    "close": "Đóng"
+  },
+  "forms": {
+    "browse": "Duyệt",
+    "replace": "Thay thế"
   }
 }

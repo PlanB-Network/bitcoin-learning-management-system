@@ -100,7 +100,7 @@
     "signUp": "Inscrever-se"
   },
   "bCert": {
-    "bCertDescription": "O ₿-CERT é o exame final de Bitcoin concebido para avaliar o seu conhecimento sobre Bitcoin e temas relacionados. Se obter mais de 80%, recebe o certificado ₿-CERT que valida a sua especialização na indústria Bitcoin, abrindo portas para várias posições de trabalho na área.",
+    "bCertDescription": "O ₿-CERT é o teste definitivo do Bitcoin projetado para avaliar seu conhecimento sobre Bitcoin e seus tópicos relacionados.\n\nObtenha seu certificado ₿-CERT e prove sua expertise na indústria do Bitcoin, abrindo portas para posições de trabalho no campo.",
     "bookExam": "Marque o seu exame",
     "challengeYourself": "Desafie-se e avalie o seu nível!",
     "download": "Descarregar o certificado",
@@ -1181,7 +1181,8 @@
         "none": "Nenhuma",
         "platformTitle": "Que tipo de notificações gostaria de receber nesta plataforma?",
         "settingsSaved": "As suas configurações foram salvas com sucesso!",
-        "title": "Configuração das notificações"
+        "title": "Configuração das notificações",
+        "coursesEventsOption": "Atualizações sobre seus cursos e seus eventos"
       },
       "password": "Senha",
       "preview": "Prévia",
@@ -1190,7 +1191,9 @@
       "saving": "Salvando…",
       "securitySettings": "Configurações de segurança",
       "username": "Nome de Utilizador",
-      "emailOrUsername": "Email ou nome de usuário"
+      "emailOrUsername": "Email ou nome de usuário",
+      "addEmail": "Adicionar email",
+      "verifyYourEmail": "Verifique seu email"
     },
     "teacher": {
       "courses": {
@@ -1393,6 +1396,13 @@
         "lecture": "palestras",
         "meetup": "encontros",
         "workshop": "workshops"
+      },
+      "singular": {
+        "meetup": "Encontro",
+        "workshop": "Oficina",
+        "conference": "Conferência",
+        "exam": "Exame",
+        "lecture": "Palestra"
       }
     }
   },
@@ -1403,7 +1413,8 @@
     "definition": "Definição",
     "relatedWords": "Palavras relacionadas:",
     "term": "Termo",
-    "showMoreWords": "Mostrar mais palavras"
+    "showMoreWords": "Mostrar mais palavras",
+    "learnMore": "Saiba mais"
   },
   "home": {
     "aboutUsSection": {
@@ -1603,7 +1614,27 @@
     "searchFilterName": "Procurar por nome",
     "toggleLabelAll": "Todos",
     "toggleLabelSelectedLanguage": "Idioma selecionado",
-    "pageSubtitleMovies": "<0>Outros filmes</0> que possa gostar"
+    "pageSubtitleMovies": "<0>Outros filmes</0> que possa gostar",
+    "papers": {
+      "citations": "Citações (.bib)",
+      "types": {
+        "PhD Thesis": "Tese de Doutorado",
+        "academic": "Acadêmico",
+        "journal": "Revista",
+        "pre-print": "Pré-impressão",
+        "thesis": "Tese",
+        "whitepaper": "Livro branco",
+        "book": "Livro",
+        "conference": "Conferência"
+      },
+      "addPaper": "Adicionar papel",
+      "downloadCitations": "Baixar citações",
+      "papers": "Papéis",
+      "publisher": "Editora",
+      "showMorePapers": "Mostrar mais papéis",
+      "title": "Artigos de pesquisa",
+      "accessPaper": "Acessar papel"
+    }
   },
   "search": {
     "all": "Todos",
@@ -1909,7 +1940,11 @@
     "weight": "Peso",
     "confirmation": "Confirmação",
     "optional": "Opcional",
-    "syllabus": "Programa de estudos"
+    "syllabus": "Programa de estudos",
+    "open": "Aberto",
+    "researchPaper": "Artigo de pesquisa",
+    "enroll": "Inscrever-se",
+    "downloads": "Descarregar"
   },
   "youtubeChannels": {
     "view": "Ver Canal do Youtube",
@@ -1917,11 +1952,13 @@
   },
   "account": {
     "account": "Conta",
-    "myTeacherProfile": "Meu perfil de professor"
+    "myTeacherProfile": "Meu perfil de professor",
+    "profile": "Perfil"
   },
   "footer": {
     "FOSSOpenContent": "FOSS & Conteúdo aberto",
-    "proudlyPartOf": "Orgulhosamente parte da <0>Plan ₿ Network</0>"
+    "proudlyPartOf": "Orgulhosamente parte da <0>Plan ₿ Network</0>",
+    "becomeATeacher": "Torne-se um <0>Professor</0>"
   },
   "months": {
     "april": "Abril",
@@ -1974,5 +2011,102 @@
       "rumble": "Rumble",
       "youtube": "Youtube"
     }
+  },
+  "becomeTeacher": {
+    "activeBitcoinLearners": "Aprendizes ativos de Bitcoin",
+    "bookCall": "Agende uma chamada de 30 minutos para se tornar um professor",
+    "enhanceExperience": "<0>Melhore a experiência de aprendizado de seus alunos</0> com as ferramentas da plataforma",
+    "bitcoinOnly": "Apenas Bitcoin",
+    "description": "Se você é um apaixonado pelo Bitcoin que adora ensinar e quer causar um verdadeiro impacto em sua comunidade local, você pode hospedar seu próprio curso em nossa plataforma de aprendizado.",
+    "globalReach": "Alcance global",
+    "hostOwnCourse": "<0>Hospede seu próprio curso</0>, online ou pessoalmente",
+    "inspireLearners": "Inspire uma comunidade de aprendizes",
+    "joinMission": "<0>Junte-se à missão</0> como um verdadeiro educador de Bitcoin",
+    "superiorAmount": ">{{amount}}",
+    "teachWhatYouLove": "<0>Ensine o que você ama</0>",
+    "title": "Ensine Bitcoin e inspire outros"
+  },
+  "educatorContent": {
+    "shareLinks": "Compartilhar Links",
+    "urlInvalid": "O link deve ser um URL válido",
+    "types": {
+      "workshop": "Oficina",
+      "art": "Arte",
+      "booklet": "Folheto",
+      "flyer": "Panfleto",
+      "game": "Jogo",
+      "sticker": "Adesivo",
+      "presentation": "Apresentações",
+      "other": "Outro"
+    },
+    "uploadForReview": "Carregar para revisão",
+    "uploading": "Carregando...",
+    "contentNotFound": "Conteúdo não encontrado",
+    "descriptionRequired": "A descrição não pode estar vazia",
+    "detail": {
+      "createdBy": "Criado por",
+      "downloadAll": "Baixar tudo",
+      "view": "Visualizar"
+    },
+    "titleTooLong": "O título não pode exceder 60 caracteres",
+    "dropCover": "Solte a imagem de capa aqui",
+    "dropFiles": "Solte arquivos aqui",
+    "editAndRequireApproval": "Editar e requerer aprovação",
+    "editMaterial": "Editar conteúdo do educador",
+    "fileTooLarge": "Arquivo muito grande (máx 50MB)",
+    "imageCover": "Imagem de Capa",
+    "imageError": "Ocorreu um erro ao carregar a imagem",
+    "languageRequired": "Selecione o idioma do recurso",
+    "loginMessage": "Por favor, faça login para ver o seu conteúdo.",
+    "myContent": "Meu conteúdo",
+    "noContent": "Você ainda não fez upload de nenhum conteúdo.",
+    "noContentToReview": "Nenhum conteúdo para revisar",
+    "noCover": "Sem capa",
+    "noResultsDescription": "Tente ajustar os seus filtros de pesquisa",
+    "noResultsTitle": "Nenhum conteúdo de educador encontrado",
+    "onlyImages": "Somente são permitidos arquivos de imagem",
+    "resourceType": "Tipo de Recurso",
+    "status": {
+      "draft": "Pendente",
+      "published": "Ao vivo",
+      "rejected": "Não aceito",
+      "unpublished": "Não publicado"
+    },
+    "success": "Conteúdo do educador adicionado com sucesso!",
+    "successSubtitle": "Ele passará por um processo de revisão antes de ser exibido.",
+    "successTitle": "Conteúdo do educador carregado com sucesso",
+    "titleHelper": "Ele deve refletir o conteúdo e o propósito de seu recurso. Mantenha-o conciso, mas informativo.",
+    "titleRequired": "O título não pode estar vazio",
+    "typeRequired": "Especifique que tipo de recurso é",
+    "addMoreLinks": "Adicione mais links",
+    "coverRequired": "A imagem de capa é obrigatória",
+    "descriptionHelper": "Descreva o conteúdo do recurso para ajudar outros a entenderem seu conteúdo e encontrá-lo",
+    "descriptionPlaceholder": "Breve descrição do material educacional",
+    "descriptionTooLong": "A descrição não pode ultrapassar 350 caracteres",
+    "uploadFiles": "Carregar Arquivos",
+    "addMaterial": "Adicionar conteúdo do educador",
+    "browseFiles": "ou navegue pelos arquivos",
+    "browseImages": "ou navegue pelas imagens",
+    "currentCoverPresent": "Capa atual presente",
+    "languagePlaceholder": "Selecionar",
+    "done": "Feito"
+  },
+  "forms": {
+    "browse": "Navegar",
+    "replace": "Substituir"
+  },
+  "mentor": {
+    "collapse": "Colapsar",
+    "error": "Ocorreu um erro. Por favor, tente novamente.",
+    "expand": "Expandir",
+    "loginRequired": "Crie uma conta para conversar com PlanBot!",
+    "openChat": "Pergunte ao PlanBot",
+    "placeholder": "Faça uma pergunta...",
+    "reset": "Nova conversa",
+    "sources": "Ir mais longe",
+    "thinking": "Pensando",
+    "title": "PlanBot",
+    "welcome": "Pergunte-me qualquer coisa sobre Bitcoin!",
+    "close": "Fechar"
   }
 }

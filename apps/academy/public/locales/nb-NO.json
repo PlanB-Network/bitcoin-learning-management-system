@@ -1181,7 +1181,8 @@
         "none": "Ingen",
         "platformTitle": "Hvilke typer varsler vil du gjerne motta på denne plattformen?",
         "settingsSaved": "Innstillingene dine ble lagret!",
-        "title": "Varslingsinnstillinger"
+        "title": "Varslingsinnstillinger",
+        "coursesEventsOption": "Oppdateringer om kursene dine og arrangementene dine"
       },
       "password": "Passord",
       "preview": "Forhåndsvisning",
@@ -1190,7 +1191,9 @@
       "saving": "Lagrer…",
       "securitySettings": "Sikkerhetsinnstillinger",
       "username": "Brukernavn",
-      "emailOrUsername": "E-post eller brukernavn"
+      "emailOrUsername": "E-post eller brukernavn",
+      "addEmail": "Legg til e-post",
+      "verifyYourEmail": "Verifiser e-posten din"
     },
     "teacher": {
       "courses": {
@@ -1393,6 +1396,13 @@
         "lecture": "forelesninger",
         "meetup": "møter",
         "workshop": "verksteder"
+      },
+      "singular": {
+        "meetup": "Møte",
+        "workshop": "Verksted",
+        "conference": "Konferanse",
+        "exam": "Eksamen",
+        "lecture": "Forelesning"
       }
     }
   },
@@ -1403,7 +1413,8 @@
     "definition": "Definisjon",
     "relatedWords": "Relaterte ord:",
     "term": "Begrep",
-    "showMoreWords": "Vis flere ord"
+    "showMoreWords": "Vis flere ord",
+    "learnMore": "Lær mer"
   },
   "home": {
     "aboutUsSection": {
@@ -1606,7 +1617,27 @@
     "searchFilterName": "Søk etter navn",
     "toggleLabelAll": "Alt",
     "toggleLabelSelectedLanguage": "Valgt språk",
-    "pageSubtitleMovies": "<0>Andre filmer</0> du kanskje liker"
+    "pageSubtitleMovies": "<0>Andre filmer</0> du kanskje liker",
+    "papers": {
+      "addPaper": "Legg til papir",
+      "downloadCitations": "Last ned sitasjoner",
+      "types": {
+        "academic": "Akademisk",
+        "journal": "Tidsskrift",
+        "pre-print": "Forhåndsutskrift",
+        "thesis": "Avhandling",
+        "whitepaper": "Hvitbok",
+        "PhD Thesis": "PhD Avhandling",
+        "book": "Bok",
+        "conference": "Konferanse"
+      },
+      "publisher": "Utgiver",
+      "accessPaper": "Få tak i papir",
+      "citations": "Sitasjoner (.bib)",
+      "papers": "Papirer",
+      "showMorePapers": "Vis flere papirer",
+      "title": "Forskningspapirer"
+    }
   },
   "search": {
     "all": "Alle",
@@ -1912,7 +1943,11 @@
     "list": "Liste",
     "optional": "Valgfritt",
     "session": "Økt",
-    "syllabus": "Pensum"
+    "syllabus": "Pensum",
+    "open": "Åpen",
+    "researchPaper": "Forskningspapir",
+    "downloads": "Nedlastninger",
+    "enroll": "Registrer deg"
   },
   "youtubeChannels": {
     "view": "Se på Youtube-kanalen",
@@ -1920,11 +1955,13 @@
   },
   "account": {
     "account": "Konto",
-    "myTeacherProfile": "Min lærerprofil"
+    "myTeacherProfile": "Min lærerprofil",
+    "profile": "Profil"
   },
   "footer": {
     "FOSSOpenContent": "FOSS og åpent innhold",
-    "proudlyPartOf": "Stolt del av <0>Plan ₿ Network</0>"
+    "proudlyPartOf": "Stolt del av <0>Plan ₿ Network</0>",
+    "becomeATeacher": "Bli en <0>Lærer</0>"
   },
   "months": {
     "april": "April",
@@ -1974,5 +2011,102 @@
       "rumble": "Rumble",
       "youtube": "Youtube"
     }
+  },
+  "educatorContent": {
+    "urlInvalid": "Linken må være en gyldig URL",
+    "types": {
+      "art": "Kunst",
+      "booklet": "Heftet",
+      "flyer": "Flyer",
+      "game": "Spill",
+      "presentation": "Presentasjon",
+      "sticker": "Klistremerke",
+      "workshop": "Verksted",
+      "other": "Annet"
+    },
+    "uploading": "Laster opp...",
+    "contentNotFound": "Innhold ikke funnet",
+    "editAndRequireApproval": "Rediger og krever godkjenning",
+    "editMaterial": "Rediger lærerinnhold",
+    "titleTooLong": "Tittelen kan ikke overstige 60 tegn",
+    "detail": {
+      "createdBy": "Opprettet av",
+      "downloadAll": "Last ned alt",
+      "view": "Visning"
+    },
+    "dropCover": "Slipp omslagsbilde her",
+    "dropFiles": "Slipp filer her",
+    "fileTooLarge": "Fil for stor (maks 50MB)",
+    "imageCover": "Omslagsbilde",
+    "imageError": "Det oppstod en feil under opplasting av bildet",
+    "languageRequired": "Velg ressursspråket",
+    "loginMessage": "Vennligst logg inn for å se innholdet ditt.",
+    "myContent": "Mitt innhold",
+    "noContent": "Du har ikke lastet opp noe innhold ennå.",
+    "noContentToReview": "Ingen innhold til å gjennomgå",
+    "noCover": "Ingen forside",
+    "noResultsDescription": "Prøv å justere søkefiltrene dine",
+    "noResultsTitle": "Ingen lærerinnhold funnet",
+    "onlyImages": "Kun bildefiler er tillatt",
+    "resourceType": "Ressurstype",
+    "shareLinks": "Del lenker",
+    "status": {
+      "draft": "Venter",
+      "published": "Live",
+      "rejected": "Ikke akseptert",
+      "unpublished": "Upublisert"
+    },
+    "success": "Lærerinnhold lagt til vellykket!",
+    "successSubtitle": "Det vil gjennomgå en gjennomgangsprosess før det vises.",
+    "titleHelper": "Det skal gjenspeile innholdet og formålet med ressursen din. Hold det kort men informativt.",
+    "titleRequired": "Tittelen kan ikke være tom",
+    "typeRequired": "Spesifiser hva slags ressurs det er",
+    "uploadFiles": "Last opp filer",
+    "uploadForReview": "Last opp for gjennomgang",
+    "addMoreLinks": "Legg til flere lenker",
+    "browseFiles": "eller bla gjennom filer",
+    "browseImages": "eller bla gjennom bilder",
+    "coverRequired": "Forsidebildet er obligatorisk",
+    "currentCoverPresent": "Nåværende omslag til stede",
+    "descriptionHelper": "Beskriv ressursinnholdet for å hjelpe andre med å forstå innholdet og finne det",
+    "descriptionPlaceholder": "Kort beskrivelse av det pedagogiske materialet",
+    "descriptionRequired": "Beskrivelsen kan ikke være tom",
+    "descriptionTooLong": "Beskrivelsen kan ikke overstige 350 tegn",
+    "addMaterial": "Legg til lærerinnhold",
+    "successTitle": "Lærerinnholdet ble lastet opp vellykket",
+    "done": "Ferdig",
+    "languagePlaceholder": "Velg"
+  },
+  "forms": {
+    "replace": "Erstatt",
+    "browse": "Bla gjennom"
+  },
+  "mentor": {
+    "collapse": "Kollaps",
+    "error": "En feil oppstod. Vennligst prøv igjen.",
+    "expand": "Utvid",
+    "placeholder": "Still et spørsmål...",
+    "reset": "Ny samtale",
+    "sources": "Gå lenger",
+    "thinking": "Tenker",
+    "welcome": "Spør meg om hva som helst om Bitcoin!",
+    "loginRequired": "Opprett en konto for å chatte med PlanBot!",
+    "openChat": "Spør PlanBot",
+    "title": "PlanBot",
+    "close": "Lukk"
+  },
+  "becomeTeacher": {
+    "title": "Undervis i Bitcoin og inspirer andre",
+    "bitcoinOnly": "Kun Bitcoin",
+    "bookCall": "Bestill en 30-minutters samtale for å bli en lærer",
+    "description": "Hvis du er en lidenskapelig Bitcoiner som elsker å undervise og ønsker å gjøre en virkelig forskjell i ditt lokale samfunn, kan du arrangere ditt eget kurs på vår læringsplattform.",
+    "enhanceExperience": "<0>Forbedre dine studenters læringserfaring</0> med plattformverktøyene",
+    "globalReach": "Global rekkevidde",
+    "hostOwnCourse": "<0>Arranger ditt eget kurs</0>, online eller i person",
+    "inspireLearners": "Inspire en gruppe av lærende",
+    "joinMission": "<0>Bli med på oppdraget</0> som en ekte Bitcoin-utdanner",
+    "superiorAmount": ">{{amount}}",
+    "teachWhatYouLove": "<0>Lær bort det du elsker</0>",
+    "activeBitcoinLearners": "Aktive Bitcoin-lærere"
   }
 }

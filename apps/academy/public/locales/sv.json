@@ -100,7 +100,7 @@
     "oldPassword": "Gammalt lösenord"
   },
   "bCert": {
-    "bCertDescription": "₿-CERT är ett internationellt erkänt prov för att bedöma din kunskapsnivå inom Bitcoin och dess relaterade ämnen. Detta certifikat kommer att göra det möjligt för dig att bevisa dina färdigheter och kunskaper inom Bitcoin-industrin.",
+    "bCertDescription": "₿-CERT är det ultimata Bitcoin-testet designat för att utvärdera din kunskap om Bitcoin och relaterade ämnen. \n\nTjäna ditt ₿-CERT certifikat och bevisa din expertis inom Bitcoin-industrin, vilket öppnar dörrar till jobbpositioner inom området.",
     "bookExam": "Boka ett provtillfälle",
     "challengeYourself": "Utmana dig själv och testa din nivå",
     "download": "Ladda ner certifikat",
@@ -1181,7 +1181,8 @@
         "none": "Ingen",
         "platformTitle": "Vilka typer av notifikationer skulle du vilja få på denna plattform?",
         "settingsSaved": "Dina inställningar har sparats!",
-        "title": "Aviseringsinställningar"
+        "title": "Aviseringsinställningar",
+        "coursesEventsOption": "Uppdateringar om dina kurser och dina evenemang"
       },
       "password": "Lösenord",
       "preview": "Förhandsgranska",
@@ -1190,7 +1191,9 @@
       "saving": "Sparar…",
       "securitySettings": "Säkerhetsinställningar",
       "username": "Användarnamn",
-      "emailOrUsername": "E-post eller användarnamn"
+      "emailOrUsername": "E-post eller användarnamn",
+      "addEmail": "Lägg till e-post",
+      "verifyYourEmail": "Verifiera din e-post"
     },
     "teacher": {
       "courses": {
@@ -1383,6 +1386,13 @@
         "exam": "examen",
         "lecture": "föreläsningar",
         "meetup": "träffar"
+      },
+      "singular": {
+        "meetup": "Träff",
+        "workshop": "Verkstad",
+        "conference": "Konferens",
+        "exam": "Prov",
+        "lecture": "Föreläsning"
       }
     },
     "addEvent": "Lägg till evenemang",
@@ -1403,7 +1413,8 @@
     "definition": "Definition",
     "relatedWords": "Relaterade ord:",
     "term": "Term",
-    "showMoreWords": "Visa fler ord"
+    "showMoreWords": "Visa fler ord",
+    "learnMore": "Läs mer"
   },
   "home": {
     "aboutUsSection": {
@@ -1603,7 +1614,27 @@
     "searchFilterName": "Sök via namn",
     "toggleLabelAll": "Alla",
     "toggleLabelSelectedLanguage": "Valt språk",
-    "pageSubtitleMovies": "<0>Andra filmer</0> du kanske gillar"
+    "pageSubtitleMovies": "<0>Andra filmer</0> du kanske gillar",
+    "papers": {
+      "accessPaper": "Åtkomst papper",
+      "addPaper": "Lägg till papper",
+      "citations": "Citationer (.bib)",
+      "downloadCitations": "Ladda ner citat",
+      "papers": "Artiklar",
+      "publisher": "Utgivare",
+      "showMorePapers": "Visa fler artiklar",
+      "title": "Forskningsartiklar",
+      "types": {
+        "PhD Thesis": "Doktorsavhandling",
+        "academic": "Akademisk",
+        "journal": "Tidskrift",
+        "pre-print": "Förutskrivning",
+        "thesis": "Avhandling",
+        "whitepaper": "Vitbok",
+        "book": "Bok",
+        "conference": "Konferens"
+      }
+    }
   },
   "search": {
     "all": "Alla",
@@ -1909,7 +1940,11 @@
     "theory": "Teori",
     "topic": "Ämne",
     "type": "Skriv",
-    "viewAll": "Visa alla"
+    "viewAll": "Visa alla",
+    "researchPaper": "Forskningsrapport",
+    "open": "Öppna",
+    "enroll": "Registrera",
+    "downloads": "Ladda ner"
   },
   "youtubeChannels": {
     "view": "Visa Youtube-kanal",
@@ -1966,13 +2001,112 @@
   },
   "account": {
     "account": "Konto",
-    "myTeacherProfile": "Min lärarprofil"
+    "myTeacherProfile": "Min lärarprofil",
+    "profile": "Profil"
   },
   "footer": {
     "FOSSOpenContent": "FOSS & Öppet innehåll",
-    "proudlyPartOf": "Stolt del av <0>Plan ₿ Network</0>"
+    "proudlyPartOf": "Stolt del av <0>Plan ₿ Network</0>",
+    "becomeATeacher": "Bli en <0>Lärare</0>"
   },
   "movies": {
     "checkTheMovie": "Kolla på filmen"
+  },
+  "becomeTeacher": {
+    "bitcoinOnly": "Endast Bitcoin",
+    "bookCall": "Boka ett 30-minuters samtal för att bli en lärare",
+    "description": "Om du är en passionerad Bitcoin-användare som älskar att undervisa och vill göra en verklig inverkan i ditt lokala samhälle, kan du hålla din egen kurs på vår lärplattform.",
+    "enhanceExperience": "<0>Förbättra dina studenters lärandeupplevelse</0> med plattformens verktyg",
+    "globalReach": "Global räckvidd",
+    "hostOwnCourse": "<0>Håll din egen kurs</0>, online eller personligen",
+    "inspireLearners": "Inspirera en gemenskap av elever",
+    "joinMission": "<0>Gå med i uppdraget</0> som en sann Bitcoin-utbildare",
+    "superiorAmount": ">{{amount}}",
+    "teachWhatYouLove": "<0>Undervisa i det du älskar</0>",
+    "title": "Undervisa i Bitcoin och inspirera andra",
+    "activeBitcoinLearners": "Aktiva Bitcoin-lärare"
+  },
+  "educatorContent": {
+    "imageCover": "Omslagsbild",
+    "urlInvalid": "Länken måste vara en giltig URL",
+    "types": {
+      "workshop": "Verkstad",
+      "art": "Konst",
+      "booklet": "Broschyr",
+      "flyer": "Flygblad",
+      "game": "Spel",
+      "sticker": "Klistermärke",
+      "other": "Annat",
+      "presentation": "Presentationer"
+    },
+    "contentNotFound": "Innehållet hittades inte",
+    "descriptionHelper": "Beskriv innehållet i resursen för att hjälpa andra att förstå dess innehåll och hitta den",
+    "dropCover": "Släpp omslagsbilden här",
+    "dropFiles": "Släpp filerna här",
+    "editAndRequireApproval": "Redigera och begär godkännande",
+    "editMaterial": "Redigera pedagogiskt innehåll",
+    "status": {
+      "published": "Live",
+      "rejected": "Ej accepterad",
+      "unpublished": "Opublicerad",
+      "draft": "Väntar"
+    },
+    "typeRequired": "Ange vilken typ av resurs det är",
+    "uploadFiles": "Ladda upp filer",
+    "titleTooLong": "Titeln får inte överstiga 60 tecken",
+    "fileTooLarge": "Filen är för stor (max 50MB)",
+    "imageError": "Ett fel uppstod när bilden laddades upp",
+    "languageRequired": "Välj resursspråket",
+    "loginMessage": "Logga in för att visa ditt innehåll.",
+    "myContent": "Mitt innehåll",
+    "noContent": "Du har inte laddat upp något innehåll än.",
+    "noContentToReview": "Inget innehåll att granska",
+    "noCover": "Inget omslag",
+    "noResultsDescription": "Försök justera dina sökfilter",
+    "noResultsTitle": "Inget lärarinnehåll hittades",
+    "onlyImages": "Endast bildfiler är tillåtna",
+    "resourceType": "Resurstyp",
+    "shareLinks": "Dela länkar",
+    "success": "Lärarinnehåll har lagts till framgångsrikt!",
+    "successSubtitle": "Det kommer att gå igenom en granskningsprocess innan det visas.",
+    "successTitle": "Lärarinnehåll laddades upp framgångsrikt",
+    "titleHelper": "Det bör spegla innehållet och syftet med din resurs. Håll det kortfattat men informativt.",
+    "titleRequired": "Titeln får inte vara tom",
+    "addMaterial": "Lägg till pedagogiskt innehåll",
+    "addMoreLinks": "Lägg till fler länkar",
+    "browseFiles": "eller bläddra bland filer",
+    "browseImages": "eller bläddra bland bilder",
+    "coverRequired": "Omslagsbilden är obligatorisk",
+    "currentCoverPresent": "Nuvarande omslag tillhandahålls",
+    "descriptionPlaceholder": "Kort beskrivning av det pedagogiska materialet",
+    "descriptionRequired": "Beskrivningen kan inte vara tom",
+    "descriptionTooLong": "Beskrivningen får inte överskrida 350 tecken",
+    "detail": {
+      "createdBy": "Skapad av",
+      "downloadAll": "Ladda ner alla",
+      "view": "Visa"
+    },
+    "uploadForReview": "Ladda upp för granskning",
+    "uploading": "Laddar upp...",
+    "languagePlaceholder": "Välj",
+    "done": "Klara"
+  },
+  "forms": {
+    "browse": "Bläddra",
+    "replace": "Ersätt"
+  },
+  "mentor": {
+    "expand": "Expandera",
+    "loginRequired": "Skapa ett konto för att chatta med PlanBot!",
+    "openChat": "Fråga PlanBot",
+    "placeholder": "Ställ en fråga...",
+    "reset": "Ny konversation",
+    "collapse": "Kollapsa",
+    "error": "Ett fel inträffade. Försök igen.",
+    "sources": "Gå längre",
+    "thinking": "Tänker",
+    "title": "PlanBot",
+    "welcome": "Fråga mig vad som helst om Bitcoin!",
+    "close": "Stäng"
   }
 }

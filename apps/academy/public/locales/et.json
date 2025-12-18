@@ -100,7 +100,7 @@
     "signUp": "Registreeru"
   },
   "bCert": {
-    "bCertDescription": "₿-CERT on ülim Bitcoini test, mis on loodud teie Bitcoini ja sellega seotud teemade tundmise hindamiseks.\n\nSooritage üle 80%, et teenida ₿-CERT sertifikaat, mis tõestab teie asjatundlikkust Bitcoini valdkonnas ja avab uksed töökohtadele selles valdkonnas.",
+    "bCertDescription": "₿-CERT on ülim Bitcoini test, mis on loodud teie Bitcoini ja sellega seotud teemade tundmise hindamiseks.\n\nTeenida ₿-CERT sertifikaat, mis tõestab teie asjatundlikkust Bitcoini valdkonnas ja avab uksed töökohtadele selles valdkonnas.",
     "bookExam": "Broneeri eksamisessioon",
     "challengeYourself": "Tule pane end proovile ja tõesta oma taset",
     "download": "Laadi sertifikaat alla",
@@ -1181,7 +1181,8 @@
         "none": "Puudub",
         "platformTitle": "Mis laadi teateid soovite sellel platvormil saada?",
         "settingsSaved": "Teie seaded salvestati edukalt!",
-        "title": "Teavituste seaded"
+        "title": "Teavituste seaded",
+        "coursesEventsOption": "Uuendused teie kursuste ja ürituste kohta"
       },
       "password": "Parool",
       "preview": "Eelvaade",
@@ -1190,7 +1191,9 @@
       "saving": "Salvestamine…",
       "securitySettings": "Turvaseaded",
       "username": "Kasutajanimi",
-      "emailOrUsername": "E-post või kasutajanimi"
+      "emailOrUsername": "E-post või kasutajanimi",
+      "addEmail": "Lisa e-post",
+      "verifyYourEmail": "Kinnita oma e-post"
     },
     "teacher": {
       "courses": {
@@ -1379,6 +1382,13 @@
         "lecture": "loengud",
         "meetup": "kokkusaamised",
         "workshop": "töötoad"
+      },
+      "singular": {
+        "meetup": "Kohtumine",
+        "workshop": "Töötuba",
+        "conference": "Konverents",
+        "exam": "Eksam",
+        "lecture": "Loeng"
       }
     },
     "eventInfos": {
@@ -1403,7 +1413,8 @@
     "definition": "Selgitus",
     "relatedWords": "Seotud sõnad :",
     "term": "Mõiste",
-    "showMoreWords": "Kuva rohkem sõnu"
+    "showMoreWords": "Kuva rohkem sõnu",
+    "learnMore": "Loe lähemalt"
   },
   "home": {
     "aboutUsSection": {
@@ -1606,7 +1617,27 @@
     "searchFilterName": "Otsi nime järgi",
     "toggleLabelAll": "Kõik",
     "toggleLabelSelectedLanguage": "Valitud keel",
-    "pageSubtitleMovies": "<0>Teised filmid</0>, mis teile meeldida võivad"
+    "pageSubtitleMovies": "<0>Teised filmid</0>, mis teile meeldida võivad",
+    "papers": {
+      "accessPaper": "Juurdepääs paberile",
+      "addPaper": "Lisa paber",
+      "citations": "Viited (.bib)",
+      "downloadCitations": "Laadi alla viited",
+      "papers": "Paberid",
+      "publisher": "Kirjastaja",
+      "showMorePapers": "Näita rohkem pabereid",
+      "title": "Teadusartiklid",
+      "types": {
+        "PhD Thesis": "Doktoritöö",
+        "academic": "Akadeemiline",
+        "journal": "Ajakiri",
+        "pre-print": "Eeltrükk",
+        "thesis": "Väitekiri",
+        "whitepaper": "Valge raamat",
+        "book": "Raamat",
+        "conference": "Konverents"
+      }
+    }
   },
   "search": {
     "all": "Kõik",
@@ -1926,7 +1957,11 @@
     "confirmation": "Kinnitus",
     "optional": "Valikuline",
     "session": "Seanss",
-    "syllabus": "Õppekava"
+    "syllabus": "Õppekava",
+    "enroll": "Registreeru",
+    "open": "Ava",
+    "researchPaper": "Teadusartikkel",
+    "downloads": "Laadi alla"
   },
   "youtubeChannels": {
     "view": "Vaata Youtube'i kanalit",
@@ -1948,7 +1983,8 @@
   },
   "account": {
     "account": "Konto",
-    "myTeacherProfile": "Minu õpetaja profiil"
+    "myTeacherProfile": "Minu õpetaja profiil",
+    "profile": "Profiil"
   },
   "navbar": {
     "bookings": "Broneeringud",
@@ -1973,6 +2009,104 @@
   },
   "footer": {
     "FOSSOpenContent": "FOSS ja avatud sisu",
-    "proudlyPartOf": "Uhke <0>Plan ₿ Network</0> liige"
+    "proudlyPartOf": "Uhke <0>Plan ₿ Network</0> liige",
+    "becomeATeacher": "Saage <0>õpetajaks</0>"
+  },
+  "educatorContent": {
+    "contentNotFound": "Sisu ei leitud",
+    "dropCover": "Aseta kaanepilt siia",
+    "dropFiles": "Aseta failid siia",
+    "urlInvalid": "Link peab olema kehtiv URL",
+    "types": {
+      "flyer": "Flaier",
+      "game": "Mäng",
+      "sticker": "Kleebis",
+      "workshop": "Töötuba",
+      "art": "Kunst",
+      "booklet": "Brošüür",
+      "other": "Muu",
+      "presentation": "Esitlused"
+    },
+    "uploadFiles": "Laadi faile üles",
+    "uploadForReview": "Laadi ülevaatuseks üles",
+    "uploading": "Laadimine...",
+    "titleTooLong": "Pealkiri ei tohi ületada 60 märki",
+    "editAndRequireApproval": "Redigeeri ja nõua kinnitust",
+    "editMaterial": "Muuda õpetaja sisu",
+    "fileTooLarge": "Fail on liiga suur (maks. 50MB)",
+    "imageCover": "Kaane pilt",
+    "imageError": "Pildi üleslaadimisel tekkis viga",
+    "languageRequired": "Vali ressursi keel",
+    "loginMessage": "Palun logige sisse, et vaadata oma sisu.",
+    "myContent": "Minu sisu",
+    "noContent": "Te pole veel üles laadinud ühtegi sisu.",
+    "noContentToReview": "Ülevaatamiseks sisu puudub",
+    "noCover": "Ei ole kaant",
+    "noResultsDescription": "Proovi kohandada oma otsingufiltreid",
+    "noResultsTitle": "Õpetaja sisu ei leitud",
+    "onlyImages": "Lubatud on ainult pildifailid",
+    "resourceType": "Ressursi tüüp",
+    "status": {
+      "draft": "Ootel",
+      "published": "Otse-eetris",
+      "rejected": "Mitte aktsepteeritud",
+      "unpublished": "Avaldamata"
+    },
+    "successSubtitle": "Enne kuvamist läbib see ülevaatuse.",
+    "successTitle": "Õpetaja sisu on edukalt üles laetud",
+    "titleHelper": "See peaks peegeldama teie ressursi sisu ja eesmärki. Hoia see lühike, kuid informatiivne.",
+    "titleRequired": "Pealkiri ei tohi olla tühi",
+    "typeRequired": "Määrake, milline ressurss see on",
+    "addMoreLinks": "Lisa rohkem linke",
+    "browseFiles": "või sirvi faile",
+    "browseImages": "või sirvi pilte",
+    "coverRequired": "Kaane pilt on kohustuslik",
+    "currentCoverPresent": "Hetkel kaas on olemas",
+    "descriptionHelper": "Kirjelda ressursi sisu, et teised selle sisu mõistaksid ja leiaksid",
+    "descriptionPlaceholder": "Haridusmaterjali lühikirjeldus",
+    "descriptionRequired": "Kirjeldus ei tohi olla tühi",
+    "descriptionTooLong": "Kirjeldus ei tohi ületada 350 tähemärki",
+    "detail": {
+      "createdBy": "Loodud poolt",
+      "downloadAll": "Lae kõik alla",
+      "view": "Vaade"
+    },
+    "addMaterial": "Lisa õpetaja sisu",
+    "shareLinks": "Jaga linke",
+    "success": "Õpetaja sisu on edukalt lisatud!",
+    "languagePlaceholder": "Vali",
+    "done": "Tehtud"
+  },
+  "forms": {
+    "browse": "Sirvi",
+    "replace": "Asenda"
+  },
+  "mentor": {
+    "collapse": "Kokku tõmbama",
+    "error": "Ilmnes viga. Palun proovi uuesti.",
+    "expand": "Laienda",
+    "loginRequired": "Loo konto, et vestelda PlanBot'iga!",
+    "openChat": "Küsi PlanBot'ilt",
+    "placeholder": "Küsi küsimus...",
+    "reset": "Uus vestlus",
+    "sources": "Mine kaugemale",
+    "thinking": "Mõtlemine",
+    "title": "PlanBot",
+    "welcome": "Küsi minult kõike Bitcoinist!",
+    "close": "Sulge"
+  },
+  "becomeTeacher": {
+    "inspireLearners": "Innusta õppijate kogukonda",
+    "joinMission": "<0>Liitu missiooniga</0> kui tõeline Bitcoin'i hariduse eestvedaja",
+    "superiorAmount": ">{{amount}}",
+    "teachWhatYouLove": "<0>Õpeta seda, mida armastad</0>",
+    "title": "Õpeta Bitcoin'i ja innusta teisi",
+    "bitcoinOnly": "Ainult Bitcoin",
+    "bookCall": "Broneeri 30-minutiline kõne, et õpetajaks saada",
+    "description": "Kui oled kirglik Bitcoin'i kasutaja, armastad õpetada ja soovid oma kohalikus kogukonnas reaalset mõju avaldada, siis saad korraldada oma kursuse meie õppeplatvormil.",
+    "enhanceExperience": "<0>Parenda oma õpilaste õpikogemust</0> platvormi tööriistadega",
+    "globalReach": "Globaalne haardeulatus",
+    "hostOwnCourse": "<0>Korralda oma kursus</0>, veebis või isiklikult",
+    "activeBitcoinLearners": "Aktiivsed Bitcoin'i õppijad"
   }
 }

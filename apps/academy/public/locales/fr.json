@@ -100,7 +100,7 @@
     "signUp": "S’inscrire"
   },
   "bCert": {
-    "bCertDescription": "Le ₿-CERT est un examen reconnu internationalement pour évaluer votre niveau de préparation sur Bitcoin et ses sujets dérivés. Ce certificat vous permettra de démontrer vos compétences et connaissances dans l’industrie de Bitcoin, vous donnant ainsi accès à des entreprises et des postes dans ce secteur.",
+    "bCertDescription": "Le ₿-CERT est le test Bitcoin de référence, conçu pour évaluer vos connaissances de Bitcoin et des sujets connexes.\n\nObtenez votre certificat ₿-CERT et démontrez votre expertise au sein de l’industrie Bitcoin, ouvrant ainsi l’accès à des opportunités professionnelles dans le domaine.",
     "bookExam": "Réservez une session d'examen",
     "challengeYourself": "Mettez-vous au défi et évaluez votre niveau",
     "download": "Télécharger le certificat",
@@ -1191,7 +1191,9 @@
       "saving": "Enregistrement…",
       "securitySettings": "Paramètres de sécurité",
       "username": "Nom d'utilisateur",
-      "emailOrUsername": "E-mail ou nom d'utilisateur"
+      "emailOrUsername": "E-mail ou nom d'utilisateur",
+      "addEmail": "Ajouter une adresse e-mail",
+      "verifyYourEmail": "Vérifiez votre adresse e-mail"
     },
     "teacher": {
       "courses": {
@@ -2002,7 +2004,8 @@
   },
   "account": {
     "account": "Compte",
-    "myTeacherProfile": "Mon profil d'enseignant"
+    "myTeacherProfile": "Mon profil d'enseignant",
+    "profile": "Profil"
   },
   "footer": {
     "FOSSOpenContent": "FOSS & Contenu libre",
@@ -2072,7 +2075,6 @@
     "noResultsDescription": "Essayez d’ajuster vos filtres de recherche",
     "noResultsTitle": "Aucun contenu pédagogique trouvé",
     "onlyImages": "Seuls les fichiers image sont autorisés",
-    "resourceDetails": "Détails des ressources",
     "resourceType": "Type de ressource",
     "shareLinks": "Partager les liens",
     "status": {
@@ -2093,11 +2095,15 @@
       "game": "Jeu",
       "presentation": "Présentation",
       "sticker": "Autocollant",
-      "workshop": "Atelier pratique"
+      "workshop": "Atelier pratique",
+      "art": "Art",
+      "other": "Autre"
     },
     "uploadFiles": "Téléverser des fichiers",
     "uploadForReview": "Téléverser pour validation",
-    "uploading": "Téléversement en cours..."
+    "uploading": "Téléversement en cours...",
+    "titleTooLong": "Le titre ne peut pas dépasser 60 caractères",
+    "urlInvalid": "Le lien doit être une URL valide"
   },
   "forms": {
     "browse": "Parcourir",

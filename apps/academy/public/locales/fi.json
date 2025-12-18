@@ -100,7 +100,7 @@
     "signUp": "Rekisteröidy"
   },
   "bCert": {
-    "bCertDescription": "₿-CERT on lopullinen Bitcoin-testi, joka arvioi Bitcoin-tietämyksesi ja siihen liittyvät aiheet.\n\nSaa yli 80% pisteitä ansaitaksesi ₿-CERT-sertifikaatin, joka todistaa asiantuntemuksesi Bitcoin-alalla, avaten ovia työmahdollisuuksiin alalla.",
+    "bCertDescription": "₿-CERT on lopullinen Bitcoin-testi, joka on suunniteltu arvioimaan tietämyksesi Bitcoinista ja siihen liittyvistä aiheista.\n\nAnsaitse ₿-CERT sertifikaattisi ja todista asiantuntemuksesi Bitcoin-alalla, avaten ovia työpaikkoihin alalla.",
     "bookExam": "Varaa testiaika",
     "challengeYourself": "Haasta itsesi ja arvioi tasoasi",
     "download": "Lataa sertifikaatti",
@@ -1181,7 +1181,8 @@
         "none": "Ei mitään",
         "platformTitle": "Mitä tyyppisiä ilmoituksia haluaisit saada tällä alustalla?",
         "settingsSaved": "Asetuksesi tallennettiin onnistuneesti!",
-        "title": "Ilmoitusasetukset"
+        "title": "Ilmoitusasetukset",
+        "coursesEventsOption": "Päivityksiä kursseistasi ja tapahtumistasi"
       },
       "password": "Salasana",
       "preview": "Esikatselu",
@@ -1190,7 +1191,9 @@
       "saving": "Tallennetaan…",
       "securitySettings": "Turva-asetukset",
       "username": "Käyttäjätunnus",
-      "emailOrUsername": "Sähköposti tai käyttäjätunnus"
+      "emailOrUsername": "Sähköposti tai käyttäjätunnus",
+      "addEmail": "Lisää sähköposti",
+      "verifyYourEmail": "Vahvista sähköpostisi"
     },
     "teacher": {
       "courses": {
@@ -1393,6 +1396,13 @@
         "lecture": "luetelmia",
         "meetup": "miitit",
         "workshop": "työpajat"
+      },
+      "singular": {
+        "meetup": "Tapaaminen",
+        "workshop": "Työpaja",
+        "conference": "Konferenssi",
+        "exam": "Tentti",
+        "lecture": "Luento"
       }
     }
   },
@@ -1403,7 +1413,8 @@
     "definition": "Määritelmä",
     "relatedWords": "Liittyvät sanat:",
     "term": "Termi",
-    "showMoreWords": "Näytä enemmän sanoja"
+    "showMoreWords": "Näytä enemmän sanoja",
+    "learnMore": "Lue lisää"
   },
   "home": {
     "aboutUsSection": {
@@ -1603,7 +1614,27 @@
     "searchFilterName": "Hae nimellä",
     "toggleLabelAll": "Kaikki",
     "toggleLabelSelectedLanguage": "Valittu kieli",
-    "pageSubtitleMovies": "<0>Muita elokuvia</0>, joista saattaisit tykätä"
+    "pageSubtitleMovies": "<0>Muita elokuvia</0>, joista saattaisit tykätä",
+    "papers": {
+      "accessPaper": "Käytä paperia",
+      "addPaper": "Lisää paperi",
+      "citations": "Viitteet (.bib)",
+      "downloadCitations": "Lataa viitteet",
+      "publisher": "Julkaisija",
+      "showMorePapers": "Näytä lisää artikkeleita",
+      "title": "Tutkimusartikkelit",
+      "types": {
+        "PhD Thesis": "Väitöskirja",
+        "academic": "Akateeminen",
+        "journal": "Lehti",
+        "pre-print": "Esipainos",
+        "thesis": "Väitöskirja",
+        "whitepaper": "Valkoinen kirja",
+        "book": "Kirja",
+        "conference": "Konferenssi"
+      },
+      "papers": "Artikkelit"
+    }
   },
   "search": {
     "all": "Kaikki",
@@ -1909,7 +1940,11 @@
     "actions": "Toiminnot",
     "address": "Osoite",
     "booking": "Varaus",
-    "certifications": "Sertifikaatit"
+    "certifications": "Sertifikaatit",
+    "enroll": "Ilmoittaudu",
+    "researchPaper": "Tutkimusartikkeli",
+    "open": "Avaa",
+    "downloads": "Lataa"
   },
   "youtubeChannels": {
     "view": "Katso Youtube-kanava",
@@ -1917,11 +1952,13 @@
   },
   "account": {
     "account": "Tili",
-    "myTeacherProfile": "Opettajaprofiilini"
+    "myTeacherProfile": "Opettajaprofiilini",
+    "profile": "Profiili"
   },
   "footer": {
     "FOSSOpenContent": "FOSS & avoimen sisällön",
-    "proudlyPartOf": "Ylpeänä osa <0>Plan ₿ -verkostoa</0>"
+    "proudlyPartOf": "Ylpeänä osa <0>Plan ₿ -verkostoa</0>",
+    "becomeATeacher": "Ryhdy <0>opettajaksi</0>"
   },
   "months": {
     "april": "Huhtikuu",
@@ -1974,5 +2011,102 @@
       "rumble": "Rumble",
       "youtube": "Youtube"
     }
+  },
+  "educatorContent": {
+    "urlInvalid": "Linkin on oltava kelvollinen URL",
+    "types": {
+      "art": "Taide",
+      "booklet": "Esitteet",
+      "flyer": "Lehtinen",
+      "game": "Peli",
+      "sticker": "Tarrat",
+      "workshop": "Työpaja",
+      "other": "Muu",
+      "presentation": "Esitykset"
+    },
+    "uploadFiles": "Lataa tiedostot",
+    "uploadForReview": "Lähetä tarkistettavaksi",
+    "uploading": "Ladataan...",
+    "contentNotFound": "Sisältöä ei löytynyt",
+    "titleTooLong": "Otsikko ei voi olla yli 60 merkkiä",
+    "detail": {
+      "createdBy": "Luonut",
+      "downloadAll": "Lataa kaikki",
+      "view": "Näytä"
+    },
+    "dropCover": "Pudota kansikuva tähän",
+    "dropFiles": "Pudota tiedostot tähän",
+    "editAndRequireApproval": "Muokkaa ja vaadi hyväksyntää",
+    "editMaterial": "Muokkaa opettajan sisältöä",
+    "fileTooLarge": "Tiedosto on liian suuri (max 50MB)",
+    "imageCover": "Kansikuva",
+    "imageError": "Kuvan lataamisen yhteydessä ilmeni virhe",
+    "languageRequired": "Valitse resurssin kieli",
+    "loginMessage": "Ole hyvä ja kirjaudu sisään nähdäksesi sisältösi.",
+    "myContent": "Oma sisältö",
+    "noContent": "Et ole vielä ladannut sisältöä.",
+    "noContentToReview": "Ei sisältöä tarkasteltavaksi",
+    "noResultsDescription": "Kokeile hakusuodattimiesi säätämistä",
+    "noResultsTitle": "Ei löydetty opettajasisältöä",
+    "onlyImages": "Vain kuvatiedostot sallitaan",
+    "resourceType": "Resurssityyppi",
+    "shareLinks": "Jaa linkkejä",
+    "status": {
+      "draft": "Odottaa",
+      "published": "Julkaistu",
+      "rejected": "Ei hyväksytty",
+      "unpublished": "Ei julkaistu"
+    },
+    "success": "Opettajasisältö lisätty onnistuneesti!",
+    "successSubtitle": "Se käy läpi tarkistusprosessin ennen näyttämistä.",
+    "titleHelper": "Sen pitäisi heijastaa resurssisi sisältöä ja tarkoitusta. Pidä se tiiviinä, mutta informatiivisena.",
+    "titleRequired": "Otsikko ei voi olla tyhjä",
+    "typeRequired": "Määritä, millainen resurssi on kyseessä",
+    "descriptionHelper": "Kuvaa resurssin sisältö auttaaksesi muita ymmärtämään sen sisältöä ja löytämään sen",
+    "noCover": "Ei kantta",
+    "addMaterial": "Lisää opettajan sisältöä",
+    "browseFiles": "tai selaa tiedostoja",
+    "browseImages": "tai selaa kuvia",
+    "currentCoverPresent": "Nykyinen kansi esillä",
+    "successTitle": "Opettajasisältö ladattu onnistuneesti",
+    "addMoreLinks": "Lisää linkkejä",
+    "coverRequired": "Kansikuva on pakollinen",
+    "descriptionPlaceholder": "Lyhyt kuvaus opetusmateriaalista",
+    "descriptionRequired": "Kuvaus ei voi olla tyhjä",
+    "descriptionTooLong": "Kuvaus ei saa ylittää 350 merkkiä",
+    "done": "Valmis",
+    "languagePlaceholder": "Valitse"
+  },
+  "forms": {
+    "browse": "Selaa",
+    "replace": "Korvaa"
+  },
+  "becomeTeacher": {
+    "globalReach": "Maailmanlaajuinen ulottuvuus",
+    "hostOwnCourse": "<0>Järjestä oma kurssisi</0>, verkossa tai henkilökohtaisesti",
+    "inspireLearners": "Inspiroidu opiskelijayhteisöstä",
+    "joinMission": "<0>Liity tehtävään</0> todellisena Bitcoin-kouluttajana",
+    "superiorAmount": ">{{amount}}",
+    "teachWhatYouLove": "<0>Opeta, mistä pidät</0>",
+    "title": "Opettakaa Bitcoinia ja inspiroida muita",
+    "bitcoinOnly": "Vain Bitcoin",
+    "bookCall": "Varaa 30 minuutin puhelu opettajaksi tulemiseksi",
+    "description": "Jos olet intohimoinen Bitcoin-käyttäjä, joka rakastaa opettamista ja haluat tehdä todellisen vaikutuksen paikallisyhteisöösi, voit järjestää oman kurssisi oppimisalustallamme.",
+    "enhanceExperience": "<0>Paranna opiskelijoidesi oppimiskokemusta</0> alustan työkaluilla",
+    "activeBitcoinLearners": "Aktiiviset Bitcoin-opiskelijat"
+  },
+  "mentor": {
+    "collapse": "Kutista",
+    "error": "Tapahtui virhe. Yritä uudelleen.",
+    "expand": "Laajenna",
+    "loginRequired": "Luo tili keskustellaksesi PlanBotin kanssa!",
+    "openChat": "Kysy PlanBotilta",
+    "placeholder": "Kysy kysymys...",
+    "reset": "Uusi keskustelu",
+    "sources": "Mene pidemmälle",
+    "thinking": "Ajattelen",
+    "title": "PlanBot",
+    "welcome": "Kysy minulta mitä tahansa Bitcoinista!",
+    "close": "Sulje"
   }
 }

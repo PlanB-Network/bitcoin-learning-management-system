@@ -100,7 +100,7 @@
     "signUp": "Regístrate"
   },
   "bCert": {
-    "bCertDescription": "El ₿-CERT es un examen reconocido internacionalmente para evaluar tu preparación sobre Bitcoin y sus temas derivados.\nObtén un puntaje mayor a 80% para ganar tu certificado ₿-CERT que te permitirá demostrar tus conocimientos en la industria de Bitcoin, dándote acceso a puestos de trabajo en la industria.",
+    "bCertDescription": "El ₿-CERT es un examen reconocido internacionalmente para evaluar tu preparación sobre Bitcoin y sus temas derivados.\nGana tu certificado ₿-CERT que te permitirá demostrar tus conocimientos en la industria de Bitcoin, dándote acceso a puestos de trabajo en la industria.",
     "bookExam": "Reserva una sesión de examen",
     "challengeYourself": "Desafíate a ti mismo y afirma tu nivel",
     "download": "Descargar certificado",
@@ -1181,7 +1181,8 @@
         "none": "Ninguno",
         "platformTitle": "¿Qué tipo de notificaciones te gustaría recibir en esta plataforma?",
         "settingsSaved": "¡Tus configuraciones se guardaron con éxito!",
-        "title": "Configuración de notificaciones"
+        "title": "Configuración de notificaciones",
+        "coursesEventsOption": "Actualizaciones sobre tus cursos y tus eventos"
       },
       "password": "Contraseña",
       "preview": "Vista previa",
@@ -1190,7 +1191,9 @@
       "saving": "Guardando…",
       "securitySettings": "Configuración de seguridad",
       "username": "Nombre de usuario",
-      "emailOrUsername": "Correo electrónico o nombre de usuario"
+      "emailOrUsername": "Correo electrónico o nombre de usuario",
+      "addEmail": "Agregar correo electrónico",
+      "verifyYourEmail": "Verifica tu correo electrónico"
     },
     "teacher": {
       "courses": {
@@ -1393,6 +1396,13 @@
         "lecture": "clases",
         "meetup": "reuniones",
         "workshop": "talleres"
+      },
+      "singular": {
+        "meetup": "Reunión",
+        "workshop": "Taller",
+        "conference": "Conferencia",
+        "exam": "Examen",
+        "lecture": "Clase"
       }
     }
   },
@@ -1403,7 +1413,8 @@
     "definition": "Definición",
     "relatedWords": "Palabras relacionadas:",
     "term": "Término",
-    "showMoreWords": "Mostrar más palabras"
+    "showMoreWords": "Mostrar más palabras",
+    "learnMore": "Aprende más"
   },
   "home": {
     "aboutUsSection": {
@@ -1606,7 +1617,27 @@
     "searchFilterName": "Buscar por nombre",
     "toggleLabelAll": "Todo",
     "toggleLabelSelectedLanguage": "Idioma seleccionado",
-    "pageSubtitleMovies": "<0>Otras películas</0> que pueden gustarte"
+    "pageSubtitleMovies": "<0>Otras películas</0> que pueden gustarte",
+    "papers": {
+      "accessPaper": "Acceder al papel",
+      "addPaper": "Añadir papel",
+      "citations": "Citas (.bib)",
+      "downloadCitations": "Descargar citas",
+      "papers": "Papeles",
+      "publisher": "Editor",
+      "showMorePapers": "Mostrar más papeles",
+      "title": "Papeles de investigación",
+      "types": {
+        "PhD Thesis": "Tesis Doctoral",
+        "academic": "Académico",
+        "journal": "Revista",
+        "pre-print": "Pre-impresión",
+        "thesis": "Tesis",
+        "whitepaper": "Libro blanco",
+        "book": "Libro",
+        "conference": "Conferencia"
+      }
+    }
   },
   "search": {
     "all": "Todos",
@@ -1912,7 +1943,11 @@
     "session": "Sesión",
     "syllabus": "Programa",
     "aboutUs": "Sobre nosotros",
-    "address": "Dirección"
+    "address": "Dirección",
+    "enroll": "Inscribirse",
+    "open": "Abrir",
+    "researchPaper": "Papel de investigación",
+    "downloads": "Descargar"
   },
   "youtubeChannels": {
     "view": "Ver Canal de Youtube",
@@ -1934,7 +1969,8 @@
   },
   "account": {
     "account": "Cuenta",
-    "myTeacherProfile": "Mi perfil de profesor"
+    "myTeacherProfile": "Mi perfil de profesor",
+    "profile": "Perfil"
   },
   "navbar": {
     "bookings": "Reservas",
@@ -1973,6 +2009,104 @@
   },
   "footer": {
     "FOSSOpenContent": "FOSS y contenido abierto",
-    "proudlyPartOf": "Orgullosamente parte de <0>Plan ₿ Network</0>"
+    "proudlyPartOf": "Orgullosamente parte de <0>Plan ₿ Network</0>",
+    "becomeATeacher": "Conviértete en un <0>Profesor</0>"
+  },
+  "educatorContent": {
+    "detail": {
+      "createdBy": "Creado por",
+      "downloadAll": "Descargar todo",
+      "view": "Ver"
+    },
+    "uploading": "Subiendo...",
+    "urlInvalid": "El enlace debe ser una URL válida",
+    "types": {
+      "flyer": "Volante",
+      "game": "Juego",
+      "sticker": "Pegatina",
+      "workshop": "Taller",
+      "art": "Arte",
+      "booklet": "Folleto",
+      "other": "Otro",
+      "presentation": "Presentaciones"
+    },
+    "uploadFiles": "Subir archivos",
+    "uploadForReview": "Subir para revisión",
+    "titleTooLong": "El título no puede exceder los 60 caracteres",
+    "dropCover": "Dejar la imagen de portada aquí",
+    "dropFiles": "Deja los archivos aquí",
+    "editAndRequireApproval": "Editar y requerir aprobación",
+    "editMaterial": "Editar contenido del educador",
+    "fileTooLarge": "Archivo demasiado grande (máx 50MB)",
+    "imageCover": "Imagen de portada",
+    "imageError": "Ocurrió un error mientras se subía la imagen",
+    "languageRequired": "Selecciona el idioma del recurso",
+    "loginMessage": "Por favor, inicia sesión para ver tu contenido.",
+    "myContent": "Mi contenido",
+    "noContent": "Aún no has subido ningún contenido.",
+    "noContentToReview": "No hay contenido para revisar",
+    "noCover": "No hay portada",
+    "noResultsDescription": "Intenta ajustar los filtros de tu búsqueda",
+    "onlyImages": "Solo se permiten archivos de imagen",
+    "resourceType": "Tipo de recurso",
+    "shareLinks": "Compartir enlaces",
+    "status": {
+      "draft": "Pendiente",
+      "published": "En vivo",
+      "rejected": "No aceptado",
+      "unpublished": "No publicado"
+    },
+    "success": "¡Contenido del educador añadido exitosamente!",
+    "successSubtitle": "Pasará por un proceso de revisión antes de ser mostrado.",
+    "successTitle": "Contenido del educador subido con éxito",
+    "titleHelper": "Debe reflejar el contenido y propósito de su recurso. Mantenlo conciso pero informativo.",
+    "titleRequired": "El título no puede estar vacío",
+    "typeRequired": "Especificar qué tipo de recurso es",
+    "addMaterial": "Agregar contenido del educador",
+    "addMoreLinks": "Añade más enlaces",
+    "browseFiles": "o buscar archivos",
+    "browseImages": "o buscar imágenes",
+    "contentNotFound": "Contenido no encontrado",
+    "coverRequired": "La imagen de portada es obligatoria",
+    "currentCoverPresent": "Portada actual presente",
+    "descriptionHelper": "Describe el contenido del recurso para ayudar a otros a entenderlo y encontrarlo",
+    "descriptionPlaceholder": "Breve descripción del material educativo",
+    "descriptionRequired": "La descripción no puede estar vacía",
+    "descriptionTooLong": "La descripción no puede exceder los 350 caracteres",
+    "noResultsTitle": "No se encontró contenido del educador",
+    "done": "Hecho",
+    "languagePlaceholder": "Seleccionar"
+  },
+  "mentor": {
+    "collapse": "Colapsar",
+    "error": "Ocurrió un error. Por favor, inténtalo de nuevo.",
+    "expand": "Expandir",
+    "loginRequired": "¡Crea una cuenta para chatear con PlanBot!",
+    "openChat": "Pregunta a PlanBot",
+    "placeholder": "Haz una pregunta...",
+    "reset": "Nueva conversación",
+    "welcome": "¡Pregúntame cualquier cosa sobre Bitcoin!",
+    "sources": "Ir más allá",
+    "thinking": "Pensando",
+    "title": "PlanBot",
+    "close": "Cerrar"
+  },
+  "becomeTeacher": {
+    "activeBitcoinLearners": "Aprendices activos de Bitcoin",
+    "bitcoinOnly": "Solo Bitcoin",
+    "bookCall": "Reserva una llamada de 30 minutos para convertirte en profesor",
+    "description": "Si eres un apasionado de Bitcoin que ama enseñar y quieres tener un verdadero impacto en tu comunidad local, puedes presentar tu propio curso en nuestra plataforma de aprendizaje.",
+    "enhanceExperience": "<0>Mejora la experiencia de aprendizaje de tus alumnos</0> con las herramientas de la plataforma",
+    "globalReach": "Alcance global",
+    "hostOwnCourse": "<0>Organiza tu propio curso</0>, en línea o en persona",
+    "inspireLearners": "Inspira a una comunidad de aprendices",
+    "joinMission": "<0>Únete a la misión</0> como un verdadero educador de Bitcoin",
+    "superiorAmount": ">{{amount}}",
+    "teachWhatYouLove": "<0>Enseña lo que amas</0>",
+    "title": "Enseña Bitcoin e inspira a otros"
+  },
+  "forms": {
+    "browse": "Explorar",
+    "replace": "Reemplazar"
   }
 }

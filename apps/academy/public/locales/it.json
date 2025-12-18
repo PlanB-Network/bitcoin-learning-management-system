@@ -100,7 +100,7 @@
     "signUp": "Registrati"
   },
   "bCert": {
-    "bCertDescription": "Il ₿-CERT è il test finale creato per valutare il livello di conoscenze su Bitcoin e gli argomenti correlati. Se superi l'80% di risposte esatte, otterrai un certificato ₿-CERT che può provare le tue conoscenze nell'industria Bitcoin, aprendo le porte a varie opportunità di lavoro nel campo.",
+    "bCertDescription": "Il ₿-CERT è il test finale creato per valutare il livello di conoscenze su Bitcoin e gli argomenti correlati. Ottieni un certificato ₿-CERT dai sfoggio delle tue conoscenze nell'industria Bitcoin, aprendo le porte a varie opportunità di lavoro nel campo.",
     "bookExam": "Prenota una sessione di test",
     "challengeYourself": "Sfida te stesso e dimostra il tuo livello",
     "download": "Scarica il certificato",
@@ -2035,7 +2035,6 @@
     "noResultsDescription": "Prova a regolare i tuoi filtri di ricerca",
     "noResultsTitle": "Nessun contenuto didattico trovato",
     "onlyImages": "Sono consentiti solo file immagine",
-    "resourceDetails": "Dettagli della risorsa",
     "resourceType": "Tipo di risorsa",
     "shareLinks": "Condividi collegamenti",
     "status": {
@@ -2075,7 +2074,8 @@
     "descriptionPlaceholder": "Breve descrizione del materiale didattico",
     "fileTooLarge": "File troppo grande (max 50MB)",
     "done": "Completato",
-    "languagePlaceholder": "Seleziona"
+    "languagePlaceholder": "Seleziona",
+    "urlInvalid": "Il link deve essere un URL valido"
   },
   "mentor": {
     "collapse": "Comprimi",

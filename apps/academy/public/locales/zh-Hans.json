@@ -100,7 +100,7 @@
     "signUp": "注册"
   },
   "bCert": {
-    "bCertDescription": "₿-CERT是一项国际认证的考试，用于评估您对比特币及其衍生主题的了解程度。如果您的得分大于80%，您会获得₿-CERT证书，它将使您能够在比特币行业中证明自己的技能和知识，是进入该行业公司和职位的准入证。",
+    "bCertDescription": "₿-CERT是一项国际认证的考试，用于评估您对比特币及其衍生主题的了解程度。您会获得₿-CERT证书，它将使您能够在比特币行业中证明自己的技能和知识，是进入该行业公司和职位的准入证。",
     "bookExam": "预约考试时间",
     "challengeYourself": "让我们挑战自己并证明您的水平！",
     "download": "下载证书",
@@ -1181,7 +1181,8 @@
         "none": "无",
         "platformTitle": "您希望在此平台上接收哪些类型的通知？",
         "settingsSaved": "已成功保存您的设置！",
-        "title": "通知设置"
+        "title": "通知设置",
+        "coursesEventsOption": "关于您的课程和活动的更新"
       },
       "password": "密码",
       "preview": "预览",
@@ -1190,7 +1191,9 @@
       "saving": "保存中…",
       "securitySettings": "安全设置",
       "username": "用户名",
-      "emailOrUsername": "电子邮件或用户名"
+      "emailOrUsername": "电子邮件或用户名",
+      "addEmail": "添加电子邮件",
+      "verifyYourEmail": "验证您的电子邮件"
     },
     "teacher": {
       "courses": {
@@ -1393,6 +1396,13 @@
         "lecture": "讲课",
         "meetup": "聚会",
         "workshop": "工作坊"
+      },
+      "singular": {
+        "meetup": "聚会",
+        "workshop": "工作坊",
+        "conference": "大会",
+        "exam": "考试",
+        "lecture": "讲课"
       }
     }
   },
@@ -1403,7 +1413,8 @@
     "definition": "定义",
     "relatedWords": "相关词汇：",
     "term": "术语",
-    "showMoreWords": "加载更多单词"
+    "showMoreWords": "加载更多单词",
+    "learnMore": "进一步学习"
   },
   "home": {
     "aboutUsSection": {
@@ -1606,7 +1617,27 @@
     "searchFilterName": "按照名称搜索",
     "toggleLabelAll": "所有",
     "toggleLabelSelectedLanguage": "所选语言",
-    "pageSubtitleMovies": "<0>你可能会喜欢的其他电影</0>"
+    "pageSubtitleMovies": "<0>你可能会喜欢的其他电影</0>",
+    "papers": {
+      "addPaper": "添加论文",
+      "accessPaper": "获取论文",
+      "citations": "引文（.bib）",
+      "downloadCitations": "下载引文",
+      "papers": "论文",
+      "publisher": "出版商",
+      "showMorePapers": "显示更多论文",
+      "types": {
+        "journal": "期刊",
+        "whitepaper": "白皮书",
+        "PhD Thesis": "博士论文",
+        "academic": "学术",
+        "pre-print": "预印本",
+        "thesis": "论文",
+        "book": "书籍",
+        "conference": "大会"
+      },
+      "title": "研究论文"
+    }
   },
   "search": {
     "all": "所有",
@@ -1912,7 +1943,11 @@
     "optional": "可选",
     "planBNetwork": "Plan ₿ 网络",
     "session": "会议",
-    "syllabus": "教学大纲"
+    "syllabus": "教学大纲",
+    "researchPaper": "研究论文",
+    "open": "打开",
+    "enroll": "报名",
+    "downloads": "下载"
   },
   "youtubeChannels": {
     "view": "查看YouTube频道",
@@ -1969,10 +2004,109 @@
   },
   "account": {
     "account": "账户",
-    "myTeacherProfile": "我的教师简介"
+    "myTeacherProfile": "我的教师简介",
+    "profile": "个人资料"
   },
   "footer": {
     "FOSSOpenContent": "自由软件与开放内容",
-    "proudlyPartOf": "自豪地成为 <0>Plan ₿ 网络</0>的一部分"
+    "proudlyPartOf": "自豪地成为 <0>Plan ₿ 网络</0>的一部分",
+    "becomeATeacher": "成为一名<0>教师</0>"
+  },
+  "becomeTeacher": {
+    "activeBitcoinLearners": "积极学习比特币的人",
+    "bitcoinOnly": "仅限比特币",
+    "bookCall": "预约30分钟通话，成为一名教师",
+    "description": "如果你是对教学充满热情的比特币爱好者，并想在你的地方社区产生真正的影响，你可以在我们的学习平台上开设你自己的课程。",
+    "enhanceExperience": "用平台工具<0>提升你的学生的学习体验</0>",
+    "globalReach": "全球覆盖",
+    "hostOwnCourse": "<0>开设你自己的课程</0>，线上或线下",
+    "inspireLearners": "激发学习者社区",
+    "joinMission": "作为一名真正的比特币教育者<0>加入这个任务</0>",
+    "superiorAmount": ">{{amount}}",
+    "teachWhatYouLove": "<0>教授你所热爱的</0>",
+    "title": "教授比特币并激励他人"
+  },
+  "educatorContent": {
+    "addMoreLinks": "添加更多链接",
+    "coverRequired": "封面图片是必需的",
+    "descriptionTooLong": "描述不能超过350个字符",
+    "status": {
+      "draft": "待处理",
+      "published": "直播",
+      "rejected": "未接受",
+      "unpublished": "未发布"
+    },
+    "urlInvalid": "链接必须是有效的URL",
+    "addMaterial": "添加教育者内容",
+    "browseFiles": "或浏览文件",
+    "resourceType": "资源类型",
+    "contentNotFound": "找不到内容",
+    "descriptionRequired": "描述不能为空",
+    "detail": {
+      "createdBy": "创建者",
+      "downloadAll": "下载全部",
+      "view": "视图"
+    },
+    "browseImages": "或浏览图片",
+    "currentCoverPresent": "当前封面呈现",
+    "descriptionHelper": "描述资源内容以帮助他人理解其含义并找到它",
+    "descriptionPlaceholder": "教育材料的简要描述",
+    "dropCover": "在此处放置封面图像",
+    "dropFiles": "在此处放置文件",
+    "editAndRequireApproval": "编辑并需要审批",
+    "editMaterial": "编辑教育者内容",
+    "fileTooLarge": "文件过大（最大50MB）",
+    "imageCover": "封面图片",
+    "languageRequired": "选择资源语言",
+    "loginMessage": "请登录以查看您的内容。",
+    "myContent": "我的内容",
+    "noContent": "您还没有上传任何内容。",
+    "noContentToReview": "无内容可审查",
+    "noCover": "无封面",
+    "noResultsDescription": "尝试调整您的搜索过滤器",
+    "noResultsTitle": "找不到教育者的内容",
+    "success": "教育者的内容已成功添加！",
+    "successSubtitle": "在显示之前，它将经过审查过程。",
+    "successTitle": "教育者的内容已成功上传",
+    "titleTooLong": "标题不能超过60个字符",
+    "imageError": "上传图片时发生错误",
+    "onlyImages": "只允许图像文件",
+    "shareLinks": "分享链接",
+    "titleHelper": "它应反映你的资源的内容和目的。保持简洁但信息丰富。",
+    "titleRequired": "标题不能为空",
+    "typeRequired": "指定资源的类型",
+    "types": {
+      "art": "艺术",
+      "booklet": "小册子",
+      "flyer": "传单",
+      "game": "游戏",
+      "sticker": "贴纸",
+      "workshop": "工作坊",
+      "other": "其他",
+      "presentation": "演示文稿"
+    },
+    "uploadFiles": "上传文件",
+    "uploadForReview": "上传以供回顾",
+    "uploading": "上传中...",
+    "done": "完毕",
+    "languagePlaceholder": "选择"
+  },
+  "mentor": {
+    "collapse": "折叠",
+    "error": "发生错误。 请再试一次。",
+    "expand": "展开",
+    "loginRequired": "创建一个帐户以与PlanBot聊天！",
+    "openChat": "问PlanBot",
+    "placeholder": "提问…",
+    "reset": "新的对话",
+    "sources": "走得更远",
+    "thinking": "思考中",
+    "title": "计划Bot",
+    "welcome": "关于比特币，问我任何问题！",
+    "close": "关闭"
+  },
+  "forms": {
+    "browse": "浏览",
+    "replace": "替换"
   }
 }
