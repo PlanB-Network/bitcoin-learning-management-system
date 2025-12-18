@@ -634,6 +634,7 @@ export const contentProjects = content.table('projects', (t) => ({
 
   // Links
   websiteUrl: t.text(),
+  linkedinUrl: t.text(),
 }));
 
 export const contentProjectsLocalized = content.table(
