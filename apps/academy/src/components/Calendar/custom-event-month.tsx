@@ -1,6 +1,6 @@
-import { format } from 'date-fns';
 import { useState } from 'react';
 import type { EventProps } from 'react-big-calendar';
+import { formatTime } from '#src/utils/date.ts';
 
 import type { CalendarEvent } from './calendar-event.ts';
 
@@ -37,7 +37,7 @@ export const CustomEventMonth = ({ event }: CustomEventProps) => {
       <div
         className={`flex flex-row text-sm pl-1 ${isSelected ? 'order-1' : 'order-2'}`}
       >
-        {`${format(event.start, 'h:mm a')} - ${format(event.end, 'h:mm a')}`}
+        {`${formatTime(event.start)} - ${formatTime(event.end)}`}
       </div>
       <div className="font-semibold text-sm whitespace-normal w-full">
         {event.title}

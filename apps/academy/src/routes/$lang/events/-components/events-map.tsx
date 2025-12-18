@@ -29,6 +29,7 @@ import { capitalize } from 'lodash-es';
 import { useEffect, useState } from 'react';
 import type { View as CalendarView, Components } from 'react-big-calendar';
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
+import { useTranslation } from 'react-i18next';
 import type { IconType } from 'react-icons/lib';
 import {
   TbCertificate2,
@@ -241,6 +242,7 @@ const EventsMap = ({
   const [mode, setMode] = useState<DisplayMode>(
     showMap ? DisplayMode.Map : DisplayMode.Calendar,
   );
+  const { i18n } = useTranslation();
   // const [isShareModalOpen, setShareModalOpen] = useState(false);
   // const [shareUrl, setShareUrl] = useState('');
 
@@ -526,39 +528,70 @@ const EventsMap = ({
   };
 
   const handleRangeChange = (range: Date[] | { start: Date; end: Date }) => {
+    const locale = i18n.language || 'en-US';
     if (Array.isArray(range)) {
-      const start = format(range[0], 'd');
-      const end = format(range[range.length - 1], 'd');
-      const monthStart = format(range[0], 'MMMM');
-      const monthEnd = format(range[range.length - 1], 'MMMM');
+      const startDay = new Intl.DateTimeFormat(locale, {
+        day: 'numeric',
+      }).format(range[0]);
+      const endDay = new Intl.DateTimeFormat(locale, { day: 'numeric' }).format(
+        range[range.length - 1],
+      );
+      const monthStart = new Intl.DateTimeFormat(locale, {
+        month: 'long',
+      }).format(range[0]);
+      const monthEnd = new Intl.DateTimeFormat(locale, {
+        month: 'long',
+      }).format(range[range.length - 1]);
+
       if (monthStart === monthEnd) {
-        setDateRange(`${monthStart} ${start} - ${end}`);
+        setDateRange(`${monthStart} ${startDay} - ${endDay}`);
       } else {
-        setDateRange(`${monthStart} ${start} - ${monthEnd} ${end}`);
+        setDateRange(`${monthStart} ${startDay} - ${monthEnd} ${endDay}`);
       }
     } else {
-      setDateRange(format(range.start, 'MMMM yyyy'));
+      setDateRange(
+        new Intl.DateTimeFormat(locale, {
+          month: 'long',
+          year: 'numeric',
+        }).format(range.start),
+      );
     }
   };
 
   useEffect(() => {
+    const locale = i18n.language || 'en-US';
     if (calendarView === 'month') {
-      setDateRange(format(calendarDate, 'MMMM yyyy'));
+      setDateRange(
+        new Intl.DateTimeFormat(locale, {
+          month: 'long',
+          year: 'numeric',
+        }).format(calendarDate),
+      );
     } else if (calendarView === 'week') {
       const weekStart = startOfWeek(calendarDate, { locale: fr });
       const weekEnd = new Date(weekStart);
       weekEnd.setDate(weekEnd.getDate() + 6);
-      const start = format(weekStart, 'd');
-      const end = format(weekEnd, 'd');
-      const monthStart = format(weekStart, 'MMMM');
-      const monthEnd = format(weekEnd, 'MMMM');
+
+      const startDay = new Intl.DateTimeFormat(locale, {
+        day: 'numeric',
+      }).format(weekStart);
+      const endDay = new Intl.DateTimeFormat(locale, { day: 'numeric' }).format(
+        weekEnd,
+      );
+      const monthStart = new Intl.DateTimeFormat(locale, {
+        month: 'long',
+      }).format(weekStart);
+      const monthEnd = new Intl.DateTimeFormat(locale, {
+        month: 'long',
+      }).format(weekEnd);
+
       if (monthStart === monthEnd) {
-        setDateRange(`${monthStart} ${start} - ${end}`);
+        setDateRange(`${monthStart} ${startDay} - ${endDay}`);
       } else {
-        setDateRange(`${monthStart} ${start} - ${monthEnd} ${end}`);
+        setDateRange(`${monthStart} ${startDay} - ${monthEnd} ${endDay}`);
       }
     }
-  }, [calendarView, calendarDate]);
+  }, [calendarView, calendarDate, i18n.language]);
 
   return (
     <div

@@ -68,7 +68,7 @@ function Syllabus() {
           <CourseAnnouncements courseId={course.id} />
 
           {containsChapterStartDate ? (
-            <div className="flex flex-col gap-6 mt-6 text-xl course-overview">
+            <div className="flex flex-col gap-6 mt-6 course-overview">
               <h3 className="subtitle-large-med-20px text-neutral-1000">
                 {t('dashboard.course.courseCalendar')}
               </h3>

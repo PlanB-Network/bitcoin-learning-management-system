@@ -1,9 +1,11 @@
 import { cn } from '@blms/ui';
+import { startOfWeek } from 'date-fns';
 import type { Messages, ToolbarProps, View } from 'react-big-calendar';
+import { useTranslation } from 'react-i18next';
 import { formatDateRange } from '#src/utils/date.ts';
 import type { CalendarEvent } from './calendar-event.ts';
 
-const formatAgendaLabel = (label: string): string => {
+const formatAgendaLabel = (label: string, locale: string): string => {
   try {
     const [startDateStr, endDateStr] = label.split(' – ');
 
@@ -14,7 +16,7 @@ const formatAgendaLabel = (label: string): string => {
     const startDate = new Date(startDateStr);
     const endDate = new Date(endDateStr);
 
-    return formatDateRange(startDate, endDate);
+    return formatDateRange(startDate, endDate, undefined, locale);
   } catch (error) {
     console.error('Error formatting agenda label:', error);
     return label;
@@ -38,8 +40,9 @@ function ViewNamesGroup({
     return (
       <button
         className={cn(
+          'flex items-center justify-center !h-10 px-4 whitespace-nowrap',
           name === 'week'
-            ? '!hidden md:!inline'
+            ? '!hidden md:!inline-flex'
             : name === 'month'
               ? '!rounded-l-sm md:!rounded-none'
               : '',
@@ -47,7 +50,6 @@ function ViewNamesGroup({
         )}
         type="button"
         key={name}
-        // className={clsx({ 'rbc-active': view === name })}
         onClick={() => onView(name)}
       >
         {messages[name]}
@@ -63,8 +65,25 @@ export default function CustomToolbar({
   onView,
   view,
   views,
+  date,
 }: ToolbarProps<CalendarEvent, object>) {
-  const displayLabel = view === 'agenda' ? formatAgendaLabel(label) : label;
+  const { i18n } = useTranslation();
+  const locale = i18n.language || 'en-US';
+
+  let displayLabel = label;
+  if (view === 'agenda') {
+    displayLabel = formatAgendaLabel(label, locale);
+  } else if (view === 'month') {
+    displayLabel = new Intl.DateTimeFormat(locale, {
+      month: 'long',
+      year: 'numeric',
+    }).format(date);
+  } else if (view === 'week') {
+    const weekStart = startOfWeek(date, { weekStartsOn: 1 });
+    const weekEnd = new Date(weekStart);
+    weekEnd.setDate(weekEnd.getDate() + 6);
+    displayLabel = formatDateRange(weekStart, weekEnd, undefined, locale);
+  }
 
   return (
     <div className="rbc-toolbar max-md:px-1">
@@ -73,6 +92,7 @@ export default function CustomToolbar({
         <span className="rbc-btn-group examples--custom-toolbar">
           <button
             type="button"
+            className="flex items-center justify-center !h-10 px-3"
             onClick={() => onNavigate('PREV')}
             aria-label={messages.previous!.toString()}
           >
@@ -80,6 +100,7 @@ export default function CustomToolbar({
           </button>
           <button
             type="button"
+            className="flex items-center justify-center !h-10 px-4 whitespace-nowrap"
             onClick={() => onNavigate('TODAY')}
             aria-label={messages.today!.toString()}
           >
@@ -87,6 +108,7 @@ export default function CustomToolbar({
           </button>
           <button
             type="button"
+            className="flex items-center justify-center !h-10 px-3"
             onClick={() => onNavigate('NEXT')}
             aria-label={messages.next!.toString()}
           >
