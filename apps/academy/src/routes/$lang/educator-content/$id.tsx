@@ -91,7 +91,7 @@ function EducatorContentDetail() {
     link.click();
     document.body.removeChild(link);
     // Then open in a new tab
-    window.open(url, '_blank');
+    // window.open(url, '_blank');
   };
 
   const sortedLinks = item?.links?.sort((a, b) =>

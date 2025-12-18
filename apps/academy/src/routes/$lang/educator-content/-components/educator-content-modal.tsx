@@ -532,11 +532,15 @@ export const EducatorContentModal = ({
                       />
                     </SelectTrigger>
                     <SelectContent>
-                      {LANGUAGES.map((lang) => (
-                        <SelectItem key={lang} value={lang}>
-                          {getLanguageName(lang)}
-                        </SelectItem>
-                      ))}
+                      {[...LANGUAGES]
+                        .sort((a, b) =>
+                          getLanguageName(a).localeCompare(getLanguageName(b)),
+                        )
+                        .map((lang) => (
+                          <SelectItem key={lang} value={lang}>
+                            {getLanguageName(lang)}
+                          </SelectItem>
+                        ))}
                     </SelectContent>
                   </Select>
                   {fieldState.invalid && (
