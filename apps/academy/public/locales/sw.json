@@ -100,7 +100,7 @@
     "signUp": "Jisajili"
   },
   "bCert": {
-    "bCertDescription": "₿-CERT ni mtihani wa mwisho wa Bitcoin uliobuniwa kutathmini ufahamu wako wa Bitcoin na mada zinazohusiana. Ikiwa utapata alama zaidi ya 80%, utapata cheti cha ₿-CERT ambacho kinaweza kuthibitisha ujuzi wako katika sekta ya Bitcoin, kufungua milango kwa nafasi mbalimbali za kazi katika uwanja huo.",
+    "bCertDescription": "₿-CERT ni mtihani wa mwisho wa Bitcoin ulioundwa ili kupima maarifa yako kuhusu Bitcoin na mada zinazohusiana nayo.\n\nPata cheti chako cha ₿-CERT na uthibitishe ujuzi wako katika tasnia ya Bitcoin, ukifungua milango kwa nafasi za kazi katika uwanja huo.",
     "bookExam": "Hifadhi kikao cha mtihani",
     "challengeYourself": "Jitahidi na upime kiwango chako",
     "download": "Pakua cheti",
@@ -1181,7 +1181,8 @@
         "none": "Hakuna",
         "platformTitle": "Ni aina gani za arifa ungetaka kupokea kwenye jukwaa hili?",
         "settingsSaved": "Mipangilio yako imehifadhiwa kwa mafanikio!",
-        "title": "Mipangilio ya arifa"
+        "title": "Mipangilio ya arifa",
+        "coursesEventsOption": "Sasisho kuhusu kozi zako na matukio yako"
       },
       "password": "Nenosiri",
       "preview": "Hakiki",
@@ -1190,7 +1191,9 @@
       "saving": "Inahifadhi…",
       "securitySettings": "Mipangilio ya usalama",
       "username": "Jina la mtumiaji",
-      "emailOrUsername": "Barua pepe au jina la mtumiaji"
+      "emailOrUsername": "Barua pepe au jina la mtumiaji",
+      "addEmail": "Ongeza barua pepe",
+      "verifyYourEmail": "Thibitisha barua pepe yako"
     },
     "teacher": {
       "courses": {
@@ -1393,6 +1396,13 @@
         "lecture": "mihadhara",
         "meetup": "mikutano",
         "workshop": "warsha za kazi"
+      },
+      "singular": {
+        "meetup": "Mkutano",
+        "workshop": "Warsha",
+        "conference": "Mkutano",
+        "exam": "Mtihani",
+        "lecture": "Mhadhara"
       }
     }
   },
@@ -1403,7 +1413,8 @@
     "definition": "Ufafanuzi",
     "relatedWords": "Maneno yanayohusiana:",
     "term": "Neno",
-    "showMoreWords": "Onyesha maneno zaidi"
+    "showMoreWords": "Onyesha maneno zaidi",
+    "learnMore": "Jifunze zaidi"
   },
   "home": {
     "aboutUsSection": {
@@ -1606,7 +1617,27 @@
     "searchFilterName": "Tafuta kwa jina",
     "toggleLabelAll": "Zote",
     "toggleLabelSelectedLanguage": "Lugha iliyochaguliwa",
-    "pageSubtitleMovies": "<0>Filamu nyingine</0> unaweza kupenda"
+    "pageSubtitleMovies": "<0>Filamu nyingine</0> unaweza kupenda",
+    "papers": {
+      "accessPaper": "Fikia karatasi",
+      "addPaper": "Ongeza karatasi",
+      "citations": "Marejeleo (.bib)",
+      "downloadCitations": "Pakua marejeleo",
+      "title": "Makaratasi ya Utafiti",
+      "types": {
+        "PhD Thesis": "Thesis ya PhD",
+        "academic": "Kielimu",
+        "journal": "Jarida",
+        "pre-print": "Makala ya awali",
+        "thesis": "Thesis",
+        "whitepaper": "Mkataba mweupe",
+        "book": "Kitabu",
+        "conference": "Mkutano"
+      },
+      "papers": "Makaratasi",
+      "publisher": "Mchapishaji",
+      "showMorePapers": "Onyesha makaratasi zaidi"
+    }
   },
   "search": {
     "all": "Zote",
@@ -1912,7 +1943,11 @@
     "confirmation": "Uthibitisho",
     "optional": "Hiari",
     "session": "Kikao",
-    "syllabus": "Mtaala"
+    "syllabus": "Mtaala",
+    "downloads": "Vipakuli",
+    "open": "Fungua",
+    "researchPaper": "Karatasi ya Utafiti",
+    "enroll": "Jisajili"
   },
   "youtubeChannels": {
     "view": "Tazama Channel ya Youtube",
@@ -1920,7 +1955,8 @@
   },
   "account": {
     "account": "KICHWA: Sehemu ya akaunti",
-    "myTeacherProfile": "Wasifu wangu wa ualimu"
+    "myTeacherProfile": "Wasifu wangu wa ualimu",
+    "profile": "Profaili"
   },
   "months": {
     "april": "Aprili",
@@ -1973,6 +2009,104 @@
   },
   "footer": {
     "FOSSOpenContent": "FOSS & Maudhui Wazi",
-    "proudlyPartOf": "Kwa fahari sehemu ya <0>Mtandao wa Mpango ₿</0>"
+    "proudlyPartOf": "Kwa fahari sehemu ya <0>Mtandao wa Mpango ₿</0>",
+    "becomeATeacher": "Kuwa <0>Mwalimu</0>"
+  },
+  "becomeTeacher": {
+    "bitcoinOnly": "Bitcoin-pekee",
+    "bookCall": "Weka wito wa dakika 30 kuwa mwalimu",
+    "description": "Ikiwa wewe ni mtumiaji wa Bitcoin anayependa kufundisha na unataka kuwa na athari halisi katika jamii yako ya ndani, unaweza kuandaa kozi yako mwenyewe kwenye jukwaa letu la kujifunza.",
+    "enhanceExperience": "<0>Boresha uzoefu wa kujifunza kwa wanafunzi wako</0> na zana za jukwaa",
+    "globalReach": "Mkono wa kimataifa",
+    "hostOwnCourse": "<0>Andaa kozi yako mwenyewe</0>, mtandaoni au uso kwa uso",
+    "inspireLearners": "Hamasa jamii ya wanafunzi",
+    "joinMission": "<0>Jiunge na ujumbe</0> kama mwalimu halisi wa Bitcoin",
+    "superiorAmount": ">{{amount}}",
+    "teachWhatYouLove": "<0>Fundisha unachokipenda</0>",
+    "title": "Fundisha Bitcoin na hamasisha wengine",
+    "activeBitcoinLearners": "Wanafunzi hai wa Bitcoin"
+  },
+  "educatorContent": {
+    "urlInvalid": "Kiungo lazima kuwe URL halali",
+    "uploading": "Inapakia...",
+    "addMaterial": "Ongeza maudhui ya mwalimu",
+    "dropCover": "Tupa picha ya kava hapa",
+    "dropFiles": "Tupa faili hapa",
+    "editMaterial": "Hariri maudhui ya mwalimu",
+    "fileTooLarge": "Faili kubwa mno (kiwango cha juu 50MB)",
+    "imageCover": "Picha ya Jalada",
+    "addMoreLinks": "Ongeza viungo zaidi",
+    "browseFiles": "au vinjari faili",
+    "browseImages": "au vinjari picha",
+    "coverRequired": "Picha ya jalada ni lazima",
+    "currentCoverPresent": "Kava la sasa lipo",
+    "descriptionPlaceholder": "Maelezo mafupi ya nyenzo za kielimu",
+    "descriptionTooLong": "Maelezo hayawezi kuzidi herufi 350",
+    "imageError": "Kosa limetokea wakati wa kupakia picha",
+    "loginMessage": "Tafadhali ingia kwenye akaunti yako kuona maudhui yako.",
+    "myContent": "Yaliyomo yangu",
+    "noContent": "Bado hujapakia maudhui yoyote.",
+    "noContentToReview": "Hakuna maudhui ya kupitiwa",
+    "noResultsTitle": "Hakuna yaliyomo ya mwalimu yalipatikana",
+    "shareLinks": "Shiriki Viungo",
+    "status": {
+      "draft": "Inasubiri",
+      "published": "Haija",
+      "rejected": "Haikubaliwa",
+      "unpublished": "Haijachapishwa"
+    },
+    "contentNotFound": "Hakuna Maudhui yalipatikana",
+    "descriptionHelper": "Elezea maudhui ya rasilimali kusaidia wengine kuelewa maudhui yake na kuipata",
+    "descriptionRequired": "Maelezo hayawezi kuwa matupu",
+    "detail": {
+      "createdBy": "Imeundwa na",
+      "downloadAll": "Pakua zote",
+      "view": "Angalia"
+    },
+    "resourceType": "Aina ya Rasilimali",
+    "titleTooLong": "Kichwa hakiwezi kuzidi herufi 60",
+    "editAndRequireApproval": "Hariri na hitaji idhini",
+    "languageRequired": "Chagua lugha ya rasilimali",
+    "noCover": "Hakuna Jalada",
+    "noResultsDescription": "Jaribu kurekebisha vigezo vyako vya kutafuta",
+    "onlyImages": "Ruhusiwa faili za picha tu",
+    "success": "Yaliyomo mwalimu yameongezwa kikamilifu!",
+    "successSubtitle": "Itapitia mchakato wa ukaguzi kabla ya kuonyeshwa.",
+    "successTitle": "Yaliyomo mwalimu yamepakiwa kikamilifu",
+    "titleHelper": "Inapaswa kuakisi yaliyomo na kusudi la rasilimali yako. Keep it concise but informative.",
+    "titleRequired": "Jina la kichwa haliwezi kuwa tupu",
+    "typeRequired": "Eleza ni aina gani ya rasilimali hii",
+    "types": {
+      "art": "Sanaa",
+      "booklet": "Kitabu kidogo",
+      "flyer": "Karatasia",
+      "game": "Mchezo",
+      "presentation": "Maonyesho",
+      "sticker": "Stika",
+      "workshop": "Warsha",
+      "other": "Nyingine"
+    },
+    "uploadFiles": "Pakia Faili",
+    "uploadForReview": "Pakia kwa ukaguzi",
+    "done": "Imekamilika",
+    "languagePlaceholder": "Chagua"
+  },
+  "forms": {
+    "browse": "Vinjari",
+    "replace": "Badilisha"
+  },
+  "mentor": {
+    "reset": "Mazungumzo mapya",
+    "sources": "Endelea mbele",
+    "thinking": "Fikiria",
+    "title": "PlanBot",
+    "welcome": "Uliza chochote kuhusu Bitcoin!",
+    "collapse": "Fumba",
+    "error": "Hitilafu imetokea. Tafadhali jaribu tena.",
+    "expand": "Panua",
+    "loginRequired": "Fungua akaunti kuzungumza na PlanBot!",
+    "openChat": "Muulize PlanBot",
+    "placeholder": "Uliza swali...",
+    "close": "Funga"
   }
 }

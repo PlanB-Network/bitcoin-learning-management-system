@@ -1181,7 +1181,8 @@
         "none": "هیچ کدام",
         "platformTitle": "شما چه نوع اعلاناتی را می خواهید در این پلتفرم دریافت کنید؟",
         "settingsSaved": "تنظیمات شما با موفقیت ذخیره شدند!",
-        "title": "تنظیمات بخش اعلانات"
+        "title": "تنظیمات بخش اعلانات",
+        "coursesEventsOption": "به روزرسانی درباره دوره های شما و رویدادهایتان"
       },
       "password": "رمز عبور",
       "preview": "پیش نمایش",
@@ -1190,7 +1191,9 @@
       "saving": "در حال ذخیره‌سازی …",
       "securitySettings": "تنظیمات بخش امنیتی",
       "username": "نام کاربری",
-      "emailOrUsername": "ایمیل یا نام کاربری"
+      "emailOrUsername": "ایمیل یا نام کاربری",
+      "addEmail": "افزودن ایمیل",
+      "verifyYourEmail": "ایمیل خود را تأیید کنید"
     },
     "teacher": {
       "courses": {
@@ -1393,6 +1396,13 @@
         "lecture": "سخنرانی‌ها",
         "meetup": "ملاقات‌ها",
         "workshop": "ورکشاپ‌ها"
+      },
+      "singular": {
+        "meetup": "ملاقات",
+        "workshop": "کارگاه",
+        "conference": "کنفرانس",
+        "exam": "امتحان",
+        "lecture": "سخنرانی"
       }
     }
   },
@@ -1403,7 +1413,8 @@
     "definition": "تعریف",
     "relatedWords": "کلمات مرتبط:",
     "term": "مدت",
-    "showMoreWords": "نمایش بیشتر کلمات"
+    "showMoreWords": "نمایش بیشتر کلمات",
+    "learnMore": "بیشتر بیاموزید"
   },
   "home": {
     "aboutUsSection": {
@@ -1606,7 +1617,27 @@
     "searchFilterName": "جستجو بر اساس نام",
     "toggleLabelAll": "همه",
     "toggleLabelSelectedLanguage": "زبان انتخاب شده",
-    "pageSubtitleMovies": "<0>فیلم های دیگری</0> که ممکن است دوست داشته باشید"
+    "pageSubtitleMovies": "<0>فیلم های دیگری</0> که ممکن است دوست داشته باشید",
+    "papers": {
+      "accessPaper": "دسترسی به مقاله",
+      "addPaper": "اضافه کردن مقاله",
+      "citations": "مراجع (.bib)",
+      "downloadCitations": "دانلود مراجع",
+      "publisher": "ناشر",
+      "showMorePapers": "نمایش مقالات بیشتر",
+      "title": "مقالات تحقیقاتی",
+      "types": {
+        "PhD Thesis": "پایان نامه دکترا",
+        "academic": "آکادمیک",
+        "journal": "مجله",
+        "pre-print": "پیش چاپ",
+        "thesis": "پایان نامه",
+        "whitepaper": "سفیدکاغذ",
+        "book": "کتاب",
+        "conference": "کنفرانس"
+      },
+      "papers": "مقالات"
+    }
   },
   "search": {
     "all": "همه",
@@ -1912,7 +1943,11 @@
     "list": "لیست",
     "optional": "اختیاری",
     "session": "جلسه",
-    "syllabus": "سرفصل"
+    "syllabus": "سرفصل",
+    "downloads": "دانلود",
+    "enroll": "ثبت نام",
+    "open": "باز کردن",
+    "researchPaper": "مقاله تحقیقاتی"
   },
   "youtubeChannels": {
     "view": "مشاهده کانال یوتیوب",
@@ -1969,10 +2004,109 @@
   },
   "account": {
     "account": "حساب کاربری",
-    "myTeacherProfile": "پروفایل استاد من"
+    "myTeacherProfile": "پروفایل استاد من",
+    "profile": "پروفایل"
   },
   "footer": {
     "FOSSOpenContent": "نرم افزارهای آزاد و محتوای باز",
-    "proudlyPartOf": "با افتخار بخشی از <0>Plan ₿ Network</0>"
+    "proudlyPartOf": "با افتخار بخشی از <0>Plan ₿ Network</0>",
+    "becomeATeacher": "<0>معلم</0> شوید"
+  },
+  "educatorContent": {
+    "contentNotFound": "محتوا یافت نشد",
+    "titleRequired": "عنوان نمی‌تواند خالی باشد",
+    "urlInvalid": "لینک باید یک URL معتبر باشد",
+    "types": {
+      "sticker": "برچسب",
+      "workshop": "کارگاه",
+      "art": "هنر",
+      "booklet": "کتابچه",
+      "flyer": "بروشور",
+      "game": "بازی",
+      "presentation": "پرزنتیشن",
+      "other": "دیگر"
+    },
+    "uploadFiles": "بارگذاری فایل‌ها",
+    "uploadForReview": "بارگذاری برای بازبینی",
+    "uploading": "در حال بارگذاری...",
+    "titleTooLong": "عنوان نمی تواند بیش از 60 کاراکتر باشد",
+    "imageError": "خطا هنگام بارگذاری تصویر رخ داد",
+    "loginMessage": "لطفا برای دیدن محتوای خود وارد شوید.",
+    "noContent": "شما هنوز هیچ محتوایی بارگذاری نکرده‌اید.",
+    "noContentToReview": "هیچ محتوایی برای بررسی وجود ندارد",
+    "noCover": "بدون جلد",
+    "noResultsDescription": "سعی کنید فیلترهای جستجوی خود را تنظیم کنید",
+    "noResultsTitle": "محتوای آموزشی پیدا نشد",
+    "onlyImages": "فقط فایل‌های تصویر مجاز هستند",
+    "resourceType": "نوع منبع",
+    "shareLinks": "لینک‌های اشتراک‌گذاری",
+    "status": {
+      "draft": "در انتظار",
+      "published": "زنده",
+      "rejected": "پذیرفته نشده",
+      "unpublished": "منتشر نشده"
+    },
+    "success": "محتوای آموزشی با موفقیت اضافه شد!",
+    "successSubtitle": "قبل از نمایش، از طریق یک فرایند بازبینی گذر خواهد کرد.",
+    "successTitle": "محتوای آموزشی با موفقیت بارگذاری شد",
+    "titleHelper": "باید محتوا و هدف منبع شما را منعکس کند. آن را مختصر اما اطلاعاتی نگه دارید.",
+    "typeRequired": "نوع منبعی که است از آن مشخص کنید",
+    "addMaterial": "اضافه کردن محتوای آموزشی",
+    "addMoreLinks": "افزودن لینک های بیشتر",
+    "coverRequired": "تصویر کاور الزامی است",
+    "currentCoverPresent": "کاور کنونی وجود دارد",
+    "descriptionHelper": "توضیح محتوای منبع برای کمک به دیگران برای درک محتوا و پیدا کردن آن",
+    "descriptionPlaceholder": "توضیح مختصری از مطلب آموزشی",
+    "descriptionRequired": "توضیحات نمی تواند خالی باشد",
+    "descriptionTooLong": "توضیحات نمی تواند از 350 کاراکتر بیشتر باشد",
+    "detail": {
+      "createdBy": "ایجاد شده توسط",
+      "downloadAll": "دانلود همه",
+      "view": "مشاهده"
+    },
+    "dropCover": "تصویر کاور را در اینجا بندازید",
+    "dropFiles": "فایل ها را در اینجا بندازید",
+    "editAndRequireApproval": "ویرایش کردن و نیاز به تأیید",
+    "editMaterial": "ویرایش محتوای آموزگار",
+    "browseFiles": "یا مرور فایل ها",
+    "browseImages": "یا مرور تصاویر",
+    "fileTooLarge": "فایل خیلی بزرگ است (حداکثر 50 مگابایت)",
+    "imageCover": "تصویر جلد",
+    "languageRequired": "زبان منبع را انتخاب کنید",
+    "myContent": "محتوای من",
+    "done": "انجام شد",
+    "languagePlaceholder": "انتخاب کنید"
+  },
+  "forms": {
+    "browse": "مرور",
+    "replace": "جایگزین کردن"
+  },
+  "mentor": {
+    "loginRequired": "برای گپ زدن با PlanBot یک حساب ایجاد کنید!",
+    "openChat": "پرسیدن از PlanBot",
+    "placeholder": "یک سوال بپرسید...",
+    "reset": "مکالمه جدید",
+    "sources": "بیشتر پیش بروید",
+    "thinking": "اندیشه",
+    "title": "پلن‌بات",
+    "welcome": "از من هر سوالی درباره بیت کوین بپرسید!",
+    "collapse": "منهدم کردن",
+    "error": "خطایی رخ داد. دوباره تلاش کنید.",
+    "expand": "گسترش",
+    "close": "بستن"
+  },
+  "becomeTeacher": {
+    "title": "بیتکوین را آموزش دهید و دیگران را الهام بخشید",
+    "activeBitcoinLearners": "یادگیرندگان فعال بیتکوین",
+    "bitcoinOnly": "فقط-بیتکوین",
+    "bookCall": "یک تماس 30 دقیقه ای برای تبدیل شدن به یک معلم رزرو کنید",
+    "description": "اگر شما یک بیتکوینر متعصب هستید که عشق آموزش دادن را دارد و می خواهید تاثیر واقعی در جامعه محلی خود داشته باشید، می توانید دوره خود را در پلتفرم یادگیری ما برگزار کنید.",
+    "enhanceExperience": "<0> تجربه یادگیری دانش آموزان خود را </0> با ابزارهای پلتفرم افزایش دهید",
+    "globalReach": "دسترسی جهانی",
+    "hostOwnCourse": "<0>برگزاری دوره خودتان</0>، آنلاین یا حضوری",
+    "inspireLearners": "الهام بخشی به جامعه ی یادگیرندگان",
+    "joinMission": "<0>به عنوان یک معلم واقعی بیتکوین به ماموریت بپیوندید</0>",
+    "superiorAmount": ">{{amount}}",
+    "teachWhatYouLove": "<0>آنچه را که دوست دارید آموزش دهید</0>"
   }
 }

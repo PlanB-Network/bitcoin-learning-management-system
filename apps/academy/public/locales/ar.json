@@ -19,7 +19,8 @@
     "missionTitle": "مهمتنا",
     "storyContent": "The PlanB network is an initiative to support Bitcoin education worldwide. It's the crossover of various passionate Bitcoin companies focused on education, open-source software, peer-to-peer networks, and the sense of communities. Together, they've decided to build the PlanB network and offer the Bitcoin ecosystem the right tools to grow. Our 2023 release presentation is available here.",
     "storyTitle": "Out story",
-    "title": "About the planB network"
+    "title": "About the planB network",
+    "readManifesto": "اقرأ ميثاقنا"
   },
   "accessType": {
     "hybrid": "شخصياً وعبر الإنترنت",
@@ -62,7 +63,9 @@
       "invalidCredentials": "بيانات اعتماد غير صالحة",
       "usernameRegex": "يجب أن يحتوي اسم المستخدم فقط على الحروف، الأرقام، الشرطة السفلية (_) النقاط (.) والشرطة (-).",
       "usernameRequired": "يجب إدخال اسم المستخدم.",
-      "usernameTooShort": "يجب أن يتكون اسم المستخدم من 5 أحرف على الأقل."
+      "usernameTooShort": "يجب أن يتكون اسم المستخدم من 5 أحرف على الأقل.",
+      "passwordTooShort": "كلمة المرور قصيرة جدا",
+      "oldPasswordRequired": "كلمة المرور القديمة مطلوبة"
     },
     "forgottenPassword": "Passwort vergessen ?",
     "headerAccountCreated": "Konto erstellt",
@@ -88,7 +91,13 @@
     "sendLink": "Link versenden",
     "signIn": "Einloggen",
     "trackProgress": "أنشئ حساباً أو سجل الدخول لتتمكن من متابعة تقدّمك",
-    "tryAgain": "حاول ثانية"
+    "tryAgain": "حاول ثانية",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "login": "تسجيل الدخول",
+    "loginNotAvailable1": "ميزات تسجيل الدخول غير متوفرة في تطبيق سطح المكتب بعد.",
+    "loginNotAvailable2": "يمكنك زيارة موقعنا على الويب لتسجيل الدخول والوصول إلى حسابك.",
+    "oldPassword": "كلمة المرور القديمة",
+    "signUp": "سجل"
   },
   "bCert": {
     "bCertDescription": "شهادة ₿ هي اختبار معترف به دوليًا لتقييم استعدادك للعملة الرقمية Bitcoin والموضوعات المشتقة منها. ستمكنك هذه الشهادة من إثبات مهاراتك ومعرفتك في صناعة Bitcoin، مما يتيح لك الوصول إلى الشركات والمناصب في هذه الصناعة.",
@@ -99,7 +108,13 @@
     "organizeExam": "تنظيم جلسة",
     "pageTitle": "أخذ اختبار CERT-₿",
     "tweetText": "أنا في قمة السعادة لأني نجحت في CERT-₿ في @planb_network بمعدل {{score}}/100! {{emoji}} #BCERT\n\n{{certificateUrl}}",
-    "verify": "التحقق من صحة شهادتك"
+    "verify": "التحقق من صحة شهادتك",
+    "certificates": "الشهادات",
+    "chooseCourse": "اختر الدورة",
+    "hostSessionConditions": "هكذا تفعل:\n\n1. قراءة ال<0>ميثاق</0> - تأكيد أن مجتمعك يفي بشروط الاستضافة الإلزامية\n2. التخطيط والجدولة - إذا كنت مؤهلاً، اختر تاريخًا وقم بإعداد الجلسة\n3. نشر الحدث الخاص بك - اتصل بنا لإضافته إلى منصة شبكة Plan ₿ حتى يتمكن الناس من الانضمام",
+    "noDiplomasAvailable": "لا توجد شهادات متاحة بعد",
+    "noTestSessions": "لا توجد جلسات اختبار متاحة حاليا",
+    "wantHostSession": "هل تريد استضافة جلسة اختبار ₿-CERT في مركزك المحلي؟"
   },
   "bet": {
     "educationalContent": {
@@ -122,7 +137,8 @@
     "noConferences": "لم يتم إضافة مؤتمرات لـ {{year}} بعد.",
     "pageTitle": "تسيجلات المؤتمرات",
     "planBConferences": "مؤتمرات ₿ Plan",
-    "topics": "مواضيع"
+    "topics": "مواضيع",
+    "conferencesGenesis": "المؤتمرات منذ Genesis Block"
   },
   "courses": {
     "chapter": {
@@ -207,7 +223,7 @@
       "failed": "غير ناجح",
       "failedDiploma": "يجب أن تحصل على أكثر من 80% في الامتحان النهائي للحصول على شهادتك وإكمال الدورة بالكامل. يمكنك إعادة الامتحان بعد 24 ساعة.",
       "finalExam": "الامتحان النهائي",
-      "finalScore": "",
+      "finalScore": "الدرجة النهائية",
       "findInformationChapter": "البحث عن مزيد من المعلومات في هذه الوحدة:",
       "futureProof": "مواكبة للمستقبل: شهادتك محمية بشكل دائم وذات صلاحية أبدية.",
       "getCertificate": "الحصول على شهادتي",
@@ -247,13 +263,13 @@
       "skipExamDescription": "من الممكن أيضاً تجاوز الامتحان والانتقال مباشرة إلى الخاتمة بالضغط على الزر أدناه.",
       "skipExamGoConclusion": "تخطي الامتحان والانتقال إلى الخاتمة",
       "skipGoConclusion": "التخطي و الذهاب إلى الخاتمة",
-      "solidEffort": "",
+      "solidEffort": "مبروك على إكمال الدورة، أعطيتها جهدًا كبيرًا. \nبينما لم تنجح هذه المرة، فإن كل خطوة تُساهم في التقدم. \nاستمر في التقدم في رحلتك التعليمية!",
       "startExam": "بدأ الامتحان",
       "submit": "تسليم",
       "successDiploma": "مبروك! لقد اجتزت الامتحان بنجاح.\nشهادتك متاحة في لوحة تحكم الطالب الخاصة بك. تم تزويد الشهادة <0>بطابع زمني</0> لضمان مصداقيتها.",
-      "successDiplomaTeacherLed": "",
+      "successDiplomaTeacherLed": "مبروك! لقد نجحت بنجاح في الدورة. \nالآن يمكنك العثور على شهادتك في لوحة التحكم الخاصة بك كطالب.",
       "successDiplomaTimeStamped": "مبروك! لقد اجتزت الامتحان بنجاح.\nستكون شهادتك متاحة في لوحة الطالب الخاصة بك بعد 10 ساعات تقريباً من وقت تقديمك للاختبار. يعود هذا التأخير إلى استخدام تقنية <0>الختم الزمني</0> التي تضمن مصداقية الشهادة.",
-      "successfulPassedThreshold": "",
+      "successfulPassedThreshold": "مبروك على إكمال الدورة.\nلقد نجحت بنجاح في تخطي حاجز النجاح لهذه الدورة وأنت الآن من الخريجين.\nيمكنك العثور على شهادتك في لوحة التحكم الخاصة بك.",
       "sureSubmit": "هل ترغب فعلاً في تسليم الامتحان الآن؟",
       "takeExam": "تقديم الامتحان",
       "tamperProof": "آمنة من التزوير: تقنية البلوكشين تضمن بقاء شهادتك كما هي دون أي تلاعب.",
@@ -272,11 +288,14 @@
       "weight": "الوزن النسبي: {{weight}}%",
       "whyTimeStamp": "وضع الطابع الزمني على شهادتك: \nما أهمية ذلك؟",
       "wishTryAgain": "إذا كنت ترغب في المحاولة مرة أخرى، سيكون الامتحان متاحاً بعد 24 ساعة.",
-      "yesSubmit": "نعم، تسليم"
+      "yesSubmit": "نعم، تسليم",
+      "examResults": "نتائج الامتحان",
+      "scoreAndDiploma": "الدرجة والشهادة"
     },
     "explorer": {
       "goal": "الهدف:",
-      "seeCourse": "استكشاف الدورة"
+      "seeCourse": "استكشاف الدورة",
+      "discover": "اكتشف"
     },
     "format": {
       "hybrid": "شخصياً و عبر الإنترنت",
@@ -357,7 +376,24 @@
       "writeThoughts": "يمكنك كتابة خواطرك هنا",
       "yesOfCourse": "نعم، أكيد",
       "yesVeryMuch": "نعم، بشكل كبير"
-    }
+    },
+    "allCourses": "جميع الدورات",
+    "continueLeftOff": "أكمل من حيث توقفت",
+    "courseSelector": "مُختار الدورات",
+    "plusXMore": "+{{count}} المزيد",
+    "tryAdjustingFilters": "حاول تعديل المرشحات الخاصة بك",
+    "liveClasses": {
+      "allOtherTitle": "جميع الدروس المباشرة الأخرى",
+      "liveClasses": "الدروس المباشرة",
+      "program": {
+        "goal": "احترف صناعة البتكوين مع جياكومو زوكو في برنامج لمدة 5 أشهر يجمع بين النظرية ودراسات حالة حقيقية وفرص تواصل حصرية.",
+        "semester": "الفصل الدراسي",
+        "title": "برنامج ₿ خطة"
+      },
+      "title": "قاد متغيرات. احترف البتكوين."
+    },
+    "navbarHover": "سجّل للإطلاع",
+    "noCoursesFound": "لم يتم العثور على دورات"
   },
   "dashboard": {
     "adminPanel": {
@@ -374,7 +410,9 @@
         "profession": "المهنة",
         "resultsRemaining": "عدد النتائج المتبقية {{results}}",
         "seeMore": "رؤية المزيد",
-        "viewCV": "عرض السيرة الذاتية"
+        "viewCV": "عرض السيرة الذاتية",
+        "candidateFile": "ملف المرشح",
+        "file": "الملف"
       },
       "confirmRemoval": "تأكيد الإزالة",
       "coupons": {
@@ -460,7 +498,346 @@
       "type": "النوع",
       "upcomingBookings": "الحجوزات القادمة",
       "upcomingBookingsSubtitle": "يمكنك من هنا تحميل قائمة المشاركين في جميع الفعاليات الحضورية.",
-      "userRolesAllocation": "توزيع أدوار المستخدمين"
+      "userRolesAllocation": "توزيع أدوار المستخدمين",
+      "translationPanel": {
+        "actions": {
+          "delete": "حذف",
+          "accept": "قبول",
+          "reject": "رفض"
+        },
+        "addContributor": {
+          "language": "اللغة",
+          "selectLanguage": "اختر لغة",
+          "addLanguage": "أضف لغة أخرى",
+          "assign": "تعيين",
+          "assignedLanguages": "اللغات المعينة بالفعل",
+          "assigning": "جارٍ التعيين...",
+          "assignmentSuccess": "تم تعيين المساهمين بنجاح!",
+          "confirm": "تأكيد",
+          "findContributor": "ابحث عن مساهم",
+          "noUsers": "لا يوجد مستخدمين متاحين",
+          "searchUsers": "ابحث عن المستخدمين...",
+          "title": "أضف مساهم",
+          "selectedUsers": "المستخدمون المحددون:"
+        },
+        "contentManagement": {
+          "actions": {
+            "view": "عرض",
+            "assign": "تعيين",
+            "backToContentManagement": "العودة إلى إدارة المحتوى",
+            "reassign": "إعادة التعيين"
+          },
+          "assignModal": {
+            "cancel": "إلغاء",
+            "assign": "تعيين",
+            "assigning": "جارٍ التعيين...",
+            "assigningCourse": "تعيين الدورة التعليمية:",
+            "assignmentSuccess": "تم تعيين الدورة التعليمية بنجاح!",
+            "chooseContributor": "اختر مساهم...",
+            "courseInfo": "معلومات الدورة",
+            "selectContributor": "اختر المساهم",
+            "title": "تعيين الدورة التعليمية للمساهم"
+          },
+          "reassignModal": {
+            "cancel": "إلغاء",
+            "currentlyAssignedTo": "مُكلَف حاليًا:",
+            "reassign": "إعادة التعيين",
+            "reassigning": "إعادة التعيين...",
+            "reassigningCourse": "إعادة تعيين الدورة:",
+            "reassignmentSuccess": "تمت إعادة تعيين الدورة بنجاح!",
+            "selectNewContributor": "اختر المساهم الجديد",
+            "title": "إعادة تعيين الدورة للمساهم الجديد",
+            "warning": {
+              "description": "الفصول التي تمت مراجعتها بمفاتيح لن تعاد تعيينها.",
+              "title": "ملاحظة مهمة"
+            },
+            "chooseNewContributor": "اختر مساهم جديد...",
+            "courseInfo": "معلومات الدورة"
+          },
+          "table": {
+            "actions": "الإجراءات",
+            "course": "دورة",
+            "language": "اللغة",
+            "status": "الحالة",
+            "contributor": "المساهم",
+            "index": "الفهرس",
+            "progress": "التقدم"
+          },
+          "description": "إدارة الترجمات للدورات التعليمية وتعيينها للمساهمين",
+          "noCourses": "لا توجد دورات متاحة",
+          "noCoursesFiltered": "لا توجد دورات تتوافق مع معايير البحث الخاصة بك",
+          "notAssigned": "لم يتم التعيين",
+          "status": {
+            "assigned": "مُكلَف",
+            "notAssigned": "لم يتم التعيين",
+            "readyForReview": "جاهز للمراجعة",
+            "underReview": "تحت المراجعة"
+          },
+          "title": "إدارة المحتوى"
+        },
+        "courseDetails": {
+          "actions": "الإجراءات",
+          "chapterIndex": "الوحدة",
+          "language": "اللغة",
+          "chapterTitle": "العنوان",
+          "status": "الحالة",
+          "assignedTo": "مُكلَف به",
+          "courseIndex": "فهرس الدورة",
+          "courseInformation": "معلومات الدورة",
+          "courseName": "اسم الدورة",
+          "currentContributor": "المساهم الحالي",
+          "errorLoadingDetails": "خطأ في تحميل تفاصيل الدورة",
+          "noChapters": "لا توجد فصول متاحة لهذه الدورة",
+          "noContributor": "لم يتم تكليف أي متعاون",
+          "partTitle": "الجزء {{index}}: {{title}}",
+          "progress": "التقدم",
+          "translationStatus": "حالة الترجمة",
+          "chaptersAndProgress": "الفصول والتقدم",
+          "chaptersCompleted": "الفصول المكتملة"
+        },
+        "courseNotFound": "لم يتم العثور على الدورة",
+        "modal": {
+          "cancel": "إلغاء",
+          "close": "إغلاق",
+          "course": "دورة",
+          "language": "اللغة",
+          "submitRejection": "تسليم",
+          "contributor": "المساهم",
+          "doYouWantToAcceptRequest": "هل ترغب في قبول طلب الترجمة هذا؟",
+          "provideRejectionReason": "يرجى تقديم سبب لرفض هذا الطلب",
+          "reasonForRejection": "سبب الرفض",
+          "reasonPlaceholder": "اكتب تفسيرك هنا...",
+          "rejecting": "جاري الرفض...",
+          "requestAcceptedMessage": "لقد تم إعلام المساهم ويمكنه الآن البدء في العمل على الترجمة.",
+          "requestAcceptedSuccess": "لقد قبلت طلب الترجمة!",
+          "requestRejectedSuccess": "تم رفض الطلب بنجاح",
+          "accepting": "جاري القبول...",
+          "acceptRequest": "قبول الطلب",
+          "acceptTranslationRequest": "قبول طلب المراجعة"
+        },
+        "reports": {
+          "contributors": {
+            "languages": "اللغة",
+            "username": "اسم المستخدم",
+            "assignedCourses": "الدورات المُعيَّنة",
+            "completedCourses": "الدورات المنجزة",
+            "startDate": "تاريخ البدء",
+            "title": "المساهمون",
+            "totalReward": "المكافأة الكلية"
+          },
+          "table": {
+            "lastUpdated": "تم التحديث آخر مرة",
+            "contributor": "المساهم",
+            "progress": "نسبة التقدم %"
+          },
+          "courses": {
+            "lastUpdated": "تم التحديث آخر مرة",
+            "contributor": "المساهم",
+            "filterByCourse": "تصفية حسب الدورة",
+            "progress": "نسبة التقدم %"
+          },
+          "tabs": {
+            "courses": "الدورات",
+            "contributors": "المساهمون",
+            "coverage": "تغطية اللغة"
+          },
+          "chooseYear": "أي عام تود أن تأخذ في الاعتبار؟",
+          "comingSoon": {
+            "courses": "عرض الدورات قريبًا",
+            "coverage": "عرض تغطية اللغة قريباً"
+          },
+          "noLanguages": "لم يتم العثور على لغات",
+          "proofreadCourses": "دورات مُصححة",
+          "dateFilter": "تصفية حسب التاريخ",
+          "downloadData": "تحميل البيانات",
+          "filterByLanguage": "تصفية حسب اللغة",
+          "fromMonth": "من",
+          "fromMonthPlaceholder": "من أي شهر؟",
+          "generalReport": "تقرير عام",
+          "languageCoverage": {
+            "completed": "مكتمل",
+            "inProgress": "قيد التقدم",
+            "notStarted": "لم يبدأ بعد",
+            "totalCourses": "مجموع الدورات"
+          },
+          "languagesProofread": "اللغات المُصححة",
+          "noContributors": "لم يتم العثور على مساهمين",
+          "noCourses": "لم يتم العثور على دورات",
+          "toMonth": "إلى",
+          "toMonthPlaceholder": "إلى أي شهر؟",
+          "totalLanguages": "إجمالي اللغات",
+          "year": "السنة"
+        },
+        "table": {
+          "language": "اللغة",
+          "username": "اسم المستخدم",
+          "actions": "الإجراءات",
+          "course": "دورة",
+          "index": "الفهرس"
+        },
+        "translate": {
+          "backToCourse": "العودة إلى الدورة التدريبية",
+          "language": "اللغة",
+          "selectLanguagesModal": {
+            "cancel": "إلغاء",
+            "course": "دورة",
+            "audioFile": "ملف صوتي",
+            "audioFileInfo": "التنسيقات المدعومة: MP3، WAV، M4A (الحد الأقصى 50MB)",
+            "audioFileTooLarge": "ملف الصوت كبير جدًا. الحجم الأقصى هو 50MB.",
+            "chooseAudioFile": "اختر الصوت",
+            "chooseFolder": "اختر المجلد",
+            "choosePptxFile": "اختر PPTX",
+            "chooseZip": "اختر ZIP",
+            "englishFilesRequired": "يرجى التأكد من أن جميع الملفات المرفوعة باللغة الإنجليزية فقط",
+            "existingUploadsInfo": "تم بالفعل تحميل الملفات الأصلية. يمكنك بدء الترجمة دون إضافتهم مرة أخرى. سيؤدي تحميل ملفات جديدة إلى الكتابة فوق الملفات الموجودة.",
+            "folderUrl": "URL للمجلد",
+            "invalidAudioFile": "يرجى اختيار ملف صوت صالح.",
+            "invalidPptxFile": "يرجى اختيار ملف PowerPoint صالح (.pptx).",
+            "missingFilesError": "يرجى تحميل ملفات الترجمة أو تقديم عنوان URL قبل بدء الترجمة.",
+            "networkError": "حدث خطأ في الشبكة. يرجى التحقق من الاتصال والمحاولة مرة أخرى.",
+            "noAudioFileSelected": "لم يتم اختيار ملف صوت",
+            "noFolderSelected": "لم يتم اختيار مجلد",
+            "noLanguagesAvailable": "لا توجد لغات متاحة للترجمة.",
+            "noPptxFileSelected": "لم يتم اختيار ملف PowerPoint",
+            "noZipSelected": "لم يتم اختيار ZIP",
+            "originalLanguage": "اللغة الأصلية:",
+            "overwriteWarning": "سيتم استبدال الملفات الموجودة.",
+            "pptxFile": "ملف PowerPoint",
+            "pptxFileInfo": "يتم دعم ملفات .pptx فقط (الحد الأقصى 100MB)",
+            "pptxFileTooLarge": "ملف PowerPoint كبير جدا. الحد الأقصى هو 100MB.",
+            "processingStarted": "بدأت الترجمة! قد يستغرق العملية بضع دقائق للدورات الكبيرة.",
+            "selectLanguages": "حدد اللغات للترجمة:",
+            "startSuccess": "تم بدء الترجمة بنجاح!",
+            "startTranslation": "بدء الترجمة",
+            "startingTranslation": "جاري تحميل الملفات...",
+            "startingTranslationStep": "بدء الترجمة...",
+            "timeoutError": "انتهت صلاحية طلب الترجمة. قد يكون محتوى الدورة كبير جدا. يرجى المحاولة مرة أخرى أو الاتصال بالدعم.",
+            "title": "حدد اللغات للترجمة",
+            "translationFailed": "فشلت الترجمة. يرجى التحقق من السجلات والمحاولة مرة أخرى.",
+            "uploadAndTranslationStarted": "تم تحميل الملفات وبدء الترجمة! قد تستغرق العملية عدة دقائق للدورات الكبيرة.",
+            "uploadError": "فشل التحميل. يرجى التحقق من الملفات والمحاولة مرة أخرى.",
+            "uploadFiles": "تحميل الملفات الداعمة (اختياري)",
+            "uploadFolder": "تحميل المجلد (PPTX + TXT)",
+            "uploadingFiles": "جاري تحميل الملفات...",
+            "useEnglishLabel": "تم ترجمة الدورة التدريبية بالفعل إلى الإنجليزية. استخدم الإصدار الإنجليزي كمصدر؟",
+            "uploadTimeoutError": "تجاوز التحميل الوقت المحدد بعد 10 دقائق. يرجى المحاولة بملفات أصغر أو التحقق من اتصالك."
+          },
+          "table": {
+            "actions": "الإجراءات",
+            "course": "دورة",
+            "index": "الفهرس",
+            "todoLanguages": "اللغات المراد ترجمتها",
+            "totalLanguages": "مجموع اللغات"
+          },
+          "slideNavigation": {
+            "next": "التالي",
+            "previous": "السابق",
+            "slideCounter": "{{current}} / {{total}}"
+          },
+          "actions": {
+            "translate": "ترجمة"
+          },
+          "changeSpeed": "تغيير سرعة التشغيل",
+          "chapterTitle": "عنوان الفصل",
+          "compare": "قارن",
+          "compareDisabledTooltip": "النسخة المصححة غير متوفرة",
+          "compareTooltip": "قارن النسخة الأصلية والنسخة المصححة",
+          "comparison": {
+            "backToChapter": "العودة إلى الفصل",
+            "originalVersion": "النسخة الأصلية",
+            "translatedVersion": "النسخة المترجمة"
+          },
+          "description": "ابدأ بترجمة الدورات إلى لغات محددة.",
+          "forward15Seconds": "إعادة 15 ثانية",
+          "imageNotFound": "الصورة غير موجودة",
+          "loadingPresentation": "جارٍ تحميل العرض...",
+          "noContentAvailable": "لا يوجد محتوى متاح",
+          "noCourses": "لا توجد دورات تحتاج إلى ترجمة في الوقت الحالي.",
+          "noOriginalContent": "لا يوجد محتوى أصلي",
+          "noPngSlides": "لا توجد شرائح PNG متاحة لهذا العرض",
+          "noSlidesFound": "لم يتم العثور على شرائح",
+          "originalContent": "المحتوى الأصلي",
+          "pause": "إيقاف مؤقت",
+          "play": "تشغيل",
+          "presentations": "العروض",
+          "rewind15Seconds": "إعادة تشغيل لمدة 15 ثانية",
+          "slideNotFound": "لم يتم العثور على الشريحة",
+          "textContent": "محتوى النص",
+          "title": "دورات",
+          "translateTo": "ترجمة إلى",
+          "unknownContributor": "مجهول",
+          "slideNotAvailable": "الشريحة {{slideNumber}} غير متاحة"
+        },
+        "userManagement": {
+          "chapters": "الوحدات",
+          "courses": "الدورات",
+          "table": {
+            "actions": "الإجراءات",
+            "language": "اللغة",
+            "username": "اسم المستخدم",
+            "assignedCourses": "الدورات المُعيَّنة",
+            "startDate": "تاريخ البدء"
+          },
+          "actions": {
+            "backToList": "الرجوع إلى قائمة المستخدمين",
+            "backToUsers": "الرجوع إلى المستخدمين",
+            "viewDetails": "عرض التفاصيل"
+          },
+          "addContributor": "أضف مساهم",
+          "contributorInformation": "معلومات المساهم",
+          "modal": {
+            "assignments": "تاريخ الواجب",
+            "noAssignments": "لم يتم العثور على واجبات",
+            "title": "تفاصيل المستخدم",
+            "userInfo": "معلومات المستخدم"
+          },
+          "noUsers": "لم يتم العثور على مساهمين",
+          "status": {
+            "underReview": "تحت المراجعة",
+            "published": "منشورة",
+            "readyForReview": "جاهز للمراجعة",
+            "rejected": "مرفوضة",
+            "reviewed": "مراجعة",
+            "todo": "للعمل عليه"
+          },
+          "title": "المساهمون"
+        },
+        "admin": "المدير",
+        "comingSoon": {
+          "courses": "عرض الدورات قريبًا",
+          "coverage": "عرض تغطية اللغة قريباً"
+        },
+        "messages": {
+          "noPendingRequests": "لا توجد طلبات مراجعة معلقة.",
+          "noPendingRequestsSearch": "لا توجد طلبات مراجعة متوافقة مع \"{{query}}\".",
+          "noRejectedRequests": "لا توجد طلبات مراجعة مرفوضة.",
+          "noRejectedRequestsSearch": "لا توجد طلبات مراجعة مرفوضة تتطابق مع \"{{query}}\"."
+        },
+        "noResultsFound": "لم يتم العثور على نتائج",
+        "pendingTranslationRequests": "طلبات التدقيق في انتظار",
+        "tabs": {
+          "contentManagement": "إدارة المحتوى",
+          "reports": "التقارير",
+          "requests": "الطلبات",
+          "translate": "ترجمة",
+          "userManagement": "إدارة المستخدمين"
+        },
+        "title": "لوحة تحكم الترجمة للمدير",
+        "toggle": {
+          "rejectedRequests": "طلبات مرفوضة",
+          "pendingRequest": "طلب معلق"
+        },
+        "searchPlaceholder": "بحث...",
+        "status": {
+          "assigned": "مُكلَف",
+          "completed": "مكتمل",
+          "inProgress": "قيد التنفيذ",
+          "readyForReview": "جاهز للمراجعة",
+          "todo": "للعمل عليه",
+          "underReview": "تحت المراجعة"
+        }
+      },
+      "translation": "لوحة الترجمة"
     },
     "announcements": {
       "groups": {
@@ -677,207 +1054,271 @@
     "course": {
       "announcement": "الإعلانات",
       "assignment": "الواجبات",
-      "assignmentCompletedDescription": "",
-      "assignmentCompletedTitle": "",
-      "assignmentTitle": "",
+      "assignmentCompletedDescription": "تم تقديم مشروعك بنجاح وهو تحت الاستعراض.\nسيكون علامتك مرئية هنا بعد التقييم.",
+      "assignmentCompletedTitle": "تم الانتهاء من الواجب",
+      "assignmentTitle": "واجب المشروع",
       "completionDiploma": "شهادة الإنهاء",
       "completionExamInfo": "يجب عليك إكمال الامتحان للوصول إلى هذه الميزة.",
       "conclusionHeadline": "فيما يلي ملخص لما تعلّمته. إن فاتتك بعض الوحدات أو لم يتم اعتمادها بالشكل الصحيح، يمكنك إتمامها الآن إمّا بإعادة دراستها أو الضغط على زر \"إكمال\".",
       "conclusionNotReleased": "سيتم فتح الخاتمة في يوم الدرس الأخير.",
-      "confirmList": "",
-      "confirmNoEditable": "",
-      "confirmNoEditableFile": "",
-      "confirmSubmission": "",
-      "congratulationsPassed": "",
+      "confirmList": "تأكيد القائمة",
+      "confirmNoEditable": "بمجرد التأكيد، لن تكون قائمة التفضيلات هذه قابلة للتحرير بعد الآن.",
+      "confirmNoEditableFile": "بمجرد تقديمك، لن تكون قادرًا على تحرير ملفك بعد الآن.",
+      "confirmSubmission": "تأكيد التسليم",
+      "congratulationsPassed": "مبروك! لقد اجتزت بنجاح!",
       "coordinator": "منسق الدورة التدريبية",
       "courseCalendar": "تقويم الدورة التدريبية",
-      "diplomaReleaseDescription": "",
-      "diplomaReleaseTitle": "",
+      "diplomaReleaseDescription": "بمجرد اكتمال جميع الفصول الدراسية، سوف يتم منحك شهادة لاجتياز الدورة بنجاح. ستكون الشهادات متاحة للتنزيل من هنا بعد الفصل الدراسي الأخير واكتمال الفصل الختامي.",
+      "diplomaReleaseTitle": "إصدار الشهادة",
       "examScore": "النتيجة:",
       "exams": "الامتحانات",
-      "feedbacks": "",
-      "fileUploaded": "",
-      "finalGradeSummary": "",
-      "finalScore": "",
+      "feedbacks": "هنا يمكنك التحقق من التقييمات والتعليقات التي قدمتها لهذه الدورة وتعديلها.",
+      "fileUploaded": "تم تحميل عملك بنجاح!",
+      "finalGradeSummary": "ملخص الدرجة النهائية",
+      "finalScore": "الدرجة النهائية",
       "generalInformation": "المعلومات العامة",
-      "individualWork": "",
-      "isSubmissionFinal": "",
-      "joinTelegramGroup": "",
-      "keepEditing": "",
-      "keepMovingForward": "",
-      "leastPreferred": "",
-      "listSaved": "",
-      "listSavedComeTomorrow": "",
-      "mostPreferred": "",
-      "mustBePdf": "",
-      "notSelectedAssignment": "",
-      "projectRankingInstructions": "",
-      "ranking": "",
-      "rankingInstructions": "",
-      "rankingOnly24Hours": "",
-      "rankProjectPreferences": "",
+      "individualWork": "العمل الفردي",
+      "isSubmissionFinal": "هل تسليمك نهائي؟",
+      "joinTelegramGroup": "انضم إلى مجموعة تليجرام",
+      "keepEditing": "استمر في التحرير",
+      "keepMovingForward": "رغم أنك لم تنجح هذه المرة، كل خطوة تقوم بها تسهم في التقدم. استمر في الذهاب للأمام في رحلتك التعليمية!",
+      "leastPreferred": "الأقل تفضيلًا",
+      "listSaved": "تم حفظ قائمة تفضيلاتك.",
+      "listSavedComeTomorrow": "تم حفظ قائمة تفضيلاتك.\nعد هنا غداً لتكتشف أي مشروع تم تكليفك به.",
+      "mostPreferred": "الأكثر تفضيلًا",
+      "mustBePdf": "يجب أن يكون الملف الخاص بك بتنسيق PDF. إذا كنت بحاجة إلى تقديم ملف إضافي، يرجى إدخال الرابط المرتبط داخل ملف الPDF الخاص بك.",
+      "notSelectedAssignment": "للأسف، لم تتم اختيارك للمشاركة في مشروع التكليف.\nلا يزال بإمكانك متابعة محاضرات الدورة.",
+      "projectRankingInstructions": "تعليمات تقدير المشروع:",
+      "ranking": "التقدير",
+      "rankingInstructions": "رتب المشاريع المقترحة حسب تفضيلاتك (الرقم 1 هو خيارك الأول). سيتيح لنا هذا التقدير تكليفك بالمشروع الأنسب. سيتم اعتبار اختيار الطلاب ذوي الدرجات العالية أولاً.",
+      "rankingOnly24Hours": "سيكون باب التقدير مفتوحاً فقط لمدة 24 ساعة، في 2 يونيو من 00:00 إلى 23:59 (UTC+2).",
+      "rankProjectPreferences": "قم بتقدير تفضيلات المشروع الخاصة بك",
       "ratingsAndFeedbacks": "التقييمات والملاحظات",
-      "readAssignment": "",
-      "saveList": "",
+      "readAssignment": "اقرأ المزيد عن المهمة",
+      "saveList": "حفظ القائمة",
       "shareOnSocials": "المشاركة على الشبكات الاجتماعية:",
-      "submissionInstructions": "",
-      "submitBefore": "",
+      "submissionInstructions": "تعليمات التسليم",
+      "submitBefore": "يجب أن تقدم عملك قبل {{date}} في {{hour}}. لن يتم تقييم الأعمال المرسلة بعد هذا الوقت.",
       "submitReviewInfo": "يجب عليك تقديم مراجعة أو رأي للوصول إلى هذه الميزة.",
-      "submitYourWork": "",
-      "summerSchool": "",
-      "surePreferenceList": "",
-      "thresholdToPass": "",
-      "tweetText": ""
+      "submitYourWork": "أرسل عملك",
+      "summerSchool": "المدرسة الصيفية",
+      "surePreferenceList": "هل أنت متأكد من قائمة التفضيلات الخاصة بك؟",
+      "thresholdToPass": "الحد الأدنى للنجاح: {{threshold}}%",
+      "tweetText": "متحمس لأنني أكملت دورة {{courseIndex}} في @planb_network وحصلت على دبلومي بدرجة {{score}}/100 في الامتحان النهائي! {{emoji}} #PBNDiploma\n\n{{certificateUrl}}",
+      "assignmentNotAccessible": "الواجب قد بدأ بالفعل ولم يعد قابلاً للوصول.",
+      "assignmentScore": "علامة الواجب",
+      "yourProjectAssignment": "واجبك المشروع",
+      "tweetTextCourseDiploma": "متحمس لأنني أكملت الدورة {{courseName}}، التي قدمتها {{courseCoordinator}} على @planb_network وحصلت على دبلومي!\n#PBNDiploma\n\n{{certificateUrl}}",
+      "viewScoreSummary": "عرض ملخص الدرجة",
+      "wellDoneCompleting": "مبروك على الانتهاء والنجاح في هذه الدورة!\nإليك دبلومك الذي تستحقه بجدارة"
     },
     "credentials": {
       "beingGraded": "جاري تصحيح امتحانك. ستكون النتائج متاحة في غضون أسبوع أو أسبوعين.",
-      "courseDiplomas": "",
-      "globalCertifications": ""
+      "courseDiplomas": "دبلوم الدورة التدريبية",
+      "globalCertifications": "الشهادات العالمية",
+      "bCertResults": {
+        "score020": "لقد بدأت في رحلتك! كل خبير بدأ من هنا مرة واحدة",
+        "score100": "درجة كاملة! هل أنت ساتوشي، أم أنك متألق؟",
+        "score2140": "لديك الأساس! استمر، أنت تتحسن بسرعة!",
+        "score4160": "أساس قوي! أنت جاهز للدروس المتقدمة",
+        "score6180": "أنت تفعلها بشكل رائع! استمر في تحسين مهاراتك واتقان البيتكوين",
+        "score8199": "افهم جيدًا! تتعامل مع موضوعات البيتكوين المعقدة بسهولة"
+      },
+      "completeACourse": "أكمل أول دورة لك لتحصل على دبلوم ",
+      "detailedScore": "الدرجة المفصلة",
+      "exploreBCert": "استكشف ₿-CERT",
+      "getGlobalRecognition": "احصل على الاعتراف العالمي مع شهادة ₿-CERT",
+      "noCertificatesAvailable": "لا توجد شهادات متاحة"
     },
-    "goToDashboard": "",
-    "goToHomepage": "",
-    "logout": "",
+    "goToDashboard": "اذهب إلى لوحة القيادة",
+    "goToHomepage": "الذهاب إلى الصفحة الرئيسية",
+    "logout": "تسجيل الخروج",
     "myCourses": {
-      "completeAll": "",
-      "completed": "",
-      "detailsAndCertificate": "",
-      "done": "",
-      "download": "",
-      "duration": "",
-      "inProgress": "",
-      "notStarted": "",
-      "notValidated": "",
-      "price": "",
-      "professor": "",
+      "completeAll": "أكمل الكل",
+      "completed": "مكتمل",
+      "detailsAndCertificate": "التفاصيل والشهادة",
+      "done": "تم",
+      "download": "تحميل الشهادة",
+      "duration": "المدة :",
+      "inProgress": "قيد التقدم",
+      "notStarted": "لم يبدأ بعد",
+      "notValidated": "لم يتم التحقق",
+      "price": "السعر :",
+      "professor": "أستاذ",
       "resumeLesson": "Resume the lesson",
-      "seeDetails": "",
-      "seeTheCourse": "",
-      "shareOn": "",
-      "verify": "",
-      "whereYouAre": "",
-      "yourCertificate": "",
-      "yourProgress": ""
+      "seeDetails": "انظر التفاصيل",
+      "seeTheCourse": "استكشاف الدورة",
+      "shareOn": "مشاركة على",
+      "verify": "تحقق من أصالة الشهادة",
+      "whereYouAre": "لنرى أين أنت الآن!",
+      "yourCertificate": "شهادتك",
+      "yourProgress": "تقدمك :",
+      "noCourseStarted": "لم تبدأ أي دورات ذات وتيرة ذاتية بعد"
     },
     "profile": {
-      "cancel": "",
-      "change": "",
-      "crop": "",
-      "displayName": "",
-      "edit": "",
-      "email": "",
-      "emailChangeConfirmation": "",
-      "emailChangeRateLimitError": "",
+      "cancel": "إلغاء",
+      "change": "تغيير",
+      "crop": "قطع",
+      "displayName": "اسم العرض",
+      "edit": "تعديل",
+      "email": "البريد الإلكتروني",
+      "emailChangeConfirmation": "تم إرسال بريد إلكتروني لتأكيد تغيير بريدك الإلكتروني، يرجى التحقق من صندوق الوارد للتأكيد.",
+      "emailChangeRateLimitError": "قمت مؤخراً بتحديث بريدك الإلكتروني. يرجى الانتظار بضع دقائق قبل المحاولة مرة أخرى.",
       "notificationSettings": {
-        "coursesOption": "",
-        "description": "",
-        "emailPreferencesDescription": "",
-        "emailPreferencesSavedSuccessfully": "",
-        "emailPreferencesTitle": "",
-        "emailTitle": "",
-        "emailWarning": "",
-        "eventsOption": "",
-        "generalOption": "",
-        "goToProfile": "",
-        "loadEmailSettingsError": "",
-        "loadEmailSettingsErrorDescription": "",
-        "loadEmailSettingsErrorManage": "",
-        "none": "",
-        "platformTitle": "",
-        "settingsSaved": "",
-        "title": ""
+        "coursesOption": "تحديثات حول الدورات التي سجلت فيها",
+        "description": "يمكنك تخصيص إعدادات التنبيه الخاصة بك أدناه. ",
+        "emailPreferencesDescription": "هنا يمكنك اختيار أنواع الرسائل الإلكترونية التي تود تلقيها منا. تنطبق هذه التفضيلات فقط على عنوان البريد الإلكتروني المرتبط بهذا الرابط.",
+        "emailPreferencesSavedSuccessfully": "تم تحديث تفضيلات البريد الإلكتروني بنجاح.",
+        "emailPreferencesTitle": "إدارة تفضيلات البريد الإلكتروني لشبكة Plan ₿",
+        "emailTitle": "ما نوع التنبيهات التي تود تلقيها عن طريق البريد الإلكتروني؟",
+        "emailWarning": "تحذير! لا يوجد عنوان بريد إلكتروني مرتبط بحسابك. يرجى إضافته في قسم ملفك الشخصي.",
+        "eventsOption": "تحديثات حول الأحداث التي حجزتها",
+        "generalOption": "معلومات عامة وأخبار حول شبكة Plan ₿",
+        "goToProfile": "انتقل إلى الملف الشخصي",
+        "loadEmailSettingsError": "عذرًا، لم نتمكن من تحميل تفضيلات بريدك الإلكتروني.",
+        "loadEmailSettingsErrorDescription": "يرجى التأكد من صحة الرابط الذي استخدمته.",
+        "loadEmailSettingsErrorManage": "إذا كان لديك وصول إلى حسابك، يمكنك أيضاً إدارة الإعدادات مباشرة في لوحة التحكم الخاصة بك:",
+        "none": "لا شيء",
+        "platformTitle": "ما نوع الإشعارات التي ترغب في تلقيها على هذا المنصة؟",
+        "settingsSaved": "تم حفظ الإعدادات بنجاح!",
+        "title": "إعدادات الإشعارات",
+        "coursesEventsOption": "تحديثات حول دوراتك وأحداثك"
       },
-      "password": "",
-      "preview": "",
-      "profilePicture": "",
-      "save": "",
-      "saving": "",
-      "securitySettings": "",
-      "username": ""
+      "password": "كلمة المرور",
+      "preview": "معاينة",
+      "profilePicture": "صورة الملف الشخصي",
+      "save": "حفظ",
+      "saving": "جار التحميل …",
+      "securitySettings": "إعدادات الأمان",
+      "username": "اسم المستخدم",
+      "addEmail": "أضف البريد الإلكتروني",
+      "emailOrUsername": "البريد الإلكتروني أو اسم المستخدم",
+      "verifyYourEmail": "تحقق من بريدك الإلكتروني"
     },
     "teacher": {
       "courses": {
-        "allStudents": "",
+        "allStudents": "كل الطلاب",
         "announcementModal": {
-          "contentLabel": "",
-          "contentPlaceholder": "",
-          "create": "",
-          "dateRequired": "",
-          "editAnnouncement": "",
-          "groupLabel": "",
-          "title": "",
-          "typeLabel": "",
-          "typePlaceholder": ""
+          "contentLabel": "نص الإعلان",
+          "contentPlaceholder": "الرجاء الكتابة هنا.",
+          "create": "إنشاء إعلان",
+          "dateRequired": "التاريخ مطلوب",
+          "editAnnouncement": "تحرير الإعلان",
+          "groupLabel": "حدد مجموعة الطلاب التي ترغب في مخاطبتها",
+          "title": "اكتب إعلانًا",
+          "typeLabel": "ما نوع الإعلان هذا؟",
+          "typePlaceholder": "حدد نوعًا واحدًا"
         },
-        "announcements": "",
-        "announcementsIntroduction": "",
-        "announcementsPast": "",
-        "announcementsPastDescription": "",
-        "announcementsUpcoming": "",
-        "announcementsUpcomingDescription": "",
-        "assignment": "",
+        "announcements": "الإعلانات",
+        "announcementsIntroduction": "بالإضافة إلى الإشعارات التلقائية حول جداول الفصول الدراسية، لديك الخيار لكتابة وجدولة إعلانات إضافية لطلابك. على سبيل المثال، يمكنك إبلاغهم عن التغييرات اللوجستية أو التحديثات في اللحظة الأخيرة.\nسيتلقى الطلاب هذه الإشعارات على المنصة، وأيضاً عبر البريد الإلكتروني (إذا كانوا قد فعّلوا هذه الميزة الاختيارية).",
+        "announcementsPast": "الإعلانات السابقة",
+        "announcementsPastDescription": "في الأسفل مدرجة الإعلانات التي تم نشرها بالفعل. سيتم مسح القائمة بعد شهر.",
+        "announcementsUpcoming": "الإعلانات القادمة",
+        "announcementsUpcomingDescription": "في الأسفل هي الإعلانات المستقبلية التي كتبتها وجدولتها.",
+        "assignment": "الواجبات",
         "assignmentGrade": {
-          "alertDescription": "",
-          "alertTitle": "",
-          "confirmPublication": "",
-          "confirmPublicationDescription": "",
-          "confirmPublicationTitle": "",
-          "description": "",
-          "grade100": "",
-          "gradesPublished": "",
-          "missingGradesDescription": "",
-          "missingGradesTitle": "",
-          "publishAllGrades": "",
-          "studentDisplayName": "",
-          "title": ""
+          "alertDescription": "بعد إدخال كل الدرجات، انقر على \"نشر كل الدرجات\" لنشرها كلها في وقت واحد.\nيرجى التحقق من الدرجات مسبقًا، لأنه لن يمكن تعديلها بعد أن يتم نشرها. ",
+          "alertTitle": "تقييم المهمة",
+          "confirmPublication": "تأكيد النشر",
+          "confirmPublicationDescription": "بعد نشر الدرجات، لا يمكن التراجع لأنهم لن يكونوا قابلين للتعديل بعد الآن.",
+          "confirmPublicationTitle": "هل أنت متأكد من أنه لا يوجد خطأ؟",
+          "description": "تم ترتيب الطلاب حسب مجموعات المهام.",
+          "grade100": "الدرجة (/100)",
+          "gradesPublished": "تم نشر الدرجات.",
+          "missingGradesDescription": "إذا تم نشر الدرجات، سيتم استبدال التقديرات المفقودة بـ 0/100.",
+          "missingGradesTitle": "لا تزال هناك {{count}} درجات مفقودة!",
+          "publishAllGrades": "نشر جميع الدرجات",
+          "studentDisplayName": "الطالب (اسم العرض)",
+          "title": "درجات المهمات",
+          "courseAssignment": "مهمة الدورة"
         },
-        "assignmentStudents": "",
-        "courseDetails": "",
-        "courseLongDescription": "",
-        "courseModification": "",
-        "curriculum": "",
-        "curriculumDescription": "",
-        "deleteAnnouncementTitle": "",
-        "deleteAnnouncementWarning": "",
-        "editOnGithub": "",
-        "examResults": "",
-        "makeModifications": "",
-        "noPastAnnouncement": "",
-        "noWrittenAnnouncement": "",
-        "objectives": "",
-        "quickRecap": "",
-        "reviews": "",
-        "summerStudents": "",
-        "writeAnnouncement": ""
+        "assignmentStudents": "مهمة المشروع",
+        "courseDetails": "تفاصيل الدورة التعليمية",
+        "courseLongDescription": "وصف تمهيدي",
+        "courseModification": "إذا كنت بحاجة إلى مساعدة لتعديل شيء في الدورة التعليمية، يرجى مراجعة هذا ال<0>دليل</0>.",
+        "curriculum": "منهاج الدورة التعليمية",
+        "curriculumDescription": "هنا المنهاج الحالي لهذه الدورة.",
+        "deleteAnnouncementTitle": "هل أنت متأكد أنك تريد حذف هذا الإعلان؟",
+        "deleteAnnouncementWarning": "هذا التغيير لا رجعة فيه",
+        "editOnGithub": "تحرير على Github",
+        "examResults": "نتائج الامتحان",
+        "makeModifications": "تحتاج إلى إجراء تعديلات؟",
+        "noPastAnnouncement": "لا يوجد لديك أي إعلانات سابقة في الوقت الحالي.",
+        "noWrittenAnnouncement": "ليس لديك أي إعلان مكتوب في الوقت الحالي.",
+        "objectives": "Ziele",
+        "quickRecap": "هنا يمكنك العثور على جميع المعلومات العامة بخصوص هذا الدورة.",
+        "reviews": "المراجعات",
+        "summerStudents": "المدرسة الصيفية",
+        "writeAnnouncement": "اكتب إعلانًا",
+        "overview": "نظرة عامة",
+        "amountPaid": "المبلغ المدفوع",
+        "successRate": "معدل النجاح",
+        "thresholdToPass": "الحد الأدنى للنجاح",
+        "totalQuestions": "العدد الإجمالي للأسئلة",
+        "averageAttempts": "متوسط التجارب",
+        "averageDuration": "متوسط المدة",
+        "averageScore": "الدرجة الاعتيادية",
+        "exportExamData": "تصدير بيانات الامتحان",
+        "finalAverageResults": "نتائج الشهادة النهائية",
+        "finalScore": "الدرجة النهائية",
+        "lastActive": "آخر نشاط",
+        "medianScore": "النتيجة المتوسطة",
+        "noExamLinked": "لا يوجد حاليًا اختبار مرتبط بهذا الدورة. إذا كنت ترغب في إنشاء امتحان، يرجى الاتصال بنا.",
+        "questionsInExam": "الأسئلة في الامتحان",
+        "studentsGraduated": "الطلاب الخريجين"
       },
       "profile": {
-        "billingInformation": "",
-        "description": "",
-        "enterTipsInformation": "",
-        "lightningAddress": "",
-        "makeModifications": "",
-        "noLightningAddress": "",
-        "noShortBio": "",
-        "noTags": "",
-        "publicDescription": "",
-        "publicProfileDescription": "",
-        "tutorialModification": ""
+        "billingInformation": "معلومات الفوترة",
+        "description": "وصفك",
+        "enterTipsInformation": "يشجع برنامج Plan ₿ Network المستخدمين على تقديم الإكراميات للمعلمين. يرجى إدخال معلوماتك حتى يتمكن الأشخاص من تقديم الإكراميات لك عندما يرغبون في ذلك.",
+        "lightningAddress": "عنوان البرق",
+        "makeModifications": "تحتاج إلى إجراء تعديلات؟",
+        "noLightningAddress": "لم يتم إضافة عنوان برق بعد.",
+        "noShortBio": "لا توجد أي سيرة ذاتية مختصرة مرتبطة بهذا الحساب بعد، لا تتردد في إضافته في GitHub.",
+        "noTags": "لا توجد أي علامات مرتبطة بهذا الحساب بعد.",
+        "publicDescription": "يتم عرض هذا الوصف في بطاقة معلومات المعلم الخاصة بك على المنصة.",
+        "publicProfileDescription": "هنا يمكنك ملء أو تحرير جميع المعلومات المرتبطة بنشاطك كمعلم في برنامج Plan ₿ Network.",
+        "tutorialModification": "إذا كنت بحاجة إلى مساعدة لتعديل شيء ما، يرجى التحقق من هذا <0>البرنامج التعليمي</0>."
       },
       "reviews": {
-        "checkComments": "",
-        "checkReviews": "",
-        "noReviewsYet": "",
-        "privateComment": "",
-        "publicComment": "",
-        "review": "",
-        "reviews": "",
-        "reviewsAndGrading": "",
-        "seeStatistics": "",
-        "viewDetails": "",
-        "writtenFeedbacks": ""
+        "checkComments": "هنا يمكنك قراءة التعليقات التي قدمها الطلاب. يتم ترتيب التعليقات حسب التاريخ.",
+        "checkReviews": "هنا يمكنك التحقق من الدرجات والمراجعات التي تلقى دورتك.",
+        "noReviewsYet": "لم يتلق هذا الدورة مراجعات ودرجات حتى الآن.",
+        "privateComment": "تعليق خاص",
+        "publicComment": "تعليق عام",
+        "review": "مراجعة",
+        "reviews": "المراجعات",
+        "reviewsAndGrading": "مراجعات وتقييم",
+        "seeStatistics": "رؤية الإحصائيات",
+        "viewDetails": "عرض التفاصيل",
+        "writtenFeedbacks": "تعليقات مكتوبة"
       },
       "tutorials": {
-        "tutorialAnalyticsDescription": "",
-        "yourTutorials": ""
+        "tutorialAnalyticsDescription": "هنا يمكنك العثور على التحليلات حول الدروس التي أنشأتها ونشرتها على المنصة.",
+        "yourTutorials": "دروسك"
+      },
+      "discount": {
+        "description": "إنشاء و إدارة رموز خصم للفعاليات والدورات – سواء كانت للاستخدام لمرة واحدة مثل المنح الدراسية، أو متعددة الاستخدام لحملات التسويق."
+      }
+    },
+    "professor": {
+      "courses": {
+        "overview": {
+          "courseEnded": "انتهت هذه الدورة.",
+          "announceChange": "أعلن تغييرًا",
+          "attendanceList": "قائمة الحضور",
+          "courseNotStarted": "لم تبدأ هذه الدورة بعد.",
+          "enrolledStudents": "الطلاب المسجلين",
+          "hasEnrolled": "سجل",
+          "hasGraduated": "تخرج بنسبة {{score}}%",
+          "hasLeftReview": "ترك تقييما",
+          "hasLeftReviewAndComment": "ترك تعليقًا وتقييمًا",
+          "notifyStudents": "تغير شيئًا؟ أبلغ طلابك.",
+          "overallPerformance": "الأداء العام",
+          "recentActivity": "النشاط الحديث",
+          "studentsRegistered": "الطلاب المسجلين",
+          "upcomingClass": "الفصل القادم"
+        }
       }
     }
   },
@@ -888,50 +1329,92 @@
       "free": "free",
       "online": "online",
       "people": "people",
-      "purchased": "",
+      "purchased": "تم الشراء",
       "unlimited": "unlimited",
       "visitWebsite": "Visit website",
-      "watchReplay": "Watch replay"
+      "watchReplay": "Watch replay",
+      "buyLecture": "اشتر المحاضرة"
     },
     "main": {
       "upcomingEvents": "Upcoming events"
     },
     "payment": {
-      "access_online_successful": "",
-      "access_physical_successful": "",
-      "access_type": "",
-      "additional_free_description": "",
-      "address": "",
-      "back_events": "",
-      "book_seat": "",
-      "callout_book_online": "",
-      "callout_book_physical": "",
-      "callout_book_replay": "",
-      "callout_purchase_online": "",
-      "callout_purchase_physical": "",
-      "callout_purchase_replay": "",
-      "date": "",
-      "description_free_physical": "",
-      "description_online": "",
-      "description_physical": "",
-      "download_ticket": "",
-      "language": "",
-      "limitation": "",
-      "limitedSeats": "",
-      "max_capacity": "",
-      "payment_successful": "",
-      "time": ""
+      "access_online_successful": "عند بدء الحدث، قم بتسجيل الدخول إلى المنصة وابدأ البث المباشر عبر صفحة الحدث.",
+      "access_physical_successful": "يمكنك تنزيل تذكرتك هنا، أو تنزيلها لاحقًا في لوحة التحكم الخاصة بك.",
+      "access_type": "نوع الوصول",
+      "additional_free_description": "هذا الحدث مجاني لذا لن يتم محاسبتك لحجز هذا المقعد.",
+      "address": "العنوان",
+      "back_events": "الرجوع إلى الأحداث",
+      "book_seat": "Book your seat",
+      "callout_book_online": "أنت على وشك حجز الوصول عبر الإنترنت لهذا الحدث.",
+      "callout_book_physical": "أنت على وشك حجز الوصول <highlight>مباشرة</highlight> لهذا الحدث.",
+      "callout_book_replay": "أنت على وشك حجز الوصول إلى فيديو إعادة العرض لهذا الحدث.",
+      "callout_purchase_online": "أنت على وشك شراء <highlight> الوصول عبر الإنترنت </highlight> لهذا الحدث.",
+      "callout_purchase_physical": "أنت على وشك شراء الوصول <highlight>مباشرة</highlight> لهذا الحدث.",
+      "callout_purchase_replay": "أنت على وشك شراء الوصول إلى فيديو إعادة العرض لهذا الحدث.",
+      "date": "Date",
+      "description_free_physical": "يرجى مراجعة تفاصيل الموقع المرفقة. بمجرد تأكيد الحجز، سيتم إرسال تذكرة تأكيد ورمز QR لتقديمه عند الحضور إلى القاعة. ",
+      "description_online": "يرجى مراجعة تاريخ ووقت الحدث المقدم. عندما يحين الوقت، قم بتسجيل الدخول إلى المنصة للوصول إلى البث المباشر عبر صفحة الحدث.",
+      "description_physical": "يرجى مراجعة تفاصيل المكان المقدمة. بمجرد تأكيد الحجز، ستتلقى تذكرة تأكيد ورمز QR، لتقديمها في الحدث.\n\nستمنحك هذه التذكرة أيضًا الوصول إلى البث المباشر وفيديو إعادة العرض، إن وجد.",
+      "download_ticket": "تنزيل تذكرتك",
+      "language": "اللغة المُحكية",
+      "limitation": "التحديد",
+      "limitedSeats": "المقاعد محدودة. يرجى إلغاء حجزك في حال عدم قدرتك على الحضور.",
+      "max_capacity": "السعة القصوى لـ",
+      "payment_successful": "الحجز ناجح.",
+      "time": "الوقت"
     },
-    "tcDisclaimer": "",
-    "tcMustBeAccepted": ""
+    "tcDisclaimer": "أوافق على أن يتم مشاركة معلوماتي مع الجهة المنظمة لأغراض الوصول إلى المكان.",
+    "tcMustBeAccepted": "يجب عليك قبول الشروط والأحكام للمتابعة",
+    "types": {
+      "singular": {
+        "conference": "Konferenz",
+        "exam": "امتحان",
+        "lecture": "محاضرة",
+        "meetup": "لقاء",
+        "workshop": "ورشة عمل"
+      },
+      "plurals": {
+        "workshop": "الورشات",
+        "conference": "المؤتمرات",
+        "exam": "الامتحانات",
+        "lecture": "المحاضرات",
+        "meetup": "لقاءات التواصل"
+      }
+    },
+    "eventInfos": {
+      "eventBooked": "الحدث محجوز",
+      "eventType": "نوع الحدث",
+      "numberOfSpots": "عدد الأماكن",
+      "onlineAndInPerson": "على الإنترنت وشخصيا",
+      "secureYourSpot": "حجز مكانك",
+      "sessionBooked": "تم حجز الجلسة",
+      "whatsPlanned": "ما هو المخطط"
+    },
+    "myTickets": "تذاكري",
+    "calendar": {
+      "xMonthsAgo": "منذ {{number}} أشهر",
+      "inXMonths": "في {{number}} أشهر",
+      "lastMonth": "الشهر الماضي",
+      "nextMonth": "الشهر القادم",
+      "noEventsFound": "لم يتم العثور على أحداث",
+      "thisMonth": "هذا الشهر",
+      "today": "اليوم"
+    },
+    "addEvent": "إضافة حدث",
+    "planBWeek": {
+      "pageTitle": "الخطة ₿ الأسبوعية"
+    }
   },
   "filters": {
-    "topics": ""
+    "topics": "مواضيع"
   },
   "glossary": {
     "definition": "التعريف",
     "relatedWords": "كلمات ذات صلة:",
-    "term": "المصطلح"
+    "term": "المصطلح",
+    "learnMore": "تعلم المزيد",
+    "showMoreWords": "إظهار المزيد من الكلمات"
   },
   "home": {
     "aboutUsSection": {
@@ -945,13 +1428,13 @@
       "privacyTitle": "Privacy"
     },
     "blogSection": {
-      "seeAll": ""
+      "seeAll": "رؤية الكل"
     },
     "courseSection": {
-      "checkAllCourses": ""
+      "checkAllCourses": "راجع جميع الدورات"
     },
     "languageSection": {
-      "availableLanguages": "",
+      "availableLanguages": "اللغات المتاحة",
       "link": "Help us translate the academy"
     }
   },
@@ -961,24 +1444,27 @@
     "underConstructionImage": "Abbildung mehrerer Kaninchen auf einer Baustelle"
   },
   "labs": {
-    "coordinatedBy": "",
-    "description1": "",
-    "description2": "",
-    "planBLabs": "",
+    "coordinatedBy": "هذا المعمل يتم تنسيقه بواسطة",
+    "description1": "مختبرات Plan ₿ هي مجموعات دراسية مصممة لتوفير فصول عملية وتفاعلية منتظمة للطلاب. من خلال هذه المجموعات الدراسية، يشارك الطلاب والأساتذة في المناقشات، يناقشون أحدث الأبحاث، يتعاملون مع التحديات الحقيقية في العالم، ويطبقون المفاهيم النظرية.",
+    "description2": "انضم إلى المختبر الذي يتماشى مع مجال دراستك وحسّن تجربة التعلم الخاصة بك!",
+    "planBLabs": "مختبرات Plan ₿",
     "presentation": {
-      "link": "",
-      "subtitle": ""
+      "link": "اكتشف مختبرات Plan ₿",
+      "subtitle": "انضم إلى مختبر للتعلم، والمناقشة والنمو!"
     },
-    "title": ""
+    "title": "فصول عملية وتفاعلية للتعلم المستمر"
   },
   "lectures": {
-    "buyVideoToUnlock": "",
-    "checkFullCourse": "",
-    "lecturePartCourse": "",
-    "watchLecture": ""
+    "buyVideoToUnlock": "اشتر الفيديو لفتحه",
+    "checkFullCourse": "تحقق من الدورة التدريبية كاملة",
+    "lecturePartCourse": "هذا إعادة تشغيل المحاضرة جزء من دورة <0>{{courseTitle}}</0>.\nًاستكشف الدورة التدريبية كاملة لتتقن المفهوم بأكمله وتطور إمكاناتك بشكل كامل!",
+    "watchLecture": "شاهد إعادة تشغيل المحاضرة"
   },
   "menu": {
-    "login": ""
+    "login": "تسجيل الدخول",
+    "signIn": "Einloggen",
+    "educatorContent": "محتوى المعلم",
+    "getStarted": "ابدأ الآن"
   },
   "notFound": {
     "here": "Hier",
@@ -987,52 +1473,53 @@
   },
   "notification": {
     "types": {
-      "assignment": "",
-      "calendar": "",
-      "celebration": "",
-      "general": "",
-      "warning": ""
+      "assignment": "الواجبات",
+      "calendar": "تنبيه التقويم",
+      "celebration": "احتفال",
+      "general": "المعلومات العامة",
+      "warning": "تحذير"
     }
   },
   "notifications": {
-    "bCertResults": "",
-    "blogNotTranslated": "",
-    "bookYourSeat": "",
-    "calendar_5m": "",
-    "calendar_5m_online_event": "",
-    "calendar_24h": "",
-    "calendar_24h_in_person_event": "",
-    "calendar_48h_online_event": "",
-    "dashboardDescription": "",
-    "daysAgo": "",
-    "markAsRead": "",
-    "monthsAgo": "",
-    "noRecentNotifications": "",
-    "notifications": "",
-    "noUnreadNotifications": "",
-    "planBNews": "",
-    "read": "",
-    "results": "",
-    "select": "",
-    "selectAll": "",
-    "today": "",
-    "unread": "",
-    "upcomingEvent": "",
-    "weeksAgo": "",
-    "yearsAgo": "",
-    "yesterday": ""
+    "bCertResults": "نتائج شهادة البتكوين الخاصة بك متوفرة الآن!",
+    "blogNotTranslated": "عذراً، هذه التدوينة الجديدة لم يتم ترجمتها بعد إلى اللغة الحالية.",
+    "bookYourSeat": "احجز مقعدك إذا كنت ترغب في الحضور شخصيًا!",
+    "calendar_5m": "الدرس يبدأ في خمس دقائق! اضغط هنا للانضمام الآن.",
+    "calendar_5m_online_event": "حان الوقت! {{eventName}} سيبدأ خلال 5 دقائق. اضغط هنا للانضمام الآن!",
+    "calendar_24h": "الدرس التالي سيكون غداً من {{ formattedTime }}.",
+    "calendar_24h_in_person_event": "الحدث {{eventName}} سيقام غداً، من {{formattedTime}} في {{addressLine}}. تأكد من تنزيل تذكرتك للحضور!",
+    "calendar_48h_online_event": "ال{{eventName}} قادم قريباً! تم جدولته ل{{date}}، من {{formattedTime}}. ",
+    "dashboardDescription": "ها هي آخر الإخطارات الخاصة بك. يتم إزالتها تلقائيًا بعد شهر من رؤيتها.",
+    "daysAgo": "قبل {{days}} أيام",
+    "markAsRead": "اعتبرها مقروءة",
+    "monthsAgo": "قبل {{months}} شهر{{s}}",
+    "noRecentNotifications": "ليست لديك أي إشعارات حديثة في الوقت الحالي.",
+    "notifications": "الإشعارات",
+    "noUnreadNotifications": "لا يوجد أي إشعارات غير مقروءة بعد",
+    "planBNews": "أخبار Plan ₿",
+    "read": "اقرأ",
+    "results": "نتائج شهادة البتكوين الخاصة بك متوفرة الآن!",
+    "select": "اختر",
+    "selectAll": "حدد الكل",
+    "today": "اليوم",
+    "unread": "غير مقروء",
+    "upcomingEvent": "حدث قادم",
+    "weeksAgo": "منذ {{weeks}} أسبوع{{s}}",
+    "yearsAgo": "منذ {{years}} سنة{{s}}",
+    "yesterday": "الأمس",
+    "newVersionAvailable": "إصدار جديد من منصة شبكة Plan ₿ متاح ، يرجى تحديث الصفحة للتحديث."
   },
   "payment": {
-    "haveReductionCode": "",
-    "insertReductionCode": "",
-    "payByCard": "",
-    "payWithBitcoin": "",
-    "taxesMayApply": "",
-    "terms": "",
-    "total": ""
+    "haveReductionCode": "هل لديك رمز تخفيض؟",
+    "insertReductionCode": "أدخل رمز التخفيض الخاص بك",
+    "payByCard": "ادفع بالبطاقة",
+    "payWithBitcoin": "ادفع بالبتكوين",
+    "taxesMayApply": "قد تطبق الضرائب عند الخروج",
+    "terms": "راجع <0>الشروط العامة</0> لدينا والأحكام لتفاصيل الاسترجاع",
+    "total": "المجموع"
   },
   "placeholders": {
-    "selectTimeZone": ""
+    "selectTimeZone": "اختر المنطقة الزمنية"
   },
   "professors": {
     "navigationTitles": {
@@ -1044,151 +1531,182 @@
     "pageSubtitle": "يقدم جميع الأساتذة جهودهم تطوّعاً بدافع الشغف بالبيتكوين. إن رغبت، يمكنك دعمهم بتبرع تعبيراً عن تقديرك.",
     "pageTitle": "الأساتذة",
     "tips": {
-      "authorSupport": "",
+      "authorSupport": "ادعم المؤلف بإعطاء بقشيش",
       "noTipsYet": "This professor does not accept tips at the moment.",
       "thanks": "Thanks for supporting {{name}}'s work !",
       "thanksNoName": "Thanks for supporting my work !"
     }
   },
   "projects": {
-    "noRelatedEvents": "",
-    "otherCommunities": "",
-    "related": "",
-    "relatedEvents": ""
+    "noRelatedEvents": "لا توجد أحداث قادمة مرتبطة بهذا المعلم في الوقت الحالي.",
+    "otherCommunities": "استكشف خطة ₿ المجتمعات",
+    "related": "متعلق",
+    "relatedEvents": "الأحداث القادمة ذات الصلة"
   },
   "proofreading": {
-    "completed": "",
-    "description": "",
-    "descriptionOriginalLanguage": "",
-    "inProgress": "",
-    "reviewEarn": "",
-    "rewardsText": "",
-    "status": "",
-    "thanks": ""
+    "completed": "اكتمل التدقيق النحوي",
+    "description": "تم ترجمة النص الأصلي بواسطة AI ، لكنه يحتاج أيضًا إلى مراجعة بشرية لضمان دقة اللغة.",
+    "descriptionOriginalLanguage": "حتى لو كان هذا المحتوى بلغته الأصلية, يحتاج إلى مراجعة بشرية لضمان دقة اللغة.",
+    "inProgress": "جاري التدقيق النحوي",
+    "reviewEarn": "قم بالمراجعة واكسب ستوشي",
+    "rewardsText": "* قد تختلف الجوائز بناءً على سعر صرف الدولار",
+    "status": "حالة التدقيق النحوي",
+    "thanks": "شكرا جزيلا لمراجعينا المدهشين!"
   },
   "publicCommunication": {
-    "legal": "",
+    "legal": "معلومات قانونية",
     "legalSections": {
-      "contact": "",
-      "legalNotice": "",
-      "privacyPolicy": "",
-      "termsOfSale": ""
+      "contact": "اتصل",
+      "legalNotice": "إشعار قانوني",
+      "privacyPolicy": "سياسة الخصوصية",
+      "termsOfSale": "شروط البيع",
+      "notFound": "لم يتم العثور على معلومات قانونية"
     }
   },
   "resources": {
     "bet": {
-      "title": "الموارد التعليمية"
+      "title": "الموارد التعليمية",
+      "addEducationKit": "أضف كتاب تعليمي"
     },
     "books": {
-      "title": "المكتبة"
+      "title": "المكتبة",
+      "addBook": "أضف كتاب"
     },
     "channels": {
-      "noYoutubeChannels": "",
+      "noYoutubeChannels": "لا يوجد حاليًا أي قنوات يوتيوب للغة المختارة.",
       "title": "قنوات اليوتيوب"
     },
     "conferences": {
-      "title": "تسيجلات المؤتمرات"
+      "title": "تسيجلات المؤتمرات",
+      "addConference": "أضف إعادة بث المؤتمر"
     },
     "glossary": {
       "title": "قاموس المصطلحات"
     },
     "lectures": {
-      "title": ""
+      "title": "إعادات بث المحاضرات"
     },
     "movies": {
-      "noMovies": "",
-      "title": ""
+      "noMovies": "لا توجد حاليًا أفلام أو أفلام وثائقية للغة المختارة.",
+      "title": "فيلم"
     },
     "newsletter": {
-      "check": ""
+      "check": "تحقق من النشرة الإخبارية"
     },
     "newsletters": {
-      "noNewsletters": "",
-      "subtitle": "",
+      "noNewsletters": "لا توجد حاليًا أي نشرات إخبارية للغة المختارة.",
+      "subtitle": "<0>أخرى من النشرات الإخبارية</0> قد تعجبك",
       "title": "Newsletters"
     },
-    "pageSubtitleBooks": "",
-    "pageSubtitleChannels": "",
-    "pageSubtitlePodcast": "",
+    "pageSubtitleBooks": "<0>كتب أخرى</0> قد تعجبك",
+    "pageSubtitleChannels": "<0>قنوات يوتيوب أخرى</0> قد تعجبك",
+    "pageSubtitlePodcast": "<0>بودكاستات أخرى</0> قد تعجبك",
     "podcasts": {
-      "noPodcasts": "",
-      "title": "Podcasts"
+      "noPodcasts": "حالياً لا توجد بودكاست للغة المختارة.",
+      "title": "Podcasts",
+      "addPodcast": "أضف البودكاست",
+      "checkThePodcast": "تحقق من البودكاست"
     },
     "projects": {
-      "title": ""
+      "title": "مشاريع",
+      "addProjects": "أضف مشروع"
     },
-    "searchFilterName": "",
-    "toggleLabelAll": "",
-    "toggleLabelSelectedLanguage": ""
+    "searchFilterName": "البحث بالاسم",
+    "toggleLabelAll": "الكل",
+    "toggleLabelSelectedLanguage": "اللغة المحددة",
+    "papers": {
+      "types": {
+        "book": "Buch",
+        "conference": "Konferenz",
+        "PhD Thesis": "أطروحة الدكتوراه",
+        "academic": "أكاديمي",
+        "journal": "مجلة",
+        "pre-print": "قبل الطباعة",
+        "thesis": "أطروحة",
+        "whitepaper": "ورقة بيضاء"
+      },
+      "accessPaper": "الوصول إلى الورقة",
+      "addPaper": "إضافة ورقة",
+      "citations": "الاقتباسات (bib.)",
+      "downloadCitations": "تحميل الاقتباسات",
+      "papers": "أوراق",
+      "publisher": "الناشر",
+      "showMorePapers": "عرض المزيد من الأوراق",
+      "title": "أوراق البحث"
+    },
+    "pageSubtitleMovies": "<0>أفلام أخرى</0> قد تعجبك"
   },
   "search": {
-    "all": "",
-    "book": "",
-    "books": "",
-    "categories": "",
-    "conference": "",
-    "conference_replay": "",
-    "conference_replays": "",
-    "course": "",
-    "course_chapter": "",
-    "course_part": "",
-    "courses": "",
-    "event": "",
-    "events": "",
+    "all": "الكل",
+    "book": "Buch",
+    "books": "المكتبة",
+    "categories": "التصنيفات",
+    "conference": "Konferenz",
+    "conference_replay": "تسيجلات المؤتمرات",
+    "conference_replays": "تسيجلات المؤتمرات",
+    "course": "دورة",
+    "course_chapter": "فصل الدورة",
+    "course_part": "جزء الدورة",
+    "courses": "الدورات",
+    "event": "فعالية",
+    "events": "الفعاليات",
     "explorer": {
-      "title": ""
+      "title": "بحث"
     },
     "glossary_word": "كلمة القاموس",
     "glossary_words": "كلمات القاموس",
-    "lecture_replay": "",
-    "lecture_replays": "",
-    "loadMoreResults": "",
-    "newsletter": "",
-    "newsletters": "",
-    "podcast": "",
-    "podcasts": "",
-    "professor": "",
-    "professors": "",
-    "project": "",
-    "projects": "",
-    "resultEmpty": "",
-    "resultError": "",
-    "results": "",
-    "resultsRemaining": "",
-    "search": "",
-    "startSearch": "",
-    "tutorial": "",
-    "tutorials": "",
-    "youtube_channel": "",
-    "youtube_channels": ""
+    "lecture_replay": "إعادة عرض المحاضرة",
+    "lecture_replays": "إعادات بث المحاضرات",
+    "loadMoreResults": "رؤية المزيد من النتائج",
+    "newsletter": "Newsletter",
+    "newsletters": "Newsletters",
+    "podcast": "Podcast",
+    "podcasts": "Podcasts",
+    "professor": "أستاذ",
+    "professors": "Professors",
+    "project": "مشروع",
+    "projects": "مشاريع",
+    "resultEmpty": "عفوا! لم نتمكن من العثور على أي شيء يتوافق مع بحثك. تحقق من التهجئة، أو جرب كلمات مفتاحية مختلفة، أو اختر فئة أخرى.",
+    "resultError": "هناك خطأ ما. من فضلك حاول مرة أخرى.",
+    "results": "النتائج",
+    "resultsRemaining": "تبقى {{count}} نتائج",
+    "search": "بحث",
+    "startSearch": "ابدأ بحثك",
+    "tutorial": "Tutorial",
+    "tutorials": "Anleitungen",
+    "youtube_channel": "قنوات اليوتيوب",
+    "youtube_channels": "قنوات اليوتيوب",
+    "noResults": "لا توجد نتائج",
+    "resultsFound": "تم العثور على {{count}} نتائج"
   },
   "settings": {
-    "changeDisplayName": "",
-    "changeEmail": "",
+    "changeDisplayName": "تغيير اسم العرض",
+    "changeEmail": "تغيير البريد الإلكتروني",
     "changePassword": "Change password",
-    "changeProfilePicture": ""
+    "changeProfilePicture": "تغيير صورة الملف الشخصي"
   },
   "tutorials": {
     "business": {
-      "title": ""
+      "title": "أعمال"
     },
     "computer-security": {
-      "title": ""
+      "title": "أمن الكمبيوتر"
     },
     "contribution": {
-      "title": ""
+      "title": "مساهمة"
     },
     "details": {
-      "author": "",
-      "ratingSuccess": "",
+      "author": "الكاتب:",
+      "ratingSuccess": "شكرا لتقييمك!",
       "source": "Original source :",
-      "tutorialName": ""
+      "tutorialName": "اسم الدليل",
+      "didThisWork": "هل كان هذا عمل بشكل جيد بالنسبة لك؟"
     },
     "exchange": {
       "title": "Umtausch"
     },
-    "hasBeenProofreadBy": "",
-    "hasNotBeenProofread": "",
+    "hasBeenProofreadBy": "تمت مراجعة هذا الدليل بواسطة",
+    "hasNotBeenProofread": "لم يتم مراجعة هذا الدليل بعد",
     "mining": {
       "title": "Bergbau"
     },
@@ -1201,54 +1719,57 @@
       "title": "Privatsphäre"
     },
     "subCategories": {
-      "authentication": "",
-      "backup": "",
-      "bitcoin": "",
-      "centralized": "",
-      "communication": "",
-      "content": "",
-      "data": "",
-      "desktop": "",
-      "hardware": "",
-      "lightning-network": "",
-      "mobile": "",
-      "on-chain": "",
-      "operating system": "",
-      "others": "",
-      "peer-to-peer": "",
-      "point-of-sale": "",
-      "pool": "",
-      "resource": ""
+      "authentication": "المصادقة",
+      "backup": "النسخ الاحتياطي",
+      "bitcoin": "بيتكوين",
+      "centralized": "مركزي",
+      "communication": "التواصل",
+      "content": "المحتوى",
+      "data": "البيانات",
+      "desktop": "سطح المكتب",
+      "hardware": "الأجهزة",
+      "lightning-network": "شبكة البرق",
+      "mobile": "الموبايل",
+      "on-chain": "على السلسلة",
+      "operating system": "نظام التشغيل",
+      "others": "آخر",
+      "peer-to-peer": "ند للند",
+      "point-of-sale": "نقطة البيع",
+      "pool": "المجموعة",
+      "resource": "Ressourcen",
+      "explorer": "مستكشف"
     },
     "wallet": {
       "title": "Wallet"
     },
-    "writtenBy": ""
+    "writtenBy": "تم كتابة هذا البرنامج التعليمي بواسطة",
+    "noTutorialsFound": "لم نتمكن من العثور على أي درس توجيهي يطابق بحثك.",
+    "onThisPage": "على هذه الصفحة"
   },
   "underConstruction": {
     "github": "GitHub",
-    "itemNotFound": "",
-    "itemNotFoundOrTranslated": "",
+    "itemNotFound": "لم يتم العثور على {{item}}",
+    "itemNotFoundOrTranslated": "لم يتم العثور على {{item}} ، أو لم يتم ترجمته بلغتك",
     "p1": "Ein Kaninchen hat ein Loch niedergeschlagen. Aufgrund dieses unerwarteten Abenteuers befindet sich diese Seite im Moment noch im Bau. Wir entschuldigen uns für jegliche Unannehmlichkeiten. Unser Team ist in vollem Gang, um diese Seite zu vervollständigen. Wenn Sie Interesse an einer Hand haben, zögern Sie bitte nicht unsere Seite zu besuchen",
     "p2": "und erwägen Sie, unserer Community beizutreten!",
     "pageTitle": "Hoppla."
   },
   "words": {
-    "abstract": "",
-    "access": "",
-    "action": "",
-    "admin": "",
-    "admins": "",
+    "abstract": "ملخص",
+    "access": "الوصول",
+    "action": "الإجراءات",
+    "admin": "المدير",
+    "admins": "المشرفون",
     "advanced": "Erweitert",
-    "all": "",
-    "amount": "",
-    "author": "",
+    "all": "الكل",
+    "amount": "Amount",
+    "author": "المؤلف",
     "back": "Zurück",
-    "bCert": "",
+    "bCert": "₿-شهادة",
     "beginner": "Anfänger",
-    "bitcoin": "",
+    "bitcoin": "بيتكوين",
     "book": "Buch",
-    "business": "",
+    "business": "أعمال",
     "calendar": "التقويم",
     "cancel": "إلغاء",
     "careerPortal": "بوابة الوظائف",
@@ -1258,23 +1779,23 @@
     "chapter": "الوحدة",
     "chapters": "الوحدات",
     "close": "أغلق",
-    "company": "",
+    "company": "الشركة",
     "conference": "Konferenz",
     "congrats": "مبروك!",
-    "continue": "",
+    "continue": "استمر",
     "country": "بلد",
     "course": "Kurs",
     "courseId": "رقم الدورة",
     "courses": "Kurse",
     "credits": "الاعتمادات",
     "date": "التاريخ",
-    "day": "",
+    "day": "يوم",
     "delete": "حذف",
     "description": "وصف",
     "details": "Details",
     "diploma": "دبلوم",
-    "dislikes": "",
-    "displayName": "",
+    "dislikes": "لا يعجبه",
+    "displayName": "اسم العرض",
     "download": "تنزيل",
     "duration": "المدة",
     "edit": "تعديل",
@@ -1286,31 +1807,31 @@
     "github": "GitHub",
     "glossary": "قاموس",
     "goal": "هدف",
-    "grade": "",
+    "grade": "درجة",
     "home": "Zuhause",
     "hours": "ساعات",
-    "hybrid": "",
+    "hybrid": "هجين",
     "inperson": "حضور شخصي",
     "intermediate": "Mittler",
-    "invoice": "",
+    "invoice": "فاتورة",
     "language": "لغة",
     "lecture": "محاضرة",
     "lectures": "محاضرات",
     "level": {
       "advanced": "Erweitert",
       "beginner": "Anfänger",
-      "beginnerFriendly": "",
+      "beginnerFriendly": "مناسب للمبتدئين",
       "expert": "خبير",
       "intermediate": "Mittler",
       "level": "مستوى",
       "levels": "مستويات"
     },
-    "lightningInvoice": "",
+    "lightningInvoice": "فاتورة البرق",
     "likes": "إعجابات",
     "linkedin": "لينكدإن",
     "location": "موقع",
     "members": " Members",
-    "mentor": "",
+    "mentor": "مرشد",
     "mining": "Bergbau",
     "movie": "فيلم",
     "name": "الاسم",
@@ -1318,20 +1839,20 @@
     "newsletter": "Newsletter",
     "next": "التالي",
     "no": "لا",
-    "notApplicable": "",
+    "notApplicable": "غير قابل للتطبيق",
     "on": "على",
-    "onChainAddress": "",
+    "onChainAddress": "عنوان على السلسلة",
     "online": "عبر الإنترنت",
     "overview": "نظرة عامة",
     "paid": "بريميوم",
     "part": "جزء",
-    "password": "",
+    "password": "كلمة المرور",
     "podcast": "Podcast",
     "previous": "السابق",
     "price": "السعر",
     "professor": "أستاذ",
     "professors": "Professors",
-    "progress": "",
+    "progress": "التقدم",
     "project": "مشروع",
     "projects": "مشاريع",
     "protocol": "بروتوكول",
@@ -1341,7 +1862,7 @@
     "resources": "Ressourcen",
     "role": "دور",
     "save": "حفظ",
-    "saving": "",
+    "saving": "جار الحفظ...",
     "search": "بحث",
     "security": "الأمن",
     "selectedAmount": "تم اختيار {{amount}}",
@@ -1356,8 +1877,8 @@
     "telegram": "تيليجرام",
     "ticket": "تذكرة",
     "time": "الوقت",
-    "timeZone": "",
-    "title": "",
+    "timeZone": "المنطقة الزمنية",
+    "title": "العنوان",
     "to": "إلى",
     "topics": "مواضيع",
     "total": "المجموع",
@@ -1373,10 +1894,219 @@
     "view": "عرض",
     "viewMore": "عرض المزيد",
     "wallets": "Wallets",
-    "yes": "نعم"
+    "yes": "نعم",
+    "booking": "الحجوزات",
+    "confirmation": "تأكيد",
+    "downloads": "تنزيل",
+    "topic": "مواضيع",
+    "type": "النوع",
+    "resume": "Resume the lesson",
+    "actions": "الإجراءات",
+    "filters": "فلتر",
+    "rating": "تقييمات",
+    "aboutUs": "من نحن",
+    "certifications": "الشهادات",
+    "completed": "مكتمل",
+    "discover": "اكتشف",
+    "enroll": "التسجيل",
+    "researchPaper": "ورقة بحث",
+    "searchTripleDot": "بحث...",
+    "session": "جلسة",
+    "settings": "الإعدادات",
+    "structure": "البنية",
+    "syllabus": "المنهج الدراسي",
+    "theory": "النظرية",
+    "info": "معلومات",
+    "invoices": "الفواتير",
+    "practice": "ممارسة",
+    "questions": "أسئلة",
+    "sats": "إحصاءات",
+    "review": "مراجعة",
+    "seeAll": "رؤية الكل",
+    "share": "مشاركة",
+    "taxes": "الضرائب",
+    "academy": "أكاديمية",
+    "account": "الحساب",
+    "address": "العنوان",
+    "full": "كامل",
+    "legal": "قانوني",
+    "list": "قائمة",
+    "map": "خريطة",
+    "month": "شهر",
+    "none": "لا شيء",
+    "open": "مفتوح",
+    "optional": "اختياري",
+    "planBNetwork": "تخطيط ₿ الشبكة",
+    "pricing": "التسعير",
+    "resetAll": "إعادة تعيين الكل",
+    "resetFilters": "إعادة ضبط الفلاتر",
+    "results": "النتائج",
+    "viewAll": "عرض الكل",
+    "week": "أسبوع",
+    "weight": "وزن",
+    "enrolled": "مسجل"
   },
   "youtubeChannels": {
-    "view": "",
-    "watchTrailer": ""
+    "view": "عرض قناة يوتيوب",
+    "watchTrailer": "شاهد الإعلان التشويقي"
+  },
+  "mentor": {
+    "close": "إغلاق",
+    "collapse": "طي",
+    "error": "حدث خطأ. الرجاء المحاولة مرة أخرى.",
+    "expand": "توسيع",
+    "loginRequired": "أنشئ حسابًا لتتحدث مع PlanBot!",
+    "openChat": "اسأل PlanBot",
+    "placeholder": "اسأل سؤالا...",
+    "reset": "محادثة جديدة",
+    "sources": "انتقل إلى الأمام",
+    "thinking": "التفكير",
+    "title": "PlanBot",
+    "welcome": "اسألني أي شيء عن البيتكوين!"
+  },
+  "navbar": {
+    "bookings": "الحجوزات",
+    "tutorials": "Anleitungen",
+    "tutorialsAnalytics": "تحليلات الدلائل الإرشادية",
+    "userRolesAllocation": "توزيع أدوار المستخدمين",
+    "career": "الوظائف",
+    "careers": "الوظائف",
+    "discountCode": "رموز الخصم",
+    "tabs": {
+      "learn": "تعلم",
+      "teach": "علم",
+      "admin": "المدير"
+    },
+    "translationPanel": "لوحة الترجمة",
+    "learnAnytimeDescription": "الدورات الذاتية السرعة",
+    "learnAnytimeTitle": "تعلم في أي وقت",
+    "liveClassesDescription": "الدورات التي يقودها المعلم",
+    "liveClassesTitle": "الدروس المباشرة",
+    "manageCourses": "إدارة الدورات",
+    "myCourses": "دوراتي"
+  },
+  "videoSelector": {
+    "language": {
+      "language": "اللغة",
+      "AI": "الترجمة الذكية",
+      "original": "اللغة الأصلية"
+    },
+    "player": {
+      "pears": "الكمثرى 🍐",
+      "peertube": "Peertube",
+      "player": "اللاعب",
+      "rumble": "الهمهمة",
+      "youtube": "يوتيوب"
+    }
+  },
+  "educatorContent": {
+    "types": {
+      "other": "آخر",
+      "art": "فن",
+      "booklet": "كتيب",
+      "flyer": "نشرة دعائية",
+      "game": "لعبة",
+      "presentation": "عرض تقديمي",
+      "sticker": "ملصق",
+      "workshop": "ورشة عمل"
+    },
+    "detail": {
+      "view": "عرض",
+      "createdBy": "تم الإنشاء بواسطة",
+      "downloadAll": "تحميل الكل"
+    },
+    "contentNotFound": "المحتوى غير موجود",
+    "urlInvalid": "يجب أن يكون الرابط عنوان URL صالح",
+    "titleTooLong": "لا يمكن أن يتجاوز العنوان 60 حرفًا",
+    "fileTooLarge": "الملف كبير جدًا (الحد الأقصى 50 ميغابايت)",
+    "imageCover": "صورة الغلاف",
+    "languagePlaceholder": "اختر",
+    "languageRequired": "حدد لغة المورد",
+    "resourceType": "نوع المورد",
+    "shareLinks": "مشاركة الروابط",
+    "status": {
+      "draft": "قيد الانتظار",
+      "published": "مباشر",
+      "rejected": "لم يتم القبول",
+      "unpublished": "غير منشور"
+    },
+    "success": "تمت إضافة محتوى المعلم بنجاح!",
+    "successSubtitle": "سوف يمر بعملية المراجعة قبل العرض.",
+    "successTitle": "تم تحميل محتوى المعلم بنجاح",
+    "addMaterial": "أضف محتوى المعلم",
+    "addMoreLinks": "أضف المزيد من الروابط",
+    "browseFiles": "أو تصفح الملفات",
+    "browseImages": "أو استعرض الصور",
+    "coverRequired": "الصورة الغلاف إلزامية",
+    "currentCoverPresent": "الغطاء الحالي موجود",
+    "descriptionHelper": "صف محتوى المورد لمساعدة الآخرين على فهم محتواه والعثور عليه",
+    "descriptionPlaceholder": "وصف موجز للمادة التعليمية",
+    "descriptionRequired": "لا يمكن أن يكون الوصف فارغًا",
+    "descriptionTooLong": "لا يمكن أن تتجاوز الوصف 350 حرفًا",
+    "done": "تم",
+    "dropCover": "أسقط الصورة الغطاء هنا",
+    "dropFiles": "أسقط الملفات هنا",
+    "editAndRequireApproval": "تحرير وطلب الموافقة",
+    "editMaterial": "تحرير محتوى المعلم",
+    "imageError": "حدث خطأ أثناء تحميل الصورة",
+    "loginMessage": "الرجاء تسجيل الدخول لمشاهدة المحتوى الخاص بك.",
+    "myContent": "محتواي",
+    "noContent": "لم تقم بتحميل أي محتوى بعد.",
+    "noContentToReview": "لا يوجد محتوى للمراجعة",
+    "noResultsDescription": "حاول تعديل مرشحات البحث الخاصة بك",
+    "noResultsTitle": "لم يتم العثور على محتوى المعلم",
+    "onlyImages": "مسموح فقط بملفات الصور",
+    "titleHelper": "يجب أن يعكس المحتوى والغرض من موردك. احتفظ به موجزًا ولكن معلوماتي.",
+    "titleRequired": "لا يمكن أن يكون العنوان فارغًا",
+    "typeRequired": "حدد نوع المورد",
+    "uploadFiles": "تحميل الملفات",
+    "uploadForReview": "تحميل للمراجعة",
+    "uploading": "جار التحميل...",
+    "noCover": "لا يوجد غلاف"
+  },
+  "forms": {
+    "browse": "تصفح",
+    "replace": "استبدال"
+  },
+  "footer": {
+    "proudlyPartOf": "نحن جزء فخور من <0>شبكة الخطة ₿</0>",
+    "FOSSOpenContent": "البرامج المجانية والمحتوى المفتوح",
+    "becomeATeacher": "أصبح <0>معلم</0>"
+  },
+  "months": {
+    "april": "أبريل",
+    "august": "أغسطس",
+    "december": "ديسمبر",
+    "february": "فبراير",
+    "january": "يناير",
+    "july": "يوليو",
+    "june": "يونيو",
+    "march": "مارس",
+    "may": "مايو",
+    "november": "نوفمبر",
+    "october": "أكتوبر",
+    "september": "سبتمبر"
+  },
+  "movies": {
+    "checkTheMovie": "تحقق من الفيلم"
+  },
+  "account": {
+    "profile": "الملف الشخصي",
+    "account": "الحساب",
+    "myTeacherProfile": "ملفي الشخصي كمعلم"
+  },
+  "becomeTeacher": {
+    "description": "إذا كنت من محبي البيتكوين الحماسيين الذين يحبون التعليم ويرغبون في إحداث تأثير حقيقي في مجتمعك المحلي، يمكنك استضافة دورة تعليمية خاصة بك على منصة التعلم الخاصة بنا.",
+    "enhanceExperience": "<0>عزز تجربة تعلم طلابك</0> مع أدوات المنصة",
+    "globalReach": "التوصل العالمي",
+    "hostOwnCourse": "<0>استضف دورتك التعليمية الخاصة</0>، على الإنترنت أو شخصيًا",
+    "inspireLearners": "ألهم مجتمع المتعلمين",
+    "joinMission": "<0>انضم إلى المهمة</0> كمربي بيتكوين حقيقي",
+    "superiorAmount": ">{{amount}}",
+    "teachWhatYouLove": "<0>علم ما تحب</0>",
+    "title": "علم البيتكوين وألهم الآخرين",
+    "activeBitcoinLearners": "متعلمي بيتكوين النشطين",
+    "bitcoinOnly": "للبيتكوين فقط",
+    "bookCall": "احجز مكالمة لمدة 30 دقيقة لتصبح معلما"
   }
 }

@@ -100,7 +100,7 @@
     "oldPassword": "Régi jelszó"
   },
   "bCert": {
-    "bCertDescription": "A ₿-CERT a végső Bitcoin-teszt, amely a Bitcoinhoz és a kapcsolódó témákhoz kapcsolódó tudásodat méri fel.\n\nA 80% feletti eredménnyel megszerezhető ₿-CERT tanúsítvány igazolja a Bitcoin területén szerzett szakértelmedet, és új lehetőségeket nyithat meg a szakmai előrelépéshez.",
+    "bCertDescription": "A ₿-CERT a végső Bitcoin teszt, amelynek célja, hogy értékelje Bitcoin és kapcsolódó témák tudását.\n\nSzerezze meg a ₿-CERT bizonyítványát és igazolja szakértelmét a Bitcoin iparágban, ami új munkalehetőségeket nyit meg a területen.",
     "bookExam": "Vizsgaidőpont foglalása",
     "challengeYourself": "Tedd próbára magad, és mérd fel a tudásodat",
     "download": "Tanúsítvány letöltése",
@@ -770,15 +770,26 @@
             "selectLanguages": "Válassza ki a fordításra kívánt nyelveket:",
             "startingTranslation": "Fájlok feltöltése...",
             "startingTranslationStep": "Fordítás indítása...",
-            "startSuccess": "A fordítás sikeresen elindult!"
+            "startSuccess": "A fordítás sikeresen elindult!",
+            "startTranslation": "Fordítás indítása...",
+            "title": "Válassza ki a fordításra kívánt nyelveket:",
+            "uploadAndTranslationStarted": "Elkezdődött a fordítás! A folyamat több percig is tarthat nagyobb tanfolyamok esetén.",
+            "uploadingFiles": "Fájlok feltöltése..."
           },
           "table": {
-            "totalLanguages": "Összes nyelv"
+            "totalLanguages": "Összes nyelv",
+            "actions": "Műveletek",
+            "course": "Kurzus",
+            "index": "Index"
           },
           "textContent": "Szövegtartalom",
           "title": "Fordítási kurzusok",
           "translateTo": "Fordítás erre",
-          "unknownContributor": "Ismeretlen"
+          "unknownContributor": "Ismeretlen",
+          "slideNavigation": {
+            "next": "Következő",
+            "previous": "Előző"
+          }
         },
         "userManagement": {
           "actions": {
@@ -1974,7 +1985,6 @@
     "noResultsDescription": "Próbálja meg módosítani keresési szűrőit",
     "noResultsTitle": "Nincs megtalálható oktatói tartalom",
     "onlyImages": "Csak képfájlok megengedettek",
-    "resourceDetails": "Erőforrás részletei",
     "resourceType": "Erőforrás típusa",
     "shareLinks": "Linkek megosztása",
     "status": {
@@ -1995,7 +2005,9 @@
       "game": "Játék",
       "presentation": "Prezentáció",
       "sticker": "Matrica",
-      "workshop": "Műhely"
+      "workshop": "Műhely",
+      "other": "Egyéb",
+      "art": "Művészet"
     },
     "uploadFiles": "Fájlok feltöltése",
     "uploadForReview": "Feltöltés áttekintésre",
@@ -2007,7 +2019,9 @@
     "fileTooLarge": "A fájl túl nagy (max. 50MB)",
     "imageCover": "Borítókép",
     "languagePlaceholder": "Kiválaszt",
-    "languageRequired": "Válassza ki a forrásnyelvet"
+    "languageRequired": "Válassza ki a forrásnyelvet",
+    "titleTooLong": "A cím nem haladhatja meg a 60 karaktert",
+    "urlInvalid": "A linknek érvényes URL-nek kell lennie"
   },
   "footer": {
     "FOSSOpenContent": "FOSS és Nyílt tartalom",

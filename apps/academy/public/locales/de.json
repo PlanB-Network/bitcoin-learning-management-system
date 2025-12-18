@@ -1181,7 +1181,8 @@
         "none": "Keine",
         "platformTitle": "Welche Arten von Benachrichtigungen möchtest du auf dieser Plattform erhalten?",
         "settingsSaved": "Deine Einstellungen wurden erfolgreich gespeichert!",
-        "title": "Benachrichtigungseinstellungen"
+        "title": "Benachrichtigungseinstellungen",
+        "coursesEventsOption": "Updates über Ihre Kurse und Ihre Veranstaltungen"
       },
       "password": "Passwort",
       "preview": "Vorschau",
@@ -1190,7 +1191,9 @@
       "saving": "Speichern…",
       "securitySettings": "Sicherheitseinstellungen",
       "username": "Benutzername",
-      "emailOrUsername": "E-Mail oder Benutzername"
+      "emailOrUsername": "E-Mail oder Benutzername",
+      "addEmail": "E-Mail hinzufügen",
+      "verifyYourEmail": "Bestätigen Sie Ihre E-Mail"
     },
     "teacher": {
       "courses": {
@@ -1393,6 +1396,13 @@
         "lecture": "Vorlesungen",
         "meetup": "Treffen",
         "workshop": "Workshops"
+      },
+      "singular": {
+        "meetup": "Treffen",
+        "workshop": "Werkstatt",
+        "conference": "Konferenz",
+        "exam": "Prüfung",
+        "lecture": "Vortrag"
       }
     }
   },
@@ -1403,7 +1413,8 @@
     "definition": "Definition",
     "relatedWords": "Verwandte Wörter:",
     "term": "Begriff",
-    "showMoreWords": "Mehr Wörter anzeigen"
+    "showMoreWords": "Mehr Wörter anzeigen",
+    "learnMore": "Erfahren Sie mehr"
   },
   "home": {
     "aboutUsSection": {
@@ -1603,7 +1614,27 @@
     "searchFilterName": "Suche nach Name",
     "toggleLabelAll": "Alle",
     "toggleLabelSelectedLanguage": "Ausgewählte Sprache",
-    "pageSubtitleMovies": "<0>Andere Filme</0>, die Ihnen vielleicht gefallen"
+    "pageSubtitleMovies": "<0>Andere Filme</0>, die Ihnen vielleicht gefallen",
+    "papers": {
+      "addPaper": "Papier hinzufügen",
+      "citations": "Zitate (.bib)",
+      "downloadCitations": "Zitate herunterladen",
+      "papers": "Papiere",
+      "publisher": "Verleger",
+      "showMorePapers": "Mehr Papiere anzeigen",
+      "title": "Forschungsarbeiten",
+      "types": {
+        "PhD Thesis": "Doktorarbeit",
+        "academic": "Akademisch",
+        "journal": "Zeitschrift",
+        "pre-print": "Vorabdruck",
+        "thesis": "These",
+        "whitepaper": "Weißbuch",
+        "book": "Buchen",
+        "conference": "Konferenz"
+      },
+      "accessPaper": "Papier zugreifen"
+    }
   },
   "search": {
     "all": "Alle",
@@ -1909,7 +1940,11 @@
     "planBNetwork": "Plan ₿ Netzwerk",
     "seeAll": "Alle anzeigen",
     "session": "Sitzung",
-    "syllabus": "Lehrplan"
+    "syllabus": "Lehrplan",
+    "enroll": "Einschreiben",
+    "open": "Öffnen",
+    "researchPaper": "Forschungsarbeit",
+    "downloads": "Herunterladen"
   },
   "youtubeChannels": {
     "view": "Youtube-Kanal ansehen",
@@ -1917,7 +1952,8 @@
   },
   "account": {
     "account": "Konto",
-    "myTeacherProfile": "Mein Lehrerprofil"
+    "myTeacherProfile": "Mein Lehrerprofil",
+    "profile": "Profil"
   },
   "months": {
     "april": "April",
@@ -1973,6 +2009,104 @@
   },
   "footer": {
     "FOSSOpenContent": "FOSS & Open Content",
-    "proudlyPartOf": "Stolzes Mitglied des <0>Plan ₿ Netzwerks</0>"
+    "proudlyPartOf": "Stolzes Mitglied des <0>Plan ₿ Netzwerks</0>",
+    "becomeATeacher": "Werden Sie ein <0>Lehrer</0>"
+  },
+  "educatorContent": {
+    "contentNotFound": "Inhalt nicht gefunden",
+    "editAndRequireApproval": "Bearbeiten und Genehmigung erforderlich",
+    "urlInvalid": "Der Link muss eine gültige URL sein",
+    "uploading": "Hochladen...",
+    "titleTooLong": "Der Titel darf nicht mehr als 60 Zeichen enthalten",
+    "detail": {
+      "downloadAll": "Alles herunterladen",
+      "createdBy": "Erstellt von",
+      "view": "Sicht"
+    },
+    "dropCover": "Ziehen Sie das Cover-Bild hierher",
+    "dropFiles": "Ziehen Sie Dateien hierher",
+    "editMaterial": "Bildungsinhalte bearbeiten",
+    "fileTooLarge": "Datei zu groß (max 50MB)",
+    "imageCover": "Titelbild",
+    "imageError": "Beim Hochladen des Bildes ist ein Fehler aufgetreten",
+    "languageRequired": "Wählen Sie die Ressourcensprache aus",
+    "loginMessage": "Bitte melden Sie sich an, um Ihren Inhalt zu sehen.",
+    "myContent": "Mein Inhalt",
+    "noContent": "Sie haben noch keinen Inhalt hochgeladen.",
+    "noContentToReview": "Kein Inhalt zur Überprüfung",
+    "noCover": "Kein Cover",
+    "noResultsDescription": "Versuchen Sie, Ihre Suchfilter anzupassen",
+    "noResultsTitle": "Kein Bildungsinhalt gefunden",
+    "onlyImages": "Nur Bilddateien sind erlaubt",
+    "resourceType": "Ressourcentyp",
+    "shareLinks": "Links teilen",
+    "status": {
+      "draft": "Ausstehend",
+      "published": "Live",
+      "rejected": "Nicht akzeptiert",
+      "unpublished": "Unveröffentlicht"
+    },
+    "success": "Bildungsinhalt erfolgreich hinzugefügt!",
+    "successSubtitle": "Es durchläuft einen Überprüfungsprozess, bevor es angezeigt wird.",
+    "types": {
+      "art": "Kunst",
+      "booklet": "Broschüre",
+      "flyer": "Flyer",
+      "game": "Spiel",
+      "sticker": "Aufkleber",
+      "workshop": "Werkstatt",
+      "other": "Sonstige",
+      "presentation": "Präsentationen"
+    },
+    "uploadForReview": "Zur Überprüfung hochladen",
+    "addMoreLinks": "Füge mehr Links hinzu",
+    "browseFiles": "oder Dateien durchsuchen",
+    "browseImages": "oder Bilder durchsuchen",
+    "coverRequired": "Das Titelbild ist verpflichtend",
+    "currentCoverPresent": "Aktuelles Cover vorhanden",
+    "descriptionHelper": "Beschreiben Sie den Inhalt der Ressource, um anderen zu helfen, ihren Inhalt zu verstehen und sie zu finden",
+    "descriptionPlaceholder": "Kurze Beschreibung des Bildungsmaterials",
+    "descriptionRequired": "Die Beschreibung darf nicht leer sein",
+    "descriptionTooLong": "Die Beschreibung darf 350 Zeichen nicht überschreiten",
+    "addMaterial": "Bildungsinhalte hinzufügen",
+    "successTitle": "Bildungsinhalt erfolgreich hochgeladen",
+    "titleHelper": "Es sollte den Inhalt und den Zweck Ihrer Ressource widerspiegeln. Halten Sie es kurz aber informativ.",
+    "titleRequired": "Der Titel darf nicht leer sein",
+    "typeRequired": "Geben Sie an, um welche Art von Ressource es sich handelt",
+    "uploadFiles": "Dateien hochladen",
+    "done": "Erledigt",
+    "languagePlaceholder": "Auswählen"
+  },
+  "forms": {
+    "replace": "Ersetzen",
+    "browse": "Durchsuchen"
+  },
+  "mentor": {
+    "collapse": "Einklappen",
+    "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+    "expand": "Erweitern",
+    "loginRequired": "Erstellen Sie ein Konto, um mit PlanBot zu chatten!",
+    "openChat": "PlanBot fragen",
+    "placeholder": "Eine Frage stellen...",
+    "reset": "Neues Gespräch",
+    "sources": "Weitergehen",
+    "thinking": "Denken",
+    "title": "PlanBot",
+    "welcome": "Fragen Sie mich alles über Bitcoin!",
+    "close": "Schliessen"
+  },
+  "becomeTeacher": {
+    "activeBitcoinLearners": "Aktive Bitcoin-Lerner",
+    "bitcoinOnly": "Nur Bitcoin",
+    "bookCall": "Buche einen 30-minütigen Anruf, um Lehrer zu werden",
+    "description": "Wenn Sie ein leidenschaftlicher Bitcoin-Nutzer sind, der gerne lehrt und einen echten Einfluss auf Ihre lokale Gemeinschaft haben möchte, können Sie auf unserer Lernplattform Ihren eigenen Kurs anbieten.",
+    "enhanceExperience": "<0>Verbessern Sie das Lernerlebnis Ihrer Schüler</0> mit den Plattformwerkzeugen",
+    "globalReach": "Globale Reichweite",
+    "hostOwnCourse": "<0>Bieten Sie Ihren eigenen Kurs an</0>, online oder persönlich",
+    "inspireLearners": "Inspirieren Sie eine Gemeinschaft von Lernenden",
+    "joinMission": "<0>Trete der Mission bei</0> als echter Bitcoin-Bildungsbeauftragter",
+    "superiorAmount": ">{{amount}}",
+    "teachWhatYouLove": "<0>Unterrichten Sie, was Sie lieben</0>",
+    "title": "Unterrichte Bitcoin und inspiriere andere"
   }
 }

@@ -100,7 +100,7 @@
     "signUp": "Registrace"
   },
   "bCert": {
-    "bCertDescription": "₿-CERT je nejvyšší test znalostí Bitcoinu, který hodnotí vaše znalosti o Bitcoinu a souvisejících tématech. Pokud získáte více než 80%, získáte certifikát ₿-CERT, který může prokázat vaši odbornost v oblasti Bitcoinu a otevřít tak dveře k různým pracovním pozicím v tomto oboru.",
+    "bCertDescription": "₿-CERT je nejvyšší test znalostí o Bitcoinu navržený k ověření vašich znalostí o Bitcoinu a souvisejících tématech.\n\nZískejte svůj certifikát ₿-CERT a prokažte svou odbornost v Bitcoinovém průmyslu, což vám otevře dveře k pracovním pozicím v tomto odvětví.",
     "bookExam": "Zarezervujte si testovací sezení",
     "challengeYourself": "Otestujte se a posuďte svou úroveň",
     "download": "Stáhnout certifikát",
@@ -1181,7 +1181,8 @@
         "none": "Žádný",
         "platformTitle": "Jaké typy oznámení byste chtěli na této platformě dostávat?",
         "settingsSaved": "Vaše nastavení byla úspěšně uložena!",
-        "title": "Nastavení oznámení"
+        "title": "Nastavení oznámení",
+        "coursesEventsOption": "Aktualizace o vašich kurzech a vašich událostech"
       },
       "password": "Heslo",
       "preview": "Náhled",
@@ -1190,7 +1191,9 @@
       "saving": "Ukládání…",
       "securitySettings": "Nastavení zabezpečení",
       "username": "Uživatelské jméno",
-      "emailOrUsername": "E-mail nebo uživatelské jméno"
+      "emailOrUsername": "E-mail nebo uživatelské jméno",
+      "addEmail": "Přidat email",
+      "verifyYourEmail": "Ověřte svůj email"
     },
     "teacher": {
       "courses": {
@@ -1393,6 +1396,13 @@
         "lecture": "přednášky",
         "meetup": "setkání",
         "workshop": "workshopy"
+      },
+      "singular": {
+        "conference": "Konference",
+        "exam": "Zkouška",
+        "lecture": "Lekce",
+        "meetup": "Setkání",
+        "workshop": "Dílna"
       }
     }
   },
@@ -1403,7 +1413,8 @@
     "definition": "Definice",
     "relatedWords": "Související slova:",
     "term": "Pojem",
-    "showMoreWords": "Zobrazit více slov"
+    "showMoreWords": "Zobrazit více slov",
+    "learnMore": "Dozvědět se více"
   },
   "home": {
     "aboutUsSection": {
@@ -1603,7 +1614,27 @@
     "searchFilterName": "Vyhledat podle názvu",
     "toggleLabelAll": "Vše",
     "toggleLabelSelectedLanguage": "Vybrané jazyky",
-    "pageSubtitleMovies": "<0>Další filmy</0>, které se vám mohou líbit"
+    "pageSubtitleMovies": "<0>Další filmy</0>, které se vám mohou líbit",
+    "papers": {
+      "types": {
+        "book": "Kniha",
+        "conference": "Konference",
+        "PhD Thesis": "Doktorská práce",
+        "academic": "Akademický",
+        "journal": "Časopis",
+        "pre-print": "Předtisk",
+        "thesis": "Práce",
+        "whitepaper": "Bílá kniha"
+      },
+      "accessPaper": "Přístup k dokumentu",
+      "addPaper": "Přidat dokument",
+      "citations": "Citace (.bib)",
+      "downloadCitations": "Stáhnout citace",
+      "papers": "Dokumenty",
+      "publisher": "Vydavatel",
+      "showMorePapers": "Zobrazit více dokumentů",
+      "title": "Výzkumné práce"
+    }
   },
   "search": {
     "all": "Vše",
@@ -1909,7 +1940,11 @@
     "aboutUs": "O nás",
     "academy": "Akademie",
     "account": "Účet",
-    "actions": "Akce"
+    "actions": "Akce",
+    "downloads": "Stahování",
+    "open": "Otevřít",
+    "researchPaper": "Výzkumná práce",
+    "enroll": "Zaregistrujte se"
   },
   "youtubeChannels": {
     "view": "Zobrazit YouTube kanál",
@@ -1917,7 +1952,8 @@
   },
   "account": {
     "myTeacherProfile": "Můj profil učitele",
-    "account": "Účet"
+    "account": "Účet",
+    "profile": "Profil"
   },
   "months": {
     "april": "Duben",
@@ -1935,7 +1971,8 @@
   },
   "footer": {
     "FOSSOpenContent": "FOSS & Open content",
-    "proudlyPartOf": "S hrdostí součástí <0>Plan ₿ Network</0>"
+    "proudlyPartOf": "S hrdostí součástí <0>Plan ₿ Network</0>",
+    "becomeATeacher": "Staňte se <0>učitelem</0>"
   },
   "movies": {
     "checkTheMovie": "Zkontrolujte film"
@@ -1974,5 +2011,102 @@
       "rumble": "Rumble",
       "youtube": "Youtube"
     }
+  },
+  "educatorContent": {
+    "done": "Hotovo",
+    "detail": {
+      "view": "Zobrazit",
+      "createdBy": "Vytvořil",
+      "downloadAll": "Stáhnout vše"
+    },
+    "languagePlaceholder": "Vyberte",
+    "types": {
+      "other": "Jiné",
+      "art": "Umění",
+      "booklet": "Brožura",
+      "flyer": "Leták",
+      "game": "Hra",
+      "presentation": "Prezentace",
+      "sticker": "Nálepka",
+      "workshop": "Dílna"
+    },
+    "status": {
+      "draft": "Čekající",
+      "published": "Živě",
+      "rejected": "Nepřijato",
+      "unpublished": "Nezveřejněno"
+    },
+    "urlInvalid": "Odkaz musí být platná URL",
+    "uploadFiles": "Nahrát soubory",
+    "uploadForReview": "Nahrát ke kontrole",
+    "titleTooLong": "Délka titulku nesmí překročit 60 znaků",
+    "dropCover": "Zde přetáhněte obrázek obalu",
+    "dropFiles": "Přetáhněte sem soubory",
+    "editAndRequireApproval": "Upravit a vyžadovat schválení",
+    "editMaterial": "Upravit obsah pro vyučující",
+    "fileTooLarge": "Soubor je příliš velký (max. 50 MB)",
+    "imageCover": "Obálkový obrázek",
+    "imageError": "Při nahrávání obrázku došlo k chybě",
+    "languageRequired": "Vyberte jazyk zdroje",
+    "noContent": "Dosud jste nenahráli žádný obsah.",
+    "noContentToReview": "Žádný obsah k posouzení",
+    "noCover": "Bez obalu",
+    "noResultsDescription": "Zkuste upravit filtry vašeho hledání",
+    "noResultsTitle": "Nebyl nalezen žádný obsah vyučujícího",
+    "onlyImages": "Jsou povoleny pouze soubory obrázků",
+    "resourceType": "Typ zdroje",
+    "successTitle": "Obsah vyučujícího byl úspěšně nahrán",
+    "titleHelper": "Měl by odrážet obsah a účel vašeho zdroje. Buďte stručný, ale informativní.",
+    "titleRequired": "Název nesmí být prázdný",
+    "typeRequired": "Určete, o jaký typ zdroje se jedná",
+    "uploading": "Nahrávání...",
+    "addMoreLinks": "Přidat další odkazy",
+    "contentNotFound": "Obsah nenalezen",
+    "shareLinks": "Sdílet odkazy",
+    "success": "Obsah vyučujícího byl úspěšně přidán!",
+    "successSubtitle": "Před zobrazením projde kontrolním procesem.",
+    "coverRequired": "Je nutné mít obrázek na obalu",
+    "descriptionHelper": "Popište obsah zdroje, aby ostatní pochopili jeho obsah a našli ho",
+    "descriptionPlaceholder": "Stručný popis vzdělávacího materiálu",
+    "descriptionRequired": "Popis nemůže být prázdný",
+    "descriptionTooLong": "Popis nesmí přesahovat 350 znaků",
+    "loginMessage": "Pro zobrazení svého obsahu se prosím přihlaste.",
+    "myContent": "Můj obsah",
+    "addMaterial": "Přidejte obsah pro vyučující",
+    "browseFiles": "nebo procházejte soubory",
+    "browseImages": "nebo prohlížejte obrázky",
+    "currentCoverPresent": "Současný obal přítomný"
+  },
+  "mentor": {
+    "close": "Zavřít",
+    "collapse": "Sbalit",
+    "error": "Došlo k chybě. Prosím zkuste to znovu.",
+    "expand": "Rozbalit",
+    "loginRequired": "Vytvořte si účet a chatujte s PlanBotem!",
+    "openChat": "Zeptejte se PlanBota",
+    "placeholder": "Zeptejte se...",
+    "reset": "Nová konverzace",
+    "sources": "Jděte dál",
+    "thinking": "Přemýšlím",
+    "title": "PlanBot",
+    "welcome": "Zeptejte se mě na cokoli o Bitcoinu!"
+  },
+  "forms": {
+    "replace": "Nahradit",
+    "browse": "Procházet"
+  },
+  "becomeTeacher": {
+    "hostOwnCourse": "<0>Pořádejte svůj vlastní kurz</0>, online nebo osobně",
+    "inspireLearners": "Inspirujte komunitu studentů",
+    "joinMission": "<0>Přidejte se k misi</0> jako skutečný vzdělavatel v oblasti Bitcoinu",
+    "superiorAmount": ">{{amount}}",
+    "teachWhatYouLove": "<0>Vyučujte to, co máte rádi</0>",
+    "title": "Vyučujte Bitcoin a inspirujte ostatní",
+    "activeBitcoinLearners": "Aktivní učení o Bitcoinu",
+    "bitcoinOnly": "Pouze Bitcoin",
+    "bookCall": "Rezervujte si 30minutový hovor a staňte se učitelem",
+    "description": "Pokud jste vášnivým zastáncem Bitcoinu, který miluje výuku a chce mít skutečný dopad v místní komunitě, můžete na naší vzdělávací platformě hostovat vlastní kurz.",
+    "enhanceExperience": "<0>Vylepšete studijní zkušenosti svých studentů</0> pomocí nástrojů platformy",
+    "globalReach": "Globální dosah"
   }
 }

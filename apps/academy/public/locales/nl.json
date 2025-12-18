@@ -100,7 +100,7 @@
     "signUp": "Aanmelden"
   },
   "bCert": {
-    "bCertDescription": "De ₿-CERT is de ultieme Bitcoin-test, ontworpen om je kennis van Bitcoin en gerelateerde onderwerpen te evalueren. \n\nAls je meer dan 80% scoort, verdien je een ₿-CERT certificaat dat je expertise binnen de Bitcoin-industrie aantoont en deuren kan openen naar verschillende functions in het veld.",
+    "bCertDescription": "Het ₿-CERT is de ultieme Bitcoin-test ontworpen om je kennis van Bitcoin en gerelateerde onderwerpen te evalueren.\n\nVerdien je ₿-CERT certificaat en bewijs je expertise binnen de Bitcoin-industrie, waarmee je de deur opent naar functies in het veld.",
     "bookExam": "Boek een testsessie",
     "challengeYourself": "Daag jezelf uit en beoordeel je niveau",
     "download": "Certificaat downloaden",
@@ -1181,7 +1181,8 @@
         "emailPreferencesSavedSuccessfully": "Je e-mailvoorkeuren zijn succesvol bijgewerkt.",
         "emailPreferencesTitle": "Beheer je Plan ₿ Network e-mailvoorkeuren",
         "emailTitle": "Welke soort meldingen wil je per e-mail ontvangen?",
-        "emailWarning": "Waarschuwing! Er is geen e-mailadres gekoppeld aan je account. Voeg dit toe in je profielsectie."
+        "emailWarning": "Waarschuwing! Er is geen e-mailadres gekoppeld aan je account. Voeg dit toe in je profielsectie.",
+        "coursesEventsOption": "Updates over uw cursussen en uw evenementen"
       },
       "password": "Wachtwoord",
       "preview": "Preview",
@@ -1190,7 +1191,9 @@
       "saving": "Opslaan…",
       "securitySettings": "Beveiligingsinstellingen",
       "username": "Gebruikersnaam",
-      "emailOrUsername": "E-mail of gebruikersnaam"
+      "emailOrUsername": "E-mail of gebruikersnaam",
+      "addEmail": "Voeg email toe",
+      "verifyYourEmail": "Verifieer uw e-mail"
     },
     "teacher": {
       "courses": {
@@ -1393,6 +1396,13 @@
         "lecture": "colleges",
         "meetup": "bijeenkomsten",
         "workshop": "workshops"
+      },
+      "singular": {
+        "meetup": "Bijeenkomst",
+        "workshop": "Werkplaats",
+        "conference": "Conferentie",
+        "exam": "Examen",
+        "lecture": "Les"
       }
     }
   },
@@ -1400,7 +1410,8 @@
     "definition": "Definitie",
     "relatedWords": "Gerelateerde woorden:",
     "term": "Term",
-    "showMoreWords": "Toon meer woorden"
+    "showMoreWords": "Toon meer woorden",
+    "learnMore": "Meer informatie"
   },
   "filters": {
     "topics": "Onderwerpen"
@@ -1568,7 +1579,27 @@
     "searchFilterName": "Zoeken op naam",
     "toggleLabelAll": "Alle",
     "toggleLabelSelectedLanguage": "Geselecteerde taal",
-    "pageSubtitleMovies": "<0>Andere films</0> die je misschien leuk vindt"
+    "pageSubtitleMovies": "<0>Andere films</0> die je misschien leuk vindt",
+    "papers": {
+      "accessPaper": "Toegang papier",
+      "papers": "Papieren",
+      "publisher": "Uitgever",
+      "showMorePapers": "Toon meer papers",
+      "title": "Onderzoekspapieren",
+      "types": {
+        "pre-print": "Voorpublicatie",
+        "PhD Thesis": "PhD Thesis",
+        "academic": "Academisch",
+        "journal": "Tijdschrift",
+        "thesis": "Thesis",
+        "whitepaper": "Witboek",
+        "book": "Boek",
+        "conference": "Conferentie"
+      },
+      "addPaper": "Voeg papier toe",
+      "citations": "Citaties (.bib)",
+      "downloadCitations": "Download citaties"
+    }
   },
   "payment": {
     "haveReductionCode": "Heb je een kortingscode?",
@@ -1912,7 +1943,11 @@
     "optional": "Optioneel",
     "planBNetwork": "Plan ₿ Netwerk",
     "session": "Sessie",
-    "syllabus": "Syllabus"
+    "syllabus": "Syllabus",
+    "open": "Open",
+    "researchPaper": "Onderzoekspapier",
+    "enroll": "Inschrijven",
+    "downloads": "Download"
   },
   "videoSelector": {
     "language": {
@@ -1948,7 +1983,8 @@
   },
   "account": {
     "account": "Account",
-    "myTeacherProfile": "Mijn docentenprofiel"
+    "myTeacherProfile": "Mijn docentenprofiel",
+    "profile": "Profiel"
   },
   "navbar": {
     "bookings": "Reserveringen",
@@ -1973,6 +2009,104 @@
   },
   "footer": {
     "FOSSOpenContent": "FOSS & Open inhoud",
-    "proudlyPartOf": "Met trots deel van <0>Plan ₿ Netwerk</0>"
+    "proudlyPartOf": "Met trots deel van <0>Plan ₿ Netwerk</0>",
+    "becomeATeacher": "Word een <0>Leraar</0>"
+  },
+  "educatorContent": {
+    "urlInvalid": "De link moet een geldige URL zijn",
+    "titleTooLong": "De titel mag niet meer dan 60 tekens bevatten",
+    "languageRequired": "Selecteer de brontaal",
+    "typeRequired": "Geef aan wat voor soort bron het is",
+    "types": {
+      "art": "Kunst",
+      "booklet": "Boekje",
+      "flyer": "Flyer",
+      "game": "Spel",
+      "sticker": "Sticker",
+      "workshop": "Werkplaats",
+      "other": "Andere",
+      "presentation": "Presentaties"
+    },
+    "uploadFiles": "Bestanden uploaden",
+    "uploadForReview": "Uploaden voor beoordeling",
+    "uploading": "Uploaden...",
+    "addMaterial": "Voeg educatieve inhoud toe",
+    "addMoreLinks": "Voeg meer links toe",
+    "browseFiles": "of blader door bestanden",
+    "browseImages": "of blader door afbeeldingen",
+    "contentNotFound": "Inhoud niet gevonden",
+    "coverRequired": "De omslagafbeelding is verplicht",
+    "currentCoverPresent": "Huidige cover aanwezig",
+    "descriptionTooLong": "De beschrijving mag niet meer dan 350 tekens bevatten",
+    "detail": {
+      "createdBy": "Gecreëerd door",
+      "downloadAll": "Alles downloaden",
+      "view": "Bekijken"
+    },
+    "dropCover": "Laat de omslagafbeelding hier vallen",
+    "dropFiles": "Laat bestanden hier vallen",
+    "editAndRequireApproval": "Bewerken en goedkeuring vereisen",
+    "editMaterial": "Bewerk educatieve inhoud",
+    "imageError": "Er is een fout opgetreden tijdens het uploaden van de afbeelding",
+    "loginMessage": "Log alstublieft in om uw inhoud te bekijken.",
+    "myContent": "Mijn inhoud",
+    "noContent": "Je hebt nog geen inhoud geüpload.",
+    "noContentToReview": "Geen inhoud om te beoordelen",
+    "noCover": "Geen omslag",
+    "noResultsDescription": "Probeer uw zoekfilters aan te passen",
+    "noResultsTitle": "Geen docentinhoud gevonden",
+    "onlyImages": "Alleen afbeeldingsbestanden zijn toegestaan",
+    "resourceType": "Type bron",
+    "shareLinks": "Deel Links",
+    "status": {
+      "draft": "In behandeling",
+      "published": "Live",
+      "rejected": "Niet geaccepteerd",
+      "unpublished": "Niet gepubliceerd"
+    },
+    "success": "Docentinformatie succesvol toegevoegd!",
+    "successSubtitle": "Het zal een reviewproces ondergaan voordat het wordt weergegeven.",
+    "successTitle": "Docentinformatie succesvol geüpload",
+    "titleHelper": "Het moet de inhoud en het doel van uw bron weerspiegelen. Houd het beknopt maar informatief.",
+    "titleRequired": "De titel mag niet leeg zijn",
+    "descriptionHelper": "Beschrijf de inhoud van de bron om anderen te helpen deze te begrijpen en te vinden",
+    "descriptionPlaceholder": "Korte beschrijving van het educatief materiaal",
+    "descriptionRequired": "De beschrijving mag niet leeg zijn",
+    "fileTooLarge": "Bestand te groot (max 50MB)",
+    "imageCover": "Omslagafbeelding",
+    "done": "Klaar",
+    "languagePlaceholder": "Selecteer"
+  },
+  "forms": {
+    "replace": "Vervangen",
+    "browse": "Bladeren"
+  },
+  "mentor": {
+    "collapse": "Inklappen",
+    "error": "Er is een fout opgetreden. Probeer het opnieuw.",
+    "expand": "Uitvouwen",
+    "loginRequired": "Maak een account aan om te chatten met PlanBot!",
+    "openChat": "Vraag het aan PlanBot",
+    "placeholder": "Stel een vraag...",
+    "sources": "Ga verder",
+    "thinking": "Aan het denken",
+    "title": "PlanBot",
+    "welcome": "Vraag me alles over Bitcoin!",
+    "reset": "Nieuw gesprek",
+    "close": "Sluiten"
+  },
+  "becomeTeacher": {
+    "bitcoinOnly": "Alleen Bitcoin",
+    "bookCall": "Boek een 30-minuten gesprek om een leraar te worden",
+    "description": "Als je een gepassioneerde Bitcoiner bent die graag lesgeeft en een echte impact wilt maken in je lokale gemeenschap, kun je je eigen cursus hosten op ons leerplatform.",
+    "enhanceExperience": "<0>Versterk de leerervaring van je studenten</0> met de platformtools",
+    "globalReach": "Wereldwijd bereik",
+    "hostOwnCourse": "<0>Host je eigen cursus</0>, online of persoonlijk",
+    "inspireLearners": "Inspireer een gemeenschap van lerenden",
+    "joinMission": "<0>Sluit aan bij de missie</0> als een echte Bitcoin-onderwijzer",
+    "superiorAmount": ">{{amount}}",
+    "teachWhatYouLove": "<0>Leer wat je liefhebt</0>",
+    "title": "Geef les over Bitcoin en inspireer anderen",
+    "activeBitcoinLearners": "Actieve Bitcoin-lerenden"
   }
 }

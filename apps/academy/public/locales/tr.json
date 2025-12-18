@@ -1181,7 +1181,8 @@
         "none": "Hiçbiri",
         "platformTitle": "Bu platformda hangi türde bildirimler almak istersiniz?",
         "settingsSaved": "Ayarlarınız başarıyla kaydedildi!",
-        "title": "Bildirim ayarları"
+        "title": "Bildirim ayarları",
+        "coursesEventsOption": "Kurslarınız ve etkinlikleriniz hakkında güncellemeler"
       },
       "password": "Parola",
       "preview": "Önizleme",
@@ -1190,7 +1191,9 @@
       "saving": "Kaydediliyor…",
       "securitySettings": "Güvenlik ayarları",
       "username": "Kullanıcı Adı",
-      "emailOrUsername": "Eposta veya kullanıcı adı"
+      "emailOrUsername": "Eposta veya kullanıcı adı",
+      "addEmail": "E-posta ekle",
+      "verifyYourEmail": "E-postanızı doğrulayın"
     },
     "teacher": {
       "courses": {
@@ -1393,6 +1396,13 @@
         "lecture": "dersler",
         "meetup": "buluşmalar",
         "workshop": "atölye çalışmaları"
+      },
+      "singular": {
+        "meetup": "Buluşma",
+        "workshop": "Atölye",
+        "conference": "Konferanslar",
+        "exam": "Sınav",
+        "lecture": "Ders"
       }
     }
   },
@@ -1403,7 +1413,8 @@
     "definition": "Tanım",
     "relatedWords": "İlgili kelimeler:",
     "term": "Dönem",
-    "showMoreWords": "Daha fazla kelime göster"
+    "showMoreWords": "Daha fazla kelime göster",
+    "learnMore": "Daha fazla bilgi edin"
   },
   "home": {
     "aboutUsSection": {
@@ -1603,7 +1614,27 @@
     "searchFilterName": "İsimle ara",
     "toggleLabelAll": "Hepsi",
     "toggleLabelSelectedLanguage": "Seçilen dil",
-    "pageSubtitleMovies": "Hoşunuza gidebilecek <0>diğer filmler</0>"
+    "pageSubtitleMovies": "Hoşunuza gidebilecek <0>diğer filmler</0>",
+    "papers": {
+      "accessPaper": "Kağıda eriş",
+      "addPaper": "Kağıdı ekle",
+      "citations": "Alıntılar (.bib)",
+      "downloadCitations": "Alıntıları indir",
+      "papers": "Kağıtlar",
+      "publisher": "Yayıncı",
+      "showMorePapers": "Daha fazla kağıt göster",
+      "title": "Araştırma kağıtları",
+      "types": {
+        "PhD Thesis": "Doktora Tezi",
+        "academic": "Akademik",
+        "journal": "Dergi",
+        "pre-print": "Ön baskı",
+        "thesis": "Tez",
+        "whitepaper": "Beyaz kağıt",
+        "conference": "Konferanslar",
+        "book": "Kitap"
+      }
+    }
   },
   "search": {
     "all": "Hepsi",
@@ -1909,7 +1940,11 @@
     "theory": "Teori",
     "topic": "Konu",
     "type": "Yazın",
-    "viewAll": "Tümünü gör"
+    "viewAll": "Tümünü gör",
+    "researchPaper": "Araştırma kağıdı",
+    "enroll": "Kaydol",
+    "open": "Açık",
+    "downloads": "İndir"
   },
   "youtubeChannels": {
     "view": "Youtube Kanalını Görüntüle",
@@ -1966,13 +2001,112 @@
   },
   "account": {
     "account": "Hesap",
-    "myTeacherProfile": "Doçent profilim"
+    "myTeacherProfile": "Doçent profilim",
+    "profile": "Profil"
   },
   "footer": {
     "FOSSOpenContent": "FOSS & Açık içerik",
-    "proudlyPartOf": "Gururla <0>Plan ₿ Network</0>'in bir parçası"
+    "proudlyPartOf": "Gururla <0>Plan ₿ Network</0>'in bir parçası",
+    "becomeATeacher": "Bir <0>Öğretmen</0> Olun"
   },
   "movies": {
     "checkTheMovie": "Filmi kontrol et"
+  },
+  "educatorContent": {
+    "resourceType": "Kaynak Türü",
+    "types": {
+      "sticker": "Sticker",
+      "art": "Sanat",
+      "booklet": "Kitapçık",
+      "flyer": "Broşür",
+      "game": "Oyun",
+      "workshop": "Atölye",
+      "presentation": "Sunumlar",
+      "other": "Diğer"
+    },
+    "urlInvalid": "Link geçerli bir URL olmalı",
+    "uploadFiles": "Dosya Yükle",
+    "uploadForReview": "İnceleme için yükle",
+    "uploading": "Yükleniyor...",
+    "myContent": "İçeriğim",
+    "noResultsTitle": "Hiç eğitmen içeriği bulunamadı",
+    "contentNotFound": "İçerik bulunamadı",
+    "descriptionHelper": "Diğerlerinin içeriğini anlamasına ve bulmasına yardımcı olmak için kaynağın içeriğini tanımlayın",
+    "titleTooLong": "Başlık 60 karakteri aşamaz",
+    "detail": {
+      "createdBy": "Tarafından oluşturuldu",
+      "downloadAll": "Tümünü indir",
+      "view": "Görünüm"
+    },
+    "dropCover": "Kapak görselini buraya sürükleyin",
+    "dropFiles": "Dosyaları buraya sürükleyin",
+    "editAndRequireApproval": "Düzenle ve onay gerektir",
+    "editMaterial": "Eğitim içeriğini düzenle",
+    "fileTooLarge": "Dosya çok büyük (maks. 50MB)",
+    "imageCover": "Kapak Resmi",
+    "imageError": "Resim yüklenirken bir hata oluştu",
+    "languageRequired": "Kaynak dilini seçin",
+    "loginMessage": "İçeriğinizi görüntülemek için lütfen giriş yapın.",
+    "noContent": "Henüz hiçbir içerik yüklemediniz.",
+    "noContentToReview": "İncelemek için içerik yok",
+    "noResultsDescription": "Arama filtrelerinizi ayarlamayı deneyin",
+    "onlyImages": "Yalnızca resim dosyalarına izin verilir",
+    "shareLinks": "Bağlantıları Paylaş",
+    "status": {
+      "draft": "Beklemede",
+      "published": "Canlı",
+      "rejected": "Kabul Edilmedi",
+      "unpublished": "Yayınlanmadı"
+    },
+    "success": "Eğitimci içeriği başarıyla eklendi!",
+    "successSubtitle": "Görüntülenmeden önce bir inceleme sürecinden geçecektir.",
+    "successTitle": "Eğitmen içeriği başarıyla yüklendi",
+    "titleHelper": "Kaynağınızın içeriğini ve amacını yansıtmalıdır. Concise ama bilgilendirici tutun.",
+    "titleRequired": "Başlık boş olamaz",
+    "typeRequired": "Kaynağın ne tür olduğunu belirtin",
+    "addMaterial": "Eğitim içeriği ekleyin",
+    "addMoreLinks": "Daha fazla link ekleyin",
+    "browseFiles": "veya dosyaları göz atın",
+    "browseImages": "veya resimlere göz atın",
+    "coverRequired": "Kapak resmi zorunludur",
+    "currentCoverPresent": "Mevcut kapak var",
+    "descriptionPlaceholder": "Eğitim materyalinin kısa bir açıklaması",
+    "descriptionRequired": "Açıklama boş olamaz",
+    "descriptionTooLong": "Açıklama 350 karakteri aşamaz",
+    "noCover": "Kapak Yok",
+    "done": "Tamamlandı",
+    "languagePlaceholder": "Seç"
+  },
+  "becomeTeacher": {
+    "activeBitcoinLearners": "Aktif Bitcoin öğrenenler",
+    "bitcoinOnly": "Sadece Bitcoin",
+    "bookCall": "Öğretmen olmak için 30 dakikalık bir çağrı ayırtın",
+    "description": "Öğretmeyi seven ve yerel topluluğunuzda gerçek bir etki yaratmak isteyen tutkulu bir Bitcoiner iseniz, öğrenme platformumuzda kendi kursunuzu düzenleyebilirsiniz.",
+    "enhanceExperience": "Platform araçlarıyla <0>öğrencilerinizin öğrenme deneyimini geliştirin</0>",
+    "globalReach": "Global erişim",
+    "hostOwnCourse": "<0>Kendi kursunuzu düzenleyin</0>, online veya yüz yüze",
+    "inspireLearners": "Bir öğrenenler topluluğunu ilham verin",
+    "joinMission": "Gerçek bir Bitcoin eğitmeni olarak <0>misyonuna katılın</0>",
+    "superiorAmount": ">{{amount}}",
+    "teachWhatYouLove": "<0>Sevdiğiniz şeyi öğretin</0>",
+    "title": "Bitcoin öğretin ve diğerlerine ilham verin"
+  },
+  "forms": {
+    "browse": "Göz at",
+    "replace": "Değiştir"
+  },
+  "mentor": {
+    "collapse": "Daralt",
+    "error": "Bir hata oluştu. Lütfen tekrar deneyin.",
+    "expand": "Genişlet",
+    "loginRequired": "PlanBot ile sohbet etmek için bir hesap oluşturun!",
+    "openChat": "PlanBot'a Sor",
+    "placeholder": "Bir soru sor...",
+    "reset": "Yeni görüşme",
+    "thinking": "Düşünüyor",
+    "title": "PlanBot",
+    "welcome": "Bana Bitcoin hakkında herhangi bir şey sorun!",
+    "sources": "Daha ileriye git",
+    "close": "Kapat"
   }
 }
