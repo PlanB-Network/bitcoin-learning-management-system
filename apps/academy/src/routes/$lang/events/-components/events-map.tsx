@@ -23,7 +23,6 @@ import {
   SegmentedControlItem,
 } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
-import { fr } from 'date-fns/locale';
 import { t } from 'i18next';
 import { capitalize } from 'lodash-es';
 import { useEffect, useState } from 'react';
@@ -568,7 +567,7 @@ const EventsMap = ({
         }).format(calendarDate),
       );
     } else if (calendarView === 'week') {
-      const weekStart = startOfWeek(calendarDate, { locale: fr });
+      const weekStart = startOfWeek(calendarDate, { weekStartsOn: 1 });
       const weekEnd = new Date(weekStart);
       weekEnd.setDate(weekEnd.getDate() + 6);
 
