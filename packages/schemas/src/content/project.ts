@@ -32,6 +32,7 @@ export const joinedProjectSchema = resourceSchema
       category: true,
       githubUrl: true,
       languages: true,
+      linkedinUrl: true,
       name: true,
       nostr: true,
       originalLanguage: true,

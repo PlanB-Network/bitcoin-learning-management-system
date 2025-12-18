@@ -18,6 +18,7 @@ interface ProjectMain {
     twitter?: string;
     github?: string;
     nostr?: string;
+    linkedin?: string;
   };
   address_city_country: string;
   address_line_2: string;
@@ -66,11 +67,11 @@ export const createProcessChangedProject = (
           const parsedProject = await yamlToObject<ProjectMain>(main);
 
           const result = await transaction<Project[]>`
-              INSERT INTO content.projects (id, resource_id, name, category, languages, website_url, twitter_url, github_url, nostr, address_line_1, address_line_2, address_line_3, original_language)
+              INSERT INTO content.projects (id, resource_id, name, category, languages, website_url, twitter_url, github_url, linkedin_url, nostr, address_line_1, address_line_2, address_line_3, original_language)
               VALUES (
                 ${parsedProject.id},${resourceId}, ${parsedProject.name}, ${parsedProject.category.toLowerCase()}, ${parsedProject.language},
                 ${parsedProject.links.website}, ${parsedProject.links.twitter},
-                ${parsedProject.links.github}, ${parsedProject.links.nostr}, ${parsedProject.address_city_country}, ${parsedProject.address_line_2}, ${parsedProject.address_line_3}, ${parsedProject.original_language}
+                ${parsedProject.links.github}, ${parsedProject.links.linkedin}, ${parsedProject.links.nostr}, ${parsedProject.address_city_country}, ${parsedProject.address_line_2}, ${parsedProject.address_line_3}, ${parsedProject.original_language}
               )
               ON CONFLICT (id) DO UPDATE SET
                 resource_id = EXCLUDED.resource_id,
@@ -80,6 +81,7 @@ export const createProcessChangedProject = (
                 website_url = EXCLUDED.website_url,
                 twitter_url = EXCLUDED.twitter_url,
                 github_url = EXCLUDED.github_url,
+                linkedin_url = EXCLUDED.linkedin_url,
                 nostr = EXCLUDED.nostr,
                 address_line_1 = EXCLUDED.address_line_1,
                 address_line_2 = EXCLUDED.address_line_2,

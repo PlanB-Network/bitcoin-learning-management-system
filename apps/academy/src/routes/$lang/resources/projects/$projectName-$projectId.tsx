@@ -4,7 +4,12 @@ import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import { type ReactNode, useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { TbBrandGithub, TbBrandX, TbLink } from 'react-icons/tb';
+import {
+  TbBrandGithub,
+  TbBrandLinkedin,
+  TbBrandX,
+  TbLink,
+} from 'react-icons/tb';
 import { z } from 'zod';
 import Nostr from '#src/assets/icons/nostr.svg?react';
 import { PageLayout } from '#src/components/page-layout.tsx';
@@ -174,6 +179,14 @@ function Project() {
                     {
                       icon: TbBrandGithub,
                       href: project.githubUrl,
+                    },
+                  ]
+                : []),
+              ...(project.linkedinUrl
+                ? [
+                    {
+                      icon: TbBrandLinkedin,
+                      href: project.linkedinUrl,
                     },
                   ]
                 : []),

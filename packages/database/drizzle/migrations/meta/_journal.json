@@ -1079,6 +1079,13 @@
       "when": 1765977524604,
       "tag": "0153_handy_goliath",
       "breakpoints": true
+    },
+    {
+      "idx": 154,
+      "version": "7",
+      "when": 1766052328990,
+      "tag": "0154_ancient_banshee",
+      "breakpoints": true
     }
   ]
 }

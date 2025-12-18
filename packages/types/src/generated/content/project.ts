@@ -22,6 +22,7 @@ export interface Project {
   resourceId: string;
   twitterUrl: string | null;
   websiteUrl: string | null;
+  linkedinUrl: string | null;
 }
 
 export interface ProjectLocalized {
@@ -40,6 +41,7 @@ export interface JoinedProject {
   category: string;
   githubUrl: string | null;
   languages: string[];
+  linkedinUrl: string | null;
   name: string;
   nostr: string | null;
   originalLanguage: string;
