@@ -49,7 +49,7 @@ export const AddEmailModal = ({
       setEmailError(null);
       form.reset({ email });
     }
-  }, [isOpen, email, form]);
+  }, [isOpen, email, form.reset]);
 
   const changeEmail = useMutation(
     trpc.user.changeEmail.mutationOptions({
