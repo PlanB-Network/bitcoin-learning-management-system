@@ -225,6 +225,20 @@ export const EducatorContentModal = ({
       return;
     }
 
+    // Check if at least one link or one file is provided
+    const hasValidLink = values.links?.some(
+      (link) => link.url && link.url.trim() !== '',
+    );
+    const hasFiles = existingFiles.length > 0 || newFiles.length > 0;
+
+    if (!hasValidLink && !hasFiles) {
+      customToast(t('educatorContent.linkOrFileRequired'), {
+        mode: 'light',
+        color: 'warning',
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       const uploadedFiles = [];
