@@ -25,8 +25,14 @@ import { useNavigate } from '@tanstack/react-router';
 import { useEffect, useRef, useState } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { BiPlus, BiTrash, BiUpload } from 'react-icons/bi';
-import { BsFileEarmarkCheckFill, BsX } from 'react-icons/bs';
+import {
+  TbCircleCheckFilled,
+  TbFileCheck,
+  TbFileUpload,
+  TbPlus,
+  TbTrash,
+  TbX,
+} from 'react-icons/tb';
 import { z } from 'zod';
 import {
   getEducatorContentCoverUrl,
@@ -433,13 +439,9 @@ export const EducatorContentModal = ({
     >
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-2 text-left w-full"
+        className="space-y-6 text-left w-full"
       >
-        <FieldGroup className="gap-2">
-          <h3 className="font-semibold">
-            {t('educatorContent.resourceDetails')}
-          </h3>
-
+        <FieldGroup className="gap-6">
           <Controller
             control={form.control}
             name="title"
@@ -451,7 +453,7 @@ export const EducatorContentModal = ({
                 </p>
                 <Input
                   id={field.name}
-                  placeholder="e.g. Multi-sig workshop Liana"
+                  placeholder={t('educatorContent.titlePlaceholder')}
                   {...field}
                 />
                 {fieldState.invalid && (
@@ -465,10 +467,7 @@ export const EducatorContentModal = ({
             control={form.control}
             name="description"
             render={({ field, fieldState }) => (
-              <Field
-                data-invalid={fieldState.invalid}
-                className="gap-0 relative"
-              >
+              <Field data-invalid={fieldState.invalid} className="gap-0">
                 <FieldLabel htmlFor={field.name}>
                   {t('words.description')}
                 </FieldLabel>
@@ -481,7 +480,7 @@ export const EducatorContentModal = ({
                   maxLength={350}
                   {...field}
                 />
-                <div className="flex justify-end mt-1 absolute bottom-0">
+                <div className="flex justify-end mt-1">
                   <span
                     className={cn(
                       'text-xs',
@@ -500,7 +499,7 @@ export const EducatorContentModal = ({
             )}
           />
 
-          <div className="w-[200px]">
+          <div className="w-[200px] -mt-4">
             <Controller
               control={form.control}
               name="language"
@@ -536,7 +535,9 @@ export const EducatorContentModal = ({
         </FieldGroup>
 
         <FieldGroup className="gap-2">
-          <h3 className="font-semibold">{t('educatorContent.resourceType')}</h3>
+          <h3 className="title-medium md:subtitle-base">
+            {t('educatorContent.resourceType')}
+          </h3>
           <Controller
             control={form.control}
             name="type"
@@ -578,16 +579,16 @@ export const EducatorContentModal = ({
         </FieldGroup>
 
         <div className="space-y-4">
-          <h3 className="font-semibold">{t('educatorContent.imageCover')}</h3>
+          <h3 className="body-base-bold">{t('educatorContent.imageCover')}</h3>
           <div
             className={cn(
-              'border-2 border-dashed rounded-xl p-8 flex flex-col items-center justify-center text-center transition-colors relative overflow-hidden',
+              'border-2 border-dashed rounded-xl p-6 flex flex-col items-center justify-center text-center transition-colors relative overflow-hidden',
               isCoverDragActive ? 'duration-0' : 'duration-1000',
               isCoverDropError
                 ? 'border-red-400 bg-red-50'
                 : isCoverDragActive
                   ? 'border-primary-400 bg-neutral-100'
-                  : 'border-newGray-400 bg-white',
+                  : 'border-newGray-400 bg-[#FAFAFA]',
             )}
             onDragEnter={(e) =>
               handleDragEnter(e, coverDragCounter, setIsCoverDragActive)
@@ -603,7 +604,7 @@ export const EducatorContentModal = ({
                 <div className="w-full aspect-4/3 mb-4 relative rounded-lg overflow-hidden">
                   <img
                     src={previewUrl}
-                    alt="Cover preview"
+                    alt={t('educatorContent.coverPreview')}
                     className="w-full h-full object-cover"
                     onError={(e) => {
                       if (e.currentTarget.src === activePreviewUrlRef.current) {
@@ -630,21 +631,19 @@ export const EducatorContentModal = ({
               </>
             ) : (
               <>
-                <div className="bg-white border rounded shadow-sm p-2 mb-4">
-                  <BiUpload size={24} className="text-gray-400" />
-                </div>
+                <TbFileUpload size={24} className="text-neutral-200 mb-4" />
                 <p
                   className={cn(
-                    'mb-2 text-sm font-medium',
-                    isCoverDragActive ? 'text-primary-900' : 'text-gray-900',
+                    'mb-1 text-sm font-medium',
+                    isCoverDragActive ? 'text-black' : 'text-gray-900',
                   )}
                 >
                   {t('educatorContent.dropCover')}
                 </p>
                 <p
                   className={cn(
-                    'text-xs mb-6',
-                    isCoverDragActive ? 'text-primary-700' : 'text-gray-500',
+                    'text-xs mb-4',
+                    isCoverDragActive ? 'text-black' : 'text-gray-900',
                   )}
                 >
                   {t('educatorContent.browseImages')}
@@ -675,7 +674,9 @@ export const EducatorContentModal = ({
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-semibold">{t('educatorContent.shareLinks')}</h3>
+          <h3 className="title-medium md:subtitle-base">
+            {t('educatorContent.shareLinks')}
+          </h3>
           {fields.map((field, index) => (
             <div key={field.id} className="flex gap-2">
               <Controller
@@ -683,7 +684,10 @@ export const EducatorContentModal = ({
                 name={`links.${index}.url`}
                 render={({ field, fieldState }) => (
                   <Field className="flex-1" data-invalid={fieldState.invalid}>
-                    <Input placeholder="https://example.com" {...field} />
+                    <Input
+                      placeholder={t('educatorContent.linkPlaceholder')}
+                      {...field}
+                    />
                     {fieldState.invalid && (
                       <FieldError errors={[fieldState.error]} />
                     )}
@@ -696,25 +700,27 @@ export const EducatorContentModal = ({
                 size="s"
                 onClick={() => remove(index)}
               >
-                <BiTrash />
+                <TbTrash />
               </Button>
             </div>
           ))}
           <Button
             type="button"
-            variant="outline"
+            variant="tertiary"
             className="w-full"
             onClick={() => append({ url: '' })}
           >
-            <BiPlus className="mr-2" /> {t('educatorContent.addMoreLinks')}
+            <TbPlus className="mr-4" /> {t('educatorContent.addMoreLinks')}
           </Button>
         </div>
 
         <div className="space-y-4">
-          <h3 className="font-semibold">{t('educatorContent.uploadFiles')}</h3>
+          <h3 className="title-medium md:subtitle-base">
+            {t('educatorContent.uploadFiles')}
+          </h3>
           <div
             className={cn(
-              'border-2 border-dashed rounded-xl p-8 flex flex-col items-center justify-center text-center transition-colors',
+              'border-2 border-dashed rounded-xl p-6 flex flex-col items-center justify-center text-center transition-colors',
               isFilesDragActive ? 'duration-0' : 'duration-1000',
               isFilesDropError
                 ? 'border-red-4 bg-red-2'
@@ -722,7 +728,7 @@ export const EducatorContentModal = ({
                   ? 'border-green-400 bg-green-100'
                   : isFilesDragActive
                     ? 'border-primary-400 bg-neutral-100'
-                    : 'border-newGray-400 bg-white',
+                    : 'border-newGray-400 bg-[#FAFAFA]',
             )}
             onDragEnter={(e) =>
               handleDragEnter(e, filesDragCounter, setIsFilesDragActive)
@@ -733,21 +739,19 @@ export const EducatorContentModal = ({
             onDragOver={handleDragOver}
             onDrop={handleFilesDrop}
           >
-            <div className="bg-white border rounded shadow-sm p-2 mb-4">
-              <BiUpload size={24} className="text-gray-400" />
-            </div>
+            <TbFileUpload size={24} className="text-neutral-200 mb-4" />
             <p
               className={cn(
-                'mb-2 text-sm font-medium',
-                isFilesDragActive ? 'text-primary-900' : 'text-gray-900',
+                'mb-1 text-sm font-medium',
+                isFilesDragActive ? 'text-black' : 'text-gray-900',
               )}
             >
               {t('educatorContent.dropFiles')}
             </p>
             <p
               className={cn(
-                'text-xs mb-6',
-                isFilesDragActive ? 'text-primary-700' : 'text-gray-500',
+                'text-xs mb-4',
+                isFilesDragActive ? 'text-black' : 'text-gray-900',
               )}
             >
               {t('educatorContent.browseFiles')}
@@ -789,7 +793,7 @@ export const EducatorContentModal = ({
 
           <div className="flex justify-between items-center mt-2 mb-4 text-xs text-gray-400">
             {/* <p>Supported file types: .png, .pdf, .jpg</p> */}
-            <p>Max file size: 50MB</p>
+            <p>{t('educatorContent.maxFileSize')}</p>
           </div>
 
           {(existingFiles.length > 0 || newFiles.length > 0) && (
@@ -801,10 +805,10 @@ export const EducatorContentModal = ({
                 >
                   <div className="flex items-center gap-3 overflow-hidden">
                     <div className="w-8 h-8 rounded-full bg-green-100 shrink-0 flex items-center justify-center text-green-600">
-                      <BsFileEarmarkCheckFill size={16} />
+                      <TbFileCheck size={16} />
                     </div>
                     <span className="text-sm font-medium text-gray-700 truncate">
-                      {file.name} (Existing)
+                      {file.name} {t('educatorContent.fileExisting')}
                     </span>
                   </div>
                   <button
@@ -814,9 +818,9 @@ export const EducatorContentModal = ({
                         prev.filter((_, i) => i !== index),
                       );
                     }}
-                    className="p-1 hover:bg-gray-100 rounded-full transition-colors shrink-0"
+                    className="p-2 hover:bg-neutral-100 bg-neutral-50 rounded-full transition-colors shrink-0"
                   >
-                    <BsX size={20} className="text-gray-400" />
+                    <TbX size={16} />
                   </button>
                 </div>
               ))}
@@ -826,21 +830,17 @@ export const EducatorContentModal = ({
                   className="flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg shadow-sm"
                 >
                   <div className="flex items-center gap-3 overflow-hidden">
-                    <div className="w-8 h-8 rounded-full bg-blue-100 shrink-0 flex items-center justify-center text-blue-600">
-                      <BsFileEarmarkCheckFill size={16} />
-                    </div>
-                    <span className="text-sm font-medium text-gray-700 truncate">
-                      {file.name} (New)
-                    </span>
+                    <TbCircleCheckFilled size={16} className="text-green-400" />
+                    <span className="body-base truncate">{file.name}</span>
                   </div>
                   <button
                     type="button"
                     onClick={() => {
                       setNewFiles((prev) => prev.filter((_, i) => i !== index));
                     }}
-                    className="p-1 hover:bg-gray-100 rounded-full transition-colors shrink-0"
+                    className="p-2 hover:bg-neutral-100 bg-neutral-50 rounded-full transition-colors shrink-0"
                   >
-                    <BsX size={20} className="text-gray-400" />
+                    <TbX size={16} />
                   </button>
                 </div>
               ))}

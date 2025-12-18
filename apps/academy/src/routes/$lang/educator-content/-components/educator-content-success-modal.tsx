@@ -1,6 +1,6 @@
 import { BasicModal, Button } from '@blms/ui';
 import { useTranslation } from 'react-i18next';
-import { TbCircleCheckFilled } from 'react-icons/tb';
+import CheckPixel from '#src/assets/icons/pixelated/check_orange.svg?react';
 
 interface Props {
   isOpen: boolean;
@@ -12,7 +12,8 @@ export const EducatorContentSuccessModal = ({ isOpen, onClose }: Props) => {
 
   return (
     <BasicModal open={isOpen} onOpenChange={onClose}>
-      <TbCircleCheckFilled size={60} className="text-green-400" />
+      <CheckPixel className="size-15" />
+
       <div className="flex flex-col gap-2">
         <h2 className="title-base md:title-large -mt-4">
           {t('educatorContent.successTitle')}

@@ -303,12 +303,14 @@ function StatCard({
   icon?: React.ElementType;
 }) {
   return (
-    <div className="bg-neutral-50 rounded-2xl p-2 md:p-6 flex flex-col items-center justify-center text-center gap-3">
+    <div className="bg-neutral-50 rounded-2xl p-2 md:p-6 flex flex-col items-center justify-center text-center gap-3 min-w-0 w-full">
       <div className="flex items-center gap-2 text-gray-400">
         {Icon && <Icon className="size-4" />}
         <span className="caption-extra-small uppercase">{label}</span>
       </div>
-      <span className="body-base-bold">{value}</span>
+      <span className="body-base-bold max-w-full truncate" title={value}>
+        {value}
+      </span>
     </div>
   );
 }

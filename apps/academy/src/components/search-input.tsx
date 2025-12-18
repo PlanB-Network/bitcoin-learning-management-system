@@ -18,7 +18,7 @@ export const SearchInput = ({
   return (
     <div
       className={cn(
-        'relative h-9 lg:h-11 w-full transition-[min-width] ease-in-out min-w-0 lg:max-w-56 focus-within:min-w-[200px]',
+        'relative min-h-9 lg:min-h-11 w-full transition-[min-width] ease-in-out min-w-0 lg:max-w-56 focus-within:min-w-[200px]',
         searchTerm && 'min-w-[200px]',
         className,
         fullWidthOnMobile ? 'max-w-full sm:max-w-40' : 'max-w-40',
