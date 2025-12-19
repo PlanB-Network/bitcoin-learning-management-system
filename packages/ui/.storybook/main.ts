@@ -16,6 +16,7 @@ const config: StorybookConfig = {
   },
   stories: [
     '../src/stories/**/Fonts.mdx',
+    '../src/stories/**/Colors.mdx',
     '../src/stories/**/*.stories.@(js|jsx|ts|tsx)',
   ],
 
