@@ -16,6 +16,7 @@ import {
 import { AppContext } from '#src/providers/context.tsx';
 import { useGlossary } from '#src/providers/glossaryContext.tsx';
 import { TutorialCard } from '#src/routes/$lang/tutorials/-components/tutorial-card.tsx';
+import { isTestnetOrDevelopmentEnvironment } from '#src/utils/misc.ts';
 import { getCourse, getTutorial } from '../utils/link-preview.tsx';
 
 const linkStyles = cva('text-base tracking-wide', {
@@ -76,7 +77,10 @@ export const LinkRenderer: React.FC<LinkRendererProps> = (props) => {
   const isGlossaryLink = relativePath?.startsWith('/resources/glossary/');
 
   if (isGlossaryLink && relativePath) {
-    return <GlossaryLink href={relativePath}>{children}</GlossaryLink>;
+    if (isTestnetOrDevelopmentEnvironment()) {
+      return <GlossaryLink href={relativePath}>{children}</GlossaryLink>;
+    }
+    return <span>{children}</span>;
   }
 
   return (
@@ -198,7 +202,7 @@ const GlossaryLink: React.FC<{ href: string; children: React.ReactNode }> = ({
                 type="button"
                 onClick={() => setMobileModalOpen(false)}
                 className="text-yellow-700 bg-yellow-100 p-1.5 rounded-md"
-                aria-label={t('words.close')}
+                aria-label={t('words.open')}
               >
                 <svg
                   width="20"
