@@ -606,7 +606,7 @@ export const EducatorContentModal = ({
                 ? 'border-red-400 bg-red-50'
                 : isCoverDragActive
                   ? 'border-primary-400 bg-neutral-100'
-                  : 'border-neutral-20000 bg-[#FAFAFA]',
+                  : 'border-neutral-200 bg-[#FAFAFA]',
             )}
             onDragEnter={(e) =>
               handleDragEnter(e, coverDragCounter, setIsCoverDragActive)
@@ -746,7 +746,7 @@ export const EducatorContentModal = ({
                   ? 'border-green-400 bg-green-100'
                   : isFilesDragActive
                     ? 'border-primary-400 bg-neutral-100'
-                    : 'border-neutral-20000 bg-[#FAFAFA]',
+                    : 'border-neutral-200 bg-[#FAFAFA]',
             )}
             onDragEnter={(e) =>
               handleDragEnter(e, filesDragCounter, setIsFilesDragActive)
