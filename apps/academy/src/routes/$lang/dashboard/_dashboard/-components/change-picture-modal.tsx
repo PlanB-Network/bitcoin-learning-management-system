@@ -17,6 +17,7 @@ import {
 import { t } from 'i18next';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import spinner from '#src/assets/icons/spinner.svg';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 
 interface Props {
   file: File | null;
@@ -31,6 +32,8 @@ enum Tabs {
 }
 
 export const ChangePictureModal = (props: Props) => {
+  const isMobile = useSmaller('md');
+
   const [image, setImage] = useState<string | undefined>();
   const [cropData, setCropData] = useState('');
   const selectionRef = useRef<CropperSelectionElement>(null);
@@ -183,12 +186,21 @@ export const ChangePictureModal = (props: Props) => {
               </div>
             ) : (
               <>
-                <Button variant="primary" size="m" onClick={validateChange}>
-                  <span>{t('dashboard.profile.save')}</span>
-                </Button>
-
-                <Button variant="secondary" size="m" onClick={props.onClose}>
+                <Button
+                  variant="secondary"
+                  className="w-full"
+                  size={isMobile ? 'm' : 'l'}
+                  onClick={props.onClose}
+                >
                   {t('dashboard.profile.cancel')}
+                </Button>
+                <Button
+                  variant="primary"
+                  className="w-full"
+                  size={isMobile ? 'm' : 'l'}
+                  onClick={validateChange}
+                >
+                  <span>{t('dashboard.profile.save')}</span>
                 </Button>
               </>
             ))}

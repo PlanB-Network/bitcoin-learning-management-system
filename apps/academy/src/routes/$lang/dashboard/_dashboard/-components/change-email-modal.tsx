@@ -13,6 +13,7 @@ import type { SubmitHandler } from 'react-hook-form';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { trpc } from '#src/utils/trpc.js';
 
 const changeEmailSchema = z.object({
@@ -39,6 +40,7 @@ export const ChangeEmailModal = ({
   email,
   onEmailSent,
 }: ChangeEmailModalProps) => {
+  const isMobile = useSmaller('md');
   const { t } = useTranslation();
   const changeEmail = useMutation(
     trpc.user.changeEmail.mutationOptions({
@@ -99,14 +101,19 @@ export const ChangeEmailModal = ({
           <Button
             variant="secondary"
             className="w-full"
-            size="l"
+            size={isMobile ? 'm' : 'l'}
             type="button"
             onClick={onClose}
           >
             {t('dashboard.profile.cancel')}
           </Button>
 
-          <Button variant="primary" className="w-full" size="l" type="submit">
+          <Button
+            variant="primary"
+            className="w-full"
+            size={isMobile ? 'm' : 'l'}
+            type="submit"
+          >
             {t('dashboard.profile.save')}
           </Button>
         </div>
