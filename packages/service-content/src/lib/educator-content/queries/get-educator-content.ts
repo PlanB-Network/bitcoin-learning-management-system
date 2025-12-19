@@ -19,9 +19,10 @@ export const getEducatorContentQuery = (
       ec.status,
       ec.uid,
       ec.downloads,
-      ec.published_at AS "publishedAt",
-      ec.original_id AS "originalId",
-      u.display_name AS "displayName",
+      ec.published_at,
+      ec.created_at,
+      ec.original_id,
+      u.display_name,
       (
         SELECT COALESCE(
           json_agg(
@@ -62,5 +63,27 @@ export const getEducatorContentQuery = (
       AND ${originalId ? sql`ec.original_id = ${originalId}` : sql`TRUE`}
     GROUP BY ec.id, u.display_name
     LIMIT 1000
+  `;
+};
+
+export const getRecentlySubmittedEducatorContentQuery = (since: Date) => {
+  return sql<
+    {
+      id: string;
+      title: string;
+      displayName: string | null;
+      language: string;
+    }[]
+  >`
+    SELECT
+      ec.id,
+      ec.title,
+      u.display_name AS "displayName",
+      ec.language
+    FROM content.educator_contents ec
+    LEFT JOIN users.accounts u ON ec.uid = u.uid
+    WHERE ec.status = 'draft'
+      AND ec.created_at >= ${since}
+    ORDER BY ec.created_at DESC
   `;
 };

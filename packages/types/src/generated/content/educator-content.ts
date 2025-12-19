@@ -21,6 +21,7 @@ export interface EducatorContent {
   publishedAt: Date | null;
   uid: string;
   downloads: number;
+  createdAt: Date;
 }
 
 export interface EducatorContentLink {
@@ -58,6 +59,7 @@ export interface JoinedEducatorContent {
   publishedAt: Date | null;
   uid: string;
   downloads: number;
+  createdAt: Date;
   links?: EducatorContentLink[] | undefined;
   files?: EducatorContentFile[] | undefined;
   displayName?: string | undefined;

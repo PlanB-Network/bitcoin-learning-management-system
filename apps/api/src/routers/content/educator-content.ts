@@ -14,7 +14,10 @@ import {
   createUpdateEducatorContent,
   createUpdateEducatorContentAsAdmin,
 } from '@blms/service-content';
-import { createSendEducatorContentApprovedEmail } from '@blms/service-user';
+import {
+  createSendEducatorContentApprovedEmail,
+  createSendEducatorContentRejectedEmail,
+} from '@blms/service-user';
 import type { JoinedEducatorContent } from '@blms/types';
 import { z } from 'zod';
 import { checkPermissions } from '#src/middlewares/auth.js';
@@ -219,7 +222,26 @@ export const educatorContentRouter = createTRPCRouter({
       const rejectEducatorContent = createRejectEducatorContent(
         ctx.dependencies,
       );
-      return rejectEducatorContent(input.id);
+      const getEducatorContent = createGetEducatorContent(ctx.dependencies);
+      const sendEducatorContentRejectedEmail =
+        createSendEducatorContentRejectedEmail(ctx.dependencies);
+
+      const [content] = await getEducatorContent(
+        undefined,
+        undefined,
+        input.id,
+      );
+
+      if (!content) {
+        throw new Error('Content not found');
+      }
+
+      await rejectEducatorContent(input.id);
+
+      await sendEducatorContentRejectedEmail({
+        title: content.title,
+        userId: content.uid,
+      });
     }),
 
   incrementDownloads: publicProcedure

@@ -11,6 +11,7 @@ export type Frequency =
   | 'sun4pm'
   | 'jun1_23_gmt'
   | 'jun3_0_gmt'
+  | 'daily_12_gmt'
   | 'daily_16_gmt'
   | 'monthly_1st_16_gmt';
 
@@ -54,6 +55,10 @@ export const createCronService = () => {
   crons.set(
     'jun3_0_gmt',
     new CronJob('0 0 3 6 *', createExecTasks('jun3_0_gmt')),
+  );
+  crons.set(
+    'daily_12_gmt',
+    new CronJob('0 12 * * *', createExecTasks('daily_12_gmt')),
   );
   crons.set(
     'daily_16_gmt',

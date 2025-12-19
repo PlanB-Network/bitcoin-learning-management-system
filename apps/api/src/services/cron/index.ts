@@ -5,6 +5,7 @@ import {
   createGetCourseChapters,
   createGetCourses,
   createGetCoursesIds,
+  createGetRecentlySubmittedEducatorContent,
   createGetUpcomingEventsInfos,
   createIndexContent,
   createRefreshCoursesRatings,
@@ -21,6 +22,7 @@ import {
   createSendCoordinatorNewStudentsDailyRecapEmail,
   createSendCourseStartingSoonEmail,
   createSendCourseWeeklyRecapEmail,
+  createSendEducatorContentDigestEmail,
   createSendEventReminderEmail,
   createSendSelfPacedCourseMonthlySummaryEmail,
   createStartCourse,
@@ -413,6 +415,38 @@ export const registerCronTasks = async (ctx: Dependencies) => {
       }
       console.log(
         '[cron] Finished sending daily mail recap to course coordinators about new enrolled students',
+      );
+    });
+  }
+
+  // Once a day, send digest of newly submitted educator content to admins
+  {
+    const getRecentlySubmittedEducatorContent =
+      createGetRecentlySubmittedEducatorContent(ctx);
+    const sendEducatorContentDigestEmail =
+      createSendEducatorContentDigestEmail(ctx);
+
+    ctx.crons.addTask('daily_12_gmt', async () => {
+      console.log('[cron] Running educator content digest email job');
+      const since = new Date(Date.now() - 24 * 60 * 60 * 1000); // 24 hours ago
+      const contents = await getRecentlySubmittedEducatorContent(since);
+
+      if (contents.length === 0) {
+        console.log(
+          '[cron] No new educator content submitted in last 24 hours',
+        );
+        return;
+      }
+
+      await sendEducatorContentDigestEmail({
+        contents: contents.map((c) => ({
+          title: c.title,
+          authorName: c.displayName ?? 'Anonymous',
+        })),
+      });
+
+      console.log(
+        `[cron] Finished sending educator content digest email with ${contents.length} items`,
       );
     });
   }

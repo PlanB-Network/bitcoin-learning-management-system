@@ -17,3 +17,21 @@ export const getCareerAdminEmailsQuery = () => {
     ;
   `;
 };
+
+export const getEducatorContentAdminEmailsQuery = () => {
+  return sql<{ email: string }[]>`
+    SELECT
+      a.email
+    FROM users.accounts a
+    WHERE
+      a.email IS NOT NULL
+      AND (
+        a.role = 'superadmin'
+        OR (
+          a.role = 'admin'
+          AND 'admin:educatorContent' = ANY(a.permissions)
+        )
+      )
+    ;
+  `;
+};

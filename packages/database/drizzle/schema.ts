@@ -1455,6 +1455,7 @@ export const contentEducatorContents = content.table(
       .notNull()
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
     downloads: t.integer().default(0).notNull(),
+    createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   }),
   (table) => [
     foreignKey({
