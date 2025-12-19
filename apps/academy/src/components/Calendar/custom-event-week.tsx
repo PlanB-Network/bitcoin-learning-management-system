@@ -1,7 +1,7 @@
 import { cn } from '@blms/ui';
-import { format } from 'date-fns';
 import { useState } from 'react';
 import type { EventProps } from 'react-big-calendar';
+import { formatTime } from '#src/utils/date.ts';
 import type { CalendarEvent } from './calendar-event.js';
 
 type CustomEventProps = EventProps<CalendarEvent>;
@@ -33,7 +33,7 @@ export const CustomEventWeek = ({ event }: CustomEventProps) => {
       }}
     >
       <div className="flex flex-row text-[10px]">
-        {`${format(event.start, 'h:mm a')} - ${format(event.end, 'h:mm a')}`}
+        {`${formatTime(event.start)} - ${formatTime(event.end)}`}
       </div>
       <div className="font-semibold text-xs">{event.title}</div>
       {isSelected && (
