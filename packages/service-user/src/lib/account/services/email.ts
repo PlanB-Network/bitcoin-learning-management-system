@@ -27,7 +27,7 @@ export const createSendEmail = ({ config }: Pick<Dependencies, 'config'>) => {
       body: JSON.stringify({
         from: {
           email: config.sendgrid.email,
-          name: 'Plan B Network',
+          name: 'Plan B Academy',
         },
         personalizations: [
           {
