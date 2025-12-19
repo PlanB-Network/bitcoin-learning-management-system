@@ -426,7 +426,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
     const sendEducatorContentDigestEmail =
       createSendEducatorContentDigestEmail(ctx);
 
-    ctx.crons.addTask('daily_12_gmt', async () => {
+    ctx.crons.addTask('daily_8_gmt', async () => {
       console.log('[cron] Running educator content digest email job');
       const since = new Date(Date.now() - 24 * 60 * 60 * 1000); // 24 hours ago
       const contents = await getRecentlySubmittedEducatorContent(since);
