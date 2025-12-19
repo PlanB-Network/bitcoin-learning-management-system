@@ -28,8 +28,7 @@ const buttonVariants = cva(
         carouselDashboard: 'bg-darkOrange-5 text-white opacity-60',
         fakeDisabled: '!bg-darkOrange-1 !text-darkOrange-3',
         flags: 'bg-[#ffffff4d] text-white !rounded-[16px]',
-        ghost:
-          'text-text disabled:!text-newBlack-5 disabled:!border-newBlack-5',
+        ghost: 'text-text disabled:opacity-30',
         loginButton: 'bg-newBlack-3 text-white hover:bg-[#5c5c5c]',
         outline:
           'bg-transparent text-primary border border-primary disabled:!text-newGray-3 disabled:!border-newGray-3',
