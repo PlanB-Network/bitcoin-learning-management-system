@@ -73,7 +73,7 @@ export const createEmailValidationToken = (deps: Dependencies) => {
             token_url: `${domain}/${isCreationEmail ? 'validate-email' : 'validate-email-change'}/${token.id}`,
           },
           email,
-          subject: 'Validate your email',
+          subject: 'Verify your email',
           template: 'd-4bb80937894d42bebef0019dfb219bcc',
         }),
       )
