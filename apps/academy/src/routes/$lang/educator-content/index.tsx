@@ -82,6 +82,10 @@ function RouteComponent() {
     setCurrentPage(1);
   }, [selectedType, selectedLanguage, searchQuery, sortBy]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
+
   const filteredContent = useMemo(() => {
     if (!content) return [];
 
