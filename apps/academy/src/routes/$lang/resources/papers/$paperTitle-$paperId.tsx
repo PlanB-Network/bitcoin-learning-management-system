@@ -123,7 +123,7 @@ function Paper() {
             {paper.abstract}
           </p>
           <section className="mt-8 rounded-2xl border border-neutral-100 max-md:hidden">
-            <div className="flex justify-between items-center pl-4 pr-2 py-2">
+            <div className="flex justify-between items-center pl-4 pr-2 py-2 gap-2">
               <span className="body-base">{paper.title}</span>
               <a
                 href={paper.paperUrl}
@@ -136,7 +136,7 @@ function Paper() {
                 </Button>
               </a>
             </div>
-            <div className="flex justify-between items-center pl-4 pr-2 py-2 border-t border-neutral-100">
+            <div className="flex justify-between items-center pl-4 pr-2 py-2 border-t border-neutral-100 gap-2">
               <span className="body-base">
                 {t('resources.papers.citations')}
               </span>

@@ -94,9 +94,9 @@ function ValidateEmailChangePage() {
         </p>
         <p>
           <Button asChild className="w-fit">
-            <Link className="cursor-pointer" to={user ? '/my-courses' : '/'}>
+            <Link className="cursor-pointer" to={user ? '/account' : '/'}>
               {user
-                ? t('dashboard.goToDashboard')
+                ? t('dashboard.backToProfile')
                 : t('dashboard.goToHomepage')}
             </Link>
           </Button>
@@ -113,9 +113,9 @@ function ValidateEmailChangePage() {
         </p>
         <p>
           <Button asChild className="w-fit">
-            <Link className="cursor-pointer" to={user ? '/my-courses' : '/'}>
+            <Link className="cursor-pointer" to={user ? '/account' : '/'}>
               {user
-                ? t('dashboard.goToDashboard')
+                ? t('dashboard.backToProfile')
                 : t('dashboard.goToHomepage')}
             </Link>
           </Button>
