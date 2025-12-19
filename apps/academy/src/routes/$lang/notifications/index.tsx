@@ -114,7 +114,7 @@ const NotificationsTable = () => {
 
   if (userNotifications && userNotifications.length === 0) {
     return (
-      <p className="mt-8 subtitle-small-caps-14px text-newGray-1 max-md:px-4">
+      <p className="mt-8 subtitle-small-caps-14px text-neutral-500 max-md:px-4">
         {t('notifications.noRecentNotifications')}
       </p>
     );
@@ -164,7 +164,7 @@ const NotificationsTable = () => {
             </div>
           </div>
 
-          <section className="flex flex-col w-full md:rounded-[12px] border border-newGray-5 mt-5 overflow-hidden">
+          <section className="flex flex-col w-full md:rounded-[12px] border border-neutral-100 mt-5 overflow-hidden">
             {shownNotifications.map(
               (notification, index, filteredNotifications) => (
                 <NotificationItem
@@ -299,7 +299,7 @@ const NotificationItem = ({
     >
       {isMobile && (
         <div
-          className="absolute w-[73px] top-0 right-0 bottom-0 flex flex-col gap-1.5 items-center justify-center px-4 bg-darkOrange-5 text-white z-20 pointer-events-none transition-transform"
+          className="absolute w-[73px] top-0 right-0 bottom-0 flex flex-col gap-1.5 items-center justify-center px-4 bg-orange-500 text-white z-20 pointer-events-none transition-transform"
           style={{
             transform: `translateX(${MAX_SWIPE - touchDeltaX}px)`,
           }}
@@ -310,7 +310,7 @@ const NotificationItem = ({
       )}
       <article
         className={cn(
-          'group flex w-full hover:bg-darkOrange-0 hover:border-darkOrange-4 hover:border-l-2 py-1.5 px-4 md:p-4',
+          'group flex w-full hover:bg-orange-50 hover:border-orange-400 hover:border-l-2 py-1.5 px-4 md:p-4',
           isRead && 'bg-transparent/5',
         )}
         onTouchStart={isMobile ? handleTouchStart : undefined}
@@ -342,12 +342,12 @@ const NotificationItem = ({
           <div className="flex justify-between items-center max-md:min-h-8">
             <div className="flex items-center gap-2 md:gap-3">
               {!isRead && (
-                <div className="rounded-full size-2 bg-darkOrange-5 md:hidden ml-1.5" />
+                <div className="rounded-full size-2 bg-orange-500 md:hidden ml-1.5" />
               )}
               {getNotificationIcon(
                 notification.type,
                 isTeacherAnnouncementType(notification.type)
-                  ? 'size-[18px] md:size-6 text-darkOrange-6'
+                  ? 'size-[18px] md:size-6 text-orange-600'
                   : '',
               )}
               <TextTag
@@ -372,13 +372,13 @@ const NotificationItem = ({
               </TextTag>
             </div>
             {!isRead && (
-              <div className="rounded-full size-2 bg-darkOrange-5 max-md:hidden" />
+              <div className="rounded-full size-2 bg-orange-500 max-md:hidden" />
             )}
-            <span className="px-4 shrink-0 text-center lowercase desktop-caption1 text-newBlack-5 md:hidden">
+            <span className="px-4 shrink-0 text-center lowercase desktop-caption1 text-neutral-600 md:hidden">
               {getNotificationDateString(new Date(notification.createdAt))}
             </span>
           </div>
-          <p className="body-14px text-newBlack-1 whitespace-pre-line">
+          <p className="body-14px text-neutral-1000 whitespace-pre-line">
             {notification.content ||
               getNotificationContent(
                 notification.type,
@@ -387,12 +387,12 @@ const NotificationItem = ({
               )}
           </p>
         </Link>
-        <span className="px-4 w-35 shrink-0 text-center lowercase desktop-caption1 text-newBlack-5 max-md:hidden">
+        <span className="px-4 w-35 shrink-0 text-center lowercase desktop-caption1 text-neutral-600 max-md:hidden">
           {getNotificationDateString(new Date(notification.createdAt))}
         </span>
       </article>
       {index < filteredNotifications.length - 1 && (
-        <div className="h-px w-full bg-newGray-4" />
+        <div className="h-px w-full bg-neutral-200" />
       )}
     </div>
   );
@@ -420,13 +420,13 @@ const MultiSelectionTool = ({
           onCheckedChange={handleSelectAll}
           size={isMobile ? 's' : 'm'}
         />
-        <span className="text-newBlack-1 subtitle-small-med-14px max-md:leading-4 md:subtitle-medium-med-16px">
+        <span className="text-neutral-1000 subtitle-small-med-14px max-md:leading-4 md:subtitle-medium-med-16px">
           {selectedAmount && selectedAmount > 0
             ? t('words.selectedAmount', { amount: selectedAmount })
             : t('notifications.selectAll')}
         </span>
       </Label>
-      <div className="w-px bg-newGray-1 self-stretch" />
+      <div className="w-px bg-neutral-500 self-stretch" />
       <Button
         variant="tertiary"
         size={isMobile ? 'xs' : 's'}

@@ -46,12 +46,12 @@ export const SingleTrialExamResult = ({
       {isExamResultsFetched && examResults && (
         <>
           <section className="flex flex-col w-full">
-            <article className="flex flex-col px-4 md:px-7 py-5 md:py-11 items-center gap-2 md:gap-8 bg-newGray-6 rounded-[20px] w-full self-center">
+            <article className="flex flex-col px-4 md:px-7 py-5 md:py-11 items-center gap-2 md:gap-8 bg-neutral-50 rounded-[20px] w-full self-center">
               <SuccessExam className="size-7 md:size-10 fill-green-400" />
-              <p className="text-newBlack-1 label-medium-16px md:title-large-24px !font-semibold max-md:w-[194px] text-center">
+              <p className="text-neutral-1000 label-medium-16px md:title-large-24px !font-semibold max-md:w-[194px] text-center">
                 {t('courses.exam.completed')}
               </p>
-              <span className="subtitle-medium-caps-18px md:display-large-bold-caps-48px text-darkOrange-5 !font-extrabold">
+              <span className="subtitle-medium-caps-18px md:display-large-bold-caps-48px text-orange-500 !font-extrabold">
                 <span>{examResults.score}%</span>
               </span>
 
@@ -80,7 +80,7 @@ export const SingleTrialExamResult = ({
             chapter.endDate &&
             now > chapter.endDate.getTime() + TWO_HOURS && (
               <section className="flex flex-col w-full mt-7">
-                <h2 className="body-medium-16px md:text-[34px] text-newBlack-1 leading-tight tracking-[0.25px]">
+                <h2 className="body-medium-16px md:text-[34px] text-neutral-1000 leading-tight tracking-[0.25px]">
                   {t('courses.exam.answersReview')}
                 </h2>
                 <Divider

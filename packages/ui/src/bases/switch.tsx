@@ -6,7 +6,7 @@ import * as React from 'react';
 import { cn } from '#src/lib/utils.ts';
 
 const switchVariants = cva(
-  'peer inline-flex shrink-0 cursor-pointer items-center rounded-full border border- border-darkOrange-5 transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-newGray-6 dark:data-[state=checked]:border-black data-[state=checked]:bg-darkOrange-5 dark:data-[state=checked]:bg-primary data-[state=unchecked]:bg-newGray-6 dark:data-[state=unchecked]:bg-black',
+  'peer inline-flex shrink-0 cursor-pointer items-center rounded-full border border- border-orange-500 transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-neutral-50 dark:data-[state=checked]:border-black data-[state=checked]:bg-orange-500 dark:data-[state=checked]:bg-primary data-[state=unchecked]:bg-neutral-50 dark:data-[state=unchecked]:bg-black',
   {
     defaultVariants: {
       size: 's',
@@ -21,7 +21,7 @@ const switchVariants = cva(
 );
 
 const thumbVariants = cva(
-  'pointer-events-none block rounded-full bg-darkOrange-5 shadow-lg ring-0 transition-transform data-[state=checked]:bg-newGray-6 dark:data-[state=checked]:bg-black',
+  'pointer-events-none block rounded-full bg-orange-500 shadow-lg ring-0 transition-transform data-[state=checked]:bg-neutral-50 dark:data-[state=checked]:bg-black',
   {
     defaultVariants: {
       size: 's',

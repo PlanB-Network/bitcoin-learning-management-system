@@ -29,7 +29,7 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
   return (
     <div className="flex flex-row place-items-center gap-6 md:gap-4 ml-auto max-lg:mx-auto">
       <Link to={`/${i18n.language}/search`}>
-        <TbSearch size={24} strokeWidth={1.5} className="text-newGray-1" />
+        <TbSearch size={24} strokeWidth={1.5} className="text-neutral-500" />
       </Link>
       <LanguageSelector direction={isScreenLg ? 'down' : 'up'} />
       <div className="h-4.5 w-px bg-neutral-200" />
@@ -39,7 +39,7 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
             <TbCalendarMonth
               size={24}
               strokeWidth={1.5}
-              className="text-newGray-1"
+              className="text-neutral-500"
             />
           </Link>
           <NotificationsPanel />

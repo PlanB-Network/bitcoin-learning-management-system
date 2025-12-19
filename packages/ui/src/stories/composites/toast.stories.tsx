@@ -9,7 +9,7 @@ const meta: Meta = {
     layout: 'centered',
   },
   render: (args) => (
-    <div className="relative w-[800px] min-h-60 h-auto p-4 bg-darkOrange-0 rounded-lg flex items-center justify-center">
+    <div className="relative w-[800px] min-h-60 h-auto p-4 bg-orange-50 rounded-lg flex items-center justify-center">
       <ToastContainer
         autoClose={5000}
         hideProgressBar={false}
@@ -78,7 +78,7 @@ export const Default: Story = {
           Show Neutral Toast
         </Button>
 
-        <div className="dark p-2 rounded-md bg-newBlack-2 flex justify-center">
+        <div className="dark p-2 rounded-md bg-neutral-900 flex justify-center">
           <Button
             onClick={() =>
               customToast('This is a dark mode primary toast.', {
@@ -90,7 +90,7 @@ export const Default: Story = {
             Show Dark Primary
           </Button>
         </div>
-        <div className="dark p-2 rounded-md bg-newBlack-2 flex justify-center">
+        <div className="dark p-2 rounded-md bg-neutral-900 flex justify-center">
           <Button
             onClick={() =>
               customToast('This is a dark mode warning toast!', {
@@ -103,7 +103,7 @@ export const Default: Story = {
             Show Dark Warning
           </Button>
         </div>
-        <div className="dark p-2 rounded-md bg-newBlack-2 flex justify-center">
+        <div className="dark p-2 rounded-md bg-neutral-900 flex justify-center">
           <Button
             onClick={() =>
               customToast('Dark mode operation successful!', {
@@ -116,7 +116,7 @@ export const Default: Story = {
             Show Dark Success
           </Button>
         </div>
-        <div className="dark p-2 rounded-md bg-newBlack-2 flex justify-center">
+        <div className="dark p-2 rounded-md bg-neutral-900 flex justify-center">
           <Button
             onClick={() =>
               customToast('Dark mode informational message.', {

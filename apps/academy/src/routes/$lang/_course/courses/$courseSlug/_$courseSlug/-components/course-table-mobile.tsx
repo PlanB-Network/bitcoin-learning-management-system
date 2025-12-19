@@ -77,7 +77,7 @@ export const CourseTableMobile = ({
   ) => {
     if (!progress) {
       return {
-        bgColor: isSelected ? 'bg-newGray-5' : 'bg-newGray-4',
+        bgColor: isSelected ? 'bg-neutral-100' : 'bg-neutral-200',
         text: t('dashboard.myCourses.notStarted'),
       };
     }
@@ -92,7 +92,7 @@ export const CourseTableMobile = ({
     }
 
     return {
-      bgColor: isSelected ? 'bg-darkOrange-5' : 'bg-darkOrange-4',
+      bgColor: isSelected ? 'bg-orange-500' : 'bg-orange-400',
       text: t('dashboard.myCourses.inProgress'),
     };
   };
@@ -170,7 +170,7 @@ export const CourseTableMobile = ({
   return (
     <section className="flex flex-col md:hidden max-h-[calc(100dvh-140px)]">
       <div className="overflow-y-auto no-scrollbar rounded-[10px] w-full">
-        <Table className="size-full bg-newGray-6 rounded-[10px] overflow-hidden">
+        <Table className="size-full bg-neutral-50 rounded-[10px] overflow-hidden">
           <TableHeader className="border-none">
             <TableRow>
               {courseCategoriesDashboard.map((category) => (
@@ -192,7 +192,7 @@ export const CourseTableMobile = ({
               ))}
             </TableRow>
           </TableHeader>
-          <TableBody className="bg-newGray-6">
+          <TableBody className="bg-neutral-50">
             <TableRow>
               {courseCategoriesDashboard.map((category) => (
                 <TableCell

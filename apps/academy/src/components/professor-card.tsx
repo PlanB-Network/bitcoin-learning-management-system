@@ -72,7 +72,7 @@ export const ProfessorCardReduced = ({
   return (
     <div
       className={cn(
-        'rounded-[20px] p-2 border-2 border-newBlack-1 bg-newGray-6 size-fit flex flex-col',
+        'rounded-[20px] p-2 border-2 border-neutral-1000 bg-neutral-50 size-fit flex flex-col',
         mobileSize === 'small' && 'max-md:p-1 max-md:border',
       )}
     >
@@ -164,7 +164,7 @@ export const ProfessorCardReduced = ({
               alt={professor.name}
               className="size-8"
             />
-            <div className="subtitle-small-med-14px text-darkOrange-6 whitespace-pre-line max-w-[200px]">
+            <div className="subtitle-small-med-14px text-orange-600 whitespace-pre-line max-w-[200px]">
               {t('professors.tips.authorSupport')}
             </div>
           </button>

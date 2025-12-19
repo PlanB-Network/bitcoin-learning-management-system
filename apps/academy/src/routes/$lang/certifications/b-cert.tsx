@@ -65,13 +65,13 @@ function BCert() {
           className="w-full max-w-[304px] [overflow-clip-margin:_unset]"
         />
         <div className="flex flex-col w-full">
-          <h3 className="title-medium text-newBlack-1">
+          <h3 className="title-medium text-neutral-1000">
             {t('bCert.knowledgeableBitcoin')}
           </h3>
           <span className="title-base text-neutral-600">
             {t('bCert.challengeYourself')}
           </span>
-          <p className="body-base text-newBlack-1 whitespace-pre-line mt-5">
+          <p className="body-base text-neutral-1000 whitespace-pre-line mt-5">
             {t('bCert.bCertDescription')}
           </p>
         </div>
@@ -100,7 +100,7 @@ const OrganizeDialog = () => {
               href="https://kutt.planb.network/BCERT-chart"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-darkOrange-5 font-semibold"
+              className="text-orange-500 font-semibold"
             >
               charter
             </a>

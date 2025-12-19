@@ -56,7 +56,7 @@ export const Default: Story = {
           // biome-ignore lint/suspicious/noArrayIndexKey: explanation
           <CarouselItem key={index}>
             <div className="p-1">
-              <div className="flex aspect-video items-center justify-center rounded-md bg-darkOrange-5 text-black">
+              <div className="flex aspect-video items-center justify-center rounded-md bg-orange-500 text-black">
                 <span className="text-4xl font-semibold">
                   Slide {index + 1}
                 </span>
@@ -86,7 +86,7 @@ export const LoopCarousel: Story = {
           // biome-ignore lint/suspicious/noArrayIndexKey: explanation
           <CarouselItem key={index}>
             <div className="p-1">
-              <div className="flex aspect-video items-center justify-center rounded-md bg-darkOrange-5 text-black">
+              <div className="flex aspect-video items-center justify-center rounded-md bg-orange-500 text-black">
                 <span className="text-4xl font-semibold">
                   Slide {index + 1}
                 </span>

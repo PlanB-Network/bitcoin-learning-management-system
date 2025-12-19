@@ -28,7 +28,7 @@ export const ModalBookSummary = ({
   const { t } = useTranslation();
 
   const Separator = () => (
-    <div className="w-full h-px bg-newGray-4 lg:bg-white/10" />
+    <div className="w-full h-px bg-neutral-200 lg:bg-white/10" />
   );
 
   const timezone = chapter.timezone || undefined;
@@ -45,7 +45,7 @@ export const ModalBookSummary = ({
     >
       <div
         className={cn(
-          'flex flex-col gap-4 w-full max-w-[492px] p-2.5 lg:p-7 backdrop-blur-md bg-newGray-5 lg:bg-black/75',
+          'flex flex-col gap-4 w-full max-w-[492px] p-2.5 lg:p-7 backdrop-blur-md bg-neutral-100 lg:bg-black/75',
           borderClassName,
         )}
       >

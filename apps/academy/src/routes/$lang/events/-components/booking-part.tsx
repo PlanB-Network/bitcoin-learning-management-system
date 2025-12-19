@@ -32,7 +32,7 @@ export const BookingPart = ({
     <>
       {sortedTickets.length > 0 ? (
         <>
-          <div className="hidden md:flex flex-row gap-4 font-medium text-newBlack-1 my-4">
+          <div className="hidden md:flex flex-row gap-4 font-medium text-neutral-1000 my-4">
             <span className="w-[150px] flex-none">
               {t('dashboard.booking.ticketDate')}
             </span>
@@ -84,7 +84,7 @@ export const BookingPart = ({
                   color="gray"
                 >
                   <div className="flex flex-col gap-1">
-                    <span className="text-newBlack-1 font-medium">
+                    <span className="text-neutral-1000 font-medium">
                       {ticket.title}
                     </span>
                     <span className="flex-none  text-sm">
@@ -281,7 +281,7 @@ const CancelBookingDialog = ({ onConfirm }: { onConfirm: () => void }) => {
       trigger={
         <button
           type="button"
-          className="underline decoration-darkOrange-5 text-darkOrange-5"
+          className="underline decoration-orange-500 text-orange-500"
         >
           {t('words.cancel')}
         </button>

@@ -19,7 +19,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     const classes = useMemo(
       () => [
-        'block w-full body-base rounded-md  border border-neutral-200 hover:border-blue-300 focus:border-transparent active:border-transparent focus:ring-2 active:ring-blue-300/10 active:ring-2 focus:ring-blue-300 focus-visible:outline-none px-3 py-3 md:py-4 bg-white text-black placeholder:text-newGray-3',
+        'block w-full body-base rounded-md  border border-neutral-200 hover:border-blue-300 focus:border-transparent active:border-transparent focus:ring-2 active:ring-blue-300/10 active:ring-2 focus:ring-blue-300 focus-visible:outline-none px-3 py-3 md:py-4 bg-white text-black placeholder:text-neutral-300',
       ],
       [error],
     );
@@ -47,7 +47,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
       if (error) {
         return (
-          <TbExclamationMark className="size-6 text-red-5" aria-hidden="true" />
+          <TbExclamationMark
+            className="size-6 text-red-400"
+            aria-hidden="true"
+          />
         );
       }
 

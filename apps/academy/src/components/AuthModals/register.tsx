@@ -171,7 +171,7 @@ export const Register = ({ redirectTo }: RegisterProps) => {
       </FieldGroup>
 
       {register.error && (
-        <p className="mt-2 text-base font-semibold text-red-5">
+        <p className="mt-2 text-base font-semibold text-red-400">
           {register.error.message}
         </p>
       )}

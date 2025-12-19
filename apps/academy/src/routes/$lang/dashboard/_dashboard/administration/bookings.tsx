@@ -53,7 +53,7 @@ function AdminBookings() {
           <span className="text-2xl mb-2.5 md:mb-4">
             {t('dashboard.adminPanel.upcomingBookings')}
           </span>
-          <span className="text-newBlack-5">
+          <span className="text-neutral-600">
             {t('dashboard.adminPanel.upcomingBookingsSubtitle')}
           </span>
         </div>

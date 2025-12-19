@@ -11,11 +11,13 @@ export const LiveVideo = ({ url, chatUrl, displayVideo }: LiveVideoProps) => {
 
   return (
     <div className="flex flex-col gap-4">
-      <p className="text-newOrange-2 text-2xl">
+      <p className="text-orange-400 text-2xl">
         {t('courses.chapter.live.title')}
       </p>
       {!displayVideo && (
-        <p className="text-newBlack-5">{t('courses.chapter.live.stayTuned')}</p>
+        <p className="text-neutral-600">
+          {t('courses.chapter.live.stayTuned')}
+        </p>
       )}
       {url && displayVideo && (
         <div className="flex flex-col gap-6 w-full items-center">
@@ -31,7 +33,7 @@ export const LiveVideo = ({ url, chatUrl, displayVideo }: LiveVideoProps) => {
               src={chatUrl}
               title="Chat"
               sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-              className="w-full p-2 rounded-2xl border border-darkOrange-0 shadow-course-navigation"
+              className="w-full p-2 rounded-2xl border border-orange-50 shadow-course-navigation"
               height="331px"
             />
           )}

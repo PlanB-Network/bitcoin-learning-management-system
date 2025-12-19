@@ -24,21 +24,21 @@ const buttonVariants = cva(
       },
       variant: {
         carousel:
-          'bg-primary text-black disabled:text-newGray-1 disabled:bg-darkOrange-8 hover:bg-darkOrange-3 opacity-100',
-        carouselDashboard: 'bg-darkOrange-5 text-white opacity-60',
-        fakeDisabled: '!bg-darkOrange-1 !text-darkOrange-3',
+          'bg-primary text-black disabled:text-neutral-500 disabled:bg-orange-800 hover:bg-orange-300 opacity-100',
+        carouselDashboard: 'bg-orange-500 text-white opacity-60',
+        fakeDisabled: '!bg-orange-100 !text-orange-300',
         flags: 'bg-[#ffffff4d] text-white !rounded-[16px]',
         ghost: 'text-text disabled:opacity-30',
-        loginButton: 'bg-newBlack-3 text-white hover:bg-[#5c5c5c]',
+        loginButton: 'bg-neutral-800 text-white hover:bg-[#5c5c5c]',
         outline:
-          'bg-transparent text-primary border border-primary disabled:!text-newGray-3 disabled:!border-newGray-3',
+          'bg-transparent text-primary border border-primary disabled:!text-neutral-300 disabled:!border-neutral-300',
         outlineWhite:
-          'text-white border border-newGray-2 hover:border-white transition-colors disabled:!text-newBlack-5 disabled:!border-newBlack-5',
+          'text-white border border-neutral-400 hover:border-white transition-colors disabled:!text-neutral-600 disabled:!border-neutral-600',
         primary:
-          'bg-primary text-white disabled:!bg-darkOrange-1 disabled:!text-darkOrange-3',
+          'bg-primary text-white disabled:!bg-orange-100 disabled:!text-orange-300',
         secondary: 'bg-orange-50 text-orange-500',
         tertiary:
-          'bg-neutral-50 text-black border-newGray-3 disabled:!bg-newGray-5 disabled:!text-newGray-4 disabled:border-newGray-4 dark:bg-newBlack-3 dark:text-newGray-4 dark:border-newGray-1 dark:disabled:bg-newBlack-2 dark:disabled:text-newBlack-4 dark:disabled:border-newBlack-4',
+          'bg-neutral-50 text-black border-neutral-300 disabled:!bg-neutral-100 disabled:!text-neutral-200 disabled:border-neutral-200 dark:bg-neutral-800 dark:text-neutral-200 dark:border-neutral-500 dark:disabled:bg-neutral-900 dark:disabled:text-neutral-700 dark:disabled:border-neutral-700',
         newTertiary:
           'bg-neutral-50 text-black hover:bg-neutral-100 focus-visible:border-5 focus-visible:border-neutral-100 disabled:opacity-30',
         transparent: 'bg-white/30 text-white',

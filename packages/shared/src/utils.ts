@@ -42,16 +42,16 @@ export const getStatusBadgeClass = (status: string): string => {
     case 'reviewed':
       return 'bg-blue-200 text-white';
     case 'under_review':
-      return 'bg-darkOrange-8 text-white';
+      return 'bg-orange-800 text-white';
     case 'ready_for_review':
-      return 'bg-darkOrange-4 text-white';
+      return 'bg-orange-400 text-white';
     case 'in_progress':
       return 'bg-orange-100 text-orange-800';
     // New translation progress statuses for chapter-level overview
     case 'completed':
       return 'bg-green-100 text-green-800';
     case 'in-progress':
-      return 'bg-darkOrange-1 text-orange-800';
+      return 'bg-orange-100 text-orange-800';
     case 'not-started':
       return 'bg-gray-100 text-gray-800';
     case 'todo':

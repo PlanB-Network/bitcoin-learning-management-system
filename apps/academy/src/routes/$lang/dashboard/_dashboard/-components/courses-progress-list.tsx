@@ -26,7 +26,7 @@ export const ProgressBar = ({
               key={index}
               className={cn(
                 'relative h-2 flex justify-end items-center',
-                isFilled ? 'bg-darkOrange-5' : 'bg-darkOrange-1',
+                isFilled ? 'bg-orange-500' : 'bg-orange-100',
                 isFirstRectangle && 'rounded-l',
                 isLastRectangle && 'rounded-r',
               )}
@@ -43,9 +43,9 @@ export const ProgressBar = ({
           );
         })}
       </div>
-      <div className="w-full md:hidden relative h-2 bg-darkOrange-1 rounded flex items-center mb-7">
+      <div className="w-full md:hidden relative h-2 bg-orange-100 rounded flex items-center mb-7">
         <div
-          className="bg-darkOrange-5 h-full rounded"
+          className="bg-orange-500 h-full rounded"
           style={{
             width: `${(courseCompletedChapters / courseTotalChapters) * 100}%`,
           }}

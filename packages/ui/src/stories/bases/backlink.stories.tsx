@@ -4,7 +4,7 @@ import { BackLink } from '#src/bases/backlink.tsx';
 const meta: Meta<typeof BackLink> = {
   args: {
     className:
-      'flex items-center subtitle-large-med-20px md:display-large text-darkOrange-5 hover:text-white',
+      'flex items-center subtitle-large-med-20px md:display-large text-orange-500 hover:text-white',
     label: 'Back',
     to: '/',
   },

@@ -261,11 +261,11 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
               placeholder={`${t('words.search')} ${t(`words.${userRole}`).toLowerCase()}`}
               value={search}
               onChange={(event) => setSearch(event.target.value)}
-              className="w-full pl-5 pr-12 py-3 rounded-[25px] bg-newGray-5 text-newBlack-1 placeholder:text-newGray-1 body-14px"
+              className="w-full pl-5 pr-12 py-3 rounded-[25px] bg-neutral-100 text-neutral-1000 placeholder:text-neutral-500 body-14px"
             />
             <AiOutlineSearch
               size={24}
-              className="absolute right-5 top-1/2 -translate-y-1/2 text-newBlack-1"
+              className="absolute right-5 top-1/2 -translate-y-1/2 text-neutral-1000"
             />
           </div>
 
@@ -609,7 +609,7 @@ export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
                                             )
                                           }
                                           disabled={!editingUsers[user.uid]}
-                                          className="peer col-start-1 row-start-1 size-3.5 appearance-none rounded-full border bg-transparent checked:bg-darkOrange-5 border-darkOrange-5 shrink-0"
+                                          className="peer col-start-1 row-start-1 size-3.5 appearance-none rounded-full border bg-transparent checked:bg-orange-500 border-orange-500 shrink-0"
                                         />
                                         <MdCheck
                                           size={12}
@@ -748,7 +748,7 @@ const StudentMobileCard = ({
   refetch: () => void;
 }) => {
   return (
-    <article className="flex flex-col gap-2.5 bg-newGray-6 rounded-xl p-2 body-14px-medium">
+    <article className="flex flex-col gap-2.5 bg-neutral-50 rounded-xl p-2 body-14px-medium">
       <span>
         Username: <span className="body-14px">{user.username}</span>
       </span>
@@ -877,7 +877,7 @@ const AdminMobileCard = ({
   toggleUserEditMode: (userId: string) => void;
 }) => {
   return (
-    <article className="flex flex-col gap-2.5 bg-newGray-6 rounded-xl p-2 body-14px-medium">
+    <article className="flex flex-col gap-2.5 bg-neutral-50 rounded-xl p-2 body-14px-medium">
       <span>
         Username: <span className="body-14px">{user.username}</span>
       </span>
@@ -914,7 +914,7 @@ const AdminMobileCard = ({
                       )
                     }
                     disabled={!editingUsers[user.uid]}
-                    className="peer col-start-1 row-start-1 size-3.5 appearance-none rounded-full border bg-transparent checked:bg-darkOrange-5 border-darkOrange-5 shrink-0"
+                    className="peer col-start-1 row-start-1 size-3.5 appearance-none rounded-full border bg-transparent checked:bg-orange-500 border-orange-500 shrink-0"
                   />
                   <MdCheck
                     size={12}
@@ -965,7 +965,7 @@ const RemoveTeacherDialog = ({ onConfirm }: { onConfirm: () => void }) => {
       trigger={
         <FiTrash2
           size="24"
-          className="cursor-pointer mx-auto text-darkOrange-5"
+          className="cursor-pointer mx-auto text-orange-500"
         />
       }
       title={t('dashboard.adminPanel.removeTeacherDescription')}

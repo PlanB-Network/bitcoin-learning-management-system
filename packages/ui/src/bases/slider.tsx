@@ -18,23 +18,23 @@ const Slider = React.forwardRef<
       )}
       {...props}
     >
-      <SliderPrimitive.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-newGray-4">
+      <SliderPrimitive.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-neutral-200">
         <SliderPrimitive.Range
           className={cn('absolute h-full bg-transparent')}
         />
       </SliderPrimitive.Track>
       <SliderPrimitive.Thumb
         className={cn(
-          'block size-7 rounded-full bg-darkOrange-5 ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ',
-          props.disabled && 'bg-newGray-2',
+          'block size-7 rounded-full bg-orange-500 ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ',
+          props.disabled && 'bg-neutral-400',
         )}
       />
       {/* Hack - course review slider */}
       <div
         className={cn(
-          'absolute bg-darkOrange-5 h-full rounded-full left-1/2',
+          'absolute bg-orange-500 h-full rounded-full left-1/2',
           props.value && props.value[0] < average ? '-translate-x-full' : '',
-          props.disabled && 'bg-newGray-2',
+          props.disabled && 'bg-neutral-400',
         )}
         style={{
           width:

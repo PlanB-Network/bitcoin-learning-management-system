@@ -49,8 +49,8 @@ export default function QuizzCardQuestion({
         questionIndex={questionIndex}
         answersColors={answersColors}
       />
-      <div className="border-newBlack-1 flex flex-col items-center self-stretch rounded-b-2xl border md:border-2 bg-darkOrange-1 px-2 py-4 md:px-8 md:pb-9 md:pt-6">
-        <div className="mb-6 flex items-start gap-2.5 text-newBlack-1 w-full">
+      <div className="border-neutral-1000 flex flex-col items-center self-stretch rounded-b-2xl border md:border-2 bg-orange-100 px-2 py-4 md:px-8 md:pb-9 md:pt-6">
+        <div className="mb-6 flex items-start gap-2.5 text-neutral-1000 w-full">
           <FaPlay
             size={window.innerWidth < 768 ? 10 : 24}
             className="max-md:mt-1 shrink-0"
@@ -69,27 +69,27 @@ export default function QuizzCardQuestion({
               key={question}
               className="group w-full"
             >
-              <div className="border-newBlack-1 flex w-full cursor-pointer items-stretch rounded-lg border overflow-hidden">
+              <div className="border-neutral-1000 flex w-full cursor-pointer items-stretch rounded-lg border overflow-hidden">
                 <span
                   className={cn(
-                    'label-medium-med-16px md:title-large-24px text-newBlack-1 uppercase px-4 flex items-center',
+                    'label-medium-med-16px md:title-large-24px text-neutral-1000 uppercase px-4 flex items-center',
                     index === clickedAnswer
                       ? clickedAnswer === correctAnswer
                         ? 'bg-green-300'
-                        : 'bg-red-4'
-                      : 'bg-newGray-5 md:group-hover:bg-newGray-3',
+                        : 'bg-red-300'
+                      : 'bg-neutral-100 md:group-hover:bg-neutral-300',
                   )}
                 >
                   {String.fromCodePoint(97 + index)}
                 </span>
                 <span
                   className={cn(
-                    'label-small-12px md:body-16px text-newBlack-1 text-start w-full px-1 md:px-4 border-l border-newBlack-1 py-1 min-h-12 md:py-3',
+                    'label-small-12px md:body-16px text-neutral-1000 text-start w-full px-1 md:px-4 border-l border-neutral-1000 py-1 min-h-12 md:py-3',
                     index === clickedAnswer
                       ? clickedAnswer === correctAnswer
                         ? 'bg-green-200 !font-semibold'
-                        : 'bg-red-3 !font-semibold'
-                      : 'bg-white md:group-hover:bg-newGray-5',
+                        : 'bg-red-200 !font-semibold'
+                      : 'bg-white md:group-hover:bg-neutral-100',
                   )}
                 >
                   {formatTextCodeblock(question)}

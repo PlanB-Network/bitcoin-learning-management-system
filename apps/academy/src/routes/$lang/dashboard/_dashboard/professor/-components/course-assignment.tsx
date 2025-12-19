@@ -228,7 +228,7 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
           <AlertTitle icon={TbAlertCircle}>
             {t('dashboard.teacher.courses.assignmentGrade.alertTitle')}
           </AlertTitle>
-          <AlertDescription className="text-newBlack-2">
+          <AlertDescription className="text-neutral-900">
             {t('dashboard.teacher.courses.assignmentGrade.alertDescription')}
           </AlertDescription>
         </Alert>
@@ -381,7 +381,7 @@ const AssignmentGradesTable = ({
   };
 
   return (
-    <div className="w-full border border-newGray-5 bg-newGray-6 rounded-xl flex flex-col gap-2">
+    <div className="w-full border border-neutral-100 bg-neutral-50 rounded-xl flex flex-col gap-2">
       <div
         className="flex items-center justify-between px-4 py-2.5 cursor-pointer"
         onClick={() => setIsCollapsed(!isCollapsed)}
@@ -445,7 +445,7 @@ const AssignmentGradesTable = ({
                   </td>
                   <td className="py-2.5 pr-2 flex flex-col md:hidden">
                     <span className="body-16px">{student.displayName}</span>
-                    <span className="text-newGray-1 body-12px">
+                    <span className="text-neutral-500 body-12px">
                       {student.username}
                     </span>
                   </td>
@@ -461,7 +461,7 @@ const AssignmentGradesTable = ({
                       placeholder="--"
                       readOnly={!isEditing}
                       className={cn(
-                        'w-19 md:w-25 px-4 py-1.5 text-left border rounded-lg border-newGray-4 placeholder:text-newGray-3',
+                        'w-19 md:w-25 px-4 py-1.5 text-left border rounded-lg border-neutral-200 placeholder:text-neutral-300',
                         isEditing
                           ? 'bg-white'
                           : 'bg-transparent cursor-default',

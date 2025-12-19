@@ -12,7 +12,7 @@ const tabsTriggerVariant = cva(
       variant: {
         dark: '',
         light:
-          'data-[state=active]:bg-darkOrange-1 data-[state=active]:text-darkOrange-5 data-[state=inactive]:text-newBlack-3 data-[state=inactive]:hover:text-darkOrange-5',
+          'data-[state=active]:bg-orange-100 data-[state=active]:text-orange-500 data-[state=inactive]:text-neutral-800 data-[state=inactive]:hover:text-orange-500',
       },
     },
   },
@@ -42,7 +42,7 @@ export const TabsListSegmented = ({
   return (
     <TabsList
       className={cn(
-        'flex flex-wrap bg-newGray-5 shadow-course-card relative z-[2] p-0 gap-0 rounded-t-[20px] overflow-hidden w-full',
+        'flex flex-wrap bg-neutral-100 shadow-course-card relative z-[2] p-0 gap-0 rounded-t-[20px] overflow-hidden w-full',
         className,
       )}
       removeClasses={true}

@@ -111,7 +111,7 @@ function DashboardCalendar() {
                 'leading-snug mx-1 px-4 capitalize rounded-xl',
                 filter.includes(filterName)
                   ? 'hover:brightness-110'
-                  : 'hover:bg-newGray-5',
+                  : 'hover:bg-neutral-100',
               )}
             >
               {t(`dashboard.calendar.eventType.${filterName}`)}

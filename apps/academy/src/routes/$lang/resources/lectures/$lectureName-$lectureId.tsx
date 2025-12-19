@@ -216,7 +216,7 @@ function Lecture() {
                   className="size-5 lg:size-6 shrink-0"
                   alt="BookOpen"
                 />
-                <h3 className="text-darkOrange-5 body-base-bold md:display-small">
+                <h3 className="text-orange-500 body-base-bold md:display-small">
                   {t('lectures.checkFullCourse')}
                 </h3>
               </div>

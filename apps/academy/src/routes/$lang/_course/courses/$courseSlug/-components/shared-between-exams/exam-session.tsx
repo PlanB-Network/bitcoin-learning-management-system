@@ -187,10 +187,10 @@ export const ExamSession = ({
   const isMobile = window.innerWidth < 768;
 
   return (
-    <section className="flex flex-col w-full max-w-[1056px] rounded-2xl overflow-hidden border-2 border-newBlack-1">
-      <div className="flex flex-col w-full gap-5 bg-darkOrange-1 border-b-2 border-newBlack-1 px-4 py-2.5 md:px-7 md:py-5">
+    <section className="flex flex-col w-full max-w-[1056px] rounded-2xl overflow-hidden border-2 border-neutral-1000">
+      <div className="flex flex-col w-full gap-5 bg-orange-100 border-b-2 border-neutral-1000 px-4 py-2.5 md:px-7 md:py-5">
         <div className="flex w-full items-center gap-1 md:gap-4 ">
-          <h2 className="body-medium-16px uppercase md:display-medium-bold-caps-40px text-darkOrange-11">
+          <h2 className="body-medium-16px uppercase md:display-medium-bold-caps-40px text-orange-1000">
             {examName}
           </h2>
         </div>
@@ -216,9 +216,8 @@ export const ExamSession = ({
                 });
               }}
               className={cn(
-                'size-8 flex justify-center items-center rounded-lg border border-newGray-1 bg-white text-newBlack-1 cursor-pointer label-medium-med-16px',
-                selectedAnswers[questionIndex].order !== -1 &&
-                  'bg-darkOrange-4',
+                'size-8 flex justify-center items-center rounded-lg border border-neutral-500 bg-white text-neutral-1000 cursor-pointer label-medium-med-16px',
+                selectedAnswers[questionIndex].order !== -1 && 'bg-orange-400',
               )}
             >
               {questionIndex + 1}
@@ -226,7 +225,7 @@ export const ExamSession = ({
           ))}
         </div>
       </div>
-      <div className="flex flex-col items-center px-2.5 md:px-10 py-5 md:pt-10 md:pb-6 bg-newGray-6 w-full gap-5 md:gap-11">
+      <div className="flex flex-col items-center px-2.5 md:px-10 py-5 md:pt-10 md:pb-6 bg-neutral-50 w-full gap-5 md:gap-11">
         <div
           className="relative w-full scrollbar-light overflow-y-scroll max-h-[929px] md:max-h-[1201px] pb-1.5 pr-3 md:pr-2 flex flex-col items-center"
           id="examContainer"
@@ -235,7 +234,7 @@ export const ExamSession = ({
             <Button
               variant="primary"
               size={isMobile ? 'xs' : 'm'}
-              className="absolute left-0 w-fit pointer-events-none flex gap-2 md:gap-2.5 items-center !bg-darkOrange-7 z-10"
+              className="absolute left-0 w-fit pointer-events-none flex gap-2 md:gap-2.5 items-center !bg-orange-700 z-10"
             >
               <MdTimer size={isMobile ? 16 : 24} className="shrink-0" />
               <span className="w-9 md:w-12 text-xs md:text-lg leading-normal font-medium text-white">
@@ -252,7 +251,7 @@ export const ExamSession = ({
                   questionIndex === 0 && 'pt-0',
                 )}
               >
-                <p className="body-medium-16px md:subtitle-large-med-20px text-newBlack-1">
+                <p className="body-medium-16px md:subtitle-large-med-20px text-neutral-1000">
                   {questionIndex + 1}. {formatTextCodeblock(q.text)}
                 </p>
                 <section className="flex flex-col gap-2.5 md:gap-4 w-full">
@@ -264,24 +263,24 @@ export const ExamSession = ({
                       onClick={() =>
                         handleAnswerClick(questionIndex, answerIndex)
                       }
-                      className="group border-newBlack-1 flex w-full cursor-pointer items-stretch rounded-lg border overflow-hidden"
+                      className="group border-neutral-1000 flex w-full cursor-pointer items-stretch rounded-lg border overflow-hidden"
                     >
                       <span
                         className={cn(
-                          'label-medium-med-16px md:title-large-24px text-newBlack-1 uppercase px-4 flex items-center bg-newGray-5 lg:group-hover:bg-newGray-3',
+                          'label-medium-med-16px md:title-large-24px text-neutral-1000 uppercase px-4 flex items-center bg-neutral-100 lg:group-hover:bg-neutral-300',
                           selectedAnswers[questionIndex].index ===
                             answerIndex &&
-                            '!bg-darkOrange-4 lg:group-hover:!bg-darkOrange-3',
+                            '!bg-orange-400 lg:group-hover:!bg-orange-300',
                         )}
                       >
                         {String.fromCodePoint(97 + answerIndex)}
                       </span>
                       <p
                         className={cn(
-                          'label-small-12px md:body-16px text-newBlack-1 text-start w-full px-1 md:px-4 border-l border-newBlack-1 py-1 min-h-12 md:py-3 bg-white lg:group-hover:bg-newGray-4',
+                          'label-small-12px md:body-16px text-neutral-1000 text-start w-full px-1 md:px-4 border-l border-neutral-1000 py-1 min-h-12 md:py-3 bg-white lg:group-hover:bg-neutral-200',
                           selectedAnswers[questionIndex].index ===
                             answerIndex &&
-                            '!bg-darkOrange-1 lg:group-hover:!bg-darkOrange-0',
+                            '!bg-orange-100 lg:group-hover:!bg-orange-50',
                         )}
                       >
                         {formatTextCodeblock(answer.text)}

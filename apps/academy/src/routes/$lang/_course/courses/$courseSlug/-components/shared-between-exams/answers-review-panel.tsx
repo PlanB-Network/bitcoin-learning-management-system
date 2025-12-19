@@ -20,7 +20,7 @@ export const AnswersReviewPanel = ({
     <section
       className={cn(
         'flex flex-col gap-6 md:gap-5 w-full',
-        hasBackground && 'bg-newGray-6 rounded-[20px]',
+        hasBackground && 'bg-neutral-50 rounded-[20px]',
         className,
       )}
     >
@@ -33,14 +33,14 @@ export const AnswersReviewPanel = ({
             type="button"
             onClick={() => setSelectedQuestion(index)}
             className={cn(
-              'size-8 md:size-10 flex justify-center items-center border border-newGray-1 rounded-lg label-medium-med-16px md:title-large-24px text-newBlack-1',
+              'size-8 md:size-10 flex justify-center items-center border border-neutral-500 rounded-lg label-medium-med-16px md:title-large-24px text-neutral-1000',
               q.userAnswer === q.answers.find((ans) => ans.correctAnswer)?.order
                 ? selectedQuestion === index
                   ? 'bg-green-300'
                   : 'bg-green-100 hover:bg-green-300'
                 : selectedQuestion === index
-                  ? 'bg-red-4'
-                  : 'bg-red-2 hover:bg-red-4',
+                  ? 'bg-red-300'
+                  : 'bg-red-100 hover:bg-red-300',
             )}
           >
             {index + 1}
@@ -49,8 +49,8 @@ export const AnswersReviewPanel = ({
       </section>
 
       {/* Question details */}
-      <article className="flex flex-col md:border-t border-newBlack-5 md:px-5 gap-4 w-full md:pt-5">
-        <h3 className="body-medium-16px md:subtitle-medium-med-16px text-newBlack-1">
+      <article className="flex flex-col md:border-t border-neutral-600 md:px-5 gap-4 w-full md:pt-5">
+        <h3 className="body-medium-16px md:subtitle-medium-med-16px text-neutral-1000">
           {selectedQuestion + 1} .{' '}
           {formatTextCodeblock(examResults.questions[selectedQuestion].text)}
         </h3>
@@ -79,10 +79,10 @@ export const AnswersReviewPanel = ({
 
         {/* Explanations */}
         <section className="flex flex-col gap-2.5">
-          <h5 className="body-medium-16px md:subtitle-large-med-20px text-newBlack-1">
+          <h5 className="body-medium-16px md:subtitle-large-med-20px text-neutral-1000">
             {t('courses.exam.explanations')}
           </h5>
-          <p className="text-newBlack-1 body-12px md:body-16px text-justify">
+          <p className="text-neutral-1000 body-12px md:body-16px text-justify">
             {formatTextCodeblock(
               examResults.questions[selectedQuestion].explanation,
             )}
@@ -91,13 +91,13 @@ export const AnswersReviewPanel = ({
 
         {/* Link to chapter */}
         <section className="flex max-md:flex-col md:items-center gap-2.5">
-          <h5 className="body-medium-12px md:body-medium-16px text-newBlack-1">
+          <h5 className="body-medium-12px md:body-medium-16px text-neutral-1000">
             {t('courses.exam.findInformationChapter')}
           </h5>
           <Link
             to={examResults.questions[selectedQuestion].chapterLink}
             target="_blank"
-            className="text-newBlue-1 body-12px md:body-16px underline text-justify"
+            className="text-blue-500 body-12px md:body-16px underline text-justify"
           >
             {examResults.questions[selectedQuestion].chapterPart}.
             {examResults.questions[selectedQuestion].chapterIndex}.{' '}

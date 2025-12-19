@@ -372,7 +372,7 @@ export const CourseTranslationCard = ({
             <div className="flex flex-col space-y-2">
               {/* Video creation progress row */}
               <div className="flex justify-between text-sm">
-                <span className="text-maroon-8">
+                <span className="text-brown-700">
                   {t('translate.videoGeneration.title', {
                     defaultValue: 'Video creation progress',
                   })}
@@ -383,7 +383,7 @@ export const CourseTranslationCard = ({
               </div>
 
               <div className="flex justify-between text-sm">
-                <span className="text-maroon-8">
+                <span className="text-brown-700">
                   {t('translate.originalLanguage')}
                 </span>
                 <span className="font-medium">

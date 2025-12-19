@@ -206,7 +206,7 @@ export const ExamResults = ({ courseId }: { courseId: string }) => {
   });
 
   return (
-    <div className="flex flex-col w-full md:p-4 gap-4 md:border border-newGray-5 bg-white rounded-2xl">
+    <div className="flex flex-col w-full md:p-4 gap-4 md:border border-neutral-100 bg-white rounded-2xl">
       {((isCourseConclusionReleased && teacherLedCourseGradesAndSummary) ||
         (multiAttemptExams.length > 0 && selfPacedCourseGradesAndSummary)) && (
         <FinalResultsSummary
@@ -322,7 +322,7 @@ const FinalResultsSummary = ({
             )
           }
           type="button"
-          className="absolute right-0 text-newBlack-5"
+          className="absolute right-0 text-neutral-600"
         >
           <TbFileTypeXls size={24} />
         </button>
@@ -444,9 +444,9 @@ const ExamCard = ({
   }
 
   return (
-    <article className="bg-newGray-6 rounded-2xl overflow-hidden w-full">
-      <header className="p-4 md:px-6 md:py-3 border-b border-newGray-5 flex justify-between items-center">
-        <h4 className="label-med-18px font-medium md:label-large-med-20px text-newBlack-1">
+    <article className="bg-neutral-50 rounded-2xl overflow-hidden w-full">
+      <header className="p-4 md:px-6 md:py-3 border-b border-neutral-100 flex justify-between items-center">
+        <h4 className="label-med-18px font-medium md:label-large-med-20px text-neutral-1000">
           {index + 1}. {name}
         </h4>
         {((assignmentGrades && assignmentGrades.length > 0) ||
@@ -469,7 +469,7 @@ const ExamCard = ({
                     )
               }
               type="button"
-              className="body-medium-16px text-newBlack-5 flex items-center gap-2"
+              className="body-medium-16px text-neutral-600 flex items-center gap-2"
             >
               <span className="max-md:hidden">
                 {t('dashboard.teacher.courses.exportExamData')}
@@ -481,7 +481,7 @@ const ExamCard = ({
 
       <section className="p-3 md:p-6 flex max-md:flex-col gap-4 md:gap-7 w-full">
         <div className="flex flex-col grow self-center max-md:w-full md:min-w-80">
-          <h5 className="mb-3 label-medium-med-16px text-newBlack-3">
+          <h5 className="mb-3 label-medium-med-16px text-neutral-800">
             {t('words.structure')}
           </h5>
 
@@ -542,7 +542,7 @@ const ExamCard = ({
         </div>
         {areResultsPublished && (
           <div className="flex flex-col max-md:grow max-md:self-center items-center">
-            <h5 className="mb-3 label-medium-med-16px text-newBlack-3 self-start">
+            <h5 className="mb-3 label-medium-med-16px text-neutral-800 self-start">
               {t('words.results')}
             </h5>
 
@@ -607,15 +607,15 @@ const InfoRow = ({
   <div
     className={cn(
       'flex justify-between items-center py-1.5 gap-2',
-      showBorder && 'border-b border-newGray-6',
+      showBorder && 'border-b border-neutral-50',
       className,
     )}
   >
-    <div className="flex items-center gap-2 text-newGray-1 shrink-0">
+    <div className="flex items-center gap-2 text-neutral-500 shrink-0">
       {icon}
       <span className="subtitle-small-14px md:label-18px">{label}</span>
     </div>
-    <span className="subtitle-small-14px md:label-18px text-newBlack-3">
+    <span className="subtitle-small-14px md:label-18px text-neutral-800">
       {value}
     </span>
   </div>
@@ -631,7 +631,7 @@ export const WeightIndicator = ({ weight }: { weight: number }) => {
           key={`weight-bar-${i}`}
           className={cn(
             'w-1.5 h-5.5',
-            i < filledBars ? 'bg-newGray-2' : 'bg-newGray-5',
+            i < filledBars ? 'bg-neutral-400' : 'bg-neutral-100',
           )}
         />
       ))}

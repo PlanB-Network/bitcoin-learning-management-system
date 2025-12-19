@@ -20,7 +20,7 @@ const SelectTrigger = React.forwardRef<
     ref={ref}
     className={cn(
       'flex w-full items-center justify-between rounded-md border border-neutral-200 bg-white',
-      'px-3 py-2 md:py-3 text-base placeholder:text-newGray-3 hover:border-blue-300',
+      'px-3 py-2 md:py-3 text-base placeholder:text-neutral-300 hover:border-blue-300',
       'focus:border-transparent focus:ring-2 focus:ring-blue-300 focus-visible:outline-none',
       'disabled:cursor-not-allowed disabled:opacity-50 [&>span]:truncate',
       mode === 'dark' && 'dark',
@@ -93,7 +93,7 @@ const SelectContent = React.forwardRef<
       <SelectPrimitive.Content
         ref={ref}
         className={cn(
-          'relative z-50 max-h-72 md:max-h-96 min-w-32 max-md:max-w-[calc(100vw-40px)] overflow-hidden rounded-lg border border-newGray-3 bg-white dark:bg-gray-100 text-newBlack-1 dark:text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
+          'relative z-50 max-h-72 md:max-h-96 min-w-32 max-md:max-w-[calc(100vw-40px)] overflow-hidden rounded-lg border border-neutral-300 bg-white dark:bg-gray-100 text-neutral-1000 dark:text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
           position === 'popper' &&
             'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',
           className,
@@ -137,7 +137,7 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      'relative flex w-full cursor-default select-none items-center rounded-xs py-1.5 px-2 text-sm outline-hidden focus:bg-newBlack-5/10 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&>span]:truncate',
+      'relative flex w-full cursor-default select-none items-center rounded-xs py-1.5 px-2 text-sm outline-hidden focus:bg-neutral-600/10 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&>span]:truncate',
       className,
     )}
     {...props}

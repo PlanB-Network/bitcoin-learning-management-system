@@ -233,7 +233,7 @@ function CourseDetails() {
     return (
       <section className="flex flex-col self-start w-full">
         <div className="md:flex md:flex-row md:justify-between items-center gap-4">
-          <h1 className="text-newBlack-1 max-md:text-center title-large-sb-24px md:display-large-med-48px">
+          <h1 className="text-neutral-1000 max-md:text-center title-large-sb-24px md:display-large-med-48px">
             {course.name}
           </h1>
           {course.hasLogo ? (
@@ -273,7 +273,7 @@ function CourseDetails() {
             </TextTag>
           )}
         </div>
-        <div className="mt-4 md:mt-7 max-md:flex max-md:flex-col gap-1 label-medium-16px md:label-large-20px text-newBlack-1 border-l border-newBlack-5 pl-2.5">
+        <div className="mt-4 md:mt-7 max-md:flex max-md:flex-col gap-1 label-medium-16px md:label-large-20px text-neutral-1000 border-l border-neutral-600 pl-2.5">
           <span className="!font-medium">{t('courses.explorer.goal')} </span>
           <span>{course.goal}</span>
         </div>
@@ -296,7 +296,7 @@ function CourseDetails() {
         />
 
         <div className="w-full">
-          <article className="flex flex-col w-full xl:max-w-[564px] [&>*:not(:last-child)]:border-b [&>*:not(:last-child)]:border-newGray-4">
+          <article className="flex flex-col w-full xl:max-w-[564px] [&>*:not(:last-child)]:border-b [&>*:not(:last-child)]:border-neutral-200">
             <ListItem
               leftText={t('words.professor')}
               rightText={course.mainProfessors.map((professor, index) => (
@@ -305,7 +305,7 @@ function CourseDetails() {
                     to={`/professor/${formatNameForURL(professor.name || '')}-${
                       professor.id
                     }`}
-                    className="hover:text-darkOrange-5"
+                    className="hover:text-orange-500"
                   >
                     {professor.name}
                   </Link>
@@ -459,7 +459,7 @@ function CourseDetails() {
   const Professors = ({ course }: { course: CourseResponse }) => {
     return (
       <section className="max-lg:mx-auto w-full flex flex-col">
-        <span className="subtitle-small-caps-14px md:subtitle-medium-caps-reg-18px text-darkOrange-5">
+        <span className="subtitle-small-caps-14px md:subtitle-medium-caps-reg-18px text-orange-500">
           {t('words.professor')}
         </span>
         <h4 className="mt-4 md:mt-6 label-large-20px md:display-small-32px text-black">
@@ -469,14 +469,14 @@ function CourseDetails() {
               : t('courses.details.taughtBy')}{' '}
           </span>
 
-          <span className="text-darkOrange-5 label-large-20px md:display-small-32px hover:!font-medium">
+          <span className="text-orange-500 label-large-20px md:display-small-32px hover:!font-medium">
             {course.mainProfessors.map((professor, index) => (
               <React.Fragment key={professor.id}>
                 <Link
                   to={`/professor/${formatNameForURL(professor.name || '')}-${
                     professor.id
                   }`}
-                  className="hover:text-darkOrange-5"
+                  className="hover:text-orange-500"
                 >
                   {professor.name}
                 </Link>
@@ -538,10 +538,10 @@ function CourseDetails() {
 
     return (
       <section className="flex w-full flex-col gap-4 md:gap-9">
-        <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-reg-18px text-darkOrange-5">
+        <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-reg-18px text-orange-500">
           {t('courses.review.ratingsAndReviews')}
         </h4>
-        <h3 className="label-large-20px md:display-small-32px text-newBlack-1">
+        <h3 className="label-large-20px md:display-small-32px text-neutral-1000">
           {course?.isPlanbSchool
             ? t('courses.review.whatStudentsSayPasEdition')
             : t('courses.review.whatStudentsSay')}
@@ -857,7 +857,7 @@ function CourseDetails() {
           : undefined
       }
     >
-      <div className="text-newBlack-1">
+      <div className="text-neutral-1000">
         {!isFetched && <Loader size={'s'} />}
         {isFetched && !course && (
           <div className="flex size-full flex-col items-start justify-center sm:items-center">
@@ -879,7 +879,7 @@ function CourseDetails() {
               hideGithubLink
               className="self-start"
             >
-              <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-reg-18px text-darkOrange-5 mb-4 lg:mb-9">
+              <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-reg-18px text-orange-500 mb-4 lg:mb-9">
                 {t('courses.details.curriculum')}
               </h4>
             </CourseCurriculum>
@@ -931,7 +931,7 @@ const DescriptionAndObjectives = memo(
       <>
         <section className="flex flex-col w-full md:grid md:grid-cols-2 gap-6 md:gap-12">
           <div className="flex flex-col gap-4 md:gap-6">
-            <h4 className="subtitle-small-caps-14px max-md:mt-2 md:subtitle-medium-caps-reg-18px text-darkOrange-5">
+            <h4 className="subtitle-small-caps-14px max-md:mt-2 md:subtitle-medium-caps-reg-18px text-orange-500">
               {t('courses.details.description')}
             </h4>
             <ReactMarkdown
@@ -945,12 +945,12 @@ const DescriptionAndObjectives = memo(
                   </LinkRenderer>
                 ),
                 h1: ({ children }) => (
-                  <h3 className="label-large-20px md:display-small-32px text-newBlack-1">
+                  <h3 className="label-large-20px md:display-small-32px text-neutral-1000">
                     {children}
                   </h3>
                 ),
                 p: ({ children }) => (
-                  <p className="body-14px md:subtitle-large-18px text-newBlack-1 text-justify">
+                  <p className="body-14px md:subtitle-large-18px text-neutral-1000 text-justify">
                     {children}
                   </p>
                 ),
@@ -962,15 +962,15 @@ const DescriptionAndObjectives = memo(
 
           <Divider width="w-full" className="md:hidden" />
           <div className="flex w-full flex-col gap-4 md:gap-6">
-            <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-reg-18px text-darkOrange-5">
+            <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-reg-18px text-orange-500">
               {t('courses.details.learning')}
             </h4>
-            <h3 className="label-large-20px md:display-small-32px text-newBlack-1">
+            <h3 className="label-large-20px md:display-small-32px text-neutral-1000">
               {t('courses.details.objectives')}
             </h3>
             <ul className="flex flex-col gap-4 md:gap-6">
               {course.objectives?.map((goal) => (
-                <li className="flex gap-2.5 text-newBlack-1" key={goal}>
+                <li className="flex gap-2.5 text-neutral-1000" key={goal}>
                   <TbCheck size={isMobile ? 18 : 24} className="shrink-0" />
                   <span className="body-16px md:label-large-20px">{goal}</span>
                 </li>
@@ -1001,6 +1001,6 @@ export const TaxesSpan = () => {
   const { t } = useTranslation();
 
   return (
-    <span className="text-newGray-2 font-normal">(+{t('words.taxes')})</span>
+    <span className="text-neutral-400 font-normal">(+{t('words.taxes')})</span>
   );
 };

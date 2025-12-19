@@ -159,8 +159,8 @@ const SecondaryNavbarDesktop = ({ tabs }: { tabs: Tab[] }) => {
                     className={cn(
                       'flex items-center relative pb-2 group text-nowrap',
                       isActive
-                        ? 'text-newBlack-1 label-strong'
-                        : 'label text-newBlack-3 group-hover:text-newBlack-1',
+                        ? 'text-neutral-1000 label-strong'
+                        : 'label text-neutral-800 group-hover:text-neutral-1000',
                       tab.onlyForLoggedIn && !isLoggedIn
                         ? 'cursor-default opacity-20'
                         : '',
@@ -210,7 +210,7 @@ const SecondaryNavbarDesktop = ({ tabs }: { tabs: Tab[] }) => {
             >
               <TbDotsVertical
                 size={16}
-                className="text-newBlack-3 hover:text-newBlack-1 hover:cursor-pointer"
+                className="text-neutral-800 hover:text-neutral-1000 hover:cursor-pointer"
               />
             </button>
 
@@ -230,8 +230,8 @@ const SecondaryNavbarDesktop = ({ tabs }: { tabs: Tab[] }) => {
                       className={cn(
                         'text-nowrap pl-2.5 py-2 relative group',
                         isActive
-                          ? 'text-newBlack-1 label-strong'
-                          : 'label text-newBlack-3 group-hover:text-newBlack-1',
+                          ? 'text-neutral-1000 label-strong'
+                          : 'label text-neutral-800 group-hover:text-neutral-1000',
                       )}
                     >
                       {t(tab.label)}
@@ -386,8 +386,8 @@ const SecondaryNavbarMobile = ({ tabs }: { tabs: Tab[] }) => {
               className={cn(
                 'flex items-center relative pb-2 group text-nowrap',
                 isActive
-                  ? 'text-newBlack-1 body-base-bold'
-                  : 'body-base text-newBlack-3 group-hover:text-newBlack-1',
+                  ? 'text-neutral-1000 body-base-bold'
+                  : 'body-base text-neutral-800 group-hover:text-neutral-1000',
                 tab.onlyForLoggedIn && !isLoggedIn
                   ? 'pointer-events-none opacity-20'
                   : '',

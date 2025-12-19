@@ -15,8 +15,8 @@ const dividerVariant = cva('w-full border-t', {
   },
   variants: {
     mode: {
-      dark: 'border-newGray-1',
-      light: 'border-newGray-4',
+      dark: 'border-neutral-500',
+      light: 'border-neutral-200',
     },
   },
 });
@@ -37,7 +37,7 @@ export const Divider = ({
       </div>
       {children && (
         <div className="relative flex justify-center">
-          <span className="px-2 desktop-body1 text-newGray-1 bg-white">
+          <span className="px-2 desktop-body1 text-neutral-500 bg-white">
             {children}
           </span>
         </div>
@@ -74,8 +74,8 @@ const dividerVerticalVariant = cva('w-px', {
   },
   variants: {
     mode: {
-      dark: 'bg-newGray-1',
-      light: 'bg-newGray-1',
+      dark: 'bg-neutral-500',
+      light: 'bg-neutral-500',
     },
   },
 });

@@ -55,7 +55,7 @@ export const RatingChart = ({ chartData }: RatingChartProps) => {
           <LabelList
             position="top"
             offset={8}
-            className="fill-newBlack-1 italic"
+            className="fill-neutral-1000 italic"
             fontSize={10}
           />
         </Bar>

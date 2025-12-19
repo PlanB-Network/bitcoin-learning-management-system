@@ -27,7 +27,7 @@ export const CourseDiplomas = () => {
   );
 
   return (
-    <div className="flex flex-col mt-5 md:mt-8 text-newBlack-1">
+    <div className="flex flex-col mt-5 md:mt-8 text-neutral-1000">
       {!isFetched && isLoggedIn && <Loader size={'s'} />}
       {isFetched && examResults && examResults.length > 0 && (
         <>
@@ -123,7 +123,7 @@ export const CourseDiplomas = () => {
 const TableHead = () => {
   return (
     <thead>
-      <tr className="border-b border-newGray-1 text-left">
+      <tr className="border-b border-neutral-500 text-left">
         <th className="w-2/10 py-2 mobile-subtitle2 md:desktop-typo2 px-1.5">
           {t('words.date')}
         </th>

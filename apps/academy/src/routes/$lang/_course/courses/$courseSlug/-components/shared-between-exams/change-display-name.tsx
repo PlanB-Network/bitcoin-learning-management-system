@@ -28,7 +28,7 @@ export const ChangeDisplayName = () => {
   return (
     <div className="flex flex-col w-full max-w-[604px] max-md:gap-4">
       <Divider className="mx-0" width="w-full" mode="light" />
-      <p className="subtitle-medium-med-16px text-newBlack-1 md:mt-4 font-normal">
+      <p className="subtitle-medium-med-16px text-neutral-1000 md:mt-4 font-normal">
         {t('courses.exam.verifyDisplayName')}
       </p>
       <section className="flex flex-col md:mt-5 gap-2">
@@ -37,13 +37,13 @@ export const ChangeDisplayName = () => {
           className="flex gap-0.5 text-dashboardSectionText font-medium leading-[120%]"
         >
           {t('dashboard.profile.displayName')}
-          <span className="text-red-5">*</span>
+          <span className="text-red-400">*</span>
         </label>
         <div className="flex max-lg:flex-col lg:items-center gap-4 md:gap-5">
           {/** biome-ignore lint/a11y/useSemanticElements: explanation */}
           <span
             id="displayName"
-            className="rounded-md bg-commentTextBackground border border-gray-500/10 px-4 py-2 text-newGray-1 text-sm leading-[120%] w-full max-w-[302px] h-8 truncate"
+            className="rounded-md bg-commentTextBackground border border-gray-500/10 px-4 py-2 text-neutral-500 text-sm leading-[120%] w-full max-w-[302px] h-8 truncate"
             onClick={!isLoggedIn ? openAuthModal : openChangeDisplayNameModal}
             role="button"
             tabIndex={0}

@@ -121,7 +121,7 @@ function FieldLabel({
       {...props}
     >
       {children}
-      {required && <span className="text-red-5 align-top">*</span>}
+      {required && <span className="text-red-400 align-top">*</span>}
       {optionalText && <span className="text-neutral-400">{optionalText}</span>}
     </Label>
   );
@@ -144,7 +144,7 @@ function FieldDescription({ className, ...props }: React.ComponentProps<'p'>) {
   return (
     <p
       data-slot="field-description"
-      className={cn('text-newGray-1 body-small', className)}
+      className={cn('text-neutral-500 body-small', className)}
       {...props}
     />
   );
@@ -224,7 +224,7 @@ function FieldError({
     <div
       role="alert"
       data-slot="field-error"
-      className={cn('text-red-5 body-small text-left', className)}
+      className={cn('text-red-400 body-small text-left', className)}
       {...props}
     >
       {content}

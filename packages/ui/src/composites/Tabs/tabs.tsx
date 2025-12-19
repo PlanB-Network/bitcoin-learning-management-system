@@ -6,7 +6,7 @@ import { cn } from '#src/lib/utils.ts';
 const Tabs = TabsPrimitive.Root;
 
 const tabsListVariants = cva(
-  'items-center bg-transparent text-newBlack-3 dark:text-newGray-4 overflow-x-scroll no-scrollbar flex max-w-full',
+  'items-center bg-transparent text-neutral-800 dark:text-neutral-200 overflow-x-scroll no-scrollbar flex max-w-full',
   {
     defaultVariants: {
       mode: 'light',
@@ -36,9 +36,9 @@ const tabsTriggerVariants = cva(
     },
     variants: {
       mode: {
-        dark: 'dark:data-[state=active]:text-white data-[state=inactive]:hover:border-b-2 data-[state=inactive]:hover:border-newGray-4 data-[state=active]:border-b-2 data-[state=active]:border-darkOrange-5',
+        dark: 'dark:data-[state=active]:text-white data-[state=inactive]:hover:border-b-2 data-[state=inactive]:hover:border-neutral-200 data-[state=active]:border-b-2 data-[state=active]:border-orange-500',
         dark2:
-          'data-[state=active]:text-white border-newGray-2 data-[state=inactive]:hover:border-newGray-5 data-[state=inactive]:hover:font-medium data-[state=active]:bg-darkOrange-5 border-t border-x rounded-t-2xl px-4 pt-3 bg-black',
+          'data-[state=active]:text-white border-neutral-400 data-[state=inactive]:hover:border-neutral-100 data-[state=inactive]:hover:font-medium data-[state=active]:bg-orange-500 border-t border-x rounded-t-2xl px-4 pt-3 bg-black',
       },
       size: {
         l: 'label-large-20px pb-3',

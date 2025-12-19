@@ -319,12 +319,12 @@ export const PearVideoPlayer = ({ videoKey }: PearVideoTestProps) => {
       </video>
 
       {status && (
-        <div className="p-2 border-x border-newGray-4">Status: {status}</div>
+        <div className="p-2 border-x border-neutral-200">Status: {status}</div>
       )}
 
       {/* Quality selector */}
       {levels.length > 1 && (
-        <div className="border-x border-newGray-4 p-2 flex gap-2 items-center">
+        <div className="border-x border-neutral-200 p-2 flex gap-2 items-center">
           <span>Quality:</span>
 
           <select

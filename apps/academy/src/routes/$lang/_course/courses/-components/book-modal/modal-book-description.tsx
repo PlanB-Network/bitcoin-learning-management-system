@@ -63,7 +63,7 @@ export const ModalBookDescription = ({
                   <a
                     href={href}
                     target="_blank"
-                    className=" text-darkOrange-5 "
+                    className=" text-orange-500 "
                     rel="noreferrer"
                   >
                     {children}
@@ -73,13 +73,15 @@ export const ModalBookDescription = ({
             >
               {gdprTerms}
             </ReactMarkdown>
-            <span className="absolute text-red-6 text-sm right-0 top-0">*</span>
+            <span className="absolute text-red-500 text-sm right-0 top-0">
+              *
+            </span>
           </label>
         </div>
       ) : null}
 
       {!isBookEnabled && isBtnClicked ? (
-        <p className="text-red-6 text-sm self-start -mt-4">
+        <p className="text-red-500 text-sm self-start -mt-4">
           {t('events.tcMustBeAccepted')}
         </p>
       ) : null}

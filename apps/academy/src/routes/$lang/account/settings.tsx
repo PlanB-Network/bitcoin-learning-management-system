@@ -84,18 +84,18 @@ function AccountSettings() {
       ]}
     >
       <section className="flex flex-col gap-2.5 md:gap-4">
-        <h3 className="subtitle-large-18px font-medium md:subtitle-large-med-20px text-newBlack-1">
+        <h3 className="subtitle-large-18px font-medium md:subtitle-large-med-20px text-neutral-1000">
           {t('dashboard.profile.securitySettings')}
         </h3>
         <div className="flex flex-col gap-2">
-          <span className="subtitle-medium-med-16px text-newBlack-1">
+          <span className="subtitle-medium-med-16px text-neutral-1000">
             {t('words.password')}
           </span>
           <div className="flex max-md:flex-col md:items-center w-full gap-4 md:gap-8 max-md:flex-wrap">
             <input
               type="text"
               disabled
-              className="w-full border border-newGray-4 bg-newGray-5 rounded-lg px-4 py-1 placeholder:text-newGray-2"
+              className="w-full border border-neutral-200 bg-neutral-100 rounded-lg px-4 py-1 placeholder:text-neutral-400"
               placeholder="**********"
             />
             <Button
@@ -188,7 +188,7 @@ const NotificationSettings = () => {
       >
         <div className="flex flex-col gap-2.5 md:gap-4">
           <div className="flex justify-between w-full items-center flex-wrap">
-            <h3 className="subtitle-large-18px font-medium md:subtitle-large-med-20px text-newBlack-1">
+            <h3 className="subtitle-large-18px font-medium md:subtitle-large-med-20px text-neutral-1000">
               {t('dashboard.profile.notificationSettings.title')}
             </h3>
 
@@ -211,7 +211,7 @@ const NotificationSettings = () => {
             </Button>
           </div>
 
-          <p className="desktop-typo1 md:body-16px text-newBlack-1">
+          <p className="desktop-typo1 md:body-16px text-neutral-1000">
             {t('dashboard.profile.notificationSettings.description')}
           </p>
         </div>
@@ -278,7 +278,7 @@ const NotificationSettings = () => {
               />
 
               {!user?.email && (
-                <p className="body-14px text-red-6">
+                <p className="body-14px text-red-500">
                   {t('dashboard.profile.notificationSettings.emailWarning')}
                 </p>
               )}
@@ -326,7 +326,7 @@ export const FormCheckboxGroup = ({
             </span>
 
             {subLabel && (
-              <span className="text-newGray-1 body-14px">{subLabel}</span>
+              <span className="text-neutral-500 body-14px">{subLabel}</span>
             )}
           </FieldLabel>
 

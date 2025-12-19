@@ -198,21 +198,21 @@ const WrittenFeedbacks = ({
         // biome-ignore lint/suspicious/noArrayIndexKey: explanation
         <article key={index} className="flex flex-col">
           <div className="flex flex-col">
-            <span className="label-small-12px text-newGray-1 capitalize">
+            <span className="label-small-12px text-neutral-500 capitalize">
               {new Date(feedback.date).toLocaleDateString(undefined, {
                 day: 'numeric',
                 month: 'long',
                 year: 'numeric',
               })}
             </span>
-            <div className="h-px bg-newGray-4 w-full px-5 mt-2.5 mb-5" />
+            <div className="h-px bg-neutral-200 w-full px-5 mt-2.5 mb-5" />
             <span className="font-medium text-dashboardSectionText leading-[120%]">
               {feedback.user}
             </span>
           </div>
           <div className="flex max-md:flex-wrap w-full mt-3 gap-3">
             <div className="flex flex-col justify-between gap-3 p-3 w-full">
-              <p className="body-16px text-newBlack-3">
+              <p className="body-16px text-neutral-800">
                 &quot;{feedback.publicComment || "User didn't add comment."}
                 &quot;
               </p>
@@ -220,8 +220,8 @@ const WrittenFeedbacks = ({
                 {t('dashboard.teacher.reviews.publicComment')}
               </TextTag>
             </div>
-            <div className="flex flex-col justify-between gap-3 p-3 w-full bg-newGray-5 rounded-xs">
-              <p className="body-16px text-newBlack-3">
+            <div className="flex flex-col justify-between gap-3 p-3 w-full bg-neutral-100 rounded-xs">
+              <p className="body-16px text-neutral-800">
                 &quot;
                 {feedback.teacherComment || "User didn't add comment."}
                 &quot;
@@ -298,7 +298,7 @@ const SliderGradeSection = ({
               </Suspense>
             </div>
           </CollapsibleDropdown>
-          <div className="h-px bg-newGray-4 w-full px-5 my-4" />
+          <div className="h-px bg-neutral-200 w-full px-5 my-4" />
         </>
       )}
     </article>
@@ -345,7 +345,7 @@ const ReviewSlider = ({
               <div
                 // biome-ignore lint/suspicious/noArrayIndexKey: explanation
                 key={i}
-                className="w-0.5 h-1 bg-newGray-3"
+                className="w-0.5 h-1 bg-neutral-300"
                 style={{ left: `${(i / 10) * 100}%` }}
               />
             ))}
@@ -353,7 +353,7 @@ const ReviewSlider = ({
         </div>
       </div>
       <div className="relative mt-4 w-full max-w-[88%] lg:max-w-[95%] mx-auto">
-        <div className="flex flex-col body-14px !font-medium text-newGray-1 text-center">
+        <div className="flex flex-col body-14px !font-medium text-neutral-500 text-center">
           {stepNames[0] && (
             <span className="absolute self-start -translate-x-1/2 max-sm:max-w-16">
               {stepNames[0]}
@@ -412,7 +412,7 @@ const GeneralGradeSection = ({
           </Suspense>
         </div>
       </CollapsibleDropdown>
-      <div className="h-px bg-newGray-4 w-full max-w-[416px] px-5 my-10 lg:mt-4" />
+      <div className="h-px bg-neutral-200 w-full max-w-[416px] px-5 my-10 lg:mt-4" />
     </article>
   );
 };

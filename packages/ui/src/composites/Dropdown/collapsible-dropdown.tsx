@@ -17,7 +17,7 @@ const CollapsibleDropdownVariant = cva(
     variants: {
       variant: {
         dark: '',
-        light: 'bg-newGray-6 border-newGray-4',
+        light: 'bg-neutral-50 border-neutral-200',
       },
     },
   },
@@ -31,8 +31,8 @@ const collapsibleTriggerVariant = cva(
     },
     variants: {
       variant: {
-        dark: 'text-newBlack-3',
-        light: 'text-darkOrange-5',
+        dark: 'text-neutral-800',
+        light: 'text-orange-500',
       },
     },
   },

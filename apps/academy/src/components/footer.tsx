@@ -59,8 +59,8 @@ export const Footer = ({
 }) => {
   const { t } = useTranslation();
 
-  const backgroundClass = 'bg-white text-newBlack-2';
-  const textSecondaryClass = 'text-newBlack-5';
+  const backgroundClass = 'bg-white text-neutral-900';
+  const textSecondaryClass = 'text-neutral-600';
 
   const links = [
     { label: t('words.aboutUs'), to: '/about' },
@@ -222,7 +222,7 @@ const SocialNetworksMobile = () => {
           icon={icon}
           isReactIcon={isReactIcon}
           iconSize={iconSize}
-          iconClasses={'text-newBlack-5 stroke-newBlack-5'}
+          iconClasses={'text-neutral-600 stroke-neutral-600'}
         />
       ))}
     </div>
@@ -234,7 +234,7 @@ const SocialNetworksDesktop = () => {
 
   return (
     <div className="flex flex-col gap-12 max-md:hidden w-full items-center py-6">
-      <ul className={'flex gap-12 text-newBlack-5'}>
+      <ul className={'flex gap-12 text-neutral-600'}>
         {SOCIAL_LINKS.map(({ href, icon, isReactIcon }) => (
           <li key={href}>
             <SocialLink
@@ -242,7 +242,7 @@ const SocialNetworksDesktop = () => {
               icon={icon}
               isReactIcon={isReactIcon}
               iconSize={iconSize}
-              iconClasses={'stroke-newBlack-5'}
+              iconClasses={'stroke-neutral-600'}
             />
           </li>
         ))}
@@ -257,7 +257,7 @@ const PartPlanBNetwork = () => {
       <Trans i18nKey="footer.proudlyPartOf">
         <a
           href="https://planb.network/"
-          className="text-newBlack-5 body-small md:body-small-bold"
+          className="text-neutral-600 body-small md:body-small-bold"
           target="_blank"
           rel="noreferrer"
         >

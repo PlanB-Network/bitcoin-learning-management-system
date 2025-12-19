@@ -19,8 +19,8 @@ const courseCardStyles = cva('group flex flex-col w-full md:h-[400px]', {
       courses: 'rounded-2xl',
     },
     color: {
-      featured: 'bg-darkOrange-9 border border-darkOrange-5 shadow-sm-section',
-      primary: 'bg-transparent border border-neutral-100 dark:bg-maroon-10',
+      featured: 'bg-orange-900 border border-orange-500 shadow-sm-section',
+      primary: 'bg-transparent border border-neutral-100 dark:bg-brown-900',
     },
     mode: {
       dark: 'dark',
@@ -83,7 +83,7 @@ export const CourseCard = ({
             className="md:hidden rounded-tl-2xl w-31 object-cover [overflow-clip-margin:_unset] object-center"
           />
           <div className="flex flex-col md:gap-2">
-            <span className="max-md:flex flex-col !line-clamp-2 title-small md:title-base text-maroon-11 dark:text-white md:align-top mb-2 md:mb-0">
+            <span className="max-md:flex flex-col !line-clamp-2 title-small md:title-base text-brown-950 dark:text-white md:align-top mb-2 md:mb-0">
               {course.name}
             </span>
             <div className="flex md:items-center flex-wrap gap-1.5 md:gap-2 order-2 md:order-1">
@@ -126,7 +126,7 @@ export const CourseCard = ({
           </div>
         </div>
         <div className="relative px-2 max-md:pb-2 md:px-4">
-          <p className="text-neutral-400 dark:text-maroon-4 body-small line-clamp-3 md:line-clamp-5 transition-opacity opacity-100 md:group-hover:opacity-0 md:group-hover:absolute">
+          <p className="text-neutral-400 dark:text-brown-300 body-small line-clamp-3 md:line-clamp-5 transition-opacity opacity-100 md:group-hover:opacity-0 md:group-hover:absolute">
             {course.goal}
           </p>
         </div>

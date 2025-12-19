@@ -127,7 +127,7 @@ export const CourseStudentsTable = ({ course }: { course: JoinedCourse }) => {
           placeholder={`${t('words.search')}...`}
           value={search}
           onChange={(event) => setSearch(event.target.value)}
-          className="w-full p-3 rounded-xl bg-newGray-5 text-newBlack-1 placeholder:text-newGray-1 body-12px md:body-14px"
+          className="w-full p-3 rounded-xl bg-neutral-100 text-neutral-1000 placeholder:text-neutral-500 body-12px md:body-14px"
         />
         <TbSearch
           size={16}

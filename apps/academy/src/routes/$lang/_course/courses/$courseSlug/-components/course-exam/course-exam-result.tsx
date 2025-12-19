@@ -65,7 +65,7 @@ export const CourseExamResult = ({
       {isExamResultsFetched && examResults && (
         <>
           <section className="flex flex-col w-full">
-            <h2 className="text-[34px] text-newBlack-1 leading-tight tracking-[0.25px] max-md:hidden">
+            <h2 className="text-[34px] text-neutral-1000 leading-tight tracking-[0.25px] max-md:hidden">
               {t('courses.exam.testResults')}
             </h2>
             <Divider
@@ -74,10 +74,10 @@ export const CourseExamResult = ({
               mode="light"
             />
 
-            <article className="flex flex-col px-4 md:px-7 py-5 md:py-11 items-center gap-4 md:gap-10 bg-newGray-6 rounded-[20px] w-full self-center">
+            <article className="flex flex-col px-4 md:px-7 py-5 md:py-11 items-center gap-4 md:gap-10 bg-neutral-50 rounded-[20px] w-full self-center">
               {examResults.finalized ? (
                 <>
-                  <p className="text-newBlack-1 label-medium-16px md:title-large-24px max-md:w-[194px] text-center">
+                  <p className="text-neutral-1000 label-medium-16px md:title-large-24px max-md:w-[194px] text-center">
                     <Trans
                       i18nKey={
                         examResults.succeeded
@@ -90,11 +90,13 @@ export const CourseExamResult = ({
                       </span>
                     </Trans>
                   </p>
-                  <span className="subtitle-medium-caps-18px md:display-large-bold-caps-48px text-newBlack-1">
+                  <span className="subtitle-medium-caps-18px md:display-large-bold-caps-48px text-neutral-1000">
                     {t('courses.exam.score')}{' '}
                     <span
                       className={
-                        examResults.succeeded ? 'text-green-400' : 'text-red-5'
+                        examResults.succeeded
+                          ? 'text-green-400'
+                          : 'text-red-400'
                       }
                     >
                       {examResults.score}%
@@ -114,13 +116,13 @@ export const CourseExamResult = ({
                     <div>
                       <div className="max-md:text-center md:flex flex-col items-center md:gap-4 body-14px">
                         {!examResults.isTimestamped && (
-                          <span className="text-newBlack-1 md:title-large-sb-24px text-center">
+                          <span className="text-neutral-1000 md:title-large-sb-24px text-center">
                             {t('courses.exam.certificateGeneration')}
 
                             <TimeStampDialog />
                           </span>
                         )}
-                        <span className="text-newBlack-1 md:title-large-24px text-center max-md:pl-1">
+                        <span className="text-neutral-1000 md:title-large-24px text-center max-md:pl-1">
                           {!examResults.isTimestamped
                             ? t('courses.exam.availableDashboard')
                             : t('courses.exam.availableDashboardTimestamped')}
@@ -152,7 +154,7 @@ export const CourseExamResult = ({
                     </div>
                   ) : (
                     <>
-                      <p className="text-newBlack-1 body-14px md:title-large-24px text-center">
+                      <p className="text-neutral-1000 body-14px md:title-large-24px text-center">
                         {t('courses.exam.wishTryAgain')}
                       </p>
 
@@ -175,10 +177,10 @@ export const CourseExamResult = ({
               ) : (
                 <>
                   <img src={Warning} alt="Warning" className="max-md:w-7" />
-                  <p className="text-newBlack-1 body-16px md:title-large-24px text-center md:max-w-[584px]">
+                  <p className="text-neutral-1000 body-16px md:title-large-24px text-center md:max-w-[584px]">
                     {t('courses.exam.quitWithoutSubmitting')}
                   </p>
-                  <p className="text-newBlack-1 body-16px md:title-large-24px text-center">
+                  <p className="text-neutral-1000 body-16px md:title-large-24px text-center">
                     {t('courses.exam.wishTryAgain')}
                   </p>
                   <TryAgainDialog examResults={examResults} onStart={onStart} />
@@ -189,7 +191,7 @@ export const CourseExamResult = ({
           {/* Answers review */}
           {examResults.finalized && (
             <section className="flex flex-col w-full max-md:mt-7 mt-16">
-              <h2 className="body-medium-16px md:text-[34px] text-newBlack-1 leading-tight tracking-[0.25px]">
+              <h2 className="body-medium-16px md:text-[34px] text-neutral-1000 leading-tight tracking-[0.25px]">
                 {t('courses.exam.answersReview')}
               </h2>
               <Divider
@@ -229,8 +231,8 @@ export const TimeStampDialog = ({
           className={cn(
             'group relative justify-center text-nowrap',
             onHoverAddColor
-              ? 'text-newBlack-1 hover:text-darkOrange-5 hover:underline hover:decoration-darkOrange-5 font-medium'
-              : 'text-darkOrange-5 underline decoration-darkOrange-5 max-md:font-medium',
+              ? 'text-neutral-1000 hover:text-orange-500 hover:underline hover:decoration-orange-500 font-medium'
+              : 'text-orange-500 underline decoration-orange-500 max-md:font-medium',
           )}
         >
           {triggerText ?? t('courses.exam.timeStamped')}
@@ -249,10 +251,10 @@ export const TimeStampDialog = ({
             alt="Time stamp"
             className="shrink-0 max-md:w-[90px]"
           />
-          <p className="body-medium-16px md:subtitle-large-med-20px text-newBlack-1 text-center max-w-[541px] md:px-5">
+          <p className="body-medium-16px md:subtitle-large-med-20px text-neutral-1000 text-center max-w-[541px] md:px-5">
             {t('courses.exam.planBTimeStamp')}
           </p>
-          <div className="flex flex-col gap-5 w-full text-newBlack-1">
+          <div className="flex flex-col gap-5 w-full text-neutral-1000">
             <div className="flex flex-col">
               <span className="title-small-med-16px">
                 {t('courses.exam.timeStampHow')}
@@ -308,7 +310,7 @@ const TryAgainDialog = ({
       }
       title={t('courses.exam.tryOneMoreTime')}
     >
-      <div className="font-semibold text-newBlack-1 text-center md:px-5 flex flex-col gap-6 md:gap-8">
+      <div className="font-semibold text-neutral-1000 text-center md:px-5 flex flex-col gap-6 md:gap-8">
         <p>{t('courses.exam.sameRules')}</p>
         <p>{t('courses.exam.retakeInstructions')}</p>
         <p>{t('courses.exam.goodLuck')}</p>

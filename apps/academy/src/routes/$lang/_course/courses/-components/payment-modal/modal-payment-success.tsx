@@ -21,7 +21,7 @@ export const ModalPaymentSuccess = ({
       <div className="items-center justify-center w-full max-w-96 lg:w-96 flex flex-col gap-6 max-lg:pb-6 max-lg:pt-8 mt-auto">
         <PlanBLogo className="w-60 h-auto" />
         <div className="items-center justify-center flex flex-col gap-6">
-          <span className="text-darkOrange-5 text-sm lg:text-xl font-medium leading-relaxed lg:tracking-015px">
+          <span className="text-orange-500 text-sm lg:text-xl font-medium leading-relaxed lg:tracking-015px">
             {t('courses.payment.payment_successful')}
           </span>
         </div>
@@ -67,7 +67,7 @@ export const ModalPaymentSuccess = ({
           <Trans i18nKey="payment.terms">
             <Link
               to="/legal/terms-of-sale"
-              className="hover:underline hover:underline-offset-2 text-darkOrange-5"
+              className="hover:underline hover:underline-offset-2 text-orange-500"
               target="_blank"
               rel="noreferrer"
             >

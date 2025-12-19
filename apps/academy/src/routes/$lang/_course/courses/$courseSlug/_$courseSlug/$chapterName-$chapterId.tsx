@@ -108,7 +108,7 @@ const TimelineSmall = ({
       <div className="flex flex-col">
         <div className="flex items-center justify-center gap-3">
           <div className="h-0 grow border-t border-gray-300 min-w-8" />
-          <span className="body-12px text-newBlack-1 text-center max-w-[225px]">
+          <span className="body-12px text-neutral-1000 text-center max-w-[225px]">
             {t('courses.part.count', {
               count: chapter.part.partIndex,
               total: chapter.course.parts?.length,
@@ -121,7 +121,7 @@ const TimelineSmall = ({
 
         <div
           className={cn(
-            'flex items-center justify-between rounded-lg bg-newGray-6 px-2.5 py-1 mt-2.5 mb-3 gap-4',
+            'flex items-center justify-between rounded-lg bg-neutral-50 px-2.5 py-1 mt-2.5 mb-3 gap-4',
           )}
         >
           {/*
@@ -135,7 +135,7 @@ const TimelineSmall = ({
                 : '/courses/$courseId/$chapterId'
             }
             params={goToChapterParameters(chapter, 'previous')}
-            className="flex size-6 items-center justify-center rounded-full bg-darkOrange-5/60 shrink-0"
+            className="flex size-6 items-center justify-center rounded-full bg-orange-500/60 shrink-0"
           >
             <BiChevronLeft className="size-4 text-white" />
           </Link>
@@ -152,7 +152,7 @@ const TimelineSmall = ({
                 : '/courses/$courseId/$chapterId'
             }
             params={goToChapterParameters(chapter, 'next')}
-            className="flex size-6 items-center justify-center rounded-full bg-darkOrange-5/60 shrink-0"
+            className="flex size-6 items-center justify-center rounded-full bg-orange-500/60 shrink-0"
           >
             <BiChevronRight className="size-4 text-white" />
           </Link>
@@ -186,20 +186,20 @@ const TimelineBig = ({
         </TextTag>
         <Link
           to={`/courses/${formatNameForURL(chapter.course.name)}-${chapter.course.id}`}
-          className="text-black hover:text-darkOrange-5 display-small-32px"
+          className="text-black hover:text-orange-500 display-small-32px"
         >
           {chapter.course.name}
         </Link>
       </h1>
       <div className="font-body flex flex-col justify-between text-xl text-black leading-relaxed tracking-015px mt-6">
-        <span className="label-medium-med-16px text-newBlack-2">
+        <span className="label-medium-med-16px text-neutral-900">
           {t('courses.part.count', {
             count: chapter.part.partIndex,
             total: chapter.course.parts.length,
           })}{' '}
           : {chapter.part.title}
         </span>
-        <span className="body-16px text-newBlack-5">{professor}</span>
+        <span className="body-16px text-neutral-600">{professor}</span>
       </div>
       <div className="mt-5 flex h-4 flex-row justify-between space-x-3 rounded-full">
         {chapter.course.parts.map((currentPart, partIndex) => {
@@ -237,8 +237,8 @@ const TimelineBig = ({
                             (currentPart.partIndex === chapter.part.partIndex &&
                               currentChapter.chapterIndex <
                                 chapter.chapterIndex)
-                            ? 'bg-darkOrange-5'
-                            : 'bg-darkOrange-1',
+                            ? 'bg-orange-500'
+                            : 'bg-orange-100',
                           firstPart && firstChapter ? 'rounded-l-full' : '',
                           lastPart && lastChapter ? 'rounded-r-full' : '',
                         )}
@@ -255,13 +255,13 @@ const TimelineBig = ({
                   >
                     <div
                       className={compose(
-                        'h-4 w-1/2 bg-darkOrange-5',
+                        'h-4 w-1/2 bg-orange-500',
                         firstPart && firstChapter ? 'rounded-l-full' : '',
                       )}
                     />
                     <div
                       className={compose(
-                        'h-4 w-1/2 bg-darkOrange-1',
+                        'h-4 w-1/2 bg-orange-100',
                         lastPart && lastChapter ? 'rounded-r-full' : '',
                       )}
                     />
@@ -288,13 +288,13 @@ const TimelineBig = ({
                 : '/courses/$courseId/$chapterId'
             }
             params={goToChapterParameters(chapter, 'previous')}
-            className="basis-1/4 truncate text-newGray-1 hover:font-medium"
+            className="basis-1/4 truncate text-neutral-500 hover:font-medium"
           >
             {goToChapterParameters(chapter, 'previous').chapterName}
           </Link>
         )}
 
-        <div className="flex gap-10 items-center text-newBlack-1 font-medium">
+        <div className="flex gap-10 items-center text-neutral-1000 font-medium">
           {!isFirstChapter && (
             <Link
               to={
@@ -332,7 +332,7 @@ const TimelineBig = ({
                 : '/courses/$courseId/$chapterId'
             }
             params={goToChapterParameters(chapter, 'next')}
-            className="basis-1/4 truncate text-newGray-1 hover:font-medium"
+            className="basis-1/4 truncate text-neutral-500 hover:font-medium"
           >
             {goToChapterParameters(chapter, 'next').chapterName}
           </Link>
@@ -672,7 +672,7 @@ function CourseChapter() {
               <Link
                 to={'/courses/$courseId'}
                 params={{ courseId: params.courseSlug }}
-                className="text-newOrange-1 hover:underline"
+                className="text-orange-500 hover:underline"
               >
                 {t('courses.details.premiumContentNeedsPaymentAction')}
               </Link>
@@ -727,7 +727,7 @@ function CourseChapter() {
                           onClick={() =>
                             setIsContentExpanded(!isContentExpanded)
                           }
-                          className="flex cursor-pointer items-center text-darkOrange-5 gap-2 lg:gap-4"
+                          className="flex cursor-pointer items-center text-orange-500 gap-2 lg:gap-4"
                         >
                           <IoIosArrowForward
                             className={cn(
@@ -798,7 +798,7 @@ function CourseChapter() {
                     <div className="md:!mt-5">
                       {questionsArray && questionsArray.length > 0 && (
                         <>
-                          <span className="text-darkOrange-5 title-medium-sb-18px md:font-normal md:text-2xl">
+                          <span className="text-orange-500 title-medium-sb-18px md:font-normal md:text-2xl">
                             Quiz
                           </span>
                           <QuizzCard

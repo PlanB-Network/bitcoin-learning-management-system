@@ -613,12 +613,12 @@ const EventsMap = ({
                   onClick={() => handlePrevNext(-1)}
                   className="border border-neutral-200 rounded-lg grid place-content-center h-8 w-9"
                 >
-                  <TbChevronLeft className="size-4 text-newBlack-4" />
+                  <TbChevronLeft className="size-4 text-neutral-700" />
                 </button>
                 <button
                   type="button"
                   onClick={() => handleNavigate(new Date())}
-                  className="border border-neutral-200 text-newBlack-4 text-sm leading-normal rounded-lg grid place-content-center h-8 px-2.5"
+                  className="border border-neutral-200 text-neutral-700 text-sm leading-normal rounded-lg grid place-content-center h-8 px-2.5"
                 >
                   {dateRange}
                 </button>
@@ -627,7 +627,7 @@ const EventsMap = ({
                   onClick={() => handlePrevNext(1)}
                   className="border border-neutral-200 rounded-lg grid place-content-center h-8 w-9"
                 >
-                  <TbChevronRight className="size-4 text-newBlack-4" />
+                  <TbChevronRight className="size-4 text-neutral-700" />
                 </button>
               </div>
 
@@ -752,7 +752,7 @@ const EventsMap = ({
               <button
                 type="button"
                 onClick={() => mapInstance && prepareShareUrl(mapInstance)}
-                className="bg-darkOrange-5 text-white px-3 py-2 rounded-lg shadow-md hover:bg-darkOrange-6 flex items-center gap-2"
+                className="bg-orange-500 text-white px-3 py-2 rounded-lg shadow-md hover:bg-orange-600 flex items-center gap-2"
               >
                 <p>{t('words.share')}</p>
                 <CiShare2 />

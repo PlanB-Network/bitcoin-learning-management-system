@@ -107,31 +107,31 @@ const ContributorsNames = ({
         return contributors.length > 2
           ? 'text-green-600'
           : contributors.length > 0
-            ? 'text-darkOrange-3'
-            : 'text-darkOrange-6';
+            ? 'text-orange-300'
+            : 'text-orange-600';
       if (index === 1)
         return contributors.length > 2
           ? 'text-green-600'
           : contributors.length > 1
-            ? 'text-darkOrange-3'
-            : 'text-darkOrange-6';
+            ? 'text-orange-300'
+            : 'text-orange-600';
       if (index === 2)
-        return contributors.length > 2 ? 'text-green-600' : 'text-darkOrange-6';
+        return contributors.length > 2 ? 'text-green-600' : 'text-orange-600';
     } else {
       if (index === 0)
         return contributors.length > 2
           ? 'text-green-900'
           : contributors.length > 0
-            ? 'text-darkOrange-5'
-            : 'text-darkOrange-8';
+            ? 'text-orange-500'
+            : 'text-orange-800';
       if (index === 1)
         return contributors.length > 2
           ? 'text-green-900'
           : contributors.length > 1
-            ? 'text-darkOrange-5'
-            : 'text-darkOrange-8';
+            ? 'text-orange-500'
+            : 'text-orange-800';
       if (index === 2)
-        return contributors.length > 2 ? 'text-green-900' : 'text-darkOrange-8';
+        return contributors.length > 2 ? 'text-green-900' : 'text-orange-800';
     }
     return '';
   };
@@ -171,7 +171,7 @@ const ContributorsNames = ({
         <span
           className={cn(
             'max-md:hidden absolute -bottom-8 text-[8px] w-full font-light text-center',
-            mode === 'dark' ? 'text-newGray-4' : 'text-newBlack-4',
+            mode === 'dark' ? 'text-neutral-200' : 'text-neutral-700',
           )}
         >
           {t('proofreading.rewardsText')}
@@ -220,10 +220,10 @@ export const ProofreadingDesktop = ({
         'group rounded-[20px] gap-2.5',
         variant === 'horizontal' ? 'flex-row' : 'flex-col',
         mode === 'dark'
-          ? 'bg-newBlack-3'
+          ? 'bg-neutral-800'
           : contributorsLength > 2
             ? 'bg-green-50'
-            : 'bg-darkOrange-0',
+            : 'bg-orange-50',
         standalone
           ? 'p-5 w-fit max-w-[282px] flex'
           : 'max-lg:hidden p-2.5 hover:p-5 absolute right-6 top-14 justify-start items-start inline-flex hover:min-h-[231px] z-30',
@@ -256,10 +256,10 @@ export const ProofreadingDesktop = ({
             className={cn(
               'px-2 py-1 rounded-md title-medium-sb-18px',
               mode === 'dark'
-                ? 'bg-white/15 text-newGray-4'
+                ? 'bg-white/15 text-neutral-200'
                 : contributorsLength > 2
                   ? 'bg-green-100 text-green-600'
-                  : 'bg-[#ff5c00]/15 text-darkOrange-6',
+                  : 'bg-[#ff5c00]/15 text-orange-600',
             )}
           >
             {contributorsLength}/3
@@ -337,7 +337,7 @@ export const ProofreadingDesktop = ({
         <span
           className={cn(
             'text-[8px] w-full font-light text-center',
-            mode === 'dark' ? 'text-newGray-4' : 'text-newBlack-4',
+            mode === 'dark' ? 'text-neutral-200' : 'text-neutral-700',
           )}
         >
           {t('proofreading.rewardsText')}

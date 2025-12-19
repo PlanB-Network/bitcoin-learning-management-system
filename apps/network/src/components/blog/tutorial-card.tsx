@@ -33,7 +33,7 @@ export const TutorialCard = ({
           <span className="body-base-bold md:subtitle-base text-black">
             {tutorial.title}
           </span>
-          <span className="body-base text-newBlack-3 max-md:hidden line-clamp-2">
+          <span className="body-base text-neutral-800 max-md:hidden line-clamp-2">
             {tutorial.description}
           </span>
         </div>

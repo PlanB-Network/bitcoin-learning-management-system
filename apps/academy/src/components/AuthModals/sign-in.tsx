@@ -86,7 +86,7 @@ export const SignIn = ({ onClose, goTo, redirectTo }: SignInProps) => {
         <p className="font-medium text-xl">{t('auth.loginNotAvailable1')}</p>
         <p className="font-medium text-xl">{t('auth.loginNotAvailable2')}</p>
         <a
-          className="flex flex-row gap-2 justify-center items-center text-newOrange-1"
+          className="flex flex-row gap-2 justify-center items-center text-orange-500"
           href="https://planb.academy"
         >
           <span className="text-lg">planb.academy</span>

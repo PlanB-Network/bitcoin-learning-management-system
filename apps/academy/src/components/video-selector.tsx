@@ -205,7 +205,7 @@ const CollapsibleSelectorPart = ({
 }) => (
   <CollapsibleDropdown
     title="Video preferences"
-    className="border-b border-l border-r rounded-t-none rounded-b-[12px] border-newGray-4"
+    className="border-b border-l border-r rounded-t-none rounded-b-[12px] border-neutral-200"
     variant="dark"
     defaultOpen={false}
     icon={<TbVideo />}

@@ -28,7 +28,7 @@ export const MainLayout = ({
     light: 'bg-white',
     dark: 'bg-black',
     blue: 'bg-blue-200',
-    gray: 'bg-newGray-6',
+    gray: 'bg-neutral-50',
   };
 
   // using session storage to check if user just registered and show toast

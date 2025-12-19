@@ -390,7 +390,7 @@ export const TranslationRequestsTable = ({
                             variant="outline"
                             onClick={() => handleReject(request.id)}
                             disabled={isProcessing}
-                            className="text-newOrange-1 border-newOrange-1 hover:bg-orange-50"
+                            className="text-orange-500 border-orange-500 hover:bg-orange-50"
                           >
                             {isProcessing ? (
                               <Loader size="s" />
@@ -404,7 +404,7 @@ export const TranslationRequestsTable = ({
                             size="s"
                             onClick={() => handleAccept(request.id)}
                             disabled={isProcessing}
-                            className="bg-newOrange-1 hover:bg-newOrange-2 text-white border-newOrange-1"
+                            className="bg-orange-500 hover:bg-orange-400 text-white border-orange-500"
                           >
                             {isProcessing ? (
                               <Loader size="s" />
@@ -423,7 +423,7 @@ export const TranslationRequestsTable = ({
                             variant="outline"
                             onClick={() => handleDelete(request.id)}
                             disabled={isProcessing}
-                            className="text-newOrange-1 border-newOrange-1 hover:bg-orange-50 flex items-center gap-2"
+                            className="text-orange-500 border-orange-500 hover:bg-orange-50 flex items-center gap-2"
                           >
                             {isProcessing ? (
                               <Loader size="s" />
@@ -440,7 +440,7 @@ export const TranslationRequestsTable = ({
                             size="s"
                             onClick={() => handleAccept(request.id)}
                             disabled={isProcessing}
-                            className="bg-newOrange-1 hover:bg-newOrange-2 text-white border-newOrange-1"
+                            className="bg-orange-500 hover:bg-orange-400 text-white border-orange-500"
                           >
                             {isProcessing ? (
                               <Loader size="s" />

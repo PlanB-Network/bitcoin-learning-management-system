@@ -260,7 +260,7 @@ export const AnnouncementModal = ({
                   placeholder={t(
                     'dashboard.teacher.courses.announcementModal.contentPlaceholder',
                   )}
-                  className="min-h-25 bg-white border-newGray-3"
+                  className="min-h-25 bg-white border-neutral-300"
                   {...field}
                 />
 
@@ -308,9 +308,9 @@ export const AnnouncementModal = ({
                             value={option.value}
                             checked={field.value === option.value}
                             onChange={() => field.onChange(option.value)}
-                            className="peer col-start-1 row-start-1 size-3.5 appearance-none rounded-full border bg-white border-darkOrange-5 shrink-0"
+                            className="peer col-start-1 row-start-1 size-3.5 appearance-none rounded-full border bg-white border-orange-500 shrink-0"
                           />
-                          <div className="col-start-1 row-start-1 w-2 h-2 rounded-full peer-checked:bg-darkOrange-5" />
+                          <div className="col-start-1 row-start-1 w-2 h-2 rounded-full peer-checked:bg-orange-500" />
                         </div>
 
                         <span className="text-black label-medium-16px">
@@ -346,14 +346,14 @@ export const AnnouncementModal = ({
                     <PopoverTrigger asChild>
                       <button
                         className={cn(
-                          'flex items-center justify-between rounded-lg bg-white border-newGray-3 px-3 py-2 text-sm leading-[120%] text-newBlack-1 data-placeholder:text-newGray-2 dark:bg-transparent dark:border-newGray-4 border shadow-none',
+                          'flex items-center justify-between rounded-lg bg-white border-neutral-300 px-3 py-2 text-sm leading-[120%] text-neutral-1000 data-placeholder:text-neutral-400 dark:bg-transparent dark:border-neutral-200 border shadow-none',
                         )}
                         type="button"
                       >
                         {field.value ? (
                           `${format(field.value, 'PPP')}, ${time}`
                         ) : (
-                          <span className="text-newGray-2">
+                          <span className="text-neutral-400">
                             {t('dashboard.announcements.pickADate')}
                           </span>
                         )}
@@ -384,7 +384,7 @@ export const AnnouncementModal = ({
                           Number(date) < Date.now() - 1000 * 60 * 60 * 24
                         }
                         defaultMonth={field.value}
-                        className="border border-newGray-4 rounded-lg"
+                        className="border border-neutral-200 rounded-lg"
                       />
                     </PopoverContent>
                   </Popover>
@@ -420,7 +420,7 @@ export const AnnouncementModal = ({
                       }
                     }}
                   >
-                    <SelectTrigger className="dark:bg-transparent dark:border-newGray-4 border shadow-none w-fit">
+                    <SelectTrigger className="dark:bg-transparent dark:border-neutral-200 border shadow-none w-fit">
                       <SelectValue />
                     </SelectTrigger>
 
@@ -465,7 +465,7 @@ export const AnnouncementModal = ({
                       field.onChange(selectedValue);
                     }}
                   >
-                    <SelectTrigger className="dark:bg-transparent dark:border-newGray-4 border shadow-none">
+                    <SelectTrigger className="dark:bg-transparent dark:border-neutral-200 border shadow-none">
                       <SelectValue
                         placeholder={t('placeholders.selectTimeZone')}
                       />

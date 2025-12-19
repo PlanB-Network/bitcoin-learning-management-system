@@ -103,10 +103,10 @@ function ChangeEmailPreferences() {
       hideTitle
       className="max-w-xl mx-auto"
     >
-      <h1 className="title-medium-sb-18px md:title-large-sb-24px mb-4 md:mb-8 text-newBlack-1">
+      <h1 className="title-medium-sb-18px md:title-large-sb-24px mb-4 md:mb-8 text-neutral-1000">
         {t('dashboard.profile.notificationSettings.emailPreferencesTitle')}
       </h1>
-      <p className="subtitle-small-14px md:subtitle-large-18px mb-4 md:mb-8 text-newBlack-1">
+      <p className="subtitle-small-14px md:subtitle-large-18px mb-4 md:mb-8 text-neutral-1000">
         {t(
           'dashboard.profile.notificationSettings.emailPreferencesDescription',
         )}
@@ -166,7 +166,7 @@ function ChangeEmailPreferences() {
           </Button>
         </form>
       ) : (
-        <div className="text-newBlack-1 body-14px md:body-16px">
+        <div className="text-neutral-1000 body-14px md:body-16px">
           <p className="mb-2 font-medium">
             {t('dashboard.profile.notificationSettings.loadEmailSettingsError')}
           </p>

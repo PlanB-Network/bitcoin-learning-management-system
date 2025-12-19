@@ -37,12 +37,12 @@ const TutorialsMarkdownBody = ({
           <CodeRenderer className={className}>{children}</CodeRenderer>
         ),
         h2: ({ children }) => (
-          <h2 className="title-large-sb-24px mt-6 md:mt-8 text-newBlack-1">
+          <h2 className="title-large-sb-24px mt-6 md:mt-8 text-neutral-1000">
             {children}
           </h2>
         ),
         h3: ({ children }) => (
-          <h3 className="subtitle-large-med-20px text-darkOrange-5">
+          <h3 className="subtitle-large-med-20px text-orange-500">
             {children}
           </h3>
         ),

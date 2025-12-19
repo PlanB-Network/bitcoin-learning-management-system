@@ -262,7 +262,7 @@ export const ReviewModal = ({
 
           {isUnpublishMode ? (
             <Button
-              className="w-full justify-center bg-red-6 relative"
+              className="w-full justify-center bg-red-500 relative"
               onClick={() => {
                 if (isConfirmingUnpublish) {
                   onUnpublish();
@@ -283,7 +283,7 @@ export const ReviewModal = ({
           ) : (
             <>
               <Button
-                className="w-full justify-center bg-red-6 relative"
+                className="w-full justify-center bg-red-500 relative"
                 onClick={onReject}
                 disabled={isRejectPending}
               >

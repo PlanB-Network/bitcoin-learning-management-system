@@ -308,7 +308,7 @@ function EventDetails() {
                 className="object-cover [overflow-clip-margin:_unset] sm:aspect-[300/214] w-62 sm:w-full h-full rounded-2xl max-w-75"
               />
               <div className="flex flex-col gap-2 sm:gap-4 w-full">
-                <h1 className="display-small sm:display-medium text-newBlack-1">
+                <h1 className="display-small sm:display-medium text-neutral-1000">
                   {event.name}
                 </h1>
                 {event.projectId === 'cd62a137-baad-4133-b90d-711963e510c7' ? (
@@ -330,8 +330,8 @@ function EventDetails() {
               </Banner>
             )}
 
-            <div className="flex flex-col bg-newGray-6 text-newBlack-3 rounded-xl">
-              <h2 className="label-large-med-20px text-newBlack-1 border-b border-newGray-5 py-3 px-4 md:px-6">
+            <div className="flex flex-col bg-neutral-50 text-neutral-800 rounded-xl">
+              <h2 className="label-large-med-20px text-neutral-1000 border-b border-neutral-100 py-3 px-4 md:px-6">
                 {t('events.eventInfos.whatsPlanned')}
               </h2>
 
@@ -390,7 +390,7 @@ function EventDetails() {
                 {event.description && (
                   <section className="flex flex-col w-full gap-2">
                     <p className="body-base-bold">{t('words.description')}</p>
-                    <p className="bg-white px-5 py-4 rounded-2xl text-newBlack-3 body-large whitespace-pre-line">
+                    <p className="bg-white px-5 py-4 rounded-2xl text-neutral-800 body-large whitespace-pre-line">
                       {event.description}
                     </p>
                   </section>
@@ -450,7 +450,7 @@ function EventDetails() {
                           {dollarPrice &&
                           dollarPrice > 0 &&
                           conversionRate != null ? (
-                            <span className="text-darkOrange-4">
+                            <span className="text-orange-400">
                               {satsPrice} sats
                             </span>
                           ) : null}

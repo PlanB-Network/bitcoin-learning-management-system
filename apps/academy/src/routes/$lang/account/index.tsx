@@ -175,14 +175,17 @@ function Account() {
               <div className="flex flex-col shrink-0">
                 <div className="flex items-center gap-1">
                   {!user?.currentEmailChecked || !user?.email ? (
-                    <TbAlertCircleFilled size={24} className="text-yellow-5" />
+                    <TbAlertCircleFilled
+                      size={24}
+                      className="text-yellow-400"
+                    />
                   ) : null}
                   <span className="body-base-bold text-neutral-700">
                     {t('dashboard.profile.email')}
                   </span>
                 </div>
                 {!user?.currentEmailChecked && user?.email ? (
-                  <span className="body-small text-yellow-6">
+                  <span className="body-small text-yellow-500">
                     {t('dashboard.profile.verifyYourEmail')}
                   </span>
                 ) : null}
@@ -194,7 +197,7 @@ function Account() {
                       'body-base truncate',
                       user?.currentEmailChecked
                         ? 'text-neutral-700'
-                        : 'text-yellow-6',
+                        : 'text-yellow-500',
                     )}
                   >
                     {user?.email}
@@ -222,7 +225,7 @@ function Account() {
             </div>
           )}
           {emailError && (
-            <div className="mt-3 text-red-5">
+            <div className="mt-3 text-red-400">
               {t(`dashboard.profile.${emailError}`)}
             </div>
           )}

@@ -6,10 +6,10 @@ import { cn } from '#src/lib/utils.ts';
 const gaugeVariantStyles = {
   blue: {
     // TODO : update blue colors in global.css
-    background: 'stroke-newBlue-1', // Unfilled
-    foreground: 'stroke-newBlue-1', // Filled
-    needle: 'stroke-newBlue-1',
-    text: 'text-newBlue-1',
+    background: 'stroke-blue-500', // Unfilled
+    foreground: 'stroke-blue-500', // Filled
+    needle: 'stroke-blue-500',
+    text: 'text-blue-500',
   },
   green: {
     background: 'stroke-green-100', // Unfilled
@@ -18,10 +18,10 @@ const gaugeVariantStyles = {
     text: 'text-green-500',
   },
   orange: {
-    background: 'stroke-darkOrange-1', // Unfilled
-    foreground: 'stroke-darkOrange-4', // Filled
-    needle: 'stroke-darkOrange-4',
-    text: 'text-darkOrange-4',
+    background: 'stroke-orange-100', // Unfilled
+    foreground: 'stroke-orange-400', // Filled
+    needle: 'stroke-orange-400',
+    text: 'text-orange-400',
   },
   purple: {
     background: 'stroke-[#EFB6FC]', // Unfilled
@@ -30,16 +30,16 @@ const gaugeVariantStyles = {
     text: 'text-[#D954F7]',
   },
   yellow: {
-    background: 'stroke-yellow-1', // Unfilled
-    foreground: 'stroke-yellow-5', // Filled - See later if we want a different color than unfilled
-    needle: 'stroke-yellow-7',
-    text: 'text-yellow-5',
+    background: 'stroke-yellow-50', // Unfilled
+    foreground: 'stroke-yellow-400', // Filled - See later if we want a different color than unfilled
+    needle: 'stroke-yellow-600',
+    text: 'text-yellow-400',
   },
 };
 
 const customGaugeVariantStyles = {
   blue: {
-    text: 'text-newBlue-1',
+    text: 'text-blue-500',
   },
 };
 
@@ -321,7 +321,7 @@ const RadialGauge = ({
       </span>
       {subLabel && (
         <span
-          className={cn('text-center text-newGray-2 text-xs tracking-015px')}
+          className={cn('text-center text-neutral-400 text-xs tracking-015px')}
         >
           {subLabel}
         </span>

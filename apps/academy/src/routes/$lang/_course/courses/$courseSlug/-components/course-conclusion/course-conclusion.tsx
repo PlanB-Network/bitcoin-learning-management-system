@@ -265,14 +265,14 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
 
   if (isConclusionNotReleased) {
     return (
-      <div className="relative flex items-center w-full h-28 md:h-40 rounded-lg border border-newGray-5 bg-gradient-to-b from-white/75 to-[#e2e2e2]/75">
+      <div className="relative flex items-center w-full h-28 md:h-40 rounded-lg border border-neutral-100 bg-gradient-to-b from-white/75 to-[#e2e2e2]/75">
         <img
           src={conclusionBlurred}
           alt="Congratulations"
           className="absolute opacity-30"
         />
         <div className="absolute flex flex-row ml-6 md:ml-20 p-2 gap-4 items-center">
-          <Padlock className={cn(iconSizeClass, 'fill-newOrange-1')} />
+          <Padlock className={cn(iconSizeClass, 'fill-orange-500')} />
           <p className="text-black font-semibold">
             {t('dashboard.course.conclusionNotReleased')}
           </p>
@@ -288,13 +288,13 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
 
   return (
     <>
-      <p className="text-darkOrange-5 text-2xl leading-snug max-md:title-medium-sb-18px">
+      <p className="text-orange-500 text-2xl leading-snug max-md:title-medium-sb-18px">
         {t('courses.conclusion.congratulationsEnd')}
       </p>
 
       {showProgressSteps ? (
         <>
-          <p className="text-newBlack-1 body-16px mb-3 max-md:hidden">
+          <p className="text-neutral-1000 body-16px mb-3 max-md:hidden">
             {showFinalStep
               ? t('courses.conclusion.finalStep')
               : t('courses.conclusion.stepsToComplete')}
@@ -339,7 +339,7 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
       ) : course ? (
         <>
           {session?.user || !multiAttemptsExamChapterId ? (
-            <p className="text-newBlack-1 body-16px mb-3 max-md:hidden">
+            <p className="text-neutral-1000 body-16px mb-3 max-md:hidden">
               {t('courses.conclusion.finalStep')}
             </p>
           ) : (
@@ -381,10 +381,10 @@ const ProgressBar = ({
 }: ProgressBarProps) => {
   const lineContainerClass = 'flex items-center w-full h-12 md:h-25';
   const lineSizeClass = 'w-full h-1 md:h-[5px] rounded-l-full';
-  const linkMainClass = `${lineSizeClass} bg-newGray-5`;
-  const linkSubClass = `${lineSizeClass}absolute bg-gradient-to-r from-white to-darkOrange-5 transition-all ease-in-out start-animation`;
+  const linkMainClass = `${lineSizeClass} bg-neutral-100`;
+  const linkSubClass = `${lineSizeClass}absolute bg-gradient-to-r from-white to-orange-500 transition-all ease-in-out start-animation`;
   const stepPercentageClass =
-    'label-small-med-12px md:title-large-sb-24px text-darkOrange-5 text-center';
+    'label-small-med-12px md:title-large-sb-24px text-orange-500 text-center';
 
   // Chapter conditions
   const isChapterStepComplete = step >= 1 && isAllClassicChaptersDone;
@@ -445,7 +445,7 @@ const ProgressBar = ({
           <BookOpen
             className={cn(
               iconSizeClass,
-              step === 1 ? 'fill-newOrange-1' : 'fill-newGray-5',
+              step === 1 ? 'fill-orange-500' : 'fill-neutral-100',
             )}
           />
         ) : isChapterStepInProgress ? (
@@ -472,7 +472,7 @@ const ProgressBar = ({
           <SpeechIcon
             className={cn(
               iconSizeClass,
-              isCurrentlyOnReviewStep ? 'fill-newOrange-1' : 'fill-newGray-5',
+              isCurrentlyOnReviewStep ? 'fill-orange-500' : 'fill-neutral-100',
             )}
           />
         ) : (
@@ -495,7 +495,7 @@ const ProgressBar = ({
           <BookPixel
             className={cn(
               iconSizeClass,
-              isCurrentlyOnExamStep ? 'fill-newOrange-1' : 'fill-newGray-5',
+              isCurrentlyOnExamStep ? 'fill-orange-500' : 'fill-neutral-100',
             )}
           />
         ) : hasSingleTrialExamOrAssignment ? (
@@ -521,9 +521,9 @@ const ProgressBar = ({
         isCurrentStep={isCurrentlyOnLockedFinalStep}
       >
         {isFinalStepNotReached ? (
-          <Finish className={cn(iconSizeClass, 'fill-newGray-5')} />
+          <Finish className={cn(iconSizeClass, 'fill-neutral-100')} />
         ) : isFinalStepLocked ? (
-          <Padlock className={cn(iconSizeClass, 'fill-newOrange-1')} />
+          <Padlock className={cn(iconSizeClass, 'fill-orange-500')} />
         ) : (
           <Finish className={cn(iconSizeClass, 'fill-white')} />
         )}
@@ -551,10 +551,10 @@ const HeaderBox = ({
         className={cn(
           'size-12 md:size-25 border-4 rounded-xl flex flex-col items-center justify-center z-10 shrink-0',
           isDone
-            ? 'border-darkOrange-1 bg-darkOrange-5'
+            ? 'border-orange-100 bg-orange-500'
             : isCurrentStep
-              ? 'border-darkOrange-5'
-              : 'border-newGray-5',
+              ? 'border-orange-500'
+              : 'border-neutral-100',
         )}
       >
         {children}
@@ -564,7 +564,9 @@ const HeaderBox = ({
           <span
             className={cn(
               'text-center text-nowrap title-medium-sb-18px max-md:hidden absolute left-1/2 transform -translate-x-1/2 whitespace-nowrap',
-              isDone || isCurrentStep ? 'text-newBlack-1' : 'text-newGray-4',
+              isDone || isCurrentStep
+                ? 'text-neutral-1000'
+                : 'text-neutral-200',
             )}
           >
             {text}
@@ -622,7 +624,7 @@ const StepsContent = ({
 }: StepsContentProps) => {
   const stepMessageIconClass = 'size-10 md:size-20 mx-auto';
   const titleStepClass =
-    'text-newGray-1 subtitle-small-caps-14px md:subtitle-medium-caps-18px';
+    'text-neutral-500 subtitle-small-caps-14px md:subtitle-medium-caps-18px';
 
   const isMobile = useSmaller('md');
 
@@ -657,7 +659,7 @@ const StepsContent = ({
     <div
       className={cn(
         shouldApplyContainerStyling
-          ? 'bg-maroon-1 p-2 md:px-7 md:py-8 rounded-[10px] md:rounded-[20px]'
+          ? 'bg-brown-50 p-2 md:px-7 md:py-8 rounded-[10px] md:rounded-[20px]'
           : '',
       )}
     >
@@ -668,14 +670,14 @@ const StepsContent = ({
             headline={t('courses.conclusion.completedChaptersHeadline')}
             icon={
               <ThumbUp
-                className={cn(stepMessageIconClass, 'fill-darkOrange-5')}
+                className={cn(stepMessageIconClass, 'fill-orange-500')}
               />
             }
           />
         ) : (
           <section className="flex flex-col w-full gap-5 md:gap-7">
             <p className={titleStepClass}>{t('words.chapters')}</p>
-            <p className="text-newBlack-1 body-16px md:subtitle-large-18px whitespace-pre-line">
+            <p className="text-neutral-1000 body-16px md:subtitle-large-18px whitespace-pre-line">
               {t('dashboard.course.conclusionHeadline')}
             </p>
             <CourseCurriculum
@@ -715,7 +717,7 @@ const StepsContent = ({
             subHeadline={t('courses.conclusion.completedFeedbackSubHeadline')}
             icon={
               <HeartPixel
-                className={cn(stepMessageIconClass, 'fill-darkOrange-5')}
+                className={cn(stepMessageIconClass, 'fill-orange-500')}
               />
             }
           />
@@ -773,7 +775,7 @@ const StepsContent = ({
                 />
               ) : (
                 <Certificate
-                  className={cn(stepMessageIconClass, 'fill-red-5')}
+                  className={cn(stepMessageIconClass, 'fill-red-400')}
                 />
               )
             }
@@ -798,7 +800,7 @@ const StepsContent = ({
                       <span
                         className={cn(
                           'font-semibold',
-                          hasExamSucceeded ? 'text-green-400' : 'text-red-5',
+                          hasExamSucceeded ? 'text-green-400' : 'text-red-400',
                         )}
                       >
                         {previousExamResults.score}%
@@ -820,12 +822,12 @@ const StepsContent = ({
                   />
                 ) : (
                   <FailurePixel
-                    className={cn(stepMessageIconClass, 'fill-red-5')}
+                    className={cn(stepMessageIconClass, 'fill-red-400')}
                   />
                 )
               ) : (
                 <BookPixel
-                  className={cn(stepMessageIconClass, 'fill-darkOrange-5')}
+                  className={cn(stepMessageIconClass, 'fill-orange-500')}
                 />
               )
             }

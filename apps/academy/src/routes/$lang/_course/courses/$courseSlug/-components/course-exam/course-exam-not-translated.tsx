@@ -16,7 +16,7 @@ export const CourseExamNotTranslated = ({
 
   return (
     <section className="flex flex-col w-full max-w-[816px] gap-7 md:gap-10">
-      <div className="flex flex-col text-newBlack-1">
+      <div className="flex flex-col text-neutral-1000">
         <h2 className="text-[34px] leading-tight tracking-[0.25px] max-md:hidden">
           {t('courses.exam.finalExam')}
         </h2>

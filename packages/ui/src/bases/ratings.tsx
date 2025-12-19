@@ -13,12 +13,12 @@ const ratingVariants = {
     star: 'text-destructive',
   },
   disabled: {
-    emptyStar: 'text-newGray-2',
-    star: 'text-newGray-1',
+    emptyStar: 'text-neutral-400',
+    star: 'text-neutral-500',
   },
   yellow: {
-    emptyStar: 'text-newGray-2',
-    star: 'text-darkOrange-5',
+    emptyStar: 'text-neutral-400',
+    star: 'text-orange-500',
   },
 };
 

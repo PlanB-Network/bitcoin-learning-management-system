@@ -102,7 +102,7 @@ const BCertCard = ({
     .join('\n');
 
   return (
-    <details className="group rounded-2xl w-full bg-newGray-6" open={isFirst}>
+    <details className="group rounded-2xl w-full bg-neutral-50" open={isFirst}>
       <summary className="[&::-webkit-details-marker]:hidden list-none px-3 md:px-6 py-3 border-b-transparent border-b group-open:border-b-neutral-100 flex items-center justify-between gap-2 text-black cursor-pointer">
         <span className="title-small md:title-base">{t('words.bCert')}</span>
         <TbChevronDown
@@ -150,7 +150,7 @@ const BCertGrade = ({ bcertResult }: { bcertResult: JoinedBCertResults }) => {
           <img
             src={`/api/files/${bcertResult.imgKey}`}
             alt="BCert"
-            className="mt-4 md:mt-8 rounded-3xl border border-newGray-5"
+            className="mt-4 md:mt-8 rounded-3xl border border-neutral-100"
           />
         )}
         <div className="flex flex-row justify-between mt-4 w-full">
@@ -218,7 +218,7 @@ const BCertDetailedScore = ({
   return (
     <details open className="group/details w-full">
       <summary className="[&::-webkit-details-marker]:hidden list-none flex items-center justify-between gap-2 text-black cursor-pointer mb-2">
-        <span className="body-base-bold text-newBlack-3">
+        <span className="body-base-bold text-neutral-800">
           {t('dashboard.credentials.detailedScore')}
         </span>
         <TbChevronDown
@@ -260,7 +260,7 @@ const BCertStatus = ({ examTicket }: { examTicket: Ticket }) => {
   ) : (
     <Banner
       variant="inprogress"
-      icon={<SandClock className="fill-maroon-7 md:w" />}
+      icon={<SandClock className="fill-brown-600 md:w" />}
     >
       <BannerTitle>{t('dashboard.credentials.beingGraded')}</BannerTitle>
     </Banner>
@@ -280,7 +280,7 @@ const BCertSession = ({
 }) => {
   return (
     <div className="flex flex-col gap-2">
-      <span className="body-base-bold text-newBlack-3">
+      <span className="body-base-bold text-neutral-800">
         {t('words.session')}
       </span>
       <div className="bg-white p-2 md:px-5 md:py-3 rounded-2xl">

@@ -22,7 +22,7 @@ const checkboxVariants = cva(
       },
       variant: {
         default:
-          'border-newGray-1 data-[state=checked]:bg-darkOrange-5 data-[state=checked]:border-darkOrange-5 data-[state=checked]:text-white',
+          'border-neutral-500 data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500 data-[state=checked]:text-white',
       },
     },
   },

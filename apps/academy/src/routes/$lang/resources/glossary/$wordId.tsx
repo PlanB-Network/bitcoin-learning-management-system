@@ -98,7 +98,7 @@ function GlossaryWord() {
                       <Link
                         to="/resources/glossary/$wordId"
                         params={{ wordId: word.fileName }}
-                        className="text-darkOrange-5 underline underline-offset-4 capitalize"
+                        className="text-orange-500 underline underline-offset-4 capitalize"
                       >
                         {word.term}
                       </Link>

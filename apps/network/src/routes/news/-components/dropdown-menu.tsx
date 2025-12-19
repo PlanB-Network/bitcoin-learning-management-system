@@ -52,14 +52,14 @@ export const DropdownMenu = ({
   const filteredItems = itemsList.filter((item) => item.name !== activeItem);
 
   const variantClasses = {
-    default: 'bg-darkOrange-11 text-darkOrange-5 border-darkOrange-9',
-    gray: 'border-newGray-6 text-black font-medium bg-newGray-6',
+    default: 'bg-orange-1000 text-orange-500 border-orange-900',
+    gray: 'border-neutral-50 text-black font-medium bg-neutral-50',
   };
 
   return (
     <div
       className={cn(
-        'relative w-full mx-auto lg:hidden bg-newGray-6',
+        'relative w-full mx-auto lg:hidden bg-neutral-50',
         isOpen ? 'rounded-t-xl z-10' : 'rounded-xl z-10',
         maxWidth,
       )}
@@ -70,14 +70,14 @@ export const DropdownMenu = ({
           <button
             type="button"
             className={cn(
-              'flex items-center gap-4 px-4 pt-3 pb-2 w-full bg-newGray-5 rounded-xl',
+              'flex items-center gap-4 px-4 pt-3 pb-2 w-full bg-neutral-100 rounded-xl',
             )}
             id="options-menu"
             aria-expanded={isOpen}
             aria-haspopup="true"
             onClick={toggleDropdown}
           >
-            <span className="font-medium leading-[140%] tracking-015px text-start bg-newGray-5 text-black">
+            <span className="font-medium leading-[140%] tracking-015px text-start bg-neutral-100 text-black">
               {activeItem}
             </span>
 

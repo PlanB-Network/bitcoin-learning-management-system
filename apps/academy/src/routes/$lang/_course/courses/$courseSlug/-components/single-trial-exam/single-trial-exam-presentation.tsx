@@ -107,7 +107,7 @@ export const SingleTrialExamPresentation = ({
       </Alert>
 
       <section className="flex flex-col w-full max-w-[816px] gap-7 md:gap-10">
-        <div className="flex flex-col text-newBlack-1">
+        <div className="flex flex-col text-neutral-1000">
           <h2 className="text-[34px] leading-tight tracking-[0.25px] max-md:hidden">
             {chapter.title}
           </h2>
@@ -117,7 +117,7 @@ export const SingleTrialExamPresentation = ({
             mode="light"
           />
 
-          <p className="text-darkOrange-5 subtitle-medium-med-16px md:title-large-24px">
+          <p className="text-orange-500 subtitle-medium-med-16px md:title-large-24px">
             {t('courses.exam.readyToTest')}
           </p>
           <span className="body-medium-16px mt-6">

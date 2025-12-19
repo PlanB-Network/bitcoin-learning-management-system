@@ -135,11 +135,11 @@ export const DashboardTutorialsTable = ({
           placeholder={t('dashboard.adminPanel.searchByNameOrCategory')}
           value={search}
           onChange={(event) => setSearch(event.target.value)}
-          className="w-full pl-5 pr-12 py-3 rounded-[25px] bg-newGray-5 text-newBlack-1 placeholder:text-newGray-1 body-14px"
+          className="w-full pl-5 pr-12 py-3 rounded-[25px] bg-neutral-100 text-neutral-1000 placeholder:text-neutral-500 body-14px"
         />
         <AiOutlineSearch
           size={24}
-          className="absolute right-5 top-1/2 -translate-y-1/2 text-newBlack-1"
+          className="absolute right-5 top-1/2 -translate-y-1/2 text-neutral-1000"
         />
       </div>
 
@@ -222,7 +222,7 @@ export const DashboardTutorialsTable = ({
                 <span className={cn('max-md:hidden')}>{t('words.likes')}</span>
                 <MdThumbUp
                   size={18}
-                  className={cn('md:hidden text-darkGreen-1 shrink-0')}
+                  className={cn('md:hidden text-green-300 shrink-0')}
                 />
                 {sortConfig.key === 'likeCount' ? (
                   <MdKeyboardArrowDown
@@ -250,7 +250,7 @@ export const DashboardTutorialsTable = ({
                 </span>
                 <MdThumbDown
                   size={18}
-                  className={cn('md:hidden text-red-5 shrink-0')}
+                  className={cn('md:hidden text-red-400 shrink-0')}
                 />
                 {sortConfig.key === 'dislikeCount' ? (
                   <MdKeyboardArrowDown
@@ -304,14 +304,14 @@ export const DashboardTutorialsTable = ({
               <TableCell>
                 <div className="flex w-full justify-center items-center gap-2">
                   <span>{tutorial.likeCount}</span>
-                  <MdThumbUp size={18} className="text-darkGreen-1 shrink-0" />
+                  <MdThumbUp size={18} className="text-green-300 shrink-0" />
                 </div>
               </TableCell>
 
               <TableCell>
                 <div className="flex w-full justify-center items-center gap-2">
                   <span>{tutorial.dislikeCount}</span>
-                  <MdThumbDown size={18} className="text-red-5 shrink-0" />
+                  <MdThumbDown size={18} className="text-red-400 shrink-0" />
                 </div>
               </TableCell>
 
@@ -322,7 +322,7 @@ export const DashboardTutorialsTable = ({
                   href={`https://github.com/PlanB-Network/bitcoin-educational-content/tree/dev/${tutorial.path}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-darkOrange-5 underline"
+                  className="text-orange-500 underline"
                 >
                   {t('dashboard.adminPanel.seeOrEdit')}
                 </a>

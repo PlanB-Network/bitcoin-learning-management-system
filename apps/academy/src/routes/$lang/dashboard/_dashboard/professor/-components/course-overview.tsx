@@ -57,7 +57,7 @@ const CourseStatusBanner = ({ course }: { course: CourseResponse }) => {
     return (
       <Banner
         variant="inprogress"
-        icon={<SandClockIcon className="size-9 fill-maroon-6" />}
+        icon={<SandClockIcon className="size-9 fill-brown-500" />}
       >
         <BannerTitle>
           {t('dashboard.professor.courses.overview.courseNotStarted')}
@@ -142,14 +142,14 @@ const OverallPerformance = ({ course }: { course: CourseResponse }) => {
   };
 
   return (
-    <section className="flex flex-col items-center mt-6 border border-newGray-5 bg-white rounded-2xl">
-      <h3 className="px-6 py-3 text-newBlack-1 label-18px max-md:font-medium md:title-large-sb-24px">
+    <section className="flex flex-col items-center mt-6 border border-neutral-100 bg-white rounded-2xl">
+      <h3 className="px-6 py-3 text-neutral-1000 label-18px max-md:font-medium md:title-large-sb-24px">
         {t('dashboard.professor.courses.overview.overallPerformance')}
       </h3>
       <div className="flex justify-center max-md:max-w-[286px] flex-wrap gap-2">
         {/* Enrolled students */}
         {courseInfos.totalStudents && courseInfos.totalStudents > 0 ? (
-          <div className="flex flex-col items-center text-newBlue-1 self-end justify-center w-full max-w-54 md:max-w-[336px] py-5 md:px-14 md:py-7">
+          <div className="flex flex-col items-center text-blue-500 self-end justify-center w-full max-w-54 md:max-w-[336px] py-5 md:px-14 md:py-7">
             <span className="max-md:title-large-sb-24px md:text-[44px] md:font-bold !leading-none">
               {courseInfos.totalStudents}
             </span>
@@ -228,25 +228,25 @@ const UpcomingClass = ({ course }: { course: CourseResponse }) => {
 
   return (
     <section className="w-full flex flex-col gap-4 py-2 mt-6">
-      <h3 className="md:p-2 mobile-h3 md:subtitle-large-med-20px text-newBlack-1">
+      <h3 className="md:p-2 mobile-h3 md:subtitle-large-med-20px text-neutral-1000">
         {t('dashboard.professor.courses.overview.upcomingClass')}
       </h3>
 
-      <article className="bg-newGray-6 rounded-2xl overflow-hidden w-full">
+      <article className="bg-neutral-50 rounded-2xl overflow-hidden w-full">
         <header
           className={cn(
-            'p-4 md:px-6 md:py-3 border-b border-newGray-5 flex justify-between items-center cursor-pointer transition-colors',
+            'p-4 md:px-6 md:py-3 border-b border-neutral-100 flex justify-between items-center cursor-pointer transition-colors',
             !isExpanded && 'border-b-0',
           )}
           onClick={!isMobile ? toggleExpanded : undefined}
         >
-          <h4 className="label-med-18px font-medium md:label-large-med-20px text-newBlack-1">
+          <h4 className="label-med-18px font-medium md:label-large-med-20px text-neutral-1000">
             {nextChapter.partIndex}.{nextChapter.chapterIndex}.{' '}
             {nextChapter.title}
           </h4>
 
           <TbChevronDown
-            className={`max-md:hidden text-newBlack-1 transition-transform duration-200 ${
+            className={`max-md:hidden text-neutral-1000 transition-transform duration-200 ${
               isExpanded ? 'rotate-180' : ''
             }`}
             size={24}
@@ -256,7 +256,7 @@ const UpcomingClass = ({ course }: { course: CourseResponse }) => {
         {isExpanded && (
           <div className="p-3 md:p-6 flex max-md:flex-col gap-4 md:gap-7 w-full">
             <section className="flex flex-col gap-2 w-full">
-              <h5 className="text-newBlack-3 font-medium md:px-1">
+              <h5 className="text-neutral-800 font-medium md:px-1">
                 {t('words.info')}
               </h5>
               <div className="flex flex-col w-full p-5 bg-white rounded-2xl [&>*:not(:last-child)]:border-b">
@@ -315,7 +315,7 @@ const UpcomingClass = ({ course }: { course: CourseResponse }) => {
 
             {(course.format === 'hybrid' || course.format === 'inperson') && (
               <section className="flex flex-col gap-2 w-full">
-                <h5 className="text-newBlack-3 font-medium md:px-1">
+                <h5 className="text-neutral-800 font-medium md:px-1">
                   {t('words.students')}
                 </h5>
 
@@ -337,7 +337,7 @@ const UpcomingClass = ({ course }: { course: CourseResponse }) => {
                         )}
                         rightText={
                           <button
-                            className="text-darkOrange-5 flex items-center gap-1"
+                            className="text-orange-500 flex items-center gap-1"
                             onClick={() =>
                               handleDownload(
                                 chapterAttendance,
@@ -400,12 +400,12 @@ const CourseRecentActivity = ({ courseId }: { courseId: string }) => {
 
   return (
     <section className="flex flex-col w-full mt-6 gap-2">
-      <h3 className="md:p-2 mobile-h3 md:subtitle-large-med-20px text-newBlack-1">
+      <h3 className="md:p-2 mobile-h3 md:subtitle-large-med-20px text-neutral-1000">
         {t('dashboard.professor.courses.overview.recentActivity')}
       </h3>
       <ul
-        className="bg-white rounded-2xl border border-newGray-5
-        [&>*:not(:last-child)]:border-b [&>*:not(:last-child)]:border-newGray-5"
+        className="bg-white rounded-2xl border border-neutral-100
+        [&>*:not(:last-child)]:border-b [&>*:not(:last-child)]:border-neutral-100"
       >
         {displayedActivity.map((activity, index) => (
           <ActivityItem
@@ -443,18 +443,18 @@ const ActivityItem = ({ activity }: { activity: CourseActivity }) => {
               {displayName}
             </TextTag>
           </div>
-          <span className="text-center text-newBlack-5 desktop-caption1 w-fit lowercase md:hidden">
+          <span className="text-center text-neutral-600 desktop-caption1 w-fit lowercase md:hidden">
             {getNotificationDateString(activity.date)}
           </span>
         </div>
-        <span className="body-14px text-newBlack-1 max-md:hidden">
+        <span className="body-14px text-neutral-1000 max-md:hidden">
           {t(translationKey, { score })}
         </span>
       </span>
-      <span className="text-center text-newBlack-5 desktop-caption1 w-36 lowercase max-md:hidden">
+      <span className="text-center text-neutral-600 desktop-caption1 w-36 lowercase max-md:hidden">
         {getNotificationDateString(activity.date)}
       </span>
-      <span className="body-14px text-newBlack-1 md:hidden">
+      <span className="body-14px text-neutral-1000 md:hidden">
         {t(translationKey, { score })}
       </span>
     </li>
@@ -481,7 +481,7 @@ const ActivityIcon = ({
     ICONS[type === 'review' && withComment ? 'reviewWithComment' : type];
   return (
     <IconComponent
-      className="text-newBlack-1 shrink-0"
+      className="text-neutral-1000 shrink-0"
       size={isMobile ? 18 : 24}
     />
   );

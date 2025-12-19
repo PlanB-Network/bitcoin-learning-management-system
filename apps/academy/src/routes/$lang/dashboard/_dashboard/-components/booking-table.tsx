@@ -178,11 +178,11 @@ const EventCard = ({ event, participants }: EventProps) => {
   return (
     <Card withPadding={false} className="flex md:hidden p-3" color="gray">
       <div className="flex flex-col gap-1">
-        <span className="text-newBlack-1 mobile-subtitle1">{event.name}</span>
-        <span className="flex-none text-sm text-newBlack-5">
+        <span className="text-neutral-1000 mobile-subtitle1">{event.name}</span>
+        <span className="flex-none text-sm text-neutral-600">
           {formatDate(startDate)}
-          <span className="inline-block mx-1 text-newBlack-5">·</span>
-          <span className="capitalize text-newBlack-5">{event.type}</span>
+          <span className="inline-block mx-1 text-neutral-600">·</span>
+          <span className="capitalize text-neutral-600">{event.type}</span>
         </span>
         <span>
           <Button
