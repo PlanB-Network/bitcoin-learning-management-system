@@ -11,9 +11,9 @@ const alertVariants = cva('relative w-full rounded-lg border p-4', {
   },
   variants: {
     variant: {
-      default: 'bg-darkOrange-0 border-darkOrange-1 text-foreground',
-      transparent: 'border-newGray-4',
-      warning: 'bg-darkOrange-0 border-darkOrange-1 text-darkOrange-9',
+      default: 'bg-orange-50 border-orange-100 text-foreground',
+      transparent: 'border-neutral-200',
+      warning: 'bg-orange-50 border-orange-100 text-orange-900',
     },
   },
 });
@@ -51,7 +51,7 @@ const Alert = React.forwardRef<
           aria-label="Close alert"
           type="button"
         >
-          <IoMdClose className={cn('size-5 text-newGray-1')} />
+          <IoMdClose className={cn('size-5 text-neutral-500')} />
         </button>
       )}
       {props.children}
@@ -67,7 +67,7 @@ const AlertTitle = React.forwardRef<
   <h5
     ref={ref}
     className={cn(
-      'mb-1 md:mb-4 body-14px-medium md:body-medium-16px text-darkOrange-9 flex items-center gap-3 md:gap-2',
+      'mb-1 md:mb-4 body-14px-medium md:body-medium-16px text-orange-900 flex items-center gap-3 md:gap-2',
       className,
     )}
     {...props}

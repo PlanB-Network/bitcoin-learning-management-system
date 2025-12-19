@@ -42,7 +42,7 @@ export const RequestsTab = () => {
           )}
         </h2>
         {pendingCount > 0 && (
-          <span className="inline-flex items-center justify-center bg-maroon-9 text-white text-sm font-semibold px-2.5 py-0.5 rounded-full min-w-[1rem] h-5">
+          <span className="inline-flex items-center justify-center bg-brown-800 text-white text-sm font-semibold px-2.5 py-0.5 rounded-full min-w-[1rem] h-5">
             {pendingCount}
           </span>
         )}

@@ -99,7 +99,7 @@ const DialogTitle = React.forwardRef<
   const baseClass = 'text-center';
   const variantStyles = {
     black: 'text-black',
-    orange: 'text-darkOrange-5',
+    orange: 'text-orange-500',
   };
   const variantClassName = variantStyles[variant] || variantStyles.orange;
 

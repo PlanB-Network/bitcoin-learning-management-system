@@ -58,8 +58,8 @@ export const MenuItem = ({
         }}
         className={cn(
           'flex w-full cursor-pointer items-center gap-3 p-2 justify-start rounded-md',
-          active && 'bg-darkOrange-9 text-white font-medium',
-          'hover:bg-darkOrange-9 hover:text-white hover:font-medium',
+          active && 'bg-orange-900 text-white font-medium',
+          'hover:bg-orange-900 hover:text-white hover:font-medium',
         )}
       >
         <div className="shrink-0">{icon}</div>
@@ -89,9 +89,9 @@ export const MenuItem = ({
               key={index}
               to={item.to}
               className={cn(
-                'text-left body-16px text-white px-2 py-1 hover:bg-darkOrange-9 hover:text-white hover:font-medium w-full rounded-xs truncate',
+                'text-left body-16px text-white px-2 py-1 hover:bg-orange-900 hover:text-white hover:font-medium w-full rounded-xs truncate',
                 location.pathname.includes(item.to) &&
-                  'bg-darkOrange-9 font-medium',
+                  'bg-orange-900 font-medium',
               )}
               onClick={item.onClick}
             >

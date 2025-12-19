@@ -61,7 +61,7 @@ const Header = ({ tutorial }: { tutorial: GetTutorialResponse }) => {
 
       <section className="flex justify-between items-center w-full mt-1 md:mt-5 gap-4">
         {tutorial.creditLink && (
-          <span className="flex items-center gap-1.5 subtitle-small-14px text-newBlack-5 max-md:hidden w-full">
+          <span className="flex items-center gap-1.5 subtitle-small-14px text-neutral-600 max-md:hidden w-full">
             <span className="shrink-0">
               {t('tutorials.details.source').toUpperCase()}
             </span>
@@ -69,20 +69,20 @@ const Header = ({ tutorial }: { tutorial: GetTutorialResponse }) => {
               href={tutorial.creditLink}
               target="_blank"
               rel="noreferrer"
-              className="max-w-[350px] leading-snug tracking-015px underline text-newBlue-1 truncate lowercase"
+              className="max-w-[350px] leading-snug tracking-015px underline text-blue-500 truncate lowercase"
             >
               {tutorial.creditLink}
             </a>
           </span>
         )}
         {tutorial.professor?.name && (
-          <span className="flex items-center gap-1.5 text-newBlack-5 shrink-0">
+          <span className="flex items-center gap-1.5 text-neutral-600 shrink-0">
             <span className="max-md:hidden subtitle-small-caps-14px">
               {t('tutorials.details.author').toUpperCase()}
             </span>
             <a
               href={`/professor/${formatNameForURL(tutorial.professor?.name)}-${tutorial.professor?.id}`}
-              className="text-newBlack-1 subtitle-medium-16px md:title-small-med-16px hover:underline"
+              className="text-neutral-1000 subtitle-medium-16px md:title-small-med-16px hover:underline"
             >
               {tutorial.professor?.name}
             </a>
@@ -104,21 +104,21 @@ const AuthorDetails = ({ tutorial }: { tutorial: GetTutorialResponse }) => {
     <>
       <DividerSimple variant="brown" />
       <section className="w-full flex flex-col">
-        <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
+        <h4 className="subtitle-medium-caps-18px text-orange-500">
           {t('words.author')}
         </h4>
         <p className="mt-4 md:mt-6 label-large-20px md:display-small-32px text-black">
           {t('tutorials.writtenBy')}{' '}
-          <span className="text-darkOrange-5 label-large-20px md:display-small-32px">
+          <span className="text-orange-500 label-large-20px md:display-small-32px">
             <Link
               to={`/professor/${formatNameForURL(author?.name || '')}-${author?.id}`}
-              className="hover:text-darkOrange-5 hover:font-medium"
+              className="hover:text-orange-500 hover:font-medium"
             >
               {author?.name}
             </Link>
           </span>
         </p>
-        <p className="md:mt-6 text-newBlack-1 md:text-justify body-16px md:label-large-20px max-md:hidden">
+        <p className="md:mt-6 text-neutral-1000 md:text-justify body-16px md:label-large-20px max-md:hidden">
           {t('courses.details.thanksTipping')}
         </p>
         {author && (
@@ -155,7 +155,7 @@ const Credits = ({
     <>
       <DividerSimple variant="brown" />
       <section className="w-full flex flex-col">
-        <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
+        <h4 className="subtitle-medium-caps-18px text-orange-500">
           {t('words.credits')}
         </h4>
 
@@ -163,7 +163,7 @@ const Credits = ({
           {proofreading?.contributorNames?.length > 0
             ? t('tutorials.hasBeenProofreadBy')
             : t('tutorials.hasNotBeenProofread')}
-          <span className="text-darkOrange-5 label-large-20px md:display-small-32px">
+          <span className="text-orange-500 label-large-20px md:display-small-32px">
             {' '}
             {proofreading?.contributorNames?.length > 0
               ? proofreading.contributorNames.map((proofreader, index) => (
@@ -193,10 +193,10 @@ const Credits = ({
               variant="vertical"
             />
           </div>
-          <p className="md:mb-8 text-newBlack-1 md:text-justify body-16px md:subtitle-medium-16px whitespace-pre-line">
+          <p className="md:mb-8 text-neutral-1000 md:text-justify body-16px md:subtitle-medium-16px whitespace-pre-line">
             <Trans i18nKey={'courses.details.collaborativeEffort'}>
               <a
-                className="hover:text-darkOrange-5 font-medium"
+                className="hover:text-orange-500 font-medium"
                 href="https://t.me/PlanBNetwork_ContentBuilder"
                 target="_blank"
                 rel="noreferrer"
@@ -205,14 +205,14 @@ const Credits = ({
               </a>
               <Link
                 to="/tutorials/others/contribution/content-review-tutorial-1ee068ca-ddaf-4bec-b44e-b41a9abfdef6"
-                className="hover:text-darkOrange-5 font-medium"
+                className="hover:text-orange-500 font-medium"
                 target="_blank"
                 rel="noreferrer"
               >
                 tutorial
               </Link>
               <a
-                className="hover:text-darkOrange-5 font-medium"
+                className="hover:text-orange-500 font-medium"
                 href="https://creativecommons.org/licenses/by-sa/4.0/deed.en"
                 target="_blank"
                 rel="noreferrer"
@@ -389,8 +389,8 @@ function TutorialDetails() {
     };
 
     return (
-      <div className="flex flex-col items-center justify-center gap-2 md:gap-4 bg-newGray-6 w-[290px] md:w-fit rounded-[15px] md:rounded-[30px] px-7 py-5 md:pb-4 border border-newGray-5 shadow-course-navigation-sm-accent text-black mx-auto md:my-7">
-        <span className="title-medium-sb-18px md:title-large-sb-24px text-center text-newBlack-1">
+      <div className="flex flex-col items-center justify-center gap-2 md:gap-4 bg-neutral-50 w-[290px] md:w-fit rounded-[15px] md:rounded-[30px] px-7 py-5 md:pb-4 border border-neutral-100 shadow-course-navigation-sm-accent text-black mx-auto md:my-7">
+        <span className="title-medium-sb-18px md:title-large-sb-24px text-center text-neutral-1000">
           {t('tutorials.details.didThisWork')}
         </span>
         <div className="flex items-center justify-between py-2.5 gap-6 md:gap-10">
@@ -415,8 +415,8 @@ function TutorialDetails() {
                 isLoggedIn ? handleDislike() : openAuthModal();
               }}
               className={cn(
-                'py-3 md:py-3.5 px-3.5 md:px-4 rounded-lg md:rounded-[12px] border shadow-course-navigation border-red-5 focus:border-red-7',
-                isLiked.disliked ? 'bg-red-1' : 'hover:bg-red-1 bg-white',
+                'py-3 md:py-3.5 px-3.5 md:px-4 rounded-lg md:rounded-[12px] border shadow-course-navigation border-red-400 focus:border-red-600',
+                isLiked.disliked ? 'bg-red-50' : 'hover:bg-red-50 bg-white',
               )}
             >
               <img src={ThumbDown} alt="" className="size-9 md:size-12" />
@@ -448,7 +448,7 @@ function TutorialDetails() {
       {tutorial && (
         <>
           <div className="flex w-full flex-col items-center justify-center">
-            <div className="w-full flex flex-col gap-5 md:gap-7 text-newBlack-1">
+            <div className="w-full flex flex-col gap-5 md:gap-7 text-neutral-1000">
               <Header
                 tutorial={{
                   ...tutorial,
@@ -459,13 +459,13 @@ function TutorialDetails() {
               <MarkdownContent tutorial={tutorial} />
               <LikeDislikeButtons />
               {tutorial.creditLink && (
-                <span className="w-full flex flex-col gap-4 subtitle-medium-caps-18px subtitle-small-caps-14px text-darkOrange-5 mx-auto">
+                <span className="w-full flex flex-col gap-4 subtitle-medium-caps-18px subtitle-small-caps-14px text-orange-500 mx-auto">
                   {t('tutorials.details.source')}
                   <a
                     href={tutorial.creditLink}
                     target="_blank"
                     rel="noreferrer"
-                    className="leading-snug tracking-015px underline text-newBlue-1 break-words lowercase max-w-full truncate"
+                    className="leading-snug tracking-015px underline text-blue-500 break-words lowercase max-w-full truncate"
                   >
                     {tutorial.creditLink}
                   </a>

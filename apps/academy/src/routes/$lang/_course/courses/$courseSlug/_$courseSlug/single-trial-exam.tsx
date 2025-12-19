@@ -118,7 +118,7 @@ function SingleTrialExam() {
   );
 
   const scoreAndRankingClasses =
-    'flex flex-col gap-2.5 md:gap-4 items-center justify-center p-5 bg-white rounded-2xl border border-newGray-5 w-full md:max-w-80';
+    'flex flex-col gap-2.5 md:gap-4 items-center justify-center p-5 bg-white rounded-2xl border border-neutral-100 w-full md:max-w-80';
 
   return (
     <PageLayout
@@ -135,12 +135,12 @@ function SingleTrialExam() {
               <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle capitalize">
                 {t('dashboard.course.finalGradeSummary')}
               </h2>
-              <section className="flex flex-col items-center w-full rounded-2xl bg-newGray-6 border border-newGray-5 px-2.5 py-5 md:p-8 gap-4 md:gap-10">
+              <section className="flex flex-col items-center w-full rounded-2xl bg-neutral-50 border border-neutral-100 px-2.5 py-5 md:p-8 gap-4 md:gap-10">
                 <div className="flex flex-col items-center gap-5">
                   {hasPassed && (
                     <SuccessExam className="size-7 md:size-9 fill-green-500" />
                   )}
-                  <p className="whitespace-pre-line label-med-18px md:label-large-med-20px text-newBlack-1 text-center">
+                  <p className="whitespace-pre-line label-med-18px md:label-large-med-20px text-neutral-1000 text-center">
                     {hasPassed
                       ? t('dashboard.course.congratulationsPassed')
                       : t('dashboard.course.keepMovingForward')}
@@ -150,17 +150,17 @@ function SingleTrialExam() {
                   <div className={scoreAndRankingClasses}>
                     <span
                       className={cn(
-                        hasPassed ? 'text-green-500' : 'text-red-5',
+                        hasPassed ? 'text-green-500' : 'text-red-400',
                         'title-large-sb-24px md:display-small-med-32px',
                       )}
                     >
                       {finalScore}%
                     </span>
                     <div className="flex flex-col items-center">
-                      <span className="subtitle-medium-16px md:label-18px text-newGray-1">
+                      <span className="subtitle-medium-16px md:label-18px text-neutral-500">
                         {t('dashboard.course.finalScore')}
                       </span>
-                      <span className="body-12px text-newGray-2">
+                      <span className="body-12px text-neutral-400">
                         {t('dashboard.course.thresholdToPass', {
                           threshold: passingThreshold,
                         })}
@@ -170,12 +170,12 @@ function SingleTrialExam() {
                   <div className={scoreAndRankingClasses}>
                     <span
                       className={cn(
-                        'text-darkOrange-6 title-large-sb-24px md:display-small-med-32px',
+                        'text-orange-600 title-large-sb-24px md:display-small-med-32px',
                       )}
                     >
                       {currentCourseProgress?.ranking ?? '-'} / {totalStudents}
                     </span>
-                    <span className="subtitle-medium-16px md:label-18px text-newGray-1">
+                    <span className="subtitle-medium-16px md:label-18px text-neutral-500">
                       {t('dashboard.course.ranking')}
                     </span>
                   </div>
@@ -185,9 +185,9 @@ function SingleTrialExam() {
           )}
           {hasPassed &&
             (isCourseConclusionReleased ? (
-              <section className="flex flex-col items-center w-full rounded-2xl bg-newGray-6 border border-newGray-5 px-2.5 py-5 md:p-8 gap-4 md:gap-5">
-                <Finish className="fill-darkOrange-5 size-7 md:size-9" />
-                <p className="label-medium-16px md:subtitle-large-med-20px text-newBlack-1 whitespace-pre-line text-center">
+              <section className="flex flex-col items-center w-full rounded-2xl bg-neutral-50 border border-neutral-100 px-2.5 py-5 md:p-8 gap-4 md:gap-5">
+                <Finish className="fill-orange-500 size-7 md:size-9" />
+                <p className="label-medium-16px md:subtitle-large-med-20px text-neutral-1000 whitespace-pre-line text-center">
                   {t('dashboard.course.wellDoneCompleting')}
                 </p>
                 {isTimestampFetched && timestamp ? (
@@ -206,7 +206,7 @@ function SingleTrialExam() {
                 <AlertTitle icon={TbAlertOctagon}>
                   {t('dashboard.course.diplomaReleaseTitle')}
                 </AlertTitle>
-                <AlertDescription className="max-md:body-14px text-newBlack-2">
+                <AlertDescription className="max-md:body-14px text-neutral-900">
                   {t('dashboard.course.diplomaReleaseDescription')}
                 </AlertDescription>
               </Alert>
@@ -293,27 +293,27 @@ const ExamItem = ({
   const nbQuestion = examInfo?.nbQuestions ?? 0;
 
   return isExamResultsFetched ? (
-    <div className="flex flex-col md:flex-row md:items-center h-full p-4 border border-newGray-5 bg-newGray-6 rounded-2xl gap-3 md:gap-5">
+    <div className="flex flex-col md:flex-row md:items-center h-full p-4 border border-neutral-100 bg-neutral-50 rounded-2xl gap-3 md:gap-5">
       <div className="flex flex-col gap-1 w-52">
         <span className="subtitle-large-med-18px md:subtitle-large-med-20px">
           {exam.title}
         </span>
-        <span className="body-14px md:body-16px text-newGray-1">
+        <span className="body-14px md:body-16px text-neutral-500">
           {t('courses.exam.weight', { weight: examWeight })}
         </span>
       </div>
-      <DividerVertical className="max-md:hidden my-1 mx-2 bg-newGray-4 h-12" />
-      <DividerSimple className="md:hidden bg-newGray-4" />
+      <DividerVertical className="max-md:hidden my-1 mx-2 bg-neutral-200 h-12" />
+      <DividerSimple className="md:hidden bg-neutral-200" />
       <div className="flex flex-col md:flex-row md:items-center max-md:gap-4 justify-between flex-1">
         <div className="flex flex-col gap-1.5">
           {examResults ? (
             <p className="subtitle-large-med-18px md:subtitle-large-med-20px">
               <span>{t('dashboard.course.examScore')} </span>
-              <span className="text-darkOrange-5">{examResults.score}%</span>
+              <span className="text-orange-500">{examResults.score}%</span>
             </p>
           ) : (
             <>
-              <div className="flex items-center gap-2 text-newBlack-3">
+              <div className="flex items-center gap-2 text-neutral-800">
                 <BiPencil size={24} />
                 {isExamInfoFetched ? (
                   <span className="subtitle-medium-16px md:subtitle-large-18px">
@@ -322,7 +322,7 @@ const ExamItem = ({
                   </span>
                 ) : null}
               </div>
-              <div className="flex items-center gap-2 text-newBlack-3">
+              <div className="flex items-center gap-2 text-neutral-800">
                 <MdOutlineCalendarMonth size={24} />
                 <span className="subtitle-medium-16px md:subtitle-large-18px">
                   {formatDate(exam.startDate)}
@@ -403,24 +403,24 @@ const AssignmentItem = ({
   score?: number;
 }) => {
   return (
-    <div className="flex flex-col md:flex-row md:items-center h-full p-4 border border-newGray-5 bg-newGray-6 rounded-2xl gap-3 md:gap-5">
+    <div className="flex flex-col md:flex-row md:items-center h-full p-4 border border-neutral-100 bg-neutral-50 rounded-2xl gap-3 md:gap-5">
       <div className="flex flex-col gap-1 w-52">
         <span className="subtitle-large-med-18px md:subtitle-large-med-20px">
           {title}
         </span>
-        <span className="body-14px md:body-16px text-newGray-1">
+        <span className="body-14px md:body-16px text-neutral-500">
           {t('courses.exam.weight', { weight })}
         </span>
       </div>
-      <DividerVertical className="max-md:hidden my-1 mx-2 bg-newGray-4 h-12" />
-      <DividerSimple className="md:hidden bg-newGray-4" />
+      <DividerVertical className="max-md:hidden my-1 mx-2 bg-neutral-200 h-12" />
+      <DividerSimple className="md:hidden bg-neutral-200" />
       <div className="flex flex-col md:flex-row md:items-center max-md:gap-4 justify-between flex-1">
         <div className="flex flex-col gap-1.5">
           {isGradePublished ? (
             score !== undefined ? (
               <p className="subtitle-large-med-18px md:subtitle-large-med-20px">
                 <span>{t('dashboard.course.examScore')} </span>
-                <span className="text-darkOrange-5">{score}%</span>
+                <span className="text-orange-500">{score}%</span>
               </p>
             ) : (
               <p className="subtitle-large-med-18px md:subtitle-large-med-20px">
@@ -429,13 +429,13 @@ const AssignmentItem = ({
             )
           ) : (
             <>
-              <div className="flex items-center gap-2 text-newBlack-3">
+              <div className="flex items-center gap-2 text-neutral-800">
                 <BiPencil size={24} />
                 <span className="subtitle-medium-16px md:subtitle-large-18px">
                   {description}
                 </span>
               </div>
-              <div className="flex items-center gap-2 text-newBlack-3">
+              <div className="flex items-center gap-2 text-neutral-800">
                 <MdOutlineCalendarMonth size={24} />
                 <span className="subtitle-medium-16px md:subtitle-large-18px">
                   {formatDateRange(startDate, endDate)}
@@ -516,7 +516,7 @@ const DiplomaSection = ({
           '/tutorials/contribution/others/pbn-certificate-timestamping-dd16f8c0-00c1-45fd-8792-920612bed18f'
         }
         target="_blank"
-        className="mt-4 md:mt-2.5 md:self-start max-md:self-center flex flex-row items-center gap-2 text-newBlack-5 hover:text-newOrange-5 hover:underline max-md:order-3"
+        className="mt-4 md:mt-2.5 md:self-start max-md:self-center flex flex-row items-center gap-2 text-neutral-600 hover:text-orange-200 hover:underline max-md:order-3"
       >
         <ApprovedIcon className="size-4" />
         <span>{t('dashboard.myCourses.verify')}</span>

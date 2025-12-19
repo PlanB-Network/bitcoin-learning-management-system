@@ -149,7 +149,7 @@ export const WithCustomClass: Story = {
         </AlertDescription>
       </>
     ),
-    className: 'shadow-lg bg-red-2',
+    className: 'shadow-lg bg-red-100',
     variant: 'default',
   },
   name: 'Default (Custom Class)',

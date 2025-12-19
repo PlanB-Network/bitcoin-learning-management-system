@@ -148,7 +148,7 @@ export const PaymentDescription = ({
                 setInputCoupon(event.target.value);
                 setIsCouponValid(null);
               }}
-              className="border-2 px-2 py-1  rounded-lg border-newGray-5 text-newBlack-5 w-full placeholder-newGray-3"
+              className="border-2 px-2 py-1  rounded-lg border-neutral-100 text-neutral-600 w-full placeholder-neutral-300"
               placeholder={t('payment.insertReductionCode')}
             />
 
@@ -175,7 +175,7 @@ export const PaymentDescription = ({
           </Button>
         </div>
         {isCouponValid === false && (
-          <div className="text-red-6">Invalid code</div>
+          <div className="text-red-500">Invalid code</div>
         )}
       </div>
     );
@@ -202,7 +202,7 @@ export const PaymentDescription = ({
               <span className="text-lg font-medium">
                 {getFormattedUnit(paidPriceDollars || 0, DEFAULT_CURRENCY, 0)}
               </span>
-              <span className="text-sm text-newBlack-5">{satsPrice} sats</span>
+              <span className="text-sm text-neutral-600">{satsPrice} sats</span>
             </div>
           </div>
           <Divider mode="light" width="w-full" className="!mx-0" />
@@ -235,7 +235,7 @@ export const PaymentDescription = ({
                     <a
                       href={href}
                       target="_blank"
-                      className=" text-darkOrange-5 "
+                      className=" text-orange-500 "
                       rel="noreferrer"
                     >
                       {children}
@@ -245,19 +245,19 @@ export const PaymentDescription = ({
               >
                 {gdprTerms}
               </ReactMarkdown>
-              <span className="absolute text-red-6 text-sm right-0 top-0">
+              <span className="absolute text-red-500 text-sm right-0 top-0">
                 *
               </span>
             </label>
           </div>
         ) : null}
         {!isBookEnabled && isBtnClicked ? (
-          <p className="text-red-6 text-sm self-start -mt-4">
+          <p className="text-red-500 text-sm self-start -mt-4">
             {t('events.tcMustBeAccepted')}
           </p>
         ) : null}
         {checkoutError && (
-          <span className="text-red-5 text-center whitespace-pre-line">
+          <span className="text-red-400 text-center whitespace-pre-line">
             {checkoutError}
           </span>
         )}
@@ -302,7 +302,7 @@ export const PaymentDescription = ({
           <Trans i18nKey="payment.terms">
             <Link
               to="/legal/terms-of-sale"
-              className="hover:underline hover:underline-offset-2 text-darkOrange-5"
+              className="hover:underline hover:underline-offset-2 text-orange-500"
               target="_blank"
               rel="noreferrer"
             >
@@ -320,7 +320,7 @@ const TaxWarningText = ({ className }: { className?: string }) => {
   return (
     <span
       className={cn(
-        'w-full max-md:text-center md:text-right text-newGray-3 body-14px',
+        'w-full max-md:text-center md:text-right text-neutral-300 body-14px',
         className,
       )}
     >

@@ -15,7 +15,7 @@ export const PublicComment = ({
   comment,
 }: PublicCommentProps) => {
   return (
-    <article className="bg-newGray-6 rounded-lg border border-newGray-5 h-[171px] p-2.5 w-full min-[600px]:max-w-[270px] md:max-w-[322px] flex flex-col gap-1">
+    <article className="bg-neutral-50 rounded-lg border border-neutral-100 h-[171px] p-2.5 w-full min-[600px]:max-w-[270px] md:max-w-[322px] flex flex-col gap-1">
       <header className="w-full flex gap-6 items-center shrink-0">
         <Image
           breakpoints={{ default: 90 }}
@@ -26,10 +26,10 @@ export const PublicComment = ({
           alt={`${author}`}
         />
         <div className="flex flex-col gap-0.5 overflow-hidden">
-          <h2 className="text-darkOrange-5 title-medium-sb-18px truncate">
+          <h2 className="text-orange-500 title-medium-sb-18px truncate">
             {author}
           </h2>
-          <time className="text-newBlack-5 label-medium-16px truncate">
+          <time className="text-neutral-600 label-medium-16px truncate">
             {new Date(date).toLocaleDateString(undefined, {
               day: 'numeric',
               month: 'long',
@@ -38,7 +38,7 @@ export const PublicComment = ({
           </time>
         </div>
       </header>
-      <p className="size-full overflow-y-scroll scrollbar-light px-4 py-1.5 bg-commentTextBackground border border-gray-500/10 rounded-md text-newBlack-3 text-sm leading-[120%]">
+      <p className="size-full overflow-y-scroll scrollbar-light px-4 py-1.5 bg-commentTextBackground border border-gray-500/10 rounded-md text-neutral-800 text-sm leading-[120%]">
         {comment}
       </p>
     </article>

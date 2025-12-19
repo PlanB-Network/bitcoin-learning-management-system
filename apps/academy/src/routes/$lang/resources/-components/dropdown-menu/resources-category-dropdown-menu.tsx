@@ -52,7 +52,7 @@ export const ResourcesDropdownMenu = ({
           <button
             type="button"
             className={cn(
-              'flex items-center gap-2 p-2 pr-3 w-full bg-darkOrange-11 rounded-xl border border-darkOrange-9',
+              'flex items-center gap-2 p-2 pr-3 w-full bg-orange-1000 rounded-xl border border-orange-900',
             )}
           >
             <CategoryIcon
@@ -60,7 +60,7 @@ export const ResourcesDropdownMenu = ({
               variant="resources"
               imgClassName="filter-darkOrange size-6"
             />
-            <span className="text-darkOrange-5 font-medium leading-[140%] tracking-015px">
+            <span className="text-orange-500 font-medium leading-[140%] tracking-015px">
               {capitalizeFirstWord(
                 t(`resources.${resourceActiveCategory}.title`),
               )}
@@ -80,10 +80,10 @@ export const ResourcesDropdownMenu = ({
         <button
           type="button"
           className={cn(
-            'flex items-center gap-4 p-2 w-full bg-darkOrange-11',
+            'flex items-center gap-4 p-2 w-full bg-orange-1000',
             isOpen
-              ? 'rounded-t-xl border-x border-t border-darkOrange-9'
-              : 'rounded-xl border border-darkOrange-9',
+              ? 'rounded-t-xl border-x border-t border-orange-900'
+              : 'rounded-xl border border-orange-900',
           )}
           id="options-menu"
           aria-expanded={isOpen}
@@ -95,14 +95,14 @@ export const ResourcesDropdownMenu = ({
             variant="resources"
             imgClassName="filter-darkOrange size-6"
           />
-          <span className="text-darkOrange-5 font-medium leading-[140%] tracking-015px">
+          <span className="text-orange-500 font-medium leading-[140%] tracking-015px">
             {capitalizeFirstWord(
               t(`resources.${resourceActiveCategory}.title`),
             )}
           </span>
           <MdKeyboardArrowDown
             className={cn(
-              'ml-auto text-newOrange-1 size-6 transition-transform ease-in-out',
+              'ml-auto text-orange-500 size-6 transition-transform ease-in-out',
               isOpen ? '-rotate-180' : 'rotate-0',
             )}
           />
@@ -111,7 +111,7 @@ export const ResourcesDropdownMenu = ({
 
       {isOpen && (
         <div
-          className="absolute left-1/2 -translate-x-1/2 w-full max-w-[280px] rounded-b-xl bg-darkOrange-11 border-x border-b border-darkOrange-9 z-10 overflow-hidden"
+          className="absolute left-1/2 -translate-x-1/2 w-full max-w-[280px] rounded-b-xl bg-orange-1000 border-x border-b border-orange-900 z-10 overflow-hidden"
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="options-menu"

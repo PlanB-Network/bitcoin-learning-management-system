@@ -43,7 +43,7 @@ function ViewNamesGroup({
             : name === 'month'
               ? '!rounded-l-sm md:!rounded-none'
               : '',
-          name === view && '!bg-newGray-5',
+          name === view && '!bg-neutral-100',
         )}
         type="button"
         key={name}

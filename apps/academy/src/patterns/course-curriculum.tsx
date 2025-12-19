@@ -33,7 +33,7 @@ export const CourseCurriculum = ({
   const isTablet = useSmaller('lg');
 
   return (
-    <div className={cn('flex flex-col max-w-5xl text-newBlack-1', className)}>
+    <div className={cn('flex flex-col max-w-5xl text-neutral-1000', className)}>
       {children}
       <section className="flex flex-col gap-5">
         {course.parts?.map((part, partIndex) => (
@@ -111,12 +111,12 @@ export const CourseCurriculum = ({
                             'label-medium-16px group-hover/link:font-medium group-hover/link:underline',
                             nextChapter === chapter.chapterId &&
                               !expandAll &&
-                              'text-darkOrange-5 font-medium',
+                              'text-orange-500 font-medium',
                           )}
                         >{`${partIndex + 1}.${chapter.chapterIndex} - ${chapter.title}`}</span>
                         {chapter.startDate &&
                           chapter.startDate > new Date() && (
-                            <span className="max-lg:label-medium-16px text-newGray-1 leading-[121%] hover:no-underline">
+                            <span className="max-lg:label-medium-16px text-neutral-500 leading-[121%] hover:no-underline">
                               {'//'}{' '}
                               {new Intl.DateTimeFormat(undefined, {
                                 day: 'numeric',
@@ -135,7 +135,7 @@ export const CourseCurriculum = ({
                       {!hideGithubLink && (
                         <Link
                           to={`https://github.com/PlanB-Network/bitcoin-educational-content/tree/dev/courses/${course.id}`}
-                          className="leading-[156.25%] underline text-darkOrange-5 max-lg:hidden"
+                          className="leading-[156.25%] underline text-orange-500 max-lg:hidden"
                         >
                           {t('dashboard.teacher.courses.editOnGithub')}
                         </Link>

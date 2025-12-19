@@ -32,7 +32,7 @@ const PresentationMarkdownBody = ({
           <CodeRenderer className={className}>{children}</CodeRenderer>
         ),
         h1: ({ children }) => (
-          <h1 className="max-lg:subtitle-small-caps-14px lg:subtitle-medium-caps-18px text-darkOrange-5">
+          <h1 className="max-lg:subtitle-small-caps-14px lg:subtitle-medium-caps-18px text-orange-500">
             <div className="flex w-auto items-center">{children}</div>
           </h1>
         ),

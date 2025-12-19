@@ -41,7 +41,7 @@ export const PageHeader = ({
       )}
     >
       {subtitle && (
-        <h1 className="text-center text-sm md:text-2xl text-newOrange-1 font-medium md:font-semibold leading-tight md:leading-relaxed md:tracking-015px max-md:mb-2 mb-1">
+        <h1 className="text-center text-sm md:text-2xl text-orange-500 font-medium md:font-semibold leading-tight md:leading-relaxed md:tracking-015px max-md:mb-2 mb-1">
           {subtitle}
         </h1>
       )}
@@ -54,10 +54,10 @@ export const PageHeader = ({
       )}
       {hasGithubDescription ? (
         <>
-          <p className="max-w-4xl mx-auto text-center text-xs md:desktop-subtitle1 text-newGray-1 leading-[1.66] tracking-[0.4px] mt-1 md:mt-6">
+          <p className="max-w-4xl mx-auto text-center text-xs md:desktop-subtitle1 text-neutral-500 leading-[1.66] tracking-[0.4px] mt-1 md:mt-6">
             <Trans i18nKey="resources.github">
               <a
-                className="underline underline-offset-2 hover:text-darkOrange-5"
+                className="underline underline-offset-2 hover:text-orange-500"
                 href="https://github.com/PlanB-Network/bitcoin-educational-content"
                 target="_blank"
                 rel="noreferrer"
@@ -68,11 +68,11 @@ export const PageHeader = ({
           </p>
 
           {addedCredits && (
-            <p className="max-w-4xl mx-auto text-center text-xs md:desktop-subtitle1 text-newGray-1 leading-[1.66] tracking-[0.4px] mt-1">
+            <p className="max-w-4xl mx-auto text-center text-xs md:desktop-subtitle1 text-neutral-500 leading-[1.66] tracking-[0.4px] mt-1">
               <Trans i18nKey="glossary.creditsLoic">
                 <span className="font-semibold">Credits</span>
                 <a
-                  className="underline underline-offset-2 hover:text-darkOrange-5"
+                  className="underline underline-offset-2 hover:text-orange-500"
                   href="https://planb.network/en/professor/lo%C3%AFc-morel-50"
                   target="_blank"
                   rel="noreferrer"
@@ -80,7 +80,7 @@ export const PageHeader = ({
                   Loïc Morel (Pandul)
                 </a>
                 <a
-                  className="underline underline-offset-2 hover:text-darkOrange-5"
+                  className="underline underline-offset-2 hover:text-orange-500"
                   href="https://github.com/LoicPandul/Dictionnaire-de-Bitcoin/tree/main"
                   target="_blank"
                   rel="noreferrer"
@@ -95,10 +95,10 @@ export const PageHeader = ({
         description && (
           <p
             className={cn(
-              'max-w-4xl mx-auto text-center subtitle-medium-16px md:desktop-subtitle1 text-newGray-1 mt-1 md:mt-6',
+              'max-w-4xl mx-auto text-center subtitle-medium-16px md:desktop-subtitle1 text-neutral-500 mt-1 md:mt-6',
               hideDescriptionOnMobile
                 ? 'max-md:hidden'
-                : 'max-md:pb-12 max-md:border-b border-newGray-1 max-md:mt-5',
+                : 'max-md:pb-12 max-md:border-b border-neutral-500 max-md:mt-5',
             )}
           >
             {description}
@@ -120,7 +120,7 @@ const PageTitle = ({
     <h2
       className={cn(
         isSubsectionTitle
-          ? 'text-lg md:text-[40px] text-darkOrange-5 tracking-[0.25px] font-medium'
+          ? 'text-lg md:text-[40px] text-orange-500 tracking-[0.25px] font-medium'
           : 'text-[32px] md:text-6xl text-white md:font-light md:tracking-[-0.5px]',
         'text-center leading-[120%]',
       )}

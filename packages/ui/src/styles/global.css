@@ -16,14 +16,6 @@
   --color-background-static: #f2f2f2;
   --color-header: #f6f4f3;
 
-  --color-newBlack-1: #000000;
-  --color-newBlack-2: #1a1a1a;
-  --color-newBlack-3: #333333;
-  --color-newBlack-4: #4d4d4d;
-  --color-newBlack-5: #666666;
-
-  --color-newBlue-1: #0a69da;
-
   --color-blue-50: #e7f1fe;
   --color-blue-100: #b6d6fc;
   --color-blue-200: #85baf9;
@@ -47,6 +39,7 @@
   --color-orange-800: #853000;
   --color-orange-900: #5c2100;
   --color-orange-950: #411800;
+  --color-orange-1000: #210c00;
 
   --color-purple-50: #fae7fe;
   --color-purple-100: #efb6fc;
@@ -96,25 +89,6 @@
   --color-brown-900: #2b1f18;
   --color-brown-950: #100a07;
 
-  --color-newOrange-1: #ff5c00;
-  --color-newOrange-2: #ff6c1a;
-  --color-newOrange-3: #ff7c33;
-  --color-newOrange-4: #ff8d4d;
-  --color-newOrange-5: #ff9d66;
-
-  --color-darkOrange-0: #ffeee5;
-  --color-darkOrange-1: #ffd1b7;
-  --color-darkOrange-2: #ffb48a;
-  --color-darkOrange-3: #ff975c;
-  --color-darkOrange-4: #ff792e;
-  --color-darkOrange-5: #ff5c00;
-  --color-darkOrange-6: #d64d00;
-  --color-darkOrange-7: #ad3f00;
-  --color-darkOrange-8: #853000;
-  --color-darkOrange-9: #5c2100;
-  --color-darkOrange-10: #411800;
-  --color-darkOrange-11: #210c00;
-
   --color-gray-100: #f2f2f2;
   --color-gray-200: #d9d9d9;
   --color-gray-300: #bfbfbf;
@@ -124,13 +98,6 @@
   --color-gray-700: #595959;
   --color-gray-800: #404040;
   --color-gray-900: #262626;
-
-  --color-newGray-1: #808080;
-  --color-newGray-2: #999999;
-  --color-newGray-3: #b2b2b2;
-  --color-newGray-4: #cccccc;
-  --color-newGray-5: #e5e5e5;
-  --color-newGray-6: #f6f6f6;
 
   --color-neutral-50: #f6f6f6;
   --color-neutral-100: #e5e5e5;
@@ -142,59 +109,19 @@
   --color-neutral-700: #4d4d4d;
   --color-neutral-800: #333333;
   --color-neutral-900: #1a1a1a;
+  --color-neutral-1000: #000000;
 
-  --color-red-1: #ffdad3;
-  --color-red-2: #ffb5a7;
-  --color-red-3: #ff8d7b;
-  --color-red-4: #ff5e4d;
-  --color-red-5: #ff0000;
-  --color-red-6: #de0000;
-  --color-red-7: #be0000;
-  --color-red-8: #9e0000;
-  --color-red-9: #800000;
-  --color-red-10: #630000;
-  --color-red-11: #480000;
-
-  --color-yellow-1: #fff0d9;
-  --color-yellow-2: #ffe0b2;
-  --color-yellow-3: #ffcc80;
-  --color-yellow-4: #ffbd59;
-  --color-yellow-5: #ffa826;
-  --color-yellow-6: #de9220;
-  --color-yellow-7: #be7c19;
-  --color-yellow-8: #9e6713;
-  --color-yellow-9: #80520d;
-  --color-yellow-10: #633f08;
-  --color-yellow-11: #482c04;
-
-  --color-yellow-50: #fff0d9;
-  --color-yellow-100: #ffe0b2;
-  --color-yellow-200: #ffcc80;
-  --color-yellow-300: #ffbd59;
-  --color-yellow-400: #ffa826;
-  --color-yellow-500: #de9220;
-  --color-yellow-600: #be7c19;
-  --color-yellow-700: #9e6713;
-  --color-yellow-800: #80520d;
-  --color-yellow-900: #633f08;
-  --color-yellow-950: #482c04;
-
-  --color-darkGreen-1: #42a86b;
-  --color-darkGreen-4: #a0d4b5;
-  --color-darkGreen-5: #c6e5d3;
-  --color-darkGreen-6: #e3f2e9;
-
-  --color-maroon-1: #f1eeec;
-  --color-maroon-2: #e3ddd9;
-  --color-maroon-3: #d6ccce;
-  --color-maroon-4: #c8bcb4;
-  --color-maroon-5: #bbaba2;
-  --color-maroon-6: #a18c7f;
-  --color-maroon-7: #876d5d;
-  --color-maroon-8: #695142;
-  --color-maroon-9: #49372c;
-  --color-maroon-10: #2b1f18;
-  --color-maroon-11: #100a07;
+  --color-red-50: #ffdad3;
+  --color-red-100: #ffb5a7;
+  --color-red-200: #ff8d7b;
+  --color-red-300: #ff5e4d;
+  --color-red-400: #ff0000;
+  --color-red-500: #de0000;
+  --color-red-600: #be0000;
+  --color-red-700: #9e0000;
+  --color-red-800: #800000;
+  --color-red-900: #630000;
+  --color-red-950: #480000;
 
   --color-ring: hsl(var(--ring));
   --color-border: hsl(var(--border));
@@ -1032,16 +959,16 @@
   }
   .scrollbar-dark::-webkit-scrollbar-track {
     border-radius: 4px;
-    background: var(--color-newBlack-5);
+    background: var(--color-neutral-600);
   }
 
   .scrollbar-dark::-webkit-scrollbar-thumb {
-    background: var(--color-newOrange-5);
+    background: var(--color-orange-200);
     border-radius: 4px;
   }
 
   .scrollbar-dark::-webkit-scrollbar-thumb:hover {
-    background: var(--color-darkOrange-4);
+    background: var(--color-orange-400);
   }
 
   .scrollbar-light::-webkit-scrollbar {
@@ -1049,33 +976,33 @@
   }
   .scrollbar-light::-webkit-scrollbar-track {
     border-radius: 4px;
-    background: var(--color-newGray-5);
+    background: var(--color-neutral-100);
   }
 
   .scrollbar-light::-webkit-scrollbar-thumb {
-    background: var(--color-newOrange-5);
+    background: var(--color-orange-200);
     border-radius: 4px;
   }
 
   .scrollbar-light::-webkit-scrollbar-thumb:hover {
-    background: var(--color-darkOrange-4);
+    background: var(--color-orange-400);
   }
 
   @supports (-moz-appearance: none) {
     .scrollbar-dark {
-      scrollbar-color: var(--color-newOrange-5) var(--color-newBlack-5);
+      scrollbar-color: var(--color-orange-200) var(--color-neutral-600);
     }
 
     .scrollbar-dark:hover {
-      scrollbar-color: var(--color-darkOrange-4) var(--color-newBlack-5);
+      scrollbar-color: var(--color-orange-400) var(--color-neutral-600);
     }
 
     .scrollbar-light {
-      scrollbar-color: var(--color-orange-500) var(--color-newGray-5);
+      scrollbar-color: var(--color-orange-500) var(--color-neutral-100);
     }
 
     .scrollbar-light:hover {
-      scrollbar-color: var(--color-darkOrange-4) var(--color-newGray-5);
+      scrollbar-color: var(--color-orange-400) var(--color-neutral-100);
     }
   }
 }
@@ -1117,7 +1044,7 @@
   padding: 0 !important;
   border: 0 !important;
   overflow: visible !important;
-  background-color: var(--color-newGray-5) !important;
+  background-color: var(--color-neutral-100) !important;
 }
 
 .rbc-event-content:has(:hover) {
@@ -1140,12 +1067,12 @@
 }
 
 .rbc-current-time-indicator {
-  background-color: var(--color-darkOrange-4) !important;
+  background-color: var(--color-orange-400) !important;
 }
 
 .rbc-btn-group button {
   border-radius: 10px;
-  border: 1px solid var(--color-newGray-4) !important;
+  border: 1px solid var(--color-neutral-200) !important;
   background: var(--color-white) !important;
   font-size: 14px;
 }
@@ -1233,8 +1160,8 @@
   --toastify-color-progress-warning: var(--toastify-color-warning);
   --toastify-color-progress-error: var(--toastify-color-error);
   --toastify-color-progress-bgo: 1;
-  --toastify-color-progress-bgColorLight: var(--color-newGray-5);
-  --toastify-color-progress-bgColorDark: var(--color-newBlack-4);
+  --toastify-color-progress-bgColorLight: var(--color-neutral-100);
+  --toastify-color-progress-bgColorDark: var(--color-neutral-700);
 }
 
 .Toastify__toast-container {

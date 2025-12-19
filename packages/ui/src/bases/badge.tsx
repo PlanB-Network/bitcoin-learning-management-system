@@ -18,9 +18,9 @@ const badgeVariants = cva(
           'px-1.5 text-center text-[10px] leading-none h-4 rounded-md ',
       },
       variant: {
-        darkMaroon: 'bg-newBlack-4 text-white',
-        darkOrange: 'bg-darkOrange-8 text-maroon-1',
-        lightOrange: 'bg-darkOrange-3 text-white',
+        darkMaroon: 'bg-neutral-700 text-white',
+        darkOrange: 'bg-orange-800 text-brown-50',
+        lightOrange: 'bg-orange-300 text-white',
       },
     },
   },

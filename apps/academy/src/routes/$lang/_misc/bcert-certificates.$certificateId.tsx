@@ -93,7 +93,7 @@ function Certificate() {
         <h3 className="max-md:title-medium-sb-18px md:desktop-h4 mb-1 md:mb-2.5">
           {t('bCert.knowledgeableBitcoin')}
         </h3>
-        <span className="max-md:label-medium-16px md:text-2xl font-medium leading-tight tracking-[0.25px] text-darkOrange-5">
+        <span className="max-md:label-medium-16px md:text-2xl font-medium leading-tight tracking-[0.25px] text-orange-500">
           {t('bCert.challengeYourself')}
         </span>
         <p className="md:desktop-h8 body-16px  mt-4 lg:mt-8">

@@ -66,7 +66,7 @@ export const LightMaroonVariant: Story = {
   },
   decorators: [
     (Story) => (
-      <div className="bg-maroon-1 p-6 max-w-md rounded border border-maroon-3">
+      <div className="bg-brown-50 p-6 max-w-md rounded border border-brown-300">
         <Story />
       </div>
     ),

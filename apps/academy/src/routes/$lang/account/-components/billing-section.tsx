@@ -14,10 +14,10 @@ export const BillingSection = ({ invoices }: { invoices: Invoice[] }) => {
   return (
     <>
       {invoices && (
-        <div className="w-full flex flex-col gap-2.5 md:gap-4 text-newBlack-4">
+        <div className="w-full flex flex-col gap-2.5 md:gap-4 text-neutral-700">
           {sortedInvoices.length > 0 ? (
             <>
-              <div className="hidden md:flex flex-row gap-4 font-medium text-newBlack-1">
+              <div className="hidden md:flex flex-row gap-4 font-medium text-neutral-1000">
                 <span className="w-[150px] flex-none">
                   {t('dashboard.booking.invoiceDate')}
                 </span>
@@ -43,7 +43,7 @@ export const BillingSection = ({ invoices }: { invoices: Invoice[] }) => {
                     case 'stripe': {
                       return (
                         <a
-                          className="underline underline-offset-2 hover:text-darkOrange-5"
+                          className="underline underline-offset-2 hover:text-orange-500"
                           href={invoice.url}
                           target="_blank"
                           rel="noreferrer"
@@ -77,7 +77,7 @@ export const BillingSection = ({ invoices }: { invoices: Invoice[] }) => {
                       color="gray"
                     >
                       <div className="flex flex-col gap-1">
-                        <span className="text-newBlack-1 font-medium">
+                        <span className="text-neutral-1000 font-medium">
                           {invoice.title}
                         </span>
                         <span className="flex-none  text-sm">

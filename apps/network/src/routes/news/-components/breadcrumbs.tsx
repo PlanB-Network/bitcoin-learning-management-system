@@ -10,7 +10,7 @@ const Breadcrumbs = ({ blogTitle }: { blogTitle: string }) => {
   }
 
   return (
-    <div className="flex items-center text-newGray-5 mb-4">
+    <div className="flex items-center text-neutral-100 mb-4">
       <TbChevronLeft size={24} className=" mx-1" />
       <Link className="body-small-bold" to="/news" viewTransition>
         {t('news.news')}

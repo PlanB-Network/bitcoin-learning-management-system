@@ -11,7 +11,7 @@ const bannerVariants = cva('relative w-full rounded-lg border p-3 md:p-6', {
     variant: {
       success: 'bg-green-50 border-green-100 text-green-700',
       info: 'bg-blue-50 border-blue-100 text-blue-600',
-      inprogress: 'bg-maroon-1 border-maroon-2 text-maroon-7',
+      inprogress: 'bg-brown-50 border-brown-200 text-brown-600',
     },
   },
 });

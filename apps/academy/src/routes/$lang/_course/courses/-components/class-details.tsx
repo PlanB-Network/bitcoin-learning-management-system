@@ -76,11 +76,11 @@ export const ClassDetails = ({
 
   return (
     <section className="flex flex-col gap-4 w-full md:max-w-[1102px] mt-4 md:mt-8 px-5 md:px-2">
-      <span className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-newBlack-1">
+      <span className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-neutral-1000">
         {t('courses.chapter.detail.title')}
       </span>
-      <article className="flex flex-col justify-center p-4 gap-5 self-stretch rounded-[12px] bg-newGray-6 body-14px md:label-normal-16px">
-        <div className="w-full flex max-md:flex-col gap-4 md:gap-2.5 text-newBlack-1">
+      <article className="flex flex-col justify-center p-4 gap-5 self-stretch rounded-[12px] bg-neutral-50 body-14px md:label-normal-16px">
+        <div className="w-full flex max-md:flex-col gap-4 md:gap-2.5 text-neutral-1000">
           {chapter.startDate && (
             <div className="flex max-md:flex-wrap md:flex-col w-full md:max-w-[282px] gap-4 md:gap-1">
               <div className="flex gap-2 items-center">
@@ -104,7 +104,7 @@ export const ClassDetails = ({
             chapter.addressLine2 ||
             chapter.addressLine3) && (
             <>
-              <div className="self-stretch w-px bg-newGray-3 max-md:hidden" />
+              <div className="self-stretch w-px bg-neutral-300 max-md:hidden" />
               <div className="flex gap-2 h-fit items-center">
                 <MdOutlineLocationOn size={18} className="shrink-0" />
                 <div className="flex flex-col">

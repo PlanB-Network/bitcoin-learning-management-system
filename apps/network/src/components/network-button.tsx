@@ -16,7 +16,7 @@ const buttonVariants = cva(
       },
       variant: {
         primary:
-          'bg-primary text-black shadow-button disabled:!bg-darkOrange-1 disabled:!text-darkOrange-3 hover:shadow-sm-section',
+          'bg-primary text-black shadow-button disabled:!bg-orange-100 disabled:!text-orange-300 hover:shadow-sm-section',
         secondary: 'bg-white  text-headerDark hover:shadow-sm-section-white',
         tertiary:
           'bg-black !text-white border-[1px] border-orange-500 hover:shadow-sm-section ',

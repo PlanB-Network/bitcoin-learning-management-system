@@ -42,7 +42,7 @@ function ProfessorProfile() {
   );
 
   const infoTextClasses =
-    'flex flex-col py-1 px-4 bg-white rounded-md border border-newGray-4 overflow-y-scroll text-newBlack-3 body-14px !leading-[120%] whitespace-pre-line scrollbar-light';
+    'flex flex-col py-1 px-4 bg-white rounded-md border border-neutral-200 overflow-y-scroll text-neutral-800 body-14px !leading-[120%] whitespace-pre-line scrollbar-light';
 
   useEffect(() => {
     if (session === null) {
@@ -98,7 +98,7 @@ function ProfessorProfile() {
               {t('dashboard.teacher.profile.publicProfileDescription')}
             </p>
 
-            <section className="flex max-lg:flex-col gap-5 lg:gap-12 lg:bg-newGray-6 lg:shadow-course-navigation rounded-[20px] lg:p-5 w-full mb-9">
+            <section className="flex max-lg:flex-col gap-5 lg:gap-12 lg:bg-neutral-50 lg:shadow-course-navigation rounded-[20px] lg:p-5 w-full mb-9">
               <div className="flex flex-col lg:items-center gap-5 lg:gap-7 w-[227px] shrink-0">
                 <span className="subtitle-large-med-20px text-black lg:text-center">
                   {professor.name}
@@ -115,7 +115,7 @@ function ProfessorProfile() {
                   <span className="leading-tight font-medium text-dashboardSectionText">
                     {t('dashboard.teacher.profile.description')}
                   </span>
-                  <p className="text-sm text-newGray-1 leading-tight">
+                  <p className="text-sm text-neutral-500 leading-tight">
                     {t('dashboard.teacher.profile.publicDescription')}
                   </p>
                   <p className={cn('h-25', infoTextClasses)}>
@@ -139,7 +139,7 @@ function ProfessorProfile() {
                     : t('dashboard.teacher.profile.noTags')}
                 </div>
                 {/* Links */}
-                <div className="flex flex-col gap-2.5 lg:border-l border-newGray-1 lg:pl-2.5 w-full max-w-[280px]">
+                <div className="flex flex-col gap-2.5 lg:border-l border-neutral-500 lg:pl-2.5 w-full max-w-[280px]">
                   {professor.links.twitter && (
                     <div className="flex gap-5 items-center">
                       <TbBrandX size={18} className="shrink-0" />
@@ -230,7 +230,7 @@ function ProfessorProfile() {
                   {t('dashboard.teacher.profile.lightningAddress')}
                 </span>
                 <div className="flex flex-wrap items-end gap-x-9 gap-y-2">
-                  <p className="py-2 px-4 bg-white w-full max-w-[302px] rounded-md border border-newGray-4 text-sm leading-tight text-newBlack-3 overflow-hidden text-ellipsis body-14px overflow-y-scroll no-scrollbar">
+                  <p className="py-2 px-4 bg-white w-full max-w-[302px] rounded-md border border-neutral-200 text-sm leading-tight text-neutral-800 overflow-hidden text-ellipsis body-14px overflow-y-scroll no-scrollbar">
                     {professor.tips.lightningAddress ||
                       t('dashboard.teacher.profile.noLightningAddress')}
                   </p>

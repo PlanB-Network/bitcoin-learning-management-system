@@ -28,12 +28,12 @@ export const LectureCard = ({ lecture }: LectureCardProps) => {
     return (
       <div className="flex flex-col justify-between sm:p-4 sm:pt-0 flex-grow sm:gap-7">
         <div className="flex flex-col gap-1 max-sm:grow max-sm:justify-center">
-          <span className="title-small sm:title-base text-maroon-11 line-clamp-2">
+          <span className="title-small sm:title-base text-brown-950 line-clamp-2">
             {lecture.name}
           </span>
 
           {(lecture.professorName || lecture.projectName) && (
-            <span className="text-newBlack-3 body-small sm:body-base">
+            <span className="text-neutral-800 body-small sm:body-base">
               {lecture.professorName ?? lecture.projectName ?? ''}
             </span>
           )}

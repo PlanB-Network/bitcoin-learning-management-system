@@ -157,7 +157,7 @@ function SummerSchool() {
         {isEventPaid ? (
           <CollapsibleDropdown
             title="Overview"
-            className="border border-newGray-4"
+            className="border border-neutral-200"
             variant="dark"
             defaultOpen={false}
           >
@@ -216,7 +216,7 @@ function SummerPresentation() {
                 <p className="text-xl font-medium">
                   6 days all-inclusive experience
                 </p>
-                <div className="text-base flex flex-row gap-2 text-newGray-1 items-center">
+                <div className="text-base flex flex-row gap-2 text-neutral-500 items-center">
                   <TbCalendarMonth />
                   July 21 - 26
                 </div>
@@ -230,7 +230,7 @@ function SummerPresentation() {
               <div className="flex flex-col gap-2 items-center">
                 <BookPixel className="justify-self-center size-11 fill-primary" />
                 <p className="text-xl font-medium">5 full-day courses</p>
-                <div className="text-base flex flex-row gap-2 text-newGray-1 items-center">
+                <div className="text-base flex flex-row gap-2 text-neutral-500 items-center">
                   <TbCalendarMonth />
                   July 21 - 25
                 </div>
@@ -246,7 +246,7 @@ function SummerPresentation() {
                 <p className="text-xl font-medium">
                   An entire week at a Four Star Hotel
                 </p>
-                <div className="text-base flex flex-row gap-2 text-newGray-1 items-center">
+                <div className="text-base flex flex-row gap-2 text-neutral-500 items-center">
                   <TbCalendarMonth />
                   July 20 - 27
                 </div>
@@ -368,7 +368,7 @@ function WhatsIncluded({
 
   return (
     <section>
-      <div className="flex flex-col gap-4 bg-newGray-6 py-4 rounded-xl">
+      <div className="flex flex-col gap-4 bg-neutral-50 py-4 rounded-xl">
         <h2 className="ml-4 mobile-h3 md:title-large-sb-24px  text-dashboardSectionTitle">
           What's included
         </h2>
@@ -418,7 +418,7 @@ function WhatsIncluded({
             <ListElement2 icon={TbTag} leftText="Total price">
               <div className="flex flex-col">
                 <span>$2,500</span>
-                <span className="text-darkOrange-4">{satsPrice} sats</span>
+                <span className="text-orange-400">{satsPrice} sats</span>
               </div>
             </ListElement2>
           </div>
@@ -463,7 +463,7 @@ export function ListElement({
   return (
     <div className="flex items-center gap-4">
       <div className="flex w-6 md:w-8">
-        <Icon className="size-6 md:size-8 text-darkOrange-3" />
+        <Icon className="size-6 md:size-8 text-orange-300" />
       </div>
       <p className="text-xl">{children}</p>
     </div>
@@ -482,11 +482,11 @@ export function ListElement2({
   const Icon = icon;
   return (
     <article className="flex max-md:flex-wrap items-center justify-between gap-2 md:gap-4 py-1 md:py-2 border-b border-neutral-50 last:border-b-0">
-      <div className="flex flex-row gap-2 items-center text-newGray-1">
+      <div className="flex flex-row gap-2 items-center text-neutral-500">
         {Icon && <Icon className="size-6" />}
         <span className="body-large">{leftText}</span>
       </div>
-      <p className="body-large text-newBlack-3 text-right">{children}</p>
+      <p className="body-large text-neutral-800 text-right">{children}</p>
     </article>
   );
 }

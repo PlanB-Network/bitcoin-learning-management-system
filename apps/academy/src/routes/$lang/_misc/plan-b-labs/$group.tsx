@@ -123,7 +123,7 @@ function PlanBLabs() {
         <>
           <Tabs
             defaultValue={activeItem.label}
-            className="pt-9 md:pt-12 border-b border-newGray-1 bg-gradient-tabs pl-4 md:pl-[max(20px,calc((100vw-1200px)/2))]"
+            className="pt-9 md:pt-12 border-b border-neutral-500 bg-gradient-tabs pl-4 md:pl-[max(20px,calc((100vw-1200px)/2))]"
           >
             <TabsList size="l" mode="dark2" className="max-md:gap-3">
               <img
@@ -229,12 +229,12 @@ function PlanBLabs() {
               {/* Study group main content */}
               <div className="flex flex-col max-w-[1200px] w-full md:flex-row px-4 self-center mt-7 lg:mt-14 pt-6 gap-6">
                 {/* Next session */}
-                <div className="relative w-full max-w-[800px] border-2 border-darkOrange-6 p-4 font-light rounded-b-2xl rounded-r-2xl">
-                  <div className="absolute -mt-8 bg-white px-4 text-2xl lg:text-3xl xl:text-4xl italic text-darkOrange-6">
+                <div className="relative w-full max-w-[800px] border-2 border-orange-600 p-4 font-light rounded-b-2xl rounded-r-2xl">
+                  <div className="absolute -mt-8 bg-white px-4 text-2xl lg:text-3xl xl:text-4xl italic text-orange-600">
                     Next session
                   </div>
 
-                  <div className="flex flex-col lg:flex-row max-lg:items-center lg:absolute lg:-mt-10 lg:mr-5 lg:right-0 max-lg:mt-2 py-2 px-4 bg-darkOrange-5 subtitle-medium-16px md:font-normal md:text-xl text-black rounded-2xl md:max-w-[450px] md:whitespace-nowrap md:overflow-hidden">
+                  <div className="flex flex-col lg:flex-row max-lg:items-center lg:absolute lg:-mt-10 lg:mr-5 lg:right-0 max-lg:mt-2 py-2 px-4 bg-orange-500 subtitle-medium-16px md:font-normal md:text-xl text-black rounded-2xl md:max-w-[450px] md:whitespace-nowrap md:overflow-hidden">
                     <span>
                       {formatDate(lastSession.startDate, userTimeZone)}
                     </span>
@@ -249,7 +249,7 @@ function PlanBLabs() {
                     </span>
                   </div>
                   <div className="mt-6 w-full">
-                    <span className="text-newGray-1 uppercase">
+                    <span className="text-neutral-500 uppercase">
                       {'> TOPIC OF DISCUSSION'}
                     </span>
                     <div className="mx-auto lg:max-w-2x max-md:w-full lg:mx-8 xl:mx-auto md:max-w-none my-4 px-2">
@@ -286,10 +286,10 @@ function PlanBLabs() {
                 </div>
 
                 {/* Previous session */}
-                <div className="relative md:w-[400px] border-l-2 border-newBlack-5 p-4 max-lg:mt-7">
+                <div className="relative md:w-[400px] border-l-2 border-neutral-600 p-4 max-lg:mt-7">
                   {/* Top border */}
-                  <div className="absolute top-0 left-0 w-[30px] border-t-2 border-newBlack-5" />
-                  <div className="absolute -mt-8 bg-white px-4 text-xl lg:text-2xl xl:text-4xl italic text-newGray-2 font-light">
+                  <div className="absolute top-0 left-0 w-[30px] border-t-2 border-neutral-600" />
+                  <div className="absolute -mt-8 bg-white px-4 text-xl lg:text-2xl xl:text-4xl italic text-neutral-400 font-light">
                     Previous sessions
                   </div>
                   <div className="mt-2 lg:mt-8 flex flex-col gap-4">
@@ -303,7 +303,7 @@ function PlanBLabs() {
                           href={session.liveUrl ?? ''}
                           target="_blank"
                           rel="noreferrer"
-                          className="text-darkOrange-5 underline hover:font-medium"
+                          className="text-orange-500 underline hover:font-medium"
                         >
                           {session.title}
                         </a>
@@ -350,15 +350,15 @@ function PlanBLabs() {
 const Professor = ({ professor }: { professor: FullProfessor }) => {
   return (
     <section className="max-w-[1200px] w-full px-4 self-center flex flex-col mt-7 md:mt-16">
-      <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
+      <h4 className="subtitle-medium-caps-18px text-orange-500">
         {t('words.professor')}
       </h4>
       <p className="mt-4 md:mt-6 label-large-20px md:display-small-32px">
         {t('labs.coordinatedBy')}{' '}
-        <span className="text-darkOrange-5 label-large-20px md:display-small-32px">
+        <span className="text-orange-500 label-large-20px md:display-small-32px">
           <Link
             to={`/professor/${formatNameForURL(professor.name || '')}-${professor.id}`}
-            className="hover:text-darkOrange-5 hover:font-medium"
+            className="hover:text-orange-500 hover:font-medium"
           >
             {professor.name}
           </Link>

@@ -97,7 +97,7 @@ function RouteComponent() {
           src={luganoBgImage}
           alt=""
           className={cn(
-            'border-4 border-newBlue-1 absolute inset-0',
+            'border-4 border-blue-500 absolute inset-0',
             'h-full w-full opacity-23 object-cover z-0',
             'rounded-tl-[68px] rounded-br-[68px]',
             'lg:rounded-tl-[200px] lg:rounded-br-[200px]',

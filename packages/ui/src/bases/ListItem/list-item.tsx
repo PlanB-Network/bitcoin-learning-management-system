@@ -43,7 +43,7 @@ const listItemVariant = cva(
         dark: 'border-white/10',
         light: 'border-black/10',
         lightMaroon: 'border-black/10',
-        grey: 'border-newGray-6',
+        grey: 'border-neutral-50',
       },
       wrapOnMobile: {
         false: '',
@@ -63,8 +63,8 @@ const leftTextListItemVariant = cva(
       variant: {
         dark: 'text-white/70',
         light: 'text-neutral-400',
-        lightMaroon: 'text-maroon-8',
-        grey: 'text-newGray-1',
+        lightMaroon: 'text-brown-700',
+        grey: 'text-neutral-500',
       },
     },
   },
@@ -80,8 +80,8 @@ const rightTextListItemVariant = cva(
       variant: {
         dark: 'text-white',
         light: 'text-black',
-        lightMaroon: 'text-maroon-11',
-        grey: 'text-newBlack-3',
+        lightMaroon: 'text-brown-950',
+        grey: 'text-neutral-800',
       },
     },
   },

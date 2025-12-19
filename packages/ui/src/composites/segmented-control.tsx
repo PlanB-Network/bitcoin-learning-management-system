@@ -65,7 +65,7 @@ function SegmentedControl({
       data-variant={variant}
       data-size={size}
       className={cn(
-        'bg-newGray-6 py-1 group/toggle-group flex flex-wrap w-fit items-center rounded-xl',
+        'bg-neutral-50 py-1 group/toggle-group flex flex-wrap w-fit items-center rounded-xl',
         className,
       )}
       {...props}
@@ -97,7 +97,7 @@ function SegmentedControlItem({
           size: context.size || size,
           variant: context.variant || variant,
         }),
-        'mx-1 overflow-hidden !body-12px md:!body-14px !text-newBlack-5 shadow-none data-[state=on]:!text-newBlack-3 data-[state=on]:!font-medium data-[state=on]:bg-white data-[state=on]:shadow-sm max-md:text-xs hover:bg-newGray-5 min-w-0 flex-1 shrink-0 focus:z-10 focus-visible:z-10 border-0 rounded-lg',
+        'mx-1 overflow-hidden !body-12px md:!body-14px !text-neutral-600 shadow-none data-[state=on]:!text-neutral-800 data-[state=on]:!font-medium data-[state=on]:bg-white data-[state=on]:shadow-sm max-md:text-xs hover:bg-neutral-100 min-w-0 flex-1 shrink-0 focus:z-10 focus-visible:z-10 border-0 rounded-lg',
         className,
       )}
       {...props}

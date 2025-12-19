@@ -64,7 +64,7 @@ function CourseRetakeExam() {
 
           {isExamResultsFetched && examResults && examResults.length === 0 && (
             <>
-              <p className="body-14px md:subtitle-large-med-20px text-dashboardSectionText/75 md:text-newBlack-1">
+              <p className="body-14px md:subtitle-large-med-20px text-dashboardSectionText/75 md:text-neutral-1000">
                 {t('dashboard.course.completionExamInfo')}
               </p>
               <div className="flex justify-center items-center relative w-full max-w-[264px] md:max-w-[652px] mt-7 md:mt-10">
@@ -142,7 +142,7 @@ const CourseExamsTable = ({
             <span className="max-md:hidden">{t('words.status')}</span>
           </span>
         </div>
-        <div className="h-px bg-newGray-1" />
+        <div className="h-px bg-neutral-500" />
         {[...examResults]
           .sort(
             (a, b) =>
@@ -163,14 +163,14 @@ const CourseExamsTable = ({
               <div
                 className={cn(
                   'flex flex-col py-2.5',
-                  isCollapsed && 'bg-newGray-6 rounded-b-[20px]',
+                  isCollapsed && 'bg-neutral-50 rounded-b-[20px]',
                 )}
                 key={exam.id}
               >
                 <button
                   type="button"
                   onClick={() => toggleCollapse(index)}
-                  className="cursor-pointer hover:font-medium body-14px md:body-16px text-newBlack-1 flex md:justify-between items-center px-2.5 text-start"
+                  className="cursor-pointer hover:font-medium body-14px md:body-16px text-neutral-1000 flex md:justify-between items-center px-2.5 text-start"
                   tabIndex={0}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
@@ -191,7 +191,7 @@ const CourseExamsTable = ({
                   <span
                     className={cn(
                       'md:text-center font-medium w-[70px] md:w-[130px]',
-                      exam.succeeded ? 'text-green-500' : 'text-red-5',
+                      exam.succeeded ? 'text-green-500' : 'text-red-400',
                     )}
                   >
                     {exam.score}%
@@ -200,7 +200,7 @@ const CourseExamsTable = ({
                     <span
                       className={cn(
                         'max-md:hidden body-16px italic',
-                        exam.succeeded ? 'text-green-500' : 'text-red-5',
+                        exam.succeeded ? 'text-green-500' : 'text-red-400',
                       )}
                     >
                       {exam.succeeded
@@ -225,7 +225,7 @@ const CourseExamsTable = ({
                   {exam.succeeded &&
                     (exam.isTimestamped ? (
                       <div className="flex flex-col w-full max-w-[549px] items-center max-md:px-3 max-md:pt-6 max-md:pb-3 pt-5">
-                        <span className="subtitle-small-caps-14px text-newBlack-5">
+                        <span className="subtitle-small-caps-14px text-neutral-600">
                           {t('dashboard.myCourses.yourCertificate')}
                         </span>
 
@@ -286,7 +286,7 @@ const CourseExamsTable = ({
                             '/tutorials/contribution/others/pbn-certificate-timestamping-dd16f8c0-00c1-45fd-8792-920612bed18f'
                           }
                           target="_blank"
-                          className="mt-4 md:mt-1 md:self-start max-md:self-center flex flex-row items-center gap-2 text-newBlack-5 hover:text-newOrange-5 hover:underline max-md:order-3"
+                          className="mt-4 md:mt-1 md:self-start max-md:self-center flex flex-row items-center gap-2 text-neutral-600 hover:text-orange-200 hover:underline max-md:order-3"
                         >
                           <ApprovedIcon className="size-4" />
                           <span>{t('dashboard.myCourses.verify')}</span>
@@ -321,7 +321,7 @@ const CourseExamsTable = ({
                         </div>
 
                         <div className="flex flex-col items-center justify-center w-full gap-4 md:gap-7 max-md:px-4">
-                          <span className="whitespace-pre-line text-center body-14px-medium md:body-medium-16px text-newBlack-1">
+                          <span className="whitespace-pre-line text-center body-14px-medium md:body-medium-16px text-neutral-1000">
                             {t('courses.exam.certificateGeneration')}
                             <TimeStampDialog />{' '}
                             {t('courses.exam.certificateAvailable')}
@@ -343,7 +343,7 @@ const CourseExamsTable = ({
                       </div>
                       {!examResults.some((e) => e.succeeded) && (
                         <div className="flex flex-col items-center justify-center w-full gap-4 md:gap-7 max-md:px-4">
-                          <span className="whitespace-pre-line text-center body-14px-medium md:body-medium-16px text-newBlack-1">
+                          <span className="whitespace-pre-line text-center body-14px-medium md:body-medium-16px text-neutral-1000">
                             {t('courses.exam.dontGiveUpTryAgain')}
                           </span>
                           <img src={SandClockGif} alt="Time" />
@@ -381,7 +381,7 @@ const CourseExamsTable = ({
                   )}
 
                   <section className="flex flex-col max-md:gap-4 w-full md:py-5">
-                    <span className="subtitle-small-caps-14px text-newBlack-1 md:text-newBlack-5 px-1.5 md:px-5">
+                    <span className="subtitle-small-caps-14px text-neutral-1000 md:text-neutral-600 px-1.5 md:px-5">
                       {t('courses.exam.answersReview')}
                     </span>
                     <AnswersReviewPanel

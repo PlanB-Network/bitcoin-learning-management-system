@@ -567,7 +567,7 @@ export const SideBarItem = ({
                   } as React.CSSProperties
                 }
                 className={cn(
-                  'align-middle whitespace-nowrap text-newBlack-1 inline-block',
+                  'align-middle whitespace-nowrap text-neutral-1000 inline-block',
                   description || isMain
                     ? 'text-lg'
                     : isActive
@@ -582,7 +582,7 @@ export const SideBarItem = ({
             </div>
 
             {description && (
-              <span className="text-[10px] text-newBlack-1/30 leading-[120%]">
+              <span className="text-[10px] text-neutral-1000/30 leading-[120%]">
                 {description}
               </span>
             )}

@@ -33,12 +33,12 @@ const CoursesMarkdownBody = ({
           <CodeRenderer className={className}>{children}</CodeRenderer>
         ),
         h2: ({ children }) => (
-          <h2 className="max-lg:title-large-sb-24px lg:text-3xl leading-snug text-darkOrange-5">
+          <h2 className="max-lg:title-large-sb-24px lg:text-3xl leading-snug text-orange-500">
             <div className="flex w-auto items-center">{children}</div>
           </h2>
         ),
         h3: ({ children }) => (
-          <h3 className="max-lg:title-medium-sb-18px lg:text-2xl leading-snug text-darkOrange-5">
+          <h3 className="max-lg:title-medium-sb-18px lg:text-2xl leading-snug text-orange-500">
             {children}
           </h3>
         ),

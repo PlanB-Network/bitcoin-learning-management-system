@@ -87,15 +87,15 @@ export const Default: Story = {
           {bitcoinBlocks.map((block) => (
             <TableRow key={block.block}>
               <TableCell className="font-medium">{block.block}</TableCell>
-              <TableCell className="font-mono text-xs text-newGray-2">
+              <TableCell className="font-mono text-xs text-neutral-400">
                 {block.hash}
               </TableCell>
               <TableCell>{block.transactions}</TableCell>
               <TableCell>{block.minedBy}</TableCell>
-              <TableCell className="text-right font-medium text-darkOrange-5">
+              <TableCell className="text-right font-medium text-orange-500">
                 {block.reward}
               </TableCell>
-              <TableCell className="text-newGray-1 text-sm">
+              <TableCell className="text-neutral-500 text-sm">
                 {block.timestamp}
               </TableCell>
             </TableRow>

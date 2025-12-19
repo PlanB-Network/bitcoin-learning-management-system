@@ -256,7 +256,7 @@ function AdminCoupons() {
             variant={filters.has('all') ? 'primary' : 'outline'}
             size="s"
             onClick={() => toggle('all')}
-            className="focus-visible:border-newOrange-1"
+            className="focus-visible:border-orange-500"
           >
             {`${t('dashboard.adminPanel.coupons.filters.all')}`}
           </Button>
@@ -268,7 +268,7 @@ function AdminCoupons() {
                 variant={filters.has(filter) ? 'primary' : 'outline'}
                 size="s"
                 onClick={() => toggle(filter)}
-                className="focus-visible:border-newOrange-1"
+                className="focus-visible:border-orange-500"
               >
                 {`${t(`dashboard.adminPanel.coupons.filters.${filter}`)}`}
               </Button>
@@ -402,7 +402,7 @@ function AdminCoupons() {
               );
             })}
             {coupons.data?.length === 0 && !coupons.isLoading && (
-              <p className="md:col-span-2 text-center text-newGray-2 py-4">
+              <p className="md:col-span-2 text-center text-neutral-400 py-4">
                 {t('dashboard.adminPanel.coupons.noCouponsFound')}
               </p>
             )}
@@ -566,11 +566,11 @@ function AdminCoupons() {
                 <h3 className="subtitle-medium-med-16px">
                   {t('dashboard.adminPanel.coupons.discountValue')}
                 </h3>
-                <small className="text-newGray-1">
+                <small className="text-neutral-500">
                   {t('dashboard.adminPanel.coupons.discountValueExplanation')}
                 </small>
                 <input
-                  className="w-full border border-newGray-1 rounded-lg p-2"
+                  className="w-full border border-neutral-500 rounded-lg p-2"
                   type="number"
                   step="5"
                   min="5"
@@ -583,7 +583,7 @@ function AdminCoupons() {
                 <fieldset className="w-full">
                   <h3>{t('dashboard.adminPanel.coupons.numberOfCodes')}</h3>
                   <input
-                    className="w-full border border-newGray-1 rounded-lg p-2"
+                    className="w-full border border-neutral-500 rounded-lg p-2"
                     type="number"
                     min="1"
                     value={formNumberOfCodes}
@@ -598,13 +598,13 @@ function AdminCoupons() {
                     <h3 className="subtitle-medium-med-16px">
                       {t('dashboard.adminPanel.coupons.discountCode')}
                     </h3>
-                    <small className="text-newGray-1">
+                    <small className="text-neutral-500">
                       {t(
                         'dashboard.adminPanel.coupons.discountCodeExplanation',
                       )}
                     </small>
                     <input
-                      className="w-full border border-newGray-1 rounded-lg p-2"
+                      className="w-full border border-neutral-500 rounded-lg p-2"
                       type="text"
                       value={formCode}
                       placeholder={t(
@@ -619,7 +619,7 @@ function AdminCoupons() {
                       {t('dashboard.adminPanel.coupons.maximumNumberOfUse')}
                     </h3>
                     <input
-                      className="w-full border border-newGray-1 rounded-lg p-2"
+                      className="w-full border border-neutral-500 rounded-lg p-2"
                       type="number"
                       step="1"
                       min="1"
@@ -660,7 +660,7 @@ function AdminCoupons() {
               </div>
 
               <ul className="relative border rounded-lg p-2">
-                <li className="absolute top-0 right-0 text-newGray-3 p-1 rounded-md cursor-pointer">
+                <li className="absolute top-0 right-0 text-neutral-300 p-1 rounded-md cursor-pointer">
                   {codeCopied ? (
                     <div className="pt-1 pr-2 text-orange-400">
                       {t('dashboard.adminPanel.coupons.discountCodeCopied')}
@@ -754,7 +754,7 @@ function CouponCard({
   onDeleteClick,
 }: CouponCardProps) {
   return (
-    <article className="p-2 rounded-[10px] flex flex-col gap-1.5 bg-newGray-6 border border-newGray-5 shadow-course-navigation-sm text-newBlack-1">
+    <article className="p-2 rounded-[10px] flex flex-col gap-1.5 bg-neutral-50 border border-neutral-100 shadow-course-navigation-sm text-neutral-1000">
       <div className="flex justify-between items-center">
         <h3 className="subtitle-medium-med-16px break-all pr-2 max-w-[calc(100%-60px)]">
           {coupon.code}
@@ -771,11 +771,11 @@ function CouponCard({
           </p>
           <p className="body-14px-medium truncate">{coupon.owner}</p>
           <div className="flex items-center gap-x-2 gap-y-1 flex-wrap">
-            <span className="body-14px text-newBlack-5">
+            <span className="body-14px text-neutral-600">
               {t('dashboard.adminPanel.coupons.tableHead.uses')}:
             </span>
             <span className="body-14px-medium">{coupon.uses}</span>
-            <span className="body-14px text-newBlack-5">
+            <span className="body-14px text-neutral-600">
               {t('words.total')}:
             </span>
             <span className="body-14px-medium">{coupon.maxUses}</span>
@@ -845,7 +845,7 @@ function MobileSortDropdown({
   };
 
   return (
-    <div className="lg:hidden w-full bg-white rounded-lg border border-newGray-4 flex flex-col">
+    <div className="lg:hidden w-full bg-white rounded-lg border border-neutral-200 flex flex-col">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
@@ -854,11 +854,11 @@ function MobileSortDropdown({
         <span
           className={cn(
             'text-sm ',
-            !selectedKey ? 'text-newGray-2' : 'text-newBlack-1',
+            !selectedKey ? 'text-neutral-400' : 'text-neutral-1000',
           )}
         >
           {selectedKey && (
-            <span className="text-newGray-2">
+            <span className="text-neutral-400">
               {t('dashboard.adminPanel.coupons.mobileSort.sortBy')}:{' '}
             </span>
           )}
@@ -874,7 +874,7 @@ function MobileSortDropdown({
       </button>
 
       {isOpen && (
-        <div className="flex flex-col border-t border-newGray-3">
+        <div className="flex flex-col border-t border-neutral-300">
           {options.map((option) => (
             <button
               key={option.key}
@@ -884,7 +884,7 @@ function MobileSortDropdown({
                 setIsOpen(false);
               }}
               className={`w-full px-3 py-2 text-left text-sm flex flex-col justify-center items-start min-h-8
-                ${selectedKey === option.key ? 'bg-newGray-6 text-black font-medium' : 'text-black hover:bg-newGray-6'}`}
+                ${selectedKey === option.key ? 'bg-neutral-50 text-black font-medium' : 'text-black hover:bg-neutral-50'}`}
             >
               {option.label}
             </button>

@@ -10,7 +10,7 @@ interface BackLinkProps {
 export const BackLink = ({
   to,
   label,
-  className = 'flex items-center subtitle-large-med-20px md:display-large text-darkOrange-5 hover:text-white mb-[30px]',
+  className = 'flex items-center subtitle-large-med-20px md:display-large text-orange-500 hover:text-white mb-[30px]',
 }: BackLinkProps) => {
   return (
     <Link to={to} className={className}>

@@ -335,12 +335,12 @@ function Assignment() {
             {courseInfo.assignmentDescription && (
               <CollapsibleDropdown
                 title={t('dashboard.course.generalInformation')}
-                className="border border-newGray-4"
+                className="border border-neutral-200"
                 variant="dark"
                 defaultOpen={!hasAffectedAssignment}
                 icon={<LuCircleAlert />}
               >
-                <p className="whitespace-pre-line text-newBlack-4 body-14px md:body-16px ">
+                <p className="whitespace-pre-line text-neutral-700 body-14px md:body-16px ">
                   {courseInfo.assignmentDescription}
                 </p>
               </CollapsibleDropdown>
@@ -361,7 +361,7 @@ function Assignment() {
                     {t('dashboard.course.projectRankingInstructions')}
                   </AlertTitle>
                   <AlertDescription>
-                    <div className="flex flex-col text-newBlack-2">
+                    <div className="flex flex-col text-neutral-900">
                       <p className="font-medium">
                         {t('dashboard.course.rankingOnly24Hours')}
                       </p>
@@ -375,7 +375,7 @@ function Assignment() {
             {canRankAssignments && (
               <>
                 <div className="flex flex-col gap-4">
-                  <span className="subtitle-small-caps-14px text-newBlack-5">
+                  <span className="subtitle-small-caps-14px text-neutral-600">
                     {t('dashboard.course.mostPreferred')}
                   </span>
 
@@ -398,7 +398,7 @@ function Assignment() {
                     />
                   ))}
 
-                  <span className="subtitle-small-caps-14px text-newBlack-5">
+                  <span className="subtitle-small-caps-14px text-neutral-600">
                     {t('dashboard.course.leastPreferred')}
                   </span>
                 </div>
@@ -506,7 +506,7 @@ function Assignment() {
                     {t('dashboard.course.submissionInstructions')}
                   </AlertTitle>
                   <AlertDescription>
-                    <ul className="list-disc pl-6 text-newBlack-2">
+                    <ul className="list-disc pl-6 text-neutral-900">
                       <li>
                         <span className="font-medium">
                           {t('dashboard.course.submitBefore', {
@@ -541,21 +541,21 @@ function Assignment() {
                         <button
                           type="button"
                           onClick={() => fileInputRef.current?.click()}
-                          className="h-full flex items-center px-3.5 rounded-l-[10px] border border-newBlack-4 md:text-lg leading-normal font-medium bg-darkOrange-5 text-white hover:cursor-pointer shrink-0 focus:border-newBlack-2 focus:bg-darkOrange-6"
+                          className="h-full flex items-center px-3.5 rounded-l-[10px] border border-neutral-700 md:text-lg leading-normal font-medium bg-orange-500 text-white hover:cursor-pointer shrink-0 focus:border-neutral-900 focus:bg-orange-600"
                         >
                           {t('dashboard.careerPortal.chooseFile')}
                         </button>
-                        <span className="h-full flex items-center px-3.5 body-16px md:label-medium-16px text-newBlack-5 truncate w-full border-r border-y border-newBlack-4 rounded-r-[10px]">
+                        <span className="h-full flex items-center px-3.5 body-16px md:label-medium-16px text-neutral-600 truncate w-full border-r border-y border-neutral-700 rounded-r-[10px]">
                           {selectedFileName ||
                             t('dashboard.careerPortal.noFileSelected')}
                         </span>
                       </div>
 
-                      <p className="body-14px text-newGray-1">
+                      <p className="body-14px text-neutral-500">
                         {t('dashboard.careerPortal.acceptedFormat')}
                       </p>
                       {workErrorMessage && (
-                        <p className="text-red-6 body-14px">
+                        <p className="text-red-500 body-14px">
                           {workErrorMessage}
                         </p>
                       )}
@@ -580,8 +580,8 @@ function Assignment() {
             )}
 
             {courseInfo.isAssignmentGradingPublished && (
-              <section className="flex flex-col w-full bg-white rounded-2xl border border-newGray-5">
-                <div className="px-2 md:px-6 py-3 border-b border-newGray-5 mobile-h3 md:title-large-sb-24px flex gap-2 md:gap-4 items-center">
+              <section className="flex flex-col w-full bg-white rounded-2xl border border-neutral-100">
+                <div className="px-2 md:px-6 py-3 border-b border-neutral-100 mobile-h3 md:title-large-sb-24px flex gap-2 md:gap-4 items-center">
                   <img
                     src={Certificate}
                     alt={'Certificate icon'}
@@ -676,7 +676,7 @@ const RankingItem = ({
     >
       {/* Mobile */}
       <div className="md:hidden w-full flex">
-        <div className="w-10 py-2 bg-darkOrange-0 border border-darkOrange-1 rounded-l-lg flex flex-col justify-between items-center">
+        <div className="w-10 py-2 bg-orange-50 border border-orange-100 rounded-l-lg flex flex-col justify-between items-center">
           <button
             className={cn(
               'w-8.5 h-6.5 px-2 py-2.5 rounded-lg flex items-center justify-center transition-colors',
@@ -690,7 +690,7 @@ const RankingItem = ({
           </button>
 
           <div className="flex-1 flex items-center justify-center">
-            <span className="text-darkOrange-7 font-semibold text-base leading-5">
+            <span className="text-orange-700 font-semibold text-base leading-5">
               {rank}
             </span>
           </div>
@@ -706,12 +706,12 @@ const RankingItem = ({
 
         <div
           className={cn(
-            'flex-1 p-2 bg-white border-t border-r border-b border-newGray-5 rounded-r-xl transition-all duration-200 flex flex-wrap items-center content-center',
+            'flex-1 p-2 bg-white border-t border-r border-b border-neutral-100 rounded-r-xl transition-all duration-200 flex flex-wrap items-center content-center',
             isDragging
-              ? 'border-newGray-3 bg-newGray-6 opacity-50'
-              : 'bg-white border-newGray-5',
+              ? 'border-neutral-300 bg-neutral-50 opacity-50'
+              : 'bg-white border-neutral-100',
             isDraggedOver && !isDragging
-              ? 'border-darkOrange-3 bg-darkOrange-0'
+              ? 'border-orange-300 bg-orange-50'
               : '',
           )}
           draggable
@@ -748,27 +748,25 @@ const RankingItem = ({
             )}
             type="button"
           >
-            <LuGripVertical className="size-4.5 text-newGray-3" />
+            <LuGripVertical className="size-4.5 text-neutral-300" />
           </button>
         </div>
       </div>
 
       {/* Desktop */}
       <div className="hidden md:contents">
-        <div className="size-15 border rounded-lg bg-darkOrange-0 border-darkOrange-1 flex items-center justify-center">
-          <span className="text-darkOrange-7 display-small-med-32px">
-            {rank}
-          </span>
+        <div className="size-15 border rounded-lg bg-orange-50 border-orange-100 flex items-center justify-center">
+          <span className="text-orange-700 display-small-med-32px">{rank}</span>
         </div>
 
         <div
           className={cn(
             'flex-1 px-4 py-1 border rounded-xl flex items-center gap-5 transition-all duration-200',
             isDragging
-              ? 'border-newGray-3 bg-newGray-6 opacity-50'
-              : 'bg-white border-newGray-5',
+              ? 'border-neutral-300 bg-neutral-50 opacity-50'
+              : 'bg-white border-neutral-100',
             isDraggedOver && !isDragging
-              ? 'border-darkOrange-3 bg-darkOrange-0'
+              ? 'border-orange-300 bg-orange-50'
               : '',
           )}
           draggable
@@ -778,7 +776,7 @@ const RankingItem = ({
           <div className="w-[34px] flex flex-col justify-between items-center h-full">
             <button
               className={cn(
-                'h-6.5 px-2 py-2.5 rounded-lg hover:bg-newGray-5 flex items-center justify-center transition-colors',
+                'h-6.5 px-2 py-2.5 rounded-lg hover:bg-neutral-100 flex items-center justify-center transition-colors',
                 rank === 1 ? 'opacity-30 cursor-not-allowed' : '',
               )}
               onClick={rank === 1 ? undefined : onMoveUp}
@@ -788,7 +786,7 @@ const RankingItem = ({
               <BsChevronUp className="size-4.5 text-black" />
             </button>
             <button
-              className="h-6.5 px-2 py-2.5 rounded-lg hover:bg-newGray-5 flex items-center justify-center transition-colors"
+              className="h-6.5 px-2 py-2.5 rounded-lg hover:bg-neutral-100 flex items-center justify-center transition-colors"
               onClick={onMoveDown}
               type="button"
             >
@@ -814,12 +812,12 @@ const RankingItem = ({
 
             <button
               className={cn(
-                'size-6 hover:bg-newGray-5 rounded flex items-center justify-center transition-colors cursor-grab active:cursor-grabbing',
+                'size-6 hover:bg-neutral-100 rounded flex items-center justify-center transition-colors cursor-grab active:cursor-grabbing',
                 isDragging && 'cursor-grabbing',
               )}
               type="button"
             >
-              <LuGripVertical className="size-4.5 text-newGray-3" />
+              <LuGripVertical className="size-4.5 text-neutral-300" />
             </button>
           </div>
         </div>
@@ -846,7 +844,7 @@ const InformationalPanel = ({
   return (
     <div
       className={cn(
-        'flex w-full flex-col justify-center items-center gap-4 md:gap-8 px-4 py-5 md:p-8 bg-newGray-6 border border-newGray-5 rounded-2xl shadow-course-navigation text-center',
+        'flex w-full flex-col justify-center items-center gap-4 md:gap-8 px-4 py-5 md:p-8 bg-neutral-50 border border-neutral-100 rounded-2xl shadow-course-navigation text-center',
         className,
       )}
     >
@@ -859,18 +857,18 @@ const InformationalPanel = ({
           />
         )}
         {title && (
-          <h3 className="text-newBlack-1 label-medium-med-16px md:label-large-med-20px">
+          <h3 className="text-neutral-1000 label-medium-med-16px md:label-large-med-20px">
             {title}
           </h3>
         )}
       </div>
       {subtitle && (
-        <span className="text-darkOrange-5 display-medium-bold-caps-32px md:display-large-bold-caps-48px">
+        <span className="text-orange-500 display-medium-bold-caps-32px md:display-large-bold-caps-48px">
           {subtitle}
         </span>
       )}
       {description && (
-        <p className="body-14px md:label-18px text-newBlack-1 whitespace-pre-line">
+        <p className="body-14px md:label-18px text-neutral-1000 whitespace-pre-line">
           {description}
         </p>
       )}
@@ -882,11 +880,11 @@ const InfoRow = ({ icon, label, value }: InfoRowProps) => {
   const Icon = icon;
   return (
     <div className="flex items-center gap-2 flex-wrap w-full justify-between border-b border-neutral-50 py-1 last:border-b-0">
-      <div className="flex items-center gap-2 text-newGray-1">
+      <div className="flex items-center gap-2 text-neutral-500">
         <Icon size={24} />
         <span className="body-16px">{label}</span>
       </div>
-      <span className="text-newBlack-3 body-16px">{value}</span>
+      <span className="text-neutral-800 body-16px">{value}</span>
     </div>
   );
 };

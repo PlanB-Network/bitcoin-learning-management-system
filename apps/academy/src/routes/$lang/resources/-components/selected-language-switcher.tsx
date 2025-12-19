@@ -47,7 +47,7 @@ export const LanguageResourcesSectionHeader = ({
   return (
     <div
       className={cn(
-        'flex items-center gap-3 pt-2.5 border-t border-t-newGray-4 mb-6',
+        'flex items-center gap-3 pt-2.5 border-t border-t-neutral-200 mb-6',
         addMarginTop ? 'mt-8' : 'mt-2.5',
       )}
     >

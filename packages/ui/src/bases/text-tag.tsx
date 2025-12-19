@@ -25,17 +25,17 @@ const textTagVariants = cva(
       },
       variant: {
         darkMaroon:
-          'bg-maroon-2 text-maroon-8 dark:bg-maroon-9 dark:text-white [&.light100]:bg-maroon-3',
+          'bg-brown-200 text-brown-700 dark:bg-brown-800 dark:text-white [&.light100]:bg-brown-300',
         green:
           'bg-green-50 text-green-700 dark:bg-green-800 dark:text-green-100 [&.light100]:bg-green-100 [&.dark100]:bg-green-800 [&.dark100]:text-green-100',
-        grey: 'bg-neutral-50 text-neutral-800 dark:bg-newBlack-3 dark:text-newGray-4 [&.light100]:bg-brown-200 [&.dark100]:bg-newBlack-5 [&.dark100]:text-newGray-5',
+        grey: 'bg-neutral-50 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200 [&.light100]:bg-brown-200 [&.dark100]:bg-neutral-600 [&.dark100]:text-neutral-100',
         lightMaroon:
-          'bg-maroon-1 text-maroon-8 dark:bg-maroon-8 dark:text-white [&.light100]:bg-maroon-2 [&.dark100]:bg-maroon-8 [&.dark100]:text-white',
+          'bg-brown-50 text-brown-700 dark:bg-brown-700 dark:text-white [&.light100]:bg-brown-200 [&.dark100]:bg-brown-700 [&.dark100]:text-white',
         orange:
-          'bg-darkOrange-0 text-darkOrange-7 dark:bg-darkOrange-8 dark:text-darkOrange-2 [&.light100]:bg-darkOrange-1 [&.dark100]:bg-darkOrange-8 [&.dark100]:text-darkOrange-2',
-        yellow: 'bg-yellow-100 text-yellow-8',
+          'bg-orange-50 text-orange-700 dark:bg-orange-800 dark:text-orange-200 [&.light100]:bg-orange-100 [&.dark100]:bg-orange-800 [&.dark100]:text-orange-200',
+        yellow: 'bg-yellow-100 text-yellow-700',
         withoutFill:
-          'bg-transparent text-newBlack-5 dark:text-newGray-3 [&.dark100]:text-newGray-4',
+          'bg-transparent text-neutral-600 dark:text-neutral-300 [&.dark100]:text-neutral-200',
       },
     },
   },

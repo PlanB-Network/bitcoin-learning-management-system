@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 export { ToastContainer } from 'react-toastify';
 
-const toastVariants = cva('md:!w-[299px] focus:ring-1 focus:ring-newGray-2', {
+const toastVariants = cva('md:!w-[299px] focus:ring-1 focus:ring-neutral-400', {
   defaultVariants: {
     color: 'primary',
     mode: 'light',
@@ -14,13 +14,13 @@ const toastVariants = cva('md:!w-[299px] focus:ring-1 focus:ring-newGray-2', {
   variants: {
     color: {
       neutral:
-        '!bg-newGray-6 dark:!bg-newBlack-3 hover:!bg-newGray-5 hover:dark:!bg-newBlack-4 focus:!bg-newGray-5 focus:dark:!bg-newBlack-4',
+        '!bg-neutral-50 dark:!bg-neutral-800 hover:!bg-neutral-100 hover:dark:!bg-neutral-700 focus:!bg-neutral-100 focus:dark:!bg-neutral-700',
       primary:
-        '!bg-darkOrange-0 dark:!bg-darkOrange-10 hover:!bg-darkOrange-1 hover:dark:!bg-darkOrange-9 focus:!bg-darkOrange-1 focus:dark:!bg-darkOrange-9',
+        '!bg-orange-50 dark:!bg-orange-950 hover:!bg-orange-100 hover:dark:!bg-orange-900 focus:!bg-orange-100 focus:dark:!bg-orange-900',
       success:
         '!bg-green-50 dark:!bg-green-800 hover:!bg-green-100 hover:dark:!bg-green-700 focus:!bg-green-100 focus:dark:!bg-green-700',
       warning:
-        '!bg-red-1 dark:!bg-red-9 hover:!bg-red-2 hover:dark:!bg-red-8 focus:!bg-red-2 focus:dark:!bg-red-8',
+        '!bg-red-50 dark:!bg-red-800 hover:!bg-red-100 hover:dark:!bg-red-700 focus:!bg-red-100 focus:dark:!bg-red-700',
     },
     mode: {
       dark: 'dark',
@@ -36,7 +36,7 @@ const textVariants = cva('body-medium-12px', {
   variants: {
     mode: {
       dark: '!text-white',
-      light: '!text-newBlack-1',
+      light: '!text-neutral-1000',
     },
   },
 });
@@ -48,10 +48,10 @@ const iconVariants = cva('shrink-0', {
   },
   variants: {
     color: {
-      neutral: '!text-newGray-3 dark:!text-newGray-2',
-      primary: '!text-darkOrange-4 dark:!text-darkOrange-6',
+      neutral: '!text-neutral-300 dark:!text-neutral-400',
+      primary: '!text-orange-400 dark:!text-orange-600',
       success: '!text-green-300 dark:!text-green-500',
-      warning: '!text-red-5',
+      warning: '!text-red-400',
     },
     mode: {
       dark: 'dark',
@@ -67,10 +67,10 @@ const progressBarVariants = cva('', {
   },
   variants: {
     color: {
-      neutral: '!bg-newGray-3 dark:!bg-newGray-2',
-      primary: '!bg-darkOrange-4 dark:!bg-darkOrange-6',
+      neutral: '!bg-neutral-300 dark:!bg-neutral-400',
+      primary: '!bg-orange-400 dark:!bg-orange-600',
       success: '!bg-green-300 dark:!bg-green-500',
-      warning: '!bg-red-5',
+      warning: '!bg-red-400',
     },
     mode: {
       dark: 'dark',
@@ -86,10 +86,10 @@ const toastCloseButtonVariants = cva('shrink-0', {
   },
   variants: {
     color: {
-      neutral: '!text-newGray-3 dark:!text-newGray-2',
-      primary: '!text-darkOrange-4 dark:!text-darkOrange-6',
+      neutral: '!text-neutral-300 dark:!text-neutral-400',
+      primary: '!text-orange-400 dark:!text-orange-600',
       success: '!text-green-300 dark:!text-green-500',
-      warning: '!text-red-5',
+      warning: '!text-red-400',
     },
     mode: {
       dark: 'dark hover:!brightness-110',

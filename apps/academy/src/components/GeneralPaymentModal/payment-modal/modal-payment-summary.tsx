@@ -34,7 +34,7 @@ export const ModalPaymentSummary = ({
   // };
 
   const Separator = () => (
-    <div className="w-full h-px bg-newGray-4 lg:bg-white/10" />
+    <div className="w-full h-px bg-neutral-200 lg:bg-white/10" />
   );
 
   return (
@@ -52,7 +52,7 @@ export const ModalPaymentSummary = ({
       /> */}
       <div
         className={cn(
-          'flex flex-col w-full max-w-[450px] p-2.5 lg:p-7 lg:m-7 backdrop-blur-md bg-newGray-5 lg:bg-black/75',
+          'flex flex-col w-full max-w-[450px] p-2.5 lg:p-7 lg:m-7 backdrop-blur-md bg-neutral-100 lg:bg-black/75',
           borderClassName,
         )}
       >
@@ -104,7 +104,7 @@ export const ModalPaymentSummary = ({
         </div>
         {/* <DescriptionWithBreaks /> */}
 
-        <span className="flex items-center justify-center gap-1 w-full px-4 py-2 text-darkOrange-5 lg:text-2xl leading-none bg-white lg:bg-white/10 rounded-lg mt-4">
+        <span className="flex items-center justify-center gap-1 w-full px-4 py-2 text-orange-500 lg:text-2xl leading-none bg-white lg:bg-white/10 rounded-lg mt-4">
           <span className="font-semibold">
             {getFormattedUnit(paidPriceDollars || 0, DEFAULT_CURRENCY, 0)}
           </span>

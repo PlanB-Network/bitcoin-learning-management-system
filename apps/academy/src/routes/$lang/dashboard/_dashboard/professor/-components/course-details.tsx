@@ -39,7 +39,7 @@ export const CourseDetails = ({ course }: { course: JoinedCourse }) => {
   );
 
   const infoTextClasses =
-    'flex flex-col py-1 px-4 bg-white rounded-md border border-newGray-4 overflow-y-scroll text-newBlack-3 body-14px !leading-[120%] whitespace-pre-line scrollbar-light';
+    'flex flex-col py-1 px-4 bg-white rounded-md border border-neutral-200 overflow-y-scroll text-neutral-800 body-14px !leading-[120%] whitespace-pre-line scrollbar-light';
 
   const labelClasses = 'leading-tight font-medium text-black';
 
@@ -59,7 +59,7 @@ export const CourseDetails = ({ course }: { course: JoinedCourse }) => {
 
   return (
     <div className="flex flex-col text-dashboardSectionTitle w-full mt-3 lg:mt-10">
-      <div className="flex flex-col gap-6 mb-5 lg:mb-8 lg:bg-newGray-6 lg:shadow-course-navigation lg:rounded-[20px] lg:p-5 max-w-xl lg:max-w-5xl">
+      <div className="flex flex-col gap-6 mb-5 lg:mb-8 lg:bg-neutral-50 lg:shadow-course-navigation lg:rounded-[20px] lg:p-5 max-w-xl lg:max-w-5xl">
         {/* Course details section */}
         <div className="flex flex-col gap-5 lg:gap-10 w-full items-center">
           <div className="flex max-lg:flex-col items-center justify-center w-full gap-x-15 gap-y-5">

@@ -30,7 +30,7 @@ export const CourseDashboardCard = ({
   const getStatusStyles = (progress: CourseProgressExtended | null) => {
     if (!progress)
       return {
-        bgColor: 'bg-newGray-5',
+        bgColor: 'bg-neutral-100',
         text: t('dashboard.myCourses.notStarted'),
       };
 
@@ -43,12 +43,12 @@ export const CourseDashboardCard = ({
     }
     if (progressPercentage > 0 || progressPercentage === 0) {
       return {
-        bgColor: 'bg-darkOrange-4',
+        bgColor: 'bg-orange-400',
         text: t('dashboard.myCourses.inProgress'),
       };
     }
     return {
-      bgColor: 'bg-newGray-5',
+      bgColor: 'bg-neutral-100',
       text: t('dashboard.myCourses.notStarted'),
     };
   };
@@ -109,10 +109,10 @@ export const CourseDashboardCard = ({
             {!isInProgress && (
               <div className="flex flex-col md:gap-2.5">
                 <div className="flex items-center md:justify-between gap-1">
-                  <span className="body-14px shrink-0 md:mr-2 font-normal text-newBlack-4 md:body-16px">
+                  <span className="body-14px shrink-0 md:mr-2 font-normal text-neutral-700 md:body-16px">
                     {t('dashboard.myCourses.professor')} {''}
                   </span>
-                  <span className="body-14px font-normal text-newBlack-4  line-clamp-1 md:text-black md:label-medium-med-16px">
+                  <span className="body-14px font-normal text-neutral-700  line-clamp-1 md:text-black md:label-medium-med-16px">
                     {course.mainProfessors
                       .map((professor) => professor.name)
                       .join(', ')}
@@ -121,10 +121,10 @@ export const CourseDashboardCard = ({
 
                 <hr className="max-md:hidden" />
                 <div className="flex items-center md:justify-between gap-1">
-                  <span className="body-14px font-normal text-newBlack-4 md:body-16px">
+                  <span className="body-14px font-normal text-neutral-700 md:body-16px">
                     {t('dashboard.myCourses.duration')} {''}
                   </span>
-                  <span className="body-14px font-normal text-newBlack-4 md:text-black md:label-medium-med-16px">{`${course.hours} hours`}</span>
+                  <span className="body-14px font-normal text-neutral-700 md:text-black md:label-medium-med-16px">{`${course.hours} hours`}</span>
                 </div>
 
                 <hr className="max-md:hidden" />
@@ -132,10 +132,10 @@ export const CourseDashboardCard = ({
                 {!progress && course.requiresPayment && (
                   <>
                     <div className="max-[1440px]:hidden min-[1440px]:flex items-center md:justify-between gap-1">
-                      <span className="body-14px font-normal text-newBlack-4 md:body-16px">
+                      <span className="body-14px font-normal text-neutral-700 md:body-16px">
                         {t('dashboard.myCourses.price')} {''}
                       </span>
-                      <span className="body-14px font-normal text-newBlack-4 md:text-black md:label-medium-med-16px">
+                      <span className="body-14px font-normal text-neutral-700 md:text-black md:label-medium-med-16px">
                         {course.onlinePriceDollars === null
                           ? `$${course.inpersonPriceDollars || 5300}`
                           : `$${course.onlinePriceDollars}`}
@@ -147,7 +147,7 @@ export const CourseDashboardCard = ({
               </div>
             )}
             <div className="max-md:hidden flex flex-col gap-4 order-2 min-[1440px]:order-1">
-              <span className="body-14px text-newBlack-4 line-clamp-2 min-[1440px]:line-clamp-4">
+              <span className="body-14px text-neutral-700 line-clamp-2 min-[1440px]:line-clamp-4">
                 {course.goal}
               </span>
               <hr className="max-[1440px]:hidden" />
@@ -159,7 +159,7 @@ export const CourseDashboardCard = ({
                   <span className="label-medium-med-16px text-black">
                     {t('dashboard.myCourses.yourProgress')}
                   </span>
-                  <span className="text-darkOrange-5 label-medium-med-16px">
+                  <span className="text-orange-500 label-medium-med-16px">
                     {progress.progressPercentage}%
                   </span>
                 </div>

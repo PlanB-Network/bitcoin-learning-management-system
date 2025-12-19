@@ -25,10 +25,10 @@ const linkStyles = cva('text-base tracking-wide', {
   },
   variants: {
     intent: {
-      default: 'underline text-newBlue-1',
+      default: 'underline text-blue-500',
       general: 'text-blue-500',
       glossary:
-        'text-yellow-7 border-b border-dotted border-yellow-7 cursor-help',
+        'text-yellow-600 border-b border-dotted border-yellow-600 cursor-help',
     },
   },
 });

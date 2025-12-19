@@ -62,11 +62,11 @@ export const GlossaryList = ({
               <Link
                 to="/resources/glossary/$wordId"
                 params={{ wordId: term.fileName }}
-                className="w-1/4 text-darkOrange-5 underline underline-offset-4 capitalize label-strong"
+                className="w-1/4 text-orange-500 underline underline-offset-4 capitalize label-strong"
               >
                 {term.term}
               </Link>
-              <p className="w-3/4 text-newBlack-3 line-clamp-5 text-justify body-large">
+              <p className="w-3/4 text-neutral-800 line-clamp-5 text-justify body-large">
                 {term.definition}
               </p>
             </div>
@@ -83,11 +83,11 @@ export const GlossaryList = ({
               <Link
                 to="/resources/glossary/$wordId"
                 params={{ wordId: term.fileName }}
-                className="w-full text-darkOrange-5 underline underline-offset-4 capitalize label-strong"
+                className="w-full text-orange-500 underline underline-offset-4 capitalize label-strong"
               >
                 {term.term}
               </Link>
-              <p className="w-full text-newBlack-3 line-clamp-5 text-justify body-large">
+              <p className="w-full text-neutral-800 line-clamp-5 text-justify body-large">
                 {term.definition}
               </p>
             </div>

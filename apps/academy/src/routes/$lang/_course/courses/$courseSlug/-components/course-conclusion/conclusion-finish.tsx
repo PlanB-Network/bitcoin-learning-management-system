@@ -68,19 +68,19 @@ const Professor = ({
 }) => {
   return (
     <section className="w-full flex flex-col mt-5 md:mt-8">
-      <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
+      <h4 className="subtitle-medium-caps-18px text-orange-500">
         {t('words.professor')}
       </h4>
       <p className="mt-4 md:mt-6 label-large-20px md:display-small-32px text-black">
         {course.associatedProfessors.length > 0
           ? t('courses.details.coordinatedBy')
           : t('courses.details.taughtBy')}{' '}
-        <span className="text-darkOrange-5 label-large-20px md:display-small-32px">
+        <span className="text-orange-500 label-large-20px md:display-small-32px">
           {course.mainProfessors.map((professor, index) => (
             <React.Fragment key={professor.id}>
               <Link
                 to={`/professor/${formatNameForURL(professor.name || '')}-${professor.id}`}
-                className="hover:text-darkOrange-5 hover:font-medium"
+                className="hover:text-orange-500 hover:font-medium"
               >
                 {professor.name}
               </Link>
@@ -93,7 +93,7 @@ const Professor = ({
           ))}
         </span>
       </p>
-      <p className="md:mt-6 text-newBlack-1 md:text-justify body-16px md:label-large-20px max-md:hidden">
+      <p className="md:mt-6 text-neutral-1000 md:text-justify body-16px md:label-large-20px max-md:hidden">
         {t('courses.details.thanksTipping')}
       </p>
       <div className="flex h-fit flex-col max-md:gap-4">
@@ -108,7 +108,7 @@ const Professor = ({
         ))}
         {course.associatedProfessors.length > 0 ? (
           <>
-            <h4 className="mt-4 md:mt-6 text-darkOrange-5 uppercase">
+            <h4 className="mt-4 md:mt-6 text-orange-500 uppercase">
               <span>{t('courses.details.associatedProfessors')}</span>
             </h4>
             <div className="my-6 flex flex-row flex-wrap gap-6 max-md:justify-center">
@@ -145,7 +145,7 @@ const Credits = ({ course }: { course: CourseResponse }) => {
     <>
       <DividerSimple className="my-5 md:mt-3 md:mb-8" />
       <section className="w-full flex flex-col">
-        <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
+        <h4 className="subtitle-medium-caps-18px text-orange-500">
           {t('words.credits')}
         </h4>
 
@@ -153,7 +153,7 @@ const Credits = ({ course }: { course: CourseResponse }) => {
           {proofreading?.contributorNames?.length > 0
             ? t('courses.details.hasBeenProofreadBy')
             : t('courses.details.hasNotBeenProofread')}
-          <span className="text-darkOrange-5 label-large-20px md:display-small-32px">
+          <span className="text-orange-500 label-large-20px md:display-small-32px">
             {' '}
             {proofreading?.contributorNames?.length > 0
               ? proofreading.contributorNames.map((proofreader, index) => (
@@ -183,10 +183,10 @@ const Credits = ({ course }: { course: CourseResponse }) => {
               variant="vertical"
             />
           </div>
-          <p className="md:mb-8 text-newBlack-1 md:text-justify body-16px md:subtitle-medium-16px whitespace-pre-line">
+          <p className="md:mb-8 text-neutral-1000 md:text-justify body-16px md:subtitle-medium-16px whitespace-pre-line">
             <Trans i18nKey={'courses.details.collaborativeEffort'}>
               <a
-                className="hover:text-darkOrange-5 font-medium"
+                className="hover:text-orange-500 font-medium"
                 href="https://t.me/PlanBNetwork_ContentBuilder"
                 target="_blank"
                 rel="noreferrer"
@@ -195,14 +195,14 @@ const Credits = ({ course }: { course: CourseResponse }) => {
               </a>
               <Link
                 to="/tutorials/others/contribution/content-review-tutorial-1ee068ca-ddaf-4bec-b44e-b41a9abfdef6"
-                className="hover:text-darkOrange-5 font-medium"
+                className="hover:text-orange-500 font-medium"
                 target="_blank"
                 rel="noreferrer"
               >
                 tutorial
               </Link>
               <a
-                className="hover:text-darkOrange-5 font-medium"
+                className="hover:text-orange-500 font-medium"
                 href="https://creativecommons.org/licenses/by-sa/4.0/deed.en"
                 target="_blank"
                 rel="noreferrer"
@@ -236,7 +236,7 @@ const DiplomaSelfPaced = ({
     <>
       <DividerSimple className="my-5 md:mt-3 md:mb-8" />
       <section className="w-full flex flex-col">
-        <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
+        <h4 className="subtitle-medium-caps-18px text-orange-500">
           {t('words.diploma')}
         </h4>
 
@@ -257,7 +257,7 @@ const DiplomaSelfPaced = ({
             />
           </div>
           <div className="flex flex-col justify-between gap-4 grow md:pb-2">
-            <p className="text-newBlack-1 md:text-justify body-16px md:subtitle-medium-16px whitespace-pre-line">
+            <p className="text-neutral-1000 md:text-justify body-16px md:subtitle-medium-16px whitespace-pre-line">
               {!examResults || examResults.succeeded ? (
                 <Trans
                   i18nKey={
@@ -326,7 +326,7 @@ const DiplomaSelfPaced = ({
 const DiplomaTeacherLed = ({ course }: { course: CourseResponse }) => {
   return (
     <section className="w-full flex flex-col">
-      <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
+      <h4 className="subtitle-medium-caps-18px text-orange-500">
         {t('words.diploma')}
       </h4>
 
@@ -343,7 +343,7 @@ const DiplomaTeacherLed = ({ course }: { course: CourseResponse }) => {
           />
         </div>
         <div className="flex flex-col justify-between gap-4 grow md:pb-2">
-          <p className="text-newBlack-1 md:text-justify body-16px md:subtitle-medium-16px whitespace-pre-line">
+          <p className="text-neutral-1000 md:text-justify body-16px md:subtitle-medium-16px whitespace-pre-line">
             {t('courses.exam.successDiplomaTeacherLed')}
           </p>
 
@@ -371,7 +371,7 @@ const DiplomaTeacherLed = ({ course }: { course: CourseResponse }) => {
 //     <>
 //       <DividerSimple className="my-5 md:mt-3 md:mb-8" />
 //       <section className="w-full flex flex-col gap-4 md:gap-5">
-//         <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
+//         <h4 className="subtitle-medium-caps-18px text-orange-500">
 //           {t('labs.planBLabs')}
 //         </h4>
 
@@ -379,11 +379,11 @@ const DiplomaTeacherLed = ({ course }: { course: CourseResponse }) => {
 //           {t('labs.presentation.subtitle')}
 //         </p>
 
-//         <p className="text-newBlack-1 md:text-justify body-16px md:subtitle-medium-16px whitespace-pre-line">
+//         <p className="text-neutral-1000 md:text-justify body-16px md:subtitle-medium-16px whitespace-pre-line">
 //           {t('labs.description1')}
 //         </p>
 
-//         <p className="text-newBlack-1 md:text-justify body-16px md:subtitle-medium-16px whitespace-pre-line">
+//         <p className="text-neutral-1000 md:text-justify body-16px md:subtitle-medium-16px whitespace-pre-line">
 //           {t('labs.description2')}
 //         </p>
 
@@ -412,7 +412,7 @@ const OtherCourses = ({ course }: { course: CourseResponse }) => {
     <>
       <DividerSimple className="my-5 md:my-8" />
       <section className="w-full flex flex-col">
-        <h4 className="subtitle-medium-caps-18px text-darkOrange-5">
+        <h4 className="subtitle-medium-caps-18px text-orange-500">
           {t('courses.details.otherCourses')}
         </h4>
         <p className="mt-1 md:mt-6 label-large-20px md:display-small-32px text-black">

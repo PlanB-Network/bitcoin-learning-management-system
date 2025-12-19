@@ -16,7 +16,7 @@ export const DropdownItem = ({
 }: DropdownItemProps) => {
   const variantClasses = {
     default: 'text-white hover:bg-white/15',
-    white: 'text-black bg-newGray-6',
+    white: 'text-black bg-neutral-50',
   };
 
   return link ? (

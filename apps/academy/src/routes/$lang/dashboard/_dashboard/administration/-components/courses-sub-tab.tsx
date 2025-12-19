@@ -134,7 +134,7 @@ export const CoursesSubTab = ({
             <Button
               variant="outline"
               size="s"
-              className="flex items-center gap-1 text-newOrange-1 border-newOrange-1 hover:bg-orange-50"
+              className="flex items-center gap-1 text-orange-500 border-orange-500 hover:bg-orange-50"
               onClick={() => setIsDateModalOpen(true)}
             >
               {t('dashboard.adminPanel.translationPanel.reports.dateFilter')}

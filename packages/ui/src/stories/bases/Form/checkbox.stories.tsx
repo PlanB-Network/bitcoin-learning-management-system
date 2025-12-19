@@ -138,7 +138,7 @@ export const WithLabelSmall: Story = {
       <Checkbox {...args} />
       <label
         htmlFor={args.id}
-        className="text-newBlack-1 subtitle-small-med-14px leading-3"
+        className="text-neutral-1000 subtitle-small-med-14px leading-3"
       >
         Allow email notifications
       </label>

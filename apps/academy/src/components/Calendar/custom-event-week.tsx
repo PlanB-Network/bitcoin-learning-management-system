@@ -13,11 +13,11 @@ export const CustomEventWeek = ({ event }: CustomEventProps) => {
 
   switch (event.type) {
     case 'class': {
-      cssClasses = 'bg-darkOrange-0 text-darkOrange-5';
+      cssClasses = 'bg-orange-50 text-orange-500';
       break;
     }
     default: {
-      cssClasses = 'bg-[#f2eae5] text-darkOrange-7';
+      cssClasses = 'bg-[#f2eae5] text-orange-700';
       break;
     }
   }

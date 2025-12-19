@@ -20,7 +20,7 @@ export const Primary: Story = {
     children: (
       <Tooltip>
         <TooltipTrigger asChild>
-          <span className="text-darkOrange-5">Tooltip top</span>
+          <span className="text-orange-500">Tooltip top</span>
         </TooltipTrigger>
         <TooltipContent sideOffset={5} side={'top'}>
           <p>Hey</p>

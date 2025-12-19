@@ -15,9 +15,9 @@ const linkStyles = cva('text-base tracking-wide', {
   },
   variants: {
     intent: {
-      default: 'underline text-newBlue-1',
+      default: 'underline text-blue-500',
       general: 'text-blue-500',
-      glossary: 'underline text-darkOrange-5 hover:font-medium',
+      glossary: 'underline text-orange-500 hover:font-medium',
     },
   },
 });
@@ -77,7 +77,7 @@ export const LinkRenderer: React.FC<LinkRendererProps> = (props) => {
           href={href}
           target="_blank"
           rel="noreferrer"
-          className="flex max-md:flex-col items-center w-full bg-newGray-6 shadow-course-navigation border border-newGray-5 rounded-[20px] p-4 gap-6 max-md:max-w-96"
+          className="flex max-md:flex-col items-center w-full bg-neutral-50 shadow-course-navigation border border-neutral-100 rounded-[20px] p-4 gap-6 max-md:max-w-96"
         >
           <Image
             src={resourceImgUrl(blog)}
@@ -87,14 +87,14 @@ export const LinkRenderer: React.FC<LinkRendererProps> = (props) => {
             breakpoints={{ default: 200 }}
           />
           <div className="flex flex-col max-md:text-center">
-            <p className="text-newBlack-3 text-xs font-light mb-2">
+            <p className="text-neutral-800 text-xs font-light mb-2">
               {blog.description}
             </p>
             <div className="flex gap-4 max-md:justify-center">
               {blog.tags?.map((tag) => (
                 <span
                   key={tag}
-                  className="bg-[rgba(204,204,204,0.5)] px-2 py-1 rounded-md desktop-typo1 text-newBlack-3"
+                  className="bg-[rgba(204,204,204,0.5)] px-2 py-1 rounded-md desktop-typo1 text-neutral-800"
                 >
                   {tag}
                 </span>

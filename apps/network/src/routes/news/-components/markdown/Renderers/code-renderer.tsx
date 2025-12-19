@@ -10,7 +10,8 @@ const codeStyles = cva('text-base tracking-wide', {
   },
   variants: {
     intent: {
-      default: 'bg-newGray-4 px-1.5 rounded-lg font-mono inline-block text-sm',
+      default:
+        'bg-neutral-200 px-1.5 rounded-lg font-mono inline-block text-sm',
       glossary:
         'bg-black/20 px-1.5 rounded-lg font-mono inline-block text-sm text-black',
     },

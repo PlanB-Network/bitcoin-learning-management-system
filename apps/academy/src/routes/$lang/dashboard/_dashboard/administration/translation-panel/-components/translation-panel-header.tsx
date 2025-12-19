@@ -42,7 +42,7 @@ export const TranslationPanelHeader = ({
         </h1>
         <TextTag
           size={isTablet ? 'small' : 'base'}
-          className="uppercase w-fit bg-newOrange-1 text-white"
+          className="uppercase w-fit bg-orange-500 text-white"
         >
           {t('dashboard.adminPanel.translationPanel.admin')}
         </TextTag>
@@ -53,15 +53,15 @@ export const TranslationPanelHeader = ({
         // Tab navigation for user details page with same style as main page
         <div className="w-full">
           <div
-            className={`items-center bg-transparent text-newBlack-3 dark:text-newGray-4 overflow-x-scroll no-scrollbar flex max-w-full ${isMobile ? 'gap-[18px]' : 'gap-6'}`}
+            className={`items-center bg-transparent text-neutral-800 dark:text-neutral-200 overflow-x-scroll no-scrollbar flex max-w-full ${isMobile ? 'gap-[18px]' : 'gap-6'}`}
           >
             <button
               type="button"
               onClick={() => handleTabChange('requests')}
               className={`data-[state=active]:font-medium inline-flex items-center justify-center whitespace-nowrap ring-offset-background transition-color focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-black ${isMobile ? 'label-medium-16px pb-2' : 'label-18px pb-2.5'} ${
                 activeTab === 'requests'
-                  ? 'font-medium text-black border-b-2 border-darkOrange-5'
-                  : 'text-newBlack-3 hover:border-b-2 hover:border-newGray-4'
+                  ? 'font-medium text-black border-b-2 border-orange-500'
+                  : 'text-neutral-800 hover:border-b-2 hover:border-neutral-200'
               }`}
             >
               {t('dashboard.adminPanel.translationPanel.tabs.requests')}
@@ -71,8 +71,8 @@ export const TranslationPanelHeader = ({
               onClick={() => handleTabChange('content')}
               className={`data-[state=active]:font-medium inline-flex items-center justify-center whitespace-nowrap ring-offset-background transition-color focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-black ${isMobile ? 'label-medium-16px pb-2' : 'label-18px pb-2.5'} ${
                 activeTab === 'content'
-                  ? 'font-medium text-black border-b-2 border-darkOrange-5'
-                  : 'text-newBlack-3 hover:border-b-2 hover:border-newGray-4'
+                  ? 'font-medium text-black border-b-2 border-orange-500'
+                  : 'text-neutral-800 hover:border-b-2 hover:border-neutral-200'
               }`}
             >
               {t(
@@ -84,8 +84,8 @@ export const TranslationPanelHeader = ({
               onClick={() => handleTabChange('users')}
               className={`data-[state=active]:font-medium inline-flex items-center justify-center whitespace-nowrap ring-offset-background transition-color focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-black ${isMobile ? 'label-medium-16px pb-2' : 'label-18px pb-2.5'} ${
                 activeTab === 'users'
-                  ? 'font-medium text-black border-b-2 border-darkOrange-5'
-                  : 'text-newBlack-3 hover:border-b-2 hover:border-newGray-4'
+                  ? 'font-medium text-black border-b-2 border-orange-500'
+                  : 'text-neutral-800 hover:border-b-2 hover:border-neutral-200'
               }`}
             >
               {t('dashboard.adminPanel.translationPanel.tabs.userManagement')}
@@ -95,8 +95,8 @@ export const TranslationPanelHeader = ({
               onClick={() => handleTabChange('reports')}
               className={`data-[state=active]:font-medium inline-flex items-center justify-center whitespace-nowrap ring-offset-background transition-color focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-black ${isMobile ? 'label-medium-16px pb-2' : 'label-18px pb-2.5'} ${
                 activeTab === 'reports'
-                  ? 'font-medium text-black border-b-2 border-darkOrange-5'
-                  : 'text-newBlack-3 hover:border-b-2 hover:border-newGray-4'
+                  ? 'font-medium text-black border-b-2 border-orange-500'
+                  : 'text-neutral-800 hover:border-b-2 hover:border-neutral-200'
               }`}
             >
               {t('dashboard.adminPanel.translationPanel.tabs.reports')}
@@ -106,8 +106,8 @@ export const TranslationPanelHeader = ({
               onClick={() => handleTabChange('translate')}
               className={`data-[state=active]:font-medium inline-flex items-center justify-center whitespace-nowrap ring-offset-background transition-color focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-black ${isMobile ? 'label-medium-16px pb-2' : 'label-18px pb-2.5'} ${
                 activeTab === 'translate'
-                  ? 'font-medium text-black border-b-2 border-darkOrange-5'
-                  : 'text-newBlack-3 hover:border-b-2 hover:border-newGray-4'
+                  ? 'font-medium text-black border-b-2 border-orange-500'
+                  : 'text-neutral-800 hover:border-b-2 hover:border-neutral-200'
               }`}
             >
               {t('dashboard.adminPanel.translationPanel.tabs.translate')}

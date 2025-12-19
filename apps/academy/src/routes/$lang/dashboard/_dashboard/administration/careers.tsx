@@ -192,7 +192,7 @@ function AdminCareers() {
       <h2 className="title-medium-sb-18px md:title-large-sb-24px text-dashboardSectionTitle mb-2.5 md:mb-4">
         {t('dashboard.adminPanel.careers.careers')}
       </h2>
-      <p className="text-dashboardSectionText/75 md:text-newBlack-1 body-16px mb-8 max-w-[994px]">
+      <p className="text-dashboardSectionText/75 md:text-neutral-1000 body-16px mb-8 max-w-[994px]">
         {t('dashboard.adminPanel.careers.careersSubtitle')}
       </p>
 
@@ -217,9 +217,9 @@ function AdminCareers() {
                 {t('dashboard.adminPanel.careers.downloadSpreadsheet')}
                 <TbDownload className="ml-2" size={24} />
               </Button>
-              <span className="body-14px md:subtitle-medium-16px text-newBlack-2">
+              <span className="body-14px md:subtitle-medium-16px text-neutral-900">
                 {t('dashboard.adminPanel.careers.lastUpdated')}:{' '}
-                <span className="text-newGray-1">
+                <span className="text-neutral-500">
                   {sortedCareerProfiles?.length > 0
                     ? new Date(
                         Math.max(
@@ -340,7 +340,10 @@ function AdminCareers() {
                 {sortedCareerProfiles
                   .slice(0, maxShownProfiles)
                   .map((profile) => (
-                    <tr key={profile.id} className="body-16px text-newBlack-1">
+                    <tr
+                      key={profile.id}
+                      className="body-16px text-neutral-1000"
+                    >
                       <td className="pr-4 py-3.5 align-top">
                         {profile.firstName} {profile.lastName}
                       </td>
@@ -375,14 +378,14 @@ function AdminCareers() {
                           href={`${profile.cvUrl}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="underline text-newBlack-5 hover:text-darkOrange-5"
+                          className="underline text-neutral-600 hover:text-orange-500"
                         >
                           {t('dashboard.adminPanel.careers.viewCV')}
                         </a>
                       </td>
                       <td className="py-3.5 align-top">
                         <button
-                          className="underline text-newBlack-5 hover:text-darkOrange-5"
+                          className="underline text-neutral-600 hover:text-orange-500"
                           onClick={() =>
                             generateCandidateFilePdf(
                               profile,
@@ -408,9 +411,9 @@ function AdminCareers() {
                 .map((profile) => (
                   <article
                     key={profile.id}
-                    className="p-2 w-full max-sm:max-w-[320px] flex flex-col gap-2 border border-newGray-5 bg-newGray-6 shadow-course-navigation-sm rounded-[10px] md:hidden"
+                    className="p-2 w-full max-sm:max-w-[320px] flex flex-col gap-2 border border-neutral-100 bg-neutral-50 shadow-course-navigation-sm rounded-[10px] md:hidden"
                   >
-                    <span className="text-newBlack-1 mobile-subtitle1">
+                    <span className="text-neutral-1000 mobile-subtitle1">
                       {profile.firstName} {profile.lastName}
                     </span>
                     <section className="flex flex-wrap gap-1 body-14px">
@@ -420,7 +423,10 @@ function AdminCareers() {
                         );
                         return (
                           <>
-                            <span key={role.roleId} className="text-newBlack-3">
+                            <span
+                              key={role.roleId}
+                              className="text-neutral-800"
+                            >
                               {jobTitle
                                 ? t(
                                     `dashboard.careerPortal.jobTitles.${jobTitle.name}`,
@@ -428,7 +434,7 @@ function AdminCareers() {
                                 : role.roleId}
                             </span>
                             {index !== profile.roles.length - 1 && (
-                              <span className="text-newGray-3">·</span>
+                              <span className="text-neutral-300">·</span>
                             )}
                           </>
                         );
@@ -444,7 +450,7 @@ function AdminCareers() {
                         <Button
                           variant="ghost"
                           size="s"
-                          className="w-fit !text-newBlack-5 !font-normal underline px-0"
+                          className="w-fit !text-neutral-600 !font-normal underline px-0"
                         >
                           {t('dashboard.adminPanel.careers.viewCV')}
                         </Button>
@@ -452,7 +458,7 @@ function AdminCareers() {
                       <Button
                         variant="ghost"
                         size="s"
-                        className="w-fit !text-newBlack-5 !font-normal underline !px-0"
+                        className="w-fit !text-neutral-600 !font-normal underline !px-0"
                         onClick={() =>
                           generateCandidateFilePdf(
                             profile,
@@ -465,7 +471,7 @@ function AdminCareers() {
                       >
                         {t('dashboard.adminPanel.careers.candidateFile')}
                       </Button>
-                      <span className="text-newBlack-5 body-14px">
+                      <span className="text-neutral-600 body-14px">
                         {new Date(profile.editedAt).toLocaleDateString(
                           undefined,
                           {
@@ -492,7 +498,7 @@ function AdminCareers() {
                 >
                   {t('dashboard.adminPanel.careers.seeMore')}
                 </Button>
-                <span className="subtitle-medium-16px text-newGray-3 text-center">{`(${t('dashboard.adminPanel.careers.resultsRemaining', { results: sortedCareerProfiles.length - maxShownProfiles })})`}</span>
+                <span className="subtitle-medium-16px text-neutral-300 text-center">{`(${t('dashboard.adminPanel.careers.resultsRemaining', { results: sortedCareerProfiles.length - maxShownProfiles })})`}</span>
               </div>
             )}
           </>

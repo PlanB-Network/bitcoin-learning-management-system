@@ -35,7 +35,7 @@ export const PaymentRow = ({
       <RowText
         className={cn(
           'text-sm lg:text-base tracking-[0.08px] self-start',
-          isBlack ? 'text-slate-950' : 'text-newGray-1 lg:text-white/[.64]',
+          isBlack ? 'text-slate-950' : 'text-neutral-500 lg:text-white/[.64]',
           isLabelBold ? 'font-semibold' : '',
         )}
       >

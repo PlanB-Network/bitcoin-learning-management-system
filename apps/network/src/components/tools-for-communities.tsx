@@ -149,7 +149,7 @@ function BlockThree() {
       rel="noopener noreferrer"
       className="max-lg:w-full flex h-fit lg:-translate-y-30"
     >
-      <div className="w-full mx-2 flex flex-col border-1 border-yellow-4 rounded-[40px] lg:max-w-[450px] xl:max-w-[530px] bg-[#1B1000] hover:bg-[#402704]">
+      <div className="w-full mx-2 flex flex-col border-1 border-yellow-300 rounded-[40px] lg:max-w-[450px] xl:max-w-[530px] bg-[#1B1000] hover:bg-[#402704]">
         <div className="px-4 mt-5 lg:mt-8 flex flex-row w-full gap-6">
           <Image
             className="max-lg:h-16 object-cover "
@@ -161,7 +161,7 @@ function BlockThree() {
           <div className="flex flex-col gap-4 title-large max-w-[330px]">
             <span>
               <Trans i18nKey="community.box3Title">
-                <span className="text-yellow-4">tools and resources</span>
+                <span className="text-yellow-300">tools and resources</span>
               </Trans>
             </span>
           </div>

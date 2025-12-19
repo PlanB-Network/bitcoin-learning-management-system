@@ -77,7 +77,7 @@ export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
 
       {scheduledCourseAnnouncements &&
       scheduledCourseAnnouncements.length > 0 ? (
-        <div className="flex flex-col border border-newGray-5 rounded-[12px] w-full mt-8">
+        <div className="flex flex-col border border-neutral-100 rounded-[12px] w-full mt-8">
           {scheduledCourseAnnouncements?.map((announcement, index) => (
             <Fragment key={announcement.id}>
               <article className="w-full flex max-md:flex-col md:items-center justify-between p-4">
@@ -89,7 +89,7 @@ export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
                         `dashboard.teacher.courses.${announcement.studentGroup}Students`,
                       )}
                     </TextTag>
-                    <span className="ml-auto flex items-center md:hidden desktop-caption1 text-newBlack-5">
+                    <span className="ml-auto flex items-center md:hidden desktop-caption1 text-neutral-600">
                       {new Intl.DateTimeFormat(undefined, {
                         day: 'numeric',
                         month: 'long',
@@ -142,13 +142,13 @@ export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
                 </div>
               </article>
               {index < scheduledCourseAnnouncements.length - 1 && (
-                <div className="h-px w-full bg-newGray-4" />
+                <div className="h-px w-full bg-neutral-200" />
               )}
             </Fragment>
           ))}
         </div>
       ) : (
-        <p className="mt-8 subtitle-small-caps-14px text-newGray-1">
+        <p className="mt-8 subtitle-small-caps-14px text-neutral-500">
           {t('dashboard.teacher.courses.noWrittenAnnouncement')}
         </p>
       )}
@@ -164,7 +164,7 @@ export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
 
       {publishedCourseAnnouncements &&
       publishedCourseAnnouncements.length > 0 ? (
-        <div className="flex flex-col border border-newGray-5 rounded-[12px] w-full mt-8 overflow-hidden bg-black/5">
+        <div className="flex flex-col border border-neutral-100 rounded-[12px] w-full mt-8 overflow-hidden bg-black/5">
           {publishedCourseAnnouncements.map((announcement, index) => (
             <Fragment key={announcement.id}>
               <article className="w-full flex flex-col px-4 max-md:py-1.5 md:py-4">
@@ -175,7 +175,7 @@ export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
                       `dashboard.teacher.courses.${announcement.studentGroup}Students`,
                     )}
                   </TextTag>
-                  <span className="flex ml-auto justify-center md:w-35 shrink-0 text-center desktop-caption1 text-newBlack-5">
+                  <span className="flex ml-auto justify-center md:w-35 shrink-0 text-center desktop-caption1 text-neutral-600">
                     {getNotificationDateString(announcement.scheduledAt)}
                   </span>
                 </div>
@@ -184,13 +184,13 @@ export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
                 </p>
               </article>
               {index < publishedCourseAnnouncements.length - 1 && (
-                <div className="h-px w-full bg-newGray-4" />
+                <div className="h-px w-full bg-neutral-200" />
               )}
             </Fragment>
           ))}
         </div>
       ) : (
-        <p className="mt-8 subtitle-small-caps-14px text-newGray-1">
+        <p className="mt-8 subtitle-small-caps-14px text-neutral-500">
           {t('dashboard.teacher.courses.noPastAnnouncement')}
         </p>
       )}

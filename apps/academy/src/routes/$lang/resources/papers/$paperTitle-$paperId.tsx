@@ -174,7 +174,7 @@ function Paper() {
             </a>
           </section>
 
-          <section className="flex flex-col bg-neutral-50 text-newBlack-3 rounded-2xl mt-6 md:mt-8 p-3">
+          <section className="flex flex-col bg-neutral-50 text-neutral-800 rounded-2xl mt-6 md:mt-8 p-3">
             <div className="flex flex-col w-full gap-7">
               <section className="flex flex-col w-full gap-2">
                 <p className="body-base-bold px-1">{t('words.details')}</p>

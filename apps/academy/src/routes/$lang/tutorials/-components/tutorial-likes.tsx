@@ -23,7 +23,7 @@ export const TutorialLikes = ({
             'w-[70px] rounded-full h-2 mx-2 max-md:hidden',
             tutorial.likeCount === 0 &&
               tutorial.dislikeCount === 0 &&
-              'bg-newGray-3',
+              'bg-neutral-300',
           )}
           style={
             tutorial.likeCount > 0 || tutorial.dislikeCount > 0
@@ -39,7 +39,7 @@ export const TutorialLikes = ({
           alt="separator icon"
           className="inline-block md:hidden mx-[18px] h-2.5"
         />
-        <MdThumbDown className="text-red-5 size-[18px] lg:size-[21px]" />
+        <MdThumbDown className="text-red-400 size-[18px] lg:size-[21px]" />
       </span>
       <span className="text-black text-base md:label-large-20px">
         {tutorial.dislikeCount}

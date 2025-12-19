@@ -60,7 +60,7 @@ export const NotificationsPanel = ({ className }: NotificationsPanelProps) => {
             )}
             aria-label="Toggle notifications panel"
           >
-            <TbBell strokeWidth={1.5} className="text-newGray-1" size={24} />
+            <TbBell strokeWidth={1.5} className="text-neutral-500" size={24} />
             {hasUnreadNotifications && (
               <div className="absolute top-0.5 right-0.5 rounded-full size-2.5 bg-orange-500" />
             )}
@@ -88,7 +88,7 @@ export const NotificationsPanel = ({ className }: NotificationsPanelProps) => {
             {unreadNotifications.length > 5 && <ViewMoreButton />}
 
             {!hasUnreadNotifications && (
-              <p className="w-full p-4 text-center text-newBlack-1 subtitle-small-caps-14px">
+              <p className="w-full p-4 text-center text-neutral-1000 subtitle-small-caps-14px">
                 {t('notifications.noUnreadNotifications')}
               </p>
             )}
@@ -126,9 +126,7 @@ const NotificationItem = ({ notification, onClose }: NotificationItemProps) => {
     <div
       className={cn(
         'group flex w-full items-start self-stretch border-l',
-        isHovered
-          ? 'bg-darkOrange-0 border-darkOrange-4 '
-          : 'border-transparent',
+        isHovered ? 'bg-orange-50 border-orange-400 ' : 'border-transparent',
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -149,8 +147,8 @@ const NotificationItem = ({ notification, onClose }: NotificationItemProps) => {
                 cn(
                   'size-full',
                   isTeacherAnnouncementType(notification.type)
-                    ? 'text-darkOrange-6'
-                    : 'text-newBlack-1',
+                    ? 'text-orange-600'
+                    : 'text-neutral-1000',
                 ),
               )}
             </div>
@@ -161,9 +159,9 @@ const NotificationItem = ({ notification, onClose }: NotificationItemProps) => {
               )}
             </TextTag>
           </div>
-          <div className="size-2 rounded-full bg-darkOrange-5" />
+          <div className="size-2 rounded-full bg-orange-500" />
         </div>
-        <p className="self-stretch body-14px text-newBlack-1 line-clamp-6 whitespace-pre-line">
+        <p className="self-stretch body-14px text-neutral-1000 line-clamp-6 whitespace-pre-line">
           {notification.content ||
             getNotificationContent(
               notification.type,
@@ -180,7 +178,7 @@ const NotificationItem = ({ notification, onClose }: NotificationItemProps) => {
               e.stopPropagation();
               onClose();
             }}
-            className="flex size-5 items-center justify-center text-newGray-1 hover:text-newGray-2"
+            className="flex size-5 items-center justify-center text-neutral-500 hover:text-neutral-400"
             aria-label="Dismiss notification"
           >
             <IoMdClose className="size-full" />
@@ -193,13 +191,13 @@ const NotificationItem = ({ notification, onClose }: NotificationItemProps) => {
 
 const NotificationsHeader = () => {
   return (
-    <div className="flex w-full items-center justify-between self-stretch px-5 py-2 border-b border-newGray-4">
-      <h3 className="flex subtitle-large-18px text-newBlack-5">
+    <div className="flex w-full items-center justify-between self-stretch px-5 py-2 border-b border-neutral-200">
+      <h3 className="flex subtitle-large-18px text-neutral-600">
         {t('notifications.notifications')}
       </h3>
       <Link
         to="/notifications"
-        className="flex items-center justify-center gap-2.5 overflow-hidden rounded-lg px-2.5 text-base font-normal text-newBlack-5 hover:text-darkOrange-5 underline"
+        className="flex items-center justify-center gap-2.5 overflow-hidden rounded-lg px-2.5 text-base font-normal text-neutral-600 hover:text-orange-500 underline"
       >
         {t('words.seeAll')}
       </Link>
@@ -211,7 +209,7 @@ const ViewMoreButton = () => {
   return (
     <Link
       to="/notifications"
-      className="flex w-full items-center px-4 py-3 text-base font-normal text-newBlack-5 hover:text-darkOrange-5 underline border-t border-newGray-4"
+      className="flex w-full items-center px-4 py-3 text-base font-normal text-neutral-600 hover:text-orange-500 underline border-t border-neutral-200"
     >
       {t('words.viewMore')}
     </Link>

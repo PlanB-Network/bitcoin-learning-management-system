@@ -71,26 +71,26 @@ export const VerticalCard = ({
 }: VerticalCardProps) => {
   const cardColorClasses = {
     black: 'bg-black',
-    grey: 'bg-newBlack-2',
-    lightgrey: 'bg-newGray-6',
-    maroon: 'bg-darkOrange-7',
-    orange: 'bg-darkOrange-5',
+    grey: 'bg-neutral-900',
+    lightgrey: 'bg-neutral-50',
+    maroon: 'bg-orange-700',
+    orange: 'bg-orange-500',
   };
 
   const hoverCardColorClasses = {
-    black: 'hover:bg-newBlack-3',
-    grey: 'hover:bg-newBlack-3',
-    lightgrey: 'bg-newGray-5',
-    maroon: 'hover:bg-darkOrange-8',
-    orange: 'hover:bg-darkOrange-6',
+    black: 'hover:bg-neutral-800',
+    grey: 'hover:bg-neutral-800',
+    lightgrey: 'bg-neutral-100',
+    maroon: 'hover:bg-orange-800',
+    orange: 'hover:bg-orange-600',
   };
 
   const subtitleColorClasses = {
-    black: 'text-darkOrange-5',
-    grey: 'text-darkOrange-5',
-    lightgrey: 'text-darkOrange-5',
-    maroon: 'text-newGray-6',
-    orange: 'text-newGray-6',
+    black: 'text-orange-500',
+    grey: 'text-orange-500',
+    lightgrey: 'text-orange-500',
+    maroon: 'text-neutral-50',
+    orange: 'text-neutral-50',
   };
 
   const titleColorClasses = {
@@ -177,7 +177,7 @@ export const VerticalCard = ({
             {title}
           </h4>
           {excerpt && (
-            <span className="max-md:hidden md:desktop-body1 text-newGray-1 line-clamp-3 mb-2.5">
+            <span className="max-md:hidden md:desktop-body1 text-neutral-500 line-clamp-3 mb-2.5">
               {excerpt}
             </span>
           )}

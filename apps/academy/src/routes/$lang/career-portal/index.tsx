@@ -422,7 +422,7 @@ function CareerPortal() {
               </p>
               {existingCareerProfile ? (
                 <>
-                  <p className="bg-newGray-6 text-center text-lg font-medium text-newBlack-1 px-4 py-2 md:px-8 md:py-4 rounded-[16px] border-b border-b-newGray-4 uppercase w-fit mx-auto mb-2">
+                  <p className="bg-neutral-50 text-center text-lg font-medium text-neutral-1000 px-4 py-2 md:px-8 md:py-4 rounded-[16px] border-b border-b-neutral-200 uppercase w-fit mx-auto mb-2">
                     <Trans
                       i18nKey={
                         validatedSteps === 4
@@ -430,11 +430,11 @@ function CareerPortal() {
                           : 'dashboard.careerPortal.applicationIncomplete'
                       }
                       components={{
-                        highlight: <span className="text-darkOrange-5" />,
+                        highlight: <span className="text-orange-500" />,
                       }}
                     />
                   </p>
-                  <p className="w-full text-center text-newBlack-5 body-16px md:label-medium-16px mb-6 md:mb-15 whitespace-pre-line">
+                  <p className="w-full text-center text-neutral-600 body-16px md:label-medium-16px mb-6 md:mb-15 whitespace-pre-line">
                     {validatedSteps === 4
                       ? t('dashboard.careerPortal.lookingForJob')
                       : t('dashboard.careerPortal.followProcess')}
@@ -482,13 +482,13 @@ function CareerPortal() {
                   />
                 </div>
               )}
-              <p className="max-w-[738px] mx-auto text-newBlack-4 text-center body-14px">
+              <p className="max-w-[738px] mx-auto text-neutral-700 text-center body-14px">
                 <Trans i18nKey={'dashboard.careerPortal.beAware'}>
                   <a
                     href="https://workspace.planb.network/s/EKLJPd8YnH3ooft"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="body-14px-medium hover:text-darkOrange-5"
+                    className="body-14px-medium hover:text-orange-500"
                   >
                     here
                   </a>
@@ -654,8 +654,8 @@ function CareerPortal() {
                 )}
 
                 {languageSkillsFields.length > 0 && (
-                  <div className="w-full bg-newGray-6 rounded-[10px] shadow-course-navigation-sm flex flex-col gap-5 md:gap-4 p-4 mt-5 md:mt-4">
-                    <h3 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-newGray-1">
+                  <div className="w-full bg-neutral-50 rounded-[10px] shadow-course-navigation-sm flex flex-col gap-5 md:gap-4 p-4 mt-5 md:mt-4">
+                    <h3 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-neutral-500">
                       {t('dashboard.careerPortal.yourLanguages')}
                     </h3>
                     {languageSkillsFields.map((field, index) => (
@@ -858,8 +858,8 @@ function CareerPortal() {
                 )}
 
                 {rolesFields.length > 0 && (
-                  <div className="w-full bg-newGray-6 rounded-[10px] shadow-course-navigation-sm flex flex-col gap-5 md:gap-4 p-4 mt-5 md:mt-4">
-                    <h3 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-newGray-1">
+                  <div className="w-full bg-neutral-50 rounded-[10px] shadow-course-navigation-sm flex flex-col gap-5 md:gap-4 p-4 mt-5 md:mt-4">
+                    <h3 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-neutral-500">
                       {t('dashboard.careerPortal.yourRoles')}
                     </h3>
                     {rolesFields.map((field, index) => (
@@ -1038,16 +1038,16 @@ function CareerPortal() {
                   <button
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
-                    className="h-full flex items-center px-3.5 rounded-l-[10px] border border-newBlack-4 md:text-lg leading-normal font-medium bg-darkOrange-5 text-white hover:cursor-pointer shrink-0 focus:border-newBlack-2 focus:bg-darkOrange-6"
+                    className="h-full flex items-center px-3.5 rounded-l-[10px] border border-neutral-700 md:text-lg leading-normal font-medium bg-orange-500 text-white hover:cursor-pointer shrink-0 focus:border-neutral-900 focus:bg-orange-600"
                   >
                     {t('dashboard.careerPortal.chooseFile')}
                   </button>
-                  <span className="h-full flex items-center px-3.5 body-16px md:label-medium-16px text-newBlack-5 truncate w-full border-r border-y border-newBlack-4 rounded-r-[10px]">
+                  <span className="h-full flex items-center px-3.5 body-16px md:label-medium-16px text-neutral-600 truncate w-full border-r border-y border-neutral-700 rounded-r-[10px]">
                     {selectedFileName ||
                       t('dashboard.careerPortal.noFileSelected')}
                   </span>
                 </div>
-                <p className="body-14px text-newGray-1">
+                <p className="body-14px text-neutral-500">
                   {t('dashboard.careerPortal.acceptedFormat')}
                 </p>
                 {cvErrorMessage && <FieldError>{cvErrorMessage}</FieldError>}
@@ -1107,12 +1107,12 @@ function CareerPortal() {
                 subtitle={t('dashboard.careerPortal.legalInformationSubtitle')}
               />
 
-              <article className="w-full bg-newGray-6 p-5 mt-5 md:mt-10 rounded-[10px] flex flex-col gap-5 md:gap-10">
+              <article className="w-full bg-neutral-50 p-5 mt-5 md:mt-10 rounded-[10px] flex flex-col gap-5 md:gap-10">
                 <h3 className="subtitle-medium-med-16px md:subtitle-large-med-20px text-dashboardSectionText">
                   {t('dashboard.careerPortal.termsAndConditions')}
                 </h3>
                 {/* TODO: add markdown support and backend automation of terms and conditions retrieval + handle language */}
-                <p className="text-newBlack-1 label-medium-16px whitespace-pre-line pr-3.5 md:pr-10 max-h-[439px] md:max-h-[385px] overflow-y-scroll scrollbar-light">
+                <p className="text-neutral-1000 label-medium-16px whitespace-pre-line pr-3.5 md:pr-10 max-h-[439px] md:max-h-[385px] overflow-y-scroll scrollbar-light">
                   <TermsAndConditions />
                 </p>
               </article>
@@ -1210,8 +1210,8 @@ const StepsProcess = ({
                   'absolute bottom-4 w-full max-w-20 h-1.5 rounded-full',
                   (currentStep === 0 && step.stepNumber < validatedSteps) ||
                     step.stepNumber < currentStep
-                    ? 'bg-darkOrange-5'
-                    : 'bg-newGray-5',
+                    ? 'bg-orange-500'
+                    : 'bg-neutral-100',
                 )}
               />
             </div>
@@ -1225,8 +1225,8 @@ const StepsProcess = ({
 const StepsProcessMobile = ({ currentStep }: { currentStep: number }) => {
   return (
     <div className="w-full flex-col md:hidden mb-5">
-      <span className="flex gap-1 items-center body-14px text-newGray-1">
-        <IoMdCheckmarkCircle size={16} className="text-darkOrange-5" />
+      <span className="flex gap-1 items-center body-14px text-neutral-500">
+        <IoMdCheckmarkCircle size={16} className="text-orange-500" />
         {t('words.progress')} : {currentStep} / 4
       </span>
       <div className="flex gap-1 w-full">
@@ -1236,7 +1236,7 @@ const StepsProcessMobile = ({ currentStep }: { currentStep: number }) => {
             key={index}
             className={cn(
               'w-full h-1.5 rounded-full',
-              currentStep >= index + 1 ? 'bg-darkOrange-5' : 'bg-newGray-5',
+              currentStep >= index + 1 ? 'bg-orange-500' : 'bg-neutral-100',
             )}
           />
         ))}
@@ -1261,7 +1261,7 @@ const StepIndicator = ({
       <span
         className={cn(
           'max-md:order-2 w-full md:text-center title-small-med-16px',
-          highlighted ? 'text-newBlack-1' : 'text-newBlack-5',
+          highlighted ? 'text-neutral-1000' : 'text-neutral-600',
         )}
       >
         {label}
@@ -1269,7 +1269,7 @@ const StepIndicator = ({
       <div
         className={cn(
           'flex justify-center items-center rounded-full size-10 p-0.5 shrink-0 max-md:order-1 text-white text-xl leading-normal font-medium text-center',
-          highlighted ? 'bg-darkOrange-5' : 'bg-newGray-3',
+          highlighted ? 'bg-orange-500' : 'bg-neutral-300',
         )}
       >
         {validated ? <ImCheckmark /> : stepNumber}
@@ -1403,7 +1403,7 @@ const FormText = ({
               rows={3}
               disabled={disabled}
               className={cn(
-                '!w-full !bg-white !border-newGray-4 placeholder:text-sm placeholder:leading-tight placeholder:text-newGray-3 placeholder:truncate',
+                '!w-full !bg-white !border-neutral-200 placeholder:text-sm placeholder:leading-tight placeholder:text-neutral-300 placeholder:truncate',
                 hasMaxWidth ? 'max-w-[596px]' : '',
               )}
               {...field}
@@ -1510,9 +1510,9 @@ const FormRadio = ({
                     checked={String(field.value) === String(option.value)}
                     onChange={() => field.onChange(option.value)}
                     disabled={disabled}
-                    className="peer col-start-1 row-start-1 size-3.5 appearance-none rounded-full border bg-white border-darkOrange-5 shrink-0"
+                    className="peer col-start-1 row-start-1 size-3.5 appearance-none rounded-full border bg-white border-orange-500 shrink-0"
                   />
-                  <div className="col-start-1 row-start-1 w-2 h-2 rounded-full peer-checked:bg-darkOrange-5" />
+                  <div className="col-start-1 row-start-1 w-2 h-2 rounded-full peer-checked:bg-orange-500" />
                 </div>
                 <span className="text-black label-medium-16px">
                   {option.label}
@@ -1558,7 +1558,7 @@ const FormCheckbox = ({
                 checked={field.value}
                 onChange={(e) => field.onChange(e.target.checked)}
                 disabled={disabled}
-                className="peer col-start-1 row-start-1 size-3.5 appearance-none rounded-full border bg-transparent checked:bg-darkOrange-5 border-darkOrange-5 shrink-0"
+                className="peer col-start-1 row-start-1 size-3.5 appearance-none rounded-full border bg-transparent checked:bg-orange-500 border-orange-500 shrink-0"
               />
 
               <ImCheckmark
@@ -1630,7 +1630,7 @@ const FormCheckboxGroup = ({
                       field.onChange(newValue);
                     }}
                     disabled={disabled}
-                    className="peer col-start-1 row-start-1 size-3.5 appearance-none rounded-full border bg-white checked:bg-darkOrange-5 border-darkOrange-5 shrink-0"
+                    className="peer col-start-1 row-start-1 size-3.5 appearance-none rounded-full border bg-white checked:bg-orange-500 border-orange-500 shrink-0"
                   />
                   <ImCheckmark
                     size={8}
@@ -1658,7 +1658,7 @@ const FormCheckboxGroup = ({
                       field.onChange(newValue);
                     }}
                     disabled={disabled}
-                    className="peer col-start-1 row-start-1 size-3.5 appearance-none rounded-full border bg-white checked:bg-darkOrange-5 border-darkOrange-5 shrink-0"
+                    className="peer col-start-1 row-start-1 size-3.5 appearance-none rounded-full border bg-white checked:bg-orange-500 border-orange-500 shrink-0"
                   />
                   <ImCheckmark
                     size={8}

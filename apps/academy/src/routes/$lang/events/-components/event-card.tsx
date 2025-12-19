@@ -37,7 +37,7 @@ export const EventCard = ({ event }: EventCardProps) => {
     return (
       <div className="flex flex-col justify-between sm:p-4 sm:pt-0 flex-grow sm:gap-7">
         <div className="flex flex-col gap-1 max-sm:grow max-sm:justify-center">
-          <span className="title-small sm:title-base text-maroon-11">
+          <span className="title-small sm:title-base text-brown-950">
             {event.name}
           </span>
           {event.projectId === 'cd62a137-baad-4133-b90d-711963e510c7' ? (

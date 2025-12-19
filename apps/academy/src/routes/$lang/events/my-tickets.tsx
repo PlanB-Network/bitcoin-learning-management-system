@@ -62,7 +62,7 @@ function DashboardBookings() {
           <h2 className="title-large text-black mb-4">
             {t('dashboard.booking.upcomingTicketTitle')}
           </h2>
-          <div className="w-full flex flex-col gap-4 text-newBlack-4 mb-10">
+          <div className="w-full flex flex-col gap-4 text-neutral-700 mb-10">
             <BookingPart
               tickets={upcomingTickets}
               refetchTickets={refetchTickets}
@@ -72,7 +72,7 @@ function DashboardBookings() {
           <h2 className="title-large text-black mb-4">
             {t('dashboard.booking.pastTicketTitle')}
           </h2>
-          <div className="w-full flex flex-col gap-4 text-newBlack-4">
+          <div className="w-full flex flex-col gap-4 text-neutral-700">
             <BookingPart tickets={pastTickets} />
           </div>
         </>

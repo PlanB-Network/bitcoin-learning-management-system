@@ -54,7 +54,7 @@ export const CourseTable = ({
     const progressForCourse = progressMap.get(course.id);
     if (!progressForCourse)
       return {
-        bgColor: 'bg-newGray-5 hover:bg-newGray-6',
+        bgColor: 'bg-neutral-100 hover:bg-neutral-50',
         text: t('dashboard.myCourses.notStarted'),
       };
 
@@ -66,11 +66,11 @@ export const CourseTable = ({
       };
     if (progressPercentage >= 0)
       return {
-        bgColor: 'bg-darkOrange-4 hover:bg-darkOrange-5',
+        bgColor: 'bg-orange-400 hover:bg-orange-500',
         text: t('dashboard.myCourses.inProgress'),
       };
     return {
-      bgColor: 'bg-newGray-5 hover:bg-newGray-6',
+      bgColor: 'bg-neutral-100 hover:bg-neutral-50',
       text: t('dashboard.myCourses.notStarted'),
     };
   };
@@ -102,7 +102,7 @@ export const CourseTable = ({
                   key={category}
                   className="text-center lg:w-[101px] max-w-[101px] pb-3 pt-1.5"
                 >
-                  <div className="capitalize bg-darkOrange-7 text-white desktop-caption1 py-px px-1 rounded-[5px] h-[22px] lg:w-[101px] mx-auto text-center">
+                  <div className="capitalize bg-orange-700 text-white desktop-caption1 py-px px-1 rounded-[5px] h-[22px] lg:w-[101px] mx-auto text-center">
                     {category}
                   </div>
                 </TableHead>
@@ -111,11 +111,11 @@ export const CourseTable = ({
           </TableHeader>
 
           {/* Table Body */}
-          <TableBody className="bg-newGray-6 p-1 gap-1">
+          <TableBody className="bg-neutral-50 p-1 gap-1">
             {Object.values(CourseLevel).map((level) => (
               <TableRow key={level}>
                 <TableCell className="p-1 bg-white! lg:w-[37px]">
-                  <div className="capitalize desktop-caption1 text-black py-px px-1 bg-maroon-2 rounded-[5px] self-center align-middle text-center [writing-mode:vertical-rl] transform-[rotate(180deg)]">
+                  <div className="capitalize desktop-caption1 text-black py-px px-1 bg-brown-200 rounded-[5px] self-center align-middle text-center [writing-mode:vertical-rl] transform-[rotate(180deg)]">
                     {level}
                   </div>
                 </TableCell>
@@ -135,7 +135,7 @@ export const CourseTable = ({
                   return (
                     <TableCell
                       key={`${level}-${category}`}
-                      className={`text-center align-middle lg:w-[115px] p-[2.5px] ${categoryIndex % 2 === 0 ? 'bg-newGray-6' : 'bg-[#f7f1e8]'}`}
+                      className={`text-center align-middle lg:w-[115px] p-[2.5px] ${categoryIndex % 2 === 0 ? 'bg-neutral-50' : 'bg-[#f7f1e8]'}`}
                     >
                       <div className="grid grid-cols-2 grid-rows-2 gap-1">
                         {[0, 1, 2, 3, 4, 5].map((i) => {
@@ -182,7 +182,7 @@ export const CourseTable = ({
                                     alignOffset={-50}
                                     className={`text-base leading-4 font-medium w-[200px] text-start p-2 ${bgColor}`}
                                   >
-                                    <span className="text-base leading-4 font-medium text-newBlack-3 line-clamp-2">
+                                    <span className="text-base leading-4 font-medium text-neutral-800 line-clamp-2">
                                       {course ? course.name : status?.text}
                                     </span>
                                   </TooltipContent>

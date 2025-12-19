@@ -196,11 +196,11 @@ export function CourseReviewComponent({
           {!existingReview && !isLockedReview && (
             <>
               <h1
-                className={cn('text-center md:text-2xl mb-6 text-newBlack-1')}
+                className={cn('text-center md:text-2xl mb-6 text-neutral-1000')}
               >
                 {t('courses.review.feedbackSessionTitle')}
               </h1>
-              <div className="text-center max-md:body-14px md:whitespace-pre-line text-newBlack-1">
+              <div className="text-center max-md:body-14px md:whitespace-pre-line text-neutral-1000">
                 <p>{t('courses.review.feedbackDescription1')}</p>
                 <p>{t('courses.review.feedbackDescription2')}</p>
               </div>
@@ -236,7 +236,7 @@ export function CourseReviewComponent({
                 className={cn(
                   'flex max-lg:flex-col gap-6 lg:gap-10 mt-6',
                   isLockedReview &&
-                    'pointer-events-none bg-newGray-6 blur-[1.5px] rounded-lg md:rounded-[20px] py-5 px-2 relative',
+                    'pointer-events-none bg-neutral-50 blur-[1.5px] rounded-lg md:rounded-[20px] py-5 px-2 relative',
                 )}
                 onClick={() => {
                   formDisabled && openAuthModal();
@@ -264,7 +264,7 @@ export function CourseReviewComponent({
 
                           <div
                             className={cn(
-                              'md:bg-newGray-6 md:py-7 md:rounded-full w-full max-md:max-w-[270px] md:max-w-fit mx-auto md:px-11',
+                              'md:bg-neutral-50 md:py-7 md:rounded-full w-full max-md:max-w-[270px] md:max-w-fit mx-auto md:px-11',
                               !isEditable && 'pointer-events-none',
                             )}
                           >
@@ -349,7 +349,7 @@ export function CourseReviewComponent({
                     />
                   </div>
 
-                  <div className="mb-5 w-10/12 mx-auto h-px my-2.5 bg-newGray-1" />
+                  <div className="mb-5 w-10/12 mx-auto h-px my-2.5 bg-neutral-500" />
 
                   <div className="flex flex-col gap-6">
                     <FormTextArea
@@ -489,7 +489,7 @@ function FormSlider({
 
   return (
     <div className="flex flex-col">
-      <div className="mb-5 w-full h-px my-2.5 bg-newGray-4" />
+      <div className="mb-5 w-full h-px my-2.5 bg-neutral-200" />
       <div className={formDivClass}>
         <Controller
           control={form.control}
@@ -522,7 +522,7 @@ function FormSlider({
                 <div
                   // biome-ignore lint/suspicious/noArrayIndexKey: explanation
                   key={i}
-                  className="w-0.5 h-1 bg-newGray-3"
+                  className="w-0.5 h-1 bg-neutral-300"
                   style={{ left: `${(i / 10) * 100}%` }}
                 />
               ))}
@@ -530,7 +530,7 @@ function FormSlider({
           </div>
         </div>
         <div className="relative mt-8">
-          <div className="flex lg:flex-col max-lg:justify-between body-14px-medium text-newGray-1 text-center">
+          <div className="flex lg:flex-col max-lg:justify-between body-14px-medium text-neutral-500 text-center">
             {stepNames[0] && (
               <span className="lg:absolute lg:self-start lg:-translate-x-1/2 max-lg:w-1/4 text-left">
                 {stepNames[0]}
@@ -585,7 +585,7 @@ function FormTextArea({
             placeholder={t('courses.review.writeThoughts')}
             rows={3}
             disabled={disabled}
-            className="w-full rounded-md px-4 py-2.5 text-newBlack-1 placeholder:text-newGray-2 border border-newGray-4 bg-white subtitle-medium-med-16px"
+            className="w-full rounded-md px-4 py-2.5 text-neutral-1000 placeholder:text-neutral-400 border border-neutral-200 bg-white subtitle-medium-med-16px"
             {...field}
           />
 

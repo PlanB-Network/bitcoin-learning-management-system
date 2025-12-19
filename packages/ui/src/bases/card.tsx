@@ -10,7 +10,7 @@ const cardStyles = cva('flex flex-col rounded-[10px] lg:rounded-3xl border ', {
   variants: {
     color: {
       gray: 'bg-gray-100 border-gray-200',
-      orange: 'bg-darkOrange-10 border-darkOrange-5',
+      orange: 'bg-orange-950 border-orange-500',
     },
   },
 });

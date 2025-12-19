@@ -37,11 +37,11 @@ export const PaymentQr = ({ checkoutData, onBack }: PaymentQrProps) => {
           </span>
           <div
             className={cn(
-              'flex flex-row items-center justify-center px-4 py-3 w-fit min-w-48 mb-8 bg-white !border-newGray-4',
+              'flex flex-row items-center justify-center px-4 py-3 w-fit min-w-48 mb-8 bg-white !border-neutral-200',
               borderClassName,
             )}
           >
-            <span className="desktop-subtitle1 text-newBlack-3 flex-1 truncate">
+            <span className="desktop-subtitle1 text-neutral-800 flex-1 truncate">
               {(checkoutData.amount / 100_000_000).toLocaleString('en-US', {
                 maximumFractionDigits: 8,
                 minimumFractionDigits: 8,
@@ -75,7 +75,7 @@ export const PaymentQr = ({ checkoutData, onBack }: PaymentQrProps) => {
                   borderClassName,
                 )}
               >
-                <span className="desktop-subtitle1 text-newGray-1 flex-1 truncate">
+                <span className="desktop-subtitle1 text-neutral-500 flex-1 truncate">
                   {unifiedPayment}
                 </span>
                 <AiOutlineCopy
@@ -99,7 +99,7 @@ export const PaymentQr = ({ checkoutData, onBack }: PaymentQrProps) => {
                   borderClassName,
                 )}
               >
-                <span className="desktop-subtitle1 text-newGray-1 flex-1 truncate">
+                <span className="desktop-subtitle1 text-neutral-500 flex-1 truncate">
                   {onchainAddress}
                 </span>
                 <AiOutlineCopy
@@ -121,7 +121,7 @@ export const PaymentQr = ({ checkoutData, onBack }: PaymentQrProps) => {
               borderClassName,
             )}
           >
-            <span className="desktop-subtitle1 text-newGray-1 flex-1 truncate">
+            <span className="desktop-subtitle1 text-neutral-500 flex-1 truncate">
               {lightningInvoice}
             </span>
             <AiOutlineCopy
@@ -143,7 +143,7 @@ export const PaymentQr = ({ checkoutData, onBack }: PaymentQrProps) => {
           <Trans i18nKey="payment.terms">
             <Link
               to="/legal/terms-of-sale"
-              className="hover:underline hover:underline-offset-2 text-darkOrange-5"
+              className="hover:underline hover:underline-offset-2 text-orange-500"
               target="_blank"
               rel="noreferrer"
             >

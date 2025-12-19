@@ -69,7 +69,7 @@ function Syllabus() {
 
           {containsChapterStartDate ? (
             <div className="flex flex-col gap-6 mt-6 text-xl course-overview">
-              <h3 className="subtitle-large-med-20px text-newBlack-1">
+              <h3 className="subtitle-large-med-20px text-neutral-1000">
                 {t('dashboard.course.courseCalendar')}
               </h3>
               <CourseCalendar courseId={course.id} />
@@ -84,7 +84,7 @@ function Syllabus() {
             hideGithubLink
             className="self-start mt-7 md:mt-10 w-full"
           >
-            <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-darkOrange-5 mb-7 md:mb-6">
+            <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-orange-500 mb-7 md:mb-6">
               {t('courses.details.curriculum')}
             </h4>
           </CourseCurriculum>
@@ -99,7 +99,7 @@ function Syllabus() {
             </h4>
             <div className="flex h-fit flex-col max-md:gap-4">
               {course.associatedProfessors.length > 0 ? (
-                <span className="uppercase text-darkOrange-5 text-lg">
+                <span className="uppercase text-orange-500 text-lg">
                   {t('dashboard.course.coordinator')}
                 </span>
               ) : null}
@@ -113,7 +113,7 @@ function Syllabus() {
             </div>
             {course.associatedProfessors.length > 0 ? (
               <div className="flex h-fit flex-col">
-                <span className="max-md:mt-6 uppercase text-darkOrange-5 text-lg ">
+                <span className="max-md:mt-6 uppercase text-orange-500 text-lg ">
                   {t('courses.details.associatedProfessors')}
                 </span>
                 <div className="mt-6 flex flex-row flex-wrap gap-6 max-md:justify-center">
@@ -144,7 +144,7 @@ const CourseProgress = ({
   return (
     <div
       key={courseProgress.courseId}
-      className="rounded-lg md:rounded-[20px] md:p-1.5 xl:p-2.5 max-md:border max-md:border-newGray-5 shadow-course-navigation-sm md:shadow-course-navigation bg-white md:bg-newGray-6 w-full max-w-[1082px] mt-2.5 md:mt-10"
+      className="rounded-lg md:rounded-[20px] md:p-1.5 xl:p-2.5 max-md:border max-md:border-neutral-100 shadow-course-navigation-sm md:shadow-course-navigation bg-white md:bg-neutral-50 w-full max-w-[1082px] mt-2.5 md:mt-10"
     >
       <div className="flex max-md:flex-col md:items-center md:justify-between md:gap-4 p-2 md:p-3 xl:p-5">
         <div className="flex justify-between items-center w-full md:w-[105px] md:shrink-0 max-md:mb-5">
@@ -152,7 +152,7 @@ const CourseProgress = ({
             {courseProgress.courseIndex.toUpperCase()}
           </span>
           <span className="max-md:hidden text-xl">{t('words.progress')}</span>
-          <span className="mobile-subtitle1 text-darkOrange-5 md:hidden">
+          <span className="mobile-subtitle1 text-orange-500 md:hidden">
             {courseProgress.progressPercentage}%
           </span>
         </div>
@@ -161,7 +161,7 @@ const CourseProgress = ({
           courseCompletedChapters={courseProgress.completedChaptersCount}
           courseTotalChapters={courseProgress.totalChapters}
         />
-        <span className="text-xl font-medium text-darkOrange-5 leading-normal w-13 shrink-0 text-end max-md:hidden">
+        <span className="text-xl font-medium text-orange-500 leading-normal w-13 shrink-0 text-end max-md:hidden">
           {courseProgress.progressPercentage}%
         </span>
         <div
@@ -236,10 +236,10 @@ const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
 
   return (
     <section className="w-full flex flex-col gap-5 mt-8">
-      <h3 className="subtitle-large-med-20px text-newBlack-1">
+      <h3 className="subtitle-large-med-20px text-neutral-1000">
         {t('dashboard.course.announcement')}
       </h3>
-      <div className="flex flex-col rounded-[12px] border-newGray-5 border overflow-hidden">
+      <div className="flex flex-col rounded-[12px] border-neutral-100 border overflow-hidden">
         {courseAnnouncements.map((announcement, index) => (
           <CourseAnnouncementItem
             key={announcement.id}
@@ -271,16 +271,16 @@ const CourseAnnouncementItem = ({
     <div key={announcement.id} className="relative flex flex-col">
       <article
         className={cn(
-          'group flex w-full hover:bg-darkOrange-0 hover:border-darkOrange-4 hover:border-l-2 py-1.5 px-4 md:p-4',
+          'group flex w-full hover:bg-orange-50 hover:border-orange-400 hover:border-l-2 py-1.5 px-4 md:p-4',
         )}
       >
         <div className="flex flex-col gap-2.5 md:px-4 grow">
           <div className="flex justify-between items-center max-md:min-h-8">
             <div className="flex items-center gap-2 md:gap-3">
-              <div className="rounded-full size-2 bg-darkOrange-5 md:hidden ml-1.5" />
+              <div className="rounded-full size-2 bg-orange-500 md:hidden ml-1.5" />
               {getNotificationIcon(
                 announcement.type,
-                'size-[18px] md:size-6 text-darkOrange-6',
+                'size-[18px] md:size-6 text-orange-600',
               )}
               <TextTag size="small" variant="orange" mode="light100">
                 {getNotificationTitle(
@@ -289,16 +289,16 @@ const CourseAnnouncementItem = ({
                 )}
               </TextTag>
             </div>
-            <div className="rounded-full size-2 bg-darkOrange-5 max-md:hidden" />
-            <span className="px-4 shrink-0 text-center lowercase desktop-caption1 text-newBlack-5 md:hidden">
+            <div className="rounded-full size-2 bg-orange-500 max-md:hidden" />
+            <span className="px-4 shrink-0 text-center lowercase desktop-caption1 text-neutral-600 md:hidden">
               {getNotificationDateString(new Date(announcement.scheduledAt))}
             </span>
           </div>
-          <p className="body-14px text-newBlack-1 whitespace-pre-line">
+          <p className="body-14px text-neutral-1000 whitespace-pre-line">
             {announcement.content}
           </p>
         </div>
-        <span className="px-4 w-35 shrink-0 text-center lowercase desktop-caption1 text-newBlack-5 max-md:hidden">
+        <span className="px-4 w-35 shrink-0 text-center lowercase desktop-caption1 text-neutral-600 max-md:hidden">
           {getNotificationDateString(new Date(announcement.scheduledAt))}
         </span>
         <button
@@ -313,7 +313,7 @@ const CourseAnnouncementItem = ({
           <IoMdClose size={20} />
         </button>
       </article>
-      {!lastAnnouncement && <div className="h-px w-full bg-newGray-4" />}
+      {!lastAnnouncement && <div className="h-px w-full bg-neutral-200" />}
     </div>
   );
 };

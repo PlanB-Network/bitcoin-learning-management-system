@@ -15,7 +15,7 @@ const dropdownButtonVariant = cva('flex items-center gap-4 px-4 py-3 w-full', {
       true: 'rounded-t-xl border-x border-t',
     },
     variant: {
-      dark: 'bg-darkOrange-11 border-darkOrange-9',
+      dark: 'bg-orange-1000 border-orange-900',
       light: 'bg-neutral-50 border-none',
     },
   },
@@ -29,7 +29,7 @@ const dropdownContainerVariant = cva(
     },
     variants: {
       variant: {
-        dark: 'bg-darkOrange-11 border-darkOrange-9',
+        dark: 'bg-orange-1000 border-orange-900',
         light: 'bg-neutral-50 border-none',
       },
     },

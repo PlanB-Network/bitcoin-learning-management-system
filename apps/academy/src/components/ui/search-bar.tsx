@@ -41,7 +41,7 @@ export const SearchBar: FC<SearchBarProps> = ({
 
   return (
     <div
-      className={`flex items-center rounded-xl bg-[#E5E5E5] overflow-hidden focus-within:ring-2 focus-within:ring-newOrange-1 w-full ${className}`}
+      className={`flex items-center rounded-xl bg-[#E5E5E5] overflow-hidden focus-within:ring-2 focus-within:ring-orange-500 w-full ${className}`}
     >
       {/* Left search icon */}
       <span className="pl-3 mr-3 flex items-center">
@@ -74,7 +74,7 @@ export const SearchBar: FC<SearchBarProps> = ({
         type="button"
         onClick={onFilterClick}
         aria-label="Filter options"
-        className="bg-maroon-8 hover:bg-maroon-9 flex items-center justify-center px-3 self-stretch"
+        className="bg-brown-700 hover:bg-brown-800 flex items-center justify-center px-3 self-stretch"
       >
         <img src={FilterIcon} alt="Filter" className="w-5 h-5" />
       </button>
