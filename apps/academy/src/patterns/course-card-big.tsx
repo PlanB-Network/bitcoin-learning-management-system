@@ -52,7 +52,7 @@ export const CourseCardBig = ({
         <div className="grow min-w-0 w-full">
           <MobileCourseThumbnail course={course} />
 
-          <div className="flex flex-col p-4 h-full w-full">
+          <div className="flex flex-col p-4 lg:h-full w-full">
             <span className="mt-4 flex flex-col w-full line-clamp-2 title-medium align-top mb-2 lg:mb-0">
               {course.name}
             </span>
