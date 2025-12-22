@@ -85,7 +85,7 @@ function Projects() {
               return (
                 <details
                   key={category}
-                  open={isSearching ? true : index === 0 ? true : undefined}
+                  open={isSearching ? true : undefined}
                   className="group border border-neutral-100 rounded-2xl w-full hover:cursor-pointer"
                 >
                   <summary className="[&::-webkit-details-marker]:hidden list-none px-4 py-3">
