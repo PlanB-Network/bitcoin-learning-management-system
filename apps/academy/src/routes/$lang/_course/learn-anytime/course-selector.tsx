@@ -19,7 +19,7 @@ import { TbChevronRight } from 'react-icons/tb';
 import { PageLayout } from '#src/components/page-layout.js';
 import { AppContext } from '#src/providers/context.tsx';
 import { assetUrl } from '#src/utils/index.ts';
-import { normalizeString } from '#src/utils/string.ts';
+import { normalizeString, toCamelCase } from '#src/utils/string.ts';
 import { CourseInfoSection } from './-components/course-info-section.tsx';
 import { levels, sortCoursesByLevel } from './-utils/course-utils.tsx';
 
@@ -113,7 +113,7 @@ function CourseSelector() {
                   : 'hover:bg-neutral-50',
               )}
             >
-              {topic}
+              {t(`words.${toCamelCase(topic)}`)}
               <TbChevronRight
                 className={cn(
                   activeTopic === topic
@@ -215,7 +215,7 @@ function CourseSelector() {
                   }
                 }}
                 isActive={topic === activeTopic}
-                text={capitalize(topic)}
+                text={capitalize(t(`words.${toCamelCase(topic)}`))}
                 size="s"
                 inactiveBackgroundColor="bg-neutral-50"
               />
