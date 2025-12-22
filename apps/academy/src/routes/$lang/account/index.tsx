@@ -171,8 +171,22 @@ function Account() {
               </span>
             </div>
             {/* Email */}
-            <div className="flex items-center justify-between w-full p-4 gap-2">
-              <div className="flex flex-col shrink-0">
+            <div
+              className={cn(
+                'flex justify-between w-full p-4 gap-2 md:items-center',
+                user?.currentEmailChecked === false && user?.email
+                  ? 'max-md:flex-col'
+                  : 'max-md:items-center',
+              )}
+            >
+              <div
+                className={cn(
+                  'flex md:flex-col shrink-0',
+                  user?.currentEmailChecked === false
+                    ? 'max-md:justify-between'
+                    : 'max-md:flex-col',
+                )}
+              >
                 <div className="flex items-center gap-1">
                   {!user?.currentEmailChecked || !user?.email ? (
                     <TbAlertCircleFilled
@@ -191,7 +205,14 @@ function Account() {
                 ) : null}
               </div>
               {user?.email ? (
-                <div className="flex items-center gap-2 min-w-0">
+                <div
+                  className={cn(
+                    'flex items-center gap-2 min-w-0',
+                    user?.currentEmailChecked === false
+                      ? 'max-md:w-full max-md:justify-between'
+                      : '',
+                  )}
+                >
                   <span
                     className={cn(
                       'body-base truncate',

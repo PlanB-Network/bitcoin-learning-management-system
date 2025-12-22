@@ -31,6 +31,7 @@ import { base64ToBlob } from '#src/utils/misc.ts';
 import { trpc } from '#src/utils/trpc.js';
 import { TaxesSpan } from '../_course/courses/$courseName-$courseId.tsx';
 import { ListElement2 } from '../_course/courses/$courseSlug/_$courseSlug/summer-school.tsx';
+import { AddEmailModal } from '../dashboard/_dashboard/-components/add-email-modal.tsx';
 import { EventBookModal } from './-components/event-book-modal.tsx';
 import { EventPaymentModal } from './-components/event-payment-modal.tsx';
 
@@ -61,6 +62,7 @@ function EventDetails() {
       satsPrice: null,
     });
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
+  const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
 
   const { user, session } = useContext(AppContext);
   const { conversionRate } = useContext(ConversionRateContext);
@@ -171,13 +173,17 @@ function EventDetails() {
               className="w-full"
               onClick={() => {
                 if (isLoggedIn) {
-                  setPaymentModalData({
-                    accessType: 'online',
-                    dollarPrice: dollarPrice,
-                    eventId: event.id,
-                    satsPrice: satsPrice,
-                  });
-                  setIsPaymentModalOpen(true);
+                  if (user?.email && user?.currentEmailChecked) {
+                    setPaymentModalData({
+                      accessType: 'online',
+                      dollarPrice: dollarPrice,
+                      eventId: event.id,
+                      satsPrice: satsPrice,
+                    });
+                    setIsPaymentModalOpen(true);
+                  } else {
+                    setIsEmailModalOpen(true);
+                  }
                 } else {
                   openAuthModal();
                 }
@@ -196,13 +202,17 @@ function EventDetails() {
               className="w-full"
               onClick={() => {
                 if (isLoggedIn) {
-                  setPaymentModalData({
-                    accessType: 'physical',
-                    dollarPrice: dollarPrice,
-                    eventId: event.id,
-                    satsPrice: satsPrice,
-                  });
-                  setIsPaymentModalOpen(true);
+                  if (user?.email && user?.currentEmailChecked) {
+                    setPaymentModalData({
+                      accessType: 'physical',
+                      dollarPrice: dollarPrice,
+                      eventId: event.id,
+                      satsPrice: satsPrice,
+                    });
+                    setIsPaymentModalOpen(true);
+                  } else {
+                    setIsEmailModalOpen(true);
+                  }
                 } else {
                   openAuthModal();
                 }
@@ -287,6 +297,14 @@ function EventDetails() {
             }}
           />
         ) : null}
+
+        {isEmailModalOpen && event && user && (
+          <AddEmailModal
+            isOpen={isEmailModalOpen}
+            onClose={() => setIsEmailModalOpen(false)}
+            email={user?.email ?? ''}
+          />
+        )}
       </div>
       <div className="flex flex-col items-center w-full">
         {!isFetched && (
