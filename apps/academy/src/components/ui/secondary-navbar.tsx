@@ -1,6 +1,7 @@
 import {
   cn,
   Tooltip,
+  TooltipArrow,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
@@ -187,10 +188,15 @@ const SecondaryNavbarDesktop = ({ tabs }: { tabs: Tab[] }) => {
                   sideOffset={5}
                   side={'bottom'}
                   className={
-                    'flex flex-col items-center text-base w-fit px-4 text-start bg-yellow-50 rounded-full border-0'
+                    'flex flex-col items-center shadow-none! text-xs! w-fit px-3! text-start bg-yellow-50 rounded-full border-0!'
                   }
                   hidden={!tab.onlyForLoggedIn || isLoggedIn}
                 >
+                  <TooltipArrow
+                    className="fill-yellow-50"
+                    width={9}
+                    height={7}
+                  />
                   <span className="text-xs">{t('courses.navbarHover')}</span>
                 </TooltipContent>
               </Tooltip>
