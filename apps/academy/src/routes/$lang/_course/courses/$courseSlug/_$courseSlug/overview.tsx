@@ -27,12 +27,12 @@ import { CourseTitle } from '../-components/course-title.tsx';
 import { getTabs } from '../-utils/get-tabs.tsx';
 
 export const Route = createFileRoute(
-  '/$lang/_course/courses/$courseSlug/_$courseSlug/syllabus',
+  '/$lang/_course/courses/$courseSlug/_$courseSlug/overview',
 )({
-  component: Syllabus,
+  component: Overview,
 });
 
-function Syllabus() {
+function Overview() {
   const { t } = useTranslation();
 
   const { course, courseProgress } = useContext(CourseContext);
@@ -45,7 +45,7 @@ function Syllabus() {
 
   return (
     <PageLayout
-      title={t('words.syllabus')}
+      title={t('words.overview')}
       hideTitle
       layoutSize="max"
       overTitle={course ? <CourseTitle course={course} /> : undefined}

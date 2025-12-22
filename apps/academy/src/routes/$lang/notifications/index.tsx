@@ -594,7 +594,7 @@ export const getNotificationRedirect = (
     case NotificationType.Celebration:
     case NotificationType.Warning:
     case NotificationType.General:
-      return `/courses/${courseId}/syllabus`;
+      return `/courses/${courseId}/overview`;
     default:
       return '/notifications';
   }

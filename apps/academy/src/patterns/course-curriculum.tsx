@@ -134,7 +134,7 @@ export const CourseCurriculum = ({
                       </Link>
                       {!hideGithubLink && (
                         <Link
-                          to={`https://github.com/PlanB-Network/bitcoin-educational-content/tree/dev/courses/${course.id}`}
+                          to={`https://github.com/PlanB-Network/bitcoin-educational-content/tree/dev/courses/${course.index}`}
                           className="leading-[156.25%] underline text-orange-500 max-lg:hidden"
                         >
                           {t('dashboard.teacher.courses.editOnGithub')}

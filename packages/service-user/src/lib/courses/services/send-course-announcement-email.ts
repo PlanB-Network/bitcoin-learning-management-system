@@ -134,7 +134,7 @@ export const createSendCourseAnnouncementEmail = (
       const announcementText = announcementInfo.content
         .split('\n')
         .map((line) => line.trim() || ' '); // non breaking space for empty lines
-      const dashboardLink = `${config.domainUrl}/courses/${courseId}/syllabus`;
+      const dashboardLink = `${config.domainUrl}/courses/${courseId}/overview`;
 
       for (const user of eligibleUsers) {
         const unsubscribeLink = `${config.domainUrl}/change-email-preferences/${user.unsubscribeId}`;

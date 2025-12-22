@@ -42,9 +42,9 @@ export const getTabs = (
       onlyForLoggedIn: false,
     },
     {
-      id: 'syllabus',
-      label: 'words.syllabus',
-      href: `/courses/${courseId}/syllabus`,
+      id: 'overview',
+      label: 'words.overview',
+      href: `/courses/${courseId}/overview`,
       onlyForLoggedIn: false,
     },
   ];

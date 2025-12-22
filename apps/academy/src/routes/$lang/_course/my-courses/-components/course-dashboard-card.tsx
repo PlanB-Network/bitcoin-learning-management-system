@@ -227,7 +227,7 @@ export const CourseDashboardCard = ({
                   <Link
                     className="w-full"
                     // TODO: remove the condition when the course completion page for professor led course is ready
-                    to={`/courses/${course.id}/syllabus`}
+                    to={`/courses/${course.id}/overview`}
                   >
                     <ButtonWithArrow
                       variant="primary"

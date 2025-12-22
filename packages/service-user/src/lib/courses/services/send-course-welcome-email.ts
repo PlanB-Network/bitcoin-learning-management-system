@@ -52,7 +52,7 @@ export const createSendCourseWelcomeEmail = (
       await sendEmail({
         data: {
           courseName: courseName,
-          dashboardLink: `${config.domainUrl}/courses/${courseId}/syllabus`,
+          dashboardLink: `${config.domainUrl}/courses/${courseId}/overview`,
           subject: subject,
         },
         email: userEmail,

@@ -152,12 +152,14 @@ export const CourseDetails = ({ course }: { course: JoinedCourse }) => {
         </CourseCurriculum>
       )}
 
-      <MakeModificationBlock
-        title={t('dashboard.teacher.courses.makeModifications')}
-        titleLink={`https://github.com/PlanB-Network/bitcoin-educational-content/tree/dev/courses/${course.id}`}
-        text="dashboard.teacher.courses.courseModification"
-        textLink="/tutorials/others/contribution/5862003b-9d76-47f5-a9e0-5ec74256a8ba"
-      />
+      {course && !course.requiresPayment && (
+        <MakeModificationBlock
+          title={t('dashboard.teacher.courses.makeModifications')}
+          titleLink={`https://github.com/PlanB-Network/bitcoin-educational-content/tree/dev/courses/${course.index}`}
+          text="dashboard.teacher.courses.courseModification"
+          textLink="/tutorials/others/contribution/5862003b-9d76-47f5-a9e0-5ec74256a8ba"
+        />
+      )}
     </div>
   );
 };
