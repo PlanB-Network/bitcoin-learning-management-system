@@ -6,7 +6,10 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 import { PageLayout } from '#src/components/page-layout.js';
-import { SocialLinks } from '#src/components/professor-card.tsx';
+import {
+  professorHasTipsAvailable,
+  SocialLinks,
+} from '#src/components/professor-card.tsx';
 import { TipModal } from '#src/components/tip-modal.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.js';
@@ -121,12 +124,14 @@ function ProfessorDetail() {
             description={professor.bio ?? undefined}
             tags={professor.tags}
             button={
-              <Button
-                onClick={openTipModal}
-                className="max-md:order-1 max-md:w-full max-md:mx-auto max-md:max-w-88"
-              >
-                {t('professors.tips.authorSupport')}
-              </Button>
+              professorHasTipsAvailable(professor) ? (
+                <Button
+                  onClick={openTipModal}
+                  className="max-md:order-1 max-md:w-full max-md:mx-auto max-md:max-w-88"
+                >
+                  {t('professors.tips.authorSupport')}
+                </Button>
+              ) : undefined
             }
             socials={<SocialLinks professor={professor} />}
           />

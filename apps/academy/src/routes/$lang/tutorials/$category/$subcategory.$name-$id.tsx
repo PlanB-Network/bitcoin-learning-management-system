@@ -14,6 +14,7 @@ import { AuthModal } from '#src/components/AuthModals/auth-modal.js';
 import { AuthModalState } from '#src/components/AuthModals/props.js';
 import { AuthorCard } from '#src/components/author-card.tsx';
 import { PageLayout } from '#src/components/page-layout.tsx';
+import { professorHasTipsAvailable } from '#src/components/professor-card.tsx';
 import { ProofreadingDesktop } from '#src/components/proofreading-progress.js';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
@@ -118,9 +119,11 @@ const AuthorDetails = ({ tutorial }: { tutorial: GetTutorialResponse }) => {
             </Link>
           </span>
         </p>
-        <p className="md:mt-6 text-neutral-1000 md:text-justify body-16px md:label-large-20px max-md:hidden">
-          {t('courses.details.thanksTipping')}
-        </p>
+        {author && professorHasTipsAvailable(author) ? (
+          <p className="md:mt-6 text-neutral-1000 md:text-justify body-16px md:label-large-20px max-md:hidden">
+            {t('courses.details.thanksTipping')}
+          </p>
+        ) : null}
         {author && (
           <div className="flex h-fit flex-col max-md:gap-4">
             <AuthorCard

@@ -10,7 +10,10 @@ import CertificateLockImage from '#src/assets/courses/completion-diploma-lock.we
 import CertificateSelfPacedSatoshiImage from '#src/assets/courses/completion-diploma-satoshi-clear.webp?no-inline';
 import CertificateTeacherLedSatoshiImage from '#src/assets/courses/diploma-teacher-led-satoshi.webp?no-inline';
 import { AuthorCard } from '#src/components/author-card.tsx';
-import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
+import {
+  ProfessorCardReduced,
+  professorHasTipsAvailable,
+} from '#src/components/professor-card.tsx';
 import { ProofreadingDesktop } from '#src/components/proofreading-progress.tsx';
 import { CourseCard } from '#src/patterns/course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
@@ -66,6 +69,9 @@ const Professor = ({
   course: CourseResponse;
   addThanksTipping?: boolean;
 }) => {
+  const someProfessorHasTipsAvailable = course.mainProfessors.some(
+    (professor) => professorHasTipsAvailable(professor),
+  );
   return (
     <section className="w-full flex flex-col mt-5 md:mt-8">
       <h4 className="subtitle-medium-caps-18px text-orange-500">
@@ -93,9 +99,11 @@ const Professor = ({
           ))}
         </span>
       </p>
-      <p className="md:mt-6 text-neutral-1000 md:text-justify body-16px md:label-large-20px max-md:hidden">
-        {t('courses.details.thanksTipping')}
-      </p>
+      {someProfessorHasTipsAvailable ? (
+        <p className="md:mt-6 text-neutral-1000 md:text-justify body-16px md:label-large-20px max-md:hidden">
+          {t('courses.details.thanksTipping')}
+        </p>
+      ) : null}
       <div className="flex h-fit flex-col max-md:gap-4">
         {course.mainProfessors.map((professor) => (
           <AuthorCard

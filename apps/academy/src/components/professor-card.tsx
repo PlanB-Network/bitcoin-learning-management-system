@@ -69,6 +69,10 @@ export const ProfessorCardReduced = ({
   const numberCountClass = `text-5xl leading-[116%] text-center text-white${mobileSize === 'small' ? ' max-md:title-large-24px' : ''}`;
   const wordCountClass = `font-semibold leading-[133%] text-center text-white${mobileSize === 'small' ? ' max-md:body-12px' : ''}`;
 
+  if (!professorHasTipsAvailable(professor)) {
+    hasDonateButton = false;
+  }
+
   return (
     <div
       className={cn(
@@ -348,5 +352,15 @@ const BackgroundAuthorCardElement = ({
         </linearGradient>
       </defs>
     </svg>
+  );
+};
+
+export const professorHasTipsAvailable = (professor: FormattedProfessor) => {
+  return Boolean(
+    professor.tips.lightningAddress ||
+      professor.tips.lnurlPay ||
+      professor.tips.paynym ||
+      professor.tips.silentPayment ||
+      professor.tips.url,
   );
 };
