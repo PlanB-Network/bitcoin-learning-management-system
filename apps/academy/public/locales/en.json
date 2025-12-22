@@ -1810,7 +1810,24 @@
     },
     "projects": {
       "addProjects": "Add project",
-      "title": "Projects"
+      "title": "Projects",
+      "types": {
+        "communities": "Communities",
+        "conference": "Conference",
+        "education": "Education",
+        "exchange": "Exchange",
+        "infrastructure": "Infrastructure",
+        "investment": "Investment",
+        "manufacturer": "Manufacturer",
+        "merchant": "Merchant",
+        "mining": "Mining",
+        "news": "News",
+        "node": "Node",
+        "payment": "Payment",
+        "privacy": "Privacy",
+        "service": "Service",
+        "wallet": "Wallet"
+      }
     },
     "searchFilterName": "Search by name",
     "toggleLabelAll": "All",

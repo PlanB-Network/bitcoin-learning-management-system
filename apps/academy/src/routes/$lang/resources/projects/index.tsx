@@ -72,7 +72,7 @@ function Projects() {
             fullWidthOnMobile
           />
           <div className="flex flex-col gap-2 md:gap-5 w-full">
-            {categories.map((category, index) => {
+            {categories.map((category) => {
               const filteredProjects = categorizedProjects[category].filter(
                 (project) =>
                   project.name.toLowerCase().includes(searchTerm.toLowerCase()),
@@ -90,7 +90,9 @@ function Projects() {
                 >
                   <summary className="[&::-webkit-details-marker]:hidden list-none px-4 py-3">
                     <h3 className="title-small md:title-medium text-black flex items-center justify-between">
-                      {capitalize(category)}
+                      {capitalize(
+                        t(`resources.projects.types.${category}`, category),
+                      )}
                       <MdKeyboardArrowDown
                         size={24}
                         className="group-open:-rotate-180 transition-transform ease-in-out"
