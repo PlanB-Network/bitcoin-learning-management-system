@@ -25,6 +25,7 @@ import { MentorChat } from '#src/components/mentor-chat.tsx';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { useGreater } from '#src/hooks/use-greater.js';
+import { useAuthModal } from '#src/providers/auth.tsx';
 import { CourseContext } from '#src/providers/courseContext.tsx';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import {
@@ -466,6 +467,8 @@ function CourseChapter() {
   const { i18n, t } = useTranslation();
   const params = Route.useParams();
 
+  const { openAuthModal: openAuthModalContext } = useAuthModal();
+
   const { course, courseProgress, isLoggedIn } = useContext(CourseContext);
 
   const [isContentExpanded, setIsContentExpanded] = useState(true);
@@ -640,6 +643,17 @@ function CourseChapter() {
       title={`${course?.name || ''} - ${chapter?.title || ''}`}
       hideTitle
       tabs={course ? getTabs(course, courseProgress?.[0]) : []}
+      actionButtons={
+        !isLoggedIn && chapter
+          ? [
+              {
+                text: t('auth.saveProgress'),
+                tooltipText: t('auth.signUpToSave'),
+                onClick: () => openAuthModalContext(AuthModalState.Register),
+              },
+            ]
+          : []
+      }
     >
       <div className="text-black flex flex-col grow">
         {!isFetched && (

@@ -27,7 +27,12 @@ interface Props {
   }[];
   backLink?: { text: string; href: string };
   actionButtons?:
-    | { text: string; onClick?: () => void; href?: string }[]
+    | {
+        text: string;
+        onClick?: () => void;
+        href?: string;
+        tooltipText?: string;
+      }[]
     | React.ReactNode[];
   layoutSize?: 'small' | 'base' | 'wide' | 'max';
   icon?: IconType | ReactNode;
@@ -68,7 +73,7 @@ export const PageLayout = ({
         if (typeof button === 'object' && button !== null && 'text' in button) {
           return (
             // biome-ignore lint/suspicious/noArrayIndexKey: <N/A>
-            <div key={index}>
+            <div key={index} className="relative flex flex-col items-center">
               {button.href ? (
                 <Button variant="newTertiary" size={'s'} asChild rounded>
                   <Link to={button.href} target="_blank" rel="noreferrer">
@@ -84,6 +89,23 @@ export const PageLayout = ({
                 >
                   {button.text}
                 </Button>
+              )}
+
+              {button.tooltipText && (
+                <div className="hidden lg:flex absolute -bottom-8.5 flex-col items-center pointer-events-none">
+                  {/** biome-ignore lint/a11y/noSvgWithoutTitle: <N/A> */}
+                  <svg
+                    width="9"
+                    height="5"
+                    viewBox="0 0 9 5"
+                    className="fill-yellow-50 translate-y-px"
+                  >
+                    <path d="M4.5 0L9 5H0L4.5 0Z" />
+                  </svg>
+                  <div className="bg-yellow-50 px-3 py-1.5 rounded-full shadow-none text-xs text-center text-neutral-800 whitespace-nowrap">
+                    {button.tooltipText}
+                  </div>
+                </div>
               )}
             </div>
           );
