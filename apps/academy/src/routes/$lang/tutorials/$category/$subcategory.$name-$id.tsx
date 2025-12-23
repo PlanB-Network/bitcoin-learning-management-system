@@ -1,12 +1,12 @@
 import { formatNameForURL } from '@blms/shared';
 import type { GetTutorialResponse, JoinedProofreading } from '@blms/types';
-import { cn, customToast, DividerSimple, Loader } from '@blms/ui';
+import { cn, customToast, DividerSimple, Image, Loader } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import React, { memo, useContext, useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import { TbCheck } from 'react-icons/tb';
+import { TbCalendarCheck, TbCheck } from 'react-icons/tb';
 import { z } from 'zod';
 import ThumbDown from '#src/assets/icons/thumb_down.svg';
 import ThumbUp from '#src/assets/icons/thumb_up.svg';
@@ -18,9 +18,11 @@ import { professorHasTipsAvailable } from '#src/components/professor-card.tsx';
 import { ProofreadingDesktop } from '#src/components/proofreading-progress.js';
 import { useDisclosure } from '#src/hooks/use-disclosure.js';
 import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.js';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
-import { cdnUrl } from '#src/utils/index.ts';
+import { formatDate } from '#src/utils/date.ts';
+import { cdnUrl, resourceImgUrl } from '#src/utils/index.ts';
 import { trpc } from '#src/utils/trpc.js';
 import { TutorialLikes } from '../-components/tutorial-likes.tsx';
 import TutorialWithTOC from '../-components/tutorial-toc.tsx';
@@ -53,47 +55,46 @@ export const Route = createFileRoute(
 });
 
 const Header = ({ tutorial }: { tutorial: GetTutorialResponse }) => {
-  return (
-    <div>
-      <section className="flex justify-between items-end gap-4 w-full py-1 md:py-2.5">
-        <h1 className="display-small md:display-medium">{tutorial.title}</h1>
-        <TutorialLikes tutorial={tutorial} className="max-md:hidden shrink-0" />
-      </section>
+  const isMobile = useSmaller('md');
 
-      <section className="flex justify-between items-center w-full mt-1 md:mt-5 gap-4">
-        {tutorial.creditLink && (
-          <span className="flex items-center gap-1.5 subtitle-small-14px text-neutral-600 max-md:hidden w-full">
-            <span className="shrink-0">
-              {t('tutorials.details.source').toUpperCase()}
-            </span>
-            <a
-              href={tutorial.creditLink}
-              target="_blank"
-              rel="noreferrer"
-              className="max-w-[350px] leading-snug tracking-015px underline text-blue-500 truncate lowercase"
-            >
-              {tutorial.creditLink}
-            </a>
-          </span>
-        )}
+  return (
+    <div className="flex flex-col w-full">
+      <h1 className="display-base md:display-medium">{tutorial.title}</h1>
+
+      <section className="flex items-center max-md:justify-between w-full gap-10 mt-2">
         {tutorial.professor?.name && (
-          <span className="flex items-center gap-1.5 text-neutral-600 shrink-0">
-            <span className="max-md:hidden subtitle-small-caps-14px">
-              {t('tutorials.details.author').toUpperCase()}
-            </span>
-            <a
-              href={`/professor/${formatNameForURL(tutorial.professor?.name)}-${tutorial.professor?.id}`}
-              className="text-neutral-1000 subtitle-medium-16px md:title-small-med-16px hover:underline"
-            >
-              {tutorial.professor?.name}
-            </a>
-          </span>
+          <a
+            href={`/professor/${formatNameForURL(tutorial.professor?.name)}-${tutorial.professor?.id}`}
+            className="flex items-center gap-2 shrink-0 body-small-bold md:body-base-bold"
+          >
+            <Image
+              src={resourceImgUrl(tutorial.professor, 'profile.webp')}
+              alt={tutorial.professor.name}
+              width={16}
+              height={16}
+              breakpoints={{ default: 64 }}
+              className={cn(
+                'size-4 rounded-full object-cover [overflow-clip-margin:_unset]',
+              )}
+            />
+            {tutorial.professor?.name}
+          </a>
         )}
+        <div className="flex items-center gap-2 text-neutral-600 max-md:hidden">
+          <TbCalendarCheck size={16} />
+          <span className="body-base">{formatDate(tutorial.lastUpdated)}</span>
+        </div>
         <TutorialLikes
           tutorial={tutorial}
-          className="md:hidden shrink-0 ml-auto"
+          isMobile={isMobile ?? undefined}
+          className="shrink-0"
         />
       </section>
+
+      <div className="flex items-center gap-2 text-neutral-600 md:hidden mt-1">
+        <TbCalendarCheck size={16} />
+        <span className="body-small">{formatDate(tutorial.lastUpdated)}</span>
+      </div>
     </div>
   );
 };
@@ -392,40 +393,56 @@ function TutorialDetails() {
     };
 
     return (
-      <div className="flex flex-col items-center justify-center gap-2 md:gap-4 bg-neutral-50 w-[290px] md:w-fit rounded-[15px] md:rounded-[30px] px-7 py-5 md:pb-4 border border-neutral-100 shadow-course-navigation-sm-accent text-black mx-auto md:my-7">
-        <span className="title-medium-sb-18px md:title-large-sb-24px text-center text-neutral-1000">
-          {t('tutorials.details.didThisWork')}
-        </span>
-        <div className="flex items-center justify-between py-2.5 gap-6 md:gap-10">
-          {isFetched && tutorial && (
-            <button
-              type="button"
-              onClick={() => {
-                isLoggedIn ? handleLike() : openAuthModal();
-              }}
-              className={cn(
-                'py-3.5 px-4 rounded-lg md:rounded-[12px] border shadow-course-navigation border-green-500 focus:border-green-700',
-                isLiked.liked ? 'bg-green-50' : 'hover:bg-green-50 bg-white',
-              )}
-            >
-              <img src={ThumbUp} alt="" className="size-9 md:size-12" />
-            </button>
-          )}
-          {isFetched && tutorial && (
-            <button
-              type="button"
-              onClick={() => {
-                isLoggedIn ? handleDislike() : openAuthModal();
-              }}
-              className={cn(
-                'py-3 md:py-3.5 px-3.5 md:px-4 rounded-lg md:rounded-[12px] border shadow-course-navigation border-red-400 focus:border-red-600',
-                isLiked.disliked ? 'bg-red-50' : 'hover:bg-red-50 bg-white',
-              )}
-            >
-              <img src={ThumbDown} alt="" className="size-9 md:size-12" />
-            </button>
-          )}
-        </div>
+      <div className="flex flex-col items-center justify-center gap-2 md:gap-4 w-full rounded-[30px] px-2 py-4 border border-neutral-100 text-black max-md:mt-8 max-md:mb-2 md:my-16">
+        {isFetched && tutorial && (
+          <>
+            <span className="title-medium text-center text-neutral-1000">
+              {t('tutorials.details.didThisWork')}
+            </span>
+            <div className="flex items-center justify-between py-2.5 gap-6 md:gap-10">
+              <div className="flex flex-col gap-2 items-center justify-center">
+                <button
+                  type="button"
+                  onClick={() => {
+                    isLoggedIn ? handleLike() : openAuthModal();
+                  }}
+                  className={cn(
+                    'py-3.5 px-4 rounded-xl border border-green-400 focus:border-green-700',
+                    isLiked.liked
+                      ? 'bg-green-50'
+                      : 'hover:bg-green-50 bg-white',
+                  )}
+                >
+                  <img src={ThumbUp} alt="" className="size-12" />
+                </button>
+                <span className="body-extra-large-bold text-green-400">
+                  {likesCounts.likeCount}
+                </span>
+              </div>
+              <div className="flex flex-col gap-2 items-center justify-center">
+                <button
+                  type="button"
+                  onClick={() => {
+                    isLoggedIn ? handleDislike() : openAuthModal();
+                  }}
+                  className={cn(
+                    'py-3.5 px-4 rounded-xl border border-red-400 focus:border-red-600',
+                    isLiked.disliked ? 'bg-red-50' : 'hover:bg-red-50 bg-white',
+                  )}
+                >
+                  <img
+                    src={ThumbDown}
+                    alt=""
+                    className="size-12 -scale-x-100"
+                  />
+                </button>
+                <span className="body-extra-large-bold text-red-400">
+                  {likesCounts.dislikeCount}
+                </span>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     );
   };
@@ -450,15 +467,15 @@ function TutorialDetails() {
       )}
       {tutorial && (
         <>
-          <div className="flex w-full flex-col items-center justify-center">
+          <div className="flex w-full flex-col items-center justify-center gap-2 md:gap-4">
+            <Header
+              tutorial={{
+                ...tutorial,
+                dislikeCount: likesCounts.dislikeCount,
+                likeCount: likesCounts.likeCount,
+              }}
+            />
             <div className="w-full flex flex-col gap-5 md:gap-7 text-neutral-1000">
-              <Header
-                tutorial={{
-                  ...tutorial,
-                  dislikeCount: likesCounts.dislikeCount,
-                  likeCount: likesCounts.likeCount,
-                }}
-              />
               <MarkdownContent tutorial={tutorial} />
               <LikeDislikeButtons />
               {tutorial.creditLink && (

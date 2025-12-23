@@ -217,70 +217,66 @@ export default function TutorialWithTOC({
   };
 
   return (
-    <>
+    <div className="w-full flex relative">
       <div ref={topSentinelRef} className="h-0" />
-      <div className="w-full flex relative">
-        <div
-          ref={contentRef}
-          id="tutorial-content"
-          className="wrap-break-word overflow-hidden w-full space-y-4 md:space-y-6"
-        >
-          <Suspense fallback={<Loader size={'s'} />}>
-            {MemoizedMarkdown}
-          </Suspense>
-          <div ref={bottomSentinelRef} className="h-0" />
-        </div>
-
-        {toc.length > 0 && (
-          <div className="ml-8 w-50 shrink-0 max-xl:hidden">
-            <aside
-              className={cn(
-                'flex flex-col gap-2 shrink-0 w-50 transition-transform h-full overflow-y-auto scrollbar-light pr-1',
-                isFixed && !isAtBottom ? 'fixed top-32' : 'relative',
-              )}
-              style={maxHeightStyle}
-            >
-              <h3 className="flex gap-1 items-center body-small-bold">
-                <TbNotebook size={12} className="shrink-0" />
-                {t('tutorials.onThisPage')}
-              </h3>
-              <nav className="flex flex-col">
-                {toc.map((item, index) => (
-                  <Fragment key={item.key}>
-                    <button
-                      onClick={() => handleClick(item.key)}
-                      className="flex items-stretch gap-2 text-left group"
-                      type="button"
-                    >
-                      <div
-                        className={cn(
-                          'w-px rounded-full shrink-0 group-hover:bg-orange-500',
-                          item.key === activeKey
-                            ? 'bg-orange-500'
-                            : 'bg-brown-100',
-                        )}
-                      />
-                      <span
-                        className={cn(
-                          'py-0.5 body-small line-clamp-3 group-hover:text-orange-500',
-                          item.key === activeKey
-                            ? 'text-orange-500'
-                            : 'text-brown-800',
-                        )}
-                      >
-                        {item.title}
-                      </span>
-                    </button>
-                    {index < toc.length - 1 && (
-                      <div className="h-2 w-px bg-brown-100" />
-                    )}
-                  </Fragment>
-                ))}
-              </nav>
-            </aside>
-          </div>
-        )}
+      <div
+        ref={contentRef}
+        id="tutorial-content"
+        className="wrap-break-word overflow-hidden w-full space-y-4 md:space-y-6"
+      >
+        <Suspense fallback={<Loader size={'s'} />}>{MemoizedMarkdown}</Suspense>
+        <div ref={bottomSentinelRef} className="h-0" />
       </div>
-    </>
+
+      {toc.length > 0 && (
+        <div className="ml-8 md:mt-4 w-50 shrink-0 max-xl:hidden">
+          <aside
+            className={cn(
+              'flex flex-col gap-2 shrink-0 w-50 transition-transform h-full overflow-y-auto scrollbar-light pr-1',
+              isFixed && !isAtBottom ? 'fixed top-32' : 'relative',
+            )}
+            style={maxHeightStyle}
+          >
+            <h3 className="flex gap-1 items-center body-small-bold">
+              <TbNotebook size={12} className="shrink-0" />
+              {t('tutorials.onThisPage')}
+            </h3>
+            <nav className="flex flex-col">
+              {toc.map((item, index) => (
+                <Fragment key={item.key}>
+                  <button
+                    onClick={() => handleClick(item.key)}
+                    className="flex items-stretch gap-2 text-left group"
+                    type="button"
+                  >
+                    <div
+                      className={cn(
+                        'w-px rounded-full shrink-0 group-hover:bg-orange-500',
+                        item.key === activeKey
+                          ? 'bg-orange-500'
+                          : 'bg-brown-100',
+                      )}
+                    />
+                    <span
+                      className={cn(
+                        'py-0.5 body-small line-clamp-3 group-hover:text-orange-500',
+                        item.key === activeKey
+                          ? 'text-orange-500'
+                          : 'text-brown-800',
+                      )}
+                    >
+                      {item.title}
+                    </span>
+                  </button>
+                  {index < toc.length - 1 && (
+                    <div className="h-2 w-px bg-brown-100" />
+                  )}
+                </Fragment>
+              ))}
+            </nav>
+          </aside>
+        </div>
+      )}
+    </div>
   );
 }
