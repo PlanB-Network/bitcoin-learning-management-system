@@ -3,16 +3,14 @@ import type {
   CourseProgressExtended,
   ScheduledCourseAnnouncement,
 } from '@blms/types';
-import { ButtonWithArrow, cn, Divider, TextTag } from '@blms/ui';
+import { ButtonWithArrow, cn, TextTag } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IoMdClose } from 'react-icons/io';
-import { AuthorCard } from '#src/components/author-card.tsx';
 import type { CalendarEvent } from '#src/components/Calendar/calendar-event.ts';
 import { PageLayout } from '#src/components/page-layout.tsx';
-import { ProfessorCardReduced } from '#src/components/professor-card.tsx';
 import { CourseCurriculum } from '#src/patterns/course-curriculum.tsx';
 import { CourseContext } from '#src/providers/courseContext.tsx';
 import { ProgressBar } from '#src/routes/$lang/dashboard/_dashboard/-components/courses-progress-list.tsx';
@@ -52,7 +50,7 @@ function Overview() {
       tabs={course ? getTabs(course, courseProgress?.[0]) : []}
     >
       {course && (
-        <div className="flex flex-col w-fit">
+        <div className="flex flex-col w-full">
           {courseProgress &&
             courseProgress.length > 0 &&
             courseProgress[0].progressPercentage < 100 && (
@@ -88,46 +86,6 @@ function Overview() {
               {t('courses.details.curriculum')}
             </h4>
           </CourseCurriculum>
-
-          <Divider className="my-6 md:my-9" width="w-full" />
-
-          <section className="flex flex-col md:gap-5">
-            <h4 className="title-small-med-16px md:title-large-sb-24px text-dashboardSectionTitle">
-              {course.associatedProfessors.length > 0
-                ? t('words.professors')
-                : t('words.professor')}
-            </h4>
-            <div className="flex h-fit flex-col max-md:gap-4">
-              {course.associatedProfessors.length > 0 ? (
-                <span className="uppercase text-orange-500 text-lg">
-                  {t('dashboard.course.coordinator')}
-                </span>
-              ) : null}
-              {course.mainProfessors.map((professor) => (
-                <AuthorCard
-                  key={professor.id}
-                  professor={professor}
-                  hasDonateButton
-                />
-              ))}
-            </div>
-            {course.associatedProfessors.length > 0 ? (
-              <div className="flex h-fit flex-col">
-                <span className="max-md:mt-6 uppercase text-orange-500 text-lg ">
-                  {t('courses.details.associatedProfessors')}
-                </span>
-                <div className="mt-6 flex flex-row flex-wrap gap-6 max-md:justify-center">
-                  {course.associatedProfessors.map((professor) => (
-                    <ProfessorCardReduced
-                      key={professor.id}
-                      professor={professor}
-                      hasDonateButton
-                    />
-                  ))}
-                </div>
-              </div>
-            ) : null}
-          </section>
         </div>
       )}
     </PageLayout>

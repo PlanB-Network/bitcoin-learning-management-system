@@ -23,8 +23,8 @@ export const AuthorCard = ({
     <article {...props} className="flex flex-col w-full">
       <div
         className={cn(
-          'flex max-md:flex-col gap-5 md:gap-7 md:py-5 md:items-start',
-          centeredContent && 'items-center',
+          'flex max-md:flex-col gap-5 md:gap-7 md:items-start',
+          centeredContent && 'items-center md:py-5',
         )}
       >
         <ProfessorCardReduced
@@ -39,12 +39,14 @@ export const AuthorCard = ({
             centeredContent && 'items-center',
           )}
         >
-          <p className="body-16px md:max-w-[596px] w-full text-justify">
-            {professor.bio}
-          </p>
+          <p className="body-base md:max-w-[596px] w-full">{professor.bio}</p>
           <div className="mt-4 md:mt-4 flex flex-wrap gap-2.5 items-center">
             {professor.tags?.map((tag) => (
-              <TextTag key={tag} mode={mode ? mode : undefined}>
+              <TextTag
+                key={tag}
+                mode={mode ? mode : undefined}
+                className="capitalize"
+              >
                 {tag}
               </TextTag>
             ))}

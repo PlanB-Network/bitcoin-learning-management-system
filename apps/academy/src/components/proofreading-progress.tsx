@@ -99,7 +99,7 @@ const ContributorsNames = ({
         ];
 
   const textClasses =
-    'truncate max-w-24 w-full text-center text-xs font-medium leading-relaxed tracking-[0.1px]';
+    'truncate max-w-24 w-full text-center body-extra-small-bold';
 
   const getColorClass = (index: number) => {
     if (mode === 'dark') {
@@ -225,7 +225,7 @@ export const ProofreadingDesktop = ({
             ? 'bg-green-50'
             : 'bg-orange-50',
         standalone
-          ? 'p-5 w-fit max-w-[282px] flex'
+          ? 'p-5 w-fit max-w-[341px] lg:max-w-[282px] flex'
           : 'max-lg:hidden p-2.5 hover:p-5 absolute right-6 top-14 justify-start items-start inline-flex hover:min-h-[231px] z-30',
         className,
       )}
@@ -266,7 +266,7 @@ export const ProofreadingDesktop = ({
           </span>
           <span
             className={cn(
-              'text-black title-medium-sb-18px',
+              'text-black label-strong',
               mode === 'dark' ? 'text-white' : 'text-black',
             )}
           >
@@ -275,7 +275,7 @@ export const ProofreadingDesktop = ({
         </div>
         <p
           className={cn(
-            'body-12px',
+            'body-extra-small',
             mode === 'dark' ? 'text-white' : 'text-black',
           )}
         >

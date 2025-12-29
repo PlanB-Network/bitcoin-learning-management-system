@@ -202,7 +202,7 @@ const Credits = ({ course }: { course: CourseResponse }) => {
                 telegram
               </a>
               <Link
-                to="/tutorials/others/contribution/content-review-tutorial-1ee068ca-ddaf-4bec-b44e-b41a9abfdef6"
+                to="/tutorials/contribution/content/proofreading-review-tutorial-28236c98-23b2-4efd-9563-953f08707017"
                 className="hover:text-orange-500 font-medium"
                 target="_blank"
                 rel="noreferrer"

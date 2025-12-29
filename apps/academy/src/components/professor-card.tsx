@@ -76,7 +76,7 @@ export const ProfessorCardReduced = ({
   return (
     <div
       className={cn(
-        'rounded-[20px] p-2 border-2 border-neutral-1000 bg-neutral-50 size-fit flex flex-col',
+        'rounded-[20px] p-2 bg-neutral-50 size-fit flex flex-col',
         mobileSize === 'small' && 'max-md:p-1 max-md:border',
       )}
     >

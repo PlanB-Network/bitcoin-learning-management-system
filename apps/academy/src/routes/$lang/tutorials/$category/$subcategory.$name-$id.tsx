@@ -57,6 +57,8 @@ export const Route = createFileRoute(
 const Header = ({ tutorial }: { tutorial: GetTutorialResponse }) => {
   const isMobile = useSmaller('md');
 
+  const totalLikesDislikes = tutorial.likeCount + tutorial.dislikeCount;
+
   return (
     <div className="flex flex-col w-full">
       <h1 className="display-base md:display-medium">{tutorial.title}</h1>
@@ -84,11 +86,13 @@ const Header = ({ tutorial }: { tutorial: GetTutorialResponse }) => {
           <TbCalendarCheck size={16} />
           <span className="body-base">{formatDate(tutorial.lastUpdated)}</span>
         </div>
-        <TutorialLikes
-          tutorial={tutorial}
-          isMobile={isMobile ?? undefined}
-          className="shrink-0"
-        />
+        {totalLikesDislikes >= 10 ? (
+          <TutorialLikes
+            tutorial={tutorial}
+            isMobile={isMobile ?? undefined}
+            className="shrink-0"
+          />
+        ) : null}
       </section>
 
       <div className="flex items-center gap-2 text-neutral-600 md:hidden mt-1">
@@ -208,7 +212,7 @@ const Credits = ({
                 telegram
               </a>
               <Link
-                to="/tutorials/others/contribution/content-review-tutorial-1ee068ca-ddaf-4bec-b44e-b41a9abfdef6"
+                to="/tutorials/contribution/content/proofreading-review-tutorial-28236c98-23b2-4efd-9563-953f08707017"
                 className="hover:text-orange-500 font-medium"
                 target="_blank"
                 rel="noreferrer"

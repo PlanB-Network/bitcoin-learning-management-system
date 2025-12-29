@@ -88,5 +88,13 @@ export const getTabs = (
     });
   }
 
+  if (courseIsSelfPaced) {
+    tabs.push({
+      id: 'credits',
+      label: 'words.credits',
+      href: `/courses/${courseId}/credits`,
+    });
+  }
+
   return tabs;
 };
