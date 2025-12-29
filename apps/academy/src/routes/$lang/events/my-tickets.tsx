@@ -69,12 +69,16 @@ function DashboardBookings() {
             />
           </div>
 
-          <h2 className="title-large text-black mb-4">
-            {t('dashboard.booking.pastTicketTitle')}
-          </h2>
-          <div className="w-full flex flex-col gap-4 text-neutral-700">
-            <BookingPart tickets={pastTickets} />
-          </div>
+          {pastTickets.length > 0 ? (
+            <>
+              <h2 className="title-large text-black mb-4">
+                {t('dashboard.booking.pastTicketTitle')}
+              </h2>
+              <div className="w-full flex flex-col gap-4 text-neutral-700">
+                <BookingPart tickets={pastTickets} />
+              </div>
+            </>
+          ) : null}
         </>
       )}
     </PageLayout>
