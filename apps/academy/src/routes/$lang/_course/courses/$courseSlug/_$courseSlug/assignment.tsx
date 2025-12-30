@@ -321,12 +321,12 @@ function Assignment() {
   return (
     <PageLayout
       title={t('dashboard.course.assignment')}
-      hideTitle
       layoutSize="max"
-      overTitle={course ? <CourseTitle course={course} /> : undefined}
+      overTitleMobile={course ? course.name : undefined}
+      navbarTitle={course ? <CourseTitle course={course} /> : undefined}
       tabs={course ? getTabs(course, courseProgress) : []}
     >
-      <section className="flex flex-col mt-4 md:mt-8 w-full max-w-[1000px] gap-4 md:gap-8">
+      <section className="flex flex-col w-full max-w-[1000px] gap-4 md:gap-8">
         {!hasSubmittedWork && (
           <div className="flex flex-col gap-5">
             <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">

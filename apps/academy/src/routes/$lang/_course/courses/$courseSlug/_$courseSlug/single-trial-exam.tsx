@@ -123,13 +123,13 @@ function SingleTrialExam() {
   return (
     <PageLayout
       title={t('courses.exam.scoreAndDiploma')}
-      hideTitle
       layoutSize="max"
-      overTitle={course ? <CourseTitle course={course} /> : undefined}
+      overTitleMobile={course ? course.name : undefined}
+      navbarTitle={course ? <CourseTitle course={course} /> : undefined}
       tabs={course ? getTabs(course, currentCourseProgress) : []}
     >
       {course && (
-        <section className="flex flex-col mt-6 md:mt-10 w-full max-w-[1000px] gap-6">
+        <section className="flex flex-col w-full max-w-[1000px] gap-6">
           {isCourseConclusionReleased && (
             <div className="flex flex-col gap-4 md:gap-6 w-full">
               <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle capitalize">

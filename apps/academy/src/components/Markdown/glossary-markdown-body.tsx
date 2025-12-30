@@ -41,9 +41,7 @@ const GlossaryMarkdownBody = ({
         h3: ({ children }) => (
           <h3 className="ml-2 text-xl font-semibold text-black">{children}</h3>
         ),
-        img: ({ src, alt }) => (
-          <ImageVideoRenderer header="none" src={src} alt={alt} />
-        ),
+        img: ({ src, alt }) => <ImageVideoRenderer src={src} alt={alt} />,
         li: ({ children }) => (
           <li className="my-1 mobile-body2 md:desktop-body1 last:mb-0 text-black">
             {children}

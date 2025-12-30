@@ -44,9 +44,9 @@ function Overview() {
   return (
     <PageLayout
       title={t('words.overview')}
-      hideTitle
-      layoutSize="max"
-      overTitle={course ? <CourseTitle course={course} /> : undefined}
+      layoutSize="wide"
+      overTitleMobile={course ? course.name : undefined}
+      navbarTitle={course ? <CourseTitle course={course} /> : undefined}
       tabs={course ? getTabs(course, courseProgress?.[0]) : []}
     >
       {course && (
@@ -55,7 +55,7 @@ function Overview() {
             courseProgress.length > 0 &&
             courseProgress[0].progressPercentage < 100 && (
               <>
-                <span className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle mt-4 md:mt-10">
+                <span className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
                   {t('dashboard.myCourses.whereYouAre')}
                 </span>
 

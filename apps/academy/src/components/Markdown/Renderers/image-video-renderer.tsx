@@ -1,6 +1,4 @@
-import { t } from 'i18next';
 import { useEffect, useState } from 'react';
-import { TbVideo } from 'react-icons/tb';
 import ReactPlayer from 'react-player';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import {
@@ -10,11 +8,9 @@ import {
 } from '#src/utils/misc.ts';
 
 export const ImageVideoRenderer = ({
-  header,
   src,
   alt,
 }: {
-  header: 'none' | 'logo' | 'text';
   src?: string;
   alt?: string;
 }) => {
@@ -41,27 +37,6 @@ export const ImageVideoRenderer = ({
   if (isUrlFromValidVideoPlatform(src)) {
     return (
       <div className="mx-auto mb-2 max-w-full rounded-lg pb-6 md:pt-4 last:pb-0 last:md:pb-4">
-        {header === 'logo' && (
-          <div className="flex items-center">
-            <TbVideo className="size-10" />
-            <div className="ml-2">
-              <p className="text-lg font-medium text-blue-900">
-                {t('words.video')}
-              </p>
-            </div>
-          </div>
-        )}
-
-        {header === 'text' && (
-          <div className="flex items-center">
-            <div className="ml-2">
-              <p className="text-lg font-medium text-blue-900">
-                {t('words.video')}
-              </p>
-            </div>
-          </div>
-        )}
-
         <div className="relative pt-[56.25%]">
           {doesVideoUrlWorkWithReactPlayer(src) ? (
             <ReactPlayer

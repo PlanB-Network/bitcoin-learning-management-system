@@ -145,25 +145,6 @@ export const VideoSelector = ({
   return (
     <div className="mb-8">
       <div>
-        {header === 'logo' && (
-          <div className="flex items-center mb-1">
-            <TbVideo className="size-10" />
-            <div className="ml-2">
-              <p className="text-lg font-medium text-blue-900">
-                {t('words.video')}
-              </p>
-            </div>
-          </div>
-        )}
-        {header === 'text' && (
-          <div className=" flex items-center">
-            <div className="ml-2">
-              <p className="text-lg font-medium text-blue-900">
-                {t('words.video')}
-              </p>
-            </div>
-          </div>
-        )}
         {selectedVideo ? (
           <DisplayVideo
             idFromProvider={selectedVideo.idFromProvider!}

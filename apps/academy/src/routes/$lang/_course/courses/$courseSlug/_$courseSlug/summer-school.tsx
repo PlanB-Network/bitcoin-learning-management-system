@@ -98,9 +98,9 @@ function SummerSchool() {
   return (
     <PageLayout
       title={t('words.ratings')}
-      hideTitle
       layoutSize="max"
-      overTitle={course ? <CourseTitle course={course} /> : undefined}
+      overTitleMobile={course ? course.name : undefined}
+      navbarTitle={course ? <CourseTitle course={course} /> : undefined}
       tabs={course ? getTabs(course, courseProgress?.[0]) : []}
     >
       <div className="flex flex-col gap-4 md:gap-8 w-full max-w-[1000px]">

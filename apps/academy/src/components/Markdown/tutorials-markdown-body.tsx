@@ -49,9 +49,7 @@ const TutorialsMarkdownBody = ({
         h4: ({ children }) => (
           <h3 className="text-lg font-medium text-black">{children}</h3>
         ),
-        img: ({ src, alt }) => (
-          <ImageVideoRenderer header="logo" src={src} alt={alt} />
-        ),
+        img: ({ src, alt }) => <ImageVideoRenderer src={src} alt={alt} />,
         li: ({ children }) => (
           <li className="my-1 text-base tracking-wide last:mb-0">{children}</li>
         ),

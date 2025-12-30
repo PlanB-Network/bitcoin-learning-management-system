@@ -24,6 +24,7 @@ const textTagVariants = cva(
         small: 'px-2 py-1 body-extra-small-bold rounded-full',
       },
       variant: {
+        brown: 'bg-white text-brown-800',
         darkMaroon:
           'bg-brown-200 text-brown-700 dark:bg-brown-800 dark:text-white [&.light100]:bg-brown-300',
         green:

@@ -1,6 +1,10 @@
 import { formatNameForURL } from '@blms/shared';
-import type { CourseChapterResponse, JoinedQuizQuestion } from '@blms/types';
-import { Button, cn, Loader, TextTag } from '@blms/ui';
+import type {
+  CourseChapterResponse,
+  FormattedProfessor,
+  JoinedQuizQuestion,
+} from '@blms/types';
+import { Button, cn, Image, Loader } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import {
@@ -13,10 +17,9 @@ import {
   useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import { IoIosArrowForward } from 'react-icons/io';
-import { TbCheck } from 'react-icons/tb';
+import { TbCheck, TbChevronLeft, TbChevronRight } from 'react-icons/tb';
 import { z } from 'zod';
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
@@ -29,11 +32,10 @@ import { useAuthModal } from '#src/providers/auth.tsx';
 import { CourseContext } from '#src/providers/courseContext.tsx';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import {
-  addSpaceToCourseIndex,
   COURSES_WITH_INLINE_LATEX_SUPPORT,
   goToChapterParameters,
 } from '#src/utils/courses.js';
-import { cdnUrl, compose, trpc } from '#src/utils/index.js';
+import { cdnUrl, compose, resourceImgUrl, trpc } from '#src/utils/index.js';
 import { capitalizeFirstWord, joinWords } from '#src/utils/string.js';
 import { ClassDetails } from '../../-components/class-details.tsx';
 import { LiveVideo } from '../../-components/live-video.tsx';
@@ -44,6 +46,7 @@ import QuizzCard, {
 import { CourseConclusion } from '../-components/course-conclusion/course-conclusion.tsx';
 import { CourseExamWorkflow } from '../-components/course-exam/course-exam-workflow.tsx';
 import { CourseReviewComponent } from '../-components/course-review-component.tsx';
+import { CourseTitle } from '../-components/course-title.tsx';
 import { SingleTrialExamWorkflow } from '../-components/single-trial-exam/single-trial-exam-workflow.tsx';
 import { getTabs } from '../-utils/get-tabs.tsx';
 
@@ -94,37 +97,39 @@ const TimelineSmall = ({
   chapter: CourseChapterResponse;
   professor: string;
 }) => {
-  const { t } = useTranslation();
+  const allChapters = chapter.course.parts.flatMap((p) => p.chapters);
+  const totalChapters = allChapters.length;
+
+  const currentChapterIndex = allChapters.findIndex(
+    (c) => c.chapterId === chapter.chapterId,
+  );
+
+  /**
+   * 3. Calculate percentage.
+   * We use (index / total) * 100 if you want the bar to show progress UP TO the current.
+   * We use ((index + 1) / total) * 100 if you want the current chapter to count as 'filled'.
+   */
+  const progressPercentage =
+    totalChapters > 0 ? ((currentChapterIndex + 1) / totalChapters) * 100 : 0;
 
   return (
-    <div className="mb-0 w-full max-w-5xl sm:hidden mt-4">
-      <Link
-        to={`/courses/${chapter.course.name}-${chapter.course.id}`}
-        className="w-full flex justify-center items-center mb-4"
-      >
-        <h1 className="px-5 title-medium-sb-18px text-black max-md:text-center">
-          {chapter.course.name}
-        </h1>
-      </Link>
+    <div className="w-full md:hidden mb-6">
       <div className="flex flex-col">
-        <div className="flex items-center justify-center gap-3">
-          <div className="h-0 grow border-t border-gray-300 min-w-8" />
-          <span className="body-12px text-neutral-1000 text-center max-w-[225px]">
-            {t('courses.part.count', {
-              count: chapter.part.partIndex,
-              total: chapter.course.parts?.length,
-            })}{' '}
-            : {chapter.part.title}
-          </span>
-
-          <div className="h-0 grow border-t border-gray-300 min-w-8" />
-        </div>
-
-        <div
-          className={cn(
-            'flex items-center justify-between rounded-lg bg-neutral-50 px-2.5 py-1 mt-2.5 mb-3 gap-4',
-          )}
+        <Link
+          to={`/courses/${chapter.course.name}-${chapter.course.id}`}
+          className="w-full flex justify-center items-center"
         >
+          <h1 className="body-extra-small-bold text-neutral-400 text-center">
+            {chapter.course.name}
+          </h1>
+        </Link>
+        <div className="h-1 w-25 rounded-full bg-orange-100 overflow-hidden mx-auto mt-2">
+          <div
+            className="h-full bg-orange-500"
+            style={{ width: `${progressPercentage}%` }}
+          />
+        </div>
+        <div className={cn('flex items-center justify-between gap-4')}>
           {/*
            * TODO: Refactor nav logic : edge cases (first chapter, course root) make this messy
            * goToChapterParameters always returns a chapterId, even when not needed ?
@@ -136,13 +141,12 @@ const TimelineSmall = ({
                 : '/courses/$courseId/$chapterId'
             }
             params={goToChapterParameters(chapter, 'previous')}
-            className="flex size-6 items-center justify-center rounded-full bg-orange-500/60 shrink-0"
+            className="flex size-8 items-center justify-center rounded-full bg-brown-100 shrink-0"
           >
-            <BiChevronLeft className="size-4 text-white" />
+            <TbChevronLeft className="size-6 text-brown-400" />
           </Link>
-          <h2 className="text-center title-small-med-16px text-headerDark">
-            {chapter.part.partIndex}.{chapter.chapterIndex}. {chapter.title}
-          </h2>
+
+          <h2 className="text-center display-extra-small">{chapter.title}</h2>
 
           {/* TODO : see above */}
           <Link
@@ -153,9 +157,9 @@ const TimelineSmall = ({
                 : '/courses/$courseId/$chapterId'
             }
             params={goToChapterParameters(chapter, 'next')}
-            className="flex size-6 items-center justify-center rounded-full bg-orange-500/60 shrink-0"
+            className="flex size-8 items-center justify-center rounded-full bg-brown-100 shrink-0"
           >
-            <BiChevronRight className="size-4 text-white" />
+            <TbChevronRight className="size-6 text-brown-400" />
           </Link>
         </div>
       </div>
@@ -165,44 +169,14 @@ const TimelineSmall = ({
 
 const TimelineBig = ({
   chapter,
-  professor,
+  professors,
 }: {
   chapter: CourseChapterResponse;
-  professor: string;
+  professors: FormattedProfessor[];
 }) => {
-  const { t } = useTranslation();
-
-  const isFirstChapter =
-    chapter.chapterIndex === 1 && chapter.part.partIndex === 1;
-
-  const isLastChapter =
-    chapter.chapterIndex === chapter.part.chapters.length &&
-    chapter.part.partIndex === chapter.course.parts.length;
-
   return (
-    <div className="mb-0 w-full max-w-[1102px] max-sm:hidden mt-10 px-5 md:px-2">
-      <h1 className="flex items-center gap-5">
-        <TextTag size="base" variant="grey" mode="light" className="uppercase">
-          {addSpaceToCourseIndex(chapter.course.index)}
-        </TextTag>
-        <Link
-          to={`/courses/${formatNameForURL(chapter.course.name)}-${chapter.course.id}`}
-          className="text-black hover:text-orange-500 display-small-32px"
-        >
-          {chapter.course.name}
-        </Link>
-      </h1>
-      <div className="font-body flex flex-col justify-between text-xl text-black leading-relaxed tracking-015px mt-6">
-        <span className="label-medium-med-16px text-neutral-900">
-          {t('courses.part.count', {
-            count: chapter.part.partIndex,
-            total: chapter.course.parts.length,
-          })}{' '}
-          : {chapter.part.title}
-        </span>
-        <span className="body-16px text-neutral-600">{professor}</span>
-      </div>
-      <div className="mt-5 flex h-4 flex-row justify-between space-x-3 rounded-full">
+    <div className="flex flex-col w-full max-w-[736px] max-md:hidden gap-12 mt-8">
+      <div className="flex h-4 flex-row justify-between space-x-3 rounded-full">
         {chapter.course.parts.map((currentPart, partIndex) => {
           const firstPart = currentPart.partIndex === 1;
           const lastPart =
@@ -280,78 +254,38 @@ const TimelineBig = ({
           );
         })}
       </div>
-      <div className="flex items-center justify-center gap-10 mt-10 text-center leading-normal tracking-015px">
-        {!isFirstChapter && (
-          <Link
-            to={
-              isFirstChapter
-                ? '/courses/$courseId'
-                : '/courses/$courseId/$chapterId'
-            }
-            params={goToChapterParameters(chapter, 'previous')}
-            className="basis-1/4 truncate text-neutral-500 hover:font-medium"
-          >
-            {goToChapterParameters(chapter, 'previous').chapterName}
-          </Link>
-        )}
-
-        <div className="flex gap-10 items-center text-neutral-1000 font-medium">
-          {!isFirstChapter && (
-            <Link
-              to={
-                isFirstChapter
-                  ? '/courses/$courseId'
-                  : '/courses/$courseId/$chapterId'
-              }
-              params={goToChapterParameters(chapter, 'previous')}
-            >
-              <span>&lt;</span>
-            </Link>
-          )}
-          <span>
-            {chapter.part.partIndex}.{chapter.chapterIndex}. {chapter.title}
+      <div className="font-body flex flex-col justify-between gap-2">
+        <span className="title-small text-neutral-400">
+          {chapter.part.title}
+        </span>
+        <Header chapter={chapter} />
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            {professors.map((professor) => (
+              <Image
+                key={professor.id}
+                src={resourceImgUrl(professor, 'profile.webp')}
+                alt={professor.name}
+                width={24}
+                height={24}
+                breakpoints={{ default: 64 }}
+                className={cn(
+                  'size-6 rounded-full object-cover [overflow-clip-margin:_unset]',
+                )}
+              />
+            ))}
+          </div>
+          <span className="body-16px text-neutral-600">
+            {professors.map((professor) => professor.name).join(', ')}
           </span>
-          {!isLastChapter && (
-            <Link
-              to={
-                isLastChapter
-                  ? '/courses/$courseId'
-                  : '/courses/$courseId/$chapterId'
-              }
-              params={goToChapterParameters(chapter, 'next')}
-            >
-              <span>&gt;</span>
-            </Link>
-          )}
         </div>
-
-        {!isLastChapter && (
-          <Link
-            to={
-              isLastChapter
-                ? '/courses/$courseId'
-                : '/courses/$courseId/$chapterId'
-            }
-            params={goToChapterParameters(chapter, 'next')}
-            className="basis-1/4 truncate text-neutral-500 hover:font-medium"
-          >
-            {goToChapterParameters(chapter, 'next').chapterName}
-          </Link>
-        )}
       </div>
-      <div className="mt-2 bg-neutral-100 h-px" />
     </div>
   );
 };
 
 const Header = ({ chapter }: { chapter: CourseChapterResponse }) => {
-  return (
-    <div>
-      <h2 className="mt-2.5 text-black desktop-h4 max-sm:hidden">
-        {chapter.part.partIndex}.{chapter.chapterIndex}. {chapter.title}
-      </h2>
-    </div>
-  );
+  return <h1 className="display-medium">{chapter.title}</h1>;
 };
 
 const BottomButton = ({ chapter }: { chapter: CourseChapterResponse }) => {
@@ -591,7 +525,7 @@ function CourseChapter() {
     }
   }
 
-  let computerProfessor = '';
+  let computedProfessor = '';
   if (chapter) {
     (() => {
       // biome-ignore lint/suspicious/noImplicitAnyLet: explanation
@@ -601,7 +535,7 @@ function CourseChapter() {
         professors = chapter.professors;
       }
 
-      computerProfessor = joinWords(
+      computedProfessor = joinWords(
         professors
           .map((p) => p.name)
           .filter((name): name is string => name !== undefined),
@@ -639,9 +573,10 @@ function CourseChapter() {
 
   return (
     <PageLayout
-      layoutSize="max"
+      layoutSize="wide"
       title={`${course?.name || ''} - ${chapter?.title || ''}`}
       hideTitle
+      navbarTitle={course ? <CourseTitle course={course} /> : undefined}
       tabs={course ? getTabs(course, courseProgress?.[0]) : []}
       actionButtons={
         !isLoggedIn && chapter
@@ -695,38 +630,36 @@ function CourseChapter() {
         )}
 
         {isFetched && !isError && !chapter && (
-          <div className="flex size-full flex-col items-start px-2 py-6 sm:items-center sm:py-10">
+          <div className="flex size-full flex-col items-start py-6 md:items-center md:py-10">
             {t('underConstruction.itemNotFoundOrTranslated', {
               item: t('words.chapter'),
             })}
           </div>
         )}
         {chapter && (
-          <div className="flex size-full flex-col items-center">
+          <div className="flex size-full flex-col">
             {/* Desktop */}
-            <TimelineBig chapter={chapter} professor={computerProfessor} />
+            <TimelineBig
+              chapter={chapter}
+              professors={chapter?.course.mainProfessors}
+            />
             {/* Mobile */}
-            <TimelineSmall chapter={chapter} professor={computerProfessor} />
+            <TimelineSmall chapter={chapter} professor={computedProfessor} />
 
             {displayClassDetails && (
               <ClassDetails
                 course={chapter.course}
                 chapter={chapter}
-                professor={computerProfessor}
+                professor={computedProfessor}
               />
             )}
 
             <div className="flex w-full flex-col items-center justify-center lg:max-w-[1102px] lg:items-stretch lg:justify-stretch">
               {!chapter.isCourseExam && !chapter.isSingleTrialExam && (
-                <div
-                  className="text-blue-950 w-full space-y-5 break-words md:px-2 mt-3 md:mt-8 md:grow md:space-y-4 md:overflow-hidden pb-2 md:pb-0"
-                  id="headerChapter"
-                >
-                  <Header chapter={chapter} />
-                </div>
+                <div id="headerChapter" />
               )}
               <div className="flex w-full max-lg:flex-col items-center justify-center lg:max-w-[1102px] lg:items-stretch lg:justify-stretch">
-                <div className="text-blue-950 flex flex-col w-full gap-5 break-words md:px-2 md:mt-8 md:grow md:gap-4 md:overflow-hidden pb-2">
+                <div className="text-blue-950 flex flex-col w-full gap-5 break-words md:mt-8 md:grow md:gap-4 md:overflow-hidden pb-2">
                   {!chapter.isCourseExam &&
                     !chapter.isSingleTrialExam &&
                     sections.length > 0 && (

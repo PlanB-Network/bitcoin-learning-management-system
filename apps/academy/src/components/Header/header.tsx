@@ -1,5 +1,5 @@
 import { cn } from '@blms/ui';
-import { useState } from 'react';
+import { type ReactNode, useState } from 'react';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { AuthModal } from '../AuthModals/auth-modal.tsx';
 import { AuthModalState } from '../AuthModals/props.ts';
@@ -9,9 +9,14 @@ import { MobileMenu } from './mobile-menu.tsx';
 interface HeaderProps {
   isSidebarOpen: boolean;
   setIsSidebarOpen: (isOpen: boolean) => void;
+  navbarTitle?: ReactNode;
 }
 
-export const Header = ({ isSidebarOpen, setIsSidebarOpen }: HeaderProps) => {
+export const Header = ({
+  isSidebarOpen,
+  setIsSidebarOpen,
+  navbarTitle,
+}: HeaderProps) => {
   const { isOpen: isMobileMenuOpen, toggle: toggleMobileMenu } =
     useDisclosure();
 
@@ -43,6 +48,7 @@ export const Header = ({ isSidebarOpen, setIsSidebarOpen }: HeaderProps) => {
         }}
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
+        navbarTitle={navbarTitle}
       />
 
       <MobileMenu

@@ -9,6 +9,7 @@ import { PageLayout } from '#src/components/page-layout.tsx';
 import { ProofreadingDesktop } from '#src/components/proofreading-progress.tsx';
 import { CourseContext } from '#src/providers/courseContext.tsx';
 import { trpc } from '#src/utils/trpc.ts';
+import { CourseTitle } from '../-components/course-title.tsx';
 import { getTabs } from '../-utils/get-tabs.tsx';
 
 export const Route = createFileRoute(
@@ -26,6 +27,8 @@ function Credits() {
     <PageLayout
       title={t('words.credits')}
       layoutSize="base"
+      overTitleMobile={course ? course.name : undefined}
+      navbarTitle={course ? <CourseTitle course={course} /> : undefined}
       tabs={course ? getTabs(course, courseProgress?.[0]) : []}
     >
       {course && (

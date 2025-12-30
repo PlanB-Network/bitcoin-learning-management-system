@@ -65,15 +65,6 @@ export const CourseExamResult = ({
       {isExamResultsFetched && examResults && (
         <>
           <section className="flex flex-col w-full">
-            <h2 className="text-[34px] text-neutral-1000 leading-tight tracking-[0.25px] max-md:hidden">
-              {t('courses.exam.testResults')}
-            </h2>
-            <Divider
-              className="mt-1 md:mt-2.5 mb-7 md:mb-10"
-              width="w-full"
-              mode="light"
-            />
-
             <article className="flex flex-col px-4 md:px-7 py-5 md:py-11 items-center gap-4 md:gap-10 bg-neutral-50 rounded-[20px] w-full self-center">
               {examResults.finalized ? (
                 <>

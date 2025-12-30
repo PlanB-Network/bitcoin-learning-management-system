@@ -1,4 +1,6 @@
+import { cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
+import type { ReactNode } from 'react';
 import {
   TbLayoutSidebar,
   TbLayoutSidebarLeftExpandFilled,
@@ -11,6 +13,7 @@ export interface DesktopMenuProps {
   onClickRegister: () => void;
   isSidebarOpen: boolean;
   setIsSidebarOpen: (open: boolean) => void;
+  navbarTitle?: ReactNode;
 }
 
 export const DesktopMenu = ({
@@ -18,9 +21,15 @@ export const DesktopMenu = ({
   onClickLogin,
   isSidebarOpen,
   setIsSidebarOpen,
+  navbarTitle,
 }: DesktopMenuProps) => {
   return (
-    <nav className="flex w-full flex-row items-center justify-between max-lg:hidden">
+    <nav
+      className={cn(
+        'flex w-full flex-row items-center max-lg:hidden',
+        navbarTitle ? 'gap-[63px]' : 'justify-between',
+      )}
+    >
       <div className="flex items-center gap-4 px-4 py-3">
         {isSidebarOpen ? (
           <TbLayoutSidebar
@@ -39,6 +48,8 @@ export const DesktopMenu = ({
           <PlanBLogoBlack className="h-auto w-31" />
         </Link>
       </div>
+
+      {navbarTitle}
 
       <MetaElements
         onClickLogin={onClickLogin}

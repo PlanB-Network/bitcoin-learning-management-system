@@ -47,9 +47,7 @@ const PresentationMarkdownBody = ({
           </h3>
         ),
         hr: () => <hr className="my-4" />,
-        img: ({ src, alt }) => (
-          <ImageVideoRenderer header="none" src={src} alt={alt} />
-        ),
+        img: ({ src, alt }) => <ImageVideoRenderer src={src} alt={alt} />,
         li: ({ children }) => (
           <li className="my-1 body-16px last:mb-0">{children}</li>
         ),

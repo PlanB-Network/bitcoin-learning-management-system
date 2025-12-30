@@ -1,5 +1,12 @@
 import { cn, customToast, ScrollToTopButton } from '@blms/ui';
-import { type JSX, useContext, useEffect, useRef, useState } from 'react';
+import {
+  type JSX,
+  type ReactNode,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { AppContext } from '#src/providers/context.tsx';
@@ -12,12 +19,14 @@ interface MainLayoutProps {
   children: JSX.Element | JSX.Element[];
   showFooter?: boolean;
   showBecomeTeacherButton?: boolean;
+  navbarTitle?: ReactNode;
 }
 
 export const MainLayout = ({
   children,
   showFooter = true,
   showBecomeTeacherButton,
+  navbarTitle,
 }: MainLayoutProps) => {
   const { t } = useTranslation();
 
@@ -86,6 +95,7 @@ export const MainLayout = ({
       <Header
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
+        navbarTitle={navbarTitle}
       />
 
       <div className="flex w-full grow overflow-hidden">

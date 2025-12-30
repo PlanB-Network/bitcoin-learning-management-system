@@ -11,10 +11,12 @@ import { MainLayout } from './main-layout.tsx';
 import { SecondaryNavbar } from './ui/secondary-navbar.tsx';
 
 interface Props {
+  navbarTitle?: ReactNode;
   title?: string;
   overTitle?: ReactNode;
-  hideTitle?: boolean;
+  overTitleMobile?: string;
   subtitle?: string;
+  hideTitle?: boolean;
   description?: string;
   link?: string;
   children?: ReactNode;
@@ -40,10 +42,12 @@ interface Props {
 }
 
 export const PageLayout = ({
+  navbarTitle,
   title,
   overTitle,
-  hideTitle,
+  overTitleMobile,
   subtitle,
+  hideTitle,
   description,
   link,
   children,
@@ -117,7 +121,10 @@ export const PageLayout = ({
   );
 
   return (
-    <MainLayout showBecomeTeacherButton={showBecomeTeacherButton}>
+    <MainLayout
+      showBecomeTeacherButton={showBecomeTeacherButton}
+      navbarTitle={navbarTitle}
+    >
       <PageMeta title={title} description={description} />
       {/** biome-ignore lint/complexity/noUselessFragments: <N/A> */}
       <>
@@ -177,6 +184,11 @@ export const PageLayout = ({
       >
         <div className={cn('w-full')}>
           {overTitle}
+          {overTitleMobile ? (
+            <span className="lg:hidden text-neutral-400 body-small-bold">
+              {overTitleMobile}
+            </span>
+          ) : null}
           <div className="flex items-center gap-6">
             {Icon ? (
               typeof Icon === 'function' ? (

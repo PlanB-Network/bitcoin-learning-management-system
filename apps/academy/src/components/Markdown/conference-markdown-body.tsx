@@ -44,9 +44,7 @@ const ConferencesMarkdownBody = ({
         h3: ({ children }) => (
           <h3 className="ml-2 text-xl font-semibold text-white">{children}</h3>
         ),
-        img: ({ src, alt }) => (
-          <ImageVideoRenderer header="none" src={src} alt={alt} />
-        ),
+        img: ({ src, alt }) => <ImageVideoRenderer src={src} alt={alt} />,
         li: ({ children }) => (
           <li className="my-1 text-base tracking-wide last:mb-0">{children}</li>
         ),

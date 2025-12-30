@@ -49,13 +49,13 @@ function CourseRetakeExam() {
   return (
     <PageLayout
       title={t('courses.exam.scoreAndDiploma')}
-      hideTitle
       layoutSize="max"
-      overTitle={course ? <CourseTitle course={course} /> : undefined}
+      overTitleMobile={course ? course.name : undefined}
+      navbarTitle={course ? <CourseTitle course={course} /> : undefined}
       tabs={course ? getTabs(course, courseProgress?.[0]) : []}
     >
       {course && (
-        <div className="flex flex-col mt-4 md:mt-10 w-full">
+        <div className="flex flex-col w-full">
           <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle max-md:mb-4">
             {t('dashboard.course.completionDiploma')}
           </h2>
