@@ -50,6 +50,7 @@ import { formatDate, formatDateRange, formatTime } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 import { CourseTitle } from '../-components/course-title.tsx';
 import { getTabs } from '../-utils/get-tabs.tsx';
+import { SectionTitle } from './credits.tsx';
 
 export const Route = createFileRoute(
   '/$lang/_course/courses/$courseSlug/_$courseSlug/assignment',
@@ -329,9 +330,6 @@ function Assignment() {
       <section className="flex flex-col w-full max-w-[1000px] gap-4 md:gap-8">
         {!hasSubmittedWork && (
           <div className="flex flex-col gap-5">
-            <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
-              {t('dashboard.course.assignment')}
-            </h2>
             {courseInfo.assignmentDescription && (
               <CollapsibleDropdown
                 title={t('dashboard.course.generalInformation')}
@@ -351,9 +349,9 @@ function Assignment() {
         {shouldShowRanking && !hasAffectedAssignment && (
           <>
             <div className="flex flex-col gap-4 md:gap-5">
-              <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
-                {t('dashboard.course.rankProjectPreferences')}
-              </h2>
+              <SectionTitle
+                title={t('dashboard.course.rankProjectPreferences')}
+              />
 
               {!hasAlreadyRanked && (
                 <Alert hasCloseButton variant="warning">
@@ -419,9 +417,9 @@ function Assignment() {
         {hasAffectedAssignment && affectedAssignment && (
           <div className="flex flex-col gap-5 md:gap-8">
             <section className="flex flex-col w-full bg-neutral-50 rounded-2xl">
-              <h3 className="px-2 md:px-6 py-3 border-b border-neutral-100 mobile-h3 md:title-large-sb-24px">
-                {t('dashboard.course.yourProjectAssignment')}
-              </h3>
+              <SectionTitle
+                title={t('dashboard.course.yourProjectAssignment')}
+              />
               <div className="w-full p-2 md:p-6 flex flex-col gap-6 md:gap-7">
                 <article className="flex flex-col bg-white p-2 md:px-5 md:py-4 gap-2 rounded-2xl w-full">
                   <div className="flex flex-col gap-2">
@@ -497,9 +495,7 @@ function Assignment() {
 
             {!hasSubmittedWork && !courseInfo.isAssignmentGradingPublished && (
               <div className="flex flex-col gap-5">
-                <h3 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
-                  {t('dashboard.course.submitYourWork')}
-                </h3>
+                <SectionTitle title={t('dashboard.course.submitYourWork')} />
 
                 <Alert hasCloseButton variant="warning">
                   <AlertTitle icon={TbAlertOctagon}>

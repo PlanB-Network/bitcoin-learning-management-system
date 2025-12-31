@@ -57,6 +57,7 @@ function Review() {
     <PageLayout
       layoutSize="wide"
       title={t('dashboard.teacher.reviews.reviewsAndGrading')}
+      overTitleMobile={course ? course.name : undefined}
       description={t('dashboard.teacher.reviews.checkReviews')}
       tabs={getTabs(course.id, courses || [])}
     >

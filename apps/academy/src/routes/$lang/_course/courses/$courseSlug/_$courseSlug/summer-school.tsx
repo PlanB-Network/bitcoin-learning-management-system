@@ -48,6 +48,7 @@ import { trpc } from '#src/utils/trpc.ts';
 import { CourseTitle } from '../-components/course-title.tsx';
 import { getTabs } from '../-utils/get-tabs.tsx';
 import { SummerSchoolWithdrawButton } from './-components/summer-school-withdraw-button.tsx';
+import { SectionTitle } from './credits.tsx';
 
 export const Route = createFileRoute(
   '/$lang/_course/courses/$courseSlug/_$courseSlug/summer-school',
@@ -106,9 +107,7 @@ function SummerSchool() {
       <div className="flex flex-col gap-4 md:gap-8 w-full max-w-[1000px]">
         <section className="flex flex-col md:mt-8 w-full gap-4 md:gap-8">
           <div className="flex flex-col gap-5">
-            <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle !font-bold">
-              {t('dashboard.course.summerSchool')}
-            </h2>
+            <SectionTitle title={t('dashboard.course.summerSchool')} />
           </div>
           <div>
             {isEventPaid ? (

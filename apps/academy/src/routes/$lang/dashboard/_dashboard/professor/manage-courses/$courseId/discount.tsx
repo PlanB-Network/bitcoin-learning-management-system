@@ -59,6 +59,7 @@ function Discount() {
     <PageLayout
       layoutSize="wide"
       title={t('dashboard.adminPanel.discountCodes')}
+      overTitleMobile={course ? course.name : undefined}
       description={t('dashboard.teacher.discount.description')}
       tabs={getTabs(params.courseId, courses)}
     >

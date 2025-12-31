@@ -58,6 +58,7 @@ function Students() {
     <PageLayout
       layoutSize="wide"
       title={t('words.students')}
+      overTitleMobile={course ? course.name : undefined}
       tabs={getTabs(course.id, courses || [])}
     >
       <CourseStudentsTable course={course} />

@@ -57,6 +57,7 @@ function Details() {
     <PageLayout
       layoutSize="wide"
       title={course.name}
+      overTitleMobile={course ? course.name : undefined}
       description={t('dashboard.teacher.courses.quickRecap')}
       tabs={getTabs(course.id, courses || [])}
     >

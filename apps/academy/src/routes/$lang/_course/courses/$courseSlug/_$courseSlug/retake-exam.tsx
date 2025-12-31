@@ -23,6 +23,7 @@ import { TimeStampDialog } from '../-components/course-exam/course-exam-result.t
 import { CourseTitle } from '../-components/course-title.tsx';
 import { AnswersReviewPanel } from '../-components/shared-between-exams/answers-review-panel.tsx';
 import { getTabs } from '../-utils/get-tabs.tsx';
+import { SectionTitle } from './credits.tsx';
 
 export const Route = createFileRoute(
   '/$lang/_course/courses/$courseSlug/_$courseSlug/retake-exam',
@@ -56,9 +57,10 @@ function CourseRetakeExam() {
     >
       {course && (
         <div className="flex flex-col w-full">
-          <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle max-md:mb-4">
-            {t('dashboard.course.completionDiploma')}
-          </h2>
+          <SectionTitle
+            title={t('dashboard.course.completionDiploma')}
+            className="max-md:mb-4"
+          />
 
           {!isExamResultsFetched && <Loader />}
 

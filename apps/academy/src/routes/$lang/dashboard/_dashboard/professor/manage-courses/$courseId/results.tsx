@@ -1,12 +1,14 @@
 import { UserRole } from '@blms/constants';
 import { canAccess } from '@blms/shared';
 import { Loader } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import z from 'zod';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { AppContext } from '#src/providers/context.tsx';
+import { trpc } from '#src/utils/trpc.ts';
 import { ExamResults } from '../../-components/exam-results.tsx';
 import { getTabs } from './-utils/get-tabs.tsx';
 
@@ -23,11 +25,18 @@ export const Route = createFileRoute(
 });
 
 function Results() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const params = Route.useParams();
 
   const navigate = useNavigate();
   const { session, courses } = useContext(AppContext);
+
+  const { data: course } = useQuery(
+    trpc.content.getCourse.queryOptions({
+      id: params.courseId,
+      language: i18n.language,
+    }),
+  );
 
   useEffect(() => {
     if (session === undefined) return;
@@ -38,6 +47,10 @@ function Results() {
     }
   }, [navigate, session]);
 
+  if (!course) {
+    return null;
+  }
+
   if (!session) {
     return <Loader />;
   }
@@ -46,6 +59,7 @@ function Results() {
     <PageLayout
       layoutSize="wide"
       title={t('courses.exam.examResults')}
+      overTitleMobile={course ? course.name : undefined}
       tabs={getTabs(params.courseId, courses || [])}
     >
       <ExamResults courseId={params.courseId} />

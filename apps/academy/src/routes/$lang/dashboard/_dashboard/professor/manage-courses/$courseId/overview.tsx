@@ -58,6 +58,7 @@ function Overview() {
     <PageLayout
       layoutSize="wide"
       title={t('dashboard.teacher.courses.overview')}
+      overTitleMobile={course ? course.name : undefined}
       tabs={getTabs(course.id, courses || [])}
     >
       <CourseOverview course={course} />

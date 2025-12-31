@@ -30,6 +30,7 @@ import { formatDate, formatDateRange } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 import { CourseTitle } from '../-components/course-title.tsx';
 import { getTabs } from '../-utils/get-tabs.tsx';
+import { SectionTitle } from './credits.tsx';
 
 export const Route = createFileRoute(
   '/$lang/_course/courses/$courseSlug/_$courseSlug/single-trial-exam',
@@ -132,9 +133,7 @@ function SingleTrialExam() {
         <section className="flex flex-col w-full max-w-[1000px] gap-6">
           {isCourseConclusionReleased && (
             <div className="flex flex-col gap-4 md:gap-6 w-full">
-              <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle capitalize">
-                {t('dashboard.course.finalGradeSummary')}
-              </h2>
+              <SectionTitle title={t('dashboard.course.finalGradeSummary')} />
               <section className="flex flex-col items-center w-full rounded-2xl bg-neutral-50 border border-neutral-100 px-2.5 py-5 md:p-8 gap-4 md:gap-10">
                 <div className="flex flex-col items-center gap-5">
                   {hasPassed && (
@@ -212,9 +211,7 @@ function SingleTrialExam() {
               </Alert>
             ))}
           <div className="flex flex-col gap-2.5 md:gap-6">
-            <h2 className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
-              {t('dashboard.course.exams')}
-            </h2>
+            <SectionTitle title={t('dashboard.course.exams')} />
           </div>
 
           <div className="flex flex-col gap-4">

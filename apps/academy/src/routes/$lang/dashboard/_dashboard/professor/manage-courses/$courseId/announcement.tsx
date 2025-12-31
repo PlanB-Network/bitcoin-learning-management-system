@@ -59,6 +59,7 @@ function Announcements() {
     <PageLayout
       layoutSize="wide"
       title={t('dashboard.teacher.courses.announcements')}
+      overTitleMobile={course ? course.name : undefined}
       description={t('dashboard.teacher.courses.announcementsIntroduction')}
       tabs={getTabs(params.courseId, courses)}
     >

@@ -23,6 +23,7 @@ import {
 import { trpc } from '#src/utils/trpc.ts';
 import { CourseTitle } from '../-components/course-title.tsx';
 import { getTabs } from '../-utils/get-tabs.tsx';
+import { SectionTitle } from './credits.tsx';
 
 export const Route = createFileRoute(
   '/$lang/_course/courses/$courseSlug/_$courseSlug/overview',
@@ -67,9 +68,7 @@ function Overview() {
 
           {containsChapterStartDate ? (
             <div className="flex flex-col gap-6 mt-6 course-overview">
-              <h3 className="subtitle-large-med-20px text-neutral-1000">
-                {t('dashboard.course.courseCalendar')}
-              </h3>
+              <SectionTitle title={t('dashboard.course.courseCalendar')} />
               <CourseCalendar courseId={course.id} />
             </div>
           ) : null}
@@ -82,9 +81,10 @@ function Overview() {
             hideGithubLink
             className="self-start mt-7 md:mt-10 w-full"
           >
-            <h4 className="subtitle-small-caps-14px md:subtitle-medium-caps-18px text-orange-500 mb-7 md:mb-6">
-              {t('courses.details.curriculum')}
-            </h4>
+            <SectionTitle
+              title={t('courses.details.curriculum')}
+              className="mb-7 md:mb-6"
+            />
           </CourseCurriculum>
         </div>
       )}
@@ -194,9 +194,7 @@ const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
 
   return (
     <section className="w-full flex flex-col gap-5 mt-8">
-      <h3 className="subtitle-large-med-20px text-neutral-1000">
-        {t('dashboard.course.announcement')}
-      </h3>
+      <SectionTitle title={t('dashboard.course.announcement')} />
       <div className="flex flex-col rounded-[12px] border-neutral-100 border overflow-hidden">
         {courseAnnouncements.map((announcement, index) => (
           <CourseAnnouncementItem

@@ -59,6 +59,7 @@ function Assignment() {
     <PageLayout
       layoutSize="wide"
       title={t('dashboard.teacher.courses.assignmentGrade.title')}
+      overTitleMobile={course ? course.name : undefined}
       description={t('dashboard.teacher.courses.assignmentGrade.description')}
       tabs={getTabs(params.courseId, courses)}
     >

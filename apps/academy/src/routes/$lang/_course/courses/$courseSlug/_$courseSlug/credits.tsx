@@ -1,5 +1,5 @@
 import type { CourseResponse } from '@blms/types';
-import { Button } from '@blms/ui';
+import { Button, cn } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useContext } from 'react';
@@ -153,6 +153,18 @@ const OpenSourceContent = () => {
   );
 };
 
-const SectionTitle = ({ title }: { title: string }) => {
-  return <h3 className="title-large text-orange-500">{title}</h3>;
+export const SectionTitle = ({
+  title,
+  className,
+}: {
+  title: string;
+  className?: string;
+}) => {
+  return (
+    <h3
+      className={cn('title-medium md:title-large text-orange-500', className)}
+    >
+      {title}
+    </h3>
+  );
 };
