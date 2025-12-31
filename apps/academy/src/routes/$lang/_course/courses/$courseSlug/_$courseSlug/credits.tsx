@@ -51,7 +51,13 @@ const Professor = ({
   const { t } = useTranslation();
   return (
     <section className="w-full flex flex-col">
-      <SectionTitle title={t('words.professor')} />
+      <SectionTitle
+        title={
+          course.associatedProfessors.length > 0
+            ? t('courses.details.courseCoordinator')
+            : t('words.professor')
+        }
+      />
       <div className="flex flex-col gap-6 mt-3">
         {course.mainProfessors.map((professor) => (
           <AuthorCard
@@ -63,6 +69,25 @@ const Professor = ({
           />
         ))}
       </div>
+      {course.associatedProfessors.length > 0 && (
+        <>
+          <SectionTitle
+            title={t('courses.details.associatedProfessors')}
+            className="mt-8"
+          />
+          <div className="flex flex-col gap-6 mt-3">
+            {course.associatedProfessors.map((professor) => (
+              <AuthorCard
+                key={professor.id}
+                professor={professor}
+                hasDonateButton={false}
+                mobileSize="medium"
+                centeredContent={false}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </section>
   );
 };
