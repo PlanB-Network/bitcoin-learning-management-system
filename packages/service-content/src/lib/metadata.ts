@@ -6,9 +6,13 @@ import type { Dependencies } from './dependencies.js';
 import { createGetBook } from './resources/services/get-book.js';
 import { createGetConferenceMeta } from './resources/services/get-conference-meta.js';
 import { createGetGlossaryWord } from './resources/services/get-glossary-word.js';
+import { createGetLectureMeta } from './resources/services/get-lecture-meta.js';
+import { createGetMovie } from './resources/services/get-movie.js';
 import { createGetNewsletterMeta } from './resources/services/get-newsletter-meta.js';
 import { createGetPodcast } from './resources/services/get-podcast.js';
 import { createGetProjectMeta } from './resources/services/get-project-meta.js';
+import { createGetResearchPaper } from './resources/services/get-research-paper.js';
+import { createGetYoutubeChannel } from './resources/services/get-youtube-channel.js';
 import { createGetTutorialMeta } from './tutorials/services/get-tutorial-meta.js';
 
 const cdn = (
@@ -80,6 +84,10 @@ export const createGetMetadata = (dependencies: Dependencies) => {
   // Resources
   const getBook = createGetBook(dependencies);
   const getPodcast = createGetPodcast(dependencies);
+  const getChannel = createGetYoutubeChannel(dependencies);
+  const getLecture = createGetLectureMeta(dependencies);
+  const getMovie = createGetMovie(dependencies);
+  const getPaper = createGetResearchPaper(dependencies);
   const getProject = createGetProjectMeta(dependencies);
   const getGlossaryWord = createGetGlossaryWord(dependencies);
   const getConferenceMeta = createGetConferenceMeta(dependencies);
@@ -148,7 +156,7 @@ export const createGetMetadata = (dependencies: Dependencies) => {
           podcast.name,
           podcast.description,
           cdn(podcast.path, 'logo.webp'),
-          lang,
+          podcast.language,
         );
       }
       case 'conferences': {
@@ -157,6 +165,7 @@ export const createGetMetadata = (dependencies: Dependencies) => {
           conf.name,
           conf.description,
           cdn(conf.path, 'thumbnail.webp'),
+          conf.languages[0],
         );
       }
       case 'projects': {
@@ -183,6 +192,42 @@ export const createGetMetadata = (dependencies: Dependencies) => {
           newsletter.language,
         );
       }
+
+      case 'channels': {
+        const channel = await getChannel(resourceId);
+        return meta(
+          channel.name,
+          channel.description,
+          cdn(channel.path, 'thumbnail.webp'),
+          channel.language,
+        );
+      }
+
+      case 'papers': {
+        const paper = await getPaper(resourceId);
+        return meta(paper.title, paper.abstract, DEFAULT.image, paper.language);
+      }
+
+      case 'lectures': {
+        const lecture = await getLecture(resourceId);
+        return meta(
+          lecture.name,
+          lecture.description,
+          cdn(lecture.path, 'thumbnail.webp'),
+          lecture.languages[0],
+        );
+      }
+
+      case 'movies': {
+        const movie = await getMovie(resourceId);
+        return meta(
+          movie.title,
+          movie.description,
+          cdn(movie.path, 'thumbnail.webp'),
+          movie.language,
+        );
+      }
+
       default: {
         return defaultMeta(lang);
       }

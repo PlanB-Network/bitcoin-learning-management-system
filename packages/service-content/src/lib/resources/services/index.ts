@@ -7,6 +7,7 @@ export { createGetConferences } from './get-conferences.js';
 export { createGetGlossaryWord } from './get-glossary-word.js';
 export { createGetGlossaryWords } from './get-glossary-words.js';
 export { createGetLecture } from './get-lecture.js';
+export { createGetLectureMeta } from './get-lecture-meta.js';
 export { createGetLectures } from './get-lectures.js';
 export { createGetMovie } from './get-movie.js';
 export { createGetMovies } from './get-movies.js';
