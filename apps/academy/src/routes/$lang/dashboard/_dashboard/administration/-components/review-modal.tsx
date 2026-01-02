@@ -18,6 +18,7 @@ import {
   getEducatorContentFileUrl,
 } from '#src/services/content.js';
 import { getLanguageName } from '#src/utils/i18n.ts';
+import { formatFileSize } from '#src/utils/string.ts';
 
 interface RootReviewModalProps {
   content: JoinedEducatorContent;
@@ -218,7 +219,10 @@ export const ReviewModal = ({
                 className="flex items-center justify-between py-2 px-4 hover:bg-gray-50 transition-colors gap-4"
               >
                 <span className="body-small md:body-base text-gray-700 truncate">
-                  {file.name}
+                  {file.name}{' '}
+                  <span className="text-gray-500">
+                    ({formatFileSize(file.size)})
+                  </span>
                 </span>
                 <Button
                   variant="tertiary"

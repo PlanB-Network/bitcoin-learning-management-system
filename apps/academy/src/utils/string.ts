@@ -36,3 +36,16 @@ export const normalizeString = (str: string) => {
     .replace(/[\p{M}]/gu, '')
     .toLowerCase();
 };
+
+export const formatFileSize = (bytes: number) => {
+  if (bytes === 0) return '0 B';
+
+  const k = 1024;
+  const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
+
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+  const val = Number.parseFloat((bytes / k ** i).toFixed(0));
+
+  return `${val} ${sizes[i]}`;
+};

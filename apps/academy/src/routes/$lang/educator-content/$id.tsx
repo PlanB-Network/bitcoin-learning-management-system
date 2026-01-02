@@ -20,6 +20,7 @@ import {
   getEducatorContentFileUrl,
 } from '#src/services/content.js';
 import { getLanguageName } from '#src/utils/i18n.ts';
+import { formatFileSize } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 import { EducatorContentModal } from './-components/educator-content-modal.tsx';
 
@@ -246,7 +247,10 @@ function EducatorContentDetail() {
                   className="flex items-center justify-between py-2 px-4 hover:bg-gray-50 transition-colors gap-4"
                 >
                   <span className="body-small md:body-base text-gray-700 truncate">
-                    {file.name}
+                    {file.name}{' '}
+                    <span className="text-gray-500">
+                      {formatFileSize(file.size)}
+                    </span>
                   </span>
                   <Button
                     variant="tertiary"
