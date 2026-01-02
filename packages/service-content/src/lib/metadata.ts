@@ -205,7 +205,7 @@ export const createGetMetadata = (dependencies: Dependencies) => {
     return meta(
       `Tutorial - ${tutorial.title}`,
       tutorial.description,
-      DEFAULT_IMAGE,
+      cdn(tutorial.path, 'cover.webp'),
       language,
     );
   };
