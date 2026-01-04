@@ -97,7 +97,9 @@
     "forgotPassword": "Glemt passord?",
     "login": "Logg inn",
     "oldPassword": "Gammelt passord",
-    "signUp": "Registrer deg"
+    "signUp": "Registrer deg",
+    "saveProgress": "Lagre fremdriften din",
+    "signUpToSave": "Registrer deg for å lagre"
   },
   "bCert": {
     "bCertDescription": "₿-CERT er en internasjonalt anerkjent eksamen for å vurdere din forberedelse på Bitcoin og relaterte emner. Dette sertifikatet vil gjøre det mulig for deg å bevise dine ferdigheter og kunnskaper i Bitcoin-industrien, og gir deg tilgang til selskaper og stillinger i den industrien.",
@@ -196,7 +198,10 @@
       "premiumContentNeedsPaymentAction": "Gå til kursets hjemmeside",
       "startCourse": "Start kurset",
       "taughtBy": "Dette kurset undervises av:",
-      "thanksTipping": "Du kan si takk ved å gi professoren et tips."
+      "thanksTipping": "Du kan si takk ved å gi professoren et tips.",
+      "creditsCollaboration": "Dette kurset er resultatet av et samarbeid: hver leksjon, oversettelse og revisjon er muliggjort av bidragsytere. Av denne grunn er vi alltid på jakt etter korrekturlesere som kan gjennomgå innholdet vårt på mange språk.\n\nHvis du vil delta i korrekturlesingsprosessen, kan du kontakte oss i vår <0>Telegram</0> gruppe og lese vår <1>opplæring</1>.\n\nHjelp med å spre kunnskap om Bitcoin:",
+      "openSourceContentDescription": "Dette kursinnholdet er åpen kildekode - lisensiert under <0>CC BY-SA</0> - slik at det kan deles og brukes fritt, så lenge originalkilden blir kreditert.",
+      "openSourceContentTitle": "Åpen kildekode-innhold"
     },
     "exam": {
       "answersReview": "Svar gjennomgang",
@@ -1320,7 +1325,8 @@
           "upcomingClass": "Kommende klasser"
         }
       }
-    }
+    },
+    "backToProfile": "Tilbake til profilen min"
   },
   "events": {
     "card": {
@@ -1612,7 +1618,24 @@
     },
     "projects": {
       "title": "Prosjekter",
-      "addProjects": "Legg til prosjekt"
+      "addProjects": "Legg til prosjekt",
+      "types": {
+        "infrastructure": "Infrastruktur",
+        "investment": "Investering",
+        "manufacturer": "Produsent",
+        "news": "Nyheter",
+        "payment": "Betaling",
+        "service": "Tjeneste",
+        "communities": "Fellesskap",
+        "conference": "Konferanse",
+        "education": "Utdanning",
+        "exchange": "Vekslingstjenester",
+        "merchant": "Kjøpmann",
+        "mining": "Mining",
+        "node": "Node",
+        "privacy": "Personvern",
+        "wallet": "Lommebok"
+      }
     },
     "searchFilterName": "Søk etter navn",
     "toggleLabelAll": "Alt",
@@ -1629,7 +1652,8 @@
         "whitepaper": "Hvitbok",
         "PhD Thesis": "PhD Avhandling",
         "book": "Bok",
-        "conference": "Konferanse"
+        "conference": "Konferanse",
+        "review": "Anmeldelse"
       },
       "publisher": "Utgiver",
       "accessPaper": "Få tak i papir",
@@ -1686,7 +1710,12 @@
     "changeDisplayName": "Endre visningsnavn",
     "changeEmail": "Endre e-post",
     "changePassword": "Endre passord",
-    "changeProfilePicture": "Endre profilbilde"
+    "changeProfilePicture": "Endre profilbilde",
+    "addEmailContinue": "Legg til e-post for å fortsette",
+    "emailSentDescription": "Bekreft e-posten din og oppdater denne siden for å fortsette.",
+    "emailSentTitle": "Vi har sendt deg en e-post",
+    "verifyEmail": "Bekreft e-post",
+    "addEmail": "Legg til e-post"
   },
   "tutorials": {
     "business": {
@@ -1947,7 +1976,12 @@
     "open": "Åpen",
     "researchPaper": "Forskningspapir",
     "downloads": "Nedlastninger",
-    "enroll": "Registrer deg"
+    "enroll": "Registrer deg",
+    "contribute": "Bidra",
+    "oldest": "Eldst",
+    "agenda": "Agenda",
+    "event": "Arrangementer",
+    "contributors": "Bidragsytere"
   },
   "youtubeChannels": {
     "view": "Se på Youtube-kanalen",
@@ -2075,7 +2109,40 @@
     "addMaterial": "Legg til lærerinnhold",
     "successTitle": "Lærerinnholdet ble lastet opp vellykket",
     "done": "Ferdig",
-    "languagePlaceholder": "Velg"
+    "languagePlaceholder": "Velg",
+    "titlePlaceholder": "f.eks. Multi-sig workshop Liana",
+    "coverPreview": "Forhåndsvis omslag",
+    "reviewModal": {
+      "approveAndPublish": "Godkjenn innhold og publiser",
+      "reviewForApproval": "Gjennomgå for godkjenning",
+      "viewContent": "Se på innhold",
+      "unpublishConfirm": "Avpubliser (er du sikker?)",
+      "edit": "Rediger",
+      "noCover": "Ingen forside",
+      "reject": "Avvis",
+      "unknown": "Ukjent",
+      "unpublish": "Upublisert"
+    },
+    "adminPanel": {
+      "previewForApproval": "Forhåndsvis til godkjenning",
+      "toReview": "Til gjennomgang",
+      "approved": "Godkjent",
+      "modified": "Endret",
+      "new": "Ny",
+      "pageTitle": "Gjennomgå lærerinnhold",
+      "previewChanges": "Forhåndsvis endringer"
+    },
+    "fileExisting": "(Eksisterende)",
+    "linkPlaceholder": "https://example.com",
+    "maxFileSize": "Maks filstørrelse: 50MB",
+    "pageSubtitle": "Der Bitcoin-utdannere og samfunn deler og gjenbruker ressurser",
+    "linkOrFileRequired": "Vennligst legg til minst en lenke eller last opp en fil",
+    "sortMostDownloaded": "Mest nedlastet",
+    "sortMostRecent": "Mest nylig",
+    "typePlaceholder": "Skriv",
+    "languagePlaceholderFilter": "Språk",
+    "pageTitle": "Lærerinnhold",
+    "sortBy": "Sorter etter"
   },
   "forms": {
     "replace": "Erstatt",

@@ -24,7 +24,8 @@
   },
   "account": {
     "account": "Účet",
-    "myTeacherProfile": "Môj profil učiteľa"
+    "myTeacherProfile": "Môj profil učiteľa",
+    "profile": "Profil"
   },
   "auth": {
     "accountCreated": "Váš účet bol vytvorený, {{userName}}!",
@@ -95,7 +96,8 @@
     "forgotPassword": "Zabudli ste heslo?",
     "login": "Prihlásiť sa",
     "oldPassword": "Staré heslo",
-    "signUp": "Zaregistrovať sa"
+    "signUp": "Zaregistrovať sa",
+    "saveProgress": "Uložte svoj pokrok"
   },
   "bCert": {
     "bCertDescription": "₿-CERT je konečný test o Bitcoine, ktorý je navrhnutý na vyhodnotenie vašich vedomostí o Bitcoine a súvisiacich témach.\n\nZískajte svoj certifikát ₿-CERT a preukážte svoje odborné znalosti v oblasti Bitcoinu, čo otvára dvere k pracovným pozíciám v tomto odbore.",
@@ -203,7 +205,10 @@
       "premiumContentNeedsPaymentAction": "Prejsť na domovskú stránku kurzu",
       "startCourse": "Začať kurz",
       "taughtBy": "Tento kurz vyučuje",
-      "thanksTipping": "Môžete poďakovať tým, že dáte profesorovi tringelt."
+      "thanksTipping": "Môžete poďakovať tým, že dáte profesorovi tringelt.",
+      "creditsCollaboration": "Tento kurz je výsledkom spolupráce: každá lekcia, preklad a revízia je možná vďaka práci prispievateľov. Z tohto dôvodu neustále hľadáme korektorov na preklad nášho obsahu do mnohých jazykov.\n\nAk sa chcete stať korektorom, prosím, ozvite sa v našej <0>Telegram</0> skupine a prečítajte si náš <1>návod</1>.\n\nPomôžte šíriť vedomosti o Bitcoine:",
+      "openSourceContentDescription": "Obsah tohto kurzu je voľne dostupný - licencovaný pod <0>CC BY-SA</0> - a preto môže byť voľne zdieľaný a používaný, pokiaľ je uvedený pôvodný zdroj.",
+      "openSourceContentTitle": "Open-source obsah"
     },
     "exam": {
       "answersReview": "Vyhodnotenie odpovedí",
@@ -1134,7 +1139,198 @@
       "globalCertifications": "Globálne certifikácie",
       "noCertificatesAvailable": "Nie sú k dispozícii žiadne certifikáty"
     },
-    "goToDashboard": "Ísť na kontrolný panel"
+    "goToDashboard": "Ísť na kontrolný panel",
+    "professor": {
+      "courses": {
+        "overview": {
+          "hasLeftReviewAndComment": "zanechal hodnotenie a komentár",
+          "notifyStudents": "Niečo sa zmenilo? Informujte svojich študentov.",
+          "overallPerformance": "Celkový výkon",
+          "recentActivity": "Nedávna aktivita",
+          "studentsRegistered": "Registrovaní študenti",
+          "upcomingClass": "Nadchádzajúca hodina",
+          "announceChange": "Oznámiť zmenu",
+          "attendanceList": "Zoznam účastníkov",
+          "courseEnded": "Tento kurz sa skončil.",
+          "courseNotStarted": "Tento kurz ešte nezačal.",
+          "enrolledStudents": "Zapísaní študenti",
+          "hasEnrolled": "sa zapísal",
+          "hasGraduated": "absolvoval s hodnotením {{score}}%",
+          "hasLeftReview": "zanechal recenziu"
+        }
+      }
+    },
+    "profile": {
+      "addEmail": "Pridať email",
+      "cancel": "Zrušiť",
+      "change": "Zmeniť",
+      "crop": "Orezať",
+      "displayName": "Zobrazované meno",
+      "edit": "Upraviť",
+      "email": "Email",
+      "emailChangeConfirmation": "Potvrdzovací email o zmene vašej emailovej adresy bol odoslaný, prosím skontrolujte svoju schránku pre potvrdenie.",
+      "emailChangeRateLimitError": "Nedávno ste aktualizovali svoj email. Počkajte prosím niekoľko minút, kým to skúsite znova.",
+      "notificationSettings": {
+        "none": "Žiadne",
+        "platformTitle": "Aké typy upozornení by ste chceli dostávať na tejto platforme?",
+        "settingsSaved": "Vaše nastavenia boli úspešne uložené!",
+        "coursesEventsOption": "Aktualizácie o vašich kurzoch a udalostiach",
+        "coursesOption": "Aktualizácie o kurzoch, do ktorých ste sa zapísali",
+        "description": "Nastavenia upozornení si môžete si prispôsobiť nižšie. ",
+        "emailPreferencesDescription": "Tu si môžete vybrať druh e-mailov, ktoré by ste chceli od nás dostávať. Tieto preferencie sa týkajú len e-mailovej adresy spojenej s týmto odkazom.",
+        "emailPreferencesSavedSuccessfully": "Vaše preferencie e-mailov boli úspešne aktualizované.",
+        "emailPreferencesTitle": "Spravujte svoje nastavenia e-mailov od ₿ Plan Network",
+        "emailTitle": "Aké typy upozornení by ste chceli dostávať e-mailom?",
+        "emailWarning": "Upozornenie! K vášmu účtu nie je priradená žiadna emailová adresa. Prosím pridajte ju do sekcie na svojom profile.",
+        "eventsOption": "Aktualizácie o udalostiach, ktoré ste si zarezervovali",
+        "generalOption": "Všeobecné informácie a novinky o Plan ₿ Network",
+        "goToProfile": "Ísť na profil",
+        "loadEmailSettingsError": "Je nám ľúto, nemohli sme načítať vaše e-mailové preferencie.",
+        "loadEmailSettingsErrorDescription": "Prosím, uistite sa, že použitý odkaz je správny.",
+        "loadEmailSettingsErrorManage": "Ak máte prístup k svojmu účtu, môžete tiež spravovať nastavenia priamo vo svojom ovládacom paneli:",
+        "title": "Nastavenia upozornení"
+      },
+      "emailOrUsername": "E-mail alebo používateľské meno",
+      "profilePicture": "Profilová fotografia",
+      "save": "Uložiť",
+      "saving": "Ukladá sa…",
+      "securitySettings": "Nastavenia zabezpečenia",
+      "username": "Používateľské meno",
+      "verifyYourEmail": "Overte svoj email",
+      "password": "Heslo",
+      "preview": "Náhľad"
+    },
+    "goToHomepage": "Prejsť na domovskú stránku",
+    "logout": "Odhlásiť sa",
+    "myCourses": {
+      "completeAll": "Dokončiť všetko",
+      "completed": "Dokončené",
+      "detailsAndCertificate": "Detaily & certifikát",
+      "done": "Hotové",
+      "download": "Stiahnuť diplom",
+      "duration": "Trvanie :",
+      "inProgress": "Prebieha",
+      "noCourseStarted": "Ešte ste nezačali žiadne kurzy vo vlastnom tempe",
+      "notStarted": "Nezačaté",
+      "notValidated": "Neoverené",
+      "price": "Cena :",
+      "professor": "Profesor:",
+      "resumeLesson": "Pokračovať v lekcii",
+      "seeDetails": "Zobraziť detaily",
+      "seeTheCourse": "Pozrieť si kurz",
+      "shareOn": "Zdieľať na",
+      "verify": "Overiť pravosť diplomu",
+      "whereYouAre": "Pozrime sa, kde ste!",
+      "yourCertificate": "Váš certifikát",
+      "yourProgress": "Váš pokrok:"
+    },
+    "backToProfile": "Späť na môj profil",
+    "teacher": {
+      "courses": {
+        "allStudents": "Všetci študenti",
+        "amountPaid": "Zaplatená suma",
+        "announcementModal": {
+          "contentLabel": "Text oznámenia",
+          "contentPlaceholder": "Prosím, píšte sem.",
+          "create": "Vytvorte oznámenie",
+          "dateRequired": "Nutné uviesť dátum",
+          "editAnnouncement": "Upraviť oznámenie",
+          "groupLabel": "Vyberte skupinu študentov, ktorú chcete osloviť",
+          "title": "Napísať oznámenie",
+          "typeLabel": "Aký druh oznamu je to?",
+          "typePlaceholder": "Vyberte jeden typ"
+        },
+        "announcements": "Oznámenia",
+        "announcementsIntroduction": "Okrem automatických upozornení o rozvrhu hodín máte možnosť písať a naplánovať ďalšie oznámenia pre svojich študentov. Napríklad ich môžete informovať o logistických zmenách alebo aktualizáciach na poslednú chvíľu.\nŠtudenti dostanú tieto upozornenia na platforme a tiež e-mailom (ak túto voliteľnú funkciu aktivujú).",
+        "announcementsPast": "Predchádzajúce oznámenia",
+        "announcementsPastDescription": "Nižšie sú uvedené oznamy, ktoré už boli zverejnené. Zoznam sa vymaže po jednom mesiaci.",
+        "announcementsUpcoming": "Nadchádzajúce oznámenia",
+        "announcementsUpcomingDescription": "Nižšie nájdete budúce oznamy, ktoré ste napísali a naplánovali.",
+        "assignment": "Úloha",
+        "assignmentGrade": {
+          "alertDescription": "Po zadaní všetkých známok kliknite na \"Publikovať všetky známky\", aby ste ich všetky naraz zverejnili.\nProsím, overte známky vopred, pretože po ich publikovaní už nebude možné ich upraviť. ",
+          "alertTitle": "Hodnotenie úloh",
+          "confirmPublication": "Potvrdiť zverejnenie",
+          "confirmPublicationDescription": "Po zverejnení známok sa nedá vrátiť späť, pretože už nebudú možné úpravy.",
+          "confirmPublicationTitle": "Overili ste, že sa nevyskytla žiadna chyba?",
+          "courseAssignment": "Zadanie kurzu",
+          "description": "Študenti sú usporiadaní do skupín podľa úloh.",
+          "grade100": "Hodnotenie (/100)",
+          "gradesPublished": "Známky sú zverejnené.",
+          "missingGradesDescription": "Ak budú známky zverejnené, chýbajúce známky budú nahradené hodnotou 0/100.",
+          "missingGradesTitle": "Stále chýba {{count}} známok!",
+          "publishAllGrades": "Zverejniť všetky známky",
+          "studentDisplayName": "Študent (Zobrazované meno)",
+          "title": "Známky za úlohy"
+        },
+        "assignmentStudents": "Zadanie projektu",
+        "averageAttempts": "Priemerný počet pokusov",
+        "averageDuration": "Priemerná doba trvania",
+        "averageScore": "Priemerné skóre",
+        "courseDetails": "Detaily kurzu",
+        "courseLongDescription": "Úvodný popis",
+        "courseModification": "Ak potrebujete pomoc s úpravou niečoho v kurze, pozrite si tento <0>návod</0>.",
+        "curriculum": "Študijný plán kurzu",
+        "curriculumDescription": "Tu je aktuálna osnova tohto kurzu.",
+        "deleteAnnouncementTitle": "Ste si istý, že chcete vymazať toto oznámenie?",
+        "deleteAnnouncementWarning": "Táto zmena je nezvratná",
+        "editOnGithub": "Upraviť na Github-e",
+        "examResults": "Výsledky skúšok",
+        "exportExamData": "Exportovať údaje o skúške",
+        "finalAverageResults": "Konečné priemerné výsledky",
+        "finalScore": "Konečné skóre",
+        "lastActive": "Posledná aktivita",
+        "makeModifications": "Potrebujete urobiť úpravy?",
+        "medianScore": "Mediánové skóre",
+        "noExamLinked": "Momentálne k tomuto kurzu nie je priradená žiadna skúška. Ak chcete vytvoriť skúšku, prosím, kontaktujte nás.",
+        "noPastAnnouncement": "Momentálne nemáte žiadne minulé oznamy.",
+        "noWrittenAnnouncement": "Momentálne nemáte žiadne písomné oznámenie.",
+        "objectives": "Ciele",
+        "overview": "Prehľad",
+        "questionsInExam": "Otázky na skúške",
+        "quickRecap": "Tu môžete nájsť všetky všeobecné informácie týkajúce sa tohto kurzu.",
+        "reviews": "Recenzie",
+        "studentsGraduated": "Abolventi",
+        "successRate": "Miera úspešnosti",
+        "summerStudents": "Summer School",
+        "thresholdToPass": "Prah na úspešné absolvovanie",
+        "totalQuestions": "Celkový počet otázok",
+        "writeAnnouncement": "Napísať oznámenie"
+      },
+      "discount": {
+        "description": "Tu môžete generovať a spravovať zľavové kódy pre tento kurz - buď na jednorazové použitie pre štipendia alebo podobné prípady, alebo na viacnásobné použitie pre marketingové kampane."
+      },
+      "profile": {
+        "billingInformation": "Fakturačné údaje",
+        "description": "Váš popis",
+        "enterTipsInformation": "Plan ₿ Network povzbudzuje používateľov, aby dávali učiteľom dobrovoľný príspevok. Zadajte prosím svoje informácie, aby vám ľudia mohli prispieť, keď budú chcieť.",
+        "lightningAddress": "Lightning adresa",
+        "makeModifications": "Potrebujete urobiť úpravy?",
+        "noLightningAddress": "Zatiaľ nebola pridaná žiadna lightning adresa.",
+        "noShortBio": "K tomuto účtu zatiaľ nebolo pripojené žiadne krátke bio, neváhajte ho pridať na GitHub.",
+        "noTags": "Ešte nie sú k tomuto účtu priradené žiadne tagy.",
+        "publicDescription": "Tento popis bude zobrazený na vašej karte s informáciami o učiteľoch na platforme.",
+        "publicProfileDescription": "Tu môžete vyplniť alebo upraviť všetky informácie spojené s vašou aktivitou ako učiteľa v Plan ₿ Network.",
+        "tutorialModification": "Ak potrebujete pomoc s úpravou niečoho, prosím pozrite tento <0>návod</0>."
+      },
+      "reviews": {
+        "checkComments": "Tu si môžete prečítať komentáre od študentov. Komentáre sú zoradené podľa dátumu.",
+        "checkReviews": "Tu si môžete skontrolovať známky a hodnotenia, ktoré váš kurz dostal.",
+        "noReviewsYet": "Tento kurz ešte nedostal hodnotenia a známky.",
+        "privateComment": "Súkromný komentár",
+        "publicComment": "Verejný komentár",
+        "review": "Recenzia",
+        "reviews": "Recenzie",
+        "reviewsAndGrading": "Recenzie a hodnotenie",
+        "seeStatistics": "Pozrieť štatistiky",
+        "viewDetails": "Zobraziť podrobnosti",
+        "writtenFeedbacks": "Písomné spätné väzby"
+      },
+      "tutorials": {
+        "tutorialAnalyticsDescription": "Tu môžete nájsť analýzy tutoriálov, ktoré ste vytvorili a publikovali na platforme.",
+        "yourTutorials": "Vaše návody"
+      }
+    }
   },
   "becomeTeacher": {
     "activeBitcoinLearners": "aktívni študenti bitcoinu",
@@ -1149,5 +1345,190 @@
     "superiorAmount": ">{{amount}}",
     "teachWhatYouLove": "<Učte to, čo milujete>",
     "title": "Učte Bitcoin a inšpirujte ostatných"
+  },
+  "educatorContent": {
+    "adminPanel": {
+      "previewChanges": "Náhľad zmien",
+      "previewForApproval": "Náhľad na schválenie",
+      "approved": "Schválené",
+      "modified": "Upravené",
+      "new": "Nové",
+      "pageTitle": "Skontrolovať obsah vyučujúceho",
+      "toReview": "Na recenziu"
+    },
+    "browseFiles": "alebo prehliadať súbory",
+    "browseImages": "alebo prehliadať obrázky",
+    "contentNotFound": "Obsah nebol nájdený",
+    "coverPreview": "Náhľad titulného obrázku",
+    "coverRequired": "Titulný obrázok je povinný",
+    "descriptionHelper": "Popíšte obsah zdroja, aby ostatní pochopili jeho obsah a našli ho",
+    "descriptionPlaceholder": "Popíšte obsah zdroja, aby ostatní pochopili jeho obsah a našli ho",
+    "descriptionRequired": "Popis nemôže byť prázdny",
+    "descriptionTooLong": "Popis nesmie presiahnuť 350 znakov",
+    "detail": {
+      "createdBy": "Vytvoril/a",
+      "downloadAll": "Stiahnuť všetko",
+      "view": "Zobraziť"
+    },
+    "done": "Hotovo",
+    "dropCover": "Sem vložte titulný obrázok",
+    "dropFiles": "Sem vložte súbory",
+    "editAndRequireApproval": "Upraviť a vyžadovať schválenie",
+    "editMaterial": "Upraviť obsah pre edukátorov",
+    "fileExisting": "(Existujúce)",
+    "fileTooLarge": "Súbor je príliš veľký (max 50MB)",
+    "imageCover": "Titulný obrázok",
+    "imageError": "Pri nahrávaní obrázka sa vyskytla chyba",
+    "languagePlaceholder": "Vybrať",
+    "languagePlaceholderFilter": "Jazyk",
+    "languageRequired": "Vyberte jazyk zdroja",
+    "linkOrFileRequired": "Prosím, pridajte aspoň jeden odkaz alebo nahrajte súbor",
+    "loginMessage": "Prosím, pre zobrazenie vášho obsahu sa prihláste.",
+    "maxFileSize": "Maximálna veľkosť súboru: 50MB",
+    "myContent": "Môj obsah",
+    "noContent": "Ešte ste nenahrali žiadny obsah.",
+    "noContentToReview": "Žiadny obsah na kontrolu",
+    "noCover": "Žiadny titulný obrázok",
+    "noResultsDescription": "Skúste upraviť filtre vyhľadávania",
+    "noResultsTitle": "Nenašiel sa žiadny obsah vyučujúceho",
+    "onlyImages": "Sú povolené len súbory obrázkov",
+    "pageSubtitle": "Kde Bitcoin edukátori a komunity zdieľajú a opätovne využívajú zdroje",
+    "resourceType": "Aký typ zdroja je toto?",
+    "reviewModal": {
+      "approveAndPublish": "Schváliť obsah a publikovať",
+      "edit": "Upraviť",
+      "noCover": "Žiadny titulný obrázok",
+      "reject": "Odmietnuť",
+      "unknown": "Neznámy",
+      "unpublish": "Zrušiť publikovanie",
+      "unpublishConfirm": "Zrušiť publikovanie (ste si istý?)",
+      "viewContent": "Zobraziť obsah",
+      "reviewForApproval": "Preskúmať na schválenie"
+    },
+    "shareLinks": "Zdieľať odkazy",
+    "sortBy": "Triediť podľa",
+    "sortMostDownloaded": "Najviac sťahované",
+    "sortMostRecent": "Najnovšie",
+    "status": {
+      "draft": "Čakajúce",
+      "published": "Živé",
+      "rejected": "Neprijaté",
+      "unpublished": "Zrušená publikácia"
+    },
+    "success": "Obsah vyučujúceho bol úspešne pridaný!",
+    "successSubtitle": "Prejde kontrolou pred tým, ako sa zobrazí.",
+    "successTitle": "Obsah vyučujúceho bol úspešne nahraný",
+    "titleHelper": "Malo by to odrážať obsah a účel vášho zdroja. Zachovajte stručnosť, ale informatívnosť.",
+    "titlePlaceholder": "napr. Multi-sig workshop Liana",
+    "titleRequired": "Názov nemôže byť prázdny",
+    "titleTooLong": "Názov nesmie presiahnuť 60 znakov",
+    "typePlaceholder": "Typ",
+    "typeRequired": "Špecifikujte, aký typ zdroja to je",
+    "types": {
+      "art": "Umenie",
+      "booklet": "Brožúra",
+      "flyer": "Leták",
+      "game": "Hra",
+      "other": "Ostatné",
+      "presentation": "Prezentácia",
+      "sticker": "Nálepka",
+      "workshop": "Workshop"
+    },
+    "uploadFiles": "Alebo nahrajte súbory",
+    "uploadForReview": "Nahrať na kontrolu",
+    "uploading": "Nahrávanie...",
+    "urlInvalid": "Odkaz musí byť platná URL",
+    "addMaterial": "Pridať obsah vyučujúceho",
+    "addMoreLinks": "Pridať viac odkazov",
+    "currentCoverPresent": "Súčasný titulný obrázok prítomný",
+    "linkPlaceholder": "https://example.com",
+    "pageTitle": "Obsah vyučujúceho"
+  },
+  "events": {
+    "addEvent": "Pridať udalosť",
+    "calendar": {
+      "inXMonths": "O {{number}} mesiac/e/ov",
+      "lastMonth": "Minulý mesiac",
+      "nextMonth": "Budúci mesiac",
+      "noEventsFound": "Nenašli sa žiadne udalosti",
+      "thisMonth": "Tento mesiac",
+      "today": "Dnes",
+      "xMonthsAgo": "Pred {{number}} mesiacmi"
+    },
+    "card": {
+      "bookLive": "Rezervovať si priamy prenos",
+      "bookSeat": "Rezervujte si miesto",
+      "buyLecture": "Kúpiť prednášku",
+      "free": "zadarmo",
+      "online": "online",
+      "people": "ľudia",
+      "purchased": "Kúpené",
+      "unlimited": "neobmedzený",
+      "visitWebsite": "Navštívte webovú stránku",
+      "watchReplay": "Pozrite si záznam"
+    },
+    "eventInfos": {
+      "eventBooked": "Udalosť rezervovaná",
+      "eventType": "Typ udalosti",
+      "numberOfSpots": "Počet miest",
+      "onlineAndInPerson": "Online a osobne",
+      "secureYourSpot": "Zabezpečte si svoje miesto",
+      "sessionBooked": "Miesto rezervované",
+      "whatsPlanned": "Čo je naplánované"
+    },
+    "main": {
+      "upcomingEvents": "Nadchádzajúce udalosti"
+    },
+    "myTickets": "Moje lístky",
+    "payment": {
+      "access_online_successful": "Keď sa začne podujatie, prihláste sa na platformu a začnite živé vysielanie prostredníctvom stránky podujatia.",
+      "access_physical_successful": "Môžete si stiahnuť svoju vstupenku tu, alebo neskôr na svojom paneli.",
+      "access_type": "Typ prístupu",
+      "additional_free_description": "Táto udalosť je zdarma, takže rezervácia vám nebude účtovaná.",
+      "address": "Adresa",
+      "back_events": "Späť na udalosti",
+      "book_seat": "Rezervujte si miesto",
+      "callout_book_online": "Chystáte se rezervovať online prístup na túto akciu.",
+      "callout_book_physical": "Chystáte sa rezervovať <highlight>osobný prístup</highlight> na toto podujatie.",
+      "callout_book_replay": "Chystáte sa rezervovať prístup k záznamu tohto podujatia.",
+      "callout_purchase_online": "Chystáte sa zakúpiť <highlight>online prístup</highlight> na túto udalosť.",
+      "callout_purchase_physical": "Chystáte sa rezervovať <highlight>osobný prístup</highlight> na toto podujatie.",
+      "callout_purchase_replay": "Chystáte sa zakúpiť prístup k záznamu tohto podujatia.",
+      "date": "Dátum",
+      "description_free_physical": "Prosím, skontrolujte uvedené informácie o mieste konania. Po potvrdení rezervácie obdržíte potvrdzovací lístok a QR kód, ktorý predložíte na podujatí. ",
+      "description_online": "Prosím, skontrolujte dátum a čas udalosti. Keď príde čas, prihláste sa na platformu, aby ste mohli sledovať priamy prenos na stránke udalosti.",
+      "description_physical": "Prosím, skontrolujte poskytnuté detaily miesta konania. Po potvrdení rezervácie dostanete potvrdzovací lístok a QR kód, ktorý predložíte na podujatí.\n\nTento lístok vám tiež umožní prístup k živému prenosu a prípadnému videozáznamu.",
+      "download_ticket": "Stiahnite si svoju vstupenku",
+      "language": "Hovorené jazyky",
+      "limitation": "Obmedzenie",
+      "limitedSeats": "Miest je obmedzený počet. V prípade, že sa nemôžete zúčastniť, zrušte prosím svoju rezerváciu.",
+      "max_capacity": "Maximálna kapacita",
+      "payment_successful": "Rezervácia bola úspešná.",
+      "time": "Čas"
+    },
+    "planBWeek": {
+      "pageTitle": "Plán ₿ Týždeň"
+    },
+    "tcDisclaimer": "Súhlasím s tým, že moje informácie môžu byť zdieľané s organizátormi za účelom prístupu na miesto konania.",
+    "tcMustBeAccepted": "Musíte prijať pravidlá a podmienky na pokračovanie",
+    "types": {
+      "plurals": {
+        "conference": "konferencie",
+        "exam": "skúšky",
+        "lecture": "prednášky",
+        "meetup": "stretnutia",
+        "workshop": "workshopy"
+      },
+      "singular": {
+        "conference": "Konferencia",
+        "exam": "Skúška",
+        "lecture": "Prednáška",
+        "meetup": "Stretnutie",
+        "workshop": "Workshop"
+      }
+    }
+  },
+  "filters": {
+    "topics": "Témy"
   }
 }

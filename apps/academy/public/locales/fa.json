@@ -97,7 +97,9 @@
     "forgotPassword": "رمز عبور را فراموش کرده اید؟",
     "login": "ورود",
     "oldPassword": "رمز عبور قدیمی",
-    "signUp": "ثبت نام"
+    "signUp": "ثبت نام",
+    "saveProgress": "پیشرفت خود را ذخیره کنید",
+    "signUpToSave": "برای ذخیره سازی ثبت نام کنید"
   },
   "bCert": {
     "bCertDescription": "B-CERT یک امتحان شناخته شده بین المللی می‌باشدکه تسلط شما بر بیت کوین و موضوعات مربوط به آن را ارزیابی می‌کند. این گواهینامه به شما این امکان را می‌دهد تا مهارت‌ها و دانش خود را در صنعت بیت کوین اثبات کنید، همچنین امکان دسترسی به بهترین شرکت‌ها و موقعیت‌های شغلی عالی را برای شما فراهم می‌کند.",
@@ -196,7 +198,10 @@
       "premiumContentNeedsPaymentAction": "به صفحه اصلی دوره بروید",
       "startCourse": "دوره را آغاز نمایید",
       "taughtBy": "این دوره آموزش داده می‌شود توسط",
-      "thanksTipping": "می‌توانید با انعام دادن به استاد، از ایشان تشکر کنید."
+      "thanksTipping": "می‌توانید با انعام دادن به استاد، از ایشان تشکر کنید.",
+      "creditsCollaboration": "این دوره نتیجه تلاش مشترک است: هر درس، ترجمه و بازبینی با کمک مشارکت کنندگان امکان پذیر است. به همین دلیل، همیشه دنبال غلط یابانی هستیم که می توانند محتوای ما را در زبان های مختلف بررسی کنند.\n\nاگر می خواهید در فرآیند غلط یابی شرکت کنید، لطفا در گروه <0>Telegram</0> ما به ما اطلاع دهید و <1>tutorial</1> ما را بخوانید.\n\nدانش بیتکوین را گسترش دهید:",
+      "openSourceContentDescription": "محتوای این دوره منبع باز است - تحت مجوز <0>CC BY-SA</0> - بنابراین می توان آن را به طور آزاد به اشتراک گذاشت و استفاده کرد، به شرط اینکه منبع اصلی شناسایی شود.",
+      "openSourceContentTitle": "محتوای منبع باز"
     },
     "exam": {
       "answersReview": "بررسی پاسخ‌ها",
@@ -1320,7 +1325,8 @@
           "upcomingClass": "کلاس آینده"
         }
       }
-    }
+    },
+    "backToProfile": "بازگشت به پروفایل من"
   },
   "events": {
     "card": {
@@ -1612,7 +1618,24 @@
     },
     "projects": {
       "title": "پروژه‌ها",
-      "addProjects": "اضافه کردن پروژه"
+      "addProjects": "اضافه کردن پروژه",
+      "types": {
+        "infrastructure": "زیرساخت",
+        "manufacturer": "سازنده",
+        "investment": "سرمایه گذاری",
+        "merchant": "بازرگان",
+        "news": "اخبار",
+        "payment": "پرداخت",
+        "service": "خدمات",
+        "education": "آموزش",
+        "mining": "استخراج (ماینینگ)",
+        "communities": "جوامع",
+        "conference": "کنفرانس",
+        "exchange": "مبادله",
+        "node": "نود",
+        "privacy": "حریم خصوصی",
+        "wallet": "کیف پول"
+      }
     },
     "searchFilterName": "جستجو بر اساس نام",
     "toggleLabelAll": "همه",
@@ -1634,7 +1657,8 @@
         "thesis": "پایان نامه",
         "whitepaper": "سفیدکاغذ",
         "book": "کتاب",
-        "conference": "کنفرانس"
+        "conference": "کنفرانس",
+        "review": "دیدگاه"
       },
       "papers": "مقالات"
     }
@@ -1686,7 +1710,12 @@
     "changeDisplayName": "تغییر نام نمایشی",
     "changeEmail": "تغییر ایمیل",
     "changePassword": "تغییر رمز عبور",
-    "changeProfilePicture": "تغییر تصویر پروفایل"
+    "changeProfilePicture": "تغییر تصویر پروفایل",
+    "addEmailContinue": "برای ادامه ایمیل خود را اضافه کنید",
+    "emailSentDescription": "ایمیل خود را تأیید کرده و این صفحه را برای ادامه مجددا بارگزاری کنید.",
+    "emailSentTitle": "ما یک ایمیل برای شما ارسال کرده ایم",
+    "verifyEmail": "تایید ایمیل",
+    "addEmail": "افزودن ایمیل"
   },
   "tutorials": {
     "business": {
@@ -1947,7 +1976,12 @@
     "downloads": "دانلود",
     "enroll": "ثبت نام",
     "open": "باز کردن",
-    "researchPaper": "مقاله تحقیقاتی"
+    "researchPaper": "مقاله تحقیقاتی",
+    "contribute": "مشارکت کنید",
+    "oldest": "قدیمی‌ترین",
+    "agenda": "دستور کار",
+    "event": "رویداد",
+    "contributors": "مشارکت کنندگان"
   },
   "youtubeChannels": {
     "view": "مشاهده کانال یوتیوب",
@@ -2075,7 +2109,40 @@
     "languageRequired": "زبان منبع را انتخاب کنید",
     "myContent": "محتوای من",
     "done": "انجام شد",
-    "languagePlaceholder": "انتخاب کنید"
+    "languagePlaceholder": "انتخاب کنید",
+    "adminPanel": {
+      "approved": "تایید شده",
+      "modified": "تغییر یافته",
+      "new": "جدید",
+      "pageTitle": "بررسی محتوا آموزشگر",
+      "previewChanges": "پیش‌نمایش تغییرات",
+      "previewForApproval": "پیش‌نمایش برای تایید",
+      "toReview": "برای بررسی"
+    },
+    "coverPreview": "پیش‌نمایش جلد",
+    "fileExisting": "(موجود)",
+    "linkPlaceholder": "https://example.com",
+    "maxFileSize": "حداکثر اندازه فایل: 50 مگابایت",
+    "pageSubtitle": "جایی که مربیان بیتکوین و اجتماعات منابع را به اشتراک می‌گذارند و استفاده مجدد می‌کنند",
+    "reviewModal": {
+      "approveAndPublish": "تایید محتوا و انتشار",
+      "unpublishConfirm": "لغو انتشار (آیا مطمئن هستید؟)",
+      "reviewForApproval": "بررسی برای تایید",
+      "unpublish": "لغو انتشار",
+      "viewContent": "مشاهده محتوا",
+      "edit": "بازنگری",
+      "noCover": "بدون جلد",
+      "reject": "رد کردن",
+      "unknown": "ناشناخته"
+    },
+    "sortMostDownloaded": "بیشترین دانلود",
+    "sortMostRecent": "جدیدترین",
+    "titlePlaceholder": "مثلا. کارگاه چند امضا لیانا",
+    "linkOrFileRequired": "لطفاً حداقل یک پیوند اضافه کنید یا یک فایل بارگذاری کنید",
+    "languagePlaceholderFilter": "زبان",
+    "typePlaceholder": "نوع",
+    "pageTitle": "محتوای آموزشگر",
+    "sortBy": "مرتب سازی بر اساس"
   },
   "forms": {
     "browse": "مرور",

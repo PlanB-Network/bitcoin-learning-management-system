@@ -97,7 +97,9 @@
     "loginNotAvailable1": "Tính năng đăng nhập chưa có sẵn trên ứng dụng máy tính để bàn.",
     "loginNotAvailable2": "Bạn có thể truy cập trang web của chúng tôi để đăng nhập và truy cập tài khoản của bạn.",
     "oldPassword": "Mật khẩu cũ",
-    "signUp": "Đăng ký"
+    "signUp": "Đăng ký",
+    "saveProgress": "Lưu tiến trình của bạn",
+    "signUpToSave": "Đăng ký để lưu"
   },
   "bCert": {
     "bCertDescription": "Chứng chỉ ₿-CERT là một bài thi được công nhận toàn cầu dùng để đánh giá sự thành thạo của bạn liên quan tới Bitcoin và các chủ đề liên quan. Chứng chỉ này có thể chứng minh cho kỹ năng và hiểu biết của bạn trong ngành công nghiệp Bitcoin, cho phép bạn được tiếp cận tới các công ty và cơ hội việc làm tốt nhất.",
@@ -196,7 +198,10 @@
       "premiumContentNeedsPaymentAction": "Đi tới trang chủ của khoá học",
       "startCourse": "Bắt đầu khoá học",
       "taughtBy": "Khoá học này đang được giảng dạy bởi:",
-      "thanksTipping": "Bạn có thể nói lời cảm ơn bằng cách thưởng cho giáo sư."
+      "thanksTipping": "Bạn có thể nói lời cảm ơn bằng cách thưởng cho giáo sư.",
+      "creditsCollaboration": "Khoá học này là kết quả của sự cộng tác: mỗi bài học, bản dịch và bản sửa đổi đều được thực hiện nhờ công việc của các người đóng góp. Vì lý do này, chúng tôi luôn tìm kiếm những người chỉnh sửa có thể xem lại nội dung của chúng tôi bằng nhiều ngôn ngữ.\n\nNếu bạn muốn tham gia vào quá trình chỉnh sửa, vui lòng liên hệ với nhóm <0>Telegram</0> của chúng tôi và đọc <1>hướng dẫn</1> của chúng tôi.\n\nHãy giúp lan tỏa kiến thức về Bitcoin:",
+      "openSourceContentDescription": "Nội dung khoá học này là mã nguồn mở - được cấp phép theo <0>CC BY-SA</0> - vì vậy nó có thể được chia sẻ và sử dụng tự do, miễn là ghi rõ nguồn gốc ban đầu.",
+      "openSourceContentTitle": "Nội dung mã nguồn mở"
     },
     "exam": {
       "answersReview": "Trả lời nhận xét",
@@ -1320,7 +1325,8 @@
           "upcomingClass": "Lớp sắp học"
         }
       }
-    }
+    },
+    "backToProfile": "Quay lại hồ sơ của tôi"
   },
   "events": {
     "card": {
@@ -1609,7 +1615,24 @@
     },
     "projects": {
       "title": "Các dự án",
-      "addProjects": "Thêm dự án"
+      "addProjects": "Thêm dự án",
+      "types": {
+        "communities": "Các cộng đồng",
+        "conference": "Hội nghị",
+        "exchange": "Sàn giao dịch",
+        "merchant": "Người bán",
+        "mining": "Đào",
+        "node": "Nút",
+        "privacy": "Riêng tư",
+        "education": "Giáo dục",
+        "wallet": "Ví",
+        "infrastructure": "Cơ sở hạ tầng",
+        "news": "Tin tức",
+        "payment": "Thanh toán",
+        "investment": "Đầu tư",
+        "manufacturer": "Nhà sản xuất",
+        "service": "Dịch vụ"
+      }
     },
     "searchFilterName": "Tìm kiếm theo tên",
     "toggleLabelAll": "Tất cả",
@@ -1632,7 +1655,8 @@
         "academic": "Học thuật",
         "journal": "Tạp chí",
         "book": "Sách",
-        "conference": "Hội nghị"
+        "conference": "Hội nghị",
+        "review": "Đánh giá"
       }
     }
   },
@@ -1683,7 +1707,12 @@
     "changeDisplayName": "Thay đổi tên hiển thị",
     "changeEmail": "Thay đổi email",
     "changePassword": "Thay đổi mật khẩu",
-    "changeProfilePicture": "Thay đổi hình ảnh hồ sơ"
+    "changeProfilePicture": "Thay đổi hình ảnh hồ sơ",
+    "addEmailContinue": "Thêm email để tiếp tục",
+    "emailSentDescription": "Xác minh email của bạn và tải lại trang này để tiếp tục.",
+    "emailSentTitle": "Chúng tôi đã gửi cho bạn một email",
+    "verifyEmail": "Xác minh email",
+    "addEmail": "Thêm email"
   },
   "tutorials": {
     "business": {
@@ -1944,7 +1973,12 @@
     "open": "Mở",
     "researchPaper": "Bài viết nghiên cứu",
     "enroll": "Đăng ký",
-    "downloads": "Tải xuống"
+    "downloads": "Tải xuống",
+    "event": "Sự kiện",
+    "oldest": "Cũ nhất",
+    "agenda": "Chương trình",
+    "contribute": "Đóng góp",
+    "contributors": "Những người đóng góp"
   },
   "youtubeChannels": {
     "view": "Xem kênh Youtube",
@@ -2089,7 +2123,40 @@
     "descriptionRequired": "Mô tả không được để trống",
     "descriptionTooLong": "Mô tả không được vượt quá 350 ký tự",
     "languagePlaceholder": "Chọn",
-    "done": "Xong"
+    "done": "Xong",
+    "languagePlaceholderFilter": "Ngôn ngữ",
+    "reviewModal": {
+      "edit": "Chỉnh sửa",
+      "approveAndPublish": "Chấp nhận nội dung và xuất bản",
+      "unpublishConfirm": "Hủy xuất bản (bạn có chắc không?)",
+      "viewContent": "Xem nội dung",
+      "reviewForApproval": "Duyệt để phê duyệt",
+      "noCover": "Không có bìa",
+      "reject": "Từ chối",
+      "unknown": "Không rõ",
+      "unpublish": "Chưa được xuất bản"
+    },
+    "typePlaceholder": "Loại",
+    "coverPreview": "Xem trước bìa",
+    "adminPanel": {
+      "approved": "Đã duyệt",
+      "modified": "Đã chỉnh sửa",
+      "new": "Mới",
+      "pageTitle": "Duyệt Nội dung Giáo dục",
+      "previewChanges": "Xem trước các thay đổi",
+      "previewForApproval": "Xem trước để duyệt",
+      "toReview": "Để duyệt"
+    },
+    "fileExisting": "(Đang tồn tại)",
+    "linkPlaceholder": "https://example.com",
+    "maxFileSize": "Kích thước tệp tối đa: 50MB",
+    "sortMostDownloaded": "Được tải xuống nhiều nhất",
+    "linkOrFileRequired": "Vui lòng thêm ít nhất một liên kết hoặc tải lên một tệp",
+    "sortMostRecent": "Mới nhất",
+    "pageSubtitle": "Nơi các nhà giáo dục Bitcoin và cộng đồng chia sẻ và tái sử dụng tài nguyên",
+    "titlePlaceholder": "ví dụ: Hội thảo chữ ký đa Liana",
+    "sortBy": "Sắp xếp theo",
+    "pageTitle": "Nội dung giáo dục"
   },
   "mentor": {
     "collapse": "Thu gọn",

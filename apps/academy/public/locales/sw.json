@@ -97,7 +97,9 @@
     "forgotPassword": "Umesahau nywila?",
     "login": "Ingia",
     "oldPassword": "Nywila ya zamani",
-    "signUp": "Jisajili"
+    "signUp": "Jisajili",
+    "signUpToSave": "Jisajili ili uokoe",
+    "saveProgress": "Hifadhi maendeleo yako"
   },
   "bCert": {
     "bCertDescription": "₿-CERT ni mtihani wa mwisho wa Bitcoin ulioundwa ili kupima maarifa yako kuhusu Bitcoin na mada zinazohusiana nayo.\n\nPata cheti chako cha ₿-CERT na uthibitishe ujuzi wako katika tasnia ya Bitcoin, ukifungua milango kwa nafasi za kazi katika uwanja huo.",
@@ -196,7 +198,10 @@
       "premiumContentNeedsPaymentAction": "Nenda kwenye ukurasa mkuu wa kozi",
       "startCourse": "Anza kozi",
       "taughtBy": "Mafunzo haya yanafundishwa na",
-      "thanksTipping": "Unaweza kusema asante kwa kudokeza profesa."
+      "thanksTipping": "Unaweza kusema asante kwa kudokeza profesa.",
+      "creditsCollaboration": "Kozi hii ni matokeo ya juhudi za ushirikiano: kila somo, tafsiri, na marekebisho yanaifanya iwezekane kwa kazi ya wachangiaji. Kwa sababu hii, sisi daima tunatafuta wahakiki ambao wanaweza kupitia yaliyomo yetu kwa lugha nyingi.\n\nIkiwa ungetaka kushiriki katika mchakato wa uhakiki, tafadhali wasiliana nasi katika kundi letu la <0>Telegram</0> na soma <1>tutorial</1> yetu.\n\nSaidia kueneza maarifa ya Bitcoin:",
+      "openSourceContentDescription": "Maudhui ya kozi hii ni chanzo wazi - imesajiliwa chini ya <0>CC BY-SA</0> - kwa hivyo inaweza kushirikiwa na kutumika kwa uhuru, mradi chanzo cha asili kinafaa kutambuliwa.",
+      "openSourceContentTitle": "Maudhui ya chanzo huria"
     },
     "exam": {
       "answersReview": "Ukaguzi wa majibu",
@@ -1104,7 +1109,7 @@
       "summerSchool": "Shule ya Kiangazi",
       "surePreferenceList": "Je, una uhakika kuhusu orodha yako ya upendeleo?",
       "thresholdToPass": "Kizingiti cha kupita: {{threshold}}%",
-      "tweetText": "Nimefurahi kukamilisha kozi ya {{courseIndex}} katika @planb_network na kupata diploma yangu kwa alama ya {{score}}/100 kwenye mtihani wa mwisho! {{emoji}} #PBNDiploma\n  {{certificateUrl}}",
+      "tweetText": "Nimefurahi kukamilisha kozi ya {{courseIndex}} katika @planb_network na kupata diploma yangu kwa alama ya {{score}}/100 kwenye mtihani wa mwisho! {{emoji}} #PBNDiploma\n\n  {{certificateUrl}}",
       "assignmentNotAccessible": "Kazi tayari imeanza na haiwezi kupatikana tena.",
       "assignmentScore": "Alama za kazi",
       "tweetTextCourseDiploma": "Nimefurahia kumaliza kozi {{courseName}}, iliyofundishwa na {{courseCoordinator}} kwenye @planb_network na kupata shahada yangu!\n#PBNDiploma\n\n{{certificateUrl}}",
@@ -1320,7 +1325,8 @@
           "upcomingClass": "Darasa lijalo"
         }
       }
-    }
+    },
+    "backToProfile": "Rudi kwenye profaili yangu"
   },
   "events": {
     "card": {
@@ -1612,7 +1618,24 @@
     },
     "projects": {
       "title": "Miradi",
-      "addProjects": "Ongeza mradi"
+      "addProjects": "Ongeza mradi",
+      "types": {
+        "communities": "Jamii",
+        "conference": "Mkutano",
+        "education": "Elimu",
+        "exchange": "Exchange",
+        "infrastructure": "Miundombinu",
+        "investment": "Uwekezaji",
+        "manufacturer": "Mtengenezaji",
+        "merchant": "Merchant",
+        "mining": "Mining",
+        "news": "Habari",
+        "node": "Node",
+        "payment": "Malipo",
+        "privacy": "Uhuru wa Kibinafsi",
+        "service": "Huduma",
+        "wallet": "Wallet"
+      }
     },
     "searchFilterName": "Tafuta kwa jina",
     "toggleLabelAll": "Zote",
@@ -1632,7 +1655,8 @@
         "thesis": "Thesis",
         "whitepaper": "Mkataba mweupe",
         "book": "Kitabu",
-        "conference": "Mkutano"
+        "conference": "Mkutano",
+        "review": "Ukaguzi"
       },
       "papers": "Makaratasi",
       "publisher": "Mchapishaji",
@@ -1686,7 +1710,12 @@
     "changeDisplayName": "Badilisha jina la onyesho",
     "changeEmail": "Badilisha barua pepe",
     "changePassword": "Badilisha nenosiri",
-    "changeProfilePicture": "Badilisha picha ya wasifu"
+    "changeProfilePicture": "Badilisha picha ya wasifu",
+    "addEmail": "Ongeza barua pepe",
+    "addEmailContinue": "Ongeza barua pepe kuendelea",
+    "emailSentDescription": "Thibitisha barua pepe yako na upakie tena ukurasa huu kuendelea.",
+    "emailSentTitle": "Tumetuma barua pepe kwako",
+    "verifyEmail": "Thibitisha barua pepe"
   },
   "tutorials": {
     "business": {
@@ -1947,7 +1976,12 @@
     "downloads": "Vipakuli",
     "open": "Fungua",
     "researchPaper": "Karatasi ya Utafiti",
-    "enroll": "Jisajili"
+    "enroll": "Jisajili",
+    "agenda": "Ajenda",
+    "contribute": "Changia",
+    "contributors": "Wachangiaji",
+    "event": "Tukio",
+    "oldest": "Mzee zaidi"
   },
   "youtubeChannels": {
     "view": "Tazama Channel ya Youtube",
@@ -2089,7 +2123,40 @@
     "uploadFiles": "Pakia Faili",
     "uploadForReview": "Pakia kwa ukaguzi",
     "done": "Imekamilika",
-    "languagePlaceholder": "Chagua"
+    "languagePlaceholder": "Chagua",
+    "adminPanel": {
+      "approved": "Imeidhinishwa",
+      "modified": "Iliyobadilishwa",
+      "new": "Mpya",
+      "pageTitle": "Pitia Maudhui ya Mwalimu",
+      "previewChanges": "Hakikisha mabadiliko",
+      "previewForApproval": "Hakiki kabla ya kuidhinisha",
+      "toReview": "Kupitia upya"
+    },
+    "coverPreview": "Hakiki ya Jalada",
+    "fileExisting": "(Ipo)",
+    "languagePlaceholderFilter": "Lugha",
+    "linkOrFileRequired": "Tafadhali ongeza angalau link moja au pakia faili.",
+    "linkPlaceholder": "https://example.com",
+    "maxFileSize": "Ukubwa wa faili kubwa zaidi: 50MB",
+    "pageSubtitle": "Mahali ambapo walimu na jamii za Bitcoin wanashiriki na kutumia tena rasilimali",
+    "pageTitle": "Maudhui ya mwalimu",
+    "reviewModal": {
+      "approveAndPublish": "Idhinisha yaliyomo na kuchapisha",
+      "edit": "Hariri",
+      "noCover": "Hakuna Jalada",
+      "reject": "Kataa",
+      "reviewForApproval": "Kagua kwa ajili ya kuidhinisha",
+      "unknown": "Isiyojulikana",
+      "unpublish": "ondoa kwenye uchapishaji",
+      "unpublishConfirm": "ondoa kwenye uchapishaji (una uhakika?)",
+      "viewContent": "Angalia maudhui"
+    },
+    "sortBy": "Panga kwa",
+    "sortMostDownloaded": "Ilipakuliwa Zaidi",
+    "sortMostRecent": "Hivi Majuzi Zaidi",
+    "titlePlaceholder": "e.g. Warsha ya Multi-sig Liana",
+    "typePlaceholder": "Aina"
   },
   "forms": {
     "browse": "Vinjari",

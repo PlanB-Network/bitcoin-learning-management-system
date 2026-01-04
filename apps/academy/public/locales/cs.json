@@ -97,7 +97,9 @@
     "loginNotAvailable1": "Funkce přihlášení zatím nejsou dostupné v desktopové aplikaci.",
     "loginNotAvailable2": "Pro přihlášení a přístup k vašemu účtu můžete navštívit naše webové stránky.",
     "oldPassword": "Staré heslo",
-    "signUp": "Registrace"
+    "signUp": "Registrace",
+    "saveProgress": "Uložte svůj pokrok",
+    "signUpToSave": "Zaregistrujte se k uložení"
   },
   "bCert": {
     "bCertDescription": "₿-CERT je nejvyšší test znalostí o Bitcoinu navržený k ověření vašich znalostí o Bitcoinu a souvisejících tématech.\n\nZískejte svůj certifikát ₿-CERT a prokažte svou odbornost v Bitcoinovém průmyslu, což vám otevře dveře k pracovním pozicím v tomto odvětví.",
@@ -196,7 +198,10 @@
       "premiumContentNeedsPaymentAction": "Přejděte na domovskou stránku kurzu",
       "startCourse": "Začátek kurzu",
       "taughtBy": "Tento kurz vyučuje",
-      "thanksTipping": "Můžete poděkovat tím, že dáte profesorovi spropitné."
+      "thanksTipping": "Můžete poděkovat tím, že dáte profesorovi spropitné.",
+      "creditsCollaboration": "Tento kurz je výsledkem spolupráce: každá lekce, překlad a revize je možná díky práci přispěvatelů. Z tohoto důvodu hledáme korektory, kteří mohou přehodnocovat náš obsah v mnoha jazycích.\n\nPokud byste chtěli se podílet na procesu korektur, ozvěte se v naší skupině na <0>Telegramu</0> a přečtěte si náš <1>tutoriál</1>.\n\nPomozte šířit znalosti o Bitcoinu:",
+      "openSourceContentDescription": "Obsah tohoto kurzu je open-source - licencován pod <0>CC BY-SA</0> - takže může být volně sdílen a používán, pokud je uveden původní zdroj.",
+      "openSourceContentTitle": "Open-source obsah"
     },
     "exam": {
       "answersReview": "Vyhodnocení odpovědí",
@@ -1320,7 +1325,8 @@
           "upcomingClass": "Nadcházející hodina"
         }
       }
-    }
+    },
+    "backToProfile": "Zpět na můj profil"
   },
   "events": {
     "card": {
@@ -1609,7 +1615,24 @@
     },
     "projects": {
       "title": "Projekty",
-      "addProjects": "Přidat projekt"
+      "addProjects": "Přidat projekt",
+      "types": {
+        "communities": "Komunity",
+        "education": "Vzdělávání",
+        "infrastructure": "Infrastruktura",
+        "investment": "Investice",
+        "manufacturer": "Výrobce",
+        "merchant": "Obchodník",
+        "news": "Zprávy",
+        "payment": "Platba",
+        "service": "Služba",
+        "wallet": "Peněženka",
+        "conference": "Konference",
+        "exchange": "Směnárna",
+        "mining": "Těžení",
+        "node": "Uzel",
+        "privacy": "Soukromí"
+      }
     },
     "searchFilterName": "Vyhledat podle názvu",
     "toggleLabelAll": "Vše",
@@ -1624,7 +1647,8 @@
         "journal": "Časopis",
         "pre-print": "Předtisk",
         "thesis": "Práce",
-        "whitepaper": "Bílá kniha"
+        "whitepaper": "Bílá kniha",
+        "review": "Recenze"
       },
       "accessPaper": "Přístup k dokumentu",
       "addPaper": "Přidat dokument",
@@ -1683,7 +1707,12 @@
     "changeDisplayName": "Změnit zobrazované jméno",
     "changeEmail": "Změnit email",
     "changePassword": "Změnit heslo",
-    "changeProfilePicture": "Změnit profilový obrázek"
+    "changeProfilePicture": "Změnit profilový obrázek",
+    "addEmailContinue": "Pro pokračování přidejte e-mail",
+    "emailSentDescription": "Potvrďte svůj e-mail a obnovte tuto stránku pro pokračování.",
+    "emailSentTitle": "Poslali jsme vám e-mail",
+    "verifyEmail": "Ověřit e-mail",
+    "addEmail": "Přidat email"
   },
   "tutorials": {
     "business": {
@@ -1944,7 +1973,12 @@
     "downloads": "Stahování",
     "open": "Otevřít",
     "researchPaper": "Výzkumná práce",
-    "enroll": "Zaregistrujte se"
+    "enroll": "Zaregistrujte se",
+    "agenda": "Program",
+    "contribute": "Přispějte",
+    "oldest": "Nejstarší",
+    "event": "Události",
+    "contributors": "Přispěvatelé"
   },
   "youtubeChannels": {
     "view": "Zobrazit YouTube kanál",
@@ -2075,7 +2109,40 @@
     "addMaterial": "Přidejte obsah pro vyučující",
     "browseFiles": "nebo procházejte soubory",
     "browseImages": "nebo prohlížejte obrázky",
-    "currentCoverPresent": "Současný obal přítomný"
+    "currentCoverPresent": "Současný obal přítomný",
+    "adminPanel": {
+      "modified": "Upraveno",
+      "new": "Nové",
+      "toReview": "Ke kontrole",
+      "pageTitle": "Přezkoumat obsah vzdělávacího pracovníka",
+      "previewChanges": "Náhled změn",
+      "previewForApproval": "Náhled pro schválení",
+      "approved": "Schváleno"
+    },
+    "pageSubtitle": "Místo, kde vzdělavatelé v oblasti Bitcoinu a komunity sdílejí a opětovně využívají zdroje",
+    "titlePlaceholder": "např. Multi-sig workshop Liana",
+    "sortMostRecent": "Nejnovější",
+    "sortMostDownloaded": "Nejvíce stahované",
+    "coverPreview": "Náhled obálky",
+    "fileExisting": "(Existující)",
+    "linkOrFileRequired": "Přidejte prosím alespoň jeden odkaz nebo nahrajte soubor",
+    "linkPlaceholder": "https://example.com",
+    "reviewModal": {
+      "reviewForApproval": "Přezkoumat pro schválení",
+      "unpublish": "Zrušit publikaci",
+      "unpublishConfirm": "Zrušit publikaci (jste si jistý?)",
+      "viewContent": "Zobrazit obsah",
+      "approveAndPublish": "Schválit obsah a publikovat",
+      "edit": "Upravit",
+      "noCover": "Bez obalu",
+      "reject": "Odmítnout",
+      "unknown": "Neznámý"
+    },
+    "maxFileSize": "Maximální velikost souboru: 50MB",
+    "sortBy": "Seřadit podle",
+    "languagePlaceholderFilter": "Jazyk",
+    "pageTitle": "Obsah pro vyučující",
+    "typePlaceholder": "Typ"
   },
   "mentor": {
     "close": "Zavřít",

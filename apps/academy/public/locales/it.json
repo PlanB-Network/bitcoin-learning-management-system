@@ -97,7 +97,9 @@
     "forgotPassword": "Hai dimenticato la password?",
     "login": "Accedi",
     "oldPassword": "Vecchia password",
-    "signUp": "Registrati"
+    "signUp": "Registrati",
+    "saveProgress": "Salva i tuoi progressi",
+    "signUpToSave": "Accedi per salvare"
   },
   "bCert": {
     "bCertDescription": "Il ₿-CERT è il test finale creato per valutare il livello di conoscenze su Bitcoin e gli argomenti correlati. Ottieni un certificato ₿-CERT dai sfoggio delle tue conoscenze nell'industria Bitcoin, aprendo le porte a varie opportunità di lavoro nel campo.",
@@ -196,7 +198,10 @@
       "premiumContentNeedsPaymentAction": "Vai alla homepage del corso",
       "startCourse": "Inizia il corso",
       "taughtBy": "Questo corso è tenuto da",
-      "thanksTipping": "Puoi dire grazie lasciando una mancia al professore."
+      "thanksTipping": "Puoi dire grazie lasciando una mancia al professore.",
+      "creditsCollaboration": "Questo corso è il risultato di uno sforzo collaborativo: ogni lezione, traduzione e revisione è resa possibile dal lavoro dei contributor. Per questo motivo, siamo sempre alla ricerca di proofreader che possano rivedere i nostri contenuti in molte lingue.\n\nSe desideri partecipare al processo di proofreading, contattaci nel nostro gruppo <0>Telegram</0> e leggi il nostro <1>tutorial</1>.\n\nAiuta a diffondere la conoscenza su Bitcoin:",
+      "openSourceContentDescription": "Il contenuto di questo corso è open source - ovvero sotto licenza <0>CC BY-SA</0> - quindi può essere condiviso e utilizzato liberamente, purché sia attribuita la paternità alla fonte originale.",
+      "openSourceContentTitle": "Contenuto open-source"
     },
     "exam": {
       "answersReview": "Revisione delle risposte",
@@ -1320,7 +1325,8 @@
           "upcomingClass": "Prossima lezione"
         }
       }
-    }
+    },
+    "backToProfile": "Torna al mio profilo"
   },
   "events": {
     "card": {
@@ -1462,7 +1468,7 @@
   },
   "menu": {
     "login": "Accedi",
-    "educatorContent": "Contenuti per gli educatori",
+    "educatorContent": "Contenuti per educatori",
     "getStarted": "Inizia",
     "signIn": "Accedi"
   },
@@ -1612,7 +1618,24 @@
     },
     "projects": {
       "title": "Progetti",
-      "addProjects": "Aggiungi un progetto"
+      "addProjects": "Aggiungi un progetto",
+      "types": {
+        "communities": "Community",
+        "conference": "Conferenza",
+        "education": "Educazione",
+        "exchange": "Exchange",
+        "infrastructure": "Infrastrutture",
+        "investment": "Investimenti",
+        "manufacturer": "Produttori",
+        "merchant": "Negozi",
+        "mining": "Mining",
+        "news": "Notizie",
+        "node": "Nodi",
+        "payment": "Pagamenti",
+        "privacy": "Privacy",
+        "service": "Servizi",
+        "wallet": "Wallet"
+      }
     },
     "searchFilterName": "Cerca per nome",
     "toggleLabelAll": "Tutti",
@@ -1635,7 +1658,8 @@
         "thesis": "Tesi",
         "whitepaper": "Libro bianco",
         "book": "Libro",
-        "conference": "Conferenza"
+        "conference": "Conferenza",
+        "review": "Revisiona"
       }
     }
   },
@@ -1686,7 +1710,12 @@
     "changeDisplayName": "Cambia nome visualizzato",
     "changeEmail": "Cambia email",
     "changePassword": "Cambia password",
-    "changeProfilePicture": "Cambia immagine del profilo"
+    "changeProfilePicture": "Cambia immagine del profilo",
+    "addEmail": "Aggiungi email",
+    "addEmailContinue": "Aggiungi email per continuare",
+    "emailSentDescription": "Verifica la tua email e ricarica questa pagina per continuare.",
+    "emailSentTitle": "Ti abbiamo inviato un'email",
+    "verifyEmail": "Verifica email"
   },
   "tutorials": {
     "business": {
@@ -1947,7 +1976,12 @@
     "enroll": "Iscriviti",
     "open": "Apri",
     "researchPaper": "Documento di ricerca",
-    "downloads": "Scarica"
+    "downloads": "Scarica",
+    "agenda": "Agenda",
+    "contribute": "Contribuisci",
+    "contributors": "Contributor",
+    "event": "Evento",
+    "oldest": "Più vecchio"
   },
   "youtubeChannels": {
     "view": "Vai al canale Youtube",
@@ -2023,7 +2057,7 @@
     "dropCover": "Trascina qui l'immagine di copertina",
     "dropFiles": "Trascina qui i file",
     "editAndRequireApproval": "Modifica e richiedi approvazione",
-    "editMaterial": "Modifica il contenuto dell'educatore",
+    "editMaterial": "Modifica il contenuto educativo",
     "imageCover": "Immagine di copertina",
     "imageError": "Si è verificato un errore durante il caricamento dell'immagine",
     "languageRequired": "Seleziona la lingua della risorsa",
@@ -2032,11 +2066,11 @@
     "noContent": "Non hai ancora caricato nessun contenuto.",
     "noContentToReview": "Nessun contenuto da revisionare",
     "noCover": "Nessuna copertina",
-    "noResultsDescription": "Prova a regolare i tuoi filtri di ricerca",
-    "noResultsTitle": "Nessun contenuto didattico trovato",
+    "noResultsDescription": "Prova a cambiare i filtri di ricerca",
+    "noResultsTitle": "Nessun contenuto educativo trovato",
     "onlyImages": "Sono consentiti solo file immagine",
-    "resourceType": "Tipo di risorsa",
-    "shareLinks": "Condividi collegamenti",
+    "resourceType": "Di che tipo di risorsa si tratta?",
+    "shareLinks": "Condividi i link",
     "status": {
       "draft": "In attesa",
       "published": "Dal vivo",
@@ -2044,38 +2078,71 @@
       "unpublished": "Non pubblicato"
     },
     "success": "Contenuto didattico aggiunto con successo!",
-    "successSubtitle": "Dovrà passare un processo di revisione prima di essere visualizzato.",
+    "successSubtitle": "Dovrà essere revisionato prima di essere visualizzato.",
     "successTitle": "Contenuto didattico caricato con successo",
-    "titleHelper": "Dovrebbe rispecchiare il contenuto e lo scopo della tua risorsa. Mantienilo conciso ma informativo.",
+    "titleHelper": "Deve rispecchiare il contenuto e lo scopo della tua risorsa. Scrivi un testo conciso ma informativo.",
     "titleRequired": "Il titolo non può essere vuoto",
     "typeRequired": "Specifica di che tipo di risorsa si tratta",
     "types": {
-      "art": "Arte",
+      "art": "Creazione Artistica",
       "booklet": "Opuscolo",
       "flyer": "Volantino",
       "game": "Gioco",
       "sticker": "Adesivo",
       "workshop": "Workshop",
       "other": "Altro",
-      "presentation": "Presentazioni"
+      "presentation": "Presentazione"
     },
-    "uploadFiles": "Carica file",
+    "uploadFiles": "o carica i file",
     "uploadForReview": "Carica per la revisione",
     "uploading": "Caricamento in corso...",
     "addMoreLinks": "Aggiungi altri link",
     "coverRequired": "L'immagine di copertina è obbligatoria",
     "descriptionRequired": "La descrizione non può essere vuota",
     "descriptionTooLong": "La descrizione non può superare i 350 caratteri",
-    "addMaterial": "Aggiungi contenuto dell'educatore",
+    "addMaterial": "Aggiungi contenuti educativi",
     "browseFiles": "o sfoglia i file",
     "browseImages": "o sfoglia le immagini",
-    "currentCoverPresent": "Copertina attuale presente",
-    "descriptionHelper": "Descrivi il contenuto della risorsa per aiutare gli altri a capirne il contenuto e a trovarlo",
-    "descriptionPlaceholder": "Breve descrizione del materiale didattico",
+    "currentCoverPresent": "Copertina attuale",
+    "descriptionHelper": "Descrivi la risorsa per aiutare gli altri a capirne il contenuto e a trovarlo facilmente",
+    "descriptionPlaceholder": "Descrivi la risorsa per aiutare gli altri a capirne il contenuto e a trovarlo facilmente",
     "fileTooLarge": "File troppo grande (max 50MB)",
     "done": "Completato",
     "languagePlaceholder": "Seleziona",
-    "urlInvalid": "Il link deve essere un URL valido"
+    "urlInvalid": "Il link deve essere un URL valido",
+    "adminPanel": {
+      "approved": "Approvato",
+      "modified": "Modificato",
+      "new": "Nuovo",
+      "pageTitle": "Revisione contenuti educativi",
+      "previewChanges": "Anteprima delle modifiche",
+      "previewForApproval": "Anteprima per approvazione",
+      "toReview": "Da revisionare"
+    },
+    "coverPreview": "Anteprima copertina",
+    "fileExisting": "(Esistente)",
+    "languagePlaceholderFilter": "Lingua",
+    "linkOrFileRequired": "Aggiungi almeno un link o carica un file",
+    "linkPlaceholder": "https://example.com",
+    "maxFileSize": "Dimensione massima del file: 50MB",
+    "pageSubtitle": "Dove gli educatori di Bitcoin e le community condividono e riutilizzano risorse",
+    "pageTitle": "Contenuti educativi",
+    "reviewModal": {
+      "approveAndPublish": "Approva il contenuto e pubblica",
+      "edit": "Modifica",
+      "noCover": "Nessuna copertina",
+      "reject": "Rifiuta",
+      "reviewForApproval": "Revisiona e approva",
+      "unknown": "Sconosciuto",
+      "unpublish": "Annulla la pubblicazione",
+      "unpublishConfirm": "Annulla pubblicazione (sei sicuro?)",
+      "viewContent": "Visualizza contenuto"
+    },
+    "sortBy": "Ordina per",
+    "sortMostDownloaded": "Più scaricato",
+    "sortMostRecent": "Più recente",
+    "titlePlaceholder": "Ad esempio, workshop Multi-sig Liana",
+    "typePlaceholder": "Tipo"
   },
   "mentor": {
     "collapse": "Comprimi",
@@ -2092,18 +2159,18 @@
     "close": "Chiudi"
   },
   "becomeTeacher": {
-    "bookCall": "Prenota una chiamata di 30 minuti per diventare un insegnante",
-    "description": "Se sei un appassionato di Bitcoin che ama insegnare e vuole fare una vera differenza nella tua comunità locale, puoi ospitare il tuo corso sulla nostra piattaforma di apprendimento.",
+    "bookCall": "Prenota una call di 30 minuti per proporti come insegnante",
+    "description": "Se sei un appassionato di Bitcoin che ama insegnare e vuoi fare la differenza nella tua community locale, puoi tenere un corso sulla nostra piattaforma di e-learning.",
     "enhanceExperience": "<0>Migliora l'esperienza di apprendimento dei tuoi studenti</0> con gli strumenti della piattaforma",
-    "globalReach": "Raggio d'azione globale",
-    "hostOwnCourse": "<0>Ospita il tuo corso</0>, online o di persona",
-    "inspireLearners": "Ispira una comunità di apprendisti",
-    "joinMission": "<0>Unisciti alla missione</0> come vero educatore di Bitcoin",
+    "globalReach": "Diffusione globale",
+    "hostOwnCourse": "<0>Tieni il tuo corso</0>, online o di persona",
+    "inspireLearners": "Ispira una community di studenti",
+    "joinMission": "<0>Unisciti alla missione</0> come vero insegnante di Bitcoin",
     "superiorAmount": ">{{amount}}",
     "teachWhatYouLove": "<0>Insegna ciò che ami</0>",
-    "title": "Insegna Bitcoin e ispira gli altri",
-    "activeBitcoinLearners": "Discenti attivi di Bitcoin",
-    "bitcoinOnly": "Solo Bitcoin"
+    "title": "Insegna Bitcoin e ispira le persone",
+    "activeBitcoinLearners": "Studenti coinvolti",
+    "bitcoinOnly": "Focus su Bitcoin"
   },
   "forms": {
     "browse": "Sfoglia",

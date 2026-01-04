@@ -97,7 +97,9 @@
     "forgotPassword": "Mot de passe oublié ?",
     "login": "Connexion",
     "oldPassword": "Ancien mot de passe",
-    "signUp": "S’inscrire"
+    "signUp": "S’inscrire",
+    "saveProgress": "Enregistrez votre progression",
+    "signUpToSave": "Inscrivez-vous pour sauvegarder"
   },
   "bCert": {
     "bCertDescription": "Le ₿-CERT est le test Bitcoin de référence, conçu pour évaluer vos connaissances de Bitcoin et des sujets connexes.\n\nObtenez votre certificat ₿-CERT et démontrez votre expertise au sein de l’industrie Bitcoin, ouvrant ainsi l’accès à des opportunités professionnelles dans le domaine.",
@@ -196,7 +198,10 @@
       "premiumContentNeedsPaymentAction": "Accédez à la page d'accueil du cours",
       "startCourse": "Débuter le cours",
       "taughtBy": "Ce cours est enseigné par",
-      "thanksTipping": "Vous pouvez dire merci en donnant un pourboire au professeur."
+      "thanksTipping": "Vous pouvez dire merci en donnant un pourboire au professeur.",
+      "creditsCollaboration": "Ce cours est le résultat d'un effort collaboratif : chaque leçon, traduction et révision est rendue possible par le travail des contributeurs. Pour cette raison, nous sommes toujours à la recherche de correcteurs qui peuvent réviser notre contenu dans de nombreuses langues.\n\nSi vous souhaitez participer au processus de relecture, veuillez nous contacter dans notre groupe <0>Telegram</0> et lire notre <1>tutoriel</1>.\n\nAidez à diffuser la connaissance du Bitcoin :",
+      "openSourceContentDescription": "Le contenu de ce cours est open-source - sous licence <0>CC BY-SA</0> - il peut donc être librement partagé et utilisé, tant que la source originale est créditée.",
+      "openSourceContentTitle": "Contenu open-source"
     },
     "exam": {
       "answersReview": "Relecture des réponses",
@@ -1320,7 +1325,8 @@
           "upcomingClass": "Classe à venir"
         }
       }
-    }
+    },
+    "backToProfile": "Retour à mon profil"
   },
   "events": {
     "card": {
@@ -1612,7 +1618,24 @@
     },
     "projects": {
       "title": "Projets",
-      "addProjects": "Ajouter un projet"
+      "addProjects": "Ajouter un projet",
+      "types": {
+        "communities": "Communautés",
+        "conference": "Conférence",
+        "education": "Éducation",
+        "exchange": "Plateforme d'échange",
+        "infrastructure": "Infrastructure",
+        "investment": "Investissement",
+        "manufacturer": "Fabricant",
+        "merchant": "Commerçant",
+        "mining": "Minage",
+        "news": "Actualités",
+        "node": "Nœud",
+        "payment": "Paiement",
+        "privacy": "Confidentialité",
+        "service": "Service",
+        "wallet": "Portefeuille"
+      }
     },
     "searchFilterName": "Recherche par nom",
     "toggleLabelAll": "Tout",
@@ -1635,7 +1658,8 @@
         "PhD Thesis": "Thèse de doctorat",
         "pre-print": "Prépublication",
         "thesis": "Thèse",
-        "whitepaper": "Livre blanc"
+        "whitepaper": "Livre blanc",
+        "review": "Examiner"
       }
     }
   },
@@ -1686,7 +1710,12 @@
     "changeDisplayName": "Changer le nom d'affichage",
     "changeEmail": "Changer l'email",
     "changePassword": "Changer le mot de passe",
-    "changeProfilePicture": "Changer la photo de profil"
+    "changeProfilePicture": "Changer la photo de profil",
+    "addEmail": "Ajouter une adresse e-mail",
+    "addEmailContinue": "Ajoutez une adresse e-mail pour continuer",
+    "emailSentDescription": "Vérifiez votre adresse e-mail et rechargez cette page pour continuer.",
+    "emailSentTitle": "Nous vous avons envoyé un e-mail",
+    "verifyEmail": "Vérifier l’adresse e-mail"
   },
   "tutorials": {
     "business": {
@@ -1961,7 +1990,12 @@
     "downloads": "Téléchargements",
     "enroll": "S’inscrire",
     "open": "Ouvrir",
-    "researchPaper": "Article de recherche"
+    "researchPaper": "Article de recherche",
+    "agenda": "Agenda",
+    "event": "Événement",
+    "oldest": "Les plus anciens",
+    "contribute": "Contribuer",
+    "contributors": "Contributeurs"
   },
   "youtubeChannels": {
     "view": "Voir la chaîne Youtube",
@@ -2103,7 +2137,40 @@
     "uploadForReview": "Téléverser pour validation",
     "uploading": "Téléversement en cours...",
     "titleTooLong": "Le titre ne peut pas dépasser 60 caractères",
-    "urlInvalid": "Le lien doit être une URL valide"
+    "urlInvalid": "Le lien doit être une URL valide",
+    "adminPanel": {
+      "approved": "Approuvé",
+      "modified": "Modifié",
+      "new": "Nouveau",
+      "pageTitle": "Examiner le contenu pédagogique",
+      "previewChanges": "Aperçu des modifications",
+      "previewForApproval": "Aperçu pour validation",
+      "toReview": "À examiner"
+    },
+    "coverPreview": "Aperçu de la couverture",
+    "fileExisting": "(Existant)",
+    "languagePlaceholderFilter": "Langue",
+    "linkOrFileRequired": "Veuillez ajouter au moins un lien ou téléverser un fichier",
+    "linkPlaceholder": "https://example.com",
+    "maxFileSize": "Taille maximale du fichier : 50 Mo",
+    "pageSubtitle": "Un espace où les éducateurs Bitcoin et les communautés partagent et réutilisent des ressources",
+    "pageTitle": "Contenu pédagogique",
+    "reviewModal": {
+      "approveAndPublish": "Approuver le contenu et publier",
+      "edit": "Modifier",
+      "noCover": "Pas de couverture",
+      "reject": "Rejeter",
+      "reviewForApproval": "Soumettre à validation",
+      "unknown": "Inconnu",
+      "unpublish": "Dépublier",
+      "unpublishConfirm": "Dépublier (êtes-vous sûr ?)",
+      "viewContent": "Voir le contenu"
+    },
+    "sortBy": "Trier par",
+    "sortMostDownloaded": "Les plus téléchargés",
+    "sortMostRecent": "Les plus récents",
+    "titlePlaceholder": "ex. Workshop multi-sig Liana",
+    "typePlaceholder": "Type"
   },
   "forms": {
     "browse": "Parcourir",
