@@ -256,7 +256,7 @@ export const createGetMetadata = (dependencies: Dependencies) => {
 
     const tutorial = await getTutorialMeta({ id, language });
     return meta(
-      `Tutorial - ${tutorial.title}`,
+      tutorial.title,
       tutorial.description,
       cdn(tutorial.path, 'cover.webp'),
       language,
