@@ -16,6 +16,7 @@ import {
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CourseDashboardCard } from '#src/routes/$lang/_course/my-courses/-components/course-dashboard-card.tsx';
+import { toCamelCase } from '#src/utils/string.ts';
 
 export const courseCategoriesDashboard = [
   'bitcoin',
@@ -97,16 +98,23 @@ export const CourseTable = ({
           <TableHeader className="border-none">
             <TableRow>
               <TableHead className="bg-white p-1 text-sm" />
-              {courseCategoriesDashboard.map((category) => (
-                <TableHead
-                  key={category}
-                  className="text-center lg:w-[101px] max-w-[101px] pb-3 pt-1.5"
-                >
-                  <div className="capitalize bg-orange-700 text-white desktop-caption1 py-px px-1 rounded-[5px] h-[22px] lg:w-[101px] mx-auto text-center">
-                    {category}
-                  </div>
-                </TableHead>
-              ))}
+              {courseCategoriesDashboard.map((category) => {
+                const translatedCategory = t(`words.${toCamelCase(category)}`);
+
+                return (
+                  <TableHead
+                    key={category}
+                    className="text-center lg:w-[101px] max-w-[101px] pb-3 pt-1.5"
+                  >
+                    <div
+                      title={translatedCategory}
+                      className="truncate capitalize bg-orange-700 text-white desktop-caption1 py-px px-1 rounded-[5px] h-[22px] lg:w-[101px] mx-auto text-center"
+                    >
+                      {translatedCategory}
+                    </div>
+                  </TableHead>
+                );
+              })}
             </TableRow>
           </TableHeader>
 
@@ -115,8 +123,8 @@ export const CourseTable = ({
             {Object.values(CourseLevel).map((level) => (
               <TableRow key={level}>
                 <TableCell className="p-1 bg-white! lg:w-[37px]">
-                  <div className="capitalize desktop-caption1 text-black py-px px-1 bg-brown-200 rounded-[5px] self-center align-middle text-center [writing-mode:vertical-rl] transform-[rotate(180deg)]">
-                    {level}
+                  <div className="max-h truncate capitalize desktop-caption1 text-black py-px px-1 bg-brown-200 rounded-[5px] self-center align-middle text-center [writing-mode:vertical-rl] transform-[rotate(180deg)]">
+                    {t(`words.level.${toCamelCase(level)}`)}
                   </div>
                 </TableCell>
 
