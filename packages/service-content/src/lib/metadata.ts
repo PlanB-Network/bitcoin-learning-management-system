@@ -3,6 +3,7 @@ import { createGetCourseChapterMeta } from './courses/services/get-course-chapte
 import { createGetCourseMeta } from './courses/services/get-course-meta.js';
 import { createGetCertificateImgKeyByExamAttemptId } from './courses/services/get-diploma-img-key.js';
 import type { Dependencies } from './dependencies.js';
+import { createGetEducatorContent } from './educator-content/services/get-educator-content.js';
 import { createGetBook } from './resources/services/get-book.js';
 import { createGetConferenceMeta } from './resources/services/get-conference-meta.js';
 import { createGetGlossaryWord } from './resources/services/get-glossary-word.js';
@@ -93,6 +94,7 @@ export const createGetMetadata = (dependencies: Dependencies) => {
   const getConferenceMeta = createGetConferenceMeta(dependencies);
   const getNewsletterMeta = createGetNewsletterMeta(dependencies);
   const getBlog = createGetBlog(dependencies);
+  const getEducatorContent = createGetEducatorContent(dependencies);
 
   // Tutorials
   const getTutorialMeta = createGetTutorialMeta(dependencies);
@@ -255,6 +257,32 @@ export const createGetMetadata = (dependencies: Dependencies) => {
     );
   };
 
+  const getEducatorContentMetadata = async (
+    lang: string,
+    parts: string[],
+  ): Promise<Metadata> => {
+    const contentId = extractUUID(parts.shift() || '');
+
+    if (!contentId) {
+      return defaultMeta(lang);
+    }
+
+    const content = await getEducatorContent(undefined, undefined, contentId);
+
+    if (content.length === 0) {
+      return defaultMeta(lang);
+    }
+
+    const item = content[0];
+
+    return meta(
+      item.title,
+      item.description,
+      item.cover ? `/api/files/contribute/cover/${item.cover}` : DEFAULT.image,
+      item.language,
+    );
+  };
+
   const getExamCertificateMetadata = async (
     lang: string,
     parts: string[],
@@ -338,6 +366,10 @@ export const createGetMetadata = (dependencies: Dependencies) => {
       }
       case 'tutorials': {
         return getTutorialMetadata(lang, rest) //
+          .catch(defaultOnError(lang));
+      }
+      case 'educator-content': {
+        return getEducatorContentMetadata(lang, rest) //
           .catch(defaultOnError(lang));
       }
       case 'exam-certificates': {
