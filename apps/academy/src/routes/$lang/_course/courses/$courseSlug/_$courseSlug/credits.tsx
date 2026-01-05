@@ -148,8 +148,15 @@ const ProofReading = ({ course }: { course: CourseResponse }) => {
           <Button
             variant="newTertiary"
             className="min-w-[200px] max-md:max-w-[351px] max-md:w-full"
+            asChild
           >
-            {t('words.contribute')}
+            <a
+              href="https://t.me/PlanBNetwork_ContentBuilder"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t('words.contribute')}
+            </a>
           </Button>
         </div>
       </div>
