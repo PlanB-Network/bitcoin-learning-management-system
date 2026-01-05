@@ -46,6 +46,7 @@ interface Metadata {
 }
 
 const DEFAULT_IMAGE = '/share-default.png';
+const SHARE_PAPER_IMAGE = '/share-paper.png';
 
 const DEFAULT: Metadata = {
   description: "Let's build together the Bitcoin educational layer",
@@ -207,7 +208,12 @@ export const createGetMetadata = (dependencies: Dependencies) => {
 
       case 'papers': {
         const paper = await getPaper(resourceId);
-        return meta(paper.title, paper.abstract, DEFAULT.image, paper.language);
+        return meta(
+          paper.title,
+          paper.abstract,
+          SHARE_PAPER_IMAGE,
+          paper.language,
+        );
       }
 
       case 'lectures': {
