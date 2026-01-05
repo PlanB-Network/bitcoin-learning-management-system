@@ -57,7 +57,7 @@ export const CourseDashboardCard = ({
   const beginnerFriendlyCourses = new Set(['btc101', 'btc102', 'scu101']);
 
   return (
-    <article className="flex flex-row md:max-h-fit min-[1440px]:max-h-fit size-full min-[1440px]:flex-col rounded-[10px] border border-black bg-white">
+    <article className="flex flex-row md:max-h-fit min-[1440px]:max-h-none min-[1440px]:min-h-full size-full min-[1440px]:flex-col rounded-[10px] border border-black bg-white">
       <span
         className={cn(
           'p-1 md:p-4 title-small-med-16px md:display-small-bold-caps-22px uppercase text-black max-[1440px]:[writing-mode:vertical-rl] min-[1440px]:border-b min-[1440px]:rounded-t-[10px] border-black text-center text-sm',

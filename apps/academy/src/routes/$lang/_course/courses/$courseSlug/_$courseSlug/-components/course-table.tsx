@@ -210,24 +210,26 @@ export const CourseTable = ({
       </div>
 
       {selectedCourse ? (
-        <div className="min-[1440px]:max-w-[280px] w-full">
+        <div className="min-[1440px]:max-w-[280px] min-[1440px]:min-h-full w-full flex flex-col">
           {[...combinedMap.values()]
             .filter(({ course }) => course.name === selectedCourse)
             .map(({ course, progress }) => (
-              <div key={course.id}>
-                <CourseDashboardCard course={course} progress={progress} />
-              </div>
+              <CourseDashboardCard
+                key={course.id}
+                course={course}
+                progress={progress}
+              />
             ))}
         </div>
       ) : highestProgressCourse ? (
-        <div className="min-[1440px]:max-w-[280px] w-full">
+        <div className="min-[1440px]:max-w-[280px] min-[1440px]:min-h-full w-full flex flex-col">
           <CourseDashboardCard
             course={highestProgressCourse.course}
             progress={highestProgressCourse.progress}
           />
         </div>
       ) : (
-        <div className="min-[1440px]:max-w-[280px] w-full">
+        <div className="min-[1440px]:max-w-[280px] min-[1440px]:min-h-full w-full flex flex-col">
           {combinedMap.get(BTC101ID)?.course ? (
             <CourseDashboardCard
               course={combinedMap.get(BTC101ID)!.course}
