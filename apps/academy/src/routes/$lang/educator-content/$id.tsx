@@ -248,8 +248,8 @@ function EducatorContentDetail() {
                 >
                   <span className="body-small md:body-base text-gray-700 truncate">
                     {file.name}{' '}
-                    <span className="text-gray-500">
-                      {formatFileSize(file.size)}
+                    <span className="text-gray-400">
+                      ({formatFileSize(file.size)})
                     </span>
                   </span>
                   <Button
