@@ -97,7 +97,9 @@
     "forgotPassword": "Wachtwoord vergeten?",
     "login": "Inloggen",
     "oldPassword": "Oud wachtwoord",
-    "signUp": "Aanmelden"
+    "signUp": "Aanmelden",
+    "saveProgress": "Sla uw voortgang op",
+    "signUpToSave": "Schrijf u in om op te slaan"
   },
   "bCert": {
     "bCertDescription": "Het ₿-CERT is de ultieme Bitcoin-test ontworpen om je kennis van Bitcoin en gerelateerde onderwerpen te evalueren.\n\nVerdien je ₿-CERT certificaat en bewijs je expertise binnen de Bitcoin-industrie, waarmee je de deur opent naar functies in het veld.",
@@ -196,7 +198,10 @@
       "premiumContentNeedsPaymentAction": "Ga naar de cursus homepage",
       "startCourse": "Start de cursus",
       "taughtBy": "Deze cursus wordt gegeven door",
-      "thanksTipping": "Je kunt de professor bedanken met een fooi."
+      "thanksTipping": "Je kunt de professor bedanken met een fooi.",
+      "creditsCollaboration": "Deze cursus is het resultaat van een gezamenlijke inspanning: elke les, vertaling en revisie is mogelijk gemaakt door het werk van bijdragers. Om deze reden zijn we altijd op zoek naar proeflezers die onze inhoud in veel talen kunnen bekijken.\n\nAls u wilt deelnemen aan het proefleesproces, neem dan contact op in onze <0>Telegram</0> -groep en lees onze <1>tutorial</1>.\n\nHelp bij het verspreiden van Bitcoin-kennis:",
+      "openSourceContentDescription": "De inhoud van deze cursus is open source - gelicentieerd onder <0>CC BY-SA</0> - dus deze kan vrij worden gedeeld en gebruikt, zolang de oorspronkelijke bron wordt vermeld.",
+      "openSourceContentTitle": "Open-source inhoud"
     },
     "exam": {
       "answersReview": "Antwoorden nakijken",
@@ -1320,7 +1325,8 @@
           "upcomingClass": "Aankomende les"
         }
       }
-    }
+    },
+    "backToProfile": "Terug naar mijn profiel"
   },
   "events": {
     "card": {
@@ -1574,7 +1580,24 @@
     },
     "projects": {
       "title": "Projecten",
-      "addProjects": "Project toevoegen"
+      "addProjects": "Project toevoegen",
+      "types": {
+        "communities": "Gemeenschappen",
+        "education": "Educatie",
+        "infrastructure": "Infrastructuur",
+        "investment": "Investering",
+        "manufacturer": "Fabrikant",
+        "merchant": "Koopman",
+        "news": "Nieuws",
+        "payment": "Betaling",
+        "service": "Service",
+        "wallet": "Wallet",
+        "conference": "Conferentie",
+        "mining": "Mining",
+        "exchange": "Exchange",
+        "node": "Node",
+        "privacy": "Privacy"
+      }
     },
     "searchFilterName": "Zoeken op naam",
     "toggleLabelAll": "Alle",
@@ -1594,7 +1617,8 @@
         "thesis": "Thesis",
         "whitepaper": "Witboek",
         "book": "Boek",
-        "conference": "Conferentie"
+        "conference": "Conferentie",
+        "review": "Beoordeling"
       },
       "addPaper": "Voeg papier toe",
       "citations": "Citaties (.bib)",
@@ -1686,7 +1710,12 @@
     "changeDisplayName": "Weergavenaam wijzigen",
     "changeEmail": "E-mail wijzigen",
     "changePassword": "Wachtwoord wijzigen",
-    "changeProfilePicture": "Profielfoto wijzigen"
+    "changeProfilePicture": "Profielfoto wijzigen",
+    "addEmailContinue": "Voeg een email toe om door te gaan",
+    "emailSentDescription": "Verifieer uw email en herlaad deze pagina om door te gaan.",
+    "emailSentTitle": "We hebben u een email gestuurd",
+    "verifyEmail": "Email verifiëren",
+    "addEmail": "Voeg email toe"
   },
   "tutorials": {
     "exchange": {
@@ -1947,7 +1976,12 @@
     "open": "Open",
     "researchPaper": "Onderzoekspapier",
     "enroll": "Inschrijven",
-    "downloads": "Download"
+    "downloads": "Download",
+    "contribute": "Bijdragen",
+    "oldest": "Oudste",
+    "agenda": "Agenda",
+    "contributors": "Bijdragers",
+    "event": "Evenement"
   },
   "videoSelector": {
     "language": {
@@ -2075,7 +2109,40 @@
     "fileTooLarge": "Bestand te groot (max 50MB)",
     "imageCover": "Omslagafbeelding",
     "done": "Klaar",
-    "languagePlaceholder": "Selecteer"
+    "languagePlaceholder": "Selecteer",
+    "coverPreview": "Voorbeeld van omslag",
+    "adminPanel": {
+      "approved": "Goedgekeurd",
+      "modified": "Gewijzigd",
+      "previewForApproval": "Voorbeeld ter goedkeuring",
+      "toReview": "Ter review",
+      "new": "Nieuw",
+      "pageTitle": "Review Educatieve Inhoud",
+      "previewChanges": "Veranderingen voorbeeld"
+    },
+    "fileExisting": "(Bestaand)",
+    "maxFileSize": "Maximale bestandsgrootte: 50MB",
+    "sortMostRecent": "Meest recent",
+    "titlePlaceholder": "bijv. Multi-sig workshop Liana",
+    "linkOrFileRequired": "Voeg ten minste één link toe of upload een bestand",
+    "linkPlaceholder": "https://voorbeeld.com",
+    "pageSubtitle": "Waar Bitcoin-opleiders en gemeenschappen hulpbronnen delen en hergebruiken",
+    "reviewModal": {
+      "approveAndPublish": "Keur inhoud goed en publiceer",
+      "reviewForApproval": "Review ter goedkeuring",
+      "unpublish": "Depubliceren",
+      "unpublishConfirm": "Depubliceren (wees je zeker?)",
+      "viewContent": "Inhoud bekijken",
+      "edit": "Bewerken",
+      "noCover": "Geen omslag",
+      "reject": "Afwijzen",
+      "unknown": "Onbekend"
+    },
+    "sortMostDownloaded": "Meest gedownload",
+    "languagePlaceholderFilter": "Taal",
+    "typePlaceholder": "Type",
+    "pageTitle": "Educatieve inhoud",
+    "sortBy": "Sorteer op"
   },
   "forms": {
     "replace": "Vervangen",

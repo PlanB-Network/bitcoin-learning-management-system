@@ -97,7 +97,9 @@
     "forgotPassword": "忘記密碼？",
     "login": "登入",
     "oldPassword": "舊密碼",
-    "signUp": "註冊"
+    "signUp": "註冊",
+    "saveProgress": "保存您的進度",
+    "signUpToSave": "註冊以便存檔"
   },
   "bCert": {
     "bCertDescription": "₿-CERT是最終的比特幣測試，旨在評估您對比特幣及其相關話題的知識。 \n\n獲得您的₿-CERT證書，證明您在比特幣行業的專業知識，為您在該領域的工作崗位敞開大門。",
@@ -196,7 +198,10 @@
       "premiumContentNeedsPaymentAction": "前往課程首頁",
       "startCourse": "開始課程",
       "taughtBy": "此課程由以下講師授課",
-      "thanksTipping": "您可以透過給予小費來感謝教授。"
+      "thanksTipping": "您可以透過給予小費來感謝教授。",
+      "creditsCollaboration": "這門課程是一項共同努力的結果：每節課、翻譯和修訂都由貢獻者的工作實現。因此，我們一直在尋找可以審閱我們的多種語言內容的校對者。\n\n如果您願意參與校對過程，請在我們的<0>Telegram</0>群組中吸我們的<1>教程</1>。\n\n幫助傳播比特幣知識：",
+      "openSourceContentDescription": "本課程內容是開源的-採用<0>CC BY-SA</0>許可-所以可以自由分享和使用，只要原始來源得到認證。",
+      "openSourceContentTitle": "開源內容"
     },
     "exam": {
       "answersReview": "答案回顧",
@@ -1320,7 +1325,8 @@
           "upcomingClass": "即將開始的課程"
         }
       }
-    }
+    },
+    "backToProfile": "返回到我的個人資料"
   },
   "events": {
     "card": {
@@ -1612,7 +1618,24 @@
     },
     "projects": {
       "title": "專案",
-      "addProjects": "新增專案"
+      "addProjects": "新增專案",
+      "types": {
+        "communities": "社區",
+        "education": "教育",
+        "infrastructure": "基礎設施",
+        "investment": "投資",
+        "manufacturer": "製造商",
+        "merchant": "商人",
+        "news": "新聞",
+        "payment": "付款",
+        "service": "服務",
+        "conference": "研討會",
+        "exchange": "交易所",
+        "mining": "挖礦",
+        "node": "節點",
+        "privacy": "隱私",
+        "wallet": "錢包"
+      }
     },
     "searchFilterName": "按名稱搜索",
     "toggleLabelAll": "所有",
@@ -1634,7 +1657,8 @@
         "thesis": "論文",
         "whitepaper": "白皮書",
         "book": "書籍",
-        "conference": "研討會"
+        "conference": "研討會",
+        "review": "評論"
       },
       "showMorePapers": "顯示更多論文"
     }
@@ -1686,7 +1710,12 @@
     "changeDisplayName": "更改顯示名稱",
     "changeEmail": "更改電子郵件",
     "changePassword": "更改密碼",
-    "changeProfilePicture": "更改個人資料照片"
+    "changeProfilePicture": "更改個人資料照片",
+    "verifyEmail": "驗證電子郵件",
+    "addEmailContinue": "繼續必須添加電子郵件",
+    "emailSentDescription": "驗證您的電子郵件並重載此頁繼續進行。",
+    "emailSentTitle": "我們已向您發送一封電子郵件",
+    "addEmail": "新增電子郵件"
   },
   "tutorials": {
     "business": {
@@ -1947,7 +1976,12 @@
     "downloads": "下載",
     "enroll": "註冊",
     "open": "打開",
-    "researchPaper": "研究報告"
+    "researchPaper": "研究報告",
+    "agenda": "議程",
+    "contribute": "貢獻",
+    "oldest": "最古老",
+    "event": "活動",
+    "contributors": "貢獻者"
   },
   "youtubeChannels": {
     "view": "查看Youtube頻道",
@@ -2089,7 +2123,40 @@
     "titleRequired": "標題不能為空",
     "typeRequired": "指明它是何種資源",
     "done": "完成",
-    "languagePlaceholder": "選擇"
+    "languagePlaceholder": "選擇",
+    "adminPanel": {
+      "approved": "已批准",
+      "modified": "已修改",
+      "new": "新的",
+      "pageTitle": "審查教育者內容",
+      "previewChanges": "預覽更改",
+      "previewForApproval": "審批預覽",
+      "toReview": "待審查"
+    },
+    "linkPlaceholder": "https://example.com",
+    "maxFileSize": "最大文件大小：50MB",
+    "pageSubtitle": "比特幣教育家和社區在哪裡分享和重用資源",
+    "coverPreview": "封面預覽",
+    "fileExisting": "（已存在）",
+    "linkOrFileRequired": "請至少添加一個鏈接或上傳一個文件",
+    "reviewModal": {
+      "approveAndPublish": "批准內容並發布",
+      "reviewForApproval": "審批",
+      "unpublishConfirm": "取消發布（你確定嗎？）",
+      "viewContent": "查看內容",
+      "edit": "編輯",
+      "noCover": "無封面",
+      "reject": "已拒絕",
+      "unknown": "未知",
+      "unpublish": "未發布"
+    },
+    "sortMostDownloaded": "下載次數最多的",
+    "sortMostRecent": "最新的",
+    "titlePlaceholder": "例如 多簽名工作坊 Liana",
+    "languagePlaceholderFilter": "語言",
+    "pageTitle": "教育者內容",
+    "sortBy": "排序依據",
+    "typePlaceholder": "類型"
   },
   "mentor": {
     "collapse": "摺疊",

@@ -97,7 +97,9 @@
     "signUp": "Registrera dig",
     "forgotPassword": "Glömt lösenord?",
     "login": "Logga in",
-    "oldPassword": "Gammalt lösenord"
+    "oldPassword": "Gammalt lösenord",
+    "saveProgress": "Spara dina framsteg",
+    "signUpToSave": "Registrera dig för att spara"
   },
   "bCert": {
     "bCertDescription": "₿-CERT är det ultimata Bitcoin-testet designat för att utvärdera din kunskap om Bitcoin och relaterade ämnen. \n\nTjäna ditt ₿-CERT certifikat och bevisa din expertis inom Bitcoin-industrin, vilket öppnar dörrar till jobbpositioner inom området.",
@@ -196,7 +198,10 @@
       "premiumContentNeedsPaymentAction": "Gå till kursens startsida",
       "startCourse": "Starta kursen",
       "taughtBy": "Denna kurs undervisas av",
-      "thanksTipping": "Du kan säga tack genom att ge läraren dricks."
+      "thanksTipping": "Du kan säga tack genom att ge läraren dricks.",
+      "creditsCollaboration": "Denna kurs är resultatet av ett gemensamt arbete: varje lektion, översättning och revision möjliggörs av bidragsgivares insatser. Av denna anledning söker vi alltid efter korrekturläsare som kan granska vårt innehåll på många språk.\n\nOm du vill delta i korrekturläsningsprocessen, vänligen ta kontakt i vår <0>Telegram</0> grupp och läs vår <1>handledning</1>.\n\nHjälp till att sprida kunskap om Bitcoin:",
+      "openSourceContentDescription": "Detta kursinnehåll är öppen källkod - licensierat under <0>CC BY-SA</0> - så det kan fritt delas och användas, så länge som den ursprungliga källan krediteras.",
+      "openSourceContentTitle": "Öppen källkods-innehåll"
     },
     "exam": {
       "answersReview": "Genomgång av svar",
@@ -1320,7 +1325,8 @@
           "upcomingClass": "Kommande lektion"
         }
       }
-    }
+    },
+    "backToProfile": "Tillbaka till min profil"
   },
   "events": {
     "card": {
@@ -1609,7 +1615,24 @@
     },
     "projects": {
       "title": "Projekt",
-      "addProjects": "Lägg till projekt"
+      "addProjects": "Lägg till projekt",
+      "types": {
+        "communities": "Gemenskaper",
+        "infrastructure": "Infrastruktur",
+        "investment": "Investering",
+        "manufacturer": "Tillverkare",
+        "news": "Nyheter",
+        "payment": "Betalning",
+        "service": "Tjänst",
+        "conference": "Konferens",
+        "education": "Utbildning",
+        "exchange": "Börser",
+        "merchant": "Merchant",
+        "mining": "Mining",
+        "node": "Nod",
+        "privacy": "Integritet",
+        "wallet": "Plånbok"
+      }
     },
     "searchFilterName": "Sök via namn",
     "toggleLabelAll": "Alla",
@@ -1632,7 +1655,8 @@
         "thesis": "Avhandling",
         "whitepaper": "Vitbok",
         "book": "Bok",
-        "conference": "Konferens"
+        "conference": "Konferens",
+        "review": "Granska"
       }
     }
   },
@@ -1683,7 +1707,12 @@
     "changeDisplayName": "Ändra visningsnamn",
     "changeEmail": "Ändra e-post",
     "changePassword": "Ändra lösenord",
-    "changeProfilePicture": "Ändra profilbild"
+    "changeProfilePicture": "Ändra profilbild",
+    "addEmailContinue": "Lägg till e-post för att fortsätta",
+    "emailSentDescription": "Verifiera din e-post och ladda om denna sida för att fortsätta.",
+    "emailSentTitle": "Vi har skickat ett e-postmeddelande till dig",
+    "verifyEmail": "Verifiera e-post",
+    "addEmail": "Lägg till e-post"
   },
   "tutorials": {
     "business": {
@@ -1944,7 +1973,12 @@
     "researchPaper": "Forskningsrapport",
     "open": "Öppna",
     "enroll": "Registrera",
-    "downloads": "Ladda ner"
+    "downloads": "Ladda ner",
+    "agenda": "Agenda",
+    "contribute": "Bidra",
+    "oldest": "Äldsta",
+    "event": "Event",
+    "contributors": "Användarhantering"
   },
   "youtubeChannels": {
     "view": "Visa Youtube-kanal",
@@ -2089,7 +2123,40 @@
     "uploadForReview": "Ladda upp för granskning",
     "uploading": "Laddar upp...",
     "languagePlaceholder": "Välj",
-    "done": "Klara"
+    "done": "Klara",
+    "adminPanel": {
+      "new": "Ny",
+      "previewChanges": "Förhandsvisa ändringar",
+      "previewForApproval": "Förhandsvisa för godkännande",
+      "approved": "Godkänd",
+      "modified": "Modifierad",
+      "pageTitle": "Granska lärarinnehåll",
+      "toReview": "För granskning"
+    },
+    "reviewModal": {
+      "viewContent": "Visa innehåll",
+      "approveAndPublish": "Godkänn innehåll och publicera",
+      "reviewForApproval": "Granska för godkännande",
+      "unpublishConfirm": "Avpublicera (är du säker?)",
+      "edit": "Redigera",
+      "reject": "Avvisa",
+      "noCover": "Inget omslag",
+      "unknown": "Okänd",
+      "unpublish": "Opublicerad"
+    },
+    "coverPreview": "Omslagsförhandsvisning",
+    "fileExisting": "(Befintlig)",
+    "linkOrFileRequired": "Lägg till minst en länk eller ladda upp en fil",
+    "linkPlaceholder": "https://example.com",
+    "maxFileSize": "Maximal filstorlek: 50MB",
+    "pageSubtitle": "Där Bitcoin-utbildare och gemenskaper delar och återanvänder resurser",
+    "sortMostDownloaded": "Mest nedladdade",
+    "sortMostRecent": "Senaste",
+    "titlePlaceholder": "t.ex. Multi-sig workshop Liana",
+    "sortBy": "Sortera efter",
+    "languagePlaceholderFilter": "Språk",
+    "typePlaceholder": "Typ",
+    "pageTitle": "Utbildningsinnehåll"
   },
   "forms": {
     "browse": "Bläddra",

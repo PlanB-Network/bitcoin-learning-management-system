@@ -97,7 +97,9 @@
     "loginNotAvailable1": "Kirjautumistoimintoja ei ole saatavilla työpöytäsovelluksessa vielä.",
     "loginNotAvailable2": "Voit vierailla verkkosivustollamme kirjautuaksesi sisään ja käyttääksesi tiliäsi.",
     "oldPassword": "Vanha salasana",
-    "signUp": "Rekisteröidy"
+    "signUp": "Rekisteröidy",
+    "saveProgress": "Tallenna edistymisesi",
+    "signUpToSave": "Rekisteröidy tallentaaksesi"
   },
   "bCert": {
     "bCertDescription": "₿-CERT on lopullinen Bitcoin-testi, joka on suunniteltu arvioimaan tietämyksesi Bitcoinista ja siihen liittyvistä aiheista.\n\nAnsaitse ₿-CERT sertifikaattisi ja todista asiantuntemuksesi Bitcoin-alalla, avaten ovia työpaikkoihin alalla.",
@@ -196,7 +198,10 @@
       "premiumContentNeedsPaymentAction": "Siirry kurssin kotisivulle",
       "startCourse": "Aloita kurssi",
       "taughtBy": "Tämän kurssin opettajana toimii:",
-      "thanksTipping": "Voit kiittää antamalla tippia professorille."
+      "thanksTipping": "Voit kiittää antamalla tippia professorille.",
+      "creditsCollaboration": "Tämä kurssi on yhteisen työn tulos: jokainen oppitunti, käännös ja uudelleentarkastelu on mahdollistettu avustajien työllä. Tästä syystä etsimme aina oikolukijoita voivat arvioida sisältöämme monilla kielillä.\n\nJos haluaisit osallistua oikolukuun, ota yhteyttä <0>Telegram</0>-ryhmässämme ja lue <1>opetusohjelmamme</1>.\n\nLevitä tietoa Bitcoinista:",
+      "openSourceContentDescription": "Tämän kurssin sisältö on avointa lähdekoodia - <0>CC BY-SA</0>-lisenssin alainen - joten sitä voidaan vapaasti jakaa ja käyttää, kunhan alkuperäinen lähde mainitaan.",
+      "openSourceContentTitle": "Avoin lähdekoodin sisältö"
     },
     "exam": {
       "answersReview": "Vastausten tarkistus",
@@ -1320,7 +1325,8 @@
           "upcomingClass": "Tuleva luokka"
         }
       }
-    }
+    },
+    "backToProfile": "Takaisin profiiliini"
   },
   "events": {
     "card": {
@@ -1609,7 +1615,24 @@
     },
     "projects": {
       "title": "Projektit",
-      "addProjects": "Lisää projekti"
+      "addProjects": "Lisää projekti",
+      "types": {
+        "communities": "Yhteisöt",
+        "education": "Koulutus",
+        "infrastructure": "Infrastruktuuri",
+        "investment": "Investointi",
+        "manufacturer": "Valmistaja",
+        "merchant": "Kauppias",
+        "news": "Uutiset",
+        "payment": "Maksu",
+        "service": "Palvelu",
+        "conference": "Konferenssi",
+        "exchange": "Pörssi",
+        "mining": "Louhinta",
+        "node": "Solmu (node)",
+        "privacy": "Yksityisyys",
+        "wallet": "Lompakko"
+      }
     },
     "searchFilterName": "Hae nimellä",
     "toggleLabelAll": "Kaikki",
@@ -1631,7 +1654,8 @@
         "thesis": "Väitöskirja",
         "whitepaper": "Valkoinen kirja",
         "book": "Kirja",
-        "conference": "Konferenssi"
+        "conference": "Konferenssi",
+        "review": "Arvostelu"
       },
       "papers": "Artikkelit"
     }
@@ -1683,7 +1707,12 @@
     "changeDisplayName": "Muuta näyttönimeä",
     "changeEmail": "Vaihda sähköposti",
     "changePassword": "Vaihda salasana",
-    "changeProfilePicture": "Muuta profiilikuvaa"
+    "changeProfilePicture": "Muuta profiilikuvaa",
+    "emailSentDescription": "Varmista sähköpostisi ja päivitä tämä sivu jatkaaksesi.",
+    "emailSentTitle": "Olemme lähettäneet sinulle sähköpostin",
+    "addEmailContinue": "Lisää sähköposti jatkaaksesi",
+    "verifyEmail": "Vahvista sähköposti",
+    "addEmail": "Lisää sähköposti"
   },
   "tutorials": {
     "business": {
@@ -1944,7 +1973,12 @@
     "enroll": "Ilmoittaudu",
     "researchPaper": "Tutkimusartikkeli",
     "open": "Avaa",
-    "downloads": "Lataa"
+    "downloads": "Lataa",
+    "contribute": "Osallistu",
+    "oldest": "Vanhin",
+    "agenda": "Esityslista",
+    "contributors": "Avustajat",
+    "event": "Tapahtuma"
   },
   "youtubeChannels": {
     "view": "Katso Youtube-kanava",
@@ -2075,7 +2109,40 @@
     "descriptionRequired": "Kuvaus ei voi olla tyhjä",
     "descriptionTooLong": "Kuvaus ei saa ylittää 350 merkkiä",
     "done": "Valmis",
-    "languagePlaceholder": "Valitse"
+    "languagePlaceholder": "Valitse",
+    "adminPanel": {
+      "pageTitle": "Tarkista opettajan sisältö",
+      "approved": "Hyväksytty",
+      "modified": "Muutettu",
+      "new": "Uusi",
+      "previewChanges": "Esikatsele muutoksia",
+      "previewForApproval": "Esikatselu hyväksyttäväksi",
+      "toReview": "Arvosteltavaksi"
+    },
+    "maxFileSize": "Maksimikoko: 50MB",
+    "pageSubtitle": "Missä Bitcoin-kouluttajat ja yhteisöt jakavat ja uudelleenkäyttävät resursseja",
+    "reviewModal": {
+      "approveAndPublish": "Hyväksy sisältö ja julkaise",
+      "reviewForApproval": "Tarkista hyväksyttäväksi",
+      "viewContent": "Näytä sisältö",
+      "unpublishConfirm": "Poista julkaisu (oletko varma?)",
+      "edit": "Muokkaa",
+      "noCover": "Ei kantta",
+      "reject": "Hylkää",
+      "unknown": "Tuntematon",
+      "unpublish": "Ei julkaistu"
+    },
+    "sortMostDownloaded": "Ladatuimmat",
+    "coverPreview": "Kannen esikatselu",
+    "fileExisting": "(olemassa oleva)",
+    "linkOrFileRequired": "Lisää vähintään yksi linkki tai lataa tiedosto",
+    "linkPlaceholder": "https://example.com",
+    "sortMostRecent": "Uusimmat",
+    "titlePlaceholder": "esim. Moni-allekirjoitus työpaja Liana",
+    "languagePlaceholderFilter": "Kieli",
+    "pageTitle": "Opettajan sisältö",
+    "sortBy": "Lajittele",
+    "typePlaceholder": "Tyyppi"
   },
   "forms": {
     "browse": "Selaa",

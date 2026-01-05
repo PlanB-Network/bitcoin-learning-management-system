@@ -97,7 +97,9 @@
     "forgotPassword": "비밀번호를 잊으셨나요?",
     "login": "로그인",
     "oldPassword": "이전 비밀번호",
-    "signUp": "가입하기"
+    "signUp": "가입하기",
+    "saveProgress": "진행 상황 저장",
+    "signUpToSave": "저장하려면 가입하세요"
   },
   "bCert": {
     "bCertDescription": "₿-인증서는 비트코인 및 관련 주제에 대한 이해 수준을 평가하는 국제적으로 인정받은 시험입니다. 이 인증서를 취득하면 비트코인 산업에서의 기술과 지식을 입증할 수 있습니다.",
@@ -196,7 +198,10 @@
       "premiumContentNeedsPaymentAction": "코스 홈페이지로 이동하기",
       "startCourse": "코스 시작하기",
       "taughtBy": "이 코스는 [instructor name here?]가 강의하고 있습니다.",
-      "thanksTipping": "강사에게 팁을 주며 감사의 뜻을 전할 수 있습니다."
+      "thanksTipping": "강사에게 팁을 주며 감사의 뜻을 전할 수 있습니다.",
+      "creditsCollaboration": "이 과정은 협력적 노력의 결과입니다: 각각의 수업, 번역, 그리고 수정은 기여자들의 작업으로 가능해집니다. 이를 위해, 우리는 항상 많은 언어로 우리의 내용을 검토할 수 있는 교정자를 찾고 있습니다.\n\n교정 과정에 참여하고 싶다면, 우리의 <0>텔레그램</0> 그룹에 참여하고, 우리의 <1>튜토리얼</1>을 읽어보세요.\n\n비트코인 지식 전파를 돕습니다:",
+      "openSourceContentDescription": "이 과정 내용은 오픈소스 - <0>CC BY-SA</0>에 따라 라이선스가 부여됨 - 따라서 원본 출처만 인정한다면 자유롭게 공유하고 사용할 수 있습니다.",
+      "openSourceContentTitle": "오픈소스 컨텐츠"
     },
     "exam": {
       "answersReview": "답변 검토",
@@ -1320,7 +1325,8 @@
           "hasEnrolled": "등록하였습니다"
         }
       }
-    }
+    },
+    "backToProfile": "내 프로필로 돌아가기"
   },
   "events": {
     "card": {
@@ -1612,7 +1618,24 @@
     },
     "projects": {
       "title": "프로젝트",
-      "addProjects": "프로젝트 추가"
+      "addProjects": "프로젝트 추가",
+      "types": {
+        "communities": "커뮤니티",
+        "conference": "컨퍼런스",
+        "exchange": "거래소",
+        "mining": "마이닝",
+        "wallet": "지갑",
+        "node": "노드",
+        "privacy": "프라이버시",
+        "education": "교육",
+        "infrastructure": "인프라",
+        "investment": "투자",
+        "manufacturer": "제조업자",
+        "merchant": "상인",
+        "service": "서비스",
+        "news": "뉴스",
+        "payment": "결제"
+      }
     },
     "searchFilterName": "이름으로 검색",
     "toggleLabelAll": "모두",
@@ -1627,7 +1650,8 @@
         "journal": "저널",
         "pre-print": "사전 인쇄",
         "thesis": "논문",
-        "whitepaper": "백서"
+        "whitepaper": "백서",
+        "review": "리뷰"
       },
       "accessPaper": "문서 접근",
       "addPaper": "문서 추가",
@@ -1686,7 +1710,12 @@
     "changeDisplayName": "디스플레이 이름 변경",
     "changeEmail": "이메일 변경",
     "changePassword": "비밀번호 변경",
-    "changeProfilePicture": "프로필 사진 변경"
+    "changeProfilePicture": "프로필 사진 변경",
+    "addEmailContinue": "계속하려면 이메일 추가",
+    "emailSentDescription": "이메일을 인증하고 이 페이지를 다시 로드하여 계속하세요.",
+    "emailSentTitle": "이메일을 보냈습니다",
+    "verifyEmail": "이메일 인증",
+    "addEmail": "이메일 추가"
   },
   "tutorials": {
     "business": {
@@ -1947,7 +1976,12 @@
     "downloads": "다운로드",
     "researchPaper": "연구 논문",
     "open": "열기",
-    "enroll": "등록"
+    "enroll": "등록",
+    "event": "이벤트",
+    "contribute": "기여하다",
+    "oldest": "가장 오래된",
+    "agenda": "일정",
+    "contributors": "참여자"
   },
   "youtubeChannels": {
     "view": "유튜브 채널 보기",
@@ -2075,7 +2109,40 @@
     "successTitle": "교육자 콘텐츠가 성공적으로 업로드되었습니다",
     "titleHelper": "자원의 콘텐츠와 목적을 반영해야 합니다. 짧지만 정보적으로 유지하세요.",
     "descriptionPlaceholder": "교육자료의 간단한 설명",
-    "descriptionRequired": "설명은 비워 둘 수 없습니다"
+    "descriptionRequired": "설명은 비워 둘 수 없습니다",
+    "reviewModal": {
+      "edit": "편집",
+      "approveAndPublish": "콘텐츠 승인 및 게시",
+      "reviewForApproval": "승인을 위한 검토",
+      "unpublishConfirm": "게시 취소 (확실한가요?)",
+      "viewContent": "콘텐츠 보기",
+      "noCover": "커버 없음",
+      "reject": "거절",
+      "unknown": "알 수 없음",
+      "unpublish": "발행되지 않음"
+    },
+    "languagePlaceholderFilter": "��어",
+    "typePlaceholder": "유형",
+    "sortMostDownloaded": "가장 많이 다운로드된",
+    "sortMostRecent": "가장 최근",
+    "coverPreview": "커버 미리보기",
+    "linkOrFileRequired": "링크 하나 이상을 추가하거나 파일을 업로드해주세요.",
+    "adminPanel": {
+      "approved": "승인됨",
+      "modified": "수정됨",
+      "new": "새로운",
+      "pageTitle": "교육자 콘텐츠 검토",
+      "previewChanges": "변경 사항 미리보기",
+      "previewForApproval": "승인 위한 미리보기",
+      "toReview": "검토하기"
+    },
+    "fileExisting": "(기존)",
+    "linkPlaceholder": "https://example.com",
+    "titlePlaceholder": "예: 멀티-시그 워크샵 레아나",
+    "maxFileSize": "최대 파일 크기: 50MB",
+    "pageSubtitle": "비트코인 교육자와 커뮤니티가 자료를 공유하고 재사용하는 곳",
+    "pageTitle": "교육자 콘텐츠",
+    "sortBy": "정렬 방식"
   },
   "mentor": {
     "close": "닫기",

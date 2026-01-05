@@ -97,7 +97,9 @@
     "forgotPassword": "Lupa kata sandi?",
     "login": "Masuk",
     "oldPassword": "Kata sandi lama",
-    "signUp": "Daftar"
+    "signUp": "Daftar",
+    "saveProgress": "Simpan perkembangan Anda",
+    "signUpToSave": "Daftar untuk menyimpan"
   },
   "bCert": {
     "bCertDescription": "₿-CERT adalah tes Bitcoin terakhir yang dirancang untuk mengevaluasi pengetahuan Anda tentang Bitcoin dan topik terkaitnya.\n\nDapatkan sertifikat ₿-CERT Anda dan buktikan keahlian Anda di industri Bitcoin, membuka pintu ke posisi kerja di bidang ini.",
@@ -196,7 +198,10 @@
       "premiumContentNeedsPaymentAction": "Pergi ke beranda kursus",
       "startCourse": "Mulai kursus",
       "taughtBy": "Kursus ini diajarkan oleh",
-      "thanksTipping": "Anda dapat mengucapkan terima kasih dengan memberikan tip kepada profesor."
+      "thanksTipping": "Anda dapat mengucapkan terima kasih dengan memberikan tip kepada profesor.",
+      "creditsCollaboration": "Kursus ini adalah hasil dari upaya kolaboratif: setiap pelajaran, terjemahan, dan revisi dimungkinkan oleh kerja kontributor. Untuk alasan ini, kami selalu mencari perevisi yang dapat meninjau konten kami dalam banyak bahasa.\n\nJika Anda ingin berpartisipasi dalam proses pengetikan ulang, silakan hubungi kami di grup <0>Telegram</0> kami dan baca <1>tutorial</1> kami.\n\nBantu sebarkan pengetahuan Bitcoin:",
+      "openSourceContentDescription": "Konten kursus ini adalah sumber terbuka - berlisensi di bawah <0>CC BY-SA</0> - sehingga dapat dibagikan dan digunakan secara bebas, asalkan sumber asli dikreditkan.",
+      "openSourceContentTitle": "Konten sumber terbuka"
     },
     "exam": {
       "answersReview": "Ulasan jawaban",
@@ -1320,7 +1325,8 @@
           "upcomingClass": "Kelas yang akan datang"
         }
       }
-    }
+    },
+    "backToProfile": "Kembali ke profil saya"
   },
   "events": {
     "card": {
@@ -1612,7 +1618,24 @@
     },
     "projects": {
       "title": "Proyek",
-      "addProjects": "Tambahkan proyek"
+      "addProjects": "Tambahkan proyek",
+      "types": {
+        "communities": "Komunitas",
+        "service": "Layanan",
+        "education": "Pendidikan",
+        "infrastructure": "Infrastruktur",
+        "investment": "Investasi",
+        "manufacturer": "Pabrikan",
+        "merchant": "Pedagang",
+        "news": "Berita",
+        "payment": "Pembayaran",
+        "privacy": "Privasi",
+        "wallet": "Dompet",
+        "conference": "Konferensi",
+        "exchange": "Bursa pertukaran",
+        "mining": "Penambangan",
+        "node": "Node"
+      }
     },
     "searchFilterName": "Cari berdasarkan nama",
     "toggleLabelAll": "Semua",
@@ -1634,7 +1657,8 @@
         "whitepaper": "Kertas putih",
         "PhD Thesis": "Tesis PhD",
         "book": "Buku",
-        "conference": "Konferensi"
+        "conference": "Konferensi",
+        "review": "Ulasan"
       },
       "papers": "Kertas"
     }
@@ -1686,7 +1710,12 @@
     "changeDisplayName": "Ganti nama tampilan",
     "changeEmail": "Ganti email",
     "changePassword": "Ganti kata sandi",
-    "changeProfilePicture": "Ganti foto profil"
+    "changeProfilePicture": "Ganti foto profil",
+    "emailSentDescription": "Verifikasi email Anda dan muat ulang halaman ini untuk melanjutkan.",
+    "verifyEmail": "Verifikasi email",
+    "addEmailContinue": "Tambahkan email untuk melanjutkan",
+    "emailSentTitle": "Kami telah mengirimkan email kepada Anda",
+    "addEmail": "Tambahkan email"
   },
   "tutorials": {
     "business": {
@@ -1947,7 +1976,12 @@
     "researchPaper": "Kertas penelitian",
     "open": "Buka",
     "enroll": "Daftar",
-    "downloads": "Unduh"
+    "downloads": "Unduh",
+    "contribute": "Kontribusikan",
+    "oldest": "Terlama",
+    "agenda": "Agenda",
+    "contributors": "Kontributor",
+    "event": "Acara"
   },
   "youtubeChannels": {
     "view": "Lihat Saluran Youtube",
@@ -2075,7 +2109,40 @@
     "uploadFiles": "Unggah File",
     "uploading": "Mengunggah...",
     "languagePlaceholder": "Pilih",
-    "done": "Selesai"
+    "done": "Selesai",
+    "adminPanel": {
+      "approved": "Disetujui",
+      "modified": "Dimodifikasi",
+      "new": "Baru",
+      "previewForApproval": "Pratinjau untuk persetujuan",
+      "toReview": "Untuk diulas",
+      "pageTitle": "Ulas Konten Pendidik",
+      "previewChanges": "Pratinjau perubahan"
+    },
+    "coverPreview": "Pratinjau sampul",
+    "reviewModal": {
+      "approveAndPublish": "Setujui konten dan publikasikan",
+      "unpublishConfirm": "Batal publikasikan (apakah anda yakin?)",
+      "viewContent": "Lihat konten",
+      "reviewForApproval": "Ulas untuk persetujuan",
+      "reject": "Tolak",
+      "edit": "Ubah",
+      "noCover": "Tidak ada sampul",
+      "unknown": "Tidak diketahui",
+      "unpublish": "Tidak dipublikasikan"
+    },
+    "sortMostRecent": "Terbaru",
+    "titlePlaceholder": "mis. Multi-tanda tangan workshop Liana",
+    "fileExisting": "(Ada)",
+    "linkOrFileRequired": "Harap tambahkan setidaknya satu tautan atau unggah sebuah berkas",
+    "linkPlaceholder": "https://contoh.com",
+    "maxFileSize": "Ukuran file maksimal: 50MB",
+    "pageSubtitle": "Tempat pendidik dan komunitas Bitcoin berbagi dan menggunakan kembali sumber daya",
+    "sortMostDownloaded": "Paling Banyak Diunduh",
+    "sortBy": "Urut berdasarkan",
+    "typePlaceholder": "Tipe",
+    "languagePlaceholderFilter": "Bahasa",
+    "pageTitle": "Konten pendidik"
   },
   "forms": {
     "browse": "Telusuri",

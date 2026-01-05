@@ -97,7 +97,9 @@
     "forgotPassword": "Şifrenizi mi unuttunuz?",
     "login": "Giriş",
     "oldPassword": "Eski şifre",
-    "signUp": "Kaydol"
+    "signUp": "Kaydol",
+    "saveProgress": "İlerlemenizi kaydedin",
+    "signUpToSave": "Kaydetmek için kaydolun"
   },
   "bCert": {
     "bCertDescription": "B-sertifikası, Bitcoin ve bağlantılı konular hakkındaki seviyenizi değerlendirmek için uluslararası olarak tanınan bir sınavdır. Bu sertifika, Bitcoin endüstrisi arasında yeteneklerinizi ve bilginizi kanıtlamanızı sağlar, size bu endüstrideki şirketlere ve pozisyonlara erişim imkanı verir.",
@@ -196,7 +198,10 @@
       "premiumContentNeedsPaymentAction": "Ders ana sayfasına gidin",
       "startCourse": "Kursu başlatın",
       "taughtBy": "Bu kurs, bu doçent tarafından verilmektedir",
-      "thanksTipping": "Profesöre katkıda bulunarak teşekkür edebilirsiniz."
+      "thanksTipping": "Profesöre katkıda bulunarak teşekkür edebilirsiniz.",
+      "creditsCollaboration": "Bu kurs, işbirliği içinde gerçekleştirilen bir çabanın sonucudur: her ders, çeviri ve revizyon katkıda bulunanların çalışması ile mümkün olmuştur. Bu yüzden her zaman içeriğimizi birçok dilde inceleyebilecek düzeltmenler arıyoruz.\n\nDüzeltme sürecine katılmak isterseniz, lütfen <0>Telegram</0> grubumuzla iletişime geçin ve <1>eğitimimizi</1> okuyun.\n\nBitcoin bilgisini yaymaya yardımcı olun:",
+      "openSourceContentDescription": "Bu kurs içeriği açık kaynaklıdır - <0>CC BY-SA</0> altında lisanslanmıştır - bu yüzden orijinal kaynak belirtildiği sürece serbestçe paylaşılabilir ve kullanılabilir.",
+      "openSourceContentTitle": "Açık kaynaklı içerik"
     },
     "exam": {
       "answersReview": "Cevapları gözden geçirme",
@@ -1320,7 +1325,8 @@
           "upcomingClass": "Yaklaşan ders"
         }
       }
-    }
+    },
+    "backToProfile": "Profilime geri dön"
   },
   "events": {
     "card": {
@@ -1609,7 +1615,24 @@
     },
     "projects": {
       "title": "Projeler",
-      "addProjects": "Proje ekle"
+      "addProjects": "Proje ekle",
+      "types": {
+        "communities": "Topluluklar",
+        "conference": "Conference",
+        "education": "Education",
+        "exchange": "Exchange",
+        "merchant": "Merchant",
+        "mining": "Mining",
+        "node": "Node",
+        "privacy": "Privacy",
+        "wallet": "Wallet",
+        "investment": "Yatırım",
+        "manufacturer": "Üretici",
+        "infrastructure": "Alt yapı",
+        "news": "Haberler",
+        "payment": "Ödeme",
+        "service": "Hizmet"
+      }
     },
     "searchFilterName": "İsimle ara",
     "toggleLabelAll": "Hepsi",
@@ -1632,7 +1655,8 @@
         "thesis": "Tez",
         "whitepaper": "Beyaz kağıt",
         "conference": "Konferanslar",
-        "book": "Kitap"
+        "book": "Kitap",
+        "review": "İnceleme"
       }
     }
   },
@@ -1683,7 +1707,12 @@
     "changeDisplayName": "Görünen adı değiştir",
     "changeEmail": "E-postayı değiştir",
     "changePassword": "Şifreyi değiştir",
-    "changeProfilePicture": "Profil resmini değiştir"
+    "changeProfilePicture": "Profil resmini değiştir",
+    "addEmailContinue": "Devam etmek için e-posta ekleyin",
+    "emailSentDescription": "E-postanızı doğrulayın ve bu sayfayı yeniden yükleyerek devam edin.",
+    "emailSentTitle": "Size bir e-posta gönderdik",
+    "verifyEmail": "E-postayı doğrula",
+    "addEmail": "E-posta ekle"
   },
   "tutorials": {
     "business": {
@@ -1944,7 +1973,12 @@
     "researchPaper": "Araştırma kağıdı",
     "enroll": "Kaydol",
     "open": "Açık",
-    "downloads": "İndir"
+    "downloads": "İndir",
+    "contributors": "Katılımcılar",
+    "event": "Etkinlik",
+    "agenda": "Ajanda",
+    "oldest": "En eski",
+    "contribute": "Katkıda bulunun"
   },
   "youtubeChannels": {
     "view": "Youtube Kanalını Görüntüle",
@@ -2075,7 +2109,40 @@
     "descriptionTooLong": "Açıklama 350 karakteri aşamaz",
     "noCover": "Kapak Yok",
     "done": "Tamamlandı",
-    "languagePlaceholder": "Seç"
+    "languagePlaceholder": "Seç",
+    "reviewModal": {
+      "edit": "Düzenle",
+      "reject": "Reddet",
+      "unknown": "Bilinmeyen",
+      "approveAndPublish": "İçeriği onayla ve yayınla",
+      "reviewForApproval": "Onay için incele",
+      "unpublishConfirm": "Yayından kaldır (emin misiniz?)",
+      "viewContent": "İçeriği görüntüle",
+      "noCover": "Kapak Yok",
+      "unpublish": "Yayınlanmadı"
+    },
+    "languagePlaceholderFilter": "Dil",
+    "sortBy": "Sırala",
+    "typePlaceholder": "Tür",
+    "adminPanel": {
+      "approved": "Onaylandı",
+      "modified": "Değiştirildi",
+      "new": "Yeni",
+      "pageTitle": "Eğitmen İçeriğini İnceleyin",
+      "previewChanges": "Değişiklikleri önizleme",
+      "previewForApproval": "Onay için önizleme",
+      "toReview": "İncelemek için"
+    },
+    "coverPreview": "Kapak önizlemesi",
+    "fileExisting": "(Mevcut)",
+    "linkOrFileRequired": "Lütfen en az bir bağlantı ekleyin veya bir dosya yükleyin",
+    "linkPlaceholder": "https://ornek.com",
+    "maxFileSize": "Maksimum dosya boyutu: 50MB",
+    "pageSubtitle": "Bitcoin eğitmenleri ve toplulukları kaynakları paylaşır ve yeniden kullanır",
+    "sortMostDownloaded": "En Çok İndirilen",
+    "sortMostRecent": "En Son",
+    "titlePlaceholder": "örn. Çoklu imza atölyesi Liana",
+    "pageTitle": "Eğitimci içeriği"
   },
   "becomeTeacher": {
     "activeBitcoinLearners": "Aktif Bitcoin öğrenenler",

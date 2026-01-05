@@ -97,7 +97,9 @@
     "forgotPassword": "Unustasid parooli?",
     "login": "Logi sisse",
     "oldPassword": "Vana parool",
-    "signUp": "Registreeru"
+    "signUp": "Registreeru",
+    "saveProgress": "Salvesta oma progress",
+    "signUpToSave": "Registreeru, et oma edusamme salvestada"
   },
   "bCert": {
     "bCertDescription": "₿-CERT on ülim Bitcoini test, mis on loodud teie Bitcoini ja sellega seotud teemade tundmise hindamiseks.\n\nTeenida ₿-CERT sertifikaat, mis tõestab teie asjatundlikkust Bitcoini valdkonnas ja avab uksed töökohtadele selles valdkonnas.",
@@ -196,7 +198,10 @@
       "premiumContentNeedsPaymentAction": "Mine kursuse avalehele",
       "startCourse": "Alusta kursust",
       "taughtBy": "Seda kursust õpetab",
-      "thanksTipping": "Saate professorit tänada talle jootraha jättes."
+      "thanksTipping": "Saate professorit tänada talle jootraha jättes.",
+      "creditsCollaboration": "See kursus on ühistöö tulemus: iga tund, tõlge ja redigeerimine on võimalik tänu panustajate tööle. Seetõttu otsime alati toimetajaid, kes saaksid üle vaadata meie sisu paljudes keeltes.\n\nKui soovite osaleda toimetamisprotsessis, võtke meiega ühendust meie <0>Telegram</0> grupis ja lugege meie <1>õpetust</1>.\n\nAitame levitada teadmisi Bitcoinist:",
+      "openSourceContentDescription": "See kursuse sisu on avatud lähtekoodiga - litsenseeritud alusel <0>CC BY-SA</0> -, nii et seda saab vabalt jagada ja kasutada, kui originaalallikat tunnustatakse.",
+      "openSourceContentTitle": "Avatud lähtekoodiga sisu"
     },
     "exam": {
       "answersReview": "Vastuste ülevaade",
@@ -1320,7 +1325,8 @@
           "hasLeftReviewAndComment": "on jätnud ülevaate ja kommentaari"
         }
       }
-    }
+    },
+    "backToProfile": "Tagasi minu profiili juurde"
   },
   "events": {
     "card": {
@@ -1612,7 +1618,24 @@
     },
     "projects": {
       "title": "Projektid",
-      "addProjects": "Lisa projekt"
+      "addProjects": "Lisa projekt",
+      "types": {
+        "investment": "Investeering",
+        "manufacturer": "Tootja",
+        "communities": "Kogukonnad",
+        "education": "Haridus",
+        "infrastructure": "Infrastruktuur",
+        "merchant": "Kaupmees",
+        "news": "Uudised",
+        "payment": "Makse",
+        "service": "Teenindus",
+        "wallet": "Rahakott",
+        "conference": "Konverents",
+        "exchange": "Valuutavahetusettevõtted",
+        "mining": "Kaevandamine",
+        "node": "Sõlmed",
+        "privacy": "Privaatsus"
+      }
     },
     "searchFilterName": "Otsi nime järgi",
     "toggleLabelAll": "Kõik",
@@ -1635,7 +1658,8 @@
         "thesis": "Väitekiri",
         "whitepaper": "Valge raamat",
         "book": "Raamat",
-        "conference": "Konverents"
+        "conference": "Konverents",
+        "review": "Arvustus"
       }
     }
   },
@@ -1686,7 +1710,12 @@
     "changeDisplayName": "Muuda kuvanime",
     "changeEmail": "Muuda e-posti",
     "changePassword": "Muuda parooli",
-    "changeProfilePicture": "Muuda profiilipilti"
+    "changeProfilePicture": "Muuda profiilipilti",
+    "verifyEmail": "Kinnita e-post",
+    "addEmailContinue": "Lisage e-post jätkamiseks",
+    "emailSentDescription": "Kinnitage oma e-posti aadress ja laadige leht uuesti, et jätkata.",
+    "emailSentTitle": "Oleme teile e-kirja saatnud",
+    "addEmail": "Lisa e-post"
   },
   "tutorials": {
     "business": {
@@ -1961,7 +1990,12 @@
     "enroll": "Registreeru",
     "open": "Ava",
     "researchPaper": "Teadusartikkel",
-    "downloads": "Laadi alla"
+    "downloads": "Laadi alla",
+    "oldest": "Kõige vanem",
+    "contribute": "Kaasa aita",
+    "agenda": "Päevakava",
+    "event": "Sündmus",
+    "contributors": "Kasutajate haldus"
   },
   "youtubeChannels": {
     "view": "Vaata Youtube'i kanalit",
@@ -2075,7 +2109,40 @@
     "shareLinks": "Jaga linke",
     "success": "Õpetaja sisu on edukalt lisatud!",
     "languagePlaceholder": "Vali",
-    "done": "Tehtud"
+    "done": "Tehtud",
+    "adminPanel": {
+      "previewForApproval": "Heakskiitmiseks eelvaade",
+      "toReview": "Ülevaatamiseks",
+      "approved": "Heaks kiidetud",
+      "modified": "Muudetud",
+      "new": "Uus",
+      "pageTitle": "Õppejõu sisu ülevaatamine",
+      "previewChanges": "Eelvaatamise muudatused"
+    },
+    "coverPreview": "Kaanepiltide eelvaade",
+    "fileExisting": "(Olemasolev)",
+    "linkOrFileRequired": "Palun lisage vähemalt üks link või laadige üles fail",
+    "linkPlaceholder": "https://example.com",
+    "maxFileSize": "Maksimaalne faili suurus: 50MB",
+    "pageSubtitle": "Kus Bitcoin'i haridustöötajad ja kogukonnad jagavad ja kasutavad uuesti ressursse",
+    "reviewModal": {
+      "approveAndPublish": "Kinnita sisu ja avalda",
+      "reviewForApproval": "Ülevaatamiseks heakskiidu saamiseks",
+      "unpublishConfirm": "Eemaldage avaldamine (kas olete kindel?)",
+      "viewContent": "Vaata sisu",
+      "edit": "Redigeeri",
+      "noCover": "Ei ole kaant",
+      "reject": "Keeldu",
+      "unknown": "Teadmata",
+      "unpublish": "Avaldamata"
+    },
+    "titlePlaceholder": "nt Mitme allkirja töötuba Liana",
+    "sortMostRecent": "Kõige uuem",
+    "sortMostDownloaded": "Enim allalaaditud",
+    "pageTitle": "Haridussisu",
+    "sortBy": "Sorteeri",
+    "typePlaceholder": "Tüüp",
+    "languagePlaceholderFilter": "Keel"
   },
   "forms": {
     "browse": "Sirvi",

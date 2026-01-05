@@ -97,7 +97,9 @@
     "forgotPassword": "パスワードを忘れましたか？",
     "login": "ログイン",
     "oldPassword": "古いパスワード",
-    "signUp": "サインアップ"
+    "signUp": "サインアップ",
+    "saveProgress": "進行状況を保存する",
+    "signUpToSave": "保存するためにサインアップする"
   },
   "bCert": {
     "bCertDescription": "₿-CERT は、ビットコインとその派生トピックに関するあなたのレベルを評価する国際的に認められた試験です。 ₿-CERT 認定証を取得することで、ビットコイン業界におけるスキルと知識を証明することができます。",
@@ -196,7 +198,10 @@
       "premiumContentNeedsPaymentAction": "コースのホームページへ",
       "startCourse": "コースを開始する",
       "taughtBy": "このコースは以下のメンバーによって提供されています：",
-      "thanksTipping": "講師にチップを渡すことで、感謝の気持ちを伝えることができます。"
+      "thanksTipping": "講師にチップを渡すことで、感謝の気持ちを伝えることができます。",
+      "creditsCollaboration": "このコースは共同作業の結果です：各レッスン、翻訳、および改訂は、貢献者の作業によって可能になります。このため、私たちは常に多くの言語で私たちのコンテンツをレビューできる校正者を探しています。\n\n校正プロセスに参加したい場合は、私たちの<0>Telegram</0>グループに参加し、私たちの<1>チュートリアル</1>を読んでください。\n\nBitcoinの知識を広めるお手伝いをしてください：",
+      "openSourceContentDescription": "このコースのコンテンツはオープンソースであり、<0>CC BY-SA</0>ライセンスのもとに提供されているため、オリジナルのソースがクレジットされる限り、自由に共有や使用が可能です。",
+      "openSourceContentTitle": "オープンソースコンテンツ"
     },
     "exam": {
       "answersReview": "レビュー回答",
@@ -1320,7 +1325,8 @@
           "upcomingClass": "次回のクラス"
         }
       }
-    }
+    },
+    "backToProfile": "マイプロフィールに戻る"
   },
   "events": {
     "card": {
@@ -1609,7 +1615,24 @@
     },
     "projects": {
       "title": "プロジェクト",
-      "addProjects": "プロジェクトを追加"
+      "addProjects": "プロジェクトを追加",
+      "types": {
+        "communities": "コミュニティ",
+        "conference": "カンファレンス",
+        "education": "教育",
+        "exchange": "取引所",
+        "merchant": "マーチャント",
+        "mining": "マイニング",
+        "node": "ノード",
+        "privacy": "プライバシー",
+        "wallet": "ウォレット",
+        "infrastructure": "インフラ",
+        "investment": "投資",
+        "manufacturer": "製造業者",
+        "news": "ニュース",
+        "payment": "支払い",
+        "service": "サービス"
+      }
     },
     "searchFilterName": "名前で検索する",
     "toggleLabelAll": "すべて",
@@ -1630,7 +1653,8 @@
         "journal": "雑誌",
         "pre-print": "プレプリント",
         "book": "本",
-        "conference": "カンファレンス"
+        "conference": "カンファレンス",
+        "review": "レビュー"
       },
       "accessPaper": "論文を参照",
       "addPaper": "論文を追加"
@@ -1683,7 +1707,12 @@
     "changeDisplayName": "表示名の変更",
     "changeEmail": "メールアドレスを変更する",
     "changePassword": "パスワードを変更する",
-    "changeProfilePicture": "プロフィール写真の変更"
+    "changeProfilePicture": "プロフィール写真の変更",
+    "emailSentDescription": "あなたのメールを確認し、このページを再読み込みして続行してください。",
+    "emailSentTitle": "あなたにメールを送りました",
+    "verifyEmail": "メールを確認する",
+    "addEmailContinue": "続行するにはメールを追加してください",
+    "addEmail": "メールを追加する"
   },
   "tutorials": {
     "business": {
@@ -1944,7 +1973,12 @@
     "open": "開く",
     "researchPaper": "研究論文",
     "enroll": "登録する",
-    "downloads": "ダウンロード"
+    "downloads": "ダウンロード",
+    "event": "イベント",
+    "contribute": "貢献する",
+    "oldest": "最も古い",
+    "agenda": "議題",
+    "contributors": "寄稿者"
   },
   "youtubeChannels": {
     "view": "Youtubeチャンネルを見る",
@@ -2075,7 +2109,40 @@
     "coverRequired": "表紙画像は必須です",
     "descriptionTooLong": "説明文は350字を超えることはできません",
     "done": "完了",
-    "languagePlaceholder": "選択"
+    "languagePlaceholder": "選択",
+    "languagePlaceholderFilter": "言語",
+    "reviewModal": {
+      "edit": "編集",
+      "approveAndPublish": "コンテンツを承認し公開する",
+      "reviewForApproval": "承認のためのレビュー",
+      "unpublishConfirm": "非公開（本当によろしいですか？）",
+      "viewContent": "コンテンツを見る",
+      "noCover": "カバーなし",
+      "reject": "拒否",
+      "unknown": "不明",
+      "unpublish": "未公開"
+    },
+    "typePlaceholder": "種類",
+    "adminPanel": {
+      "approved": "承認済み",
+      "modified": "修正済み",
+      "new": "新規",
+      "pageTitle": "教育者コンテンツのレビュー",
+      "previewChanges": "変更をプレビューする",
+      "previewForApproval": "承認のためのプレビュー",
+      "toReview": "レビューする"
+    },
+    "coverPreview": "カバープレビュー",
+    "fileExisting": "（既存）",
+    "linkOrFileRequired": "最低でも1つのリンクを追加するか、ファイルをアップロードしてください",
+    "linkPlaceholder": "https://example.com",
+    "pageSubtitle": "ビットコインの教育者とコミュニティが資源を共有し、再利用する場所",
+    "sortMostDownloaded": "最もダウンロードされた",
+    "sortMostRecent": "最新",
+    "titlePlaceholder": "例：マルチシグワークショップ リアナ",
+    "maxFileSize": "最大ファイルサイズ: 50MB",
+    "pageTitle": "教育者向けコンテンツ",
+    "sortBy": "並べ替え："
   },
   "mentor": {
     "placeholder": "質問をする...",
