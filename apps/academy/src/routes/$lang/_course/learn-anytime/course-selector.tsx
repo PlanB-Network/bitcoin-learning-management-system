@@ -12,14 +12,15 @@ import {
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { capitalize } from 'lodash-es';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { TbChevronRight } from 'react-icons/tb';
 import { PageLayout } from '#src/components/page-layout.js';
 import { AppContext } from '#src/providers/context.tsx';
 import { assetUrl } from '#src/utils/index.ts';
-import { normalizeString, toCamelCase } from '#src/utils/string.ts';
+import { getSystemLanguage, isLanguageMatch } from '#src/utils/language.ts';
+import { toCamelCase } from '#src/utils/string.ts';
 import { CourseInfoSection } from './-components/course-info-section.tsx';
 import { levels, sortCoursesByLevel } from './-utils/course-utils.tsx';
 
@@ -35,22 +36,25 @@ function CourseSelector() {
 
   const selectedSchool = null;
 
-  const filteredCourses = courses
-    ? courses
-        .filter(
-          (course) =>
-            course.isArchived === false &&
-            normalizeString(course.language) ===
-              normalizeString(i18n.language) &&
-            course.teachingFormat === 'self_paced' &&
-            (!course.paymentExpirationDate ||
-              course.paymentExpirationDate > new Date()),
-        )
-        .sort((a, b) => a.index.slice(3).localeCompare(b.index.slice(3)))
-        .sort((a, b) =>
-          a.index === selectedSchool ? -1 : b.index === selectedSchool ? 1 : 0,
-        )
-    : [];
+  const systemLanguage = useMemo(() => getSystemLanguage(), []);
+
+  const filteredCourses = useMemo(() => {
+    if (!courses) return [];
+
+    return courses
+      .filter(
+        (course) =>
+          course.isArchived === false &&
+          isLanguageMatch(course.language, i18n.language, systemLanguage) &&
+          course.teachingFormat === 'self_paced' &&
+          (!course.paymentExpirationDate ||
+            course.paymentExpirationDate > new Date()),
+      )
+      .sort((a, b) => a.index.slice(3).localeCompare(b.index.slice(3)))
+      .sort((a, b) =>
+        a.index === selectedSchool ? -1 : b.index === selectedSchool ? 1 : 0,
+      );
+  }, [courses, i18n.language, systemLanguage, selectedSchool]);
 
   const [topics, setTopics] = useState<string[]>([]);
   const [activeTopic, setActiveTopic] = useState('bitcoin');

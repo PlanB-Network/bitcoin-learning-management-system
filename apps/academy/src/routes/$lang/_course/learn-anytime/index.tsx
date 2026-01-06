@@ -32,6 +32,7 @@ import { SearchInput } from '#src/components/search-input.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { CourseCard } from '#src/patterns/course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
+import { getSystemLanguage, isLanguageMatch } from '#src/utils/language.ts';
 import { normalizeString, toCamelCase } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
@@ -163,13 +164,16 @@ function AllCourses() {
     { id: 'paid', name: t('words.paid') },
   ];
 
+  const systemLanguage = useMemo(() => getSystemLanguage(), []);
+
   const filteredCourses = useMemo(() => {
     if (!courses) return [];
+
     return courses
       .filter(
         (course) =>
           course.isArchived === false &&
-          normalizeString(course.language) === normalizeString(i18n.language) &&
+          isLanguageMatch(course.language, i18n.language, systemLanguage) &&
           course.teachingFormat === 'self_paced' &&
           (!course.paymentExpirationDate ||
             course.paymentExpirationDate > new Date()) &&
@@ -196,6 +200,7 @@ function AllCourses() {
   }, [
     courses,
     i18n.language,
+    systemLanguage,
     activeTopic,
     activeLevel,
     activeType,

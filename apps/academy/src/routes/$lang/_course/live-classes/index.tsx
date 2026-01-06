@@ -5,7 +5,7 @@ import { Button, cn, Flag, Image, Loader, Progress } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { t } from 'i18next';
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbCalendarEvent, TbChevronRight, TbClock } from 'react-icons/tb';
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
@@ -15,7 +15,7 @@ import { CourseCardBig } from '#src/patterns/course-card-big.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { formatShortDateRange } from '#src/utils/date.ts';
 import { resourceImgUrl } from '#src/utils/index.ts';
-import { normalizeString } from '#src/utils/string.ts';
+import { getSystemLanguage, isLanguageMatch } from '#src/utils/language.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
 export const Route = createFileRoute('/$lang/_course/live-classes/')({
@@ -65,22 +65,26 @@ function AllCourses() {
           (course.endDate ? course.endDate.getTime() > Date.now() : true),
       );
 
-  const otherCourses = !courses
-    ? []
-    : courses
-        .filter(
-          (course) =>
-            course.isArchived === false &&
-            course.isPlanbSchool === false &&
-            (normalizeString(course.language) ===
-              normalizeString(i18n.language) ||
-              normalizeString(course.language) === 'en') &&
-            course.teachingFormat === 'professor_led' &&
-            (!course.paymentExpirationDate ||
-              course.paymentExpirationDate > new Date()) &&
-            (course.endDate ? course.endDate.getTime() > Date.now() : true),
-        )
-        .sort((a, b) => a.index.slice(3).localeCompare(b.index.slice(3)));
+  const systemLanguage = useMemo(() => getSystemLanguage(), []);
+
+  const otherCourses = useMemo(() => {
+    if (!courses) return [];
+
+    return courses
+      .filter(
+        (course) =>
+          course.isArchived === false &&
+          course.isPlanbSchool === false &&
+          isLanguageMatch(course.language, i18n.language, systemLanguage, [
+            'en',
+          ]) &&
+          course.teachingFormat === 'professor_led' &&
+          (!course.paymentExpirationDate ||
+            course.paymentExpirationDate > new Date()) &&
+          (course.endDate ? course.endDate.getTime() > Date.now() : true),
+      )
+      .sort((a, b) => a.index.slice(3).localeCompare(b.index.slice(3)));
+  }, [courses, i18n.language, systemLanguage]);
 
   if (!courses) {
     return (
