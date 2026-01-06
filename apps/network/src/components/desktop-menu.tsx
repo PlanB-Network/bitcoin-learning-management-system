@@ -3,9 +3,13 @@ import { Link } from '@tanstack/react-router';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Logo from '#src/assets/logo.svg?no-inline';
+import { NetworkButton } from './network-button.tsx';
 
-const activeLinkProps = { className: 'text-orange-500' };
-const linkClassName = 'hover:font-bold hover:text-orange-500';
+const activeLinkProps = {
+  className: 'text-orange-500 [text-shadow:_0_0_0.5px_currentColor]',
+};
+const linkClassName =
+  'hover:text-orange-500 hover:[text-shadow:_0_0_0.5px_currentColor]';
 
 export default function DesktopMenu() {
   const { t } = useTranslation();
@@ -42,7 +46,7 @@ export default function DesktopMenu() {
         !isMenuVisible && !isMenuVisible && '-translate-y-full',
       )}
     >
-      <div className="max-w-[1440px] flex flex-row justify-between gap-2 mx-auto">
+      <div className="max-w-[1440px] flex flex-row justify-between items-center gap-2 mx-auto">
         <Link to="/" viewTransition>
           <Image
             className="h-8 w-auto"
@@ -52,7 +56,7 @@ export default function DesktopMenu() {
             breakpoints={{ default: 700 }}
           />
         </Link>
-        <div className="flex flex-row gap-16">
+        <div className="flex flex-row gap-8 items-center">
           <Link
             to="/academy"
             className={linkClassName}
@@ -77,8 +81,7 @@ export default function DesktopMenu() {
           >
             {t('menu.funds')}
           </Link>
-        </div>
-        <div className="flex flex-row gap-16">
+          <div className="h-6 w-px bg-white/20" />
           <Link
             to="/news"
             className={linkClassName}
@@ -96,6 +99,15 @@ export default function DesktopMenu() {
             {t('menu.about')}
           </Link>
         </div>
+        <Link
+          to="https://planb.academy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <NetworkButton variant={'secondary'}>
+            {t('academy.startLearning')}
+          </NetworkButton>
+        </Link>
       </div>
     </div>
   );
