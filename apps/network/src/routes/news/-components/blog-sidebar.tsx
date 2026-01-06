@@ -49,8 +49,8 @@ const BlogSidebar: React.FC<BlogSidebarProps> = ({
     .slice(0, 10);
 
   return (
-    <div className="mx-auto md:p-2.5 rounded-2xl">
-      <div className="flex flex-row items-center py-5 gap-5 border-b border-neutral-200">
+    <div className="mx-auto md:p-2 rounded-2xl border border-gray-100">
+      <div className="flex flex-row items-center py-5 gap-5">
         <Image
           className="size-[35px] ml-2.5"
           src={MessageIcon}

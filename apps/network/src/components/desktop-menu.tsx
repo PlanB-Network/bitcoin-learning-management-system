@@ -11,7 +11,11 @@ const activeLinkProps = {
 const linkClassName =
   'hover:text-orange-500 hover:[text-shadow:_0_0_0.5px_currentColor]';
 
-export default function DesktopMenu() {
+export default function DesktopMenu({
+  variant,
+}: {
+  variant?: 'light' | 'dark';
+}) {
   const { t } = useTranslation();
 
   const [isMenuVisible, setIsMenuVisible] = useState(true);
@@ -40,10 +44,11 @@ export default function DesktopMenu() {
       className={cn(
         'sticky top-0 z-50 ',
         ' display-extra-small',
-        'py-8 px-10  bg-[#000000b3] max-lg:hidden',
+        'py-8 px-10 max-lg:hidden',
         'transition-transform duration-300 transform ',
         isMenuVisible ? 'translate-y-0' : '',
         !isMenuVisible && !isMenuVisible && '-translate-y-full',
+        variant === 'dark' ? 'bg-[#000000b3]' : 'bg-black text-white',
       )}
     >
       <div className="max-w-[1440px] flex flex-row justify-between items-center gap-2 mx-auto">

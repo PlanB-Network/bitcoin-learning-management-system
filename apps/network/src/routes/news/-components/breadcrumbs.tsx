@@ -2,16 +2,12 @@ import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import { TbChevronLeft } from 'react-icons/tb';
 
-const Breadcrumbs = ({ blogTitle }: { blogTitle: string }) => {
+const Breadcrumbs = () => {
   const { t } = useTranslation();
 
-  if (!blogTitle) {
-    return null;
-  }
-
   return (
-    <div className="flex items-center text-neutral-100 mb-4">
-      <TbChevronLeft size={24} className=" mx-1" />
+    <div className="flex items-center text-neutral-300 mb-2 lg:mb-3 lg:px-1 lg:py-1.5">
+      <TbChevronLeft className="m-1 lg:m-1.5 size-4 lg:size-6" />
       <Link className="body-small-bold" to="/news" viewTransition>
         {t('news.news')}
       </Link>

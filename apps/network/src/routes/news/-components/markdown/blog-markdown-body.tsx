@@ -32,34 +32,28 @@ const BlogMarkdownBody = ({
           <CodeRenderer className={className}>{children}</CodeRenderer>
         ),
         h1: ({ children }) => (
-          <h1 className="text-xl mb-4 text-white">
+          <h1 className="text-xl mb-4">
             <div className="flex w-auto items-center text-start font-medium">
               {children}
             </div>
           </h1>
         ),
         h2: ({ children }) => (
-          <h2 className="text-xl mb-4 text-white font-medium">
+          <h2 className="text-xl mb-4 font-medium">
             <div className="flex w-auto items-center text-start">
               {children}
             </div>
           </h2>
         ),
         h3: ({ children }) => (
-          <h3 className="text-xl mb-4 text-white font-medium text-start">
-            {children}
-          </h3>
+          <h3 className="text-xl mb-4 font-medium text-start">{children}</h3>
         ),
         h4: ({ children }) => (
-          <h3 className="text-xl mb-4 text-white font-medium text-start">
-            {children}
-          </h3>
+          <h3 className="text-xl mb-4 font-medium text-start">{children}</h3>
         ),
         img: ({ src, alt }) => <ImageVideoRenderer src={src} alt={alt} />,
         li: ({ children }) => (
-          <li className="leading-relaxed mb-5 text-start text-white">
-            {children}
-          </li>
+          <li className="leading-relaxed mb-5 text-start">{children}</li>
         ),
         ol: ({ children }) => (
           <ol className="flex list-decimal flex-col pl-10 text-base tracking-wide md:text-justify">

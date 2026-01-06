@@ -1,17 +1,19 @@
 import { formatNameForURL } from '@blms/shared';
-import { Loader } from '@blms/ui';
+import { DividerSimple, Image, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
-import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import React, { Suspense, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
-import { NetworkButton } from '#src/components/network-button.tsx';
 import PageBlock from '#src/components/page-block.tsx';
-import { cdnUrl, getNameAndIdFromUrl } from '#src/utils/misc.tsx';
+import {
+  cdnUrl,
+  formatDate,
+  getNameAndIdFromUrl,
+  resourceImgUrl,
+} from '#src/utils/misc.tsx';
 import { trpc } from '#src/utils/trpc.js';
 import BlogSidebar from '../-components/blog-sidebar.tsx';
 import Breadcrumbs from '../-components/breadcrumbs.tsx';
-import { FeaturedCard } from '../-components/featured-card.tsx';
 
 const BlogMarkdownBody = React.lazy(
   () => import('#src/routes/news/-components/markdown/blog-markdown-body.tsx'),
@@ -34,11 +36,12 @@ export const Route = createFileRoute('/news/article/$blogName-$blogId')({
       'blogName-$blogId': `${blogName}-${blogId}`,
     }),
   },
+  staticData: {
+    layoutVariant: 'light',
+  },
 });
 
 function SingleBlogDetail() {
-  const { t } = useTranslation();
-
   const params = Route.useParams();
   const blogId = params.blogId;
 
@@ -64,37 +67,59 @@ function SingleBlogDetail() {
     <>
       {!isFetched && <Loader size={'s'} />}
       {blog && (
-        <PageBlock>
-          <Breadcrumbs blogTitle={blog.title} />
+        <PageBlock variant="blog" withXPadding={false} withYPadding={false}>
+          <Breadcrumbs />
 
-          <div className="text-start flex flex-col mx-auto lg:mx-0 md:flex-row w-full justify-between align-top border-b-2 lg:border-b-0">
-            <FeaturedCard blog={blog} variant="secondary" />
+          <Image
+            className="rounded-2xl mx-auto max-h-[244px] lg:max-h-[382px] w-full object-cover"
+            src={resourceImgUrl(blog)}
+            alt={blog.title}
+            loading="lazy"
+            breakpoints={{ default: 1400 }}
+          />
+
+          <div className="flex flex-col gap-5.5 max-lg:mb-8">
+            <h1 className="display-small lg:title-extra-large mt-6">
+              {blog.title}
+            </h1>
+            {blog.author && (
+              <div className="flex items-center gap-2.5">
+                <span className="body-base-bold lg:title-medium text-gray-800">
+                  {blog.author}
+                </span>
+                {blog.date && (
+                  <>
+                    <span className="text-gray-500 body-base lg:title-base">
+                      •
+                    </span>
+                    <span className="text-gray-500 body-base lg:title-base">
+                      {formatDate(blog.date)}
+                    </span>
+                  </>
+                )}
+              </div>
+            )}
+            <p className="body-base">{blog.description}</p>
           </div>
 
-          <div className="mx-auto lg:mx-0 gap-8 flex flex-col lg:flex-row">
-            <div className="flex flex-col flex-1 border-b-2 md:border-b-0 py-4 lg:py-0">
-              <Suspense fallback={<Loader variant="black" size={'s'} />}>
-                <BlogMarkdownBody
-                  content={blog.rawContent}
-                  assetPrefix={cdnUrl(blog.path)}
-                  blogs={[]}
-                />
-              </Suspense>
-            </div>
-            <div className="max-md:w-full max-w-[400px] mx-auto lg:max-w-[336px] flex-1">
-              <BlogSidebar
-                currentBlogId={blog.id}
-                currentCategory={blog.category}
+          <DividerSimple className="my-6 max-lg:hidden" />
+
+          <div className="flex flex-col max-lg:mb-15">
+            <Suspense fallback={<Loader variant="black" size={'s'} />}>
+              <BlogMarkdownBody
+                content={blog.rawContent}
+                assetPrefix={cdnUrl(blog.path)}
+                blogs={[]}
               />
-            </div>
+            </Suspense>
           </div>
-          <div className="flex w-max-[135px] mt-6 max-md:justify-center">
-            <Link to="/news" viewTransition>
-              <NetworkButton variant="primary" className="group">
-                {t('news.backToAll')}
-              </NetworkButton>
-            </Link>
-          </div>
+
+          <DividerSimple className="my-15 max-lg:hidden" />
+
+          <BlogSidebar
+            currentBlogId={blog.id}
+            currentCategory={blog.category}
+          />
         </PageBlock>
       )}
     </>

@@ -75,11 +75,11 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="mt-25 pt-3 md:pt-6 w-full">
+    <footer className="mt-28 md:mt-31 w-full">
       {/* Desktop */}
       <div
         className={cn(
-          'w-full max-md:hidden bg-footer text-white pb-20',
+          'w-full max-md:hidden bg-footer text-white pt-15 pb-25',
           backgroundClass,
         )}
       >
@@ -123,7 +123,7 @@ export const Footer = () => {
 
       {/* Mobile */}
       <div className={cn('flex w-full flex-col md:hidden', backgroundClass)}>
-        <div className="flex flex-col w-full p-4 pb-0 pt-6 gap-6">
+        <div className="flex flex-col w-full p-4 pb-0 pt-8 gap-6">
           <div className="w-full flex flex-col justify-center gap-6">
             <Image
               src={Logo}
