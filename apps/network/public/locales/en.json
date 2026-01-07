@@ -217,7 +217,6 @@
     "forum": {
       "button": "Learn more",
       "subtitle": "Every October, thousands of the brightest Bitcoin minds gather in Lugano for the annual Plan ₿ Forum. Leveraging the Forum impact, our team expands the agenda with an addition of more than 50 workshops and 40 events, notably via the Plan ₿ Week, Spazio 21, and the Masterclasses.",
-
       "tag": "Conference",
       "title": "Plan ₿ Forum"
     },
@@ -253,6 +252,7 @@
   },
   "news": {
     "backToAll": "Back to all articles",
+    "continueReading": "Continue reading...",
     "news": "News",
     "noNews": "There are no news at this time.",
     "pastArticles": "Past articles",

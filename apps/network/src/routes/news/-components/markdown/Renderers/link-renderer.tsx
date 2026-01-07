@@ -9,7 +9,7 @@ import { getBlog, getCourse, getTutorial } from '#src/utils/link-preview.tsx';
 import { resourceImgUrl } from '#src/utils/misc.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 
-const linkStyles = cva('text-base tracking-wide', {
+const linkStyles = cva('text-base tracking-wide break-words', {
   defaultVariants: {
     intent: 'default',
   },

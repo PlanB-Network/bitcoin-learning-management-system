@@ -71,28 +71,28 @@ function SingleBlogDetail() {
           <Breadcrumbs />
 
           <Image
-            className="rounded-2xl mx-auto max-h-[244px] lg:max-h-[382px] w-full object-cover"
+            className="rounded-2xl mx-auto max-h-[244px] md:max-h-[382px] w-full object-cover"
             src={resourceImgUrl(blog)}
             alt={blog.title}
             loading="lazy"
             breakpoints={{ default: 1400 }}
           />
 
-          <div className="flex flex-col gap-5.5 max-lg:mb-8">
-            <h1 className="display-small lg:title-extra-large mt-6">
+          <div className="flex flex-col gap-5.5 max-md:mb-8">
+            <h1 className="display-small md:title-extra-large mt-6">
               {blog.title}
             </h1>
             {blog.author && (
               <div className="flex items-center gap-2.5">
-                <span className="body-base-bold lg:title-medium text-gray-800">
+                <span className="body-base-bold md:title-medium text-gray-800">
                   {blog.author}
                 </span>
                 {blog.date && (
                   <>
-                    <span className="text-gray-500 body-base lg:title-base">
+                    <span className="text-gray-500 body-base md:title-base">
                       •
                     </span>
-                    <span className="text-gray-500 body-base lg:title-base">
+                    <span className="text-gray-500 body-base md:title-base">
                       {formatDate(blog.date)}
                     </span>
                   </>
@@ -102,9 +102,9 @@ function SingleBlogDetail() {
             <p className="body-base">{blog.description}</p>
           </div>
 
-          <DividerSimple className="my-6 max-lg:hidden" />
+          <DividerSimple className="my-6 max-md:hidden" />
 
-          <div className="flex flex-col max-lg:mb-15">
+          <div className="flex flex-col max-md:mb-15">
             <Suspense fallback={<Loader variant="black" size={'s'} />}>
               <BlogMarkdownBody
                 content={blog.rawContent}
@@ -114,7 +114,7 @@ function SingleBlogDetail() {
             </Suspense>
           </div>
 
-          <DividerSimple className="my-15 max-lg:hidden" />
+          <DividerSimple className="my-15 max-md:hidden" />
 
           <BlogSidebar
             currentBlogId={blog.id}

@@ -8,7 +8,7 @@ const paragraphStyles = cva('text-base tracking-wide', {
   },
   variants: {
     intent: {
-      blog: 'mb-4 text-base tracking-wide md:text-justify text-start',
+      blog: 'mb-4 text-base tracking-wide md:text-justify text-start break-words',
       conference: 'desktop-subtitle1 text-neutral-500',
       default: 'text-blue-950 body-16px',
       general: 'text-blue-950 text-base tracking-wide',

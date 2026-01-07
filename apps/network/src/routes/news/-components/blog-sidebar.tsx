@@ -5,7 +5,7 @@ import { Link } from '@tanstack/react-router';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbChevronRight } from 'react-icons/tb';
-import MessageIcon from '#src/assets/icons/icon-message.svg';
+import PaperIcon from '#src/assets/icons/paper-sheet.svg';
 import { formatMonthAndYear } from '#src/utils/misc.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 
@@ -49,35 +49,40 @@ const BlogSidebar: React.FC<BlogSidebarProps> = ({
     .slice(0, 10);
 
   return (
-    <div className="mx-auto md:p-2 rounded-2xl border border-gray-100">
-      <div className="flex flex-row items-center py-5 gap-5">
+    <div className="w-full mx-auto md:p-2 rounded-2xl border border-gray-100 overflow-hidden">
+      <div className="flex flex-row items-center p-4 gap-4">
         <Image
-          className="size-[35px] ml-2.5"
-          src={MessageIcon}
+          className="h-8"
+          src={PaperIcon}
           alt=""
           loading="lazy"
-          breakpoints={{ default: 200 }}
+          breakpoints={{ default: 120 }}
         />
-        <h3 className="subtitle-large-18px capitalize">
-          {t('news.previousNews')}
-        </h3>
+        <span className="title-small md:title-medium text-orange-500">
+          {t('news.continueReading')}
+        </span>
       </div>
 
-      <ul className="list-none">
+      <ul className="list-none flex flex-col w-full">
         {filteredBlogs.map((blog) => (
-          <li key={blog.id} className="flex flex-row items-center">
+          <li
+            key={blog.id}
+            className="w-full border-b border-gray-100 last:border-b-0 first:rounded-t-2xl last:rounded-b-2xl overflow-hidden"
+          >
             <Link
               to={`/news/article/${formatNameForURL(blog.title)}-${blog.id}`}
-              className="flex items-center justify-between py-3 text-start lg:px-2.5 w-full cursor-pointer"
+              className="flex items-center w-full py-3 px-4 hover:bg-neutral-50 text-gray-900 hover:text-orange-500"
             >
-              <div className="flex flex-row items-center truncate">
-                <p className="subtitle-medium-16px text-gray-600 min-w-[77px]">
-                  {formatMonthAndYear(new Date(blog.date))}
-                </p>
-                <TbChevronRight size={20} className="" />
-                <p className="subtitle-medium-med-16px truncate">
+              <div className="flex flex-row items-center justify-between w-full gap-4">
+                <p className="body-base-bold md:title-base truncate">
                   {blog.title}
                 </p>
+                <span className="flex items-center gap-2 shrink-0">
+                  <p className="body-small text-gray-300 max-md:hidden">
+                    {formatMonthAndYear(new Date(blog.date))}
+                  </p>
+                  <TbChevronRight className="text-gray-200 size-4 md:size-6" />
+                </span>
               </div>
             </Link>
           </li>
