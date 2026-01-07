@@ -1,4 +1,5 @@
 import { ExamType } from '@blms/constants';
+import { sql } from '@blms/database';
 import type { PartialExamQuestion } from '@blms/types';
 import type { Dependencies } from '../../../dependencies.js';
 import { getExamInfo } from '../queries/get-exam-info.js';
@@ -35,6 +36,22 @@ export const createStartExamAttempt = ({ postgres }: Dependencies) => {
 
         if (now.getTime() > examInfo.endDate.getTime()) {
           throw new Error('Exam is over');
+        }
+      }
+
+      if (examInfo.isSingleTrialExam) {
+        const existingAttempt = await postgres.exec(sql<{ id: string }[]>`
+          SELECT id FROM users.exam_attempts
+          WHERE uid = ${options.uid}
+            AND course_id = ${options.courseId}
+            AND chapter_id = ${options.chapterId}
+            AND exam_type = 'single_trial'
+            AND finalized = true
+          LIMIT 1
+       `);
+
+        if (existingAttempt.length > 0) {
+          throw new Error('You have already completed this exam.');
         }
       }
     }
