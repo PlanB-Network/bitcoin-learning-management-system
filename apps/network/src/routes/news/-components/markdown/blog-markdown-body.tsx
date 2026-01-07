@@ -32,24 +32,28 @@ const BlogMarkdownBody = ({
           <CodeRenderer className={className}>{children}</CodeRenderer>
         ),
         h1: ({ children }) => (
-          <h1 className="title-large mb-4">
+          <h1 className="title-base md:title-large mb-4">
             <div className="flex w-auto items-center text-start">
               {children}
             </div>
           </h1>
         ),
         h2: ({ children }) => (
-          <h2 className="title-medium mb-4">
+          <h2 className="title-small md:title-medium mb-4">
             <div className="flex w-auto items-center text-start">
               {children}
             </div>
           </h2>
         ),
         h3: ({ children }) => (
-          <h3 className="title-base mb-4 text-start">{children}</h3>
+          <h3 className="title-small-sb-16px md:title-base mb-4 text-start">
+            {children}
+          </h3>
         ),
         h4: ({ children }) => (
-          <h3 className="title-small mb-4 text-start">{children}</h3>
+          <h4 className="title-small-med-16px md:title-small mb-4 text-start">
+            {children}
+          </h4>
         ),
         img: ({ src, alt }) => <ImageVideoRenderer src={src} alt={alt} />,
         li: ({ children }) => (
