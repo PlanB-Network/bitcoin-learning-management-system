@@ -169,7 +169,7 @@ export const ReviewModal = ({
             label={t('words.category')}
             value={
               content.type
-                ? capitalize(content.type)
+                ? t(`educatorContent.types.${content.type}`)
                 : t('educatorContent.reviewModal.unknown')
             }
             icon={TbFile}

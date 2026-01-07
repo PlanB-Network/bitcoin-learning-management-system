@@ -193,7 +193,7 @@ function EducatorContentDetail() {
               label={t('words.category')}
               value={
                 item.type
-                  ? capitalize(item.type)
+                  ? t(`educatorContent.types.${item.type}`)
                   : t('educatorContent.reviewModal.unknown')
               }
               icon={TbFile}

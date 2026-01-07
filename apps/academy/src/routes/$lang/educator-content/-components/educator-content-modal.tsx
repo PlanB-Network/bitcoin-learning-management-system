@@ -567,23 +567,28 @@ export const EducatorContentModal = ({
                   className="flex flex-col gap-1"
                   ref={field.ref}
                 >
+                  AAA
                   {Object.values(EducatorContentType)
+                    .map((type) => ({
+                      id: type,
+                      name: t(`educatorContent.types.${type}`),
+                    }))
                     .sort((a, b) => {
-                      if (a === EducatorContentType.Other) return 1;
-                      if (b === EducatorContentType.Other) return -1;
-                      return a.localeCompare(b);
+                      if (a.id === EducatorContentType.Other) return 1;
+                      if (b.id === EducatorContentType.Other) return -1;
+                      return a.name.localeCompare(b.name);
                     })
-                    .map((type) => (
+                    .map(({ id, name }) => (
                       <div
-                        key={type}
+                        key={id}
                         className="flex items-center space-x-3 space-y-0"
                       >
-                        <RadioGroupItem value={type} id={type} />
+                        <RadioGroupItem value={id} id={id} />
                         <label
-                          htmlFor={type}
-                          className="font-normal capitalize cursor-pointer"
+                          htmlFor={id}
+                          className="font-normal cursor-pointer"
                         >
-                          {type}
+                          {name}
                         </label>
                       </div>
                     ))}

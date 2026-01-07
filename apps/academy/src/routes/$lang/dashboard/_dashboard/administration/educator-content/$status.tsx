@@ -190,16 +190,16 @@ function AdminEducatorContent() {
       onClick: () => setSelectedType('all'),
     },
     ...Object.values(EducatorContentType)
-      .sort((a, b) => {
-        if (a === EducatorContentType.Other) return 1;
-        if (b === EducatorContentType.Other) return -1;
-        return a.localeCompare(b);
-      })
       .map((type) => ({
         id: type,
-        name: capitalize(type),
+        name: t(`educatorContent.types.${type}`),
         onClick: () => setSelectedType(type),
-      })),
+      }))
+      .sort((a, b) => {
+        if (a.id === EducatorContentType.Other) return 1;
+        if (b.id === EducatorContentType.Other) return -1;
+        return a.name.localeCompare(b.name);
+      }),
   ];
 
   const languages = [
