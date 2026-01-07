@@ -1,6 +1,6 @@
 import { cn, Loader } from '@blms/ui';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import FilterIcon from '#src/assets/icons/Filter-black.svg';
@@ -12,6 +12,7 @@ import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { useQuery } from '@tanstack/react-query';
 import { PageLayout } from '#src/components/page-layout.tsx';
+import { generateIcs } from '#src/utils/ics.ts';
 import { EventCalendar } from '../dashboard/-components/event-calendar.tsx';
 
 type CalenderEventType = 'class' | 'event';
@@ -30,39 +31,61 @@ function DashboardCalendar() {
 
   const courseColor = ['#FF5C00', '#AD3F00'];
 
+  const [filter, setFilter] = useState<CalenderEventType[]>(['class', 'event']);
+
   const { data: events } = useQuery(
-    trpc.user.calendar.getCalendarEvents.queryOptions(
-      { upcomingEvents: true, userSpecific: true },
-      {
-        select: (allEvents) =>
-          allEvents
-            ?.filter((e) =>
-              filter.length > 0
-                ? filter.includes(e.type as CalenderEventType)
-                : true,
-            )
-            .map<CalendarEvent>((e) => ({
-              addressLine1: e.addressLine1,
-              end: e.endDate!,
-              id: e.id,
-              isOnline: e.isOnline,
-              organizer: e.organizer,
-              start: e.startDate!,
-              subId: e.subId,
-              title: e.name,
-              type: e.type,
-            })),
-      },
-    ),
+    trpc.user.calendar.getCalendarEvents.queryOptions({
+      upcomingEvents: true,
+      userSpecific: true,
+    }),
   );
 
-  const [filter, setFilter] = useState<CalenderEventType[]>(['class', 'event']);
+  const filteredEvents = useMemo(() => {
+    return (
+      events
+        ?.filter((e) =>
+          filter.length > 0
+            ? filter.includes(e.type as CalenderEventType)
+            : false,
+        )
+        .map<CalendarEvent>((e) => ({
+          addressLine1: e.addressLine1,
+          end: e.endDate!,
+          id: e.id,
+          isOnline: e.isOnline,
+          organizer: e.organizer,
+          start: e.startDate!,
+          subId: e.subId,
+          title: e.name,
+          type: e.type,
+        })) ?? []
+    );
+  }, [events, filter]);
 
   useEffect(() => {
     if (session === null) {
       navigate({ to: '/' });
     }
   }, [session]);
+
+  const downloadIcs = () => {
+    if (!events) {
+      return;
+    }
+
+    const icsContent = generateIcs(filteredEvents);
+    const blob = new Blob([icsContent], {
+      type: 'text/calendar;charset=utf-8',
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'calendar-plan-b-academy.ics');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
 
   if (!session) {
     return <Loader />;
@@ -72,6 +95,12 @@ function DashboardCalendar() {
     <PageLayout
       title={t('dashboard.calendar.personalCalendar')}
       layoutSize="max"
+      actionButtons={[
+        {
+          text: t('dashboard.calendar.downloadIcs'),
+          onClick: downloadIcs,
+        },
+      ]}
     >
       <div className="flex flex-col w-full gap-4">
         <div className="hidden max-md:px-6 lg:flex">
@@ -128,7 +157,7 @@ function DashboardCalendar() {
           ))}
         </div>
 
-        <EventCalendar events={events ?? []} />
+        <EventCalendar events={filteredEvents ?? []} />
       </div>
     </PageLayout>
   );

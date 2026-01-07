@@ -893,6 +893,7 @@
       "yesCancel": "Yes, cancel"
     },
     "calendar": {
+      "downloadIcs": "Download calendar",
       "eventType": {
         "class": "Classes",
         "event": "Events"
