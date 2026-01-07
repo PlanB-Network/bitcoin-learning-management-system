@@ -30,6 +30,14 @@ export const Route = createFileRoute('/$lang/educator-content/')({
 });
 
 const ITEMS_PER_PAGE = 10;
+const FILTERS_STORAGE_KEY = 'educatorContentFilters';
+
+interface SavedFilters {
+  selectedType: EducatorContentType | 'all';
+  selectedLanguage: string;
+  searchQuery: string;
+  sortBy: 'recent' | 'downloads';
+}
 
 function RouteComponent() {
   const { i18n, t } = useTranslation();
@@ -69,14 +77,47 @@ function RouteComponent() {
 
   const isMobile = useSmaller('lg');
 
+  // Load saved filters from localStorage
+  const loadSavedFilters = (): Partial<SavedFilters> => {
+    try {
+      const saved = localStorage.getItem(FILTERS_STORAGE_KEY);
+      return saved ? JSON.parse(saved) : {};
+    } catch {
+      return {};
+    }
+  };
+
+  const savedFilters = loadSavedFilters();
+
   const [selectedType, setSelectedType] = useState<EducatorContentType | 'all'>(
-    'all',
+    savedFilters.selectedType || 'all',
   );
-  const [selectedLanguage, setSelectedLanguage] = useState<string>('all');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [sortBy, setSortBy] = useState<'recent' | 'downloads'>('recent');
+  const [selectedLanguage, setSelectedLanguage] = useState<string>(
+    savedFilters.selectedLanguage || 'all',
+  );
+  const [searchQuery, setSearchQuery] = useState(
+    savedFilters.searchQuery || '',
+  );
+  const [sortBy, setSortBy] = useState<'recent' | 'downloads'>(
+    savedFilters.sortBy || 'recent',
+  );
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+
+  // Save filters to localStorage whenever they change
+  useEffect(() => {
+    const filtersToSave: SavedFilters = {
+      selectedType,
+      selectedLanguage,
+      searchQuery,
+      sortBy,
+    };
+    try {
+      localStorage.setItem(FILTERS_STORAGE_KEY, JSON.stringify(filtersToSave));
+    } catch (error) {
+      console.error('Failed to save filters to localStorage:', error);
+    }
+  }, [selectedType, selectedLanguage, searchQuery, sortBy]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -137,16 +178,16 @@ function RouteComponent() {
       onClick: () => setSelectedType('all'),
     },
     ...Object.values(EducatorContentType)
-      .sort((a, b) => {
-        if (a === EducatorContentType.Other) return 1;
-        if (b === EducatorContentType.Other) return -1;
-        return a.localeCompare(b);
-      })
       .map((type) => ({
         id: type,
         name: t(`educatorContent.types.${type}`),
         onClick: () => setSelectedType(type),
-      })),
+      }))
+      .sort((a, b) => {
+        if (a.id === EducatorContentType.Other) return 1;
+        if (b.id === EducatorContentType.Other) return -1;
+        return a.name.localeCompare(b.name);
+      }),
   ];
 
   const languages = [
