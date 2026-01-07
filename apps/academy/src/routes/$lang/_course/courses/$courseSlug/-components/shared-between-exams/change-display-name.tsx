@@ -6,7 +6,7 @@ import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { AppContext } from '#src/providers/context.tsx';
-import { ChangeDisplayNameModal } from '#src/routes/$lang/dashboard/_dashboard/-components/change-display-name-modal.tsx';
+import { ChangeDisplayNameModal } from '#src/routes/$lang/dashboard/-components/change-display-name-modal.tsx';
 
 export const ChangeDisplayName = () => {
   const { user } = useContext(AppContext);

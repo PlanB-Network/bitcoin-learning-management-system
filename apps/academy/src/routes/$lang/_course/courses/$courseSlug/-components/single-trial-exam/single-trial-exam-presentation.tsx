@@ -17,7 +17,7 @@ import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { AppContext } from '#src/providers/context.tsx';
-import { ChangeDisplayNameModal } from '#src/routes/$lang/dashboard/_dashboard/-components/change-display-name-modal.tsx';
+import { ChangeDisplayNameModal } from '#src/routes/$lang/dashboard/-components/change-display-name-modal.tsx';
 import { formatTimeRange } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 import { ChangeDisplayName } from '../shared-between-exams/change-display-name.tsx';

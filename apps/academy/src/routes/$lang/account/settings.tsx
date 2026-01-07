@@ -22,7 +22,7 @@ import { PageLayout } from '#src/components/page-layout.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.ts';
-import { ChangePasswordModal } from '../dashboard/_dashboard/-components/change-password-modal.tsx';
+import { ChangePasswordModal } from '../dashboard/-components/change-password-modal.tsx';
 import { showEmailProfileNotificationNavbar } from './index.tsx';
 
 export const Route = createFileRoute('/$lang/account/settings')({

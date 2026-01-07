@@ -12,7 +12,7 @@ import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { useQuery } from '@tanstack/react-query';
 import { PageLayout } from '#src/components/page-layout.tsx';
-import { EventCalendar } from '../dashboard/_dashboard/-components/event-calendar.tsx';
+import { EventCalendar } from '../dashboard/-components/event-calendar.tsx';
 
 type CalenderEventType = 'class' | 'event';
 

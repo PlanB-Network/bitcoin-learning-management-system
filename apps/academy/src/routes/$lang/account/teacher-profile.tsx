@@ -15,7 +15,7 @@ import Nostr from '#src/assets/icons/nostr.svg?react';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { AppContext } from '#src/providers/context.js';
 import { isUUID, resourceImgUrl, trpc } from '#src/utils/index.ts';
-import { MakeModificationBlock } from '../dashboard/_dashboard/professor/-components/make-modification.tsx';
+import { MakeModificationBlock } from '../dashboard/professor/-components/make-modification.tsx';
 import { showEmailProfileNotificationNavbar } from './index.tsx';
 
 export const Route = createFileRoute('/$lang/account/teacher-profile')({
