@@ -1093,6 +1093,13 @@
       "when": 1766136112766,
       "tag": "0155_sticky_bloodstrike",
       "breakpoints": true
+    },
+    {
+      "idx": 156,
+      "version": "7",
+      "when": 1767778880759,
+      "tag": "0156_faulty_slapstick",
+      "breakpoints": true
     }
   ]
 }

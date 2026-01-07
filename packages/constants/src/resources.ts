@@ -15,6 +15,7 @@ export enum EventType {
 export enum EducatorContentType {
   Art = 'art',
   Booklet = 'booklet',
+  Curriculum = 'curriculum',
   Flyer = 'flyer',
   Game = 'game',
   Other = 'other',

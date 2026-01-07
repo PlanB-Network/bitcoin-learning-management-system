@@ -6,6 +6,7 @@ export interface EducatorContent {
   type:
     | 'art'
     | 'booklet'
+    | 'curriculum'
     | 'flyer'
     | 'game'
     | 'other'
@@ -44,6 +45,7 @@ export interface JoinedEducatorContent {
   type:
     | 'art'
     | 'booklet'
+    | 'curriculum'
     | 'flyer'
     | 'game'
     | 'other'

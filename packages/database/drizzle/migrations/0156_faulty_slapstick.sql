@@ -1,0 +1,1 @@
+ALTER TYPE "public"."educator_content_type" ADD VALUE 'curriculum' BEFORE 'flyer';

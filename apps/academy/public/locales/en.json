@@ -1434,6 +1434,7 @@
     "types": {
       "art": "Art",
       "booklet": "Booklet",
+      "curriculum": "Curriculum",
       "flyer": "Flyer",
       "game": "Game",
       "other": "Other",
