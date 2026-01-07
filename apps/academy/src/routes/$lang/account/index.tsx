@@ -19,9 +19,9 @@ import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl, setProfilePicture } from '#src/services/user.js';
 import { logout } from '#src/utils/session-utils.ts';
-import { ChangeDisplayNameModal } from '../dashboard/_dashboard/-components/change-display-name-modal.tsx';
-import { ChangeEmailModal } from '../dashboard/_dashboard/-components/change-email-modal.tsx';
-import { ChangePictureModal } from '../dashboard/_dashboard/-components/change-picture-modal.tsx';
+import { ChangeDisplayNameModal } from '../dashboard/-components/change-display-name-modal.tsx';
+import { ChangeEmailModal } from '../dashboard/-components/change-email-modal.tsx';
+import { ChangePictureModal } from '../dashboard/-components/change-picture-modal.tsx';
 
 export const Route = createFileRoute('/$lang/account/')({
   component: Account,

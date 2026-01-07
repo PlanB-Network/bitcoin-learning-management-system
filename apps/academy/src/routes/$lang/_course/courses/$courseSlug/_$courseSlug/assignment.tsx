@@ -45,7 +45,7 @@ import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { CourseContext } from '#src/providers/courseContext.tsx';
-import { WeightIndicator } from '#src/routes/$lang/dashboard/_dashboard/professor/-components/exam-results.tsx';
+import { WeightIndicator } from '#src/routes/$lang/dashboard/professor/-components/exam-results.tsx';
 import { formatDate, formatDateRange, formatTime } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 import { CourseTitle } from '../-components/course-title.tsx';

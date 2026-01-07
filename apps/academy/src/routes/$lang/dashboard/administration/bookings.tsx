@@ -1,0 +1,64 @@
+import { UserRole } from '@blms/constants';
+import { canAccess } from '@blms/shared/auth';
+import { Loader, TextTag } from '@blms/ui';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import { useContext, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { PageLayout } from '#src/components/page-layout.tsx';
+import { AppContext } from '#src/providers/context.tsx';
+import BookingTable from '../-components/booking-table.tsx';
+
+export const Route = createFileRoute(
+  '/$lang/dashboard/administration/bookings',
+)({
+  component: AdminBookings,
+});
+
+function AdminBookings() {
+  const { t } = useTranslation();
+
+  const navigate = useNavigate();
+
+  const { session } = useContext(AppContext);
+
+  useEffect(() => {
+    if (session === undefined) return;
+    if (!session) {
+      navigate({ to: '/' });
+    } else if (!canAccess(UserRole.Admin)(session?.user)) {
+      navigate({ to: '/my-courses' });
+    }
+  }, [session]);
+
+  if (!session) {
+    return <Loader />;
+  }
+
+  return (
+    <PageLayout
+      layoutSize="wide"
+      title={t('dashboard.adminPanel.bookingsPanel')}
+      hideTitle
+    >
+      <section className="flex flex-col gap-4 lg:gap-8">
+        <div className="flex flex-col">
+          <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-5 mb-5 md:mb-11">
+            <span className="text-dashboardSectionText text-s text-2xl md:display-small-32px">
+              {t('dashboard.adminPanel.bookingsPanel')}
+            </span>
+            <TextTag size={'base'} className="uppercase">
+              {t('words.admin')}
+            </TextTag>
+          </div>
+          <span className="text-2xl mb-2.5 md:mb-4">
+            {t('dashboard.adminPanel.upcomingBookings')}
+          </span>
+          <span className="text-neutral-600">
+            {t('dashboard.adminPanel.upcomingBookingsSubtitle')}
+          </span>
+        </div>
+        <BookingTable />
+      </section>
+    </PageLayout>
+  );
+}

@@ -58,7 +58,7 @@ classDiagram
 ### Route Structure
 
 ```
-apps/academy/src/routes/$lang/dashboard/_dashboard/administration/
+apps/academy/src/routes/$lang/dashboard/administration/
 ├── translation-panel/
 │   ├── index.tsx                 # Router entry, renders <DashboardAdministrationTranslationPanel/>
 │   ├── user/$userId.tsx          # Contributor details page

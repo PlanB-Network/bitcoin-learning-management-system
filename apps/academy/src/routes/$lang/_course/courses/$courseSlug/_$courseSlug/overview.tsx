@@ -13,8 +13,8 @@ import type { CalendarEvent } from '#src/components/Calendar/calendar-event.ts';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { CourseCurriculum } from '#src/patterns/course-curriculum.tsx';
 import { CourseContext } from '#src/providers/courseContext.tsx';
-import { ProgressBar } from '#src/routes/$lang/dashboard/_dashboard/-components/courses-progress-list.tsx';
-import { EventCalendar } from '#src/routes/$lang/dashboard/_dashboard/-components/event-calendar.tsx';
+import { ProgressBar } from '#src/routes/$lang/dashboard/-components/courses-progress-list.tsx';
+import { EventCalendar } from '#src/routes/$lang/dashboard/-components/event-calendar.tsx';
 import {
   getNotificationDateString,
   getNotificationIcon,
