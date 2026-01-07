@@ -9,15 +9,21 @@ export const calculateCourseScoreForUser = (uid: string, courseId: string) => {
         ucp.course_id,
         (
           COALESCE((
-            SELECT SUM(ea.score::float * ccl.rate_weight / 100)
-            FROM users.exam_attempts ea
+            SELECT SUM(best.score::float * ccl.rate_weight / 100)
+            FROM (
+              -- Get the best (MAX) score per chapter to handle edge cases
+              -- where a user has multiple attempts on single-trial exams
+              SELECT ea.chapter_id, ea.course_id, MAX(ea.score) as score
+              FROM users.exam_attempts ea
+              WHERE
+                ea.exam_type = 'single_trial'
+                AND ea.uid = ucp.uid
+                AND ea.course_id = ucp.course_id
+              GROUP BY ea.chapter_id, ea.course_id
+            ) best
             JOIN content.course_chapters_localized ccl
-              ON ea.chapter_id = ccl.chapter_id AND ea.course_id = ccl.course_id
-            WHERE
-              ea.exam_type = 'single_trial'
-              AND ea.uid = ucp.uid
-              AND ea.course_id = ucp.course_id
-              AND ccl.language = cc.original_language
+              ON best.chapter_id = ccl.chapter_id AND best.course_id = ccl.course_id
+            WHERE ccl.language = cc.original_language
           ), 0)
           +
           COALESCE(ucp.assignment_grade::float  * cc.assignment_weight / 100, 0)
@@ -38,21 +44,27 @@ export const calculateCourseScoreForUser = (uid: string, courseId: string) => {
 
 export const calculateCourseScoreForAllUsers = (courseId: string) => {
   return sql`
-    WITH exam_scores AS (
-      SELECT
-        ea.uid,
-        ea.course_id,
-        ROUND(SUM(ea.score::float * ccl.rate_weight / 100)) AS exam_score
+    WITH best_chapter_scores AS (
+      -- First, get the best (MAX) score per chapter per user
+      -- to handle edge cases where a user has multiple attempts on single-trial exams
+      SELECT ea.uid, ea.course_id, ea.chapter_id, MAX(ea.score) as score
       FROM users.exam_attempts ea
+      WHERE ea.exam_type = 'single_trial'
+        AND ea.course_id = ${courseId}
+      GROUP BY ea.uid, ea.course_id, ea.chapter_id
+    ),
+    exam_scores AS (
+      SELECT
+        best.uid,
+        best.course_id,
+        ROUND(SUM(best.score::float * ccl.rate_weight / 100)) AS exam_score
+      FROM best_chapter_scores best
       JOIN content.course_chapters_localized ccl
-        ON ea.chapter_id = ccl.chapter_id
-        AND ea.course_id = ccl.course_id
-      JOIN content.courses cc ON ea.course_id = cc.id
-      WHERE
-        cc.id = ${courseId} AND
-        ea.exam_type = 'single_trial'
-        AND ccl.language = cc.original_language
-      GROUP BY ea.uid, ea.course_id
+        ON best.chapter_id = ccl.chapter_id
+        AND best.course_id = ccl.course_id
+      JOIN content.courses cc ON best.course_id = cc.id
+      WHERE ccl.language = cc.original_language
+      GROUP BY best.uid, best.course_id
     ),
     computed_scores AS (
       SELECT
