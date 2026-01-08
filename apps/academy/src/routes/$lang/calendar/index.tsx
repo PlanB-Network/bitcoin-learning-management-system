@@ -12,7 +12,7 @@ import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { useQuery } from '@tanstack/react-query';
 import { PageLayout } from '#src/components/page-layout.tsx';
-import { generateIcs } from '#src/utils/ics.ts';
+// import { generateIcs } from '#src/utils/ics.ts';
 import { EventCalendar } from '../dashboard/-components/event-calendar.tsx';
 
 type CalenderEventType = 'class' | 'event';
@@ -68,24 +68,24 @@ function DashboardCalendar() {
     }
   }, [session]);
 
-  const downloadIcs = () => {
-    if (!events) {
-      return;
-    }
+  // const downloadIcs = () => {
+  //   if (!events) {
+  //     return;
+  //   }
 
-    const icsContent = generateIcs(filteredEvents);
-    const blob = new Blob([icsContent], {
-      type: 'text/calendar;charset=utf-8',
-    });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('download', 'calendar-plan-b-academy.ics');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  };
+  //   const icsContent = generateIcs(filteredEvents);
+  //   const blob = new Blob([icsContent], {
+  //     type: 'text/calendar;charset=utf-8',
+  //   });
+  //   const url = URL.createObjectURL(blob);
+  //   const link = document.createElement('a');
+  //   link.href = url;
+  //   link.setAttribute('download', 'calendar-plan-b-academy.ics');
+  //   document.body.appendChild(link);
+  //   link.click();
+  //   document.body.removeChild(link);
+  //   URL.revokeObjectURL(url);
+  // };
 
   if (!session) {
     return <Loader />;
@@ -95,12 +95,12 @@ function DashboardCalendar() {
     <PageLayout
       title={t('dashboard.calendar.personalCalendar')}
       layoutSize="max"
-      actionButtons={[
-        {
-          text: t('dashboard.calendar.downloadIcs'),
-          onClick: downloadIcs,
-        },
-      ]}
+      // actionButtons={[
+      //   {
+      //     text: t('dashboard.calendar.downloadIcs'),
+      //     onClick: downloadIcs,
+      //   },
+      // ]}
     >
       <div className="flex flex-col w-full gap-4">
         <div className="hidden max-md:px-6 lg:flex">
