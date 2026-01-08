@@ -97,7 +97,8 @@
     "login": "Prihlásiť sa",
     "oldPassword": "Staré heslo",
     "signUp": "Zaregistrovať sa",
-    "saveProgress": "Uložte svoj pokrok"
+    "saveProgress": "Uložte svoj pokrok",
+    "signUpToSave": "Zaregistrujte na uloženie"
   },
   "bCert": {
     "bCertDescription": "₿-CERT je konečný test o Bitcoine, ktorý je navrhnutý na vyhodnotenie vašich vedomostí o Bitcoine a súvisiacich témach.\n\nZískajte svoj certifikát ₿-CERT a preukážte svoje odborné znalosti v oblasti Bitcoinu, čo otvára dvere k pracovným pozíciám v tomto odbore.",
@@ -208,7 +209,8 @@
       "thanksTipping": "Môžete poďakovať tým, že dáte profesorovi tringelt.",
       "creditsCollaboration": "Tento kurz je výsledkom spolupráce: každá lekcia, preklad a revízia je možná vďaka práci prispievateľov. Z tohto dôvodu neustále hľadáme korektorov na preklad nášho obsahu do mnohých jazykov.\n\nAk sa chcete stať korektorom, prosím, ozvite sa v našej <0>Telegram</0> skupine a prečítajte si náš <1>návod</1>.\n\nPomôžte šíriť vedomosti o Bitcoine:",
       "openSourceContentDescription": "Obsah tohto kurzu je voľne dostupný - licencovaný pod <0>CC BY-SA</0> - a preto môže byť voľne zdieľaný a používaný, pokiaľ je uvedený pôvodný zdroj.",
-      "openSourceContentTitle": "Open-source obsah"
+      "openSourceContentTitle": "Open-source obsah",
+      "courseCoordinator": "Koordinátor kurzu"
     },
     "exam": {
       "answersReview": "Vyhodnotenie odpovedí",
@@ -880,7 +882,8 @@
         "class": "Triedy",
         "event": "Udalosti"
       },
-      "personalCalendar": "Osobný kalendár"
+      "personalCalendar": "Osobný kalendár",
+      "downloadIcs": "Stiahnuť kalendár"
     },
     "careerPortal": {
       "acceptedFormat": "Akceptovaný formát súborov: pdf / Maximálna veľkosť súboru: 10 MB.",
@@ -1432,7 +1435,8 @@
       "other": "Ostatné",
       "presentation": "Prezentácia",
       "sticker": "Nálepka",
-      "workshop": "Workshop"
+      "workshop": "Workshop",
+      "curriculum": "Osnova"
     },
     "uploadFiles": "Alebo nahrajte súbory",
     "uploadForReview": "Nahrať na kontrolu",
@@ -1530,5 +1534,277 @@
   },
   "filters": {
     "topics": "Témy"
+  },
+  "footer": {
+    "FOSSOpenContent": "FOSS & Otvorený obsah",
+    "becomeATeacher": "Staňte sa <0>učiteľom</0>",
+    "proudlyPartOf": "Hrdým členom <0>Plan ₿ Network</0>"
+  },
+  "forms": {
+    "browse": "Prehliadať",
+    "replace": "Nahradiť"
+  },
+  "glossary": {
+    "definition": "Definícia",
+    "learnMore": "Dozvedieť sa viac",
+    "relatedWords": "Súvisiace slová:",
+    "showMoreWords": "Zobraz viac slov",
+    "term": "Termín"
+  },
+  "home": {
+    "aboutUsSection": {
+      "bitcoinFocusContent": "Objavujeme Bitcoin revolúciu od jeho základnej vrstvy po okolité peer-to-peer komunikácie.",
+      "bitcoinFocusTitle": "Zameranie na bitcoin",
+      "communityContent": "Sme predovšetkým komunitou nadšencov, ktorí si navzájom pomáhajú na Bitcoin ceste",
+      "communityTitle": "Komunita",
+      "openSourceContent": "Podporujeme voľný tok poznatkov a pomáhame tvoriť open-source riešenia",
+      "openSourceTitle": "Open source",
+      "privacyContent": "Veríme, že súkromie je jedným z najzákladnejších ľudských práv, ktoré je nevyhnutné pre pokrok",
+      "privacyTitle": "Súkromie"
+    },
+    "blogSection": {
+      "seeAll": "Vidieť všetko"
+    },
+    "courseSection": {
+      "checkAllCourses": "Prezrieť všetky kurzy"
+    },
+    "languageSection": {
+      "availableLanguages": "Dostupné jazyky",
+      "link": "Pomôžte nám preložiť akadémiu"
+    }
+  },
+  "imagesAlt": {
+    "rabbit404": "králik svietiaci baterkou na znak 404",
+    "underConstructionImage": "Ilustrácia niekoľkých králikov pracujúcich na stavenisku"
+  },
+  "labs": {
+    "coordinatedBy": "Táto laboratórium koordinuje",
+    "description1": "Plan ₿ Labs sú študijné skupiny navrhnuté tak, aby študentom poskytovali pravidelné praktické a interaktívne hodiny. Prostredníctvom týchto študijných skupín sa študenti a profesori zapájajú do diskusií, debatujú o najnovších výskumoch, riešia problémy reálneho sveta a aplikujú teoretické koncepty.",
+    "description2": "Pripojte sa k laboratóriu, ktoré súvisí s vaším odborom štúdia a vylepšite svoj študijný zážitok!",
+    "planBLabs": "Plan ₿ Labs",
+    "presentation": {
+      "link": "Objavte Plan ₿ Labs",
+      "subtitle": "Pripojte sa do laboratória, kde sa môžete učiť, diskutovať a rozvíjať!"
+    },
+    "title": "Praktické a interaktívne hodiny pre kontinuálne vzdelávanie"
+  },
+  "lectures": {
+    "buyVideoToUnlock": "Kúpte si video, aby ste ho odomkli",
+    "checkFullCourse": "Pozrite si celý kurz",
+    "lecturePartCourse": "Tento záznam prednášky je súčasťou kurzu <0>{{courseTitle}}</0>.\nPonorte sa do celého kurzu, aby ste zvládli celý koncept a odomkli svoj plný potenciál!",
+    "watchLecture": "Pozrite si záznam prednášky"
+  },
+  "mentor": {
+    "close": "Zavrieť",
+    "collapse": "Zbaliť",
+    "error": "Vyskytla sa chyba. Prosím, skúste to znova.",
+    "expand": "Rozbaliť",
+    "loginRequired": "Vytvorte si účet a chatujte s PlanBotom!",
+    "openChat": "Opýtajte sa PlanBota",
+    "placeholder": "Spýtajte sa...",
+    "reset": "Nová konverzácia",
+    "sources": "Choďte ďalej",
+    "thinking": "Premýšľam",
+    "title": "PlanBot",
+    "welcome": "Opýtajte sa ma na čokoľvek o Bitcoine!"
+  },
+  "menu": {
+    "educatorContent": "Obsah vyučujúceho",
+    "getStarted": "Začnite",
+    "login": "Prihlásiť sa",
+    "signIn": "Prihlásiť sa"
+  },
+  "months": {
+    "april": "Apríl",
+    "august": "August",
+    "december": "December",
+    "february": "Február",
+    "january": "Január",
+    "july": "Júl",
+    "june": "Jún",
+    "march": "Marec",
+    "may": "Máj",
+    "november": "November",
+    "october": "Október",
+    "september": "September"
+  },
+  "movies": {
+    "checkTheMovie": "Pozrieť film"
+  },
+  "navbar": {
+    "bookings": "Rezervácie",
+    "career": "Kariéra",
+    "careers": "Pracovné pozície",
+    "discountCode": "Zľavové kódy",
+    "learnAnytimeDescription": "Kurzy vlastným tempom",
+    "learnAnytimeTitle": "Učte sa kedykoľvek",
+    "liveClassesDescription": "Kurzy vedené učiteľom",
+    "liveClassesTitle": "Živé lekcie",
+    "manageCourses": "Spravovať kurzy",
+    "myCourses": "Moje kurzy",
+    "tabs": {
+      "admin": "Admin",
+      "learn": "Učiť sa",
+      "teach": "Učiť"
+    },
+    "translationPanel": "Panel prekladov",
+    "tutorials": "Návody",
+    "tutorialsAnalytics": "Analýza tutoriálov",
+    "userRolesAllocation": "Pridelenie užívateľských rolí"
+  },
+  "notFound": {
+    "here": "Sem",
+    "pageSubtitle": "Zdá sa, že niekto spadol príliš hlboko do králičej nory a stratil sa. Ak sa chcete vrátiť na povrch, kliknite",
+    "pageTitle": "Ups."
+  },
+  "notification": {
+    "types": {
+      "assignment": "Úloha",
+      "calendar": "Upozornenie v kalendári",
+      "celebration": "Oslava",
+      "general": "Všeobecné informácie",
+      "warning": "Varovanie"
+    }
+  },
+  "notifications": {
+    "bCertResults": "Výsledky ₿-CERT testu sú vonku!",
+    "blogNotTranslated": "Ospravedlňujeme sa, tento nový blogový príspevok ešte nie je preložený do vášho aktuálneho jazyka.",
+    "bookYourSeat": "Rezervujte si miesto, ak sa chcete zúčastniť osobne!",
+    "calendar_24h": "Ďalšia hodina bude zajtra od {{ formattedTime }}.",
+    "calendar_24h_in_person_event": "Udalosť {{eventName}} sa uskutoční zajtra, od {{formattedTime}} na {{addressLine}}. Nezabudnite si stiahnuť vstupenku aby ste sa mohli zúčastniť!",
+    "calendar_48h_online_event": "Udalosť {{eventName}} sa blíži! Je naplánovaná na {{date}}, od {{formattedTime}}. ",
+    "calendar_5m": "Hodina začína o 5 minút! Pripojte sa kliknutím sem.",
+    "calendar_5m_online_event": "Je čas! {{eventName}} začína za 5 minút. Kliknite sem a pripojte sa hneď teraz!",
+    "dashboardDescription": "Tu súvaše najnovšie upozornenia. Automaticky sa odstránia mesiac po tom, ako ich uvidíte.",
+    "daysAgo": "pred {{days}} dňami",
+    "markAsRead": "Označiť ako prečítané",
+    "monthsAgo": "Pred {{months}} mesiacmi",
+    "newVersionAvailable": "Nová verzia platformy Plan ₿ Network je dostupná. Prosím, obnovte stránku pre aktualizáciu.",
+    "noRecentNotifications": "Momentálne nemáte žiadne nedávne upozornenia.",
+    "noUnreadNotifications": "Už žiadne neprečítané upozornenia",
+    "notifications": "Upozornenia",
+    "planBNews": "Plan ₿ Novinky",
+    "read": "Čítať",
+    "results": "Výsledky vášho ₿-CERT testu sú vonku!",
+    "select": "Vybrať",
+    "selectAll": "Vybrať všetko",
+    "today": "Dnes",
+    "unread": "Neprečítané",
+    "upcomingEvent": "Nadchádzajúca udalost",
+    "weeksAgo": "Pred {{weeks}} týždňami",
+    "yearsAgo": "Pred {{years}} rokmi",
+    "yesterday": "Včera"
+  },
+  "payment": {
+    "haveReductionCode": "Máte zľavový kód?",
+    "insertReductionCode": "Vložte svoj zľavový kód",
+    "payByCard": "Platba kartou",
+    "payWithBitcoin": "Platba Bitcoinom",
+    "taxesMayApply": "Pri platbe vám môžu byť účtované dane",
+    "terms": "Pozrite si naše <0>všeobecné podmienky</0> pre podrobnosti o vrátení peňazí",
+    "total": "Celkom"
+  },
+  "placeholders": {
+    "selectTimeZone": "Vyberte časové pásmo"
+  },
+  "professors": {
+    "navigationTitles": {
+      "all": "Všetky",
+      "lecturers": "Prednášajúci/e",
+      "teachers": "Učitelia",
+      "tutorialCreators": "Tvorcovia tutoriálov"
+    },
+    "pageSubtitle": "Všetci naši profesori sú dobrovoľníci a vášniví Bitcoinery a Bitcoinerky. Môžete im poslať dar na vyjadrenie svojej vďaky.",
+    "pageTitle": "Profesori/ky",
+    "tips": {
+      "authorSupport": "Podporte autora/ku dobrovoľným príspevkom",
+      "noTipsYet": "Tento profesor momentálne neprijíma dary.",
+      "thanks": "Ďakujeme za podporu práce profesora/ky {{name}}!",
+      "thanksNoName": "Ďakujem za podporu mojej práce!"
+    }
+  },
+  "projects": {
+    "noRelatedEvents": "Momentálne sa nekonajú žiadne udalosti týkajúce sa tohto vyučujúceho.",
+    "otherCommunities": "Preskúmajte Plan ₿ komunity",
+    "related": "Súvisiace",
+    "relatedEvents": "Súvisiace nadchádzajúce udalosti"
+  },
+  "proofreading": {
+    "completed": "Korektúra dokončená",
+    "description": "Pôvodný obsah bol preložený umelou inteligenciou, ale ľudská kontrola je potrebná na zabezpečenie jeho presnosti.",
+    "descriptionOriginalLanguage": "Aj keď je tento obsah v pôvodnom jazyku, ľudská kontrola je nevyhnutná na zabezpečenie jeho presnosti.",
+    "inProgress": "Prebieha korektúra",
+    "reviewEarn": "Staňte sa korektorom a zarábajte sats",
+    "rewardsText": "Odmeny sa môžu líšiť na základe výmenného kurzu $",
+    "status": "Stav korektúry",
+    "thanks": "Veľké ďakujem patrí našim úžasným korektorom!"
+  },
+  "publicCommunication": {
+    "legal": "Právne informácie",
+    "legalSections": {
+      "contact": "Kontakt",
+      "legalNotice": "Právne upozornenie",
+      "notFound": "Právne informácie sa nenašli",
+      "privacyPolicy": "Zásady ochrany osobných údajov",
+      "termsOfSale": "Podmienky predaja"
+    }
+  },
+  "resources": {
+    "bet": {
+      "addEducationKit": "Pridať vzdelávaciu sadu",
+      "title": "Vzdelávacie sady"
+    },
+    "books": {
+      "addBook": "Pridať knihu",
+      "title": "Knihy"
+    },
+    "channels": {
+      "noYoutubeChannels": "Pre vybraný jazyk momentálne nie sú k dispozícii žiadne Youtube kanály.",
+      "title": "Youtube kanály"
+    },
+    "conferences": {
+      "addConference": "Pridať záznam konferencie",
+      "title": "Záznamy konferencie"
+    },
+    "glossary": {
+      "title": "Slovník pojmov"
+    },
+    "lectures": {
+      "title": "Záznamy prednášok"
+    },
+    "movies": {
+      "noMovies": "Momentálne nie sú dostupné žiadne filmy alebo dokumenty pre vybraný jazyk.",
+      "title": "Filmy"
+    },
+    "newsletter": {
+      "check": "Pozrieť newsletter"
+    },
+    "newsletters": {
+      "noNewsletters": "Aktuálne nie je k dispozícii žiadny newsletter pre vybraný jazyk.",
+      "subtitle": "<0>Iné newslettre</0>, ktoré sa vám môžu páčiť",
+      "title": "Newslettre"
+    },
+    "pageSubtitleBooks": "<0>Iné knihy</0>, ktoré by sa vám mohli páčiť",
+    "pageSubtitleChannels": "<0>Ďalšie Youtube kanály</0>, ktoré by sa vám mohli páčiť",
+    "pageSubtitleMovies": "<0>Iné filmy</0>, ktoré by sa vám mohli páčiť",
+    "pageSubtitlePodcast": "<0>Iné podcastyy</0>, ktoré by sa vám mohli páčiť",
+    "papers": {
+      "accessPaper": "Prístup k dokumentu",
+      "addPaper": "Pridať dokument",
+      "citations": "Citácie (.bib)",
+      "downloadCitations": "Stiahnuť citácie",
+      "papers": "Dokumenty",
+      "publisher": "Vydavateľ",
+      "showMorePapers": "Zobraziť viac dokumentov",
+      "title": "Vedecké práce",
+      "types": {
+        "PhD Thesis": "Doktorandská dizertačná práca",
+        "academic": "Akademické",
+        "book": "Kniha",
+        "conference": "Konferencia",
+        "journal": "Časopis",
+        "pre-print": "Predtlač"
+      }
+    }
   }
 }
