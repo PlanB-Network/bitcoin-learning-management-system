@@ -95,10 +95,11 @@ const Header = ({ tutorial }: { tutorial: GetTutorialResponse }) => {
         ) : null}
       </section>
 
-      <div className="flex items-center gap-2 text-neutral-600 md:hidden mt-1">
+      {/* Last update */}
+      {/* <div className="flex items-center gap-2 text-neutral-600 md:hidden mt-1">
         <TbCalendarCheck size={16} />
         <span className="body-small">{formatDate(tutorial.lastUpdated)}</span>
-      </div>
+      </div> */}
     </div>
   );
 };
