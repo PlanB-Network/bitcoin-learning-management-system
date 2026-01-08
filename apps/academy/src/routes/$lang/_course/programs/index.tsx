@@ -441,7 +441,7 @@ function FAQ() {
         />
         <FAQQuestion
           question="How much does it cost?"
-          answer="Early-bird registrations submitted before December 31st, 2025, will benefit from a reduced rate of $450. From December to March, the registration fee will increase to $900. The participation at the Summer School requires an additional fee of $3,500 to cover the tuition and accommodation expenses."
+          answer="Early-bird registrations submitted before January 15th, 2025, will benefit from a reduced rate of $450. From mid-January to March, the registration fee will increase to $750. The participation at the Summer School requires an additional fee of $3,500 to cover the tuition and accommodation expenses."
         />
         <FAQQuestion
           question="Do I need any prior knowledge to enroll in this course?"
