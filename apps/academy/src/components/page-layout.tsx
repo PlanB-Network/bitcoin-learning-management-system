@@ -79,7 +79,7 @@ export const PageLayout = ({
             // biome-ignore lint/suspicious/noArrayIndexKey: <N/A>
             <div key={index} className="relative flex flex-col items-center">
               {button.href ? (
-                <Button variant="newTertiary" size={'s'} asChild rounded>
+                <Button variant="newTertiary" size={'actionButton'} asChild>
                   <Link to={button.href} target="_blank" rel="noreferrer">
                     {button.text}
                   </Link>
@@ -87,9 +87,8 @@ export const PageLayout = ({
               ) : (
                 <Button
                   variant="newTertiary"
-                  size={'s'}
+                  size={'actionButton'}
                   onClick={button.onClick}
-                  rounded
                 >
                   {button.text}
                 </Button>

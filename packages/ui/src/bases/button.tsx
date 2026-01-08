@@ -15,6 +15,7 @@ const buttonVariants = cva(
       size: {
         carouselSize: 'p-0 text-base md:text-xl rounded-full',
         flagsMobile: 'px-2.5 py-3 font-base font-medium rounded-[8px]',
+        actionButton: 'px-3 py-2 !body-base-bold rounded-full',
         l: 'px-4 py-3 text-xl leading-6 !font-medium rounded-2xl',
         loginButton: 'py-2.5 px-2 text-xs leading-3 !font-medium rounded-lg',
         m: 'px-3.5 py-3 text-lg leading-5 !font-medium rounded-[10px]',
