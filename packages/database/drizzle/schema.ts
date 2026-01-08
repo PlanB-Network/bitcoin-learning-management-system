@@ -71,7 +71,7 @@ export const userPermissionsEnum = pgNativeEnum(
 
 export const usersAccounts = users.table('accounts', (t) => ({
   certificateName: t.varchar({ length: 255 }),
-  contributorId: t.varchar({ length: 20 }).unique().notNull(),
+  contributorId: t.varchar({ length: 63 }).unique().notNull(),
   createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   currentEmailChecked: t.boolean().default(false).notNull(),
   displayName: t.varchar({ length: 255 }),
@@ -306,7 +306,7 @@ export const contentBlogsLocalized = content.table(
     blogId: t
       .uuid()
       .notNull()
-      .references(() => contentBlogs.id),
+      .references(() => contentBlogs.id, { onDelete: 'cascade' }),
     description: t.text(),
     language: t.varchar({ length: 10 }).notNull(),
     rawContent: t.text().notNull(),
@@ -325,7 +325,7 @@ export const contentBlogTags = content.table(
     blogId: t
       .uuid()
       .notNull()
-      .references(() => contentBlogs.id),
+      .references(() => contentBlogs.id, { onDelete: 'cascade' }),
     tagId: t
       .integer()
       .notNull()
@@ -596,7 +596,7 @@ export const contentBooksLocalized = content.table(
 
     // Links
     shopUrl: t.text(),
-    summaryContributorId: t.varchar({ length: 20 }),
+    summaryContributorId: t.varchar({ length: 63 }),
     summaryText: t.text(),
 
     // Per translation
@@ -2017,7 +2017,7 @@ export const contentLabSession = content.table('labs_sessions', (t) => ({
 // PROFESSORS
 
 export const contentContributors = content.table('contributors', (t) => ({
-  id: t.varchar({ length: 20 }).primaryKey().notNull(),
+  id: t.varchar({ length: 63 }).primaryKey().notNull(),
 }));
 
 export const contentProfessors = content.table('professors', (t) => ({
@@ -2270,7 +2270,7 @@ export const contentProofreadingContributor = content.table(
   'proofreading_contributor',
   (t) => ({
     contributorId: t
-      .varchar({ length: 20 })
+      .varchar({ length: 63 })
       .notNull()
       .references(() => contentContributors.id, { onDelete: 'cascade' }),
     order: t.integer().notNull(),

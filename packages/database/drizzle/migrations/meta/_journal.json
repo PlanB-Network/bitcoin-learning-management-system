@@ -1100,6 +1100,13 @@
       "when": 1767778880759,
       "tag": "0156_faulty_slapstick",
       "breakpoints": true
+    },
+    {
+      "idx": 157,
+      "version": "7",
+      "when": 1767859098449,
+      "tag": "0157_fast_gunslinger",
+      "breakpoints": true
     }
   ]
 }
