@@ -1,7 +1,8 @@
-import { cn, Loader } from '@blms/ui';
+import { BasicModal, Button, cn, DividerSimple, Loader } from '@blms/ui';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { TbCheck, TbDownload, TbLink } from 'react-icons/tb';
 
 import FilterIcon from '#src/assets/icons/Filter-black.svg';
 import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
@@ -10,9 +11,10 @@ import { trpc } from '#src/utils/trpc.js';
 
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { generateIcs } from '@blms/shared';
 import { useQuery } from '@tanstack/react-query';
 import { PageLayout } from '#src/components/page-layout.tsx';
-// import { generateIcs } from '#src/utils/ics.ts';
+import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { EventCalendar } from '../dashboard/-components/event-calendar.tsx';
 
 type CalenderEventType = 'class' | 'event';
@@ -25,17 +27,18 @@ function DashboardCalendar() {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const { session } = useContext(AppContext);
+  const { session, user } = useContext(AppContext);
 
   const courseTypes: CalenderEventType[] = ['class', 'event'];
 
   const courseColor = ['#FF5C00', '#AD3F00'];
 
   const [filter, setFilter] = useState<CalenderEventType[]>(['class', 'event']);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data: events } = useQuery(
     trpc.user.calendar.getCalendarEvents.queryOptions({
-      upcomingEvents: true,
+      upcomingEvents: false,
       userSpecific: true,
     }),
   );
@@ -68,24 +71,34 @@ function DashboardCalendar() {
     }
   }, [session]);
 
-  // const downloadIcs = () => {
-  //   if (!events) {
-  //     return;
-  //   }
+  const downloadIcs = () => {
+    if (!events) {
+      return;
+    }
 
-  //   const icsContent = generateIcs(filteredEvents);
-  //   const blob = new Blob([icsContent], {
-  //     type: 'text/calendar;charset=utf-8',
-  //   });
-  //   const url = URL.createObjectURL(blob);
-  //   const link = document.createElement('a');
-  //   link.href = url;
-  //   link.setAttribute('download', 'calendar-plan-b-academy.ics');
-  //   document.body.appendChild(link);
-  //   link.click();
-  //   document.body.removeChild(link);
-  //   URL.revokeObjectURL(url);
-  // };
+    const icsContent = generateIcs(
+      events.filter((e) => filter.includes(e.type as CalenderEventType)),
+    );
+    const blob = new Blob([icsContent], {
+      type: 'text/calendar;charset=utf-8',
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'calendar-plan-b-academy.ics');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
+  const copyCalendarUrl = () => {
+    const token = user?.calendarToken;
+    if (!token) return;
+
+    const url = `${window.location.origin}/api/calendar/${token}.ics`;
+    navigator.clipboard.writeText(url);
+  };
 
   if (!session) {
     return <Loader />;
@@ -95,12 +108,12 @@ function DashboardCalendar() {
     <PageLayout
       title={t('dashboard.calendar.personalCalendar')}
       layoutSize="max"
-      // actionButtons={[
-      //   {
-      //     text: t('dashboard.calendar.downloadIcs'),
-      //     onClick: downloadIcs,
-      //   },
-      // ]}
+      actionButtons={[
+        {
+          text: t('dashboard.calendar.downloadCalendar'),
+          onClick: () => setIsModalOpen(true),
+        },
+      ]}
     >
       <div className="flex flex-col w-full gap-4">
         <div className="hidden max-md:px-6 lg:flex">
@@ -159,6 +172,94 @@ function DashboardCalendar() {
 
         <EventCalendar events={filteredEvents ?? []} />
       </div>
+
+      <CalendarDownloadModal
+        isOpen={isModalOpen}
+        onClose={setIsModalOpen}
+        onDownload={downloadIcs}
+        onSubscribe={copyCalendarUrl}
+      />
     </PageLayout>
   );
 }
+
+interface CalendarDownloadModalProps {
+  isOpen: boolean;
+  onClose: (open: boolean) => void;
+  onDownload: () => void;
+  onSubscribe: () => void;
+}
+
+const CalendarDownloadModal = ({
+  isOpen,
+  onClose,
+  onDownload,
+  onSubscribe,
+}: CalendarDownloadModalProps) => {
+  const isMobile = useSmaller('md');
+
+  const { t } = useTranslation();
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleSubscribe = () => {
+    onSubscribe();
+    setIsCopied(true);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 2000);
+  };
+
+  return (
+    <BasicModal
+      open={isOpen}
+      onOpenChange={onClose}
+      title={t('dashboard.calendar.downloadCalendarTitle')}
+    >
+      <div className="w-full flex flex-col gap-6 text-left">
+        <div className="flex flex-col gap-3">
+          <h3 className="label-strong">
+            {t('dashboard.calendar.subscribeTitle')}
+          </h3>
+          <ul className="body-base list-disc list-inside">
+            <li>{t('dashboard.calendar.subscribeStep1')}</li>
+            <li>{t('dashboard.calendar.subscribeStep2')}</li>
+            <li>{t('dashboard.calendar.subscribeStep3')}</li>
+          </ul>
+        </div>
+
+        <Button
+          variant="primary"
+          size={isMobile ? 'm' : 'l'}
+          onClick={handleSubscribe}
+          className="w-full gap-2"
+        >
+          {isCopied ? <TbCheck size={24} /> : <TbLink size={24} />}
+          {t('dashboard.calendar.subscribeButton')}
+        </Button>
+
+        <DividerSimple />
+
+        <div className="flex flex-col gap-3">
+          <h3 className="label-strong">
+            {t('dashboard.calendar.downloadTitle')}
+          </h3>
+          <ul className="body-base list-disc list-inside">
+            <li>{t('dashboard.calendar.downloadStep1')}</li>
+            <li>{t('dashboard.calendar.downloadStep2')}</li>
+            <li>{t('dashboard.calendar.downloadStep3')}</li>
+          </ul>
+        </div>
+
+        <Button
+          variant="newTertiary"
+          size={isMobile ? 'm' : 'l'}
+          onClick={onDownload}
+          className="w-full gap-2"
+        >
+          <TbDownload size={24} />
+          {t('dashboard.calendar.downloadButton')}
+        </Button>
+      </div>
+    </BasicModal>
+  );
+};

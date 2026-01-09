@@ -893,12 +893,23 @@
       "yesCancel": "Yes, cancel"
     },
     "calendar": {
-      "downloadIcs": "Download calendar",
+      "downloadButton": "Download .ics calendar and import",
+      "downloadCalendar": "Download calendar",
+      "downloadCalendarTitle": "Download calendar",
+      "downloadStep1": "Download the calendar file",
+      "downloadStep2": "Open it with your calendar app",
+      "downloadStep3": "Events won’t update if dates change",
+      "downloadTitle": "Or download the current calendar",
       "eventType": {
         "class": "Classes",
         "event": "Events"
       },
-      "personalCalendar": "Personal calendar"
+      "personalCalendar": "Personal calendar",
+      "subscribeButton": "Copy synced calendar link",
+      "subscribeStep1": "Copy the calendar link",
+      "subscribeStep2": "Paste it into your calendar app’s “Subscribe” option",
+      "subscribeStep3": "Events stay updated automatically if anything changes",
+      "subscribeTitle": "Subscribe to calendar (automatically sync)"
     },
     "careerPortal": {
       "acceptTermsAndConditions": "I have read and I accept the terms and conditions",

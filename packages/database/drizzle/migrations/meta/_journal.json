@@ -1107,6 +1107,13 @@
       "when": 1767859098449,
       "tag": "0157_fast_gunslinger",
       "breakpoints": true
+    },
+    {
+      "idx": 158,
+      "version": "7",
+      "when": 1767948693782,
+      "tag": "0158_adorable_rocket_racer",
+      "breakpoints": true
     }
   ]
 }

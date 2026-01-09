@@ -1,0 +1,2 @@
+ALTER TABLE "users"."accounts" ADD COLUMN "calendar_token" uuid DEFAULT gen_random_uuid() NOT NULL;--> statement-breakpoint
+ALTER TABLE "users"."accounts" ADD CONSTRAINT "accounts_calendarToken_unique" UNIQUE("calendar_token");

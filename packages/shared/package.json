@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "@blms/constants": "workspace:*"
+    "@blms/constants": "workspace:*",
+    "@blms/types": "workspace:*"
   },
   "devDependencies": {},
   "exports": {

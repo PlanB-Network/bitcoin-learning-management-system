@@ -25,7 +25,7 @@ export const getCalendarEventsQuery = (
     e.address_line_3
   FROM content.events e
   FULL JOIN users.user_event ue on e.id = ue.event_id
-    WHERE 1 = 1
+  WHERE 1 = 1
     ${uid ? sql`AND ue.uid = ${uid} AND ue.booked = true` : sql``}
     ${upcomingEvents ? sql`AND e.start_date > (NOW() - INTERVAL '1 DAY')` : sql``}
 
@@ -50,7 +50,8 @@ export const getCalendarEventsQuery = (
     e.address_line_3
   FROM content.events e
   JOIN users.event_payment ep ON e.id = ep.event_id
-  ${uid ? sql`WHERE ep.uid = ${uid} AND ep.payment_status = 'paid'` : sql`WHERE ep.payment_status = 'paid'`}
+  WHERE ep.payment_status = 'paid'
+    ${uid ? sql`AND ep.uid = ${uid}` : sql``}
     ${upcomingEvents ? sql`AND e.start_date > (NOW() - INTERVAL '1 DAY')` : sql``}
 
   UNION
@@ -71,14 +72,16 @@ export const getCalendarEventsQuery = (
     cl.address_line_3
   FROM content.course_chapters_localized cl
   JOIN content.courses c ON c.id = cl.course_id
-  JOIN users.course_payment cp on cl.course_id = cp.course_id
+  ${uid ? sql`JOIN users.course_payment cp on cl.course_id = cp.course_id` : sql``}
   LEFT JOIN LATERAL (
     SELECT ARRAY_AGG(pr.name) as professors
     FROM content.course_professors cp
     JOIN content.professors pr on cp.professor_id = pr.id
     WHERE cp.course_id = cl.course_id
   ) AS cp_agg ON TRUE
-  ${uid ? sql`WHERE cp.uid = ${uid} AND cp.payment_status = 'paid'` : sql`WHERE cp.payment_status = 'paid'`}
+  WHERE 1 = 1
+    ${uid ? sql`AND cp.uid = ${uid} AND cp.payment_status = 'paid'` : sql``}
+    AND cl.start_date IS NOT NULL
     ${upcomingEvents ? sql`AND cl.start_date > (NOW() - INTERVAL '1 DAY')` : sql``}
   `;
 };

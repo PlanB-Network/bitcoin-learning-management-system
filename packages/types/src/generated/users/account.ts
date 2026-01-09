@@ -4,6 +4,7 @@
 import type { UserPermission, UserRole } from '@blms/constants';
 
 export interface UserAccount {
+  calendarToken: string;
   certificateName: string | null;
   contributorId: string;
   createdAt: Date;
@@ -35,6 +36,7 @@ export interface UserAccountSettings {
 }
 
 export interface UserDetails {
+  calendarToken: string;
   certificateName: string | null;
   contributorId: string;
   currentEmailChecked: boolean;
