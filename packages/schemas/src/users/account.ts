@@ -18,6 +18,7 @@ export const userAccountSettingsSchema =
 
 export const userDetailsSchema = userAccountSchema
   .pick({
+    calendarToken: true,
     certificateName: true,
     contributorId: true,
     currentEmailChecked: true,

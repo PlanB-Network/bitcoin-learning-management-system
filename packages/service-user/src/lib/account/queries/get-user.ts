@@ -64,3 +64,9 @@ export const getUserByUserNameOrEmailQuery = (usernameOrEmail: string) => {
     OR email = LOWER( ${usernameOrEmail} );
   `;
 };
+export const getUserUidByCalendarTokenQuery = (token: string) => {
+  return sql<{ uid: string }[]>`
+    SELECT uid FROM users.accounts
+    WHERE calendar_token = ${token};
+  `;
+};

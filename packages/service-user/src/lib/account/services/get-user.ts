@@ -7,6 +7,7 @@ import {
   getUserByLud4PublicKey,
   getUserByUserNameOrEmailQuery,
   getUserByUserNameQuery,
+  getUserUidByCalendarTokenQuery,
 } from '../queries/get-user.js';
 
 export const createGetUserDetails = ({ postgres }: Dependencies) => {
@@ -40,6 +41,14 @@ export const createGetUserByLud4PublicKey = ({ postgres }: Dependencies) => {
   return ({ key }: { key: string }): Promise<UserAccount | null> => {
     return postgres
       .exec(getUserByLud4PublicKey(key))
+      .then(firstRow)
+      .then((user) => user ?? null);
+  };
+};
+export const createGetUserUidByCalendarToken = ({ postgres }: Dependencies) => {
+  return ({ token }: { token: string }): Promise<{ uid: string } | null> => {
+    return postgres
+      .exec(getUserUidByCalendarTokenQuery(token))
       .then(firstRow)
       .then((user) => user ?? null);
   };
