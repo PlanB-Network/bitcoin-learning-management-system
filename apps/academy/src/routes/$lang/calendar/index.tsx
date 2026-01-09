@@ -103,7 +103,9 @@ function DashboardCalendar() {
     const token = user?.calendarToken;
     if (!token) return false;
 
-    const url = `${window.location.origin}/api/calendar/${token}.ics`;
+    const url = `${window.location.origin}/api/calendar/${token}.ics${
+      filter.length > 0 ? `?types=${filter.join(',')}` : ''
+    }`;
 
     try {
       await navigator.clipboard.writeText(url);

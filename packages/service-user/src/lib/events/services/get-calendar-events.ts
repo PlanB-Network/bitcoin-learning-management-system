@@ -6,10 +6,15 @@ import { getCalendarEventsQuery } from '../queries/get-calendar-events.js';
 interface Options {
   uid?: string;
   upcomingEvents?: boolean;
+  types?: string[];
 }
 
 export const createGetCalendarEvents = ({ postgres }: Dependencies) => {
-  return ({ uid, upcomingEvents }: Options): Promise<CalendarEvent[]> => {
-    return postgres.exec(getCalendarEventsQuery(uid, upcomingEvents));
+  return ({
+    uid,
+    upcomingEvents,
+    types,
+  }: Options): Promise<CalendarEvent[]> => {
+    return postgres.exec(getCalendarEventsQuery(uid, upcomingEvents, types));
   };
 };
