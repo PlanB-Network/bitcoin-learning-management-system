@@ -36,7 +36,7 @@ export const createRestCalendarRoutes = (
 
       res.setHeader('Content-Type', 'text/calendar; charset=utf-8');
       res.setHeader('Content-Disposition', 'inline; filename="calendar.ics"');
-      res.setHeader('Cache-Control', 'no-cache');
+      res.setHeader('Cache-Control', 'public, max-age=300');
 
       res.send(icsContent);
     } catch (error) {

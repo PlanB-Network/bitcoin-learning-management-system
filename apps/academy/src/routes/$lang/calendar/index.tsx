@@ -101,17 +101,19 @@ function DashboardCalendar() {
 
   const copyCalendarUrl = async () => {
     const token = user?.calendarToken;
-    if (!token) return;
+    if (!token) return false;
 
     const url = `${window.location.origin}/api/calendar/${token}.ics`;
 
     try {
       await navigator.clipboard.writeText(url);
+      return true;
     } catch (error) {
       console.error('Failed to copy calendar URL to clipboard.', error);
       customToast('Failed to copy the calendar URL.', {
         color: 'warning',
       });
+      return false;
     }
   };
 
@@ -202,7 +204,7 @@ interface CalendarDownloadModalProps {
   isOpen: boolean;
   onClose: (open: boolean) => void;
   onDownload: () => void;
-  onSubscribe: () => void;
+  onSubscribe: () => Promise<boolean | void>;
 }
 
 const CalendarDownloadModal = ({
@@ -216,12 +218,14 @@ const CalendarDownloadModal = ({
   const { t } = useTranslation();
   const [isCopied, setIsCopied] = useState(false);
 
-  const handleSubscribe = () => {
-    onSubscribe();
-    setIsCopied(true);
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 2000);
+  const handleSubscribe = async () => {
+    const success = await onSubscribe();
+    if (success !== false) {
+      setIsCopied(true);
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 2000);
+    }
   };
 
   return (
