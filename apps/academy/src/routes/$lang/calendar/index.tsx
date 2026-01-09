@@ -1,4 +1,11 @@
-import { BasicModal, Button, cn, DividerSimple, Loader } from '@blms/ui';
+import {
+  BasicModal,
+  Button,
+  cn,
+  customToast,
+  DividerSimple,
+  Loader,
+} from '@blms/ui';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -92,12 +99,20 @@ function DashboardCalendar() {
     URL.revokeObjectURL(url);
   };
 
-  const copyCalendarUrl = () => {
+  const copyCalendarUrl = async () => {
     const token = user?.calendarToken;
     if (!token) return;
 
     const url = `${window.location.origin}/api/calendar/${token}.ics`;
-    navigator.clipboard.writeText(url);
+
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch (error) {
+      console.error('Failed to copy calendar URL to clipboard.', error);
+      customToast('Failed to copy the calendar URL.', {
+        color: 'warning',
+      });
+    }
   };
 
   if (!session) {
