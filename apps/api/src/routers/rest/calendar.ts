@@ -24,8 +24,8 @@ export const createRestCalendarRoutes = (
         return res.status(404).send('Invalid or expired calendar token');
       }
 
-      const types = req.query['types']
-        ? (req.query['types'] as string).split(',')
+      const types = req.query.types
+        ? (req.query.types as string).split(',')
         : undefined;
 
       const events = await createGetCalendarEvents({
