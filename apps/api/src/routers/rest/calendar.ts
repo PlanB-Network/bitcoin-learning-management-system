@@ -21,7 +21,7 @@ export const createRestCalendarRoutes = (
       })({ token });
 
       if (!user) {
-        return res.status(404).send('User not found');
+        return res.status(404).send('Invalid or expired calendar token');
       }
 
       const events = await createGetCalendarEvents({
@@ -40,8 +40,10 @@ export const createRestCalendarRoutes = (
 
       res.send(icsContent);
     } catch (error) {
-      console.error('Error generating calendar:', error);
-      res.status(500).send('Internal Server Error');
+      req.log('Error generating calendar for token', error);
+      res
+        .status(500)
+        .send('Internal Server Error: Failed to generate calendar');
     }
   });
 };
