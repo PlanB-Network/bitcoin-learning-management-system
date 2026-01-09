@@ -6,7 +6,7 @@ import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import { t } from 'i18next';
 import React, { memo, useContext, useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import { TbCalendarCheck, TbCheck } from 'react-icons/tb';
+import { TbCheck } from 'react-icons/tb';
 import { z } from 'zod';
 import ThumbDown from '#src/assets/icons/thumb_down.svg';
 import ThumbUp from '#src/assets/icons/thumb_up.svg';
@@ -21,7 +21,7 @@ import { useNavigateMisc } from '#src/hooks/use-navigate-misc.ts';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.js';
 import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
-import { formatDate } from '#src/utils/date.ts';
+// import { formatDate } from '#src/utils/date.ts';
 import { cdnUrl, resourceImgUrl } from '#src/utils/index.ts';
 import { trpc } from '#src/utils/trpc.js';
 import { TutorialLikes } from '../-components/tutorial-likes.tsx';
@@ -82,10 +82,10 @@ const Header = ({ tutorial }: { tutorial: GetTutorialResponse }) => {
             {tutorial.professor?.name}
           </a>
         )}
-        <div className="flex items-center gap-2 text-neutral-600 max-md:hidden">
+        {/* <div className="flex items-center gap-2 text-neutral-600 max-md:hidden">
           <TbCalendarCheck size={16} />
           <span className="body-base">{formatDate(tutorial.lastUpdated)}</span>
-        </div>
+        </div> */}
         {totalLikesDislikes >= 10 ? (
           <TutorialLikes
             tutorial={tutorial}
