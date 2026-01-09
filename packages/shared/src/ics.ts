@@ -27,9 +27,14 @@ export const generateIcs = (events: CalendarEvent[]) => {
     const startDate = event.startDate;
     const endDate = event.endDate || new Date(startDate.getTime() + 3600000); // Default 1 hour if no end date
 
+    const uid =
+      event.subId != null
+        ? `event-${event.id}-${event.subId}@plan-b-academy`
+        : `event-${event.id}@plan-b-academy`;
+
     return [
       'BEGIN:VEVENT',
-      `UID:event-${event.id}@plan-b-academy`,
+      `UID:${uid}`,
       `DTSTAMP:${formatIcsDate(new Date())}`,
       `DTSTART:${formatIcsDate(startDate)}`,
       `DTEND:${formatIcsDate(endDate)}`,
