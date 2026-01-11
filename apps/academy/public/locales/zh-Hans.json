@@ -97,7 +97,9 @@
     "forgotPassword": "忘记密码？",
     "login": "登录",
     "oldPassword": "旧密码",
-    "signUp": "注册"
+    "signUp": "注册",
+    "saveProgress": "保存您的进度",
+    "signUpToSave": "注册以保存"
   },
   "bCert": {
     "bCertDescription": "₿-CERT是一项国际认证的考试，用于评估您对比特币及其衍生主题的了解程度。您会获得₿-CERT证书，它将使您能够在比特币行业中证明自己的技能和知识，是进入该行业公司和职位的准入证。",
@@ -196,7 +198,11 @@
       "premiumContentNeedsPaymentAction": "前往课程主页",
       "startCourse": "开始课程",
       "taughtBy": "这门课程由以下人员教授：",
-      "thanksTipping": "您可以打赏教授以表达您的感谢。"
+      "thanksTipping": "您可以打赏教授以表达您的感谢。",
+      "courseCoordinator": "课程协调员",
+      "openSourceContentTitle": "开源内容",
+      "creditsCollaboration": "本课程是协作努力的结果：每个课程，翻译和修订都是由贡献者的工作做到的。正因为如此，我们一直在寻找可以审查我们的内容的校对员。\n\n如果您愿意参加校对过程，请在我们的<0>Telegram</0>小组中联系我们并阅读我们的<1>教程</1>。\n\n帮助传播比特币知识：",
+      "openSourceContentDescription": "本课程内容是开源的 - 根据<0> CC BY-SA</0> 许可 - 因此可以自由分享和使用，只要原始来源得到归功。"
     },
     "exam": {
       "answersReview": "答案讲述",
@@ -1320,7 +1326,8 @@
           "upcomingClass": "即将开始的课程"
         }
       }
-    }
+    },
+    "backToProfile": "返回到我的个人资料"
   },
   "events": {
     "card": {
@@ -1612,7 +1619,24 @@
     },
     "projects": {
       "title": "项目",
-      "addProjects": "添加项目"
+      "addProjects": "添加项目",
+      "types": {
+        "communities": "社区",
+        "conference": "会议",
+        "education": "教育",
+        "exchange": "交换",
+        "infrastructure": "基础设施",
+        "investment": "投资",
+        "manufacturer": "制造商",
+        "merchant": "商人",
+        "mining": "采矿",
+        "news": "新闻",
+        "node": "节点",
+        "payment": "支付",
+        "privacy": "隐私",
+        "service": "服务",
+        "wallet": "钱包"
+      }
     },
     "searchFilterName": "按照名称搜索",
     "toggleLabelAll": "所有",
@@ -1634,7 +1658,8 @@
         "pre-print": "预印本",
         "thesis": "论文",
         "book": "书籍",
-        "conference": "大会"
+        "conference": "大会",
+        "review": "审查"
       },
       "title": "研究论文"
     }
@@ -1686,7 +1711,12 @@
     "changeDisplayName": "更改显示名称",
     "changeEmail": "更改电子邮件",
     "changePassword": "更改密码",
-    "changeProfilePicture": "更换头像"
+    "changeProfilePicture": "更换头像",
+    "addEmail": "添加电子邮件",
+    "addEmailContinue": "继续需要添加电子邮件",
+    "emailSentDescription": "验证您的电子邮件并重新加载此页面以继续。",
+    "emailSentTitle": "我们已向您发送电子邮件",
+    "verifyEmail": "验证电子邮件"
   },
   "tutorials": {
     "business": {
@@ -1947,7 +1977,12 @@
     "researchPaper": "研究论文",
     "open": "打开",
     "enroll": "报名",
-    "downloads": "下载"
+    "downloads": "下载",
+    "contribute": "贡献",
+    "contributors": "贡献者",
+    "event": "活动",
+    "agenda": "议程",
+    "oldest": "最早的"
   },
   "youtubeChannels": {
     "view": "查看YouTube频道",
@@ -2083,13 +2118,47 @@
       "sticker": "贴纸",
       "workshop": "工作坊",
       "other": "其他",
-      "presentation": "演示文稿"
+      "presentation": "演示文稿",
+      "curriculum": "课程大纲"
     },
     "uploadFiles": "上传文件",
     "uploadForReview": "上传以供回顾",
     "uploading": "上传中...",
     "done": "完毕",
-    "languagePlaceholder": "选择"
+    "languagePlaceholder": "选择",
+    "coverPreview": "封面预览",
+    "languagePlaceholderFilter": "语言",
+    "adminPanel": {
+      "modified": "已修改",
+      "new": "新的",
+      "pageTitle": "审查教育者内容",
+      "previewChanges": "预览更改",
+      "previewForApproval": "预览以供批准",
+      "approved": "已批准",
+      "toReview": "审核"
+    },
+    "linkOrFileRequired": "请至少添加一个链接或上传一个文件",
+    "linkPlaceholder": "https://example.com",
+    "pageSubtitle": "比特币教育者和社区共享和重复使用资源的地方",
+    "pageTitle": "教育者内容",
+    "reviewModal": {
+      "approveAndPublish": "批准内容并发布",
+      "edit": "编辑",
+      "noCover": "无封面",
+      "reject": "拒绝",
+      "reviewForApproval": "审核批准",
+      "unknown": "未知",
+      "unpublish": "取消发布",
+      "unpublishConfirm": "取消发布（你确定吗？）",
+      "viewContent": "查看内容"
+    },
+    "sortMostRecent": "最新的",
+    "titlePlaceholder": "例如，Liana的多重签名研讨会",
+    "typePlaceholder": "类型",
+    "fileExisting": "（现有的）",
+    "maxFileSize": "最大文件大小：50MB",
+    "sortBy": "排序方式",
+    "sortMostDownloaded": "最多下载"
   },
   "mentor": {
     "collapse": "折叠",

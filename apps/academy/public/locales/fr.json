@@ -201,7 +201,8 @@
       "thanksTipping": "Vous pouvez dire merci en donnant un pourboire au professeur.",
       "creditsCollaboration": "Ce cours est le résultat d'un effort collaboratif : chaque leçon, traduction et révision est rendue possible par le travail des contributeurs. Pour cette raison, nous sommes toujours à la recherche de correcteurs qui peuvent réviser notre contenu dans de nombreuses langues.\n\nSi vous souhaitez participer au processus de relecture, veuillez nous contacter dans notre groupe <0>Telegram</0> et lire notre <1>tutoriel</1>.\n\nAidez à diffuser la connaissance du Bitcoin :",
       "openSourceContentDescription": "Le contenu de ce cours est open-source - sous licence <0>CC BY-SA</0> - il peut donc être librement partagé et utilisé, tant que la source originale est créditée.",
-      "openSourceContentTitle": "Contenu open-source"
+      "openSourceContentTitle": "Contenu open-source",
+      "courseCoordinator": "Coordinateur du cours"
     },
     "exam": {
       "answersReview": "Relecture des réponses",
@@ -2131,7 +2132,8 @@
       "sticker": "Autocollant",
       "workshop": "Atelier pratique",
       "art": "Art",
-      "other": "Autre"
+      "other": "Autre",
+      "curriculum": "Syllabus"
     },
     "uploadFiles": "Téléverser des fichiers",
     "uploadForReview": "Téléverser pour validation",
