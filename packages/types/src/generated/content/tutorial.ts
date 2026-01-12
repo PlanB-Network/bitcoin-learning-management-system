@@ -10,6 +10,7 @@ export interface Tutorial {
   lastCommit: string;
   lastSync: Date;
   lastUpdated: Date;
+  lastUpdateContent: Date | null;
   isArchived: boolean;
   level: string;
   logoUrl: string;
@@ -42,6 +43,7 @@ export interface JoinedTutorialLight {
   id: string;
   lastCommit: string;
   lastUpdated: Date;
+  lastUpdateContent: Date | null;
   level: string;
   logoUrl: string;
   name: string;
@@ -64,6 +66,7 @@ export interface JoinedTutorial {
   id: string;
   lastCommit: string;
   lastUpdated: Date;
+  lastUpdateContent: Date | null;
   level: string;
   logoUrl: string;
   name: string;
@@ -102,6 +105,7 @@ export interface GetTutorialResponse {
   id: string;
   lastCommit: string;
   lastUpdated: Date;
+  lastUpdateContent: Date | null;
   level: string;
   logoUrl: string;
   name: string;

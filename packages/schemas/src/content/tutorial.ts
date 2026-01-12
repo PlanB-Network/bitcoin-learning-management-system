@@ -23,6 +23,7 @@ export const joinedTutorialLightSchema = tutorialSchema
     id: true,
     lastCommit: true,
     lastUpdated: true,
+    lastUpdateContent: true,
     level: true,
     logoUrl: true,
     name: true,

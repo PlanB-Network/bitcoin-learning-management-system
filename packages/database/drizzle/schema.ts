@@ -1623,6 +1623,8 @@ export const contentTutorials = content.table('tutorials', (t) => ({
     .defaultNow()
     .notNull(),
 
+  lastUpdateContent: t.timestamp({ withTimezone: true }),
+
   isArchived: t.boolean().default(false).notNull(),
 
   level: t.varchar({ length: 255 }).notNull(),

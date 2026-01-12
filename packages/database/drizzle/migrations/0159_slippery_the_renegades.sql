@@ -1,0 +1,1 @@
+ALTER TABLE "content"."tutorials" ADD COLUMN "last_update_content" timestamp with time zone;

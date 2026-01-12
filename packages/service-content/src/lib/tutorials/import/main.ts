@@ -20,6 +20,7 @@ export interface TutorialMain {
   proofreading: ProofreadingEntry[];
   is_archived?: boolean;
   test_only?: boolean;
+  last_update_date?: string | null;
 }
 
 export const createProcessMainFile = (transaction: TransactionSql) => {
@@ -52,7 +53,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
     }
 
     const result = await transaction<Tutorial[]>`
-        INSERT INTO content.tutorials (id, project_id, professor_id, path, logo_url, name, category, subcategory, original_language, level, credit_link, is_archived, last_updated, last_commit, last_sync)
+        INSERT INTO content.tutorials (id, project_id, professor_id, path, logo_url, name, category, subcategory, original_language, level, credit_link, is_archived, last_update_content, last_updated, last_commit, last_sync)
         VALUES (
           ${parsedTutorial.id},
           ${parsedTutorial.project_id},
@@ -66,6 +67,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           ${parsedTutorial.level},
           ${parsedTutorial.credit_link},
           ${parsedTutorial.is_archived === true},
+          ${parsedTutorial.last_update_date},
           ${lastUpdated.time},
           ${lastUpdated.commit},
           NOW()
@@ -82,6 +84,7 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           level = EXCLUDED.level,
           credit_link = EXCLUDED.credit_link,
           is_archived = EXCLUDED.is_archived,
+          last_update_content = EXCLUDED.last_update_content,
           last_updated = EXCLUDED.last_updated,
           last_commit = EXCLUDED.last_commit,
           last_sync = NOW()
