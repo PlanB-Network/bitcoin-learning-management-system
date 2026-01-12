@@ -567,7 +567,6 @@ export const EducatorContentModal = ({
                   className="flex flex-col gap-1"
                   ref={field.ref}
                 >
-                  AAA
                   {Object.values(EducatorContentType)
                     .map((type) => ({
                       id: type,
