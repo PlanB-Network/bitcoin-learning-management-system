@@ -24,6 +24,7 @@ import { getEducatorContentCoverUrl } from '#src/services/content.js';
 import { getLanguageName, LANGUAGES } from '#src/utils/i18n.ts';
 import { trpc } from '#src/utils/trpc.js';
 import { EducatorContentModal } from './-components/educator-content-modal.tsx';
+import { GuidelinesModal } from './-components/guidelines-modal.tsx';
 
 export const Route = createFileRoute('/$lang/educator-content/')({
   component: RouteComponent,
@@ -48,6 +49,12 @@ function RouteComponent() {
     open: openAuthModal,
     isOpen: isAuthModalOpen,
     close: closeAuthModal,
+  } = useDisclosure();
+
+  const {
+    open: openGuidelinesModal,
+    isOpen: isGuidelinesModalOpen,
+    close: closeGuidelinesModal,
   } = useDisclosure();
 
   const {
@@ -165,10 +172,15 @@ function RouteComponent() {
 
   const handleAddContentClick = () => {
     if (isLoggedIn) {
-      openAddContentModal();
+      openGuidelinesModal();
     } else {
       openAuthModal();
     }
+  };
+
+  const handleGuidelinesContinue = () => {
+    closeGuidelinesModal();
+    openAddContentModal();
   };
 
   const types = [
@@ -399,6 +411,11 @@ function RouteComponent() {
       )}
 
       <AuthModal isOpen={isAuthModalOpen} onClose={closeAuthModal} />
+      <GuidelinesModal
+        isOpen={isGuidelinesModalOpen}
+        onClose={closeGuidelinesModal}
+        onContinue={handleGuidelinesContinue}
+      />
       <EducatorContentModal
         isOpen={isAddContentModalOpen}
         onClose={closeAddContentModal}
