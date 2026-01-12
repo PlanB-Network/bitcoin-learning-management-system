@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LuCopy, LuCopyCheck } from 'react-icons/lu';
+import { TbCopy, TbCopyCheck } from 'react-icons/tb';
 
 interface CopyButtonProps {
   text: string;
@@ -25,7 +25,7 @@ export const CopyButton = ({ text }: CopyButtonProps) => {
       className="absolute top-1 right-1 sm:top-2 sm:right-2 text-black"
       aria-label="Copy to Clipboard"
     >
-      {isClicked ? <LuCopyCheck /> : <LuCopy />}
+      {isClicked ? <TbCopyCheck /> : <TbCopy />}
     </button>
   );
 };

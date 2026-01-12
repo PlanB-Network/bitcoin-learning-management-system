@@ -9,7 +9,7 @@ import {
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { TbCheck, TbDownload, TbLink } from 'react-icons/tb';
+import { TbCopy, TbCopyCheck, TbDownload } from 'react-icons/tb';
 
 import FilterIcon from '#src/assets/icons/Filter-black.svg';
 import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
@@ -254,8 +254,8 @@ const CalendarDownloadModal = ({
           onClick={handleSubscribe}
           className="w-full gap-2"
         >
-          {isCopied ? <TbCheck size={24} /> : <TbLink size={24} />}
           {t('dashboard.calendar.subscribeButton')}
+          {isCopied ? <TbCopyCheck size={24} /> : <TbCopy size={24} />}
         </Button>
 
         <DividerSimple />
@@ -277,8 +277,8 @@ const CalendarDownloadModal = ({
           onClick={onDownload}
           className="w-full gap-2"
         >
-          <TbDownload size={24} />
           {t('dashboard.calendar.downloadButton')}
+          <TbDownload size={24} />
         </Button>
       </div>
     </BasicModal>
