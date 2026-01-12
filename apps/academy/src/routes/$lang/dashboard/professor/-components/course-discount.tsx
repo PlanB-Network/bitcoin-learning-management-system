@@ -2,9 +2,10 @@ import type { CouponCode, CouponCodeWithOwner } from '@blms/types';
 import { BasicModal, Button, cn, TextTag } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { LuChevronDown, LuPlus } from 'react-icons/lu';
+import { TbChevronsDown, TbCopy, TbCopyCheck } from 'react-icons/tb';
 import Warning from '#src/assets/icons/warning_orange.svg';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { trpc } from '#src/utils/trpc.ts';
@@ -15,6 +16,12 @@ export const CourseDiscount = ({ courseId }: { courseId: string }) => {
 
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
   const [sortKey, setSortKey] = useState<string | null>(null);
+
+  const [maxShown, setMaxShown] = useState(100);
+
+  useEffect(() => {
+    setMaxShown(100);
+  }, [sortKey, sortDirection]);
 
   const coupons = useQuery(
     trpc.content.listCouponCodesOwner.queryOptions({
@@ -198,7 +205,7 @@ export const CourseDiscount = ({ courseId }: { courseId: string }) => {
         </thead>
 
         <tbody>
-          {coupons.data?.map((coupon) => {
+          {coupons.data?.slice(0, maxShown).map((coupon) => {
             return (
               <tr key={coupon.code} className="*:pt-2">
                 <td>{coupon.code}</td>
@@ -244,7 +251,7 @@ export const CourseDiscount = ({ courseId }: { courseId: string }) => {
           onSortFieldSelect={handleMobileSortFieldSelect}
         />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {coupons.data?.map((coupon) => {
+          {coupons.data?.slice(0, maxShown).map((coupon) => {
             return (
               <CouponCard
                 key={coupon.id}
@@ -267,6 +274,18 @@ export const CourseDiscount = ({ courseId }: { courseId: string }) => {
           )}
         </div>
       </div>
+
+      {coupons.data && coupons.data.length > maxShown && (
+        <Button
+          variant="newTertiary"
+          size="xl"
+          className="mx-auto mt-5 sm:mt-10 flex items-center gap-4"
+          onClick={() => setMaxShown((v) => v + 100)}
+        >
+          {t('dashboard.adminPanel.coupons.showMore')}
+          <TbChevronsDown size={24} />
+        </Button>
+      )}
 
       <BasicModal
         title={t('dashboard.adminPanel.coupons.deleteDiscountCodeConfirm')}
@@ -445,37 +464,23 @@ export const CourseDiscount = ({ courseId }: { courseId: string }) => {
 
             <ul className="relative border rounded-lg p-2">
               <li className="absolute top-0 right-0 text-neutral-300 p-1 rounded-md cursor-pointer">
-                {codeCopied ? (
-                  <div className="pt-1 pr-2 text-orange-400">
-                    {t('dashboard.adminPanel.coupons.discountCodeCopied')}
-                  </div>
-                ) : (
-                  <button
-                    type="button"
-                    className="group"
-                    onClick={() => {
-                      navigator.clipboard.writeText(
-                        generatedCodes.map((c) => c.code).join('\n'),
-                      );
-                      setCodeCopied(true);
-                      setTimeout(() => setCodeCopied(false), 2000);
-                    }}
-                  >
-                    <svg
-                      role="img"
-                      aria-label="Copy"
-                      className="size-8"
-                      viewBox="0 0 16 17"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M6.48926 12.2394C6.12259 12.2394 5.8087 12.1089 5.54759 11.8478C5.28648 11.5866 5.15592 11.2728 5.15592 10.9061V2.90609C5.15592 2.53942 5.28648 2.22553 5.54759 1.96442C5.8087 1.70331 6.12259 1.57275 6.48926 1.57275H12.4893C12.8559 1.57275 13.1698 1.70331 13.4309 1.96442C13.692 2.22553 13.8226 2.53942 13.8226 2.90609V10.9061C13.8226 11.2728 13.692 11.5866 13.4309 11.8478C13.1698 12.1089 12.8559 12.2394 12.4893 12.2394H6.48926ZM6.48926 10.9061H12.4893V2.90609H6.48926V10.9061ZM3.82259 14.9061C3.45592 14.9061 3.14204 14.7755 2.88092 14.5144C2.61981 14.2533 2.48926 13.9394 2.48926 13.5728V4.23942H3.82259V13.5728H11.1559V14.9061H3.82259Z"
-                        className="fill-black group-hover:fill-orange-500"
-                      />
-                    </svg>
-                  </button>
-                )}
+                <button
+                  type="button"
+                  className="group text-black hover:text-orange-500"
+                  onClick={() => {
+                    navigator.clipboard.writeText(
+                      generatedCodes.map((c) => c.code).join('\n'),
+                    );
+                    setCodeCopied(true);
+                    setTimeout(() => setCodeCopied(false), 2000);
+                  }}
+                >
+                  {codeCopied ? (
+                    <TbCopyCheck className="size-8" />
+                  ) : (
+                    <TbCopy className="size-8" />
+                  )}
+                </button>
               </li>
               {generatedCodes.map((coupon) => (
                 <li key={coupon.id}>{coupon.code}</li>

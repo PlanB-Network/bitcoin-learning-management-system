@@ -489,6 +489,7 @@
         "productEvent": "Event",
         "selectCourse": "Select course",
         "selectEvent": "Select event",
+        "showMore": "Show more codes",
         "tableHead": {
           "actions": "Actions",
           "code": "Code",
