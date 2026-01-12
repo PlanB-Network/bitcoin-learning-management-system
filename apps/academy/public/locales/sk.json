@@ -882,8 +882,7 @@
         "class": "Triedy",
         "event": "Udalosti"
       },
-      "personalCalendar": "Osobný kalendár",
-      "downloadIcs": "Stiahnuť kalendár"
+      "personalCalendar": "Osobný kalendár"
     },
     "careerPortal": {
       "acceptedFormat": "Akceptovaný formát súborov: pdf / Maximálna veľkosť súboru: 10 MB.",

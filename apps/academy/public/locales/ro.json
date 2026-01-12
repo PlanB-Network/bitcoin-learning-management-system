@@ -97,7 +97,9 @@
     "loginNotAvailable1": "Funcțiile de autentificare nu sunt încă disponibile în aplicația de desktop.",
     "loginNotAvailable2": "Puteți vizita site-ul nostru pentru a vă conecta și a accesa contul.",
     "oldPassword": "Parolă veche",
-    "signUp": "Înregistrați-vă"
+    "signUp": "Înregistrați-vă",
+    "saveProgress": "Salvează-ți progresul",
+    "signUpToSave": "Înregistrează-te pentru a salva"
   },
   "bCert": {
     "bCertDescription": "Certificatul ₿ este un examen recunoscut internațional care evaluează stăpânirea ta asupra Bitcoin și a subiectelor derivate din acesta. Acest certificat îți va permite să îți dovedești abilitățile și cunoștințele în industria Bitcoin, oferindu-ți acces la cele mai bune companii și poziții de muncă excelente.",
@@ -196,7 +198,11 @@
       "premiumContentNeedsPaymentAction": "Mergi la pagina principală a cursului",
       "startCourse": "Începe cursul",
       "taughtBy": "Acest curs este predat de",
-      "thanksTipping": "Poți mulțumi dând un bacșiș profesorului."
+      "thanksTipping": "Poți mulțumi dând un bacșiș profesorului.",
+      "courseCoordinator": "Coordonator de curs",
+      "openSourceContentDescription": "Acest conținut de curs este open-source - licențiat sub <0>CC BY-SA</0> - astfel încât poate fi împărtășit și utilizat liber, atâta timp cât sursa originală este creditată.",
+      "openSourceContentTitle": "Conținut open-source",
+      "creditsCollaboration": "Acest curs este rezultatul unui efort de colaborare: fiecare lecție, traducere și revizuire este posibilă datorită muncii colaboratorilor. Din acest motiv, suntem întotdeauna în căutarea de corectori care pot revizui conținutul nostru în multe limbi.\n\nDacă doriți să participați la procesul de corectură, vă rugăm să ne contactați în grupul nostru de pe <0>Telegram</0> și să citiți <1>tutorialul</1> nostru.\n\nAjutați la răspândirea cunoștințelor despre Bitcoin:"
     },
     "exam": {
       "answersReview": "Revizuirea răspunsurilor",
@@ -1181,7 +1187,8 @@
         "none": "Niciunul",
         "platformTitle": "Ce tipuri de notificări doriți să primiți pe această platformă?",
         "settingsSaved": "Setările dvs. au fost salvate cu succes!",
-        "title": "Setări notificări"
+        "title": "Setări notificări",
+        "coursesEventsOption": "Actualizări despre cursurile și evenimentele tale"
       },
       "password": "Parolă",
       "preview": "Previzualizare",
@@ -1190,7 +1197,9 @@
       "saving": "Salvare…",
       "securitySettings": "Setări de securitate",
       "username": "Username",
-      "emailOrUsername": "E-mail sau nume de utilizator"
+      "emailOrUsername": "E-mail sau nume de utilizator",
+      "verifyYourEmail": "Verifică-ți emailul",
+      "addEmail": "Adaugă email"
     },
     "teacher": {
       "courses": {
@@ -1317,7 +1326,8 @@
           "upcomingClass": "Clasă viitoare"
         }
       }
-    }
+    },
+    "backToProfile": "Înapoi la profilul meu"
   },
   "events": {
     "card": {
@@ -1393,6 +1403,13 @@
         "lecture": "prelegeri",
         "meetup": "întâlniri",
         "workshop": "ateliere"
+      },
+      "singular": {
+        "lecture": "Prelegere",
+        "meetup": "Întâlnire",
+        "conference": "Conferință",
+        "exam": "Examen",
+        "workshop": "Atelier"
       }
     }
   },
@@ -1403,7 +1420,8 @@
     "definition": "Definiție",
     "relatedWords": "Cuvinte asociate:",
     "term": "Termen",
-    "showMoreWords": "Arată mai multe cuvinte"
+    "showMoreWords": "Arată mai multe cuvinte",
+    "learnMore": "Află mai multe"
   },
   "home": {
     "aboutUsSection": {
@@ -1598,12 +1616,50 @@
     },
     "projects": {
       "title": "Proiecte",
-      "addProjects": "Adaugă proiect"
+      "addProjects": "Adaugă proiect",
+      "types": {
+        "communities": "Comunități",
+        "education": "Educație",
+        "exchange": "Schimb",
+        "merchant": "Comerciant",
+        "conference": "Conferință",
+        "infrastructure": "Infrastructură",
+        "investment": "Investiție",
+        "manufacturer": "Producător",
+        "mining": "Minerit",
+        "news": "Știri",
+        "node": "Nod",
+        "payment": "Plată",
+        "privacy": "Confidențialitate",
+        "service": "Serviciu",
+        "wallet": "Portofel"
+      }
     },
     "searchFilterName": "Căutare după nume",
     "toggleLabelAll": "Totul",
     "toggleLabelSelectedLanguage": "Limba selectată",
-    "pageSubtitleMovies": "Alte filme pe care s-ar putea să le îți placă"
+    "pageSubtitleMovies": "Alte filme pe care s-ar putea să le îți placă",
+    "papers": {
+      "accessPaper": "Accesează documentul",
+      "addPaper": "Adaugă documentul",
+      "types": {
+        "PhD Thesis": "Teza de doctorat",
+        "academic": "Academic",
+        "book": "Carte",
+        "conference": "Conferință",
+        "journal": "Revistă",
+        "pre-print": "Pre-publicare",
+        "thesis": "Teza",
+        "review": "Recenzie",
+        "whitepaper": "Albă"
+      },
+      "citations": "Citatii (.bib)",
+      "downloadCitations": "Descarcă citatii",
+      "papers": "Documente",
+      "publisher": "Editor",
+      "showMorePapers": "Arată mai multe documente",
+      "title": "Articole de cercetare"
+    }
   },
   "search": {
     "all": "Totul",
@@ -1652,7 +1708,12 @@
     "changeDisplayName": "Schimbă numele afișat",
     "changeEmail": "Schimbă emailul",
     "changePassword": "Schimbă parola",
-    "changeProfilePicture": "Schimbă poza de profil"
+    "changeProfilePicture": "Schimbă poza de profil",
+    "emailSentTitle": "Ți-am trimis un email",
+    "verifyEmail": "Verifică email",
+    "addEmail": "Adaugă email",
+    "addEmailContinue": "Adaugă email pentru a continua",
+    "emailSentDescription": "Verifică-ți emailul și reîncarcă această pagină pentru a continua."
   },
   "tutorials": {
     "business": {
@@ -1909,7 +1970,16 @@
     "type": "Tip",
     "viewAll": "Vezi toate",
     "week": "Săptămână",
-    "weight": "Greutate"
+    "weight": "Greutate",
+    "open": "Deschide",
+    "downloads": "Descărcări",
+    "agenda": "Agendă",
+    "researchPaper": "Articol de cercetare",
+    "enroll": "Înscriere",
+    "contribute": "Contribuie",
+    "contributors": "Contribuitori",
+    "event": "Eveniment",
+    "oldest": "Cel mai vechi"
   },
   "youtubeChannels": {
     "view": "Vezi canalul Youtube",
@@ -1917,11 +1987,13 @@
   },
   "account": {
     "account": "Cont",
-    "myTeacherProfile": "Profilul meu de profesor"
+    "myTeacherProfile": "Profilul meu de profesor",
+    "profile": "Profil"
   },
   "footer": {
     "FOSSOpenContent": "FOSS și conținut deschis",
-    "proudlyPartOf": "Mândri că facem parte din <0>Rețeaua Plan ₿</0>"
+    "proudlyPartOf": "Mândri că facem parte din <0>Rețeaua Plan ₿</0>",
+    "becomeATeacher": "Devino un <0>Profesor</0>"
   },
   "months": {
     "april": "Aprilie",
@@ -1974,5 +2046,136 @@
       "rumble": "Rumble",
       "youtube": "Youtube"
     }
+  },
+  "mentor": {
+    "expand": "Extinde",
+    "placeholder": "Pune o întrebare...",
+    "welcome": "Întreabă-mă orice despre Bitcoin!",
+    "openChat": "Întreabă PlanBot",
+    "thinking": "Gândire",
+    "reset": "Conversație nouă",
+    "sources": "Mergi mai departe",
+    "title": "PlanBot",
+    "collapse": "Strânge",
+    "error": "S-a produs o eroare. Vă rugăm să încercați din nou.",
+    "loginRequired": "Creează un cont pentru a discuta cu PlanBot!",
+    "close": "Închide"
+  },
+  "becomeTeacher": {
+    "activeBitcoinLearners": "Utilizatori activi Bitcoin",
+    "bitcoinOnly": "Doar Bitcoin",
+    "bookCall": "Programați un apel de 30 de minute pentru a deveni profesor",
+    "description": "Dacă ești un pasionat de Bitcoin, care iubește să predea și dorește să aibă un impact real în comunitatea locală, poți organiza propriul curs pe platforma noastră de învățare.",
+    "enhanceExperience": "<0>Îmbunătățiți experiența de învățare a studenților dvs.</0> cu ajutorul instrumentelor platformei",
+    "globalReach": "Arie globală",
+    "inspireLearners": "Inspirați o comunitate de elevi",
+    "joinMission": "<0>Alăturați-vă misiunii</0> ca adevărat educatoare Bitcoin",
+    "superiorAmount": ">{{amount}}",
+    "teachWhatYouLove": "<0>Învățați ceea ce iubiți</0>",
+    "title": "Predați Bitcoin și inspirați pe alții",
+    "hostOwnCourse": "<0>Organizați propriul curs</0>, online sau în persoană"
+  },
+  "educatorContent": {
+    "languagePlaceholderFilter": "Limbă",
+    "languageRequired": "Selectează limba resursei",
+    "maxFileSize": "Mărime maximă fișier: 50MB",
+    "myContent": "Conținutul meu",
+    "types": {
+      "game": "Joc",
+      "booklet": "Brosură",
+      "flyer": "Flyer",
+      "art": "Artă",
+      "other": "Altul",
+      "presentation": "Prezentare",
+      "sticker": "Autocolant",
+      "workshop": "Atelier",
+      "curriculum": "Curriculum"
+    },
+    "uploading": "Se încarcă...",
+    "urlInvalid": "Linkul trebuie să fie un URL valid",
+    "contentNotFound": "Conținut negăsit",
+    "loginMessage": "Vă rugăm să vă autentificați pentru a vizualiza conținutul.",
+    "noContent": "Nu ați încărcat încă niciun conținut.",
+    "noContentToReview": "Nu este niciun conținut de revizuit",
+    "titleTooLong": "Titlul nu poate depăși 60 de caractere",
+    "imageError": "A apărut o eroare în timpul încărcării imaginii",
+    "noCover": "Fără Copertă",
+    "noResultsDescription": "Încearcă să ajustezi filtrele de căutare",
+    "shareLinks": "Partajează linkuri",
+    "addMaterial": "Adaugă conținut pentru educatori",
+    "adminPanel": {
+      "toReview": "De revizuit",
+      "approved": "Aprobat",
+      "modified": "Modificat",
+      "new": "Nou",
+      "pageTitle": "Revizuirea conținutului educativ",
+      "previewChanges": "Previzualizare modificări",
+      "previewForApproval": "Previzualizare pentru aprobare"
+    },
+    "descriptionPlaceholder": "Descrie conținutul resursei pentru a ajuta pe alții să îl înțeleagă și să îl găsească",
+    "detail": {
+      "downloadAll": "Descarcă toate",
+      "view": "Vizualizează",
+      "createdBy": "Creat de"
+    },
+    "dropCover": "Aruncă imaginea de copertă aici",
+    "dropFiles": "Aruncă fișierele aici",
+    "editMaterial": "Editează conținutul pentru educatori",
+    "fileExisting": "(Existent)",
+    "noResultsTitle": "Nu s-a găsit niciun conținut pentru educatori",
+    "onlyImages": "Sunt permise doar fișierele de tip imagine",
+    "reviewModal": {
+      "edit": "Editează",
+      "reviewForApproval": "Revizuire pentru aprobare",
+      "approveAndPublish": "Aprobă conținutul și publică",
+      "noCover": "Fără Copertă",
+      "reject": "Respinge",
+      "unknown": "Necunoscut",
+      "unpublish": "Anulați publicarea",
+      "unpublishConfirm": "Anulați publicarea (sunteți sigur?)",
+      "viewContent": "Vizualizează conținutul"
+    },
+    "sortMostDownloaded": "Cel mai descărcat",
+    "browseImages": "sau răsfoiește imaginile",
+    "coverPreview": "Previzualizare copertă",
+    "successTitle": "Conținutul pentru educatori a fost încărcat cu succes",
+    "titleHelper": "Ar trebui să reflecte conținutul și scopul resursei tale. Păstrează-l concis, dar informativ.",
+    "titlePlaceholder": "ex. Atelier multi-semnatură Liana",
+    "titleRequired": "Titlul nu poate fi gol",
+    "typePlaceholder": "Tip",
+    "typeRequired": "Specificați ce tip de resursă este",
+    "uploadFiles": "Sau încărcați fișiere",
+    "uploadForReview": "Încărcați pentru revizuire",
+    "coverRequired": "Imaginea de copertă este obligatorie",
+    "currentCoverPresent": "Prezentă coperta curentă",
+    "descriptionRequired": "Descrierea nu poate fi goală",
+    "descriptionTooLong": "Descrierea nu poate depăși 350 de caractere",
+    "done": "Gata",
+    "editAndRequireApproval": "Editează și cere aprobare",
+    "fileTooLarge": "Fișier prea mare (max 50MB)",
+    "imageCover": "Imagine de copertă",
+    "languagePlaceholder": "Selectează",
+    "linkOrFileRequired": "Vă rugăm să adăugați cel puțin un link sau încărcați un fișier",
+    "linkPlaceholder": "https://example.com",
+    "pageSubtitle": "Locul unde educatori în Bitcoin și comunități distribuie și reutilizează resurse",
+    "pageTitle": "Conținut educativ",
+    "resourceType": "Ce tip de resursă este aceasta?",
+    "sortBy": "Sortează după",
+    "sortMostRecent": "Cel mai recent",
+    "status": {
+      "draft": "În așteptare",
+      "published": "Live",
+      "rejected": "Neacceptat",
+      "unpublished": "Nepublicat"
+    },
+    "success": "Conținutul pentru educatori a fost adăugat cu succes!",
+    "successSubtitle": "Va trece printr-un proces de revizuire înainte de a fi afișat.",
+    "addMoreLinks": "Adăugați mai multe linkuri",
+    "browseFiles": "sau răsfoiește fișierele",
+    "descriptionHelper": "Descrie conținutul resursei pentru a ajuta pe alții să îl înțeleagă și să îl găsească"
+  },
+  "forms": {
+    "browse": "Răsfoiește",
+    "replace": "Înlocuiește"
   }
 }

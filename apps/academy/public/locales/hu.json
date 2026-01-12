@@ -871,8 +871,7 @@
         "class": "Órák",
         "event": "Események"
       },
-      "personalCalendar": "Személyes naptár",
-      "downloadIcs": "Naptár letöltése"
+      "personalCalendar": "Személyes naptár"
     },
     "careerPortal": {
       "acceptedFormat": "Elfogadott fájlformátum: pdf / Maximális fájlméret: 10 MB.",
@@ -915,15 +914,15 @@
       "cvUploadLabel": "Önéletrajz feltöltése",
       "cvUploadSubtitle": "Töltsd fel önéletrajzodat, hogy bemutasd készségeidet és tapasztalataidat a lehetséges munkaadóknak.",
       "deleteCareerProfile": "Karrierprofil törlése",
-      "deleteCareerProfileTitle": "Biztosan törli a karrierprofilját?",
-      "description": "A Plan ₿ Hálózat diákjaként részese vagy egy széles közösségnek, amely támogatja a karriered fejlődését. Ebben a szakaszban felveheted az önéletrajzodat és megoszthatod a karrierbeli törekvéseidet. Szorosan együttműködünk ipari partnereinkkel, hogy profilodat összehangoljuk a lehetséges álláslehetőségekkel, segítve téged a szakmai utad következő lépésének megtételében.",
+      "deleteCareerProfileTitle": "Biztosan törlöd a karrierprofilodat?",
+      "description": "A Plan ₿ Network hallgatójaként egy széles körű közösség része vagy, amely támogatja a szakmai fejlődésedet. Ebben a szakaszban feltöltheted az önéletrajzodat, és megoszthatod a karrierrel kapcsolatos céljaidat. Iparági partnereinkkel szorosan együttműködve azon dolgozunk, hogy a profilodat releváns álláslehetőségekkel párosítsuk, és segítsünk megtenni a következő lépést a szakmai utadon.",
       "emailAddress": "E-mail cím",
       "emailPlaceholder": "mail@mail.com",
       "expectedSalary": "Elvárt fizetés",
       "expectedSalaryPlaceholder": "Havi fizetés: 2.5K nettó",
       "expectedSalarySubLabel": "A profilodtól függően, mondd meg az órabéred vagy a havi fizetési elvárásaidat. Kérjük, tüntesd fel, hogy nettó vagy bruttó.",
       "fileTooLarge": "A kiválasztott fájl túl nagy",
-      "fileUploadError": "Hiba történt a fájl feltöltésekor. Kérjük, próbálja meg újra.",
+      "fileUploadError": "Hiba történt a fájl feltöltésekor. Kérjük, próbáld meg újra.",
       "fileUploaded": "Az önéletrajz sikeresen feltöltve!",
       "firstName": "Keresztnév (vagy álnév)",
       "followProcess": "Kövesd ezt a lépésről lépésre haladó folyamatot az önéletrajzod és a munkával kapcsolatos információk beküldéséhez.",
@@ -931,7 +930,7 @@
       "invalidFile": "Érvénytelen fájlformátum",
       "jobCategories": {
         "businessRoles": "Üzleti szerepek",
-        "financeCompliance": "Pénzügyek és conformitás",
+        "financeCompliance": "Pénzügyek és megfelelés",
         "marketingCommunity": "Marketing és közösség",
         "more": "Tovább",
         "operationsSupport": "Operáció és támogatás",
@@ -940,13 +939,13 @@
         "technicalRoles": "Technikai szerepek"
       },
       "jobSearch": "Álláskeresés",
-      "jobSearchSubtitle": "Határozza meg álláspreferenciáit, hogy segítsenek nekünk a profiljához legjobban illő lehetőségek kiválasztásában.",
+      "jobSearchSubtitle": "Add meg az álláspreferenciáidat, hogy a profilodhoz legjobban illő lehetőségeket ajánlhassuk.",
       "jobTitles": {
-        "accountingManager": "Könyvviteli menedzser",
+        "accountingManager": "Könyvelési menedzser",
         "amlKycSpecialist": "AML/KYC szakértő",
-        "backendEngineer": "Háttérmérnök",
+        "backendEngineer": "Backend fejlesztő",
         "bitcoinInvestmentAnalyst": "Bitcoin-befektetési elemző",
-        "brandStrategist": "Márkastratégus",
+        "brandStrategist": "Márkastratéga",
         "businessAnalyst": "Üzleti elemző",
         "businessDevelopmentManager": "Üzletfejlesztési menedzser",
         "cloudInfrastructureEngineer": "Felhőinfrastruktúra-mérnök",
