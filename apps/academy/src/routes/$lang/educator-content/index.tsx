@@ -29,7 +29,7 @@ export const Route = createFileRoute('/$lang/educator-content/')({
   component: RouteComponent,
 });
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 30;
 const FILTERS_STORAGE_KEY = 'educatorContentFilters';
 
 interface SavedFilters {
@@ -190,17 +190,25 @@ function RouteComponent() {
       }),
   ];
 
+  // Get unique languages that have published content
+  const availableLanguages = useMemo(() => {
+    if (!content) return [];
+    return [...new Set(content.map((item) => item.language))];
+  }, [content]);
+
   const languages = [
     {
       id: 'all',
       name: t('words.all'),
       onClick: () => setSelectedLanguage('all'),
     },
-    ...LANGUAGES.map((lang) => ({
-      id: lang,
-      name: capitalize(getLanguageName(lang)),
-      onClick: () => setSelectedLanguage(lang),
-    })).sort((a, b) => a.name.localeCompare(b.name)),
+    ...LANGUAGES.filter((lang) => availableLanguages.includes(lang))
+      .map((lang) => ({
+        id: lang,
+        name: capitalize(getLanguageName(lang)),
+        onClick: () => setSelectedLanguage(lang),
+      }))
+      .sort((a, b) => a.name.localeCompare(b.name)),
   ];
 
   return (
