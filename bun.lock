@@ -14,7 +14,7 @@
         "lint-staged": "^16.2.6",
         "mocha": "^11.7.4",
         "tsx": "^4.20.6",
-        "turbo": "^2.7.2",
+        "turbo": "^2.7.3",
         "typescript": "~5.9.3",
       },
     },
@@ -387,6 +387,7 @@
       "version": "0.0.1",
       "dependencies": {
         "@blms/constants": "workspace:*",
+        "@blms/types": "workspace:*",
       },
     },
     "packages/types": {

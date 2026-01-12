@@ -1,9 +1,18 @@
 import { Button, cn } from '@blms/ui';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { BiCollapse, BiExpand, BiRefresh, BiX } from 'react-icons/bi';
+import {
+  BiCollapse,
+  BiExpand,
+  BiLoaderAlt,
+  BiRefresh,
+  BiX,
+} from 'react-icons/bi';
 import { BsRobot } from 'react-icons/bs';
 import { IoSend } from 'react-icons/io5';
+import type { Components } from 'react-markdown';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 import { AuthModalState } from '#src/components/AuthModals/props.js';
 import { useAuthModal } from '#src/providers/auth.js';
@@ -23,6 +32,77 @@ interface Message {
   isStreaming?: boolean;
 }
 
+/**
+ * Custom markdown components for mentor chat messages.
+ * Defined outside the component to prevent recreation on each render.
+ */
+const mentorMarkdownComponents: Components = {
+  h1: ({ children }) => (
+    <h1 className="text-base font-bold mt-3 mb-1 first:mt-0">{children}</h1>
+  ),
+  h2: ({ children }) => (
+    <h2 className="text-base font-bold mt-3 mb-1 first:mt-0">{children}</h2>
+  ),
+  h3: ({ children }) => (
+    <h3 className="text-sm font-bold mt-2 mb-1 first:mt-0">{children}</h3>
+  ),
+  h4: ({ children }) => (
+    <h4 className="text-sm font-semibold mt-2 mb-1 first:mt-0">{children}</h4>
+  ),
+  a: ({ children, href }) => (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-blue-600 underline hover:text-blue-800"
+    >
+      {children}
+    </a>
+  ),
+  code: ({ children, className }) => {
+    const isCodeBlock =
+      className?.startsWith('language-') ||
+      (!className && String(children).includes('\n'));
+
+    if (isCodeBlock) {
+      return (
+        <code className="block bg-gray-800 text-gray-100 rounded p-2 text-xs overflow-x-auto my-1 whitespace-pre-wrap">
+          {children}
+        </code>
+      );
+    }
+
+    return (
+      <code className="bg-gray-200 text-gray-800 rounded px-1 py-0.5 text-xs">
+        {children}
+      </code>
+    );
+  },
+  pre: ({ children }) => <>{children}</>,
+  p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+  ul: ({ children }) => (
+    <ul className="list-disc pl-4 mb-2 last:mb-0">{children}</ul>
+  ),
+  ol: ({ children }) => (
+    <ol className="list-decimal pl-4 mb-2 last:mb-0">{children}</ol>
+  ),
+  li: ({ children }) => <li className="mb-1 last:mb-0">{children}</li>,
+  table: ({ children }) => (
+    <table className="w-full border-collapse border border-gray-300 my-2 text-xs">
+      {children}
+    </table>
+  ),
+  thead: ({ children }) => <thead className="bg-gray-200">{children}</thead>,
+  th: ({ children }) => (
+    <th className="border border-gray-300 px-2 py-1 text-left font-semibold">
+      {children}
+    </th>
+  ),
+  td: ({ children }) => (
+    <td className="border border-gray-300 px-2 py-1">{children}</td>
+  ),
+};
+
 export const MentorChat = ({ chapterId, language }: MentorChatProps) => {
   const { t } = useTranslation();
   const { session } = useContext(AppContext);
@@ -39,6 +119,7 @@ export const MentorChat = ({ chapterId, language }: MentorChatProps) => {
   const [historyLoaded, setHistoryLoaded] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   // Build session key
   const sessionKey = chapterId
@@ -56,6 +137,13 @@ export const MentorChat = ({ chapterId, language }: MentorChatProps) => {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
+
+  // Refocus input when loading completes
+  useEffect(() => {
+    if (!isLoading && isOpen) {
+      inputRef.current?.focus();
+    }
+  }, [isLoading, isOpen]);
 
   const loadHistory = async () => {
     try {
@@ -254,7 +342,7 @@ export const MentorChat = ({ chapterId, language }: MentorChatProps) => {
         <button
           type="button"
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-28 right-10 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-orange-500 text-white shadow-lg transition-all hover:bg-orange-600 hover:scale-110"
+          className="fixed bottom-20 right-4 md:bottom-28 md:right-10 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-orange-500 text-white shadow-lg transition-all hover:bg-orange-600 hover:scale-110"
           aria-label={t('mentor.openChat')}
         >
           <BsRobot size={24} />
@@ -268,7 +356,7 @@ export const MentorChat = ({ chapterId, language }: MentorChatProps) => {
             'fixed z-50 flex flex-col rounded-lg border border-gray-200 bg-white shadow-2xl transition-all duration-300',
             isExpanded
               ? 'bottom-4 right-4 left-4 top-4 md:bottom-10 md:right-10 md:left-auto md:top-auto md:h-[80vh] md:w-[600px]'
-              : 'bottom-28 right-10 h-[500px] w-[380px]',
+              : 'bottom-4 right-4 left-4 h-[60vh] max-h-[500px] md:bottom-28 md:right-10 md:left-auto md:h-[500px] md:w-[380px]',
           )}
         >
           {/* Header */}
@@ -342,18 +430,29 @@ export const MentorChat = ({ chapterId, language }: MentorChatProps) => {
               >
                 <div
                   className={cn(
-                    'max-w-[85%] rounded-lg px-4 py-2',
+                    'max-w-[90%] rounded-lg px-4 py-2',
                     message.type === 'user'
                       ? 'bg-orange-500 text-white'
-                      : 'bg-gray-100 text-gray-900',
+                      : 'bg-gray-100/50 text-gray-900',
                   )}
                 >
-                  <p className="text-sm whitespace-pre-wrap">
-                    {message.content}
+                  <div className="text-sm">
+                    {message.type === 'mentor' ? (
+                      <ReactMarkdown
+                        components={mentorMarkdownComponents}
+                        remarkPlugins={[remarkGfm]}
+                      >
+                        {message.content}
+                      </ReactMarkdown>
+                    ) : (
+                      <span className="whitespace-pre-wrap">
+                        {message.content}
+                      </span>
+                    )}
                     {message.isStreaming && (
                       <span className="inline-block w-2 h-4 ml-1 bg-gray-400 animate-pulse" />
                     )}
-                  </p>
+                  </div>
 
                   {message.sources &&
                     message.sources.length > 0 &&
@@ -397,20 +496,25 @@ export const MentorChat = ({ chapterId, language }: MentorChatProps) => {
           >
             <div className="flex gap-2">
               <input
+                ref={inputRef}
                 type="text"
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
                 placeholder={t('mentor.placeholder')}
-                className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500"
+                className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
                 maxLength={500}
-                disabled={isLoading || !isLoggedIn}
+                disabled={!isLoggedIn}
               />
               <Button
                 type="submit"
                 disabled={!question.trim() || isLoading || !isLoggedIn}
-                className="bg-orange-500 hover:bg-orange-600 text-white px-4"
+                className="bg-orange-500 hover:bg-orange-600 disabled:bg-orange-300 text-white px-4"
               >
-                <IoSend size={18} />
+                {isLoading ? (
+                  <BiLoaderAlt size={18} className="animate-spin" />
+                ) : (
+                  <IoSend size={18} />
+                )}
               </Button>
             </div>
           </form>
