@@ -1,3 +1,4 @@
+import { ResourceType } from '@blms/constants';
 import { formatNameForURL } from '@blms/shared';
 import type { JoinedBook } from '@blms/types';
 import { Loader } from '@blms/ui';
@@ -9,6 +10,7 @@ import { PageLayout } from '#src/components/page-layout.tsx';
 import { SearchInput } from '#src/components/search-input.tsx';
 import { assetUrl } from '#src/utils/index.ts';
 import { trpc } from '#src/utils/trpc.js';
+import { AddResourceModal } from '../-components/add-resource-modal.tsx';
 import { ResourceCard } from '../-components/cards/resource-card.tsx';
 import { resourcesTabs } from '../index.tsx';
 
@@ -19,6 +21,7 @@ export const Route = createFileRoute('/$lang/resources/books/')({
 function Books() {
   const { t, i18n } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data: books, isFetched } = useQuery(
     trpc.content.getBooks.queryOptions(
@@ -42,11 +45,16 @@ function Books() {
       layoutSize="wide"
       actionButtons={[
         {
-          text: t('resources.books.addBook'),
-          href: '/tutorials/contribution/resource/add-book-d3bd9f9a-1859-4d81-8c55-0b720a8740c9',
+          text: t('resources.addResource.book'),
+          onClick: () => setIsModalOpen(true),
         },
       ]}
     >
+      <AddResourceModal
+        resourceType={ResourceType.Book}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
       {!isFetched && <Loader size={'s'} />}
       {isFetched && (
         <>

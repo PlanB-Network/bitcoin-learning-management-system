@@ -1,3 +1,4 @@
+import { ResourceType } from '@blms/constants';
 import { formatNameForURL } from '@blms/shared';
 import { EmptyState, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
@@ -8,6 +9,7 @@ import { PageLayout } from '#src/components/page-layout.tsx';
 import { SearchInput } from '#src/components/search-input.tsx';
 import { resourceImgUrl } from '#src/utils/index.ts';
 import { trpc } from '#src/utils/trpc.js';
+import { AddResourceModal } from '../-components/add-resource-modal.tsx';
 import { ResourceCard } from '../-components/cards/resource-card.tsx';
 import {
   LanguageResourcesSectionHeader,
@@ -23,6 +25,7 @@ function YoutubeChannels() {
   const { t, i18n } = useTranslation();
   const [showLocalOnly, setShowLocalOnly] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data: youtubeChannels, isFetched } = useQuery(
     trpc.content.getYoutubeChannels.queryOptions({}, { staleTime: 300_000 }),
@@ -61,7 +64,18 @@ function YoutubeChannels() {
       title={t('resources.channels.title')}
       tabs={resourcesTabs}
       layoutSize="wide"
+      actionButtons={[
+        {
+          text: t('resources.addResource.youtube-channel'),
+          onClick: () => setIsModalOpen(true),
+        },
+      ]}
     >
+      <AddResourceModal
+        resourceType={ResourceType.YoutubeChannel}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
       <SearchInput
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}

@@ -19,3 +19,23 @@ export interface Tags {
   id: number;
   name: string;
 }
+
+export interface CreateResourcePR {
+  type: string;
+  title: string;
+  category?: string | undefined;
+  country?: string | undefined;
+  description: string;
+  tags?: string[] | undefined;
+  links?:
+    | {
+        website?: string | undefined;
+        twitter?: string | undefined;
+        github?: string | undefined;
+        nostr?: string | undefined;
+        linkedin?: string | undefined;
+      }
+    | undefined;
+  language: string;
+  coverImage?: { name: string; data: string } | undefined;
+}

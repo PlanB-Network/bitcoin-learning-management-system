@@ -1,14 +1,15 @@
+import { ResourceType } from '@blms/constants';
 import { Button, cn, DropdownMenu, HorizontalCard, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbAdjustmentsHorizontal, TbChevronsDown, TbX } from 'react-icons/tb';
-
 import PaperImage from '#src/assets/resources/paper.png';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { SearchInput } from '#src/components/search-input.tsx';
 import { trpc } from '#src/utils/trpc.js';
+import { AddResourceModal } from '../-components/add-resource-modal.tsx';
 
 import { resourcesTabs } from '../index.tsx';
 
@@ -23,6 +24,7 @@ function ResearchPapers() {
   const [activeType, setActiveType] = useState('all');
   const [sortBy, setSortBy] = useState<'recent' | 'oldest'>('recent');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data: papers, isFetched } = useQuery(
     trpc.content.getResearchPapers.queryOptions(
@@ -92,7 +94,18 @@ function ResearchPapers() {
       title={t('resources.papers.title')}
       tabs={resourcesTabs}
       layoutSize="wide"
+      actionButtons={[
+        {
+          text: t('resources.addResource.paper'),
+          onClick: () => setIsModalOpen(true),
+        },
+      ]}
     >
+      <AddResourceModal
+        resourceType={ResourceType.Paper}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
       {!isFetched && <Loader size={'s'} />}
       {isFetched && (
         <>

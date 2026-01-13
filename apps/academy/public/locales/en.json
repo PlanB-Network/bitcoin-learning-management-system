@@ -1780,6 +1780,32 @@
     }
   },
   "resources": {
+    "addResource": {
+      "project": "Add project",
+      "book": "Add book",
+      "movie": "Add movie",
+      "podcast": "Add podcast",
+      "youtube-channel": "Add YouTube channel",
+      "newsletter": "Add newsletter",
+      "paper": "Add research paper",
+      "glossary": "Add glossary word",
+      "bet": "Add education kit",
+      "conference": "Add conference replay",
+      "title": "Title",
+      "titlePlaceholder": "Enter the resource title",
+      "category": "Category",
+      "selectCategory": "Select a category",
+      "selectLanguage": "Select a language",
+      "description": "Description",
+      "descriptionPlaceholder": "Enter a description of the resource",
+      "coverImage": "Cover image",
+      "dropImage": "Click or drop an image here (PNG, JPG, WebP)",
+      "browse": "Browse files",
+      "socialProfiles": "Social profiles",
+      "sendForReview": "Send for review",
+      "sending": "Sending...",
+      "success": "Resource successfully submitted! A Pull Request has been created on GitHub."
+    },
     "bet": {
       "addEducationKit": "Add education kit",
       "title": "Education kits"

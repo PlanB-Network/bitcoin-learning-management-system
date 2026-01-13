@@ -1,3 +1,4 @@
+import { ResourceType } from '@blms/constants';
 import type { JoinedConference } from '@blms/types';
 import { Button, cn, EmptyState, Image, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
@@ -9,6 +10,7 @@ import OrangePill from '#src/assets/icons/orange_pill_color.svg?react';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { assetUrl, trpc } from '#src/utils/index.ts';
+import { AddResourceModal } from '../-components/add-resource-modal.tsx';
 import { ConferencesTimeLine } from '../-components/conferences-timeline.tsx';
 import { ConferencesTable } from '../-components/tables/conferences-table.tsx';
 import { resourcesTabs } from '../index.tsx';
@@ -21,6 +23,7 @@ function Conferences() {
   const [activeYear, setActiveYear] = useState(
     new Date().getFullYear().toString(),
   );
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [filteredConferences, setFilteredConferences] =
     useState<JoinedConference[]>();
   const [latestConferences, setLatestConferences] =
@@ -72,11 +75,16 @@ function Conferences() {
       layoutSize="wide"
       actionButtons={[
         {
-          text: t('resources.conferences.addConference'),
-          href: '/tutorials/contribution/resource/add-conference-replay-3282deba-16ab-4dd9-8357-680902bfb527',
+          text: t('resources.addResource.conference'),
+          onClick: () => setIsModalOpen(true),
         },
       ]}
     >
+      <AddResourceModal
+        resourceType={ResourceType.Conference}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
       <div className="flex flex-wrap gap-4 mt-4 sm:mt-2 max-lg:hidden">
         <div className="flex flex-col gap-1 sm:gap-4">
           <h3 className="title-small text-black">
