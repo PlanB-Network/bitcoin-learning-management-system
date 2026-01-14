@@ -53,9 +53,7 @@ const GlossaryMarkdownBody = ({
           </ol>
         ),
         p: ({ children }) => (
-          <ParagraphRenderer intent="glossary" header="none">
-            {children}
-          </ParagraphRenderer>
+          <ParagraphRenderer intent="glossary">{children}</ParagraphRenderer>
         ),
         table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
         td: ({ children }) => <TdRenderer>{children}</TdRenderer>,

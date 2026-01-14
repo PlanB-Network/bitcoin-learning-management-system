@@ -206,6 +206,7 @@ interface CalendarDownloadModalProps {
   isOpen: boolean;
   onClose: (open: boolean) => void;
   onDownload: () => void;
+  // biome-ignore lint/suspicious/noConfusingVoidType: ok
   onSubscribe: () => Promise<boolean | void>;
 }
 

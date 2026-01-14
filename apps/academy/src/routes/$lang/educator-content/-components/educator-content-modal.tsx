@@ -20,7 +20,7 @@ import {
   Textarea,
 } from '@blms/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from '@tanstack/react-router';
 import { useEffect, useRef, useState } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
@@ -39,9 +39,32 @@ import {
   uploadEducatorContentCover,
   uploadEducatorContentFile,
 } from '#src/services/content.js';
-import { getLanguageName, LANGUAGES } from '#src/utils/i18n.ts';
+
 import { trpc } from '#src/utils/trpc.js';
 import { EducatorContentSuccessModal } from './educator-content-success-modal.tsx';
+
+// Allowed file types for educator content uploads
+const ALLOWED_FILE_TYPES = [
+  // Images
+  'image/jpeg',
+  'image/png',
+  'image/gif',
+  'image/webp',
+  'image/svg+xml',
+  // PDF
+  'application/pdf',
+  // Microsoft Office
+  'application/msword',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  'application/vnd.ms-powerpoint',
+  'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+  'application/vnd.ms-excel',
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  // LibreOffice / OpenDocument
+  'application/vnd.oasis.opendocument.text',
+  'application/vnd.oasis.opendocument.presentation',
+  'application/vnd.oasis.opendocument.spreadsheet',
+];
 
 interface Props {
   isOpen: boolean;
@@ -59,6 +82,14 @@ export const EducatorContentModal = ({
   const { t } = useTranslation();
   const queryClient = useQueryClient();
   const navigate = useNavigate();
+
+  const { data: allExistingLanguages } = useQuery(
+    trpc.user.career.getLanguages.queryOptions(),
+  );
+  const sortedLanguages = allExistingLanguages
+    ? [...allExistingLanguages].sort((a, b) => a.code.localeCompare(b.code))
+    : [];
+
   const [createdContentId, setCreatedContentId] = useState<string | null>(null);
   const [coverImage, setCoverImage] = useState<File | null>(null);
   const [newFiles, setNewFiles] = useState<File[]>([]);
@@ -401,6 +432,13 @@ export const EducatorContentModal = ({
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
       const droppedFiles = Array.from(e.dataTransfer.files);
       const validFiles = droppedFiles.filter((file) => {
+        if (!ALLOWED_FILE_TYPES.includes(file.type)) {
+          customToast(t('educatorContent.fileTypeNotAllowed'), {
+            mode: 'light',
+            color: 'warning',
+          });
+          return false;
+        }
         if (file.size > 50 * 1024 * 1024) {
           customToast(t('educatorContent.fileTooLarge'), {
             mode: 'light',
@@ -490,7 +528,7 @@ export const EducatorContentModal = ({
                 </p>
                 <Textarea
                   id={field.name}
-                  placeholder={t('educatorContent.descriptionPlaceholder')}
+                  placeholder={t('educatorContent.descriptionHelper')}
                   maxLength={350}
                   {...field}
                 />
@@ -532,15 +570,11 @@ export const EducatorContentModal = ({
                       />
                     </SelectTrigger>
                     <SelectContent>
-                      {[...LANGUAGES]
-                        .sort((a, b) =>
-                          getLanguageName(a).localeCompare(getLanguageName(b)),
-                        )
-                        .map((lang) => (
-                          <SelectItem key={lang} value={lang}>
-                            {getLanguageName(lang)}
-                          </SelectItem>
-                        ))}
+                      {sortedLanguages.map((lang) => (
+                        <SelectItem key={lang.code} value={lang.code}>
+                          {lang.nativeName}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                   {fieldState.invalid && (
@@ -740,6 +774,9 @@ export const EducatorContentModal = ({
           <h3 className="title-medium md:subtitle-base">
             {t('educatorContent.uploadFiles')}
           </h3>
+          <p className="body-small text-gray-500 -mt-4">
+            {t('educatorContent.uploadFilesHelper')}
+          </p>
           <div
             className={cn(
               'border-2 border-dashed rounded-xl p-6 flex flex-col items-center justify-center text-center transition-colors',
@@ -794,10 +831,18 @@ export const EducatorContentModal = ({
               ref={fileInputRef}
               className="hidden"
               multiple
+              accept="image/*,.pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.odt,.odp,.ods"
               onChange={(e) => {
                 if (e.target.files) {
                   const selectedFiles = Array.from(e.target.files);
                   const validFiles = selectedFiles.filter((file) => {
+                    if (!ALLOWED_FILE_TYPES.includes(file.type)) {
+                      customToast(t('educatorContent.fileTypeNotAllowed'), {
+                        mode: 'light',
+                        color: 'warning',
+                      });
+                      return false;
+                    }
                     if (file.size > 50 * 1024 * 1024) {
                       customToast(t('educatorContent.fileTooLarge'), {
                         mode: 'light',
@@ -814,7 +859,7 @@ export const EducatorContentModal = ({
           </div>
 
           <div className="flex justify-between items-center mt-2 mb-4 text-xs text-gray-400">
-            {/* <p>Supported file types: .png, .pdf, .jpg</p> */}
+            <p>{t('educatorContent.supportedFileTypes')}</p>
             <p>{t('educatorContent.maxFileSize')}</p>
           </div>
 

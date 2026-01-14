@@ -25,10 +25,9 @@ interface ParagraphRendererProps
   children?: React.ReactNode;
   className?: string;
   intent?: 'default' | 'conference' | 'general' | 'glossary';
-  header: 'none' | 'logo' | 'text';
 }
 export const ParagraphRenderer: React.FC<ParagraphRendererProps> = (props) => {
-  const { children, intent, header } = props;
+  const { children, intent } = props;
   const { i18n } = useTranslation();
 
   const renderChild = (child: React.ReactNode) => {
@@ -55,7 +54,6 @@ export const ParagraphRenderer: React.FC<ParagraphRendererProps> = (props) => {
               key={planbVideoId}
               videoId={planbVideoId}
               language={i18n.language}
-              header={header}
             />
           );
         }

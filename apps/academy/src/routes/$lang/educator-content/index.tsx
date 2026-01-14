@@ -1,18 +1,18 @@
 import { EducatorContentStatus, EducatorContentType } from '@blms/constants';
 import type { JoinedEducatorContent } from '@blms/types';
-import { cn, DropdownMenu, EmptyState, Loader } from '@blms/ui';
+import {
+  CategorySwitcher,
+  cn,
+  DropdownMenu,
+  EmptyState,
+  Loader,
+} from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { capitalize } from 'lodash-es';
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-  TbAdjustmentsHorizontal,
-  TbChevronRight,
-  TbDownload,
-  TbSearch,
-  TbX,
-} from 'react-icons/tb';
+import { TbChevronRight, TbDownload, TbSearch } from 'react-icons/tb';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { Pagination } from '#src/components/pagination.tsx';
@@ -21,7 +21,7 @@ import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { getEducatorContentCoverUrl } from '#src/services/content.js';
-import { getLanguageName, LANGUAGES } from '#src/utils/i18n.ts';
+
 import { trpc } from '#src/utils/trpc.js';
 import { EducatorContentModal } from './-components/educator-content-modal.tsx';
 import { GuidelinesModal } from './-components/guidelines-modal.tsx';
@@ -69,6 +69,13 @@ function RouteComponent() {
     }),
   );
 
+  const { data: allExistingLanguages } = useQuery(
+    trpc.user.career.getLanguages.queryOptions(),
+  );
+  const sortedCareerLanguages = allExistingLanguages
+    ? [...allExistingLanguages].sort((a, b) => a.code.localeCompare(b.code))
+    : [];
+
   const { data: userContent } = useQuery(
     trpc.content.getEducatorContents.queryOptions(
       {
@@ -108,7 +115,6 @@ function RouteComponent() {
   const [sortBy, setSortBy] = useState<'recent' | 'downloads'>(
     savedFilters.sortBy || 'recent',
   );
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
   // Save filters to localStorage whenever they change
@@ -214,11 +220,12 @@ function RouteComponent() {
       name: t('words.all'),
       onClick: () => setSelectedLanguage('all'),
     },
-    ...LANGUAGES.filter((lang) => availableLanguages.includes(lang))
+    ...sortedCareerLanguages
+      .filter((lang) => availableLanguages.includes(lang.code))
       .map((lang) => ({
-        id: lang,
-        name: capitalize(getLanguageName(lang)),
-        onClick: () => setSelectedLanguage(lang),
+        id: lang.code,
+        name: capitalize(lang.nativeName),
+        onClick: () => setSelectedLanguage(lang.code),
       }))
       .sort((a, b) => a.name.localeCompare(b.name)),
   ];
@@ -260,55 +267,21 @@ function RouteComponent() {
         <Loader />
       ) : (
         <>
-          {/* Mobile Search filter */}
-          <div
-            className={cn(
-              'flex items-center gap-2 w-full justify-end my-2 mb-6 lg:hidden',
-            )}
-          >
-            <SearchInput
-              searchTerm={searchQuery}
-              setSearchTerm={setSearchQuery}
-            />
-            <button
-              onClick={() => setIsFilterOpen((prev) => !prev)}
-              className="p-2 rounded-lg bg-neutral-50 text-neutral-400 flex items-center gap-2"
-              type="button"
-            >
-              <span className="body-base">{t('words.filters')}</span>
-              {isFilterOpen ? (
-                <TbX size={16} />
-              ) : (
-                <TbAdjustmentsHorizontal size={16} />
-              )}
-            </button>
+          {/* Type Filter Pills */}
+          <div className="flex flex-wrap gap-2 lg:mt-4">
+            {types.map((type) => (
+              <CategorySwitcher
+                key={type.id}
+                size="m"
+                onClick={type.onClick}
+                isActive={selectedType === type.id}
+                text={type.name}
+              />
+            ))}
           </div>
 
-          {/* Filters */}
-          <div
-            className={cn(
-              'flex lg:justify-end max-lg:flex-col gap-1 lg:gap-2',
-              'max-lg:p-2 max-lg:rounded-lg max-lg:w-full max-lg:max-w-90',
-              'max-lg:mx-auto lg:mt-4 mt-8 mb-8',
-              isFilterOpen ? '' : 'max-lg:hidden',
-            )}
-          >
-            <div className="lg:hidden flex justify-between items-center w-full mb-1 px-1">
-              <span className="body-small-bold text-neutral-700">
-                {t('words.filters')}
-              </span>
-            </div>
-
-            <DropdownMenu
-              activeItem={
-                types.find((t) => t.id === selectedType)?.name || 'Type'
-              }
-              itemsList={types.filter((t) => t.id !== selectedType)}
-              variant="light"
-              placeholder={t('educatorContent.typePlaceholder')}
-              forcePlaceholder={selectedType === 'all'}
-              className="w-full lg:w-44"
-            />
+          {/* Language and Search Filters */}
+          <div className={cn('flex lg:justify-end gap-2', 'mt-4 mb-8')}>
             <DropdownMenu
               activeItem={
                 languages.find((l) => l.id === selectedLanguage)?.name ||
@@ -318,12 +291,12 @@ function RouteComponent() {
               variant="light"
               placeholder={t('educatorContent.languagePlaceholderFilter')}
               forcePlaceholder={selectedLanguage === 'all'}
-              className="w-full lg:w-40"
+              className="max-lg:flex-1 lg:w-40"
             />
             <SearchInput
               searchTerm={searchQuery}
               setSearchTerm={setSearchQuery}
-              className="max-lg:hidden"
+              className="max-lg:flex-1 max-lg:h-13!"
             />
           </div>
 
