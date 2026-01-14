@@ -641,7 +641,11 @@ function CourseChapter() {
             {/* Desktop */}
             <TimelineBig
               chapter={chapter}
-              professors={chapter?.course.mainProfessors}
+              professors={
+                chapter?.professors && chapter?.professors.length > 0
+                  ? chapter.professors
+                  : chapter.course.mainProfessors
+              }
             />
             {/* Mobile */}
             <TimelineSmall chapter={chapter} professor={computedProfessor} />
