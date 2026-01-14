@@ -201,7 +201,8 @@
       "thanksTipping": "Anda dapat mengucapkan terima kasih dengan memberikan tip kepada profesor.",
       "creditsCollaboration": "Kursus ini adalah hasil dari upaya kolaboratif: setiap pelajaran, terjemahan, dan revisi dimungkinkan oleh kerja kontributor. Untuk alasan ini, kami selalu mencari perevisi yang dapat meninjau konten kami dalam banyak bahasa.\n\nJika Anda ingin berpartisipasi dalam proses pengetikan ulang, silakan hubungi kami di grup <0>Telegram</0> kami dan baca <1>tutorial</1> kami.\n\nBantu sebarkan pengetahuan Bitcoin:",
       "openSourceContentDescription": "Konten kursus ini adalah sumber terbuka - berlisensi di bawah <0>CC BY-SA</0> - sehingga dapat dibagikan dan digunakan secara bebas, asalkan sumber asli dikreditkan.",
-      "openSourceContentTitle": "Konten sumber terbuka"
+      "openSourceContentTitle": "Konten sumber terbuka",
+      "courseCoordinator": "Koordinator kursus"
     },
     "exam": {
       "answersReview": "Ulasan jawaban",
@@ -876,7 +877,19 @@
         "class": "Kelas",
         "event": "Acara"
       },
-      "personalCalendar": "Kalender pribadi"
+      "personalCalendar": "Kalender pribadi",
+      "downloadButton": "Unduh kalender .ics dan impor",
+      "downloadCalendar": "Unduh kalender",
+      "downloadCalendarTitle": "Unduh kalender",
+      "downloadStep1": "Unduh file kalender",
+      "downloadStep2": "Buka dengan aplikasi kalender Anda",
+      "downloadStep3": "Acara tidak akan diperbarui jika ada perubahan tanggal",
+      "downloadTitle": "Atau unduh kalender saat ini",
+      "subscribeButton": "Salin tautan kalender yang telah disinkronkan",
+      "subscribeStep1": "Salin tautan kalender",
+      "subscribeStep2": "Tempelkan ke opsi \"Berlangganan\" pada aplikasi kalender Anda",
+      "subscribeStep3": "Jadwal acara tetap diperbarui secara otomatis jika ada perubahan",
+      "subscribeTitle": "Berlangganan kalender (sinkronisasi otomatis)"
     },
     "careerPortal": {
       "acceptedFormat": "Format file yang diterima: pdf / Ukuran file maksimum: 10 MB.",
@@ -2056,7 +2069,8 @@
       "flyer": "Brosur",
       "workshop": "Workshop",
       "other": "Lainnya",
-      "presentation": "Presentasi"
+      "presentation": "Presentasi",
+      "curriculum": "Kurikulum"
     },
     "contentNotFound": "Konten tidak ditemukan",
     "success": "Konten pendidik berhasil ditambahkan!",

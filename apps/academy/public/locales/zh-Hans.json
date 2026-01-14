@@ -877,7 +877,19 @@
         "class": "课程",
         "event": "活动"
       },
-      "personalCalendar": "个人时间安排"
+      "personalCalendar": "个人时间安排",
+      "downloadButton": "下载 .ics 日历并导入",
+      "downloadCalendar": "下载日历",
+      "downloadCalendarTitle": "下载日历",
+      "downloadStep1": "下载日历文件",
+      "downloadStep2": "使用您的日历应用打开",
+      "downloadStep3": "如果有日期更改，活动将不会更新",
+      "downloadTitle": "或下载当前日历",
+      "subscribeButton": "复制同步日历链接",
+      "subscribeStep1": "复制日历链接",
+      "subscribeStep2": "将其粘贴到您的日历应用的“订阅”选项中",
+      "subscribeStep3": "如果有任何变化，活动信息会自动更新",
+      "subscribeTitle": "订阅日历（活动会自动同步更新）"
     },
     "careerPortal": {
       "acceptedFormat": "可接收文件格式：pdf/最大文件大小：10 MB。",
