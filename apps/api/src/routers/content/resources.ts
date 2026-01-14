@@ -10,6 +10,7 @@ import {
   joinedProjectSchema,
   joinedResearchPaperSchema,
   joinedYoutubeChannelSchema,
+  languageSchema,
 } from '@blms/schemas';
 import {
   createGetBets,
@@ -35,6 +36,7 @@ import {
   createGetYoutubeChannels,
   createSearch,
 } from '@blms/service-content';
+import { createGetLanguages } from '@blms/service-user';
 import type {
   JoinedBet,
   JoinedBook,
@@ -47,9 +49,9 @@ import type {
   JoinedProject,
   JoinedResearchPaper,
   JoinedYoutubeChannel,
+  Language,
 } from '@blms/types';
 import { z } from 'zod';
-
 import { publicProcedure } from '#src/procedures/public.js';
 import { createTRPCRouter } from '#src/trpc/index.js';
 import type { Parser } from '#src/trpc/types.js';
@@ -217,4 +219,9 @@ export const resourcesRouter = createTRPCRouter({
     .query(({ ctx, input }) => {
       return createSearch(ctx.dependencies)(input);
     }),
+
+  getLanguages: publicProcedure
+    .input(z.void())
+    .output<Parser<Language[] | null>>(languageSchema.array().nullable())
+    .query(({ ctx }) => createGetLanguages(ctx.dependencies)()),
 });

@@ -42,7 +42,7 @@ function AdminCareers() {
   );
 
   const { data: languages, isFetched: isLanguagesFetched } = useQuery(
-    trpc.user.career.getLanguages.queryOptions(),
+    trpc.content.getLanguages.queryOptions(),
   );
   const { data: jobTitles, isFetched: isJobTitlesFetched } = useQuery(
     trpc.user.career.getJobTitles.queryOptions(),
