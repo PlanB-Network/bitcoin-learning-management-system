@@ -882,7 +882,19 @@
         "class": "Triedy",
         "event": "Udalosti"
       },
-      "personalCalendar": "Osobný kalendár"
+      "personalCalendar": "Osobný kalendár",
+      "downloadButton": "Stiahnite si .ics kalendár a importujte ho",
+      "downloadCalendar": "Stiahnuť kalendár",
+      "downloadCalendarTitle": "Stiahnuť kalendár",
+      "downloadStep1": "Stiahnite si súbor kalendára",
+      "downloadStep2": "Otvoriť to pomocou aplikácie Kalendár",
+      "downloadStep3": "Udalosti sa neaktualizujú, ak sa zmenia dátumy",
+      "downloadTitle": "Alebo si stiahnite aktuálny kalendár",
+      "subscribeButton": "Skopírujte odkaz na synchronizovaný kalendár",
+      "subscribeStep1": "Skopírujte odkaz na kalendár",
+      "subscribeStep2": "Vložiť do možnosti „Prihlásiť sa na odber“ vo vašej aplikácii Kalendár",
+      "subscribeStep3": "Udalosti sa automaticky aktualizujú, ak dôjde k akejkoľvek zmene",
+      "subscribeTitle": "Prihlásiť sa k odberu kalendára (automaticky synchronizovať)"
     },
     "careerPortal": {
       "acceptedFormat": "Akceptovaný formát súborov: pdf / Maximálna veľkosť súboru: 10 MB.",
@@ -1802,8 +1814,191 @@
         "book": "Kniha",
         "conference": "Konferencia",
         "journal": "Časopis",
-        "pre-print": "Predtlač"
+        "pre-print": "Predtlač",
+        "review": "Skontrolovať",
+        "thesis": "Práca",
+        "whitepaper": "Biela kniha"
       }
+    },
+    "podcasts": {
+      "addPodcast": "Pridať podcast",
+      "checkThePodcast": "Pozrieť podcast",
+      "noPodcasts": "Momentálne nie sú k dispozícii žiadne podcasty pre vybraný jazyk.",
+      "title": "Podcasty"
+    },
+    "projects": {
+      "addProjects": "Pridať projekt",
+      "title": "Projekty",
+      "types": {
+        "communities": "Komunity",
+        "conference": "Konferencia",
+        "education": "Vzdelávanie",
+        "exchange": "Zmenáreň",
+        "infrastructure": "Infraštruktúra",
+        "investment": "Investícia",
+        "manufacturer": "Výrobca",
+        "merchant": "Obchodník",
+        "mining": "Ťažba",
+        "news": "Správy",
+        "node": "Uzol",
+        "payment": "Platba",
+        "privacy": "Súkromie",
+        "service": "Služba",
+        "wallet": "Peňaženka"
+      }
+    },
+    "searchFilterName": "Hľadať podľa mena",
+    "toggleLabelAll": "Všetko",
+    "toggleLabelSelectedLanguage": "Vybraný jazyk"
+  },
+  "search": {
+    "all": "Všetko",
+    "book": "Kniha",
+    "books": "Knihy",
+    "categories": "Kategórie",
+    "conference": "Konferencia",
+    "conference_replay": "Záznam konferencie",
+    "conference_replays": "Záznamy konferencií",
+    "course": "Kurz",
+    "course_chapter": "Kapitola kurzu",
+    "course_part": "Časť kurzu",
+    "courses": "Kurzy",
+    "event": "Udalosť",
+    "events": "Udalosti",
+    "explorer": {
+      "title": "Hľadať"
+    },
+    "glossary_word": "Výraz zo slovníka pojmov",
+    "glossary_words": "Slovník pojmov",
+    "lecture_replay": "Záznam prednášky",
+    "lecture_replays": "Záznamy prednášok",
+    "loadMoreResults": "Zobraziť viac výsledkov",
+    "newsletter": "Newsletter",
+    "newsletters": "Newslettre",
+    "noResults": "Žiadne výsledky",
+    "podcast": "Podcast",
+    "podcasts": "Podcasty",
+    "professor": "Profesor/ka",
+    "professors": "Profesori/ky",
+    "project": "Projekt",
+    "projects": "Projekty",
+    "resultEmpty": "Ups! Nenašli sme nič, čo by zodpovedalo hľadaným výrazom. Skontrolujte svoj pravopis, skúste použiť iné kľúčové slová alebo si vyberte inú kategóriu.",
+    "resultError": "Niečo sa pokazilo. Skúste to prosím znova.",
+    "results": "Výsledky",
+    "resultsFound": "{{count}} nájdených výsledkov",
+    "resultsRemaining": "{{count}} zostávajúcich výsledkov",
+    "search": "Hľadať",
+    "startSearch": "Začnite vyhľadávanie",
+    "tutorial": "Návod",
+    "tutorials": "Návody",
+    "youtube_channel": "Youtube kanál",
+    "youtube_channels": "Youtube kanály"
+  },
+  "settings": {
+    "addEmail": "Pridať email",
+    "addEmailContinue": "Pridajte e-mail aby ste mohli pokračovať",
+    "changeDisplayName": "Zmeniť zobrazované meno",
+    "changeEmail": "Zmeniť email",
+    "changePassword": "Zmeniť heslo",
+    "changeProfilePicture": "Zmeniť profilovú fotografiu",
+    "emailSentDescription": "Overte svoj email a obnovte túto stránku, aby ste mohli pokračovať.",
+    "emailSentTitle": "Poslali sme vám email",
+    "verifyEmail": "Overiť email"
+  },
+  "tutorials": {
+    "business": {
+      "title": "Biznis"
+    },
+    "computer-security": {
+      "title": "Počítačová bezpečnosť"
+    },
+    "contribution": {
+      "title": "Prispievatelia"
+    },
+    "details": {
+      "author": "Autor/ka:",
+      "didThisWork": "Fungovalo to pre vás dobre?",
+      "ratingSuccess": "Ďakujeme za vaše hodnotenie!",
+      "source": "Pôvodný zdroj:",
+      "tutorialName": "Názov tutoriálu"
+    },
+    "exchange": {
+      "title": "Zmenáreň"
+    },
+    "hasBeenProofreadBy": "Tento tutoriál skontroloval/a",
+    "hasNotBeenProofread": "Tento tutoriál ešte nebol skontrolovaný",
+    "mining": {
+      "title": "Ťažba"
+    },
+    "noTutorialsFound": "Nenašli sme žiadny návod zodpovedajúci vášmu vyhľadávaniu.",
+    "node": {
+      "title": "Uzol"
+    },
+    "onThisPage": "Na tejto stránke",
+    "privacy": {
+      "description": "Súkromie je základné právo. Hoci sa usilujeme o svet, kde je súkromie štandardom, nie je to realita, v ktorej žijeme. Pokúsime sa vám vysvetliť najlepšie postupy, poskytnúť návody a nasmerovať vás na cestu k väčšej nezávislosti pokiaľ ide o vaše dáta.",
+      "shortDescription": "Nástroje na zálohovanie a udržiavanie súkromia",
+      "title": "Súkromie"
+    },
+    "subCategories": {
+      "authentication": "Autentifikácia",
+      "backup": "Záloha",
+      "bitcoin": "Bitcoin",
+      "centralized": "Centralizované",
+      "communication": "Komunikácia",
+      "content": "Obsah",
+      "data": "Dáta",
+      "desktop": "Desktopové",
+      "explorer": "Prieskumník",
+      "hardware": "Hardware",
+      "lightning-network": "Lightning sieť",
+      "mobile": "Mobilné",
+      "on-chain": "On-chain",
+      "operating system": "Operačný systém",
+      "others": "Ostatné",
+      "peer-to-peer": "Peer-to-peer",
+      "point-of-sale": "POS",
+      "pool": "Pool",
+      "resource": "Zdroj"
+    },
+    "wallet": {
+      "title": "Peňaženka"
+    },
+    "writtenBy": "Tento tutoriál napísal/a"
+  },
+  "underConstruction": {
+    "github": "GitHub",
+    "itemNotFound": "{{item}} nenájdený",
+    "itemNotFoundOrTranslated": "{{item}} sa nenašiel alebo nebol preložený do vašho jazyka",
+    "p1": "Králik spadol do diery. Kvôli tomuto nečakanému dobrodružstvu je táto stránka momentálne vo výstavbe. Ospravedlňujeme sa za akékoľvek nepríjemnosti. Náš tím pracuje na plné obrátky, aby túto stránku dokončil. Ak máte záujem pomôcť, neváhajte kliknúť sem:",
+    "p2": "a zvážte pripojenie sa našej komunity!",
+    "pageTitle": "Ups."
+  },
+  "videoSelector": {
+    "language": {
+      "AI": "AI preklad",
+      "language": "Jazyk",
+      "original": "Pôvodný jazyk"
+    },
+    "player": {
+      "pears": "Pears🍐",
+      "peertube": "Peertube",
+      "player": "Hráč",
+      "rumble": "Rumble",
+      "youtube": "Youtube"
     }
+  },
+  "words": {
+    "aboutUs": "O nás",
+    "abstract": "Abstrakt",
+    "academy": "Akadémia",
+    "access": "Prístup",
+    "account": "Účet",
+    "action": "Akcia",
+    "actions": "Akcie",
+    "address": "Adresa",
+    "admin": "Správca",
+    "admins": "Administrátori",
+    "advanced": "Pokročilý"
   }
 }
