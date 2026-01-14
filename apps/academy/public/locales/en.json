@@ -1379,8 +1379,7 @@
     "coverPreview": "Cover preview",
     "coverRequired": "The cover image is mandatory",
     "currentCoverPresent": "Current cover present",
-    "descriptionHelper": "Describe the resource content to help others understand its content and find it",
-    "descriptionPlaceholder": "Describe the resource content to help others understand its content and find it",
+    "descriptionHelper": "Give some context to your content, to help others understand how it can be used.",
     "descriptionRequired": "The description cannot be empty",
     "descriptionTooLong": "The description cannot exceed 350 characters",
     "detail": {
@@ -1395,6 +1394,8 @@
     "editMaterial": "Edit educator content",
     "fileExisting": "(Existing)",
     "fileTooLarge": "File too large (max 50MB)",
+    "fileTypeNotAllowed": "Only images and documents (PDF, presentations, spreadsheets, text docs) are allowed",
+    "supportedFileTypes": "Supported file types: images, PDF, presentations, spreadsheets, text docs",
     "guidelines": {
       "continueToAdd": "Continue to Add",
       "point1": "Group related files into bundles (e.g., \"Lille Meetup Presentations 2024\").",
@@ -1465,6 +1466,7 @@
       "workshop": "Workshop"
     },
     "uploadFiles": "Or upload Files",
+    "uploadFilesHelper": "If you have related files, upload them together as one bundle. Name your files clearly before uploading.",
     "uploadForReview": "Upload for review",
     "uploading": "Uploading...",
     "urlInvalid": "The link must be a valid URL"

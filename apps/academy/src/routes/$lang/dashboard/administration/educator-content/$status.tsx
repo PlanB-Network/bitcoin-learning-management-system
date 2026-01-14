@@ -27,7 +27,7 @@ import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { ReviewModal } from '#src/routes/$lang/dashboard/administration/-components/review-modal.tsx';
 import { EducatorContentModal } from '#src/routes/$lang/educator-content/-components/educator-content-modal.tsx';
 import { getEducatorContentCoverUrl } from '#src/services/content.js';
-import { getLanguageName, LANGUAGES } from '#src/utils/i18n.ts';
+
 import { trpc } from '#src/utils/trpc.js';
 
 export const Route = createFileRoute(
@@ -87,6 +87,13 @@ function AdminEducatorContent() {
       status: EducatorContentStatus.Published,
     }),
   );
+
+  const { data: allExistingLanguages } = useQuery(
+    trpc.user.career.getLanguages.queryOptions(),
+  );
+  const sortedExistingLanguages = allExistingLanguages
+    ? [...allExistingLanguages].sort((a, b) => a.code.localeCompare(b.code))
+    : [];
 
   const queryClient = useQueryClient();
 
@@ -208,10 +215,10 @@ function AdminEducatorContent() {
       name: t('words.all'),
       onClick: () => setSelectedLanguage('all'),
     },
-    ...LANGUAGES.map((lang) => ({
-      id: lang,
-      name: capitalize(getLanguageName(lang)),
-      onClick: () => setSelectedLanguage(lang),
+    ...sortedExistingLanguages.map((lang) => ({
+      id: lang.code,
+      name: capitalize(lang.nativeName),
+      onClick: () => setSelectedLanguage(lang.code),
     })),
   ];
 
@@ -457,6 +464,7 @@ function AdminEducatorContent() {
           isApprovePending={approveMutation.isPending}
           isRejectPending={rejectMutation.isPending}
           isUnpublishPending={unpublishMutation.isPending}
+          allExistingLanguages={allExistingLanguages ?? undefined}
         />
 
         {/* Edit Modal */}

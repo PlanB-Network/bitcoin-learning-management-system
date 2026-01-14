@@ -54,9 +54,7 @@ const ConferencesMarkdownBody = ({
           </ol>
         ),
         p: ({ children }) => (
-          <ParagraphRenderer intent="conference" header="none">
-            {children}
-          </ParagraphRenderer>
+          <ParagraphRenderer intent="conference">{children}</ParagraphRenderer>
         ),
         table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
         td: ({ children }) => <TdRenderer>{children}</TdRenderer>,

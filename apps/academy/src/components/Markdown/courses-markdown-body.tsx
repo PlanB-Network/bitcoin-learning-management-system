@@ -54,9 +54,7 @@ const CoursesMarkdownBody = ({
             {children}
           </ol>
         ),
-        p: ({ children }) => (
-          <ParagraphRenderer header="logo">{children}</ParagraphRenderer>
-        ),
+        p: ({ children }) => <ParagraphRenderer>{children}</ParagraphRenderer>,
         table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
         td: ({ children }) => <TdRenderer>{children}</TdRenderer>,
         th: ({ children }) => <TdRenderer>{children}</TdRenderer>,

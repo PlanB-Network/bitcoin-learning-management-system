@@ -18,11 +18,9 @@ import { isPearApp } from '../env.ts';
 export const VideoSelector = ({
   videoId,
   language,
-  header,
 }: {
   videoId: string;
   language: string;
-  header: 'none' | 'logo' | 'text';
 }) => {
   const {
     data: _videos,

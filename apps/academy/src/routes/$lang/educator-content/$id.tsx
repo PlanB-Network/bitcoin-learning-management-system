@@ -19,7 +19,7 @@ import {
   getEducatorContentCoverUrl,
   getEducatorContentFileUrl,
 } from '#src/services/content.js';
-import { getLanguageName } from '#src/utils/i18n.ts';
+
 import { formatFileSize } from '#src/utils/string.ts';
 import { trpc } from '#src/utils/trpc.js';
 import { EducatorContentModal } from './-components/educator-content-modal.tsx';
@@ -63,6 +63,10 @@ function EducatorContentDetail() {
     }),
   );
 
+  const { data: allExistingLanguages } = useQuery(
+    trpc.user.career.getLanguages.queryOptions(),
+  );
+
   const incrementDownloadsMutation = useMutation(
     trpc.content.incrementDownloads.mutationOptions({
       onSuccess: () => {
@@ -81,18 +85,19 @@ function EducatorContentDetail() {
     }
   };
 
+  // biome-ignore lint/correctness/noUnusedFunctionParameters: temporary
   const handleDownload = (path: string, filename?: string) => {
     handleIncrementDownload();
     const url = getEducatorContentFileUrl(path);
     // First trigger the download
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = filename || path.split('/').pop() || 'download';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // const link = document.createElement('a');
+    // link.href = url;
+    // link.download = filename || path.split('/').pop() || 'download';
+    // document.body.appendChild(link);
+    // link.click();
+    // document.body.removeChild(link);
     // Then open in a new tab
-    // window.open(url, '_blank');
+    window.open(url, '_blank');
   };
 
   const sortedLinks = item?.links?.sort((a, b) =>
@@ -200,7 +205,10 @@ function EducatorContentDetail() {
             />
             <StatCard
               label={t('words.language')}
-              value={capitalize(getLanguageName(item.language))}
+              value={capitalize(
+                allExistingLanguages?.find((l) => l.code === item.language)
+                  ?.nativeName || item.language,
+              )}
               icon={TbLanguage}
             />
             <StatCard

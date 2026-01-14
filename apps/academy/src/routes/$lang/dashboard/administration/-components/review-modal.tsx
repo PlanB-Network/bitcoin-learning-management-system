@@ -17,7 +17,6 @@ import {
   getEducatorContentCoverUrl,
   getEducatorContentFileUrl,
 } from '#src/services/content.js';
-import { getLanguageName } from '#src/utils/i18n.ts';
 import { formatFileSize } from '#src/utils/string.ts';
 
 interface RootReviewModalProps {
@@ -32,6 +31,7 @@ interface RootReviewModalProps {
   isRejectPending?: boolean;
   isUnpublishPending?: boolean;
   isUnpublishMode?: boolean;
+  allExistingLanguages?: Array<{ code: string; nativeName: string }>;
 }
 
 export const ReviewModal = ({
@@ -46,6 +46,7 @@ export const ReviewModal = ({
   isRejectPending,
   isUnpublishPending,
   isUnpublishMode,
+  allExistingLanguages,
 }: RootReviewModalProps) => {
   const { t } = useTranslation();
   const [isConfirmingUnpublish, setIsConfirmingUnpublish] = useState(false);
@@ -176,7 +177,10 @@ export const ReviewModal = ({
           />
           <StatCard
             label={t('words.language')}
-            value={capitalize(getLanguageName(content.language))}
+            value={capitalize(
+              allExistingLanguages?.find((l) => l.code === content.language)
+                ?.nativeName || content.language,
+            )}
             icon={TbLanguage}
           />
         </div>
