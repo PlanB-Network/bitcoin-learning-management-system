@@ -1,9 +1,11 @@
 import { sql } from '@blms/database';
-import type { Dependencies } from '#src/dependencies.js';
+import type { Dependencies } from '../../../dependencies.js';
 
-export const createUserNotificationsService = async (ctx: Dependencies) => {
+export const createUserNotificationsService = async ({
+  postgres,
+}: Dependencies) => {
   const getAllUids = async () => {
-    const result = await ctx.postgres.exec(
+    const result = await postgres.exec(
       sql`
         SELECT uid
         FROM users.accounts;
@@ -18,7 +20,7 @@ export const createUserNotificationsService = async (ctx: Dependencies) => {
     isSelectedForAssignment?: boolean,
     isSelectedForFinalLesson?: boolean,
   ) => {
-    const result = await ctx.postgres.exec(
+    const result = await postgres.exec(
       sql`
         SELECT cp.uid
         FROM users.course_progress cp
@@ -33,7 +35,7 @@ export const createUserNotificationsService = async (ctx: Dependencies) => {
   };
 
   const getUidsByEvent = async (eventId: string, isEmail?: boolean) => {
-    const bookedEventsUids = await ctx.postgres
+    const bookedEventsUids = await postgres
       .exec(
         sql`
         SELECT ue.uid
@@ -48,7 +50,7 @@ export const createUserNotificationsService = async (ctx: Dependencies) => {
         return result.map((row) => row.uid);
       });
 
-    const paidEventsUids = await ctx.postgres
+    const paidEventsUids = await postgres
       .exec(
         sql`
       SELECT ep.uid
@@ -75,7 +77,7 @@ export const createUserNotificationsService = async (ctx: Dependencies) => {
   };
 
   const getUnpublishedCourseAnnouncementsIds = async () => {
-    return ctx.postgres
+    return postgres
       .exec(
         sql`
         SELECT id
@@ -90,7 +92,7 @@ export const createUserNotificationsService = async (ctx: Dependencies) => {
   };
 
   const deleteOldReadNotifications = async () => {
-    return ctx.postgres
+    return postgres
       .exec(sql`
       DELETE FROM users.user_notification_status
       WHERE read_date < NOW() - INTERVAL '30 days';

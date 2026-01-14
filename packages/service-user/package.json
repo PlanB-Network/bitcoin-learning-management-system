@@ -24,6 +24,9 @@
     "import": "./dist/src/index.js",
     "types": "./src/index.ts"
   },
+  "imports": {
+    "#src/*": "./src/*"
+  },
   "main": "./src/index.ts",
   "name": "@blms/service-user",
   "scripts": {

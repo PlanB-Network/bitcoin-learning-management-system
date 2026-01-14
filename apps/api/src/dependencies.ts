@@ -13,7 +13,7 @@ import { Client as TypesenseClient } from 'typesense';
 import * as config from './config.js';
 import { registerCronTasks } from './services/cron/index.js';
 
-export interface Dependencies {
+export interface Dependencies extends LogContext {
   s3: S3Service;
   postgres: PostgresClient;
   typesense: TypesenseClient;
@@ -54,6 +54,7 @@ export const startDependencies = async () => {
   const dependencies: Dependencies = {
     config,
     crons,
+    log: console.log,
     postgres,
     s3,
     stripe,
