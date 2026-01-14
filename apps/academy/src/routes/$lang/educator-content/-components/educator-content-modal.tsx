@@ -84,7 +84,7 @@ export const EducatorContentModal = ({
   const navigate = useNavigate();
 
   const { data: allExistingLanguages } = useQuery(
-    trpc.user.career.getLanguages.queryOptions(),
+    trpc.content.getLanguages.queryOptions(),
   );
   const sortedLanguages = allExistingLanguages
     ? [...allExistingLanguages].sort((a, b) => a.code.localeCompare(b.code))

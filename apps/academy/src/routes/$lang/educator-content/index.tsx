@@ -70,7 +70,7 @@ function RouteComponent() {
   );
 
   const { data: allExistingLanguages } = useQuery(
-    trpc.user.career.getLanguages.queryOptions(),
+    trpc.content.getLanguages.queryOptions(),
   );
   const sortedCareerLanguages = allExistingLanguages
     ? [...allExistingLanguages].sort((a, b) => a.code.localeCompare(b.code))

@@ -64,7 +64,7 @@ function EducatorContentDetail() {
   );
 
   const { data: allExistingLanguages } = useQuery(
-    trpc.user.career.getLanguages.queryOptions(),
+    trpc.content.getLanguages.queryOptions(),
   );
 
   const incrementDownloadsMutation = useMutation(
