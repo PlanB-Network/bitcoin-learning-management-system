@@ -66,13 +66,13 @@ function YoutubeChannels() {
       layoutSize="wide"
       actionButtons={[
         {
-          text: t('resources.addResource.youtube-channel'),
+          text: t('resources.addResource.channel'),
           onClick: () => setIsModalOpen(true),
         },
       ]}
     >
       <AddResourceModal
-        resourceType={ResourceType.YoutubeChannel}
+        resourceType={ResourceType.Channel}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />

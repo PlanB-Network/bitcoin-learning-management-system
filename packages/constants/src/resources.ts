@@ -46,7 +46,7 @@ export enum ResourceType {
   Book = 'books',
   Movie = 'movies',
   Podcast = 'podcasts',
-  YoutubeChannel = 'channels',
+  Channel = 'channels',
   Newsletter = 'newsletters',
   Paper = 'papers',
   Glossary = 'glossary',

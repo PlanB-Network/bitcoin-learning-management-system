@@ -5,11 +5,9 @@ import type { CreateResourcePR } from '@blms/types';
 import yaml from 'js-yaml';
 import type { Dependencies } from '../../dependencies.js';
 
-type CreateResourcePRInput = CreateResourcePR;
-
 export const createResourcePR = async (
   dependencies: Dependencies,
-  input: CreateResourcePRInput,
+  input: CreateResourcePR,
 ) => {
   const { config } = dependencies;
   const token = config.sync.githubPrToken;
@@ -22,6 +20,19 @@ export const createResourcePR = async (
   const repoUrl = config.sync.publicRepositoryUrl;
   const { owner, repo } = getRepoDetails(repoUrl);
   const baseBranch = config.sync.publicRepositoryBranch;
+  const allowedTypes = [
+    'projects',
+    'books',
+    'movies',
+    'podcasts',
+    'channels',
+    'newsletters',
+    'papers',
+  ];
+
+  if (!allowedTypes.includes(input.type)) {
+    throw new Error(`Resource type "${input.type}" is not allowed`);
+  }
 
   // 1. Generate unique ID and branch name
   const resourceId = crypto.randomUUID();
@@ -35,9 +46,20 @@ export const createResourcePR = async (
     encoding?: 'base64' | 'utf-8';
   }[] = [];
 
-  const categoryDir = input.type === 'project' ? 'projects' : input.type;
+  const categoryDir = input.type;
   const basePath = `resources/${categoryDir}/${normalizedTitle}`;
 
+  // // "proofreading:
+  //   - language: {original_language}
+  //     last_contribution_date: {today}
+  //     urgency: 1
+  //     contributor_names:
+  //       - Asi0Flammeus
+  //     reward: 0"
+
+  // Need to add this in all "base" yml (like project.yml, book.yml, etc...)
+
+  // PROJECTS
   if (input.type === 'project') {
     const projectYaml = {
       id: resourceId,
@@ -45,10 +67,6 @@ export const createResourcePR = async (
       links: input.links,
       category: input.category,
       original_language: input.language,
-      languages: input.category === 'communities' ? [input.language] : [],
-      address_city_country:
-        input.category === 'communities' ? input.country : '',
-      tags: input.tags,
     };
 
     const projectLocalizedYaml = {

@@ -59,7 +59,7 @@ function Movies() {
       layoutSize="wide"
       actionButtons={[
         {
-          text: t('resources.movies.addMovie'),
+          text: t('resources.addResource.movie'),
           onClick: () => setIsModalOpen(true),
         },
       ]}

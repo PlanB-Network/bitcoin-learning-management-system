@@ -15,15 +15,20 @@ import {
   Textarea,
 } from '@blms/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { TbBrandGithub, TbBrandX, TbGlobe } from 'react-icons/tb';
+import {
+  TbBrandGithub,
+  TbBrandLinkedin,
+  TbBrandX,
+  TbWorld,
+} from 'react-icons/tb';
 import { z } from 'zod';
 
 import Nostr from '#src/assets/icons/nostr.svg?react';
-import { getLanguageName, LANGUAGES } from '#src/utils/i18n.js';
+import { ImageInput } from '#src/components/image-input.tsx';
 import { trpc } from '#src/utils/trpc.js';
 
 interface AddResourceModalProps {
@@ -32,13 +37,52 @@ interface AddResourceModalProps {
   resourceType: ResourceType;
 }
 
+interface ResourceFormConfig {
+  showTitle?: boolean;
+  showLanguage?: boolean;
+  showCategory?: boolean;
+  showDescription?: boolean;
+  showCoverImage?: boolean;
+  showSocialLinks?: boolean;
+  categories?: string[];
+  socialLinks?: string[];
+}
+
+const RESOURCE_FORM_CONFIG: Record<string, ResourceFormConfig> = {
+  projects: {
+    showTitle: true,
+    showCategory: true,
+    showDescription: true,
+    showCoverImage: true,
+    showSocialLinks: true,
+    showLanguage: false,
+    categories: [
+      'communities',
+      'conference',
+      'education',
+      'exchange',
+      'infrastructure',
+      'investment',
+      'manufacturer',
+      'merchant',
+      'mining',
+      'news',
+      'node',
+      'payment',
+      'privacy',
+      'service',
+      'wallet',
+    ],
+    socialLinks: ['github', 'twitter', 'website', 'nostr'],
+  },
+};
+
 const createResourcePRSchema = z.object({
   type: z.string(),
   title: z.string().min(1, 'Title is required'),
-  category: z.string().min(1, 'Category is required'),
+  category: z.string().optional(),
   country: z.string().optional(),
   description: z.string().min(1, 'Description is required'),
-  tags: z.array(z.string()).optional(),
   links: z
     .object({
       website: z.string().optional(),
@@ -64,7 +108,7 @@ export const AddResourceModal = ({
   onClose,
   resourceType,
 }: AddResourceModalProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [coverImageBase64, setCoverImageBase64] = useState<string | null>(null);
   const [coverImageName, setCoverImageName] = useState<string | null>(null);
 
@@ -74,16 +118,17 @@ export const AddResourceModal = ({
       type: resourceType,
       title: '',
       description: '',
-      language: 'en',
-      tags: [],
-      links: {
-        website: '',
-        twitter: '',
-        github: '',
-        nostr: '',
-      },
+      language: i18n.language || 'en',
     },
   });
+
+  const { data: languages } = useQuery(
+    trpc.user.career.getLanguages.queryOptions(),
+  );
+
+  const sortedLanguages = languages
+    ? [...languages].sort((a, b) => a.code.localeCompare(b.code))
+    : [];
 
   const createPR = useMutation(
     trpc.github.createResourcePR.mutationOptions({
@@ -109,214 +154,163 @@ export const AddResourceModal = ({
     });
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setCoverImageName(file.name);
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setCoverImageBase64(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  const config = RESOURCE_FORM_CONFIG[resourceType] || {};
 
   return (
     <BasicModal
-      title={t(`resources.addResource.${resourceType}`)}
+      title={t(`resources.addResource.${resourceType.replace(/s$/, '')}`)}
       open={isOpen}
       onOpenChange={onClose}
+      size="large"
     >
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-6"
+        className="flex flex-col gap-6 w-full"
       >
-        <Controller
-          control={form.control}
-          name="title"
-          render={({ field, fieldState }) => (
-            <Field data-invalid={fieldState.invalid}>
-              <FieldLabel required>
-                {t('resources.addResource.title')}
-              </FieldLabel>
-              <Input
-                {...field}
-                placeholder={t('resources.addResource.titlePlaceholder')}
-              />
-              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-            </Field>
-          )}
-        />
+        {config.showTitle && (
+          <Controller
+            control={form.control}
+            name="title"
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel required>{t('words.title')}</FieldLabel>
+                <Input
+                  {...field}
+                  placeholder={t('resources.addResource.titlePlaceholder')}
+                />
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
+          />
+        )}
 
-        <Controller
-          control={form.control}
-          name="language"
-          render={({ field, fieldState }) => (
-            <Field data-invalid={fieldState.invalid}>
-              <FieldLabel required>{t('words.language')}</FieldLabel>
-              <Select onValueChange={field.onChange} value={field.value}>
-                <SelectTrigger>
-                  <SelectValue
-                    placeholder={t('resources.addResource.selectLanguage')}
-                  />
-                </SelectTrigger>
-                <SelectContent>
-                  {LANGUAGES.map((lang) => ({
-                    value: lang,
-                    label: getLanguageName(lang),
-                  }))
-                    .sort((a, b) => a.label.localeCompare(b.label))
-                    .map((lang) => (
-                      <SelectItem key={lang.value} value={lang.value}>
-                        {lang.label}
+        {config.showLanguage && (
+          <Controller
+            control={form.control}
+            name="language"
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel required>{t('words.language')}</FieldLabel>
+                <Select onValueChange={field.onChange} value={field.value}>
+                  <SelectTrigger>
+                    <SelectValue
+                      placeholder={t('resources.addResource.selectLanguage')}
+                    />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {sortedLanguages.map((lang) => (
+                      <SelectItem key={lang.code} value={lang.code}>
+                        {lang.nativeName}
                       </SelectItem>
                     ))}
-                </SelectContent>
-              </Select>
-              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-            </Field>
-          )}
-        />
+                  </SelectContent>
+                </Select>
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
+          />
+        )}
 
-        <Controller
-          control={form.control}
-          name="category"
-          render={({ field, fieldState }) => (
-            <Field data-invalid={fieldState.invalid}>
-              <FieldLabel required>
-                {t('resources.addResource.category')}
-              </FieldLabel>
-              <Select onValueChange={field.onChange} value={field.value}>
-                <SelectTrigger>
-                  <SelectValue
-                    placeholder={t('resources.addResource.selectCategory')}
+        {config.showCategory && config.categories && (
+          <Controller
+            control={form.control}
+            name="category"
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel required>{t('words.category')}</FieldLabel>
+                <Select onValueChange={field.onChange} value={field.value}>
+                  <SelectTrigger>
+                    <SelectValue
+                      placeholder={t('resources.addResource.selectCategory')}
+                    />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {config.categories?.map((category) => (
+                      <SelectItem key={category} value={category}>
+                        {t(
+                          `resources.${resourceType}.types.${category}`,
+                          category,
+                        )}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
+          />
+        )}
+
+        {config.showDescription && (
+          <Controller
+            control={form.control}
+            name="description"
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel required>{t('words.description')}</FieldLabel>
+                <Textarea
+                  {...field}
+                  placeholder={t(
+                    'resources.addResource.descriptionPlaceholder',
+                  )}
+                  className="min-h-[100px]"
+                />
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
+          />
+        )}
+
+        {config.showCoverImage && (
+          <ImageInput
+            label={t('resources.addResource.coverImage')}
+            value={coverImageBase64}
+            onChange={(base64, filename) => {
+              setCoverImageBase64(base64);
+              setCoverImageName(filename);
+            }}
+          />
+        )}
+
+        {config.showSocialLinks && (
+          <div className="flex flex-col gap-3">
+            <FieldLabel>{t('resources.addResource.socialProfiles')}</FieldLabel>
+            <div className="flex flex-col gap-3">
+              {socialLinksList
+                .filter((link) => config.socialLinks?.includes(link.id))
+                .map((link) => (
+                  <Controller
+                    key={link.id}
+                    control={form.control}
+                    name={link.name}
+                    render={({ field }) => (
+                      <Field>
+                        <FieldLabel className="flex items-center gap-2">
+                          <link.icon
+                            size={link.id === 'nostr' ? undefined : 20}
+                            className={cn(
+                              'shrink-0',
+                              link.id === 'nostr' && 'size-5 fill-current',
+                            )}
+                          />
+                          <span className="capitalize">{link.id}</span>
+                        </FieldLabel>
+                        <Input {...field} placeholder={link.placeholder} />
+                      </Field>
+                    )}
                   />
-                </SelectTrigger>
-                <SelectContent>
-                  {[
-                    'communities',
-                    'conference',
-                    'education',
-                    'exchange',
-                    'infrastructure',
-                    'investment',
-                    'manufacturer',
-                    'merchant',
-                    'mining',
-                    'news',
-                    'node',
-                    'payment',
-                    'privacy',
-                    'service',
-                    'wallet',
-                  ].map((category) => (
-                    <SelectItem key={category} value={category}>
-                      {t(`resources.projects.types.${category}`)}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-            </Field>
-          )}
-        />
-
-        <Controller
-          control={form.control}
-          name="description"
-          render={({ field, fieldState }) => (
-            <Field data-invalid={fieldState.invalid}>
-              <FieldLabel required>
-                {t('resources.addResource.description')}
-              </FieldLabel>
-              <Textarea
-                {...field}
-                placeholder={t('resources.addResource.descriptionPlaceholder')}
-                className="min-h-[100px]"
-              />
-              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-            </Field>
-          )}
-        />
-
-        <div className="flex flex-col gap-2">
-          <FieldLabel>{t('resources.addResource.coverImage')}</FieldLabel>
-          <div
-            className={cn(
-              'border-2 border-dashed border-neutral-300 rounded-xl p-8 flex flex-col items-center justify-center gap-4 bg-neutral-50 hover:bg-neutral-100 transition-colors cursor-pointer relative',
-              coverImageBase64 && 'border-orange-500',
-            )}
-          >
-            <input
-              type="file"
-              accept="image/*"
-              className="absolute inset-0 opacity-0 cursor-pointer"
-              onChange={handleImageChange}
-            />
-            {coverImageBase64 ? (
-              <img
-                src={coverImageBase64}
-                alt="Preview"
-                className="max-h-32 rounded-lg"
-              />
-            ) : (
-              <>
-                <div className="text-neutral-400">
-                  {t('resources.addResource.dropImage')}
-                </div>
-                <Button type="button" variant="primary" size="s">
-                  {t('resources.addResource.browse')}
-                </Button>
-              </>
-            )}
+                ))}
+            </div>
           </div>
-        </div>
-
-        <div className="flex flex-col gap-4">
-          <FieldLabel>{t('resources.addResource.socialProfiles')}</FieldLabel>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Controller
-              control={form.control}
-              name="links.github"
-              render={({ field }) => (
-                <div className="flex items-center gap-2">
-                  <TbBrandGithub size={20} className="shrink-0" />
-                  <Input {...field} placeholder="Github URL" />
-                </div>
-              )}
-            />
-            <Controller
-              control={form.control}
-              name="links.twitter"
-              render={({ field }) => (
-                <div className="flex items-center gap-2">
-                  <TbBrandX size={20} className="shrink-0" />
-                  <Input {...field} placeholder="X URL" />
-                </div>
-              )}
-            />
-            <Controller
-              control={form.control}
-              name="links.nostr"
-              render={({ field }) => (
-                <div className="flex items-center gap-2">
-                  <Nostr className="shrink-0 size-5 fill-neutral-600" />
-                  <Input {...field} placeholder="Nostr URL" />
-                </div>
-              )}
-            />
-            <Controller
-              control={form.control}
-              name="links.website"
-              render={({ field }) => (
-                <div className="flex items-center gap-2">
-                  <TbGlobe size={20} className="shrink-0" />
-                  <Input {...field} placeholder="Website URL" />
-                </div>
-              )}
-            />
-          </div>
-        </div>
+        )}
 
         <Button
           type="submit"
@@ -333,3 +327,36 @@ export const AddResourceModal = ({
     </BasicModal>
   );
 };
+
+const socialLinksList = [
+  {
+    id: 'github',
+    icon: TbBrandGithub,
+    placeholder: 'https://github.com/PlanB-Network/bitcoin-educational-content',
+    name: 'links.github' as const,
+  },
+  {
+    id: 'twitter',
+    icon: TbBrandX,
+    placeholder: 'https://x.com/planb_network',
+    name: 'links.twitter' as const,
+  },
+  {
+    id: 'nostr',
+    icon: Nostr,
+    placeholder: 'https://nostr.com/PlanB-Network/',
+    name: 'links.nostr' as const,
+  },
+  {
+    id: 'website',
+    icon: TbWorld,
+    placeholder: 'https://planb.academy',
+    name: 'links.website' as const,
+  },
+  {
+    id: 'linkedin',
+    icon: TbBrandLinkedin,
+    placeholder: 'https://linkedin.com/company/planb-network',
+    name: 'links.linkedin' as const,
+  },
+];

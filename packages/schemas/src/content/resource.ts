@@ -11,12 +11,18 @@ export const resourceTagSchema = createSelectSchema(contentResourceTags);
 export const tagsSchema = createSelectSchema(contentTags);
 
 export const createResourcePRSchema = z.object({
-  type: z.string(),
+  type: z.enum([
+    'projects',
+    'books',
+    'movies',
+    'podcasts',
+    'channels',
+    'newsletters',
+    'papers',
+  ]),
   title: z.string(),
   category: z.string().optional(),
-  country: z.string().optional(),
   description: z.string(),
-  tags: z.array(z.string()).optional(),
   links: z
     .object({
       website: z.string().optional(),
