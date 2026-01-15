@@ -160,7 +160,7 @@ export const ReviewModal = ({
         {/* Stats Cards */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           <StatCard
-            label={t('educatorContent.detail.createdBy')}
+            label={t('educatorContent.detail.addedBy')}
             value={
               content.displayName ?? t('educatorContent.reviewModal.unknown')
             }
@@ -241,6 +241,14 @@ export const ReviewModal = ({
             ))}
           </div>
         </div>
+
+        {/* License */}
+        {content.license && (
+          <p className="text-sm text-gray-500 px-4">
+            {t('educatorContent.license.title')}: {content.license}
+          </p>
+        )}
+
         {/* Download All */}
         {content.files && content.files.length > 0 && (
           <div className="flex justify-end px-6 mt-4">

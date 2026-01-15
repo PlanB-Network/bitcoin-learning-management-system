@@ -1,0 +1,2 @@
+CREATE TYPE "public"."educator_content_license" AS ENUM('CC-BY-SA', 'CC-BY', 'CC-BY-NC', 'CC-BY-NC-SA', 'CC-BY-ND', 'CC-BY-NC-ND', 'MIT');--> statement-breakpoint
+ALTER TABLE "content"."educator_contents" ADD COLUMN "license" "educator_content_license" DEFAULT 'CC-BY-SA' NOT NULL;

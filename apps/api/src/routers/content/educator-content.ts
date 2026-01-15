@@ -1,4 +1,5 @@
 import {
+  EducatorContentLicense,
   EducatorContentStatus,
   EducatorContentType,
   UserPermission,
@@ -61,6 +62,7 @@ export const educatorContentRouter = createTRPCRouter({
         description: z.string().optional(),
         status: z.enum(EducatorContentStatus).optional(),
         originalId: z.string().optional(),
+        license: z.enum(EducatorContentLicense),
         links: z
           .array(
             z.object({
@@ -104,6 +106,7 @@ export const educatorContentRouter = createTRPCRouter({
         title: z.string().optional(),
         description: z.string().optional(),
         status: z.enum(EducatorContentStatus).optional(),
+        license: z.enum(EducatorContentLicense).optional(),
         links: z
           .array(
             z.object({
@@ -146,6 +149,7 @@ export const educatorContentRouter = createTRPCRouter({
         title: z.string().optional(),
         description: z.string().optional(),
         status: z.enum(EducatorContentStatus).optional(),
+        license: z.enum(EducatorContentLicense).optional(),
         links: z
           .array(
             z.object({

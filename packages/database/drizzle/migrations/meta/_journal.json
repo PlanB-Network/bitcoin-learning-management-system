@@ -1121,6 +1121,13 @@
       "when": 1768216367098,
       "tag": "0159_slippery_the_renegades",
       "breakpoints": true
+    },
+    {
+      "idx": 160,
+      "version": "7",
+      "when": 1768466163531,
+      "tag": "0160_open_starbolt",
+      "breakpoints": true
     }
   ]
 }

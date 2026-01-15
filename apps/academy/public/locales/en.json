@@ -1383,7 +1383,7 @@
     "descriptionRequired": "The description cannot be empty",
     "descriptionTooLong": "The description cannot exceed 350 characters",
     "detail": {
-      "createdBy": "Created by",
+      "addedBy": "Added by",
       "downloadAll": "Download all",
       "view": "View"
     },
@@ -1469,6 +1469,12 @@
     "uploadFilesHelper": "If you have related files, upload them together as one bundle. Name your files clearly before uploading.",
     "uploadForReview": "Upload for review",
     "uploading": "Uploading...",
+    "license": {
+      "title": "License",
+      "licensedByDefault": "Licensed by default as CC BY-SA",
+      "learnMore": "Learn more about licenses",
+      "changeLicense": "Change license"
+    },
     "urlInvalid": "The link must be a valid URL"
   },
   "events": {
@@ -2050,6 +2056,7 @@
     "date": "Date",
     "day": "Day",
     "delete": "Delete",
+    "default": "default",
     "description": "Description",
     "details": "Details",
     "diploma": "Diploma",

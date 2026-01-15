@@ -22,6 +22,7 @@ export const getEducatorContentQuery = (
       ec.published_at,
       ec.created_at,
       ec.original_id,
+      ec.license,
       u.display_name,
       (
         SELECT COALESCE(

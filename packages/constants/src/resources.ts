@@ -30,3 +30,13 @@ export enum EducatorContentStatus {
   Rejected = 'rejected',
   Unpublished = 'unpublished',
 }
+
+export enum EducatorContentLicense {
+  CcBySa = 'CC-BY-SA',
+  CcBy = 'CC-BY',
+  CcByNc = 'CC-BY-NC',
+  CcByNcSa = 'CC-BY-NC-SA',
+  CcByNd = 'CC-BY-ND',
+  CcByNcNd = 'CC-BY-NC-ND',
+  Mit = 'MIT',
+}

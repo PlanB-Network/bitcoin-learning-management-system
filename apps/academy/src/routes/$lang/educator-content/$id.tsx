@@ -188,7 +188,7 @@ function EducatorContentDetail() {
           {/* Stats Cards */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             <StatCard
-              label={t('educatorContent.detail.createdBy')}
+              label={t('educatorContent.detail.addedBy')}
               value={
                 item.displayName ?? t('educatorContent.reviewModal.unknown')
               }
@@ -266,13 +266,20 @@ function EducatorContentDetail() {
                     className="gap-4 shrink-0"
                     onClick={() => handleDownload(file.path, file.name)}
                   >
-                    <span>{t('words.download')}</span>
+                    <span>{t('words.open')}</span>
                     <TbDownload />
                   </Button>
                 </div>
               ))}
             </div>
           </div>
+
+          {/* License */}
+          {item.license && (
+            <p className="body-extra-small text-neutral-500 -mt-2">
+              {t('educatorContent.license.title')}: {item.license}
+            </p>
+          )}
 
           {/* Download All */}
           {item.files && item.files.length > 0 && (

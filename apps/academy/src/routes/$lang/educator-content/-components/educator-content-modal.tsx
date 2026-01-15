@@ -1,4 +1,8 @@
-import { EducatorContentStatus, EducatorContentType } from '@blms/constants';
+import {
+  EducatorContentLicense,
+  EducatorContentStatus,
+  EducatorContentType,
+} from '@blms/constants';
 import type { JoinedEducatorContent } from '@blms/types';
 import {
   BasicModal,
@@ -101,6 +105,7 @@ export const EducatorContentModal = ({
   const [isFilesDropSuccess, setIsFilesDropSuccess] = useState(false);
   const [isCoverDropError, setIsCoverDropError] = useState(false);
   const [isFilesDropError, setIsFilesDropError] = useState(false);
+  const [isLicenseExpanded, setIsLicenseExpanded] = useState(false);
 
   const coverInputRef = useRef<HTMLInputElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -124,6 +129,7 @@ export const EducatorContentModal = ({
       .refine((val) => !!val, {
         message: t('educatorContent.typeRequired'),
       }),
+    license: z.enum(EducatorContentLicense),
     links: z
       .array(
         z.object({
@@ -145,6 +151,7 @@ export const EducatorContentModal = ({
       description: '',
       language: '',
       type: undefined as unknown as EducatorContentType,
+      license: EducatorContentLicense.CcBySa,
       links: [],
     },
   });
@@ -162,6 +169,9 @@ export const EducatorContentModal = ({
           description: initialData.description || '',
           language: initialData.language,
           type: initialData.type as EducatorContentType,
+          license:
+            (initialData.license as EducatorContentLicense) ||
+            EducatorContentLicense.CcBySa,
           links: initialData.links?.map((link) => ({ ...link })) || [],
         });
         setExistingFiles(initialData.files || []);
@@ -171,6 +181,7 @@ export const EducatorContentModal = ({
           description: '',
           language: '',
           type: undefined as unknown as EducatorContentType,
+          license: EducatorContentLicense.CcBySa,
           links: [],
         });
         setExistingFiles([]);
@@ -183,6 +194,7 @@ export const EducatorContentModal = ({
       setIsFilesDropSuccess(false);
       setIsCoverDropError(false);
       setIsFilesDropError(false);
+      setIsLicenseExpanded(false);
     } else if (isOpen && initialData && prevIsOpen.current) {
       // Modal is open and initialData changed (e.g. background update)
       setImageError(false);
@@ -858,9 +870,11 @@ export const EducatorContentModal = ({
             />
           </div>
 
-          <div className="flex justify-between items-center mt-2 mb-4 text-xs text-gray-400">
+          <div className="flex justify-between items-start gap-2 mt-2 mb-4 text-xs text-gray-400">
             <p>{t('educatorContent.supportedFileTypes')}</p>
-            <p>{t('educatorContent.maxFileSize')}</p>
+            <p className="shrink-0 whitespace-nowrap">
+              {t('educatorContent.maxFileSize')}
+            </p>
           </div>
 
           {(existingFiles.length > 0 || newFiles.length > 0) && (
@@ -914,6 +928,66 @@ export const EducatorContentModal = ({
             </div>
           )}
         </div>
+
+        {!isLicenseExpanded && (
+          <div className="flex items-center justify-between">
+            <p className="body-base">
+              {t('educatorContent.license.licensedByDefault')}
+            </p>
+            <button
+              type="button"
+              onClick={() => setIsLicenseExpanded(true)}
+              className="body-extra-small-bold hover:text-orange-500"
+            >
+              {t('educatorContent.license.changeLicense')}
+            </button>
+          </div>
+        )}
+
+        {isLicenseExpanded && (
+          <div className="space-y-2">
+            <Controller
+              control={form.control}
+              name="license"
+              render={({ field }) => (
+                <RadioGroup
+                  onValueChange={field.onChange}
+                  value={field.value}
+                  className="flex flex-col gap-1"
+                  ref={field.ref}
+                >
+                  {Object.values(EducatorContentLicense).map((license) => (
+                    <div
+                      key={license}
+                      className="flex items-center space-x-3 space-y-0"
+                    >
+                      <RadioGroupItem
+                        value={license}
+                        id={`license-${license}`}
+                      />
+                      <label
+                        htmlFor={`license-${license}`}
+                        className="font-normal cursor-pointer"
+                      >
+                        {license}
+                        {license === EducatorContentLicense.CcBySa &&
+                          ` (${t('words.default')})`}
+                      </label>
+                    </div>
+                  ))}
+                </RadioGroup>
+              )}
+            />
+            <a
+              href="https://creativecommons.org/share-your-work/cclicenses/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="body-small text-neutral-500 hover:text-neutral-700"
+            >
+              {t('educatorContent.license.learnMore')} ↗
+            </a>
+          </div>
+        )}
 
         <Button
           type="submit"

@@ -10,6 +10,7 @@ import {
   CoursePaymentFormat,
   CoursePaymentMethod,
   CourseType,
+  EducatorContentLicense,
   EducatorContentStatus,
   EducatorContentType,
   EventType,
@@ -1437,6 +1438,11 @@ export const educatorContentStatusEnum = pgNativeEnum(
   EducatorContentStatus,
 );
 
+export const educatorContentLicenseEnum = pgNativeEnum(
+  'educator_content_license',
+  EducatorContentLicense,
+);
+
 export const contentEducatorContents = content.table(
   'educator_contents',
   (t) => ({
@@ -1457,6 +1463,9 @@ export const contentEducatorContents = content.table(
       .references(() => usersAccounts.uid, { onDelete: 'cascade' }),
     downloads: t.integer().default(0).notNull(),
     createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    license: educatorContentLicenseEnum()
+      .notNull()
+      .default(EducatorContentLicense.CcBySa),
   }),
   (table) => [
     foreignKey({

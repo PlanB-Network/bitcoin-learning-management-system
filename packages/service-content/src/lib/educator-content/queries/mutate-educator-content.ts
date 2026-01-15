@@ -12,12 +12,13 @@ export const createEducatorContentQuery = (
   return sql<JoinedEducatorContent[]>`
       WITH inserted_content AS (
         INSERT INTO content.educator_contents (
-          type, cover, language, title, description, uid, original_id, status, published_at
+          type, cover, language, title, description, uid, original_id, status, published_at, license
         ) VALUES (
           ${input.type}, ${input.cover}, ${input.language}, ${input.title}, ${input.description}, ${input.uid}, ${input.originalId}, ${input.status},
-          CASE WHEN ${input.status} = 'published' THEN NOW() ELSE NULL END
+          CASE WHEN ${input.status} = 'published' THEN NOW() ELSE NULL END,
+          ${input.license}
         )
-        RETURNING id, type, cover, language, title, description, uid, original_id, status
+        RETURNING id, type, cover, language, title, description, uid, original_id, status, license
       ),
       inserted_links AS (
         INSERT INTO content.educator_content_links (
@@ -78,7 +79,7 @@ export const createEducatorContentQuery = (
           WHERE if.educator_content_id = ic.id
         ) AS files
       FROM inserted_content ic
-      GROUP BY ic.id, ic.type, ic.cover, ic.language, ic.title, ic.description, ic.uid, ic.original_id, ic.status
+      GROUP BY ic.id, ic.type, ic.cover, ic.language, ic.title, ic.description, ic.uid, ic.original_id, ic.status, ic.license
     `;
 };
 
@@ -100,10 +101,11 @@ export const updateEducatorContentQuery = (
         title = COALESCE(${input.title}, title),
         description = COALESCE(${input.description}, description),
         status = COALESCE(${input.status}, status),
+        license = COALESCE(${input.license}, license),
         published_at = CASE WHEN ${input.status} = 'published' THEN NOW() ELSE published_at END
       WHERE id = ${input.id}
       ${input.uid ? sql`AND uid = ${input.uid}` : sql``}
-      RETURNING id, type, cover, language, title, description, uid, status, original_id
+      RETURNING id, type, cover, language, title, description, uid, status, original_id, license
     ),
     deleted_links AS (
       DELETE FROM content.educator_content_links
@@ -176,7 +178,7 @@ export const updateEducatorContentQuery = (
         WHERE if.educator_content_id = uc.id
       ) AS files
     FROM updated_content uc
-    GROUP BY uc.id, uc.type, uc.cover, uc.language, uc.title, uc.description, uc.uid, uc.status, uc.original_id
+    GROUP BY uc.id, uc.type, uc.cover, uc.language, uc.title, uc.description, uc.uid, uc.status, uc.original_id, uc.license
   `;
 };
 export const deleteEducatorContentQuery = (id: string) => {

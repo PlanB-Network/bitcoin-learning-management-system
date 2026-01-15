@@ -23,6 +23,14 @@ export interface EducatorContent {
   uid: string;
   downloads: number;
   createdAt: Date;
+  license:
+    | 'CC-BY-SA'
+    | 'CC-BY'
+    | 'CC-BY-NC'
+    | 'CC-BY-NC-SA'
+    | 'CC-BY-ND'
+    | 'CC-BY-NC-ND'
+    | 'MIT';
 }
 
 export interface EducatorContentLink {
@@ -62,6 +70,14 @@ export interface JoinedEducatorContent {
   uid: string;
   downloads: number;
   createdAt: Date;
+  license:
+    | 'CC-BY-SA'
+    | 'CC-BY'
+    | 'CC-BY-NC'
+    | 'CC-BY-NC-SA'
+    | 'CC-BY-ND'
+    | 'CC-BY-NC-ND'
+    | 'MIT';
   links?: EducatorContentLink[] | undefined;
   files?: EducatorContentFile[] | undefined;
   displayName?: string | undefined;
