@@ -501,6 +501,19 @@ export const createRestFilesRoutes = async (
         return;
       }
 
+      const head = await dependencies.s3.head(`${dir}/${key}`);
+      if (head.contentType) {
+        res.setHeader('Content-Type', head.contentType);
+      }
+
+      const { fileName } = req.query;
+      if (fileName && typeof fileName === 'string') {
+        res.setHeader(
+          'Content-Disposition',
+          `inline; filename="${fileName.replace(/"/g, '')}"`,
+        );
+      }
+
       const stream = await dependencies.s3.getStream(`${dir}/${key}`);
       if (!stream) {
         res.status(404).send('Not found');

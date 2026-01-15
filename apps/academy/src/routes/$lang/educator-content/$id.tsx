@@ -85,11 +85,11 @@ function EducatorContentDetail() {
     }
   };
 
-  // biome-ignore lint/correctness/noUnusedFunctionParameters: temporary
   const handleDownload = (path: string, filename?: string) => {
     handleIncrementDownload();
-    const url = getEducatorContentFileUrl(path);
-    // First trigger the download
+    const url = getEducatorContentFileUrl(path, filename);
+    window.open(url, '_blank');
+    // Trigger the download
     // const link = document.createElement('a');
     // link.href = url;
     // link.download = filename || path.split('/').pop() || 'download';
@@ -97,7 +97,6 @@ function EducatorContentDetail() {
     // link.click();
     // document.body.removeChild(link);
     // Then open in a new tab
-    window.open(url, '_blank');
   };
 
   const sortedLinks = item?.links?.sort((a, b) =>

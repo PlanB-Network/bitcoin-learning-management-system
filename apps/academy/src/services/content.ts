@@ -23,5 +23,5 @@ export const uploadEducatorContentFile = async (file: File) => {
   });
 };
 
-export const getEducatorContentFileUrl = (fileId: string) =>
-  `/api/files/contribute/educator-content/${fileId}`;
+export const getEducatorContentFileUrl = (fileId: string, fileName?: string) =>
+  `/api/files/contribute/educator-content/${fileId}${fileName ? `?fileName=${encodeURIComponent(fileName)}` : ''}`;

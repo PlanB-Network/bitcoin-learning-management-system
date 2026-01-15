@@ -76,8 +76,8 @@ export const ReviewModal = ({
     (a.name || '').localeCompare(b.name || ''),
   );
 
-  const handleDownload = (path: string) => {
-    window.open(getEducatorContentFileUrl(path), '_blank');
+  const handleDownload = (path: string, name?: string) => {
+    window.open(getEducatorContentFileUrl(path, name), '_blank');
   };
 
   if (!content) return null;
@@ -232,9 +232,9 @@ export const ReviewModal = ({
                   variant="tertiary"
                   size={isMobile ? 's' : 'm'}
                   className="gap-4 shrink-0"
-                  onClick={() => handleDownload(file.path)}
+                  onClick={() => handleDownload(file.path, file.name)}
                 >
-                  <span>{t('words.download')}</span>
+                  <span>{t('words.open')}</span>
                   <TbDownload />
                 </Button>
               </div>
