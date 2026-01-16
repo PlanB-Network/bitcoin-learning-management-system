@@ -34,12 +34,10 @@ export const createResourcePR = async (
     throw new Error(`Resource type "${input.type}" is not allowed`);
   }
 
-  // 1. Generate unique ID and branch name
   const resourceId = crypto.randomUUID();
   const normalizedTitle = input.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
   const branchName = `add-${input.type}-${normalizedTitle.slice(0, 20)}-${resourceId.slice(0, 8)}`;
 
-  // 2. Prepare files content
   const files: {
     path: string;
     content: string;
@@ -49,24 +47,27 @@ export const createResourcePR = async (
   const categoryDir = input.type;
   const basePath = `resources/${categoryDir}/${normalizedTitle}`;
 
-  // // "proofreading:
-  //   - language: {original_language}
-  //     last_contribution_date: {today}
-  //     urgency: 1
-  //     contributor_names:
-  //       - Asi0Flammeus
-  //     reward: 0"
+  const today = new Date().toISOString().split('T')[0];
 
-  // Need to add this in all "base" yml (like project.yml, book.yml, etc...)
+  const proofreadingDefault = [
+    {
+      language: input.language,
+      last_contribution_date: today,
+      urgency: 1,
+      contributor_names: ['Asi0Flammeus'],
+      reward: 0,
+    },
+  ];
 
   // PROJECTS
-  if (input.type === 'project') {
+  if (input.type === 'projects') {
     const projectYaml = {
       id: resourceId,
       name: input.title,
-      links: input.links,
       category: input.category,
+      links: input.links,
       original_language: input.language,
+      proofreading: proofreadingDefault,
     };
 
     const projectLocalizedYaml = {
@@ -75,11 +76,15 @@ export const createResourcePR = async (
 
     files.push({
       path: `${basePath}/project.yml`,
-      content: yaml.dump(projectYaml),
+      content: yaml.dump(projectYaml, {
+        lineWidth: -1,
+      }),
     });
     files.push({
       path: `${basePath}/${input.language}.yml`,
-      content: yaml.dump(projectLocalizedYaml),
+      content: yaml.dump(projectLocalizedYaml, {
+        lineWidth: -1,
+      }),
     });
 
     if (input.coverImage) {
@@ -91,7 +96,74 @@ export const createResourcePR = async (
     }
   }
 
-  // 3. Create Branch and PR
+  // BOOKS
+  if (input.type === 'books') {
+    const bookYaml = {
+      id: resourceId,
+      author: input.author,
+      original_language: input.language,
+      proofreading: proofreadingDefault,
+    };
+
+    const bookLocalizedYaml = {
+      title: input.title,
+      publication_year: input.publicationYear,
+      cover: `cover_${input.language}.webp`,
+      original: true,
+      description: input.description,
+    };
+
+    files.push({
+      path: `${basePath}/book.yml`,
+      content: yaml.dump(bookYaml, {
+        lineWidth: -1,
+      }),
+    });
+    files.push({
+      path: `${basePath}/${input.language}.yml`,
+      content: yaml.dump(bookLocalizedYaml, {
+        lineWidth: -1,
+      }),
+    });
+
+    if (input.coverImage) {
+      files.push({
+        path: `${basePath}/assets/cover_${input.language}.webp`,
+        content: input.coverImage.data.split(',')[1],
+        encoding: 'base64',
+      });
+    }
+  }
+
+  // PODCASTS
+  if (input.type === 'podcasts') {
+    const podcastYaml = {
+      id: resourceId,
+      name: input.title,
+      host: input.author,
+      language: input.contentLanguage,
+      links: {
+        podcast: input.resourceLink,
+      },
+      description: input.description,
+    };
+
+    files.push({
+      path: `${basePath}/podcast.yml`,
+      content: yaml.dump(podcastYaml, {
+        lineWidth: -1,
+      }),
+    });
+
+    if (input.coverImage) {
+      files.push({
+        path: `${basePath}/assets/logo.webp`,
+        content: input.coverImage.data.split(',')[1],
+        encoding: 'base64',
+      });
+    }
+  }
+
   try {
     // Get the SHA of the latest commit on the base branch
     const { data: refData } = await octokit.rest.git.getRef({
@@ -153,10 +225,10 @@ export const createResourcePR = async (
     const { data: prData } = await octokit.rest.pulls.create({
       owner,
       repo,
-      title: `Add ${input.type}: ${input.title}`,
+      title: `Add ${input.type.slice(0, -1)}: ${input.title}`,
       head: branchName,
       base: baseBranch,
-      body: `This PR adds a new ${input.type} resource: **${input.title}**.\n\nAutomated submission from the BLMS platform.`,
+      body: `This PR adds a new ${input.type.slice(0, -1)} resource: **${input.title}**.\n\nSubmission from the BLMS platform.`,
     });
 
     return { prUrl: prData.html_url };

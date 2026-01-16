@@ -21,12 +21,19 @@ export interface Tags {
 }
 
 export interface CreateResourcePR {
-  type: string;
+  type:
+    | 'projects'
+    | 'books'
+    | 'movies'
+    | 'podcasts'
+    | 'channels'
+    | 'newsletters'
+    | 'papers';
   title: string;
+  author?: string | undefined;
+  publicationYear?: string | undefined;
   category?: string | undefined;
-  country?: string | undefined;
   description: string;
-  tags?: string[] | undefined;
   links?:
     | {
         website?: string | undefined;
@@ -36,6 +43,8 @@ export interface CreateResourcePR {
         linkedin?: string | undefined;
       }
     | undefined;
+  resourceLink?: string | undefined;
   language: string;
+  contentLanguage?: string | undefined;
   coverImage?: { name: string; data: string } | undefined;
 }

@@ -3,6 +3,7 @@ import {
   BasicModal,
   Button,
   cn,
+  DividerSimple,
   Field,
   FieldError,
   FieldLabel,
@@ -26,8 +27,8 @@ import {
   TbWorld,
 } from 'react-icons/tb';
 import { z } from 'zod';
-
 import Nostr from '#src/assets/icons/nostr.svg?react';
+import SuccessParty from '#src/assets/icons/success_party.svg?react';
 import { ImageInput } from '#src/components/image-input.tsx';
 import { trpc } from '#src/utils/trpc.js';
 
@@ -39,11 +40,14 @@ interface AddResourceModalProps {
 
 interface ResourceFormConfig {
   showTitle?: boolean;
+  showAuthor?: boolean;
   showLanguage?: boolean;
   showCategory?: boolean;
   showDescription?: boolean;
   showCoverImage?: boolean;
+  showResourceLink?: boolean;
   showSocialLinks?: boolean;
+  showPublished?: boolean;
   categories?: string[];
   socialLinks?: string[];
 }
@@ -55,7 +59,6 @@ const RESOURCE_FORM_CONFIG: Record<string, ResourceFormConfig> = {
     showDescription: true,
     showCoverImage: true,
     showSocialLinks: true,
-    showLanguage: false,
     categories: [
       'communities',
       'conference',
@@ -75,13 +78,37 @@ const RESOURCE_FORM_CONFIG: Record<string, ResourceFormConfig> = {
     ],
     socialLinks: ['github', 'twitter', 'website', 'nostr'],
   },
+  books: {
+    showTitle: true,
+    showAuthor: true,
+    showDescription: true,
+    showCoverImage: true,
+    showPublished: true,
+  },
+  podcasts: {
+    showTitle: true,
+    showAuthor: true,
+    showDescription: true,
+    showCoverImage: true,
+    showResourceLink: true,
+    showLanguage: true,
+  },
 };
 
 const createResourcePRSchema = z.object({
-  type: z.string(),
+  type: z.enum([
+    'projects',
+    'books',
+    'movies',
+    'podcasts',
+    'channels',
+    'newsletters',
+    'papers',
+  ]),
   title: z.string().min(1, 'Title is required'),
+  author: z.string().optional(),
   category: z.string().optional(),
-  country: z.string().optional(),
+  publicationYear: z.string().optional(),
   description: z.string().min(1, 'Description is required'),
   links: z
     .object({
@@ -92,7 +119,9 @@ const createResourcePRSchema = z.object({
       linkedin: z.string().optional(),
     })
     .optional(),
+  resourceLink: z.string().optional(),
   language: z.string(),
+  contentLanguage: z.string().optional(),
   coverImage: z
     .object({
       name: z.string(),
@@ -111,14 +140,17 @@ export const AddResourceModal = ({
   const { t, i18n } = useTranslation();
   const [coverImageBase64, setCoverImageBase64] = useState<string | null>(null);
   const [coverImageName, setCoverImageName] = useState<string | null>(null);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const form = useForm<FormData>({
     resolver: zodResolver(createResourcePRSchema),
     defaultValues: {
-      type: resourceType,
+      type: resourceType as FormData['type'],
       title: '',
       description: '',
       language: i18n.language || 'en',
+      contentLanguage: 'en',
+      publicationYear: new Date().getFullYear().toString(),
     },
   });
 
@@ -133,7 +165,7 @@ export const AddResourceModal = ({
   const createPR = useMutation(
     trpc.github.createResourcePR.mutationOptions({
       onSuccess: () => {
-        onClose();
+        setIsSuccess(true);
         form.reset();
         setCoverImageBase64(null);
         setCoverImageName(null);
@@ -141,9 +173,15 @@ export const AddResourceModal = ({
     }),
   );
 
+  const handleClose = () => {
+    onClose();
+    setIsSuccess(false);
+  };
+
   const onSubmit = (data: FormData) => {
     createPR.mutate({
       ...data,
+      type: data.type,
       coverImage:
         coverImageBase64 && coverImageName
           ? {
@@ -156,174 +194,280 @@ export const AddResourceModal = ({
 
   const config = RESOURCE_FORM_CONFIG[resourceType] || {};
 
+  const authorWordReplacement = resourceType === 'podcasts' ? 'host' : 'author';
+
   return (
     <BasicModal
-      title={t(`resources.addResource.${resourceType.replace(/s$/, '')}`)}
+      title={
+        isSuccess
+          ? ''
+          : t(`resources.addResource.${resourceType.replace(/s$/, '')}`)
+      }
       open={isOpen}
-      onOpenChange={onClose}
+      onOpenChange={handleClose}
       size="large"
     >
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-6 w-full"
-      >
-        {config.showTitle && (
-          <Controller
-            control={form.control}
-            name="title"
-            render={({ field, fieldState }) => (
-              <Field data-invalid={fieldState.invalid}>
-                <FieldLabel required>{t('words.title')}</FieldLabel>
-                <Input
-                  {...field}
-                  placeholder={t('resources.addResource.titlePlaceholder')}
-                />
-                {fieldState.invalid && (
-                  <FieldError errors={[fieldState.error]} />
-                )}
-              </Field>
-            )}
-          />
-        )}
-
-        {config.showLanguage && (
-          <Controller
-            control={form.control}
-            name="language"
-            render={({ field, fieldState }) => (
-              <Field data-invalid={fieldState.invalid}>
-                <FieldLabel required>{t('words.language')}</FieldLabel>
-                <Select onValueChange={field.onChange} value={field.value}>
-                  <SelectTrigger>
-                    <SelectValue
-                      placeholder={t('resources.addResource.selectLanguage')}
-                    />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {sortedLanguages.map((lang) => (
-                      <SelectItem key={lang.code} value={lang.code}>
-                        {lang.nativeName}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                {fieldState.invalid && (
-                  <FieldError errors={[fieldState.error]} />
-                )}
-              </Field>
-            )}
-          />
-        )}
-
-        {config.showCategory && config.categories && (
-          <Controller
-            control={form.control}
-            name="category"
-            render={({ field, fieldState }) => (
-              <Field data-invalid={fieldState.invalid}>
-                <FieldLabel required>{t('words.category')}</FieldLabel>
-                <Select onValueChange={field.onChange} value={field.value}>
-                  <SelectTrigger>
-                    <SelectValue
-                      placeholder={t('resources.addResource.selectCategory')}
-                    />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {config.categories?.map((category) => (
-                      <SelectItem key={category} value={category}>
-                        {t(
-                          `resources.${resourceType}.types.${category}`,
-                          category,
-                        )}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                {fieldState.invalid && (
-                  <FieldError errors={[fieldState.error]} />
-                )}
-              </Field>
-            )}
-          />
-        )}
-
-        {config.showDescription && (
-          <Controller
-            control={form.control}
-            name="description"
-            render={({ field, fieldState }) => (
-              <Field data-invalid={fieldState.invalid}>
-                <FieldLabel required>{t('words.description')}</FieldLabel>
-                <Textarea
-                  {...field}
-                  placeholder={t(
-                    'resources.addResource.descriptionPlaceholder',
-                  )}
-                  className="min-h-[100px]"
-                />
-                {fieldState.invalid && (
-                  <FieldError errors={[fieldState.error]} />
-                )}
-              </Field>
-            )}
-          />
-        )}
-
-        {config.showCoverImage && (
-          <ImageInput
-            label={t('resources.addResource.coverImage')}
-            value={coverImageBase64}
-            onChange={(base64, filename) => {
-              setCoverImageBase64(base64);
-              setCoverImageName(filename);
-            }}
-          />
-        )}
-
-        {config.showSocialLinks && (
-          <div className="flex flex-col gap-3">
-            <FieldLabel>{t('resources.addResource.socialProfiles')}</FieldLabel>
-            <div className="flex flex-col gap-3">
-              {socialLinksList
-                .filter((link) => config.socialLinks?.includes(link.id))
-                .map((link) => (
-                  <Controller
-                    key={link.id}
-                    control={form.control}
-                    name={link.name}
-                    render={({ field }) => (
-                      <Field>
-                        <FieldLabel className="flex items-center gap-2">
-                          <link.icon
-                            size={link.id === 'nostr' ? undefined : 20}
-                            className={cn(
-                              'shrink-0',
-                              link.id === 'nostr' && 'size-5 fill-current',
-                            )}
-                          />
-                          <span className="capitalize">{link.id}</span>
-                        </FieldLabel>
-                        <Input {...field} placeholder={link.placeholder} />
-                      </Field>
-                    )}
-                  />
-                ))}
-            </div>
-          </div>
-        )}
-
-        <Button
-          type="submit"
-          variant="primary"
-          size="l"
-          className="w-full mt-4"
-          disabled={createPR.isPending}
+      {isSuccess ? (
+        <div className="flex flex-col items-center gap-5 w-full text-center">
+          <SuccessParty className="size-10 md:size-15 fill-orange-500" />
+          <h2 className="title-small md:title-large">
+            {t('resources.addResource.successTitle', {
+              type: t(
+                `words.${
+                  resourceType === 'papers'
+                    ? 'researchPaper'
+                    : resourceType.replace(/s$/, '')
+                }`,
+              ),
+            })}
+          </h2>
+          <p className="body-base md:label-label text-center">
+            {t('resources.addResource.successSubtitle', {
+              type: t(
+                `words.${
+                  resourceType === 'papers'
+                    ? 'researchPaper'
+                    : resourceType.replace(/s$/, '')
+                }`,
+              ).toLowerCase(),
+            })}
+          </p>
+        </div>
+      ) : (
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex flex-col gap-5 md:gap-6 w-full"
         >
-          {createPR.isPending
-            ? t('resources.addResource.sending')
-            : t('resources.addResource.sendForReview')}
-        </Button>
-      </form>
+          {config.showTitle && (
+            <Controller
+              control={form.control}
+              name="title"
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel required>{t('words.title')}</FieldLabel>
+                  <Input
+                    {...field}
+                    placeholder={t('resources.addResource.titlePlaceholder')}
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+          )}
+
+          {config.showAuthor && (
+            <Controller
+              control={form.control}
+              name="author"
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel required>
+                    {t(`words.${authorWordReplacement}`)}
+                  </FieldLabel>
+                  <Input {...field} placeholder="Satoshi Nakamoto" />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+          )}
+
+          {config.showCategory && config.categories && (
+            <Controller
+              control={form.control}
+              name="category"
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel required>{t('words.category')}</FieldLabel>
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <SelectTrigger>
+                      <SelectValue
+                        placeholder={t('resources.addResource.selectCategory')}
+                      />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {config.categories?.map((category) => (
+                        <SelectItem key={category} value={category}>
+                          {t(
+                            `resources.${resourceType}.types.${category}`,
+                            category,
+                          )}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+          )}
+
+          {config.showDescription && (
+            <Controller
+              control={form.control}
+              name="description"
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel required>{t('words.description')}</FieldLabel>
+                  <Textarea
+                    {...field}
+                    placeholder={t(
+                      'resources.addResource.descriptionPlaceholder',
+                    )}
+                    className="min-h-[100px]"
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+          )}
+
+          {config.showCoverImage && (
+            <ImageInput
+              label={t('resources.addResource.coverImage')}
+              value={coverImageBase64}
+              onChange={(base64, filename) => {
+                setCoverImageBase64(base64);
+                setCoverImageName(filename);
+              }}
+            />
+          )}
+
+          {config.showSocialLinks && (
+            <div className="flex flex-col gap-2">
+              <FieldLabel>
+                {t('resources.addResource.socialProfiles')}
+              </FieldLabel>
+              <div className="flex flex-col gap-3">
+                {socialLinksList
+                  .filter((link) => config.socialLinks?.includes(link.id))
+                  .map((link, index, array) => (
+                    <div key={link.id} className="flex flex-col gap-3">
+                      <Controller
+                        control={form.control}
+                        name={link.name}
+                        render={({ field }) => (
+                          <Field>
+                            <FieldLabel className="flex items-center gap-2">
+                              <link.icon
+                                size={link.id === 'nostr' ? undefined : 20}
+                                className={cn(
+                                  'shrink-0',
+                                  link.id === 'nostr' && 'size-5 fill-current',
+                                )}
+                              />
+                              <span className="capitalize">{link.id}</span>
+                            </FieldLabel>
+                            <Input {...field} placeholder={link.placeholder} />
+                          </Field>
+                        )}
+                      />
+                      {index < array.length - 1 && (
+                        <DividerSimple className="max-md:hidden" />
+                      )}
+                    </div>
+                  ))}
+              </div>
+            </div>
+          )}
+
+          {config.showResourceLink && (
+            <Controller
+              control={form.control}
+              name="resourceLink"
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel required>{t('words.link')}</FieldLabel>
+                  <Input
+                    {...field}
+                    placeholder="https://www.youtube.com/@PlanBNetwork"
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+          )}
+
+          {config.showPublished && (
+            <Controller
+              control={form.control}
+              name="publicationYear"
+              render={({ field }) => (
+                <Field>
+                  <FieldLabel>{t('words.published')}</FieldLabel>
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <SelectTrigger>
+                      <SelectValue
+                        placeholder={t('resources.addResource.selectYear')}
+                      />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {Array.from(
+                        { length: 100 },
+                        (_, i) => new Date().getFullYear() - i,
+                      ).map((year) => (
+                        <SelectItem key={year} value={year.toString()}>
+                          {year}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </Field>
+              )}
+            />
+          )}
+
+          {config.showLanguage && (
+            <Controller
+              control={form.control}
+              name="contentLanguage"
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel required>{t('words.language')}</FieldLabel>
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <SelectTrigger>
+                      <SelectValue
+                        placeholder={t('resources.addResource.selectLanguage')}
+                      />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {sortedLanguages.map((lang) => (
+                        <SelectItem key={lang.code} value={lang.code}>
+                          {lang.nativeName}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+          )}
+
+          <Button
+            type="submit"
+            variant="primary"
+            size="l"
+            className="w-full mt-4"
+            disabled={createPR.isPending}
+          >
+            {createPR.isPending
+              ? t('resources.addResource.sending')
+              : t('resources.addResource.sendForReview')}
+          </Button>
+        </form>
+      )}
     </BasicModal>
   );
 };

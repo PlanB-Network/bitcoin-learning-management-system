@@ -21,6 +21,8 @@ export const createResourcePRSchema = z.object({
     'papers',
   ]),
   title: z.string(),
+  author: z.string().optional(),
+  publicationYear: z.string().optional(),
   category: z.string().optional(),
   description: z.string(),
   links: z
@@ -32,7 +34,9 @@ export const createResourcePRSchema = z.object({
       linkedin: z.string().optional(),
     })
     .optional(),
+  resourceLink: z.string().optional(),
   language: z.string(),
+  contentLanguage: z.string().optional(),
   coverImage: z
     .object({
       name: z.string(),
