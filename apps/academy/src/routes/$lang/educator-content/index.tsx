@@ -2,6 +2,7 @@ import { EducatorContentStatus, EducatorContentType } from '@blms/constants';
 import type { JoinedEducatorContent } from '@blms/types';
 import {
   CategorySwitcher,
+  CategorySwitcherBar,
   cn,
   DropdownMenu,
   EmptyState,
@@ -268,7 +269,8 @@ function RouteComponent() {
       ) : (
         <>
           {/* Type Filter Pills */}
-          <div className="flex flex-wrap gap-2 lg:mt-4">
+          {/* Type Filter Pills - Desktop */}
+          <div className="hidden lg:flex flex-wrap gap-2 lg:mt-4">
             {types.map((type) => (
               <CategorySwitcher
                 key={type.id}
@@ -278,6 +280,21 @@ function RouteComponent() {
                 text={type.name}
               />
             ))}
+          </div>
+
+          {/* Type Filter Pills - Mobile */}
+          <div className="lg:hidden w-full">
+            <CategorySwitcherBar>
+              {types.map((type) => (
+                <CategorySwitcher
+                  key={type.id}
+                  size="s"
+                  onClick={type.onClick}
+                  isActive={selectedType === type.id}
+                  text={type.name}
+                />
+              ))}
+            </CategorySwitcherBar>
           </div>
 
           {/* Language and Search Filters */}
