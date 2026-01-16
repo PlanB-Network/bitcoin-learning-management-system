@@ -44,14 +44,14 @@ export const SectionCard = ({
       </div>
 
       <div className={`p-4 ${isComingSoon ? 'bg-white' : 'bg-[#E5E5E5]'}`}>
-        <h3 className="text-xl font-bold text-gray-900 mb-2">{title}</h3>
+        <h3 className="text-xl font-bold text-neutral-900 mb-2">{title}</h3>
         <div className="flex items-center justify-between mb-2">
-          <span className="text-gray-600">
+          <span className="text-neutral-500">
             {t('translate.translationProgress')}
           </span>
           <span className="font-bold">{progress}%</span>
         </div>
-        <div className="w-full bg-gray-200 rounded-full h-2 mb-4">
+        <div className="w-full bg-neutral-100 rounded-full h-2 mb-4">
           <div
             className="bg-orange-500 h-2 rounded-full"
             style={{ width: `${progress}%` }}

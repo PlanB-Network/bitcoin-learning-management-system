@@ -211,7 +211,7 @@ function RouteComponent() {
         </h3>
         <p
           className={cn(
-            'text-center subtitle-base max-md:text-base text-gray-200 lg:mx-48 mt-6 lg:mt-12',
+            'text-center subtitle-base max-md:text-base text-neutral-100 lg:mx-48 mt-6 lg:mt-12',
           )}
         >
           {t('about.media2subtitle')}
@@ -326,7 +326,7 @@ export const ProjectCard = (props: ProjectCardProps) => {
         src={props.logo}
         alt={props.name}
       />
-      <span className="body-base text-gray-200 md:text-center max-md:line-clamp-2 line-clamp-3 text-center">
+      <span className="body-base text-neutral-100 md:text-center max-md:line-clamp-2 line-clamp-3 text-center">
         {props.name}
       </span>
     </div>

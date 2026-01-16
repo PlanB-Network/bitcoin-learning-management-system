@@ -72,7 +72,7 @@ export const TranscriptionEditor: React.FC<TranscriptionEditorProps> = ({
           {/* Source language selector */}
           <div className="flex items-center gap-[10px]">
             <span
-              className="text-base sm:text-lg md:text-xl font-semibold text-gray-900"
+              className="text-base sm:text-lg md:text-xl font-semibold text-neutral-900"
               style={{ fontFamily: 'Rubik, sans-serif' }}
             >
               {t('translate.language', { defaultValue: 'Language' })}
@@ -89,9 +89,9 @@ export const TranscriptionEditor: React.FC<TranscriptionEditorProps> = ({
           </div>
           {/* Target language information (visible only on large screens) */}
           <div className="hidden lg:flex items-center gap-2 lg:justify-start justify-start">
-            <span className="text-gray-400">⇄</span>
+            <span className="text-neutral-500">⇄</span>
             <span
-              className="text-base sm:text-lg md:text-xl font-semibold text-gray-900"
+              className="text-base sm:text-lg md:text-xl font-semibold text-neutral-900"
               style={{ fontFamily: 'Rubik, sans-serif' }}
             >
               {t('translate.translateTo', { defaultValue: 'Translate to' })}
@@ -114,16 +114,16 @@ export const TranscriptionEditor: React.FC<TranscriptionEditorProps> = ({
           className="bg-white rounded-lg p-4 min-h-[200px]"
           style={{ border: '1px solid #CCCCCC' }}
         >
-          <div className="text-sm leading-relaxed text-gray-900 whitespace-pre-line">
+          <div className="text-sm leading-relaxed text-neutral-900 whitespace-pre-line">
             {originalContent || ''}
           </div>
         </div>
 
         {/* Target language information (visible on small screens, outside the box) */}
         <div className="flex items-center gap-2 lg:hidden">
-          <span className="text-gray-400">⇄</span>
+          <span className="text-neutral-500">⇄</span>
           <span
-            className="text-base font-semibold text-gray-900"
+            className="text-base font-semibold text-neutral-900"
             style={{ fontFamily: 'Rubik, sans-serif' }}
           >
             {t('translate.translateTo', { defaultValue: 'Translate to' })}
@@ -148,7 +148,7 @@ export const TranscriptionEditor: React.FC<TranscriptionEditorProps> = ({
             placeholder={t('translate.enterTranslation', {
               defaultValue: 'Enter your translation here...',
             })}
-            className="w-full h-full min-h-[160px] border-0 resize-none focus:outline-none text-sm leading-relaxed bg-transparent text-gray-900 textarea-scrollbar"
+            className="w-full h-full min-h-[160px] border-0 resize-none focus:outline-none text-sm leading-relaxed bg-transparent text-neutral-900 textarea-scrollbar"
             style={{ width: 'calc(100% + 18px)', marginRight: '-18px' }}
           />
         </div>

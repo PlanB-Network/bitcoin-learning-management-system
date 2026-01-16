@@ -54,11 +54,11 @@ export const getStatusBadgeClass = (status: string): string => {
     case 'in-progress':
       return 'bg-orange-100 text-orange-800';
     case 'not-started':
-      return 'bg-gray-100 text-gray-800';
+      return 'bg-neutral-50 text-neutral-800';
     case 'todo':
-      return 'bg-gray-100 text-gray-800';
+      return 'bg-neutral-50 text-neutral-800';
     default:
-      return 'bg-gray-100 text-gray-800';
+      return 'bg-neutral-50 text-neutral-800';
   }
 };
 

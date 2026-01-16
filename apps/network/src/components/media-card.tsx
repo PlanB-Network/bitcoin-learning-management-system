@@ -225,7 +225,7 @@ function BottomStuff({
       <p
         className={cn(
           'max-lg:mt-2 max-lg:px-4 ',
-          'text-center body-base lg:text-xl max-lg:font-normal text-gray-200',
+          'text-center body-base lg:text-xl max-lg:font-normal text-neutral-100',
           ' whitespace-pre-wrap',
           subtitleClassName ?? '',
           isLeft ? 'lg:text-start' : 'lg:text-end',

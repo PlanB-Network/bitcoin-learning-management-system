@@ -689,7 +689,7 @@ const EventsMap = ({
           </div>
 
           <div className="border-b-rounded-xl overflow-hidden">
-            <div className="text-gray-500 text-center w-full">
+            <div className="text-neutral-500 text-center w-full">
               <div className={cn('xl:h-[586px] w-full')}>
                 <Calendar
                   localizer={localizer}
@@ -805,7 +805,7 @@ const EventsMap = ({
           selectedEventGroup || calendarCard ? 'rounded-b-xl pb-4' : 'hidden',
         )}
       >
-        <div className="flex justify-between font-semibold text-gray-800">
+        <div className="flex justify-between font-semibold text-neutral-800">
           <div className="flex">
             {selectedEventGroup && (
               <span>{selectedEventGroup?.location.name}</span>
@@ -848,7 +848,7 @@ const EventsMap = ({
               />
             ))
           ) : (
-            <div className="text-gray-500 text-center w-full mb-4">
+            <div className="text-neutral-500 text-center w-full mb-4">
               {t('events.calendar.noEventsFound')}
             </div>
           )}

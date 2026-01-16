@@ -46,7 +46,7 @@ function RouteComponent() {
         <h1 className="title-large lg:text-6xl">
           {t('hubs.co-working.title')}
         </h1>
-        <p className="mt-8 max-w-[530px] text-gray-200">
+        <p className="mt-8 max-w-[530px] text-neutral-100">
           {t('hubs.co-working.subtitle')}
         </p>
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 mt-16">
@@ -118,7 +118,7 @@ function RouteComponent() {
           imageUrl={luganoLogo}
           alt=""
           className="mt-10 lg:mt-20 z-10 relative"
-          subtitleClassName="!text-gray-100"
+          subtitleClassName="!text-neutral-50"
           orientation="left"
         />
         <MediaCard2
@@ -182,7 +182,7 @@ function CoworkingCard({
   location: string;
 }) {
   return (
-    <div className="flex flex-col items-center gap-10 max-w-[400px] bg-black pb-6 rounded-4xl hover:bg-gray-900">
+    <div className="flex flex-col items-center gap-10 max-w-[400px] bg-black pb-6 rounded-4xl hover:bg-neutral-900">
       <Image
         src={img}
         alt="coworking 1"

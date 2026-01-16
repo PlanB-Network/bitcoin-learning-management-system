@@ -190,7 +190,7 @@ export const CourseDetailsPage: React.FC<CourseDetailsPageProps> = ({
           <Loader size="xl" />
         </div>
       ) : courseDetailsError || !courseDetails ? (
-        <div className="text-center py-8 text-gray-500">
+        <div className="text-center py-8 text-neutral-500">
           {labels.errorLoadingDetails}
         </div>
       ) : (

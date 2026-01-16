@@ -22,7 +22,7 @@ export function TranslationLanguageHeader({
     <div className="flex items-center justify-between mb-5">
       <div className="flex items-center gap-[10px]">
         <span
-          className="text-base sm:text-mg md:text-m font-semibold text-gray-900"
+          className="text-base sm:text-mg md:text-m font-semibold text-neutral-900"
           style={{ fontFamily: 'Rubik, sans-serif' }}
         >
           {t('translate.language', { defaultValue: 'Language' })}
@@ -33,9 +33,9 @@ export function TranslationLanguageHeader({
         >
           {originalLanguageName}
         </span>
-        <span className="text-gray-400">⇄</span>
+        <span className="text-neutral-500">⇄</span>
         <span
-          className="text-base sm:text-mg md:text-m font-semibold text-gray-900"
+          className="text-base sm:text-mg md:text-m font-semibold text-neutral-900"
           style={{ fontFamily: 'Rubik, sans-serif' }}
         >
           {t('translate.translateTo', { defaultValue: 'Translate to' })}

@@ -8,7 +8,8 @@ import { DEFAULT_CURRENCY, getFormattedUnit } from '#src/services/utils.tsx';
 import { formatDateRange } from '#src/utils/date.ts';
 import { assetUrl } from '#src/utils/index.ts';
 
-const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
+const borderClassName =
+  'border border-neutral-500/25 rounded-xl overflow-hidden';
 
 interface ModalPaymentSummaryProps {
   courseName: string;

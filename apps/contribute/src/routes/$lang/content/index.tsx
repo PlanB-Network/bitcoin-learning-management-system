@@ -71,7 +71,7 @@ function ContentSectionPage() {
             </Link>
           </div>
 
-          <h2 className="text-2xl font-bold mb-6 text-gray-900">
+          <h2 className="text-2xl font-bold mb-6 text-neutral-900">
             {t('translate.selectSection')}
           </h2>
 

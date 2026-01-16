@@ -81,7 +81,7 @@ export const GreyVariant: Story = {
   },
   decorators: [
     (Story) => (
-      <div className="bg-newGray-8 p-6 max-w-md rounded">
+      <div className="bg-neutral-500 p-6 max-w-md rounded">
         <Story />
       </div>
     ),

@@ -80,7 +80,7 @@ function RouteComponent() {
         <h2 className="display-base lg:display-large lg:text-6xl text-center">
           {t('academy.safestPlace')}
         </h2>
-        <div className="flex flex-row justify-between max-lg:px-2 max-w-[800px] lg:text-4xl font-medium lg:font-semibold mt-6   self-center mx-auto text-gray-200 z-10 relative">
+        <div className="flex flex-row justify-between max-lg:px-2 max-w-[800px] lg:text-4xl font-medium lg:font-semibold mt-6   self-center mx-auto text-neutral-100 z-10 relative">
           <span>{t('academy.safest1')}</span>
           <span>{t('academy.safest2')}</span>
           <span>{t('academy.safest3')}</span>
@@ -118,7 +118,7 @@ function RouteComponent() {
           className="mt-10 lg:mt-20"
           titleClassName={'lg:max-w-[53%]'}
           subtitleClassName={
-            'lg:max-w-[60%] xl:max-w-[52%] max-xl:!text-lg text-gray-300'
+            'lg:max-w-[60%] xl:max-w-[52%] max-xl:!text-lg text-neutral-300'
           }
           subtitleUnderImage={true}
           BackgroundColor="border-dark"
@@ -162,7 +162,9 @@ function RouteComponent() {
           subtext={t('academy.learnLive.subtitle')}
           imageUrl={isMobile ? media3MobileImage : media3Image}
           alt=""
-          subtitleClassName={'lg:max-w-[380px] max-xl:!text-lg text-gray-300'}
+          subtitleClassName={
+            'lg:max-w-[380px] max-xl:!text-lg text-neutral-300'
+          }
           subtitleUnderImage={true}
           BackgroundColor="border-dark"
           className="mt-12"
@@ -211,7 +213,7 @@ function RouteComponent() {
               <p className="lg:max-w-[350px] title-large lg:title-extra-large">
                 {t('academy.database.title')}
               </p>
-              <p className="body-base lg:title-base text-gray-200">
+              <p className="body-base lg:title-base text-neutral-100">
                 {t('academy.database.subtitle')}
               </p>
               <Link
@@ -309,7 +311,7 @@ function RouteComponent() {
           subtext={t('academy.blockTitle2Subtext')}
           titleClassName="text-orange-500"
         />
-        <div className="max-w-[1320px] mx-auto mt-10 lg:mt-20 border-[1px] border-gray-600 rounded-2xl lg:rounded-[68px]">
+        <div className="max-w-[1320px] mx-auto mt-10 lg:mt-20 border-[1px] border-neutral-500 rounded-2xl lg:rounded-[68px]">
           <MediaCard
             title={t('academy.career.title')}
             subtext={t('academy.career.subtitle')}
@@ -317,7 +319,9 @@ function RouteComponent() {
             alt=""
             className="!px-0"
             titleClassName={'lg:max-w-[53%]'}
-            subtitleClassName={'lg:max-w-[52%] max-xl:!text-lg text-gray-300'}
+            subtitleClassName={
+              'lg:max-w-[52%] max-xl:!text-lg text-neutral-300'
+            }
             subtitleUnderImage={true}
             orientation="left"
             gradientBackground={true}
@@ -391,7 +395,7 @@ function RouteComponent() {
             </div>
           </PageBlock>
         </div>
-        <div className="mt-8 lg:mt-30 pb-10 max-w-[1320px] mx-auto border-[1px] border-gray-600 rounded-2xl lg:rounded-[68px]">
+        <div className="mt-8 lg:mt-30 pb-10 max-w-[1320px] mx-auto border-[1px] border-neutral-500 rounded-2xl lg:rounded-[68px]">
           <PageBlock withXPadding={false} withYPadding={false}>
             <MediaCard
               title={t('academy.companies.title')}
@@ -401,7 +405,7 @@ function RouteComponent() {
               className="!px-0"
               titleClassName={'max-w-[500px]'}
               subtitleClassName={
-                'lg:max-w-[420px] max-xl:!text-lg text-gray-300'
+                'lg:max-w-[420px] max-xl:!text-lg text-neutral-300'
               }
               subtitleUnderImage={true}
               orientation="right"
@@ -452,7 +456,7 @@ function RouteComponent() {
           imageUrl={isMobile ? media6Image : media6Image}
           alt=""
           subtitleClassName={
-            'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
+            'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-neutral-300 max-lg:text-left'
           }
           imageClassName="max-lg:px-2 lg:max-w-[40%] max-lg:relative"
           className="mt-10 lg:mt-20 pb-12 lg:pt-10 lg:pr-4"
@@ -492,7 +496,7 @@ function RouteComponent() {
           imageUrl={isMobile ? media7Image : media7Image}
           alt=""
           subtitleClassName={
-            'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
+            'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-neutral-300 max-lg:text-left'
           }
           imageClassName="max-lg:px-2 lg:max-w-[40%] max-lg:relative"
           className="mt-12 pb-12 lg:pt-10 lg:px-4"
@@ -536,7 +540,7 @@ function RouteComponent() {
           imageUrl={isMobile ? media8Image : media8Image}
           alt=""
           subtitleClassName={
-            'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-gray-300 max-lg:text-left'
+            'max-w-[540px] xl:max-w-[600px] max-xl:!text-lg text-neutral-300 max-lg:text-left'
           }
           imageClassName="max-lg:px-2 lg:max-w-[40%] max-lg:relative"
           className="mt-12 pb-12 lg:pt-10 lg:pr-4"

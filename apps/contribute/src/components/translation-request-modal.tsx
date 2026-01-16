@@ -41,7 +41,7 @@ export const TranslationRequestModal = ({
         {/* Close button */}
         <button
           type="button"
-          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+          className="absolute top-4 right-4 text-neutral-500 hover:text-neutral-700"
           onClick={onClose}
         >
           ×
@@ -62,20 +62,20 @@ export const TranslationRequestModal = ({
             alt="World icon"
             className="w-[60px] h-[60px] mt-4 mb-2"
           />
-          <p className="text-gray-700 text-center">
+          <p className="text-neutral-700 text-center">
             {t('translate.modal.doYouWantToSendRequest')}
           </p>
         </div>
 
         {/* Course details */}
-        <div className="bg-gray-100 rounded-lg p-4 mb-[40px]">
+        <div className="bg-neutral-50 rounded-lg p-4 mb-[40px]">
           <div className="space-y-3">
             <div className="flex justify-between items-center">
               <div>
-                <span className="text-gray-700 font-medium">
+                <span className="text-neutral-700 font-medium">
                   {t('translate.modal.course')}:
                 </span>
-                <span className="text-gray-800 ml-2">{courseName}</span>
+                <span className="text-neutral-800 ml-2">{courseName}</span>
               </div>
               <span className="bg-orange-100 text-xs rounded px-1 py-0.5 text-orange-800">
                 {courseTopic}
@@ -83,19 +83,19 @@ export const TranslationRequestModal = ({
             </div>
 
             <div className="flex justify-between items-center">
-              <span className="text-gray-700 font-medium">
+              <span className="text-neutral-700 font-medium">
                 {t('translate.modal.originalLanguage')}:
               </span>
-              <span className="text-gray-800">
+              <span className="text-neutral-800">
                 {getLanguageName(originalLanguage)}
               </span>
             </div>
 
             <div className="flex justify-between items-center">
-              <span className="text-gray-700 font-medium">
+              <span className="text-neutral-700 font-medium">
                 {t('translate.modal.languageToProofread')}:
               </span>
-              <span className="text-gray-800">
+              <span className="text-neutral-800">
                 {getLanguageName(targetLanguage)}
               </span>
             </div>
@@ -106,7 +106,7 @@ export const TranslationRequestModal = ({
                 className={`inline-flex items-center gap-1 text-xs rounded px-2 py-0.5 ${
                   hasEnglishTranslation
                     ? 'bg-orange-100 text-orange-800'
-                    : 'bg-gray-200'
+                    : 'bg-neutral-100'
                 }`}
                 style={hasEnglishTranslation ? undefined : { color: '#4D4D4D' }}
               >
@@ -147,7 +147,7 @@ export const TranslationRequestModal = ({
               </button>
               <button
                 type="button"
-                className="flex-1 bg-gray-200 text-gray-800 py-2 px-4 rounded hover:bg-gray-300 transition-colors"
+                className="flex-1 bg-neutral-100 text-neutral-800 py-2 px-4 rounded hover:bg-neutral-300 transition-colors"
                 onClick={onClose}
               >
                 {t('translate.modal.close')}

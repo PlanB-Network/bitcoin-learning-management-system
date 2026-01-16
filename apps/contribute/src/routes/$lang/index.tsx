@@ -89,7 +89,7 @@ function ContributePage() {
               })}
             </div>
             <h1
-              className="mb-4 text-gray-900 text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
+              className="mb-4 text-neutral-900 text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
               style={{
                 fontFamily: 'Rubik, sans-serif',
                 fontWeight: 400,
@@ -98,7 +98,7 @@ function ContributePage() {
             >
               {t('translate.bitcoinTranslationCommunity')}
             </h1>
-            <p className="text-gray-600 max-w-3xl mx-auto mb-8">
+            <p className="text-neutral-500 max-w-3xl mx-auto mb-8">
               {t('translate.joinOurProofreaders', {
                 defaultValue:
                   'Join our proofreading team to make Bitcoin education accessible worldwide. You can help more people engage with the ecosystem and find their path to freedom!',
@@ -108,14 +108,14 @@ function ContributePage() {
         </section>
 
         {/* Language selection section */}
-        <section className="w-full py-0 px-4 md:px-10 lg:px-20 xl:px-40 bg-gray-50">
+        <section className="w-full py-0 px-4 md:px-10 lg:px-20 xl:px-40 bg-neutral-100">
           <div>
             <h2 className="text-2xl font-bold mb-6">
               {t('translate.selectYourLanguage', {
                 defaultValue: 'Select your language',
               })}
             </h2>
-            <p className="text-gray-600 mb-8">
+            <p className="text-neutral-500 mb-8">
               {t('translate.youCanSelectOnlyOneLanguage', {
                 defaultValue:
                   'You can only choose one language at a time to begin proofreading the related content',
@@ -140,7 +140,7 @@ function ContributePage() {
                     className={`flex items-center justify-center px-2 w-[135px] h-[135px] border rounded-lg transition-colors ${
                       isAllowed
                         ? 'border-orange-200 bg-orange-50 text-orange-500 cursor-pointer hover:bg-[#FFEEE5] hover:text-[#4D4D4D] hover:shadow-[0_1px_1px_rgba(0,0,0,0.25)] transition-shadow'
-                        : 'border-gray-300 bg-gray-50 text-gray-400 cursor-not-allowed pointer-events-none'
+                        : 'border-neutral-300 bg-neutral-100 text-neutral-500 cursor-not-allowed pointer-events-none'
                     }`}
                   >
                     <span className="font-medium text-center text-sm md:text-base">
@@ -158,12 +158,12 @@ function ContributePage() {
         </div>
         {/* Request language section */}
         <section className="w-full px-10 md:px-10 lg:px-40 xl:px-60">
-          <div className="w-full min-h-[189px] bg-gray-50 border border-[#E5E5E5] rounded-[20px] p-5 flex flex-col md:flex-row">
+          <div className="w-full min-h-[189px] bg-neutral-100 border border-[#E5E5E5] rounded-[20px] p-5 flex flex-col md:flex-row">
             <div className="flex flex-col gap-4">
               <h2 className="text-orange-500 text-3xl md:text-[40px] leading-[1.24] tracking-[0.25px] font-normal text-left">
                 {t('translate.languageMissing')}
               </h2>
-              <p className="text-gray-600 text-base md:text-[20px] leading-[1.33] font-normal text-left">
+              <p className="text-neutral-500 text-base md:text-[20px] leading-[1.33] font-normal text-left">
                 {t('translate.helpExpandBitcoinEducation')}
               </p>
             </div>

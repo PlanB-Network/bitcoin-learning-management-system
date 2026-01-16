@@ -54,7 +54,7 @@ export const SearchBar: FC<SearchBarProps> = ({
         value={value}
         onChange={handleInput}
         placeholder={placeholder}
-        className="flex-1 py-2 px-2 text-sm outline-none bg-[#E5E5E5] placeholder-gray-500"
+        className="flex-1 py-2 px-2 text-sm outline-none bg-[#E5E5E5] placeholder-neutral-500"
       />
 
       {/* Clear button */}
@@ -63,7 +63,7 @@ export const SearchBar: FC<SearchBarProps> = ({
           type="button"
           onClick={handleClear}
           aria-label="Clear search"
-          className="px-2 text-gray-500 hover:text-gray-700 focus:outline-none"
+          className="px-2 text-neutral-500 hover:text-neutral-700 focus:outline-none"
         >
           <img src={CrossIcon} alt="Clear" className="w-3.5 h-3.5" />
         </button>

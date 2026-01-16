@@ -175,10 +175,10 @@ export const ContributorsSubTab = ({
             value={selectedLanguage}
             onValueChange={(v) => setSelectedLanguage(v)}
           >
-            <SelectTrigger className="w-48 bg-white border-gray-300 text-gray-900">
+            <SelectTrigger className="w-48 bg-white border-neutral-300 text-neutral-900">
               <SelectValue placeholder="Select language" />
             </SelectTrigger>
-            <SelectContent className="max-h-60 bg-white border-gray-300">
+            <SelectContent className="max-h-60 bg-white border-neutral-300">
               <SelectItem key="all" value="all">
                 {t('words.all')}
               </SelectItem>
@@ -262,7 +262,7 @@ export const ContributorsSubTab = ({
             </TableRow>
           ) : (
             sortedContributors.map((contributor) => (
-              <TableRow key={contributor.uid} className="hover:bg-gray-50">
+              <TableRow key={contributor.uid} className="hover:bg-neutral-100">
                 <TableCell className="py-3">
                   {formatDate(contributor.startDate ?? contributor.createdAt)}
                 </TableCell>

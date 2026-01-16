@@ -31,7 +31,7 @@ export const ExpandableInfoBanner = ({
       >
         <div className="flex items-center gap-2">
           <img src={InfoIcon} alt="Info" className="w-4 h-4" />
-          <span className="font-medium text-gray-900 text-sm md:text-base">
+          <span className="font-medium text-neutral-900 text-sm md:text-base">
             {title}
           </span>
         </div>
@@ -56,7 +56,7 @@ export const ExpandableInfoBanner = ({
 
       {/* Content */}
       {open && (
-        <div className="px-4 pb-4 text-gray-700 text-sm whitespace-normal">
+        <div className="px-4 pb-4 text-neutral-700 text-sm whitespace-normal">
           {children}
         </div>
       )}

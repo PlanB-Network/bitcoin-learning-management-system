@@ -42,10 +42,10 @@ export const CourseHeader: React.FC<CourseHeaderProps> = ({
                   {item.label}
                 </button>
               ) : (
-                <span className="text-gray-600">{item.label}</span>
+                <span className="text-neutral-500">{item.label}</span>
               )}
               {index < breadcrumbItems.length - 1 && (
-                <span className="text-gray-400">•</span>
+                <span className="text-neutral-500">•</span>
               )}
             </React.Fragment>
           ))}
@@ -54,7 +54,7 @@ export const CourseHeader: React.FC<CourseHeaderProps> = ({
 
       {/* Course Title with Index */}
       <div className="flex items-center gap-4 mb-6">
-        <span className="inline-flex items-center px-3 py-1.5 text-sm font-medium bg-gray-100 text-gray-800 rounded-md">
+        <span className="inline-flex items-center px-3 py-1.5 text-sm font-medium bg-neutral-50 text-neutral-800 rounded-md">
           {courseIndex.toUpperCase()}
         </span>
         <h1 className="title-large-sb-24px text-dashboardSectionTitle">
@@ -65,10 +65,10 @@ export const CourseHeader: React.FC<CourseHeaderProps> = ({
       {/* Current contributor info */}
       <div className="flex flex-col gap-4 mb-6">
         <div>
-          <span className="text-sm font-medium text-gray-700 mr-3">
+          <span className="text-sm font-medium text-neutral-700 mr-3">
             {labels.currentContributor}
           </span>
-          <span className="text-sm text-gray-600">
+          <span className="text-sm text-neutral-500">
             {assigneeDisplayName || labels.noContributor}
           </span>
         </div>

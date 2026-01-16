@@ -169,7 +169,7 @@ export function ValidatedPptEditor({
           ) : (
             <div className="flex items-center gap-[10px]">
               <span
-                className="text-[18px] font-semibold text-gray-900"
+                className="text-[18px] font-semibold text-neutral-900"
                 style={{ fontFamily: 'Rubik, sans-serif' }}
               >
                 {t('translate.language', { defaultValue: 'Language' })}

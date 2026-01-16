@@ -85,15 +85,15 @@ export const FeaturedCard = ({
             <span className="!font-semibold text-sm lg:title-large-24px">
               {latestBlog.author}
             </span>
-            <span className="text-gray-200">•</span>
-            <span className="text-gray-200 lg:text-2xl font-medium lg:font-normal text-sm">
+            <span className="text-neutral-100">•</span>
+            <span className="text-neutral-100 lg:text-2xl font-medium lg:font-normal text-sm">
               {latestBlog.date
                 ? formatDate(latestBlog.date)
                 : t('home.blogSection.noDateAvailable')}
             </span>
           </div>
           <div>
-            <p className="text-gray-300 max-md:hidden body-16px">
+            <p className="text-neutral-300 max-md:hidden body-16px">
               {latestBlog.description}
             </p>
           </div>

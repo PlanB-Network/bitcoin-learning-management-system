@@ -45,8 +45,8 @@ export const LanguageDropdown: FC<LanguageDropdownProps> = ({
               disabled={!lang.available}
               className={
                 lang.available
-                  ? 'text-gray-900'
-                  : 'text-gray-400 cursor-not-allowed'
+                  ? 'text-neutral-900'
+                  : 'text-neutral-500 cursor-not-allowed'
               }
               style={{
                 color: lang.available ? undefined : '#9CA3AF',

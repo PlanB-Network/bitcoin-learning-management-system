@@ -66,7 +66,7 @@ export default function MediaCard3({
           />
           <p
             className={cn(
-              'title-small lg:title-base max-lg:text-center lg:max-w-[410px] text-gray-300 mt-8 ',
+              'title-small lg:title-base max-lg:text-center lg:max-w-[410px] text-neutral-300 mt-8 ',
             )}
           >
             {subtitle}

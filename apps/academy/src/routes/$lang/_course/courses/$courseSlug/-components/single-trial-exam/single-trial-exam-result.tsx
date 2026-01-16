@@ -115,8 +115,8 @@ export const SingleTrialExamResult = ({
 
 const StatsCard = ({ label, value }: { label: string; value: string }) => (
   <div className="bg-white p-3 md:p-6 rounded-xl flex flex-row md:flex-col items-center md:items-start w-full justify-between md:w-auto">
-    <span className="text-gray-600 text-sm">{label}</span>
-    <span className={'text-sm md:text-2xl font-bold text-gray-800 mt-1'}>
+    <span className="text-neutral-500 text-sm">{label}</span>
+    <span className={'text-sm md:text-2xl font-bold text-neutral-800 mt-1'}>
       {value}
     </span>
   </div>

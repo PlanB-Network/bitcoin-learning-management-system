@@ -82,7 +82,7 @@ export default function MediaCard2({
 
           <p
             className={cn(
-              'text-center text-base lg:text-xl max-lg:font-normal title-bas text-gray-300 whitespace-pre-wrap',
+              'text-center text-base lg:text-xl max-lg:font-normal title-bas text-neutral-300 whitespace-pre-wrap',
               subtitleClassName ?? '',
               isLeft ? 'lg:text-start' : 'lg:text-end',
             )}

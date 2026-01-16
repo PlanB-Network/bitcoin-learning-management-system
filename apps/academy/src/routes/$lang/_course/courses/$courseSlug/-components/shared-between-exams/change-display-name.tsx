@@ -43,7 +43,7 @@ export const ChangeDisplayName = () => {
           {/** biome-ignore lint/a11y/useSemanticElements: explanation */}
           <span
             id="displayName"
-            className="rounded-md bg-commentTextBackground border border-gray-500/10 px-4 py-2 text-neutral-500 text-sm leading-[120%] w-full max-w-[302px] h-8 truncate"
+            className="rounded-md bg-commentTextBackground border border-neutral-500/10 px-4 py-2 text-neutral-500 text-sm leading-[120%] w-full max-w-[302px] h-8 truncate"
             onClick={!isLoggedIn ? openAuthModal : openChangeDisplayNameModal}
             role="button"
             tabIndex={0}

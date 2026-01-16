@@ -34,7 +34,7 @@ export const ValidationCheckbox: FC<ValidationCheckboxProps> = ({
             ? 'bg-orange-200 border-orange-300'
             : checked
               ? 'bg-orange-500 border-orange-500'
-              : 'bg-transparent border-gray-400'
+              : 'bg-transparent border-neutral-500'
         }`}
       >
         {loading ? (
@@ -43,7 +43,7 @@ export const ValidationCheckbox: FC<ValidationCheckboxProps> = ({
           checked && <span className="text-white text-sm">✓</span>
         )}
       </div>
-      <span className="text-gray-900 font-medium text-sm sm:text-base md:text-lg">
+      <span className="text-neutral-900 font-medium text-sm sm:text-base md:text-lg">
         {label}
         {requiredStar && (
           <span className="ml-1 font-medium" style={{ color: '#ef4444' }}>

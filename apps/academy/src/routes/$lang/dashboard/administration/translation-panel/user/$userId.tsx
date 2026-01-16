@@ -37,10 +37,10 @@ function UserDetailsPage() {
     return (
       <div className="flex flex-col items-center justify-center min-h-[400px] space-y-4">
         <div className="text-center">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">
+          <h2 className="text-xl font-semibold text-neutral-900 mb-2">
             {t('errors.userNotFound')}
           </h2>
-          <p className="text-gray-600 mb-4">
+          <p className="text-neutral-500 mb-4">
             {error || 'User details could not be loaded'}
           </p>
           <Button onClick={handleBackToUserManagement}>
@@ -72,7 +72,7 @@ function UserDetailsPage() {
           </div>
 
           {/* Contributor Information Title */}
-          <h2 className="text-xl font-semibold text-gray-900 mb-4 mt-6">
+          <h2 className="text-xl font-semibold text-neutral-900 mb-4 mt-6">
             {t(
               'dashboard.adminPanel.translationPanel.userManagement.contributorInformation',
             )}

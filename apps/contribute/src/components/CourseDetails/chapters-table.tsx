@@ -44,7 +44,7 @@ export const ChaptersTable: React.FC<ChaptersTableProps> = ({
 }) => {
   if (!parts || parts.length === 0) {
     return (
-      <div className={`text-center py-8 text-gray-500 ${className}`}>
+      <div className={`text-center py-8 text-neutral-500 ${className}`}>
         {labels.noChapters}
       </div>
     );
@@ -54,8 +54,8 @@ export const ChaptersTable: React.FC<ChaptersTableProps> = ({
     <div className={`space-y-6 ${className}`}>
       {parts.map((part) => (
         <div key={part.partId} className="border rounded-lg">
-          <div className="bg-gray-50 px-4 py-3 border-b">
-            <h3 className="font-medium text-gray-900">
+          <div className="bg-neutral-100 px-4 py-3 border-b">
+            <h3 className="font-medium text-neutral-900">
               {labels.partTitle(
                 part.partIndex,
                 part.partTitle || `Part ${part.partIndex}`,
@@ -80,15 +80,15 @@ export const ChaptersTable: React.FC<ChaptersTableProps> = ({
                 {part.chapters.map((chapter) => (
                   <TableRow
                     key={chapter.chapterId}
-                    className="border-b border-gray-100 hover:bg-gray-50"
+                    className="border-b border-neutral-50 hover:bg-neutral-100"
                   >
-                    <TableCell className="py-4 font-medium text-gray-900">
-                      <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-md">
+                    <TableCell className="py-4 font-medium text-neutral-900">
+                      <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-neutral-50 text-neutral-800 rounded-md">
                         {chapter.chapterIndex}
                       </span>
                     </TableCell>
                     <TableCell className="py-4">
-                      <div className="text-sm font-medium text-gray-900 break-words">
+                      <div className="text-sm font-medium text-neutral-900 break-words">
                         {chapter.chapterTitle ||
                           `Chapter ${chapter.chapterIndex}`}
                       </div>
@@ -99,7 +99,7 @@ export const ChaptersTable: React.FC<ChaptersTableProps> = ({
                         statusText={getStatusText(chapter.status)}
                       />
                     </TableCell>
-                    <TableCell className="py-4 text-sm text-gray-700">
+                    <TableCell className="py-4 text-sm text-neutral-700">
                       {(() => {
                         const totalSteps = (chapter as any).totalSteps;
                         const validatedSteps = (chapter as any).validatedSteps;

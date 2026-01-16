@@ -14,7 +14,7 @@ export const CustomWeekHeader = ({ date }: CustomWeekHeaderProps) => {
 
   return (
     <div className="h-20 flex flex-col w-full items-start justify">
-      <div className="text-xs uppercase text-gray-500 font-semibold">
+      <div className="text-xs uppercase text-neutral-500 font-semibold">
         {dayName}
       </div>
       <div className="text-lg font-normal">

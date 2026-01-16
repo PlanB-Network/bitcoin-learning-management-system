@@ -620,14 +620,14 @@ export const SelectLanguagesModal = ({
 
           {/* Progress message */}
           <div className="text-center space-y-2">
-            <p className="text-base font-medium text-gray-900">
+            <p className="text-base font-medium text-neutral-900">
               {state.uploadProgress.progress}
             </p>
 
             {/* File counter */}
             {state.uploadProgress.totalFiles !== undefined &&
               state.uploadProgress.processedFiles !== undefined && (
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-neutral-500">
                   {state.uploadProgress.processedFiles} /{' '}
                   {state.uploadProgress.totalFiles} files processed
                 </p>
@@ -635,7 +635,7 @@ export const SelectLanguagesModal = ({
 
             {/* Current file */}
             {state.uploadProgress.currentFile && (
-              <p className="text-xs text-gray-500 truncate max-w-md mx-auto">
+              <p className="text-xs text-neutral-500 truncate max-w-md mx-auto">
                 {state.uploadProgress.currentFile}
               </p>
             )}
@@ -645,7 +645,7 @@ export const SelectLanguagesModal = ({
           {state.uploadProgress.totalFiles !== undefined &&
             state.uploadProgress.processedFiles !== undefined &&
             state.uploadProgress.totalFiles > 0 && (
-              <div className="w-full bg-gray-200 rounded-full h-2 max-w-md mx-auto">
+              <div className="w-full bg-neutral-100 rounded-full h-2 max-w-md mx-auto">
                 <div
                   className="bg-orange-500 h-2 rounded-full transition-all duration-300"
                   style={{
@@ -655,7 +655,7 @@ export const SelectLanguagesModal = ({
               </div>
             )}
 
-          <p className="text-sm text-gray-500 text-center">
+          <p className="text-sm text-neutral-500 text-center">
             This may take several minutes. Please do not close this window.
           </p>
         </div>
@@ -664,7 +664,7 @@ export const SelectLanguagesModal = ({
           {/* Course Information */}
           <div className="text-center space-y-1">
             <div>
-              <span className="text-sm font-medium text-gray-700">
+              <span className="text-sm font-medium text-neutral-700">
                 {t(
                   'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.course',
                 )}
@@ -672,7 +672,7 @@ export const SelectLanguagesModal = ({
               <p className="text-base font-semibold">{course.courseName}</p>
             </div>
             <div>
-              <span className="text-sm font-medium text-gray-700">
+              <span className="text-sm font-medium text-neutral-700">
                 {t(
                   'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.originalLanguage',
                 )}
@@ -680,7 +680,7 @@ export const SelectLanguagesModal = ({
               <p className="text-base font-semibold">
                 {getLanguageName(course.originalLanguage)}
               </p>
-              <p className="text-xs text-gray-600 mt-1">
+              <p className="text-xs text-neutral-500 mt-1">
                 {t(
                   'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.englishFilesRequired',
                 ) || 'Please upload files in English only'}
@@ -690,14 +690,14 @@ export const SelectLanguagesModal = ({
 
           {/* Language Selection */}
           <div>
-            <h3 className="text-sm font-medium text-gray-700 mb-3 text-center">
+            <h3 className="text-sm font-medium text-neutral-700 mb-3 text-center">
               {t(
                 'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.selectLanguages',
               )}
             </h3>
 
             {course.todoLanguages.length === 0 ? (
-              <p className="text-gray-500 text-center">
+              <p className="text-neutral-500 text-center">
                 {t(
                   'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.noLanguagesAvailable',
                 )}
@@ -711,7 +711,7 @@ export const SelectLanguagesModal = ({
                       'flex items-center p-2 rounded border cursor-pointer transition-colors',
                       state.selectedLanguages.includes(language)
                         ? 'bg-orange-50 border-orange-500 text-orange-700'
-                        : 'bg-gray-50 border-gray-300 hover:bg-gray-100',
+                        : 'bg-neutral-100 border-neutral-300 hover:bg-neutral-50',
                     )}
                   >
                     <input
@@ -731,7 +731,7 @@ export const SelectLanguagesModal = ({
 
           {/* Upload Section & Notice */}
           <div className="space-y-4">
-            <h3 className="text-sm font-medium text-gray-700 text-center">
+            <h3 className="text-sm font-medium text-neutral-700 text-center">
               {t(
                 'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.uploadFolder',
               )}
@@ -762,7 +762,7 @@ export const SelectLanguagesModal = ({
                   'flex items-center rounded-lg overflow-hidden border transition-colors hover:shadow-sm',
                   state.uploadType === 'folder'
                     ? 'border-orange-500 bg-orange-50'
-                    : 'border-gray-300',
+                    : 'border-neutral-300',
                 )}
               >
                 <button
@@ -774,7 +774,7 @@ export const SelectLanguagesModal = ({
                     'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.chooseFolder',
                   )}
                 </button>
-                <span className="flex-1 px-3 py-2 text-sm text-gray-600 truncate">
+                <span className="flex-1 px-3 py-2 text-sm text-neutral-500 truncate">
                   {state.uploadType === 'folder' &&
                   state.selectedFiles.length > 0
                     ? `${state.selectedFiles.length} files selected`
@@ -789,7 +789,7 @@ export const SelectLanguagesModal = ({
                   'flex items-center rounded-lg overflow-hidden border transition-colors hover:shadow-sm',
                   state.uploadType === 'zip'
                     ? 'border-orange-500 bg-orange-50'
-                    : 'border-gray-300',
+                    : 'border-neutral-300',
                 )}
               >
                 <button
@@ -801,7 +801,7 @@ export const SelectLanguagesModal = ({
                     'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.chooseZip',
                   )}
                 </button>
-                <span className="flex-1 px-3 py-2 text-sm text-gray-600 truncate">
+                <span className="flex-1 px-3 py-2 text-sm text-neutral-500 truncate">
                   {state.uploadType === 'zip' && state.selectedFiles.length > 0
                     ? `${state.selectedFiles.length} ZIP file(s) selected`
                     : t(
@@ -829,7 +829,7 @@ export const SelectLanguagesModal = ({
             <div className="space-y-1">
               <label
                 htmlFor="folderUrl"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-neutral-700"
               >
                 {t(
                   'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.folderUrl',
@@ -852,7 +852,7 @@ export const SelectLanguagesModal = ({
 
           {/* Info about existing uploads */}
           {state.hasExisting && (
-            <p className="text-sm text-gray-700 text-center">
+            <p className="text-sm text-neutral-700 text-center">
               {t(
                 'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.existingUploadsInfo',
               )}
@@ -864,7 +864,7 @@ export const SelectLanguagesModal = ({
             <button
               type="button"
               onClick={handleClose}
-              className="flex-1 py-2 px-4 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+              className="flex-1 py-2 px-4 text-neutral-700 bg-neutral-50 rounded-lg hover:bg-neutral-100 transition-colors"
             >
               {t(
                 'dashboard.adminPanel.translationPanel.translate.selectLanguagesModal.cancel',

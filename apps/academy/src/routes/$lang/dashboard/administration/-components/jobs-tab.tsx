@@ -33,14 +33,14 @@ const getStatusColor = (status: TranslationJob['status']) => {
     case 'failed':
       return 'bg-red-100 text-red-800 border-red-200';
     case 'pending':
-      return 'bg-gray-100 text-gray-800 border-gray-200';
+      return 'bg-neutral-50 text-neutral-800 border-neutral-100';
     case 'starting':
     case 'processing':
     case 'polling':
     case 'converting':
       return 'bg-blue-100 text-blue-800 border-blue-200';
     default:
-      return 'bg-gray-100 text-gray-800 border-gray-200';
+      return 'bg-neutral-50 text-neutral-800 border-neutral-100';
   }
 };
 
@@ -157,7 +157,7 @@ export const JobsTab = () => {
   if (loading && jobs.length === 0) {
     return (
       <div className="flex justify-center items-center py-12">
-        <div className="text-gray-600">Loading jobs...</div>
+        <div className="text-neutral-500">Loading jobs...</div>
       </div>
     );
   }
@@ -172,9 +172,9 @@ export const JobsTab = () => {
 
   if (jobs.length === 0) {
     return (
-      <div className="bg-gray-50 border border-gray-200 rounded-lg p-12 text-center">
-        <p className="text-gray-600">No translation jobs found</p>
-        <p className="text-sm text-gray-500 mt-2">
+      <div className="bg-neutral-100 border border-neutral-100 rounded-lg p-12 text-center">
+        <p className="text-neutral-500">No translation jobs found</p>
+        <p className="text-sm text-neutral-500 mt-2">
           Jobs will appear here when uploads or translations are in progress
         </p>
       </div>
@@ -213,38 +213,38 @@ export const JobsTab = () => {
       {/* Active Jobs */}
       {activeJobs.length > 0 && (
         <div>
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-xl font-semibold text-neutral-900 mb-4">
             Active Jobs ({activeJobs.length})
           </h2>
-          <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
+          <div className="bg-white border border-neutral-100 rounded-lg overflow-hidden">
             <table className="w-full">
-              <thead className="bg-gray-50 border-b border-gray-200">
+              <thead className="bg-neutral-100 border-b border-neutral-100">
                 <tr>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  <th className="px-4 py-3 text-left text-xs font-medium text-neutral-700 uppercase tracking-wider">
                     Course ID
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  <th className="px-4 py-3 text-left text-xs font-medium text-neutral-700 uppercase tracking-wider">
                     Type
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  <th className="px-4 py-3 text-left text-xs font-medium text-neutral-700 uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  <th className="px-4 py-3 text-left text-xs font-medium text-neutral-700 uppercase tracking-wider">
                     Progress
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  <th className="px-4 py-3 text-left text-xs font-medium text-neutral-700 uppercase tracking-wider">
                     Files
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  <th className="px-4 py-3 text-left text-xs font-medium text-neutral-700 uppercase tracking-wider">
                     Started
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-neutral-100">
                 {activeJobs.map((job) => (
-                  <tr key={job.id} className="hover:bg-gray-50">
+                  <tr key={job.id} className="hover:bg-neutral-100">
                     <td className="px-4 py-3 text-sm">
-                      <code className="text-xs bg-gray-100 px-2 py-1 rounded">
+                      <code className="text-xs bg-neutral-50 px-2 py-1 rounded">
                         {job.courseId.substring(0, 8)}...
                       </code>
                     </td>
@@ -272,11 +272,11 @@ export const JobsTab = () => {
                     </td>
                     <td className="px-4 py-3 text-sm max-w-xs">
                       <div className="space-y-1">
-                        <p className="text-gray-900 truncate">
+                        <p className="text-neutral-900 truncate">
                           {job.progress || 'Processing...'}
                         </p>
                         {job.currentFile && (
-                          <p className="text-xs text-gray-500 truncate">
+                          <p className="text-xs text-neutral-500 truncate">
                             {job.currentFile}
                           </p>
                         )}
@@ -286,10 +286,10 @@ export const JobsTab = () => {
                       {job.totalFiles !== undefined &&
                       job.processedFiles !== undefined ? (
                         <div className="space-y-1">
-                          <p className="text-gray-900">
+                          <p className="text-neutral-900">
                             {job.processedFiles} / {job.totalFiles}
                           </p>
-                          <div className="w-24 bg-gray-200 rounded-full h-1.5">
+                          <div className="w-24 bg-neutral-100 rounded-full h-1.5">
                             <div
                               className="bg-blue-500 h-1.5 rounded-full transition-all"
                               style={{
@@ -299,10 +299,10 @@ export const JobsTab = () => {
                           </div>
                         </div>
                       ) : (
-                        <span className="text-gray-400">-</span>
+                        <span className="text-neutral-500">-</span>
                       )}
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">
+                    <td className="px-4 py-3 text-sm text-neutral-500">
                       {formatRelativeTime(job.startedAt)}
                     </td>
                   </tr>
@@ -316,37 +316,37 @@ export const JobsTab = () => {
       {/* Completed Jobs */}
       {completedJobs.length > 0 && (
         <div>
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-xl font-semibold text-neutral-900 mb-4">
             Recent Completed Jobs ({completedJobs.length})
           </h2>
-          <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
+          <div className="bg-white border border-neutral-100 rounded-lg overflow-hidden">
             <table className="w-full">
-              <thead className="bg-gray-50 border-b border-gray-200">
+              <thead className="bg-neutral-100 border-b border-neutral-100">
                 <tr>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  <th className="px-4 py-3 text-left text-xs font-medium text-neutral-700 uppercase tracking-wider">
                     Course ID
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  <th className="px-4 py-3 text-left text-xs font-medium text-neutral-700 uppercase tracking-wider">
                     Type
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  <th className="px-4 py-3 text-left text-xs font-medium text-neutral-700 uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  <th className="px-4 py-3 text-left text-xs font-medium text-neutral-700 uppercase tracking-wider">
                     Languages
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  <th className="px-4 py-3 text-left text-xs font-medium text-neutral-700 uppercase tracking-wider">
                     Duration
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  <th className="px-4 py-3 text-left text-xs font-medium text-neutral-700 uppercase tracking-wider">
                     Completed
                   </th>
-                  <th className="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  <th className="px-4 py-3 text-left text-xs font-medium text-neutral-700 uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-neutral-100">
                 {completedJobs.map((job) => {
                   const duration =
                     job.completedAt &&
@@ -357,9 +357,9 @@ export const JobsTab = () => {
                     );
 
                   return (
-                    <tr key={job.id} className="hover:bg-gray-50">
+                    <tr key={job.id} className="hover:bg-neutral-100">
                       <td className="px-4 py-3 text-sm">
-                        <code className="text-xs bg-gray-100 px-2 py-1 rounded">
+                        <code className="text-xs bg-neutral-50 px-2 py-1 rounded">
                           {job.courseId.substring(0, 8)}...
                         </code>
                       </td>
@@ -387,17 +387,17 @@ export const JobsTab = () => {
                       </td>
                       <td className="px-4 py-3 text-sm">
                         {job.languages && job.languages.length > 0 ? (
-                          <span className="text-gray-900">
+                          <span className="text-neutral-900">
                             {job.languages.join(', ')}
                           </span>
                         ) : (
-                          <span className="text-gray-400">-</span>
+                          <span className="text-neutral-500">-</span>
                         )}
                       </td>
-                      <td className="px-4 py-3 text-sm text-gray-600">
+                      <td className="px-4 py-3 text-sm text-neutral-500">
                         {duration ? `${duration}s` : '-'}
                       </td>
-                      <td className="px-4 py-3 text-sm text-gray-600">
+                      <td className="px-4 py-3 text-sm text-neutral-500">
                         {job.completedAt
                           ? formatRelativeTime(job.completedAt)
                           : '-'}
@@ -445,7 +445,7 @@ export const JobsTab = () => {
                             <button
                               type="button"
                               onClick={() => alert(job.error)}
-                              className="text-gray-600 hover:text-gray-700 text-xs font-medium"
+                              className="text-neutral-500 hover:text-neutral-700 text-xs font-medium"
                             >
                               Error
                             </button>

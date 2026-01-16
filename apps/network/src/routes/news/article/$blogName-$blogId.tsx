@@ -84,15 +84,15 @@ function SingleBlogDetail() {
             </h1>
             {blog.author && (
               <div className="flex items-center gap-2.5">
-                <span className="body-base-bold md:title-medium text-gray-800">
+                <span className="body-base-bold md:title-medium text-neutral-800">
                   {blog.author}
                 </span>
                 {blog.date && (
                   <>
-                    <span className="text-gray-500 body-base md:title-base">
+                    <span className="text-neutral-500 body-base md:title-base">
                       •
                     </span>
-                    <span className="text-gray-500 body-base md:title-base">
+                    <span className="text-neutral-500 body-base md:title-base">
                       {formatDate(blog.date)}
                     </span>
                   </>

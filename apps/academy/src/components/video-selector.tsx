@@ -150,7 +150,9 @@ export const VideoSelector = ({
             title={selectedVideo.id}
           />
         ) : (
-          <div className="my-4 text-center text-gray-500">No video found.</div>
+          <div className="my-4 text-center text-neutral-500">
+            No video found.
+          </div>
         )}
         {videos.length > 1 ? (
           <CollapsibleSelectorPart

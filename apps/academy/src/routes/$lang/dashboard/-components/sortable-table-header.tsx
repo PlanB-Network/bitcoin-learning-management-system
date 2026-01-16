@@ -45,7 +45,10 @@ const SortableTableHeader = ({ items, onSort }: Props) => {
         return item.sortable ? (
           <th
             key={item.key}
-            className={cn(commonClass, 'group cursor-pointer hover:bg-gray-50')}
+            className={cn(
+              commonClass,
+              'group cursor-pointer hover:bg-neutral-100',
+            )}
             onClick={() => handleSort(item.key)}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {

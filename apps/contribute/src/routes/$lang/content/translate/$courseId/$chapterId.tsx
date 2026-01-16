@@ -1278,7 +1278,7 @@ function ChapterTranslationPage() {
         className="flex justify-center items-center min-h-screen"
       >
         <LoadingSpinner size="md" />
-        <div className="mt-4 text-gray-600">Loading chapter data...</div>
+        <div className="mt-4 text-neutral-500">Loading chapter data...</div>
       </PageLayout>
     );
   }
@@ -1363,13 +1363,13 @@ function ChapterTranslationPage() {
         {/* Course Header */}
         <div className="flex items-center gap-4">
           <div
-            className="text-gray-700 px-3 py-1 rounded text-sm font-medium"
+            className="text-neutral-700 px-3 py-1 rounded text-sm font-medium"
             style={{ backgroundColor: '#E5E5E5' }}
           >
             {chapterData?.context.courseIndex?.toUpperCase()}
           </div>
           <h2
-            className="text-gray-900 text-xl sm:text-2xl md:text-3xl lg:text-4xl"
+            className="text-neutral-900 text-xl sm:text-2xl md:text-3xl lg:text-4xl"
             style={{
               fontFamily: 'Rubik, sans-serif',
               fontWeight: 500,
@@ -1378,7 +1378,7 @@ function ChapterTranslationPage() {
           >
             {chapterData?.context.courseName}
           </h2>
-          <span className="ml-auto text-sm font-medium text-gray-900 text-right">
+          <span className="ml-auto text-sm font-medium text-neutral-900 text-right">
             {chapterData
               ? `${chapterData.context.partIndex}.${chapterData.context.chapterIndex} ${chapterData.context.chapterTitle}`
               : ''}
@@ -1453,12 +1453,12 @@ function ChapterTranslationPage() {
                           className={`h-4 w-1/2 ${
                             isCompleted || isCurrent
                               ? 'bg-orange-500'
-                              : 'bg-gray-300'
+                              : 'bg-neutral-300'
                           } ${isFirst ? 'rounded-l-full' : ''}`}
                         />
                         <div
                           className={`h-4 w-1/2 ${
-                            isCompleted ? 'bg-orange-400' : 'bg-gray-300'
+                            isCompleted ? 'bg-orange-400' : 'bg-neutral-300'
                           } ${isLast ? 'rounded-r-full' : ''}`}
                         />
                         {isCurrent && (
@@ -1522,14 +1522,14 @@ function ChapterTranslationPage() {
       {/* Course Presentation Section */}
       <div className="mb-10">
         <h3
-          className="mb-5 text-gray-900 font-semibold text-[24px]"
+          className="mb-5 text-neutral-900 font-semibold text-[24px]"
           style={{ fontFamily: 'IBM Plex Sans, sans-serif' }}
         >
           {t('translate.coursePresentation', {
             defaultValue: 'Course presentation',
           })}
         </h3>
-        <p className="text-gray-600 mb-10">
+        <p className="text-neutral-500 mb-10">
           {t('translate.reviewAndEditSlides', {
             defaultValue:
               "Review and edit each slide, making the necessary adjustments. Once you're finished, select 'Validate Presentation' to save your changes.",
@@ -1573,7 +1573,7 @@ function ChapterTranslationPage() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-[10px]">
                   <span
-                    className="text-base sm:text-lg md:text-xl font-semibold text-gray-900"
+                    className="text-base sm:text-lg md:text-xl font-semibold text-neutral-900"
                     style={{ fontFamily: 'Rubik, sans-serif' }}
                   >
                     {t('translate.originalLanguage', {
@@ -1586,9 +1586,9 @@ function ChapterTranslationPage() {
                   >
                     {originalLanguageName}
                   </span>
-                  <span className="text-gray-400">⇄</span>
+                  <span className="text-neutral-500">⇄</span>
                   <span
-                    className="text-base sm:text-lg md:text-xl font-semibold text-gray-900"
+                    className="text-base sm:text-lg md:text-xl font-semibold text-neutral-900"
                     style={{ fontFamily: 'Rubik, sans-serif' }}
                   >
                     {t('translate.translateTo', {
@@ -1652,14 +1652,14 @@ function ChapterTranslationPage() {
       {/* Review Transcription & Generate Audio Section */}
       <div className="mt-10 mb-10">
         <h3
-          className="mb-5 text-gray-900 font-semibold text-[24px]"
+          className="mb-5 text-neutral-900 font-semibold text-[24px]"
           style={{ fontFamily: 'IBM Plex Sans, sans-serif' }}
         >
           {t('translate.reviewTranscriptionGenerateAudio', {
             defaultValue: 'Review transcription & generate audio',
           })}
         </h3>
-        <p className="text-gray-600 mb-10">
+        <p className="text-neutral-500 mb-10">
           {t('translate.reviewTranscriptionInstructions', {
             defaultValue:
               "First, check the transcription of the lecture in your language and add your changes. Then, click on 'Generate Audio' to create an audio version of it. After the audio is generated, listen to it and ensure its accuracy. If the audio is fluid and comprehensible, click on the 'Validate Audio' option. Instead, if you need to make further adjustments, you can change the text and regenerate the audio for a maximum of three times.",
@@ -1681,7 +1681,7 @@ function ChapterTranslationPage() {
               {/* Source language selector */}
               <div className="flex items-center gap-[10px]">
                 <span
-                  className="text-base sm:text-lg md:text-xl font-semibold text-gray-900"
+                  className="text-base sm:text-lg md:text-xl font-semibold text-neutral-900"
                   style={{ fontFamily: 'Rubik, sans-serif' }}
                 >
                   {t('translate.language', { defaultValue: 'Language' })}
@@ -1707,9 +1707,9 @@ function ChapterTranslationPage() {
               </div>
               {/* Target language information (visible only on large screens) */}
               <div className="hidden lg:flex items-center gap-2 lg:justify-start justify-start">
-                <span className="text-gray-400">⇄</span>
+                <span className="text-neutral-500">⇄</span>
                 <span
-                  className="text-base sm:text-lg md:text-xl font-semibold text-gray-900"
+                  className="text-base sm:text-lg md:text-xl font-semibold text-neutral-900"
                   style={{ fontFamily: 'Rubik, sans-serif' }}
                 >
                   {t('translate.translateTo', { defaultValue: 'Translate to' })}
@@ -1728,7 +1728,7 @@ function ChapterTranslationPage() {
               className="bg-white rounded-lg p-4 min-h-[200px]"
               style={{ border: '1px solid #CCCCCC' }}
             >
-              <div className="text-sm leading-relaxed text-gray-900 whitespace-pre-line">
+              <div className="text-sm leading-relaxed text-neutral-900 whitespace-pre-line">
                 {isTranscriptLoading
                   ? t('translate.loadingTranscription', {
                       defaultValue: 'Loading transcription…',
@@ -1742,9 +1742,9 @@ function ChapterTranslationPage() {
 
             {/* Target language information (visible on small screens, outside the box) */}
             <div className="flex items-center gap-2 lg:hidden">
-              <span className="text-gray-400">⇄</span>
+              <span className="text-neutral-500">⇄</span>
               <span
-                className="text-base font-semibold text-gray-900"
+                className="text-base font-semibold text-neutral-900"
                 style={{ fontFamily: 'Rubik, sans-serif' }}
               >
                 {t('translate.translateTo', { defaultValue: 'Translate to' })}
@@ -1768,7 +1768,7 @@ function ChapterTranslationPage() {
                 placeholder={t('translate.enterTranslation', {
                   defaultValue: 'Enter your translation here...',
                 })}
-                className="w-full h-full min-h-[160px] border-0 resize-none focus:outline-none text-sm leading-relaxed bg-transparent text-gray-900 textarea-scrollbar"
+                className="w-full h-full min-h-[160px] border-0 resize-none focus:outline-none text-sm leading-relaxed bg-transparent text-neutral-900 textarea-scrollbar"
                 style={{ width: 'calc(100% + 18px)', marginRight: '-18px' }}
               />
             </div>

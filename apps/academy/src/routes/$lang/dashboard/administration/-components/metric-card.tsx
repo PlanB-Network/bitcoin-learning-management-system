@@ -15,10 +15,10 @@ export const MetricCard = ({
     </div>
     {/* Texts */}
     <div className="flex flex-col gap-1">
-      <span className="text-base font-medium text-gray-400 whitespace-nowrap">
+      <span className="text-base font-medium text-neutral-500 whitespace-nowrap">
         {title}
       </span>
-      <span className="text-3xl font-bold text-gray-900 leading-none mt-1">
+      <span className="text-3xl font-bold text-neutral-900 leading-none mt-1">
         {value}
       </span>
     </div>

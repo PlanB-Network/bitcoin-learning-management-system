@@ -77,12 +77,12 @@ function BlockOne() {
                 <span className="text-orange-500">Building</span>
               </Trans>
             </span>
-            <span className="max-lg:hidden title-small text-gray-200">
+            <span className="max-lg:hidden title-small text-neutral-100">
               {t('community.box1Subtitle')}
             </span>
           </div>
         </div>
-        <span className="lg:hidden my-5 body-12px-small text-gray-200 ">
+        <span className="lg:hidden my-5 body-12px-small text-neutral-100 ">
           {t('community.box1Subtitle')}
         </span>
         <Image
@@ -126,7 +126,7 @@ function BlockTwo() {
             </span>
           </div>
         </div>
-        <span className="my-5 body-12px-small lg:title-small text-gray-200 lg:max-w-[400px] lg:ml-10 ">
+        <span className="my-5 body-12px-small lg:title-small text-neutral-100 lg:max-w-[400px] lg:ml-10 ">
           {t('community.box2Subtitle')}
         </span>
         <Image
@@ -203,12 +203,12 @@ function BlockFour() {
                 <span className="text-purple-400">visibility</span>
               </Trans>
             </span>
-            <span className="max-lg:hidden title-small text-gray-200">
+            <span className="max-lg:hidden title-small text-neutral-100">
               {t('community.box4Subtitle')}
             </span>
           </div>
         </div>
-        <span className="lg:hidden px-5 my-5 body-12px-small text-gray-200 ">
+        <span className="lg:hidden px-5 my-5 body-12px-small text-neutral-100 ">
           {t('community.box4Subtitle')}
         </span>
         <Image
@@ -301,7 +301,7 @@ function BlockSix() {
           </div>
         </div>
         <div className="flex flex-col lg:flex-row pl-7 justify-items-center items-center lg:items-start max-lg:gap-4">
-          <p className="title-small text-gray-200 lg:w-[50%]">
+          <p className="title-small text-neutral-100 lg:w-[50%]">
             {t('community.box6Subtitle')}
           </p>
           <Image

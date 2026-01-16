@@ -301,7 +301,7 @@ export const CourseTranslationCard = ({
     }
     return {
       text: t('translate.notAssigned'),
-      className: 'bg-gray-200 text-gray-800',
+      className: 'bg-neutral-100 text-neutral-800',
     };
   };
 
@@ -352,13 +352,13 @@ export const CourseTranslationCard = ({
 
           {/* Course details */}
           <div className="p-4">
-            <h3 className="text-xl font-semibold mb-3 text-gray-900">
+            <h3 className="text-xl font-semibold mb-3 text-neutral-900">
               {courseName}
             </h3>
 
             {/* Category and assignment tags - category on left, assignment on right */}
             <div className="mb-3 flex justify-between items-start">
-              <span className="inline-block bg-gray-200 text-gray-800 text-xs font-medium px-2.5 py-1 rounded uppercase">
+              <span className="inline-block bg-neutral-100 text-neutral-800 text-xs font-medium px-2.5 py-1 rounded uppercase">
                 {courseTopic}
               </span>
               <span
@@ -403,7 +403,7 @@ export const CourseTranslationCard = ({
                 className={`w-full h-[32px] px-[10px] py-[14px] gap-[10px] rounded-[8px] !shadow-none transition-colors ${
                   isButtonClickable
                     ? ''
-                    : '!bg-gray-400 text-white cursor-not-allowed'
+                    : '!bg-neutral-500 text-white cursor-not-allowed'
                 }`}
               >
                 {getButtonText()}

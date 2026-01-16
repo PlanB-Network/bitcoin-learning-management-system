@@ -68,7 +68,7 @@ export const AllVariations: Story = {
           {sizes.map((size) => (
             <div key={size} className="flex flex-col items-center gap-2">
               <Flag code="fr" size={size} />
-              <span className="text-sm text-gray-600">{size}</span>
+              <span className="text-sm text-neutral-500">{size}</span>
             </div>
           ))}
         </div>
@@ -83,7 +83,7 @@ export const AllVariations: Story = {
               className="flex flex-col items-center gap-2"
             >
               <Flag code="FR" size="l" gradient={gradient} />
-              <span className="text-sm text-gray-600">
+              <span className="text-sm text-neutral-500">
                 {gradient || 'none'}
               </span>
             </div>
@@ -97,7 +97,7 @@ export const AllVariations: Story = {
           {countryCodes.slice(0, 12).map((code) => (
             <div key={code} className="flex flex-col items-center gap-2">
               <Flag code={code} size="m" />
-              <span className="text-xs text-gray-600">{code}</span>
+              <span className="text-xs text-neutral-500">{code}</span>
             </div>
           ))}
         </div>
@@ -108,15 +108,15 @@ export const AllVariations: Story = {
         <div className="grid grid-cols-4 gap-4">
           <div className="flex flex-col items-center gap-2">
             <Flag code="DE" size="l" />
-            <span className="text-sm text-gray-600">Default</span>
+            <span className="text-sm text-neutral-500">Default</span>
           </div>
           <div className="flex flex-col items-center gap-2">
             <Flag code="DE" size="l" hasBorder />
-            <span className="text-sm text-gray-600">With border</span>
+            <span className="text-sm text-neutral-500">With border</span>
           </div>
           <div className="flex flex-col items-center gap-2">
             <Flag code="DE" size="l" hasDropShadow />
-            <span className="text-sm text-gray-600">Drop shadow</span>
+            <span className="text-sm text-neutral-500">Drop shadow</span>
           </div>
         </div>
       </div>

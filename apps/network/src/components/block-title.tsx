@@ -25,7 +25,7 @@ export default function BlockTitle({
         >
           {text}
         </h2>
-        <h2 className="px-8 lg:px-4 mt-6 body-large lg:title-medium max-w-[800px] text-gray-100">
+        <h2 className="px-8 lg:px-4 mt-6 body-large lg:title-medium max-w-[800px] text-neutral-50">
           {subtext}
         </h2>
       </div>

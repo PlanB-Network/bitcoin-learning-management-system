@@ -177,7 +177,7 @@ function DashboardCalendar() {
             >
               {t(`dashboard.calendar.eventType.${filterName}`)}
               <span
-                className="ml-2 bg-white rounded-md py-1 px-1.5 text-xs border-gray font-medium"
+                className="ml-2 bg-white rounded-md py-1 px-1.5 text-xs border-neutral-300 font-medium"
                 style={{
                   borderWidth: filter.includes(filterName) ? '' : '1px',
                   color: `${courseColor[index]}`,

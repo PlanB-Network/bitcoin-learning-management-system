@@ -38,7 +38,7 @@ export const PublicComment = ({
           </time>
         </div>
       </header>
-      <p className="size-full overflow-y-scroll scrollbar-light px-4 py-1.5 bg-commentTextBackground border border-gray-500/10 rounded-md text-neutral-800 text-sm leading-[120%]">
+      <p className="size-full overflow-y-scroll scrollbar-light px-4 py-1.5 bg-commentTextBackground border border-neutral-500/10 rounded-md text-neutral-800 text-sm leading-[120%]">
         {comment}
       </p>
     </article>

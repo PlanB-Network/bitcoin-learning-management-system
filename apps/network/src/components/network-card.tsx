@@ -30,7 +30,7 @@ export default function NetworkCard({
       )}
 
       <p className="display-extra-small lg:display-small">{text}</p>
-      <p className="body-base lg:body-small lg:text-xl text-gray-300">
+      <p className="body-base lg:body-small lg:text-xl text-neutral-300">
         {subtext}
       </p>
     </div>

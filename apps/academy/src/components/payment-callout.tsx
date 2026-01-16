@@ -5,7 +5,8 @@ interface PaymentCalloutProps {
   description: React.ReactNode;
 }
 
-const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
+const borderClassName =
+  'border border-neutral-500/25 rounded-xl overflow-hidden';
 
 export const PaymentCallout = ({ description }: PaymentCalloutProps) => {
   return (

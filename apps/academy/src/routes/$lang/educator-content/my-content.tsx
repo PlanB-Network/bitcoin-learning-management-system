@@ -77,13 +77,13 @@ function MyContent() {
       case 'published':
         return 'bg-green-100 text-green-600';
       case 'pending':
-        return 'bg-gray-100 text-gray-600';
+        return 'bg-neutral-50 text-neutral-500';
       case 'rejected':
         return 'bg-orange-100 text-orange-800';
       case 'unpublished':
         return 'bg-blue-100 text-blue-800';
       default:
-        return 'bg-gray-100 text-gray-600';
+        return 'bg-neutral-50 text-neutral-500';
     }
   };
 
@@ -149,7 +149,7 @@ function MyContent() {
             >
               <div className="flex gap-3 md:gap-6 items-center">
                 {/* Thumbnail */}
-                <div className="w-28 h-21 md:w-32 md:h-24 bg-gray-200 rounded-lg md:rounded-2xl shrink-0 overflow-hidden flex items-center justify-center">
+                <div className="w-28 h-21 md:w-32 md:h-24 bg-neutral-100 rounded-lg md:rounded-2xl shrink-0 overflow-hidden flex items-center justify-center">
                   {item.cover ? (
                     <img
                       src={getEducatorContentCoverUrl(item.cover) || ''}
@@ -157,7 +157,7 @@ function MyContent() {
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <span className="text-xs text-gray-500">
+                    <span className="text-xs text-neutral-500">
                       {t('educatorContent.noCover')}
                     </span>
                   )}
@@ -165,10 +165,10 @@ function MyContent() {
 
                 {/* Content */}
                 <div className="grow flex flex-col justify-center gap-2">
-                  <h3 className="title-small md:title-base text-gray-900">
+                  <h3 className="title-small md:title-base text-neutral-900">
                     {item.title}
                   </h3>
-                  <div className="text-sm text-gray-500 flex items-center gap-2">
+                  <div className="text-sm text-neutral-500 flex items-center gap-2">
                     <span
                       className={cn(
                         'px-2 py-0.5 rounded-full text-xs font-medium lg:hidden',
@@ -208,7 +208,7 @@ function MyContent() {
             </Link>
           ))}
           {content?.length === 0 && (
-            <div className="text-center py-12 text-gray-500">
+            <div className="text-center py-12 text-neutral-500">
               {t('educatorContent.noContent')}
             </div>
           )}

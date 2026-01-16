@@ -112,7 +112,7 @@ export const AssignCourseModal = ({
         <>
           <button
             type="button"
-            className="px-6 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors"
+            className="px-6 py-2 bg-neutral-100 text-neutral-800 rounded hover:bg-neutral-300 transition-colors"
             onClick={handleClose}
             disabled={isAssigning}
           >
@@ -140,12 +140,12 @@ export const AssignCourseModal = ({
       <div className="w-full space-y-4">
         {/* Course Info */}
         <div className="text-center mb-4">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-neutral-500">
             {t(
               'dashboard.adminPanel.translationPanel.contentManagement.assignModal.assigningCourse',
             )}
           </p>
-          <p className="font-medium text-gray-900">
+          <p className="font-medium text-neutral-900">
             {course?.courseName || course?.courseId}
           </p>
         </div>
@@ -154,7 +154,7 @@ export const AssignCourseModal = ({
         <div>
           <label
             htmlFor="contributor-select"
-            className="block text-sm font-medium text-gray-700 mb-2"
+            className="block text-sm font-medium text-neutral-700 mb-2"
           >
             {t(
               'dashboard.adminPanel.translationPanel.contentManagement.assignModal.selectContributor',
@@ -164,7 +164,7 @@ export const AssignCourseModal = ({
             id="contributor-select"
             value={selectedContributorId}
             onChange={(e) => setSelectedContributorId(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"
+            className="w-full px-3 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"
             disabled={isAssigning}
           >
             <option value="">

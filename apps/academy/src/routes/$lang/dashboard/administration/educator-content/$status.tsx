@@ -241,7 +241,7 @@ function AdminEducatorContent() {
               className="flex items-center p-4 w-full text-left bg-white rounded-2xl hover:bg-neutral-50 cursor-pointer"
               onClick={() => handlePreview(item, isDraft)}
             >
-              <div className="w-28 h-21 md:w-32 md:h-24 bg-gray-200 rounded-lg md:rounded-2xl mr-4 shrink-0 overflow-hidden flex items-center justify-center">
+              <div className="w-28 h-21 md:w-32 md:h-24 bg-neutral-100 rounded-lg md:rounded-2xl mr-4 shrink-0 overflow-hidden flex items-center justify-center">
                 {item.cover ? (
                   <img
                     src={getEducatorContentCoverUrl(item.cover) || ''}
@@ -249,7 +249,7 @@ function AdminEducatorContent() {
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <span className="text-xs text-gray-500">
+                  <span className="text-xs text-neutral-500">
                     {t('educatorContent.noCover')}
                   </span>
                 )}

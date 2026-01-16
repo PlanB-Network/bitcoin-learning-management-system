@@ -4,7 +4,8 @@ import SummerSchoolThumbnail from '#src/assets/courses/summer-school-thumbnail.p
 import { PaymentRow } from '#src/components/payment-row.tsx';
 import { DEFAULT_CURRENCY, getFormattedUnit } from '#src/services/utils.tsx';
 
-const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
+const borderClassName =
+  'border border-neutral-500/25 rounded-xl overflow-hidden';
 
 interface ModalPaymentSummaryProps {
   mobileDisplay: boolean;

@@ -49,7 +49,7 @@ const BlogSidebar: React.FC<BlogSidebarProps> = ({
     .slice(0, 10);
 
   return (
-    <div className="w-full mx-auto md:p-2 rounded-2xl border border-gray-100 overflow-hidden">
+    <div className="w-full mx-auto md:p-2 rounded-2xl border border-neutral-50 overflow-hidden">
       <div className="flex flex-row items-center p-4 gap-4">
         <Image
           className="h-8"
@@ -67,21 +67,21 @@ const BlogSidebar: React.FC<BlogSidebarProps> = ({
         {filteredBlogs.map((blog) => (
           <li
             key={blog.id}
-            className="w-full border-b border-gray-100 last:border-b-0 first:rounded-t-2xl last:rounded-b-2xl overflow-hidden"
+            className="w-full border-b border-neutral-50 last:border-b-0 first:rounded-t-2xl last:rounded-b-2xl overflow-hidden"
           >
             <Link
               to={`/news/article/${formatNameForURL(blog.title)}-${blog.id}`}
-              className="flex items-center w-full py-3 px-4 hover:bg-neutral-50 text-gray-900 hover:text-orange-500"
+              className="flex items-center w-full py-3 px-4 hover:bg-neutral-50 text-neutral-900 hover:text-orange-500"
             >
               <div className="flex flex-row items-center justify-between w-full gap-4">
                 <p className="body-base-bold md:title-base truncate">
                   {blog.title}
                 </p>
                 <span className="flex items-center gap-2 shrink-0">
-                  <p className="body-small text-gray-300 max-md:hidden">
+                  <p className="body-small text-neutral-300 max-md:hidden">
                     {formatMonthAndYear(new Date(blog.date))}
                   </p>
-                  <TbChevronRight className="text-gray-200 size-4 md:size-6" />
+                  <TbChevronRight className="text-neutral-100 size-4 md:size-6" />
                 </span>
               </div>
             </Link>

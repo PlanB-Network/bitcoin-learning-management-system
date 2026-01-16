@@ -321,13 +321,13 @@ function ProofreadCoursePage() {
               {/* Course Title Section */}
               <div className="flex items-center gap-4">
                 <div
-                  className="text-gray-700 px-3 py-1 rounded text-sm font-medium"
+                  className="text-neutral-700 px-3 py-1 rounded text-sm font-medium"
                   style={{ backgroundColor: '#E5E5E5' }}
                 >
                   {course?.index?.toUpperCase() || courseId.toUpperCase()}
                 </div>
                 <h2
-                  className="text-gray-900 text-xl sm:text-2xl md:text-3xl lg:text-4xl"
+                  className="text-neutral-900 text-xl sm:text-2xl md:text-3xl lg:text-4xl"
                   style={{
                     fontFamily: 'Rubik, sans-serif',
                     fontWeight: 500,
@@ -341,7 +341,7 @@ function ProofreadCoursePage() {
               {/* Progress Card */}
               <div className="flex-shrink-0 w-full lg:w-[300px]">
                 <div className="w-full h-auto bg-[#F6F6F6] border border-[#E5E5E5] rounded-lg px-[10px] py-[4px] shadow-sm flex flex-col justify-between">
-                  <span className="text-sm font-medium text-gray-900">
+                  <span className="text-sm font-medium text-neutral-900">
                     {t('translate.courseProofreadingProgress', {
                       defaultValue: 'Course proofreading progress',
                     })}
@@ -354,15 +354,15 @@ function ProofreadCoursePage() {
                     }}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-500">
+                      <span className="text-sm text-neutral-500">
                         {completedChapters} of {totalChapters} chapters
                         completed
                       </span>
-                      <span className="text-sm font-medium text-gray-900">
+                      <span className="text-sm font-medium text-neutral-900">
                         {progressPercentage}%
                       </span>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="w-full bg-neutral-100 rounded-full h-2">
                       <div
                         className="bg-orange-500 h-2 rounded-full transition-all duration-300"
                         style={{ width: `${progressPercentage}%` }}

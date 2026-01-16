@@ -29,7 +29,7 @@ export function ComparisonTextViewer({
       <div className="flex items-center justify-between mb-5">
         <div className="flex items-center gap-[10px]">
           <span
-            className="text-base font-semibold text-gray-900"
+            className="text-base font-semibold text-neutral-900"
             style={{ fontFamily: 'Rubik, sans-serif' }}
           >
             {t('translate.language', { defaultValue: 'Language' })} :
@@ -47,11 +47,11 @@ export function ComparisonTextViewer({
       {/* Text Content */}
       <div className="bg-white border rounded-lg overflow-hidden">
         {content ? (
-          <div className="bg-gray-50 border rounded-lg p-4 text-sm text-gray-900 whitespace-pre-wrap overflow-y-auto max-h-[400px]">
+          <div className="bg-neutral-100 border rounded-lg p-4 text-sm text-neutral-900 whitespace-pre-wrap overflow-y-auto max-h-[400px]">
             {content}
           </div>
         ) : (
-          <div className="text-gray-400 text-sm text-center py-8">
+          <div className="text-neutral-500 text-sm text-center py-8">
             {t('translate.noContentAvailable', {
               defaultValue: 'No content available',
             })}

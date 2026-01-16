@@ -8,7 +8,7 @@ function ContentCreate() {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Create New Content</h1>
-      <div className="bg-gray-800 p-4 rounded">
+      <div className="bg-neutral-800 p-4 rounded">
         <form>
           <div className="mb-4">
             <label htmlFor="title" className="block text-sm font-medium mb-1">
@@ -17,7 +17,7 @@ function ContentCreate() {
             <input
               id="title"
               type="text"
-              className="w-full p-2 bg-gray-700 rounded"
+              className="w-full p-2 bg-neutral-700 rounded"
               placeholder="Enter title"
             />
           </div>
@@ -28,7 +28,10 @@ function ContentCreate() {
             >
               Content Type
             </label>
-            <select id="contentType" className="w-full p-2 bg-gray-700 rounded">
+            <select
+              id="contentType"
+              className="w-full p-2 bg-neutral-700 rounded"
+            >
               <option value="article">Article</option>
               <option value="tutorial">Tutorial</option>
               <option value="course">Course</option>
@@ -40,7 +43,7 @@ function ContentCreate() {
             </label>
             <textarea
               id="content"
-              className="w-full p-2 bg-gray-700 rounded h-64"
+              className="w-full p-2 bg-neutral-700 rounded h-64"
               placeholder="Write your content here..."
             />
           </div>

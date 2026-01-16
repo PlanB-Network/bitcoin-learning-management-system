@@ -116,10 +116,10 @@ export const CoursesSubTab = ({
               value={selectedCourseId}
               onValueChange={setSelectedCourseId}
             >
-              <SelectTrigger className="w-48 bg-white border-gray-300 text-gray-900">
+              <SelectTrigger className="w-48 bg-white border-neutral-300 text-neutral-900">
                 <SelectValue placeholder="Select course" />
               </SelectTrigger>
-              <SelectContent className="max-h-60 bg-white border-gray-300">
+              <SelectContent className="max-h-60 bg-white border-neutral-300">
                 <SelectItem value="all">{t('words.all')}</SelectItem>
                 {uniqueCourses.map((c) => (
                   <SelectItem key={c.courseId} value={c.courseId}>
@@ -154,7 +154,7 @@ export const CoursesSubTab = ({
 
         {selectedCourseInfo && (
           <div className="flex items-center gap-3">
-            <span className="bg-gray-200 rounded px-2 py-1 text-xs font-medium text-gray-700">
+            <span className="bg-neutral-100 rounded px-2 py-1 text-xs font-medium text-neutral-700">
               {selectedCourseInfo.index}
             </span>
             <h3 className="title-large-sb-24px text-dashboardSectionTitle">
@@ -198,7 +198,7 @@ export const CoursesSubTab = ({
               filteredRows.map((row) => (
                 <TableRow
                   key={`${row.courseId}-${row.language}`}
-                  className="hover:bg-gray-50"
+                  className="hover:bg-neutral-100"
                 >
                   <TableCell className="py-3">
                     {row.assigneeDisplayName || row.assigneeUsername || '-'}

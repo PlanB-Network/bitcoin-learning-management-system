@@ -512,7 +512,7 @@ export const EducatorContentModal = ({
             render={({ field, fieldState }) => (
               <Field data-invalid={fieldState.invalid} className="gap-0">
                 <FieldLabel htmlFor={field.name}>{t('words.title')}</FieldLabel>
-                <p className="text-xs text-gray-500 mb-2">
+                <p className="text-xs text-neutral-500 mb-2">
                   {t('educatorContent.titleHelper')}
                 </p>
                 <Input
@@ -535,7 +535,7 @@ export const EducatorContentModal = ({
                 <FieldLabel htmlFor={field.name}>
                   {t('words.description')}
                 </FieldLabel>
-                <p className="text-xs text-gray-500 mb-2">
+                <p className="text-xs text-neutral-500 mb-2">
                   {t('educatorContent.descriptionHelper')}
                 </p>
                 <Textarea
@@ -550,7 +550,7 @@ export const EducatorContentModal = ({
                       'text-xs',
                       field.value.length >= 350
                         ? 'text-red-500'
-                        : 'text-gray-400',
+                        : 'text-neutral-500',
                     )}
                   >
                     {field.value.length}/350
@@ -703,7 +703,7 @@ export const EducatorContentModal = ({
                 <p
                   className={cn(
                     'mb-1 text-sm font-medium',
-                    isCoverDragActive ? 'text-black' : 'text-gray-900',
+                    isCoverDragActive ? 'text-black' : 'text-neutral-900',
                   )}
                 >
                   {t('educatorContent.dropCover')}
@@ -711,7 +711,7 @@ export const EducatorContentModal = ({
                 <p
                   className={cn(
                     'text-xs mb-4',
-                    isCoverDragActive ? 'text-black' : 'text-gray-900',
+                    isCoverDragActive ? 'text-black' : 'text-neutral-900',
                   )}
                 >
                   {t('educatorContent.browseImages')}
@@ -786,7 +786,7 @@ export const EducatorContentModal = ({
           <h3 className="title-medium md:subtitle-base">
             {t('educatorContent.uploadFiles')}
           </h3>
-          <p className="body-small text-gray-500 -mt-4">
+          <p className="body-small text-neutral-500 -mt-4">
             {t('educatorContent.uploadFilesHelper')}
           </p>
           <div
@@ -814,7 +814,7 @@ export const EducatorContentModal = ({
             <p
               className={cn(
                 'mb-1 text-sm font-medium',
-                isFilesDragActive ? 'text-black' : 'text-gray-900',
+                isFilesDragActive ? 'text-black' : 'text-neutral-900',
               )}
             >
               {t('educatorContent.dropFiles')}
@@ -822,7 +822,7 @@ export const EducatorContentModal = ({
             <p
               className={cn(
                 'text-xs mb-4',
-                isFilesDragActive ? 'text-black' : 'text-gray-900',
+                isFilesDragActive ? 'text-black' : 'text-neutral-900',
               )}
             >
               {t('educatorContent.browseFiles')}
@@ -870,7 +870,7 @@ export const EducatorContentModal = ({
             />
           </div>
 
-          <div className="flex justify-between items-start gap-2 mt-2 mb-4 text-xs text-gray-400">
+          <div className="flex justify-between items-start gap-2 mt-2 mb-4 text-xs text-neutral-500">
             <p>{t('educatorContent.supportedFileTypes')}</p>
             <p className="shrink-0 whitespace-nowrap">
               {t('educatorContent.maxFileSize')}
@@ -882,13 +882,13 @@ export const EducatorContentModal = ({
               {existingFiles.map((file, index) => (
                 <div
                   key={`existing-${file.name}-${index}`}
-                  className="flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg shadow-sm"
+                  className="flex items-center justify-between p-3 bg-white border border-neutral-100 rounded-lg shadow-sm"
                 >
                   <div className="flex items-center gap-3 overflow-hidden">
                     <div className="w-8 h-8 rounded-full bg-green-100 shrink-0 flex items-center justify-center text-green-600">
                       <TbFileCheck size={16} />
                     </div>
-                    <span className="text-sm font-medium text-gray-700 truncate">
+                    <span className="text-sm font-medium text-neutral-700 truncate">
                       {file.name} {t('educatorContent.fileExisting')}
                     </span>
                   </div>
@@ -908,7 +908,7 @@ export const EducatorContentModal = ({
               {newFiles.map((file, index) => (
                 <div
                   key={`new-${file.name}-${index}`}
-                  className="flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg shadow-sm"
+                  className="flex items-center justify-between p-3 bg-white border border-neutral-100 rounded-lg shadow-sm"
                 >
                   <div className="flex items-center gap-3 overflow-hidden">
                     <TbCircleCheckFilled size={16} className="text-green-400" />

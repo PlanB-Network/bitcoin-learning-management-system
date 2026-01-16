@@ -17,7 +17,7 @@ export const TopicFilter = ({
 }: TopicFilterProps) => {
   return (
     <div className={`mb-8 ${className}`}>
-      <h3 className="text-lg font-medium mb-3 text-gray-900">{title}</h3>
+      <h3 className="text-lg font-medium mb-3 text-neutral-900">{title}</h3>
       <div className="flex flex-wrap gap-2">
         {topics.map((topic) => (
           <Button

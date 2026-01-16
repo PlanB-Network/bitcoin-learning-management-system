@@ -43,9 +43,9 @@ export const TipModal = ({
 
       <div className="flex w-full flex-row items-center justify-evenly">
         <img src={BitcoinCircleGray} alt="" className="h-8 w-auto" />
-        <span className="text-2xl text-gray-300">{'<'}</span>
+        <span className="text-2xl text-neutral-300">{'<'}</span>
         <img src={LightningOrange} alt="" className="h-12 w-auto" />
-        <span className="text-2xl text-gray-300">{'>'}</span>
+        <span className="text-2xl text-neutral-300">{'>'}</span>
         <img src={PaynimRobotGray} alt="" className="h-8 w-auto" />
       </div>
 
@@ -55,7 +55,7 @@ export const TipModal = ({
           <div className="relative w-full rounded-md shadow-xs">
             <input
               disabled
-              className="w-full bg-gray-200 p-2 pr-12 text-xs font-semibold text-blue-800 sm:text-base"
+              className="w-full bg-neutral-100 p-2 pr-12 text-xs font-semibold text-blue-800 sm:text-base"
               value={lightningAddress}
               type="text"
             />

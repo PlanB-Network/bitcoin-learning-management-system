@@ -117,7 +117,7 @@ function ResetPasswordPage() {
               />
 
               {!isPasswordValid && (
-                <p className="text-sm text-gray-400">
+                <p className="text-sm text-neutral-500">
                   {t('auth.passwordMinLength', { len: minLength })}
                 </p>
               )}

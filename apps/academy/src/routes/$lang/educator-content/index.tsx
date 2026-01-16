@@ -301,7 +301,7 @@ function RouteComponent() {
           </div>
 
           <div className="flex w-full justify-end items-center gap-2 max-lg:hidden mb-6">
-            <span className="text-sm text-gray-500">
+            <span className="text-sm text-neutral-500">
               {t('educatorContent.sortBy')}
             </span>
             <button
@@ -311,7 +311,7 @@ function RouteComponent() {
                   prev === 'recent' ? 'downloads' : 'recent',
                 )
               }
-              className="text-sm font-medium text-gray-900 hover:text-orange-500 transition-colors"
+              className="text-sm font-medium text-neutral-900 hover:text-orange-500 transition-colors"
             >
               {sortBy === 'recent'
                 ? t('educatorContent.sortMostRecent')
@@ -336,7 +336,7 @@ function RouteComponent() {
               >
                 <div className="flex gap-3 md:gap-6 items-center">
                   {/* Thumbnail */}
-                  <div className="w-28 h-21 md:w-32 md:h-24 bg-gray-200 rounded-lg md:rounded-2xl shrink-0 overflow-hidden flex items-center justify-center">
+                  <div className="w-28 h-21 md:w-32 md:h-24 bg-neutral-100 rounded-lg md:rounded-2xl shrink-0 overflow-hidden flex items-center justify-center">
                     {item.cover ? (
                       <img
                         src={getEducatorContentCoverUrl(item.cover) || ''}
@@ -344,7 +344,7 @@ function RouteComponent() {
                         className="w-full h-full object-cover"
                       />
                     ) : (
-                      <span className="text-xs text-gray-500">
+                      <span className="text-xs text-neutral-500">
                         {t('educatorContent.noCover')}
                       </span>
                     )}
@@ -352,11 +352,11 @@ function RouteComponent() {
 
                   {/* Content */}
                   <div className="grow flex flex-col justify-center gap-2">
-                    <h3 className="title-small md:title-base text-gray-900">
+                    <h3 className="title-small md:title-base text-neutral-900">
                       {item.title}
                     </h3>
                     {item.downloads > 0 ? (
-                      <div className="text-sm text-gray-500 flex items-center gap-2">
+                      <div className="text-sm text-neutral-500 flex items-center gap-2">
                         <TbDownload size={16} />
                         <span>{item.downloads}</span>
                       </div>

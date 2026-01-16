@@ -7,7 +7,7 @@ import VisibilityOff from '#src/assets/icons/visibility_off.svg';
 import ProfessorsTile from '../assets/home/professors.webp?no-inline';
 
 const paragraphClassName =
-  'text-sm text-gray-400 sm:text-sm lg:text-base mt-2 font-light';
+  'text-sm text-neutral-500 sm:text-sm lg:text-base mt-2 font-light';
 
 export const AboutUs = () => {
   const { t } = useTranslation();

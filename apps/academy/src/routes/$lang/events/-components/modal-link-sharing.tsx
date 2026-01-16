@@ -35,7 +35,7 @@ const ShareModal: React.FC<ShareModalProps> = ({ isOpen, url, onClose }) => {
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
+          className="absolute top-2 right-2 text-neutral-500 hover:text-neutral-800"
         >
           <FaTimes size={20} />
         </button>
@@ -49,12 +49,12 @@ const ShareModal: React.FC<ShareModalProps> = ({ isOpen, url, onClose }) => {
             type="text"
             value={url}
             readOnly
-            className="grow text-gray-200 bg-black border-none outline-hidden"
+            className="grow text-neutral-100 bg-black border-none outline-hidden"
           />
           <button
             onClick={copyToClipboard}
             type="button"
-            className="ml-2 p-2 text-gray-200 hover:text-orange-600"
+            className="ml-2 p-2 text-neutral-100 hover:text-orange-600"
           >
             <FaRegCopy />
           </button>

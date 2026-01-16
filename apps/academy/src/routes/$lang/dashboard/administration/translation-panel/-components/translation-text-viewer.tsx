@@ -37,11 +37,11 @@ export function TranslationTextViewer({
       {/* Text Content */}
       <div className="bg-white border rounded-lg overflow-hidden">
         {originalContent ? (
-          <div className="bg-gray-50 border rounded-lg p-4 text-sm text-gray-900 whitespace-pre-wrap overflow-y-auto max-h-[400px]">
+          <div className="bg-neutral-100 border rounded-lg p-4 text-sm text-neutral-900 whitespace-pre-wrap overflow-y-auto max-h-[400px]">
             {originalContent}
           </div>
         ) : (
-          <div className="text-gray-400 text-sm text-center py-8">
+          <div className="text-neutral-500 text-sm text-center py-8">
             {t('translate.noOriginalContent', {
               defaultValue: 'No original content',
             })}

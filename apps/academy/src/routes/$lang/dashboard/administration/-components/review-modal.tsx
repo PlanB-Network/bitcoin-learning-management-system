@@ -99,7 +99,7 @@ export const ReviewModal = ({
       <div className="flex flex-col gap-6 text-left items-stretch w-full">
         {/* Main Content Info */}
         <div className="flex flex-col md:flex-row gap-4 items-center md:items-start text-center md:text-left">
-          <div className="w-40 h-30 md:w-48 md:h-36 bg-gray-100 rounded-lg md:rounded-2xl shrink-0 overflow-hidden border border-gray-100">
+          <div className="w-40 h-30 md:w-48 md:h-36 bg-neutral-50 rounded-lg md:rounded-2xl shrink-0 overflow-hidden border border-neutral-50">
             {content.cover ? (
               <button
                 type="button"
@@ -114,7 +114,7 @@ export const ReviewModal = ({
                 />
               </button>
             ) : (
-              <div className="w-full h-full flex items-center justify-center text-gray-300">
+              <div className="w-full h-full flex items-center justify-center text-neutral-300">
                 <span className="text-xs">
                   {t('educatorContent.reviewModal.noCover')}
                 </span>
@@ -185,12 +185,12 @@ export const ReviewModal = ({
           />
         </div>
         {/* Files and Links List */}
-        <div className="bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm">
-          <div className="flex flex-col divide-y divide-gray-100">
+        <div className="bg-white rounded-3xl border border-neutral-50 overflow-hidden shadow-sm">
+          <div className="flex flex-col divide-y divide-neutral-50">
             {sortedLinks?.map((link) => (
               <div
                 key={link.url}
-                className="flex items-center justify-between py-2 px-4 hover:bg-gray-50 transition-colors gap-4"
+                className="flex items-center justify-between py-2 px-4 hover:bg-neutral-100 transition-colors gap-4"
               >
                 <a
                   href={link.url}
@@ -220,11 +220,11 @@ export const ReviewModal = ({
             {sortedFiles?.map((file) => (
               <div
                 key={file.path}
-                className="flex items-center justify-between py-2 px-4 hover:bg-gray-50 transition-colors gap-4"
+                className="flex items-center justify-between py-2 px-4 hover:bg-neutral-100 transition-colors gap-4"
               >
-                <span className="body-small md:body-base text-gray-700 truncate">
+                <span className="body-small md:body-base text-neutral-700 truncate">
                   {file.name}{' '}
-                  <span className="text-gray-400">
+                  <span className="text-neutral-500">
                     ({formatFileSize(file.size)})
                   </span>
                 </span>
@@ -244,7 +244,7 @@ export const ReviewModal = ({
 
         {/* License */}
         {content.license && (
-          <p className="text-sm text-gray-500 px-4">
+          <p className="text-sm text-neutral-500 px-4">
             {t('educatorContent.license.title')}: {content.license}
           </p>
         )}
@@ -335,7 +335,7 @@ function StatCard({
 }) {
   return (
     <div className="bg-neutral-50 rounded-2xl p-2 md:p-6 flex flex-col items-center justify-center text-center gap-3 min-w-0 w-full">
-      <div className="flex items-center gap-2 text-gray-400">
+      <div className="flex items-center gap-2 text-neutral-500">
         {Icon && <Icon className="size-4" />}
         <span className="caption-extra-small uppercase">{label}</span>
       </div>

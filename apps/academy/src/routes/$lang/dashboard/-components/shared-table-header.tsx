@@ -16,7 +16,7 @@ interface SharedTableHeadProps {
 export const SharedTableHeader = ({ children }: SharedTableHeaderProps) => {
   return (
     <TableHeader>
-      <TableRow className="border-b border-gray-200">{children}</TableRow>
+      <TableRow className="border-b border-neutral-100">{children}</TableRow>
     </TableHeader>
   );
 };
@@ -28,7 +28,7 @@ export const SharedTableHead = ({
   onSort,
   sortIcon,
 }: SharedTableHeadProps) => {
-  const baseClasses = 'font-semibold text-gray-900 py-3';
+  const baseClasses = 'font-semibold text-neutral-900 py-3';
   const combinedClasses = `${baseClasses} ${className}`;
 
   if (sortable && onSort) {
@@ -37,10 +37,10 @@ export const SharedTableHead = ({
         <button
           type="button"
           onClick={onSort}
-          className="flex items-center space-x-1 hover:text-gray-700 text-left w-full"
+          className="flex items-center space-x-1 hover:text-neutral-700 text-left w-full"
         >
           <span>{children}</span>
-          {sortIcon && <span className="text-gray-400">{sortIcon}</span>}
+          {sortIcon && <span className="text-neutral-500">{sortIcon}</span>}
         </button>
       </TableHead>
     );

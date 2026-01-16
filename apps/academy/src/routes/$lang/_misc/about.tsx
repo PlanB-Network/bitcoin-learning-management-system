@@ -50,14 +50,14 @@ const Mission = () => {
           <h2 className="text-3xl font-semibold uppercase">
             {t('about.missionTitle')}
           </h2>
-          <p className="mt-2 text-gray-400">{t('about.missionContent1')}</p>
-          <p className="mt-2 text-gray-400">{t('about.missionContent2')}</p>
+          <p className="mt-2 text-neutral-500">{t('about.missionContent1')}</p>
+          <p className="mt-2 text-neutral-500">{t('about.missionContent2')}</p>
         </div>
         <div>
           <h2 className="text-3xl font-semibold uppercase">
             {t('about.commitmentTitle')}
           </h2>
-          <p className="mt-2 whitespace-pre-line text-gray-400">
+          <p className="mt-2 whitespace-pre-line text-neutral-500">
             {t('about.commitmentContent')}
           </p>
         </div>
@@ -65,7 +65,7 @@ const Mission = () => {
           <h2 className="text-3xl font-semibold uppercase">
             {t('about.storyTitle')}
           </h2>
-          <p className="mt-2 whitespace-pre-line text-gray-400">
+          <p className="mt-2 whitespace-pre-line text-neutral-500">
             {t('about.storyContent')}{' '}
             <a
               className="inline"
@@ -97,7 +97,7 @@ const Corporate = () => {
         <h2 className="text-3xl font-semibold uppercase">
           {t('about.corporateTitle')}
         </h2>
-        <p className="mt-2 text-gray-400">{t('about.corporateContent')}</p>
+        <p className="mt-2 text-neutral-500">{t('about.corporateContent')}</p>
         <p className="mt-2">
           {t('about.corporateContact')}{' '}
           <a href="mailto:contact@planb.network">contact@planb.network</a>
@@ -125,7 +125,7 @@ const CoreTeam = () => {
           <h2 className="text-3xl font-semibold uppercase">
             {t('about.coreTeamTitle')}
           </h2>
-          <p className="mt-2 text-gray-400">{t('about.coreTeamContent')}</p>
+          <p className="mt-2 text-neutral-500">{t('about.coreTeamContent')}</p>
         </div>
       </div>
       <div className="mt-6 grid w-full grid-cols-1 gap-6 md:grid-cols-2">

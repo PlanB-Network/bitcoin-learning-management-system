@@ -30,7 +30,7 @@ export function SlideNavigation({
         type="button"
         onClick={onPrevious}
         disabled={disabled || isFirstSlide}
-        className="flex items-center space-x-2 px-4 py-2 text-sm text-orange-600 hover:text-orange-700 disabled:text-gray-400 transition-colors"
+        className="flex items-center space-x-2 px-4 py-2 text-sm text-orange-600 hover:text-orange-700 disabled:text-neutral-500 transition-colors"
       >
         <svg
           className="w-4 h-4"
@@ -58,7 +58,7 @@ export function SlideNavigation({
       </button>
 
       <div className="flex items-center space-x-4">
-        <span className="text-sm font-medium text-gray-900">
+        <span className="text-sm font-medium text-neutral-900">
           {currentSlide + 1} / {totalSlides}
         </span>
       </div>
@@ -67,7 +67,7 @@ export function SlideNavigation({
         type="button"
         onClick={onNext}
         disabled={disabled || isLastSlide}
-        className="flex items-center space-x-2 px-4 py-2 text-sm text-orange-600 hover:text-orange-700 disabled:text-gray-400 transition-colors"
+        className="flex items-center space-x-2 px-4 py-2 text-sm text-orange-600 hover:text-orange-700 disabled:text-neutral-500 transition-colors"
       >
         <span>
           {t('translate.slideNavigation.next', { defaultValue: 'Next' })}

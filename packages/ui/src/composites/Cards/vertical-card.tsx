@@ -151,7 +151,7 @@ export const VerticalCard = ({
               {tags.slice(0, isScreenMd ? tags.length : 1).map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs font-medium text-gray-700 bg-gray-200 rounded-[5px] px-1 py-px"
+                  className="text-xs font-medium text-neutral-700 bg-neutral-100 rounded-[5px] px-1 py-px"
                 >
                   {tag}
                 </span>

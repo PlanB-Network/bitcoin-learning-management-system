@@ -37,7 +37,7 @@ export function ComparisonHeader({
       <div className="flex items-center justify-between mb-6">
         {/* Left side: Course info */}
         <div className="flex items-center gap-4">
-          <span className="inline-flex items-center px-3 py-1.5 text-sm font-medium bg-gray-100 text-gray-800 rounded-md uppercase">
+          <span className="inline-flex items-center px-3 py-1.5 text-sm font-medium bg-neutral-50 text-neutral-800 rounded-md uppercase">
             {courseIndex}
           </span>
           <h1 className="title-large-sb-24px text-dashboardSectionTitle">
@@ -50,7 +50,7 @@ export function ComparisonHeader({
           <span className="text-sm font-bold text-black">
             {partIndex}.{chapterIndex}
           </span>
-          <span className="text-gray-400">•</span>
+          <span className="text-neutral-500">•</span>
           <span className="text-sm font-bold text-black">{chapterTitle}</span>
         </div>
       </div>

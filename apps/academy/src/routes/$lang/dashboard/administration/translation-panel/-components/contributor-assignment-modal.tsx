@@ -249,7 +249,7 @@ export const ContributorAssignmentModal = ({
         <>
           <button
             type="button"
-            className="px-6 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors"
+            className="px-6 py-2 bg-neutral-100 text-neutral-800 rounded hover:bg-neutral-300 transition-colors"
             onClick={handleClose}
             disabled={isLoading}
           >
@@ -275,7 +275,7 @@ export const ContributorAssignmentModal = ({
       <div className="w-full space-y-4">
         {/* Find a contributor title */}
         <div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">
+          <h3 className="text-lg font-semibold text-neutral-900 mb-4">
             {t(
               'dashboard.adminPanel.translationPanel.addContributor.findContributor',
             )}
@@ -292,7 +292,7 @@ export const ContributorAssignmentModal = ({
                 placeholder={t(
                   'dashboard.adminPanel.translationPanel.addContributor.searchUsers',
                 )}
-                className="w-full px-4 py-2.5 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"
+                className="w-full px-4 py-2.5 pr-12 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none"
               />
               <div className="absolute right-3 top-1/2 transform -translate-y-1/2 p-1">
                 <img src={ProfileIcon} alt="Search" className="w-5 h-5" />
@@ -301,27 +301,27 @@ export const ContributorAssignmentModal = ({
 
             {/* Dropdown */}
             {showDropdown && (
-              <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg max-h-48 overflow-y-auto">
+              <div className="absolute z-10 w-full mt-1 bg-white border border-neutral-300 rounded-lg shadow-lg max-h-48 overflow-y-auto">
                 {filteredUsers.length > 0 ? (
                   filteredUsers.map((user) => (
                     <button
                       key={user.uid}
                       type="button"
-                      className="w-full px-4 py-2 text-left hover:bg-gray-50 border-b border-gray-100 last:border-b-0"
+                      className="w-full px-4 py-2 text-left hover:bg-neutral-100 border-b border-neutral-50 last:border-b-0"
                       onClick={() => handleUserSelect(user)}
                     >
                       <div className="font-medium">
                         {getUserDisplayName(user)}
                       </div>
                       {user.email && (
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm text-neutral-500">
                           {user.email}
                         </div>
                       )}
                     </button>
                   ))
                 ) : (
-                  <div className="px-4 py-2 text-gray-500 text-center">
+                  <div className="px-4 py-2 text-neutral-500 text-center">
                     {t(
                       'dashboard.adminPanel.translationPanel.addContributor.noUsers',
                     )}
@@ -335,7 +335,7 @@ export const ContributorAssignmentModal = ({
         {/* Selected Users */}
         {selectedUsers.length > 0 && (
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold text-gray-900">
+            <h3 className="text-lg font-semibold text-neutral-900">
               {t(
                 'dashboard.adminPanel.translationPanel.addContributor.selectedUsers',
               )}
@@ -343,7 +343,7 @@ export const ContributorAssignmentModal = ({
             {selectedUsers.map((selectedUser) => (
               <div
                 key={selectedUser.user.uid}
-                className="p-4 bg-gray-100 rounded-lg border border-gray-200"
+                className="p-4 bg-neutral-50 rounded-lg border border-neutral-100"
               >
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center space-x-4">
@@ -383,12 +383,12 @@ export const ContributorAssignmentModal = ({
                             e.target.value,
                           )
                         }
-                        className="px-3 py-2 bg-white border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none min-w-[150px] flex-1"
+                        className="px-3 py-2 bg-white border border-neutral-300 rounded-md text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none min-w-[150px] flex-1"
                         style={{
                           color: languageCode ? '#f97316' : '#6b7280',
                         }}
                       >
-                        <option value="" className="text-gray-500">
+                        <option value="" className="text-neutral-500">
                           {t(
                             'dashboard.adminPanel.translationPanel.addContributor.selectLanguage',
                           )}
@@ -420,7 +420,7 @@ export const ContributorAssignmentModal = ({
                           onClick={() =>
                             handleRemoveLanguage(selectedUser.user.uid, index)
                           }
-                          className="p-2 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
+                          className="p-2 border border-neutral-300 rounded-md hover:bg-neutral-100 transition-colors"
                         >
                           <img
                             src={CrossIcon}

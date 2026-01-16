@@ -33,7 +33,7 @@ export function UserAssignmentsTable({
 
   if (userDetails.assignments.length === 0) {
     return (
-      <div className="text-center py-8 text-gray-500">
+      <div className="text-center py-8 text-neutral-500">
         {t(
           'dashboard.adminPanel.translationPanel.userManagement.modal.noAssignments',
         )}
@@ -73,19 +73,19 @@ export function UserAssignmentsTable({
           {userDetails.assignments.map((assignment) => (
             <TableRow
               key={assignment.id}
-              className="border-b border-gray-100 hover:bg-gray-50"
+              className="border-b border-neutral-50 hover:bg-neutral-100"
             >
-              <TableCell className="py-4 font-medium text-gray-900">
-                <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-md">
+              <TableCell className="py-4 font-medium text-neutral-900">
+                <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-neutral-50 text-neutral-800 rounded-md">
                   {assignment.index || 'N/A'}
                 </span>
               </TableCell>
               <TableCell className="py-4">
-                <div className="text-sm font-medium text-gray-900 break-words">
+                <div className="text-sm font-medium text-neutral-900 break-words">
                   {assignment.courseName || assignment.courseId}
                 </div>
               </TableCell>
-              <TableCell className="py-4 text-sm text-gray-900">
+              <TableCell className="py-4 text-sm text-neutral-900">
                 {getLanguageName(assignment.language)}
               </TableCell>
               <TableCell className="py-4">

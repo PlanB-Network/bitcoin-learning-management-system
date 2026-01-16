@@ -19,7 +19,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
 }) => {
   return (
     <div className={className}>
-      <span className="text-sm font-medium text-gray-700 mr-3">
+      <span className="text-sm font-medium text-neutral-700 mr-3">
         {languageLabel}
       </span>
       <div className="flex flex-wrap gap-2 mt-2">

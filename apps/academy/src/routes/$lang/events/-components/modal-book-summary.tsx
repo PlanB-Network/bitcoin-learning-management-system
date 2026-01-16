@@ -8,7 +8,8 @@ import { PaymentRow } from '#src/components/payment-row.js';
 import { formatDateRange, formatHourRange } from '#src/utils/date.js';
 import { resourceImgUrl } from '#src/utils/index.ts';
 
-const borderClassName = 'border border-gray-400/25 rounded-xl overflow-hidden';
+const borderClassName =
+  'border border-neutral-500/25 rounded-xl overflow-hidden';
 
 interface ModalBookSummaryProps {
   event: JoinedEvent;

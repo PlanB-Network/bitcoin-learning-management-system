@@ -350,7 +350,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   return (
     <div className="flex flex-col items-center gap-4 px-[10px] mt-10">
       {generating && (
-        <p className="text-sm text-gray-500 mb-2">
+        <p className="text-sm text-neutral-500 mb-2">
           {t('translate.generatingAudio', {
             defaultValue: 'Generating audio…',
           })}
@@ -358,7 +358,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
       )}
       {/* Status messages */}
       {exists === null && !generating && (
-        <p className="text-sm text-gray-500 mb-2">
+        <p className="text-sm text-neutral-500 mb-2">
           {t('translate.checkingResource', {
             defaultValue: 'Checking audio resource…',
           })}
@@ -430,7 +430,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
                 return (
                   <div
                     key={`bar-${globalPosStart}`}
-                    className={`relative rounded-md overflow-hidden ${rawHeights ? 'bg-gray-400' : 'bg-gray-300'}`}
+                    className={`relative rounded-md overflow-hidden ${rawHeights ? 'bg-neutral-500' : 'bg-neutral-300'}`}
                     style={{
                       height: `${h}px`,
                       pointerEvents: 'none',
@@ -446,7 +446,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
               },
             )}
           </button>
-          <span className="text-sm text-gray-600">
+          <span className="text-sm text-neutral-500">
             {`${formatTime(currentTime)} / ${formatTime(duration)}`}
           </span>
         </div>
@@ -471,7 +471,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
             type="button"
             onClick={cyclePlaybackRate}
             disabled={!exists}
-            className="text-sm font-medium text-gray-900 focus:outline-none"
+            className="text-sm font-medium text-neutral-900 focus:outline-none"
             title={t('translate.changeSpeed', {
               defaultValue: 'Change playback speed',
             })}
@@ -495,7 +495,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
 
         {/* Audio validation instruction */}
         {exists && (
-          <p className="text-gray-600 mt-4 mb-2 text-center">
+          <p className="text-neutral-500 mt-4 mb-2 text-center">
             {t('translate.audioValidationInstruction', {
               defaultValue:
                 'Listen to the complete audio to automatically validate it',

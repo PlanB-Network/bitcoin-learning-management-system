@@ -66,14 +66,14 @@ const mentorMarkdownComponents: Components = {
 
     if (isCodeBlock) {
       return (
-        <code className="block bg-gray-800 text-gray-100 rounded p-2 text-xs overflow-x-auto my-1 whitespace-pre-wrap">
+        <code className="block bg-neutral-800 text-neutral-50 rounded p-2 text-xs overflow-x-auto my-1 whitespace-pre-wrap">
           {children}
         </code>
       );
     }
 
     return (
-      <code className="bg-gray-200 text-gray-800 rounded px-1 py-0.5 text-xs">
+      <code className="bg-neutral-100 text-neutral-800 rounded px-1 py-0.5 text-xs">
         {children}
       </code>
     );
@@ -88,18 +88,18 @@ const mentorMarkdownComponents: Components = {
   ),
   li: ({ children }) => <li className="mb-1 last:mb-0">{children}</li>,
   table: ({ children }) => (
-    <table className="w-full border-collapse border border-gray-300 my-2 text-xs">
+    <table className="w-full border-collapse border border-neutral-300 my-2 text-xs">
       {children}
     </table>
   ),
-  thead: ({ children }) => <thead className="bg-gray-200">{children}</thead>,
+  thead: ({ children }) => <thead className="bg-neutral-100">{children}</thead>,
   th: ({ children }) => (
-    <th className="border border-gray-300 px-2 py-1 text-left font-semibold">
+    <th className="border border-neutral-300 px-2 py-1 text-left font-semibold">
       {children}
     </th>
   ),
   td: ({ children }) => (
-    <td className="border border-gray-300 px-2 py-1">{children}</td>
+    <td className="border border-neutral-300 px-2 py-1">{children}</td>
   ),
 };
 
@@ -353,14 +353,14 @@ export const MentorChat = ({ chapterId, language }: MentorChatProps) => {
       {isOpen && (
         <div
           className={cn(
-            'fixed z-50 flex flex-col rounded-lg border border-gray-200 bg-white shadow-2xl transition-all duration-300',
+            'fixed z-50 flex flex-col rounded-lg border border-neutral-100 bg-white shadow-2xl transition-all duration-300',
             isExpanded
               ? 'bottom-4 right-4 left-4 top-4 md:bottom-10 md:right-10 md:left-auto md:top-auto md:h-[80vh] md:w-[600px]'
               : 'bottom-4 right-4 left-4 h-[60vh] max-h-[500px] md:bottom-28 md:right-10 md:left-auto md:h-[500px] md:w-[380px]',
           )}
         >
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-gray-200 bg-orange-500 px-4 py-3 text-white rounded-t-lg">
+          <div className="flex items-center justify-between border-b border-neutral-100 bg-orange-500 px-4 py-3 text-white rounded-t-lg">
             <div className="flex items-center gap-2">
               <BsRobot size={20} />
               <h3 className="font-semibold">{t('mentor.title')}</h3>
@@ -400,8 +400,8 @@ export const MentorChat = ({ chapterId, language }: MentorChatProps) => {
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
             {!isLoggedIn && (
-              <div className="text-center text-gray-500 mt-8">
-                <BsRobot size={48} className="mx-auto mb-4 text-gray-300" />
+              <div className="text-center text-neutral-500 mt-8">
+                <BsRobot size={48} className="mx-auto mb-4 text-neutral-300" />
                 <p className="text-sm mb-4">{t('mentor.loginRequired')}</p>
                 <button
                   type="button"
@@ -414,8 +414,8 @@ export const MentorChat = ({ chapterId, language }: MentorChatProps) => {
             )}
 
             {isLoggedIn && messages.length === 0 && (
-              <div className="text-center text-gray-500 mt-8">
-                <BsRobot size={48} className="mx-auto mb-4 text-gray-300" />
+              <div className="text-center text-neutral-500 mt-8">
+                <BsRobot size={48} className="mx-auto mb-4 text-neutral-300" />
                 <p className="text-sm">{t('mentor.welcome')}</p>
               </div>
             )}
@@ -433,7 +433,7 @@ export const MentorChat = ({ chapterId, language }: MentorChatProps) => {
                     'max-w-[90%] rounded-lg px-4 py-2',
                     message.type === 'user'
                       ? 'bg-orange-500 text-white'
-                      : 'bg-gray-100/50 text-gray-900',
+                      : 'bg-neutral-50/50 text-neutral-900',
                   )}
                 >
                   <div className="text-sm">
@@ -450,14 +450,14 @@ export const MentorChat = ({ chapterId, language }: MentorChatProps) => {
                       </span>
                     )}
                     {message.isStreaming && (
-                      <span className="inline-block w-2 h-4 ml-1 bg-gray-400 animate-pulse" />
+                      <span className="inline-block w-2 h-4 ml-1 bg-neutral-500 animate-pulse" />
                     )}
                   </div>
 
                   {message.sources &&
                     message.sources.length > 0 &&
                     !message.isStreaming && (
-                      <div className="mt-2 pt-2 border-t border-gray-300">
+                      <div className="mt-2 pt-2 border-t border-neutral-300">
                         <p className="text-xs font-semibold mb-1">
                           {t('mentor.sources')}
                         </p>
@@ -492,7 +492,7 @@ export const MentorChat = ({ chapterId, language }: MentorChatProps) => {
           {/* Input */}
           <form
             onSubmit={handleSubmit}
-            className="border-t border-gray-200 p-4"
+            className="border-t border-neutral-100 p-4"
           >
             <div className="flex gap-2">
               <input
@@ -501,7 +501,7 @@ export const MentorChat = ({ chapterId, language }: MentorChatProps) => {
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
                 placeholder={t('mentor.placeholder')}
-                className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                className="flex-1 rounded-lg border border-neutral-300 px-3 py-2 text-sm focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500 disabled:bg-neutral-50 disabled:cursor-not-allowed"
                 maxLength={500}
                 disabled={!isLoggedIn}
               />

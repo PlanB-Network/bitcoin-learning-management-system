@@ -266,7 +266,7 @@ export const UserManagementTab = () => {
             </TableRow>
           ) : (
             sortedUsers.map((u) => (
-              <TableRow key={u.uid} className="hover:bg-gray-50">
+              <TableRow key={u.uid} className="hover:bg-neutral-100">
                 <TableCell className="py-4">
                   {formatDate(u.createdAt)}
                 </TableCell>
@@ -274,7 +274,7 @@ export const UserManagementTab = () => {
                 <TableCell className="py-4 text-center font-medium text-sm">
                   {u.assignedCourses}
                 </TableCell>
-                <TableCell className="py-4 text-sm text-gray-700">
+                <TableCell className="py-4 text-sm text-neutral-700">
                   {formatLanguages(u.languages || [])}
                 </TableCell>
                 <TableCell className="py-4 text-center">

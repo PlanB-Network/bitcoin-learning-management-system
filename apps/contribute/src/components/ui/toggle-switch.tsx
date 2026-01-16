@@ -16,7 +16,7 @@ export const ToggleSwitch = ({
   return (
     <div className={`relative flex items-center max-w-sm ${className}`}>
       <div
-        className={`mr-3 whitespace-nowrap text-gray-900 ${
+        className={`mr-3 whitespace-nowrap text-neutral-900 ${
           checked ? 'font-normal' : 'font-medium'
         }`}
       >
@@ -29,10 +29,10 @@ export const ToggleSwitch = ({
           checked={checked}
           onChange={(e) => onChange(e.target.checked)}
         />
-        <div className="peer h-6 w-11 rounded-full bg-gray-200 after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-orange-500 peer-checked:after:translate-x-full peer-focus:outline-none" />
+        <div className="peer h-6 w-11 rounded-full bg-neutral-100 after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-orange-500 peer-checked:after:translate-x-full peer-focus:outline-none" />
       </label>
       <div
-        className={`ml-3 whitespace-nowrap text-gray-900 ${
+        className={`ml-3 whitespace-nowrap text-neutral-900 ${
           checked ? 'font-medium' : 'font-normal'
         }`}
       >

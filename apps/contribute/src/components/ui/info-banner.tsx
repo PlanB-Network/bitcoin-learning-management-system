@@ -14,7 +14,7 @@ export const InfoBanner = ({
     warning: 'bg-orange-50 border-orange-200 text-orange-700',
     success: 'bg-green-50 border-green-200 text-green-700',
     error: 'bg-red-50 border-red-200 text-red-700',
-    neutral: 'bg-gray-100 border-gray-200 text-gray-700',
+    neutral: 'bg-neutral-50 border-neutral-100 text-neutral-700',
   } as const;
 
   return (

@@ -151,18 +151,18 @@ export const DateFilterModal = ({
       <div className="w-full space-y-4">
         {/* Year select */}
         <div>
-          <span className="block mb-1 text-sm font-medium text-gray-700">
+          <span className="block mb-1 text-sm font-medium text-neutral-700">
             {t('dashboard.adminPanel.translationPanel.reports.year')}
           </span>
           <Select value={selectedYear} onValueChange={setSelectedYear}>
-            <SelectTrigger className="w-full bg-white border-gray-300">
+            <SelectTrigger className="w-full bg-white border-neutral-300">
               <SelectValue
                 placeholder={t(
                   'dashboard.adminPanel.translationPanel.reports.chooseYear',
                 )}
               />
             </SelectTrigger>
-            <SelectContent className="max-h-60 bg-white border-gray-300">
+            <SelectContent className="max-h-60 bg-white border-neutral-300">
               {availableYears.map((y) => (
                 <SelectItem key={y} value={y}>
                   {y}
@@ -175,18 +175,18 @@ export const DateFilterModal = ({
         {/* Months range */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <span className="block mb-1 text-sm font-medium text-gray-700">
+            <span className="block mb-1 text-sm font-medium text-neutral-700">
               {t('dashboard.adminPanel.translationPanel.reports.fromMonth')}
             </span>
             <Select value={fromMonth} onValueChange={setFromMonth}>
-              <SelectTrigger className="w-full bg-white border-gray-300">
+              <SelectTrigger className="w-full bg-white border-neutral-300">
                 <SelectValue
                   placeholder={t(
                     'dashboard.adminPanel.translationPanel.reports.fromMonthPlaceholder',
                   )}
                 />
               </SelectTrigger>
-              <SelectContent className="max-h-60 bg-white border-gray-300">
+              <SelectContent className="max-h-60 bg-white border-neutral-300">
                 {monthOptions.map((m) => (
                   <SelectItem key={m.value} value={m.value}>
                     {m.label}
@@ -196,18 +196,18 @@ export const DateFilterModal = ({
             </Select>
           </div>
           <div>
-            <span className="block mb-1 text-sm font-medium text-gray-700">
+            <span className="block mb-1 text-sm font-medium text-neutral-700">
               {t('dashboard.adminPanel.translationPanel.reports.toMonth')}
             </span>
             <Select value={toMonth} onValueChange={setToMonth}>
-              <SelectTrigger className="w-full bg-white border-gray-300">
+              <SelectTrigger className="w-full bg-white border-neutral-300">
                 <SelectValue
                   placeholder={t(
                     'dashboard.adminPanel.translationPanel.reports.toMonthPlaceholder',
                   )}
                 />
               </SelectTrigger>
-              <SelectContent className="max-h-60 bg-white border-gray-300">
+              <SelectContent className="max-h-60 bg-white border-neutral-300">
                 {monthOptions.map((m) => (
                   <SelectItem key={m.value} value={m.value}>
                     {m.label}

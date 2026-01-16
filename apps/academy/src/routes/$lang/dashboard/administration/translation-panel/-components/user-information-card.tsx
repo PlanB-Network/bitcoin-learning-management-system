@@ -24,7 +24,7 @@ export function UserInformationCard({
   }, 0);
 
   return (
-    <div className="bg-gray-100 border border-gray-200 rounded-lg p-6">
+    <div className="bg-neutral-50 border border-neutral-100 rounded-lg p-6">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Left side - User info */}
         <div className="space-y-4">
@@ -32,7 +32,7 @@ export function UserInformationCard({
           <div className="flex flex-col gap-1">
             <div className="flex items-center gap-2">
               <img src={ProfileIcon} alt="Profile" className="w-5 h-5" />
-              <span className="text-lg font-medium text-gray-900">
+              <span className="text-lg font-medium text-neutral-900">
                 {userDetails.displayName || userDetails.username}
               </span>
             </div>
@@ -47,12 +47,12 @@ export function UserInformationCard({
         </div>
 
         {/* Right side - Stats with separator */}
-        <div className="lg:border-l lg:border-gray-300 lg:pl-6">
+        <div className="lg:border-l lg:border-neutral-300 lg:pl-6">
           <div className="space-y-3">
             {/* Start date with calendar icon */}
             <div className="flex items-center gap-3">
               <img src={CalendarIcon} alt="Calendar" className="w-5 h-5" />
-              <span className="text-base text-gray-900">
+              <span className="text-base text-neutral-900">
                 {formatDate(userDetails.startDate)}
               </span>
             </div>
@@ -60,7 +60,7 @@ export function UserInformationCard({
             {/* Total chapters */}
             <div className="flex items-center gap-3">
               <img src={GridIcon} alt="Chapters" className="w-5 h-5" />
-              <span className="text-base text-gray-900">
+              <span className="text-base text-neutral-900">
                 {totalChapters}{' '}
                 {t(
                   'dashboard.adminPanel.translationPanel.userManagement.chapters',
@@ -71,7 +71,7 @@ export function UserInformationCard({
             {/* Courses with book icon */}
             <div className="flex items-center gap-3">
               <img src={BookIcon} alt="Courses" className="w-5 h-5" />
-              <span className="text-base text-gray-900">
+              <span className="text-base text-neutral-900">
                 {userDetails.assignments.length}{' '}
                 {t(
                   'dashboard.adminPanel.translationPanel.userManagement.courses',

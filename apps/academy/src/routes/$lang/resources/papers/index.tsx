@@ -159,7 +159,7 @@ function ResearchPapers() {
 
           {/* Sort */}
           <div className="flex w-full justify-end items-center gap-2 mb-4 lg:mb-6">
-            <span className="text-sm text-gray-500">
+            <span className="text-sm text-neutral-500">
               {t('educatorContent.sortBy')}
             </span>
             <button
@@ -167,7 +167,7 @@ function ResearchPapers() {
               onClick={() =>
                 setSortBy((prev) => (prev === 'recent' ? 'oldest' : 'recent'))
               }
-              className="text-sm font-medium text-gray-900 hover:text-orange-500 transition-colors"
+              className="text-sm font-medium text-neutral-900 hover:text-orange-500 transition-colors"
             >
               {sortBy === 'recent'
                 ? t('educatorContent.sortMostRecent')

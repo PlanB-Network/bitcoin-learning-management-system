@@ -192,7 +192,7 @@ export const LanguageCoverageSubTab = ({
             </TableRow>
           ) : (
             sortedStats.map((row) => (
-              <TableRow key={row.language} className="hover:bg-gray-50">
+              <TableRow key={row.language} className="hover:bg-neutral-100">
                 <TableCell className="py-3">
                   {getLanguageName(row.language)}
                 </TableCell>

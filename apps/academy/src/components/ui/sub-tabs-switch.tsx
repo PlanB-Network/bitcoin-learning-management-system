@@ -21,7 +21,7 @@ export const SubTabsSwitch: React.FC<SubTabsSwitchProps> = ({
 }) => {
   return (
     <div
-      className={cn('flex w-fit bg-gray-100 p-1 rounded-lg gap-1', className)}
+      className={cn('flex w-fit bg-neutral-50 p-1 rounded-lg gap-1', className)}
     >
       {tabs.map((tab) => (
         <button
@@ -31,8 +31,8 @@ export const SubTabsSwitch: React.FC<SubTabsSwitchProps> = ({
           className={cn(
             'px-3 py-1.5 text-sm font-medium rounded-lg transition-colors',
             activeTab === tab.id
-              ? 'bg-white text-gray-900'
-              : 'text-gray-700 hover:bg-gray-200',
+              ? 'bg-white text-neutral-900'
+              : 'text-neutral-700 hover:bg-neutral-100',
           )}
         >
           {tab.label}

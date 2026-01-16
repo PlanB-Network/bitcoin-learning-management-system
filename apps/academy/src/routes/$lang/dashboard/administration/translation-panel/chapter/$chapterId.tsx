@@ -169,7 +169,7 @@ function ChapterDetailsPage() {
         </button>
 
         {/* Chapter Title */}
-        <h1 className="text-2xl font-semibold text-gray-900 mt-4">
+        <h1 className="text-2xl font-semibold text-neutral-900 mt-4">
           {courseDetails?.courseName || data?.context?.courseName}
         </h1>
 

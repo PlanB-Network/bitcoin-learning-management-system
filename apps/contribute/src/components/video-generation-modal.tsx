@@ -51,7 +51,7 @@ export const VideoGenerationModal = ({
 
         {/* Video generation icon and progress */}
         <div className="flex flex-col items-center gap-[40px] mb-[60px]">
-          <h3 className="text-gray-900 font-medium text-center">
+          <h3 className="text-neutral-900 font-medium text-center">
             {t('translate.videoGeneration.title', {
               defaultValue: 'Video generation',
             })}
@@ -66,7 +66,7 @@ export const VideoGenerationModal = ({
           </div>
 
           {/* Progress bar */}
-          <div className="w-full bg-gray-200 rounded-full h-2">
+          <div className="w-full bg-neutral-100 rounded-full h-2">
             <div
               className="bg-orange-500 h-2 rounded-full transition-all duration-500"
               style={{ width: `${progress}%` }}
@@ -82,7 +82,7 @@ export const VideoGenerationModal = ({
           </p>
 
           {/* Status message */}
-          <p className="text-gray-600 text-center text-sm">
+          <p className="text-neutral-500 text-center text-sm">
             {t('translate.videoGeneration.completedMessage', {
               defaultValue:
                 'No need to wait! Feel free to review the next course now.',

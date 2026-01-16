@@ -310,29 +310,29 @@ export const ContentManagementTab = () => {
               filteredAndSortedCourses.map((course) => (
                 <TableRow
                   key={`${course.courseId}-${course.language}`}
-                  className="border-b border-gray-100 hover:bg-gray-50"
+                  className="border-b border-neutral-50 hover:bg-neutral-100"
                 >
-                  <TableCell className="py-4 font-medium text-gray-900">
+                  <TableCell className="py-4 font-medium text-neutral-900">
                     <TextTag size="small" variant="grey">
                       {course.index?.toUpperCase()}
                     </TextTag>
                   </TableCell>
                   <TableCell className="py-4">
-                    <div className="text-sm font-medium text-gray-900 break-words">
+                    <div className="text-sm font-medium text-neutral-900 break-words">
                       {course.courseName || course.courseId}
                     </div>
                   </TableCell>
-                  <TableCell className="py-4 text-gray-900">
+                  <TableCell className="py-4 text-neutral-900">
                     {getLanguageName(course.language)}
                   </TableCell>
                   <TableCell className="py-4">
                     <span
                       className={`inline-flex items-center px-2 py-1 text-xs font-medium rounded-md ${
                         course.isAssigned === 'not_assigned'
-                          ? 'bg-gray-100 text-gray-800'
+                          ? 'bg-neutral-50 text-neutral-800'
                           : course.isAssigned === 'assigned'
                             ? 'bg-green-100 text-green-800'
-                            : 'bg-gray-100 text-gray-800'
+                            : 'bg-neutral-50 text-neutral-800'
                       }`}
                     >
                       {course.isAssigned === 'not_assigned'
@@ -346,12 +346,12 @@ export const ContentManagementTab = () => {
                           : course.isAssigned}
                     </span>
                   </TableCell>
-                  <TableCell className="py-4 text-gray-900 break-words">
+                  <TableCell className="py-4 text-neutral-900 break-words">
                     {course.assigneeDisplayName ||
                       course.assigneeUsername ||
                       ''}
                   </TableCell>
-                  <TableCell className="py-4 text-gray-900">
+                  <TableCell className="py-4 text-neutral-900">
                     {course.progress || 0}%
                   </TableCell>
                   <TableCell className="py-4 text-center">
@@ -404,7 +404,7 @@ export const ContentManagementTab = () => {
               <TableRow>
                 <TableCell
                   colSpan={7}
-                  className="py-8 text-center text-gray-500"
+                  className="py-8 text-center text-neutral-500"
                 >
                   {searchQuery || selectedTopic !== 'all'
                     ? t(

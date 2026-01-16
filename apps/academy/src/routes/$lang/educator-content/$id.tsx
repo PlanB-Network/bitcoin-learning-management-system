@@ -144,7 +144,7 @@ function EducatorContentDetail() {
                   />
                 </button>
               ) : (
-                <span className="text-gray-500 bg-gray-200 w-full h-full text-center my-auto flex items-center justify-center rounded-2xl">
+                <span className="text-neutral-500 bg-neutral-100 w-full h-full text-center my-auto flex items-center justify-center rounded-2xl">
                   {t('educatorContent.noCover')}
                 </span>
               )}
@@ -218,12 +218,12 @@ function EducatorContentDetail() {
           </div>
 
           {/* Files and Links List */}
-          <div className="bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm">
-            <div className="flex flex-col divide-y divide-gray-100">
+          <div className="bg-white rounded-3xl border border-neutral-50 overflow-hidden shadow-sm">
+            <div className="flex flex-col divide-y divide-neutral-50">
               {sortedLinks?.map((link) => (
                 <div
                   key={link.url}
-                  className="flex items-center justify-between py-2 px-4 hover:bg-gray-50 transition-colors gap-4"
+                  className="flex items-center justify-between py-2 px-4 hover:bg-neutral-100 transition-colors gap-4"
                 >
                   <a
                     href={link.url}
@@ -251,11 +251,11 @@ function EducatorContentDetail() {
               {sortedFiles?.map((file) => (
                 <div
                   key={file.path}
-                  className="flex items-center justify-between py-2 px-4 hover:bg-gray-50 transition-colors gap-4"
+                  className="flex items-center justify-between py-2 px-4 hover:bg-neutral-100 transition-colors gap-4"
                 >
-                  <span className="body-small md:body-base text-gray-700 truncate">
+                  <span className="body-small md:body-base text-neutral-700 truncate">
                     {file.name}{' '}
-                    <span className="text-gray-400">
+                    <span className="text-neutral-500">
                       ({formatFileSize(file.size)})
                     </span>
                   </span>
@@ -328,7 +328,7 @@ function StatCard({
 }) {
   return (
     <div className="bg-neutral-50 rounded-2xl p-2 md:p-6 flex flex-col items-center justify-center text-center gap-3 min-w-0 w-full">
-      <div className="flex items-center gap-2 text-gray-400">
+      <div className="flex items-center gap-2 text-neutral-500">
         {Icon && <Icon className="size-4" />}
         <span className="caption-extra-small uppercase">{label}</span>
       </div>

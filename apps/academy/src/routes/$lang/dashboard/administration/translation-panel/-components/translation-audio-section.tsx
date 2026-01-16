@@ -24,7 +24,9 @@ export function TranslationAudioSection({
 }: TranslationAudioSectionProps) {
   return (
     <div className="space-y-4">
-      {title && <h3 className="text-lg font-medium text-gray-900">{title}</h3>}
+      {title && (
+        <h3 className="text-lg font-medium text-neutral-900">{title}</h3>
+      )}
       <AudioPlayer
         courseId={courseId}
         language={language}

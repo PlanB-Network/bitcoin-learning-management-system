@@ -123,7 +123,7 @@ export function ComparisonPngViewer({
       {/* Language Header */}
       <div className="flex items-center gap-[10px] mb-5">
         <span
-          className="text-base font-semibold text-gray-900"
+          className="text-base font-semibold text-neutral-900"
           style={{ fontFamily: 'Rubik, sans-serif' }}
         >
           {t('translate.language', { defaultValue: 'Language' })} :
@@ -139,10 +139,10 @@ export function ComparisonPngViewer({
       {/* PNG Content */}
       <div className="bg-white border rounded-lg overflow-hidden">
         {loading ? (
-          <div className="h-96 flex items-center justify-center bg-gray-50">
+          <div className="h-96 flex items-center justify-center bg-neutral-100">
             <div className="text-center">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-600 mx-auto mb-2" />
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-neutral-500">
                 {t('translate.loadingPresentation', {
                   defaultValue: 'Loading presentation...',
                 })}
@@ -164,9 +164,9 @@ export function ComparisonPngViewer({
                   }}
                 />
               ) : (
-                <div className="h-96 flex items-center justify-center bg-gray-50 rounded-lg">
+                <div className="h-96 flex items-center justify-center bg-neutral-100 rounded-lg">
                   <div className="text-center">
-                    <div className="text-gray-400 mb-2">
+                    <div className="text-neutral-500 mb-2">
                       <svg
                         className="w-12 h-12 mx-auto"
                         fill="none"
@@ -186,7 +186,7 @@ export function ComparisonPngViewer({
                         />
                       </svg>
                     </div>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-neutral-500">
                       {forceType === 'original'
                         ? t('translate.comparison.originalVersion', {
                             defaultValue: 'Original Version',
@@ -205,9 +205,9 @@ export function ComparisonPngViewer({
             </div>
           </div>
         ) : (
-          <div className="h-96 flex items-center justify-center bg-gray-50">
+          <div className="h-96 flex items-center justify-center bg-neutral-100">
             <div className="text-center">
-              <div className="text-gray-400 mb-2">
+              <div className="text-neutral-500 mb-2">
                 <svg
                   className="w-12 h-12 mx-auto"
                   fill="none"
@@ -227,7 +227,7 @@ export function ComparisonPngViewer({
                   />
                 </svg>
               </div>
-              <p className="text-sm text-gray-600 mb-2">
+              <p className="text-sm text-neutral-500 mb-2">
                 {t('translate.noPngSlides', {
                   defaultValue: 'No PNG slides available for this presentation',
                 })}

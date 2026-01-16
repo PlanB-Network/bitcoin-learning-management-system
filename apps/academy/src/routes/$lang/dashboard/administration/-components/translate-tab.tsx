@@ -197,7 +197,7 @@ export const TranslateTab = () => {
           </h2>
         </div>
         <div className="text-center py-8">
-          <p className="text-gray-500">
+          <p className="text-neutral-500">
             {t('dashboard.adminPanel.translationPanel.translate.noCourses')}
           </p>
         </div>
@@ -215,7 +215,7 @@ export const TranslateTab = () => {
       </div>
 
       {/* Description */}
-      <p className="text-gray-600">
+      <p className="text-neutral-500">
         {t('dashboard.adminPanel.translationPanel.translate.description')}
       </p>
 
@@ -297,7 +297,7 @@ export const TranslateTab = () => {
                       </span>
                     ))}
                     {course.todoLanguages.length > 3 && (
-                      <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-gray-100 text-gray-600 rounded-full">
+                      <span className="inline-flex items-center px-2 py-1 text-xs font-medium bg-neutral-50 text-neutral-500 rounded-full">
                         +{course.todoLanguages.length - 3}
                       </span>
                     )}

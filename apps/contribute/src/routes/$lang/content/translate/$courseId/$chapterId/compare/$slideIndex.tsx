@@ -431,7 +431,7 @@ function CompareSlidePage() {
         className="flex justify-center items-center min-h-screen"
       >
         <LoadingSpinner size="md" />
-        <div className="mt-4 text-gray-600">Loading compare view…</div>
+        <div className="mt-4 text-neutral-500">Loading compare view…</div>
       </PageLayout>
     );
   }
@@ -511,13 +511,13 @@ function CompareSlidePage() {
 
         <div className="flex items-center gap-4">
           <div
-            className="text-gray-700 px-3 py-1 rounded text-sm font-medium"
+            className="text-neutral-700 px-3 py-1 rounded text-sm font-medium"
             style={{ backgroundColor: '#E5E5E5' }}
           >
             {chapterData.context.courseIndex?.toUpperCase()}
           </div>
           <h2
-            className="text-gray-900 text-xl sm:text-2xl md:text-3xl lg:text-4xl"
+            className="text-neutral-900 text-xl sm:text-2xl md:text-3xl lg:text-4xl"
             style={{
               fontFamily: 'Rubik, sans-serif',
               fontWeight: 500,
@@ -526,21 +526,21 @@ function CompareSlidePage() {
           >
             {chapterData?.context.courseName}
           </h2>
-          <span className="ml-auto text-sm font-medium text-gray-900 text-right">
+          <span className="ml-auto text-sm font-medium text-neutral-900 text-right">
             {`${chapterData.context.partIndex}.${chapterData.context.chapterIndex} ${chapterData.context.chapterTitle}`}
           </span>
         </div>
       </div>
 
       {/* Tab Navigation */}
-      <div className="flex border-b border-gray-200 mb-8">
+      <div className="flex border-b border-neutral-100 mb-8">
         <button
           type="button"
           onClick={() => setActiveTab('presentation')}
           className={`px-4 py-2 text-sm font-medium relative ${
             activeTab === 'presentation'
-              ? 'text-gray-900'
-              : 'text-gray-500 hover:text-gray-700'
+              ? 'text-neutral-900'
+              : 'text-neutral-500 hover:text-neutral-700'
           }`}
         >
           {t('translate.coursePresentation', {
@@ -555,8 +555,8 @@ function CompareSlidePage() {
           onClick={() => setActiveTab('transcription')}
           className={`px-4 py-2 text-sm font-medium relative ${
             activeTab === 'transcription'
-              ? 'text-gray-900'
-              : 'text-gray-500 hover:text-gray-700'
+              ? 'text-neutral-900'
+              : 'text-neutral-500 hover:text-neutral-700'
           }`}
         >
           {t('translate.transcription', { defaultValue: 'Transcription' })}
@@ -587,7 +587,7 @@ function CompareSlidePage() {
               <div className="flex items-center justify-between mb-5">
                 <div className="flex items-center gap-[10px]">
                   <span
-                    className="text-[18px] font-semibold text-gray-900"
+                    className="text-[18px] font-semibold text-neutral-900"
                     style={{ fontFamily: 'Rubik, sans-serif' }}
                   >
                     {t('translate.language', { defaultValue: 'Language' })}
@@ -660,7 +660,7 @@ function CompareSlidePage() {
                               indexParam,
                             )}
                             alt={`Slide ${numericSlideIndex + 1} - ${getLanguageName(originalLanguage)}`}
-                            className={`max-w-full h-auto border border-gray-300 rounded-lg shadow-sm transition-opacity duration-200 ${
+                            className={`max-w-full h-auto border border-neutral-300 rounded-lg shadow-sm transition-opacity duration-200 ${
                               pngLoading || pngError
                                 ? 'opacity-0'
                                 : 'opacity-100'
@@ -705,7 +705,7 @@ function CompareSlidePage() {
                           <div className="mb-2">
                             Failed to load presentation image
                           </div>
-                          <div className="text-sm text-gray-600">
+                          <div className="text-sm text-neutral-500">
                             {pngError}
                           </div>
                         </div>
@@ -764,7 +764,7 @@ function CompareSlidePage() {
               <div className="flex items-center justify-between mb-5">
                 <div className="flex items-center gap-[10px]">
                   <span
-                    className="text-[18px] font-semibold text-gray-900"
+                    className="text-[18px] font-semibold text-neutral-900"
                     style={{ fontFamily: 'Rubik, sans-serif' }}
                   >
                     {t('translate.language', { defaultValue: 'Language' })}
@@ -792,7 +792,7 @@ function CompareSlidePage() {
               </div>
 
               <div className="bg-white border rounded-lg p-4 min-h-[200px]">
-                <div className="text-gray-700 whitespace-pre-wrap">
+                <div className="text-neutral-700 whitespace-pre-wrap">
                   {isTranscriptLoading
                     ? t('translate.loadingTranscription', {
                         defaultValue: 'Loading transcription…',
@@ -821,7 +821,7 @@ function CompareSlidePage() {
               <div className="flex items-center justify-between mb-5">
                 <div className="flex items-center gap-[10px]">
                   <span
-                    className="text-[18px] font-semibold text-gray-900"
+                    className="text-[18px] font-semibold text-neutral-900"
                     style={{ fontFamily: 'Rubik, sans-serif' }}
                   >
                     {t('translate.translatedTranscription', {
@@ -845,7 +845,7 @@ function CompareSlidePage() {
                   placeholder={t('translate.enterTranslation', {
                     defaultValue: 'Enter your translation here...',
                   })}
-                  className="w-full h-full min-h-[160px] border-0 resize-none focus:outline-none text-base leading-relaxed bg-transparent text-gray-900 textarea-scrollbar"
+                  className="w-full h-full min-h-[160px] border-0 resize-none focus:outline-none text-base leading-relaxed bg-transparent text-neutral-900 textarea-scrollbar"
                   style={{ width: 'calc(100% + 18px)', marginRight: '-18px' }}
                 />
               </div>
