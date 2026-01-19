@@ -57,7 +57,7 @@ export const ImageInput = ({
         const ctx = canvas.getContext('2d');
         if (ctx) {
           ctx.drawImage(img, 0, 0);
-          const webpDataUrl = canvas.toDataURL('image/webp', 1.0);
+          const webpDataUrl = canvas.toDataURL('image/webp', 0.9);
           const newFilename = file.name.replace(/\.[^/.]+$/, '') + '.webp';
           onChange(webpDataUrl, newFilename);
         }

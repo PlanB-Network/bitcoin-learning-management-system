@@ -1,6 +1,7 @@
 import crypto from 'node:crypto';
 
 import { createOctokit } from '@blms/github';
+import { createGetUserDetails } from '@blms/service-user';
 import type { CreateResourcePR } from '@blms/types';
 import yaml from 'js-yaml';
 import type { Dependencies } from '../../dependencies.js';
@@ -8,12 +9,13 @@ import type { Dependencies } from '../../dependencies.js';
 export const createResourcePR = async (
   dependencies: Dependencies,
   input: CreateResourcePR,
+  uid: string,
 ) => {
   const { config } = dependencies;
   const token = config.sync.githubPrToken;
 
   if (!token) {
-    throw new Error('GITHUB_PR_TOKEN is not configured');
+    throw new Error('Resource submission is temporarily unavailable.');
   }
 
   const octokit = createOctokit(token);
@@ -27,7 +29,6 @@ export const createResourcePR = async (
     'podcasts',
     'channels',
     'newsletters',
-    'papers',
   ];
 
   if (!allowedTypes.includes(input.type)) {
@@ -36,7 +37,11 @@ export const createResourcePR = async (
 
   const resourceId = crypto.randomUUID();
   const normalizedTitle = input.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-  const branchName = `add-${input.type}-${normalizedTitle.slice(0, 20)}-${resourceId.slice(0, 8)}`;
+  const branchName = `add-${input.type}-${normalizedTitle.slice(0, 20)}-${resourceId}`;
+
+  const getUserDetails = createGetUserDetails(dependencies);
+  const user = await getUserDetails({ uid });
+  const contributorName = user?.displayName || 'Unknown';
 
   const files: {
     path: string;
@@ -54,7 +59,7 @@ export const createResourcePR = async (
       language: input.language,
       last_contribution_date: today,
       urgency: 1,
-      contributor_names: ['Asi0Flammeus'],
+      contributor_names: [contributorName],
       reward: 0,
     },
   ];
@@ -243,6 +248,7 @@ export const createResourcePR = async (
       language: input.contentLanguage,
       links: {
         platform: input.resourceLink,
+        trailer: input.trailerLink,
       },
       description: input.description,
     };
@@ -327,13 +333,13 @@ export const createResourcePR = async (
       title: `[${input.type.slice(0, -1).toUpperCase()} submission] ${input.title}`,
       head: branchName,
       base: baseBranch,
-      body: `This PR adds a new ${input.type.slice(0, -1)} resource: **${input.title}**.\n\nSubmission from the BLMS platform.`,
+      body: `This PR adds a new ${input.type.slice(0, -1)} resource: **${input.title}**.\n\nSubmission from the BLMS platform by ${contributorName}.`,
     });
 
     return { prUrl: prData.html_url };
   } catch (error) {
     console.error('Error creating GitHub PR:', error);
-    throw new Error(`Failed to create GitHub PR: ${(error as any).message}`);
+    throw new Error('Resource submission failed. Try again later.');
   }
 };
 

@@ -3,6 +3,7 @@ import {
   BasicModal,
   Button,
   cn,
+  customToast,
   DividerSimple,
   Field,
   FieldError,
@@ -140,15 +141,15 @@ const createResourcePRSchema = z.object({
   description: z.string().min(1, 'Description is required'),
   links: z
     .object({
-      website: z.string().optional(),
-      twitter: z.string().optional(),
-      github: z.string().optional(),
-      nostr: z.string().optional(),
-      linkedin: z.string().optional(),
+      website: z.url().optional(),
+      twitter: z.url().optional(),
+      github: z.url().optional(),
+      nostr: z.url().optional(),
+      linkedin: z.url().optional(),
     })
     .optional(),
-  resourceLink: z.string().optional(),
-  trailerLink: z.string().optional(),
+  resourceLink: z.url().optional(),
+  trailerLink: z.url().optional(),
   language: z.string(),
   contentLanguage: z.string().optional(),
   coverImage: z
@@ -202,10 +203,19 @@ export const AddResourceModal = ({
         setCoverImageBase64(null);
         setCoverImageName(null);
       },
+      onError: () => {
+        customToast(t('resources.addResource.errorSendingAddition'), {
+          mode: 'light',
+          color: 'warning',
+        });
+      },
     }),
   );
 
   const handleClose = () => {
+    if (createPR.isPending) {
+      return;
+    }
     onClose();
     setIsSuccess(false);
   };

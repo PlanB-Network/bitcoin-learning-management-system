@@ -7,6 +7,6 @@ export const githubRouter = createTRPCRouter({
   createResourcePR: studentProcedure
     .input(createResourcePRSchema)
     .mutation(async ({ input, ctx }) => {
-      return createResourcePR(ctx.dependencies, input);
+      return createResourcePR(ctx.dependencies, input, ctx.user.uid);
     }),
 });

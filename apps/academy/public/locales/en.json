@@ -1395,7 +1395,6 @@
     "fileExisting": "(Existing)",
     "fileTooLarge": "File too large (max 50MB)",
     "fileTypeNotAllowed": "Only images and documents (PDF, presentations, spreadsheets, text docs) are allowed",
-    "supportedFileTypes": "Supported file types: images, PDF, presentations, spreadsheets, text docs",
     "guidelines": {
       "continueToAdd": "Continue to Add",
       "point1": "Group related files into bundles (e.g., \"Lille Meetup Presentations 2024\").",
@@ -1407,9 +1406,16 @@
     },
     "imageCover": "Cover Image",
     "imageError": "An error occurred while uploading the image",
+    "imageTooLarge": "The image size cannot exceed 15MB",
     "languagePlaceholder": "Select",
     "languagePlaceholderFilter": "Language",
     "languageRequired": "Select the resource language",
+    "license": {
+      "changeLicense": "Change license",
+      "learnMore": "Learn more about licenses",
+      "licensedByDefault": "Licensed by default as CC BY-SA",
+      "title": "License"
+    },
     "linkOrFileRequired": "Please add at least one link or upload a file",
     "linkPlaceholder": "https://example.com",
     "loginMessage": "Please log in to view your content.",
@@ -1421,7 +1427,6 @@
     "noResultsDescription": "Try adjusting your search filters",
     "noResultsTitle": "No educator content found",
     "onlyImages": "Only image files are allowed",
-    "imageTooLarge": "The image size cannot exceed 15MB",
     "pageSubtitle": "Where Bitcoin educators and communities share and reuse resources",
     "pageTitle": "Educator content",
     "resourceType": "What type of resource is this?",
@@ -1449,6 +1454,7 @@
     "success": "Educator content added successfully!",
     "successSubtitle": "It will go through a review process before being displayed.",
     "successTitle": "Educator content successfully uploaded",
+    "supportedFileTypes": "Supported file types: images, PDF, presentations, spreadsheets, text docs",
     "titleHelper": "It should reflect the content and purpose of your resource. Keep it concise but informative.",
     "titlePlaceholder": "e.g. Multi-sig workshop Liana",
     "titleRequired": "The title cannot be empty",
@@ -1470,12 +1476,6 @@
     "uploadFilesHelper": "If you have related files, upload them together as one bundle. Name your files clearly before uploading.",
     "uploadForReview": "Upload for review",
     "uploading": "Uploading...",
-    "license": {
-      "title": "License",
-      "licensedByDefault": "Licensed by default as CC BY-SA",
-      "learnMore": "Learn more about licenses",
-      "changeLicense": "Change license"
-    },
     "urlInvalid": "The link must be a valid URL"
   },
   "events": {
@@ -1790,6 +1790,7 @@
       "descriptionPlaceholder": "Describe the resource content to help others understand its content and find it",
       "done": "Done",
       "dropImage": "Click or drop an image here (PNG, JPG, WebP)",
+      "errorSendingAddition": "There was an error while trying to send the resource.",
       "glossary": "Add glossary word",
       "movie": "Add movie",
       "newsletter": "Add newsletter",
@@ -2085,8 +2086,8 @@
     "credits": "Credits",
     "date": "Date",
     "day": "Day",
-    "delete": "Delete",
     "default": "default",
+    "delete": "Delete",
     "description": "Description",
     "details": "Details",
     "diploma": "Diploma",
