@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import ArrowRightIcon from '#src/assets/icons/arrow_right.svg';
 import CrossIcon from '#src/assets/icons/cross_black.svg';
 import SandClockIcon from '#src/assets/icons/sand_clock.svg';
-import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black_orangepill_gradient.svg';
+import PlanBLogoBlack from '#src/assets/logo/pba-horizontal-black.svg';
 
 interface VideoGenerationModalProps {
   isOpen: boolean;

@@ -2,7 +2,7 @@ import { Button } from '@blms/ui';
 import type { JSX } from 'react';
 import { useTranslation } from 'react-i18next';
 import WorldIcon from '#src/assets/icons/world.svg';
-import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black_orangepill_gradient.svg';
+import PlanBLogoBlack from '#src/assets/logo/pba-horizontal-black.svg';
 import { getLanguageName } from '#src/utils/i18n.ts';
 
 interface TranslationRequestModalProps {

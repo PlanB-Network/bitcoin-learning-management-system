@@ -18,11 +18,11 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
       {/* Top section */}
       <div
         className={cn(
-          'relative flex w-full flex-col border-t border-[#333333]',
+          'relative flex w-full flex-col border-t border-neutral-800',
           color ??
             (variant === 'dark'
               ? 'bg-white text-black'
-              : 'bg-[#1A1A1A] text-white'),
+              : 'bg-neutral-900 text-white'),
         )}
       >
         <div className="relative mx-auto flex w-full max-w-[1440px] min-h-[181px] flex-col md:flex-row items-center md:items-start justify-center gap-8 md:gap-16 px-6 pt-14 pb-8 md:pb-[72px]">
@@ -81,7 +81,7 @@ export const Footer = ({ variant = 'light', color }: FooterProps) => {
       </div>
 
       {/* Bottom section */}
-      <div className="flex w-full items-center justify-center bg-[#333333] py-4">
+      <div className="flex w-full items-center justify-center bg-neutral-800 py-4">
         <img
           src={PlanBLogoWhite}
           alt="Plan ₿ Network logo"

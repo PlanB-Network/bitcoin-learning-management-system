@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import CrossIcon from '#src/assets/icons/cross_black.svg';
 import ThumbUpOrangeIcon from '#src/assets/icons/thumb_up_orange.svg?react';
-import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black_orangepill_gradient.svg';
+import PlanBLogoBlack from '#src/assets/logo/pba-horizontal-black.svg';
 
 interface RequestSentModalProps {
   isOpen: boolean;
