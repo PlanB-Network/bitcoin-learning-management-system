@@ -4,7 +4,7 @@ import { Link } from '@tanstack/react-router';
 import { QRCodeSVG } from 'qrcode.react';
 import { Trans, useTranslation } from 'react-i18next';
 import { AiOutlineCopy } from 'react-icons/ai';
-import PlanBLogo from '../assets/logo/planb_logo_horizontal_black.svg?react';
+import PlanBLogo from '../assets/logo/pba-horizontal-black.svg?react';
 
 interface PaymentQrProps extends React.HTMLProps<HTMLDivElement> {
   checkoutData: CheckoutData;

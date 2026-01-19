@@ -16,7 +16,7 @@ import {
 } from 'react-icons/tb';
 import { z } from 'zod';
 import CheckPixel from '#src/assets/icons/pixelated/check.svg?react';
-import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
+import PlanBLogoBlack from '#src/assets/logo/pba-horizontal-black.svg?react';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { PageLayout } from '#src/components/page-layout.tsx';

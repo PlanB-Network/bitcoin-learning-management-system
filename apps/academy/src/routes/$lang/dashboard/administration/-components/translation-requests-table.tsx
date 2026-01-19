@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { TbLayoutGrid, TbMessages } from 'react-icons/tb';
 // Import the correct logo asset
-import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black.svg';
+import PlanBLogoBlack from '#src/assets/logo/pba-horizontal-black.svg';
 import { getLanguageName } from '#src/utils/i18n.ts';
 import { trpcClient } from '#src/utils/trpc.js';
 import {

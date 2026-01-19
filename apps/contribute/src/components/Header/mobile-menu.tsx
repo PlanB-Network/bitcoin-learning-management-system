@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import SignInIconDark from '#src/assets/icons/profile_log_in_dark.svg';
-import PlanBLogoOrange from '#src/assets/logo/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
+import PlanBLogoOrange from '#src/assets/logo/pba-horizontal-white.svg?react';
 import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl } from '#src/services/user.js';
 

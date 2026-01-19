@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router';
 import { useContext, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbMenu, TbX } from 'react-icons/tb';
-import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
+import PlanBLogoBlack from '#src/assets/logo/pba-horizontal-black.svg?react';
 import { AppContext } from '#src/providers/context.js';
 import { SideBarContent } from '../sidebar-content.tsx';
 import { LanguageSelectorMobile } from './language-selector.tsx';

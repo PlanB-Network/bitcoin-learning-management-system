@@ -4,7 +4,7 @@ import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import type { IconType } from 'react-icons/lib';
 import { TbCalendarEvent, TbChevronRight } from 'react-icons/tb';
-import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
+import PlanBLogoBlack from '#src/assets/logo/pba-horizontal-black.svg?react';
 import { formatShortDateRange } from '#src/utils/date.js';
 import { resourceImgUrl } from '#src/utils/index.ts';
 

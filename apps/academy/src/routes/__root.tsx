@@ -4,7 +4,7 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
 import type { i18n } from 'i18next';
 import { ErrorBoundary } from '#src/components/error-boundary.tsx';
 import { LANGUAGES } from '#src/utils/i18n.ts';
-import PlanBLogo from '../assets/logo/planb_logo_horizontal_black.svg?react';
+import PlanBLogo from '../assets/logo/pba-horizontal-black.svg?react';
 import { router } from './-router.tsx';
 
 // Create a root route

@@ -8,7 +8,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 import checkGreen from '#src/assets/icons/check_green.svg';
 import spinner from '#src/assets/icons/spinner.svg';
-import PlanBLogo from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
+import PlanBLogo from '#src/assets/logo/pba-horizontal-black.svg?react';
 import { PaymentCallout } from '#src/components/payment-callout.js';
 import { trpc } from '#src/utils/trpc.js';
 

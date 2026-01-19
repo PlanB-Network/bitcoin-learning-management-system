@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 
-import PlanBLogoOrange from '#src/assets/logo/planb_logo_horizontal_white_orangepill_whitetext.svg?react';
-import PlanBLogoWhite from '#src/assets/logo/planb_logo_horizontal_white_whitepill.svg?react';
+import PlanBLogoOrange from '#src/assets/logo/pba-horizontal-white.svg?react';
+import PlanBLogoWhite from '#src/assets/logo/pba-horizontal-white.svg?react';
 import { MetaElements } from './meta-elements.tsx';
 
 export interface FlyingMenuProps {

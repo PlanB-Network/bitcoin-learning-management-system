@@ -3,7 +3,7 @@ import { Button } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { t } from 'i18next';
 import { FiLoader } from 'react-icons/fi';
-import PlanBLogo from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
+import PlanBLogo from '#src/assets/logo/pba-horizontal-black.svg?react';
 import { formatDate, formatHourRange } from '#src/utils/date.js';
 import { base64ToBlob } from '#src/utils/misc.ts';
 import { trpc } from '#src/utils/trpc.js';

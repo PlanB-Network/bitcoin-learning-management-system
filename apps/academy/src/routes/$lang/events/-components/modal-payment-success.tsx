@@ -6,7 +6,7 @@ import { t } from 'i18next';
 import { useContext } from 'react';
 import { Trans } from 'react-i18next';
 import { FiLoader } from 'react-icons/fi';
-import PlanBLogo from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
+import PlanBLogo from '#src/assets/logo/pba-horizontal-black.svg?react';
 import { PaymentRow } from '#src/components/payment-row.js';
 import { AppContext } from '#src/providers/context.js';
 import { formatDate } from '#src/utils/date.js';

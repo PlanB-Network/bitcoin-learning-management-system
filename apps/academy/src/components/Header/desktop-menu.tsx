@@ -5,7 +5,7 @@ import {
   TbLayoutSidebar,
   TbLayoutSidebarLeftExpandFilled,
 } from 'react-icons/tb';
-import PlanBLogoBlack from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
+import PlanBLogoBlack from '#src/assets/logo/pba-horizontal-black.svg?react';
 import { MetaElements } from './meta-elements.tsx';
 
 export interface DesktopMenuProps {

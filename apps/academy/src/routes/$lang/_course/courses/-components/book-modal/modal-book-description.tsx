@@ -2,7 +2,7 @@ import { Button, Checkbox } from '@blms/ui';
 import { t } from 'i18next';
 import { type JSX, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import PlanBLogo from '#src/assets/logo/planb_logo_horizontal_black.svg?react';
+import PlanBLogo from '#src/assets/logo/pba-horizontal-black.svg?react';
 import { PaymentCallout } from '#src/components/payment-callout.js';
 
 interface ModalBookDescriptionProps {
