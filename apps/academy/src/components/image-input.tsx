@@ -8,6 +8,7 @@ interface ImageInputProps {
   value: string | null;
   onChange: (base64: string, filename: string) => void;
   className?: string;
+  isRequired?: boolean;
 }
 
 export const ImageInput = ({
@@ -15,6 +16,7 @@ export const ImageInput = ({
   value,
   onChange,
   className,
+  isRequired,
 }: ImageInputProps) => {
   const { t } = useTranslation();
   const [isDragActive, setIsDragActive] = useState(false);
@@ -23,8 +25,20 @@ export const ImageInput = ({
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleImage = (file: File) => {
+    const MAX_SIZE = 15 * 1024 * 1024; // 15MB
+
     if (!file.type.startsWith('image/')) {
       customToast(t('educatorContent.onlyImages'), {
+        mode: 'light',
+        color: 'warning',
+      });
+      setIsDropError(true);
+      setTimeout(() => setIsDropError(false), 500);
+      return;
+    }
+
+    if (file.size > MAX_SIZE) {
+      customToast(t('educatorContent.imageTooLarge'), {
         mode: 'light',
         color: 'warning',
       });
@@ -90,7 +104,7 @@ export const ImageInput = ({
 
   return (
     <div className={cn('flex flex-col gap-2', className)}>
-      <FieldLabel>{label}</FieldLabel>
+      <FieldLabel required={isRequired}>{label}</FieldLabel>
       <div
         className={cn(
           'border-2 border-dashed rounded-xl p-6 flex flex-col items-center justify-center text-center transition-colors relative overflow-hidden min-h-[160px]',

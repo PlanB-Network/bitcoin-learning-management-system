@@ -18,7 +18,6 @@ export const createResourcePRSchema = z.object({
     'podcasts',
     'channels',
     'newsletters',
-    'papers',
   ]),
   title: z.string(),
   author: z.string().optional(),
@@ -35,6 +34,7 @@ export const createResourcePRSchema = z.object({
     })
     .optional(),
   resourceLink: z.string().optional(),
+  trailerLink: z.string().optional(),
   language: z.string(),
   contentLanguage: z.string().optional(),
   coverImage: z
@@ -43,4 +43,5 @@ export const createResourcePRSchema = z.object({
       data: z.string(), // base64
     })
     .optional(),
+  duration: z.number().optional(),
 });

@@ -94,12 +94,6 @@ function ResearchPapers() {
       title={t('resources.papers.title')}
       tabs={resourcesTabs}
       layoutSize="wide"
-      actionButtons={[
-        {
-          text: t('resources.addResource.paper'),
-          onClick: () => setIsModalOpen(true),
-        },
-      ]}
     >
       <AddResourceModal
         resourceType={ResourceType.Paper}

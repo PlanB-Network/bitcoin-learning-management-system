@@ -1421,6 +1421,7 @@
     "noResultsDescription": "Try adjusting your search filters",
     "noResultsTitle": "No educator content found",
     "onlyImages": "Only image files are allowed",
+    "imageTooLarge": "The image size cannot exceed 15MB",
     "pageSubtitle": "Where Bitcoin educators and communities share and reuse resources",
     "pageTitle": "Educator content",
     "resourceType": "What type of resource is this?",
@@ -1795,6 +1796,8 @@
       "paper": "Add research paper",
       "podcast": "Add podcast",
       "project": "Add project",
+      "publicationYear": "Publication year",
+      "resourceLink": "Resource link",
       "selectCategory": "Select a category",
       "selectLanguage": "Select a language",
       "selectYear": "Select year",
@@ -1804,7 +1807,8 @@
       "success": "Resource successfully submitted! A Pull Request has been created on GitHub.",
       "successSubtitle": "You have successfully requested the addition of a new {{type}}.",
       "successTitle": "{{type}} addition sent!",
-      "titlePlaceholder": "Bitcoin intro"
+      "titlePlaceholder": "Bitcoin intro",
+      "trailerLink": "Trailer link"
     },
     "bet": {
       "addEducationKit": "Add education kit",

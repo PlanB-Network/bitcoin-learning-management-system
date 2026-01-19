@@ -46,8 +46,10 @@ interface ResourceFormConfig {
   showDescription?: boolean;
   showCoverImage?: boolean;
   showResourceLink?: boolean;
+  showTrailerLink?: boolean;
   showSocialLinks?: boolean;
-  showPublished?: boolean;
+  showPublicationYear?: boolean;
+  showDuration?: boolean;
   categories?: string[];
   socialLinks?: string[];
 }
@@ -83,7 +85,7 @@ const RESOURCE_FORM_CONFIG: Record<string, ResourceFormConfig> = {
     showAuthor: true,
     showDescription: true,
     showCoverImage: true,
-    showPublished: true,
+    showPublicationYear: true,
   },
   podcasts: {
     showTitle: true,
@@ -92,6 +94,33 @@ const RESOURCE_FORM_CONFIG: Record<string, ResourceFormConfig> = {
     showCoverImage: true,
     showResourceLink: true,
     showLanguage: true,
+  },
+  channels: {
+    showTitle: true,
+    showDescription: true,
+    showCoverImage: true,
+    showResourceLink: true,
+    showTrailerLink: true,
+    showLanguage: true,
+  },
+  newsletters: {
+    showTitle: true,
+    showDescription: true,
+    showLanguage: true,
+    showAuthor: true,
+    showCoverImage: true,
+    showResourceLink: true,
+  },
+  movies: {
+    showTitle: true,
+    showDescription: true,
+    showLanguage: true,
+    showAuthor: true,
+    showDuration: true,
+    showPublicationYear: true,
+    showCoverImage: true,
+    showResourceLink: true,
+    showTrailerLink: true,
   },
 };
 
@@ -103,7 +132,6 @@ const createResourcePRSchema = z.object({
     'podcasts',
     'channels',
     'newsletters',
-    'papers',
   ]),
   title: z.string().min(1, 'Title is required'),
   author: z.string().optional(),
@@ -120,6 +148,7 @@ const createResourcePRSchema = z.object({
     })
     .optional(),
   resourceLink: z.string().optional(),
+  trailerLink: z.string().optional(),
   language: z.string(),
   contentLanguage: z.string().optional(),
   coverImage: z
@@ -128,6 +157,7 @@ const createResourcePRSchema = z.object({
       data: z.string(), // base64
     })
     .optional(),
+  duration: z.number().optional(),
 });
 
 type FormData = z.infer<typeof createResourcePRSchema>;
@@ -140,6 +170,8 @@ export const AddResourceModal = ({
   const { t, i18n } = useTranslation();
   const [coverImageBase64, setCoverImageBase64] = useState<string | null>(null);
   const [coverImageName, setCoverImageName] = useState<string | null>(null);
+  const [durationHours, setDurationHours] = useState('');
+  const [durationMinutes, setDurationMinutes] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
 
   const form = useForm<FormData>({
@@ -179,9 +211,14 @@ export const AddResourceModal = ({
   };
 
   const onSubmit = (data: FormData) => {
+    const hours = durationHours ? Number.parseInt(durationHours) : 0;
+    const minutes = durationMinutes ? Number.parseInt(durationMinutes) : 0;
+    const totalMinutes = config.showDuration ? hours * 60 + minutes : undefined;
+
     createPR.mutate({
       ...data,
       type: data.type,
+      duration: totalMinutes,
       coverImage:
         coverImageBase64 && coverImageName
           ? {
@@ -195,6 +232,20 @@ export const AddResourceModal = ({
   const config = RESOURCE_FORM_CONFIG[resourceType] || {};
 
   const authorWordReplacement = resourceType === 'podcasts' ? 'host' : 'author';
+
+  const watchAllFields = form.watch();
+
+  const isFormComplete =
+    (!config.showTitle || !!watchAllFields.title) &&
+    (!config.showAuthor || !!watchAllFields.author) &&
+    (!config.showCategory || !!watchAllFields.category) &&
+    (!config.showDescription || !!watchAllFields.description) &&
+    (!config.showCoverImage || !!coverImageBase64) &&
+    (!config.showResourceLink || !!watchAllFields.resourceLink) &&
+    (!config.showLanguage || !!watchAllFields.contentLanguage) &&
+    (!config.showDuration ||
+      (durationHours !== '' && durationMinutes !== '')) &&
+    (!config.showPublicationYear || !!watchAllFields.publicationYear);
 
   return (
     <BasicModal
@@ -275,6 +326,42 @@ export const AddResourceModal = ({
             />
           )}
 
+          {config.showDuration && (
+            <Field>
+              <FieldLabel required>{t('words.duration')}</FieldLabel>
+              <div className="flex items-center gap-1">
+                <Select value={durationHours} onValueChange={setDurationHours}>
+                  <SelectTrigger className="w-19">
+                    <SelectValue placeholder="Hh" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {[0, 1, 2, 3, 4, 5].map((h) => (
+                      <SelectItem key={h} value={h.toString()}>
+                        {h.toString()}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <span className="text-xl">:</span>
+                <Select
+                  value={durationMinutes}
+                  onValueChange={setDurationMinutes}
+                >
+                  <SelectTrigger className="w-19">
+                    <SelectValue placeholder="Mm" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {Array.from({ length: 60 }, (_, i) => i).map((m) => (
+                      <SelectItem key={m} value={m.toString()}>
+                        {m.toString()}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            </Field>
+          )}
+
           {config.showCategory && config.categories && (
             <Controller
               control={form.control}
@@ -337,6 +424,7 @@ export const AddResourceModal = ({
                 setCoverImageBase64(base64);
                 setCoverImageName(filename);
               }}
+              isRequired={config.showCoverImage}
             />
           )}
 
@@ -384,7 +472,9 @@ export const AddResourceModal = ({
               name="resourceLink"
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel required>{t('words.link')}</FieldLabel>
+                  <FieldLabel required>
+                    {t('resources.addResource.resourceLink')}
+                  </FieldLabel>
                   <Input
                     {...field}
                     placeholder="https://www.youtube.com/@PlanBNetwork"
@@ -397,13 +487,36 @@ export const AddResourceModal = ({
             />
           )}
 
-          {config.showPublished && (
+          {config.showTrailerLink && (
+            <Controller
+              control={form.control}
+              name="trailerLink"
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel>
+                    {t('resources.addResource.trailerLink')}
+                  </FieldLabel>
+                  <Input
+                    {...field}
+                    placeholder="https://www.youtube.com/watch?v=Ow4i4p0RyvI"
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+          )}
+
+          {config.showPublicationYear && (
             <Controller
               control={form.control}
               name="publicationYear"
               render={({ field }) => (
                 <Field>
-                  <FieldLabel>{t('words.published')}</FieldLabel>
+                  <FieldLabel required>
+                    {t('resources.addResource.publicationYear')}
+                  </FieldLabel>
                   <Select onValueChange={field.onChange} value={field.value}>
                     <SelectTrigger>
                       <SelectValue
@@ -460,7 +573,7 @@ export const AddResourceModal = ({
             variant="primary"
             size="l"
             className="w-full mt-4"
-            disabled={createPR.isPending}
+            disabled={createPR.isPending || !isFormComplete}
           >
             {createPR.isPending
               ? t('resources.addResource.sending')

@@ -107,7 +107,9 @@ export const createResourcePR = async (
 
     const bookLocalizedYaml = {
       title: input.title,
-      publication_year: input.publicationYear,
+      publication_year: input.publicationYear
+        ? Number(input.publicationYear)
+        : undefined,
       cover: `cover_${input.language}.webp`,
       original: true,
       description: input.description,
@@ -145,6 +147,10 @@ export const createResourcePR = async (
       links: {
         podcast: input.resourceLink,
       },
+      duration: input.duration,
+      publication_year: input.publicationYear
+        ? Number(input.publicationYear)
+        : undefined,
       description: input.description,
     };
 
@@ -158,6 +164,99 @@ export const createResourcePR = async (
     if (input.coverImage) {
       files.push({
         path: `${basePath}/assets/logo.webp`,
+        content: input.coverImage.data.split(',')[1],
+        encoding: 'base64',
+      });
+    }
+  }
+
+  // CHANNELS
+  if (input.type === 'channels') {
+    const channelYaml = {
+      id: resourceId,
+      name: input.title,
+      language: input.contentLanguage,
+      links: {
+        channel: input.resourceLink,
+        trailer: input.trailerLink,
+      },
+      description: input.description,
+    };
+
+    files.push({
+      path: `${basePath}/channel.yml`,
+      content: yaml.dump(channelYaml, {
+        lineWidth: -1,
+      }),
+    });
+
+    if (input.coverImage) {
+      files.push({
+        path: `${basePath}/assets/thumbnail.webp`,
+        content: input.coverImage.data.split(',')[1],
+        encoding: 'base64',
+      });
+    }
+  }
+
+  // NEWSLETTERS
+  if (input.type === 'newsletters') {
+    const newsletterYaml = {
+      id: resourceId,
+      title: input.title,
+      author: input.author,
+      links: [
+        {
+          website: input.resourceLink,
+        },
+      ],
+      language: input.contentLanguage,
+      description: input.description,
+    };
+
+    files.push({
+      path: `${basePath}/newsletter.yml`,
+      content: yaml.dump(newsletterYaml, {
+        lineWidth: -1,
+      }),
+    });
+
+    if (input.coverImage) {
+      files.push({
+        path: `${basePath}/assets/thumbnail.webp`,
+        content: input.coverImage.data.split(',')[1],
+        encoding: 'base64',
+      });
+    }
+  }
+
+  // MOVIES
+  if (input.type === 'movies') {
+    const movieYaml = {
+      id: resourceId,
+      title: input.title,
+      author: input.author,
+      publication_year: input.publicationYear
+        ? Number(input.publicationYear)
+        : undefined,
+      duration: input.duration,
+      language: input.contentLanguage,
+      links: {
+        platform: input.resourceLink,
+      },
+      description: input.description,
+    };
+
+    files.push({
+      path: `${basePath}/movie.yml`,
+      content: yaml.dump(movieYaml, {
+        lineWidth: -1,
+      }),
+    });
+
+    if (input.coverImage) {
+      files.push({
+        path: `${basePath}/assets/thumbnail.webp`,
         content: input.coverImage.data.split(',')[1],
         encoding: 'base64',
       });
@@ -225,7 +324,7 @@ export const createResourcePR = async (
     const { data: prData } = await octokit.rest.pulls.create({
       owner,
       repo,
-      title: `Add ${input.type.slice(0, -1)}: ${input.title}`,
+      title: `[${input.type.slice(0, -1).toUpperCase()} submission] ${input.title}`,
       head: branchName,
       base: baseBranch,
       body: `This PR adds a new ${input.type.slice(0, -1)} resource: **${input.title}**.\n\nSubmission from the BLMS platform.`,

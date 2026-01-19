@@ -7,6 +7,8 @@ import { capitalize } from 'lodash-es';
 import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowDown } from 'react-icons/md';
+import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
+import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { SearchInput } from '#src/components/search-input.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
@@ -27,6 +29,12 @@ function Projects() {
   const { t, i18n } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
   const { isOpen, open, close } = useDisclosure();
+
+  const {
+    open: openAuthModal,
+    isOpen: isAuthModalOpen,
+    close: closeAuthModal,
+  } = useDisclosure();
 
   const isLoggedIn = !!session?.user;
 
@@ -64,16 +72,12 @@ function Projects() {
       title={t('resources.projects.title')}
       tabs={resourcesTabs}
       layoutSize="wide"
-      actionButtons={
-        isLoggedIn
-          ? [
-              {
-                text: t('resources.addResource.project'),
-                onClick: open,
-              },
-            ]
-          : []
-      }
+      actionButtons={[
+        {
+          text: t('resources.addResource.project'),
+          onClick: isLoggedIn ? open : openAuthModal,
+        },
+      ]}
     >
       <AddResourceModal
         isOpen={isOpen}
@@ -138,6 +142,13 @@ function Projects() {
             })}
           </div>
         </div>
+      )}
+      {isAuthModalOpen && (
+        <AuthModal
+          isOpen={isAuthModalOpen}
+          onClose={closeAuthModal}
+          initialState={AuthModalState.Register}
+        />
       )}
     </PageLayout>
   );

@@ -4,10 +4,14 @@ import type { JoinedBook } from '@blms/types';
 import { Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
+import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { SearchInput } from '#src/components/search-input.tsx';
+import { useDisclosure } from '#src/hooks/use-disclosure.ts';
+import { AppContext } from '#src/providers/context.tsx';
 import { assetUrl } from '#src/utils/index.ts';
 import { trpc } from '#src/utils/trpc.js';
 import { AddResourceModal } from '../-components/add-resource-modal.tsx';
@@ -19,9 +23,18 @@ export const Route = createFileRoute('/$lang/resources/books/')({
 });
 
 function Books() {
+  const { session } = useContext(AppContext);
   const { t, i18n } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const {
+    open: openAuthModal,
+    isOpen: isAuthModalOpen,
+    close: closeAuthModal,
+  } = useDisclosure();
+
+  const isLoggedIn = !!session?.user;
 
   const { data: books, isFetched } = useQuery(
     trpc.content.getBooks.queryOptions(
@@ -46,7 +59,7 @@ function Books() {
       actionButtons={[
         {
           text: t('resources.addResource.book'),
-          onClick: () => setIsModalOpen(true),
+          onClick: isLoggedIn ? () => setIsModalOpen(true) : openAuthModal,
         },
       ]}
     >
@@ -93,6 +106,13 @@ function Books() {
               ))}
           </div>
         </>
+      )}
+      {isAuthModalOpen && (
+        <AuthModal
+          isOpen={isAuthModalOpen}
+          onClose={closeAuthModal}
+          initialState={AuthModalState.Register}
+        />
       )}
     </PageLayout>
   );

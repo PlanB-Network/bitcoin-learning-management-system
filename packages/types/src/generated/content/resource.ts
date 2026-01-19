@@ -27,8 +27,7 @@ export interface CreateResourcePR {
     | 'movies'
     | 'podcasts'
     | 'channels'
-    | 'newsletters'
-    | 'papers';
+    | 'newsletters';
   title: string;
   author?: string | undefined;
   publicationYear?: string | undefined;
@@ -44,7 +43,9 @@ export interface CreateResourcePR {
       }
     | undefined;
   resourceLink?: string | undefined;
+  trailerLink?: string | undefined;
   language: string;
   contentLanguage?: string | undefined;
   coverImage?: { name: string; data: string } | undefined;
+  duration?: number | undefined;
 }
