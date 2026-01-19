@@ -187,7 +187,7 @@ export const AddResourceModal = ({
   });
 
   const { data: languages } = useQuery(
-    trpc.user.career.getLanguages.queryOptions(),
+    trpc.content.getLanguages.queryOptions(),
   );
 
   const sortedLanguages = languages
