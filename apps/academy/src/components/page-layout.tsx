@@ -1,4 +1,12 @@
-import { Button, cn } from '@blms/ui';
+import {
+  Button,
+  cn,
+  Tooltip,
+  TooltipArrow,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { type ReactNode, useContext } from 'react';
 import type { IconType } from 'react-icons/lib';
@@ -75,41 +83,51 @@ export const PageLayout = ({
     <div className="flex items-center gap-1">
       {actionButtons.map((button, index) => {
         if (typeof button === 'object' && button !== null && 'text' in button) {
+          const buttonElement = button.href ? (
+            <Button variant="newTertiary" size={'actionButton'} asChild>
+              <Link to={button.href} target="_blank" rel="noreferrer">
+                {button.text}
+              </Link>
+            </Button>
+          ) : (
+            <Button
+              variant="newTertiary"
+              size={'actionButton'}
+              onClick={button.onClick}
+            >
+              {button.text}
+            </Button>
+          );
+
+          if (button.tooltipText) {
+            return (
+              // biome-ignore lint/suspicious/noArrayIndexKey: <N/A>
+              <TooltipProvider key={index}>
+                <Tooltip delayDuration={0}>
+                  <TooltipTrigger asChild>{buttonElement}</TooltipTrigger>
+                  <TooltipContent
+                    sideOffset={5}
+                    side={'bottom'}
+                    className={
+                      'flex flex-col items-center shadow-none! text-xs! w-fit px-3! text-start bg-yellow-50 rounded-full border-0!'
+                    }
+                  >
+                    <TooltipArrow
+                      className="fill-yellow-50"
+                      width={9}
+                      height={7}
+                    />
+                    <span className="text-xs">{button.tooltipText}</span>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            );
+          }
+
           return (
             // biome-ignore lint/suspicious/noArrayIndexKey: <N/A>
             <div key={index} className="relative flex flex-col items-center">
-              {button.href ? (
-                <Button variant="newTertiary" size={'actionButton'} asChild>
-                  <Link to={button.href} target="_blank" rel="noreferrer">
-                    {button.text}
-                  </Link>
-                </Button>
-              ) : (
-                <Button
-                  variant="newTertiary"
-                  size={'actionButton'}
-                  onClick={button.onClick}
-                >
-                  {button.text}
-                </Button>
-              )}
-
-              {button.tooltipText && (
-                <div className="hidden lg:flex absolute -bottom-8.5 flex-col items-center pointer-events-none">
-                  {/** biome-ignore lint/a11y/noSvgWithoutTitle: <N/A> */}
-                  <svg
-                    width="9"
-                    height="5"
-                    viewBox="0 0 9 5"
-                    className="fill-yellow-50 translate-y-px"
-                  >
-                    <path d="M4.5 0L9 5H0L4.5 0Z" />
-                  </svg>
-                  <div className="bg-yellow-50 px-3 py-1.5 rounded-full shadow-none text-xs text-center text-neutral-800 whitespace-nowrap">
-                    {button.tooltipText}
-                  </div>
-                </div>
-              )}
+              {buttonElement}
             </div>
           );
         }
