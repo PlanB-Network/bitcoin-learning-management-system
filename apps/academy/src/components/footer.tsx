@@ -1,8 +1,14 @@
 import { cn, DividerSimple } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { Trans, useTranslation } from 'react-i18next';
-import { BsGithub, BsLinkedin, BsTwitterX, BsYoutube } from 'react-icons/bs';
-import { TbBrandDiscordFilled } from 'react-icons/tb';
+import {
+  BsDiscord,
+  BsGithub,
+  BsLinkedin,
+  BsTelegram,
+  BsTwitterX,
+  BsYoutube,
+} from 'react-icons/bs';
 import Nostr from '#src/assets/icons/nostr.svg?react';
 import Rumble from '#src/assets/icons/rumble.svg?react';
 import PlanBLogoBlack from '../assets/logo/pba-horizontal-black.svg';
@@ -27,6 +33,12 @@ const SOCIAL_LINKS = [
     label: 'Github',
   },
   {
+    href: 'https://t.me/PlanBNetwork_ContentBuilder',
+    icon: BsTelegram,
+    isReactIcon: true,
+    label: 'Telegram',
+  },
+  {
     href: 'https://www.linkedin.com/company/planb-network/',
     icon: BsLinkedin,
     isReactIcon: true,
@@ -34,7 +46,7 @@ const SOCIAL_LINKS = [
   },
   {
     href: 'https://discord.gg/q9CFPmRNAD',
-    icon: TbBrandDiscordFilled,
+    icon: BsDiscord,
     isReactIcon: true,
     label: 'Discord',
   },
