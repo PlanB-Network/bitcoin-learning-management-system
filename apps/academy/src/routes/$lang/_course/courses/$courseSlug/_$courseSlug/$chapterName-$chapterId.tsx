@@ -91,12 +91,7 @@ const CoursesMarkdownBody = lazy(
   () => import('#src/components/Markdown/courses-markdown-body.tsx'),
 );
 
-const TimelineSmall = ({
-  chapter,
-}: {
-  chapter: CourseChapterResponse;
-  professor: string;
-}) => {
+const TimelineSmall = ({ chapter }: { chapter: CourseChapterResponse }) => {
   const allChapters = chapter.course.parts.flatMap((p) => p.chapters);
   const totalChapters = allChapters.length;
 
@@ -642,13 +637,13 @@ function CourseChapter() {
             <TimelineBig
               chapter={chapter}
               professors={
-                chapter?.professors && chapter?.professors.length > 0
-                  ? chapter.professors
-                  : chapter.course.mainProfessors
+                chapter?.professors?.filter(
+                  (p) => p.id !== course?.mainProfessors[0].id,
+                ) ?? []
               }
             />
             {/* Mobile */}
-            <TimelineSmall chapter={chapter} professor={computedProfessor} />
+            <TimelineSmall chapter={chapter} />
 
             {displayClassDetails && (
               <ClassDetails
