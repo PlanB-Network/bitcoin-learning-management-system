@@ -132,15 +132,22 @@ function CourseSelector() {
         {/* Middle column */}
         <div className="flex flex-col gap-2.5 w-full max-w-[280px] shrink-1">
           <nav className="flex flex-col gap-8">
-            {levels.map((level) => (
-              <div key={level} className="flex flex-col gap-1">
-                <h4 className="uppercase subtitle-small text-orange-500 w-60 px-4 py-1">
-                  {t(`words.level.${level}`)}
-                </h4>
-                <div className="flex flex-col gap-2.5">
-                  {topicCourses
-                    ?.filter((course) => course.level === level)
-                    .map((course) => (
+            {levels.map((level) => {
+              const coursesForLevel = topicCourses?.filter(
+                (course) => course.level === level,
+              );
+
+              if (!coursesForLevel || coursesForLevel.length === 0) {
+                return null;
+              }
+
+              return (
+                <div key={level} className="flex flex-col gap-1">
+                  <h4 className="uppercase subtitle-small text-orange-500 w-60 px-4 py-1">
+                    {t(`words.level.${level}`)}
+                  </h4>
+                  <div className="flex flex-col gap-2.5">
+                    {coursesForLevel.map((course) => (
                       <button
                         key={course.id}
                         type="button"
@@ -155,9 +162,10 @@ function CourseSelector() {
                         {course.name}
                       </button>
                     ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </nav>
         </div>
         <div className="w-px self-stretch bg-neutral-50 shrink-0" />
@@ -227,15 +235,22 @@ function CourseSelector() {
           </CategorySwitcherBar>
         </div>
         <div className="flex flex-col gap-6">
-          {levels.map((level) => (
-            <div key={level} className="flex flex-col gap-1">
-              <h4 className="subtitle-base text-neutral-800">
-                {t(`words.level.${level}`)}
-              </h4>
-              <div className="flex flex-col gap-1">
-                {topicCourses
-                  ?.filter((course) => course.level === level)
-                  .map((course) => (
+          {levels.map((level) => {
+            const coursesForLevel = topicCourses?.filter(
+              (course) => course.level === level,
+            );
+
+            if (!coursesForLevel || coursesForLevel.length === 0) {
+              return null;
+            }
+
+            return (
+              <div key={level} className="flex flex-col gap-1">
+                <h4 className="subtitle-base text-neutral-800">
+                  {t(`words.level.${level}`)}
+                </h4>
+                <div className="flex flex-col gap-1">
+                  {coursesForLevel.map((course) => (
                     <details
                       key={course.id}
                       className="group w-full py-3 px-2 text-start rounded-lg bg-neutral-50"
@@ -272,9 +287,10 @@ function CourseSelector() {
                       </article>
                     </details>
                   ))}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
     </PageLayout>
