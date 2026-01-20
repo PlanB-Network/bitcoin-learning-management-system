@@ -19,3 +19,33 @@ export interface Tags {
   id: number;
   name: string;
 }
+
+export interface CreateResourcePR {
+  type:
+    | 'projects'
+    | 'books'
+    | 'movies'
+    | 'podcasts'
+    | 'channels'
+    | 'newsletters';
+  title: string;
+  author?: string | undefined;
+  publicationYear?: string | undefined;
+  category?: string | undefined;
+  description: string;
+  links?:
+    | {
+        website?: string | undefined;
+        twitter?: string | undefined;
+        github?: string | undefined;
+        nostr?: string | undefined;
+        linkedin?: string | undefined;
+      }
+    | undefined;
+  resourceLink?: string | undefined;
+  trailerLink?: string | undefined;
+  language: string;
+  contentLanguage?: string | undefined;
+  coverImage?: { name: string; data: string } | undefined;
+  duration?: number | undefined;
+}

@@ -6,6 +6,7 @@ export interface GitHubSyncConfig {
   privateRepositoryUrl: string | null;
   privateRepositoryBranch: string;
   githubAccessToken: string | null;
+  githubPrToken: string | null;
 }
 
 export interface SendGridConfig {

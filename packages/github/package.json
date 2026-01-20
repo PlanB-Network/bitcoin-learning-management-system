@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "octokit": "^5.0.5",
     "simple-git": "^3.30.0"
   },
   "devDependencies": {

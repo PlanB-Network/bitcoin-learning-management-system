@@ -21,6 +21,7 @@ interface BasicModalProps {
   contentClassName?: string;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
+  size?: 'base' | 'large';
 }
 
 const Dialog = DialogPrimitive.Root;
@@ -136,12 +137,17 @@ const BasicModal = ({
   contentClassName,
   open,
   onOpenChange,
+  size = 'base',
 }: BasicModalProps) => {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent
-        className={cn('w-full max-w-[min(90%,496px)]', contentClassName)}
+        className={cn(
+          'w-full',
+          size === 'base' ? 'max-w-[min(90%,496px)]' : 'max-w-[min(90%,668px)]',
+          contentClassName,
+        )}
         showCloseButton={false}
       >
         <div

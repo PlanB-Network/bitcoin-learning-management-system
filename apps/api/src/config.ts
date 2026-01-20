@@ -87,6 +87,7 @@ export const sync: GitHubSyncConfig = {
   privateRepositoryUrl: getenv('PRIVATE_DATA_REPOSITORY_URL', null),
   privateRepositoryBranch: getenv('PRIVATE_DATA_REPOSITORY_BRANCH', 'main'),
   githubAccessToken: getenv('GITHUB_ACCESS_TOKEN', null),
+  githubPrToken: getenv('GITHUB_PR_TOKEN', null),
 };
 
 export const session: SessionConfig = {

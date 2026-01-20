@@ -40,3 +40,15 @@ export enum EducatorContentLicense {
   CcByNcNd = 'CC-BY-NC-ND',
   Mit = 'MIT',
 }
+
+export enum ResourceType {
+  Project = 'projects',
+  Book = 'books',
+  Movie = 'movies',
+  Podcast = 'podcasts',
+  Channel = 'channels',
+  Newsletter = 'newsletters',
+  Paper = 'papers',
+  Glossary = 'glossary',
+  Conference = 'conferences',
+}

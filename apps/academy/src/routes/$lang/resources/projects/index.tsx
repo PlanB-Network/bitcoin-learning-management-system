@@ -1,15 +1,21 @@
+import { ResourceType } from '@blms/constants';
 import { formatNameForURL } from '@blms/shared';
 import { Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { capitalize } from 'lodash-es';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdKeyboardArrowDown } from 'react-icons/md';
+import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
+import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { SearchInput } from '#src/components/search-input.tsx';
+import { useDisclosure } from '#src/hooks/use-disclosure.ts';
+import { AppContext } from '#src/providers/context.tsx';
 import { resourceImgUrl } from '#src/utils/index.ts';
 import { trpc } from '#src/utils/trpc.js';
+import { AddResourceModal } from '../-components/add-resource-modal.tsx';
 import { ProjectCard } from '../-components/cards/project-card.js';
 import { resourcesTabs } from '../index.tsx';
 
@@ -18,8 +24,19 @@ export const Route = createFileRoute('/$lang/resources/projects/')({
 });
 
 function Projects() {
+  const { session } = useContext(AppContext);
+
   const { t, i18n } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
+  const { isOpen, open, close } = useDisclosure();
+
+  const {
+    open: openAuthModal,
+    isOpen: isAuthModalOpen,
+    close: closeAuthModal,
+  } = useDisclosure();
+
+  const isLoggedIn = !!session?.user;
 
   const { data: projects, isFetched } = useQuery(
     trpc.content.getProjects.queryOptions(
@@ -57,11 +74,16 @@ function Projects() {
       layoutSize="wide"
       actionButtons={[
         {
-          text: t('resources.projects.addProjects'),
-          href: '/tutorials/contribution/resource/add-builder-b5834c46-6dcc-4064-8d68-1ef529991d3d',
+          text: t('resources.addResource.project'),
+          onClick: isLoggedIn ? open : openAuthModal,
         },
       ]}
     >
+      <AddResourceModal
+        isOpen={isOpen}
+        onClose={close}
+        resourceType={ResourceType.Project}
+      />
       {!isFetched && <Loader size={'s'} />}
       {isFetched && (
         <div className="flex flex-col gap-5 max-sm:mt-4 mt-2 w-full">
@@ -120,6 +142,13 @@ function Projects() {
             })}
           </div>
         </div>
+      )}
+      {isAuthModalOpen && (
+        <AuthModal
+          isOpen={isAuthModalOpen}
+          onClose={closeAuthModal}
+          initialState={AuthModalState.Register}
+        />
       )}
     </PageLayout>
   );
