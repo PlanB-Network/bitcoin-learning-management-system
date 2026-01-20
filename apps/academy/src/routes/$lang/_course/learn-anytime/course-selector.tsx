@@ -193,18 +193,13 @@ function CourseSelector() {
 
               <CourseInfoSection course={activeCourse} />
 
-              <ButtonWithArrow
-                variant="primary"
-                size="l"
-                className="w-full"
-                asChild
+              <Link
+                to={`/courses/${formatNameForURL(activeCourse.name)}-${activeCourse.id}`}
               >
-                <Link
-                  to={`/courses/${formatNameForURL(activeCourse.name)}-${activeCourse.id}`}
-                >
-                  {t('courses.explorer.seeCourse')}
-                </Link>
-              </ButtonWithArrow>
+                <ButtonWithArrow variant="primary" size="l" className="w-full">
+                  <span>{t('courses.explorer.seeCourse')}</span>
+                </ButtonWithArrow>
+              </Link>
             </article>
           )}
         </div>
