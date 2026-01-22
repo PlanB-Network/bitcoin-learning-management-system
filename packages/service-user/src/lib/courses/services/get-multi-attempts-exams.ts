@@ -19,7 +19,7 @@ export const createGetMultiAttemptsExamCourseGrades = ({
     );
 
     const averageScore = await postgres.exec(
-      sql<{ average: number }[]>`
+      sql<{ average: number | null }[]>`
           SELECT
             AVG(score) as average
           FROM users.exam_attempts
@@ -42,9 +42,11 @@ export const createGetMultiAttemptsExamCourseGrades = ({
         array.findIndex((g) => g.uid === grade.uid) === index,
     ).length;
 
+    const formattedAverageScore = averageScore[0]?.average ?? 0;
+
     return {
       examsGrades,
-      averageScore: averageScore.length ? averageScore[0].average : 0,
+      averageScore: formattedAverageScore,
       graduatedStudentsAmount,
       totalStudentsTakingExam,
     };
