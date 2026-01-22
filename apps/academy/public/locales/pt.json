@@ -2078,7 +2078,6 @@
     "contentNotFound": "Conteúdo não encontrado",
     "descriptionRequired": "A descrição não pode estar vazia",
     "detail": {
-      "createdBy": "Criado por",
       "downloadAll": "Baixar tudo",
       "view": "Visualizar"
     },
@@ -2115,7 +2114,6 @@
     "addMoreLinks": "Adicione mais links",
     "coverRequired": "A imagem de capa é obrigatória",
     "descriptionHelper": "Descreva o conteúdo do recurso para ajudar outros a entenderem seu conteúdo e encontrá-lo",
-    "descriptionPlaceholder": "Breve descrição do material educacional",
     "descriptionTooLong": "A descrição não pode ultrapassar 350 caracteres",
     "uploadFiles": "Carregar Arquivos",
     "addMaterial": "Adicionar conteúdo do educador",

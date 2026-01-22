@@ -2074,7 +2074,6 @@
     },
     "detail": {
       "view": "ดู",
-      "createdBy": "สร้างโดย",
       "downloadAll": "ดาวน์โหลดทั้งหมด"
     },
     "done": "เสร็จสิ้น",
@@ -2087,7 +2086,6 @@
     "contentNotFound": "ไม่พบเนื้อหา",
     "currentCoverPresent": "ปกปัจจุบัน",
     "descriptionHelper": "อธิบายเนื้อหาของแหล่งข้อมูลเพื่อช่วยให้ผู้อื่นเข้าใจเนื้อหาและค้นหาได้",
-    "descriptionPlaceholder": "คำอธิบายสั้น ๆ เกี่ยวกับวัสดุการศึกษา",
     "uploadFiles": "อัปโหลดไฟล์",
     "uploadForReview": "อัปโหลดเพื่อตรวจสอบ",
     "uploading": "กำลังอัปโหลด...",

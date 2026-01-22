@@ -2068,7 +2068,6 @@
     "descriptionHelper": "Diğerlerinin içeriğini anlamasına ve bulmasına yardımcı olmak için kaynağın içeriğini tanımlayın",
     "titleTooLong": "Başlık 60 karakteri aşamaz",
     "detail": {
-      "createdBy": "Tarafından oluşturuldu",
       "downloadAll": "Tümünü indir",
       "view": "Görünüm"
     },
@@ -2104,7 +2103,6 @@
     "browseImages": "veya resimlere göz atın",
     "coverRequired": "Kapak resmi zorunludur",
     "currentCoverPresent": "Mevcut kapak var",
-    "descriptionPlaceholder": "Eğitim materyalinin kısa bir açıklaması",
     "descriptionRequired": "Açıklama boş olamaz",
     "descriptionTooLong": "Açıklama 350 karakteri aşamaz",
     "noCover": "Kapak Yok",

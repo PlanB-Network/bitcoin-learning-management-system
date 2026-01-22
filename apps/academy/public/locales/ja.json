@@ -2093,10 +2093,8 @@
     "browseImages": "または画像を参照する",
     "currentCoverPresent": "現在のカバー画像が存在します",
     "descriptionHelper": "他の人がその内容を理解し、見つけるのを助けるためにリソースの内容を説明します",
-    "descriptionPlaceholder": "教育資料の簡単な説明",
     "descriptionRequired": "説明は空欄にできません",
     "detail": {
-      "createdBy": "作成者",
       "downloadAll": "すべてダウンロード",
       "view": "表示"
     },

@@ -2064,7 +2064,6 @@
     "contentNotFound": "Sisältöä ei löytynyt",
     "titleTooLong": "Otsikko ei voi olla yli 60 merkkiä",
     "detail": {
-      "createdBy": "Luonut",
       "downloadAll": "Lataa kaikki",
       "view": "Näytä"
     },
@@ -2105,7 +2104,6 @@
     "successTitle": "Opettajasisältö ladattu onnistuneesti",
     "addMoreLinks": "Lisää linkkejä",
     "coverRequired": "Kansikuva on pakollinen",
-    "descriptionPlaceholder": "Lyhyt kuvaus opetusmateriaalista",
     "descriptionRequired": "Kuvaus ei voi olla tyhjä",
     "descriptionTooLong": "Kuvaus ei saa ylittää 350 merkkiä",
     "done": "Valmis",

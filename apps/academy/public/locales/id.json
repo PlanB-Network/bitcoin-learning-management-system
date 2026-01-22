@@ -2103,7 +2103,6 @@
     "coverRequired": "Gambar sampul wajib ada",
     "currentCoverPresent": "Sampul saat ini ada",
     "descriptionHelper": "Jelaskan konten sumber daya untuk membantu orang lain memahami kontennya dan menemukannya",
-    "descriptionPlaceholder": "Deskripsi singkat tentang materi pendidikan",
     "descriptionTooLong": "Deskripsi tidak boleh melebihi 350 karakter",
     "dropCover": "Jatuhkan gambar sampul di sini",
     "dropFiles": "Jatuhkan file di sini",
@@ -2116,7 +2115,6 @@
     "resourceType": "Jenis Sumber Daya",
     "descriptionRequired": "Deskripsi tidak boleh kosong",
     "detail": {
-      "createdBy": "Dibuat oleh",
       "downloadAll": "Unduh semua",
       "view": "Lihat"
     },

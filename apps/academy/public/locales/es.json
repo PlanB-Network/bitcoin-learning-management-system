@@ -2048,7 +2048,6 @@
   },
   "educatorContent": {
     "detail": {
-      "createdBy": "Creado por",
       "downloadAll": "Descargar todo",
       "view": "Ver"
     },
@@ -2104,7 +2103,6 @@
     "coverRequired": "La imagen de portada es obligatoria",
     "currentCoverPresent": "Portada actual presente",
     "descriptionHelper": "Describe el contenido del recurso para ayudar a otros a entenderlo y encontrarlo",
-    "descriptionPlaceholder": "Breve descripción del material educativo",
     "descriptionRequired": "La descripción no puede estar vacía",
     "descriptionTooLong": "La descripción no puede exceder los 350 caracteres",
     "noResultsTitle": "No se encontró contenido del educador",

@@ -2064,7 +2064,6 @@
     "editMaterial": "Rediger lærerinnhold",
     "titleTooLong": "Tittelen kan ikke overstige 60 tegn",
     "detail": {
-      "createdBy": "Opprettet av",
       "downloadAll": "Last ned alt",
       "view": "Visning"
     },
@@ -2103,7 +2102,6 @@
     "coverRequired": "Forsidebildet er obligatorisk",
     "currentCoverPresent": "Nåværende omslag til stede",
     "descriptionHelper": "Beskriv ressursinnholdet for å hjelpe andre med å forstå innholdet og finne det",
-    "descriptionPlaceholder": "Kort beskrivelse av det pedagogiske materialet",
     "descriptionRequired": "Beskrivelsen kan ikke være tom",
     "descriptionTooLong": "Beskrivelsen kan ikke overstige 350 tegn",
     "addMaterial": "Legg til lærerinnhold",

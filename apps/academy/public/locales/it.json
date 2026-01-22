@@ -201,7 +201,8 @@
       "thanksTipping": "Puoi dire grazie lasciando una mancia al professore.",
       "creditsCollaboration": "Questo corso è il risultato di uno sforzo collaborativo: ogni lezione, traduzione e revisione è resa possibile dal lavoro dei contributor. Per questo motivo, siamo sempre alla ricerca di proofreader che possano rivedere i nostri contenuti in molte lingue.\n\nSe desideri partecipare al processo di proofreading, contattaci nel nostro gruppo <0>Telegram</0> e leggi il nostro <1>tutorial</1>.\n\nAiuta a diffondere la conoscenza su Bitcoin:",
       "openSourceContentDescription": "Il contenuto di questo corso è open source - ovvero sotto licenza <0>CC BY-SA</0> - quindi può essere condiviso e utilizzato liberamente, purché sia attribuita la paternità alla fonte originale.",
-      "openSourceContentTitle": "Contenuto open-source"
+      "openSourceContentTitle": "Contenuto open-source",
+      "courseCoordinator": "Coordinatore del corso"
     },
     "exam": {
       "answersReview": "Revisione delle risposte",
@@ -478,7 +479,8 @@
           "owner": "Proprietario",
           "type": "Tipo",
           "uses": "Usati"
-        }
+        },
+        "showMore": "Mostra più codici"
       },
       "coursesIndexes": "Indice dei corsi",
       "date": "Data",
@@ -876,7 +878,19 @@
         "class": "Lezioni",
         "event": "Eventi"
       },
-      "personalCalendar": "Calendario personale"
+      "personalCalendar": "Calendario personale",
+      "downloadButton": "Scarica il calendario .ics e importa",
+      "downloadCalendar": "Scarica il calendario",
+      "downloadCalendarTitle": "Scarica il calendario",
+      "downloadStep1": "Scarica il file del calendario",
+      "downloadStep2": "Aprilo con la tua app",
+      "downloadStep3": "Gli eventi non verranno aggiornati se le date cambiano",
+      "downloadTitle": "O scarica il calendario attuale",
+      "subscribeButton": "Copia il link del calendario sincronizzato",
+      "subscribeStep1": "Copia il link del calendario",
+      "subscribeStep2": "Incollalo nell'opzione \"Subscribe\" della tua app di calendario",
+      "subscribeStep3": "Gli eventi vengono aggiornati automaticamente dopo ogni cambiamento",
+      "subscribeTitle": "Iscriviti al calendario (sincronizzazione automatica)"
     },
     "careerPortal": {
       "acceptedFormat": "Formato file: pdf / Dimensione massima: 10 MB.",
@@ -1468,7 +1482,7 @@
   },
   "menu": {
     "login": "Accedi",
-    "educatorContent": "Contenuti per educatori",
+    "educatorContent": "Contenuti educativi",
     "getStarted": "Inizia",
     "signIn": "Accedi"
   },
@@ -2050,7 +2064,6 @@
     "contentNotFound": "Contenuto non trovato",
     "titleTooLong": "Il titolo non può superare i 60 caratteri",
     "detail": {
-      "createdBy": "Creato da",
       "downloadAll": "Scarica tutto",
       "view": "Visualizza"
     },
@@ -2091,7 +2104,8 @@
       "sticker": "Adesivo",
       "workshop": "Workshop",
       "other": "Altro",
-      "presentation": "Presentazione"
+      "presentation": "Presentazione",
+      "curriculum": "Curriculum"
     },
     "uploadFiles": "o carica i file",
     "uploadForReview": "Carica per la revisione",
@@ -2105,7 +2119,6 @@
     "browseImages": "o sfoglia le immagini",
     "currentCoverPresent": "Copertina attuale",
     "descriptionHelper": "Descrivi la risorsa per aiutare gli altri a capirne il contenuto e a trovarlo facilmente",
-    "descriptionPlaceholder": "Descrivi la risorsa per aiutare gli altri a capirne il contenuto e a trovarlo facilmente",
     "fileTooLarge": "File troppo grande (max 50MB)",
     "done": "Completato",
     "languagePlaceholder": "Seleziona",
@@ -2142,7 +2155,16 @@
     "sortMostDownloaded": "Più scaricato",
     "sortMostRecent": "Più recente",
     "titlePlaceholder": "Ad esempio, workshop Multi-sig Liana",
-    "typePlaceholder": "Tipo"
+    "typePlaceholder": "Tipo",
+    "guidelines": {
+      "continueToAdd": "Continua ad Aggiungere",
+      "point1": "Raggruppa i file correlati in bundle (ad esempio, \"Presentazioni Meetup Lille 2024\").",
+      "point2": "Cita l'autore originale se condividi contenuti realizzati da altri.",
+      "point3": "Carica solamente materiali che hanno diritti di condivisione.",
+      "readFullGuide": "Leggi la guida completa",
+      "subtitle": "Condividi le tue migliori risorse e aiuta gli educatori di Bitcoin in tutto il mondo",
+      "title": "Linee guida per l'aggiunta di nuovi contenuti"
+    }
   },
   "mentor": {
     "collapse": "Comprimi",

@@ -2035,12 +2035,10 @@
     "coverRequired": "Ishusho y’urupapuro rwambere rurakenewe",
     "currentCoverPresent": "Ishusho y’urupapuro rwambere iriko ubu",
     "descriptionHelper": "Sigura ivyiyumviro vy’uru rwandiko kugira abandi bashobore kurutahura no kurutora.",
-    "descriptionPlaceholder": "Incamake z’ibikoresho vyo kwigisha",
     "descriptionRequired": "Insobanuro ntibishobora kuba igaragara",
     "descriptionTooLong": "Insobanuro ntibishobora kurenza indome 350",
     "titleTooLong": "Umutwe ntushobora kurenza indome 60",
     "detail": {
-      "createdBy": "Yakozwe na",
       "downloadAll": "Kubika vyose",
       "view": "Raba"
     },

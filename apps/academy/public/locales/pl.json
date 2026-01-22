@@ -2072,7 +2072,6 @@
     "uploadForReview": "Prześlij do recenzji",
     "contentNotFound": "Nie znaleziono treści",
     "detail": {
-      "createdBy": "Stworzone przez",
       "downloadAll": "Pobierz wszystko",
       "view": "Zobacz"
     },
@@ -2098,7 +2097,6 @@
     "coverRequired": "Obraz na okładce jest obowiązkowy",
     "currentCoverPresent": "Obecna okładka",
     "descriptionHelper": "Opisz zawartość zasobu, aby inni mogli zrozumieć jej zawartość i ją znaleźć",
-    "descriptionPlaceholder": "Krótki opis materiału edukacyjnego",
     "descriptionRequired": "Opis nie może być pusty",
     "dropCover": "Upuść tutaj obraz okładki",
     "imageError": "Wystąpił błąd podczas przesyłania obrazu",

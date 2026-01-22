@@ -2073,7 +2073,6 @@
     "currentCoverPresent": "Huidige cover aanwezig",
     "descriptionTooLong": "De beschrijving mag niet meer dan 350 tekens bevatten",
     "detail": {
-      "createdBy": "Gecreëerd door",
       "downloadAll": "Alles downloaden",
       "view": "Bekijken"
     },
@@ -2104,7 +2103,6 @@
     "titleHelper": "Het moet de inhoud en het doel van uw bron weerspiegelen. Houd het beknopt maar informatief.",
     "titleRequired": "De titel mag niet leeg zijn",
     "descriptionHelper": "Beschrijf de inhoud van de bron om anderen te helpen deze te begrijpen en te vinden",
-    "descriptionPlaceholder": "Korte beschrijving van het educatief materiaal",
     "descriptionRequired": "De beschrijving mag niet leeg zijn",
     "fileTooLarge": "Bestand te groot (max 50MB)",
     "imageCover": "Omslagafbeelding",

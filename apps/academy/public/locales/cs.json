@@ -2050,7 +2050,6 @@
     "done": "Hotovo",
     "detail": {
       "view": "Zobrazit",
-      "createdBy": "Vytvořil",
       "downloadAll": "Stáhnout vše"
     },
     "languagePlaceholder": "Vyberte",
@@ -2101,7 +2100,6 @@
     "successSubtitle": "Před zobrazením projde kontrolním procesem.",
     "coverRequired": "Je nutné mít obrázek na obalu",
     "descriptionHelper": "Popište obsah zdroje, aby ostatní pochopili jeho obsah a našli ho",
-    "descriptionPlaceholder": "Stručný popis vzdělávacího materiálu",
     "descriptionRequired": "Popis nemůže být prázdný",
     "descriptionTooLong": "Popis nesmí přesahovat 350 znaků",
     "loginMessage": "Pro zobrazení svého obsahu se prosím přihlaste.",

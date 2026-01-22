@@ -2079,7 +2079,6 @@
     "browseFiles": "hoặc duyệt qua các tệp",
     "browseImages": "hoặc duyệt qua các hình ảnh",
     "detail": {
-      "createdBy": "Được tạo bởi",
       "downloadAll": "Tải xuống tất cả",
       "view": "Xem"
     },
@@ -2119,7 +2118,6 @@
     "coverRequired": "Ảnh bìa là bắt buộc",
     "currentCoverPresent": "Bìa hiện tại",
     "descriptionHelper": "Mô tả nội dung nguồn tài nguyên để giúp người khác hiểu nội dung và tìm kiếm nó",
-    "descriptionPlaceholder": "Mô tả ngắn gọn về tài liệu giáo dục",
     "descriptionRequired": "Mô tả không được để trống",
     "descriptionTooLong": "Mô tả không được vượt quá 350 ký tự",
     "languagePlaceholder": "Chọn",
