@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react';
-import ReactPlayer from 'react-player';
+import { VideoRenderer } from '#src/components/video-renderer.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
-import {
-  doesVideoUrlWorkWithReactPlayer,
-  fixEmbedUrl,
-  isUrlFromValidVideoPlatform,
-} from '#src/utils/misc.ts';
+import { isUrlFromValidVideoPlatform } from '#src/utils/misc.ts';
 
 export const ImageVideoRenderer = ({
   src,
@@ -38,26 +34,7 @@ export const ImageVideoRenderer = ({
     return (
       <div className="mx-auto mb-2 max-w-full rounded-lg pb-6 md:pt-4 last:pb-0 last:md:pb-4">
         <div className="relative pt-[56.25%]">
-          {doesVideoUrlWorkWithReactPlayer(src) ? (
-            <ReactPlayer
-              width={'100%'}
-              height={'100%'}
-              style={{ left: 0, position: 'absolute', top: 0 }}
-              className="mx-auto mb-2 rounded-lg"
-              controls={true}
-              src={src}
-            />
-          ) : (
-            <iframe
-              width="100%"
-              height="100%"
-              style={{ left: 0, position: 'absolute', top: 0 }}
-              className="mx-auto mb-2 rounded-lg"
-              src={fixEmbedUrl(src)}
-              title={alt}
-              allowFullScreen
-            />
-          )}
+          <VideoRenderer src={src} alt={alt} />
         </div>
       </div>
     );

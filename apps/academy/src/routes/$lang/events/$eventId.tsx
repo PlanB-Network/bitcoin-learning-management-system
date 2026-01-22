@@ -20,6 +20,7 @@ import PlanBLogoBlack from '#src/assets/logo/pba-horizontal-black.svg?react';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { PageLayout } from '#src/components/page-layout.tsx';
+import { VideoRenderer } from '#src/components/video-renderer.tsx';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
@@ -144,7 +145,7 @@ function EventDetails() {
   if (event?.replayUrl) {
     videoUrl = event?.replayUrl;
   } else if (event?.liveUrl) {
-    videoUrl = `${event?.liveUrl}?autoplay=1&muted=1&peertubeLink=0`;
+    videoUrl = event?.liveUrl;
   }
 
   const dateString =
@@ -355,13 +356,9 @@ function EventDetails() {
             {isFetched && videoUrl && eventStartInLessThan1Hour && (
               <div className="flex flex-col gap-6 w-full items-center">
                 {videoUrl && (
-                  <iframe
-                    title={`Live ${event?.name}`}
-                    className="w-full aspect-video rounded-2xl"
-                    src={videoUrl}
-                    allowFullScreen={true}
-                    sandbox="allow-same-origin allow-scripts allow-popups"
-                  />
+                  <div className="w-full relative pt-[56.25%]">
+                    <VideoRenderer src={videoUrl} />
+                  </div>
                 )}
                 {event?.chatUrl && (
                   <iframe
