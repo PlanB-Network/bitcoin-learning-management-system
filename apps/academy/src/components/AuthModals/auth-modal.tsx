@@ -26,6 +26,8 @@ export const AuthModal = ({
     initialState,
   );
 
+  const [isOnVerifyEmail, setIsOnVerifyEmail] = useState(false);
+
   const goTo = (newState: AuthModalState) => {
     setCurrentState(null);
     setTimeout(() => setCurrentState(newState), 300);
@@ -44,50 +46,64 @@ export const AuthModal = ({
           currentState === AuthModalState.Register) && (
           <BasicModal
             trigger={<button type="button" className="hidden" />}
-            title={t('menu.getStarted')}
+            title={
+              isOnVerifyEmail ? t('menu.verifyEmail') : t('menu.getStarted')
+            }
             open={isOpen}
-            onOpenChange={onClose}
-            showPill
+            onOpenChange={
+              isOnVerifyEmail
+                ? () => {
+                    if (redirectTo) {
+                      window.location.href = redirectTo;
+                    } else {
+                      window.location.reload();
+                    }
+                  }
+                : onClose
+            }
+            showPill={!isOnVerifyEmail}
           >
             <div className="flex flex-col w-full gap-4">
-              <SegmentedControl
-                variant="outline"
-                value={
-                  currentState === AuthModalState.Register
-                    ? 'register'
-                    : 'signin'
-                }
-                onValueChange={(v) =>
-                  setCurrentState(
-                    v === 'register'
-                      ? AuthModalState.Register
-                      : AuthModalState.SignIn,
-                  )
-                }
-                className="w-full"
-                size={isMobile ? 'sm' : 'default'}
-              >
-                <SegmentedControlItem
-                  value="register"
+              {!isOnVerifyEmail && (
+                <SegmentedControl
+                  variant="outline"
+                  value={
+                    currentState === AuthModalState.Register
+                      ? 'register'
+                      : 'signin'
+                  }
+                  onValueChange={(v) =>
+                    setCurrentState(
+                      v === 'register'
+                        ? AuthModalState.Register
+                        : AuthModalState.SignIn,
+                    )
+                  }
+                  className="w-full"
                   size={isMobile ? 'sm' : 'default'}
                 >
-                  {t('auth.signUp')}
-                </SegmentedControlItem>
+                  <SegmentedControlItem
+                    value="register"
+                    size={isMobile ? 'sm' : 'default'}
+                  >
+                    {t('auth.signUp')}
+                  </SegmentedControlItem>
 
-                <SegmentedControlItem
-                  value="signin"
-                  size={isMobile ? 'sm' : 'default'}
-                >
-                  {t('menu.login')}
-                </SegmentedControlItem>
-              </SegmentedControl>
+                  <SegmentedControlItem
+                    value="signin"
+                    size={isMobile ? 'sm' : 'default'}
+                  >
+                    {t('menu.login')}
+                  </SegmentedControlItem>
+                </SegmentedControl>
+              )}
 
               {currentState === AuthModalState.SignIn && (
                 <SignIn onClose={onClose} redirectTo={redirectTo} goTo={goTo} />
               )}
 
               {currentState === AuthModalState.Register && (
-                <Register redirectTo={redirectTo} />
+                <Register setIsOnVerifyEmail={setIsOnVerifyEmail} />
               )}
             </div>
           </BasicModal>

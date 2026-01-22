@@ -13,8 +13,8 @@ import { useCallback, useContext } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { BsCheck } from 'react-icons/bs';
 import { z } from 'zod';
+import EmailIcon from '#src/assets/icons/pixelated/email.svg?react';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { trpc } from '../../utils/trpc.ts';
@@ -27,10 +27,10 @@ interface RegisterFormData {
 }
 
 interface RegisterProps {
-  redirectTo?: string | null;
+  setIsOnVerifyEmail: (value: boolean) => void;
 }
 
-export const Register = ({ redirectTo }: RegisterProps) => {
+export const Register = ({ setIsOnVerifyEmail }: RegisterProps) => {
   const isMobile = useSmaller('md') || window.innerWidth < 768;
 
   const { t } = useTranslation();
@@ -71,13 +71,7 @@ export const Register = ({ redirectTo }: RegisterProps) => {
       onSuccess: () => {
         sessionStorage.setItem('hasJustRegistered', 'true');
 
-        setTimeout(() => {
-          if (redirectTo) {
-            window.location.href = redirectTo;
-          } else {
-            window.location.reload();
-          }
-        }, 2000);
+        setIsOnVerifyEmail(true);
       },
     }),
   );
@@ -90,15 +84,17 @@ export const Register = ({ redirectTo }: RegisterProps) => {
 
   if (register.data && !register.error) {
     return (
-      <div className="flex flex-col items-center">
-        <BsCheck className="my-8 text-black" size={80} />
-        <p>
-          {t('auth.accountCreated', {
-            userName: register.data.user.username,
-          })}
-          <br />
-          {t('auth.canSaveProgress')}
-        </p>
+      <div className="flex flex-col items-center gap-4">
+        <EmailIcon className="w-12 md:w-20 fill-orange-500" />
+        <div className="flex flex-col items-center gap-2">
+          <p className="title-base md:title-large">
+            {t('settings.emailSentTitle')}
+          </p>
+          <p className="body-base md:label">{t('settings.verifyEmailClick')}</p>
+          <p className="body-small text-neutral-500">
+            {t('settings.checkSpam')}
+          </p>
+        </div>
       </div>
     );
   }

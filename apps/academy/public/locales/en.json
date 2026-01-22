@@ -1643,7 +1643,8 @@
     "educatorContent": "Educator content",
     "getStarted": "Get started",
     "login": "Log in",
-    "signIn": "Sign in"
+    "signIn": "Sign in",
+    "verifyEmail": "Verify email"
   },
   "months": {
     "april": "April",
@@ -1951,9 +1952,11 @@
     "changeEmail": "Change email",
     "changePassword": "Change password",
     "changeProfilePicture": "Change profile picture",
+    "checkSpam": "(If you don’t see it, check your spam folder.)",
     "emailSentDescription": "Verify your email and reload this page to continue.",
     "emailSentTitle": "We've sent you an email",
-    "verifyEmail": "Verify email"
+    "verifyEmail": "Verify email",
+    "verifyEmailClick": "Verify your email by clicking the link you received."
   },
   "tutorials": {
     "business": {
