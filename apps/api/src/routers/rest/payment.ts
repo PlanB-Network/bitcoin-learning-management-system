@@ -1,6 +1,5 @@
 import { createCalculateEventSeats } from '@blms/service-content';
 import {
-  createStartCourse,
   createUpdateCoursePayment,
   createUpdateCoursePaymentInvoiceId,
   createUpdateCoursePaymentStatus,
@@ -23,8 +22,8 @@ export const createRestPaymentRoutes = (
   const { stripe, config } = dependencies;
 
   const updateCoursePayment = createUpdateCoursePayment(dependencies);
-  const startCourse = createStartCourse(dependencies);
 
+  // Course payments webhook for SwissBitcoinPay only
   router.post(
     '/users/courses/payment/webhooks',
     async (req, res): Promise<void> => {
@@ -46,13 +45,6 @@ export const createRestPaymentRoutes = (
 
         const coursePayment = await updateCoursePayment(status);
 
-        if (coursePayment) {
-          await startCourse({
-            courseId: coursePayment.courseId,
-            uid: coursePayment.uid,
-          });
-        }
-
         res.json({
           coursePayment,
           message: 'success',
@@ -66,6 +58,7 @@ export const createRestPaymentRoutes = (
   const updateEventPayment = createUpdateEventPayment(dependencies);
   const calculateEventSeats = createCalculateEventSeats(dependencies);
 
+  // Events payments webhook for SwissBitcoinPay only
   router.post(
     '/users/events/payment/webhooks',
     async (req, res): Promise<void> => {
@@ -103,6 +96,7 @@ export const createRestPaymentRoutes = (
 
   const updateGeneralPayment = createUpdateGeneralPayment(dependencies);
 
+  // General payments webhook for SwissBitcoinPay only
   router.post(
     '/users/general/payment/webhooks',
     async (req, res): Promise<void> => {
@@ -189,6 +183,7 @@ export const createRestPaymentRoutes = (
 
           break;
         }
+        // Invoice paid, attach invoice details to payment
         case 'invoice.paid': {
           req.log('============ Stripe webhook', event.type);
 
@@ -205,20 +200,11 @@ export const createRestPaymentRoutes = (
           const product = paymentIntent.metadata.product;
 
           if (product === 'course') {
-            const coursePayment = await createUpdateCoursePaymentInvoiceId(
-              dependencies,
-            )({
+            await createUpdateCoursePaymentInvoiceId(dependencies)({
               intentId: intentId,
               invoiceUrl: hostedInvoiceUrl,
               stripeInvoiceId: invoiceId,
             });
-
-            if (coursePayment) {
-              await startCourse({
-                courseId: coursePayment.courseId,
-                uid: coursePayment.uid,
-              });
-            }
           } else if (product === 'event') {
             await createUpdateEventPaymentInvoiceId(dependencies)({
               intentId: intentId,

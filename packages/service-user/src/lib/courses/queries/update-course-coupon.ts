@@ -8,6 +8,7 @@ export const updateCourseCoupon = ({ paymentId }: { paymentId: string }) => {
     WHERE
       content.coupon_code.deleted_at IS NULL AND
       content.coupon_code.code = users.course_payment.coupon_code AND
+      content.coupon_code.item_id = users.course_payment.course_id AND
       users.course_payment.coupon_code IS NOT NULL AND
       users.course_payment.payment_id = ${paymentId}
   ;

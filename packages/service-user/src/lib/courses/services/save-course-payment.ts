@@ -1,5 +1,5 @@
 import { firstRow, sql } from '@blms/database';
-import type { CouponCode, Course } from '@blms/types';
+import type { CouponCode, Course, CoursePayment } from '@blms/types';
 import { v4 as uuidv4 } from 'uuid';
 
 import type { Dependencies } from '../../../dependencies.js';
@@ -10,8 +10,12 @@ import {
 } from '../../payments/services/payment-service.js';
 import { insertCoursePayment } from '../queries/insert-course-payment.js';
 import { updateCourseCoupon } from '../queries/update-course-coupon.js';
-import { updateCoursePaymentQuery } from '../queries/update-payment.js';
+import {
+  updateCoursePaymentQuery,
+  updatePaymentInvoiceId,
+} from '../queries/update-payment.js';
 import { createSendCourseWelcomeEmail } from './send-course-welcome-email.js';
+import { createStartCourse } from './start-course.js';
 
 interface Options {
   uid: string;
@@ -191,9 +195,9 @@ export const createSaveCoursePayment = (dependencies: Dependencies) => {
   };
 };
 
-export const createUpdateCoursePaymentStatus = ({
-  postgres,
-}: Pick<Dependencies, 'postgres'>) => {
+export const createUpdateCoursePaymentStatus = (
+  dependencies: Pick<Dependencies, 'postgres' | 'config'>,
+) => {
   return async ({
     paymentId,
     paymentIntentId,
@@ -201,7 +205,8 @@ export const createUpdateCoursePaymentStatus = ({
     paymentId: string;
     paymentIntentId: string;
   }) => {
-    await postgres.exec(
+    const { postgres } = dependencies;
+    const coursePayments = await postgres.exec(
       updateCoursePaymentQuery({
         id: paymentId,
         intentId: paymentIntentId,
@@ -209,5 +214,87 @@ export const createUpdateCoursePaymentStatus = ({
         isPaid: true,
       }),
     );
+    const coursePayment =
+      coursePayments && coursePayments.length === 1 ? coursePayments[0] : null;
+
+    if (coursePayment) {
+      await postSuccessfulCoursePaymentHandling(
+        dependencies,
+        coursePayment.paymentId,
+        coursePayment,
+      );
+    }
+
+    return coursePayment;
   };
+};
+
+type Options2 = { id: string } & (
+  | { isPaid: true; isExpired: false }
+  | { isPaid: false; isExpired: true }
+);
+
+export const createUpdateCoursePayment = (
+  dependencies: Pick<Dependencies, 'postgres' | 'config'>,
+) => {
+  return async (options: Options2) => {
+    const { postgres } = dependencies;
+
+    const coursePayments = await postgres.exec(
+      updateCoursePaymentQuery(options),
+    );
+
+    const coursePayment =
+      coursePayments && coursePayments.length === 1 ? coursePayments[0] : null;
+
+    if (options.isPaid && coursePayment) {
+      await postSuccessfulCoursePaymentHandling(
+        dependencies,
+        options.id,
+        coursePayment,
+      );
+    }
+
+    return coursePayment;
+  };
+};
+
+interface Options3 {
+  intentId: string;
+  stripeInvoiceId: string;
+  invoiceUrl: string;
+}
+
+export const createUpdateCoursePaymentInvoiceId = (
+  dependencies: Pick<Dependencies, 'postgres' | 'config'>,
+) => {
+  return async (options: Options3) => {
+    const { postgres } = dependencies;
+
+    const coursePayments = await postgres.exec(updatePaymentInvoiceId(options));
+    const coursePayment =
+      coursePayments && coursePayments.length === 1 ? coursePayments[0] : null;
+
+    return coursePayment;
+  };
+};
+
+const postSuccessfulCoursePaymentHandling = async (
+  dependencies: Pick<Dependencies, 'postgres' | 'config'>,
+  paymentId: string,
+  coursePayment: CoursePayment,
+) => {
+  const { postgres } = dependencies;
+
+  await createStartCourse(dependencies)({
+    courseId: coursePayment.courseId,
+    uid: coursePayment.uid,
+  });
+
+  await postgres.exec(updateCourseCoupon({ paymentId: paymentId }));
+
+  await createSendCourseWelcomeEmail(dependencies)({
+    courseId: coursePayment.courseId,
+    userId: coursePayment.uid,
+  });
 };

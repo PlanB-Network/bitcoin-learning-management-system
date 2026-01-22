@@ -39,4 +39,3 @@ export * from './set-assignment-grades-published.js';
 export * from './start-course.js';
 export * from './start-exam-attempt.js';
 export * from './teacher-led.js';
-export * from './update-payment.js';
