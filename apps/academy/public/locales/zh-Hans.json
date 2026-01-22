@@ -2090,14 +2090,12 @@
     "contentNotFound": "找不到内容",
     "descriptionRequired": "描述不能为空",
     "detail": {
-      "createdBy": "创建者",
       "downloadAll": "下载全部",
       "view": "视图"
     },
     "browseImages": "或浏览图片",
     "currentCoverPresent": "当前封面呈现",
     "descriptionHelper": "描述资源内容以帮助他人理解其含义并找到它",
-    "descriptionPlaceholder": "教育材料的简要描述",
     "dropCover": "在此处放置封面图像",
     "dropFiles": "在此处放置文件",
     "editAndRequireApproval": "编辑并需要审批",

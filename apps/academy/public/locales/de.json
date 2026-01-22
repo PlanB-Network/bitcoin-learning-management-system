@@ -2054,7 +2054,6 @@
     "titleTooLong": "Der Titel darf nicht mehr als 60 Zeichen enthalten",
     "detail": {
       "downloadAll": "Alles herunterladen",
-      "createdBy": "Erstellt von",
       "view": "Sicht"
     },
     "dropCover": "Ziehen Sie das Cover-Bild hierher",
@@ -2099,7 +2098,6 @@
     "coverRequired": "Das Titelbild ist verpflichtend",
     "currentCoverPresent": "Aktuelles Cover vorhanden",
     "descriptionHelper": "Beschreiben Sie den Inhalt der Ressource, um anderen zu helfen, ihren Inhalt zu verstehen und sie zu finden",
-    "descriptionPlaceholder": "Kurze Beschreibung des Bildungsmaterials",
     "descriptionRequired": "Die Beschreibung darf nicht leer sein",
     "descriptionTooLong": "Die Beschreibung darf 350 Zeichen nicht überschreiten",
     "addMaterial": "Bildungsinhalte hinzufügen",

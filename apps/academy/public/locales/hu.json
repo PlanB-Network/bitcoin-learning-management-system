@@ -1976,10 +1976,8 @@
     "coverRequired": "A borító kép kötelező",
     "currentCoverPresent": "Aktuális borítókép jelenleg van",
     "descriptionHelper": "Írj leírást az erőforráshoz, hogy mások megértsék a tartalmát és megtalálják azt",
-    "descriptionPlaceholder": "Az oktatási anyag rövid leírása",
     "descriptionTooLong": "A leírás nem haladhatja meg a 350 karaktert",
     "detail": {
-      "createdBy": "Létrehozta",
       "downloadAll": "Az összes letöltése",
       "view": "Megtekintés"
     },

@@ -1376,11 +1376,9 @@
     "coverPreview": "Náhľad titulného obrázku",
     "coverRequired": "Titulný obrázok je povinný",
     "descriptionHelper": "Popíšte obsah zdroja, aby ostatní pochopili jeho obsah a našli ho",
-    "descriptionPlaceholder": "Popíšte obsah zdroja, aby ostatní pochopili jeho obsah a našli ho",
     "descriptionRequired": "Popis nemôže byť prázdny",
     "descriptionTooLong": "Popis nesmie presiahnuť 350 znakov",
     "detail": {
-      "createdBy": "Vytvoril/a",
       "downloadAll": "Stiahnuť všetko",
       "view": "Zobraziť"
     },

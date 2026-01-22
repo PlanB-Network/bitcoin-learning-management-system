@@ -2076,7 +2076,7 @@
     "title": "Enseignez Bitcoin et inspirez les autres"
   },
   "educatorContent": {
-    "addMaterial": "Ajouter du contenu pédagogique",
+    "addMaterial": "Ajouter du contenu éducateur",
     "addMoreLinks": "Ajouter plus de liens",
     "browseFiles": "ou parcourir les fichiers",
     "browseImages": "ou parcourir les images",
@@ -2084,11 +2084,9 @@
     "coverRequired": "L’image de couverture est obligatoire",
     "currentCoverPresent": "Image de couverture actuelle présente",
     "descriptionHelper": "Décrivez le contenu de la ressource afin d’aider les autres à le comprendre et à la trouver",
-    "descriptionPlaceholder": "Brève description du matériel pédagogique",
     "descriptionRequired": "La description ne peut pas être vide",
     "descriptionTooLong": "La description ne peut pas dépasser 350 caractères",
     "detail": {
-      "createdBy": "Créé par",
       "downloadAll": "Télécharger tout",
       "view": "Voir"
     },
@@ -2096,7 +2094,7 @@
     "dropCover": "Déposez l'image de couverture ici",
     "dropFiles": "Déposez les fichiers ici",
     "editAndRequireApproval": "Modifier et soumettre à approbation",
-    "editMaterial": "Modifier le contenu pédagogique",
+    "editMaterial": "Modifier le contenu éducateur",
     "fileTooLarge": "Fichier trop volumineux (50 Mo maximum)",
     "imageCover": "Image de couverture",
     "imageError": "Une erreur est survenue lors du téléversement de l’image",
@@ -2108,7 +2106,7 @@
     "noContentToReview": "Aucun contenu à examiner",
     "noCover": "Aucune image de couverture",
     "noResultsDescription": "Essayez d’ajuster vos filtres de recherche",
-    "noResultsTitle": "Aucun contenu pédagogique trouvé",
+    "noResultsTitle": "Aucun contenu éducateur trouvé",
     "onlyImages": "Seuls les fichiers image sont autorisés",
     "resourceType": "Type de ressource",
     "shareLinks": "Partager les liens",
@@ -2118,9 +2116,9 @@
       "rejected": "Non accepté",
       "unpublished": "Non publié"
     },
-    "success": "Contenu pédagogique ajouté avec succès !",
+    "success": "Contenu éducateur ajouté avec succès !",
     "successSubtitle": "Il passera par un processus de validation avant d’être affiché.",
-    "successTitle": "Contenu pédagogique téléversé avec succès",
+    "successTitle": "Contenu éducateur téléversé avec succès",
     "titleHelper": "Il doit refléter le contenu et l’objectif de votre ressource. Restez concis tout en étant informatif.",
     "titleRequired": "Le titre ne peut pas être vide",
     "typeRequired": "Précisez le type de ressource",
@@ -2144,7 +2142,7 @@
       "approved": "Approuvé",
       "modified": "Modifié",
       "new": "Nouveau",
-      "pageTitle": "Examiner le contenu pédagogique",
+      "pageTitle": "Examiner le contenu éducateur",
       "previewChanges": "Aperçu des modifications",
       "previewForApproval": "Aperçu pour validation",
       "toReview": "À examiner"
@@ -2156,7 +2154,7 @@
     "linkPlaceholder": "https://example.com",
     "maxFileSize": "Taille maximale du fichier : 50 Mo",
     "pageSubtitle": "Un espace où les éducateurs Bitcoin et les communautés partagent et réutilisent des ressources",
-    "pageTitle": "Contenu pédagogique",
+    "pageTitle": "Contenu éducateur",
     "reviewModal": {
       "approveAndPublish": "Approuver le contenu et publier",
       "edit": "Modifier",

@@ -2012,7 +2012,6 @@
     },
     "detail": {
       "view": "عرض",
-      "createdBy": "تم الإنشاء بواسطة",
       "downloadAll": "تحميل الكل"
     },
     "contentNotFound": "المحتوى غير موجود",
@@ -2040,7 +2039,6 @@
     "coverRequired": "الصورة الغلاف إلزامية",
     "currentCoverPresent": "الغطاء الحالي موجود",
     "descriptionHelper": "صف محتوى المورد لمساعدة الآخرين على فهم محتواه والعثور عليه",
-    "descriptionPlaceholder": "وصف موجز للمادة التعليمية",
     "descriptionRequired": "لا يمكن أن يكون الوصف فارغًا",
     "descriptionTooLong": "لا يمكن أن تتجاوز الوصف 350 حرفًا",
     "done": "تم",

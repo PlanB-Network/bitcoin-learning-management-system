@@ -2097,11 +2097,9 @@
     "coverRequired": "Kaane pilt on kohustuslik",
     "currentCoverPresent": "Hetkel kaas on olemas",
     "descriptionHelper": "Kirjelda ressursi sisu, et teised selle sisu mõistaksid ja leiaksid",
-    "descriptionPlaceholder": "Haridusmaterjali lühikirjeldus",
     "descriptionRequired": "Kirjeldus ei tohi olla tühi",
     "descriptionTooLong": "Kirjeldus ei tohi ületada 350 tähemärki",
     "detail": {
-      "createdBy": "Loodud poolt",
       "downloadAll": "Lae kõik alla",
       "view": "Vaade"
     },

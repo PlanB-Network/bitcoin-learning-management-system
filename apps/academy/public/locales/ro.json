@@ -2112,11 +2112,9 @@
       "previewChanges": "Previzualizare modificări",
       "previewForApproval": "Previzualizare pentru aprobare"
     },
-    "descriptionPlaceholder": "Descrie conținutul resursei pentru a ajuta pe alții să îl înțeleagă și să îl găsească",
     "detail": {
       "downloadAll": "Descarcă toate",
-      "view": "Vizualizează",
-      "createdBy": "Creat de"
+      "view": "Vizualizează"
     },
     "dropCover": "Aruncă imaginea de copertă aici",
     "dropFiles": "Aruncă fișierele aici",

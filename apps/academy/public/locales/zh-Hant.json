@@ -2070,7 +2070,6 @@
     "descriptionTooLong": "描述不能超過350個字符",
     "detail": {
       "downloadAll": "全部下載",
-      "createdBy": "創建者",
       "view": "檢視"
     },
     "urlInvalid": "鏈接必須是有效的URL",
@@ -2089,7 +2088,6 @@
     "uploading": "正在上傳...",
     "contentNotFound": "找不到內容",
     "descriptionHelper": "描述資源內容以幫助他人理解其內容並找到它",
-    "descriptionPlaceholder": "教育材料的簡短描述",
     "descriptionRequired": "描述不能為空",
     "noContent": "您尚未上傳任何內容。",
     "noContentToReview": "无内容待审查",

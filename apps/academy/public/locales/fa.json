@@ -2090,11 +2090,9 @@
     "coverRequired": "تصویر کاور الزامی است",
     "currentCoverPresent": "کاور کنونی وجود دارد",
     "descriptionHelper": "توضیح محتوای منبع برای کمک به دیگران برای درک محتوا و پیدا کردن آن",
-    "descriptionPlaceholder": "توضیح مختصری از مطلب آموزشی",
     "descriptionRequired": "توضیحات نمی تواند خالی باشد",
     "descriptionTooLong": "توضیحات نمی تواند از 350 کاراکتر بیشتر باشد",
     "detail": {
-      "createdBy": "ایجاد شده توسط",
       "downloadAll": "دانلود همه",
       "view": "مشاهده"
     },
