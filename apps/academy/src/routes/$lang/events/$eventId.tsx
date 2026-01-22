@@ -136,6 +136,10 @@ function EventDetails() {
   const userBookedTheEvent =
     eventPayment !== undefined || userEvent !== undefined;
 
+  const eventStartInLessThan1Hour = event
+    ? Date.now() + 60 * 60 * 1000 > new Date(event.startDate).getTime()
+    : false;
+
   let videoUrl = '';
   if (event?.replayUrl) {
     videoUrl = event?.replayUrl;
@@ -348,6 +352,29 @@ function EventDetails() {
               </Banner>
             )}
 
+            {isFetched && videoUrl && eventStartInLessThan1Hour && (
+              <div className="flex flex-col gap-6 w-full items-center">
+                {videoUrl && (
+                  <iframe
+                    title={`Live ${event?.name}`}
+                    className="w-full aspect-video rounded-2xl"
+                    src={videoUrl}
+                    allowFullScreen={true}
+                    sandbox="allow-same-origin allow-scripts allow-popups"
+                  />
+                )}
+                {event?.chatUrl && (
+                  <iframe
+                    src="https://peertube.planb.network/plugins/livechat/router/webchat/room/4f4a811a-2d98-40dc-80ea-736088b408e7"
+                    title="Chat"
+                    sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                    className="w-full"
+                    height="315"
+                  />
+                )}
+              </div>
+            )}
+
             <div className="flex flex-col bg-neutral-50 text-neutral-800 rounded-xl">
               <h2 className="label-large-med-20px text-neutral-1000 border-b border-neutral-100 py-3 px-4 md:px-6">
                 {t('events.eventInfos.whatsPlanned')}
@@ -526,29 +553,6 @@ function EventDetails() {
                 )}
               </div>
             </div>
-          </div>
-        )}
-
-        {isFetched && videoUrl && (
-          <div className="flex flex-col gap-6 w-full items-center mt-6 md:mt-8">
-            {videoUrl && (
-              <iframe
-                title={`Live ${event?.name}`}
-                className="w-full aspect-video rounded-2xl"
-                src={videoUrl}
-                allowFullScreen={true}
-                sandbox="allow-same-origin allow-scripts allow-popups"
-              />
-            )}
-            {event?.chatUrl && (
-              <iframe
-                src="https://peertube.planb.network/plugins/livechat/router/webchat/room/4f4a811a-2d98-40dc-80ea-736088b408e7"
-                title="Chat"
-                sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-                className="w-full"
-                height="315"
-              />
-            )}
           </div>
         )}
 
