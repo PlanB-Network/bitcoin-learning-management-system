@@ -18,6 +18,7 @@ import { Route as LangResourcesIndexRouteImport } from './routes/$lang/resources
 import { Route as LangNotificationsIndexRouteImport } from './routes/$lang/notifications/index';
 import { Route as LangEventsIndexRouteImport } from './routes/$lang/events/index';
 import { Route as LangEducatorContentIndexRouteImport } from './routes/$lang/educator-content/index';
+import { Route as LangEducatorContentGuideIndexRouteImport } from './routes/$lang/educator-content-guide/index';
 import { Route as LangDashboardIndexRouteImport } from './routes/$lang/dashboard/index';
 import { Route as LangCareerPortalIndexRouteImport } from './routes/$lang/career-portal/index';
 import { Route as LangCalendarIndexRouteImport } from './routes/$lang/calendar/index';
@@ -149,6 +150,12 @@ const LangEducatorContentIndexRoute =
   LangEducatorContentIndexRouteImport.update({
     id: '/$lang/educator-content/',
     path: '/$lang/educator-content/',
+    getParentRoute: () => rootRouteImport,
+  } as any);
+const LangEducatorContentGuideIndexRoute =
+  LangEducatorContentGuideIndexRouteImport.update({
+    id: '/$lang/educator-content-guide/',
+    path: '/$lang/educator-content-guide/',
     getParentRoute: () => rootRouteImport,
   } as any);
 const LangDashboardIndexRoute = LangDashboardIndexRouteImport.update({
@@ -707,6 +714,7 @@ export interface FileRoutesByFullPath {
   '/$lang/calendar': typeof LangCalendarIndexRoute;
   '/$lang/career-portal': typeof LangCareerPortalIndexRoute;
   '/$lang/dashboard': typeof LangDashboardIndexRoute;
+  '/$lang/educator-content-guide': typeof LangEducatorContentGuideIndexRoute;
   '/$lang/educator-content': typeof LangEducatorContentIndexRoute;
   '/$lang/events': typeof LangEventsIndexRoute;
   '/$lang/notifications': typeof LangNotificationsIndexRoute;
@@ -808,6 +816,7 @@ export interface FileRoutesByTo {
   '/$lang/calendar': typeof LangCalendarIndexRoute;
   '/$lang/career-portal': typeof LangCareerPortalIndexRoute;
   '/$lang/dashboard': typeof LangDashboardIndexRoute;
+  '/$lang/educator-content-guide': typeof LangEducatorContentGuideIndexRoute;
   '/$lang/educator-content': typeof LangEducatorContentIndexRoute;
   '/$lang/events': typeof LangEventsIndexRoute;
   '/$lang/notifications': typeof LangNotificationsIndexRoute;
@@ -910,6 +919,7 @@ export interface FileRoutesById {
   '/$lang/calendar/': typeof LangCalendarIndexRoute;
   '/$lang/career-portal/': typeof LangCareerPortalIndexRoute;
   '/$lang/dashboard/': typeof LangDashboardIndexRoute;
+  '/$lang/educator-content-guide/': typeof LangEducatorContentGuideIndexRoute;
   '/$lang/educator-content/': typeof LangEducatorContentIndexRoute;
   '/$lang/events/': typeof LangEventsIndexRoute;
   '/$lang/notifications/': typeof LangNotificationsIndexRoute;
@@ -1014,6 +1024,7 @@ export interface FileRouteTypes {
     | '/$lang/calendar'
     | '/$lang/career-portal'
     | '/$lang/dashboard'
+    | '/$lang/educator-content-guide'
     | '/$lang/educator-content'
     | '/$lang/events'
     | '/$lang/notifications'
@@ -1115,6 +1126,7 @@ export interface FileRouteTypes {
     | '/$lang/calendar'
     | '/$lang/career-portal'
     | '/$lang/dashboard'
+    | '/$lang/educator-content-guide'
     | '/$lang/educator-content'
     | '/$lang/events'
     | '/$lang/notifications'
@@ -1216,6 +1228,7 @@ export interface FileRouteTypes {
     | '/$lang/calendar/'
     | '/$lang/career-portal/'
     | '/$lang/dashboard/'
+    | '/$lang/educator-content-guide/'
     | '/$lang/educator-content/'
     | '/$lang/events/'
     | '/$lang/notifications/'
@@ -1319,6 +1332,7 @@ export interface RootRouteChildren {
   LangCalendarIndexRoute: typeof LangCalendarIndexRoute;
   LangCareerPortalIndexRoute: typeof LangCareerPortalIndexRoute;
   LangDashboardIndexRoute: typeof LangDashboardIndexRoute;
+  LangEducatorContentGuideIndexRoute: typeof LangEducatorContentGuideIndexRoute;
   LangEducatorContentIndexRoute: typeof LangEducatorContentIndexRoute;
   LangEventsIndexRoute: typeof LangEventsIndexRoute;
   LangNotificationsIndexRoute: typeof LangNotificationsIndexRoute;
@@ -1439,6 +1453,13 @@ declare module '@tanstack/react-router' {
       path: '/$lang/educator-content';
       fullPath: '/$lang/educator-content';
       preLoaderRoute: typeof LangEducatorContentIndexRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    '/$lang/educator-content-guide/': {
+      id: '/$lang/educator-content-guide/';
+      path: '/$lang/educator-content-guide';
+      fullPath: '/$lang/educator-content-guide';
+      preLoaderRoute: typeof LangEducatorContentGuideIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/dashboard/': {
@@ -2187,6 +2208,7 @@ const rootRouteChildren: RootRouteChildren = {
   LangCalendarIndexRoute: LangCalendarIndexRoute,
   LangCareerPortalIndexRoute: LangCareerPortalIndexRoute,
   LangDashboardIndexRoute: LangDashboardIndexRoute,
+  LangEducatorContentGuideIndexRoute: LangEducatorContentGuideIndexRoute,
   LangEducatorContentIndexRoute: LangEducatorContentIndexRoute,
   LangEventsIndexRoute: LangEventsIndexRoute,
   LangNotificationsIndexRoute: LangNotificationsIndexRoute,

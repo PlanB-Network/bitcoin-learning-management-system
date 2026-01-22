@@ -1397,6 +1397,7 @@
     "fileTypeNotAllowed": "Only images and documents (PDF, presentations, spreadsheets, text docs) are allowed",
     "guidelines": {
       "continueToAdd": "Continue to Add",
+      "pageTitle": "Guide: Adding Content to Educator Content",
       "point1": "Group related files into bundles (e.g., \"Lille Meetup Presentations 2024\").",
       "point2": "Credit the original creator if you share content made by others.",
       "point3": "Only upload content you have the right to share.",

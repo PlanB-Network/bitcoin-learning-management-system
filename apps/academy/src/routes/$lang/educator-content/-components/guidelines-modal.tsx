@@ -1,4 +1,5 @@
 import { BasicModal, Button } from '@blms/ui';
+import { Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import AddFilePixel from '#src/assets/icons/pixelated/add-file.svg?react';
 
@@ -9,7 +10,7 @@ interface Props {
 }
 
 export const GuidelinesModal = ({ isOpen, onClose, onContinue }: Props) => {
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
 
   return (
     <BasicModal
@@ -41,9 +42,15 @@ export const GuidelinesModal = ({ isOpen, onClose, onContinue }: Props) => {
         </ol>
 
         <div className="flex flex-col w-full gap-4">
-          <Button variant="tertiary" className="w-full" size={'l'}>
-            {t('educatorContent.guidelines.readFullGuide')}
-          </Button>
+          <Link
+            to="/$lang/educator-content-guide"
+            params={{ lang: i18n.language }}
+            target="_blank"
+          >
+            <Button variant="tertiary" className="w-full" size={'l'}>
+              {t('educatorContent.guidelines.readFullGuide')}
+            </Button>
+          </Link>
 
           <Button
             variant="primary"
