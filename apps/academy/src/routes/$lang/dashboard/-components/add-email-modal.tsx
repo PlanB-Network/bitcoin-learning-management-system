@@ -2,18 +2,19 @@ import {
   BasicModal,
   Button,
   Field,
+  FieldDescription,
   FieldError,
   FieldLabel,
   Input,
 } from '@blms/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
-import InformationIcon from '#src/assets/icons/warning_orange.svg';
+import EmailIcon from '#src/assets/icons/pixelated/email.svg?react';
 import { trpc } from '#src/utils/trpc.js';
 
 const addEmailSchema = z.object({
@@ -43,14 +44,6 @@ export const AddEmailModal = ({
     resolver: zodResolver(addEmailSchema),
   });
 
-  useEffect(() => {
-    if (isOpen) {
-      setEmailSent(false);
-      setEmailError(null);
-      form.reset({ email });
-    }
-  }, [isOpen, email, form.reset]);
-
   const changeEmail = useMutation(
     trpc.user.changeEmail.mutationOptions({
       onError: (error) => {
@@ -58,7 +51,10 @@ export const AddEmailModal = ({
         setEmailError(error.message);
       },
       onSuccess: (data) => {
-        if ('success' in data && data.success) {
+        if (
+          ('success' in data && data.success) ||
+          ('error' in data && data.error === 'emailChangeRateLimitError')
+        ) {
           setEmailSent(true);
           setEmailError(null);
         } else if ('error' in data) {
@@ -68,6 +64,25 @@ export const AddEmailModal = ({
     }),
   );
 
+  const hasTriggeredRef = useRef(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      if (!hasTriggeredRef.current) {
+        setEmailSent(false);
+        setEmailError(null);
+        form.reset({ email });
+
+        if (email && email !== '') {
+          changeEmail.mutate({ email });
+          hasTriggeredRef.current = true;
+        }
+      }
+    } else {
+      hasTriggeredRef.current = false;
+    }
+  }, [isOpen, email, form.reset, changeEmail.mutate]);
+
   const onSubmit: SubmitHandler<AddEmailForm> = useCallback(
     async (values) => {
       setEmailError(null);
@@ -76,18 +91,24 @@ export const AddEmailModal = ({
     [changeEmail],
   );
 
+  const isAutoSending = email && email !== '' && !emailError;
+  const isInVerifyFlow = emailSent || !!isAutoSending || changeEmail.isPending;
+
   return (
     <BasicModal
       trigger={<button type="button" className="hidden" />}
       title={
-        !emailSent ? t('settings.addEmailContinue') : t('settings.verifyEmail')
+        isInVerifyFlow
+          ? t('settings.verifyEmailContinue')
+          : t('settings.addEmailContinue')
       }
-      iconSrc={emailSent ? InformationIcon : undefined}
+      iconSrc={isInVerifyFlow ? EmailIcon : undefined}
+      iconClassName={'fill-orange-500'}
       open={isOpen}
       onOpenChange={onClose}
-      showPill
+      showPill={!isInVerifyFlow}
     >
-      {!emailSent ? (
+      {!isInVerifyFlow ? (
         <form
           className="flex w-full flex-col items-center gap-6"
           onSubmit={form.handleSubmit(onSubmit)}
@@ -98,17 +119,18 @@ export const AddEmailModal = ({
             render={({ field, fieldState }) => (
               <Field data-invalid={fieldState.invalid}>
                 <FieldLabel htmlFor={field.name}>{t('words.email')}</FieldLabel>
-
                 <Input
                   {...field}
                   id={field.name}
                   aria-invalid={fieldState.invalid}
                   error={fieldState.error?.message || null}
                 />
-
                 {fieldState.invalid && (
                   <FieldError errors={[fieldState.error]} />
                 )}
+                <FieldDescription className="text-left">
+                  {t('settings.accountNeedsEmail')}
+                </FieldDescription>
               </Field>
             )}
           />
@@ -131,11 +153,16 @@ export const AddEmailModal = ({
         </form>
       ) : (
         <div className="flex w-full flex-col items-center gap-2">
-          <p className="title-large text-black text-center">
+          <p className="title-base md:title-large text-black text-center">
             {t('settings.emailSentTitle')}
           </p>
-          <p className="label text-black text-center">
-            {t('settings.emailSentDescription')}
+          <p className="body-base md:label text-black text-center whitespace-pre-line">
+            {t('settings.emailSentDescription', {
+              email: form.getValues('email'),
+            })}
+          </p>
+          <p className="body-small text-neutral-500">
+            {t('settings.emailSentSpam')}
           </p>
         </div>
       )}

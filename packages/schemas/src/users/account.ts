@@ -36,6 +36,7 @@ export const userDetailsSchema = userAccountSchema
       boughtCourses: z.string().array(),
       professorCourses: z.string().array(),
       professorTutorials: z.string().array(),
+      pendingEmail: z.string().nullable(),
     }),
   );
 

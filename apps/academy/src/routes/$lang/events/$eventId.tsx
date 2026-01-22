@@ -307,7 +307,7 @@ function EventDetails() {
           <AddEmailModal
             isOpen={isEmailModalOpen}
             onClose={() => setIsEmailModalOpen(false)}
-            email={user?.email ?? ''}
+            email={user?.email || user?.pendingEmail || ''}
           />
         )}
       </div>

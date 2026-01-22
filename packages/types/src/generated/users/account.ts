@@ -51,6 +51,7 @@ export interface UserDetails {
   boughtCourses: string[];
   professorCourses: string[];
   professorTutorials: string[];
+  pendingEmail: string | null;
 }
 
 export interface UserRoles {

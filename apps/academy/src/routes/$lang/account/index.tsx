@@ -188,7 +188,8 @@ function Account() {
                 )}
               >
                 <div className="flex items-center gap-1">
-                  {!user?.currentEmailChecked || !user?.email ? (
+                  {!user?.currentEmailChecked ||
+                  (!user?.email && !user?.pendingEmail) ? (
                     <TbAlertCircleFilled
                       size={24}
                       className="text-yellow-400"
@@ -198,13 +199,14 @@ function Account() {
                     {t('dashboard.profile.email')}
                   </span>
                 </div>
-                {!user?.currentEmailChecked && user?.email ? (
+                {!user?.currentEmailChecked &&
+                (user?.email || user?.pendingEmail) ? (
                   <span className="body-small text-yellow-500">
                     {t('dashboard.profile.verifyYourEmail')}
                   </span>
                 ) : null}
               </div>
-              {user?.email ? (
+              {user?.email || user?.pendingEmail ? (
                 <div
                   className={cn(
                     'flex items-center gap-2 min-w-0',
@@ -221,7 +223,7 @@ function Account() {
                         : 'text-yellow-500',
                     )}
                   >
-                    {user?.email}
+                    {user?.email || user?.pendingEmail}
                   </span>
                   <TbPencil
                     size={16}
@@ -289,7 +291,7 @@ function Account() {
             setEmailError(data.error ?? 'An error occurred');
           }
         }}
-        email={user?.email || ''}
+        email={user?.email || user?.pendingEmail || ''}
       />
     </PageLayout>
   );

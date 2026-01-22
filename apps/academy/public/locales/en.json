@@ -1947,6 +1947,7 @@
     "youtube_channels": "Youtube channels"
   },
   "settings": {
+    "accountNeedsEmail": "This account needs an email address to continue.",
     "addEmail": "Add email",
     "addEmailContinue": "Add email to continue",
     "changeDisplayName": "Change display name",
@@ -1954,10 +1955,12 @@
     "changePassword": "Change password",
     "changeProfilePicture": "Change profile picture",
     "checkSpam": "(If you don’t see it, check your spam folder.)",
-    "emailSentDescription": "Verify your email and reload this page to continue.",
+    "emailSentDescription": "Verify your email by clicking the link sent to {{email}}.\n\nOnce your email is verified, reload this page to continue.",
+    "emailSentSpam": "(If you don’t see it, check your spam folder.)",
     "emailSentTitle": "We've sent you an email",
     "verifyEmail": "Verify email",
-    "verifyEmailClick": "Verify your email by clicking the link you received."
+    "verifyEmailClick": "Verify your email by clicking the link you received.",
+    "verifyEmailContinue": "Verify email to continue"
   },
   "tutorials": {
     "business": {

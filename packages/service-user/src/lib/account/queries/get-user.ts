@@ -30,7 +30,8 @@ export const getUserByIdWithDetailsQuery = (uid: string) => {
       ua.*,
       COALESCE(array_agg(DISTINCT cp.course_id), '{}') AS professor_courses,
       COALESCE(array_agg(DISTINCT tu.id), '{}') AS professor_tutorials,
-      COALESCE(array_agg(DISTINCT bc.course_id), '{}') AS bought_courses
+      COALESCE(array_agg(DISTINCT bc.course_id), '{}') AS bought_courses,
+      (SELECT data FROM users.tokens WHERE uid = ua.uid AND type = 'validate_email' AND consumed_at IS NULL ORDER BY expires_at DESC LIMIT 1) AS pending_email
     FROM users.accounts ua
     LEFT JOIN content.professors p ON ua.professor_id = p.id
     LEFT JOIN content.course_professors cp ON p.id = cp.professor_id AND cp.course_id IS NOT NULL

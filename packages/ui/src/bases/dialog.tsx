@@ -14,8 +14,9 @@ interface BasicModalProps {
   trigger?: React.ReactNode;
   title?: string;
   content?: React.ReactNode;
-  iconSrc?: string;
+  iconSrc?: string | React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   iconAlt?: string;
+  iconClassName?: string;
   showPill?: boolean;
   children?: React.ReactNode;
   contentClassName?: string;
@@ -132,6 +133,7 @@ const BasicModal = ({
   content,
   iconSrc,
   iconAlt = 'Icon',
+  iconClassName,
   showPill,
   children,
   contentClassName,
@@ -139,6 +141,7 @@ const BasicModal = ({
   onOpenChange,
   size = 'base',
 }: BasicModalProps) => {
+  const Icon = typeof iconSrc === 'function' ? iconSrc : null;
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
@@ -170,9 +173,19 @@ const BasicModal = ({
         </div>
 
         <div className="flex flex-col items-center text-center gap-5 md:gap-8 p-4 md:p-6">
-          {iconSrc && (
-            <img src={iconSrc} alt={iconAlt} className="size-10 md:size-15" />
-          )}
+          {iconSrc ? (
+            typeof iconSrc === 'string' ? (
+              <img
+                src={iconSrc}
+                alt={iconAlt}
+                className={cn('size-10 md:size-15', iconClassName)}
+              />
+            ) : (
+              Icon && (
+                <Icon className={cn('size-10 md:size-15', iconClassName)} />
+              )
+            )
+          ) : null}
 
           <DialogDescription
             className={cn(content ? 'whitespace-pre-line w-full' : 'hidden')}
