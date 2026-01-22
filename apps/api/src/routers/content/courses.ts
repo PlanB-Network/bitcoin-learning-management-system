@@ -98,7 +98,9 @@ const getTeacherCourseReviewsProcedure = professorProcedure
       courseId: z.string(),
     }),
   )
-  .output<Parser<CourseReviewsExtended>>(courseReviewsExtendedSchema)
+  .output<Parser<CourseReviewsExtended | null>>(
+    courseReviewsExtendedSchema.nullable(),
+  )
   .query(({ ctx, input }) => {
     return createGetTeacherCourseReviews(ctx.dependencies)(input.courseId);
   });
