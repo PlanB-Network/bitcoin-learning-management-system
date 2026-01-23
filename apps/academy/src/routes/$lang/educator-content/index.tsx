@@ -24,6 +24,7 @@ import { AppContext } from '#src/providers/context.tsx';
 import { getEducatorContentCoverUrl } from '#src/services/content.js';
 
 import { trpc } from '#src/utils/trpc.js';
+import { AddEmailModal } from '../dashboard/-components/add-email-modal.tsx';
 import { EducatorContentModal } from './-components/educator-content-modal.tsx';
 import { GuidelinesModal } from './-components/guidelines-modal.tsx';
 
@@ -43,7 +44,7 @@ interface SavedFilters {
 
 function RouteComponent() {
   const { i18n, t } = useTranslation();
-  const { session } = useContext(AppContext);
+  const { session, user } = useContext(AppContext);
   const isLoggedIn = !!session?.user;
 
   const {
@@ -63,6 +64,8 @@ function RouteComponent() {
     isOpen: isAddContentModalOpen,
     close: closeAddContentModal,
   } = useDisclosure();
+
+  const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
 
   const { data: content, isLoading } = useQuery(
     trpc.content.getEducatorContents.queryOptions({
@@ -179,7 +182,11 @@ function RouteComponent() {
 
   const handleAddContentClick = () => {
     if (isLoggedIn) {
-      openGuidelinesModal();
+      if (user?.email && user?.currentEmailChecked) {
+        openGuidelinesModal();
+      } else {
+        setIsEmailModalOpen(true);
+      }
     } else {
       openAuthModal();
     }
@@ -410,6 +417,13 @@ function RouteComponent() {
         isOpen={isAddContentModalOpen}
         onClose={closeAddContentModal}
       />
+      {isEmailModalOpen && user && (
+        <AddEmailModal
+          isOpen={isEmailModalOpen}
+          onClose={() => setIsEmailModalOpen(false)}
+          email={user?.email || user?.pendingEmail || ''}
+        />
+      )}
     </PageLayout>
   );
 }
