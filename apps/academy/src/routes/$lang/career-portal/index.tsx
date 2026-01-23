@@ -48,6 +48,7 @@ import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { trpc } from '#src/utils/trpc.ts';
+import { AddEmailModal } from '../dashboard/-components/add-email-modal.tsx';
 
 export const Route = createFileRoute('/$lang/career-portal/')({
   component: CareerPortal,
@@ -64,6 +65,7 @@ function CareerPortal() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [selectedFileName, setSelectedFileName] = useState('');
   const [cvErrorMessage, setCvErrorMessage] = useState('');
+  const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
 
   const navigate = useNavigate();
   const { user } = useContext(AppContext);
@@ -456,7 +458,13 @@ function CareerPortal() {
                   variant="primary"
                   mode="light"
                   size="m"
-                  onClick={() => createCareerProfile.mutate()}
+                  onClick={() => {
+                    if (user?.email && user?.currentEmailChecked) {
+                      createCareerProfile.mutate();
+                    } else {
+                      setIsEmailModalOpen(true);
+                    }
+                  }}
                   className="mb-5 md:mb-7 mx-auto"
                   type="button"
                 >
@@ -1162,6 +1170,13 @@ function CareerPortal() {
             </>
           )}
         </form>
+        {isEmailModalOpen && user && (
+          <AddEmailModal
+            isOpen={isEmailModalOpen}
+            onClose={() => setIsEmailModalOpen(false)}
+            email={user?.email || user?.pendingEmail || ''}
+          />
+        )}
       </div>
     </PageLayout>
   );

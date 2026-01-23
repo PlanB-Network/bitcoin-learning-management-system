@@ -49,6 +49,7 @@ import { formatDate, formatDateRange } from '#src/utils/date.ts';
 import { assetUrl, cdnUrl } from '#src/utils/index.js';
 import { base64ToBlob } from '#src/utils/misc.ts';
 import { trpc } from '#src/utils/trpc.js';
+import { AddEmailModal } from '../../dashboard/-components/add-email-modal.tsx';
 import { CoursePaymentModal } from './-components/payment-modal/course-payment-modal.tsx';
 
 const PresentationMarkdownBody = lazy(
@@ -110,6 +111,7 @@ function CourseDetails() {
   >('online');
   const [satsPrice, setSatsPrice] = useState<number>(0);
   const [dollarPrice, setDollarPrice] = useState<number>(0);
+  const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
   const [downloadedPdf, setDownloadedPdf] = useState('');
 
   const { user } = useContext(AppContext);
@@ -752,14 +754,41 @@ function CourseDetails() {
 
               setDollarPrice(dollarPrice);
               setSatsPrice(satsPrice);
-              setIsPaymentModalOpen(true);
+
+              if (user?.email && user?.currentEmailChecked) {
+                setIsPaymentModalOpen(true);
+              } else {
+                setIsEmailModalOpen(true);
+              }
             } else {
               setAuthMode(AuthModalState.SignIn);
               openAuthModal();
             }
           }
         : async () => {
-            if (!isLoggedIn && !hasSeenRegisterToast) {
+            if (isLoggedIn) {
+              const isLiveClass =
+                course?.teachingFormat === TeachingFormat.ProfessorLed;
+
+              if (!isLiveClass || (user?.email && user?.currentEmailChecked)) {
+                await startCourse({ courseId });
+                if (
+                  userCourseProgress &&
+                  userCourseProgress.length === 0 &&
+                  !course?.requiresPayment
+                ) {
+                  customToast(t('courses.details.courseAddedToDashboard'), {
+                    closeButton: true,
+                    color: 'success',
+                    icon: TbCheck,
+                    mode: 'light',
+                  });
+                }
+              } else {
+                setIsEmailModalOpen(true);
+                return;
+              }
+            } else if (!hasSeenRegisterToast) {
               customToast(t('auth.trackProgress'), {
                 color: 'primary',
                 imgSrc: SignInIconLight,
@@ -769,22 +798,6 @@ function CourseDetails() {
                 },
               });
               setHasSeenRegisterToast(true);
-            }
-
-            if (isLoggedIn) {
-              await startCourse({ courseId });
-              if (
-                userCourseProgress &&
-                userCourseProgress.length === 0 &&
-                !course?.requiresPayment
-              ) {
-                customToast(t('courses.details.courseAddedToDashboard'), {
-                  closeButton: true,
-                  color: 'success',
-                  icon: TbCheck,
-                  mode: 'light',
-                });
-              }
             }
 
             navigate({
@@ -906,6 +919,13 @@ function CourseDetails() {
                 fetchUserDetailsAndSettings();
               }}
             />
+            {isEmailModalOpen && user && (
+              <AddEmailModal
+                isOpen={isEmailModalOpen}
+                onClose={() => setIsEmailModalOpen(false)}
+                email={user?.email || user?.pendingEmail || ''}
+              />
+            )}
           </div>
         )}
       </div>
