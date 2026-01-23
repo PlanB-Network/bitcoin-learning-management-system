@@ -105,7 +105,7 @@ export const UserRoleAvatar = ({
         )}
       >
         {!isShort && (
-          <span className="body-small-bold truncate max-w-28 md:max-w-50">
+          <span className="body-small-bold truncate max-w-28 lg:max-w-50">
             {isUserAdmin
               ? t('words.admin')
               : isUserProfessor
