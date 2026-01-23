@@ -5,7 +5,7 @@ export const getSystemLanguage = (): string => {
     return '';
   }
 
-  return normalizeString(navigator.language.split('-')[0]);
+  return normalizeString(navigator.language);
 };
 
 export const isLanguageMatch = (
@@ -15,12 +15,18 @@ export const isLanguageMatch = (
   additionalLangs: string[] = [],
 ): boolean => {
   const normCourseLang = normalizeString(courseLanguage);
-  const normAppLang = normalizeString(appLanguage.split('-')[0]);
-  const normSystemLang = normalizeString(systemLanguage);
+
+  const normAppFull = normalizeString(appLanguage);
+  const normAppBase = normalizeString(appLanguage.split('-')[0]);
+
+  const normSystemFull = normalizeString(systemLanguage);
+  const normSystemBase = normalizeString(systemLanguage.split('-')[0]);
 
   return (
-    normCourseLang === normAppLang ||
-    normCourseLang === normSystemLang ||
+    normCourseLang === normAppFull ||
+    normCourseLang === normAppBase ||
+    normCourseLang === normSystemFull ||
+    normCourseLang === normSystemBase ||
     additionalLangs.some((lang) => normCourseLang === normalizeString(lang))
   );
 };
