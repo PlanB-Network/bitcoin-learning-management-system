@@ -152,14 +152,21 @@ const NotificationItem = ({ notification, onClose }: NotificationItemProps) => {
                 ),
               )}
             </div>
-            <TextTag variant={tagVariant} mode="light100" size="small">
-              {getNotificationTitle(
-                notification.type,
-                notification.courseId || undefined,
-              )}
+            <TextTag
+              variant={tagVariant}
+              mode="light100"
+              size="small"
+              className="max-w-[235px]"
+            >
+              <span className="min-w-0 truncate">
+                {getNotificationTitle(
+                  notification.type,
+                  notification.courseId || undefined,
+                )}
+              </span>
             </TextTag>
           </div>
-          <div className="size-2 rounded-full bg-orange-500" />
+          <div className="size-2 rounded-full bg-orange-500 ml-2" />
         </div>
         <p className="self-stretch body-14px text-neutral-1000 line-clamp-6 whitespace-pre-line">
           {notification.content ||
