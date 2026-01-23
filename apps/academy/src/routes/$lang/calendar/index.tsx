@@ -183,7 +183,11 @@ function DashboardCalendar() {
                   color: `${courseColor[index]}`,
                 }}
               >
-                {events?.filter((p) => p.type === filterName).length}
+                {
+                  events?.filter(
+                    (p) => p.type === filterName && p.startDate >= new Date(),
+                  ).length
+                }
               </span>
             </button>
           ))}
