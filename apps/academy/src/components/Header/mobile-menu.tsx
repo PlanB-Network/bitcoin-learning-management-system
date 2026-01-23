@@ -2,7 +2,7 @@ import { Button, cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { useContext, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { TbMenu, TbX } from 'react-icons/tb';
+import { TbCalendarMonth, TbMenu, TbSearch, TbX } from 'react-icons/tb';
 import PlanBLogoBlack from '#src/assets/logo/pba-horizontal-black.svg?react';
 import { AppContext } from '#src/providers/context.js';
 import { SideBarContent } from '../sidebar-content.tsx';
@@ -96,12 +96,24 @@ export const MobileMenu = ({
         )}
         ref={mobileMenuRef}
       >
-        <div className="ml-auto mb-6 flex items-center gap-2">
-          {isLoggedIn && <UserRoleAvatar />}
-          <TbX
-            onClick={toggleMobileMenu}
-            className="cursor-pointer text-neutral-500 stroke-2 size-8 shrink-0"
-          />
+        <div className="mb-6 flex items-center justify-between gap-3 w-full">
+          <div className="flex items-center gap-3">
+            <Link to="/search">
+              <TbSearch className="text-neutral-500 stroke-[1.5px] size-6 shrink-0" />
+            </Link>
+            {isLoggedIn && (
+              <Link to="/calendar">
+                <TbCalendarMonth className="text-neutral-500 stroke-[1.5px] size-6 shrink-0" />
+              </Link>
+            )}
+          </div>
+          <div className="flex items-center gap-3 ml-auto">
+            {isLoggedIn && <UserRoleAvatar />}
+            <TbX
+              onClick={toggleMobileMenu}
+              className="cursor-pointer text-neutral-500 stroke-2 size-8 shrink-0"
+            />
+          </div>
         </div>
         <SideBarContent isSidebarOpen={true} />
         <LanguageSelectorMobile isMobileMenuOpen={isMobileMenuOpen} />

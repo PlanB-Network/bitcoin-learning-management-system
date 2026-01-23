@@ -74,7 +74,13 @@ const userRoleAvatarVariants = cva(
   },
 );
 
-export const UserRoleAvatar = ({ isShort }: { isShort?: boolean }) => {
+export const UserRoleAvatar = ({
+  isShort,
+  className,
+}: {
+  isShort?: boolean;
+  className?: string;
+}) => {
   const { t } = useTranslation();
   const { user } = useContext(AppContext);
 
@@ -84,7 +90,7 @@ export const UserRoleAvatar = ({ isShort }: { isShort?: boolean }) => {
   const isUserProfessor = user?.role === 'professor';
 
   return (
-    <Link className="flex" to="/account">
+    <Link className={cn('flex', className)} to="/account">
       <button
         type="button"
         className={cn(
@@ -99,7 +105,7 @@ export const UserRoleAvatar = ({ isShort }: { isShort?: boolean }) => {
         )}
       >
         {!isShort && (
-          <span className="body-small-bold truncate max-w-50">
+          <span className="body-small-bold truncate max-w-28 md:max-w-50">
             {isUserAdmin
               ? t('words.admin')
               : isUserProfessor

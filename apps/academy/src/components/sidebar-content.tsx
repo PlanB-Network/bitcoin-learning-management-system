@@ -6,10 +6,9 @@ import { cva } from 'class-variance-authority';
 import { type JSX, useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { IconType } from 'react-icons/lib';
-import { TbPointFilled, TbSearch } from 'react-icons/tb';
+import { TbPointFilled } from 'react-icons/tb';
 import BookCover from '#src/assets/icons/pixelated/navbar/book_cover.svg?react';
 import BookOpen from '#src/assets/icons/pixelated/navbar/book_open.svg?react';
-import Calendar from '#src/assets/icons/pixelated/navbar/calendar.svg?react';
 import Discount from '#src/assets/icons/pixelated/navbar/discount.svg?react';
 import EducatorContentBlue from '#src/assets/icons/pixelated/navbar/educator_content_blue.svg?react';
 import EducatorContentOrange from '#src/assets/icons/pixelated/navbar/educator_content_orange.svg?react';
@@ -200,17 +199,6 @@ export const SideBarContent = ({
               isSidebarOpen={isSidebarOpen}
             />
 
-            {isLoggedIn ? (
-              <SideBarItem
-                icon={Calendar}
-                iconColor="blue"
-                label={t('words.calendar')}
-                link="/calendar"
-                isActive={window.location.pathname.includes('/calendar')}
-                isSidebarOpen={isSidebarOpen}
-                className="lg:hidden"
-              />
-            ) : null}
             {user?.boughtCourses.some((courseId) =>
               COURSES_CAREER_ACCESS.includes(courseId),
             ) ? (
@@ -407,19 +395,6 @@ export const SideBarContent = ({
           ) : null}
         </div>
       )}
-
-      <div className="w-full max-w-[209px] mx-auto h-px bg-[#E8E8E8] lg:hidden" />
-      <Link
-        className="flex gap-4 items-center p-3 py-2 w-full hover:bg-white rounded-lg lg:hidden"
-        to="/search"
-      >
-        <TbSearch
-          size={24}
-          className="shrink-0 text-neutral-500"
-          strokeWidth={1.5}
-        />
-        <span className="text-sm leading-relaxed">{t('words.search')}</span>
-      </Link>
     </nav>
   );
 };
