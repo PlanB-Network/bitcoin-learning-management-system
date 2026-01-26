@@ -172,7 +172,7 @@ function MyContent() {
                     <TextTag
                       size="small"
                       variant={getStatusVariant(item.status)}
-                      className="lg:hidden"
+                      className="lg:hidden shrink-0"
                     >
                       {getStatusLabel(item.status)}
                     </TextTag>
@@ -188,7 +188,7 @@ function MyContent() {
 
               <div className="flex">
                 {/* Status */}
-                <div className="mr-4 max-lg:hidden">
+                <div className="mr-4 max-lg:hidden shrink-0">
                   <TextTag size="small" variant={getStatusVariant(item.status)}>
                     {getStatusLabel(item.status)}
                   </TextTag>
