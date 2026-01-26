@@ -1448,7 +1448,7 @@
     "sortMostRecent": "Most Recent",
     "status": {
       "draft": "Pending",
-      "published": "Live",
+      "published": "Published",
       "rejected": "Not accepted",
       "unpublished": "Unpublished"
     },

@@ -479,7 +479,8 @@
           "owner": "所有者",
           "type": "类型",
           "uses": "是否已用过？"
-        }
+        },
+        "showMore": "显示更多折扣码"
       },
       "coursesIndexes": "课程索引",
       "date": "日期",
@@ -2091,7 +2092,8 @@
     "descriptionRequired": "描述不能为空",
     "detail": {
       "downloadAll": "下载全部",
-      "view": "视图"
+      "view": "视图",
+      "addedBy": "添加者"
     },
     "browseImages": "或浏览图片",
     "currentCoverPresent": "当前封面呈现",
@@ -2168,7 +2170,25 @@
     "fileExisting": "（现有的）",
     "maxFileSize": "最大文件大小：50MB",
     "sortBy": "排序方式",
-    "sortMostDownloaded": "最多下载"
+    "sortMostDownloaded": "最多下载",
+    "fileTypeNotAllowed": "仅允许图片和文档（PDF，演示文稿，电子表格，文本文档）",
+    "guidelines": {
+      "continueToAdd": "继续添加",
+      "pageTitle": "指南：为教育者内容添加内容",
+      "point1": "将相关文件组合成包（例如，“2024 年里尔聚会演讲”）。",
+      "point2": "如果您分享他人创建的内容，请注明原创作者。",
+      "point3": "请只上传您有权分享的内容。",
+      "readFullGuide": "阅读完整指南",
+      "subtitle": "分享您的最佳资源，帮助全球的比特币教育者",
+      "title": "添加新内容的指南"
+    },
+    "imageTooLarge": "图像大小不能超过 15MB",
+    "license": {
+      "changeLicense": "更改许可证",
+      "learnMore": "了解更多关于许可证的信息",
+      "licensedByDefault": "默认以 CC BY-SA 许可证授权",
+      "title": "许可证"
+    }
   },
   "mentor": {
     "collapse": "折叠",
