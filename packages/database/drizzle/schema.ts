@@ -849,7 +849,6 @@ export const contentPodcasts = content.table('podcasts', (t) => ({
 export const contentGlossaryWords = content.table('glossary_words', (t) => ({
   fileName: t.text().notNull(),
   originalLanguage: t.varchar({ length: 10 }).notNull().default('en'),
-  originalWord: t.text().notNull(),
   relatedWords: t.varchar({ length: 255 }).array(),
   resourceId: t
     .uuid()

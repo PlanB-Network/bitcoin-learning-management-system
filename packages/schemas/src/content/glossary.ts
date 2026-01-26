@@ -25,7 +25,6 @@ export const joinedGlossaryWordSchema = resourceSchema
     glossaryWordSchema.pick({
       fileName: true,
       originalLanguage: true,
-      originalWord: true,
       relatedWords: true,
     }),
   )

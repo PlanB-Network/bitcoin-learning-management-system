@@ -57,7 +57,7 @@ export const GlossaryList = ({
           </span>
         </div>
         {filteredTerms.slice(0, maxWords).map((term) => (
-          <div key={term.originalWord} className="flex flex-col gap-6">
+          <div key={term.term} className="flex flex-col gap-6">
             <div className="flex w-full gap-5">
               <Link
                 to="/resources/glossary/$wordId"
@@ -78,7 +78,7 @@ export const GlossaryList = ({
       {/* Mobile */}
       <section className="flex flex-col gap-2 w-full sm:hidden">
         {filteredTerms.slice(0, maxWords).map((term) => (
-          <div key={term.originalWord} className="flex flex-col gap-4">
+          <div key={term.term} className="flex flex-col gap-4">
             <div className="flex flex-col gap-2 w-full">
               <Link
                 to="/resources/glossary/$wordId"

@@ -11,7 +11,6 @@ import { createProcessMainFile } from '../main.js';
 
 /** Base glossary word information, same for all translations */
 interface GlossaryWordMain {
-  en_word: string;
   related_words: string[];
   original_language: string;
   proofreading: ProofreadingEntry[];
@@ -53,12 +52,11 @@ export const createProcessChangedGlossaryWord = (
           const fileName = resource.path.split('/').slice(-1);
 
           const result = await transaction<GlossaryWord[]>`
-              INSERT INTO content.glossary_words (resource_id, original_word, file_name, related_words, original_language)
+              INSERT INTO content.glossary_words (resource_id, file_name, related_words, original_language)
               VALUES (
-                ${id}, ${parsedWord.en_word}, ${fileName}, ${parsedWord.related_words}, ${parsedWord.original_language}
+                ${id}, ${fileName}, ${parsedWord.related_words}, ${parsedWord.original_language}
               )
               ON CONFLICT (resource_id) DO UPDATE SET
-                original_word = EXCLUDED.original_word,
                 file_name = EXCLUDED.file_name,
                 related_words = EXCLUDED.related_words,
                 original_language = EXCLUDED.original_language

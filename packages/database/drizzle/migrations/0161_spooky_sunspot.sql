@@ -1,0 +1,1 @@
+ALTER TABLE "content"."glossary_words" DROP COLUMN "original_word";

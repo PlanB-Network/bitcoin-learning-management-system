@@ -43,12 +43,7 @@ export const GlossaryProvider = ({ children }: PropsWithChildren) => {
   const glossaryMap = useMemo(() => {
     const map = new Map<string, JoinedGlossaryWord>();
     for (const word of glossaryWords) {
-      // Index by term
       map.set(word.term.toLowerCase(), word);
-      // Also index by original word if different
-      if (word.originalWord.toLowerCase() !== word.term.toLowerCase()) {
-        map.set(word.originalWord.toLowerCase(), word);
-      }
     }
     return map;
   }, [glossaryWords]);

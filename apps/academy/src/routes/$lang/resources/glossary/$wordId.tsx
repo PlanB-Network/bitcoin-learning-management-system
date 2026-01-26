@@ -62,7 +62,7 @@ function GlossaryWord() {
       if (glossaryWords) {
         setRelatedWords(
           glossaryWords.filter((word) =>
-            glossaryWord.relatedWords?.includes(word.originalWord),
+            glossaryWord.relatedWords?.includes(word.term),
           ),
         );
       }

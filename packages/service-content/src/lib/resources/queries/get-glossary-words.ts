@@ -7,7 +7,6 @@ export const getGlossaryWordsQuery = (language?: string) => {
       r.id,
       r.path,
       wl.language,
-      w.original_word,
       w.file_name,
       w.related_words,
       w.original_language,
@@ -26,7 +25,6 @@ export const getGlossaryWordsQuery = (language?: string) => {
     GROUP BY
       r.id,
       wl.language,
-      w.original_word,
       w.file_name,
       w.related_words,
       w.original_language,

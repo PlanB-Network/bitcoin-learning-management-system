@@ -3,17 +3,16 @@ import type { JoinedGlossaryWord } from '@blms/types';
 
 export const getGlossaryWordQuery = (strId: string, language?: string) => {
   return sql<JoinedGlossaryWord[]>`
-    SELECT 
-      r.id, 
-      r.path, 
-      wl.language, 
-      w.original_word,
+    SELECT
+      r.id,
+      r.path,
+      wl.language,
       w.file_name,
-      w.related_words, 
+      w.related_words,
       w.original_language,
       wl.term,
-      wl.definition, 
-      r.last_updated, 
+      wl.definition,
+      r.last_updated,
       r.last_commit,
       COALESCE((SELECT ARRAY_AGG(DISTINCT t.name)
         FROM content.resource_tags rt
@@ -24,10 +23,9 @@ export const getGlossaryWordQuery = (strId: string, language?: string) => {
     JOIN content.glossary_words_localized wl ON wl.glossary_word_id = w.resource_id
     WHERE w.file_name = ${strId}
       AND wl.language = ${language || 'en'}
-    GROUP BY 
-      r.id, 
-      wl.language, 
-      w.original_word,
+    GROUP BY
+      r.id,
+      wl.language,
       w.file_name,
       w.related_words,
       w.original_language,
