@@ -16,34 +16,43 @@ export const CustomEventMonth = ({ event }: CustomEventProps) => {
       cssClasses = 'bg-orange-50 text-orange-500';
       break;
     }
+    case 'history': {
+      cssClasses = 'bg-brown-200 text-brown-800';
+      break;
+    }
+    case 'event': {
+      cssClasses = 'bg-blue-500 text-white';
+      break;
+    }
     default: {
-      cssClasses = 'bg-[#f2eae5] text-orange-700';
+      cssClasses = 'bg-orange-100 text-orange-700';
       break;
     }
   }
 
   return (
     <div
-      className={`${cssClasses} flex flex-col hover:z-20`}
+      className={`${cssClasses} flex flex-col hover:z-20 p-1`}
       style={{
-        padding: '10px',
-        paddingLeft: 8,
-        paddingTop: 8,
         width: '100%',
       }}
       onPointerEnter={() => setIsSelected(true)}
       onPointerLeave={() => setIsSelected(false)}
     >
-      <div
-        className={`flex flex-row text-sm pl-1 ${isSelected ? 'order-1' : 'order-2'}`}
-      >
-        {`${formatTime(event.start)} - ${formatTime(event.end)}`}
-      </div>
-      <div className="font-semibold text-sm whitespace-normal w-full">
+      {!event.allDay && (
+        <div
+          className={`flex flex-row text-[8px] md:text-sm pl-1 ${isSelected ? 'order-1' : 'order-2'}`}
+        >
+          {`${formatTime(event.start)} - ${formatTime(event.end)}`}
+        </div>
+      )}
+      <div className="font-semibold text-[8px] md:text-sm whitespace-normal w-full">
         {event.title}
       </div>
-      <div className="text-sm whitespace-normal w-full">{event.organizer}</div>
-      <div className="text-sm whitespace-normal w-full">
+      <div className="text-[8px] md:text-sm whitespace-normal w-full">
+        {event.organizer}
+      </div>
+      <div className="text-[8px] md:text-sm whitespace-normal w-full">
         {event.addressLine1}
       </div>
     </div>

@@ -1,6 +1,7 @@
 export const supportedCategories = [
   'bet',
   'books',
+  'calendar',
   'channels',
   'conferences',
   'glossary',

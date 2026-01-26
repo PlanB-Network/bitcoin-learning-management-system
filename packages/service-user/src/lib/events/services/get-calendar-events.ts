@@ -7,6 +7,7 @@ interface Options {
   uid?: string;
   upcomingEvents?: boolean;
   types?: string[];
+  language?: string;
 }
 
 export const createGetCalendarEvents = ({ postgres }: Dependencies) => {
@@ -14,7 +15,10 @@ export const createGetCalendarEvents = ({ postgres }: Dependencies) => {
     uid,
     upcomingEvents,
     types,
+    language,
   }: Options): Promise<CalendarEvent[]> => {
-    return postgres.exec(getCalendarEventsQuery(uid, upcomingEvents, types));
+    return postgres.exec(
+      getCalendarEventsQuery(uid, upcomingEvents, types, language),
+    );
   };
 };

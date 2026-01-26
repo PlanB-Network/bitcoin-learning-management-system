@@ -28,6 +28,10 @@ export const createRestCalendarRoutes = (
         ? (req.query.types as string).split(',')
         : undefined;
 
+      const language = req.query.language
+        ? (req.query.language as string)
+        : undefined;
+
       const events = await createGetCalendarEvents({
         ...dependencies,
         log: req.log,
@@ -35,6 +39,7 @@ export const createRestCalendarRoutes = (
         uid: user.uid,
         upcomingEvents: false,
         types,
+        language,
       });
 
       const icsContent = generateIcs(events);

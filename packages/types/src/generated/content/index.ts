@@ -5,6 +5,7 @@ export type * from './bcert.js';
 export type * from './bet.js';
 export type * from './blogs.js';
 export type * from './book.js';
+export type * from './calendar.js';
 export type * from './channels.js';
 export type * from './conference.js';
 export type * from './coupon.js';

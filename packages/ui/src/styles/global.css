@@ -1018,13 +1018,26 @@
   }
 }
 
-.rbc-day-slot .rbc-time-slot {
-  border-top: 0px !important;
+.rbc-time-content > .rbc-day-slot:nth-child(2) > * {
+  border-left: none !important;
 }
 
 .rbc-timeslot-group {
-  height: 60px !important;
+  height: 65px !important;
   flex: none !important;
+}
+
+.rbc-time-header-gutter {
+  padding-right: 10px !important;
+}
+
+.rbc-time-header-content {
+  border-left: none !important;
+}
+
+.rbc-time-gutter > .rbc-timeslot-group {
+  border-bottom: none !important;
+  padding-right: 10px !important;
 }
 
 .rbc-events-container {
@@ -1054,11 +1067,11 @@
 }
 
 .rbc-today {
-  background-color: #ffeee588 !important;
+  background-color: var(--color-neutral-50) !important;
 }
 
 .rbc-current-time-indicator {
-  background-color: var(--color-orange-400) !important;
+  background-color: var(--color-orange-500) !important;
 }
 
 .rbc-btn-group button {
@@ -1091,7 +1104,7 @@
 }
 
 .rbc-allday-cell {
-  display: none;
+  height: fit-content !important;
 }
 
 .rbc-time-view {

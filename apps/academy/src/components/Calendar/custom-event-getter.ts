@@ -10,11 +10,12 @@ export const customEventGetter = (event: CalendarEvent) => {
         },
       };
     }
-    case 'conference': {
+    case 'conference':
+    case 'event': {
       return {
         style: {
-          backgroundColor: '#8530001a',
-          color: '#AD3F00',
+          backgroundColor: '#0A69DA1a',
+          color: '#0A69DA',
         },
       };
     }
@@ -39,6 +40,14 @@ export const customEventGetter = (event: CalendarEvent) => {
         style: {
           backgroundColor: '#FFEEE5',
           color: '#FF5C00',
+        },
+      };
+    }
+    case 'history': {
+      return {
+        style: {
+          backgroundColor: '#EAE4E1',
+          color: '#49372C',
         },
       };
     }

@@ -8,6 +8,7 @@ import { getContentType, getRelativePath } from '../../utils.js';
 
 import { createProcessChangedBet } from './categories/bet.js';
 import { createProcessChangedBook } from './categories/books.js';
+import { createProcessChangedCalendar } from './categories/calendar.js';
 import { createProcessChangedConference } from './categories/conferences.js';
 import { createProcessChangedGlossaryWord } from './categories/glossary.js';
 import { createProcessChangedMovie } from './categories/movies.js';
@@ -117,6 +118,7 @@ export const createUpdateResources = (
     const mapHandlers = {
       bet: createProcessChangedBet,
       books: createProcessChangedBook,
+      calendar: createProcessChangedCalendar,
       channels: createProcessChangedYoutubeChannel,
       conferences: createProcessChangedConference,
       glossary: createProcessChangedGlossaryWord,

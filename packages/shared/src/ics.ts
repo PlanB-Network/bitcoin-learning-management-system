@@ -37,6 +37,7 @@ export const generateIcs = (events: CalendarEvent[]) => {
       `DTSTAMP:${formatIcsDate(new Date())}`,
       `DTSTART:${formatIcsDate(startDate)}`,
       `DTEND:${formatIcsDate(endDate)}`,
+      ...(event.type === 'history' ? ['RRULE:FREQ=YEARLY'] : []),
       `SUMMARY:${escapeSpecialChars(event.name || 'No title')}`,
       `DESCRIPTION:${escapeSpecialChars(event.organizer || '')}`,
       `LOCATION:${escapeSpecialChars(event.addressLine1 || '')}`,
