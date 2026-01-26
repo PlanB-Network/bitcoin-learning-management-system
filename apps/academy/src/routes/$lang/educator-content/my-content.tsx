@@ -1,4 +1,4 @@
-import { cn, Loader } from '@blms/ui';
+import { Loader, TextTag } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link, useParams } from '@tanstack/react-router';
 import { useContext, useMemo } from 'react';
@@ -72,18 +72,18 @@ function MyContent() {
     }
   };
 
-  const getStatusColor = (status: string) => {
+  const getStatusVariant = (status: string) => {
     switch (status) {
       case 'published':
-        return 'bg-green-100 text-green-600';
+        return 'green';
       case 'pending':
-        return 'bg-neutral-50 text-neutral-500';
+        return 'grey';
       case 'rejected':
-        return 'bg-orange-100 text-orange-800';
+        return 'orange';
       case 'unpublished':
-        return 'bg-blue-100 text-blue-800';
+        return 'blue';
       default:
-        return 'bg-neutral-50 text-neutral-500';
+        return 'grey';
     }
   };
 
@@ -169,14 +169,13 @@ function MyContent() {
                     {item.title}
                   </h3>
                   <div className="text-sm text-neutral-500 flex items-center gap-2">
-                    <span
-                      className={cn(
-                        'px-2 py-0.5 rounded-full text-xs font-medium lg:hidden',
-                        getStatusColor(item.status),
-                      )}
+                    <TextTag
+                      size="small"
+                      variant={getStatusVariant(item.status)}
+                      className="lg:hidden"
                     >
                       {getStatusLabel(item.status)}
-                    </span>
+                    </TextTag>
                     {item.downloads > 0 ? (
                       <>
                         <TbDownload size={16} />
@@ -190,14 +189,9 @@ function MyContent() {
               <div className="flex">
                 {/* Status */}
                 <div className="mr-4 max-lg:hidden">
-                  <span
-                    className={cn(
-                      'px-3 py-1 rounded-full text-xs font-medium',
-                      getStatusColor(item.status),
-                    )}
-                  >
+                  <TextTag size="small" variant={getStatusVariant(item.status)}>
                     {getStatusLabel(item.status)}
-                  </span>
+                  </TextTag>
                 </div>
                 {/* Arrow */}
                 <TbChevronRight
