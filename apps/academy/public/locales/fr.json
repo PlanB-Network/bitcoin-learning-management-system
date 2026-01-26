@@ -178,7 +178,7 @@
       "collaborativeEffort": "Chaque élément de contenu sur la plateforme est le produit d'un effort collaboratif : chaque leçon, traduction et révision est rendue possible grâce au travail des contributeurs. C'est pour cette raison que nous sommes toujours à la recherche de correcteurs qui peuvent examiner notre contenu dans un grand nombre de langues. Si vous souhaitez participer au processus de relecture, veuillez nous rejoindre dans notre groupe <0>Telegram</0> et consulter notre <1>tutoriel</1>.\n\nNous vous rappelons que ce contenu est open-source - sous licence <2>CC BY-SA</2> - et peut donc être partagé et utilisé librement, à condition que la source originale soit reconnue.",
       "coordinatedBy": "Ce cours est coordonné par",
       "courseAddedToDashboard": "Ce cours a été ajouté à votre tableau de bord étudiant",
-      "curriculum": "Syllabus",
+      "curriculum": "Curriculum",
       "description": "Description",
       "hasBeenProofreadBy": "Ce cours a été relu par",
       "hasNotBeenProofread": "Ce cours n'a pas encore été relu",
@@ -479,7 +479,8 @@
           "owner": "Propriétaire",
           "type": "Type",
           "uses": "Utilisé"
-        }
+        },
+        "showMore": "Afficher plus de codes"
       },
       "coursesIndexes": "Indices des cours",
       "date": "Date",
@@ -877,7 +878,19 @@
         "class": "Classes",
         "event": "Événements"
       },
-      "personalCalendar": "Calendrier personnel"
+      "personalCalendar": "Calendrier personnel",
+      "downloadButton": "Télécharger le calendrier .ics et l’importer",
+      "downloadCalendar": "Télécharger le calendrier",
+      "downloadCalendarTitle": "Télécharger le calendrier",
+      "downloadStep1": "Télécharger le fichier du calendrier",
+      "downloadStep2": "Ouvrez-le avec votre application de calendrier",
+      "downloadStep3": "Les événements ne se mettront pas à jour en cas de modification des dates",
+      "downloadTitle": "Ou télécharger le calendrier actuel",
+      "subscribeButton": "Copier le lien du calendrier synchronisé",
+      "subscribeStep1": "Copier le lien du calendrier",
+      "subscribeStep2": "Collez-le dans l’option « S’abonner » de votre application de calendrier",
+      "subscribeStep3": "Les événements se mettent automatiquement à jour en cas de modification",
+      "subscribeTitle": "S’abonner au calendrier (synchronisation automatique)"
     },
     "careerPortal": {
       "acceptedFormat": "Format de fichier accepté : pdf / Taille maximale du fichier : 10 Mo.",
@@ -1471,7 +1484,8 @@
     "login": "Se connecter",
     "getStarted": "Commencer",
     "educatorContent": "Contenu éducateur",
-    "signIn": "Se connecter"
+    "signIn": "Se connecter",
+    "verifyEmail": "Vérifier l’adresse e-mail"
   },
   "movies": {
     "checkTheMovie": "Regarder le film"
@@ -1662,6 +1676,36 @@
         "whitepaper": "Livre blanc",
         "review": "Examiner"
       }
+    },
+    "addResource": {
+      "book": "Ajouter un livre",
+      "browse": "Parcourir les fichiers",
+      "channel": "Ajouter une chaîne YouTube",
+      "conference": "Ajouter un replay de conférence",
+      "coverImage": "Image de couverture",
+      "descriptionPlaceholder": "Décrivez le contenu de la ressource afin d’aider les autres à en comprendre le contenu et à la retrouver",
+      "done": "Fait",
+      "dropImage": "Cliquez ou déposez une image ici (PNG, JPG, WebP)",
+      "errorSendingAddition": "Une erreur est survenue lors de l’envoi de la ressource.",
+      "glossary": "Ajouter un terme au glossaire",
+      "movie": "Ajouter un film",
+      "newsletter": "Ajouter une newsletter",
+      "paper": "Ajouter un article de recherche",
+      "podcast": "Ajouter un podcast",
+      "project": "Ajouter un projet",
+      "publicationYear": "Année de publication",
+      "resourceLink": "Lien de la ressource",
+      "selectCategory": "Sélectionner une catégorie",
+      "selectLanguage": "Sélectionner une langue",
+      "selectYear": "Sélectionner l'année",
+      "sendForReview": "Envoyer pour relecture",
+      "sending": "Envoi...",
+      "socialProfiles": "Profils réseaux sociaux",
+      "success": "Ressource envoyée avec succès ! Une Pull Request a été créée sur GitHub.",
+      "successSubtitle": "Vous avez demandé avec succès l’ajout d’un nouveau {{type}}.",
+      "successTitle": "Ajout de {{type}} envoyé !",
+      "titlePlaceholder": "Introduction à Bitcoin",
+      "trailerLink": "Lien de la bande-annonce"
     }
   },
   "search": {
@@ -1714,9 +1758,14 @@
     "changeProfilePicture": "Changer la photo de profil",
     "addEmail": "Ajouter une adresse e-mail",
     "addEmailContinue": "Ajoutez une adresse e-mail pour continuer",
-    "emailSentDescription": "Vérifiez votre adresse e-mail et rechargez cette page pour continuer.",
+    "emailSentDescription": "Vérifiez votre email en cliquant sur le lien envoyé à {{email}}.\n\nUne fois votre email vérifié, rechargez cette page pour continuer.",
     "emailSentTitle": "Nous vous avons envoyé un e-mail",
-    "verifyEmail": "Vérifier l’adresse e-mail"
+    "verifyEmail": "Vérifier l’adresse e-mail",
+    "checkSpam": "(Si vous ne le voyez pas, vérifiez votre dossier de spam.)",
+    "verifyEmailClick": "Vérifiez votre adresse e-mail en cliquant sur le lien que vous avez reçu.",
+    "accountNeedsEmail": "Ce compte a besoin d'une adresse email pour continuer.",
+    "emailSentSpam": "(Si vous ne le voyez pas, vérifiez votre dossier spam.)",
+    "verifyEmailContinue": "Vérifiez l'email pour continuer"
   },
   "tutorials": {
     "business": {
@@ -1996,7 +2045,11 @@
     "event": "Événement",
     "oldest": "Les plus anciens",
     "contribute": "Contribuer",
-    "contributors": "Contributeurs"
+    "contributors": "Contributeurs",
+    "default": "défaut",
+    "host": "Hébergeur",
+    "link": "Lien",
+    "published": "Publié"
   },
   "youtubeChannels": {
     "view": "Voir la chaîne Youtube",
@@ -2088,7 +2141,8 @@
     "descriptionTooLong": "La description ne peut pas dépasser 350 caractères",
     "detail": {
       "downloadAll": "Télécharger tout",
-      "view": "Voir"
+      "view": "Voir",
+      "addedBy": "Ajouté par"
     },
     "done": "Fait",
     "dropCover": "Déposez l'image de couverture ici",
@@ -2112,7 +2166,7 @@
     "shareLinks": "Partager les liens",
     "status": {
       "draft": "En attente",
-      "published": "En direct",
+      "published": "Publié",
       "rejected": "Non accepté",
       "unpublished": "Non publié"
     },
@@ -2131,7 +2185,7 @@
       "workshop": "Atelier pratique",
       "art": "Art",
       "other": "Autre",
-      "curriculum": "Syllabus"
+      "curriculum": "Curriculum"
     },
     "uploadFiles": "Téléverser des fichiers",
     "uploadForReview": "Téléverser pour validation",
@@ -2170,7 +2224,27 @@
     "sortMostDownloaded": "Les plus téléchargés",
     "sortMostRecent": "Les plus récents",
     "titlePlaceholder": "ex. Workshop multi-sig Liana",
-    "typePlaceholder": "Type"
+    "typePlaceholder": "Type",
+    "fileTypeNotAllowed": "Seules les images et les documents (PDF, présentations, tableurs, documents texte) sont autorisés",
+    "guidelines": {
+      "continueToAdd": "Continuer à Ajouter",
+      "point1": "Regroupez les fichiers liés en ensembles (par exemple, \"Présentations du meetup de Lille 2024\").",
+      "point2": "Créditez le créateur original si vous partagez du contenu réalisé par des tiers.",
+      "point3": "Ne téléversez que du contenu que vous avez le droit de partager.",
+      "readFullGuide": "Lire le guide complet",
+      "subtitle": "Partagez vos meilleures ressources et contribuez à aider les éducateurs Bitcoin dans le monde entier",
+      "title": "Directives pour l’ajout de nouveaux contenus",
+      "pageTitle": "Guide : Ajouter du contenu à Educator Content"
+    },
+    "imageTooLarge": "La taille de l’image ne peut pas dépasser 15 Mo",
+    "license": {
+      "changeLicense": "Changer de licence",
+      "learnMore": "En savoir plus sur les licences",
+      "licensedByDefault": "Sous licence CC BY-SA par défaut",
+      "title": "Licence"
+    },
+    "supportedFileTypes": "Types de fichiers pris en charge : images, PDF, présentations, tableurs, documents texte",
+    "uploadFilesHelper": "Si vous avez des fichiers liés, téléversez-les ensemble dans un seul pack. Nommez clairement vos fichiers avant le téléversement."
   },
   "forms": {
     "browse": "Parcourir",

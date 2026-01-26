@@ -1484,7 +1484,8 @@
     "login": "Ingia ndani",
     "educatorContent": "Yaliyomo ya mwalimu",
     "getStarted": "Anza",
-    "signIn": "Ingia"
+    "signIn": "Ingia",
+    "verifyEmail": "Hakiki barua pepe"
   },
   "movies": {
     "checkTheMovie": "Kagua filamu"
@@ -1757,9 +1758,14 @@
     "changeProfilePicture": "Badilisha picha ya wasifu",
     "addEmail": "Ongeza barua pepe",
     "addEmailContinue": "Ongeza barua pepe kuendelea",
-    "emailSentDescription": "Thibitisha barua pepe yako na upakie tena ukurasa huu kuendelea.",
+    "emailSentDescription": "Hakiki barua pepe yako kwa kubofya kiungo kilichotumwa kwa {{email}}.\n\nMara tu barua pepe yako itakapothibitishwa, tafadhali pakia upya ukurasa huu kuendelea.",
     "emailSentTitle": "Tumetuma barua pepe kwako",
-    "verifyEmail": "Thibitisha barua pepe"
+    "verifyEmail": "Thibitisha barua pepe",
+    "checkSpam": "(Kama hauioni, tazama kwenye folda yako ya barua taka.)",
+    "verifyEmailClick": "Hakiki barua pepe yako kwa kubofya kiungo ulichopokea.",
+    "accountNeedsEmail": "Akaunti hii inahitaji anwani ya barua pepe kuendelea.",
+    "emailSentSpam": "(Kama hauioni, tazama kwenye folda yako ya barua taka.)",
+    "verifyEmailContinue": "Hakiki barua pepe ili uendelee"
   },
   "tutorials": {
     "business": {
@@ -2213,7 +2219,8 @@
       "point3": "Pakia tu maudhui pekee unayo haki ya kushiriki.",
       "readFullGuide": "Soma mwongozo kamili",
       "subtitle": "Shirikisha rasilimali zako bora na usaidie walimu wa Bitcoin duniani kote",
-      "title": "Mwongozo wa kuongeza maudhui mapya"
+      "title": "Mwongozo wa kuongeza maudhui mapya",
+      "pageTitle": "Mwongozo: Kuongeza Yaliyomo kwenye Yaliyomo ya Mwalimu"
     },
     "imageTooLarge": "Ukubwa wa picha hauwezi kuzidi 15MB",
     "license": {
