@@ -486,6 +486,10 @@ function FAQ() {
           answer="During the first two phases (lectures and masterclasses), you will have four multiple-choice question exams to evaluate your understanding and knowledge. These exams will be based on the live sessions. Then, if you are selected for the assignment phase, you will be graded based on your assignment output. During each selection, your rank is defined based on the weighted average of your grades. The weight for each exam will be announced during the program."
         />
         <FAQQuestion
+          question="How do the exams work?"
+          answer="Each exam is a multiple-choice questionnaire that becomes available on the platform for a 72-hour window. You can take it at any time during that period, from anywhere, as long as you complete it before the window closes. This flexibility allows you to choose the moment that works best for you, regardless of your time zone or schedule."
+        />
+        <FAQQuestion
           question="Do you provide any financial or logistical support for the Summer School?"
           answer="If you are selected for the Lugano Summer School, we will provide support based on your situation, notably for visa registration and trip planning. Some scholarships will be offered to the top-ranked candidates of the final selection."
         />
