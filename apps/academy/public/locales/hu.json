@@ -97,7 +97,9 @@
     "loginNotAvailable1": "A bejelentkezési funkciók még nem érhetőek el az asztali alkalmazásban.",
     "loginNotAvailable2": "Látogass el a weboldalunkra, ahol bejelentkezhetsz és hozzáférhetsz a fiókodhoz.",
     "signUp": "Regisztráció",
-    "oldPassword": "Régi jelszó"
+    "oldPassword": "Régi jelszó",
+    "saveProgress": "Mentse a haladását",
+    "signUpToSave": "Regisztráljon a mentéshez"
   },
   "bCert": {
     "bCertDescription": "A ₿-CERT a végső Bitcoin teszt, amelynek célja, hogy értékelje Bitcoin és kapcsolódó témák tudását.\n\nSzerezd meg a ₿-CERT bizonyítványodat és igazold szakértelmedet a Bitcoin iparágban, ami új munkalehetőségeket nyit meg a területen.",
@@ -196,7 +198,11 @@
       "premiumContentNeedsPaymentAction": "Menj a kurzus kezdőlapjára",
       "startCourse": "Kezdd el a kurzust",
       "taughtBy": "A kurzust tartja",
-      "thanksTipping": "Köszönetet mondhatsz az oktatónak támogatással."
+      "thanksTipping": "Köszönetet mondhatsz az oktatónak támogatással.",
+      "creditsCollaboration": "Ez a tanfolyam egy közös erőfeszítés eredménye: minden lecke, fordítás és revízió a hozzájárulók munkájának köszönhető. Emiatt mindig keresünk lektorokat, akik sok nyelven átnézhetik a tartalmunkat.\n\nHa szeretne részt venni a lektori folyamatban, kérjük, vegye fel a kapcsolatot a <0>Telegram</0> csoportunkban és olvassa el a <1>útmutatónkat</1>.\n\nSegítsen terjeszteni a Bitcoin ismereteit:",
+      "courseCoordinator": "Kurzuskoordinátor",
+      "openSourceContentDescription": "Ez a tanfolyam tartalma nyílt forráskódú - licenciálva a <0>CC BY-SA</0> alatt - tehát szabadon megosztható és használható, feltéve, hogy a forrás eredetét megadják.",
+      "openSourceContentTitle": "Nyílt forrású tartalom"
     },
     "exam": {
       "answersReview": "Válaszok áttekintése",
@@ -473,7 +479,8 @@
           "owner": "Tulajdonos",
           "type": "Típus",
           "uses": "Használt"
-        }
+        },
+        "showMore": "Több kód megjelenítése"
       },
       "coursesIndexes": "Kurzusok indexei",
       "date": "Dátum",
@@ -871,7 +878,19 @@
         "class": "Órák",
         "event": "Események"
       },
-      "personalCalendar": "Személyes naptár"
+      "personalCalendar": "Személyes naptár",
+      "downloadButton": "Töltse le az .ics naptárat és importálja",
+      "downloadCalendar": "Naptár letöltése",
+      "downloadCalendarTitle": "Naptár letöltése",
+      "downloadStep1": "Naptárfájl letöltése",
+      "downloadStep2": "Nyissa meg a naptáralkalmazásával",
+      "downloadStep3": "Az események nem frissülnek, ha a dátumok megváltoznak",
+      "subscribeButton": "Szinkronizált naptár linkjének másolása",
+      "subscribeStep1": "Másolja a naptár linkjét",
+      "subscribeStep2": "Illessze be a linket a naptáralkalmazás \"Feliratkozás\" opciójába",
+      "subscribeStep3": "Az események automatikusan frissülnek, ha bármi változik",
+      "subscribeTitle": "Feliratkozás a naptárra (automatikus szinkronizáció)",
+      "downloadTitle": "Vagy töltse le az aktuális naptárat"
     },
     "careerPortal": {
       "acceptedFormat": "Elfogadott fájlformátum: pdf / Maximális fájlméret: 10 MB.",
@@ -1465,7 +1484,8 @@
     "login": "Jelentkezz be",
     "educatorContent": "Oktatói tartalom",
     "getStarted": "Kezdj bele",
-    "signIn": "Bejelentkezés"
+    "signIn": "Bejelentkezés",
+    "verifyEmail": "E-mail megerősítése"
   },
   "notFound": {
     "here": "Itt",
@@ -1610,7 +1630,24 @@
     },
     "projects": {
       "title": "Projektek",
-      "addProjects": "Projekt hozzáadása"
+      "addProjects": "Projekt hozzáadása",
+      "types": {
+        "exchange": "Csere",
+        "communities": "Közösségek",
+        "conference": "Konferencia",
+        "education": "Oktatás",
+        "infrastructure": "Infrastruktúra",
+        "investment": "Befektetés",
+        "manufacturer": "Gyártó",
+        "news": "Hírek",
+        "merchant": "Kereskedő",
+        "mining": "Bányászat",
+        "node": "Csomópont",
+        "payment": "Fizetés",
+        "privacy": "Adatvédelem",
+        "service": "Szolgáltatás",
+        "wallet": "Pénztárca"
+      }
     },
     "searchFilterName": "Keresés név alapján",
     "toggleLabelAll": "Összes",
@@ -1632,10 +1669,41 @@
         "journal": "Folyóirat",
         "pre-print": "Nyomda előtti példány",
         "thesis": "Szakdolgozat",
-        "whitepaper": "Fehér könyv"
+        "whitepaper": "Fehér könyv",
+        "review": "Áttekintés"
       }
     },
-    "pageSubtitleMovies": "<0>Más filmek</0>, amelyek tetszenek lehetnek"
+    "pageSubtitleMovies": "<0>Más filmek</0>, amelyek tetszenek lehetnek",
+    "addResource": {
+      "glossary": "Szószedeti szó hozzáadása",
+      "book": "Könyv hozzáadása",
+      "browse": "Fájlok keresése",
+      "movie": "Film hozzáadása",
+      "newsletter": "Hírlevél hozzáadása",
+      "paper": "Kutatási cikk hozzáadása",
+      "podcast": "Podcast hozzáadása",
+      "project": "Projekt hozzáadása",
+      "publicationYear": "Megjelenési év",
+      "resourceLink": "Erőforrás link",
+      "selectCategory": "Válasszon egy kategóriát",
+      "selectLanguage": "Válasszon egy nyelvet",
+      "success": "Az erőforrás sikeresen benyújtva! A GitHub-on létrehoztunk egy Pull Request-et.",
+      "channel": "YouTube csatorna hozzáadása",
+      "conference": "Konferencia ismétlés hozzáadása",
+      "coverImage": "Borítókép",
+      "descriptionPlaceholder": "Ismertesse a forrás tartalmát, hogy mások is értsék az tartalmát és megtalálhassák",
+      "done": "Kész",
+      "dropImage": "Kattintson ide vagy dobjon ide egy képet (PNG, JPG, WebP)",
+      "errorSendingAddition": "Hiba történt az erőforrás küldése közben.",
+      "selectYear": "Év kiválasztása",
+      "sendForReview": "Küldés felülvizsgálatra",
+      "sending": "Küldés...",
+      "socialProfiles": "Szociális profilok",
+      "successSubtitle": "Sikeresen kértél egy új {{type}} hozzáadását.",
+      "successTitle": "{{type}} hozzáadás elküldve!",
+      "titlePlaceholder": "Bitcoin bevezető",
+      "trailerLink": "Előzetes link"
+    }
   },
   "search": {
     "all": "Összes",
@@ -1684,7 +1752,17 @@
     "changeDisplayName": "Megváltoztatja a megjelenítési nevet",
     "changeEmail": "E-mail megváltoztatása",
     "changePassword": "Jelszó megváltoztatása",
-    "changeProfilePicture": "Profilkép megváltoztatása"
+    "changeProfilePicture": "Profilkép megváltoztatása",
+    "addEmailContinue": "Az folytatáshoz adjon hozzá e-mailt",
+    "addEmail": "E-mail hozzáadása",
+    "accountNeedsEmail": "Ez a fiók e-mail címet igényel a folytatáshoz.",
+    "checkSpam": "(Ha nem látja, ellenőrizze a spam mappáját.)",
+    "emailSentDescription": "Erősítse meg az e-mail címét az {{email}} címre küldött linkre kattintva.\n\nAz e-mail cím megerősítése után töltse újra az oldalt a folytatáshoz.",
+    "emailSentSpam": "(Ha nem látja, ellenőrizze a spam mappáját.)",
+    "verifyEmailClick": "Erősítse meg az e-mail címét az általának küldött linkre kattintva.",
+    "verifyEmailContinue": "Az e-mail megerősítése a folytatáshoz szükséges",
+    "emailSentTitle": "E-mailt küldtünk önnek",
+    "verifyEmail": "E-mail megerősítése"
   },
   "tutorials": {
     "business": {
@@ -1945,7 +2023,16 @@
     "full": "Teljes",
     "share": "Megosztás",
     "structure": "Szerkezet",
-    "confirmation": "Megerősítés"
+    "confirmation": "Megerősítés",
+    "oldest": "Legrégebbi",
+    "event": "Esemény",
+    "host": "Házigazda",
+    "published": "Közzétéve",
+    "contribute": "Hozzájárulás",
+    "contributors": "Közreműködők",
+    "default": "alapértelmezett",
+    "link": "Link",
+    "agenda": "Napirend"
   },
   "youtubeChannels": {
     "view": "Nézd meg a Youtube csatornát",
@@ -1979,7 +2066,8 @@
     "descriptionTooLong": "A leírás nem haladhatja meg a 350 karaktert",
     "detail": {
       "downloadAll": "Az összes letöltése",
-      "view": "Megtekintés"
+      "view": "Megtekintés",
+      "addedBy": "Hozzáadta"
     },
     "done": "Kész",
     "dropCover": "Dobja ide a borítóképet",
@@ -1999,7 +2087,7 @@
     "shareLinks": "Linkek megosztása",
     "status": {
       "draft": "Függőben",
-      "published": "Élő",
+      "published": "Közzétéve",
       "rejected": "Nem elfogadott",
       "unpublished": "Közzététel visszavonva"
     },
@@ -2017,7 +2105,8 @@
       "sticker": "Matrica",
       "workshop": "Műhely",
       "other": "Egyéb",
-      "art": "Művészet"
+      "art": "Művészet",
+      "curriculum": "Tanterv"
     },
     "uploadFiles": "Fájlok feltöltése",
     "uploadForReview": "Feltöltés áttekintésre",
@@ -2031,7 +2120,60 @@
     "languagePlaceholder": "Kiválaszt",
     "languageRequired": "Válassza ki a forrásnyelvet",
     "titleTooLong": "A cím nem haladhatja meg a 60 karaktert",
-    "urlInvalid": "A linknek érvényes URL-nek kell lennie"
+    "urlInvalid": "A linknek érvényes URL-nek kell lennie",
+    "reviewModal": {
+      "reviewForApproval": "Jóváhagyásra váró felülvizsgálat",
+      "reject": "Elutasítás",
+      "unknown": "Ismeretlen",
+      "approveAndPublish": "Jóváhagyja a tartalmat és tegye közzé",
+      "edit": "Szerkesztés",
+      "noCover": "Nincs borító",
+      "viewContent": "Tartalom megtekintése",
+      "unpublish": "Meg nem jelenítés",
+      "unpublishConfirm": "Megnemjelenítés (biztos benne?)"
+    },
+    "guidelines": {
+      "pageTitle": "Útmutató: Tartalom hozzáadása az Oktatói Tartalomhoz",
+      "point3": "Csak olyan tartalmat töltsön fel, amelynek jogosultja a megosztásra.",
+      "readFullGuide": "Olvassa el a teljes útmutatót",
+      "subtitle": "Ossza meg legjobb forrásait, és segítsen a Bitcoin oktatóknak világszerte",
+      "title": "Új tartalom hozzáadásának irányelvei",
+      "continueToAdd": "Folytatás a Hozzáadáshoz",
+      "point1": "Csoportosítson kapcsolódó fájlokat kötegekbe (pl. \"A Lille Meetup előadásai 2024\").",
+      "point2": "Adjon krediteket az eredeti alkotónak, ha megosztja mások által készített tartalmat."
+    },
+    "imageTooLarge": "A kép mérete nem haladhatja meg a 15MB-ot",
+    "linkOrFileRequired": "Kérjük, adjon hozzá legalább egy linket vagy töltsön fel egy fájlt",
+    "typePlaceholder": "Típus",
+    "uploadFilesHelper": "Ha kapcsolódó fájljai vannak, töltse fel őket egyben, egy csomagban. Nevezze el tisztán a fájljait feltöltés előtt.",
+    "adminPanel": {
+      "modified": "Módosítva",
+      "previewForApproval": "Előnézet jóváhagyáshoz",
+      "toReview": "Felülvizsgálatra",
+      "approved": "Jóváhagyva",
+      "new": "Új",
+      "pageTitle": "Oktatói Tartalom Felülvizsgálata",
+      "previewChanges": "Változások előnézete"
+    },
+    "sortBy": "Rendezés",
+    "sortMostDownloaded": "Legtöbbet letöltött",
+    "fileTypeNotAllowed": "Csak képeket és dokumentumokat (PDF, prezentációk, táblázatok, szöveges dokumentumok) fogadunk el",
+    "languagePlaceholderFilter": "Nyelv",
+    "sortMostRecent": "Legújabb",
+    "license": {
+      "title": "Licenc",
+      "licensedByDefault": "Alapértelmezés szerint CC BY-SA licenc alatt",
+      "learnMore": "Tudjon meg többet a licencekről",
+      "changeLicense": "Licenc módosítása"
+    },
+    "linkPlaceholder": "https://example.com",
+    "maxFileSize": "Maximális fájlméret: 50MB",
+    "supportedFileTypes": "Támogatott fájltípusok: képek, PDF, prezentációk, táblázatok, szöveges dokumentumok",
+    "titlePlaceholder": "Például Multi-sig műhely Liana",
+    "pageSubtitle": "Ahol a Bitcoin oktatók és közösségek megosztják és újrahasznosítják az erőforrásaikat",
+    "pageTitle": "Oktatói tartalom",
+    "coverPreview": "Borító előnézet",
+    "fileExisting": "(Létező)"
   },
   "footer": {
     "FOSSOpenContent": "FOSS és Nyílt tartalom",

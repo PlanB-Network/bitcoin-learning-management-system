@@ -201,7 +201,8 @@
       "thanksTipping": "講師にチップを渡すことで、感謝の気持ちを伝えることができます。",
       "creditsCollaboration": "このコースは共同作業の結果です：各レッスン、翻訳、および改訂は、貢献者の作業によって可能になります。このため、私たちは常に多くの言語で私たちのコンテンツをレビューできる校正者を探しています。\n\n校正プロセスに参加したい場合は、私たちの<0>Telegram</0>グループに参加し、私たちの<1>チュートリアル</1>を読んでください。\n\nBitcoinの知識を広めるお手伝いをしてください：",
       "openSourceContentDescription": "このコースのコンテンツはオープンソースであり、<0>CC BY-SA</0>ライセンスのもとに提供されているため、オリジナルのソースがクレジットされる限り、自由に共有や使用が可能です。",
-      "openSourceContentTitle": "オープンソースコンテンツ"
+      "openSourceContentTitle": "オープンソースコンテンツ",
+      "courseCoordinator": "コースコーディネーター"
     },
     "exam": {
       "answersReview": "レビュー回答",
@@ -478,7 +479,8 @@
           "owner": "管理者",
           "type": "種類",
           "uses": "使用済み"
-        }
+        },
+        "showMore": "より多くのコードを表示"
       },
       "coursesIndexes": "コース索引",
       "date": "日付",
@@ -876,7 +878,19 @@
         "class": "クラス",
         "event": "イベント"
       },
-      "personalCalendar": "個人カレンダー"
+      "personalCalendar": "個人カレンダー",
+      "downloadButton": ".icsカレンダーをダウンロードしてインポート",
+      "downloadCalendar": "カレンダーをダウンロード",
+      "downloadCalendarTitle": "カレンダーをダウンロード",
+      "downloadStep1": "カレンダーファイルをダウンロード",
+      "downloadStep2": "カレンダーアプリで開く",
+      "downloadStep3": "日程が変更されてもイベントは更新されません",
+      "downloadTitle": "または現在のカレンダーをダウンロード",
+      "subscribeButton": "同期したカレンダーリンクをコピー",
+      "subscribeTitle": "カレンダーを購読（自動同期）",
+      "subscribeStep1": "カレンダーリンクをコピー",
+      "subscribeStep2": "カレンダーアプリの「購読」オプションにペーストしてください",
+      "subscribeStep3": "何か変更があった場合、イベントは自動的に更新されます"
     },
     "careerPortal": {
       "acceptedFormat": "ファイル形式：pdf / 最大ファイルサイズ：10MB。",
@@ -1470,7 +1484,8 @@
     "login": "ログイン",
     "educatorContent": "教育者向けコンテンツ",
     "getStarted": "始める",
-    "signIn": "サインイン"
+    "signIn": "サインイン",
+    "verifyEmail": "メールを確認する"
   },
   "notFound": {
     "here": "コチラ",
@@ -1658,6 +1673,36 @@
       },
       "accessPaper": "論文を参照",
       "addPaper": "論文を追加"
+    },
+    "addResource": {
+      "conference": "カンファレンスのリプレイを追加",
+      "coverImage": "カバーイメージ",
+      "descriptionPlaceholder": "リソース内容を説明し、他の人が内容を理解し、見つけられるようにする",
+      "dropImage": "ここで画像をクリックまたはドロップしてください (PNG、JPG、WebP)",
+      "socialProfiles": "ソーシャルプロフィール",
+      "success": "リソースの提出に成功しました！GitHubでプルリクエストが作成されました。",
+      "done": "完了",
+      "podcast": "ポッドキャストを追加する",
+      "project": "プロジェクトを追加する",
+      "sendForReview": "レビューに送る",
+      "sending": "送信中...",
+      "successSubtitle": "新しい{{type}}の追加を正常にリクエストしました。",
+      "trailerLink": "トレーラーリンク",
+      "book": "本を追加",
+      "browse": "ファイルを探す",
+      "channel": "YouTubeチャンネルを追加",
+      "errorSendingAddition": "リソースの送信中にエラーが発生しました。",
+      "glossary": "用語集に単語を追加する",
+      "movie": "映画を追加する",
+      "newsletter": "ニュースレターを追加する",
+      "paper": "研究論文を追加する",
+      "publicationYear": "出版年",
+      "resourceLink": "リソースのリンク",
+      "selectCategory": "カテゴリーを選択する",
+      "selectLanguage": "言語を選択する",
+      "selectYear": "年を選択する",
+      "successTitle": "{{type}}の追加を送信しました！",
+      "titlePlaceholder": "ビットコインの紹介"
     }
   },
   "search": {
@@ -1708,11 +1753,16 @@
     "changeEmail": "メールアドレスを変更する",
     "changePassword": "パスワードを変更する",
     "changeProfilePicture": "プロフィール写真の変更",
-    "emailSentDescription": "あなたのメールを確認し、このページを再読み込みして続行してください。",
+    "emailSentDescription": "{{email}}に送信されたリンクをクリックしてメールアドレスを確認してください。\n\nメールアドレスが確認されたら、このページを再読み込みして続けてください。",
     "emailSentTitle": "あなたにメールを送りました",
     "verifyEmail": "メールを確認する",
     "addEmailContinue": "続行するにはメールを追加してください",
-    "addEmail": "メールを追加する"
+    "addEmail": "メールを追加する",
+    "verifyEmailClick": "受け取ったリンクをクリックしてメールを確認してください。",
+    "accountNeedsEmail": "このアカウントは続行するためにメールアドレスが必要です。",
+    "checkSpam": "（見つからない場合は、迷惑メールフォルダを確認してください。）",
+    "emailSentSpam": "（見つからない場合は、迷惑メールフォルダを確認してください。）",
+    "verifyEmailContinue": "メールを確認して続行してください。"
   },
   "tutorials": {
     "business": {
@@ -1978,7 +2028,11 @@
     "contribute": "貢献する",
     "oldest": "最も古い",
     "agenda": "議題",
-    "contributors": "寄稿者"
+    "contributors": "寄稿者",
+    "host": "ホスト",
+    "default": "デフォルト",
+    "published": "公開",
+    "link": "リンク"
   },
   "youtubeChannels": {
     "view": "Youtubeチャンネルを見る",
@@ -2056,7 +2110,8 @@
       "game": "ゲーム",
       "sticker": "ステッカー",
       "other": "その他",
-      "presentation": "プレゼンテーション"
+      "presentation": "プレゼンテーション",
+      "curriculum": "カリキュラム"
     },
     "uploading": "アップロード中...",
     "contentNotFound": "コンテンツが見つかりません",
@@ -2081,7 +2136,7 @@
     "shareLinks": "リンクを共有",
     "status": {
       "draft": "保留中",
-      "published": "ライブ",
+      "published": "公開",
       "rejected": "承認されません",
       "unpublished": "未公開"
     },
@@ -2096,7 +2151,8 @@
     "descriptionRequired": "説明は空欄にできません",
     "detail": {
       "downloadAll": "すべてダウンロード",
-      "view": "表示"
+      "view": "表示",
+      "addedBy": "追加者"
     },
     "titleHelper": "あなたのリソースの内容と目的を反映するようにしてください。簡潔でありながら情報を提供するようにしてください。",
     "titleRequired": "タイトルを空にすることはできません",
@@ -2140,7 +2196,27 @@
     "titlePlaceholder": "例：マルチシグワークショップ リアナ",
     "maxFileSize": "最大ファイルサイズ: 50MB",
     "pageTitle": "教育者向けコンテンツ",
-    "sortBy": "並べ替え："
+    "sortBy": "並べ替え：",
+    "guidelines": {
+      "point2": "他の人が制作したコンテンツを共有する場合は、その原作者にクレジットを付けてください。",
+      "readFullGuide": "完全ガイドを読む",
+      "pageTitle": "ガイド：エデュケーターコンテンツへのコンテンツの追加",
+      "continueToAdd": "追加に進む",
+      "point1": "関連ファイルをバンドルにまとめます（例：「リールミートアップのプレゼンテーション2024」）。",
+      "point3": "共有する権利を持つコンテンツのみをアップロードしてください。",
+      "subtitle": "最高のリソースを共有し、世界中のビットコインエデュケーターを支援してください",
+      "title": "新しいコンテンツを追加するためのガイドライン"
+    },
+    "fileTypeNotAllowed": "許可されているのは画像と文書（PDF、プレゼンテーション、スプレッドシート、テキストドキュメント）のみです",
+    "supportedFileTypes": "対応するファイルタイプ：画像、PDF、プレゼンテーション、スプレッドシート、テキストドキュメント",
+    "license": {
+      "title": "ライセンス",
+      "licensedByDefault": "デフォルトでCC BY-SAとしてライセンスされています",
+      "learnMore": "ライセンスについて詳しく知る",
+      "changeLicense": "ライセンスの変更"
+    },
+    "imageTooLarge": "画像のサイズは15MBを超えてはならない",
+    "uploadFilesHelper": "関連ファイルがある場合は、一つのバンドルとしてまとめてアップロードしてください。アップロードする前にファイルの名前を明確にしてください。"
   },
   "mentor": {
     "placeholder": "質問をする...",

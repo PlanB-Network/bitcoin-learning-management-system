@@ -1484,7 +1484,8 @@
     "login": "登录",
     "educatorContent": "教育者内容",
     "getStarted": "开始使用",
-    "signIn": "登录"
+    "signIn": "登录",
+    "verifyEmail": "验证电子邮件"
   },
   "movies": {
     "checkTheMovie": "检查电影"
@@ -1675,6 +1676,36 @@
         "review": "审查"
       },
       "title": "研究论文"
+    },
+    "addResource": {
+      "paper": "添加研究论文",
+      "podcast": "添加播客",
+      "project": "添加项目",
+      "publicationYear": "出版年份",
+      "resourceLink": "资源链接",
+      "selectCategory": "选择一个类别",
+      "selectLanguage": "选择语言",
+      "selectYear": "选择年份",
+      "sendForReview": "文件已发送以供审核",
+      "sending": "发送中...",
+      "socialProfiles": "社交资料",
+      "success": "资源成功提交！GitHub 上已创建一个拉取请求。",
+      "successSubtitle": "您已成功申请添加新的{{type}}。",
+      "successTitle": "{{type}}添加已发送！",
+      "titlePlaceholder": "比特币简介",
+      "trailerLink": "预告片链接",
+      "book": "添加书籍",
+      "browse": "浏览文件",
+      "channel": "添加YouTube频道",
+      "conference": "添加会议回放",
+      "coverImage": "封面图片",
+      "descriptionPlaceholder": "描述资源内容以帮助其他人理解其内容并找到它",
+      "done": "完成",
+      "dropImage": "点击或将图片拖拽到这里（PNG，JPG，WebP）",
+      "errorSendingAddition": "尝试发送资源时出错。",
+      "glossary": "添加词汇表单词",
+      "movie": "添加电影",
+      "newsletter": "添加通讯稿"
     }
   },
   "search": {
@@ -1727,9 +1758,14 @@
     "changeProfilePicture": "更换头像",
     "addEmail": "添加电子邮件",
     "addEmailContinue": "继续需要添加电子邮件",
-    "emailSentDescription": "验证您的电子邮件并重新加载此页面以继续。",
+    "emailSentDescription": "通过点击发送至{{email}}的链接来验证您的电子邮件。\n\n一旦您的电子邮件已验证，请重新加载此页面以继续操作。",
     "emailSentTitle": "我们已向您发送电子邮件",
-    "verifyEmail": "验证电子邮件"
+    "verifyEmail": "验证电子邮件",
+    "accountNeedsEmail": "此账户需要一个电子邮件地址以继续。",
+    "checkSpam": "（如果您没有看到，检查一下您的垃圾邮件文件夹。）",
+    "emailSentSpam": "（如果您没有看到，请检查一下您的垃圾邮件文件夹。）",
+    "verifyEmailClick": "请通过点击您收到的链接来验证您的电子邮件。",
+    "verifyEmailContinue": "请验证电子邮件以继续操作"
   },
   "tutorials": {
     "business": {
@@ -1995,7 +2031,11 @@
     "contributors": "贡献者",
     "event": "活动",
     "agenda": "议程",
-    "oldest": "最早的"
+    "oldest": "最早的",
+    "default": "默认",
+    "host": "主持人",
+    "link": "链接",
+    "published": "已发布"
   },
   "youtubeChannels": {
     "view": "查看YouTube频道",
@@ -2080,7 +2120,7 @@
     "descriptionTooLong": "描述不能超过350个字符",
     "status": {
       "draft": "待处理",
-      "published": "直播",
+      "published": "已发布",
       "rejected": "未接受",
       "unpublished": "未发布"
     },
@@ -2188,7 +2228,9 @@
       "learnMore": "了解更多关于许可证的信息",
       "licensedByDefault": "默认以 CC BY-SA 许可证授权",
       "title": "许可证"
-    }
+    },
+    "supportedFileTypes": "支持的文件类型：图片，PDF，演示文稿，电子表格，文本文档",
+    "uploadFilesHelper": "如果你有相关的文件，请将它们一起上传为一个包。上传前清晰命名你的文件。"
   },
   "mentor": {
     "collapse": "折叠",

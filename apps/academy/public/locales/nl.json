@@ -201,7 +201,8 @@
       "thanksTipping": "Je kunt de professor bedanken met een fooi.",
       "creditsCollaboration": "Deze cursus is het resultaat van een gezamenlijke inspanning: elke les, vertaling en revisie is mogelijk gemaakt door het werk van bijdragers. Om deze reden zijn we altijd op zoek naar proeflezers die onze inhoud in veel talen kunnen bekijken.\n\nAls u wilt deelnemen aan het proefleesproces, neem dan contact op in onze <0>Telegram</0> -groep en lees onze <1>tutorial</1>.\n\nHelp bij het verspreiden van Bitcoin-kennis:",
       "openSourceContentDescription": "De inhoud van deze cursus is open source - gelicentieerd onder <0>CC BY-SA</0> - dus deze kan vrij worden gedeeld en gebruikt, zolang de oorspronkelijke bron wordt vermeld.",
-      "openSourceContentTitle": "Open-source inhoud"
+      "openSourceContentTitle": "Open-source inhoud",
+      "courseCoordinator": "Cursuscoördinator"
     },
     "exam": {
       "answersReview": "Antwoorden nakijken",
@@ -478,7 +479,8 @@
           "owner": "Eigenaar",
           "type": "Type",
           "uses": "Gebruikt"
-        }
+        },
+        "showMore": "Toon meer codes"
       },
       "coursesIndexes": "Cursusindexen",
       "date": "Datum",
@@ -876,7 +878,19 @@
         "class": "Lessen",
         "event": "Evenementen"
       },
-      "personalCalendar": "Persoonlijke kalender"
+      "personalCalendar": "Persoonlijke kalender",
+      "subscribeStep1": "Kopieer de kalenderlink",
+      "subscribeStep2": "Plak deze in de \"Abonneer\" optie van uw kalender-app",
+      "subscribeStep3": "Evenementen blijven automatisch bijgewerkt als er iets verandert",
+      "subscribeTitle": "Abonneren op kalender (automatisch synchroniseren)",
+      "downloadButton": "Download .ics kalender en importeer",
+      "downloadCalendar": "Kalender downloaden",
+      "downloadCalendarTitle": "Kalender downloaden",
+      "downloadStep1": "Download het kalenderbestand",
+      "downloadStep2": "Open het met uw kalender-app",
+      "downloadStep3": "Evenementen worden niet bijgewerkt als de datums veranderen",
+      "downloadTitle": "Of download de huidige kalender",
+      "subscribeButton": "Gesynchroniseerde kalenderlink kopiëren"
     },
     "careerPortal": {
       "acceptedFormat": "Geaccepteerd bestandsformaat: pdf / Maximale bestandsgrootte: 10 MB.",
@@ -1486,7 +1500,8 @@
     "login": "Inloggen",
     "educatorContent": "Educatieve inhoud",
     "getStarted": "Beginnen",
-    "signIn": "Aanmelden"
+    "signIn": "Aanmelden",
+    "verifyEmail": "Email verifiëren"
   },
   "notifications": {
     "calendar_48h_online_event": "Het evenement {{eventName}} komt er snel aan! Het is gepland op {{date}}, vanaf {{formattedTime}}. ",
@@ -1623,6 +1638,36 @@
       "addPaper": "Voeg papier toe",
       "citations": "Citaties (.bib)",
       "downloadCitations": "Download citaties"
+    },
+    "addResource": {
+      "glossary": "Voeg woord toe aan glossarium",
+      "movie": "Voeg film toe",
+      "newsletter": "Voeg nieuwsbrief toe",
+      "browse": "Bestanden doorbladeren",
+      "channel": "YouTube-kanaal toevoegen",
+      "conference": "Conferentie replay toevoegen",
+      "dropImage": "Klik of sleep hier een afbeelding (PNG, JPG, WebP)",
+      "successSubtitle": "U heeft met succes de toevoeging van een nieuwe {{type}} aangevraagd.",
+      "book": "Boek toevoegen",
+      "coverImage": "Omslagafbeelding",
+      "descriptionPlaceholder": "Beschrijf de inhoud van de bron om anderen te helpen de inhoud te begrijpen en deze te vinden",
+      "done": "Gedaan",
+      "errorSendingAddition": "Er is een fout opgetreden bij het proberen te sturen van de resource.",
+      "paper": "Voeg onderzoeksartikel toe",
+      "podcast": "Voeg podcast toe",
+      "project": "Voeg project toe",
+      "publicationYear": "Publicatiejaar",
+      "resourceLink": "Link naar bron",
+      "selectCategory": "Selecteer een categorie",
+      "selectLanguage": "Kies een taal",
+      "selectYear": "Selecteer een jaar",
+      "sendForReview": "Stuur ter beoordeling",
+      "sending": "Verzenden...",
+      "socialProfiles": "Sociale profielen",
+      "success": "Bron is succesvol verzonden! Er is een Pull Request aangemaakt op GitHub.",
+      "successTitle": "{{type}} toevoeging verzonden!",
+      "titlePlaceholder": "Introductie van Bitcoin",
+      "trailerLink": "Trailer link"
     }
   },
   "payment": {
@@ -1712,10 +1757,15 @@
     "changePassword": "Wachtwoord wijzigen",
     "changeProfilePicture": "Profielfoto wijzigen",
     "addEmailContinue": "Voeg een email toe om door te gaan",
-    "emailSentDescription": "Verifieer uw email en herlaad deze pagina om door te gaan.",
+    "emailSentDescription": "Verifieer uw e-mail door op de link te klikken die naar {{email}} is verzonden.\n\nHerlaad deze pagina om door te gaan zodra uw e-mail is geverifieerd.",
     "emailSentTitle": "We hebben u een email gestuurd",
     "verifyEmail": "Email verifiëren",
-    "addEmail": "Voeg email toe"
+    "addEmail": "Voeg email toe",
+    "accountNeedsEmail": "Deze account heeft een e-mailadres nodig om verder te gaan.",
+    "checkSpam": "(Als je het niet ziet, controleer dan je spammap.)",
+    "emailSentSpam": "(Als je het niet ziet, controleer dan je spammap.)",
+    "verifyEmailClick": "Verifieer je e-mail door op de link te klikken die je hebt ontvangen.",
+    "verifyEmailContinue": "Verifieer e-mail om verder te gaan"
   },
   "tutorials": {
     "exchange": {
@@ -1981,7 +2031,11 @@
     "oldest": "Oudste",
     "agenda": "Agenda",
     "contributors": "Bijdragers",
-    "event": "Evenement"
+    "event": "Evenement",
+    "default": "standaard",
+    "host": "Gastheer",
+    "link": "Link",
+    "published": "Gepubliceerd"
   },
   "videoSelector": {
     "language": {
@@ -2059,7 +2113,8 @@
       "sticker": "Sticker",
       "workshop": "Werkplaats",
       "other": "Andere",
-      "presentation": "Presentaties"
+      "presentation": "Presentaties",
+      "curriculum": "Curriculum"
     },
     "uploadFiles": "Bestanden uploaden",
     "uploadForReview": "Uploaden voor beoordeling",
@@ -2074,7 +2129,8 @@
     "descriptionTooLong": "De beschrijving mag niet meer dan 350 tekens bevatten",
     "detail": {
       "downloadAll": "Alles downloaden",
-      "view": "Bekijken"
+      "view": "Bekijken",
+      "addedBy": "Toegevoegd door"
     },
     "dropCover": "Laat de omslagafbeelding hier vallen",
     "dropFiles": "Laat bestanden hier vallen",
@@ -2093,7 +2149,7 @@
     "shareLinks": "Deel Links",
     "status": {
       "draft": "In behandeling",
-      "published": "Live",
+      "published": "Gepubliceerd",
       "rejected": "Niet geaccepteerd",
       "unpublished": "Niet gepubliceerd"
     },
@@ -2140,7 +2196,27 @@
     "languagePlaceholderFilter": "Taal",
     "typePlaceholder": "Type",
     "pageTitle": "Educatieve inhoud",
-    "sortBy": "Sorteer op"
+    "sortBy": "Sorteer op",
+    "guidelines": {
+      "continueToAdd": "Ga verder naar Toevoegen",
+      "point1": "Groepsgerelateerde bestanden in bundels (bijv. \"Lille Meetup Presentaties 2024\").",
+      "point2": "Geef de originele maker credits als u content van anderen deelt.",
+      "point3": "Upload alleen inhoud waarvan u het recht heeft om deze te delen.",
+      "readFullGuide": "Lees de volledige gids",
+      "subtitle": "Deel uw beste bronnen en help Bitcoin-opleiders wereldwijd",
+      "title": "Richtlijnen voor het toevoegen van nieuwe inhoud",
+      "pageTitle": "Gids: Inhoud toevoegen aan Educatieve Inhoud"
+    },
+    "fileTypeNotAllowed": "Alleen afbeeldingen en documenten (PDF, presentaties, spreadsheets, tekstdocumenten) zijn toegestaan",
+    "supportedFileTypes": "Ondersteunde bestandstypen: afbeeldingen, PDF, presentaties, spreadsheets, tekstdocumenten",
+    "uploadFilesHelper": "Als u gerelateerde bestanden heeft, upload deze dan samen als één bundel. Noem uw bestanden duidelijk voordat u ze uploadt.",
+    "license": {
+      "title": "Licentie",
+      "licensedByDefault": "Standaard gelicentieerd als CC BY-SA",
+      "learnMore": "Lees meer over licenties",
+      "changeLicense": "Verander van licentie"
+    },
+    "imageTooLarge": "De afbeeldingsgrootte mag niet groter zijn dan 15MB"
   },
   "forms": {
     "replace": "Vervangen",

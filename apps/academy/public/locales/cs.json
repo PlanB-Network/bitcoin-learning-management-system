@@ -201,7 +201,8 @@
       "thanksTipping": "Můžete poděkovat tím, že dáte profesorovi spropitné.",
       "creditsCollaboration": "Tento kurz je výsledkem spolupráce: každá lekce, překlad a revize je možná díky práci přispěvatelů. Z tohoto důvodu hledáme korektory, kteří mohou přehodnocovat náš obsah v mnoha jazycích.\n\nPokud byste chtěli se podílet na procesu korektur, ozvěte se v naší skupině na <0>Telegramu</0> a přečtěte si náš <1>tutoriál</1>.\n\nPomozte šířit znalosti o Bitcoinu:",
       "openSourceContentDescription": "Obsah tohoto kurzu je open-source - licencován pod <0>CC BY-SA</0> - takže může být volně sdílen a používán, pokud je uveden původní zdroj.",
-      "openSourceContentTitle": "Open-source obsah"
+      "openSourceContentTitle": "Open-source obsah",
+      "courseCoordinator": "Koordinátor kurzu"
     },
     "exam": {
       "answersReview": "Vyhodnocení odpovědí",
@@ -478,7 +479,8 @@
           "owner": "Majitel",
           "type": "Typ",
           "uses": "Použitý"
-        }
+        },
+        "showMore": "Zobrazit více kódů"
       },
       "coursesIndexes": "Indexy kurzů",
       "date": "Datum",
@@ -876,7 +878,19 @@
         "class": "Třídy",
         "event": "Události"
       },
-      "personalCalendar": "Osobní kalendář"
+      "personalCalendar": "Osobní kalendář",
+      "downloadButton": "Stáhněte si .ics kalendář a importujte",
+      "downloadCalendar": "Stáhnout kalendář",
+      "downloadCalendarTitle": "Stáhnout kalendář",
+      "downloadStep1": "Stáhněte soubor kalendáře",
+      "downloadStep2": "Otevřete ho ve své aplikaci kalendáře",
+      "downloadStep3": "Události se neaktualizují, pokud se změní data",
+      "downloadTitle": "Nebo stáhněte aktuální kalendář",
+      "subscribeButton": "Kopírovat odkaz na synchronizovaný kalendář",
+      "subscribeStep1": "Kopírovat odkaz na kalendář",
+      "subscribeStep2": "Vložte ho do možnosti “Odebírat” své aplikace kalendáře",
+      "subscribeStep3": "Události se automaticky aktualizují, pokud dojde k jakékoliv změně",
+      "subscribeTitle": "Odebírat kalendář (automatická synchronizace)"
     },
     "careerPortal": {
       "acceptedFormat": "Přijímaný formát souboru: pdf / Maximální velikost souboru: 10 MB.",
@@ -1470,7 +1484,8 @@
     "login": "Přihlašte se",
     "signIn": "Přihlásit se",
     "educatorContent": "Obsah pro vyučující",
-    "getStarted": "Začít"
+    "getStarted": "Začít",
+    "verifyEmail": "Ověřit e-mail"
   },
   "notFound": {
     "here": "Zde",
@@ -1658,6 +1673,36 @@
       "publisher": "Vydavatel",
       "showMorePapers": "Zobrazit více dokumentů",
       "title": "Výzkumné práce"
+    },
+    "addResource": {
+      "descriptionPlaceholder": "Popište obsah zdroje, aby ostatní pochopili jeho obsah a našli ho",
+      "publicationYear": "Rok publikace",
+      "resourceLink": "Odkaz na zdroj",
+      "book": "Přidat knihu",
+      "browse": "Procházet soubory",
+      "channel": "Přidat YouTube kanál",
+      "conference": "Přidat záznam z konference",
+      "coverImage": "Obrázek na obálce",
+      "done": "Hotovo",
+      "dropImage": "Klikněte nebo sem přetáhněte obrázek (PNG, JPG, WebP)",
+      "errorSendingAddition": "Při pokusu o odeslání zdroje došlo k chybě.",
+      "glossary": "Přidat slovo do glosáře",
+      "movie": "Přidat film",
+      "newsletter": "Přidat newsletter",
+      "paper": "Přidat vědeckou práci",
+      "podcast": "Přidat podcast",
+      "project": "Přidat projekt",
+      "selectCategory": "Vyberte kategorii",
+      "selectLanguage": "Vyberte jazyk",
+      "selectYear": "Vyberte rok",
+      "sendForReview": "Odeslat ke kontrole",
+      "sending": "Odesílání...",
+      "socialProfiles": "Sociální profily",
+      "success": "Zdroj byl úspěšně odeslán! Na GitHubu byl vytvořen Pull Request.",
+      "successSubtitle": "Úspěšně jste požádali o přidání nové {{type}}.",
+      "successTitle": "{{type}} přidání odesláno!",
+      "titlePlaceholder": "Úvod do Bitcoinu",
+      "trailerLink": "Odkaz na trailer"
     }
   },
   "search": {
@@ -1709,10 +1754,15 @@
     "changePassword": "Změnit heslo",
     "changeProfilePicture": "Změnit profilový obrázek",
     "addEmailContinue": "Pro pokračování přidejte e-mail",
-    "emailSentDescription": "Potvrďte svůj e-mail a obnovte tuto stránku pro pokračování.",
+    "emailSentDescription": "Ověřte svůj e-mail kliknutím na odkaz zaslaný na {{email}}.\n\nJakmile bude váš e-mail ověřen, načtěte tuto stránku znovu a pokračujte.",
     "emailSentTitle": "Poslali jsme vám e-mail",
     "verifyEmail": "Ověřit e-mail",
-    "addEmail": "Přidat email"
+    "addEmail": "Přidat email",
+    "accountNeedsEmail": "Tento účet potřebuje k pokračování e-mailovou adresu.",
+    "checkSpam": "(Pokud to nevidíte, zkontrolujte svou složku se spamem.)",
+    "emailSentSpam": "(Pokud to nevidíte, zkontrolujte svou složku se spamem.)",
+    "verifyEmailClick": "Ověřte svůj email kliknutím na odkaz, který jste obdrželi.",
+    "verifyEmailContinue": "Ověřte e-mail pro pokračování"
   },
   "tutorials": {
     "business": {
@@ -1978,7 +2028,11 @@
     "contribute": "Přispějte",
     "oldest": "Nejstarší",
     "event": "Události",
-    "contributors": "Přispěvatelé"
+    "contributors": "Přispěvatelé",
+    "default": "výchozí",
+    "host": "Hostitel",
+    "link": "Odkaz",
+    "published": "Publikováno"
   },
   "youtubeChannels": {
     "view": "Zobrazit YouTube kanál",
@@ -2050,7 +2104,8 @@
     "done": "Hotovo",
     "detail": {
       "view": "Zobrazit",
-      "downloadAll": "Stáhnout vše"
+      "downloadAll": "Stáhnout vše",
+      "addedBy": "Přidal"
     },
     "languagePlaceholder": "Vyberte",
     "types": {
@@ -2061,11 +2116,12 @@
       "game": "Hra",
       "presentation": "Prezentace",
       "sticker": "Nálepka",
-      "workshop": "Dílna"
+      "workshop": "Dílna",
+      "curriculum": "Studijní plán"
     },
     "status": {
       "draft": "Čekající",
-      "published": "Živě",
+      "published": "Publikováno",
       "rejected": "Nepřijato",
       "unpublished": "Nezveřejněno"
     },
@@ -2140,7 +2196,27 @@
     "sortBy": "Seřadit podle",
     "languagePlaceholderFilter": "Jazyk",
     "pageTitle": "Obsah pro vyučující",
-    "typePlaceholder": "Typ"
+    "typePlaceholder": "Typ",
+    "guidelines": {
+      "pageTitle": "Průvodce: Přidávání obsahu do vzdělávacího obsahu",
+      "point2": "Pokud sdílíte obsah vytvořený jinými, uvádějte původního autora.",
+      "point3": "Nahrávejte pouze obsah, který máte právo sdílet.",
+      "readFullGuide": "Přečtěte si úplný průvodce",
+      "subtitle": "Sdílejte své nejlepší zdroje a pomozte vzdělávání o Bitcoinu na celém světě",
+      "title": "Pokyny pro přidání nového obsahu",
+      "continueToAdd": "Pokračovat k přidání",
+      "point1": "Související soubory seskupte do balíčků (např. \"Prezentace z setkání v Lille 2024\")."
+    },
+    "fileTypeNotAllowed": "Povoleny jsou pouze obrázky a dokumenty (PDF, prezentace, tabulky, textové dokumenty)",
+    "supportedFileTypes": "Podporované typy souborů: obrázky, PDF, prezentace, tabulky, textové dokumenty",
+    "uploadFilesHelper": "Pokud máte související soubory, nahrajte je společně jako jeden balík. Před nahráváním své soubory jasně pojmenujte.",
+    "license": {
+      "learnMore": "Dozvědět se více o licencích",
+      "changeLicense": "Změnit licenci",
+      "licensedByDefault": "Standardně licencováno jako CC BY-SA",
+      "title": "Licence"
+    },
+    "imageTooLarge": "Velikost obrázku nesmí překročit 15MB"
   },
   "mentor": {
     "close": "Zavřít",

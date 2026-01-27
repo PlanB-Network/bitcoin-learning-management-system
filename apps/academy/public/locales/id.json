@@ -479,7 +479,8 @@
           "owner": "Pemilik",
           "type": "Tipe",
           "uses": "Digunakan"
-        }
+        },
+        "showMore": "Tampilkan lebih banyak kode"
       },
       "coursesIndexes": "Indeks kursus",
       "date": "Tanggal",
@@ -1483,7 +1484,8 @@
     "login": "Masuk",
     "educatorContent": "Konten pendidik",
     "getStarted": "Mulai",
-    "signIn": "Masuk"
+    "signIn": "Masuk",
+    "verifyEmail": "Verifikasi email"
   },
   "movies": {
     "checkTheMovie": "Periksa filmnya"
@@ -1674,6 +1676,36 @@
         "review": "Ulasan"
       },
       "papers": "Kertas"
+    },
+    "addResource": {
+      "done": "Selesai",
+      "browse": "Telusuri file",
+      "channel": "Tambahkan saluran YouTube",
+      "conference": "Tambahkan replay konferensi",
+      "coverImage": "Gambar sampul",
+      "descriptionPlaceholder": "Jelaskan isi sumber daya untuk membantu orang lain memahami isinya dan menemukannya",
+      "glossary": "Tambahkan kata glosarium",
+      "movie": "Tambahkan film",
+      "newsletter": "Tambahkan newsletter",
+      "project": "Tambahkan proyek",
+      "publicationYear": "Tahun publikasi",
+      "resourceLink": "Tautan sumber daya",
+      "book": "Tambah buku",
+      "dropImage": "Klik atau taruh gambar di sini (PNG, JPG, WebP)",
+      "errorSendingAddition": "Terjadi kesalahan saat mencoba mengirim sumber daya.",
+      "paper": "Tambahkan makalah penelitian",
+      "podcast": "Tambahkan podcast",
+      "selectCategory": "Pilih kategori",
+      "selectLanguage": "Pilih bahasa",
+      "selectYear": "Pilih tahun",
+      "sendForReview": "Kirim untuk ditinjau",
+      "sending": "Mengirim...",
+      "socialProfiles": "Profil sosial",
+      "success": "Sumber berhasil dikirimkan! Permintaan Tarik telah dibuat di GitHub.",
+      "successSubtitle": "Anda telah berhasil meminta penambahan {{type}} baru.",
+      "successTitle": "Penambahan {{type}} terkirim!",
+      "titlePlaceholder": "Pengenalan Bitcoin",
+      "trailerLink": "Link trailer"
     }
   },
   "search": {
@@ -1724,11 +1756,16 @@
     "changeEmail": "Ganti email",
     "changePassword": "Ganti kata sandi",
     "changeProfilePicture": "Ganti foto profil",
-    "emailSentDescription": "Verifikasi email Anda dan muat ulang halaman ini untuk melanjutkan.",
+    "emailSentDescription": "Verifikasi email Anda dengan mengklik tautan yang dikirim ke {{email}}.\n\nSetelah email Anda diverifikasi, muat ulang halaman ini untuk melanjutkan.",
     "verifyEmail": "Verifikasi email",
     "addEmailContinue": "Tambahkan email untuk melanjutkan",
     "emailSentTitle": "Kami telah mengirimkan email kepada Anda",
-    "addEmail": "Tambahkan email"
+    "addEmail": "Tambahkan email",
+    "verifyEmailClick": "Verifikasi email Anda dengan mengklik tautan yang Anda terima.",
+    "accountNeedsEmail": "Akun ini membutuhkan alamat email untuk melanjutkan.",
+    "checkSpam": "(Jika Anda tidak melihatnya, periksa folder spam Anda.)",
+    "emailSentSpam": "(Jika Anda tidak melihatnya, periksa folder spam Anda.)",
+    "verifyEmailContinue": "Verifikasi email untuk melanjutkan"
   },
   "tutorials": {
     "business": {
@@ -1994,7 +2031,11 @@
     "oldest": "Terlama",
     "agenda": "Agenda",
     "contributors": "Kontributor",
-    "event": "Acara"
+    "event": "Acara",
+    "link": "Tautan",
+    "default": "bawaan",
+    "host": "Tuan Rumah",
+    "published": "Diterbitkan"
   },
   "youtubeChannels": {
     "view": "Lihat Saluran Youtube",
@@ -2087,7 +2128,7 @@
     "shareLinks": "Bagikan Tautan",
     "status": {
       "draft": "Tertunda",
-      "published": "Langsung",
+      "published": "Diterbitkan",
       "rejected": "Tidak diterima",
       "unpublished": "Tidak dipublikasikan"
     },
@@ -2116,7 +2157,8 @@
     "descriptionRequired": "Deskripsi tidak boleh kosong",
     "detail": {
       "downloadAll": "Unduh semua",
-      "view": "Lihat"
+      "view": "Lihat",
+      "addedBy": "Ditambahkan oleh"
     },
     "uploadFiles": "Unggah File",
     "uploading": "Mengunggah...",
@@ -2154,7 +2196,27 @@
     "sortBy": "Urut berdasarkan",
     "typePlaceholder": "Tipe",
     "languagePlaceholderFilter": "Bahasa",
-    "pageTitle": "Konten pendidik"
+    "pageTitle": "Konten pendidik",
+    "guidelines": {
+      "pageTitle": "Panduan: Menambahkan Konten ke Konten Pendidik",
+      "continueToAdd": "Lanjutkan untuk Menambahkan",
+      "point1": "Kumpulkan file yang berhubungan menjadi paket (misalnya, \"Presentasi Meetup Lille 2024\").",
+      "point2": "Berikan kredit kepada pembuat asli jika Anda membagikan konten yang dibuat oleh orang lain.",
+      "point3": "Hanya unggah konten yang Anda miliki hak untuk membagikannya.",
+      "readFullGuide": "Baca panduan lengkap",
+      "subtitle": "Bagikan sumber daya terbaik Anda dan bantu pendidik Bitcoin di seluruh dunia",
+      "title": "Pedoman untuk menambahkan konten baru"
+    },
+    "supportedFileTypes": "Jenis file yang didukung: gambar, PDF, presentasi, spreadsheet, dokumen teks",
+    "fileTypeNotAllowed": "Hanya gambar dan dokumen (PDF, presentasi, spreadsheet, dokumen teks) yang diizinkan",
+    "license": {
+      "licensedByDefault": "Secara default berlisensi CC BY-SA",
+      "learnMore": "Pelajari lebih lanjut tentang lisensi",
+      "changeLicense": "Ubah lisensi",
+      "title": "Lisensi"
+    },
+    "imageTooLarge": "Ukuran gambar tidak boleh melebihi 15MB",
+    "uploadFilesHelper": "Jika Anda memiliki file yang berhubungan, unggah bersamaan sebagai satu paket. Beri nama file Anda dengan jelas sebelum mengunggah."
   },
   "forms": {
     "browse": "Telusuri",

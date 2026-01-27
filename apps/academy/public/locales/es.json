@@ -201,7 +201,8 @@
       "thanksTipping": "Puedes mostrar tu agradecimiento dándole una propina al profesor.",
       "creditsCollaboration": "Este curso es el resultado de un esfuerzo de colaboración: cada lección, traducción y revisión es posible gracias al trabajo de los contribuyentes. Por esta razón, siempre estamos buscando correctores de pruebas que puedan revisar nuestro contenido en muchos idiomas.\n\nSi te gustaría participar en el proceso de corrección, por favor, ponte en contacto en nuestro grupo de <0>Telegram</0> y lee nuestro <1>tutorial</1>.\n\nAyuda a difundir el conocimiento sobre Bitcoin:",
       "openSourceContentDescription": "El contenido de este curso es de código abierto - licenciado bajo <0>CC BY-SA</0> - por lo que puede ser compartido y utilizado libremente, siempre que se acredite la fuente original.",
-      "openSourceContentTitle": "Contenido de código abierto"
+      "openSourceContentTitle": "Contenido de código abierto",
+      "courseCoordinator": "Coordinador del curso"
     },
     "exam": {
       "answersReview": "Revisión de respuestas",
@@ -478,7 +479,8 @@
           "owner": "Dueño",
           "type": "Tipo",
           "uses": "Usado"
-        }
+        },
+        "showMore": "Mostrar más códigos"
       },
       "coursesIndexes": "Índices de cursos",
       "date": "Fecha",
@@ -876,7 +878,19 @@
         "class": "Clases",
         "event": "Eventos"
       },
-      "personalCalendar": "Calendario personal"
+      "personalCalendar": "Calendario personal",
+      "downloadButton": "Descarga el calendario .ics e importa",
+      "downloadCalendar": "Descargar calendario",
+      "downloadCalendarTitle": "Descargar calendario",
+      "downloadStep1": "Descargue el archivo del calendario",
+      "downloadStep2": "Ábralo con su aplicación de calendario",
+      "downloadStep3": "Los eventos no se actualizarán si las fechas cambian",
+      "downloadTitle": "O descarga el calendario actual",
+      "subscribeButton": "Copiar enlace de calendario sincronizado",
+      "subscribeStep1": "Copia el enlace del calendario",
+      "subscribeStep2": "Pégalo en la opción \"Suscribirse\" de tu aplicación de calendario",
+      "subscribeStep3": "Los eventos se mantienen actualizados automáticamente si algo cambia",
+      "subscribeTitle": "Suscribirse al calendario (sincronización automática)"
     },
     "careerPortal": {
       "acceptedFormat": "Formato de archivo aceptado: pdf / Tamaño máximo de archivo: 10 MB.",
@@ -1470,7 +1484,8 @@
     "login": "Iniciar Sesión",
     "educatorContent": "Contenido educativo",
     "getStarted": "Comenzar",
-    "signIn": "Iniciar sesión"
+    "signIn": "Iniciar sesión",
+    "verifyEmail": "Verificar correo electrónico"
   },
   "movies": {
     "checkTheMovie": "Revisa la película"
@@ -1661,6 +1676,36 @@
         "conference": "Conferencia",
         "review": "Revisión"
       }
+    },
+    "addResource": {
+      "browse": "Explorar archivos",
+      "channel": "Añadir canal de YouTube",
+      "conference": "Añadir repetición de conferencia",
+      "dropImage": "Haz clic o suelta una imagen aquí (PNG, JPG, WebP)",
+      "book": "Añadir libro",
+      "coverImage": "Imagen de portada",
+      "descriptionPlaceholder": "Describe el contenido del recurso para ayudar a otros a entenderlo y encontrarlo",
+      "done": "Hecho",
+      "errorSendingAddition": "Hubo un error al intentar enviar el recurso.",
+      "glossary": "Añadir palabra de glosario",
+      "movie": "Añadir película",
+      "newsletter": "Añadir boletín",
+      "paper": "Añadir trabajo de investigación",
+      "podcast": "Añadir podcast",
+      "project": "Añadir proyecto",
+      "publicationYear": "Año de publicación",
+      "resourceLink": "Enlace del recurso",
+      "selectCategory": "Seleccionar una categoría",
+      "selectLanguage": "Seleccionar un idioma",
+      "selectYear": "Seleccionar año",
+      "sendForReview": "Enviar para revisión",
+      "sending": "Enviando...",
+      "socialProfiles": "Perfiles sociales",
+      "success": "¡Recurso enviado con éxito! Se ha creado una Solicitud de Extracción en GitHub.",
+      "successSubtitle": "Has solicitado con éxito la adición de un nuevo {{type}}.",
+      "successTitle": "¡Adición de {{type}} enviada!",
+      "trailerLink": "Enlace del tráiler",
+      "titlePlaceholder": "Introducción a Bitcoin"
     }
   },
   "search": {
@@ -1712,10 +1757,15 @@
     "changePassword": "Cambiar contraseña",
     "changeProfilePicture": "Cambiar foto de perfil",
     "addEmailContinue": "Agrega un correo electrónico para continuar",
-    "emailSentDescription": "Verifica tu correo electrónico y recarga esta página para continuar.",
+    "emailSentDescription": "Verifica tu correo electrónico haciendo clic en el enlace enviado a {{email}}.\n\nUna vez que tu correo electrónico esté verificado, recarga esta página para continuar.",
     "emailSentTitle": "Te hemos enviado un correo electrónico",
     "verifyEmail": "Verificar correo electrónico",
-    "addEmail": "Agregar correo electrónico"
+    "addEmail": "Agregar correo electrónico",
+    "accountNeedsEmail": "Esta cuenta necesita una dirección de correo electrónico para continuar.",
+    "checkSpam": "(Si no lo ves, revisa tu carpeta de spam.)",
+    "emailSentSpam": "(Si no lo ves, revisa tu carpeta de spam.)",
+    "verifyEmailClick": "Verifica tu correo electrónico haciendo clic en el enlace que recibiste.",
+    "verifyEmailContinue": "Verificar correo electrónico para continuar"
   },
   "tutorials": {
     "business": {
@@ -1981,7 +2031,11 @@
     "oldest": "Más antiguo",
     "agenda": "Agenda",
     "event": "Evento",
-    "contributors": "Colaboradores"
+    "contributors": "Colaboradores",
+    "default": "predeterminado",
+    "host": "Anfitrión",
+    "link": "Enlace",
+    "published": "Publicado"
   },
   "youtubeChannels": {
     "view": "Ver Canal de Youtube",
@@ -2049,7 +2103,8 @@
   "educatorContent": {
     "detail": {
       "downloadAll": "Descargar todo",
-      "view": "Ver"
+      "view": "Ver",
+      "addedBy": "Añadido por"
     },
     "uploading": "Subiendo...",
     "urlInvalid": "El enlace debe ser una URL válida",
@@ -2061,7 +2116,8 @@
       "art": "Arte",
       "booklet": "Folleto",
       "other": "Otro",
-      "presentation": "Presentaciones"
+      "presentation": "Presentaciones",
+      "curriculum": "Currículum"
     },
     "uploadFiles": "Subir archivos",
     "uploadForReview": "Subir para revisión",
@@ -2085,7 +2141,7 @@
     "shareLinks": "Compartir enlaces",
     "status": {
       "draft": "Pendiente",
-      "published": "En vivo",
+      "published": "Publicado",
       "rejected": "No aceptado",
       "unpublished": "No publicado"
     },
@@ -2140,7 +2196,27 @@
     "languagePlaceholderFilter": "Idioma",
     "sortBy": "Ordenar por",
     "typePlaceholder": "Tipo",
-    "pageTitle": "Contenido educativo"
+    "pageTitle": "Contenido educativo",
+    "guidelines": {
+      "pageTitle": "Guía: Añadiendo Contenido al Contenido del Educador",
+      "subtitle": "Comparte tus mejores recursos y ayuda a los educadores de Bitcoin en todo el mundo",
+      "title": "Pautas para agregar nuevo contenido",
+      "continueToAdd": "Continuar para agregar",
+      "point1": "Agrupe los archivos relacionados en paquetes (por ejemplo, \"Presentaciones de la reunión en Lille 2024\").",
+      "point2": "Acredita al creador original si compartes contenido hecho por otros.",
+      "point3": "Solo sube contenido que tienes derecho a compartir.",
+      "readFullGuide": "Leer la guía completa"
+    },
+    "uploadFilesHelper": "Si tienes archivos relacionados, súbelos juntos como un paquete. Nombra tus archivos claramente antes de subirlos.",
+    "fileTypeNotAllowed": "Sólo se permiten imágenes y documentos (PDF, presentaciones, hojas de cálculo, documentos de texto)",
+    "supportedFileTypes": "Tipos de archivos soportados: imágenes, PDF, presentaciones, hojas de cálculo, documentos de texto",
+    "license": {
+      "title": "Licencia",
+      "licensedByDefault": "Licenciado por defecto como CC BY-SA",
+      "learnMore": "Aprende más sobre las licencias",
+      "changeLicense": "Cambiar licencia"
+    },
+    "imageTooLarge": "El tamaño de la imagen no puede exceder los 15MB"
   },
   "mentor": {
     "collapse": "Colapsar",

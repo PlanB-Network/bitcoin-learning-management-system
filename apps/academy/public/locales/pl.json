@@ -201,7 +201,8 @@
       "thanksTipping": "Możesz podziękować, dając napiwek prowadzącemu kurs.",
       "creditsCollaboration": "Ten kurs jest wynikiem współpracy: każda lekcja, tłumaczenie i poprawka jest możliwe dzięki pracy osób, które na to przyczyniły się. Z tego powodu zawsze szukamy korektorów, którzy mogą sprawdzić naszą treść w wielu językach.\n\nJeśli chciałbyś wziąć udział w procesie korekty, prosimy o kontakt w naszej grupie na <0>Telegramie</0> i zapoznanie się z naszym <1>poradnikiem</1>.\n\nPomóż rozpowszechniać wiedzę o Bitcoinie:",
       "openSourceContentDescription": "Treść tego kursu jest open-source - licencjonowana na zasadach <0>CC BY-SA</0> - więc może być swobodnie udostępniana i używana, pod warunkiem podania źródła.",
-      "openSourceContentTitle": "Treść typu otwartego źródła"
+      "openSourceContentTitle": "Treść typu otwartego źródła",
+      "courseCoordinator": "Koordynator kursu"
     },
     "exam": {
       "answersReview": "Przegląd odpowiedzi",
@@ -478,7 +479,8 @@
           "owner": "Właściciel",
           "type": "Typ",
           "uses": "Wykorzystany"
-        }
+        },
+        "showMore": "Pokaż więcej kodów"
       },
       "coursesIndexes": "Indeksy kursów",
       "date": "Data",
@@ -876,7 +878,19 @@
         "class": "Zajęcia",
         "event": "Wydarzenia"
       },
-      "personalCalendar": "Kalendarz osobisty"
+      "personalCalendar": "Kalendarz osobisty",
+      "downloadCalendar": "Pobierz kalendarz",
+      "downloadCalendarTitle": "Pobierz kalendarz",
+      "downloadStep1": "Pobierz plik z kalendarzem",
+      "downloadStep2": "Otwórz go w swojej aplikacji kalendarza",
+      "downloadStep3": "Wydarzenia nie zostaną zaktualizowane, jeśli daty się zmienią",
+      "subscribeStep1": "Skopiuj link do kalendarza",
+      "subscribeStep2": "Wklej go do opcji \"Subskrybuj\" swojej aplikacji kalendarza",
+      "downloadButton": "Pobierz kalendarz .ics i zaimportuj",
+      "downloadTitle": "Lub pobierz aktualny kalendarz",
+      "subscribeButton": "Skopiuj synchronizowany link do kalendarza",
+      "subscribeStep3": "Wydarzenia są aktualizowane automatycznie, jeśli coś się zmieni",
+      "subscribeTitle": "Subskrybuj kalendarz (synchronizacja automatyczna)"
     },
     "careerPortal": {
       "acceptedFormat": "Akceptowany format pliku: pdf / Maksymalny rozmiar pliku: 10 MB.",
@@ -1470,7 +1484,8 @@
     "login": "Zaloguj się",
     "educatorContent": "Treści dla edukatorów",
     "getStarted": "Rozpocznij",
-    "signIn": "Zaloguj się"
+    "signIn": "Zaloguj się",
+    "verifyEmail": "Zweryfikuj email"
   },
   "movies": {
     "checkTheMovie": "Zobacz film"
@@ -1661,6 +1676,36 @@
       "citations": "Cytaty (.bib)",
       "downloadCitations": "Pobierz cytaty",
       "title": "Prace badawcze"
+    },
+    "addResource": {
+      "conference": "Dodaj powtórkę konferencji",
+      "coverImage": "Obraz na okładkę",
+      "paper": "Dodaj artykuł naukowy",
+      "sending": "Wysyłanie...",
+      "socialProfiles": "Profile społecznościowe",
+      "success": "Zasób został pomyślnie dodany! Na GitHubie utworzono Pull Request.",
+      "book": "Dodaj książkę",
+      "browse": "Przeglądaj pliki",
+      "channel": "Dodaj kanał YouTube",
+      "descriptionPlaceholder": "Opisz zawartość zasobu, aby pomóc innym zrozumieć jej treść i ją znaleźć",
+      "done": "Zrobione",
+      "dropImage": "Kliknij lub upuść tutaj obraz (PNG, JPG, WebP)",
+      "errorSendingAddition": "Wystąpił błąd podczas próby wysłania zasobu.",
+      "glossary": "Dodaj słowo do glosariusza",
+      "movie": "Dodaj film",
+      "newsletter": "Dodaj newsletter",
+      "podcast": "Dodaj podcast",
+      "project": "Dodaj projekt",
+      "publicationYear": "Rok publikacji",
+      "resourceLink": "Link do zasobu",
+      "selectCategory": "Wybierz kategorię",
+      "selectLanguage": "Wybierz język",
+      "selectYear": "Wybierz rok",
+      "sendForReview": "Wyślij do recenzji",
+      "successSubtitle": "Pomyślnie zażądałeś dodania nowego {{type}}.",
+      "successTitle": "Dodanie {{type}} wysłane!",
+      "titlePlaceholder": "Wprowadzenie do Bitcoina",
+      "trailerLink": "Link do zwiastuna"
     }
   },
   "search": {
@@ -1714,8 +1759,13 @@
     "emailSentTitle": "Wysłaliśmy do Ciebie email",
     "verifyEmail": "Zweryfikuj email",
     "addEmailContinue": "Dodaj email, aby kontynuować",
-    "emailSentDescription": "Zweryfikuj swój email i odśwież tę stronę, aby kontynuować.",
-    "addEmail": "Dodaj email"
+    "emailSentDescription": "Zweryfikuj swój email, klikając w link wysłany do {{email}}.\n\nPo zweryfikowaniu emaila, odśwież tą stronę, aby kontynuować.",
+    "addEmail": "Dodaj email",
+    "accountNeedsEmail": "To konto wymaga adresu email do kontynuacji.",
+    "checkSpam": "(Jeśli go nie widzisz, sprawdź swój folder ze spamem.)",
+    "emailSentSpam": "(Jeśli go nie widzisz, sprawdź swój folder ze spamem.)",
+    "verifyEmailClick": "Zweryfikuj swój email, klikając w otrzymany link.",
+    "verifyEmailContinue": "Zweryfikuj email, aby kontynuować"
   },
   "tutorials": {
     "business": {
@@ -1981,7 +2031,11 @@
     "contribute": "Przyczynić",
     "agenda": "Agenda",
     "contributors": "Współtwórcy",
-    "event": "Wydarzenie"
+    "event": "Wydarzenie",
+    "link": "Link",
+    "published": "Opublikowano",
+    "default": "domyślny",
+    "host": "Gospodarz"
   },
   "youtubeChannels": {
     "view": "Zobacz kanał na Youtube",
@@ -2051,7 +2105,7 @@
     "dropFiles": "Upuść tutaj pliki",
     "status": {
       "draft": "Oczekujące",
-      "published": "Na żywo",
+      "published": "Opublikowano",
       "rejected": "Nie zaakceptowane",
       "unpublished": "Nieopublikowane"
     },
@@ -2066,14 +2120,16 @@
       "game": "Gra",
       "sticker": "Naklejka",
       "other": "Inny",
-      "presentation": "Prezentacje"
+      "presentation": "Prezentacje",
+      "curriculum": "Program nauczania"
     },
     "uploadFiles": "Prześlij pliki",
     "uploadForReview": "Prześlij do recenzji",
     "contentNotFound": "Nie znaleziono treści",
     "detail": {
       "downloadAll": "Pobierz wszystko",
-      "view": "Zobacz"
+      "view": "Zobacz",
+      "addedBy": "Dodane przez"
     },
     "titleTooLong": "Tytuł nie może przekraczać 60 znaków",
     "editAndRequireApproval": "Edytuj i wymagaj zatwierdzenia",
@@ -2140,7 +2196,27 @@
     "pageTitle": "Treści dla edukatorów",
     "sortBy": "Sortuj według",
     "languagePlaceholderFilter": "Język",
-    "typePlaceholder": "Typ"
+    "typePlaceholder": "Typ",
+    "guidelines": {
+      "pageTitle": "Przewodnik: Dodawanie zawartości do zawartości dla nauczycieli",
+      "continueToAdd": "Kontynuuj do Dodaj",
+      "point1": "Grupuj związane pliki w pakiety (np. \"Prezentacje z Lille Meetup 2024\").",
+      "point2": "Przypisz autorstwo pierwotnemu twórcy, jeśli udostępniasz treści stworzone przez innych.",
+      "point3": "Przesyłaj tylko treści, które masz prawo udostępnić.",
+      "readFullGuide": "Przeczytaj pełne wskazówki",
+      "subtitle": "Podziel się swoimi najlepszymi zasobami i pomóż nauczycielom Bitcoin na całym świecie",
+      "title": "Wytyczne dotyczące dodawania nowych treści"
+    },
+    "license": {
+      "licensedByDefault": "Domyślnie licencjonowany jako CC BY-SA",
+      "title": "Licencja",
+      "changeLicense": "Zmień licencję",
+      "learnMore": "Dowiedz się więcej o licencjach"
+    },
+    "supportedFileTypes": "Obsługiwane typy plików: obrazy, pliki PDF, prezentacje, arkusze kalkulacyjne, dokumenty tekstowe",
+    "uploadFilesHelper": "Jeśli masz powiązane pliki, prześlij je razem jako jeden pakiet. Przed przesłaniem jasno nazwij swoje pliki.",
+    "fileTypeNotAllowed": "Dozwolone są tylko obrazy i dokumenty (PDF, prezentacje, arkusze kalkulacyjne, dokumenty tekstowe)",
+    "imageTooLarge": "Rozmiar obrazu nie może przekraczać 15MB"
   },
   "mentor": {
     "welcome": "Zapytaj mnie o cokolwiek na temat Bitcoin!",

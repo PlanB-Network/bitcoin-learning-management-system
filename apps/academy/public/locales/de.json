@@ -201,7 +201,8 @@
       "thanksTipping": "Sie können sich bedanken, indem Sie dem Professor ein Trinkgeld geben.",
       "creditsCollaboration": "Dieser Kurs ist das Ergebnis einer kollaborativen Anstrengung: Jede Lektion, Übersetzung und Revision wird durch die Arbeit von Mitwirkenden ermöglicht. Aus diesem Grund suchen wir immer Korrekturleser, die unseren Inhalt in vielen Sprachen überprüfen können.\n\nWenn Sie am Korrekturleseprozess teilnehmen möchten, wenden Sie sich bitte an unsere <0>Telegram</0>-Gruppe und lesen Sie unser <1>Tutorial</1>.\n\nHelfen Sie, das Wissen über Bitcoin zu verbreiten:",
       "openSourceContentDescription": "Der Inhalt dieses Kurses ist Open-Source - lizenziert unter <0>CC BY-SA</0> - und kann frei geteilt und genutzt werden, solange die ursprüngliche Quelle genannt wird.",
-      "openSourceContentTitle": "Open-Source-Inhalt"
+      "openSourceContentTitle": "Open-Source-Inhalt",
+      "courseCoordinator": "Kurskoordinator"
     },
     "exam": {
       "answersReview": "Überprüfung der Antworten",
@@ -478,7 +479,8 @@
           "owner": "Eigentümer",
           "type": "Typ",
           "uses": "Gebraucht"
-        }
+        },
+        "showMore": "Mehr Codes anzeigen"
       },
       "coursesIndexes": "Index der Kurse",
       "date": "Datum",
@@ -876,7 +878,19 @@
         "class": "Lektionen",
         "event": "Veranstaltungen"
       },
-      "personalCalendar": "Persönlicher Kalender"
+      "personalCalendar": "Persönlicher Kalender",
+      "downloadButton": "Download .ics-Kalender und Import",
+      "downloadCalendar": "Kalender herunterladen",
+      "downloadCalendarTitle": "Kalender herunterladen",
+      "downloadStep1": "Die Kalenderdatei herunterladen",
+      "downloadStep2": "Öffnen Sie sie mit Ihrer Kalender-App",
+      "downloadStep3": "Ereignisse werden nicht aktualisiert, wenn sich Termine ändern",
+      "downloadTitle": "Oder laden Sie den aktuellen Kalender herunter",
+      "subscribeButton": "Den synchronisierten Kalenderlink kopieren",
+      "subscribeStep1": "Den Kalenderlink kopieren",
+      "subscribeStep2": "Fügen Sie ihn in die Option \"Abonnieren\" Ihrer Kalender-App ein",
+      "subscribeStep3": "Ereignisse bleiben automatisch aktualisiert, wenn sich etwas ändert",
+      "subscribeTitle": "Kalender abonnieren (automatische Synchronisation)"
     },
     "careerPortal": {
       "acceptedFormat": "Akzeptiertes Dateiformat: pdf / Maximale Dateigröße: 10 MB.",
@@ -1470,7 +1484,8 @@
     "login": "Anmelden",
     "educatorContent": "Bildungsinhalt",
     "getStarted": "Loslegen",
-    "signIn": "Anmelden"
+    "signIn": "Anmelden",
+    "verifyEmail": "E-Mail bestätigen"
   },
   "notFound": {
     "here": "Hier",
@@ -1658,6 +1673,36 @@
         "review": "Review"
       },
       "accessPaper": "Papier zugreifen"
+    },
+    "addResource": {
+      "paper": "Forschungsarbeit hinzufügen",
+      "conference": "Konferenzwiederholung hinzufügen",
+      "coverImage": "Titelbild",
+      "descriptionPlaceholder": "Beschreiben Sie den Inhalt der Ressource, um anderen zu helfen, ihren Inhalt zu verstehen und sie zu finden",
+      "done": "Erledigt",
+      "dropImage": "Klicken Sie hier oder ziehen Sie ein Bild her (PNG, JPG, WebP)",
+      "errorSendingAddition": "Es gab einen Fehler beim Versuch, die Ressource zu senden.",
+      "glossary": "Fügen Sie ein Glossarwort hinzu",
+      "movie": "Film hinzufügen",
+      "newsletter": "Newsletter hinzufügen",
+      "podcast": "Podcast hinzufügen",
+      "project": "Projekt hinzufügen",
+      "publicationYear": "Veröffentlichungsjahr",
+      "resourceLink": "Ressourcenlink",
+      "selectCategory": "Wählen Sie eine Kategorie",
+      "selectLanguage": "Wählen Sie eine Sprache",
+      "success": "Die Ressource wurde erfolgreich übermittelt! Ein Pull Request wurde auf GitHub erstellt.",
+      "successSubtitle": "Sie haben erfolgreich die Hinzufügung eines neuen {{type}} angefordert.",
+      "titlePlaceholder": "Bitcoin Einführung",
+      "trailerLink": "Trailer Link",
+      "book": "Buch hinzufügen",
+      "browse": "Dateien durchsuchen",
+      "channel": "YouTube-Kanal hinzufügen",
+      "selectYear": "Jahr auswählen",
+      "sendForReview": "Zur Überprüfung senden",
+      "sending": "Senden...",
+      "socialProfiles": "Soziale Profile",
+      "successTitle": "{{type}} Hinzufügung gesendet!"
     }
   },
   "search": {
@@ -1710,9 +1755,14 @@
     "changeProfilePicture": "Profilbild ändern",
     "emailSentTitle": "Wir haben Ihnen eine E-Mail geschickt",
     "addEmailContinue": "Fügen Sie eine E-Mail hinzu, um fortzufahren",
-    "emailSentDescription": "Bestätigen Sie Ihre E-Mail und laden Sie diese Seite neu, um fortzufahren.",
+    "emailSentDescription": "Bestätigen Sie Ihre E-Mail-Adresse, indem Sie auf den an {{email}} gesendeten Link klicken.\n\nLaden Sie diese Seite neu, sobald Ihre E-Mail-Adresse bestätigt wurde, um fortzufahren.",
     "verifyEmail": "E-Mail bestätigen",
-    "addEmail": "E-Mail hinzufügen"
+    "addEmail": "E-Mail hinzufügen",
+    "checkSpam": "(Wenn Sie es nicht sehen, überprüfen Sie Ihren Spam-Ordner.)",
+    "accountNeedsEmail": "Für dieses Konto ist eine E-Mail-Adresse erforderlich, um fortzufahren.",
+    "emailSentSpam": "(Wenn Sie es nicht sehen, überprüfen Sie Ihren Spam-Ordner.)",
+    "verifyEmailClick": "Bestätigen Sie Ihre E-Mail-Adresse, indem Sie auf den erhaltenen Link klicken.",
+    "verifyEmailContinue": "E-Mail zur Fortsetzung bestätigen"
   },
   "tutorials": {
     "business": {
@@ -1978,7 +2028,11 @@
     "oldest": "Älteste",
     "agenda": "Agenda",
     "contributors": "Mitwirkende",
-    "event": "Veranstaltung"
+    "event": "Veranstaltung",
+    "host": "Gastgeber",
+    "published": "Veröffentlicht",
+    "default": "Standard",
+    "link": "Link"
   },
   "youtubeChannels": {
     "view": "Youtube-Kanal ansehen",
@@ -2054,7 +2108,8 @@
     "titleTooLong": "Der Titel darf nicht mehr als 60 Zeichen enthalten",
     "detail": {
       "downloadAll": "Alles herunterladen",
-      "view": "Sicht"
+      "view": "Sicht",
+      "addedBy": "Hinzugefügt von"
     },
     "dropCover": "Ziehen Sie das Cover-Bild hierher",
     "dropFiles": "Ziehen Sie Dateien hierher",
@@ -2075,7 +2130,7 @@
     "shareLinks": "Links teilen",
     "status": {
       "draft": "Ausstehend",
-      "published": "Live",
+      "published": "Veröffentlicht",
       "rejected": "Nicht akzeptiert",
       "unpublished": "Unveröffentlicht"
     },
@@ -2089,7 +2144,8 @@
       "sticker": "Aufkleber",
       "workshop": "Werkstatt",
       "other": "Sonstige",
-      "presentation": "Präsentationen"
+      "presentation": "Präsentationen",
+      "curriculum": "Lehrplan"
     },
     "uploadForReview": "Zur Überprüfung hochladen",
     "addMoreLinks": "Füge mehr Links hinzu",
@@ -2140,7 +2196,27 @@
     "sortBy": "Sortieren nach",
     "typePlaceholder": "Typ",
     "languagePlaceholderFilter": "Sprache",
-    "pageTitle": "Bildungsinhalt"
+    "pageTitle": "Bildungsinhalt",
+    "guidelines": {
+      "pageTitle": "Anleitung: Hinzufügen von Inhalten zu Educator Content",
+      "continueToAdd": "Weiter zur Hinzufügung",
+      "point1": "Gruppieren Sie verwandte Dateien in Pakete (z.B. \"Lille Meetup Präsentationen 2024\").",
+      "point2": "Geben Sie dem ursprünglichen Ersteller Anerkennung, wenn Sie Inhalte teilen, die von anderen erstellt wurden.",
+      "point3": "Laden Sie nur Inhalte hoch, zu deren Freigabe Sie berechtigt sind.",
+      "readFullGuide": "Vollständige Anleitung lesen",
+      "subtitle": "Teilen Sie Ihre besten Ressourcen und unterstützen Sie Bitcoin-Bildungseinrichtungen weltweit",
+      "title": "Richtlinien für das Hinzufügen neuer Inhalte"
+    },
+    "uploadFilesHelper": "Wenn Sie zusammengehörende Dateien haben, laden Sie diese zusammen als ein Paket hoch. Benennen Sie Ihre Dateien vor dem Hochladen eindeutig.",
+    "fileTypeNotAllowed": "Nur Bilder und Dokumente (PDF, Präsentationen, Tabellen, Textdokumente) sind erlaubt",
+    "license": {
+      "title": "Lizenz",
+      "licensedByDefault": "Standardmäßig lizenziert als CC BY-SA",
+      "learnMore": "Erfahren Sie mehr über Lizenzen",
+      "changeLicense": "Lizenz ändern"
+    },
+    "imageTooLarge": "Die Bildgröße darf 15MB nicht überschreiten",
+    "supportedFileTypes": "Unterstützte Dateitypen: Bilder, PDF, Präsentationen, Tabellen, Textdokumente"
   },
   "forms": {
     "replace": "Ersetzen",

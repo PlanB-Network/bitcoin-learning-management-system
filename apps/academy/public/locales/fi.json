@@ -201,7 +201,8 @@
       "thanksTipping": "Voit kiittää antamalla tippia professorille.",
       "creditsCollaboration": "Tämä kurssi on yhteisen työn tulos: jokainen oppitunti, käännös ja uudelleentarkastelu on mahdollistettu avustajien työllä. Tästä syystä etsimme aina oikolukijoita voivat arvioida sisältöämme monilla kielillä.\n\nJos haluaisit osallistua oikolukuun, ota yhteyttä <0>Telegram</0>-ryhmässämme ja lue <1>opetusohjelmamme</1>.\n\nLevitä tietoa Bitcoinista:",
       "openSourceContentDescription": "Tämän kurssin sisältö on avointa lähdekoodia - <0>CC BY-SA</0>-lisenssin alainen - joten sitä voidaan vapaasti jakaa ja käyttää, kunhan alkuperäinen lähde mainitaan.",
-      "openSourceContentTitle": "Avoin lähdekoodin sisältö"
+      "openSourceContentTitle": "Avoin lähdekoodin sisältö",
+      "courseCoordinator": "Kurssikoordinaattori"
     },
     "exam": {
       "answersReview": "Vastausten tarkistus",
@@ -478,7 +479,8 @@
           "owner": "Omistaja",
           "type": "Tyyppi",
           "uses": "Käytetty"
-        }
+        },
+        "showMore": "Näytä lisää koodeja"
       },
       "coursesIndexes": "Kurssien indeksit",
       "date": "Päivämäärä",
@@ -876,7 +878,19 @@
         "class": "Luokat",
         "event": "Tapahtumat"
       },
-      "personalCalendar": "Henkilökohtainen kalenteri"
+      "personalCalendar": "Henkilökohtainen kalenteri",
+      "downloadButton": "Lataa .ics-kalenteri ja tuo se",
+      "downloadCalendar": "Lataa kalenteri",
+      "downloadCalendarTitle": "Lataa kalenteri",
+      "downloadStep1": "Lataa kalenteritiedosto",
+      "downloadStep2": "Avaa se kalenterisovelluksellasi",
+      "downloadStep3": "Tapahtumat eivät päivity, jos päivämäärät muuttuvat",
+      "downloadTitle": "Tai lataa nykyinen kalenteri",
+      "subscribeButton": "Kopioi synkronoidun kalenterin linkki",
+      "subscribeStep1": "Kopioi kalenterilinkki",
+      "subscribeStep2": "Liitä se kalenterisovelluksesi \"Tilaa\" -vaihtoehtoon",
+      "subscribeStep3": "Tapahtumat päivittyvät automaattisesti, jos mikään muuttuu",
+      "subscribeTitle": "Tilaa kalenteri(automaattinen synkronointi)"
     },
     "careerPortal": {
       "acceptedFormat": "Hyväksytty tiedostomuoto: pdf / Suurin tiedostokoko: 10MB.",
@@ -1470,7 +1484,8 @@
     "login": "Kirjaudu sisään",
     "educatorContent": "Opettajan sisältö",
     "getStarted": "Aloita",
-    "signIn": "Kirjaudu sisään"
+    "signIn": "Kirjaudu sisään",
+    "verifyEmail": "Vahvista sähköposti"
   },
   "notFound": {
     "here": "Tässä",
@@ -1658,6 +1673,36 @@
         "review": "Arvostelu"
       },
       "papers": "Artikkelit"
+    },
+    "addResource": {
+      "browse": "Selaa tiedostoja",
+      "channel": "Lisää YouTube-kanava",
+      "movie": "Lisää elokuva",
+      "newsletter": "Lisää uutiskirje",
+      "publicationYear": "Julkaisuvuosi",
+      "resourceLink": "Resurssin linkki",
+      "selectCategory": "Valitse kategoria",
+      "selectLanguage": "Valitse kieli",
+      "selectYear": "Valitse vuosi",
+      "sendForReview": "Lähetä arvioitavaksi",
+      "sending": "Lähettää...",
+      "socialProfiles": "Sosiaalisen median profiilit",
+      "success": "Resurssi lähetetty onnistuneesti! GitHubissa on luotu Pull Request.",
+      "successSubtitle": "Olet onnistuneesti pyytänyt uuden {{type}}:n lisäämistä.",
+      "successTitle": "{{type}} lisäys lähetetty!",
+      "titlePlaceholder": "Bitcoin-esittely",
+      "trailerLink": "Traileri-linkki",
+      "book": "Lisää kirja",
+      "conference": "Lisää konferenssin tallenne",
+      "coverImage": "Kansikuva",
+      "descriptionPlaceholder": "Kuvaile resurssin sisältöä auttaaksesi muita ymmärtämään sen sisältöä ja löytämään sen",
+      "done": "Valmis",
+      "dropImage": "Klikkaa tai pudota kuva tähän (PNG, JPG, WebP)",
+      "errorSendingAddition": "Resurssin lähettämisessä tapahtui virhe.",
+      "glossary": "Lisää sanakirjan sana",
+      "paper": "Lisää tutkimuspaperi",
+      "podcast": "Lisää podcast",
+      "project": "Lisää projekti"
     }
   },
   "search": {
@@ -1708,11 +1753,16 @@
     "changeEmail": "Vaihda sähköposti",
     "changePassword": "Vaihda salasana",
     "changeProfilePicture": "Muuta profiilikuvaa",
-    "emailSentDescription": "Varmista sähköpostisi ja päivitä tämä sivu jatkaaksesi.",
+    "emailSentDescription": "Vahvista sähköpostiosoitteesi klikkaamalla linkkiä, joka on lähetetty osoitteeseen {{email}}.\n\nKun sähköpostiosoite on vahvistettu, lataa tämä sivu uudelleen jatkaaksesi.",
     "emailSentTitle": "Olemme lähettäneet sinulle sähköpostin",
     "addEmailContinue": "Lisää sähköposti jatkaaksesi",
     "verifyEmail": "Vahvista sähköposti",
-    "addEmail": "Lisää sähköposti"
+    "addEmail": "Lisää sähköposti",
+    "accountNeedsEmail": "Tämä tili tarvitsee sähköpostiosoitteen jatkaakseen.",
+    "checkSpam": "(Jos et näe sitä, tarkista roskapostikansiosi.)",
+    "emailSentSpam": "(Jos et näe sitä, tarkista roskapostikansiosi.)",
+    "verifyEmailClick": "Varmenna sähköpostisi klikkaamalla saamaasi linkkiä.",
+    "verifyEmailContinue": "Varmenna sähköposti jatkaaksesi."
   },
   "tutorials": {
     "business": {
@@ -1978,7 +2028,11 @@
     "oldest": "Vanhin",
     "agenda": "Esityslista",
     "contributors": "Avustajat",
-    "event": "Tapahtuma"
+    "event": "Tapahtuma",
+    "default": "oletus",
+    "host": "Isäntä",
+    "link": "Linkki",
+    "published": "Julkaistu"
   },
   "youtubeChannels": {
     "view": "Katso Youtube-kanava",
@@ -2056,7 +2110,8 @@
       "sticker": "Tarrat",
       "workshop": "Työpaja",
       "other": "Muu",
-      "presentation": "Esitykset"
+      "presentation": "Esitykset",
+      "curriculum": "Opetussuunnitelma"
     },
     "uploadFiles": "Lataa tiedostot",
     "uploadForReview": "Lähetä tarkistettavaksi",
@@ -2065,7 +2120,8 @@
     "titleTooLong": "Otsikko ei voi olla yli 60 merkkiä",
     "detail": {
       "downloadAll": "Lataa kaikki",
-      "view": "Näytä"
+      "view": "Näytä",
+      "addedBy": "Lisännyt"
     },
     "dropCover": "Pudota kansikuva tähän",
     "dropFiles": "Pudota tiedostot tähän",
@@ -2140,7 +2196,27 @@
     "languagePlaceholderFilter": "Kieli",
     "pageTitle": "Opettajan sisältö",
     "sortBy": "Lajittele",
-    "typePlaceholder": "Tyyppi"
+    "typePlaceholder": "Tyyppi",
+    "guidelines": {
+      "pageTitle": "Opas: Sisällön lisääminen opettaja-aineistoon",
+      "subtitle": "Jaa parhaat resurssisi ja auta Bitcoin-kouluttajia ympäri maailmaa",
+      "title": "Ohjeet uuden sisällön lisäämiseen",
+      "continueToAdd": "Jatka lisäämiseen",
+      "point1": "Ryhmittele liittyvät tiedostot nipuiksi (esim. \"Lillen tapaamisesitykset 2024\").",
+      "point2": "Anna alkuperäiselle tekijälle tunnustus, jos jaat muiden tekemää sisältöä.",
+      "point3": "Lataa vain sisältöä, jolla on oikeus jakaa.",
+      "readFullGuide": "Lue koko opas"
+    },
+    "uploadFilesHelper": "Jos sinulla on liittyviä tiedostoja, lataa ne yhtenä pakettina. Nimeä tiedostosi selkeästi ennen lataamista.",
+    "fileTypeNotAllowed": "Vain kuvat ja asiakirjat (PDF, esitykset, laskentataulukot, tekstiasiakirjat) ovat sallittuja",
+    "license": {
+      "licensedByDefault": "Oletuslisenssi on CC BY-SA",
+      "learnMore": "Lue lisää lisensseistä",
+      "changeLicense": "Muuta lisenssiä",
+      "title": "Lisenssi"
+    },
+    "imageTooLarge": "Kuvan koko ei saa ylittää 15MB",
+    "supportedFileTypes": "Tuetut tiedostotyypit: kuvat, PDF, esitykset, laskentataulukot, tekstiasiakirjat"
   },
   "forms": {
     "browse": "Selaa",

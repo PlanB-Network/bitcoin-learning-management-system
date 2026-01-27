@@ -201,7 +201,8 @@
       "thanksTipping": "Saate professorit tänada talle jootraha jättes.",
       "creditsCollaboration": "See kursus on ühistöö tulemus: iga tund, tõlge ja redigeerimine on võimalik tänu panustajate tööle. Seetõttu otsime alati toimetajaid, kes saaksid üle vaadata meie sisu paljudes keeltes.\n\nKui soovite osaleda toimetamisprotsessis, võtke meiega ühendust meie <0>Telegram</0> grupis ja lugege meie <1>õpetust</1>.\n\nAitame levitada teadmisi Bitcoinist:",
       "openSourceContentDescription": "See kursuse sisu on avatud lähtekoodiga - litsenseeritud alusel <0>CC BY-SA</0> -, nii et seda saab vabalt jagada ja kasutada, kui originaalallikat tunnustatakse.",
-      "openSourceContentTitle": "Avatud lähtekoodiga sisu"
+      "openSourceContentTitle": "Avatud lähtekoodiga sisu",
+      "courseCoordinator": "Kursuse koordinaator"
     },
     "exam": {
       "answersReview": "Vastuste ülevaade",
@@ -478,7 +479,8 @@
           "owner": "Omanik",
           "type": "Tüüp",
           "uses": "Kasutatud"
-        }
+        },
+        "showMore": "Näita rohkem koode"
       },
       "coursesIndexes": "Kursuste nimekirjad",
       "date": "Kuupäev",
@@ -876,7 +878,19 @@
         "class": "Klassid",
         "event": "Sündmused"
       },
-      "personalCalendar": "Isiklik kalender"
+      "personalCalendar": "Isiklik kalender",
+      "downloadButton": "Laadige alla .ics kalender ja importige",
+      "downloadCalendar": "Laadi kalender alla",
+      "downloadCalendarTitle": "Laadi kalender alla",
+      "downloadStep1": "Laadige alla kalendri fail",
+      "downloadStep2": "Avage see oma kalendri rakenduses",
+      "downloadStep3": "Üritused ei uuene, kui kuupäevad muutuvad",
+      "downloadTitle": "Või laadige alla praegune kalender",
+      "subscribeButton": "Kopeeri sünkroniseeritud kalendri link",
+      "subscribeStep1": "Kopeeri kalendri link",
+      "subscribeStep2": "Kleepige see oma kalendri rakenduse \"Telli\" valikusse",
+      "subscribeStep3": "Üritused uuenevad automaatselt, kui midagi muutub",
+      "subscribeTitle": "Telli kalender (sünkroonitakse automaatselt)"
     },
     "careerPortal": {
       "acceptedFormat": "Lubatud failivorming: PDF / Maksimaalne faili suurus: 10 MB.",
@@ -1470,7 +1484,8 @@
     "login": "Logi sisse",
     "educatorContent": "Haridussisu",
     "getStarted": "Alusta",
-    "signIn": "Logi sisse"
+    "signIn": "Logi sisse",
+    "verifyEmail": "Kinnita e-post"
   },
   "movies": {
     "checkTheMovie": "Vaata filmi"
@@ -1661,6 +1676,36 @@
         "conference": "Konverents",
         "review": "Arvustus"
       }
+    },
+    "addResource": {
+      "glossary": "Lisa sõnavarasõna",
+      "podcast": "Lisa podcast",
+      "successSubtitle": "Olete edukalt soovinud uue {{type}} lisamist.",
+      "book": "Lisa raamat",
+      "browse": "Sirvi faile",
+      "coverImage": "Esikaan",
+      "descriptionPlaceholder": "Kirjeldage ressursi sisu, et teised mõistaksid selle sisu ja leiaksid selle",
+      "done": "Valmis",
+      "dropImage": "Klõpsake siin või lohistage pilt siia (PNG, JPG, WebP)",
+      "errorSendingAddition": "Resurssi saatmisel ilmnes viga.",
+      "movie": "Lisa film",
+      "newsletter": "Lisa uudiskiri",
+      "paper": "Lisa uurimistöö",
+      "sending": "Saatmine...",
+      "socialProfiles": "Sotsiaalmeedia profiilid",
+      "success": "Ressurss on edukalt esitatud! GitHubis on loodud Pull Request.",
+      "channel": "Lisa YouTube'i kanal",
+      "conference": "Lisa konverentsi kordus",
+      "project": "Lisa projekt",
+      "publicationYear": "Avaldamise aasta",
+      "resourceLink": "Ressursi link",
+      "selectCategory": "Vali kategooria",
+      "selectLanguage": "Vali keel",
+      "selectYear": "Vali aasta",
+      "sendForReview": "Saada ülevaatamiseks",
+      "successTitle": "{{type}} lisamine saadetud!",
+      "titlePlaceholder": "Bitcoin'i tutvustus",
+      "trailerLink": "Treileri link"
     }
   },
   "search": {
@@ -1713,9 +1758,14 @@
     "changeProfilePicture": "Muuda profiilipilti",
     "verifyEmail": "Kinnita e-post",
     "addEmailContinue": "Lisage e-post jätkamiseks",
-    "emailSentDescription": "Kinnitage oma e-posti aadress ja laadige leht uuesti, et jätkata.",
+    "emailSentDescription": "Kinnitage oma e-posti, klõpsates lingil, mis saadeti {{email}}.\n\nPärast e-posti kinnitamist laadige see leht uuesti, et jätkata.",
     "emailSentTitle": "Oleme teile e-kirja saatnud",
-    "addEmail": "Lisa e-post"
+    "addEmail": "Lisa e-post",
+    "accountNeedsEmail": "Selle konto jätkamiseks on vaja e-posti aadressi.",
+    "checkSpam": "(Kui te seda ei näe, kontrollige oma rämpsposti kausta.)",
+    "emailSentSpam": "(Kui te seda ei näe, kontrollige oma rämpsposti kausta.)",
+    "verifyEmailClick": "Kinnitage oma e-posti aadress, klõpsates saadud lingil.",
+    "verifyEmailContinue": "Kinnita e-post jätkamiseks."
   },
   "tutorials": {
     "business": {
@@ -1995,7 +2045,11 @@
     "contribute": "Kaasa aita",
     "agenda": "Päevakava",
     "event": "Sündmus",
-    "contributors": "Kasutajate haldus"
+    "contributors": "Kasutajate haldus",
+    "link": "Link",
+    "host": "Peremees",
+    "published": "Avaldatud",
+    "default": "vaikimisi"
   },
   "youtubeChannels": {
     "view": "Vaata Youtube'i kanalit",
@@ -2059,7 +2113,8 @@
       "art": "Kunst",
       "booklet": "Brošüür",
       "other": "Muu",
-      "presentation": "Esitlused"
+      "presentation": "Esitlused",
+      "curriculum": "Õppekava"
     },
     "uploadFiles": "Laadi faile üles",
     "uploadForReview": "Laadi ülevaatuseks üles",
@@ -2082,7 +2137,7 @@
     "resourceType": "Ressursi tüüp",
     "status": {
       "draft": "Ootel",
-      "published": "Otse-eetris",
+      "published": "Avaldatud",
       "rejected": "Mitte aktsepteeritud",
       "unpublished": "Avaldamata"
     },
@@ -2101,7 +2156,8 @@
     "descriptionTooLong": "Kirjeldus ei tohi ületada 350 tähemärki",
     "detail": {
       "downloadAll": "Lae kõik alla",
-      "view": "Vaade"
+      "view": "Vaade",
+      "addedBy": "Lisatud"
     },
     "addMaterial": "Lisa õpetaja sisu",
     "shareLinks": "Jaga linke",
@@ -2140,7 +2196,27 @@
     "pageTitle": "Haridussisu",
     "sortBy": "Sorteeri",
     "typePlaceholder": "Tüüp",
-    "languagePlaceholderFilter": "Keel"
+    "languagePlaceholderFilter": "Keel",
+    "guidelines": {
+      "pageTitle": "Juhend: Sisu lisamine haridusliku sisu juurde",
+      "subtitle": "Jagage oma parimaid ressursse ja aitake Bitcoin'i haridustöötajaid üle maailma",
+      "continueToAdd": "Jätka lisamisega",
+      "point1": "Rühmitage seotud failid kimpudesse (nt \"Lille Meetup esitlused 2024\").",
+      "point2": "Krediteerige algset loojat, kui jagate teiste poolt loodud sisu.",
+      "point3": "Laadige üles ainult sisu, mille jagamiseks on teil õigus.",
+      "readFullGuide": "Loe täielikku juhendit",
+      "title": "Juhised uue sisu lisamiseks"
+    },
+    "imageTooLarge": "Pildi suurus ei tohi ületada 15MB",
+    "license": {
+      "changeLicense": "Muuda litsentsi",
+      "learnMore": "Lugege rohkem litsentsidest",
+      "licensedByDefault": "Vaikimisi litsentsitakse CC BY-SA alusel",
+      "title": "Litsents"
+    },
+    "supportedFileTypes": "Toetatud failitüübid: pildid, PDF, esitlused, tabelarvutused, tekstidokumendid",
+    "uploadFilesHelper": "Kui teil on seotud faile, laadige need üles koos ühe paketina. Nimetage oma faile selgelt enne üleslaadimist.",
+    "fileTypeNotAllowed": "Lubatud on ainult pildid ja dokumendid (PDF, esitlused, tabelarvutused, tekstidokumendid)"
   },
   "forms": {
     "browse": "Sirvi",

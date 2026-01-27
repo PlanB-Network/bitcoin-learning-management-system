@@ -97,7 +97,9 @@
     "loginNotAvailable1": "ميزات تسجيل الدخول غير متوفرة في تطبيق سطح المكتب بعد.",
     "loginNotAvailable2": "يمكنك زيارة موقعنا على الويب لتسجيل الدخول والوصول إلى حسابك.",
     "oldPassword": "كلمة المرور القديمة",
-    "signUp": "سجل"
+    "signUp": "سجل",
+    "saveProgress": "احفظ تقدمك",
+    "signUpToSave": "سجل للحفظ"
   },
   "bCert": {
     "bCertDescription": "شهادة ₿ هي اختبار معترف به دوليًا لتقييم استعدادك للعملة الرقمية Bitcoin والموضوعات المشتقة منها. ستمكنك هذه الشهادة من إثبات مهاراتك ومعرفتك في صناعة Bitcoin، مما يتيح لك الوصول إلى الشركات والمناصب في هذه الصناعة.",
@@ -196,7 +198,11 @@
       "premiumContentNeedsPaymentAction": "الذهاب إلى الصفحة الرئيسية للدورة",
       "startCourse": "Kurs beginnen",
       "taughtBy": "Dieser Kurs wird unterrichtet von :",
-      "thanksTipping": "يمكنك تقديم إكرامية للأستاذ كطريقة لشكره."
+      "thanksTipping": "يمكنك تقديم إكرامية للأستاذ كطريقة لشكره.",
+      "courseCoordinator": "منسق الدورة",
+      "creditsCollaboration": "هذه الدورة هي نتيجة لجهد تعاوني: كل درس، ترجمة، ومراجعة يتم بفضل عمل المساهمين. لهذا السبب، نحن دائماً نبحث عن مراجعين يستطيعون مراجعة محتوانا بالعديد من اللغات.\n\nإذا كنت ترغب في المشاركة في عملية المراجعة، يرجى الوصول إلى مجموعتنا في <0>Telegram</0> وقراءة <1>البرنامج التعليمي</1> الخاص بنا.\n\nساعد في نشر معرفة البيتكوين:",
+      "openSourceContentDescription": "محتوى هذه الدورة مفتوح المصدر - مرخص بـ <0>CC BY-SA</0> - لذا يمكن مشاركته واستخدامه بحرية، طالما تم الاعتراف بالمصدر الأصلي.",
+      "openSourceContentTitle": "محتوى مفتوح المصدر"
     },
     "exam": {
       "answersReview": "مراجعة الإجابات",
@@ -473,7 +479,8 @@
           "owner": "المالك",
           "type": "النوع",
           "uses": "مستخدم"
-        }
+        },
+        "showMore": "أظهر المزيد من الأكواد"
       },
       "coursesIndexes": "فهارس الدورات",
       "date": "التاريخ",
@@ -871,7 +878,19 @@
         "class": "الصفوف",
         "event": "الفعاليات"
       },
-      "personalCalendar": "التقويم الشخصي"
+      "personalCalendar": "التقويم الشخصي",
+      "downloadButton": "تحميل الرزنامة .ics واستيرادها",
+      "downloadCalendar": "تحميل الرزنامة",
+      "downloadCalendarTitle": "تحميل الرزنامة",
+      "downloadStep1": "تحميل ملف الرزنامة",
+      "downloadStep3": "الأحداث لن تتحدث إذا تغيرت التواريخ",
+      "downloadTitle": "أو تحميل الرزنامة الحالية",
+      "subscribeStep1": "نسخ رابط الرزنامة",
+      "subscribeTitle": "الاشتراك في الرزنامة (المزامنة تلقائيًا)",
+      "downloadStep2": "افتحه باستخدام تطبيق الرزنامة الخاص بك",
+      "subscribeButton": "نسخ رابط التزامن مع الرزنامة",
+      "subscribeStep2": "الصقه في خيار \"الاشتراك\" في تطبيق الرزنامة الخاص بك",
+      "subscribeStep3": "تبقى الأحداث محدثة تلقائيًا إذا تغير أي شيء"
     },
     "careerPortal": {
       "acceptedFormat": "نوع الملف المقبول: pdf / الحد الأقصى لحجم الملف: 10 ميغابايت.",
@@ -1320,7 +1339,8 @@
           "upcomingClass": "الفصل القادم"
         }
       }
-    }
+    },
+    "backToProfile": "الرجوع إلى ملفي الشخصي"
   },
   "events": {
     "card": {
@@ -1464,7 +1484,8 @@
     "login": "تسجيل الدخول",
     "signIn": "Einloggen",
     "educatorContent": "محتوى المعلم",
-    "getStarted": "ابدأ الآن"
+    "getStarted": "ابدأ الآن",
+    "verifyEmail": "تحقق من البريد الإلكتروني"
   },
   "notFound": {
     "here": "Hier",
@@ -1609,7 +1630,24 @@
     },
     "projects": {
       "title": "مشاريع",
-      "addProjects": "أضف مشروع"
+      "addProjects": "أضف مشروع",
+      "types": {
+        "communities": "المجتمعات",
+        "node": "عقدة",
+        "payment": "الدفع",
+        "privacy": "الخصوصية",
+        "service": "الخدمة",
+        "wallet": "المحفظة",
+        "conference": "المؤتمر",
+        "education": "التعليم",
+        "exchange": "التبادل",
+        "infrastructure": "البنية التحتية",
+        "investment": "الاستثمار",
+        "manufacturer": "الصانع",
+        "merchant": "تاجر",
+        "mining": "التعدين",
+        "news": "أخبار"
+      }
     },
     "searchFilterName": "البحث بالاسم",
     "toggleLabelAll": "الكل",
@@ -1623,7 +1661,8 @@
         "journal": "مجلة",
         "pre-print": "قبل الطباعة",
         "thesis": "أطروحة",
-        "whitepaper": "ورقة بيضاء"
+        "whitepaper": "ورقة بيضاء",
+        "review": "مراجعة"
       },
       "accessPaper": "الوصول إلى الورقة",
       "addPaper": "إضافة ورقة",
@@ -1634,7 +1673,37 @@
       "showMorePapers": "عرض المزيد من الأوراق",
       "title": "أوراق البحث"
     },
-    "pageSubtitleMovies": "<0>أفلام أخرى</0> قد تعجبك"
+    "pageSubtitleMovies": "<0>أفلام أخرى</0> قد تعجبك",
+    "addResource": {
+      "conference": "أضف إعادة تشغيل المؤتمر",
+      "dropImage": "انقر أو أسقط صورة هنا (PNG, JPG, WebP)",
+      "movie": "أضف فيلم",
+      "book": "أضف كتاب",
+      "browse": "تصفح الملفات",
+      "channel": "أضف قناة YouTube",
+      "errorSendingAddition": "حدث خطأ أثناء محاولة إرسال المورد.",
+      "newsletter": "أضف نشرة إخبارية",
+      "resourceLink": "رابط المورد",
+      "selectCategory": "حدد الفئة",
+      "trailerLink": "رابط العرض الترويجي",
+      "coverImage": "صورة الغلاف",
+      "descriptionPlaceholder": "صف محتوى المصدر لمساعدة الآخرين على فهم محتواه والعثور عليه",
+      "done": "تم",
+      "glossary": "أضف كلمة للمعجم",
+      "paper": "أضف ورقة بحثية",
+      "podcast": "أضف بودكاست",
+      "project": "أضف مشروع",
+      "publicationYear": "سنة النشر",
+      "selectLanguage": "حدد اللغة",
+      "selectYear": "حدد السنة",
+      "sendForReview": "إرسال للمراجعة",
+      "sending": "الإرسال...",
+      "socialProfiles": "الملفات الشخصية الاجتماعية",
+      "success": "تم تقديم المورد بنجاح! تم إنشاء طلب سحب على GitHub.",
+      "successSubtitle": "لقد طلبت بنجاح إضافة {{type}} جديد.",
+      "successTitle": "تم إرسال إضافة {{type}}!",
+      "titlePlaceholder": "مقدمة بيتكوين"
+    }
   },
   "search": {
     "all": "الكل",
@@ -1683,7 +1752,17 @@
     "changeDisplayName": "تغيير اسم العرض",
     "changeEmail": "تغيير البريد الإلكتروني",
     "changePassword": "Change password",
-    "changeProfilePicture": "تغيير صورة الملف الشخصي"
+    "changeProfilePicture": "تغيير صورة الملف الشخصي",
+    "accountNeedsEmail": "هذا الحساب يحتاج إلى عنوان بريد إلكتروني للمتابعة.",
+    "checkSpam": "(إذا لم تره، تحقق من مجلد الرسائل غير المرغوب فيها.)",
+    "emailSentSpam": "(إذا لم تره، تحقق من مجلد الرسائل غير المرغوب فيها.)",
+    "verifyEmailClick": "قم بالتحقق من بريدك الإلكتروني بالنقر على الرابط الذي تلقيته.",
+    "verifyEmailContinue": "تحقق من البريد الإلكتروني للمتابعة",
+    "addEmail": "أضف البريد الإلكتروني",
+    "addEmailContinue": "أضف البريد الالكتروني للمتابعة",
+    "emailSentTitle": "لقد ارسلنا لك بريدًا الكترونيًا",
+    "verifyEmail": "تحقق من البريد الإلكتروني",
+    "emailSentDescription": "تحقق من بريدك الإلكتروني عن طريق الضغط على الرابط المرسل إلى {{email}}.\n\nبمجرد التحقق من بريدك الإلكتروني، قم بتحديث هذه الصفحة للمتابعة."
   },
   "tutorials": {
     "business": {
@@ -1944,7 +2023,16 @@
     "viewAll": "عرض الكل",
     "week": "أسبوع",
     "weight": "وزن",
-    "enrolled": "مسجل"
+    "enrolled": "مسجل",
+    "event": "الحدث",
+    "link": "رابط",
+    "published": "تم النشر",
+    "default": "افتراضي",
+    "host": "المضيف",
+    "contribute": "ساهم",
+    "contributors": "المساهمون",
+    "oldest": "الأقدم",
+    "agenda": "الجدول"
   },
   "youtubeChannels": {
     "view": "عرض قناة يوتيوب",
@@ -2008,11 +2096,13 @@
       "game": "لعبة",
       "presentation": "عرض تقديمي",
       "sticker": "ملصق",
-      "workshop": "ورشة عمل"
+      "workshop": "ورشة عمل",
+      "curriculum": "المنهج الدراسي"
     },
     "detail": {
       "view": "عرض",
-      "downloadAll": "تحميل الكل"
+      "downloadAll": "تحميل الكل",
+      "addedBy": "أضيف بواسطة"
     },
     "contentNotFound": "المحتوى غير موجود",
     "urlInvalid": "يجب أن يكون الرابط عنوان URL صالح",
@@ -2025,7 +2115,7 @@
     "shareLinks": "مشاركة الروابط",
     "status": {
       "draft": "قيد الانتظار",
-      "published": "مباشر",
+      "published": "تم النشر",
       "rejected": "لم يتم القبول",
       "unpublished": "غير منشور"
     },
@@ -2060,7 +2150,60 @@
     "uploadFiles": "تحميل الملفات",
     "uploadForReview": "تحميل للمراجعة",
     "uploading": "جار التحميل...",
-    "noCover": "لا يوجد غلاف"
+    "noCover": "لا يوجد غلاف",
+    "guidelines": {
+      "pageTitle": "الدليل: إضافة المحتوى إلى المحتوى التعليمي",
+      "continueToAdd": "استمر في الإضافة",
+      "point1": "جمع الملفات ذات الصلة في حزم (مثل \"عروض العرض في ليل 2024\").",
+      "point2": "أعط الائتمان للمبدع الأصلي إذا قمت بمشاركة المحتوى الذي أنشأه الآخرون.",
+      "point3": "قم بتحميل المحتوى الذي لديك الحق في مشاركته فقط.",
+      "readFullGuide": "اقرأ الدليل بكامله",
+      "subtitle": "شارك أفضل مواردك وساعد المربين البتكوين في جميع أنحاء العالم",
+      "title": "الإرشادات لإضافة محتوى جديد"
+    },
+    "reviewModal": {
+      "edit": "تحرير",
+      "noCover": "بدون غلاف",
+      "reject": "رفض",
+      "unpublish": "إلغاء النشر",
+      "unpublishConfirm": "إلغاء النشر (هل أنت متأكد؟)",
+      "viewContent": "عرض المحتوى",
+      "reviewForApproval": "مراجعة للموافقة",
+      "unknown": "غير معروف",
+      "approveAndPublish": "الموافقة على المحتوى ونشره"
+    },
+    "uploadFilesHelper": "إذا كان لديك ملفات ذات صلة، قم بتحميلها معًا كحزمة واحدة. اسمي ملفاتك بوضوح قبل التحميل.",
+    "fileTypeNotAllowed": "فقط الصور والمستندات (PDF، عروض تقديمية، جداول بيانات، مستندات نصية) مسموح بها",
+    "linkOrFileRequired": "الرجاء إضافة رابط واحد على الأقل أو تحميل ملف",
+    "license": {
+      "title": "الترخيص",
+      "licensedByDefault": "مرخص افتراضياً كـ CC BY-SA",
+      "learnMore": "تعرف على المزيد عن التراخيص",
+      "changeLicense": "تغيير الترخيص"
+    },
+    "adminPanel": {
+      "new": "جديد",
+      "previewForApproval": "معاينة للموافقة",
+      "toReview": "للمراجعة",
+      "approved": "موافق عليه",
+      "modified": "تم التعديل",
+      "pageTitle": "مراجعة محتوى المعلم",
+      "previewChanges": "معاينة التغييرات"
+    },
+    "imageTooLarge": "لا يمكن أن يتجاوز حجم الصورة 15 ميجابايت",
+    "supportedFileTypes": "أنواع الملفات المدعومة: الصور، PDF، عروض تقديمية، جداول بيانات، مستندات نصية",
+    "fileExisting": "(موجود)",
+    "coverPreview": "معاينة الغلاف",
+    "linkPlaceholder": "https://example.com",
+    "maxFileSize": "الحد الأقصى لحجم الملف: 50 ميجا بايت",
+    "pageSubtitle": "حيث يتشارك مُعلمي ومجتمعات البيتكوين الموارد ويعيدون استخدامها",
+    "pageTitle": "محتوى المعلم",
+    "titlePlaceholder": "مثلا: ورشة العمل متعددة التوقيعات لليانا",
+    "sortBy": "الفرز بحسب",
+    "sortMostRecent": "الأحدث",
+    "sortMostDownloaded": "الأكثر تحميلا",
+    "typePlaceholder": "النوع",
+    "languagePlaceholderFilter": "اللغة"
   },
   "forms": {
     "browse": "تصفح",
