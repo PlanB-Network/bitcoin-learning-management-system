@@ -97,7 +97,9 @@
     "forgotPassword": "Zaboravljena lozinka?",
     "login": "Prijava",
     "oldPassword": "Stara lozinka",
-    "signUp": "Registruj se"
+    "signUp": "Registruj se",
+    "saveProgress": "Sačuvajte svoj napredak",
+    "signUpToSave": "Prijavite se da biste sačuvali"
   },
   "bCert": {
     "bCertDescription": "₿-CERT je vrhunski Bitcoin test osmišljen da proceni tvoje znanje o Bitcoinu i povezanim temama.\n\nSteknite ₿-CERT sertifikat i dokažite svoju stručnost u Bitcoin industriji, otvarajući vrata ka poslovnim pozicijama u ovoj oblasti.",
@@ -196,7 +198,11 @@
       "premiumContentNeedsPaymentAction": "Idite na početnu stranicu kursa",
       "startCourse": "Započnite kurs",
       "taughtBy": "Ovaj kurs predaje",
-      "thanksTipping": "Možete se zahvaliti ostavljajući napojnicu profesoru."
+      "thanksTipping": "Možete se zahvaliti ostavljajući napojnicu profesoru.",
+      "courseCoordinator": "Koordinator kursa",
+      "openSourceContentDescription": "Sadržaj ovog kursa je otvorenog koda - licenciran po <0>CC BY-SA</0> - što znači da se može slobodno deliti i koristiti, pod uslovom da se prizna originalni izvor.",
+      "openSourceContentTitle": "Sadržaj otvorenog koda",
+      "creditsCollaboration": "Ovaj kurs je rezultat saradničkog napora: svaka lekcija, prevod i revizija omogućeni su radom saradnika. Iz tog razloga, uvek tražimo lektore koji mogu da pregledaju naš sadržaj na mnogim jezicima.\n\nAko biste želeli da učestvujete u procesu lektorisanja, kontaktirajte nas u našoj <0>Telegram</0> grupi i pročitajte naš <1>tutorial</1>.\n\nPomažite širenju znanja o Bitcoinu:"
     },
     "exam": {
       "answersReview": "Pregled odgovora",
@@ -473,7 +479,8 @@
           "owner": "Vlasnik",
           "type": "Tip",
           "uses": "Iskorišćen"
-        }
+        },
+        "showMore": "Prikaži više kodova"
       },
       "coursesIndexes": "Indeksi kurseva",
       "date": "Datum",
@@ -871,7 +878,19 @@
         "class": "Časovi",
         "event": "Događaji"
       },
-      "personalCalendar": "Lični kalendar"
+      "personalCalendar": "Lični kalendar",
+      "downloadButton": "Preuzmite .ics kalendar i uvezite",
+      "downloadCalendar": "Preuzmite kalendar",
+      "downloadCalendarTitle": "Preuzmite kalendar",
+      "downloadStep1": "Preuzmite datoteku kalendara",
+      "downloadStep2": "Otvorite je sa vašom aplikacijom za kalendar",
+      "downloadStep3": "Događaji se neće ažurirati ako se datumi promene",
+      "downloadTitle": "Ili preuzmite trenutni kalendar",
+      "subscribeButton": "Kopirajte link sinhronizovanog kalendara",
+      "subscribeStep1": "Kopirajte link kalendara",
+      "subscribeStep2": "Nalepite ga u opciju „Pretplati se“ vaše aplikacije za kalendar",
+      "subscribeStep3": "Događaji se automatski ažuriraju ako dođe do promena",
+      "subscribeTitle": "Pretplati se na kalendar (automatska sinhronizacija)"
     },
     "careerPortal": {
       "acceptedFormat": "Format datoteke koji se prihvata: pdf / Maksimalna veličina datoteke: 10 MB.",
@@ -1181,7 +1200,8 @@
         "none": "Nijedne",
         "platformTitle": "Koje vrste obaveštenja biste želeli da primate na ovoj platformi?",
         "settingsSaved": "Vaša podešavanja su uspešno sačuvana!",
-        "title": "Podešavanje o obaveštenjima"
+        "title": "Podešavanje o obaveštenjima",
+        "coursesEventsOption": "Ažuriranja o vašim kursevima i događajima"
       },
       "password": "Lozinka",
       "preview": "Pregled",
@@ -1190,7 +1210,9 @@
       "saving": "Čuvanje…",
       "securitySettings": "Podešavanja bezbednosti",
       "username": "Korisničko ime",
-      "emailOrUsername": "Email ili korisničko ime"
+      "emailOrUsername": "Email ili korisničko ime",
+      "addEmail": "Dodaj email",
+      "verifyYourEmail": "Potvrdite vašu email adresu"
     },
     "teacher": {
       "courses": {
@@ -1317,7 +1339,8 @@
           "upcomingClass": "Naredni čas"
         }
       }
-    }
+    },
+    "backToProfile": "Nazad na moj profil"
   },
   "events": {
     "card": {
@@ -1393,6 +1416,13 @@
         "lecture": "Lekcije",
         "meetup": "Okupljanja",
         "workshop": "radionice"
+      },
+      "singular": {
+        "conference": "Konferencija",
+        "meetup": "Sastanak",
+        "workshop": "Radionica",
+        "exam": "Ispit",
+        "lecture": "Predavanje"
       }
     }
   },
@@ -1403,7 +1433,8 @@
     "definition": "Definicija",
     "relatedWords": "Povezane reči:",
     "term": "Termin",
-    "showMoreWords": "Prikaži više reči"
+    "showMoreWords": "Prikaži više reči",
+    "learnMore": "Saznajte više"
   },
   "home": {
     "aboutUsSection": {
@@ -1453,7 +1484,8 @@
     "login": "Prijavi se",
     "educatorContent": "Obrazovni sadržaj",
     "getStarted": "Započni",
-    "signIn": "Prijavi se"
+    "signIn": "Prijavi se",
+    "verifyEmail": "Verifikuj email"
   },
   "movies": {
     "checkTheMovie": "Pogledaj film"
@@ -1601,12 +1633,80 @@
     },
     "projects": {
       "title": "Projekti",
-      "addProjects": "Dodaj projekat"
+      "addProjects": "Dodaj projekat",
+      "types": {
+        "communities": "Zajednice",
+        "mining": "Rudarenje",
+        "conference": "Konferencija",
+        "news": "Vesti",
+        "node": "Čvor",
+        "payment": "Plaćanje",
+        "privacy": "Privatnost",
+        "service": "Usluga",
+        "wallet": "Novčanik",
+        "education": "Obrazovanje",
+        "exchange": "Razmena",
+        "infrastructure": "Infrastruktura",
+        "investment": "Investicija",
+        "manufacturer": "Proizvođač",
+        "merchant": "Trgovac"
+      }
     },
     "searchFilterName": "Pretražite po imenu",
     "toggleLabelAll": "Svi",
     "toggleLabelSelectedLanguage": "Izabrani jezik",
-    "pageSubtitleMovies": "<0>Other movies</0> koji bi ti se svideli"
+    "pageSubtitleMovies": "<0>Other movies</0> koji bi ti se svideli",
+    "papers": {
+      "title": "Istraživački radovi",
+      "types": {
+        "academic": "Akademik",
+        "PhD Thesis": "Doktorska disertacija",
+        "conference": "Konferencija",
+        "review": "Pregled",
+        "thesis": "Teza",
+        "whitepaper": "Beli papir",
+        "journal": "Časopis",
+        "pre-print": "Pretisak",
+        "book": "Knjiga"
+      },
+      "publisher": "Izdavač",
+      "citations": "Citati (.bib)",
+      "downloadCitations": "Preuzmi citate",
+      "papers": "Radovi",
+      "showMorePapers": "Prikaži više radova",
+      "accessPaper": "Pristupi dokumentu",
+      "addPaper": "Dodaj rad"
+    },
+    "addResource": {
+      "book": "Dodaj knjigu",
+      "browse": "Pregledaj datoteke",
+      "coverImage": "Slika naslovnice",
+      "descriptionPlaceholder": "Opišite sadržaj resursa kako bi drugima olakšali razumevanje njegovog sadržaja i pretragu",
+      "done": "Gotovo",
+      "movie": "Dodaj film",
+      "newsletter": "Dodaj bilten",
+      "socialProfiles": "Društveni profili",
+      "success": "Resurs je uspešno poslat! Zahtev za povlačenje je kreiran na GitHub-u.",
+      "successSubtitle": "Uspešno ste zatražili dodavanje novog {{type}}.",
+      "successTitle": "Dodavanje {{type}} poslato!",
+      "titlePlaceholder": "Uvod u Bitcoin",
+      "trailerLink": "Link do trejlera",
+      "channel": "Dodaj YouTube kanal",
+      "conference": "Dodaj snimak konferencije",
+      "dropImage": "Kliknite ovde ili prevucite sliku (PNG, JPG, WebP)",
+      "errorSendingAddition": "Došlo je do greške pri pokušaju slanja resursa.",
+      "glossary": "Dodaj reč iz rečnika",
+      "paper": "Dodaj naučni rad",
+      "podcast": "Dodaj podcast",
+      "project": "Dodaj projekat",
+      "publicationYear": "Godina izdanja",
+      "resourceLink": "Link do resursa",
+      "selectCategory": "Izaberite kategoriju",
+      "selectLanguage": "Izaberite jezik",
+      "selectYear": "Izaberite godinu",
+      "sendForReview": "Pošalji na pregled",
+      "sending": "Šalje se..."
+    }
   },
   "search": {
     "all": "Sve",
@@ -1655,7 +1755,17 @@
     "changeDisplayName": "Promeni ime za prikaz",
     "changeEmail": "Promeni email",
     "changePassword": "Promeni lozinku",
-    "changeProfilePicture": "Promeni profilnu sliku"
+    "changeProfilePicture": "Promeni profilnu sliku",
+    "checkSpam": "(Ako ga ne vidite, proverite svoj folder za spam.)",
+    "verifyEmailClick": "Verifikujte svoj email klikom na link koji ste primili.",
+    "emailSentDescription": "Verifikujte vaš email klikom na link poslat na {{email}}.\n\nKada verifikujete vaš email, osvežite ovu stranicu da biste nastavili.",
+    "emailSentTitle": "Poslali smo vam email",
+    "verifyEmail": "Verifikuj email",
+    "accountNeedsEmail": "Ovom nalogu je potrebna e-adresa da bi nastavio.",
+    "emailSentSpam": "(Ako ga ne vidite, proverite svoj folder za spam.)",
+    "verifyEmailContinue": "Potvrdite e-adresu da biste nastavili",
+    "addEmail": "Dodaj email",
+    "addEmailContinue": "Dodajte email da biste nastavili"
   },
   "tutorials": {
     "business": {
@@ -1912,7 +2022,20 @@
     "session": "Sesija",
     "confirmation": "Potvrda",
     "optional": "Opciono",
-    "syllabus": "Nastavni plan i program"
+    "syllabus": "Nastavni plan i program",
+    "default": "podrazumevano",
+    "oldest": "Najstariji",
+    "researchPaper": "Istraživački rad",
+    "downloads": "Preuzimanja",
+    "published": "Objavljeno",
+    "open": "Otvoreno",
+    "agenda": "Dnevni red",
+    "enroll": "Upišite se",
+    "event": "Događaj",
+    "host": "Domaćin",
+    "link": "Link",
+    "contribute": "Doprinosite",
+    "contributors": "Saradnici"
   },
   "youtubeChannels": {
     "view": "Pogledajte Youtube kanal",
@@ -1920,11 +2043,13 @@
   },
   "account": {
     "account": "Nalog",
-    "myTeacherProfile": "Moj nastavnički profil"
+    "myTeacherProfile": "Moj nastavnički profil",
+    "profile": "Profil"
   },
   "footer": {
     "FOSSOpenContent": "Otvoreni sadržaj",
-    "proudlyPartOf": "Ponosni deo <0>Plan ₿ Mreže</0>"
+    "proudlyPartOf": "Ponosni deo <0>Plan ₿ Mreže</0>",
+    "becomeATeacher": "Postani <0>Nastavnik</0>"
   },
   "months": {
     "april": "April",
@@ -1974,5 +2099,155 @@
       "rumble": "Rumble",
       "youtube": "Youtube"
     }
+  },
+  "educatorContent": {
+    "types": {
+      "booklet": "Priručnik",
+      "other": "Ostalo",
+      "art": "Umetnost",
+      "curriculum": "Program",
+      "sticker": "Stiker",
+      "flyer": "Flajer",
+      "game": "Igra",
+      "workshop": "Radionica",
+      "presentation": "Prezentacija"
+    },
+    "adminPanel": {
+      "toReview": "Za pregled",
+      "approved": "Odobreno",
+      "modified": "Izmenjeno",
+      "new": "Novo",
+      "pageTitle": "Pregledajte sadržaj za edukatore",
+      "previewChanges": "Pregledaj promene",
+      "previewForApproval": "Pregled za odobravanje"
+    },
+    "browseFiles": "ili pretražujte datoteke",
+    "browseImages": "ili pretražite slike",
+    "coverPreview": "Prikaz naslovnice",
+    "coverRequired": "Naslovna slika je obavezna",
+    "currentCoverPresent": "Trenutna naslovnica prisutna",
+    "descriptionRequired": "Opis ne može biti prazan",
+    "descriptionTooLong": "Opis ne može da premašuje 350 karaktera",
+    "detail": {
+      "downloadAll": "Preuzmite sve",
+      "addedBy": "Dodato od strane",
+      "view": "Pogledaj"
+    },
+    "reviewModal": {
+      "unpublishConfirm": "Povuci objavu (da li ste sigurni?)",
+      "reject": "Odbij",
+      "unknown": "Nepoznato",
+      "unpublish": "Povuci objavu",
+      "viewContent": "Pogledaj sadržaj",
+      "reviewForApproval": "Pregled za odobrenje",
+      "approveAndPublish": "Odobri sadržaj i objavi",
+      "edit": "Izmena",
+      "noCover": "Bez naslovne strane"
+    },
+    "sortBy": "Sortiraj po",
+    "titleRequired": "Naziv ne može biti prazan",
+    "urlInvalid": "Link mora biti validan URL",
+    "contentNotFound": "Sadržaj nije pronađen",
+    "descriptionHelper": "Dajte neki kontekst vašem sadržaju, da bi drugi razumeli kako se može koristiti.",
+    "guidelines": {
+      "pageTitle": "Vodič: Dodavanje sadržaja na Educator Content",
+      "continueToAdd": "Nastavi da dodaješ",
+      "point1": "Grupišite srodne fajlove u pakete (npr. \"Prezentacije sa Lille Meetupa 2024.\").",
+      "point2": "Ako delite sadržaj napravljen od strane drugih, priznajte originalnom tvorcu.",
+      "point3": "Otpremiti samo sadržaj koji imate pravo da delite.",
+      "readFullGuide": "Pročitajte ceo vodič",
+      "subtitle": "Delite svoje najbolje resurse i pomažite Bitcoin edukatorima širom sveta",
+      "title": "Smernice za dodavanje novog sadržaja"
+    },
+    "pageTitle": "Sadržaj za edukatore",
+    "status": {
+      "published": "Objavljeno",
+      "draft": "Na čekanju",
+      "rejected": "Nije prihvaćeno",
+      "unpublished": "Neobjavljeno"
+    },
+    "shareLinks": "Podeli linkove",
+    "sortMostDownloaded": "Najviše preuzeto",
+    "sortMostRecent": "Najnovije",
+    "success": "Sadržaj za edukatore je uspešno dodat!",
+    "successSubtitle": "Proći će kroz proces pregleda pre nego što bude prikazan.",
+    "successTitle": "Sadržaj za edukatore je uspešno otpremljen",
+    "titleHelper": "Treba da odražava sadržaj i svrhu vašeg resursa. Držite se koncizno, ali informativno.",
+    "titlePlaceholder": "npr. Multi-sig radionica Liana",
+    "titleTooLong": "Naslov ne može premašiti 60 karaktera",
+    "typePlaceholder": "Tip",
+    "typeRequired": "Odredite koja vrsta resursa je u pitanju",
+    "uploadFiles": "Ili otpremite fajlove",
+    "uploadFilesHelper": "Ako imate srodne fajlove, otpremite ih zajedno kao jedan paket. Jasno imenujte svoje fajlove pre otpremanja.",
+    "uploading": "Otpremanje...",
+    "addMaterial": "Dodajte sadržaj za edukatore",
+    "addMoreLinks": "Dodajte više linkova",
+    "maxFileSize": "Maksimalna veličina fajla: 50MB",
+    "myContent": "Moj sadržaj",
+    "noContent": "Još uvek niste otpremili nikakav sadržaj.",
+    "noResultsTitle": "Nema pronađenog sadržaja za edukatore",
+    "uploadForReview": "Otpremite na pregled",
+    "noContentToReview": "Nema sadržaja za pregled",
+    "noCover": "Bez naslovne strane",
+    "resourceType": "Koja vrsta resursa je ovo?",
+    "done": "Gotovo",
+    "dropCover": "Ovde spustite sliku naslovnice",
+    "dropFiles": "Ovde spustite datoteke",
+    "editAndRequireApproval": "Izmenite i zahtevajte odobrenje",
+    "editMaterial": "Izmenite sadržaj za edukatore",
+    "fileExisting": "(Postojeće)",
+    "fileTooLarge": "Datoteka je prevelika (maksimalno 50MB)",
+    "fileTypeNotAllowed": "Dozvoljeni su samo slike i dokumenti (PDF, prezentacije, tabelarni prikazi, tekstualni dokumenti)",
+    "supportedFileTypes": "Podržane vrste fajlova: slike, PDF, prezentacije, tabelarni prikazi, tekstualni dokumenti",
+    "imageCover": "Slika naslovnice",
+    "imageError": "Došlo je do greške prilikom otpremanja slike",
+    "languagePlaceholder": "Izaberi",
+    "languagePlaceholderFilter": "Jezik",
+    "languageRequired": "Izaberite jezik resursa",
+    "linkOrFileRequired": "Molimo dodajte barem jedan link ili otpremite datoteku",
+    "license": {
+      "changeLicense": "Promeni licencu",
+      "learnMore": "Saznajte više o licencama",
+      "licensedByDefault": "Podrazumevano licencirano kao CC BY-SA",
+      "title": "Licenca"
+    },
+    "imageTooLarge": "Veličina slike ne može premašiti 15MB",
+    "linkPlaceholder": "https://primer.com",
+    "loginMessage": "Molimo prijavite se da biste videli svoj sadržaj.",
+    "noResultsDescription": "Probajte da prilagodite filtere za pretragu",
+    "onlyImages": "Dozvoljene su samo slike",
+    "pageSubtitle": "Mesto gde Bitcoin edukatori i zajednice dele i ponovo koriste resurse"
+  },
+  "becomeTeacher": {
+    "activeBitcoinLearners": "Aktivni učenici Bitcoina",
+    "bitcoinOnly": "Samo Bitcoin",
+    "bookCall": "Rezervišite poziv od 30 minuta da biste postali nastavnik",
+    "description": "Ako ste strastveni Bitcoin entuzijasta koji voli da predaje i želi da napravi stvaran uticaj u svojoj lokalnoj zajednici, možete organizovati svoj sopstveni kurs na našoj platformi za učenje.",
+    "enhanceExperience": "<0>Poboljšajte iskustvo učenja vaših studenata</0> uz pomoć alata na platformi",
+    "globalReach": "Globalni doseg",
+    "hostOwnCourse": "<0>Organizujte svoj sopstveni kurs</0>, online ili lično",
+    "inspireLearners": "Inspiracija za zajednicu učenika",
+    "joinMission": "<0>Pridružite se misiji</0> kao pravi Bitcoin edukator",
+    "superiorAmount": ">{{amount}}",
+    "teachWhatYouLove": "<0>Prepredajte ono što volite</0>",
+    "title": "Predajte Bitcoin i inspirišite druge"
+  },
+  "mentor": {
+    "loginRequired": "Kreirajte nalog da biste razgovarali sa PlanBot!",
+    "collapse": "Smanji",
+    "error": "Došlo je do greške. Molimo pokušajte ponovo.",
+    "sources": "Idi dalje",
+    "thinking": "Razmišljanje",
+    "title": "PlanBot",
+    "expand": "Proširi",
+    "openChat": "Upitajte PlanBot",
+    "placeholder": "Postavite pitanje...",
+    "reset": "Nova konverzacija",
+    "close": "Zatvori",
+    "welcome": "Pitajte me bilo šta o Bitcoinu!"
+  },
+  "forms": {
+    "replace": "Zameni",
+    "browse": "Pregledaj"
   }
 }

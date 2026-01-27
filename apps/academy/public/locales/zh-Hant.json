@@ -201,7 +201,8 @@
       "thanksTipping": "您可以透過給予小費來感謝教授。",
       "creditsCollaboration": "這門課程是一項共同努力的結果：每節課、翻譯和修訂都由貢獻者的工作實現。因此，我們一直在尋找可以審閱我們的多種語言內容的校對者。\n\n如果您願意參與校對過程，請在我們的<0>Telegram</0>群組中吸我們的<1>教程</1>。\n\n幫助傳播比特幣知識：",
       "openSourceContentDescription": "本課程內容是開源的-採用<0>CC BY-SA</0>許可-所以可以自由分享和使用，只要原始來源得到認證。",
-      "openSourceContentTitle": "開源內容"
+      "openSourceContentTitle": "開源內容",
+      "courseCoordinator": "課程協調員"
     },
     "exam": {
       "answersReview": "答案回顧",
@@ -478,7 +479,8 @@
           "owner": "所有者",
           "type": "類型",
           "uses": "是否使用過"
-        }
+        },
+        "showMore": "顯示更多代碼"
       },
       "coursesIndexes": "課程索引",
       "date": "日期",
@@ -876,7 +878,19 @@
         "class": "課程",
         "event": "活動"
       },
-      "personalCalendar": "個人日曆"
+      "personalCalendar": "個人日曆",
+      "subscribeStep1": "複製日曆鏈接",
+      "subscribeStep2": "將其粘貼到您的日曆應用程序的“訂閱”選項中",
+      "subscribeStep3": "如果有任何更改，活動將自動保持更新",
+      "subscribeTitle": "訂閱日曆（自動同步）",
+      "downloadButton": "下載 .ics 日曆並導入",
+      "downloadCalendar": "下載日曆",
+      "downloadCalendarTitle": "下載日曆",
+      "downloadStep1": "下載日曆檔案",
+      "downloadStep2": "用您的日曆應用程式開啟它",
+      "downloadStep3": "如果日期改變，活動將不會更新",
+      "downloadTitle": "或下載當前日曆",
+      "subscribeButton": "複製同步日曆鏈接"
     },
     "careerPortal": {
       "acceptedFormat": "接受的文件格式：pdf / 最大文件大小：10 MB。",
@@ -1470,7 +1484,8 @@
     "login": "登入",
     "educatorContent": "教育者內容",
     "getStarted": "開始使用",
-    "signIn": "登入"
+    "signIn": "登入",
+    "verifyEmail": "驗證電子郵件"
   },
   "movies": {
     "checkTheMovie": "查看此電影"
@@ -1661,6 +1676,36 @@
         "review": "評論"
       },
       "showMorePapers": "顯示更多論文"
+    },
+    "addResource": {
+      "book": "新增書籍",
+      "browse": "瀏覽檔案",
+      "channel": "新增YouTube頻道",
+      "conference": "新增會議重播",
+      "coverImage": "封面圖片",
+      "descriptionPlaceholder": "描述資源內容以幫助他人理解其內容並找到它",
+      "done": "完成",
+      "dropImage": "在此處點擊或拖放圖像（PNG，JPG，WebP）",
+      "errorSendingAddition": "嘗試發送資源時出現錯誤。",
+      "glossary": "添加詞彙",
+      "movie": "添加電影",
+      "newsletter": "增加通訊報",
+      "resourceLink": "資源鏈接",
+      "selectCategory": "選擇一個類別",
+      "selectLanguage": "選擇一種語言",
+      "selectYear": "選擇年份",
+      "sendForReview": "發送審核",
+      "sending": "正在發送...",
+      "socialProfiles": "社交賬戶",
+      "paper": "添加研究論文",
+      "podcast": "添加播客",
+      "project": "添加專案",
+      "publicationYear": "出版年份",
+      "success": "資源提交成功！ 在 GitHub 上已創建 Pull 請求。",
+      "successSubtitle": "您已成功要求添加新的 {{type}}。",
+      "successTitle": "{{type}} 已送出！",
+      "titlePlaceholder": "比特幣介紹",
+      "trailerLink": "預告片連結"
     }
   },
   "search": {
@@ -1713,9 +1758,14 @@
     "changeProfilePicture": "更改個人資料照片",
     "verifyEmail": "驗證電子郵件",
     "addEmailContinue": "繼續必須添加電子郵件",
-    "emailSentDescription": "驗證您的電子郵件並重載此頁繼續進行。",
+    "emailSentDescription": "請點擊發送到 {{email}} 的鏈接以驗證您的電子郵件。\n\n一旦您的電子郵件被驗證，請重新載入此頁面以繼續。",
     "emailSentTitle": "我們已向您發送一封電子郵件",
-    "addEmail": "新增電子郵件"
+    "addEmail": "新增電子郵件",
+    "checkSpam": "（如果您沒看到，請檢查您的垃圾郵件文件夾。）",
+    "verifyEmailClick": "點擊您收到的連結以驗證您的電郵。",
+    "accountNeedsEmail": "此帳戶需要電郵地址才能繼續。",
+    "emailSentSpam": "（如果您沒看到，請檢查您的垃圾郵件文件夾。）",
+    "verifyEmailContinue": "驗證電郵以便繼續"
   },
   "tutorials": {
     "business": {
@@ -1981,7 +2031,11 @@
     "contribute": "貢獻",
     "oldest": "最古老",
     "event": "活動",
-    "contributors": "貢獻者"
+    "contributors": "貢獻者",
+    "published": "已發布",
+    "default": "預設",
+    "host": "主持人",
+    "link": "連結"
   },
   "youtubeChannels": {
     "view": "查看Youtube頻道",
@@ -2070,7 +2124,8 @@
     "descriptionTooLong": "描述不能超過350個字符",
     "detail": {
       "downloadAll": "全部下載",
-      "view": "檢視"
+      "view": "檢視",
+      "addedBy": "由...新增"
     },
     "urlInvalid": "鏈接必須是有效的URL",
     "types": {
@@ -2081,7 +2136,8 @@
       "sticker": "貼紙",
       "workshop": "工作坊",
       "art": "藝術",
-      "other": "其他"
+      "other": "其他",
+      "curriculum": "課程"
     },
     "uploadFiles": "上傳檔案",
     "uploadForReview": "上傳以供審核",
@@ -2110,7 +2166,7 @@
     "shareLinks": "分享鏈接",
     "status": {
       "draft": "待定",
-      "published": "直播中",
+      "published": "已發布",
       "rejected": "未被接受",
       "unpublished": "未發布"
     },
@@ -2154,7 +2210,27 @@
     "languagePlaceholderFilter": "語言",
     "pageTitle": "教育者內容",
     "sortBy": "排序依據",
-    "typePlaceholder": "類型"
+    "typePlaceholder": "類型",
+    "guidelines": {
+      "continueToAdd": "繼續添加",
+      "point1": "將相關文件分組成捆綁包(例如，“里爾聚會演示文稿 2024”)。",
+      "pageTitle": "指南：將內容添加至教育者內容",
+      "point2": "如果您分享由他人製作的內容，請給予原創者信譽。",
+      "point3": "只上傳您有權分享的內容。",
+      "readFullGuide": "閱讀完整指南",
+      "subtitle": "分享你最好的資源，並幫助全球的比特幣教育者",
+      "title": "新增內容的指導原則"
+    },
+    "imageTooLarge": "圖片大小不能超過15MB",
+    "license": {
+      "changeLicense": "修改許可證",
+      "learnMore": "了解更多關於許可證的資訊",
+      "licensedByDefault": "預設為CC BY-SA授權",
+      "title": "許可證"
+    },
+    "supportedFileTypes": "支援的檔案類型：圖片，PDF，簡報，試算表，文字檔",
+    "uploadFilesHelper": "如果你有相關檔案，建議一起上傳為一個檔案包。上傳前請將你的檔案名稱清楚。",
+    "fileTypeNotAllowed": "只允許圖片和文件（PDF，演示文稿，試算表，文字文檔）"
   },
   "mentor": {
     "collapse": "摺疊",

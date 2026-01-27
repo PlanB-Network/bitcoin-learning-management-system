@@ -1484,7 +1484,8 @@
     "login": "Accedi",
     "educatorContent": "Contenuti educativi",
     "getStarted": "Inizia",
-    "signIn": "Accedi"
+    "signIn": "Accedi",
+    "verifyEmail": "Verifica email"
   },
   "movies": {
     "checkTheMovie": "Scopri il film"
@@ -1675,6 +1676,36 @@
         "conference": "Conferenza",
         "review": "Revisiona"
       }
+    },
+    "addResource": {
+      "errorSendingAddition": "Si è verificato un errore durante il tentativo di inviare la risorsa.",
+      "glossary": "Aggiungi parola al glossario",
+      "movie": "Aggiungi film",
+      "publicationYear": "Anno di pubblicazione",
+      "resourceLink": "Link alla risorsa",
+      "selectCategory": "Seleziona una categoria",
+      "success": "Risorsa inviata con successo! È stata creata una Pull Request su GitHub.",
+      "successSubtitle": "Hai richiesto con successo l'aggiunta di un nuovo {{type}}.",
+      "successTitle": "Aggiunta di {{type}} inviata!",
+      "titlePlaceholder": "Introduzione a Bitcoin",
+      "descriptionPlaceholder": "Descrivi il contenuto della risorsa per aiutare gli altri a capire il suo contenuto e a trovarlo",
+      "dropImage": "Clicca o trascina qui un'immagine (PNG, JPG, WebP)",
+      "selectLanguage": "Seleziona una lingua",
+      "selectYear": "Seleziona anno",
+      "socialProfiles": "Profili sociali",
+      "book": "Aggiungi libro",
+      "browse": "Sfoglia i file",
+      "channel": "Aggiungi canale YouTube",
+      "conference": "Aggiungi replay della conferenza",
+      "coverImage": "Immagine di copertina",
+      "done": "Fatto",
+      "newsletter": "Aggiungi newsletter",
+      "paper": "Aggiungi documento di ricerca",
+      "podcast": "Aggiungi podcast",
+      "project": "Aggiungi progetto",
+      "sendForReview": "Invia per revisione",
+      "sending": "Invio in corso...",
+      "trailerLink": "Link al trailer"
     }
   },
   "search": {
@@ -1727,9 +1758,14 @@
     "changeProfilePicture": "Cambia immagine del profilo",
     "addEmail": "Aggiungi email",
     "addEmailContinue": "Aggiungi email per continuare",
-    "emailSentDescription": "Verifica la tua email e ricarica questa pagina per continuare.",
+    "emailSentDescription": "Verifica la tua email facendo clic sul link inviato a {{email}}.\n\nDopo aver verificato la tua email, ricarica questa pagina per continuare.",
     "emailSentTitle": "Ti abbiamo inviato un'email",
-    "verifyEmail": "Verifica email"
+    "verifyEmail": "Verifica email",
+    "checkSpam": "(Se non lo vedi, controlla la tua cartella spam.)",
+    "verifyEmailClick": "Verifica la tua email cliccando sul link che hai ricevuto.",
+    "accountNeedsEmail": "Questo account ha bisogno di un indirizzo email per continuare.",
+    "emailSentSpam": "(Se non lo vedi, controlla la tua cartella spam.)",
+    "verifyEmailContinue": "Verifica l'email per continuare."
   },
   "tutorials": {
     "business": {
@@ -1995,7 +2031,11 @@
     "contribute": "Contribuisci",
     "contributors": "Contributor",
     "event": "Evento",
-    "oldest": "Più vecchio"
+    "oldest": "Più vecchio",
+    "link": "Link",
+    "published": "Pubblicato",
+    "default": "predefinito",
+    "host": "Ospite"
   },
   "youtubeChannels": {
     "view": "Vai al canale Youtube",
@@ -2065,7 +2105,8 @@
     "titleTooLong": "Il titolo non può superare i 60 caratteri",
     "detail": {
       "downloadAll": "Scarica tutto",
-      "view": "Visualizza"
+      "view": "Visualizza",
+      "addedBy": "Aggiunto da"
     },
     "dropCover": "Trascina qui l'immagine di copertina",
     "dropFiles": "Trascina qui i file",
@@ -2086,7 +2127,7 @@
     "shareLinks": "Condividi i link",
     "status": {
       "draft": "In attesa",
-      "published": "Dal vivo",
+      "published": "Pubblicato",
       "rejected": "Non accettato",
       "unpublished": "Non pubblicato"
     },
@@ -2163,8 +2204,19 @@
       "point3": "Carica solamente materiali che hanno diritti di condivisione.",
       "readFullGuide": "Leggi la guida completa",
       "subtitle": "Condividi le tue migliori risorse e aiuta gli educatori di Bitcoin in tutto il mondo",
-      "title": "Linee guida per l'aggiunta di nuovi contenuti"
-    }
+      "title": "Linee guida per l'aggiunta di nuovi contenuti",
+      "pageTitle": "Guida: Aggiungere Contenuti al Contenuto Educatore"
+    },
+    "fileTypeNotAllowed": "Sono consentiti solo immagini e documenti (PDF, presentazioni, fogli di calcolo, documenti di testo)",
+    "supportedFileTypes": "Tipi di file supportati: immagini, PDF, presentazioni, fogli di calcolo, documenti di testo",
+    "uploadFilesHelper": "Se hai file correlati, caricarli insieme come un unico pacchetto. Nominare chiaramente i tuoi file prima di caricarli.",
+    "license": {
+      "title": "Licenza",
+      "licensedByDefault": "Licenziato di default come CC BY-SA",
+      "learnMore": "Scopri di più sulle licenze",
+      "changeLicense": "Cambia licenza"
+    },
+    "imageTooLarge": "La dimensione dell'immagine non può superare 15MB"
   },
   "mentor": {
     "collapse": "Comprimi",

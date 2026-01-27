@@ -201,7 +201,8 @@
       "thanksTipping": "Du kan säga tack genom att ge läraren dricks.",
       "creditsCollaboration": "Denna kurs är resultatet av ett gemensamt arbete: varje lektion, översättning och revision möjliggörs av bidragsgivares insatser. Av denna anledning söker vi alltid efter korrekturläsare som kan granska vårt innehåll på många språk.\n\nOm du vill delta i korrekturläsningsprocessen, vänligen ta kontakt i vår <0>Telegram</0> grupp och läs vår <1>handledning</1>.\n\nHjälp till att sprida kunskap om Bitcoin:",
       "openSourceContentDescription": "Detta kursinnehåll är öppen källkod - licensierat under <0>CC BY-SA</0> - så det kan fritt delas och användas, så länge som den ursprungliga källan krediteras.",
-      "openSourceContentTitle": "Öppen källkods-innehåll"
+      "openSourceContentTitle": "Öppen källkods-innehåll",
+      "courseCoordinator": "Kurskoordinator"
     },
     "exam": {
       "answersReview": "Genomgång av svar",
@@ -478,7 +479,8 @@
           "owner": "Ägare",
           "type": "Typ",
           "uses": "Använd"
-        }
+        },
+        "showMore": "Visa fler koder"
       },
       "coursesIndexes": "Kursindexer",
       "date": "Datum",
@@ -876,7 +878,19 @@
         "class": "Klasser",
         "event": "Events"
       },
-      "personalCalendar": "Personlig kalender"
+      "personalCalendar": "Personlig kalender",
+      "downloadStep3": "Händelser uppdateras inte om datumen ändras",
+      "downloadTitle": "Eller ladda ner den aktuella kalendern",
+      "subscribeButton": "Kopiera synkad kalenderlänk",
+      "subscribeStep1": "Kopiera kalenderlänken",
+      "subscribeStep2": "Klistra in den i din kalender-apps \"Prenumerera\"-alternativ",
+      "subscribeStep3": "Händelser hålls automatiskt uppdaterade om något ändras",
+      "subscribeTitle": "Prenumerera på kalender (synkroniseras automatiskt)",
+      "downloadButton": "Ladda ner .ics-kalender och importera",
+      "downloadCalendar": "Ladda ner kalender",
+      "downloadCalendarTitle": "Ladda ner kalender",
+      "downloadStep1": "Ladda ner kalenderfilen",
+      "downloadStep2": "Öppna den med din kalender-app"
     },
     "careerPortal": {
       "acceptedFormat": "Accepterat filformat: pdf / Maximal filstorlek: 10 MB.",
@@ -1470,7 +1484,8 @@
     "login": "Logga in",
     "educatorContent": "Utbildningsinnehåll",
     "getStarted": "Kom igång",
-    "signIn": "Logga in"
+    "signIn": "Logga in",
+    "verifyEmail": "Verifiera e-post"
   },
   "notFound": {
     "here": "Här",
@@ -1658,6 +1673,36 @@
         "conference": "Konferens",
         "review": "Granska"
       }
+    },
+    "addResource": {
+      "book": "Lägg till bok",
+      "browse": "Bläddra i filer",
+      "channel": "Lägg till YouTube-kanal",
+      "conference": "Lägg till konferensåteruppspelning",
+      "coverImage": "Omslagsbild",
+      "descriptionPlaceholder": "Beskriv innehållet i resursen för att hjälpa andra att förstå dess innehåll och hitta den",
+      "done": "Klar",
+      "dropImage": "Klicka eller släpp en bild här (PNG, JPG, WebP)",
+      "errorSendingAddition": "Det uppstod ett fel vid försök att skicka resursen.",
+      "glossary": "Lägg till ord i ordlistan",
+      "movie": "Lägg till film",
+      "newsletter": "Lägg till nyhetsbrev",
+      "paper": "Lägg till forskningspapper",
+      "podcast": "Lägg till podcast",
+      "project": "Lägg till projekt",
+      "publicationYear": "Publiceringsår",
+      "resourceLink": "Resursslänk",
+      "selectCategory": "Välj en kategori",
+      "selectLanguage": "Välj ett språk",
+      "selectYear": "Välj år",
+      "sendForReview": "Skicka för granskning",
+      "sending": "Skickar...",
+      "socialProfiles": "Sociala profiler",
+      "success": "Resursen har framgångsrikt skickats in! En Pull Request har skapats på GitHub.",
+      "successSubtitle": "Du har framgångsrikt begärt tillägg av en ny {{type}}.",
+      "successTitle": "{{type}} tillägg skickat!",
+      "titlePlaceholder": "Bitcoin-intro",
+      "trailerLink": "Länk till trailer"
     }
   },
   "search": {
@@ -1709,10 +1754,15 @@
     "changePassword": "Ändra lösenord",
     "changeProfilePicture": "Ändra profilbild",
     "addEmailContinue": "Lägg till e-post för att fortsätta",
-    "emailSentDescription": "Verifiera din e-post och ladda om denna sida för att fortsätta.",
+    "emailSentDescription": "Verifiera din e-post genom att klicka på länken skickad till {{email}}.\n\nNär din e-post är verifierad, ladda om den här sidan för att fortsätta.",
     "emailSentTitle": "Vi har skickat ett e-postmeddelande till dig",
     "verifyEmail": "Verifiera e-post",
-    "addEmail": "Lägg till e-post"
+    "addEmail": "Lägg till e-post",
+    "accountNeedsEmail": "Det här kontot behöver en e-postadress för att fortsätta.",
+    "checkSpam": "(Om du inte ser det, kontrollera din skräppostmapp.)",
+    "emailSentSpam": "(Om du inte ser det, kontrollera din skräppostmapp.)",
+    "verifyEmailClick": "Verifiera din e-post genom att klicka på länken du mottog.",
+    "verifyEmailContinue": "Verifiera e-post för att fortsätta"
   },
   "tutorials": {
     "business": {
@@ -1978,7 +2028,11 @@
     "contribute": "Bidra",
     "oldest": "Äldsta",
     "event": "Event",
-    "contributors": "Användarhantering"
+    "contributors": "Användarhantering",
+    "host": "Värd",
+    "link": "Länk",
+    "published": "Publicerad",
+    "default": "standard"
   },
   "youtubeChannels": {
     "view": "Visa Youtube-kanal",
@@ -2071,7 +2125,8 @@
       "game": "Spel",
       "sticker": "Klistermärke",
       "other": "Annat",
-      "presentation": "Presentationer"
+      "presentation": "Presentationer",
+      "curriculum": "Läroplan"
     },
     "contentNotFound": "Innehållet hittades inte",
     "descriptionHelper": "Beskriv innehållet i resursen för att hjälpa andra att förstå dess innehåll och hitta den",
@@ -2080,7 +2135,7 @@
     "editAndRequireApproval": "Redigera och begär godkännande",
     "editMaterial": "Redigera pedagogiskt innehåll",
     "status": {
-      "published": "Live",
+      "published": "Publicerad",
       "rejected": "Ej accepterad",
       "unpublished": "Opublicerad",
       "draft": "Väntar"
@@ -2116,7 +2171,8 @@
     "descriptionTooLong": "Beskrivningen får inte överskrida 350 tecken",
     "detail": {
       "downloadAll": "Ladda ner alla",
-      "view": "Visa"
+      "view": "Visa",
+      "addedBy": "Tillagt av"
     },
     "uploadForReview": "Ladda upp för granskning",
     "uploading": "Laddar upp...",
@@ -2154,7 +2210,27 @@
     "sortBy": "Sortera efter",
     "languagePlaceholderFilter": "Språk",
     "typePlaceholder": "Typ",
-    "pageTitle": "Utbildningsinnehåll"
+    "pageTitle": "Utbildningsinnehåll",
+    "guidelines": {
+      "pageTitle": "Guide: Lägga till innehåll i lärarinnehåll",
+      "continueToAdd": "Fortsätt till Lägg till",
+      "point1": "Gruppera relaterade filer i buntar (t.ex. \"Lille Meetup Presentationer 2024\").",
+      "point2": "Tillskriv den ursprungliga skaparen om du delar innehåll som andra har gjort.",
+      "point3": "Ladda endast upp innehåll som du har rätt att dela.",
+      "readFullGuide": "Läs fullständig guide",
+      "subtitle": "Dela dina bästa resurser och hjälp Bitcoin-utbildare över hela världen",
+      "title": "Riktlinjer för att lägga till nytt innehåll"
+    },
+    "supportedFileTypes": "Stödda filtyper: bilder, PDF, presentationer, kalkylblad, textdokument",
+    "uploadFilesHelper": "Om du har relaterade filer, ladda upp dem tillsammans som ett paket. Namnge dina filer tydligt innan du laddar upp dem.",
+    "fileTypeNotAllowed": "Endast bilder och dokument (PDF, presentationer, kalkylblad, textdokument) är tillåtna",
+    "imageTooLarge": "Bildstorleken får inte överstiga 15MB",
+    "license": {
+      "changeLicense": "Ändra licens",
+      "learnMore": "Lär dig mer om licenser",
+      "licensedByDefault": "Licensierad som standard som CC BY-SA",
+      "title": "Licens"
+    }
   },
   "forms": {
     "browse": "Bläddra",

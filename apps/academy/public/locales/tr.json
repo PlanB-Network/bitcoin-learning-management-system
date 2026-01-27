@@ -201,7 +201,8 @@
       "thanksTipping": "Profesöre katkıda bulunarak teşekkür edebilirsiniz.",
       "creditsCollaboration": "Bu kurs, işbirliği içinde gerçekleştirilen bir çabanın sonucudur: her ders, çeviri ve revizyon katkıda bulunanların çalışması ile mümkün olmuştur. Bu yüzden her zaman içeriğimizi birçok dilde inceleyebilecek düzeltmenler arıyoruz.\n\nDüzeltme sürecine katılmak isterseniz, lütfen <0>Telegram</0> grubumuzla iletişime geçin ve <1>eğitimimizi</1> okuyun.\n\nBitcoin bilgisini yaymaya yardımcı olun:",
       "openSourceContentDescription": "Bu kurs içeriği açık kaynaklıdır - <0>CC BY-SA</0> altında lisanslanmıştır - bu yüzden orijinal kaynak belirtildiği sürece serbestçe paylaşılabilir ve kullanılabilir.",
-      "openSourceContentTitle": "Açık kaynaklı içerik"
+      "openSourceContentTitle": "Açık kaynaklı içerik",
+      "courseCoordinator": "Ders koordinatörü"
     },
     "exam": {
       "answersReview": "Cevapları gözden geçirme",
@@ -478,7 +479,8 @@
           "owner": "Sahibi",
           "type": "Tür",
           "uses": "Kullanılmış"
-        }
+        },
+        "showMore": "Daha fazla kod göster"
       },
       "coursesIndexes": "Ders indeksleri",
       "date": "Tarih",
@@ -876,7 +878,19 @@
         "class": "Dersler",
         "event": "Etkinlikler"
       },
-      "personalCalendar": "Kişisel takvim"
+      "personalCalendar": "Kişisel takvim",
+      "subscribeStep1": "Takvim bağlantısını kopyala",
+      "subscribeStep2": "Onu takvim uygulamanızın \"Abone Ol\" seçeneğine yapıştırın",
+      "subscribeStep3": "Bir şey değişirse etkinlikler otomatik olarak güncellenir",
+      "subscribeTitle": "Takvim aboneliği (otomatik senkronizasyon)",
+      "downloadButton": ".ics takvimini indirin ve içe aktarın",
+      "downloadCalendar": "Takvimi indir",
+      "downloadCalendarTitle": "Takvimi indir",
+      "downloadStep1": "Takvim dosyasını indir",
+      "downloadStep2": "Onu takvim uygulamanızla açın",
+      "downloadStep3": "Tarihler değişirse etkinlikler güncellenmez",
+      "downloadTitle": "Veya mevcut takvimi indirin",
+      "subscribeButton": "Senkronize takvim bağlantısını kopyala"
     },
     "careerPortal": {
       "acceptedFormat": "Kabul edilen dosya formatı: pdf / Maksimum dosya boyutu: 10 MB.",
@@ -1470,7 +1484,8 @@
     "login": "Giriş Yap",
     "educatorContent": "Eğitimci içeriği",
     "getStarted": "Başla",
-    "signIn": "Oturum aç"
+    "signIn": "Oturum aç",
+    "verifyEmail": "E-postayı doğrula"
   },
   "notFound": {
     "here": "Burada",
@@ -1658,6 +1673,36 @@
         "book": "Kitap",
         "review": "İnceleme"
       }
+    },
+    "addResource": {
+      "browse": "Dosyaları göz at",
+      "trailerLink": "Fragman bağlantısı",
+      "book": "Kitap ekle",
+      "channel": "YouTube kanalı ekle",
+      "conference": "Konferans tekrarını ekle",
+      "coverImage": "Kapak görseli",
+      "descriptionPlaceholder": "Kaynağın içeriğini açıkla, diğerlerinin içeriğini anlamasına ve bulmasına yardımcı ol.",
+      "done": "Tamamlandı",
+      "errorSendingAddition": "Kaynağı göndermeye çalışırken bir hata oldu.",
+      "glossary": "Terim ekleyin",
+      "movie": "Film ekle",
+      "success": "Kaynak başarıyla gönderildi! GitHub'da bir Çekme Talebi oluşturuldu.",
+      "successSubtitle": "Başarılı bir şekilde yeni bir {{type}} eklenmesini talep ettiniz.",
+      "successTitle": "{{type}} ekleme gönderildi!",
+      "titlePlaceholder": "Bitcoin girişi",
+      "dropImage": "Bir resim tıklayın veya buraya bırakın (PNG, JPG, WebP)",
+      "newsletter": "Bülten ekle",
+      "paper": "Araştırma makalesi ekle",
+      "podcast": "Podcast ekle",
+      "project": "Proje ekle",
+      "publicationYear": "Yayın yılı",
+      "resourceLink": "Kaynak linki",
+      "selectCategory": "Bir kategori seçin",
+      "selectLanguage": "Bir dil seçin",
+      "selectYear": "Bir yıl seçin",
+      "sendForReview": "İnceleme için gönder",
+      "sending": "Gönderiliyor...",
+      "socialProfiles": "Sosyal profiller"
     }
   },
   "search": {
@@ -1709,10 +1754,15 @@
     "changePassword": "Şifreyi değiştir",
     "changeProfilePicture": "Profil resmini değiştir",
     "addEmailContinue": "Devam etmek için e-posta ekleyin",
-    "emailSentDescription": "E-postanızı doğrulayın ve bu sayfayı yeniden yükleyerek devam edin.",
+    "emailSentDescription": "{{email}}'ye gönderilen linki tıklayarak e-postanızı doğrulayın.\n\nE-postanız doğrulandığında, devam etmek için bu sayfayı yeniden yükleyin.",
     "emailSentTitle": "Size bir e-posta gönderdik",
     "verifyEmail": "E-postayı doğrula",
-    "addEmail": "E-posta ekle"
+    "addEmail": "E-posta ekle",
+    "checkSpam": "(Görmüyorsanız, spam klasörünüzü kontrol edin.)",
+    "verifyEmailClick": "Aldığınız bağlantıya tıklayarak e-postanızı doğrulayın.",
+    "accountNeedsEmail": "Bu hesap devam etmek için bir e-posta adresine ihtiyaç duyar.",
+    "emailSentSpam": "(Görmüyorsanız, spam klasörünüzü kontrol edin.)",
+    "verifyEmailContinue": "Devam etmek için e-postayı doğrulayın."
   },
   "tutorials": {
     "business": {
@@ -1978,7 +2028,11 @@
     "event": "Etkinlik",
     "agenda": "Ajanda",
     "oldest": "En eski",
-    "contribute": "Katkıda bulunun"
+    "contribute": "Katkıda bulunun",
+    "published": "Yayınlandı",
+    "host": "Ev sahibi",
+    "link": "Bağlantı",
+    "default": "varsayılan"
   },
   "youtubeChannels": {
     "view": "Youtube Kanalını Görüntüle",
@@ -2056,7 +2110,8 @@
       "game": "Oyun",
       "workshop": "Atölye",
       "presentation": "Sunumlar",
-      "other": "Diğer"
+      "other": "Diğer",
+      "curriculum": "Müfredat"
     },
     "urlInvalid": "Link geçerli bir URL olmalı",
     "uploadFiles": "Dosya Yükle",
@@ -2069,7 +2124,8 @@
     "titleTooLong": "Başlık 60 karakteri aşamaz",
     "detail": {
       "downloadAll": "Tümünü indir",
-      "view": "Görünüm"
+      "view": "Görünüm",
+      "addedBy": "Ekleyen"
     },
     "dropCover": "Kapak görselini buraya sürükleyin",
     "dropFiles": "Dosyaları buraya sürükleyin",
@@ -2087,7 +2143,7 @@
     "shareLinks": "Bağlantıları Paylaş",
     "status": {
       "draft": "Beklemede",
-      "published": "Canlı",
+      "published": "Yayınlandı",
       "rejected": "Kabul Edilmedi",
       "unpublished": "Yayınlanmadı"
     },
@@ -2140,7 +2196,27 @@
     "sortMostDownloaded": "En Çok İndirilen",
     "sortMostRecent": "En Son",
     "titlePlaceholder": "örn. Çoklu imza atölyesi Liana",
-    "pageTitle": "Eğitimci içeriği"
+    "pageTitle": "Eğitimci içeriği",
+    "guidelines": {
+      "pageTitle": "Rehber: İçerik Ekleyici İçeriğe İçerik Ekleme",
+      "title": "Yeni içerik eklemek için yönergeler",
+      "continueToAdd": "Ekleme işlemine devam et",
+      "point1": "İlgili dosyaları paketler halinde gruplandırın (örneğin, \"Lille Meetup Sunumları 2024\").",
+      "point2": "Başkaları tarafından yapılan içerikleri paylaşırken orijinal yaratıcıya kredi verin.",
+      "point3": "Paylaşma hakkına sahip olduğunuz içeriği yükleyin.",
+      "readFullGuide": "Tam kılavuzu oku",
+      "subtitle": "En iyi kaynaklarınızı paylaşın ve dünya genelindeki Bitcoin eğitimcilerine yardımcı olun"
+    },
+    "license": {
+      "learnMore": "Lisanslar hakkında daha fazla bilgi edinin",
+      "licensedByDefault": "Varsayılan olarak CC BY-SA lisanslı",
+      "title": "Lisans",
+      "changeLicense": "Lisansı değiştir"
+    },
+    "uploadFilesHelper": "İlgili dosyalarınız varsa, bunları bir paket olarak yükleyin. Dosyalarınızı yüklemadan önce açıkça adlandırın.",
+    "fileTypeNotAllowed": "Sadece görseller ve belgeler (PDF, sunumlar, hesaplama tabloları, metin belgeleri) izin verilmiştir",
+    "supportedFileTypes": "Desteklenen dosya türleri: görseller, PDF, sunumlar, hesaplama tabloları, metin belgeleri",
+    "imageTooLarge": "Görsel boyutu 15MB'ı aşamaz"
   },
   "becomeTeacher": {
     "activeBitcoinLearners": "Aktif Bitcoin öğrenenler",

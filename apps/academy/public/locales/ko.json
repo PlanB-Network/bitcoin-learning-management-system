@@ -201,7 +201,8 @@
       "thanksTipping": "강사에게 팁을 주며 감사의 뜻을 전할 수 있습니다.",
       "creditsCollaboration": "이 과정은 협력적 노력의 결과입니다: 각각의 수업, 번역, 그리고 수정은 기여자들의 작업으로 가능해집니다. 이를 위해, 우리는 항상 많은 언어로 우리의 내용을 검토할 수 있는 교정자를 찾고 있습니다.\n\n교정 과정에 참여하고 싶다면, 우리의 <0>텔레그램</0> 그룹에 참여하고, 우리의 <1>튜토리얼</1>을 읽어보세요.\n\n비트코인 지식 전파를 돕습니다:",
       "openSourceContentDescription": "이 과정 내용은 오픈소스 - <0>CC BY-SA</0>에 따라 라이선스가 부여됨 - 따라서 원본 출처만 인정한다면 자유롭게 공유하고 사용할 수 있습니다.",
-      "openSourceContentTitle": "오픈소스 컨텐츠"
+      "openSourceContentTitle": "오픈소스 컨텐츠",
+      "courseCoordinator": "과정 코디네이터"
     },
     "exam": {
       "answersReview": "답변 검토",
@@ -478,7 +479,8 @@
           "owner": "소유자",
           "type": "유형",
           "uses": "사용된"
-        }
+        },
+        "showMore": "더 많은 코드 표시"
       },
       "coursesIndexes": "코스 인덱스",
       "date": "날짜",
@@ -876,7 +878,19 @@
         "class": "수업",
         "event": "행사"
       },
-      "personalCalendar": "개인 캘린더"
+      "personalCalendar": "개인 캘린더",
+      "subscribeStep2": "캘린더 앱의 \"구독\" 옵션에 붙여넣기",
+      "subscribeStep3": "변경 사항이 있으면 이벤트가 자동으로 업데이트됩니다",
+      "subscribeTitle": "캘린더 구독(자동 동기화)",
+      "downloadButton": ".ics 캘린더를 다운로드하고 가져오기",
+      "downloadCalendar": "캘린더 다운로드",
+      "downloadCalendarTitle": "캘린더 다운로드",
+      "downloadStep1": "캘린더 파일 다운로드",
+      "downloadStep2": "캘린더 앱으로 열기",
+      "downloadStep3": "날짜가 변경되면 이벤트가 업데이트되지 않습니다",
+      "downloadTitle": "또는 현재 캘린더를 다운로드하십시오",
+      "subscribeButton": "동기화된 캘린더 링크 복사",
+      "subscribeStep1": "캘린더 링크 복사"
     },
     "careerPortal": {
       "acceptedFormat": "파일 형식: pdf / 최대 파일 크기: 10 MB.",
@@ -1470,7 +1484,8 @@
     "login": "로그인",
     "educatorContent": "교육자 콘텐츠",
     "getStarted": "시작하기",
-    "signIn": "로그인"
+    "signIn": "로그인",
+    "verifyEmail": "이메일 인증"
   },
   "movies": {
     "checkTheMovie": "영상을 확인하십시오"
@@ -1661,6 +1676,36 @@
       "publisher": "출판사",
       "showMorePapers": "더 많은 논문 보기",
       "title": "연구 논문"
+    },
+    "addResource": {
+      "book": "책 추가",
+      "movie": "영화 추가",
+      "browse": "파일 탐색",
+      "channel": "YouTube 채널 추가",
+      "conference": "컨퍼런스 재생 추가",
+      "coverImage": "커버 이미지",
+      "descriptionPlaceholder": "자원 콘텐츠를 설명하여 다른 사람들이 내용을 이해하고 찾을 수 있도록 도와주세요.",
+      "done": "완료",
+      "dropImage": "여기에 이미지를 클릭하거나 드롭하세요 (PNG, JPG, WebP)",
+      "errorSendingAddition": "리소스를 보내려고하는 도중에 오류가 발생했습니다.",
+      "glossary": "용어집 단어 추가",
+      "newsletter": "뉴스레터 추가",
+      "paper": "연구 논문 추가",
+      "podcast": "팟캐스트 추가",
+      "project": "프로젝트 추가",
+      "publicationYear": "출판 연도",
+      "resourceLink": "자원 링크",
+      "selectCategory": "카테고리 선택",
+      "selectLanguage": "언어 선택",
+      "selectYear": "연도 선택",
+      "sendForReview": "리뷰 보내기",
+      "sending": "보내는 중...",
+      "socialProfiles": "소셜 프로필",
+      "success": "리소스가 성공적으로 제출되었습니다! GitHub에 Pull Request가 생성되었습니다.",
+      "successSubtitle": "새로운 {{type}}의 추가를 성공적으로 요청하셨습니다.",
+      "successTitle": "{{type}} 추가가 전송되었습니다!",
+      "titlePlaceholder": "비트코인 소개",
+      "trailerLink": "트레일러 링크"
     }
   },
   "search": {
@@ -1712,10 +1757,15 @@
     "changePassword": "비밀번호 변경",
     "changeProfilePicture": "프로필 사진 변경",
     "addEmailContinue": "계속하려면 이메일 추가",
-    "emailSentDescription": "이메일을 인증하고 이 페이지를 다시 로드하여 계속하세요.",
+    "emailSentDescription": "{{email}}로 보내진 링크를 클릭하여 이메일을 인증하세요.\n\n이메일 인증이 완료되면 이 페이지를 새로 고치고 계속하세요.",
     "emailSentTitle": "이메일을 보냈습니다",
     "verifyEmail": "이메일 인증",
-    "addEmail": "이메일 추가"
+    "addEmail": "이메일 추가",
+    "accountNeedsEmail": "이 계정은 계속하기 위해 이메일 주소가 필요합니다.",
+    "checkSpam": "(볼 수 없다면, 스팸 폴더를 확인해보세요.)",
+    "emailSentSpam": "(볼 수 없다면, 스팸 폴더를 확인해보세요.)",
+    "verifyEmailClick": "받은 링크를 클릭하여 이메일을 인증하세요.",
+    "verifyEmailContinue": "이메일을 인증하여 계속하세요."
   },
   "tutorials": {
     "business": {
@@ -1981,7 +2031,11 @@
     "contribute": "기여하다",
     "oldest": "가장 오래된",
     "agenda": "일정",
-    "contributors": "참여자"
+    "contributors": "참여자",
+    "link": "링크",
+    "default": "기본",
+    "host": "호스트",
+    "published": "게시됨"
   },
   "youtubeChannels": {
     "view": "유튜브 채널 보기",
@@ -2056,12 +2110,14 @@
       "art": "예술",
       "booklet": "소책자",
       "flyer": "전단지",
-      "game": "게임"
+      "game": "게임",
+      "curriculum": "커리큘럼"
     },
     "languagePlaceholder": "선택",
     "detail": {
       "view": "보기",
-      "downloadAll": "모두 다운로드"
+      "downloadAll": "모두 다운로드",
+      "addedBy": "추가한 사람"
     },
     "urlInvalid": "링크는 유효한 URL이어야 합니다",
     "uploadFiles": "파일 업로드",
@@ -2099,7 +2155,7 @@
     "shareLinks": "링크 공유",
     "status": {
       "draft": "대기 중",
-      "published": "라이브",
+      "published": "게시됨",
       "rejected": "받아들여지지 않음",
       "unpublished": "발행되지 않음"
     },
@@ -2140,7 +2196,27 @@
     "maxFileSize": "최대 파일 크기: 50MB",
     "pageSubtitle": "비트코인 교육자와 커뮤니티가 자료를 공유하고 재사용하는 곳",
     "pageTitle": "교육자 콘텐츠",
-    "sortBy": "정렬 방식"
+    "sortBy": "정렬 방식",
+    "guidelines": {
+      "point1": "관련 파일을 번들(예: \"2024년 릴 모임 프레젠테이션\")로 묶습니다.",
+      "point2": "다른 사람이 만든 콘텐츠를 공유할 때 원작자에게 크레딧을 주세요.",
+      "pageTitle": "가이드: 교육자 콘텐츠에 콘텐츠 추가하기",
+      "continueToAdd": "추가로 계속하기",
+      "point3": "공유할 권리가 있는 콘텐츠만 업로드하세요.",
+      "readFullGuide": "전체 가이드 읽기",
+      "subtitle": "최고의 자료를 공유하고 전 세계의 비트코인 교육자들에게 도움을 주세요.",
+      "title": "새로운 콘텐츠를 추가하는 가이드라인"
+    },
+    "imageTooLarge": "이미지 크기는 15MB를 초과할 수 없습니다.",
+    "license": {
+      "title": "라이선스",
+      "licensedByDefault": "기본적으로 CC BY-SA로 라이선스가 부여됩니다.",
+      "learnMore": "라이선스에 대해 더 알아보기",
+      "changeLicense": "라이선스 변경"
+    },
+    "supportedFileTypes": "지원하는 파일 유형: 이미지, PDF, 프리젠테이션, 스프레드시트, 텍스트 문서",
+    "fileTypeNotAllowed": "이미지 및 문서(PDF, 프리젠테이션, 스프레드시트, 텍스트 문서)만 허용됩니다.",
+    "uploadFilesHelper": "관련 파일이 있으면 하나의 번들로 함께 업로드하세요. 업로드하기 전에 파일 이름을 명확하게 지정하세요."
   },
   "mentor": {
     "close": "닫기",

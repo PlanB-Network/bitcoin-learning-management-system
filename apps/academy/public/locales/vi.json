@@ -201,7 +201,8 @@
       "thanksTipping": "Bạn có thể nói lời cảm ơn bằng cách thưởng cho giáo sư.",
       "creditsCollaboration": "Khoá học này là kết quả của sự cộng tác: mỗi bài học, bản dịch và bản sửa đổi đều được thực hiện nhờ công việc của các người đóng góp. Vì lý do này, chúng tôi luôn tìm kiếm những người chỉnh sửa có thể xem lại nội dung của chúng tôi bằng nhiều ngôn ngữ.\n\nNếu bạn muốn tham gia vào quá trình chỉnh sửa, vui lòng liên hệ với nhóm <0>Telegram</0> của chúng tôi và đọc <1>hướng dẫn</1> của chúng tôi.\n\nHãy giúp lan tỏa kiến thức về Bitcoin:",
       "openSourceContentDescription": "Nội dung khoá học này là mã nguồn mở - được cấp phép theo <0>CC BY-SA</0> - vì vậy nó có thể được chia sẻ và sử dụng tự do, miễn là ghi rõ nguồn gốc ban đầu.",
-      "openSourceContentTitle": "Nội dung mã nguồn mở"
+      "openSourceContentTitle": "Nội dung mã nguồn mở",
+      "courseCoordinator": "Người điều phối khóa học"
     },
     "exam": {
       "answersReview": "Trả lời nhận xét",
@@ -478,7 +479,8 @@
           "owner": "Chủ sở hữu",
           "type": "Loại",
           "uses": "Đã sử dụng"
-        }
+        },
+        "showMore": "Hiển thị thêm mã"
       },
       "coursesIndexes": "Chỉ mục khóa học",
       "date": "Thời gian",
@@ -876,7 +878,19 @@
         "class": "Các lớp",
         "event": "Sự kiện"
       },
-      "personalCalendar": "Lịch cá nhân"
+      "personalCalendar": "Lịch cá nhân",
+      "subscribeTitle": "Đăng ký lịch (đồng bộ tự động)",
+      "downloadButton": "Tải lịch .ics và nhập",
+      "downloadCalendar": "Tải lịch",
+      "downloadCalendarTitle": "Tải lịch",
+      "downloadStep1": "Tải file lịch",
+      "downloadStep2": "Mở nó với ứng dụng lịch của bạn",
+      "downloadStep3": "Sự kiện sẽ không cập nhật nếu ngày thay đổi",
+      "downloadTitle": "Hoặc tải lịch hiện tại",
+      "subscribeButton": "Copy liên kết lịch đã đồng bộ",
+      "subscribeStep1": "Copy liên kết lịch",
+      "subscribeStep2": "Dán nó vào tùy chọn \"Đăng ký\" của ứng dụng lịch của bạn",
+      "subscribeStep3": "Sự kiện sẽ tự động cập nhật nếu có bất kỳ thay đổi nào"
     },
     "careerPortal": {
       "acceptedFormat": "Định dạng file được chấp nhận: pdf / Độ lớn tối đa: 10 MB.",
@@ -1470,7 +1484,8 @@
     "login": "Đăng nhập",
     "educatorContent": "Nội dung giáo dục",
     "getStarted": "Bắt đầu",
-    "signIn": "Đăng nhập"
+    "signIn": "Đăng nhập",
+    "verifyEmail": "Xác minh email"
   },
   "notFound": {
     "here": "Tại đây",
@@ -1658,6 +1673,36 @@
         "conference": "Hội nghị",
         "review": "Đánh giá"
       }
+    },
+    "addResource": {
+      "successSubtitle": "Bạn đã yêu cầu thành công thêm một {{type}} mới.",
+      "successTitle": "Đã gửi thành công bổ sung {{type}}!",
+      "titlePlaceholder": "Giới thiệu về Bitcoin",
+      "trailerLink": "Liên kết trailer",
+      "book": "Thêm sách",
+      "browse": "Duyệt tệp",
+      "channel": "Thêm kênh YouTube",
+      "errorSendingAddition": "Đã xảy ra lỗi khi cố gửi tài nguyên.",
+      "publicationYear": "Năm xuất bản",
+      "resourceLink": "Liên kết tài nguyên",
+      "selectCategory": "Chọn một danh mục",
+      "conference": "Thêm video hội nghị đã phát lại",
+      "coverImage": "Hình ảnh bìa",
+      "descriptionPlaceholder": "Mô tả nội dung tài nguyên để giúp người khác hiểu và tìm được nó",
+      "done": "Hoàn thành",
+      "dropImage": "Nhấp hoặc thả một hình ảnh vào đây (PNG, JPG, WebP)",
+      "glossary": "Thêm từ vựng",
+      "movie": "Thêm phim",
+      "newsletter": "Thêm bản tin",
+      "paper": "Thêm bài báo nghiên cứu",
+      "podcast": "Thêm podcast",
+      "project": "Thêm dự án",
+      "selectLanguage": "Chọn một ngôn ngữ",
+      "selectYear": "Chọn năm",
+      "sendForReview": "Gửi để xem xét",
+      "sending": "Đang gửi...",
+      "socialProfiles": "Hồ sơ xã hội",
+      "success": "Đã gửi tài nguyên thành công! Một Pull Request đã được tạo trên GitHub."
     }
   },
   "search": {
@@ -1709,10 +1754,15 @@
     "changePassword": "Thay đổi mật khẩu",
     "changeProfilePicture": "Thay đổi hình ảnh hồ sơ",
     "addEmailContinue": "Thêm email để tiếp tục",
-    "emailSentDescription": "Xác minh email của bạn và tải lại trang này để tiếp tục.",
+    "emailSentDescription": "Xác minh email của bạn bằng cách nhấp vào liên kết đã gửi tới {{email}}.\n\nSau khi email của bạn được xác minh, tải lại trang này để tiếp tục.",
     "emailSentTitle": "Chúng tôi đã gửi cho bạn một email",
     "verifyEmail": "Xác minh email",
-    "addEmail": "Thêm email"
+    "addEmail": "Thêm email",
+    "checkSpam": "(Nếu bạn không thấy, hãy kiểm tra thư mục spam của bạn.)",
+    "verifyEmailClick": "Xác nhận email của bạn bằng cách nhấp vào liên kết bạn đã nhận được.",
+    "accountNeedsEmail": "Tài khoản này cần một địa chỉ email để tiếp tục.",
+    "emailSentSpam": "(Nếu bạn không thấy, hãy kiểm tra thư mục spam của bạn.)",
+    "verifyEmailContinue": "Xác nhận email để tiếp tục"
   },
   "tutorials": {
     "business": {
@@ -1978,7 +2028,11 @@
     "oldest": "Cũ nhất",
     "agenda": "Chương trình",
     "contribute": "Đóng góp",
-    "contributors": "Những người đóng góp"
+    "contributors": "Những người đóng góp",
+    "published": "Đã xuất bản",
+    "default": "mặc định",
+    "host": "Chủ trì",
+    "link": "Liên kết"
   },
   "youtubeChannels": {
     "view": "Xem kênh Youtube",
@@ -2071,7 +2125,8 @@
       "workshop": "Phân xưởng",
       "art": "Nghệ thuật",
       "other": "Khác",
-      "presentation": "Bài thuyết trình"
+      "presentation": "Bài thuyết trình",
+      "curriculum": "Chương trình học"
     },
     "uploadFiles": "Tải lên tập tin",
     "uploadForReview": "Tải lên để xem xét",
@@ -2080,7 +2135,8 @@
     "browseImages": "hoặc duyệt qua các hình ảnh",
     "detail": {
       "downloadAll": "Tải xuống tất cả",
-      "view": "Xem"
+      "view": "Xem",
+      "addedBy": "Được thêm bởi"
     },
     "languageRequired": "Chọn ngôn ngữ nguồn",
     "myContent": "Nội dung của tôi",
@@ -2103,7 +2159,7 @@
     "shareLinks": "Chia sẻ liên kết",
     "status": {
       "draft": "Đang chờ",
-      "published": "Trực tuyến",
+      "published": "Đã xuất bản",
       "rejected": "Không được chấp nhận",
       "unpublished": "Chưa được xuất bản"
     },
@@ -2154,7 +2210,27 @@
     "pageSubtitle": "Nơi các nhà giáo dục Bitcoin và cộng đồng chia sẻ và tái sử dụng tài nguyên",
     "titlePlaceholder": "ví dụ: Hội thảo chữ ký đa Liana",
     "sortBy": "Sắp xếp theo",
-    "pageTitle": "Nội dung giáo dục"
+    "pageTitle": "Nội dung giáo dục",
+    "imageTooLarge": "Kích thước hình ảnh không được vượt quá 15MB",
+    "license": {
+      "learnMore": "Tìm hiểu thêm về giấy phép",
+      "licensedByDefault": "Mặc định được cấp phép theo CC BY-SA",
+      "title": "Giấy phép",
+      "changeLicense": "Thay đổi giấy phép"
+    },
+    "guidelines": {
+      "continueToAdd": "Tiếp tục Thêm vào",
+      "point1": "Nhóm các tệp liên quan thành gói (ví dụ: \"Bài thuyết trình Meetup Lille 2024\").",
+      "pageTitle": "Hướng dẫn: Thêm Nội dung vào Nội dung Giáo dục",
+      "point2": "Hãy ghi công cho người sáng tạo gốc nếu bạn chia sẻ nội dung do người khác tạo ra.",
+      "point3": "Chỉ tải lên nội dung bạn có quyền chia sẻ.",
+      "readFullGuide": "Đọc hướng dẫn đầy đủ",
+      "subtitle": "Chia sẻ những nguồn học tốt nhất của bạn và hỗ trợ giáo viên Bitcoin trên toàn thế giới",
+      "title": "Nguyên tắc khi thêm nội dung mới"
+    },
+    "supportedFileTypes": "Các loại tệp được hỗ trợ: hình ảnh, PDF, bài thuyết trình, bảng tính, tài liệu văn bản",
+    "uploadFilesHelper": "Nếu bạn có các tệp liên quan, hãy tải chúng lên cùng một lúc dưới dạng một gói. Đặt tên cho các tệp của bạn một cách rõ ràng trước khi tải lên.",
+    "fileTypeNotAllowed": "Chỉ chấp nhận hình ảnh và tài liệu (PDF, bài thuyết trình, bảng tính, tài liệu văn bản)"
   },
   "mentor": {
     "collapse": "Thu gọn",

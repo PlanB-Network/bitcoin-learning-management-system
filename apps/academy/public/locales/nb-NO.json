@@ -201,7 +201,8 @@
       "thanksTipping": "Du kan si takk ved å gi professoren et tips.",
       "creditsCollaboration": "Dette kurset er resultatet av et samarbeid: hver leksjon, oversettelse og revisjon er muliggjort av bidragsytere. Av denne grunn er vi alltid på jakt etter korrekturlesere som kan gjennomgå innholdet vårt på mange språk.\n\nHvis du vil delta i korrekturlesingsprosessen, kan du kontakte oss i vår <0>Telegram</0> gruppe og lese vår <1>opplæring</1>.\n\nHjelp med å spre kunnskap om Bitcoin:",
       "openSourceContentDescription": "Dette kursinnholdet er åpen kildekode - lisensiert under <0>CC BY-SA</0> - slik at det kan deles og brukes fritt, så lenge originalkilden blir kreditert.",
-      "openSourceContentTitle": "Åpen kildekode-innhold"
+      "openSourceContentTitle": "Åpen kildekode-innhold",
+      "courseCoordinator": "Kurskoordinator"
     },
     "exam": {
       "answersReview": "Svar gjennomgang",
@@ -478,7 +479,8 @@
           "owner": "Eier",
           "type": "Skriv",
           "uses": "Brukt"
-        }
+        },
+        "showMore": "Vis flere koder"
       },
       "coursesIndexes": "Kursindekser",
       "date": "Dato",
@@ -876,7 +878,19 @@
         "class": "Klasser",
         "event": "Arrangementer"
       },
-      "personalCalendar": "Personlig kalender"
+      "personalCalendar": "Personlig kalender",
+      "subscribeTitle": "Abonner på kalender (automatisk synk)",
+      "downloadButton": "Last ned .ics-kalender og importer",
+      "downloadCalendar": "Last ned kalender",
+      "downloadCalendarTitle": "Last ned kalender",
+      "downloadStep1": "Last ned kalenderfilen",
+      "downloadStep2": "Åpne den med kalenderappen din",
+      "downloadStep3": "Hendelser oppdateres ikke hvis datoene endres",
+      "downloadTitle": "Eller last ned den nåværende kalenderen",
+      "subscribeButton": "Kopier synkronisert kalenderlenke",
+      "subscribeStep1": "Kopier kalenderlenken",
+      "subscribeStep2": "Lim den inn i kalenderappens \"Abonner\"-alternativ",
+      "subscribeStep3": "Hendelser oppdateres automatisk hvis noe endres"
     },
     "careerPortal": {
       "acceptedFormat": "Akseptert filformat: pdf / Maksimal filstørrelse: 10 MB.",
@@ -1470,7 +1484,8 @@
     "login": "Logg inn",
     "educatorContent": "Lærerinnhold",
     "getStarted": "Kom i gang",
-    "signIn": "Logg inn"
+    "signIn": "Logg inn",
+    "verifyEmail": "Bekreft e-post"
   },
   "movies": {
     "checkTheMovie": "Se filmen"
@@ -1661,6 +1676,36 @@
       "papers": "Papirer",
       "showMorePapers": "Vis flere papirer",
       "title": "Forskningspapirer"
+    },
+    "addResource": {
+      "socialProfiles": "Sosiale profiler",
+      "success": "Ressursen ble vellykket sendt inn! En Pull Request har blitt opprettet på GitHub.",
+      "successSubtitle": "Du har vellykket forespurt om å legge til en ny {{type}}.",
+      "coverImage": "Omslagsbilde",
+      "descriptionPlaceholder": "Beskriv innholdet i ressursen for å hjelpe andre med å forstå innholdet og finne det",
+      "done": "Ferdig",
+      "dropImage": "Klikk eller slipp et bilde her (PNG, JPG, WebP)",
+      "errorSendingAddition": "Det oppstod en feil under forsøk på å sende ressursen.",
+      "glossary": "Legg til ord i ordliste",
+      "movie": "Legg til film",
+      "newsletter": "Legg til nyhetsbrev",
+      "paper": "Legg til forskningsartikkel",
+      "podcast": "Legg til podcast",
+      "project": "Legg til prosjekt",
+      "publicationYear": "Publiseringsår",
+      "resourceLink": "Ressurslenke",
+      "selectCategory": "Velg en kategori",
+      "selectLanguage": "Velg et språk",
+      "selectYear": "Velg år",
+      "sendForReview": "Send til gjennomgang",
+      "sending": "Sender...",
+      "successTitle": "{{type}} tillegg sendt!",
+      "titlePlaceholder": "Bitcoin intro",
+      "trailerLink": "Trailerlenke",
+      "book": "Legg til bok",
+      "browse": "Bla gjennom filer",
+      "channel": "Legg til YouTube-kanal",
+      "conference": "Legg til konferanse opptak"
     }
   },
   "search": {
@@ -1712,10 +1757,15 @@
     "changePassword": "Endre passord",
     "changeProfilePicture": "Endre profilbilde",
     "addEmailContinue": "Legg til e-post for å fortsette",
-    "emailSentDescription": "Bekreft e-posten din og oppdater denne siden for å fortsette.",
+    "emailSentDescription": "Verifiser e-postadressen din ved å klikke på lenken som er sendt til {{email}}.\n\nNår e-postadressen din er verifisert, last inn denne siden på nytt for å fortsette.",
     "emailSentTitle": "Vi har sendt deg en e-post",
     "verifyEmail": "Bekreft e-post",
-    "addEmail": "Legg til e-post"
+    "addEmail": "Legg til e-post",
+    "accountNeedsEmail": "Denne kontoen trenger en e-postadresse for å fortsette.",
+    "checkSpam": "(Hvis du ikke ser den, sjekk søppelpostmappen din.)",
+    "emailSentSpam": "(Hvis du ikke ser den, sjekk søppelpostmappen din.)",
+    "verifyEmailClick": "Verifiser e-posten din ved å klikke på lenken du mottok.",
+    "verifyEmailContinue": "Verifiser e-post for å fortsette"
   },
   "tutorials": {
     "business": {
@@ -1981,7 +2031,11 @@
     "oldest": "Eldst",
     "agenda": "Agenda",
     "event": "Arrangementer",
-    "contributors": "Bidragsytere"
+    "contributors": "Bidragsytere",
+    "default": "standard",
+    "host": "Vert",
+    "link": "Lenke",
+    "published": "Publisert"
   },
   "youtubeChannels": {
     "view": "Se på Youtube-kanalen",
@@ -2056,7 +2110,8 @@
       "presentation": "Presentasjon",
       "sticker": "Klistremerke",
       "workshop": "Verksted",
-      "other": "Annet"
+      "other": "Annet",
+      "curriculum": "Læreplan"
     },
     "uploading": "Laster opp...",
     "contentNotFound": "Innhold ikke funnet",
@@ -2065,7 +2120,8 @@
     "titleTooLong": "Tittelen kan ikke overstige 60 tegn",
     "detail": {
       "downloadAll": "Last ned alt",
-      "view": "Visning"
+      "view": "Visning",
+      "addedBy": "Lagt til av"
     },
     "dropCover": "Slipp omslagsbilde her",
     "dropFiles": "Slipp filer her",
@@ -2085,7 +2141,7 @@
     "shareLinks": "Del lenker",
     "status": {
       "draft": "Venter",
-      "published": "Live",
+      "published": "Publisert",
       "rejected": "Ikke akseptert",
       "unpublished": "Upublisert"
     },
@@ -2140,7 +2196,27 @@
     "typePlaceholder": "Skriv",
     "languagePlaceholderFilter": "Språk",
     "pageTitle": "Lærerinnhold",
-    "sortBy": "Sorter etter"
+    "sortBy": "Sorter etter",
+    "guidelines": {
+      "pageTitle": "Guide: Legg til innhold i utdanningsmaterialet",
+      "continueToAdd": "Fortsett å legge til",
+      "point1": "Grupper relaterte filer i bunter (f.eks. \"Lille Meetup Presentations 2024\").",
+      "point2": "Gi kreditt til den opprinnelige skaperen hvis du deler innhold laget av andre.",
+      "point3": "Last kun opp innhold du har rett til å dele.",
+      "readFullGuide": "Les full veiledning",
+      "subtitle": "Del dine beste ressurser og hjelp Bitcoin-utdannere verden over",
+      "title": "Retningslinjer for å legge til nytt innhold"
+    },
+    "uploadFilesHelper": "Hvis du har relaterte filer, last dem opp sammen som en pakke. Navngi filene dine tydelig før du laster dem opp.",
+    "fileTypeNotAllowed": "Bare bilder og dokumenter (PDF, presentasjoner, regneark, tekstdokumenter) er tillatt",
+    "supportedFileTypes": "Støttede filtyper: bilder, PDF, presentasjoner, regneark, tekstdokumenter",
+    "license": {
+      "title": "Lisens",
+      "licensedByDefault": "Lisensiert som standard som CC BY-SA",
+      "learnMore": "Lær mer om lisenser",
+      "changeLicense": "Endre lisens"
+    },
+    "imageTooLarge": "Bildestørrelsen kan ikke overstige 15MB"
   },
   "forms": {
     "replace": "Erstatt",

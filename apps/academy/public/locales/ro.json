@@ -479,7 +479,8 @@
           "owner": "Proprietar",
           "type": "Tip",
           "uses": "Folosit"
-        }
+        },
+        "showMore": "Arătați mai multe coduri"
       },
       "coursesIndexes": "Indici cursuri",
       "date": "Dată",
@@ -877,7 +878,19 @@
         "class": "Clase",
         "event": "Evenimente"
       },
-      "personalCalendar": "Calendar personal"
+      "personalCalendar": "Calendar personal",
+      "downloadButton": "Descărcați calendarul .ics și importați",
+      "downloadCalendar": "Descarcă calendarul",
+      "downloadCalendarTitle": "Descarcă calendarul",
+      "downloadStep1": "Descărcați fișierul de calendar",
+      "downloadStep2": "Deschideți-l cu aplicația dvs. de calendar",
+      "downloadStep3": "Evenimentele nu se vor actualiza dacă datele se modifică",
+      "downloadTitle": "Sau descărcați calendarul curent",
+      "subscribeButton": "Copiați linkul de sincronizare al calendarului",
+      "subscribeStep1": "Copiați linkul de calendar",
+      "subscribeStep2": "Lipiți-l în opțiunea „Abonare” a aplicației dvs. de calendar",
+      "subscribeStep3": "Evenimentele se actualizează automat dacă ceva se modifică",
+      "subscribeTitle": "Abonați-vă la calendar (sincronizare automată)"
     },
     "careerPortal": {
       "acceptedFormat": "Format de file acceptat: pdf / Dimensiunea maximă a fișierului: 10 MB.",
@@ -1471,7 +1484,8 @@
     "login": "Autentificare",
     "educatorContent": "Conținut pentru educatori",
     "getStarted": "Începe",
-    "signIn": "Conectează-te"
+    "signIn": "Conectează-te",
+    "verifyEmail": "Verifică email"
   },
   "notFound": {
     "here": "Aici",
@@ -1659,6 +1673,36 @@
       "publisher": "Editor",
       "showMorePapers": "Arată mai multe documente",
       "title": "Articole de cercetare"
+    },
+    "addResource": {
+      "glossary": "Adăugați cuvântul din glosar",
+      "paper": "Adăugați lucrarea de cercetare",
+      "podcast": "Adăugați podcastul",
+      "project": "Adăugați proiectul",
+      "publicationYear": "Anul publicării",
+      "resourceLink": "Linkul resursei",
+      "sendForReview": "Trimiteți pentru revizuire",
+      "titlePlaceholder": "Introducere Bitcoin",
+      "book": "Adăugați o carte",
+      "browse": "Răsfoiește fișierele",
+      "channel": "Adăugați un canal YouTube",
+      "conference": "Adaugă redarea unei conferințe",
+      "coverImage": "Imagine de copertă",
+      "descriptionPlaceholder": "Descrie conținutul resursei pentru a ajuta pe alții să îl înțeleagă și să îl găsească",
+      "done": "Gata",
+      "dropImage": "Click sau trage o imagine aici (PNG, JPG, WebP)",
+      "errorSendingAddition": "A survenit o eroare în timpul încercării de a trimite resursa.",
+      "movie": "Adăugați filmul",
+      "newsletter": "Adăugați buletinul informativ",
+      "selectCategory": "Selectați o categorie",
+      "selectLanguage": "Selectați o limbă",
+      "selectYear": "Selectați anul",
+      "sending": "Se trimite...",
+      "socialProfiles": "Profiluri sociale",
+      "success": "Resursa a fost trimisă cu succes! O solicitare de extragere a fost creată pe GitHub.",
+      "successSubtitle": "Ați solicitat cu succes adăugarea unui nou {{type}}.",
+      "successTitle": "Adăugarea {{type}} a fost trimisă!",
+      "trailerLink": "Link trailer"
     }
   },
   "search": {
@@ -1713,7 +1757,12 @@
     "verifyEmail": "Verifică email",
     "addEmail": "Adaugă email",
     "addEmailContinue": "Adaugă email pentru a continua",
-    "emailSentDescription": "Verifică-ți emailul și reîncarcă această pagină pentru a continua."
+    "emailSentDescription": "Verificați-vă e-mailul făcând clic pe linkul trimis la {{email}}.\n\nOdată ce e-mailul dvs. este verificat, reîncărcați această pagină pentru a continua.",
+    "accountNeedsEmail": "Acest cont are nevoie de o adresă de email pentru a continua.",
+    "checkSpam": "(Dacă nu îl vezi, verifică-ți dosarul de spam.)",
+    "emailSentSpam": "(Dacă nu îl vezi, verifică-ți dosarul de spam.)",
+    "verifyEmailClick": "Verifică-ți emailul făcând clic pe linkul primit.",
+    "verifyEmailContinue": "Verifică emailul pentru a continua"
   },
   "tutorials": {
     "business": {
@@ -1979,7 +2028,11 @@
     "contribute": "Contribuie",
     "contributors": "Contribuitori",
     "event": "Eveniment",
-    "oldest": "Cel mai vechi"
+    "oldest": "Cel mai vechi",
+    "host": "Gazdă",
+    "default": "implicit",
+    "link": "Link",
+    "published": "Publicat"
   },
   "youtubeChannels": {
     "view": "Vezi canalul Youtube",
@@ -2114,7 +2167,8 @@
     },
     "detail": {
       "downloadAll": "Descarcă toate",
-      "view": "Vizualizează"
+      "view": "Vizualizează",
+      "addedBy": "Adăugat de"
     },
     "dropCover": "Aruncă imaginea de copertă aici",
     "dropFiles": "Aruncă fișierele aici",
@@ -2162,7 +2216,7 @@
     "sortMostRecent": "Cel mai recent",
     "status": {
       "draft": "În așteptare",
-      "published": "Live",
+      "published": "Publicat",
       "rejected": "Neacceptat",
       "unpublished": "Nepublicat"
     },
@@ -2170,7 +2224,27 @@
     "successSubtitle": "Va trece printr-un proces de revizuire înainte de a fi afișat.",
     "addMoreLinks": "Adăugați mai multe linkuri",
     "browseFiles": "sau răsfoiește fișierele",
-    "descriptionHelper": "Descrie conținutul resursei pentru a ajuta pe alții să îl înțeleagă și să îl găsească"
+    "descriptionHelper": "Descrie conținutul resursei pentru a ajuta pe alții să îl înțeleagă și să îl găsească",
+    "guidelines": {
+      "continueToAdd": "Continuați să adăugați",
+      "pageTitle": "Ghid: Adăugarea de conținut la Educator Content",
+      "point1": "Grupați fișierele conexe în pachete (de exemplu, \"Prezentările întâlnirii de la Lille 2024\").",
+      "point2": "Atribuiți credit creatorului original dacă distribuiți conținut realizat de alții.",
+      "point3": "Încărcați numai conținut pe care aveți dreptul să îl distribuiți.",
+      "readFullGuide": "Citiți ghidul complet",
+      "subtitle": "Împărtășește-ți cele mai bune resurse și ajută educatori Bitcoin din întreaga lume",
+      "title": "Directii pentru adăugarea de conţinut nou"
+    },
+    "fileTypeNotAllowed": "Sunt permise doar imagini și documente (PDF, prezentări, foi de calcul, documente de text)",
+    "supportedFileTypes": "Tipuri de fișiere compatibile: imagini, PDF, prezentări, foi de calcul, documente de text",
+    "uploadFilesHelper": "Dacă ai fișiere corelate, încarcă-le împreună ca un pachet. Denumeste clar fișierele înainte de încărcare.",
+    "license": {
+      "title": "Licența",
+      "licensedByDefault": "Licențiat implicit ca CC BY-SA",
+      "learnMore": "Aflați mai multe despre licențe",
+      "changeLicense": "Schimbă licența"
+    },
+    "imageTooLarge": "Dimensiunea imaginii nu poate depăși 15MB"
   },
   "forms": {
     "browse": "Răsfoiește",

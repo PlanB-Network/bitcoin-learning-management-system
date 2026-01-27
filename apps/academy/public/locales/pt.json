@@ -201,7 +201,8 @@
       "thanksTipping": "Você pode agradecer dando uma gorjeta ao professor.",
       "creditsCollaboration": "Este curso é o resultado de um esforço colaborativo: cada lição, tradução e revisão é feita possível pelo trabalho dos colaboradores. Por essa razão, estamos sempre procurando revisores que possam analisar nosso conteúdo em muitos idiomas.\n\nSe você gostaria de participar do processo de revisão, por favor, entre em contato em nosso grupo <0>Telegram</0> e leia nosso <1>tutorial</1>.\n\nAjude a difundir o conhecimento sobre o Bitcoin:",
       "openSourceContentDescription": "Este conteúdo do curso é de código aberto - licenciado sob <0>CC BY-SA</0> - para que possa ser livremente compartilhado e usado, desde que a fonte original seja creditada.",
-      "openSourceContentTitle": "Conteúdo de código aberto"
+      "openSourceContentTitle": "Conteúdo de código aberto",
+      "courseCoordinator": "Coordenador do curso"
     },
     "exam": {
       "answersReview": "Revisão das respostas",
@@ -478,7 +479,8 @@
           "owner": "Proprietário",
           "type": "Tipo",
           "uses": "Usado"
-        }
+        },
+        "showMore": "Mostrar mais códigos"
       },
       "coursesIndexes": "Índices dos cursos",
       "date": "Data",
@@ -876,7 +878,19 @@
         "class": "Aulas",
         "event": "Eventos"
       },
-      "personalCalendar": "Calendário pessoal"
+      "personalCalendar": "Calendário pessoal",
+      "subscribeTitle": "Inscreva-se no calendário (sincronização automática)",
+      "downloadButton": "Baixe o calendário .ics e importe",
+      "downloadCalendar": "Baixar calendário",
+      "downloadCalendarTitle": "Baixar calendário",
+      "downloadStep1": "Baixe o arquivo de calendário",
+      "downloadStep2": "Abra-o com o seu aplicativo de calendário",
+      "downloadStep3": "Os eventos não serão atualizados se as datas mudarem",
+      "downloadTitle": "Ou baixe o calendário atual",
+      "subscribeButton": "Copie o link do calendário sincronizado",
+      "subscribeStep1": "Copie o link do calendário",
+      "subscribeStep2": "Cole-o na opção \"Inscrever-se\" do seu aplicativo de calendário",
+      "subscribeStep3": "Os eventos são atualizados automaticamente se algo mudar"
     },
     "careerPortal": {
       "acceptedFormat": "Formato de arquivo aceite: pdf / Tamanho máximo do arquivo: 10 MB.",
@@ -1470,7 +1484,8 @@
     "login": "Entrar",
     "educatorContent": "Conteúdo do educador",
     "getStarted": "Começar",
-    "signIn": "Entrar"
+    "signIn": "Entrar",
+    "verifyEmail": "Verificar e-mail"
   },
   "notFound": {
     "here": "Aqui",
@@ -1658,6 +1673,36 @@
       "showMorePapers": "Mostrar mais papéis",
       "title": "Artigos de pesquisa",
       "accessPaper": "Acessar papel"
+    },
+    "addResource": {
+      "channel": "Adicionar canal do YouTube",
+      "conference": "Adicionar replay de conferência",
+      "coverImage": "Imagem de capa",
+      "descriptionPlaceholder": "Descreva o conteúdo do recurso para ajudar outros a entender seu conteúdo e encontrá-lo",
+      "done": "Concluído",
+      "glossary": "Adicionar palvra no glossário",
+      "movie": "Adicionar filme",
+      "sendForReview": "Enviar para revisão",
+      "sending": "Enviando...",
+      "socialProfiles": "Perfis sociais",
+      "success": "Recurso enviado com sucesso! Um Pull Request foi criado no GitHub.",
+      "successSubtitle": "Você solicitou com sucesso a adição de um novo {{type}}.",
+      "successTitle": "Adição de {{type}} enviada!",
+      "titlePlaceholder": "Introdução ao Bitcoin",
+      "trailerLink": "Link do trailer",
+      "browse": "Navegar arquivos",
+      "dropImage": "Clique ou arraste uma imagem para cá (PNG, JPG, WebP)",
+      "errorSendingAddition": "Ocorreu um erro ao tentar enviar o recurso.",
+      "newsletter": "Adicionar newsletter",
+      "paper": "Adicionar trabalho de pesquisa",
+      "podcast": "Adicionar podcast",
+      "project": "Adicionar projeto",
+      "publicationYear": "Ano de publicação",
+      "resourceLink": "Link do recurso",
+      "selectCategory": "Selecione uma categoria",
+      "selectLanguage": "Selecione um idioma",
+      "selectYear": "Selecione o ano",
+      "book": "Adicionar livro"
     }
   },
   "search": {
@@ -1708,11 +1753,16 @@
     "changeEmail": "Alterar e-mail",
     "changePassword": "Alterar palavra-passe",
     "changeProfilePicture": "Alterar foto do perfil",
-    "emailSentDescription": "Verifique o seu email e recarregue esta página para continuar.",
+    "emailSentDescription": "Verifique o seu email clicando no link enviado para {{email}}.\n\nApós a verificação do seu email, recarregue esta página para continuar.",
     "emailSentTitle": "Nós lhe enviamos um email",
     "verifyEmail": "Verificar e-mail",
     "addEmailContinue": "Adicione email para continuar",
-    "addEmail": "Adicionar email"
+    "addEmail": "Adicionar email",
+    "verifyEmailClick": "Verifique seu email clicando no link que você recebeu.",
+    "accountNeedsEmail": "Esta conta precisa de um endereço de email para continuar.",
+    "checkSpam": "(Se você não vê-lo, verifique sua pasta de spam.)",
+    "emailSentSpam": "(Se você não vê-lo, verifique sua pasta de spam.)",
+    "verifyEmailContinue": "Verifique o email para continuar"
   },
   "tutorials": {
     "business": {
@@ -1978,7 +2028,11 @@
     "oldest": "Mais antigo",
     "agenda": "Agenda",
     "contributors": "Colaboradores",
-    "event": "Evento"
+    "event": "Evento",
+    "default": "padrão",
+    "host": "Anfitrião",
+    "published": "Publicado",
+    "link": "Link"
   },
   "youtubeChannels": {
     "view": "Ver Canal do Youtube",
@@ -2071,7 +2125,8 @@
       "game": "Jogo",
       "sticker": "Adesivo",
       "presentation": "Apresentações",
-      "other": "Outro"
+      "other": "Outro",
+      "curriculum": "Currículo"
     },
     "uploadForReview": "Carregar para revisão",
     "uploading": "Carregando...",
@@ -2079,7 +2134,8 @@
     "descriptionRequired": "A descrição não pode estar vazia",
     "detail": {
       "downloadAll": "Baixar tudo",
-      "view": "Visualizar"
+      "view": "Visualizar",
+      "addedBy": "Adicionado por"
     },
     "titleTooLong": "O título não pode exceder 60 caracteres",
     "dropCover": "Solte a imagem de capa aqui",
@@ -2101,7 +2157,7 @@
     "resourceType": "Tipo de Recurso",
     "status": {
       "draft": "Pendente",
-      "published": "Ao vivo",
+      "published": "Publicado",
       "rejected": "Não aceito",
       "unpublished": "Não publicado"
     },
@@ -2154,7 +2210,27 @@
     "typePlaceholder": "Tipo",
     "languagePlaceholderFilter": "Idioma",
     "sortBy": "Ordenar por",
-    "pageTitle": "Conteúdo do educador"
+    "pageTitle": "Conteúdo do educador",
+    "guidelines": {
+      "pageTitle": "Guia: Adicionando Conteúdo ao Conteúdo Educacional",
+      "continueToAdd": "Continuar para Adicionar",
+      "point1": "Agrupe arquivos relacionados em pacotes (por exemplo, \"Apresentações do Meetup de Lille 2024\").",
+      "point2": "Credite o criador original se você compartilhar conteúdo feito por outros.",
+      "readFullGuide": "Leia o guia completo",
+      "point3": "Carregue apenas conteúdo que você tem o direito de compartilhar.",
+      "subtitle": "Compartilhe seus melhores recursos e ajude educadores sobre Bitcoin no mundo todo",
+      "title": "Diretrizes para adicionar novo conteúdo"
+    },
+    "fileTypeNotAllowed": "Somente imagens e documentos (PDF, apresentações, planilhas, documentos de texto) são permitidos",
+    "supportedFileTypes": "Tipos de arquivos suportados: imagens, PDF, apresentações, planilhas, documentos de texto",
+    "imageTooLarge": "O tamanho da imagem não pode exceder 15MB",
+    "license": {
+      "changeLicense": "Alterar licença",
+      "learnMore": "Saiba mais sobre licenças",
+      "licensedByDefault": "Licenciado por padrão como CC BY-SA",
+      "title": "Licença"
+    },
+    "uploadFilesHelper": "Se você tem arquivos relacionados, carregue-os juntos em um pacote. Nomeie seus arquivos claramente antes de carregar."
   },
   "forms": {
     "browse": "Navegar",

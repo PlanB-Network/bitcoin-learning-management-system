@@ -97,7 +97,9 @@
     "forgotPassword": "Wibagiwe ijambobanga?",
     "login": "Injira",
     "oldPassword": "Ibijambo bya mbere n'ibanga",
-    "signUp": "Iyandikishe"
+    "signUp": "Iyandikishe",
+    "saveProgress": "Сохраните свой прогресс",
+    "signUpToSave": "Зарегистрируйтесь, чтобы сохранить"
   },
   "bCert": {
     "bCertDescription": "₿-CERT ni ikibazo ca nyuma ku bijanye na Bitcoin, cagenewe gupima ubumenyi bwawe kuri Bitcoin n’ivyerekeye ico gisata.\nRonswa impamyabumenyi yawe ya ₿-CERT uce werekana ubuhinga n’ubumenyi ufise mu gisata ca Bitcoin, bikugururira amahirwe yo kuronka akazi mururwo rubuga.",
@@ -196,7 +198,11 @@
       "premiumContentNeedsPaymentAction": "Genda ku rupapuro nyamukuru rw’ico cigwa",
       "startCourse": "Tangura icigwa",
       "taughtBy": "Kino cigwa gitangwa na",
-      "thanksTipping": "Urashobora gushimira umwigisha mu kumuha intererano."
+      "thanksTipping": "Urashobora gushimira umwigisha mu kumuha intererano.",
+      "courseCoordinator": "Koordinateri ya Course",
+      "openSourceContentDescription": "Содержание этого курса открытое - лицензировано по <0>CC BY-SA</0>- поэтому его можно свободно делиться и использовать, при условии, что указан источник оригинала.",
+      "openSourceContentTitle": "Открытое содержание",
+      "creditsCollaboration": "Этот курс является результатом совместной работы: каждый урок, перевод и редактирование становятся возможными благодаря работе участников. По этой причине мы всегда ищем корректоров, которые смогут проверять наш контент на многих языках.\n\nЕсли вы хотели бы участвовать в процессе корректуры, пожалуйста, обратитесь в нашу группу <0>Telegram</0> и прочитайте наш <1>учебник</1>.\n\nПомогите распространить знания о Биткоине:"
     },
     "exam": {
       "answersReview": "Isuzuma ry’inyishu",
@@ -473,7 +479,8 @@
           "owner": "Nyeneyo",
           "type": "Ubwoko",
           "uses": "Vyakoreshejwe"
-        }
+        },
+        "showMore": "Show more codes"
       },
       "coursesIndexes": "Ibimenyetso vy'ivyigwa",
       "date": "Itariki",
@@ -871,7 +878,19 @@
         "class": "Amashure",
         "event": "Ibirori"
       },
-      "personalCalendar": "Ikirangamisi canje"
+      "personalCalendar": "Ikirangamisi canje",
+      "downloadButton": "Retaenda .ics kalendar y'ubwihariko",
+      "downloadCalendar": "Retaenda kalendar",
+      "downloadCalendarTitle": "Retaenda kalendar",
+      "downloadStep1": "Retaenda ifayiro ya kalendar",
+      "downloadStep2": "Ibumbare nayo na yo calendar app",
+      "downloadStep3": "Imyidagaduro ntizizahinduka niba amanywa ashinduka",
+      "downloadTitle": "Cyangwa retaenda kalendar ya vuba",
+      "subscribeButton": "Kopiyisha ijumuri ya kalendar oherejwe",
+      "subscribeStep1": "Kopiyisha ijumuri ya kalendar",
+      "subscribeStep2": "Paste into your calendar app’s “Subscribe” option",
+      "subscribeStep3": "Imyidagaduro zibakaho zizaba avuguroka niba biryo byahindutse",
+      "subscribeTitle": "Subscribe to calendar (automatically sync)"
     },
     "careerPortal": {
       "acceptedFormat": "Ubwoko bwa fishe yemwe: pdf / Ubunini ntarengwa bw’ifishi: 10 MB.",
@@ -1320,7 +1339,8 @@
           "upcomingClass": "Icirwa kizokwirikira"
         }
       }
-    }
+    },
+    "backToProfile": "Regresi at mi perfili"
   },
   "events": {
     "card": {
@@ -1464,7 +1484,8 @@
     "login": "Injira",
     "educatorContent": "Содержимое образователей",
     "getStarted": "Начать",
-    "signIn": "Ukoreshereza"
+    "signIn": "Ukoreshereza",
+    "verifyEmail": "Подтвердить электронную почту"
   },
   "movies": {
     "checkTheMovie": "Reba amareresi"
@@ -1612,7 +1633,24 @@
     },
     "projects": {
       "title": "Imigambi",
-      "addProjects": "Ongerako umugambi"
+      "addProjects": "Ongerako umugambi",
+      "types": {
+        "manufacturer": "Производитель",
+        "merchant": "Торговец",
+        "mining": "Добыча",
+        "news": "Новости",
+        "node": "Узел",
+        "payment": "Платеж",
+        "privacy": "Конфиденциальность",
+        "communities": "Comunidadis",
+        "conference": "Conferencia",
+        "education": "Educajion",
+        "exchange": "Exchange",
+        "infrastructure": "Infrastructura",
+        "service": "Сервис",
+        "wallet": "Кошелек",
+        "investment": "Инвестиция"
+      }
     },
     "searchFilterName": "Rondera ukoresheje izina",
     "toggleLabelAll": "Vyose",
@@ -1635,8 +1673,39 @@
         "journal": "Ikinyamakuru",
         "pre-print": "Igitabo c’imbere yo gusohoka",
         "thesis": "Inyandiko ya kaminuza",
-        "whitepaper": "Igitabo c’uburenganzira"
+        "whitepaper": "Igitabo c’uburenganzira",
+        "review": "Elejawe"
       }
+    },
+    "addResource": {
+      "book": "Librou unxt'ayi",
+      "browse": "Faylus kellk'ayi",
+      "channel": "YouTube Channel uñxt'ayi",
+      "conference": "Conferencia repixe'uñxt'ayi",
+      "coverImage": "Cobertura imaxeña",
+      "descriptionPlaceholder": "Explica uñt'awa recursonaka ayudamtuw ununakawa, ayquiti uka contenido suytam qhantitay yatiñanasa.",
+      "done": "Kora",
+      "dropImage": "Shika hano tabi cyangwa shyushye ifoto hano (PNG, JPG, WebP)",
+      "selectLanguage": "Hitamo ururimi",
+      "sendForReview": "Ohereza kugirango ribisuzumwe",
+      "sending": "Goherereza...",
+      "socialProfiles": "Profile z'ubuzima bwawe bwifashishijwe n'abandi",
+      "success": "Isanganya yoherezwe neza! Komisiyo yo kwemo kuri Github yashinzwe.",
+      "successSubtitle": "Mwakiriye neza kwongeraho {{type}} mushya.",
+      "successTitle": "{{type}} kwongeraho koherezwe!",
+      "errorSendingAddition": "Habaye ikibazo muri kohereza isanganya.",
+      "glossary": "ongeza igisobanuro kuri ijambo",
+      "movie": "Ongereza filime",
+      "newsletter": "Ongereza icyandiko cy'ikinyamakuru",
+      "paper": "Ongereza urupapuro rw'ikirekire",
+      "podcast": "Ongereza podcast",
+      "project": "Ongereza projet",
+      "publicationYear": "Umwaka wacyoza",
+      "resourceLink": "Isanganya link",
+      "selectCategory": "Hitamo category",
+      "selectYear": "Hitamo umwaka",
+      "titlePlaceholder": "Введение в биткойн",
+      "trailerLink": "Ссылка на трейлер"
     }
   },
   "search": {
@@ -1686,7 +1755,17 @@
     "changeDisplayName": "Hindura izina ryerekanwa",
     "changeEmail": "Hindura email",
     "changePassword": "Hindura ijambo ry'ibanga",
-    "changeProfilePicture": "Hindura isanamu y'umwidondore"
+    "changeProfilePicture": "Hindura isanamu y'umwidondore",
+    "checkSpam": "(Если не видите, проверьте свою папку со спамом.)",
+    "verifyEmailClick": "Подтвердите свой адрес электронной почты, нажав на полученную ссылку.",
+    "accountNeedsEmail": "Для продолжения этому аккаунту необходим адрес электронной почты.",
+    "emailSentSpam": "(Если не видите, проверьте свою папку со спамом.)",
+    "verifyEmailContinue": "Проверьте адрес электронной почты для продолжения.",
+    "addEmail": "Добавить электронную почту",
+    "addEmailContinue": "Добавьте электронную почту для продолжения",
+    "emailSentTitle": "Мы отправили вам письмо",
+    "emailSentDescription": "Подтвердите свою электронную почту, нажав на ссылку, отправленную вам на {{email}}.\n\nПосле подтверждения электронной почты перезагрузите эту страницу для продолжения.",
+    "verifyEmail": "Подтвердить электронную почту"
   },
   "tutorials": {
     "business": {
@@ -1947,7 +2026,16 @@
     "downloads": "Ibishizwe kuri mudasobwa",
     "enroll": "Kwiyandikisha",
     "open": "kugurura",
-    "researchPaper": "Inyandiko z’ubushakashatsi"
+    "researchPaper": "Inyandiko z’ubushakashatsi",
+    "contributors": "Abakubandi",
+    "host": "Хост",
+    "link": "Ссылка",
+    "published": "Guhawe",
+    "agenda": "Agenda",
+    "contribute": "Kubanda",
+    "default": "yatiqama",
+    "oldest": "Mas vejo",
+    "event": "Evensi"
   },
   "youtubeChannels": {
     "view": "Raba umuhora wa Youtube",
@@ -2040,7 +2128,8 @@
     "titleTooLong": "Umutwe ntushobora kurenza indome 60",
     "detail": {
       "downloadAll": "Kubika vyose",
-      "view": "Raba"
+      "view": "Raba",
+      "addedBy": "Achac mayistamawa"
     },
     "done": "Biraheze",
     "dropCover": "Shira ishusho y’urupapuro rwambere aha",
@@ -2064,7 +2153,7 @@
     "shareLinks": "Sangiza ama links",
     "status": {
       "draft": "Rindira",
-      "published": "Mu gihe nyaco",
+      "published": "Guhawe",
       "rejected": "ntivyemewe",
       "unpublished": "Ntivyashikirijwe"
     },
@@ -2083,11 +2172,65 @@
       "other": "Ibindi",
       "presentation": "Kwidondora",
       "sticker": "Akamenyetso ko kwiyandika",
-      "workshop": "Ikoraniro z’inyigisho"
+      "workshop": "Ikoraniro z’inyigisho",
+      "curriculum": "Curriculum"
     },
     "uploadFiles": "Shirako inyandiko",
     "uploadForReview": "Shiraho kugira babisuzume",
-    "uploading": "Biriko birashirwako…"
+    "uploading": "Biriko birashirwako…",
+    "adminPanel": {
+      "approved": "Yahawe",
+      "modified": "Yavugurijwe",
+      "new": "Nshya",
+      "pageTitle": "Suzuma ifunguro ry'Umwarimu",
+      "previewChanges": "Reba imbogamizi",
+      "previewForApproval": "Soma mbere",
+      "toReview": "Suzumisha"
+    },
+    "guidelines": {
+      "continueToAdd": "Komeza Kugera",
+      "point1": "Vuganisha kasha files into bundles (e.g., \"Lille Meetup Presentations 2024\").",
+      "pageTitle": "Руководство: Добавление контента в образовательный контент",
+      "point2": "Good credit to the original creator if you make content by others.",
+      "point3": "Nukup'asi äntañataxka uñataki ñiqhañati mañatheyashkaña.",
+      "readFullGuide": "Jaquic pa yanapaña",
+      "subtitle": "Jaqañatuwa mayjasux mayniraquiwasa uka Bitcoin nawpañiyasisisa arunakax amtotoniw mayjt'asi.",
+      "title": "Amuya sirpt'awayi uka konteniduwa mayistaña"
+    },
+    "pageSubtitle": "Ahali ejo ko lecestion Bitcoin bitarandiye, divididiye akayateyerere",
+    "pageTitle": "Likaliya lecestie",
+    "reviewModal": {
+      "approveAndPublish": "Emeza ifunguro kugirango uhawe",
+      "noCover": "Nta Ikarita",
+      "reject": "Hohereza",
+      "viewContent": "Reba ifunguro",
+      "edit": "Hindura",
+      "reviewForApproval": "Suzumisha kugirango uhawe",
+      "unknown": "Ntakizwi",
+      "unpublish": "Ufataho",
+      "unpublishConfirm": "Ufataho (uri mukanya?)"
+    },
+    "sortBy": "Sotiri bayi",
+    "sortMostDownloaded": "Mas telechadjiri",
+    "sortMostRecent": "Mas recente",
+    "uploadFilesHelper": "Dismak mayirtxasmawa uñatakima ima faylus mamata, unuch'ip situwa uka fayluruxwa tomaruwayx suma suma. Unuch'ip situwa uñap'quiri suma suma uñt'animti.",
+    "coverPreview": "Isomo ry'Ikarita",
+    "languagePlaceholderFilter": "Langaje",
+    "linkOrFileRequired": "Ndashaka ukwinginze rimwe rimwe kuri mugihe cyangwa ugafata dosiye",
+    "linkPlaceholder": "https://example.com",
+    "fileTypeNotAllowed": "Uñatakima sirwasi apnaqaruwinakapaw imapisasjasu (PDF, presentaciones, kalkulu plañus, texto dokumentus) janiw kasamti.",
+    "supportedFileTypes": "Permitidujasinaka: imágenes, PDF, presentaciones, kalkulu plañus, texto dokumentus",
+    "maxFileSize": "Max size ya fayl: 50MB",
+    "license": {
+      "changeLicense": "Licencia p'unchayi",
+      "learnMore": "Yashañiterejama licencias",
+      "licensedByDefault": "Licenciado komo normalmente CC BY-SA",
+      "title": "Licencia"
+    },
+    "fileExisting": "(Ihagariti)",
+    "imageTooLarge": "La imagenka ñiqhamanqa 15MB-raq janiw aktirjamti.",
+    "typePlaceholder": "Tayipi",
+    "titlePlaceholder": "e.g. Multi-sig bolongi Liana"
   },
   "forms": {
     "browse": "Rondera",
