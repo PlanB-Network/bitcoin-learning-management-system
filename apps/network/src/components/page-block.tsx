@@ -24,7 +24,7 @@ export default function PageBlock({
         withXMargin ? 'max-w-[1320px] mx-auto' : '',
         withXPadding ? 'px-5 md:px-8 lg:px-12' : '',
         withYPadding ? 'py-10 lg:py-30' : '',
-        variant === 'blog' ? 'max-w-[680px] max-md:px-3 mt-2' : '',
+        variant === 'blog' ? 'max-w-[820px] max-md:px-3 mt-2' : '',
         className,
       )}
     >
