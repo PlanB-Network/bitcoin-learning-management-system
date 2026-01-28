@@ -13,6 +13,8 @@ const buttonVariants = cva(
       size: {
         m: 'px-4 py-4 lg:px-6 text-xl lg:text-2xl leading-5 font-medium',
         s: 'px-2 py-2 lg:px-3 text-base lg:text-lg leading-5 font-medium',
+        learning:
+          'px-4.5 py-2.5 lg:px-2 lg:py-1.5 subtitle-base lg:subtitle-small',
       },
       variant: {
         primary:

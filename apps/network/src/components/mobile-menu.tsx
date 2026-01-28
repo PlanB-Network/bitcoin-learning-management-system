@@ -137,7 +137,11 @@ export const MobileMenu = ({
           target="_blank"
           rel="noopener noreferrer"
         >
-          <NetworkButton className="self-center mb-6" variant={'secondary'}>
+          <NetworkButton
+            className="self-center mb-6"
+            variant={'secondary'}
+            size={'learning'}
+          >
             {t('academy.startLearning')}
           </NetworkButton>
         </Link>

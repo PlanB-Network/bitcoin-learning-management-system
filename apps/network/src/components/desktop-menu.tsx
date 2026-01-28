@@ -8,8 +8,10 @@ import { NetworkButton } from './network-button.tsx';
 const activeLinkProps = {
   className: 'text-orange-500 [text-shadow:_0_0_0.5px_currentColor]',
 };
-const linkClassName =
-  'hover:text-orange-500 hover:[text-shadow:_0_0_0.5px_currentColor]';
+const leftLinkClassName =
+  'hover:text-orange-500 hover:[text-shadow:0_0_0.5px_currentColor]';
+const rightLinkClassName =
+  'hover:text-orange-500 hover:[text-shadow:0_0_0.5px_currentColor] font-light';
 
 export default function DesktopMenu({
   variant,
@@ -51,7 +53,7 @@ export default function DesktopMenu({
         variant === 'dark' ? 'bg-[#000000b3]' : 'bg-black text-white',
       )}
     >
-      <div className="max-w-[1440px] flex flex-row justify-between items-center gap-2 mx-auto">
+      <div className="flex flex-row justify-between items-center gap-2 mx-auto">
         <Link to="/" viewTransition>
           <Image
             className="h-8 w-auto"
@@ -64,7 +66,7 @@ export default function DesktopMenu({
         <div className="flex flex-row gap-8 items-center">
           <Link
             to="/academy"
-            className={linkClassName}
+            className={leftLinkClassName}
             activeProps={activeLinkProps}
             viewTransition
           >
@@ -72,7 +74,7 @@ export default function DesktopMenu({
           </Link>
           <Link
             to="/hubs"
-            className={linkClassName}
+            className={leftLinkClassName}
             activeProps={activeLinkProps}
             viewTransition
           >
@@ -80,16 +82,16 @@ export default function DesktopMenu({
           </Link>
           <Link
             to="/funds"
-            className={linkClassName}
+            className={leftLinkClassName}
             activeProps={activeLinkProps}
             viewTransition
           >
             {t('menu.funds')}
           </Link>
-          <div className="h-6 w-px bg-white/20" />
+          <div className="h-6 w-px bg-white/30" />
           <Link
             to="/news"
-            className={linkClassName}
+            className={rightLinkClassName}
             activeProps={activeLinkProps}
             viewTransition
           >
@@ -97,7 +99,7 @@ export default function DesktopMenu({
           </Link>
           <Link
             to="/about"
-            className={linkClassName}
+            className={rightLinkClassName}
             activeProps={activeLinkProps}
             viewTransition
           >
@@ -109,7 +111,7 @@ export default function DesktopMenu({
           target="_blank"
           rel="noopener noreferrer"
         >
-          <NetworkButton variant={'secondary'}>
+          <NetworkButton variant={'secondary'} size={'learning'}>
             {t('academy.startLearning')}
           </NetworkButton>
         </Link>
