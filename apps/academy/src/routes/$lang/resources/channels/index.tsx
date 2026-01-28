@@ -3,14 +3,14 @@ import { formatNameForURL } from '@blms/shared';
 import { EmptyState, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
-import { AuthModalState } from '#src/components/AuthModals/props.ts';
+// import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
+// import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { SearchInput } from '#src/components/search-input.tsx';
-import { useDisclosure } from '#src/hooks/use-disclosure.ts';
-import { AppContext } from '#src/providers/context.tsx';
+// import { useDisclosure } from '#src/hooks/use-disclosure.ts';
+// import { AppContext } from '#src/providers/context.tsx';
 import { resourceImgUrl } from '#src/utils/index.ts';
 import { trpc } from '#src/utils/trpc.js';
 import { AddResourceModal } from '../-components/add-resource-modal.tsx';
@@ -26,19 +26,19 @@ export const Route = createFileRoute('/$lang/resources/channels/')({
 });
 
 function YoutubeChannels() {
-  const { session } = useContext(AppContext);
+  // const { session } = useContext(AppContext);
   const { t, i18n } = useTranslation();
   const [showLocalOnly, setShowLocalOnly] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const {
-    open: openAuthModal,
-    isOpen: isAuthModalOpen,
-    close: closeAuthModal,
-  } = useDisclosure();
+  // const {
+  //   open: openAuthModal,
+  //   isOpen: isAuthModalOpen,
+  //   close: closeAuthModal,
+  // } = useDisclosure();
 
-  const isLoggedIn = !!session?.user;
+  // const isLoggedIn = !!session?.user;
 
   const { data: youtubeChannels, isFetched } = useQuery(
     trpc.content.getYoutubeChannels.queryOptions({}, { staleTime: 300_000 }),
@@ -161,13 +161,13 @@ function YoutubeChannels() {
             </section>
           )}
       </div>
-      {isAuthModalOpen && (
+      {/* {isAuthModalOpen && (
         <AuthModal
           isOpen={isAuthModalOpen}
           onClose={closeAuthModal}
           initialState={AuthModalState.Register}
         />
-      )}
+      )} */}
     </PageLayout>
   );
 }
