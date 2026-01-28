@@ -29,7 +29,7 @@ export const CustomAgendaEvent = ({ event }: CustomAgendaEventProps) => {
       <div className="text-sm">{event.organizer}</div>
       <div className="text-sm">{event.addressLine1}</div>
 
-      {isSameDay(event.start, event.end) && (
+      {!event.allDay && isSameDay(event.start, event.end) && (
         <div className="text-sm mt-1">
           {`${format(event.start, 'h:mm a')} - ${format(event.end, 'h:mm a')}`}
         </div>

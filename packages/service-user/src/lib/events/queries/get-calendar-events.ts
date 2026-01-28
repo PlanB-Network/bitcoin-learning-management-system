@@ -5,6 +5,7 @@ export const getCalendarEventsQuery = (
   uid?: string,
   upcomingEvents?: boolean,
   types?: string[],
+  language?: string,
 ) => {
   return sql<CalendarEvent[]>`
   SELECT * FROM (
@@ -85,6 +86,27 @@ export const getCalendarEventsQuery = (
       ${uid ? sql`AND cp.uid = ${uid} AND cp.payment_status = 'paid'` : sql``}
       AND cl.start_date IS NOT NULL
       ${upcomingEvents ? sql`AND cl.start_date > (NOW() - INTERVAL '1 DAY')` : sql``}
+
+    UNION
+
+    SELECT
+      cl.resource_id::text as id,
+      '' as sub_id,
+      'history' as type,
+      CONCAT(EXTRACT(YEAR FROM c.date), ' : ', cl.title) as name,
+      '' as organizer,
+      c.date as start_date,
+      c.date as end_date,
+      'UTC' as timezone,
+      true as is_online,
+      true as is_in_person,
+      '' as address_line_1,
+      '' as address_line_2,
+      '' as address_line_3
+    FROM content.calendar_localized cl
+    JOIN content.calendar c ON c.resource_id = cl.resource_id
+    WHERE 1 = 1
+      ${language ? sql`AND LOWER(cl.language) = LOWER(${language})` : sql``}
   ) as events
   WHERE 1 = 1
     ${types && types.length > 0 ? sql`AND type = ANY(${types})` : sql``}

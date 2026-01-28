@@ -912,6 +912,41 @@ export const contentYoutubeChannels = content.table(
   }),
 );
 
+// CALENDAR
+
+export const contentCalendar = content.table('calendar', (t) => ({
+  resourceId: t
+    .uuid()
+    .primaryKey()
+    .notNull()
+    .references(() => contentResources.id, {
+      onDelete: 'cascade',
+      onUpdate: 'cascade',
+    }),
+  date: t.date().notNull(),
+  originalLanguage: t.varchar({ length: 10 }).notNull(),
+}));
+
+export const contentCalendarLocalized = content.table(
+  'calendar_localized',
+  (t) => ({
+    resourceId: t
+      .uuid()
+      .notNull()
+      .references(() => contentCalendar.resourceId, {
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      }),
+    language: t.varchar({ length: 10 }).notNull(),
+    title: t.text().notNull(),
+  }),
+  (table) => [
+    primaryKey({
+      columns: [table.resourceId, table.language],
+    }),
+  ],
+);
+
 // RESEARCH PAPERS
 
 export const contentResearchPapers = content.table('research_papers', (t) => ({

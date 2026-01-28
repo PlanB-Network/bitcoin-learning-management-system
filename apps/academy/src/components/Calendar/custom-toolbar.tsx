@@ -1,7 +1,8 @@
-import { cn } from '@blms/ui';
+import { cn, SegmentedControl, SegmentedControlItem } from '@blms/ui';
 import { startOfWeek } from 'date-fns';
 import type { Messages, ToolbarProps, View } from 'react-big-calendar';
 import { useTranslation } from 'react-i18next';
+import { TbChevronLeft, TbChevronRight } from 'react-icons/tb';
 import { formatDateRange } from '#src/utils/date.ts';
 import type { CalendarEvent } from './calendar-event.ts';
 
@@ -36,26 +37,24 @@ function ViewNamesGroup({
   messages,
   onView,
 }: ViewNamesGroupProps) {
-  return views.map((name: View) => {
-    return (
-      <button
-        className={cn(
-          'flex items-center justify-center !h-10 px-4 whitespace-nowrap',
-          name === 'week'
-            ? '!hidden md:!inline-flex'
-            : name === 'month'
-              ? '!rounded-l-sm md:!rounded-none'
-              : '',
-          name === view && '!bg-neutral-100',
-        )}
-        type="button"
-        key={name}
-        onClick={() => onView(name)}
-      >
-        {messages[name]}
-      </button>
-    );
-  });
+  return (
+    <SegmentedControl
+      value={view}
+      onValueChange={(val) => onView(val as View)}
+      variant="outline"
+      size="sm"
+    >
+      {views.map((name: View) => (
+        <SegmentedControlItem
+          className={cn(name === 'week' && 'max-md:hidden')}
+          key={name}
+          value={name}
+        >
+          <span className="w-19">{messages[name]}</span>
+        </SegmentedControlItem>
+      ))}
+    </SegmentedControl>
+  );
 }
 
 export default function CustomToolbar({
@@ -86,21 +85,22 @@ export default function CustomToolbar({
   }
 
   return (
-    <div className="rbc-toolbar max-md:px-1">
-      <div className="flex flex-col md:flex-row justify-between w-full items-center gap-2">
+    <div className="max-md:px-1 mb-5">
+      <div className="flex max-md:flex-col justify-between w-full items-center gap-2">
         {/* Navigation Buttons */}
-        <span className="rbc-btn-group examples--custom-toolbar">
+        <div className="flex items-center gap-2 px-2.5 py-2 border border-neutral-200 rounded-lg text-neutral-700 max-md:order-2">
           <button
             type="button"
-            className="flex items-center justify-center !h-10 px-3"
+            className="flex items-center justify-center border-none! p-0!"
             onClick={() => onNavigate('PREV')}
             aria-label={messages.previous!.toString()}
           >
-            &#60; {/* Left Arrow */}
+            <TbChevronLeft size={16} />
           </button>
           <button
             type="button"
-            className="flex items-center justify-center !h-10 px-4 whitespace-nowrap"
+            className="flex items-center justify-center whitespace-nowrap
+            border-none! p-0!"
             onClick={() => onNavigate('TODAY')}
             aria-label={messages.today!.toString()}
           >
@@ -108,25 +108,23 @@ export default function CustomToolbar({
           </button>
           <button
             type="button"
-            className="flex items-center justify-center !h-10 px-3"
+            className="flex items-center justify-center border-none! p-0!"
             onClick={() => onNavigate('NEXT')}
             aria-label={messages.next!.toString()}
           >
-            &#62; {/* Right Arrow */}
+            <TbChevronRight size={16} />
           </button>
-        </span>
+        </div>
 
         <span className="rbc-toolbar-label">{displayLabel}</span>
 
         {/* View Switcher Buttons */}
-        <span className="rbc-btn-group">
-          <ViewNamesGroup
-            view={view}
-            views={views}
-            messages={messages}
-            onView={onView}
-          />
-        </span>
+        <ViewNamesGroup
+          view={view}
+          views={views}
+          messages={messages}
+          onView={onView}
+        />
       </div>
     </div>
   );

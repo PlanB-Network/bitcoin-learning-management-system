@@ -1,17 +1,17 @@
 import {
   BasicModal,
   Button,
+  Checkbox,
   cn,
   customToast,
   DividerSimple,
   Loader,
 } from '@blms/ui';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbCopy, TbCopyCheck, TbDownload } from 'react-icons/tb';
 
-import FilterIcon from '#src/assets/icons/Filter-black.svg';
 import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.js';
@@ -24,7 +24,7 @@ import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { EventCalendar } from '../dashboard/-components/event-calendar.tsx';
 
-type CalenderEventType = 'class' | 'event';
+type CalenderEventType = 'class' | 'event' | 'history';
 
 export const Route = createFileRoute('/$lang/calendar/')({
   component: DashboardCalendar,
@@ -32,21 +32,31 @@ export const Route = createFileRoute('/$lang/calendar/')({
 
 function DashboardCalendar() {
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const { session, user } = useContext(AppContext);
 
-  const courseTypes: CalenderEventType[] = ['class', 'event'];
+  const calendarEventType: CalenderEventType[] = ['class', 'event', 'history'];
 
-  const courseColor = ['#FF5C00', '#AD3F00'];
+  const courseColor = ['#FF5C00', '#0A69DA', '#EAE4E1'];
 
-  const [filter, setFilter] = useState<CalenderEventType[]>(['class', 'event']);
+  const [filter, setFilter] = useState<CalenderEventType[]>([
+    'class',
+    'event',
+    'history',
+  ]);
+  const [icsFilters, setIcsFilters] = useState<CalenderEventType[]>([
+    'class',
+    'event',
+    'history',
+  ]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data: events } = useQuery(
     trpc.user.calendar.getCalendarEvents.queryOptions({
       upcomingEvents: false,
       userSpecific: true,
+      language: i18n.language,
     }),
   );
 
@@ -58,17 +68,31 @@ function DashboardCalendar() {
             ? filter.includes(e.type as CalenderEventType)
             : false,
         )
-        .map<CalendarEvent>((e) => ({
-          addressLine1: e.addressLine1,
-          end: e.endDate!,
-          id: e.id,
-          isOnline: e.isOnline,
-          organizer: e.organizer,
-          start: e.startDate!,
-          subId: e.subId,
-          title: e.name,
-          type: e.type,
-        })) ?? []
+        .map<CalendarEvent>((e) => {
+          let startDate = e.startDate!;
+          let endDate = e.endDate!;
+
+          if (e.type === 'history') {
+            const currentYear = new Date().getFullYear();
+            startDate = new Date(startDate);
+            startDate.setFullYear(currentYear);
+            endDate = new Date(endDate);
+            endDate.setFullYear(currentYear);
+          }
+
+          return {
+            addressLine1: e.addressLine1,
+            allDay: e.type === 'history',
+            end: endDate,
+            id: e.id,
+            isOnline: e.isOnline,
+            organizer: e.organizer,
+            start: startDate,
+            subId: e.subId,
+            title: e.name,
+            type: e.type,
+          };
+        }) ?? []
     );
   }, [events, filter]);
 
@@ -78,13 +102,13 @@ function DashboardCalendar() {
     }
   }, [session]);
 
-  const downloadIcs = () => {
+  const downloadIcs = (modalFilters: CalenderEventType[]) => {
     if (!events) {
       return;
     }
 
     const icsContent = generateIcs(
-      events.filter((e) => filter.includes(e.type as CalenderEventType)),
+      events.filter((e) => modalFilters.includes(e.type as CalenderEventType)),
     );
     const blob = new Blob([icsContent], {
       type: 'text/calendar;charset=utf-8',
@@ -99,13 +123,13 @@ function DashboardCalendar() {
     URL.revokeObjectURL(url);
   };
 
-  const copyCalendarUrl = async () => {
+  const copyCalendarUrl = async (modalFilters: CalenderEventType[]) => {
     const token = user?.calendarToken;
     if (!token) return false;
 
     const url = `${window.location.origin}/api/calendar/${token}.ics${
-      filter.length > 0 ? `?types=${filter.join(',')}` : ''
-    }`;
+      modalFilters.length > 0 ? `?types=${modalFilters.join(',')}` : ''
+    }${modalFilters.length > 0 ? '&' : '?'}language=${i18n.language}`;
 
     try {
       await navigator.clipboard.writeText(url);
@@ -134,59 +158,70 @@ function DashboardCalendar() {
         },
       ]}
     >
-      <div className="flex flex-col w-full gap-4">
-        <div className="hidden max-md:px-6 lg:flex">
-          <img className="size-10" src={FilterIcon} alt="" />
-
-          {courseTypes.map((filterName, index) => (
+      <div className="flex flex-col w-full gap-5">
+        <div className="flex flex-wrap items-center gap-2">
+          {calendarEventType.map((filterName, index) => (
             <button
               key={filterName}
               type="button"
               onClick={() =>
                 setFilter((prev) =>
-                  prev.length === courseTypes.length
-                    ? [filterName]
-                    : prev.includes(filterName)
-                      ? prev.filter((p) => p !== filterName)
-                      : [...prev, filterName],
+                  prev.includes(filterName)
+                    ? prev.filter((p) => p !== filterName)
+                    : [...prev, filterName],
                 )
               }
               style={
                 filter.includes(filterName)
                   ? {
                       backgroundColor: `${courseColor[index]}`,
-                      color: 'white',
-                      fontWeight: 600,
-                      paddingBottom: '8px',
-                      paddingTop: '8px',
+                      borderColor: `${courseColor[index]}`,
                     }
                   : {
                       borderColor: `${courseColor[index]}`,
-                      borderWidth: '2px',
-                      color: `${courseColor[index]}`,
-                      paddingBottom: '6px',
-                      paddingTop: '6px',
+                      color:
+                        filterName === 'history'
+                          ? '#49372C'
+                          : `${courseColor[index]}`,
                     }
               }
               className={cn(
-                'leading-snug mx-1 px-4 capitalize rounded-xl',
+                'body-base-bold rounded-full px-2.5 py-1.5 border-2',
                 filter.includes(filterName)
-                  ? 'hover:brightness-110'
-                  : 'hover:bg-neutral-100',
+                  ? filterName === 'history'
+                    ? 'text-brown-800'
+                    : 'text-white border-transparent'
+                  : 'border-brown-200',
               )}
             >
               {t(`dashboard.calendar.eventType.${filterName}`)}
               <span
-                className="ml-2 bg-white rounded-md py-1 px-1.5 text-xs border-neutral-300 font-medium"
+                className="ml-2.5 body-extra-small-bold px-1.5 py-px rounded-full"
                 style={{
-                  borderWidth: filter.includes(filterName) ? '' : '1px',
-                  color: `${courseColor[index]}`,
+                  color: filter.includes(filterName)
+                    ? filterName === 'history'
+                      ? '#49372C'
+                      : `${courseColor[index]}`
+                    : filterName === 'history'
+                      ? '#49372C'
+                      : 'white',
+                  backgroundColor: filter.includes(filterName)
+                    ? 'white'
+                    : `${courseColor[index]}`,
                 }}
               >
                 {
-                  events?.filter(
-                    (p) => p.type === filterName && p.startDate >= new Date(),
-                  ).length
+                  events?.filter((p) => {
+                    if (p.type !== filterName) {
+                      return false;
+                    }
+
+                    if (p.type === 'history') {
+                      return true;
+                    }
+
+                    return p.startDate >= new Date();
+                  }).length
                 }
               </span>
             </button>
@@ -201,6 +236,9 @@ function DashboardCalendar() {
         onClose={setIsModalOpen}
         onDownload={downloadIcs}
         onSubscribe={copyCalendarUrl}
+        filters={icsFilters}
+        setFilters={setIcsFilters}
+        eventTypes={calendarEventType}
       />
     </PageLayout>
   );
@@ -209,9 +247,12 @@ function DashboardCalendar() {
 interface CalendarDownloadModalProps {
   isOpen: boolean;
   onClose: (open: boolean) => void;
-  onDownload: () => void;
+  onDownload: (filters: CalenderEventType[]) => void;
   // biome-ignore lint/suspicious/noConfusingVoidType: ok
-  onSubscribe: () => Promise<boolean | void>;
+  onSubscribe: (filters: CalenderEventType[]) => Promise<boolean | void>;
+  filters: CalenderEventType[];
+  setFilters: React.Dispatch<React.SetStateAction<CalenderEventType[]>>;
+  eventTypes: CalenderEventType[];
 }
 
 const CalendarDownloadModal = ({
@@ -219,6 +260,9 @@ const CalendarDownloadModal = ({
   onClose,
   onDownload,
   onSubscribe,
+  filters,
+  setFilters,
+  eventTypes,
 }: CalendarDownloadModalProps) => {
   const isMobile = useSmaller('md');
 
@@ -226,7 +270,7 @@ const CalendarDownloadModal = ({
   const [isCopied, setIsCopied] = useState(false);
 
   const handleSubscribe = async () => {
-    const success = await onSubscribe();
+    const success = await onSubscribe(filters);
     if (success !== false) {
       setIsCopied(true);
       setTimeout(() => {
@@ -235,6 +279,17 @@ const CalendarDownloadModal = ({
     }
   };
 
+  const toggleFilter = useCallback(
+    (filterName: CalenderEventType) => {
+      setFilters((prev) =>
+        prev.includes(filterName)
+          ? prev.filter((p) => p !== filterName)
+          : [...prev, filterName],
+      );
+    },
+    [setFilters],
+  );
+
   return (
     <BasicModal
       open={isOpen}
@@ -242,6 +297,29 @@ const CalendarDownloadModal = ({
       title={t('dashboard.calendar.downloadCalendarTitle')}
     >
       <div className="w-full flex flex-col gap-6 text-left">
+        <div className="flex flex-col gap-3">
+          <h3 className="label-strong">
+            {t('dashboard.calendar.followSelectedCalendar')}
+          </h3>
+          <div className="flex items-center flex-wrap gap-6">
+            {eventTypes.map((type) => (
+              <div key={type} className="flex items-center gap-2">
+                <Checkbox
+                  id={`checkbox-${type}`}
+                  checked={filters.includes(type)}
+                  onCheckedChange={() => toggleFilter(type)}
+                />
+                <label
+                  htmlFor={`checkbox-${type}`}
+                  className="body-large cursor-pointer"
+                >
+                  {t(`dashboard.calendar.eventType.${type}`)}
+                </label>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div className="flex flex-col gap-3">
           <h3 className="label-strong">
             {t('dashboard.calendar.subscribeTitle')}
@@ -279,7 +357,7 @@ const CalendarDownloadModal = ({
         <Button
           variant="newTertiary"
           size={isMobile ? 'm' : 'l'}
-          onClick={onDownload}
+          onClick={() => onDownload(filters)}
           className="w-full gap-2"
         >
           {t('dashboard.calendar.downloadButton')}

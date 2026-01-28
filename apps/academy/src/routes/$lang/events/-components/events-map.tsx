@@ -667,21 +667,13 @@ const EventsMap = ({
               <SegmentedControl
                 variant="outline"
                 value={calendarView}
-                defaultValue="month"
+                onValueChange={(value) => handleView(value as CalendarView)}
                 size="sm"
               >
-                <SegmentedControlItem
-                  value="month"
-                  key="month"
-                  onClick={() => handleView('month')}
-                >
+                <SegmentedControlItem value="month" key="month">
                   <span className="w-19">{t('words.month')}</span>
                 </SegmentedControlItem>
-                <SegmentedControlItem
-                  value="week"
-                  key="week"
-                  onClick={() => handleView('week')}
-                >
+                <SegmentedControlItem value="week" key="week">
                   <span className="w-19">{t('words.week')}</span>
                 </SegmentedControlItem>
               </SegmentedControl>

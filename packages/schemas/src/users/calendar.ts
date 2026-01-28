@@ -14,4 +14,5 @@ export const calendarEventSchema = z.object({
   subId: z.string().nullable(),
   timezone: z.string().nullable(),
   type: z.string(),
+  allDay: z.boolean().optional(),
 });

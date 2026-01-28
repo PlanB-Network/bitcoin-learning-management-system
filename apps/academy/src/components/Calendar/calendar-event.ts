@@ -8,4 +8,5 @@ export interface CalendarEvent {
   start: Date;
   end: Date;
   isOnline: boolean;
+  allDay?: boolean;
 }

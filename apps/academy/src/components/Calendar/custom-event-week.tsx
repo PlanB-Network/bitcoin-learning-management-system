@@ -4,9 +4,11 @@ import type { EventProps } from 'react-big-calendar';
 import { formatTime } from '#src/utils/date.ts';
 import type { CalendarEvent } from './calendar-event.js';
 
-type CustomEventProps = EventProps<CalendarEvent>;
+type CustomEventProps = EventProps<CalendarEvent> & {
+  truncateTitle?: boolean;
+};
 
-export const CustomEventWeek = ({ event }: CustomEventProps) => {
+export const CustomEventWeek = ({ event, truncateTitle }: CustomEventProps) => {
   const [isSelected, setIsSelected] = useState(false);
 
   let cssClasses: string;
@@ -16,8 +18,16 @@ export const CustomEventWeek = ({ event }: CustomEventProps) => {
       cssClasses = 'bg-orange-50 text-orange-500';
       break;
     }
+    case 'history': {
+      cssClasses = 'bg-brown-200 text-brown-800';
+      break;
+    }
+    case 'event': {
+      cssClasses = 'bg-blue-500 text-white';
+      break;
+    }
     default: {
-      cssClasses = 'bg-[#f2eae5] text-orange-700';
+      cssClasses = 'bg-orange-100 text-orange-700';
       break;
     }
   }
@@ -32,10 +42,16 @@ export const CustomEventWeek = ({ event }: CustomEventProps) => {
         setIsSelected(false);
       }}
     >
-      <div className="flex flex-row text-[10px]">
-        {`${formatTime(event.start)} - ${formatTime(event.end)}`}
+      {!event.allDay && (
+        <div className="flex flex-row text-[10px]">
+          {`${formatTime(event.start)} - ${formatTime(event.end)}`}
+        </div>
+      )}
+      <div
+        className={cn('font-semibold text-xs', truncateTitle ? 'truncate' : '')}
+      >
+        {event.title}
       </div>
-      <div className="font-semibold text-xs">{event.title}</div>
       {isSelected && (
         <>
           <div className="text-xs">{event.organizer}</div>

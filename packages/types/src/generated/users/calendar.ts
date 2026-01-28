@@ -15,4 +15,5 @@ export interface CalendarEvent {
   subId: string | null;
   timezone: string | null;
   type: string;
+  allDay?: boolean | undefined;
 }

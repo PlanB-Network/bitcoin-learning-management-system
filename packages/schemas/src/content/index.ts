@@ -2,6 +2,7 @@ export * from './bcert.js';
 export * from './bet.js';
 export * from './blogs.js';
 export * from './book.js';
+export * from './calendar.js';
 export * from './channels.js';
 export * from './conference.js';
 export * from './coupon.js';

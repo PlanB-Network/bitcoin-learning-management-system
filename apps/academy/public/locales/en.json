@@ -901,9 +901,11 @@
       "downloadStep2": "Open it with your calendar app",
       "downloadStep3": "Events won’t update if dates change",
       "downloadTitle": "Or download the current calendar",
+      "followSelectedCalendar": "Follow selected calendar",
       "eventType": {
         "class": "Classes",
-        "event": "Events"
+        "event": "Events",
+        "history": "Bitcoin dates"
       },
       "personalCalendar": "Personal calendar",
       "subscribeButton": "Copy synced calendar link",
@@ -1482,6 +1484,7 @@
   "events": {
     "addEvent": "Add event",
     "calendar": {
+      "allDay": "All day",
       "inXMonths": "In {{number}} months",
       "lastMonth": "Last month",
       "nextMonth": "Next month",

@@ -6,6 +6,7 @@ import type {
   Components,
   DateLocalizer,
   DateRange,
+  EventProps,
   Formats,
   View,
 } from 'react-big-calendar';
@@ -21,6 +22,7 @@ import { CustomWeekHeader } from '#src/components/Calendar/custom-week-header.js
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { CustomAgendaEvent } from '#src/components/Calendar/custom-agenda-event.tsx';
+import { CustomAllDayEventWeek } from '#src/components/Calendar/custom-all-day-event-week.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 
 export const EventCalendar = ({ events }: { events: CalendarEvent[] }) => {
@@ -59,14 +61,19 @@ export const EventCalendar = ({ events }: { events: CalendarEvent[] }) => {
           'en-US': enUS,
         },
         parse,
-        startOfWeek: () => startOfWeek(new Date(), { weekStartsOn: 1 }),
+        startOfWeek: (date: Date) => startOfWeek(date, { weekStartsOn: 1 }),
       }),
     [],
   );
 
   const weekComponents: Components<CalendarEvent> = useMemo(
     () => ({
-      event: CustomEventWeek,
+      event: (props: EventProps<CalendarEvent>) =>
+        props.event.allDay ? (
+          <CustomAllDayEventWeek {...props} />
+        ) : (
+          <CustomEventWeek {...props} />
+        ),
       toolbar: CustomToolbar,
       week: {
         header: CustomWeekHeader,
@@ -97,8 +104,11 @@ export const EventCalendar = ({ events }: { events: CalendarEvent[] }) => {
 
   const formats: Formats = useMemo(
     () => ({
-      agendaDateFormat: (date: Date, culture?: string, local?: DateLocalizer) =>
-        local?.format(date, 'eee MMM d', culture || i18n.language) || '',
+      agendaDateFormat: (date: Date, culture?: string) =>
+        new Intl.DateTimeFormat(culture || i18n.language, {
+          weekday: 'short',
+          day: 'numeric',
+        }).format(date),
 
       agendaTimeRangeFormat: (
         range: DateRange,
@@ -133,6 +143,7 @@ export const EventCalendar = ({ events }: { events: CalendarEvent[] }) => {
       date: t('words.date'),
       time: t('words.time'),
       event: t('words.event'),
+      allDay: t('events.calendar.allDay'),
       noEventsInRange: t('events.calendar.noEventsFound'),
     }),
     [t],
@@ -141,7 +152,8 @@ export const EventCalendar = ({ events }: { events: CalendarEvent[] }) => {
   return (
     <Calendar
       localizer={localizer}
-      events={events}
+      events={events ?? []}
+      allDayAccessor="allDay"
       views={['week', 'month', 'agenda']}
       onView={handleViewChange}
       view={currentView}
@@ -149,6 +161,7 @@ export const EventCalendar = ({ events }: { events: CalendarEvent[] }) => {
       onNavigate={onNavigate}
       formats={formats}
       messages={messages}
+      tooltipAccessor={() => ''}
       onSelectEvent={(e) => {
         switch (e.type) {
           case 'class': {
@@ -156,6 +169,9 @@ export const EventCalendar = ({ events }: { events: CalendarEvent[] }) => {
               params: { chapterId: e.subId!, courseId: e.id },
               to: '/courses/$courseId/$chapterId',
             });
+            break;
+          }
+          case 'history': {
             break;
           }
           default: {
