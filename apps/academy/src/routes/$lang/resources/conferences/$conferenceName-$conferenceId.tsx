@@ -40,7 +40,7 @@ export const Route = createFileRoute(
   },
 });
 
-const MarkdownContent = ({ rawContent }: { rawContent: string }) => {
+const MarkdownContent = React.memo(({ rawContent }: { rawContent: string }) => {
   return rawContent.includes('\n') ? (
     rawContent
       .replaceAll('[live replay]', '![video]')
@@ -56,7 +56,7 @@ const MarkdownContent = ({ rawContent }: { rawContent: string }) => {
       <ConferencesMarkdownBody content={rawContent} />
     </Suspense>
   );
-};
+});
 
 const sortVideos = (videos: ConferenceStageVideo[]) => {
   return videos.sort((a, b) => {
@@ -80,12 +80,13 @@ function Conference() {
   const { t, i18n } = useTranslation();
   const params = Route.useParams();
 
-  const { data: conference, isFetched } = useQuery(
-    trpc.content.getConference.queryOptions({
+  const { data: conference, isFetched } = useQuery({
+    ...trpc.content.getConference.queryOptions({
       id: params.conferenceId,
       language: i18n.language ?? 'en',
     }),
-  );
+    refetchOnWindowFocus: false,
+  });
 
   // Get stage and video from URL
   useEffect(() => {
