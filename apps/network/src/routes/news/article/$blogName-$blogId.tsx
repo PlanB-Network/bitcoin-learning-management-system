@@ -78,7 +78,7 @@ function SingleBlogDetail() {
             breakpoints={{ default: 1400 }}
           />
 
-          <div className="flex flex-col gap-5.5 max-md:mb-8">
+          <div className="flex flex-col gap-5.5 mb-8 md:mb-6">
             <h1 className="display-small md:title-extra-large mt-6">
               {blog.title}
             </h1>
@@ -99,10 +99,7 @@ function SingleBlogDetail() {
                 )}
               </div>
             )}
-            <p className="body-base">{blog.description}</p>
           </div>
-
-          <DividerSimple className="my-6 max-md:hidden" />
 
           <div className="flex flex-col max-md:mb-15">
             <Suspense fallback={<Loader variant="black" size={'s'} />}>
