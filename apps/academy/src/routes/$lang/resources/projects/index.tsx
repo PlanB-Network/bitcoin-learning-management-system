@@ -28,7 +28,7 @@ function Projects() {
 
   const { t, i18n } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
-  const { isOpen, open, close } = useDisclosure();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const {
     open: openAuthModal,
@@ -72,16 +72,16 @@ function Projects() {
       title={t('resources.projects.title')}
       tabs={resourcesTabs}
       layoutSize="wide"
-      actionButtons={[
-        {
-          text: t('resources.addResource.project'),
-          onClick: isLoggedIn ? open : openAuthModal,
-        },
-      ]}
+      // actionButtons={[
+      //   {
+      //     text: t('resources.addResource.project'),
+      //     onClick: isLoggedIn ? () => setIsModalOpen(true) : openAuthModal,
+      //   },
+      // ]}
     >
       <AddResourceModal
-        isOpen={isOpen}
-        onClose={close}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
         resourceType={ResourceType.Project}
       />
       {!isFetched && <Loader size={'s'} />}

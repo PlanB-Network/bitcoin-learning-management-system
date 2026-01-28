@@ -77,12 +77,12 @@ function YoutubeChannels() {
       title={t('resources.channels.title')}
       tabs={resourcesTabs}
       layoutSize="wide"
-      actionButtons={[
-        {
-          text: t('resources.addResource.channel'),
-          onClick: isLoggedIn ? () => setIsModalOpen(true) : openAuthModal,
-        },
-      ]}
+      // actionButtons={[
+      //   {
+      //     text: t('resources.addResource.channel'),
+      //     onClick: isLoggedIn ? () => setIsModalOpen(true) : openAuthModal,
+      //   },
+      // ]}
     >
       <AddResourceModal
         resourceType={ResourceType.Channel}

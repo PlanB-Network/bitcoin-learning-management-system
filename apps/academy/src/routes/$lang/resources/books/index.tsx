@@ -56,12 +56,12 @@ function Books() {
       title={t('resources.books.title')}
       tabs={resourcesTabs}
       layoutSize="wide"
-      actionButtons={[
-        {
-          text: t('resources.addResource.book'),
-          onClick: isLoggedIn ? () => setIsModalOpen(true) : openAuthModal,
-        },
-      ]}
+      // actionButtons={[
+      //   {
+      //     text: t('resources.addResource.book'),
+      //     onClick: isLoggedIn ? () => setIsModalOpen(true) : openAuthModal,
+      //   },
+      // ]}
     >
       <AddResourceModal
         resourceType={ResourceType.Book}

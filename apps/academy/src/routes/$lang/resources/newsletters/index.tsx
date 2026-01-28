@@ -77,12 +77,12 @@ function Newsletter() {
       title={t('resources.newsletters.title')}
       tabs={resourcesTabs}
       layoutSize="wide"
-      actionButtons={[
-        {
-          text: t('resources.addResource.newsletter'),
-          onClick: isLoggedIn ? () => setIsModalOpen(true) : openAuthModal,
-        },
-      ]}
+      // actionButtons={[
+      //   {
+      //     text: t('resources.addResource.newsletter'),
+      //     onClick: isLoggedIn ? () => setIsModalOpen(true) : openAuthModal,
+      //   },
+      // ]}
     >
       <AddResourceModal
         resourceType={ResourceType.Newsletter}
