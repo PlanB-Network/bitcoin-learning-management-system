@@ -106,7 +106,7 @@ export const getCalendarEventsQuery = (
     FROM content.calendar_localized cl
     JOIN content.calendar c ON c.resource_id = cl.resource_id
     WHERE 1 = 1
-      ${language ? sql`AND cl.language = ${language}` : sql``}
+      ${language ? sql`AND LOWER(cl.language) = LOWER(${language})` : sql``}
   ) as events
   WHERE 1 = 1
     ${types && types.length > 0 ? sql`AND type = ANY(${types})` : sql``}
