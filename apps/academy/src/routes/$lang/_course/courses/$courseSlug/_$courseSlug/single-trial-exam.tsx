@@ -98,25 +98,27 @@ function SingleTrialExam() {
           data: {
             description: t('dashboard.course.individualWork'),
             endDate: new Date(
-              course.assignmentEndDate || '2024-06-18T23:59:00',
+              course.assignmentEndDate || '2026-04-23T23:59:00',
             ),
             isGradePublished: course.isAssignmentGradingPublished,
             score:
               typeof assignmentScore === 'number' && assignmentScore >= 0
                 ? assignmentScore
                 : undefined,
-            startDate: new Date(course.assignmentStartDate || '2024-06-02'),
+            startDate: new Date(course.assignmentStartDate || '2026-04-02'),
             title: t('dashboard.course.assignmentTitle'),
             weight: assignmentWeight,
           },
-          startDate: new Date(course.assignmentStartDate || '2024-06-02'),
+          startDate: new Date(course.assignmentStartDate || '2026-04-02'),
           type: 'assignment' as const,
         },
       ]
     : [];
-  const allItems = [...examItems, ...assignmentItems].sort(
-    (a, b) => (a.startDate?.getTime() || 0) - (b.startDate?.getTime() || 0),
-  );
+  const allItems = [...examItems, ...assignmentItems].sort((a, b) => {
+    const dateA = a.startDate ? new Date(a.startDate).getTime() : 0;
+    const dateB = b.startDate ? new Date(b.startDate).getTime() : 0;
+    return dateA - dateB;
+  });
 
   const scoreAndRankingClasses =
     'flex flex-col gap-2.5 md:gap-4 items-center justify-center p-5 bg-white rounded-2xl border border-neutral-100 w-full md:max-w-80';
