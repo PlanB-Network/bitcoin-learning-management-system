@@ -8,7 +8,7 @@ import {
   DialogClose,
   Divider,
 } from '@blms/ui';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import { useEffect } from 'react';
@@ -349,8 +349,15 @@ const ConcludeButton = ({
   addMarginTop?: boolean;
   hasSkipText?: boolean;
 }) => {
+  const queryClient = useQueryClient();
   const completeChapterMutation = useMutation(
-    trpc.user.courses.completeChapter.mutationOptions(),
+    trpc.user.courses.completeChapter.mutationOptions({
+      onSuccess: () => {
+        queryClient.invalidateQueries({
+          queryKey: trpc.user.courses.getProgress.queryKey(),
+        });
+      },
+    }),
   );
 
   const completeChapter = () => {

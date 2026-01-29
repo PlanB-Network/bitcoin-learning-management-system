@@ -5,7 +5,7 @@ import type {
   JoinedQuizQuestion,
 } from '@blms/types';
 import { Button, cn, Image, Loader } from '@blms/ui';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import {
   lazy,
@@ -286,8 +286,15 @@ const Header = ({ chapter }: { chapter: CourseChapterResponse }) => {
 const BottomButton = ({ chapter }: { chapter: CourseChapterResponse }) => {
   const { t } = useTranslation();
 
+  const queryClient = useQueryClient();
   const completeChapterMutation = useMutation(
-    trpc.user.courses.completeChapter.mutationOptions(),
+    trpc.user.courses.completeChapter.mutationOptions({
+      onSuccess: () => {
+        queryClient.invalidateQueries({
+          queryKey: trpc.user.courses.getProgress.queryKey(),
+        });
+      },
+    }),
   );
 
   const completeChapter = () => {
@@ -434,8 +441,16 @@ function CourseChapter() {
     ),
   );
 
+  const queryClient = useQueryClient();
+
   const completeChapterAutoMutation = useMutation(
-    trpc.user.courses.completeChapter.mutationOptions(),
+    trpc.user.courses.completeChapter.mutationOptions({
+      onSuccess: () => {
+        queryClient.invalidateQueries({
+          queryKey: trpc.user.courses.getProgress.queryKey(),
+        });
+      },
+    }),
   );
 
   const { data: quizzArray } = useQuery(

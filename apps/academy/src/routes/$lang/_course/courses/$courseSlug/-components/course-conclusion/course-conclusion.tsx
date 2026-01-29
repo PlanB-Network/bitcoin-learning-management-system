@@ -10,6 +10,7 @@ import {
   type UseMutationResult,
   useMutation,
   useQuery,
+  useQueryClient,
 } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
@@ -107,8 +108,15 @@ export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
     }),
   );
 
+  const queryClient = useQueryClient();
   const completeChapterMutation = useMutation(
-    trpc.user.courses.completeChapter.mutationOptions(),
+    trpc.user.courses.completeChapter.mutationOptions({
+      onSuccess: () => {
+        queryClient.invalidateQueries({
+          queryKey: trpc.user.courses.getProgress.queryKey(),
+        });
+      },
+    }),
   );
 
   const now = new Date();

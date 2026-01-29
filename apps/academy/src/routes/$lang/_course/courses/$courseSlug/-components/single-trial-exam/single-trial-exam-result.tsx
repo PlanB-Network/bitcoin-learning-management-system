@@ -1,6 +1,6 @@
 import type { CourseChapterResponse } from '@blms/types';
 import { ButtonWithArrow, cn, Divider } from '@blms/ui';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
 import SuccessExam from '#src/assets/icons/success_exam.svg?react';
@@ -20,8 +20,15 @@ export const SingleTrialExamResult = ({
     }),
   );
 
+  const queryClient = useQueryClient();
   const completeChapterMutation = useMutation(
-    trpc.user.courses.completeChapter.mutationOptions(),
+    trpc.user.courses.completeChapter.mutationOptions({
+      onSuccess: () => {
+        queryClient.invalidateQueries({
+          queryKey: trpc.user.courses.getProgress.queryKey(),
+        });
+      },
+    }),
   );
 
   const formatDuration = (seconds: number) => {
