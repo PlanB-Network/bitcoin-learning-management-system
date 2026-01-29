@@ -59,7 +59,7 @@ const MarkdownContent = React.memo(({ rawContent }: { rawContent: string }) => {
 });
 
 const sortVideos = (videos: ConferenceStageVideo[]) => {
-  return videos.sort((a, b) => {
+  return [...videos].sort((a, b) => {
     return getVideoIdNumber(a) - getVideoIdNumber(b);
   });
 };
@@ -80,13 +80,25 @@ function Conference() {
   const { t, i18n } = useTranslation();
   const params = Route.useParams();
 
-  const { data: conference, isFetched } = useQuery({
+  const { data: rawConference, isFetched } = useQuery({
     ...trpc.content.getConference.queryOptions({
       id: params.conferenceId,
       language: i18n.language ?? 'en',
     }),
     refetchOnWindowFocus: false,
   });
+
+  const conference = React.useMemo(() => {
+    if (!rawConference) return undefined;
+
+    return {
+      ...rawConference,
+      stages: rawConference.stages.map((stage) => ({
+        ...stage,
+        videos: sortVideos(stage.videos),
+      })),
+    };
+  }, [rawConference]);
 
   // Get stage and video from URL
   useEffect(() => {
@@ -233,25 +245,23 @@ function Conference() {
                 {t('conferences.details.selectVideo')}
               </span>
               <div className="flex items-center flex-wrap gap-2 max-h-32 overflow-y-auto scrollbar-light">
-                {sortVideos(conference.stages[activeStage].videos).map(
-                  (video, index) => {
-                    return (
-                      <CategorySwitcher
-                        onClick={
-                          index !== activeVideo
-                            ? () => {
-                                setActiveVideo(index);
-                              }
-                            : () => {}
-                        }
-                        text={video.name}
-                        isActive={index === activeVideo}
-                        key={`${video.name}`}
-                        inactiveBackgroundColor="bg-neutral-50"
-                      />
-                    );
-                  },
-                )}
+                {conference.stages[activeStage].videos.map((video, index) => {
+                  return (
+                    <CategorySwitcher
+                      onClick={
+                        index !== activeVideo
+                          ? () => {
+                              setActiveVideo(index);
+                            }
+                          : () => {}
+                      }
+                      text={video.name}
+                      isActive={index === activeVideo}
+                      key={`${video.name}`}
+                      inactiveBackgroundColor="bg-neutral-50"
+                    />
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -279,7 +289,7 @@ function Conference() {
               activeItem={
                 conference.stages[activeStage].videos[activeVideo].name
               }
-              itemsList={sortVideos(conference.stages[activeStage].videos).map(
+              itemsList={conference.stages[activeStage].videos.map(
                 (video, index) => {
                   return {
                     name: video.name,
