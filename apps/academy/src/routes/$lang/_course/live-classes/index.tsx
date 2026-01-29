@@ -4,8 +4,7 @@ import type { CourseResponse, JoinedCourse } from '@blms/types';
 import { Button, cn, Flag, Image, Loader, Progress } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { t } from 'i18next';
-import { useContext, useMemo } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbCalendarEvent, TbChevronRight, TbClock } from 'react-icons/tb';
 import OrangePill from '#src/assets/icons/orange_pill_color.svg';
@@ -26,6 +25,8 @@ function AllCourses() {
   const { courses, session } = useContext(AppContext);
   const { t, i18n } = useTranslation();
 
+  const [showAllInProgress, setShowAllInProgress] = useState(false);
+
   const isLoggedIn = !!session?.user;
 
   const { data: coursesProgress } = useQuery(
@@ -40,10 +41,7 @@ function AllCourses() {
   const inProgressCourses = !coursesProgress
     ? []
     : coursesProgress
-        .filter(
-          (course) =>
-            course.progressPercentage > 0 && course.progressPercentage < 100,
-        )
+        .filter((course) => course.progressPercentage < 100)
         .sort((a, b) => {
           if (b.lastUpdated && a.lastUpdated) {
             return (
@@ -110,58 +108,61 @@ function AllCourses() {
             {t('courses.continueLeftOff')}
           </p>
           <div className="flex flex-col gap-1 md:gap-4 w-full">
-            {inProgressCourses.slice(0, 2).map((courseProgress) => {
-              const course = courses.find(
-                (c) => c.id === courseProgress.courseId,
-              );
-              if (!course) return null;
-              return (
-                <article
-                  className="flex items-center justify-between w-full border border-neutral-100 rounded-2xl p-3 md:p-8 gap-2"
-                  key={course.id}
-                >
-                  <span className="body-small-bold md:subtitle-base text-black">
-                    {course.name}
-                  </span>
-                  <div className="flex items-center gap-3 md:gap-12 xl:w-full xl:max-w-[463px]">
-                    <div className="flex items-center gap-4 w-full">
-                      <div className="w-full max-w-[272px] relative max-xl:hidden">
-                        <Progress
-                          total={courseProgress.totalChapters}
-                          completed={courseProgress.completedChaptersCount}
-                          pillImage={OrangePill}
-                        />
+            {inProgressCourses
+              .slice(0, showAllInProgress ? undefined : 2)
+              .map((courseProgress) => {
+                const course = courses.find(
+                  (c) => c.id === courseProgress.courseId,
+                );
+                if (!course) return null;
+                return (
+                  <article
+                    className="flex items-center justify-between w-full border border-neutral-100 rounded-2xl p-3 md:p-8 gap-2"
+                    key={course.id}
+                  >
+                    <span className="body-small-bold md:subtitle-base text-black">
+                      {course.name}
+                    </span>
+                    <div className="flex items-center gap-3 md:gap-12 xl:w-full xl:max-w-[463px]">
+                      <div className="flex items-center gap-4 w-full">
+                        <div className="w-full max-w-[272px] relative max-xl:hidden">
+                          <Progress
+                            total={courseProgress.totalChapters}
+                            completed={courseProgress.completedChaptersCount}
+                            pillImage={OrangePill}
+                          />
+                        </div>
+                        <span className="body-extra-small-bold md:subtitle-base text-orange-500">
+                          {courseProgress.progressPercentage}%
+                        </span>
                       </div>
-                      <span className="body-extra-small-bold md:subtitle-base text-orange-500">
-                        {courseProgress.progressPercentage}%
-                      </span>
-                    </div>
-                    <Link
-                      to={`/courses/${course.id}/${courseProgress?.nextChapter?.chapterId}`}
-                    >
-                      <Button
-                        rounded
-                        variant="primary"
-                        className="w-full"
-                        size={'m'}
+                      <Link
+                        to={`/courses/${course.id}/${courseProgress?.nextChapter?.chapterId}`}
                       >
-                        {t('words.resume')}
-                      </Button>
-                    </Link>
-                  </div>
-                </article>
-              );
-            })}
-            {inProgressCourses.length > 2 && (
+                        <Button
+                          rounded
+                          variant="primary"
+                          className="w-full"
+                          size={'m'}
+                        >
+                          {t('words.resume')}
+                        </Button>
+                      </Link>
+                    </div>
+                  </article>
+                );
+              })}
+            {inProgressCourses.length > 2 && !showAllInProgress && (
               <div className="ml-auto">
-                <Link
-                  to="/my-courses"
+                <button
+                  type="button"
+                  onClick={() => setShowAllInProgress(true)}
                   className="body-small-bold text-black pr-8"
                 >
                   {t('courses.plusXMore', {
                     count: inProgressCourses.length - 2,
                   })}
-                </Link>
+                </button>
               </div>
             )}
           </div>
@@ -209,6 +210,7 @@ function AllCourses() {
 }
 
 const ProgramCard = ({ course }: { course: JoinedCourse | CourseResponse }) => {
+  const { t } = useTranslation();
   const dateString = formatShortDateRange(course.startDate, course.endDate);
 
   return (
