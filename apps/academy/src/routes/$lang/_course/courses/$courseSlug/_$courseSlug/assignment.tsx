@@ -150,16 +150,16 @@ function Assignment() {
   const [isUploading, setIsUploading] = useState(false);
 
   const openAssignmentDate = new Date(
-    isPlanBSchool
-      ? '2025-06-02T00:00:00Z'
-      : courseInfo?.assignmentStartDate || '2025-06-02T00:00:00Z',
+    courseInfo?.assignmentStartDate || '2026-04-02T00:00:00Z',
   ).getTime();
   const endAssignmentDate = new Date(
-    courseInfo?.assignmentEndDate || '2025-06-18T23:59:00Z',
+    courseInfo?.assignmentEndDate || '2026-04-23T23:59:00Z',
   ).getTime();
   const currentTime = Date.now();
   const isAssignmentOpen = currentTime >= openAssignmentDate;
-  const isBeforeAssignmentOpen = currentTime < openAssignmentDate;
+
+  // To enable once infos are available
+  // const isBeforeAssignmentOpen = currentTime < openAssignmentDate;
 
   const courseProgress = userProgress?.[0];
   const isSelectedForAssignment =
@@ -168,8 +168,10 @@ function Assignment() {
   const hasAffectedAssignment = courseProgress?.affectedAssignmentId !== null;
   const hasSubmittedWork = courseProgress?.assignmentSubmissionTime !== null;
 
-  const shouldShowRanking =
-    isPlanBSchool && (isSelectedForAssignment || isBeforeAssignmentOpen);
+  const shouldShowRanking = isPlanBSchool && isSelectedForAssignment;
+  // To enable once infos are available
+  // (isSelectedForAssignment|| isBeforeAssignmentOpen)
+
   const canRankAssignments =
     isAssignmentOpen &&
     isSelectedForAssignment &&
