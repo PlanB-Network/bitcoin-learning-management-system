@@ -1,4 +1,4 @@
-import { cn, customToast, ScrollToTopButton } from '@blms/ui';
+import { cn, ScrollToTopButton } from '@blms/ui';
 import {
   type JSX,
   type ReactNode,
@@ -7,8 +7,6 @@ import {
   useRef,
   useState,
 } from 'react';
-import { useTranslation } from 'react-i18next';
-import SignInIconLight from '#src/assets/icons/profile_log_in_light.svg';
 import { AppContext } from '#src/providers/context.tsx';
 import { isPearApp } from '../env.ts';
 import { Footer } from './footer.tsx';
@@ -28,33 +26,11 @@ export const MainLayout = ({
   showBecomeTeacherButton,
   navbarTitle,
 }: MainLayoutProps) => {
-  const { t } = useTranslation();
-
   const { isSidebarOpen, setIsSidebarOpen } = useContext(AppContext);
 
   const [isResizing, setIsResizing] = useState(false);
 
   const resizeTimerRef = useRef<number | null>(null);
-
-  // using session storage to check if user just registered and show toast
-  useEffect(() => {
-    const hasJustRegistered = sessionStorage.getItem('hasJustRegistered');
-
-    if (hasJustRegistered) {
-      customToast(t('auth.dashboardUnlocked'), {
-        closeButton: true,
-        color: 'primary',
-        imgSrc: SignInIconLight,
-        mode: 'light',
-        onClick: () => {
-          window.location.href = '/my-courses';
-        },
-        time: 5000,
-      });
-
-      sessionStorage.removeItem('hasJustRegistered');
-    }
-  }, [t]);
 
   // handle resize to avoid transition lag
   useEffect(() => {

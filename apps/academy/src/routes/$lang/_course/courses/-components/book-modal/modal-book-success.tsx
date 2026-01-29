@@ -47,9 +47,6 @@ export const ModalBookSuccess = ({
         <div>
           <div className="flex flex-col gap-4">
             <span className="text-center text-xs lg:text-base">
-              {t('events.payment.access_physical_successful')}
-            </span>
-            <span className="text-center text-xs lg:text-base">
               {t('events.payment.limitedSeats')}
             </span>
           </div>

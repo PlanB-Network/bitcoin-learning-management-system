@@ -714,7 +714,6 @@ const StepsContent = ({
           <StepMessage
             title={t('courses.review.feedback')}
             headline={t('courses.conclusion.completedFeedbackHeadline')}
-            subHeadline={t('courses.conclusion.completedFeedbackSubHeadline')}
             icon={
               <HeartPixel
                 className={cn(stepMessageIconClass, 'fill-orange-500')}

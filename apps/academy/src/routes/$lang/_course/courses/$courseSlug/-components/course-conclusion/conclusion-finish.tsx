@@ -37,8 +37,6 @@ export const ConclusionFinish = ({
   hasSingleTrialExamOrAssignment = false,
   hasPassedCourseThreshold = false,
 }: ConclusionFinishProps) => {
-  const { session } = useContext(AppContext);
-
   return (
     <>
       {!isProfessorLed && <Professor course={course} addThanksTipping />}
@@ -52,13 +50,6 @@ export const ConclusionFinish = ({
       )}
       {/* {course.topic === 'protocol' ? <Labs /> : null} */}
       <OtherCourses course={course} />
-      {session?.user && (
-        <Link to="/my-courses" className="max-md:hidden mt-8 inline-flex">
-          <ButtonWithArrow variant="primary" size="l">
-            {t('dashboard.backToDashboard')}
-          </ButtonWithArrow>
-        </Link>
-      )}
     </>
   );
 };

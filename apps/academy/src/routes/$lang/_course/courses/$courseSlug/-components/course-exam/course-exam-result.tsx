@@ -113,11 +113,11 @@ export const CourseExamResult = ({
                             <TimeStampDialog />
                           </span>
                         )}
-                        <span className="text-neutral-1000 md:title-large-24px text-center max-md:pl-1">
-                          {!examResults.isTimestamped
-                            ? t('courses.exam.availableDashboard')
-                            : t('courses.exam.availableDashboardTimestamped')}
-                        </span>
+                        {!examResults.isTimestamped && (
+                          <span className="text-neutral-1000 md:title-large-24px text-center max-md:pl-1">
+                            {t('courses.exam.availableDashboard')}
+                          </span>
+                        )}
                       </div>
                       <div className="flex justify-center gap-4 items-center max-md:hidden mt-10">
                         {examResults.isTimestamped && (

@@ -88,10 +88,8 @@ function ValidateEmailPage() {
         </p>
         <p>
           <Button asChild className="w-fit">
-            <Link className="cursor-pointer" to={user ? '/my-courses' : '/'}>
-              {user
-                ? t('dashboard.goToDashboard')
-                : t('dashboard.goToHomepage')}
+            <Link className="cursor-pointer" to="/">
+              {t('dashboard.goToHomepage')}
             </Link>
           </Button>
         </p>
@@ -107,10 +105,8 @@ function ValidateEmailPage() {
         </p>
         <p>
           <Button asChild className="w-fit">
-            <Link className="cursor-pointer" to={user ? '/my-courses' : '/'}>
-              {user
-                ? t('dashboard.goToDashboard')
-                : t('dashboard.goToHomepage')}
+            <Link className="cursor-pointer" to="/">
+              {t('dashboard.goToHomepage')}
             </Link>
           </Button>
         </p>

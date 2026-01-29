@@ -181,10 +181,9 @@
     "conclusion": {
       "completedChaptersHeadline": "All chapters are now completed!",
       "completedFeedbackHeadline": "Thank you for your feedback!\nIt is very important for us, so we really appreciate it.",
-      "completedFeedbackSubHeadline": "You can edit your ratings and comments anytime in your dashboard.",
       "congratulationsEnd": "Congratulations, you have reached the end of the course",
-      "finalStep": "This was the final step to mark this course as completed in your dashboard, before continuing your journey!",
-      "stepsToComplete": "These are the steps to mark this course as completed in your dashboard, before continuing your journey!",
+      "finalStep": "This was the final step to mark this course as completed, before continuing your journey!",
+      "stepsToComplete": "These are the steps to mark this course as completed, before continuing your journey!",
       "takeFinalExam": "Now that you have completed all chapters, it's time to take the final exam to test your knowledge.",
       "unlockFeatures1": "To unlock all features and keep track of your progress, you need an account.",
       "unlockFeatures2": "Please be aware that we do not collect any personal data nor use cookies."
@@ -228,8 +227,7 @@
     },
     "exam": {
       "answersReview": "Answers review",
-      "availableDashboard": "It will be available in your dashboard in about 10 hours.",
-      "availableDashboardTimestamped": "Your diploma is available in your dashboard.",
+      "availableDashboard": "It will be available in about 10 hours.",
       "bCertCompletionText": "Plan ₿ Network is pleased to congratulate {{username}} on being awarded the ₿-CERT test certificate.",
       "buttonTextBCert": "Learn more",
       "certificateAvailable": "It will be available about 10 hours after submission.",
@@ -296,10 +294,10 @@
       "solidEffort": "Congratulations on completing the course, you gave it a solid effort.\nWhile you didn’t pass this time, every step builds progress.\nKeep moving forward on your learning journey!",
       "startExam": "Start exam",
       "submit": "Submit",
-      "successDiploma": "Congrats! You have successfully passed the exam. \nYour diploma is available in your student dashboard. It has been <0>time-stamped</0> to ensure its authenticity.",
-      "successDiplomaTeacherLed": "Congrats! You have successfully passed the course. \nYour diploma is now available in your student dashboard.",
-      "successDiplomaTimeStamped": "Congrats! You have successfully passed the exam. \nYour diploma will be available in your student dashboard around 10 hours after the moment you took the exam. This delay is due to <0>time-stamping</0> technology, which ensures its authenticity.",
-      "successfulPassedThreshold": "Congratulations on completing the course.\nYou’ve successfully met the passing threshold for this course and you are now graduated. \nYou can find your diploma in your dashboard.",
+      "successDiploma": "Congrats! You have successfully passed the exam. \nYour diploma is available. It has been <0>time-stamped</0> to ensure its authenticity.",
+      "successDiplomaTeacherLed": "Congrats! You have successfully passed the course. \nYour diploma is now available.",
+      "successDiplomaTimeStamped": "Congrats! You have successfully passed the exam. \nYour diploma will be available around 10 hours after the moment you took the exam. This delay is due to <0>time-stamping</0> technology, which ensures its authenticity.",
+      "successfulPassedThreshold": "Congratulations on completing the course.\nYou’ve successfully met the passing threshold for this course and you are now graduated.",
       "sureSubmit": "Are you sure you want to submit your exam?",
       "takeExam": "Take test",
       "tamperProof": "Tamper-Proof: Blockchain ensures no one can alter or fake your credentials.",
@@ -874,7 +872,6 @@
       "pickADate": "Pick a date",
       "publicationDate": "Date of publication"
     },
-    "backToDashboard": "Back to dashboard",
     "backToProfile": "Back to my profile",
     "booking": {
       "accessLive": "Access the live",
@@ -1171,7 +1168,6 @@
       "globalCertifications": "Global certifications",
       "noCertificatesAvailable": "No certificates available"
     },
-    "goToDashboard": "Go to dashboard",
     "goToHomepage": "Go to homepage",
     "logout": "Log out",
     "myCourses": {
@@ -1241,7 +1237,7 @@
         "goToProfile": "Go to Profile",
         "loadEmailSettingsError": "Sorry, we could not load your email preferences.",
         "loadEmailSettingsErrorDescription": "Please ensure the link you used is correct.",
-        "loadEmailSettingsErrorManage": "If you have access to your account, you can also manage settings directly in your dashboard:",
+        "loadEmailSettingsErrorManage": "If you have access to your account, you can manage your settings there:",
         "none": "None",
         "platformTitle": "What types of notifications would you like to receive on this platform?",
         "settingsSaved": "Your settings were saved successfully!",
@@ -1520,7 +1516,6 @@
     "myTickets": "My tickets",
     "payment": {
       "access_online_successful": "When the event starts, log onto the platform and start live streaming via the event page.",
-      "access_physical_successful": "You can download your ticket here, or download it later in your dashboard.",
       "access_type": "Type of access",
       "additional_free_description": "This event is free so you will not be charged to book this seat.",
       "address": "Address",

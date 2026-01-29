@@ -69,8 +69,6 @@ export const Register = ({ setIsOnVerifyEmail }: RegisterProps) => {
   const register = useMutation(
     trpc.auth.credentials.register.mutationOptions({
       onSuccess: () => {
-        sessionStorage.setItem('hasJustRegistered', 'true');
-
         setIsOnVerifyEmail(true);
       },
     }),
