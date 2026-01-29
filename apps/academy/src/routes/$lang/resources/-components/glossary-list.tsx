@@ -2,9 +2,13 @@ import type { JoinedGlossaryWord } from '@blms/types';
 import { Button } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { t } from 'i18next';
-import { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { TbChevronsDown } from 'react-icons/tb';
 import { normalizeString } from '#src/utils/string.js';
+
+const GlossaryMarkdownBody = React.lazy(
+  () => import('#src/components/Markdown/glossary-markdown-body.js'),
+);
 
 interface GlossaryListProps {
   glossaryTerms: JoinedGlossaryWord[];
@@ -66,9 +70,11 @@ export const GlossaryList = ({
               >
                 {term.term}
               </Link>
-              <p className="w-3/4 text-neutral-800 line-clamp-5 text-justify body-large">
-                {term.definition}
-              </p>
+              <div className="w-3/4 text-neutral-800 line-clamp-5 text-justify body-large">
+                <Suspense fallback="...">
+                  <GlossaryMarkdownBody content={term.definition} isPreview />
+                </Suspense>
+              </div>
             </div>
             <div className="w-full h-px bg-neutral-100" />
           </div>
@@ -87,9 +93,11 @@ export const GlossaryList = ({
               >
                 {term.term}
               </Link>
-              <p className="w-full text-neutral-800 line-clamp-5 text-justify body-large">
-                {term.definition}
-              </p>
+              <div className="w-full text-neutral-800 line-clamp-5 text-justify body-large">
+                <Suspense fallback="...">
+                  <GlossaryMarkdownBody content={term.definition} isPreview />
+                </Suspense>
+              </div>
             </div>
             <div className="w-full h-px bg-neutral-100" />
           </div>

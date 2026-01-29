@@ -15,9 +15,11 @@ import { TdRenderer } from './Renderers/td-renderer.tsx';
 const GlossaryMarkdownBody = ({
   content,
   assetPrefix,
+  isPreview,
 }: {
   content: string;
   assetPrefix?: string;
+  isPreview?: boolean;
 }) => {
   return (
     <ReactMarkdown
@@ -27,9 +29,14 @@ const GlossaryMarkdownBody = ({
             {children}
           </LinkRenderer>
         ),
-        blockquote: ({ children }) => (
-          <BlockquoteRenderer mode={'light'}>{children}</BlockquoteRenderer>
-        ),
+        blockquote: ({ children }) =>
+          isPreview ? (
+            <blockquote className="italic border-l-4 border-neutral-300 pl-4 my-2">
+              {children}
+            </blockquote>
+          ) : (
+            <BlockquoteRenderer mode={'light'}>{children}</BlockquoteRenderer>
+          ),
         code: ({ className, children }) => (
           <CodeRenderer className={className}>{children}</CodeRenderer>
         ),
@@ -53,7 +60,11 @@ const GlossaryMarkdownBody = ({
           </ol>
         ),
         p: ({ children }) => (
-          <ParagraphRenderer intent="glossary">{children}</ParagraphRenderer>
+          <ParagraphRenderer
+            intent={isPreview ? 'glossary-preview' : 'glossary'}
+          >
+            {children}
+          </ParagraphRenderer>
         ),
         table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
         td: ({ children }) => <TdRenderer>{children}</TdRenderer>,

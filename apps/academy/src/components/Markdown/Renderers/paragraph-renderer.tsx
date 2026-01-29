@@ -15,6 +15,7 @@ const paragraphStyles = cva('text-base tracking-wide', {
       default: 'text-blue-950 body-16px',
       general: 'text-blue-950 text-base tracking-wide',
       glossary: 'mobile-body2 md:desktop-body1 text-black my-3 last:mb-0',
+      'glossary-preview': 'mobile-body2 md:desktop-body1 text-black',
     },
   },
 });
@@ -24,7 +25,12 @@ interface ParagraphRendererProps
     VariantProps<typeof paragraphStyles> {
   children?: React.ReactNode;
   className?: string;
-  intent?: 'default' | 'conference' | 'general' | 'glossary';
+  intent?:
+    | 'default'
+    | 'conference'
+    | 'general'
+    | 'glossary'
+    | 'glossary-preview';
 }
 export const ParagraphRenderer: React.FC<ParagraphRendererProps> = (props) => {
   const { children, intent } = props;
