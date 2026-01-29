@@ -143,7 +143,6 @@
     "conclusion": {
       "completedChaptersHeadline": "",
       "completedFeedbackHeadline": "",
-      "completedFeedbackSubHeadline": "",
       "congratulationsEnd": "",
       "finalStep": "",
       "stepsToComplete": "",
@@ -185,7 +184,6 @@
     "exam": {
       "answersReview": "Bitar amsoshi",
       "availableDashboard": "Zai kasance a cikin dashboard ɗinku cikin ƙasa da awowi 10.",
-      "availableDashboardTimestamped": "",
       "bCertCompletionText": "",
       "buttonTextBCert": "",
       "certificateAvailable": "Zai kasancewa nan da kusan awowi 8 bayan aika shi.",
@@ -471,7 +469,6 @@
       "pickADate": "",
       "publicationDate": ""
     },
-    "backToDashboard": "",
     "booking": {
       "accessLive": "Kashiga jarabawa wanda ake yanzu",
       "cancelBookingTitle": "",
@@ -734,7 +731,6 @@
       "courseDiplomas": "Takardun shaidar ƙwararrun kwasa-kwasai",
       "globalCertifications": "Takardun shaida na duniya"
     },
-    "goToDashboard": "",
     "goToHomepage": "",
     "logout": "Fita daga asusun",
     "myCourses": {
@@ -898,7 +894,6 @@
     },
     "payment": {
       "access_online_successful": "",
-      "access_physical_successful": "",
       "access_type": "Nau'in samun dama",
       "additional_free_description": "Wannan taron kyauta ne, don haka babu caji don tanadin wannan wurin zama. Duk da haka, a tabbatar an halarta, saboda adadin wuraren zama a kayyade yake.",
       "address": "Adireshi",

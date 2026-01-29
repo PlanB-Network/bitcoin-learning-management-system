@@ -161,7 +161,6 @@
     "conclusion": {
       "completedChaptersHeadline": "¡Haz completado todos los capítulos!",
       "completedFeedbackHeadline": "¡Gracias por tu retroalimentación!\nEs muy importante para nosotros, por lo que te lo agradecemos mucho.",
-      "completedFeedbackSubHeadline": "Puedes editar tus calificaciones y comentarios en cualquier momento en tu panel de control.",
       "congratulationsEnd": "¡Felicitaciones! Has llegado al final del curso",
       "finalStep": "¡Este fue el paso final para marcar este curso como completado en tu panel de control, antes de continuar tu viaje!",
       "stepsToComplete": "Estos son los pasos para marcar este curso como completado en tu panel de control, ¡antes de continuar tu viaje!",
@@ -207,7 +206,6 @@
     "exam": {
       "answersReview": "Revisión de respuestas",
       "availableDashboard": "Estará disponible en tu panel de control en aproximadamente 10 horas.",
-      "availableDashboardTimestamped": "Tu diploma está disponible en tu panel de control.",
       "bCertCompletionText": "Plan ₿ Network se complace en felicitar a {{username}} por haber sido galardonado con el Certificado ₿-CERT.",
       "buttonTextBCert": "Aprende más",
       "certificateAvailable": "Estará disponible aproximadamente 8 horas después de la entrega.",
@@ -855,7 +853,6 @@
       "pickADate": "Elige una fecha",
       "publicationDate": "Fecha de publicación"
     },
-    "backToDashboard": "Volver al panel de control",
     "booking": {
       "accessLive": "Accede al examen en vivo",
       "cancelBookingTitle": "¿Estás seguro de que quieres cancelar esta reserva?",
@@ -1149,7 +1146,6 @@
       },
       "detailedScore": "Puntuación detallada"
     },
-    "goToDashboard": "Ir al panel de control",
     "goToHomepage": "Ir a la página principal",
     "logout": "Cerrar sesión",
     "myCourses": {
@@ -1360,7 +1356,6 @@
     },
     "payment": {
       "access_online_successful": "Cuando comience el evento, inicia sesión en la plataforma y empieza a transmitir en vivo desde la página del evento.",
-      "access_physical_successful": "Puedes descargar tu entrada aquí o hacerlo más tarde desde tu panel.",
       "access_type": "Tipo de acceso",
       "additional_free_description": "Este evento es gratuito, por lo que no hay costo por reservar este asiento. Sin embargo, por favor, asegúrate de asistir, ya que el número de asientos es limitado.",
       "address": "Dirección",

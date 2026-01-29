@@ -161,7 +161,6 @@
     "conclusion": {
       "completedChaptersHeadline": "所有章節都已完成！",
       "completedFeedbackHeadline": "感謝您的回饋！\n這對我們非常重要，我們由衷感謝您的支持。",
-      "completedFeedbackSubHeadline": "您可以隨時在儀表板中編輯您的評分和評論。",
       "congratulationsEnd": "恭喜，你已經完成了這門課程",
       "finalStep": "這是您在儀表板上標記課程完成的最後一步，完成後即可繼續您的學習旅程！",
       "stepsToComplete": "在繼續您的學習旅程之前，請按照以下步驟在儀表板中標記此課程為已完成！",
@@ -207,7 +206,6 @@
     "exam": {
       "answersReview": "答案回顧",
       "availableDashboard": "它將在大約10小時後在你的儀表板上可用。",
-      "availableDashboardTimestamped": "您的證書已經在您的儀表板上。",
       "bCertCompletionText": "Plan ₿ Network 很高興恭喜 {{username}} 獲得 ₿-CERT 測試證書。",
       "buttonTextBCert": "了解更多",
       "certificateAvailable": "它將在提交後大約8小時可用。",
@@ -855,7 +853,6 @@
       "pickADate": "選擇日期",
       "publicationDate": "發布日期"
     },
-    "backToDashboard": "返回儀表板",
     "booking": {
       "accessLive": "進入線上考試",
       "cancelBookingTitle": "您確定要取消這個預約嗎？",
@@ -1149,7 +1146,6 @@
       },
       "detailedScore": "詳細分數"
     },
-    "goToDashboard": "前往儀表板",
     "goToHomepage": "前往首頁",
     "logout": "登出",
     "myCourses": {
@@ -1360,7 +1356,6 @@
     },
     "payment": {
       "access_online_successful": "活動開始時，請登入平台，您將能夠透過活動頁面觀看直播。",
-      "access_physical_successful": "您可以在這裡下載您的票券，或者稍後在您的儀表板中下載。",
       "access_type": "存取類型",
       "additional_free_description": "此活動免費，因此預訂座位不收費用。不過，請務必參加，因為座位數量有限。",
       "address": "地址",

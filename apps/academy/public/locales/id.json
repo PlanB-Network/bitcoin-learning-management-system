@@ -161,7 +161,6 @@
     "conclusion": {
       "completedChaptersHeadline": "Semua bab sekarang sudah selesai!",
       "completedFeedbackHeadline": "Terima kasih atas feedback anda\nfeedback anda sangat penting bagi kami, jadi kami sangat menghargainya.",
-      "completedFeedbackSubHeadline": "Anda dapat mengedit penilaian dan komentar Anda kapan saja di dasbor.",
       "congratulationsEnd": "Selamat, anda telah mencapai akhir dari kursus ini",
       "finalStep": "Ini adalah langkah terakhir untuk menandai kursus ini telah selesai di dasbor Anda, sebelum melanjutkan petualangan anda!",
       "stepsToComplete": "Berikut ini adalah langkah-langkah untuk menandai kursus ini telah selesai di dasbor Anda, sebelum melanjutkan petualangan anda!",
@@ -207,7 +206,6 @@
     "exam": {
       "answersReview": "Ulasan jawaban",
       "availableDashboard": "Ini akan tersedia di dasbor anda dalam waktu sekitar 10 jam.",
-      "availableDashboardTimestamped": "Diploma Anda dapat diakses di dasbor Anda.",
       "bCertCompletionText": "Plan ₿ Network dengan bangga mengucapkan selamat kepada {{username}} karena telah dianugerahi sertifikat ₿-CERT.",
       "buttonTextBCert": "Pelajari lebih lanjut",
       "certificateAvailable": "Ini akan tersedia sekitar 10 jam setelah pengajuan.",
@@ -855,7 +853,6 @@
       "pickADate": "Pilih tanggal",
       "publicationDate": "Tanggal publikasi"
     },
-    "backToDashboard": "Kembali ke dasbor",
     "booking": {
       "accessLive": "Akses secara langsung",
       "cancelBookingTitle": "Apakah Anda yakin ingin membatalkan pemesanan ini?",
@@ -1149,7 +1146,6 @@
       },
       "detailedScore": "Rincian Skor"
     },
-    "goToDashboard": "Buka dasbor",
     "goToHomepage": "Pergi ke beranda",
     "logout": "Keluar",
     "myCourses": {
@@ -1360,7 +1356,6 @@
     },
     "payment": {
       "access_online_successful": "Saat acara dimulai, masuk ke platform untuk mendapatkan akses ke siaran langsung di halaman acara.",
-      "access_physical_successful": "Anda dapat mengunduh tiket Anda di sini, atau mengunduhnya nanti di dasbor Anda.",
       "access_type": "Tipe akses",
       "additional_free_description": "Acara ini bersifat gratis, Anda tidak akan dikenakan biaya untuk memesan tempat. Namun pastikan untuk menghadirinya karena jumlah tempatnya terbatas.",
       "address": "Alamat",

@@ -161,7 +161,6 @@
     "conclusion": {
       "completedChaptersHeadline": "Tüm bölümler şimdi tamamlandı!",
       "completedFeedbackHeadline": "Geri bildiriminiz için teşekkür ederiz!\nBu bizim için çok önemli, gerçekten minnettarız.",
-      "completedFeedbackSubHeadline": "Puanlarınızı ve yorumlarınızı istediğiniz zaman kontrol panelinizden düzenleyebilirsiniz.",
       "congratulationsEnd": "Tebrikler, kursun sonuna ulaştınız",
       "finalStep": "Bu, yolculuğunuza devam etmeden önce, bu kursu kontrol panelinizde tamamlamak için işaretlemenin son adımıydı!",
       "stepsToComplete": "Yolculuğunuza devam etmeden önce, bu kursu kontrol panelinizde tamamlanmış olarak işaretlemenin adımları!",
@@ -207,7 +206,6 @@
     "exam": {
       "answersReview": "Cevapları gözden geçirme",
       "availableDashboard": "Yaklaşık 10 saat içinde kontrol panelinizde kullanılabilir olacak.",
-      "availableDashboardTimestamped": "Diplomanız kontrol panelinizde mevcut.",
       "bCertCompletionText": "Plan ₿ Network, {{username}}'i ₿-CERT test sertifikasını elde ettiği için tebrik eder.",
       "buttonTextBCert": "Daha fazla bilgi edin",
       "certificateAvailable": "Gönderimden yaklaşık 10 saat sonra kullanılabilir olacak.",
@@ -855,7 +853,6 @@
       "pickADate": "Bir tarih seçin",
       "publicationDate": "Yayın tarihi"
     },
-    "backToDashboard": "Gösterge paneline geri dön",
     "booking": {
       "accessLive": "Canlıya erişin",
       "cancelBookingTitle": "Bu rezervasyonu iptal etmek istediğinizden emin misiniz?",
@@ -1149,7 +1146,6 @@
       "getGlobalRecognition": "₿-CERT sertifikası ile global tanınırlık elde edin",
       "noCertificatesAvailable": "Kullanılabilir sertifika yok"
     },
-    "goToDashboard": "Gösterge paneline git",
     "goToHomepage": "Ana sayfaya git",
     "logout": "Çıkış yap",
     "myCourses": {
@@ -1360,7 +1356,6 @@
     },
     "payment": {
       "access_online_successful": "Etkinlik başladığında, platforma giriş yapın ve etkinlik sayfası üzerinden canlı yayına başlayın.",
-      "access_physical_successful": "Biletinizi buradan indirebilir veya daha sonra kontrol panelinizden indirebilirsiniz.",
       "access_type": "Erişim türü",
       "additional_free_description": "Bu etkinlik ücretsizdir, bu yüzden bu koltuğu rezerve etmek için ücret alınmayacaktır.",
       "address": "Adres",

@@ -161,7 +161,6 @@
     "conclusion": {
       "completedChaptersHeadline": "Všechny kapitoly jsou nyní dokončeny!",
       "completedFeedbackHeadline": "Děkujeme za vaši zpětnou vazbu!\nJe pro nás velmi důležitá, takže si jí opravdu vážíme.",
-      "completedFeedbackSubHeadline": "Můžete kdykoli upravit svá hodnocení a komentáře ve svém portálu.",
       "congratulationsEnd": "Gratulujeme, dokončili jste kurz",
       "finalStep": "Toto byl poslední krok k označení tohoto kurzu jako dokončeného ve vašem přehledu, než budete pokračovat ve své cestě!",
       "stepsToComplete": "Toto jsou kroky k označení tohoto kurzu jako dokončeného ve vašem portálu, než budete pokračovat ve své cestě!",
@@ -207,7 +206,6 @@
     "exam": {
       "answersReview": "Vyhodnocení odpovědí",
       "availableDashboard": "Bude k dispozici na vašem portálu za přibližně 10 hodin.",
-      "availableDashboardTimestamped": "Váš diplom je k dispozici ve vašem portálu.",
       "bCertCompletionText": "Plan ₿ Network s potěšením blahopřeje {{username}} k získání certifikátu ₿-CERT test.",
       "buttonTextBCert": "Dozvědět se více",
       "certificateAvailable": "Bude k dispozici asi 10 hodin po odevzdání.",
@@ -855,7 +853,6 @@
       "pickADate": "Vyberte datum",
       "publicationDate": "Datum publikace"
     },
-    "backToDashboard": "Zpět na přehled",
     "booking": {
       "accessLive": "Přístup k živému přenosu",
       "cancelBookingTitle": "Jste si jisti, že chcete zrušit tuto rezervaci?",
@@ -1149,7 +1146,6 @@
       "getGlobalRecognition": "Získejte globální uznání s certifikátem ₿-CERT",
       "noCertificatesAvailable": "Žádné certifikáty nejsou k dispozici"
     },
-    "goToDashboard": "Přejděte na portál",
     "goToHomepage": "Přejděte na domovskou stránku",
     "logout": "Odhlásit se",
     "myCourses": {
@@ -1360,7 +1356,6 @@
     },
     "payment": {
       "access_online_successful": "Jakmile událost začne, přihlaste se na platformu a spusťte živé vysílání prostřednictvím stránky události.",
-      "access_physical_successful": "Svou vstupenku si můžete stáhnout zde nebo si ji můžete stáhnout později ve svém portálu.",
       "access_type": "Typ přístupu",
       "additional_free_description": "Tato akce je zdarma, takže za rezervaci místa nebudete platit žádné poplatky. Každopádně prosím dbejte na to, abyste se zúčastnili, protože počet míst je omezen.",
       "address": "Adresa",

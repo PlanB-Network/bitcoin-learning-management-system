@@ -161,7 +161,6 @@
     "conclusion": {
       "completedChaptersHeadline": "Tutti i capitoli sono ora completati!",
       "completedFeedbackHeadline": "Grazie per il tuo feedback!\nÈ molto importante per noi e lo apprezziamo davvero.",
-      "completedFeedbackSubHeadline": "Puoi modificare le tue valutazioni e i commenti in qualsiasi momento dalla dashboard.",
       "congratulationsEnd": "Congratulazioni, sei arrivato alla fine del corso",
       "finalStep": "Questo è l'ultimo passaggio da percorrere per segnare questo corso come completato nella tua dashboard, prima di continuare il tuo viaggio!",
       "stepsToComplete": "Questi sono i passaggi da percorrere per contrassegnare questo corso come completato nella tua dashboard, prima di continuare il tuo viaggio!",
@@ -207,7 +206,6 @@
     "exam": {
       "answersReview": "Revisione delle risposte",
       "availableDashboard": "Sarà disponibile nella tua dashboard tra circa 10 ore.",
-      "availableDashboardTimestamped": "Il tuo certificato è disponibile nella tua dashboard..",
       "bCertCompletionText": "Plan ₿ Network è felice di congratularsi con {{username}} per aver ricevuto il certificato del ₿-CERT.",
       "buttonTextBCert": "Ulteriori informazioni",
       "certificateAvailable": "Sarà disponibile circa 10 ore dopo l'invio.",
@@ -855,7 +853,6 @@
       "pickADate": "Scegli una data",
       "publicationDate": "Data di pubblicazione"
     },
-    "backToDashboard": "Torna alla dashboard",
     "booking": {
       "accessLive": "Accedi alla diretta",
       "cancelBookingTitle": "Sei sicuro di voler annullare questa prenotazione?",
@@ -1149,7 +1146,6 @@
       },
       "detailedScore": "Punteggio dettagliato"
     },
-    "goToDashboard": "Vai alla dashboard",
     "goToHomepage": "Vai alla homepage",
     "logout": "Disconnetti",
     "myCourses": {
@@ -1360,7 +1356,6 @@
     },
     "payment": {
       "access_online_successful": "Quando inizierà l'evento, accedi alla piattaforma per ottenere l'accesso alla live dalla pagina dell'evento.",
-      "access_physical_successful": "Puoi scaricare qui il tuo biglietto, o scaricarlo dopo dalla tua dashboard.",
       "access_type": "Tipo di accesso",
       "additional_free_description": "Questo evento è gratuito quindi non dovrai pagare nulla per prenotare un posto. Ad ogni modo, assicurati di partecipare perché i posti sono limitati.",
       "address": "Indirizzo",

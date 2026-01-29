@@ -161,7 +161,6 @@
     "conclusion": {
       "completedChaptersHeadline": "Alle kapitler er nå fullført!",
       "completedFeedbackHeadline": "Takk for tilbakemeldingen din!\nDen er veldig viktig for oss, så vi setter virkelig pris på den.",
-      "completedFeedbackSubHeadline": "Du kan redigere vurderingene og kommentarene dine når som helst på dashbordet ditt.",
       "congratulationsEnd": "Gratulerer, du har nådd slutten av kurset",
       "finalStep": "Dette var det siste steget for å merke dette kurset som fullført i dashbordet ditt, før du fortsetter reisen din!",
       "stepsToComplete": "Dette er trinnene for å merke dette kurset som fullført i dashbordet ditt, før du fortsetter reisen din!",
@@ -207,7 +206,6 @@
     "exam": {
       "answersReview": "Svar gjennomgang",
       "availableDashboard": "Det vil være tilgjengelig i dashbordet ditt om omtrent 10 timer.",
-      "availableDashboardTimestamped": "Diplomet ditt er tilgjengelig på dashbordet ditt.",
       "bCertCompletionText": "Plan ₿ Network er glad for å gratulere {{username}} med å ha mottatt ₿-CERT.",
       "buttonTextBCert": "Lær mer",
       "certificateAvailable": "Det vil være tilgjengelig omtrent 8 timer etter innsending.",
@@ -855,7 +853,6 @@
       "pickADate": "Velg en dato",
       "publicationDate": "Publiseringsdato"
     },
-    "backToDashboard": "Tilbake til dashbordet",
     "booking": {
       "accessLive": "Få tilgang til live eksamen",
       "cancelBookingTitle": "Er du sikker på at du vil avbestille denne bookingen?",
@@ -1149,7 +1146,6 @@
       },
       "detailedScore": "Detaljert poengsum"
     },
-    "goToDashboard": "Gå til skrivebordet",
     "goToHomepage": "Gå til hjemmeside",
     "logout": "Logg ut",
     "myCourses": {
@@ -1360,7 +1356,6 @@
     },
     "payment": {
       "access_online_successful": "Når arrangementet starter, logg inn på plattformen for å få tilgang til direktesendingen på arrangementsiden.",
-      "access_physical_successful": "Du kan laste ned billetten din her, eller laste den ned senere i dashbordet ditt.",
       "access_type": "Type tilgang",
       "additional_free_description": "Dette arrangementet er gratis, så det er ingen kostnad for å bestille denne plassen. Men vær snill å delta, siden antallet seter er begrenset.",
       "address": "Adresse",

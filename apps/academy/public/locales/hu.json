@@ -161,7 +161,6 @@
     "conclusion": {
       "completedChaptersHeadline": "Minden fejezetet befejeztél!",
       "completedFeedbackHeadline": "Köszönjük a visszajelzésedet!\nEz nagyon fontos számunkra, nagyra értékeljük.",
-      "completedFeedbackSubHeadline": "Az értékeléseket és megjegyzéseket bármikor szerkesztheted az irányítópulton.",
       "congratulationsEnd": "Gratulálunk, elérted a kurzus végét",
       "finalStep": "Ez volt az utolsó lépés a kurzus befejezéséhez, mielőtt továbbhaladsz!",
       "stepsToComplete": "Ezek a lépések szükségesek ahhoz, hogy befejezettnek jelöld a kurzust!",
@@ -207,7 +206,6 @@
     "exam": {
       "answersReview": "Válaszok áttekintése",
       "availableDashboard": "Körülbelül 10 óra múlva lesz elérhető az irányítópultodon.",
-      "availableDashboardTimestamped": "A tanúsítvány az irányítópultodon érhető el.",
       "bCertCompletionText": "A Plan ₿ Network gratulál {{username}}-nek a ₿-CERT teszt sikeres teljesítéséhez.",
       "buttonTextBCert": "Tudj meg többet",
       "certificateAvailable": "A benyújtás után körülbelül 10 óra múlva lesz elérhető.",
@@ -855,7 +853,6 @@
       "pickADate": "Válassz egy dátumot",
       "publicationDate": "Közzététel dátuma"
     },
-    "backToDashboard": "Vissza az irányítópulthoz",
     "booking": {
       "accessLive": "Elérhető élőben",
       "cancelBookingTitle": "Biztosan törölni szeretnéd ezt a foglalást?",
@@ -1149,7 +1146,6 @@
       "getGlobalRecognition": "Szerezd meg a világ elismerését a ₿-CERT tanúsítvánnyal",
       "noCertificatesAvailable": "Nem állnak rendelkezésre tanúsítványok"
     },
-    "goToDashboard": "Ugrás az irányítópulthoz",
     "goToHomepage": "Ugrás a kezdőlapra",
     "logout": "Kijelentkezés",
     "myCourses": {
@@ -1360,7 +1356,6 @@
     },
     "payment": {
       "access_online_successful": "Amikor az esemény elkezdődik, jelentkezzen be a platformra, és kezdje meg az élő közvetítést az esemény oldalán.",
-      "access_physical_successful": "Itt letöltheti jegyét, vagy később letöltheti a vezérlőpulton.",
       "access_type": "Hozzáférés típusa",
       "additional_free_description": "Ez az esemény ingyenes, tehát nem kerül semmibe lefoglalni ezt a helyet.",
       "address": "Cím",

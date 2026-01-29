@@ -161,7 +161,6 @@
     "conclusion": {
       "completedChaptersHeadline": "Ibice vyose vy'ivy'igwa vyarangiye ubu!",
       "completedFeedbackHeadline": "Urakoze ku vyiyumviro vyawe!\nBiradufitiye akamaro cane, turabishima bivuye ku mutima.",
-      "completedFeedbackSubHeadline": "Urashobora guhindura amanota n’ivyiyumviro vyawe igihe cose kuri urupapuro rwawe rw’imikorere(dashboard).",
       "congratulationsEnd": "Turagukeje, washitse kumpera y'icigwa",
       "finalStep": "Ibi ni vyo vyanyuma vyari bisigaye kugira ngo kino cigwa candikwe nkicaheze ku rupapuro rwawe rw’imikorere(dashboard), imbere yo kubandanya urugendo rwawe!",
       "stepsToComplete": "Ibi ni intambwe zo gukurikiza kugira iki cigwa candikweko ko caheze ku rupapuro rwawe rw’imikorere(dashboard), imbere yo kubandanya urugendo rwawe!",
@@ -207,7 +206,6 @@
     "exam": {
       "answersReview": "Isuzuma ry’inyishu",
       "availableDashboard": "Bizoboneka kuri kurukuta rwanyabwonko rwawe (dashboard) yawe mu masaha agera ku 10.",
-      "availableDashboardTimestamped": "Impamyabushobozi yawe yabonetse kurukuta (dashboard) yawe.",
       "bCertCompletionText": "Plan ₿ Network iranezerewe no gukeza {{username}} kuba yahawe urupapuro rw’umutsindo rw’ikibazo ca ₿-CERT.",
       "buttonTextBCert": "Menya vyinshi",
       "certificateAvailable": "Izoboneka haciye amasaha agera ku 10 inyuma y’ukurungika.",
@@ -855,7 +853,6 @@
       "pickADate": "hitamwo itariki",
       "publicationDate": "Itariki y’ugushira ahabona"
     },
-    "backToDashboard": "Subira ku rubuga nyamukuru",
     "booking": {
       "accessLive": "Injira mu kiganiro c'ako kanya",
       "cancelBookingTitle": "uri murkuri ushaka guhagarika iri fatisha ryawe?",
@@ -1149,7 +1146,6 @@
       },
       "detailedScore": "Inshuro yiboneye"
     },
-    "goToDashboard": "Genda ku rubaho(dashboard)",
     "goToHomepage": "Genda ku rupapuro rw’itanguriro",
     "logout": "Sohoka",
     "myCourses": {
@@ -1360,7 +1356,6 @@
     },
     "payment": {
       "access_online_successful": "Iyo igikorwa gitanguye, winjire ku rubuga hanyuma utangure kwerekana ikibiriraho biciye ku rupapuro rw’igikorwa.",
-      "access_physical_successful": "Urashobora guteresharija itike yawe hano, canke ugateresharija inyuma muri kurubaho(dashboard) rwawe.",
       "access_type": "Ubwoko bw’ukwinjira",
       "additional_free_description": "Iki gikorwa ni kubuntu, rero ntuzotwara amafaranga kugira ngo ufate ikibanza.",
       "address": "Aderesi",

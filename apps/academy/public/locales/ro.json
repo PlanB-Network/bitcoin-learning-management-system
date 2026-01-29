@@ -161,7 +161,6 @@
     "conclusion": {
       "completedChaptersHeadline": "Toate capitolele sunt acum finalizate!",
       "completedFeedbackHeadline": "Vă mulțumim pentru feedback!\nEste foarte important pentru noi, așa că îl apreciem cu adevărat.",
-      "completedFeedbackSubHeadline": "Puteți edita oricând evaluările și comentariile în dashboardul dvs.",
       "congratulationsEnd": "Felicitări, ai ajuns la sfârșitul cursului",
       "finalStep": "Acesta a fost ultimul pas pentru a marca acest curs ca fiind finalizat în dashboardul tău, înainte de a-ți continua călătoria!",
       "stepsToComplete": "Aceștia sunt pașii pentru a marca acest curs ca fiind finalizat în dashboardul tău, înainte de a-ți continua călătoria!",
@@ -207,7 +206,6 @@
     "exam": {
       "answersReview": "Revizuirea răspunsurilor",
       "availableDashboard": "Va fi disponibil în dashboardul dvs. în aproximativ 10 ore.",
-      "availableDashboardTimestamped": "Diploma ta este disponibilă în dashboard-ul tău.",
       "bCertCompletionText": "Plan ₿ Network are plăcerea să îl felicite pe {{username}} pentru primirea Certificatului ₿.",
       "buttonTextBCert": "Aflați mai multe",
       "certificateAvailable": "Va fi disponibil aproximativ 8 ore după trimitere.",
@@ -855,7 +853,6 @@
       "pickADate": "Alegeți o dată",
       "publicationDate": "Data publicării"
     },
-    "backToDashboard": "Înapoi la dashboard",
     "booking": {
       "accessLive": "Accesați examenul live",
       "cancelBookingTitle": "Ești sigur că vrei să anulezi această rezervare?",
@@ -1149,7 +1146,6 @@
       "getGlobalRecognition": "Obține recunoașterea globală cu un certificat ₿-CERT",
       "noCertificatesAvailable": "Nu există certificate disponibile"
     },
-    "goToDashboard": "Du-te la tabloul de bord",
     "goToHomepage": "Du-te la pagina principală",
     "logout": "Deconectează-te",
     "myCourses": {
@@ -1360,7 +1356,6 @@
     },
     "payment": {
       "access_online_successful": "Când începe evenimentul, conectează-te la platformă pentru a avea acces la transmisia în direct pe pagina evenimentului.",
-      "access_physical_successful": "Îți poți descărca biletul aici sau îl poți descărca mai târziu din dashboard-ul tău.",
       "access_type": "Tip de acces",
       "additional_free_description": "Acest eveniment este gratuit, deci nu există nicio taxă pentru rezervarea acestui loc. Cu toate acestea, asigurați-vă că participați, deoarece numărul de locuri este limitat.",
       "address": "Adresă",

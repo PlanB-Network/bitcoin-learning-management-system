@@ -161,7 +161,6 @@
     "conclusion": {
       "completedChaptersHeadline": "Sura zote sasa zimekamilika!",
       "completedFeedbackHeadline": "Asante kwa maoni yako!\nNi muhimu sana kwetu, kwa hivyo tunaiheshimu sana.",
-      "completedFeedbackSubHeadline": "Unaweza kuhariri viwango vyako na maoni wakati wowote kwenye dashibodi yako.",
       "congratulationsEnd": "Hongera, umefikia mwisho wa kozi",
       "finalStep": "Hii ilikuwa hatua ya mwisho ya kuweka alama kwenye kozi hii kama iliyokamilika kwenye dashibodi yako, kabla ya kuendelea na safari yako!",
       "stepsToComplete": "Haya ndio hatua za kuweka alama ya kozi hii kama iliyokamilika kwenye dashibodi yako, kabla ya kuendelea na safari yako!",
@@ -207,7 +206,6 @@
     "exam": {
       "answersReview": "Ukaguzi wa majibu",
       "availableDashboard": "Itakuwa inapatikana kwenye dashibodi yako katika takriban saa 10.",
-      "availableDashboardTimestamped": "Diploma yako inapatikana kwenye dashibodi yako.",
       "bCertCompletionText": "Mtandao wa Plan ₿ unafurahi kumpongeza {{username}} kwa kupewa cheti cha mtihani wa ₿-CERT.",
       "buttonTextBCert": "Jifunze zaidi",
       "certificateAvailable": "Itakuwa inapatikana takriban saa 10 baada ya kuwasilisha.",
@@ -855,7 +853,6 @@
       "pickADate": "Chagua tarehe",
       "publicationDate": "Tarehe ya kuchapishwa"
     },
-    "backToDashboard": "Rudi kwenye dashibodi",
     "booking": {
       "accessLive": "Fikia moja kwa moja",
       "cancelBookingTitle": "Je, una uhakika unataka kughairi uhifadhi huu?",
@@ -1149,7 +1146,6 @@
       },
       "detailedScore": "Alama za kina"
     },
-    "goToDashboard": "Nenda kwenye dashibodi",
     "goToHomepage": "Nenda kwenye ukurasa wa kwanza",
     "logout": "Ondoka",
     "myCourses": {
@@ -1360,7 +1356,6 @@
     },
     "payment": {
       "access_online_successful": "Wakati tukio linaanza, ingia kwenye jukwaa ili upate ufikiaji wa matangazo ya moja kwa moja kwenye ukurasa wa tukio.",
-      "access_physical_successful": "Unaweza kupakua tiketi yako hapa, au uipakue baadaye kwenye dashibodi yako.",
       "access_type": "Aina ya ufikiaji",
       "additional_free_description": "Tukio hili ni la bure, kwa hivyo hakuna malipo ya kuhifadhi kiti hiki. Hata hivyo, tafadhali hakikisha unahudhuria, kwani idadi ya viti ni ndogo.",
       "address": "Anwani",

@@ -161,7 +161,6 @@
     "conclusion": {
       "completedChaptersHeadline": "Kõik peatükid on nüüd valmis!",
       "completedFeedbackHeadline": "Täname teid tagasiside eest!\nSee on meie jaoks väga oluline, seega hindame seda väga.",
-      "completedFeedbackSubHeadline": "Saate oma hinnanguid ja kommentaare igal ajal oma töölaual muuta.",
       "congratulationsEnd": "Õnnitlused, olete jõudnud kursuse lõpuni",
       "finalStep": "See oli viimane samm, et märkida käesolev kursus oma töölaual lõpetatuks, enne kui jätkate oma teekonda!",
       "stepsToComplete": "Need on vastavad sammud, et märkida käesolev kursus oma töölaual lõpetatuks, enne kui jätkate oma teekonda!",
@@ -207,7 +206,6 @@
     "exam": {
       "answersReview": "Vastuste ülevaade",
       "availableDashboard": "See on saadaval teie töölaual umbes 10 tunni pärast.",
-      "availableDashboardTimestamped": "Teie diplom on saadaval teie töölaual.",
       "bCertCompletionText": "Plan ₿ Networkil on hea meel õnnitleda kasutajat {{username}} ₿-CERT testi sertifikaadi saamise puhul.",
       "buttonTextBCert": "Loe lähemalt",
       "certificateAvailable": "See on saadaval ligikaudu 10 tunni pärast esitamist.",
@@ -855,7 +853,6 @@
       "pickADate": "Vali kuupäev",
       "publicationDate": "Avaldamise kuupäev"
     },
-    "backToDashboard": "Tagasi töölauale",
     "booking": {
       "accessLive": "Pääse otseülekandeni",
       "cancelBookingTitle": "Kas olete kindel, et soovite selle broneeringu tühistada?",
@@ -1149,7 +1146,6 @@
       },
       "detailedScore": "Detailne skoor"
     },
-    "goToDashboard": "Mine töölauale",
     "goToHomepage": "Mine avalehele",
     "logout": "Logi välja",
     "myCourses": {
@@ -1360,7 +1356,6 @@
     },
     "payment": {
       "access_online_successful": "Sündmuse algamisel, logi platvormi sisse ning teile antakse juurdepääs otseülekandele sündmuse lehe kaudu.",
-      "access_physical_successful": "Saate oma pileti alla laadida siit või siis laadida selle alla hiljem oma töölaualt.",
       "access_type": "Juurdepääsu tüüp",
       "additional_free_description": "Antud üritus on tasuta, seega teilt ei võeta tasu antud koha broneerimise eest. Siiski, palun veenduge, et osalete üritusel, kuna kohtade arv on piiratud.",
       "address": "Aadress",

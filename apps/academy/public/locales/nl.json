@@ -161,7 +161,6 @@
     "conclusion": {
       "completedChaptersHeadline": "Alle hoofdstukken zijn nu voltooid!",
       "completedFeedbackHeadline": "Bedankt voor je feedback!\nHet is erg belangrijk voor ons, dus we stellen het zeer op prijs.",
-      "completedFeedbackSubHeadline": "Je kunt op elk moment je beoordelingen en opmerkingen bewerken in je dashboard.",
       "congratulationsEnd": "Gefeliciteerd, je hebt het einde van de cursus bereikt",
       "finalStep": "Dit was de laatste stap om deze cursus als voltooid te markeren in je dashboard, voordat je verdergaat met je leertraject!",
       "stepsToComplete": "Dit zijn de stappen om deze cursus als voltooid te markeren in je dashboard, voordat je verdergaat met je leertraject!",
@@ -207,7 +206,6 @@
     "exam": {
       "answersReview": "Antwoorden nakijken",
       "availableDashboard": "Het zal over ongeveer 10 uur beschikbaar zijn in je dashboard.",
-      "availableDashboardTimestamped": "Je diploma is beschikbaar in je dashboard.",
       "bCertCompletionText": "Plan ₿ Network feliciteert {{username}} van harte met het behalen van het ₿-CERT certificaat.",
       "buttonTextBCert": "Meer informatie",
       "certificateAvailable": "Het zal ongeveer 10 uur na inzending beschikbaar zijn.",
@@ -855,7 +853,6 @@
       "pickADate": "Kies een datum",
       "publicationDate": "Publicatiedatum"
     },
-    "backToDashboard": "Terug naar dashboard",
     "booking": {
       "accessLive": "Toegang tot de live",
       "cancelBookingTitle": "Weet je zeker dat je deze boeking wilt annuleren?",
@@ -1149,7 +1146,6 @@
       },
       "detailedScore": "Gedetailleerde score"
     },
-    "goToDashboard": "Ga naar dashboard",
     "goToHomepage": "Ga naar homepage",
     "logout": "Uitloggen",
     "myCourses": {
@@ -1359,7 +1355,6 @@
       "callout_book_online": "Je staat op het punt om online toegang tot dit evenement te boeken.",
       "callout_purchase_online": "Je staat op het punt om <highlight>online toegang</highlight> tot dit evenement te kopen.",
       "access_online_successful": "Wanneer het evenement begint, log in op het platform en start de livestream via de evenementpagina.",
-      "access_physical_successful": "Je kunt je ticket hier downloaden, of download het later via je dashboard.",
       "access_type": "Toegangstype",
       "additional_free_description": "Dit evenement is gratis, dus er worden geen kosten in rekening gebracht om deze plek te reserveren.",
       "address": "Adres",

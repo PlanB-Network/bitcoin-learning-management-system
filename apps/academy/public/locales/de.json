@@ -161,7 +161,6 @@
     "conclusion": {
       "completedChaptersHeadline": "Alle Kapitel sind nun abgeschlossen!",
       "completedFeedbackHeadline": "Vielen Dank für Ihr Feedback!\nEs ist sehr wichtig für uns, deshalb schätzen wir es sehr.",
-      "completedFeedbackSubHeadline": "Sie können Ihre Bewertungen und Kommentare jederzeit in Ihrem Dashboard bearbeiten.",
       "congratulationsEnd": "Herzlichen Glückwunsch, Sie haben das Ende des Kurses erreicht",
       "finalStep": "Dies war der letzte Schritt, um diesen Kurs in Ihrem Dashboard als abgeschlossen zu markieren, bevor Sie Ihre Reise fortsetzen!",
       "stepsToComplete": "Dies sind die Schritte, um diesen Kurs in Ihrem Dashboard als abgeschlossen zu markieren, bevor Sie Ihre Reise fortsetzen!",
@@ -207,7 +206,6 @@
     "exam": {
       "answersReview": "Überprüfung der Antworten",
       "availableDashboard": "Es wird in etwa 10 Stunden in Ihrem Dashboard verfügbar sein.",
-      "availableDashboardTimestamped": "Ihr Abschlusszeugnis ist in Ihrem Dashboard verfügbar.",
       "bCertCompletionText": "Das Plan ₿-Netzwerk freut sich, {{username}} zur Verleihung des ₿-CERT-Prüfzertifikats zu gratulieren.",
       "buttonTextBCert": "Erfahren Sie mehr",
       "certificateAvailable": "Sie wird etwa 10 Stunden nach der Einreichung verfügbar sein.",
@@ -855,7 +853,6 @@
       "pickADate": "Wähle ein Datum",
       "publicationDate": "Veröffentlichungsdatum"
     },
-    "backToDashboard": "Zurück zum Armaturenbrett",
     "booking": {
       "accessLive": "Zugriff auf die Live-Prüfung",
       "cancelBookingTitle": "Sind Sie sicher, dass Sie diese Buchung stornieren möchten?",
@@ -1149,7 +1146,6 @@
       },
       "detailedScore": "Detaillierte Punktzahl"
     },
-    "goToDashboard": "Gehe zum Dashboard",
     "goToHomepage": "Gehe zur Startseite",
     "logout": "Abmelden",
     "myCourses": {
@@ -1360,7 +1356,6 @@
     },
     "payment": {
       "access_online_successful": "Wenn die Veranstaltung beginnt, loggen Sie sich auf der Plattform ein, um Zugang zum Live-Stream auf der Veranstaltungsseite zu erhalten.",
-      "access_physical_successful": "Sie können Ihr Ticket hier herunterladen oder es später in Ihrem Dashboard herunterladen.",
       "access_type": "Art des Zugangs",
       "additional_free_description": "Diese Veranstaltung ist kostenlos, daher fallen keine Gebühren für die Reservierung dieses Platzes an. Bitte stellen Sie jedoch sicher, dass Sie teilnehmen, da die Anzahl der Plätze begrenzt ist.",
       "address": "Adresse",
