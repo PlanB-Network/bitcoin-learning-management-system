@@ -4,6 +4,16 @@ const formatIcsDate = (date: Date) => {
   return `${date.toISOString().replace(/[-:]/g, '').split('.')[0]}Z`;
 };
 
+const formatIcsDateOnly = (date: Date) => {
+  return date.toISOString().replace(/[-:]/g, '').split('T')[0];
+};
+
+const getNextDayDateOnly = (date: Date) => {
+  const nextDay = new Date(date);
+  nextDay.setDate(nextDay.getDate() + 1);
+  return formatIcsDateOnly(nextDay);
+};
+
 const escapeSpecialChars = (str: string) => {
   return str
     .replace(/\\/g, '\\\\')
@@ -24,25 +34,38 @@ export const generateIcs = (events: CalendarEvent[]) => {
   ];
 
   const body = events.flatMap((event) => {
+    const isAllDay = event.type === 'history' || event.allDay;
     const startDate = event.startDate;
-    const endDate = event.endDate || new Date(startDate.getTime() + 3600000); // Default 1 hour if no end date
 
-    const uid = event.subId
-      ? `event-${event.id}-${event.subId}@plan-b-academy`
-      : `event-${event.id}@plan-b-academy`;
-
-    return [
+    const eventLines = [
       'BEGIN:VEVENT',
-      `UID:${uid}`,
+      `UID:${event.subId ? `event-${event.id}-${event.subId}@plan-b-academy` : `event-${event.id}@plan-b-academy`}`,
       `DTSTAMP:${formatIcsDate(new Date())}`,
-      `DTSTART:${formatIcsDate(startDate)}`,
-      `DTEND:${formatIcsDate(endDate)}`,
-      ...(event.type === 'history' ? ['RRULE:FREQ=YEARLY'] : []),
+    ];
+
+    if (isAllDay) {
+      eventLines.push(`DTSTART;VALUE=DATE:${formatIcsDateOnly(startDate)}`);
+      const endDate = event.endDate ? event.endDate : startDate;
+      eventLines.push(`DTEND;VALUE=DATE:${getNextDayDateOnly(endDate)}`);
+    } else {
+      const endDate = event.endDate || new Date(startDate.getTime() + 3600000); // Default 1 hour if no end date
+      eventLines.push(`DTSTART:${formatIcsDate(startDate)}`);
+      eventLines.push(`DTEND:${formatIcsDate(endDate)}`);
+    }
+
+    if (event.type === 'history') {
+      eventLines.push('RRULE:FREQ=YEARLY');
+    }
+
+    eventLines.push(
       `SUMMARY:${escapeSpecialChars(event.name || 'No title')}`,
       `DESCRIPTION:${escapeSpecialChars(event.organizer || '')}`,
       `LOCATION:${escapeSpecialChars(event.addressLine1 || '')}`,
+      'TRANSP:TRANSPARENT',
       'END:VEVENT',
-    ];
+    );
+
+    return eventLines;
   });
 
   const footer = ['END:VCALENDAR'];
