@@ -143,7 +143,6 @@
     "conclusion": {
       "completedChaptersHeadline": "Όλα τα κεφάλαια έχουν τώρα ολοκληρωθεί!",
       "completedFeedbackHeadline": "Ευχαριστούμε για τα σχόλιά σου!\nΕίναι πολύ σημαντικά για εμάς και τα εκτιμούμε πραγματικά.",
-      "completedFeedbackSubHeadline": "Μπορείς να επεξεργαστείς τη βαθμολογία και τα σχόλιά σου οποιαδήποτε στιγμή από τον πίνακα ελέγχου.",
       "congratulationsEnd": "Συγχαρητήρια, ολοκλήρωσες το μάθημα",
       "finalStep": "Αυτό ήταν το τελευταίο βήμα για να σημειωθεί το μάθημα ως ολοκληρωμένο στον πίνακα ελέγχου, πριν συνεχίσεις το ταξίδι σου!",
       "stepsToComplete": "Αυτά είναι τα βήματα για να σημειωθεί το μάθημα ως ολοκληρωμένο στον πίνακα ελέγχου, πριν συνεχίσεις το ταξίδι σου!",
@@ -185,7 +184,6 @@
     "exam": {
       "answersReview": "Ανασκόπηση απαντήσεων",
       "availableDashboard": "Θα είναι διαθέσιμο στον πίνακα ελέγχου σου σε περίπου 10 ώρες.",
-      "availableDashboardTimestamped": "Το δίπλωμά σου είναι διαθέσιμο στον πίνακα ελέγχου σου.",
       "bCertCompletionText": "Το Plan ₿ Network συγχαίρει με χαρά τον/την {{username}} για τη βράβευσή του/της με το πιστοποιητικό της εξέτασης ₿-CERT.",
       "buttonTextBCert": "Μάθετε περισσότερα",
       "certificateAvailable": "Θα είναι διαθέσιμο περίπου 10 ώρες μετά την υποβολή.",
@@ -472,7 +470,6 @@
       "pickADate": "",
       "publicationDate": ""
     },
-    "backToDashboard": "",
     "booking": {
       "accessLive": "",
       "cancelBookingTitle": "",
@@ -735,7 +732,6 @@
       "courseDiplomas": "",
       "globalCertifications": ""
     },
-    "goToDashboard": "",
     "goToHomepage": "",
     "logout": "",
     "myCourses": {
@@ -899,7 +895,6 @@
     },
     "payment": {
       "access_online_successful": "",
-      "access_physical_successful": "",
       "access_type": "",
       "additional_free_description": "",
       "address": "",

@@ -161,7 +161,6 @@
     "conclusion": {
       "completedChaptersHeadline": "لقد اكملت جميع الوحدات الآن!",
       "completedFeedbackHeadline": "شكراً لك على ملاحظاتك!\nإنها مهمة جداً بالنسبة لنا، لذا نقدرها حقاً.",
-      "completedFeedbackSubHeadline": "يمكنك تعديل تقييماتك وتعليقاتك في أي وقت عبر لوحة الطالب الخاصة بك.",
       "congratulationsEnd": "تهانينا، لقد وصلت إلى نهاية الدورة",
       "finalStep": "بهذه الخطوة الأخيرة، تم تسجيل اكتمال الدورة في لوحة تحكمك – ويمكنك الآن متابعة رحلتك!",
       "stepsToComplete": "حتى تظهر الدورة كمكتملة في لوحة تحكمك، اتبع هذه الخطوات قبل متابعة رحلتك!",
@@ -207,7 +206,6 @@
     "exam": {
       "answersReview": "مراجعة الإجابات",
       "availableDashboard": "سيكون متاحاً على لوحة التحكم الخاصة بك في حوالي 10 ساعات.",
-      "availableDashboardTimestamped": "شهادتك متاحة على لوحة التحكم الخاصة بك.",
       "bCertCompletionText": "تتقدم Plan ₿ Network بالتهنئة إلى {{username}} بمناسبة الحصول على شهادة اختبار CERT-₿.",
       "buttonTextBCert": "تعلم المزيد",
       "certificateAvailable": "ستكون متاحة بعد حوالي 10 ساعات من التسليم.",
@@ -855,7 +853,6 @@
       "pickADate": "اختيار التاريخ",
       "publicationDate": "تاريخ النشر"
     },
-    "backToDashboard": "العودة إلى اللائحة الرئيسية",
     "booking": {
       "accessLive": "الدخول إلى البث المباشر",
       "cancelBookingTitle": "هل أنت متأكد أنك تريد إلغاء هذا الحجز؟",
@@ -1149,7 +1146,6 @@
       "getGlobalRecognition": "احصل على الاعتراف العالمي مع شهادة ₿-CERT",
       "noCertificatesAvailable": "لا توجد شهادات متاحة"
     },
-    "goToDashboard": "اذهب إلى لوحة القيادة",
     "goToHomepage": "الذهاب إلى الصفحة الرئيسية",
     "logout": "تسجيل الخروج",
     "myCourses": {
@@ -1360,7 +1356,6 @@
     },
     "payment": {
       "access_online_successful": "عند بدء الحدث، قم بتسجيل الدخول إلى المنصة وابدأ البث المباشر عبر صفحة الحدث.",
-      "access_physical_successful": "يمكنك تنزيل تذكرتك هنا، أو تنزيلها لاحقًا في لوحة التحكم الخاصة بك.",
       "access_type": "نوع الوصول",
       "additional_free_description": "هذا الحدث مجاني لذا لن يتم محاسبتك لحجز هذا المقعد.",
       "address": "العنوان",

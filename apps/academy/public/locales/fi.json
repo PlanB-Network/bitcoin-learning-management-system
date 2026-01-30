@@ -161,7 +161,6 @@
     "conclusion": {
       "completedChaptersHeadline": "Kaikki luvut on nyt valmistunut!",
       "completedFeedbackHeadline": "Kiitos palautteestasi!\nSe on meille erittäin tärkeää, joten arvostamme sitä suuresti.",
-      "completedFeedbackSubHeadline": "Voit muokata arvostelujasi ja kommenttejasi milloin tahansa hallintapaneelissasi.",
       "congratulationsEnd": "Onnittelut, olet saavuttanut kurssin loppupään",
       "finalStep": "Tämä oli viimeinen askel, jolla merkittiin tämä kurssi loppuun suoritetuksi hallintapaneelissasi ennen matkan jatkamista!",
       "stepsToComplete": "Nämä ovat askeleet, joilla tämä kurssi merkitään suoritetuksi hallintapaneelissasi ennen matkan jatkamista!",
@@ -207,7 +206,6 @@
     "exam": {
       "answersReview": "Vastausten tarkistus",
       "availableDashboard": "Se on saatavilla hallintapaneelissasi noin 10 tunnin kuluttua.",
-      "availableDashboardTimestamped": "Diplomasi on saatavilla hallintapaneelissasi.",
       "bCertCompletionText": "Plan ₿ Network onnittelee {{username}}:a ₿-CERT-testitodistuksen saamisesta.",
       "buttonTextBCert": "Lue lisää",
       "certificateAvailable": "Se on saatavilla noin 10 tuntia jättämisen jälkeen.",
@@ -855,7 +853,6 @@
       "pickADate": "Valitse päivämäärä",
       "publicationDate": "Julkaisupäivä"
     },
-    "backToDashboard": "Takaisin hallintapaneeliin",
     "booking": {
       "accessLive": "Siirry liveen",
       "cancelBookingTitle": "Haluatko varmasti peruuttaa tämän varauksen?",
@@ -1149,7 +1146,6 @@
       "getGlobalRecognition": "Hanki maailmanlaajuinen tunnustus ₿-CERT sertifikaatille",
       "noCertificatesAvailable": "Ei sertifikaatteja saatavilla"
     },
-    "goToDashboard": "Siirry kojelautaan",
     "goToHomepage": "Siirry kotisivulle",
     "logout": "Kirjaudu ulos",
     "myCourses": {
@@ -1360,7 +1356,6 @@
     },
     "payment": {
       "access_online_successful": "Kun tapahtuma alkaa, kirjaudu alustalle ja aloita live-lähetyksen striimaaminen tapahtumasivun kautta.",
-      "access_physical_successful": "Voit ladata lipun täältä tai ladata sen myöhemmin hallintapaneelistasi.",
       "access_type": "Lipun tyyppi",
       "additional_free_description": "Tapahtuma on ilmainen, eikä paikanvarauksesta koidu kustannuksia. Kuitenkin, varmistuthan osallistumisestasi tapahtumaan! Luennoilla on rajattu määrä istumapaikkoja.",
       "address": "Osoite",

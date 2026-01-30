@@ -161,7 +161,6 @@
     "conclusion": {
       "completedChaptersHeadline": "Tất cả các chương đã được hoàn thành!",
       "completedFeedbackHeadline": "Cảm ơn phản hồi của bạn!\nĐiều đó rất quan trọng với chúng tôi, do đó chúng tôi rất trân trọng.",
-      "completedFeedbackSubHeadline": "Bạn có thể chỉnh sửa điểm xếp hạng và nhận xét của mình bất cứ lúc nào trên bảng điều khiển của mình.",
       "congratulationsEnd": "Chúc mừng, bạn đã đi tới phần cuối của khoá học",
       "finalStep": "Đây là bước cuối cùng để đánh dấu khoá học này đã hoàn thành trên bảng điều khiển của bạn, trước khi tiếp tục hành trình của bạn!",
       "stepsToComplete": "Đây là những bước để đánh dấu khoá học này đã hoàn thành trên bảng điều khiển của bạn, trước khi tiếp tục hành trình của bạn!",
@@ -207,7 +206,6 @@
     "exam": {
       "answersReview": "Trả lời nhận xét",
       "availableDashboard": "Nó sẽ có trên bảng điều khiển của bạn sau khoảng 10 tiếng đồng hồ.",
-      "availableDashboardTimestamped": "Bằng cấp của bạn đang có sẵn trên bảng điều khiển.",
       "bCertCompletionText": "Plan ₿ Network rất vinh hạnh được chúng mừng {{username}} vì đã nhận được Chứng chỉ ₿-CERT.",
       "buttonTextBCert": "Tìm hiểu thêm",
       "certificateAvailable": "Nó sẽ có sẵn khoảng 10 tiếng đồng hồ sau khi nộp lên.",
@@ -855,7 +853,6 @@
       "pickADate": "Chọn một ngày",
       "publicationDate": "Ngày xuất bản"
     },
-    "backToDashboard": "Quay lại bảng điều khiển",
     "booking": {
       "accessLive": "Truy cập bài thi trực tiếp",
       "cancelBookingTitle": "Bạn có chắc là muốn huỷ đặt chỗ không?",
@@ -1149,7 +1146,6 @@
       "getGlobalRecognition": "Nhận sự công nhận toàn cầu với chứng chỉ ₿-CERT",
       "noCertificatesAvailable": "Không có chứng chỉ nào khả dụng"
     },
-    "goToDashboard": "Đi đến bảng điều khiển",
     "goToHomepage": "Đi đến trang chủ",
     "logout": "Đăng xuất",
     "myCourses": {
@@ -1360,7 +1356,6 @@
     },
     "payment": {
       "access_online_successful": "Khi các sự kiện bắt đầu, đăng nhập vào nền tảng để truy cập vào các buổi phát trực tuyến trên trang sự kiện.",
-      "access_physical_successful": "Bạn có thể tải vé của mình về tại đây, hoặc tải về sau trên bảng điều khiển của mình.",
       "access_type": "Dạng truy cập",
       "additional_free_description": "Sự kiện này miễn phí, nên bạn sẽ không bị tính phí khi đặt chỗ. Dù sao đi nữa, hãy nhớ tham dự vì số lượng chỗ ngồi có hạn.",
       "address": "Địa chỉ",

@@ -161,7 +161,6 @@
     "conclusion": {
       "completedChaptersHeadline": "すべての章が完了しました！",
       "completedFeedbackHeadline": "ご意見ありがとうございました！\n私たちとって非常に重要なことですから、とても感謝しています。",
-      "completedFeedbackSubHeadline": "ダッシュボードでいつでも評価やコメントを編集できます。",
       "congratulationsEnd": "おめでとうございます。このコースの最後まで完了しました",
       "finalStep": "これは、旅を続ける前に、ダッシュボードでこのコースを完了とマークするための最終ステップです！",
       "stepsToComplete": "これらは、ダッシュボードでこのコースを完了としてマークし、旅を続ける前のステップです！",
@@ -207,7 +206,6 @@
     "exam": {
       "answersReview": "レビュー回答",
       "availableDashboard": "約10時間後にはダッシュボードに表示されます。",
-      "availableDashboardTimestamped": "修了証書はダッシュボードで確認できます。",
       "bCertCompletionText": "Plan ₿ Network は、{{username}}が ₿-CERT 試験認定証を授与されたことを祝福します。",
       "buttonTextBCert": "さらに詳しく知る",
       "certificateAvailable": "提出から約10時間後に利用可能となります。",
@@ -855,7 +853,6 @@
       "pickADate": "日付を選ぶ",
       "publicationDate": "発行日"
     },
-    "backToDashboard": "ダッシュボードに戻る",
     "booking": {
       "accessLive": "ライブストリーミングにアクセスする",
       "cancelBookingTitle": "本当に予約をキャンセルしますか？",
@@ -1149,7 +1146,6 @@
       "getGlobalRecognition": "₿-CERT証書で世界的な認知を得ましょう",
       "noCertificatesAvailable": "利用可能な証明書はありません"
     },
-    "goToDashboard": "ダッシュボードに移動",
     "goToHomepage": "ホームページに移動",
     "logout": "ログアウト",
     "myCourses": {
@@ -1360,7 +1356,6 @@
     },
     "payment": {
       "access_online_successful": "イベントが始まったら、プラットフォームにログインし、イベントページのライブストリーミングにアクセスしてください。",
-      "access_physical_successful": "チケットはこちらからダウンロードするか、あとでダッシュボードからダウンロードしてください。",
       "access_type": "アクセスの種類",
       "additional_free_description": "このイベントは無料です。 ただし、席数には限りがありますので、予約後は必ずご参加ください。",
       "address": "住所",

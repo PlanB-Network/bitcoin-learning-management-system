@@ -167,7 +167,6 @@
     "conclusion": {
       "completedChaptersHeadline": "Všetky kapitoly sú teraz dokončené!",
       "completedFeedbackHeadline": "Ďakujeme za vašu spätnú väzbu!\nJe pre nás veľmi dôležitá, takže si to naozaj vážime.",
-      "completedFeedbackSubHeadline": "Svoje hodnotenia a komentáre môžete kedykoľvek upraviť na svojom paneli.",
       "congratulationsEnd": "Gratulujeme, dokončili ste kurz",
       "finalStep": "Toto bol posledný krok pred označením tohto kuzu ako dokončeného na vašom paneli, predtým než budete pokračovať ďalej!",
       "stepsToComplete": "Toto sú kroky na označenie tohto kurzu ako dokončeného vo vašom paneli, než budete pokračovať vo vašej ceste!",
@@ -215,7 +214,6 @@
     "exam": {
       "answersReview": "Vyhodnotenie odpovedí",
       "availableDashboard": "K dispozícii na vašej nástenke približne o 10 hodín.",
-      "availableDashboardTimestamped": "Váš diplom je k dispozícii na vašej nástenke.",
       "bCertCompletionText": "Plan ₿ Network s potešením gratuluje {{username}} k získaniu certifikátu ₿-CERT testu.",
       "buttonTextBCert": "Dozvedieť sa viac",
       "certificateAvailable": "Bude k dispozícii približne 10 hodín po odovzdaní.",
@@ -860,7 +858,6 @@
       "pickADate": "Vyberte dátum",
       "publicationDate": "Dátum publikovania"
     },
-    "backToDashboard": "Späť na kontrolný panel",
     "booking": {
       "accessLive": "Prístup k živému prenosu",
       "cancelBookingTitle": "Ste si istý, že chcete zrušiť túto rezerváciu?",
@@ -1154,7 +1151,6 @@
       "globalCertifications": "Globálne certifikácie",
       "noCertificatesAvailable": "Nie sú k dispozícii žiadne certifikáty"
     },
-    "goToDashboard": "Ísť na kontrolný panel",
     "professor": {
       "courses": {
         "overview": {
@@ -1517,7 +1513,6 @@
     "myTickets": "Moje lístky",
     "payment": {
       "access_online_successful": "Keď sa začne podujatie, prihláste sa na platformu a začnite živé vysielanie prostredníctvom stránky podujatia.",
-      "access_physical_successful": "Môžete si stiahnuť svoju vstupenku tu, alebo neskôr na svojom paneli.",
       "access_type": "Typ prístupu",
       "additional_free_description": "Táto udalosť je zdarma, takže rezervácia vám nebude účtovaná.",
       "address": "Adresa",

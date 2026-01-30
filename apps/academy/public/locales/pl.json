@@ -161,7 +161,6 @@
     "conclusion": {
       "completedChaptersHeadline": "Wszystkie rozdziały są teraz ukończone!",
       "completedFeedbackHeadline": "Dziękujemy za twoją opinię!\nJest dla nas bardzo ważna, więc naprawdę jesteśmy wdzięczni.",
-      "completedFeedbackSubHeadline": "Możesz edytować swoje oceny i komentarze w dowolnym momencie na swoim pulpicie.",
       "congratulationsEnd": "Gratulacje, dotarłeś do końca kursu",
       "finalStep": "To był ostatni krok do tego, aby na swoim pulpicie oznaczyć ten kurs jako ukończony, możesz kontynuować swoją podróż!",
       "stepsToComplete": "Oto kroki potrzebne do tego, aby na swoim pulpicie oznaczyć ten kurs jako ukończony i móc kontynuować swoją podróż!",
@@ -207,7 +206,6 @@
     "exam": {
       "answersReview": "Przegląd odpowiedzi",
       "availableDashboard": "Będzie dostępny w twoim panelu za około 10 godzin.",
-      "availableDashboardTimestamped": "Twój dyplom jest dostępny w twoim panelu.",
       "bCertCompletionText": "Plan ₿ Network ma przyjemność pogratulować {{username}} zdobycia certyfikatu testowego ₿-CERT.",
       "buttonTextBCert": "Dowiedz się więcej",
       "certificateAvailable": "Będzie dostępny około 10 godzin po wysłaniu.",
@@ -855,7 +853,6 @@
       "pickADate": "Wybierz termin",
       "publicationDate": "Data publikacji"
     },
-    "backToDashboard": "Powrót do pulpitu ucznia",
     "booking": {
       "accessLive": "Dostęp na żywo",
       "cancelBookingTitle": "Czy na pewno chcesz anulować tę rezerwację?",
@@ -1149,7 +1146,6 @@
       },
       "detailedScore": "Szczegółowy wynik"
     },
-    "goToDashboard": "Powrót do pulpitu ucznia",
     "goToHomepage": "Przejdź do strony głównej",
     "logout": "Wyloguj się",
     "myCourses": {
@@ -1360,7 +1356,6 @@
     },
     "payment": {
       "access_online_successful": "Gdy wydarzenie się rozpocznie, zaloguj się na platformę, żeby uzyskać dostęp do transmisji na żywo przez stronę wydarzenia.",
-      "access_physical_successful": "Możesz pobrać swój bilet tutaj lub pobrać go później z poziomu swojego panelu.",
       "access_type": "Rodzaj dostępu",
       "additional_free_description": "To wydarzenie jest darmowe, więc nie zostaniesz obciążony kosztami za rezerwację tego miejsca. Niemniej jednak, upewnij się, że możesz weziąć w nim udział, ponieważ liczba miejsc jest ograniczona.",
       "address": "Adres",

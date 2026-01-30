@@ -161,7 +161,6 @@
     "conclusion": {
       "completedChaptersHeadline": "Alla kapitel är nu klara!",
       "completedFeedbackHeadline": "Tack för din feedback!\nDen är mycket viktig för oss, så vi uppskattar den verkligen.",
-      "completedFeedbackSubHeadline": "Du kan redigera dina betygsättningar och kommentarer när som helst på din kontrollpanel.",
       "congratulationsEnd": "Grattis, du har nått slutet av denna kurs",
       "finalStep": "Detta var det sista steget för att markera denna kurs som slutförd i din kontrollpanel, innan du fortsätter din resa!",
       "stepsToComplete": "Detta är stegen för att markera denna kurs som slutförd i din kontrollpanel, innan du fortsätter din resa!",
@@ -207,7 +206,6 @@
     "exam": {
       "answersReview": "Genomgång av svar",
       "availableDashboard": "Det kommer att finnas tillgängligt på din kontrollpanel om cirka 10 timmar.",
-      "availableDashboardTimestamped": "Ditt diplom finns tillgängligt i din kontrollpanel.",
       "bCertCompletionText": "Plan ₿ Network är glada att gratulera {{username}} för att ha tilldelats ₿-CERT.",
       "buttonTextBCert": "Läs mer",
       "certificateAvailable": "Det kommer att vara tillgängligt cirka 10 timmar efter inlämning.",
@@ -855,7 +853,6 @@
       "pickADate": "Välj ett datum",
       "publicationDate": "Publiceringsdatum"
     },
-    "backToDashboard": "Tillbaka till kontrollpanelen",
     "booking": {
       "accessLive": "Tillgång till det livesända provet",
       "cancelBookingTitle": "Är du säker på att du vill avboka denna bokning?",
@@ -1149,7 +1146,6 @@
       "getGlobalRecognition": "Få global erkännande med ett ₿-CERT certifikat",
       "noCertificatesAvailable": "Inga certifikat tillgängliga"
     },
-    "goToDashboard": "Gå till instrumentpanelen",
     "goToHomepage": "Gå till startsidan",
     "logout": "Logga ut",
     "myCourses": {
@@ -1360,7 +1356,6 @@
     },
     "payment": {
       "access_online_successful": "När eventet startar, logga in på plattformen för att få tillgång till live-sändningen på eventsidan.",
-      "access_physical_successful": "Du kan ladda ner din biljett här, eller ladda ner den senare i kontrollpanelen.",
       "access_type": "Typ av åtkomst",
       "additional_free_description": "Detta event är gratis, så det finns ingen kostnad för att boka denna plats. Men var snäll att se till att närvara, eftersom antalet platser är begränsade.",
       "address": "Adress",

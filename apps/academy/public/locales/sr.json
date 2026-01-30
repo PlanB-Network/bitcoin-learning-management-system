@@ -161,7 +161,6 @@
     "conclusion": {
       "completedChaptersHeadline": "Sva poglavlja su sad završena!",
       "completedFeedbackHeadline": "Hvala Vam na povratnim informacijama\nZa nas je to veoma važno, tako da mi to zaista cenimo.",
-      "completedFeedbackSubHeadline": "Možete da izmenite svoje ocene i komentare u bilo kom trenutku na kontrolnoj tabli.",
       "congratulationsEnd": "Čestitamo, stigli ste do kraja kursa",
       "finalStep": "Ovo je bio poslednji korak da označite ovaj kurs kao završen na vašoj kontrolnoj tabli, pre nego što nastavite putovanje!",
       "stepsToComplete": "Ovo su koraci za označavanje ovog kursa kao završenog na vašoj kontrolnoj tabli, pre nego što nastavite svoje putovanje!",
@@ -207,7 +206,6 @@
     "exam": {
       "answersReview": "Pregled odgovora",
       "availableDashboard": "Biće dostupno na Vašoj kontrolnoj tabeli za oko 10 sati.",
-      "availableDashboardTimestamped": "Vaša diploma je dostupna na vašoj kontrolnoj tabli.",
       "bCertCompletionText": "Plan ₿ Network ima zadovoljstvo da čestita {{username}} na dobijanju sertifikata za ₿-CERT test.",
       "buttonTextBCert": "Saznajte više",
       "certificateAvailable": "Biće dostupno za oko 8 sati nakon podnošenja.",
@@ -855,7 +853,6 @@
       "pickADate": "Izaberite datum",
       "publicationDate": "Datum objavljivanja"
     },
-    "backToDashboard": "Nazad na kontrolnu tablu",
     "booking": {
       "accessLive": "Pristupite ispitu uživo",
       "cancelBookingTitle": "Da li ste sigurni da želite da otkažete ovu rezervaciju?",
@@ -1149,7 +1146,6 @@
       },
       "detailedScore": "Detaljan rezultat"
     },
-    "goToDashboard": "Otvori kontrolnu tablu",
     "goToHomepage": "Otvori početnu stranicu",
     "logout": "Odjava",
     "myCourses": {
@@ -1360,7 +1356,6 @@
     },
     "payment": {
       "access_online_successful": "Kada događaj počne, prijavite se na platformu da biste pristupili uživo prenosu na stranici događaja.",
-      "access_physical_successful": "Možete preuzeti svoju kartu ovde, ili je preuzeti kasnije na svojoj kontrolnoj tabli.",
       "access_type": "Vrsta pristupa",
       "additional_free_description": "Ovaj događaj je besplatan, tako da nema naplate za rezervaciju ovog mesta. Međutim, molimo Vas da se obavezno pojavite, s obzirom da je broj mesta ograničen.",
       "address": "Adresa",

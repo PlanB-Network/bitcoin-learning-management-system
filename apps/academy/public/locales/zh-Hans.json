@@ -161,7 +161,6 @@
     "conclusion": {
       "completedChaptersHeadline": "所有章节已完成！",
       "completedFeedbackHeadline": "谢谢您的反馈！\n您的反馈对我们很重要，我们非常感激。",
-      "completedFeedbackSubHeadline": "您可以在您的仪表板上随时编辑您的评价和评论。",
       "congratulationsEnd": "恭喜您，您已到达课程的终点",
       "finalStep": "这是将此课程在您的仪表板上标记为“完成”的最后一步，之后您即可继续您的旅程！",
       "stepsToComplete": "这是将此课程在您的仪表板上标记为“完成”的步骤，之后您即可继续您的旅程！",
@@ -207,7 +206,6 @@
     "exam": {
       "answersReview": "答案讲述",
       "availableDashboard": "大约10小时后，它将在您的仪表板中可用。",
-      "availableDashboardTimestamped": "您可以在您的仪表板上查看您的文凭。",
       "bCertCompletionText": "Plan ₿网络很高兴祝贺 {{username}} 获得₿-CERT证书。",
       "buttonTextBCert": "进一步学习",
       "certificateAvailable": "将在大约提交10小时后可用。",
@@ -855,7 +853,6 @@
       "pickADate": "选择日期",
       "publicationDate": "出版日期"
     },
-    "backToDashboard": "返回仪表板",
     "booking": {
       "accessLive": "访问直播",
       "cancelBookingTitle": "您确定要取消此预订吗？",
@@ -1149,7 +1146,6 @@
       },
       "detailedScore": "详细得分"
     },
-    "goToDashboard": "前往仪表板",
     "goToHomepage": "前往主页",
     "logout": "登出",
     "myCourses": {
@@ -1360,7 +1356,6 @@
     },
     "payment": {
       "access_online_successful": "当活动开始时，请登录平台，使您能在活动页面中访问直播内容。",
-      "access_physical_successful": "您可以在此下载您的票证，也可以稍后在您的仪表板中下载。",
       "access_type": "访问类型",
       "additional_free_description": "此活动免费，因此您预订的这个位置不会被收费。无论如何，请您确保出席，因为位置数量有限。",
       "address": "地址",
