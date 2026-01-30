@@ -97,11 +97,12 @@ export const createProcessChangedGlossaryWord = (
             });
 
             await transaction`
-              INSERT INTO content.glossary_words_localized (glossary_word_id, language, term, definition)
-              VALUES (${id}, ${file.language}, ${header.data.term}, ${header.content.trim()})
+              INSERT INTO content.glossary_words_localized (glossary_word_id, language, term, definition, short_definition)
+              VALUES (${id}, ${file.language}, ${header.data.term}, ${header.content.trim()}, ${header.data.definition})
               ON CONFLICT (glossary_word_id, language) DO UPDATE SET
                 term = EXCLUDED.term,
-                definition = EXCLUDED.definition
+                definition = EXCLUDED.definition,
+                short_definition = EXCLUDED.short_definition
             `.then(firstRow);
           } catch (error) {
             errors.push(

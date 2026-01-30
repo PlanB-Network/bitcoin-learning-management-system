@@ -10,6 +10,7 @@ export interface GlossaryWord {
 
 export interface GlossaryWordLocalized {
   definition: string;
+  shortDefinition: string | null;
   glossaryWordId: string;
   language: string;
   term: string;
@@ -24,6 +25,7 @@ export interface JoinedGlossaryWord {
   originalLanguage: string;
   relatedWords?: (string[] | undefined) | null;
   definition: string;
+  shortDefinition: string | null;
   language: string;
   term: string;
   tags?: string[] | undefined;

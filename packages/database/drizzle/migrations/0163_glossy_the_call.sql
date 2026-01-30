@@ -1,0 +1,1 @@
+ALTER TABLE "content"."glossary_words_localized" ADD COLUMN "short_definition" text;

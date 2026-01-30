@@ -149,7 +149,10 @@ const GlossaryLink: React.FC<{ href: string; children: React.ReactNode }> = ({
   };
 
   // Truncate definition for tooltip display (desktop)
-  const truncatedDefinition = truncateAtWord(glossaryWord.definition, 400);
+  const truncatedDefinition = truncateAtWord(
+    glossaryWord.shortDefinition || glossaryWord.definition,
+    400,
+  );
   const cleanDefinition = cleanMarkdown(truncatedDefinition);
 
   // Truncate for mobile (longer limit)

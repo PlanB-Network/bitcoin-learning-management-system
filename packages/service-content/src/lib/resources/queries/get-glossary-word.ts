@@ -12,6 +12,7 @@ export const getGlossaryWordQuery = (strId: string, language?: string) => {
       w.original_language,
       wl.term,
       wl.definition,
+      wl.short_definition,
       r.last_updated,
       r.last_commit,
       COALESCE((SELECT ARRAY_AGG(DISTINCT t.name)
@@ -30,6 +31,7 @@ export const getGlossaryWordQuery = (strId: string, language?: string) => {
       w.related_words,
       w.original_language,
       wl.term,
-      wl.definition
+      wl.definition,
+      wl.short_definition
   `;
 };

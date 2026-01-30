@@ -31,6 +31,7 @@ export const joinedGlossaryWordSchema = resourceSchema
   .merge(
     glossaryWordLocalizedSchema.pick({
       definition: true,
+      shortDefinition: true,
       language: true,
       term: true,
     }),

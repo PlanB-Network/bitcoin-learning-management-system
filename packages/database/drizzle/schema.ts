@@ -864,6 +864,7 @@ export const contentGlossaryWordsLocalized = content.table(
   'glossary_words_localized',
   (t) => ({
     definition: t.text().notNull(),
+    shortDefinition: t.text(),
     glossaryWordId: t
       .uuid()
       .notNull()
