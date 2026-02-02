@@ -86,3 +86,7 @@ export const doesVideoUrlWorkWithReactPlayer = (src: string) => {
     src.startsWith('https://youtu.be')
   );
 };
+
+export const isBigBlueButtonUrl = (src: string) => {
+  return src.startsWith('https://live.planb.academy');
+};

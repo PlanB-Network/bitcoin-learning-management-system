@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
+import { VideoRenderer } from '#src/components/video-renderer.tsx';
+
 interface LiveVideoProps {
   url: string;
   chatUrl: string | null;
@@ -21,13 +23,9 @@ export const LiveVideo = ({ url, chatUrl, displayVideo }: LiveVideoProps) => {
       )}
       {url && displayVideo && (
         <div className="flex flex-col gap-6 w-full items-center">
-          <iframe
-            title="Live"
-            className="w-full aspect-video"
-            src={url}
-            allowFullScreen={true}
-            sandbox="allow-same-origin allow-scripts allow-popups"
-          />
+          <div className="relative w-full aspect-video">
+            <VideoRenderer src={url} alt="Live" />
+          </div>
           {chatUrl && (
             <iframe
               src={chatUrl}

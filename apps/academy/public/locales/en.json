@@ -173,6 +173,8 @@
       },
       "finishCourse": "Finish the course",
       "live": {
+        "joinLive": "Join live session",
+        "joining": "Joining...",
         "stayTuned": "The live session will start 30 minutes before the class begins. Stay tuned!",
         "title": "Live video"
       },
