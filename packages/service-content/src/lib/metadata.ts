@@ -373,7 +373,7 @@ export const createGetMetadata = (dependencies: Dependencies) => {
     return meta(
       event.name,
       event.projectName
-        ? `${event.projectName} - ${event.description}`
+        ? `${event.projectId === 'cd62a137-baad-4133-b90d-711963e510c7' ? 'Plan ₿ Academy' : event.projectName} - ${event.description}`
         : event.description,
       cdn(event.path, 'thumbnail.webp'),
       lang,
