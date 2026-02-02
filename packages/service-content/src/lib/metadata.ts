@@ -4,6 +4,7 @@ import { createGetCourseMeta } from './courses/services/get-course-meta.js';
 import { createGetCertificateImgKeyByExamAttemptId } from './courses/services/get-diploma-img-key.js';
 import type { Dependencies } from './dependencies.js';
 import { createGetEducatorContent } from './educator-content/services/get-educator-content.js';
+import { createGetEvent } from './events/services/get-event.js';
 import { createGetBook } from './resources/services/get-book.js';
 import { createGetConferenceMeta } from './resources/services/get-conference-meta.js';
 import { createGetGlossaryWord } from './resources/services/get-glossary-word.js';
@@ -96,6 +97,7 @@ export const createGetMetadata = (dependencies: Dependencies) => {
   const getNewsletterMeta = createGetNewsletterMeta(dependencies);
   const getBlog = createGetBlog(dependencies);
   const getEducatorContent = createGetEducatorContent(dependencies);
+  const getEvent = createGetEvent(dependencies);
 
   // Tutorials
   const getTutorialMeta = createGetTutorialMeta(dependencies);
@@ -356,6 +358,28 @@ export const createGetMetadata = (dependencies: Dependencies) => {
     );
   };
 
+  const getEventMetadata = async (
+    lang: string,
+    parts: string[],
+  ): Promise<Metadata> => {
+    const [eventId] = parts;
+
+    if (!eventId) {
+      return defaultMeta(lang);
+    }
+
+    const event = await getEvent(eventId);
+
+    return meta(
+      event.name,
+      event.projectName
+        ? `${event.projectName} - ${event.description}`
+        : event.description,
+      cdn(event.path, 'thumbnail.webp'),
+      lang,
+    );
+  };
+
   return async (parts: string[]): Promise<Metadata> => {
     const lang = (parts[0]?.length === 2 && parts.shift()) || 'en';
 
@@ -389,6 +413,10 @@ export const createGetMetadata = (dependencies: Dependencies) => {
       }
       case 'public-communication': {
         return getBlogMetadata(lang, rest); //
+      }
+      case 'events': {
+        return getEventMetadata(lang, rest) //
+          .catch(defaultOnError(lang));
       }
       default: {
         return defaultMeta(lang);
