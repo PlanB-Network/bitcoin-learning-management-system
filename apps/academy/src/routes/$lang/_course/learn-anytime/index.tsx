@@ -1,6 +1,5 @@
 import { TeachingFormat } from '@blms/constants';
 import {
-  Button,
   Carousel,
   CarouselContent,
   CarouselFadeEdges,
@@ -11,25 +10,23 @@ import {
   DropdownMenu,
   EmptyState,
   Loader,
-  Progress,
 } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
-import { createFileRoute, Link } from '@tanstack/react-router';
+import { createFileRoute } from '@tanstack/react-router';
 import { capitalize } from 'lodash-es';
 import { useContext, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   TbAdjustmentsHorizontal,
   TbBooksOff,
+  TbChevronDown,
   TbChevronsDown,
   TbX,
 } from 'react-icons/tb';
-import OrangePill from '#src/assets/icons/orange_pill_color.svg';
-import { PageTitle } from '#src/components/page-header.tsx';
 import { PageLayout } from '#src/components/page-layout.js';
 import { SearchInput } from '#src/components/search-input.tsx';
-import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { CourseCard } from '#src/patterns/course-card.tsx';
+import { InProgressCourseCard } from '#src/patterns/in-progress-course-card.tsx';
 import { AppContext } from '#src/providers/context.tsx';
 import { getSystemLanguage, isLanguageMatch } from '#src/utils/language.ts';
 import { normalizeString, toCamelCase } from '#src/utils/string.ts';
@@ -44,8 +41,6 @@ function AllCourses() {
   const { i18n, t } = useTranslation();
 
   const [showAllInProgress, setShowAllInProgress] = useState(false);
-
-  const isMobile = useSmaller('md') || window.innerWidth < 768;
 
   const isLoggedIn = !!session?.user;
 
@@ -253,15 +248,14 @@ function AllCourses() {
         },
       ]}
       title={t('courses.allCourses')}
-      hideTitle
       showBecomeTeacherButton
     >
       {inProgressCourses.length !== 0 && (
-        <div className="flex flex-col w-full gap-4 mb-6 md:mb-12">
-          <p className="text-black title-base md:title-medium">
+        <div className="flex flex-col w-full mb-6 md:mb-12">
+          <p className="text-black title-base md:title-medium mb-4">
             {t('courses.continueLeftOff')}
           </p>
-          <div className="flex flex-col gap-1 md:gap-4 w-full">
+          <div className="flex flex-col w-full border border-neutral-100 rounded-2xl overflow-hidden mb-2 md:mb-4">
             {inProgressCourses
               .slice(0, showAllInProgress ? undefined : 2)
               .map((courseProgress) => {
@@ -270,59 +264,38 @@ function AllCourses() {
                 );
                 if (!course) return null;
                 return (
-                  <article
-                    className="flex items-center justify-between w-full border border-neutral-100 rounded-2xl p-3 md:p-8 gap-2"
+                  <InProgressCourseCard
                     key={course.id}
-                  >
-                    <span className="body-small-bold md:subtitle-base text-black">
-                      {course.name}
-                    </span>
-                    <div className="flex items-center gap-3 md:gap-12 xl:w-full xl:max-w-[463px]">
-                      <div className="flex items-center gap-4 w-full">
-                        <div className="w-full max-w-[272px] relative max-xl:hidden">
-                          <Progress
-                            total={courseProgress.totalChapters}
-                            completed={courseProgress.completedChaptersCount}
-                            pillImage={OrangePill}
-                          />
-                        </div>
-                        <span className="body-extra-small-bold md:subtitle-base text-orange-500">
-                          {courseProgress.progressPercentage}%
-                        </span>
-                      </div>
-                      <Link
-                        to={`/courses/${course.id}/${courseProgress?.nextChapter?.chapterId}`}
-                      >
-                        <Button
-                          rounded
-                          variant="primary"
-                          className="w-full"
-                          size={isMobile ? 's' : 'm'}
-                        >
-                          {t('words.resume')}
-                        </Button>
-                      </Link>
-                    </div>
-                  </article>
+                    course={course}
+                    courseProgress={courseProgress}
+                  />
                 );
               })}
-            {inProgressCourses.length > 2 && !showAllInProgress && (
-              <div className="ml-auto">
-                <button
-                  type="button"
-                  onClick={() => setShowAllInProgress(true)}
-                  className="body-small-bold text-black pr-8"
-                >
-                  {t('courses.plusXMore', {
-                    count: inProgressCourses.length - 2,
-                  })}
-                </button>
-              </div>
-            )}
           </div>
+          {inProgressCourses.length > 2 && (
+            <div className="ml-auto">
+              <button
+                type="button"
+                onClick={() => setShowAllInProgress(!showAllInProgress)}
+                className="flex items-center gap-0.5 text-neutral-300 body-small-bold pr-3 md:pr-8"
+              >
+                {showAllInProgress
+                  ? t('words.hide')
+                  : t('courses.plusXMore', {
+                      count: inProgressCourses.length - 2,
+                    })}
+                <TbChevronDown
+                  size={20}
+                  className={cn(
+                    'transition-transform',
+                    showAllInProgress && 'rotate-180',
+                  )}
+                />
+              </button>
+            </div>
+          )}
         </div>
       )}
-      <PageTitle title={t('courses.allCourses')} />
 
       <div
         className={cn(

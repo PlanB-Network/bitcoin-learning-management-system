@@ -900,12 +900,12 @@
       "downloadStep2": "Open it with your calendar app",
       "downloadStep3": "Events won’t update if dates change",
       "downloadTitle": "Or download the current calendar",
-      "followSelectedCalendar": "Follow selected calendar",
       "eventType": {
         "class": "Classes",
         "event": "Events",
         "history": "Bitcoin dates"
       },
+      "followSelectedCalendar": "Follow selected calendar",
       "personalCalendar": "Personal calendar",
       "subscribeButton": "Copy synced calendar link",
       "subscribeStep1": "Copy the calendar link",
@@ -2119,6 +2119,7 @@
     "glossary": "Glossary",
     "goal": "Goal",
     "grade": "Grade",
+    "hide": "Hide",
     "home": "Home",
     "host": "Host",
     "hours": "hours",

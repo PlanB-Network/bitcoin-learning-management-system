@@ -1,21 +1,20 @@
 import { TeachingFormat } from '@blms/constants';
-import type { CourseProgressExtended } from '@blms/types';
 import {
   cn,
   EmptyState,
   Loader,
-  Progress,
   SegmentedControl,
   SegmentedControlItem,
 } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
-import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbBookOff } from 'react-icons/tb';
-import OrangePill from '#src/assets/icons/orange_pill_color.svg';
+
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { InProgressCourseCard } from '#src/patterns/in-progress-course-card.tsx';
 import { AppContext } from '#src/providers/context.js';
 import { trpc } from '#src/utils/trpc.ts';
 import { CourseTable } from '../courses/$courseSlug/_$courseSlug/-components/course-table.tsx';
@@ -129,13 +128,20 @@ function DashboardCourses() {
           <h2 className="title-base md:title-large max-md:mt-4">
             {t('navbar.liveClassesTitle')}
           </h2>
-          <div className="flex flex-col gap-1 md:gap-4 mt-4 md:mt-6 w-full">
-            {filteredInProgressProfessorLedCourses.map((courseProgress) => (
-              <InProgressCourseCard
-                key={courseProgress.courseId}
-                courseProgress={courseProgress}
-              />
-            ))}
+          <div className="flex flex-col w-full border border-neutral-100 rounded-2xl overflow-hidden mt-4 md:mt-6">
+            {filteredInProgressProfessorLedCourses.map((courseProgress) => {
+              const course = courses?.find(
+                (c) => c.id === courseProgress.courseId,
+              );
+              if (!course) return null;
+              return (
+                <InProgressCourseCard
+                  key={courseProgress.courseId}
+                  course={course}
+                  courseProgress={courseProgress}
+                />
+              );
+            })}
           </div>
         </>
       )}
@@ -182,63 +188,34 @@ function DashboardCourses() {
         </div>
       )}
       {currentTab === 'list' && (
-        <div className="flex flex-col gap-1 md:gap-4 mt-6 w-full">
-          {filteredInProgressSelfLearningCourses.map((courseProgress) => (
-            <InProgressCourseCard
-              key={courseProgress.courseId}
-              courseProgress={courseProgress}
-            />
-          ))}
+        <div className="flex flex-col mt-6 w-full border border-neutral-100 rounded-2xl overflow-hidden">
+          {filteredInProgressSelfLearningCourses.map((courseProgress) => {
+            const course = courses?.find(
+              (c) => c.id === courseProgress.courseId,
+            );
+            if (!course) return null;
+            return (
+              <InProgressCourseCard
+                key={courseProgress.courseId}
+                course={course}
+                courseProgress={courseProgress}
+              />
+            );
+          })}
           {filteredInProgressSelfLearningCourses.length === 0 && (
-            <EmptyState
-              title={t('dashboard.myCourses.noCourseStarted')}
-              linkButton={{
-                href: '/learn-anytime',
-                label: t('bCert.chooseCourse'),
-              }}
-              icon={TbBookOff}
-            />
+            <div className="p-4">
+              <EmptyState
+                title={t('dashboard.myCourses.noCourseStarted')}
+                linkButton={{
+                  href: '/learn-anytime',
+                  label: t('bCert.chooseCourse'),
+                }}
+                icon={TbBookOff}
+              />
+            </div>
           )}
         </div>
       )}
     </PageLayout>
   );
 }
-
-const InProgressCourseCard = ({
-  courseProgress,
-}: {
-  courseProgress: CourseProgressExtended;
-}) => {
-  const { courses } = useContext(AppContext);
-  if (!courses) return null;
-
-  const course = courses.find((c) => c.id === courseProgress.courseId);
-  if (!course) return null;
-
-  return (
-    <Link
-      to={`/courses/${course.id}`}
-      className="flex items-center justify-between w-full border border-neutral-100 rounded-2xl p-3 md:p-8 gap-2 max-w-[1097px] hover:bg-neutral-50"
-      key={course.id}
-    >
-      <span className="body-small-bold md:subtitle-base text-black">
-        {course.name}
-      </span>
-      <div className="flex items-center gap-3 md:gap-12 xl:w-full xl:max-w-[348px] justify-end">
-        <div className="flex items-center gap-4 w-full justify-end">
-          <div className="w-full max-w-[272px] relative max-xl:hidden">
-            <Progress
-              total={courseProgress.totalChapters}
-              completed={courseProgress.completedChaptersCount}
-              pillImage={OrangePill}
-            />
-          </div>
-          <span className="body-extra-small-bold md:subtitle-base text-orange-500">
-            {courseProgress.progressPercentage}%
-          </span>
-        </div>
-      </div>
-    </Link>
-  );
-};
