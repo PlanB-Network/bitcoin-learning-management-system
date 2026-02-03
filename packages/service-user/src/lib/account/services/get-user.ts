@@ -8,6 +8,7 @@ import {
   getUserByUserNameOrEmailQuery,
   getUserByUserNameQuery,
   getUserUidByCalendarTokenQuery,
+  getUserVerifiedEmailQuery,
 } from '../queries/get-user.js';
 
 export const createGetUserDetails = ({ postgres }: Dependencies) => {
@@ -51,5 +52,14 @@ export const createGetUserUidByCalendarToken = ({ postgres }: Dependencies) => {
       .exec(getUserUidByCalendarTokenQuery(token))
       .then(firstRow)
       .then((user) => user ?? null);
+  };
+};
+
+export const createGetUserVerifiedEmail = ({ postgres }: Dependencies) => {
+  return async (uid: string): Promise<string> => {
+    return postgres
+      .exec(getUserVerifiedEmailQuery(uid))
+      .then(firstRow)
+      .then((row) => row?.email || '');
   };
 };

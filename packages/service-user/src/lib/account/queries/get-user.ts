@@ -71,3 +71,10 @@ export const getUserUidByCalendarTokenQuery = (token: string) => {
     WHERE calendar_token = ${token};
   `;
 };
+
+export const getUserVerifiedEmailQuery = (uid: string) => {
+  return sql<{ email: string }[]>`
+    SELECT email FROM users.accounts
+    WHERE uid = ${uid} AND current_email_checked = TRUE;
+  `;
+};

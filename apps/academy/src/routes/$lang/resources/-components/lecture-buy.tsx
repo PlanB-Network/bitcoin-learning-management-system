@@ -11,6 +11,7 @@ import { AppContext } from '#src/providers/context.tsx';
 import { ConversionRateContext } from '#src/providers/conversionRateContext.tsx';
 import { EventPaymentModal } from '#src/routes/$lang/events/-components/event-payment-modal.tsx';
 import type { PaymentModalDataModel } from '#src/services/utils.tsx';
+import { AddEmailModal } from '../../dashboard/-components/add-email-modal.tsx';
 
 export const LectureBuy = ({
   lecture,
@@ -21,7 +22,7 @@ export const LectureBuy = ({
   eventPayment?: EventPayment;
   refetchEventPayments: () => void;
 }) => {
-  const { session } = useContext(AppContext);
+  const { session, user } = useContext(AppContext);
   const { conversionRate } = useContext(ConversionRateContext);
   const { openAuthModal: openAuthModalContext } = useAuthModal();
   const isLoggedIn = !!session;
@@ -43,6 +44,7 @@ export const LectureBuy = ({
       satsPrice: null,
     });
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
+  const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
 
   const isMobile = useSmaller('md');
 
@@ -76,6 +78,14 @@ export const LectureBuy = ({
           }}
         />
       ) : null}
+
+      {isEmailModalOpen && user && (
+        <AddEmailModal
+          isOpen={isEmailModalOpen}
+          onClose={() => setIsEmailModalOpen(false)}
+          email={user?.email || user?.pendingEmail || ''}
+        />
+      )}
       <div className="flex max-md:flex-col gap-2 md:gap-x-7 md:gap-y-2 md:items-center md:flex-wrap">
         <div className="flex max-md:flex-col md:gap-1 text-orange-500 ">
           <span className="body-medium-16px md:title-large-sb-24px">
@@ -97,13 +107,17 @@ export const LectureBuy = ({
             size={isMobile ? 'm' : 'l'}
             onClick={() => {
               if (isLoggedIn) {
-                setPaymentModalData({
-                  accessType: 'online',
-                  dollarPrice: dollarPrice,
-                  eventId: lecture.id,
-                  satsPrice: satsPrice,
-                });
-                setIsPaymentModalOpen(true);
+                if (user?.email && user?.currentEmailChecked) {
+                  setPaymentModalData({
+                    accessType: 'online',
+                    dollarPrice: dollarPrice,
+                    eventId: lecture.id,
+                    satsPrice: satsPrice,
+                  });
+                  setIsPaymentModalOpen(true);
+                } else {
+                  setIsEmailModalOpen(true);
+                }
               } else {
                 openAuthModalContext(AuthModalState.SignIn);
               }

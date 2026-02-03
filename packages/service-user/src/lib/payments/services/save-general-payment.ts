@@ -4,6 +4,7 @@ import { firstRow, sql } from '@blms/database';
 import type { CouponCode, GeneralPaymentLight } from '@blms/types';
 import { v4 as uuidv4 } from 'uuid';
 import type { Dependencies } from '../../../dependencies.js';
+import { createGetUserVerifiedEmail } from '../../account/services/index.js';
 import { getGeneralPaymentsQuery } from '../queries/get-general-payments.js';
 import { insertGeneralPayment } from '../queries/insert-general-payment.js';
 import { updateGeneralCoupon } from '../queries/update-general-coupon.js';
@@ -31,6 +32,7 @@ export const createSaveGeneralPayment = (dependencies: Dependencies) => {
 
   const sbpPayment = createSbpPayment(config.swissBitcoinPay);
   const stripePayment = createStripePayment({ stripe });
+  const getUserVerifiedEmail = createGetUserVerifiedEmail(dependencies);
 
   return async ({
     uid,
@@ -137,11 +139,15 @@ export const createSaveGeneralPayment = (dependencies: Dependencies) => {
 
     if (method === 'stripe') {
       const paymentId = uuidv4();
+
+      const userEmail = await getUserVerifiedEmail(uid);
+
       const session = await stripePayment(
         `${item}`,
         item,
         dollarPrice,
         paymentId,
+        userEmail || undefined,
       );
 
       await postgres.exec(

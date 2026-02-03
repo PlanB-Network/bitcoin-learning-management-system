@@ -3,6 +3,7 @@ import type { CouponCode, Course, CoursePayment } from '@blms/types';
 import { v4 as uuidv4 } from 'uuid';
 
 import type { Dependencies } from '../../../dependencies.js';
+import { createGetUserVerifiedEmail } from '../../account/services/index.js';
 import {
   checkSatsPrice,
   createSbpPayment,
@@ -33,6 +34,7 @@ export const createSaveCoursePayment = (dependencies: Dependencies) => {
 
   const sbpPayment = createSbpPayment(config.swissBitcoinPay);
   const stripePayment = createStripePayment({ stripe });
+  const getUserVerifiedEmail = createGetUserVerifiedEmail(dependencies);
 
   return async ({
     uid,
@@ -160,11 +162,15 @@ export const createSaveCoursePayment = (dependencies: Dependencies) => {
 
     if (method === 'stripe') {
       const paymentId = uuidv4();
+
+      const userEmail = await getUserVerifiedEmail(uid);
+
       const session = await stripePayment(
         `${courseIndex}:${format} course`,
         'course',
         dollarPrice,
         paymentId,
+        userEmail || undefined,
       );
 
       await postgres.exec(
