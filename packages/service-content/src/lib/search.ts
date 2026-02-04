@@ -249,6 +249,30 @@ const getLectureReplaysQuery = () => sql<Searchable<Language>[]>`
     AND events.end_date < NOW() - INTERVAL '30 days'
 `;
 
+// Resource - Movies
+const getMoviesQuery = () => sql<Searchable<Language>[]>`
+  SELECT
+    'movie' as type,
+    LOWER(m.language) as language,
+    m.title,
+    COALESCE(m.description, '') as body,
+    CONCAT('/', m.language, '/', r.path, '-', m.resource_id) as link
+  FROM content.movies m
+  JOIN content.resources r ON r.id = m.resource_id
+`;
+
+// Resource - Research Papers
+const getResearchPapersQuery = () => sql<Searchable<Language>[]>`
+  SELECT
+    'research_paper' as type,
+    LOWER(rp.language) as language,
+    rp.title,
+    COALESCE(rp.abstract, '') as body,
+    CONCAT('/', rp.language, '/', r.path, '-', rp.resource_id) as link
+  FROM content.research_papers rp
+  JOIN content.resources r ON r.id = rp.resource_id
+`;
+
 const createInitIndexes = (client: TypesenseClient) => () => {
   const searchableSchema: CollectionCreateSchema = {
     fields: [
@@ -337,6 +361,8 @@ export const createIndexContent = ({
       ...(await postgres.exec(getConferenceReplaysQuery())),
       ...(await postgres.exec(getProjectsQuery())),
       ...(await postgres.exec(getLectureReplaysQuery())),
+      ...(await postgres.exec(getMoviesQuery())),
+      ...(await postgres.exec(getResearchPapersQuery())),
     ];
 
     await ingestData(data);

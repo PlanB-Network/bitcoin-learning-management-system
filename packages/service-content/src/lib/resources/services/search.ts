@@ -22,10 +22,12 @@ const searchCategoryMap: Record<string, string[] | null> = {
   events: ['event'],
   glossary_words: ['glossary_word'],
   lecture_replays: ['lecture_replay'],
+  movies: ['movie'],
   newsletters: ['newsletter'],
   podcasts: ['podcast'],
   professors: ['professor'],
   projects: ['project'],
+  research_papers: ['research_paper'],
   tutorials: ['tutorial'],
   youtube_channels: ['youtube_channel'],
 };
@@ -48,10 +50,12 @@ const CategoryWeight: Record<string, number> = {
   default: 1,
   // Events category
   event: 4,
+  movie: 2,
   // Professors
   professor: 2,
   // Projects
   project: 3,
+  research_paper: 3,
   // Tutorials category
   tutorial: 5,
 };
@@ -76,8 +80,10 @@ const SORT_RULES = [
     // Other resources
     'book',
     'glossary_word',
+    'movie',
     'podcast',
     'newsletter',
+    'research_paper',
     'youtube_channel',
     'conference_replay',
     'lecture_replay',

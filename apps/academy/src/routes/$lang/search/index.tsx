@@ -37,9 +37,11 @@ function SearchPage() {
     'professors',
     // Resources
     'books',
+    'movies',
     'newsletters',
     'podcasts',
     'projects',
+    'research_papers',
     'youtube_channels',
     'conference_replays',
     'glossary_words',
