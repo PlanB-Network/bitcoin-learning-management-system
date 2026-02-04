@@ -37,7 +37,7 @@ export const VideoRenderer = ({ src, alt }: { src: string; alt?: string }) => {
           style={{ left: 0, position: 'absolute', top: 0 }}
           className="mx-auto mb-2 rounded-lg"
           controls={true}
-          src={src}
+          src={fixEmbedUrl(src)}
         />
       ) : (
         <iframe
