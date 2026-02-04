@@ -1,6 +1,6 @@
 {
   "about": {
-    "activeContributors": "Contributori attivi",
+    "activeContributors": "Contributor attivi",
     "commitmentContent": "Ci impegniamo nei confronti della comunità Bitcoin con le seguenti promesse: \n • Rimanere open-source \n • Fornire contenuti educativi di alta qualità \n • Tradurre i nostri contenuti in quante più lingue possibili \n • Supportare gli imprenditori del mondo Bitcoin nel loro viaggio",
     "commitmentTitle": "I nostri impegni",
     "coreTeamAjelexRole": "Coordinatore dei nodi",
@@ -2200,7 +2200,7 @@
       "readFullGuide": "Leggi la guida completa",
       "subtitle": "Condividi le tue migliori risorse e aiuta gli educatori di Bitcoin in tutto il mondo",
       "title": "Linee guida per l'aggiunta di nuovi contenuti",
-      "pageTitle": "Guida: Aggiungere Contenuti al Contenuto Educatore"
+      "pageTitle": "Guida: come aggiungere contenuti educativi"
     },
     "fileTypeNotAllowed": "Sono consentiti solo immagini e documenti (PDF, presentazioni, fogli di calcolo, documenti di testo)",
     "supportedFileTypes": "Tipi di file supportati: immagini, PDF, presentazioni, fogli di calcolo, documenti di testo",
