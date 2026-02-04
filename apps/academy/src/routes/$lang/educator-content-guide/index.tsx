@@ -7,83 +7,87 @@ export const Route = createFileRoute('/$lang/educator-content-guide/')({
   component: EducatorContentGuidePage,
 });
 
-const GUIDE_CONTENT = `Thank you for being here! This guide will help you understand how to share your educational materials with the global Bitcoin educator community.
+function useGuideContent() {
+  const { t } = useTranslation();
+  const g = (key: string) => t(`educatorContent.guideContent.${key}`);
 
-## Purpose
+  return `${g('intro')}
 
-The goal of the Educator Content section is to help Bitcoin educators support each other and reduce duplicated work. This way, no one has to start from scratch every time they prepare a presentation or educational material.
+## ${g('purposeTitle')}
 
-We know how much effort and energy educators put into creating content for their local communities. We believe this content can be extremely valuable for other educators doing the same work around the world.
+${g('purposeP1')}
 
-The idea is to be stronger together: better content, better distributed, and less time wasted recreating what already exists.
+${g('purposeP2')}
 
-## What You Can Share
+${g('purposeP3')}
 
-In the Educator Content section, Bitcoin educators and communities can share and distribute their content, as well as download materials created by others.
+## ${g('whatYouCanShareTitle')}
 
-The content can take many forms:
+${g('whatYouCanShareP1')}
 
-- **Presentations:** Slide decks, workshop materials, curricula
-- **Print materials:** Flyers, posters, stickers, banners
-- **Documents:** Guides, handouts, worksheets, infographics
+${g('whatYouCanShareP2')}
 
-Content can be shared in any language, either as:
+- ${g('whatYouCanSharePresentations')}
+- ${g('whatYouCanSharePrint')}
+- ${g('whatYouCanShareDocuments')}
 
-- **Static files:** PDF, PNG, JPG (ready to use or print)
-- **Editable versions:** Canva links, Google Slides, source files (so others can adapt and customize)
+${g('whatYouCanShareP3')}
 
-**Supported file types:** Images, PDF, presentations, spreadsheets, text documents
+- ${g('whatYouCanShareStatic')}
+- ${g('whatYouCanShareEditable')}
 
-## Content Guidelines
+${g('whatYouCanShareFileTypes')}
 
-#### 1. Bitcoin-focused content only
+## ${g('contentGuidelinesTitle')}
 
-Content shared in the Educator Content section must be directly related to Bitcoin, including its educational, economic, privacy, security or self-sovereignty aspects. Off-topic content may be moderated or removed.
+#### ${g('guideline1Title')}
 
-#### 2. Share content that is useful to others
+${g('guideline1P1')}
 
-Upload files that you believe will benefit the Bitcoin community at large, especially for education purposes. The goal is to gather resources that can serve educators and communities teaching Bitcoin around the world.
+#### ${g('guideline2Title')}
 
-Please avoid uploading files that have a very low probability of being used by others. Too many irrelevant files make it harder to find valuable content.
+${g('guideline2P1')}
 
-#### 3. Write clear titles and descriptions
+${g('guideline2P2')}
 
-Resources are much more impactful and useful when they are clearly named and described. Please provide context in your content description to help others understand:
+#### ${g('guideline3Title')}
 
-- What the content is about
-- How you have been using it
-- How others might use it in their own context
+${g('guideline3P1')}
 
-Also, choose your cover image carefully and make sure it represents the content accurately.
+- ${g('guideline3Bullet1')}
+- ${g('guideline3Bullet2')}
+- ${g('guideline3Bullet3')}
 
-When uploading files, use descriptive file names. The file name will be visible to other users when they download your content. Avoid generic names like "final_v2.png". Instead, use clear names that describe the content, such as "bitcoin-basics-workshop-slides.pdf".
+${g('guideline3P2')}
 
-#### 4. Group related files into bundles
+${g('guideline3P3')}
 
-The Educator Content section is designed for knowledge sharing and collaboration. To ensure readability and fair visibility, we encourage you to group related files together. For example, a series of presentations will have more visibility and impact as a curriculum, rather than as individual presentations that are hard to connect. Bundles make it easier for other educators to find and use complete sets of materials.
+#### ${g('guideline4Title')}
 
-#### 5. Provide multiple formats when possible
+${g('guideline4P1')}
 
-For each resource, you can attach both links and files. This gives you the opportunity to:
+#### ${g('guideline5Title')}
 
-- **Share links** to editable or duplicable resources (Canva, Google Slides, Figma), so other educators can adapt your work to their needs
-- **Attach multiple file formats** (PDF, PNG, source files), so others can choose the format that works best for them
+${g('guideline5P1')}
 
-This flexibility makes your content more useful to a wider audience.
+- ${g('guideline5Bullet1')}
+- ${g('guideline5Bullet2')}
 
-#### 6. Respect copyright
+${g('guideline5P2')}
 
-If you are adding content you did not create, the original source must be credited in the description. The content must also be shared under the same license it was originally published with.
+#### ${g('guideline6Title')}
 
-When you upload content to the Educator Content portal, it is linked to your Plan ₿ Academy account. You are responsible for the content you share. Sharing copyrighted material without proper authorization is not allowed and will be subject to moderation.
+${g('guideline6P1')}
 
-**Only upload content you have the right to share.**
+${g('guideline6P2')}
 
-#### 7. Choose a license
+${g('guideline6P3')}
 
-All content is published under the CC-BY-SA license by default.
+#### ${g('guideline7Title')}
 
-If you wish to apply a different license to your content, you can select from the following options:
+${g('guideline7P1')}
+
+${g('guideline7P2')}
 
 - CC BY
 - CC BY-NC
@@ -92,48 +96,50 @@ If you wish to apply a different license to your content, you can select from th
 - CC BY-NC-ND
 - MIT
 
-[Learn more about Creative Commons licenses](https://creativecommons.org/share-your-work/cclicenses/)
+[${g('guideline7LearnMore')}](https://creativecommons.org/share-your-work/cclicenses/)
 
-If you are not familiar with licenses, you can safely keep the recommended default option (CC-BY-SA).
+${g('guideline7P3')}
 
-#### 8. No promotions or spam
+#### ${g('guideline8Title')}
 
-Promotional content is not allowed in the Educator Content section. This includes:
+${g('guideline8P1')}
 
-- Referral links
-- Affiliate links
-- Disguised commercial promotions
+- ${g('guideline8Bullet1')}
+- ${g('guideline8Bullet2')}
+- ${g('guideline8Bullet3')}
 
-Such content will be removed.
+${g('guideline8P2')}
 
-Do not upload material that could be considered spam, scams, or that contains misleading information.
+${g('guideline8P3')}
 
-#### 9. Review Process
+#### ${g('guideline9Title')}
 
-Once you submit your content for review, our team will check that it follows these guidelines.
+${g('guideline9P1')}
 
-- **If there are minor errors:** We will take the initiative to correct them directly.
-- **If the content cannot be accepted without major corrections:** We will reject the submission.
+- ${g('guideline9Bullet1')}
+- ${g('guideline9Bullet2')}
 
-In both cases, whether your content is accepted or rejected, you will receive a notification by email.
+${g('guideline9P2')}
 
-## Community Standards
+## ${g('communityStandardsTitle')}
 
-#### 10. Respect contributors
+#### ${g('guideline10Title')}
 
-Sharing educational content requires effort and courage. Feedback and criticism are therefore welcome **only if they are constructive, respectful and relevant**. Therefore, personal attacks or harmful comments will not be tolerated.
+${g('guideline10P1')}
 
-#### 11. No hate or harassment
+#### ${g('guideline11Title')}
 
-Any contents or comments that promote **hate, discrimination or harassment are forbidden**. This includes remarks targeting race or skin color, religion, culture, origin or any other personal attribute.
+${g('guideline11P1')}
 
-#### 12. Be courteous and respect privacy
+#### ${g('guideline12Title')}
 
-Treat everyone with respect. Healthy and constructive debates are encouraged, but courtesy is essential. Please also respect people's privacy and do not share personal information without consent.
+${g('guideline12P1')}
 `;
+}
 
 function EducatorContentGuidePage() {
   const { t } = useTranslation();
+  const guideContent = useGuideContent();
 
   return (
     <PageLayout
@@ -142,7 +148,7 @@ function EducatorContentGuidePage() {
     >
       <div className="text-blue-950 flex flex-col w-full gap-5 wrap-break-word md:mt-8 md:grow md:gap-4 md:overflow-hidden pb-2">
         <CoursesMarkdownBody
-          content={GUIDE_CONTENT}
+          content={guideContent}
           assetPrefix=""
           supportInlineLatex={false}
         />
