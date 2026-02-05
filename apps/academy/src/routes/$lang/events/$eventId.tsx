@@ -357,7 +357,7 @@ function EventDetails() {
             {isFetched && videoUrl && eventStartInLessThan1Hour && (
               <div className="flex flex-col gap-6 w-full items-center">
                 {videoUrl && (
-                  <div className="w-full relative pt-[56.25%]">
+                  <div className="w-full">
                     <VideoRenderer src={videoUrl} />
                   </div>
                 )}

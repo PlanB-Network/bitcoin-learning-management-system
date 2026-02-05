@@ -4,10 +4,11 @@ import ReactPlayer from 'react-player';
 import {
   doesVideoUrlWorkWithReactPlayer,
   fixEmbedUrl,
-  isBigBlueButtonUrl,
+  isLiveBigBlueButtonUrl,
+  isPlaybackBigBlueButtonUrl,
 } from '#src/utils/misc.ts';
 
-const BBBJoinButton = ({ src }: { src: string }) => {
+const BBBJoinLiveButton = ({ src }: { src: string }) => {
   const { t } = useTranslation();
 
   const handleJoinClick = () => {
@@ -23,32 +24,56 @@ const BBBJoinButton = ({ src }: { src: string }) => {
   );
 };
 
+const BBBSeeRecordingButton = ({ src }: { src: string }) => {
+  const { t } = useTranslation();
+
+  const handleJoinClick = () => {
+    window.open(src, '_blank', 'noopener,noreferrer');
+  };
+
+  return (
+    <div className="flex items-center justify-center my-6">
+      <Button type="button" onClick={handleJoinClick}>
+        {t('courses.chapter.watchRecording')}
+      </Button>
+    </div>
+  );
+};
+
 export const VideoRenderer = ({ src, alt }: { src: string; alt?: string }) => {
-  if (isBigBlueButtonUrl(src)) {
-    return <BBBJoinButton src={src} />;
+  if (isLiveBigBlueButtonUrl(src)) {
+    return <BBBJoinLiveButton src={src} />;
+  }
+
+  if (isPlaybackBigBlueButtonUrl(src)) {
+    return <BBBSeeRecordingButton src={src} />;
   }
 
   return (
     <>
       {doesVideoUrlWorkWithReactPlayer(src) ? (
-        <ReactPlayer
-          width={'100%'}
-          height={'100%'}
-          style={{ left: 0, position: 'absolute', top: 0 }}
-          className="mx-auto mb-2 rounded-lg"
-          controls={true}
-          src={fixEmbedUrl(src)}
-        />
+        <div className="relative pt-[56.25%]">
+          <ReactPlayer
+            width={'100%'}
+            height={'100%'}
+            style={{ left: 0, position: 'absolute', top: 0 }}
+            className="mx-auto mb-2 rounded-lg"
+            controls={true}
+            src={fixEmbedUrl(src)}
+          />
+        </div>
       ) : (
-        <iframe
-          width="100%"
-          height="100%"
-          style={{ left: 0, position: 'absolute', top: 0 }}
-          className="mx-auto mb-2 rounded-lg"
-          src={fixEmbedUrl(src)}
-          title={alt}
-          allowFullScreen
-        />
+        <div className="relative pt-[56.25%]">
+          <iframe
+            width="100%"
+            height="100%"
+            style={{ left: 0, position: 'absolute', top: 0 }}
+            className="mx-auto mb-2 rounded-lg"
+            src={fixEmbedUrl(src)}
+            title={alt}
+            allowFullScreen
+          />
+        </div>
       )}
     </>
   );

@@ -33,9 +33,7 @@ export const ImageVideoRenderer = ({
   if (isUrlFromValidVideoPlatform(src)) {
     return (
       <div className="mx-auto mb-2 max-w-full rounded-lg pb-6 md:pt-4 last:pb-0 last:md:pb-4">
-        <div className="relative pt-[56.25%]">
-          <VideoRenderer src={src} alt={alt} />
-        </div>
+        <VideoRenderer src={src} alt={alt} />
       </div>
     );
   }

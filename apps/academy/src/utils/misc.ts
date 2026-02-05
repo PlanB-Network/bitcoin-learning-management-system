@@ -74,7 +74,8 @@ export const isUrlFromValidVideoPlatform = (src: string) => {
     src.startsWith('https://www.rumble.com') ||
     src.startsWith('https://rumble.com') ||
     src.startsWith('https://peertube.planb.network') ||
-    src.startsWith('https://makertube.net')
+    src.startsWith('https://makertube.net') ||
+    src.startsWith('https://live.planb.academy/playback')
   );
 };
 
@@ -87,6 +88,10 @@ export const doesVideoUrlWorkWithReactPlayer = (src: string) => {
   );
 };
 
-export const isBigBlueButtonUrl = (src: string) => {
-  return src.startsWith('https://live.planb.academy');
+export const isLiveBigBlueButtonUrl = (src: string) => {
+  return src.startsWith('https://live.planb.academy/rooms');
+};
+
+export const isPlaybackBigBlueButtonUrl = (src: string) => {
+  return src.startsWith('https://live.planb.academy/playback');
 };

@@ -178,7 +178,8 @@
         "stayTuned": "The live session will start 30 minutes before the class begins. Stay tuned!",
         "title": "Live video"
       },
-      "next": "Complete chapter"
+      "next": "Complete chapter",
+      "watchRecording": "Watch recording"
     },
     "conclusion": {
       "completedChaptersHeadline": "All chapters are now completed!",
