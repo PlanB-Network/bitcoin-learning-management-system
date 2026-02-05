@@ -13,7 +13,7 @@ import {
 } from '@blms/ui';
 import { useMemo, useState } from 'react';
 import { TbDownload } from 'react-icons/tb';
-import XLSX from 'xlsx';
+
 import FilterIcon from '#src/assets/translation/filter_orange.svg';
 import {
   SharedTable,
@@ -82,7 +82,7 @@ export const CoursesSubTab = ({
   /** ------------------------------------------------------------------ */
   /** Export helpers                                                     */
   /** ------------------------------------------------------------------ */
-  const downloadGeneralReport = () => {
+  const downloadGeneralReport = async () => {
     if (assignedCourses.length === 0) return;
 
     const data = assignedCourses.map((row) => ({
@@ -95,6 +95,7 @@ export const CoursesSubTab = ({
       'Last Updated': new Date(row.updatedAt).toLocaleDateString('en-GB'),
     }));
 
+    const XLSX = await import('xlsx');
     const ws = XLSX.utils.json_to_sheet(data);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Courses');

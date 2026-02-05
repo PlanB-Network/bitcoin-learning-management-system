@@ -10,7 +10,7 @@ import {
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbDownload } from 'react-icons/tb';
-import XLSX from 'xlsx';
+
 import { CommonModal } from '#src/components/ui/common-modal.tsx';
 
 interface DateFilterModalProps {
@@ -78,7 +78,7 @@ export const DateFilterModal = ({
     onClose();
   };
 
-  const downloadFilteredReport = () => {
+  const downloadFilteredReport = async () => {
     if (!selectedYear || fromMonth === '' || toMonth === '') return;
 
     const from = new Date(Number(selectedYear), Number(fromMonth), 1);
@@ -109,6 +109,7 @@ export const DateFilterModal = ({
       'Last Updated': new Date(row.updatedAt).toLocaleDateString('en-GB'),
     }));
 
+    const XLSX = await import('xlsx');
     const ws = XLSX.utils.json_to_sheet(data);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Courses');
