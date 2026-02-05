@@ -1,7 +1,12 @@
+import { Loader } from '@blms/ui';
 import { createFileRoute } from '@tanstack/react-router';
+import { lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
-import CoursesMarkdownBody from '#src/components/Markdown/courses-markdown-body.tsx';
 import { PageLayout } from '#src/components/page-layout.tsx';
+
+const CoursesMarkdownBody = lazy(
+  () => import('#src/components/Markdown/courses-markdown-body.tsx'),
+);
 
 export const Route = createFileRoute('/$lang/educator-content-guide/')({
   component: EducatorContentGuidePage,
@@ -147,11 +152,13 @@ function EducatorContentGuidePage() {
       layoutSize="base"
     >
       <div className="text-blue-950 flex flex-col w-full gap-5 wrap-break-word md:mt-8 md:grow md:gap-4 md:overflow-hidden pb-2">
-        <CoursesMarkdownBody
-          content={guideContent}
-          assetPrefix=""
-          supportInlineLatex={false}
-        />
+        <Suspense fallback={<Loader size={'s'} />}>
+          <CoursesMarkdownBody
+            content={guideContent}
+            assetPrefix=""
+            supportInlineLatex={false}
+          />
+        </Suspense>
       </div>
     </PageLayout>
   );
