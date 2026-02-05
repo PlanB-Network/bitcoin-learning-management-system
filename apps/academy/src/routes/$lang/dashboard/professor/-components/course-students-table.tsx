@@ -11,8 +11,8 @@ import {
   TextTag,
 } from '@blms/ui';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { TbArrowDown, TbArrowsSort, TbSearch } from 'react-icons/tb';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { getNotificationDateString } from '#src/routes/$lang/notifications/index.tsx';
@@ -20,6 +20,7 @@ import { useDebounce } from '#src/utils/search.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
 export const CourseStudentsTable = ({ course }: { course: JoinedCourse }) => {
+  const { t } = useTranslation();
   const isMobile = useSmaller('md');
 
   const [search, setSearch] = useState('');

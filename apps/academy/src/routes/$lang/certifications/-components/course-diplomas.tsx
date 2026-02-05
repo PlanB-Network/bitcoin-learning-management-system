@@ -1,7 +1,6 @@
 import { Button, Card, cn, EmptyState, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbCertificateOff, TbEye } from 'react-icons/tb';
@@ -121,6 +120,7 @@ export const CourseDiplomas = () => {
 };
 
 const TableHead = () => {
+  const { t } = useTranslation();
   return (
     <thead>
       <tr className="border-b border-neutral-500 text-left">

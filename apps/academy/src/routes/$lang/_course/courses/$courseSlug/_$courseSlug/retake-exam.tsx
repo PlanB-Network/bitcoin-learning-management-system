@@ -2,7 +2,6 @@ import type { CourseExamResults } from '@blms/types';
 import { Button, cn, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsTwitterX } from 'react-icons/bs';
@@ -32,6 +31,7 @@ export const Route = createFileRoute(
 });
 
 function CourseRetakeExam() {
+  const { t } = useTranslation();
   const params = Route.useParams();
   const { course, courseProgress } = useContext(CourseContext);
 
@@ -106,7 +106,7 @@ const CourseExamsTable = ({
   openLastExam?: boolean;
 }) => {
   const isMobile = useSmaller('md');
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [collapsedStates, setCollapsedStates] = useState<{
     [key: number]: boolean;

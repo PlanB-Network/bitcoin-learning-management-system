@@ -1,6 +1,6 @@
 import { Button, Flag, TextTag } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 interface ConferenceRowProps {
   name: string;
@@ -17,6 +17,7 @@ export const ConferenceRow = ({
   languages,
   link,
 }: ConferenceRowProps) => {
+  const { t } = useTranslation();
   return (
     <tr className="border-t border-neutral-100">
       <td className="body-large py-5 pr-2.5 capitalize">{name}</td>

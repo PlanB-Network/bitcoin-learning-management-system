@@ -1,6 +1,6 @@
 import { Button, Divider } from '@blms/ui';
-import { t } from 'i18next';
 import { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { MdOutlineModeEdit } from 'react-icons/md';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
@@ -9,6 +9,7 @@ import { AppContext } from '#src/providers/context.tsx';
 import { ChangeDisplayNameModal } from '#src/routes/$lang/dashboard/-components/change-display-name-modal.tsx';
 
 export const ChangeDisplayName = () => {
+  const { t } = useTranslation();
   const { user } = useContext(AppContext);
   const { session } = useContext(AppContext);
   const isLoggedIn = !!session;

@@ -11,7 +11,6 @@ import {
 } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
-import { t } from 'i18next';
 import React, { Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdLiveTv, MdPerson } from 'react-icons/md';
@@ -348,6 +347,7 @@ function PlanBLabs() {
 }
 
 const Professor = ({ professor }: { professor: FullProfessor }) => {
+  const { t } = useTranslation();
   return (
     <section className="max-w-[1200px] w-full px-4 self-center flex flex-col mt-7 md:mt-16">
       <h4 className="subtitle-medium-caps-18px text-orange-500">

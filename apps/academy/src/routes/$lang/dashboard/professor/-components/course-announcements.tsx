@@ -1,8 +1,8 @@
 import type { ScheduledCourseAnnouncement } from '@blms/types';
 import { BasicModal, Button, DialogClose, TextTag } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { Fragment, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { BiPencil } from 'react-icons/bi';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import InformationIcon from '#src/assets/icons/warning_orange.svg';
@@ -16,6 +16,7 @@ import { trpc } from '#src/utils/trpc.ts';
 import { AnnouncementModal } from './announcement-modal.tsx';
 
 export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
+  const { t } = useTranslation();
   const [isAnnouncementModalOpen, setIsAnnouncementModalOpen] = useState(false);
   const [announcementToEdit, setAnnouncementToEdit] =
     useState<ScheduledCourseAnnouncement | null>(null);
@@ -209,6 +210,7 @@ export const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
 };
 
 const DeleteAnnouncementDialog = ({ onConfirm }: { onConfirm: () => void }) => {
+  const { t } = useTranslation();
   const isMobile = useSmaller('md');
 
   return (

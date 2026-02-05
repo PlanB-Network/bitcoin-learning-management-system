@@ -10,7 +10,6 @@ import {
 } from '@blms/ui';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useEffect } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import FaceFailed from '#src/assets/icons/face_failed.svg';
@@ -30,7 +29,7 @@ export const CourseExamResult = ({
   chapter: CourseChapterResponse;
   onStartExam: () => void;
 }) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const { data: examResults, isFetched: isExamResultsFetched } = useQuery(
     trpc.user.courses.getLatestExamResults.queryOptions({
@@ -214,6 +213,7 @@ export const TimeStampDialog = ({
   triggerText?: string;
   onHoverAddColor?: boolean;
 }) => {
+  const { t } = useTranslation();
   return (
     <BasicModal
       trigger={
@@ -280,6 +280,7 @@ const TryAgainDialog = ({
   examResults: CourseExamResults;
   onStart: () => void;
 }) => {
+  const { t } = useTranslation();
   const isMobile = window.innerWidth < 768;
 
   return (
@@ -349,6 +350,7 @@ const ConcludeButton = ({
   addMarginTop?: boolean;
   hasSkipText?: boolean;
 }) => {
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   const completeChapterMutation = useMutation(
     trpc.user.courses.completeChapter.mutationOptions({

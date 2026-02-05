@@ -2,7 +2,6 @@ import type { BetViewUrl } from '@blms/types';
 import { Button, cn, Image, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { TbDownload, TbEye } from 'react-icons/tb';
 import { PageLayout } from '#src/components/page-layout.tsx';
@@ -144,6 +143,7 @@ const BETCard = ({
   viewUrl: string;
   downloadUrl: string;
 }) => {
+  const { t } = useTranslation();
   const GeneralInfos = () => {
     return (
       <div className="flex flex-col justify-between sm:p-4 sm:pt-0 flex-grow sm:gap-7">

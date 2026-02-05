@@ -3,7 +3,6 @@ import type { GetTutorialResponse, JoinedProofreading } from '@blms/types';
 import { cn, customToast, DividerSimple, Image, Loader } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
-import { t } from 'i18next';
 import React, { memo, useContext, useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { TbCalendarCheck, TbCheck } from 'react-icons/tb';
@@ -112,6 +111,7 @@ const Header = ({ tutorial }: { tutorial: GetTutorialResponse }) => {
 };
 
 const AuthorDetails = ({ tutorial }: { tutorial: GetTutorialResponse }) => {
+  const { t } = useTranslation();
   const author = tutorial?.professor;
 
   return (
@@ -160,7 +160,7 @@ const Credits = ({
   tutorial: GetTutorialResponse;
   proofreading: JoinedProofreading | null | undefined;
 }) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const isOriginalLanguage = i18n.language === tutorial.originalLanguage;
   if (!proofreading) {
@@ -244,7 +244,7 @@ const Credits = ({
 };
 
 function TutorialDetails() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const params = Route.useParams();
   const id = params.id;
   const navigate = useNavigate();

@@ -10,8 +10,8 @@ import {
 } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useContext, useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { IconType } from 'react-icons/lib';
 import {
   TbBed,
@@ -57,6 +57,7 @@ export const Route = createFileRoute(
 });
 
 function SummerSchool() {
+  const { t } = useTranslation();
   const params = Route.useParams();
 
   const { conversionRate } = useContext(ConversionRateContext);

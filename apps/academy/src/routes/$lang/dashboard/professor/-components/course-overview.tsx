@@ -11,7 +11,6 @@ import {
 } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
@@ -47,6 +46,7 @@ export const CourseOverview = ({ course }: { course: CourseResponse }) => {
 };
 
 const CourseStatusBanner = ({ course }: { course: CourseResponse }) => {
+  const { t } = useTranslation();
   const now = new Date();
 
   if (course.teachingFormat !== 'professor_led') {
@@ -80,6 +80,7 @@ const CourseStatusBanner = ({ course }: { course: CourseResponse }) => {
 };
 
 const OverallPerformance = ({ course }: { course: CourseResponse }) => {
+  const { t } = useTranslation();
   const isMobile = useSmaller('md');
 
   const isSelfPacedCourse = course?.teachingFormat === 'self_paced';
@@ -188,6 +189,7 @@ const OverallPerformance = ({ course }: { course: CourseResponse }) => {
 };
 
 const UpcomingClass = ({ course }: { course: CourseResponse }) => {
+  const { t } = useTranslation();
   const isMobile = useSmaller('md');
 
   const [isExpanded, setIsExpanded] = useState(true);
@@ -383,6 +385,7 @@ const UpcomingClass = ({ course }: { course: CourseResponse }) => {
 };
 
 const CourseRecentActivity = ({ courseId }: { courseId: string }) => {
+  const { t } = useTranslation();
   const [visibleCount, setVisibleCount] = useState(5);
 
   const { data: courseActivity } = useQuery(

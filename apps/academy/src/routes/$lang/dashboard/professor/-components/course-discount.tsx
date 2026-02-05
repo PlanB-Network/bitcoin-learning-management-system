@@ -1,8 +1,8 @@
 import type { CouponCode, CouponCodeWithOwner } from '@blms/types';
 import { BasicModal, Button, cn, TextTag } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { LuChevronDown, LuPlus } from 'react-icons/lu';
 import { TbChevronsDown, TbCopy, TbCopyCheck } from 'react-icons/tb';
@@ -12,6 +12,7 @@ import { trpc } from '#src/utils/trpc.ts';
 import SortableTableHeader from '../../-components/sortable-table-header.tsx';
 
 export const CourseDiscount = ({ courseId }: { courseId: string }) => {
+  const { t } = useTranslation();
   const [page] = useState(1);
 
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
@@ -535,6 +536,7 @@ interface CouponCardProps {
 }
 
 function CouponCard({ coupon, onViewClick, onDeleteClick }: CouponCardProps) {
+  const { t } = useTranslation();
   return (
     <article className="p-2 rounded-[10px] flex flex-col gap-1.5 bg-neutral-50 border border-neutral-100 shadow-course-navigation-sm text-neutral-1000">
       <div className="flex justify-between items-center">
@@ -596,6 +598,7 @@ function MobileSortDropdown({
   currentSortDirection,
   onSortFieldSelect,
 }: MobileSortDropdownProps) {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   const getDisplayLabel = () => {

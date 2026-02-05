@@ -2,7 +2,6 @@ import type { Ticket } from '@blms/types';
 import { BasicModal, Button, Card, DialogClose, EmptyState } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiLoader } from 'react-icons/fi';
@@ -274,6 +273,7 @@ const Buttons = ({
 };
 
 const CancelBookingDialog = ({ onConfirm }: { onConfirm: () => void }) => {
+  const { t } = useTranslation();
   const isMobile = useSmaller('md');
 
   return (

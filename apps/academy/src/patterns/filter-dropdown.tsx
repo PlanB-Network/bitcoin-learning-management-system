@@ -1,6 +1,6 @@
 import { cn } from '@blms/ui';
-import { t } from 'i18next';
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   TbAdjustmentsHorizontal,
   TbCheck,
@@ -30,6 +30,7 @@ export const FilterDropdown = ({
   setSearchQuery,
   ...props
 }: FilterDropdownProps | FilterDropdownPropsWithFilters) => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [isFocused, setIsFocused] = useState(false);

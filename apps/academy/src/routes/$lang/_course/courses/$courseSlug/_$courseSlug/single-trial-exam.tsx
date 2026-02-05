@@ -12,7 +12,6 @@ import {
 } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiPencil } from 'react-icons/bi';
@@ -39,6 +38,7 @@ export const Route = createFileRoute(
 });
 
 function SingleTrialExam() {
+  const { t } = useTranslation();
   const params = Route.useParams();
 
   const { course, courseProgress } = useContext(CourseContext);
@@ -264,6 +264,7 @@ const ExamItem = ({
   chapterId: string;
   language: string;
 }) => {
+  const { t } = useTranslation();
   const isMobile = useSmaller('md');
 
   const { data: examInfo, isFetched: isExamInfoFetched } = useQuery(
@@ -401,6 +402,7 @@ const AssignmentItem = ({
   isGradePublished: boolean;
   score?: number;
 }) => {
+  const { t } = useTranslation();
   return (
     <div className="flex flex-col md:flex-row md:items-center h-full p-4 border border-neutral-100 bg-neutral-50 rounded-2xl gap-3 md:gap-5">
       <div className="flex flex-col gap-1 w-52">
@@ -461,7 +463,7 @@ const DiplomaSection = ({
   courseName,
   courseCoordinator,
 }: DiplomaSectionProps) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <div className="flex flex-col w-full max-w-[549px] items-center">

@@ -2,8 +2,8 @@ import type { JoinedUserNotification } from '@blms/types';
 import { cn, Popover, PopoverContent, PopoverTrigger, TextTag } from '@blms/ui';
 import { useMutation } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useContext, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { IoMdClose } from 'react-icons/io';
 import { TbBell } from 'react-icons/tb';
 import { NotificationsContext } from '#src/providers/userNotificationsContext.tsx';
@@ -26,6 +26,7 @@ interface NotificationsPanelProps {
 }
 
 export const NotificationsPanel = ({ className }: NotificationsPanelProps) => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   const { userNotifications, fetchUserNotifications } =
@@ -197,6 +198,7 @@ const NotificationItem = ({ notification, onClose }: NotificationItemProps) => {
 };
 
 const NotificationsHeader = () => {
+  const { t } = useTranslation();
   return (
     <div className="flex w-full items-center justify-between self-stretch px-5 py-2 border-b border-neutral-200">
       <h3 className="flex subtitle-large-18px text-neutral-600">
@@ -213,6 +215,7 @@ const NotificationsHeader = () => {
 };
 
 const ViewMoreButton = () => {
+  const { t } = useTranslation();
   return (
     <Link
       to="/notifications"

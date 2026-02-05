@@ -1,8 +1,8 @@
 import type { JoinedGlossaryWord } from '@blms/types';
 import { Button } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
 import React, { Suspense, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { TbChevronsDown } from 'react-icons/tb';
 import { normalizeString } from '#src/utils/string.js';
 
@@ -21,6 +21,7 @@ export const GlossaryList = ({
   selectedLetter,
   searchTerm,
 }: GlossaryListProps) => {
+  const { t } = useTranslation();
   const [filteredTerms, setFilteredTerms] =
     useState<JoinedGlossaryWord[]>(glossaryTerms);
 

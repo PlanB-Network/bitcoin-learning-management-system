@@ -14,8 +14,8 @@ import {
   CropperSelection,
   CropperShade,
 } from 'cropperjs-react-wrapper';
-import { t } from 'i18next';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import spinner from '#src/assets/icons/spinner.svg';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 
@@ -32,6 +32,7 @@ enum Tabs {
 }
 
 export const ChangePictureModal = (props: Props) => {
+  const { t } = useTranslation();
   const isMobile = useSmaller('md');
 
   const [image, setImage] = useState<string | undefined>();

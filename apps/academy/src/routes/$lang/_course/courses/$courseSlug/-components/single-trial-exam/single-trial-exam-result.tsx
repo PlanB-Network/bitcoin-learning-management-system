@@ -2,7 +2,7 @@ import type { CourseChapterResponse } from '@blms/types';
 import { ButtonWithArrow, cn, Divider } from '@blms/ui';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 import SuccessExam from '#src/assets/icons/success_exam.svg?react';
 import { goToChapterParameters } from '#src/utils/courses.ts';
 import { trpc } from '#src/utils/trpc.ts';
@@ -13,6 +13,7 @@ export const SingleTrialExamResult = ({
 }: {
   chapter: CourseChapterResponse;
 }) => {
+  const { t } = useTranslation();
   const { data: examResults, isFetched: isExamResultsFetched } = useQuery(
     trpc.user.courses.getLatestExamResults.queryOptions({
       chapterId: chapter.chapterId,

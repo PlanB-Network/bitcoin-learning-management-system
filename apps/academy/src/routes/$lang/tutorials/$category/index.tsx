@@ -19,7 +19,7 @@ import {
   TUTORIALS_CATEGORIES,
 } from '#src/services/utils.tsx';
 import { TutorialCard } from '../-components/tutorial-card.tsx';
-import { tutorialsTabs } from '../index.tsx';
+import { getTutorialsTabs } from '../index.tsx';
 
 export const Route = createFileRoute('/$lang/tutorials/$category/')({
   component: TutorialCategory,
@@ -118,7 +118,7 @@ function TutorialCategory() {
           className="size-8 md:size-10 mb-2 md:mb-6"
         />
       }
-      tabs={tutorialsTabs}
+      tabs={getTutorialsTabs(t)}
     >
       {!isFetched && <Loader size={'s'} />}
 

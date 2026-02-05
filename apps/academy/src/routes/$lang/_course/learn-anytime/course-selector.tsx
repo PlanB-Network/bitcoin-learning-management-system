@@ -10,7 +10,6 @@ import {
   Loader,
 } from '@blms/ui';
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { capitalize } from 'lodash-es';
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -32,7 +31,7 @@ export const Route = createFileRoute(
 
 function CourseSelector() {
   const { courses } = useContext(AppContext);
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const selectedSchool = null;
 

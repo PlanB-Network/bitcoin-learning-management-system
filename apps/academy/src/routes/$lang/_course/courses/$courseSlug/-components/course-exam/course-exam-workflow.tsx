@@ -1,7 +1,7 @@
 import type { CourseChapterResponse } from '@blms/types';
 import { useQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { AppContext } from '#src/providers/context.tsx';
 import { trpc } from '#src/utils/trpc.ts';
 import { ExamSession } from '../shared-between-exams/exam-session.tsx';
@@ -14,6 +14,7 @@ interface CourseExamWorkflowProps {
 }
 
 export const CourseExamWorkflow = ({ chapter }: CourseExamWorkflowProps) => {
+  const { t } = useTranslation();
   const { session } = useContext(AppContext);
   const isLoggedIn = !!session;
 

@@ -1,6 +1,6 @@
 import type { JoinedEvent } from '@blms/types';
 import { EmptyState } from '@blms/ui';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 import { TbCalendarEvent } from 'react-icons/tb';
 import { EventCard } from '#src/routes/$lang/events/-components/event-card.tsx';
 
@@ -9,6 +9,7 @@ interface ProjectEventsProps {
 }
 
 export const ProjectEvents = ({ events }: ProjectEventsProps) => {
+  const { t } = useTranslation();
   const sortedEvents = [...events]
     .filter((event) => {
       const now = Date.now();

@@ -12,7 +12,6 @@ import {
 import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
 import { useMutation } from '@tanstack/react-query';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useContext, useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -30,6 +29,7 @@ export const Route = createFileRoute('/$lang/account/settings')({
 });
 
 function AccountSettings() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { session, user } = useContext(AppContext);
 
@@ -120,6 +120,7 @@ function AccountSettings() {
 }
 
 const NotificationSettings = () => {
+  const { t } = useTranslation();
   const { user, accountSettings, fetchUserDetailsAndSettings } =
     useContext(AppContext);
 

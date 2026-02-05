@@ -33,10 +33,9 @@ import {
 import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { t } from 'i18next';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
-import { Trans } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { BiPlus } from 'react-icons/bi';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { ImCheckmark } from 'react-icons/im';
@@ -55,6 +54,7 @@ export const Route = createFileRoute('/$lang/career-portal/')({
 });
 
 function CareerPortal() {
+  const { t } = useTranslation();
   const isMobile = useSmaller('md');
 
   const [step, setStep] = useState(0);
@@ -1191,6 +1191,7 @@ const StepsProcess = ({
   currentStep: number;
   validatedSteps: number;
 }) => {
+  const { t } = useTranslation();
   const processSteps = [
     { label: t('dashboard.careerPortal.personalInformation'), stepNumber: 1 },
     { label: t('dashboard.careerPortal.jobSearch'), stepNumber: 2 },
@@ -1238,6 +1239,7 @@ const StepsProcess = ({
 };
 
 const StepsProcessMobile = ({ currentStep }: { currentStep: number }) => {
+  const { t } = useTranslation();
   return (
     <div className="w-full flex-col md:hidden mb-5">
       <span className="flex gap-1 items-center body-14px text-neutral-500">
@@ -1294,6 +1296,7 @@ const StepIndicator = ({
 };
 
 const DeleteProfileDialog = ({ onConfirm }: { onConfirm: () => void }) => {
+  const { t } = useTranslation();
   const isMobile = useSmaller('md');
 
   return (
@@ -1615,6 +1618,7 @@ const FormCheckboxGroup = ({
   mandatory?: boolean;
   addNoPreferenceButton?: boolean;
 }) => {
+  const { t } = useTranslation();
   return (
     <Controller
       control={control}

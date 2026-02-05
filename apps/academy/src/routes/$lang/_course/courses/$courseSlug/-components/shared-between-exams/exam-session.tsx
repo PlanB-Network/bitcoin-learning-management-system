@@ -1,8 +1,8 @@
 import type { CourseChapterResponse, PartialExamQuestion } from '@blms/types';
 import { BasicModal, Button, ButtonWithArrow, cn, DialogClose } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { MdTimer } from 'react-icons/md';
 import SandClockEmpty from '#src/assets/icons/sandClock/sand_clock_empty.svg';
 import { EXAM_QUESTION_DURATION_SECONDS } from '#src/utils/courses.ts';
@@ -23,6 +23,7 @@ export const ExamSession = ({
   chapter: CourseChapterResponse;
   examName: string;
 }) => {
+  const { t } = useTranslation();
   const [selectedAnswers, setSelectedAnswers] = useState(
     Array.from({ length: questions.length }, (_, i) => ({
       index: -1,

@@ -4,7 +4,7 @@ import { Button, cn, DividerSimple, Image, ListItem, TextTag } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { cva } from 'class-variance-authority';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 import { TbChevronRight, TbClock } from 'react-icons/tb';
 import HalfFilledStar from '#src/assets/courses/half-filled-star.svg?react';
 import { CourseLevelTag } from '#src/routes/$lang/_course/courses/-components/course-level.tsx';
@@ -42,6 +42,7 @@ export const CourseCard = ({
   className?: string;
   openInNewTab?: boolean;
 }) => {
+  const { t } = useTranslation();
   return (
     <Link
       key={course.id}
@@ -199,6 +200,7 @@ export const HorizontalCourseCardDesktop = ({
   className?: string;
   openInNewTab?: boolean;
 }) => {
+  const { t } = useTranslation();
   const { data: reviews } = useQuery(
     trpc.content.getPublicCourseReviews.queryOptions(
       {

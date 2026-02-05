@@ -1,5 +1,5 @@
-import { t } from 'i18next';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   label?: string;
@@ -12,6 +12,7 @@ export const FilterBar = ({
   value: initialValue = '',
   onChange,
 }: Props) => {
+  const { t } = useTranslation();
   const [value, setValue] = useState(initialValue);
 
   return (

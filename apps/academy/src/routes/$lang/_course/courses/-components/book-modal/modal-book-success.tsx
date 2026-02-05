@@ -1,7 +1,7 @@
 import type { CourseChapterResponse, CourseResponse } from '@blms/types';
 import { Button } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 import { FiLoader } from 'react-icons/fi';
 import PlanBLogo from '#src/assets/logo/pba-horizontal-black.svg?react';
 import { formatDate, formatHourRange } from '#src/utils/date.js';
@@ -19,6 +19,7 @@ export const ModalBookSuccess = ({
   chapter,
   onClose,
 }: ModalBookSuccessProps) => {
+  const { t } = useTranslation();
   const { mutateAsync: downloadTicketMutateAsync, isPending } = useMutation(
     trpc.user.courses.downloadChapterTicket.mutationOptions(),
   );

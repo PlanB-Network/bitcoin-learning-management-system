@@ -1,7 +1,7 @@
 import type { CourseChapterResponse } from '@blms/types';
 import { ButtonWithArrow } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 import { goToChapterParameters } from '#src/utils/courses.ts';
 
@@ -10,6 +10,7 @@ export const CourseExamNotTranslated = ({
 }: {
   chapter: CourseChapterResponse;
 }) => {
+  const { t } = useTranslation();
   const isLastChapter =
     chapter.chapterIndex === chapter.part.chapters.length &&
     chapter.part.partIndex === chapter.course.parts.length;

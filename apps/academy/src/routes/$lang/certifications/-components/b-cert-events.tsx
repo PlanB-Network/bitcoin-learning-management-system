@@ -1,6 +1,6 @@
 import type { JoinedEvent } from '@blms/types';
 import { EmptyState } from '@blms/ui';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 import { TbCertificateOff } from 'react-icons/tb';
 import { EventCard } from '#src/routes/$lang/events/-components/event-card.tsx';
 
@@ -9,6 +9,7 @@ interface BCertEventsProps {
 }
 
 export const BCertEvents = ({ events }: BCertEventsProps) => {
+  const { t } = useTranslation();
   const sortedEvents = [...events].sort(
     (a, b) => a.startDate.getTime() - b.startDate.getTime(),
   );

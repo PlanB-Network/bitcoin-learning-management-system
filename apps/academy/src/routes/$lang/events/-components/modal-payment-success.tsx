@@ -2,9 +2,8 @@ import type { CheckoutData, JoinedEvent } from '@blms/types';
 import { Button } from '@blms/ui';
 import { useMutation } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useContext } from 'react';
-import { Trans } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { FiLoader } from 'react-icons/fi';
 import PlanBLogo from '#src/assets/logo/pba-horizontal-black.svg?react';
 import { PaymentRow } from '#src/components/payment-row.js';
@@ -26,6 +25,7 @@ export const ModalPaymentSuccess = ({
   accessType,
   onClose,
 }: ModalPaymentSuccessProps) => {
+  const { t } = useTranslation();
   const { user } = useContext(AppContext);
 
   const { mutateAsync: downloadTicketAsync, isPending } = useMutation(

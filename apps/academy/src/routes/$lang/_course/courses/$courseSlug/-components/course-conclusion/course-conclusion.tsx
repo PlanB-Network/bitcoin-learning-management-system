@@ -13,7 +13,6 @@ import {
   useQueryClient,
 } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { type JSX, useContext, useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { TbX } from 'react-icons/tb';
@@ -50,7 +49,7 @@ const STEP_DURATION = 2100;
 const INITIAL_STEP_DELAY = 1000;
 
 export const CourseConclusion = ({ chapter }: CourseConclusionProps) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { session } = useContext(AppContext);
 
   const [step, setStep] = useState(0);
@@ -387,6 +386,7 @@ const ProgressBar = ({
   courseReview,
   previousExamResults,
 }: ProgressBarProps) => {
+  const { t } = useTranslation();
   const lineContainerClass = 'flex items-center w-full h-12 md:h-25';
   const lineSizeClass = 'w-full h-1 md:h-[5px] rounded-l-full';
   const linkMainClass = `${lineSizeClass} bg-neutral-100`;
@@ -630,6 +630,7 @@ const StepsContent = ({
   updateStep,
   completeAllChaptersMutation,
 }: StepsContentProps) => {
+  const { t } = useTranslation();
   const stepMessageIconClass = 'size-10 md:size-20 mx-auto';
   const titleStepClass =
     'text-neutral-500 subtitle-small-caps-14px md:subtitle-medium-caps-18px';
@@ -923,6 +924,7 @@ const StepsContent = ({
 };
 
 const LockedBar = () => {
+  const { t } = useTranslation();
   return (
     <div className="relative w-full aspect-[110/25] md:aspect-[110/18] rounded-lg overflow-hidden">
       <img

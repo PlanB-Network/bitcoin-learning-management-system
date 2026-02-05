@@ -6,9 +6,9 @@ import {
   SegmentedControlItem,
 } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
 import type React from 'react';
 import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { TbVideo } from 'react-icons/tb';
 import ReactPlayer from 'react-player';
 import { fixEmbedUrl } from '#src/utils/misc.ts';
@@ -183,66 +183,72 @@ const CollapsibleSelectorPart = ({
   selectedSourceType: string;
   onProviderChange: (provider: string) => void;
   onSourceTypeChange: (language: VideoSourceType) => void;
-}) => (
-  <CollapsibleDropdown
-    title="Video preferences"
-    className="border-b border-l border-r rounded-t-none rounded-b-[12px] border-neutral-200"
-    variant="dark"
-    defaultOpen={false}
-    icon={<TbVideo />}
-  >
-    <div className="flex flex-col gap-2 my-4">
-      {providers.length > 1 ? (
-        <div className="flex justify-between items-center">
-          <span className="mr-2 label-small-12px md:subtitle-medium-16px">
-            {t('videoSelector.player.player')}
-          </span>
+}) => {
+  const { t } = useTranslation();
+  return (
+    <CollapsibleDropdown
+      title="Video preferences"
+      className="border-b border-l border-r rounded-t-none rounded-b-[12px] border-neutral-200"
+      variant="dark"
+      defaultOpen={false}
+      icon={<TbVideo />}
+    >
+      <div className="flex flex-col gap-2 my-4">
+        {providers.length > 1 ? (
+          <div className="flex justify-between items-center">
+            <span className="mr-2 label-small-12px md:subtitle-medium-16px">
+              {t('videoSelector.player.player')}
+            </span>
 
-          <div className="flex flex-row gap-2">
-            <SegmentedControl variant="outline" defaultValue={selectedProvider}>
-              {providers.map((provider) => (
+            <div className="flex flex-row gap-2">
+              <SegmentedControl
+                variant="outline"
+                defaultValue={selectedProvider}
+              >
+                {providers.map((provider) => (
+                  <SegmentedControlItem
+                    value={provider}
+                    key={provider}
+                    onClick={() => onProviderChange(provider)}
+                  >
+                    <p className="px-4">
+                      {t(`videoSelector.player.${provider}`)}
+                    </p>
+                  </SegmentedControlItem>
+                ))}
+              </SegmentedControl>
+            </div>
+          </div>
+        ) : null}
+
+        {sourceTypes.length > 0 ? (
+          <div className="flex justify-between items-center">
+            <span className="mr-2 label-small-12px md:subtitle-medium-16px">
+              {t('videoSelector.language.language')}
+            </span>
+            <SegmentedControl
+              variant="outline"
+              defaultValue={selectedSourceType}
+              value={selectedSourceType}
+            >
+              {sourceTypes.map((sourceType) => (
                 <SegmentedControlItem
-                  value={provider}
-                  key={provider}
-                  onClick={() => onProviderChange(provider)}
+                  value={sourceType}
+                  key={sourceType}
+                  onClick={() => onSourceTypeChange(sourceType)}
                 >
                   <p className="px-4">
-                    {t(`videoSelector.player.${provider}`)}
+                    {t(`videoSelector.language.${sourceType}`)}
                   </p>
                 </SegmentedControlItem>
               ))}
             </SegmentedControl>
           </div>
-        </div>
-      ) : null}
-
-      {sourceTypes.length > 0 ? (
-        <div className="flex justify-between items-center">
-          <span className="mr-2 label-small-12px md:subtitle-medium-16px">
-            {t('videoSelector.language.language')}
-          </span>
-          <SegmentedControl
-            variant="outline"
-            defaultValue={selectedSourceType}
-            value={selectedSourceType}
-          >
-            {sourceTypes.map((sourceType) => (
-              <SegmentedControlItem
-                value={sourceType}
-                key={sourceType}
-                onClick={() => onSourceTypeChange(sourceType)}
-              >
-                <p className="px-4">
-                  {t(`videoSelector.language.${sourceType}`)}
-                </p>
-              </SegmentedControlItem>
-            ))}
-          </SegmentedControl>
-        </div>
-      ) : null}
-    </div>
-  </CollapsibleDropdown>
-);
+        ) : null}
+      </div>
+    </CollapsibleDropdown>
+  );
+};
 
 function DisplayVideo({
   provider,

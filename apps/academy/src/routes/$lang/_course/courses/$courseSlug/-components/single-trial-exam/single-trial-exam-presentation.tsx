@@ -9,9 +9,8 @@ import {
   Loader,
 } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useContext, useEffect } from 'react';
-import { Trans } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { LuCircleAlert } from 'react-icons/lu';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
@@ -30,6 +29,7 @@ export const SingleTrialExamPresentation = ({
 
   onStartExam: () => void;
 }) => {
+  const { t } = useTranslation();
   const { user } = useContext(AppContext);
   const { session } = useContext(AppContext);
   const isLoggedIn = !!session;

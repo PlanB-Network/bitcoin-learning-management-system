@@ -4,8 +4,8 @@ import type { CouponCode, CouponCodeWithOwner } from '@blms/types';
 import { BasicModal, Button, cn, DividerSimple, TextTag } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useContext, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { FaSliders } from 'react-icons/fa6';
 import { LuChevronDown, LuPlus } from 'react-icons/lu';
@@ -29,6 +29,7 @@ function AdminCoupons() {
   const navigate = useNavigate();
 
   const { session } = useContext(AppContext);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (session === undefined) return;
@@ -758,6 +759,7 @@ function CouponCard({
   onViewClick,
   onDeleteClick,
 }: CouponCardProps) {
+  const { t } = useTranslation();
   return (
     <article className="p-2 rounded-[10px] flex flex-col gap-1.5 bg-neutral-50 border border-neutral-100 shadow-course-navigation-sm text-neutral-1000">
       <div className="flex justify-between items-center">
@@ -823,6 +825,7 @@ function MobileSortDropdown({
   currentSortDirection,
   onSortFieldSelect,
 }: MobileSortDropdownProps) {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   const getDisplayLabel = () => {

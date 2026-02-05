@@ -9,8 +9,8 @@ import {
   TextTag,
 } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { lazy, Suspense, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { TbMessageOff } from 'react-icons/tb';
 import { trpc } from '#src/utils/trpc.ts';
 
@@ -25,6 +25,7 @@ export const CourseReview = ({
   courseId: string;
   averageRating: number;
 }) => {
+  const { t } = useTranslation();
   const { data: reviews, isFetched } = useQuery(
     trpc.content.getTeacherCourseReviews.queryOptions(
       {
@@ -160,6 +161,7 @@ const CourseFeedbacks = ({
 }: {
   feedbacks: CourseReviewsExtended['feedbacks'];
 }) => {
+  const { t } = useTranslation();
   return (
     <section className="flex flex-col mt-6 lg:mt-16">
       <h2 className="subtitle-large-med-20px lg:title-large-sb-24px text-dashboardSectionTitle lg:text-center">
@@ -182,6 +184,7 @@ const WrittenFeedbacks = ({
 }: {
   feedbacks: CourseReviewsExtended['feedbacks'];
 }) => {
+  const { t } = useTranslation();
   const [visibleFeedbacks, setVisibleFeedbacks] = useState(5);
 
   const showMoreFeedbacks = () => {
@@ -263,6 +266,7 @@ const SliderGradeSection = ({
   stepNames: string[];
   ratings: number[];
 }) => {
+  const { t } = useTranslation();
   const chartData = Array.from({ length: 11 }, (_, i) => ({
     star: (i - 5).toString(),
     [t('words.users')]: ratings.filter((rating) => rating === i - 5).length,
@@ -382,6 +386,7 @@ const GeneralGradeSection = ({
   ratings: number[];
   averageRating: number;
 }) => {
+  const { t } = useTranslation();
   const numberOfReviews = ratings.length;
   const maxRating = 5;
 

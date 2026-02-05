@@ -2,8 +2,8 @@ import { LANGUAGES_MAP } from '@blms/shared';
 import { Banner, BannerTitle, Button, Image, Loader } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useContext, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   TbBuildingCommunity,
   TbCalendarEvent,
@@ -51,6 +51,7 @@ export const Route = createFileRoute('/$lang/events/$eventId')({
 });
 
 function EventDetails() {
+  const { t } = useTranslation();
   const isMobile = useSmaller('md');
 
   const params = Route.useParams();

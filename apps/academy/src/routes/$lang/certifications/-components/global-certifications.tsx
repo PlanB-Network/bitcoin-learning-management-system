@@ -2,9 +2,10 @@ import type { JoinedBCertResults, Ticket } from '@blms/types';
 import { Banner, BannerTitle, Button, EmptyState, RadialGauge } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
+import type { TFunction } from 'i18next';
 import { capitalize } from 'lodash-es';
 import { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   TbBrandX,
   TbCalendarEvent,
@@ -24,6 +25,7 @@ import { formatDate, formatTime } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.js';
 
 export const GlobalCertifications = () => {
+  const { t } = useTranslation();
   const { session } = useContext(AppContext);
 
   const isLoggedIn = !!session;
@@ -88,6 +90,7 @@ const BCertCard = ({
   examTicket?: Ticket;
   isFirst?: boolean;
 }) => {
+  const { t } = useTranslation();
   const dateString = exam
     ? formatDate(exam.date)
     : formatDate(examTicket!.date, examTicket!.timezone || 'UTC');
@@ -134,11 +137,12 @@ const BCertCard = ({
 };
 
 const BCertGrade = ({ bcertResult }: { bcertResult: JoinedBCertResults }) => {
+  const { t } = useTranslation();
   return (
     <div className="flex flex-col p-4 md:px-6 md:py-12 bg-white rounded-2xl w-full">
       <div className="flex flex-col w-full max-w-[549px] mx-auto items-center">
         <p className="body-base-bold md:label-large-med-20px text-green-500 md:mb-8 text-center">
-          {getScoreMessage(bcertResult.score || 0)}
+          {getScoreMessage(bcertResult.score || 0, t)}
         </p>
         <RadialGauge
           percentage={bcertResult.score}
@@ -215,6 +219,7 @@ const BCertDetailedScore = ({
 }: {
   bcertResult: JoinedBCertResults;
 }) => {
+  const { t } = useTranslation();
   return (
     <details open className="group/details w-full">
       <summary className="[&::-webkit-details-marker]:hidden list-none flex items-center justify-between gap-2 text-black cursor-pointer mb-2">
@@ -247,6 +252,7 @@ const BCertDetailedScore = ({
 };
 
 const BCertStatus = ({ examTicket }: { examTicket: Ticket }) => {
+  const { t } = useTranslation();
   const examDate = new Date(examTicket.date);
   const today = new Date();
 
@@ -278,6 +284,7 @@ const BCertSession = ({
   date: string;
   time: string;
 }) => {
+  const { t } = useTranslation();
   return (
     <div className="flex flex-col gap-2">
       <span className="body-base-bold text-neutral-800">
@@ -303,7 +310,7 @@ const BCertSession = ({
   );
 };
 
-const getScoreMessage = (score: number) => {
+const getScoreMessage = (score: number, t: TFunction) => {
   if (score >= 0 && score <= 20) {
     return t('dashboard.credentials.bCertResults.score020');
   }

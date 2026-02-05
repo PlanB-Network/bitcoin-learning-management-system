@@ -17,9 +17,9 @@ import {
 } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { t } from 'i18next';
 import type React from 'react';
 import { useContext, useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { BiPencil } from 'react-icons/bi';
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
 import { FaTelegram } from 'react-icons/fa6';
@@ -81,6 +81,7 @@ interface InfoRowProps {
 }
 
 function Assignment() {
+  const { t } = useTranslation();
   const params = Route.useParams();
   const { user } = useContext(AppContext);
   const { courses } = useContext(AppContext);
@@ -647,6 +648,7 @@ const RankingItem = ({
   isDraggedOver = false,
   index = 0,
 }: RankingItemProps) => {
+  const { t } = useTranslation();
   const handleDragStart = (e: React.DragEvent) => {
     onDragStart?.(e, index);
   };
@@ -892,6 +894,7 @@ const ConfirmAssignmentsOrderDialog = ({
 }: {
   onConfirm: () => void;
 }) => {
+  const { t } = useTranslation();
   const isMobile = useSmaller('md');
 
   return (
@@ -949,6 +952,7 @@ const ConfirmSubmissionDialog = ({
   selectedFile: File | null;
   isUploading: boolean;
 }) => {
+  const { t } = useTranslation();
   const isMobile = useSmaller('md');
 
   return (

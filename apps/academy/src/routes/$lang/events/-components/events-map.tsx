@@ -23,7 +23,6 @@ import {
   SegmentedControlItem,
 } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { capitalize } from 'lodash-es';
 import { useEffect, useState } from 'react';
 import type { View as CalendarView, Components } from 'react-big-calendar';
@@ -241,7 +240,7 @@ const EventsMap = ({
   const [mode, setMode] = useState<DisplayMode>(
     showMap ? DisplayMode.Map : DisplayMode.Calendar,
   );
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   // const [isShareModalOpen, setShareModalOpen] = useState(false);
   // const [shareUrl, setShareUrl] = useState('');
 
@@ -861,6 +860,7 @@ const EventTypeFilter = ({
   filter,
   onFilterClick,
 }: CourseFilterProps) => {
+  const { t } = useTranslation();
   const isMobile = useSmaller('md');
 
   return (

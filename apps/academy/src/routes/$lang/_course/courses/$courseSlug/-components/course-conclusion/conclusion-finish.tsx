@@ -3,7 +3,6 @@ import type { CourseExamResults, CourseResponse } from '@blms/types';
 import { ButtonWithArrow, DividerSimple } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
 import React, { useContext } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import CertificateLockImage from '#src/assets/courses/completion-diploma-lock.webp?no-inline';
@@ -60,6 +59,7 @@ const Professor = ({
   course: CourseResponse;
   addThanksTipping?: boolean;
 }) => {
+  const { t } = useTranslation();
   const someProfessorHasTipsAvailable = course.mainProfessors.some(
     (professor) => professorHasTipsAvailable(professor),
   );
@@ -126,7 +126,7 @@ const Professor = ({
 };
 
 const Credits = ({ course }: { course: CourseResponse }) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const { data: proofreading } = useQuery(
     trpc.content.getProofreading.queryOptions({
@@ -223,6 +223,7 @@ const DiplomaSelfPaced = ({
   examResults?: CourseExamResults;
   course: CourseResponse;
 }) => {
+  const { t } = useTranslation();
   const examChapterId = course.parts
     .flatMap((part) => part.chapters)
     .find((chapter) => chapter?.isCourseExam)?.chapterId;
@@ -323,6 +324,7 @@ const DiplomaSelfPaced = ({
 };
 
 const DiplomaTeacherLed = ({ course }: { course: CourseResponse }) => {
+  const { t } = useTranslation();
   return (
     <section className="w-full flex flex-col">
       <h4 className="subtitle-medium-caps-18px text-orange-500">
@@ -399,6 +401,7 @@ const DiplomaTeacherLed = ({ course }: { course: CourseResponse }) => {
 // };
 
 const OtherCourses = ({ course }: { course: CourseResponse }) => {
+  const { t } = useTranslation();
   const { courses: allCourses } = useContext(AppContext);
 
   if (!allCourses || allCourses.length === 0) {

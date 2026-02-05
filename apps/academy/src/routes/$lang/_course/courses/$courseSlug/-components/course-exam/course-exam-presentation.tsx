@@ -3,7 +3,6 @@ import type { CourseChapterResponse } from '@blms/types';
 import { ButtonWithArrow } from '@blms/ui';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AuthModal } from '#src/components/AuthModals/auth-modal.tsx';
@@ -22,7 +21,7 @@ export const CourseExamPresentation = ({
   chapter: CourseChapterResponse;
   onStartExam: () => void;
 }) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
 
   const { user } = useContext(AppContext);

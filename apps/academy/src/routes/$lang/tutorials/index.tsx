@@ -1,7 +1,8 @@
 import { EmptyState, Loader } from '@blms/ui';
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { t } from 'i18next';
+import type { TFunction } from 'i18next';
 import { useContext, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { TbChevronRight } from 'react-icons/tb';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { SearchInput } from '#src/components/search-input.tsx';
@@ -14,6 +15,7 @@ export const Route = createFileRoute('/$lang/tutorials/')({
 });
 
 function TutorialExplorer() {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
 
   const { tutorials } = useContext(AppContext);
@@ -27,7 +29,7 @@ function TutorialExplorer() {
     <PageLayout
       layoutSize="base"
       title={t('words.tutorials')}
-      tabs={tutorialsTabs}
+      tabs={getTutorialsTabs(t)}
       showBecomeTeacherButton
     >
       {!isFetchedTutorials && <Loader size={'s'} />}
@@ -83,7 +85,7 @@ function TutorialExplorer() {
   );
 }
 
-export const tutorialsTabs = [
+export const getTutorialsTabs = (t: TFunction) => [
   {
     id: 'all',
     label: t('words.all'),

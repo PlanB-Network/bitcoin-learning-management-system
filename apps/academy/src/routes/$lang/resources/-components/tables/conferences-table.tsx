@@ -1,6 +1,6 @@
 import { formatNameForURL } from '@blms/shared';
 import type { JoinedConference } from '@blms/types';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 import { ConferenceRow } from './conference-row.tsx';
 
@@ -9,6 +9,7 @@ interface ConferencesTableProps {
 }
 
 export const ConferencesTable = ({ conferences }: ConferencesTableProps) => {
+  const { t } = useTranslation();
   return (
     <div className="overflow-x-auto text-black max-xl:hidden mt-8">
       <table className="min-w-full text-left table-fixed">

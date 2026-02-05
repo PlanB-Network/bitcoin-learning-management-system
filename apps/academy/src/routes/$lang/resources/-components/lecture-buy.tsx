@@ -1,7 +1,7 @@
 import type { EventPayment, JoinedEvent } from '@blms/types';
 import { Button } from '@blms/ui';
-import { t } from 'i18next';
 import { useContext, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { IoMdLock, IoMdUnlock } from 'react-icons/io';
 
 import { AuthModalState } from '#src/components/AuthModals/props.ts';
@@ -22,6 +22,7 @@ export const LectureBuy = ({
   eventPayment?: EventPayment;
   refetchEventPayments: () => void;
 }) => {
+  const { t } = useTranslation();
   const { session, user } = useContext(AppContext);
   const { conversionRate } = useContext(ConversionRateContext);
   const { openAuthModal: openAuthModalContext } = useAuthModal();

@@ -1,8 +1,8 @@
 import type { CourseExamResults } from '@blms/types';
 import { cn } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { CompletedExamAnswer } from '../../../-components/quizz/completed-exam-answer.tsx';
 import { formatTextCodeblock } from '../../../-components/quizz/quizz-card-question.tsx';
 export const AnswersReviewPanel = ({
@@ -14,6 +14,7 @@ export const AnswersReviewPanel = ({
   hasBackground?: boolean;
   className?: string;
 }) => {
+  const { t } = useTranslation();
   const [selectedQuestion, setSelectedQuestion] = useState(0);
 
   return (

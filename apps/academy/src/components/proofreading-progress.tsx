@@ -1,6 +1,6 @@
 import { Button, cn } from '@blms/ui';
-import { t } from 'i18next';
 import { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { FaArrowRightLong } from 'react-icons/fa6';
 import largeCircleProgress0 from '#src/assets/proofreading/large_circle_progress_0.webp?no-inline';
 import largeCircleProgress1 from '#src/assets/proofreading/large_circle_progress_1.webp?no-inline';
@@ -79,6 +79,7 @@ const ContributorsNames = ({
   mode: 'light' | 'dark';
   standalone?: boolean;
 }) => {
+  const { t } = useTranslation();
   const remainingContributors = 3 - contributors.length;
 
   const remainingRewards = calculateReward(reward, remainingContributors);
@@ -201,6 +202,7 @@ export const ProofreadingDesktop = ({
   standalone?: boolean;
   className?: string;
 }) => {
+  const { t } = useTranslation();
   const contributorsLength = proofreadingData.contributors.length;
 
   const { conversionRate } = useContext(ConversionRateContext);

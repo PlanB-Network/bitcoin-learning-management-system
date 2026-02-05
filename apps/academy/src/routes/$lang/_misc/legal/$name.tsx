@@ -1,7 +1,6 @@
 import { EmptyState } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { TbError404 } from 'react-icons/tb';
 import { z } from 'zod';
@@ -47,7 +46,7 @@ const legalTabs = [
 ];
 
 function LegalInformationTab() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const params = Route.useParams();
   const name = params.name;
   const activeTabLabelKey = legalTabs.find((tab) => tab.id === name)?.label;

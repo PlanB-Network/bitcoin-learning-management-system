@@ -2,8 +2,8 @@ import type { JoinedConference } from '@blms/types';
 import { Button, cn, EmptyState, Image, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { TbCalendarOff, TbChevronRight } from 'react-icons/tb';
 import OrangePill from '#src/assets/icons/orange_pill_color.svg?react';
 import { PageLayout } from '#src/components/page-layout.tsx';
@@ -18,6 +18,7 @@ export const Route = createFileRoute('/$lang/resources/conferences/')({
 });
 
 function Conferences() {
+  const { t } = useTranslation();
   const [activeYear, setActiveYear] = useState(
     new Date().getFullYear().toString(),
   );
@@ -145,6 +146,7 @@ export const ConferenceCard = ({
 }: {
   conference: JoinedConference;
 }) => {
+  const { t } = useTranslation();
   const isSmaller = useSmaller('sm');
 
   const Wrapper = isSmaller ? Link : 'article';

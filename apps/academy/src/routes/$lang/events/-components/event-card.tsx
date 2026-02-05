@@ -1,7 +1,7 @@
 import type { JoinedEvent } from '@blms/types';
 import { cn, Flag, Image } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 import type { IconType } from 'react-icons/lib';
 import { TbCalendarEvent, TbChevronRight } from 'react-icons/tb';
 import PlanBLogoBlack from '#src/assets/logo/pba-horizontal-black.svg?react';
@@ -13,6 +13,7 @@ interface EventCardProps {
 }
 
 export const EventCard = ({ event }: EventCardProps) => {
+  const { t } = useTranslation();
   let capitalizedType = '';
   if (event.type) {
     capitalizedType =

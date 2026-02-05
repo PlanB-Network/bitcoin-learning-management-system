@@ -1,8 +1,8 @@
 import type { JoinedEvent } from '@blms/types';
 import { Button } from '@blms/ui';
 import { useMutation } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { FiLoader } from 'react-icons/fi';
 import PlanBLogo from '#src/assets/logo/pba-horizontal-black.svg?react';
 import { AppContext } from '#src/providers/context.js';
@@ -20,6 +20,7 @@ export const ModalBookSuccess = ({
   accessType,
   onClose,
 }: ModalBookSuccessProps) => {
+  const { t } = useTranslation();
   const { user } = useContext(AppContext);
 
   const { mutateAsync: downloadTicketAsync, isPending } = useMutation(

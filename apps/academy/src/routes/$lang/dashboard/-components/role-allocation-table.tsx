@@ -19,7 +19,6 @@ import {
   TableRow,
 } from '@blms/ui';
 import { useInfiniteQuery, useMutation, useQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineSearch } from 'react-icons/ai';
@@ -34,7 +33,7 @@ import { trpc } from '#src/utils/trpc.ts';
 
 export const RoleAllocationTable = ({ userRole }: { userRole: UserRole }) => {
   const isMobile = useSmaller('md');
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [search, setSearch] = useState('');
   const debouncedSearch = useDebounce(search, 400);
@@ -747,6 +746,7 @@ const StudentMobileCard = ({
   }) => void;
   refetch: () => void;
 }) => {
+  const { t } = useTranslation();
   return (
     <article className="flex flex-col gap-2.5 bg-neutral-50 rounded-xl p-2 body-14px-medium">
       <span>
@@ -876,6 +876,7 @@ const AdminMobileCard = ({
   ) => void;
   toggleUserEditMode: (userId: string) => void;
 }) => {
+  const { t } = useTranslation();
   return (
     <article className="flex flex-col gap-2.5 bg-neutral-50 rounded-xl p-2 body-14px-medium">
       <span>
@@ -958,6 +959,7 @@ const AdminMobileCard = ({
 };
 
 const RemoveTeacherDialog = ({ onConfirm }: { onConfirm: () => void }) => {
+  const { t } = useTranslation();
   const isMobile = window.innerWidth < 768;
 
   return (

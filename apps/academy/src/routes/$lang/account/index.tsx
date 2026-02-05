@@ -3,9 +3,9 @@ import { canAccess } from '@blms/shared';
 import type { UserDetails } from '@blms/types';
 import { Button, cn, Loader } from '@blms/ui';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { t } from 'i18next';
 import type { ChangeEvent } from 'react';
 import { useContext, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   TbAlertCircleFilled,
   TbLogout,
@@ -28,6 +28,7 @@ export const Route = createFileRoute('/$lang/account/')({
 });
 
 function Account() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { user, setUser, session } = useContext(AppContext);
 

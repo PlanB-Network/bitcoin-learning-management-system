@@ -4,7 +4,6 @@ import type { JoinedUserNotification } from '@blms/types';
 import { Button, Checkbox, cn, Label, Loader, Switch, TextTag } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineTrophy, AiOutlineWarning } from 'react-icons/ai';
@@ -25,6 +24,7 @@ export const Route = createFileRoute('/$lang/notifications/')({
 });
 
 function NotificationsDashboard() {
+  const { t } = useTranslation();
   return (
     <PageLayout
       layoutSize="max"
@@ -37,6 +37,7 @@ function NotificationsDashboard() {
 }
 
 const NotificationsTable = () => {
+  const { t } = useTranslation();
   const isMobile = useSmaller('md');
 
   const { userNotifications, fetchUserNotifications } =
@@ -233,6 +234,7 @@ const NotificationItem = ({
   isMobile?: boolean | null;
   isInSelectAllMode?: boolean;
 }) => {
+  const { t } = useTranslation();
   const [hasTriggered, setHasTriggered] = useState(false);
   const [touchDeltaX, setTouchDeltaX] = useState(0);
   const [touchStartX, setTouchStartX] = useState(0);
@@ -409,6 +411,7 @@ const MultiSelectionTool = ({
   handleAction?: () => void;
   selectedAmount?: number;
 }) => {
+  const { t } = useTranslation();
   const isMobile = useSmaller('md');
 
   return (
@@ -440,6 +443,7 @@ const MultiSelectionTool = ({
 };
 
 export const getNotificationTitle = (type: string, courseId?: string) => {
+  const { t } = useTranslation();
   const { courses } = useContext(AppContext);
   const courseName = courses?.find((course) => course.id === courseId)?.name;
 
@@ -470,7 +474,7 @@ export const getNotificationContent = (
   chapterId?: string,
   eventId?: string,
 ) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const { data: chapter } = useQuery(
     trpc.content.getCourseChapter.queryOptions(
@@ -601,6 +605,7 @@ export const getNotificationRedirect = (
 };
 
 export const getNotificationDateString = (date: Date) => {
+  const { t } = useTranslation();
   const now = new Date();
   const diffInMs = now.getTime() - date.getTime();
   const diffInSeconds = Math.floor(diffInMs / 1000);

@@ -10,7 +10,6 @@ import {
 } from '@blms/ui';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineSearch } from 'react-icons/ai';
@@ -24,7 +23,7 @@ export const DashboardTutorialsTable = ({
 }: {
   professorId?: string;
 }) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [search, setSearch] = useState('');
   const debouncedSearch = useDebounce(search, 400);

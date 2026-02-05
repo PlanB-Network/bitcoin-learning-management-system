@@ -1,8 +1,7 @@
 import type { CheckoutData } from '@blms/types';
 import { Button } from '@blms/ui';
 import { Link } from '@tanstack/react-router';
-import { t } from 'i18next';
-import { Trans } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import PlanBLogo from '#src/assets/logo/pba-horizontal-black.svg?react';
 import { PaymentRow } from '#src/components/payment-row.js';
 import { formatDate } from '#src/utils/date.js';
@@ -16,6 +15,7 @@ export const ModalPaymentSuccess = ({
   checkoutData,
   onClose,
 }: ModalPaymentSuccessProps) => {
+  const { t } = useTranslation();
   return (
     <>
       <div className="items-center justify-center w-full max-w-96 lg:w-96 flex flex-col gap-6 max-lg:pb-6 max-lg:pt-8 mt-auto">
