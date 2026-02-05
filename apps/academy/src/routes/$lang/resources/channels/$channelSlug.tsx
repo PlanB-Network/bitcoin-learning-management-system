@@ -12,24 +12,21 @@ import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { ResourceDetails } from '../-components/resource-details.tsx';
 
-export const Route = createFileRoute(
-  '/$lang/resources/channels/$channelName-$channelId',
-)({
+export const Route = createFileRoute('/$lang/resources/channels/$channelSlug')({
   component: Channel,
   params: {
     parse: (params) => {
-      const channelNameId = params['channelName-$channelId'];
-      const { id, name } = getNameAndIdFromUrl(channelNameId);
+      const { id, name } = getNameAndIdFromUrl(params.channelSlug);
 
       return {
         channelId: z.string().parse(id),
         channelName: z.string().parse(name),
-        'channelName-$channelId': `${name}-${id}`,
+        channelSlug: params.channelSlug,
         lang: z.string().parse(params.lang),
       };
     },
     stringify: ({ lang, channelName, channelId }) => ({
-      'channelName-$channelId': `${channelName}-${channelId}`,
+      channelSlug: `${channelName}-${channelId}`,
       lang: lang,
     }),
   },

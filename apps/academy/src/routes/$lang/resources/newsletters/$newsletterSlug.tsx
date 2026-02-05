@@ -14,24 +14,23 @@ import { trpc } from '#src/utils/trpc.js';
 import { ResourceDetails } from '../-components/resource-details.tsx';
 
 export const Route = createFileRoute(
-  '/$lang/resources/newsletters/$newsletterName-$newsletterId',
+  '/$lang/resources/newsletters/$newsletterSlug',
 )({
   component: NewsletterDetail,
   params: {
     parse: (params) => {
-      const newsletterNameId = params['newsletterName-$newsletterId'];
-      const { id, name } = getNameAndIdFromUrl(newsletterNameId);
+      const { id, name } = getNameAndIdFromUrl(params.newsletterSlug);
 
       return {
         lang: z.string().parse(params.lang),
         newsletterId: z.string().parse(id),
         newsletterName: z.string().parse(name),
-        'newsletterName-$newsletterId': `${name}-${id}`,
+        newsletterSlug: params.newsletterSlug,
       };
     },
     stringify: ({ lang, newsletterName, newsletterId }) => ({
       lang: lang,
-      'newsletterName-$newsletterId': `${newsletterName}-${newsletterId}`,
+      newsletterSlug: `${newsletterName}-${newsletterId}`,
     }),
   },
 });

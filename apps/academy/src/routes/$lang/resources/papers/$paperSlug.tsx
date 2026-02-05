@@ -17,24 +17,21 @@ import { getNameAndIdFromUrl } from '#src/services/utils.tsx';
 import { trpc } from '#src/utils/index.js';
 import { ListElement2 } from '../../_course/courses/$courseSlug/_$courseSlug/summer-school.tsx';
 
-export const Route = createFileRoute(
-  '/$lang/resources/papers/$paperTitle-$paperId',
-)({
+export const Route = createFileRoute('/$lang/resources/papers/$paperSlug')({
   component: Paper,
   params: {
     parse: (params) => {
-      const paperTitleId = params['paperTitle-$paperId'];
-      const { id, name } = getNameAndIdFromUrl(paperTitleId);
+      const { id, name } = getNameAndIdFromUrl(params.paperSlug);
 
       return {
         paperId: z.string().parse(id),
         paperTitle: z.string().parse(name),
-        'paperTitle-$paperId': `${name}-${id}`,
+        paperSlug: params.paperSlug,
         lang: z.string().parse(params.lang),
       };
     },
     stringify: ({ lang, paperTitle, paperId }) => ({
-      'paperTitle-$paperId': `${paperTitle}-${paperId}`,
+      paperSlug: `${paperTitle}-${paperId}`,
       lang: lang,
     }),
   },

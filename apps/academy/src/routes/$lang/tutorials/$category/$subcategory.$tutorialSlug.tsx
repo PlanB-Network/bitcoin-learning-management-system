@@ -29,27 +29,26 @@ import { TutorialLikes } from '../-components/tutorial-likes.tsx';
 import TutorialWithTOC from '../-components/tutorial-toc.tsx';
 
 export const Route = createFileRoute(
-  '/$lang/tutorials/$category/$subcategory/$name-$id',
+  '/$lang/tutorials/$category/$subcategory/$tutorialSlug',
 )({
   component: TutorialDetails,
   params: {
     parse: (params) => {
-      const nameId = params['name-$id'];
-      const { id, name } = getNameAndIdFromUrl(nameId);
+      const { id, name } = getNameAndIdFromUrl(params.tutorialSlug);
 
       return {
         category: z.string().parse(params.category),
         id: z.string().parse(id),
         lang: z.string().parse(params.lang),
         name: z.string().parse(name),
-        'name-$id': nameId,
+        tutorialSlug: params.tutorialSlug,
         subcategory: z.string().parse(params.subcategory),
       };
     },
     stringify: ({ lang, name, id, category, subcategory }) => ({
       category: category,
       lang: lang,
-      'name-$id': `${name}-${id}`,
+      tutorialSlug: `${name}-${id}`,
       subcategory: subcategory,
     }),
   },

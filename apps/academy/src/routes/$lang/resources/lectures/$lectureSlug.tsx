@@ -16,25 +16,22 @@ import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { fixEmbedUrl } from '#src/utils/misc.ts';
 import { LectureBuy } from '../-components/lecture-buy.js';
 
-export const Route = createFileRoute(
-  '/$lang/resources/lectures/$lectureName-$lectureId',
-)({
+export const Route = createFileRoute('/$lang/resources/lectures/$lectureSlug')({
   component: Lecture,
   params: {
     parse: (params) => {
-      const lectureNameId = params['lectureName-$lectureId'];
-      const { id, name } = getNameAndIdFromUrl(lectureNameId);
+      const { id, name } = getNameAndIdFromUrl(params.lectureSlug);
 
       return {
         lang: z.string().parse(params.lang),
         lectureId: z.string().parse(id),
         lectureName: z.string().parse(name),
-        'lectureName-$lectureId': `${name}-${id}`,
+        lectureSlug: params.lectureSlug,
       };
     },
     stringify: ({ lang, lectureName, lectureId }) => ({
       lang: lang,
-      'lectureName-$lectureId': `${lectureName}-${lectureId}`,
+      lectureSlug: `${lectureName}-${lectureId}`,
     }),
   },
 });

@@ -12,25 +12,22 @@ import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { ResourceDetails } from '../-components/resource-details.tsx';
 
-export const Route = createFileRoute(
-  '/$lang/resources/movies/$movieTitle-$movieId',
-)({
+export const Route = createFileRoute('/$lang/resources/movies/$movieSlug')({
   component: Movie,
   params: {
     parse: (params) => {
-      const movieTitleId = params['movieTitle-$movieId'];
-      const { id, name } = getNameAndIdFromUrl(movieTitleId);
+      const { id, name } = getNameAndIdFromUrl(params.movieSlug);
 
       return {
         lang: z.string().parse(params.lang),
         movieId: z.string().parse(id),
         movieTitle: z.string().parse(name),
-        'movieTitle-$movieId': `${name}-${id}`,
+        movieSlug: params.movieSlug,
       };
     },
     stringify: ({ lang, movieTitle, movieId }) => ({
       lang: lang,
-      'movieTitle-$movieId': `${movieTitle}-${movieId}`,
+      movieSlug: `${movieTitle}-${movieId}`,
     }),
   },
 });

@@ -26,25 +26,22 @@ import { ProjectEvents } from '../-components/project-events.js';
 import { ResourceDetails } from '../-components/resource-details.tsx';
 import { ConferenceCard } from '../conferences/index.tsx';
 
-export const Route = createFileRoute(
-  '/$lang/resources/projects/$projectName-$projectId',
-)({
+export const Route = createFileRoute('/$lang/resources/projects/$projectSlug')({
   component: Project,
   params: {
     parse: (params) => {
-      const projectNameId = params['projectName-$projectId'];
-      const { id, name } = getNameAndIdFromUrl(projectNameId);
+      const { id, name } = getNameAndIdFromUrl(params.projectSlug);
 
       return {
         lang: z.string().parse(params.lang),
         projectId: z.string().parse(id),
         projectName: z.string().parse(name),
-        'projectName-$projectId': `${name}-${id}`,
+        projectSlug: params.projectSlug,
       };
     },
     stringify: ({ lang, projectName, projectId }) => ({
       lang: lang,
-      'projectName-$projectId': `${projectName}-${projectId}`,
+      projectSlug: `${projectName}-${projectId}`,
     }),
   },
 });

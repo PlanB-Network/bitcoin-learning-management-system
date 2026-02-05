@@ -11,24 +11,21 @@ import { assetUrl, trpc } from '#src/utils/index.js';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { ResourceDetails } from '../-components/resource-details.tsx';
 
-export const Route = createFileRoute(
-  '/$lang/resources/books/$bookName-$bookId',
-)({
+export const Route = createFileRoute('/$lang/resources/books/$bookSlug')({
   component: Book,
   params: {
     parse: (params) => {
-      const bookNameId = params['bookName-$bookId'];
-      const { id, name } = getNameAndIdFromUrl(bookNameId);
+      const { id, name } = getNameAndIdFromUrl(params.bookSlug);
 
       return {
         bookId: z.string().parse(id),
         bookName: z.string().parse(name),
-        'bookName-$bookId': `${name}-${id}`,
+        bookSlug: params.bookSlug,
         lang: z.string().parse(params.lang),
       };
     },
     stringify: ({ lang, bookName, bookId }) => ({
-      'bookName-$bookId': `${bookName}-${bookId}`,
+      bookSlug: `${bookName}-${bookId}`,
       lang: lang,
     }),
   },

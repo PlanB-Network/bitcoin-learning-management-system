@@ -18,23 +18,22 @@ const ConferencesMarkdownBody = React.lazy(
 );
 
 export const Route = createFileRoute(
-  '/$lang/resources/conferences/$conferenceName-$conferenceId',
+  '/$lang/resources/conferences/$conferenceSlug',
 )({
   component: Conference,
   params: {
     parse: (params) => {
-      const conferenceNameId = params['conferenceName-$conferenceId'];
-      const { id, name } = getNameAndIdFromUrl(conferenceNameId);
+      const { id, name } = getNameAndIdFromUrl(params.conferenceSlug);
 
       return {
         conferenceId: z.string().parse(id),
         conferenceName: z.string().parse(name),
-        'conferenceName-$conferenceId': `${name}-${id}`,
+        conferenceSlug: params.conferenceSlug,
         lang: z.string().parse(params.lang),
       };
     },
     stringify: ({ lang, conferenceName, conferenceId }) => ({
-      'conferenceName-$conferenceId': `${conferenceName}-${conferenceId}`,
+      conferenceSlug: `${conferenceName}-${conferenceId}`,
       lang: lang,
     }),
   },

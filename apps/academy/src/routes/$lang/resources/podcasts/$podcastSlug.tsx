@@ -12,25 +12,22 @@ import { resourceImgUrl, trpc } from '#src/utils/index.ts';
 import { useShuffleSuggestedContent } from '#src/utils/resources-hook.ts';
 import { ResourceDetails } from '../-components/resource-details.tsx';
 
-export const Route = createFileRoute(
-  '/$lang/resources/podcasts/$podcastName-$podcastId',
-)({
+export const Route = createFileRoute('/$lang/resources/podcasts/$podcastSlug')({
   component: Podcast,
   params: {
     parse: (params) => {
-      const podcastNameId = params['podcastName-$podcastId'];
-      const { id, name } = getNameAndIdFromUrl(podcastNameId);
+      const { id, name } = getNameAndIdFromUrl(params.podcastSlug);
 
       return {
         lang: z.string().parse(params.lang),
         podcastId: z.string().parse(id),
         podcastName: z.string().parse(name),
-        'podcastName-$podcastId': `${name}-${id}`,
+        podcastSlug: params.podcastSlug,
       };
     },
     stringify: ({ lang, podcastName, podcastId }) => ({
       lang: lang,
-      'podcastName-$podcastId': `${podcastName}-${podcastId}`,
+      podcastSlug: `${podcastName}-${podcastId}`,
     }),
   },
 });

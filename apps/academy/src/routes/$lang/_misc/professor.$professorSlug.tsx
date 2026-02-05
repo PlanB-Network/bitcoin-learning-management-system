@@ -22,25 +22,22 @@ import { ResourceDetails } from '../resources/-components/resource-details.tsx';
 import { TutorialCard } from '../tutorials/-components/tutorial-card.tsx';
 import { professorTabs } from './-utils/professor-utils.tsx';
 
-export const Route = createFileRoute(
-  '/$lang/_misc/professor/$professorName-$professorId',
-)({
+export const Route = createFileRoute('/$lang/_misc/professor/$professorSlug')({
   component: ProfessorDetail,
   params: {
     parse: (params) => {
-      const paramNameId = params['professorName-$professorId'];
-      const { id, name } = getNameAndIdFromUrl(paramNameId);
+      const { id, name } = getNameAndIdFromUrl(params.professorSlug);
 
       return {
         lang: z.string().parse(params.lang),
         professorId: z.string().parse(id),
         professorName: z.string().parse(name),
-        'professorName-$professorId': `${name}-${id}`,
+        professorSlug: params.professorSlug,
       };
     },
     stringify: ({ lang, professorName, professorId }) => ({
       lang: lang,
-      'professorName-$professorId': `${professorName}-${professorId}`,
+      professorSlug: `${professorName}-${professorId}`,
     }),
   },
 });
