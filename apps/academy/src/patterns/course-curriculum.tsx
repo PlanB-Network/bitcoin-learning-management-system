@@ -43,9 +43,15 @@ export const CourseCurriculum = ({
             open={
               expandAll
                 ? true
-                : part.chapters.some(
-                    (chapter) => chapter?.chapterId === nextChapter,
-                  )
+                : nextChapter
+                  ? !part.chapters.every(
+                      (chapter) =>
+                        chapter?.chapterId &&
+                        completedChapters?.includes(chapter.chapterId),
+                    )
+                  : part.chapters.some(
+                      (chapter) => chapter?.chapterId === nextChapter,
+                    )
             }
             className="group"
           >

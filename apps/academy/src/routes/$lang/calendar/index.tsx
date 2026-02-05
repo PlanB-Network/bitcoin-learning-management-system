@@ -1,16 +1,8 @@
-import {
-  BasicModal,
-  Button,
-  Checkbox,
-  cn,
-  customToast,
-  DividerSimple,
-  Loader,
-} from '@blms/ui';
+import { cn, Loader } from '@blms/ui';
+import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
-import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { TbCopy, TbCopyCheck, TbDownload } from 'react-icons/tb';
 
 import type { CalendarEvent } from '#src/components/Calendar/calendar-event.js';
 import { AppContext } from '#src/providers/context.js';
@@ -18,13 +10,13 @@ import { trpc } from '#src/utils/trpc.js';
 
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { generateIcs } from '@blms/shared';
-import { useQuery } from '@tanstack/react-query';
+import {
+  CalendarDownloadModal,
+  type CalenderEventType,
+} from '#src/components/Calendar/calendar-download-modal.tsx';
 import { PageLayout } from '#src/components/page-layout.tsx';
-import { useSmaller } from '#src/hooks/use-smaller.ts';
+import { copyCalendarUrl, downloadIcs } from '#src/utils/calendar.ts';
 import { EventCalendar } from '../dashboard/-components/event-calendar.tsx';
-
-type CalenderEventType = 'class' | 'event' | 'history';
 
 export const Route = createFileRoute('/$lang/calendar/')({
   component: DashboardCalendar,
@@ -102,45 +94,21 @@ function DashboardCalendar() {
     }
   }, [session]);
 
-  const downloadIcs = (modalFilters: CalenderEventType[]) => {
-    if (!events) {
-      return;
-    }
-
-    const icsContent = generateIcs(
-      events.filter((e) => modalFilters.includes(e.type as CalenderEventType)),
-    );
-    const blob = new Blob([icsContent], {
-      type: 'text/calendar;charset=utf-8',
+  const handleDownloadIcs = (modalFilters: CalenderEventType[]) => {
+    downloadIcs({
+      events: events ?? [],
+      modalFilters,
+      filename: 'calendar-plan-b-academy.ics',
     });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('download', 'calendar-plan-b-academy.ics');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
   };
 
-  const copyCalendarUrl = async (modalFilters: CalenderEventType[]) => {
-    const token = user?.calendarToken;
-    if (!token) return false;
-
-    const url = `${window.location.origin}/api/calendar/${token}.ics${
-      modalFilters.length > 0 ? `?types=${modalFilters.join(',')}` : ''
-    }${modalFilters.length > 0 ? '&' : '?'}language=${i18n.language}`;
-
-    try {
-      await navigator.clipboard.writeText(url);
-      return true;
-    } catch (error) {
-      console.error('Failed to copy calendar URL to clipboard.', error);
-      customToast('Failed to copy the calendar URL.', {
-        color: 'warning',
-      });
-      return false;
-    }
+  const handleCopyCalendarUrl = async (modalFilters: CalenderEventType[]) => {
+    return copyCalendarUrl({
+      token: user?.calendarToken,
+      modalFilters,
+      language: i18n.language,
+      origin: window.location.origin,
+    });
   };
 
   if (!session) {
@@ -234,8 +202,8 @@ function DashboardCalendar() {
       <CalendarDownloadModal
         isOpen={isModalOpen}
         onClose={setIsModalOpen}
-        onDownload={downloadIcs}
-        onSubscribe={copyCalendarUrl}
+        onDownload={handleDownloadIcs}
+        onSubscribe={handleCopyCalendarUrl}
         filters={icsFilters}
         setFilters={setIcsFilters}
         eventTypes={calendarEventType}
@@ -243,127 +211,3 @@ function DashboardCalendar() {
     </PageLayout>
   );
 }
-
-interface CalendarDownloadModalProps {
-  isOpen: boolean;
-  onClose: (open: boolean) => void;
-  onDownload: (filters: CalenderEventType[]) => void;
-  // biome-ignore lint/suspicious/noConfusingVoidType: ok
-  onSubscribe: (filters: CalenderEventType[]) => Promise<boolean | void>;
-  filters: CalenderEventType[];
-  setFilters: React.Dispatch<React.SetStateAction<CalenderEventType[]>>;
-  eventTypes: CalenderEventType[];
-}
-
-const CalendarDownloadModal = ({
-  isOpen,
-  onClose,
-  onDownload,
-  onSubscribe,
-  filters,
-  setFilters,
-  eventTypes,
-}: CalendarDownloadModalProps) => {
-  const isMobile = useSmaller('md');
-
-  const { t } = useTranslation();
-  const [isCopied, setIsCopied] = useState(false);
-
-  const handleSubscribe = async () => {
-    const success = await onSubscribe(filters);
-    if (success !== false) {
-      setIsCopied(true);
-      setTimeout(() => {
-        setIsCopied(false);
-      }, 2000);
-    }
-  };
-
-  const toggleFilter = useCallback(
-    (filterName: CalenderEventType) => {
-      setFilters((prev) =>
-        prev.includes(filterName)
-          ? prev.filter((p) => p !== filterName)
-          : [...prev, filterName],
-      );
-    },
-    [setFilters],
-  );
-
-  return (
-    <BasicModal
-      open={isOpen}
-      onOpenChange={onClose}
-      title={t('dashboard.calendar.downloadCalendarTitle')}
-    >
-      <div className="w-full flex flex-col gap-6 text-left">
-        <div className="flex flex-col gap-3">
-          <h3 className="label-strong">
-            {t('dashboard.calendar.followSelectedCalendar')}
-          </h3>
-          <div className="flex items-center flex-wrap gap-6">
-            {eventTypes.map((type) => (
-              <div key={type} className="flex items-center gap-2">
-                <Checkbox
-                  id={`checkbox-${type}`}
-                  checked={filters.includes(type)}
-                  onCheckedChange={() => toggleFilter(type)}
-                />
-                <label
-                  htmlFor={`checkbox-${type}`}
-                  className="body-large cursor-pointer"
-                >
-                  {t(`dashboard.calendar.eventType.${type}`)}
-                </label>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-3">
-          <h3 className="label-strong">
-            {t('dashboard.calendar.subscribeTitle')}
-          </h3>
-          <ul className="body-base list-disc list-inside">
-            <li>{t('dashboard.calendar.subscribeStep1')}</li>
-            <li>{t('dashboard.calendar.subscribeStep2')}</li>
-            <li>{t('dashboard.calendar.subscribeStep3')}</li>
-          </ul>
-        </div>
-
-        <Button
-          variant="primary"
-          size={isMobile ? 'm' : 'l'}
-          onClick={handleSubscribe}
-          className="w-full gap-2"
-        >
-          {t('dashboard.calendar.subscribeButton')}
-          {isCopied ? <TbCopyCheck size={24} /> : <TbCopy size={24} />}
-        </Button>
-
-        <DividerSimple />
-
-        <div className="flex flex-col gap-3">
-          <h3 className="label-strong">
-            {t('dashboard.calendar.downloadTitle')}
-          </h3>
-          <ul className="body-base list-disc list-inside">
-            <li>{t('dashboard.calendar.downloadStep1')}</li>
-            <li>{t('dashboard.calendar.downloadStep2')}</li>
-            <li>{t('dashboard.calendar.downloadStep3')}</li>
-          </ul>
-        </div>
-
-        <Button
-          variant="newTertiary"
-          size={isMobile ? 'm' : 'l'}
-          onClick={() => onDownload(filters)}
-          className="w-full gap-2"
-        >
-          {t('dashboard.calendar.downloadButton')}
-          <TbDownload size={24} />
-        </Button>
-      </div>
-    </BasicModal>
-  );
-};

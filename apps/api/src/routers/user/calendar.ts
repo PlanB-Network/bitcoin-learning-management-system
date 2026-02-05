@@ -13,6 +13,7 @@ const getCalendarEventsProcedure = studentProcedure
       upcomingEvents: z.boolean().optional(),
       userSpecific: z.boolean().optional(),
       language: z.string().optional(),
+      courseId: z.string().optional(),
     }),
   )
   .output<Parser<CalendarEvent[]>>(calendarEventSchema.array())
@@ -21,6 +22,7 @@ const getCalendarEventsProcedure = studentProcedure
       uid: input?.userSpecific ? ctx.user.uid : undefined,
       upcomingEvents: input?.upcomingEvents ?? false,
       language: input?.language,
+      courseId: input?.courseId,
     });
   });
 

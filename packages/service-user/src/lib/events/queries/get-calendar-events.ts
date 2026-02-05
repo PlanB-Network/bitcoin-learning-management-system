@@ -6,6 +6,7 @@ export const getCalendarEventsQuery = (
   upcomingEvents?: boolean,
   types?: string[],
   language?: string,
+  courseId?: string,
 ) => {
   return sql<CalendarEvent[]>`
   SELECT * FROM (
@@ -110,5 +111,6 @@ export const getCalendarEventsQuery = (
   ) as events
   WHERE 1 = 1
     ${types && types.length > 0 ? sql`AND type = ANY(${types})` : sql``}
+    ${courseId ? sql`AND id = ${courseId}` : sql``}
   `;
 };

@@ -1,25 +1,29 @@
 import { NotificationType } from '@blms/constants';
-import type {
-  CourseProgressExtended,
-  ScheduledCourseAnnouncement,
-} from '@blms/types';
-import { ButtonWithArrow, cn, TextTag } from '@blms/ui';
+import type { ScheduledCourseAnnouncement } from '@blms/types';
+import { cn, TextTag } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
-import { createFileRoute, Link } from '@tanstack/react-router';
-import { useContext, useEffect, useState } from 'react';
+import { createFileRoute } from '@tanstack/react-router';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IoMdClose } from 'react-icons/io';
+import { TbCalendarDown } from 'react-icons/tb';
+
+import {
+  CalendarDownloadModal,
+  type CalenderEventType,
+} from '#src/components/Calendar/calendar-download-modal.tsx';
 import type { CalendarEvent } from '#src/components/Calendar/calendar-event.ts';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { CourseCurriculum } from '#src/patterns/course-curriculum.tsx';
+import { AppContext } from '#src/providers/context.js';
 import { CourseContext } from '#src/providers/courseContext.tsx';
-import { ProgressBar } from '#src/routes/$lang/dashboard/-components/courses-progress-list.tsx';
 import { EventCalendar } from '#src/routes/$lang/dashboard/-components/event-calendar.tsx';
 import {
   getNotificationDateString,
   getNotificationIcon,
   getNotificationTitle,
 } from '#src/routes/$lang/notifications/index.tsx';
+import { copyCalendarUrl, downloadIcs } from '#src/utils/calendar.ts';
 import { trpc } from '#src/utils/trpc.ts';
 import { CourseTitle } from '../-components/course-title.tsx';
 import { getTabs } from '../-utils/get-tabs.tsx';
@@ -32,15 +36,62 @@ export const Route = createFileRoute(
 });
 
 function Overview() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const { course, courseProgress } = useContext(CourseContext);
+  const { user } = useContext(AppContext);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [icsFilters, setIcsFilters] = useState<CalenderEventType[]>(['class']);
+
+  const { data: rawEvents } = useQuery(
+    trpc.user.calendar.getCalendarEvents.queryOptions({
+      upcomingEvents: false,
+      userSpecific: true,
+      language: i18n.language,
+      courseId: course?.id,
+    }),
+  );
+
+  const events = useMemo(() => {
+    return (
+      rawEvents?.map<CalendarEvent>((e) => ({
+        addressLine1: e.addressLine1,
+        end: e.endDate!,
+        id: e.id,
+        isOnline: e.isOnline,
+        organizer: e.organizer,
+        start: e.startDate!,
+        subId: e.subId,
+        title: e.name,
+        type: e.type,
+      })) ?? []
+    );
+  }, [rawEvents]);
 
   const completedChapters = courseProgress?.[0]?.chapters ?? [];
 
   const containsChapterStartDate = !!course?.parts.some((part) =>
     part.chapters.some((chapter) => chapter?.startDate != null),
   );
+
+  const handleDownloadIcs = (modalFilters: CalenderEventType[]) => {
+    downloadIcs({
+      events: rawEvents ?? [],
+      modalFilters,
+      filename: `calendar-${course?.index}.ics`,
+    });
+  };
+
+  const handleCopyCalendarUrl = async (modalFilters: CalenderEventType[]) => {
+    return copyCalendarUrl({
+      token: user?.calendarToken,
+      modalFilters,
+      language: i18n.language,
+      courseId: course?.id,
+      origin: window.location.origin,
+    });
+  };
 
   return (
     <PageLayout
@@ -52,24 +103,27 @@ function Overview() {
     >
       {course && (
         <div className="flex flex-col w-full">
-          {courseProgress &&
-            courseProgress.length > 0 &&
-            courseProgress[0].progressPercentage < 100 && (
-              <>
-                <span className="mobile-h3 md:title-large-sb-24px text-dashboardSectionTitle">
-                  {t('dashboard.myCourses.whereYouAre')}
-                </span>
-
-                <CourseProgress courseProgress={courseProgress[0]} />
-              </>
-            )}
-
           <CourseAnnouncements courseId={course.id} />
 
           {containsChapterStartDate ? (
             <div className="flex flex-col gap-6 mt-6 course-overview">
-              <SectionTitle title={t('dashboard.course.courseCalendar')} />
-              <CourseCalendar courseId={course.id} />
+              <div className="flex justify-between w-full items-center">
+                <SectionTitle title={t('dashboard.course.courseCalendar')} />
+                <button onClick={() => setIsModalOpen(true)} type="button">
+                  <TbCalendarDown size={24} />
+                </button>
+              </div>
+              <CourseCalendar events={events} />
+              <CalendarDownloadModal
+                isOpen={isModalOpen}
+                onClose={setIsModalOpen}
+                onDownload={handleDownloadIcs}
+                onSubscribe={handleCopyCalendarUrl}
+                filters={icsFilters}
+                setFilters={setIcsFilters}
+                eventTypes={['class']}
+                showFilters={false}
+              />
             </div>
           ) : null}
           <CourseCurriculum
@@ -91,58 +145,6 @@ function Overview() {
     </PageLayout>
   );
 }
-
-const CourseProgress = ({
-  courseProgress,
-}: {
-  courseProgress: CourseProgressExtended;
-}) => {
-  const { t } = useTranslation();
-
-  return (
-    <div
-      key={courseProgress.courseId}
-      className="rounded-lg md:rounded-[20px] md:p-1.5 xl:p-2.5 max-md:border max-md:border-neutral-100 shadow-course-navigation-sm md:shadow-course-navigation bg-white md:bg-neutral-50 w-full max-w-[1082px] mt-2.5 md:mt-10"
-    >
-      <div className="flex max-md:flex-col md:items-center md:justify-between md:gap-4 p-2 md:p-3 xl:p-5">
-        <div className="flex justify-between items-center w-full md:w-[105px] md:shrink-0 max-md:mb-5">
-          <span className="mobile-subtitle1 md:hidden">
-            {courseProgress.courseIndex.toUpperCase()}
-          </span>
-          <span className="max-md:hidden text-xl">{t('words.progress')}</span>
-          <span className="mobile-subtitle1 text-orange-500 md:hidden">
-            {courseProgress.progressPercentage}%
-          </span>
-        </div>
-
-        <ProgressBar
-          courseCompletedChapters={courseProgress.completedChaptersCount}
-          courseTotalChapters={courseProgress.totalChapters}
-        />
-        <span className="text-xl font-medium text-orange-500 leading-normal w-13 shrink-0 text-end max-md:hidden">
-          {courseProgress.progressPercentage}%
-        </span>
-        <div
-          className={cn(
-            courseProgress.progressPercentage === 100 ? 'hidden' : '',
-          )}
-        >
-          <Link
-            to={'/courses/$courseId/$chapterId'}
-            params={{
-              chapterId: courseProgress.nextChapter?.chapterId as string,
-              courseId: courseProgress.courseId,
-            }}
-          >
-            <ButtonWithArrow variant="outline" size="s">
-              {t('dashboard.myCourses.resumeLesson')}
-            </ButtonWithArrow>
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const CourseAnnouncements = ({ courseId }: { courseId: string }) => {
   const { t } = useTranslation();
@@ -274,28 +276,6 @@ const CourseAnnouncementItem = ({
   );
 };
 
-const CourseCalendar = ({ courseId }: { courseId: string }) => {
-  const { data: events } = useQuery(
-    trpc.user.calendar.getCalendarEvents.queryOptions(
-      { upcomingEvents: true, userSpecific: true },
-      {
-        select: (allEvents) =>
-          allEvents
-            ?.filter((e) => e.id === courseId)
-            .map<CalendarEvent>((e) => ({
-              addressLine1: e.addressLine1,
-              end: e.endDate!,
-              id: e.id,
-              isOnline: e.isOnline,
-              organizer: e.organizer,
-              start: e.startDate!,
-              subId: e.subId,
-              title: e.name,
-              type: e.type,
-            })),
-      },
-    ),
-  );
-
-  return <EventCalendar events={events ?? []} />;
+const CourseCalendar = ({ events }: { events: CalendarEvent[] }) => {
+  return <EventCalendar events={events} />;
 };

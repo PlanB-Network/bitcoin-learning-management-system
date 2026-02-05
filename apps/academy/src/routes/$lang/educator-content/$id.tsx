@@ -223,7 +223,7 @@ function EducatorContentDetail() {
               {sortedLinks?.map((link) => (
                 <div
                   key={link.url}
-                  className="flex items-center justify-between py-2 px-4 hover:bg-neutral-100 transition-colors gap-4"
+                  className="flex items-center justify-between py-2 px-4 transition-colors gap-4"
                 >
                   <a
                     href={link.url}
@@ -251,7 +251,7 @@ function EducatorContentDetail() {
               {sortedFiles?.map((file) => (
                 <div
                   key={file.path}
-                  className="flex items-center justify-between py-2 px-4 hover:bg-neutral-100 transition-colors gap-4"
+                  className="flex items-center justify-between py-2 px-4 transition-colors gap-4"
                 >
                   <span className="body-small md:body-base text-neutral-700 truncate">
                     {file.name}{' '}
