@@ -19,21 +19,21 @@ const BlogMarkdownBody = React.lazy(
   () => import('#src/routes/news/-components/markdown/blog-markdown-body.tsx'),
 );
 
-export const Route = createFileRoute('/news/article/$blogName-$blogId')({
+export const Route = createFileRoute('/news/article/$articleSlug')({
   component: SingleBlogDetail,
   params: {
     parse: (params) => {
-      const paramNameId = params['blogName-$blogId'];
+      const paramNameId = params.articleSlug;
       const { id, name } = getNameAndIdFromUrl(paramNameId);
 
       return {
         blogId: z.string().parse(id),
         blogName: z.string().parse(name),
-        'blogName-$blogId': `${name}-${id}`,
+        articleSlug: `${name}-${id}`,
       };
     },
     stringify: ({ blogName, blogId }) => ({
-      'blogName-$blogId': `${blogName}-${blogId}`,
+      articleSlug: `${blogName}-${blogId}`,
     }),
   },
   staticData: {

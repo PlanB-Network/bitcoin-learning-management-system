@@ -18,7 +18,7 @@ import { Route as NewsIndexRouteImport } from './routes/news/index';
 import { Route as LegalIndexRouteImport } from './routes/legal/index';
 import { Route as NewsCategoryRouteImport } from './routes/news/$category';
 import { Route as LegalNameRouteImport } from './routes/legal/$name';
-import { Route as NewsArticleBlogNameBlogIdRouteImport } from './routes/news/article/$blogName-$blogId';
+import { Route as NewsArticleArticleSlugRouteImport } from './routes/news/article/$articleSlug';
 
 const HubsRoute = HubsRouteImport.update({
   id: '/hubs',
@@ -65,12 +65,11 @@ const LegalNameRoute = LegalNameRouteImport.update({
   path: '/legal/$name',
   getParentRoute: () => rootRouteImport,
 } as any);
-const NewsArticleBlogNameBlogIdRoute =
-  NewsArticleBlogNameBlogIdRouteImport.update({
-    id: '/news/article/$blogName-$blogId',
-    path: '/news/article/$blogName-$blogId',
-    getParentRoute: () => rootRouteImport,
-  } as any);
+const NewsArticleArticleSlugRoute = NewsArticleArticleSlugRouteImport.update({
+  id: '/news/article/$articleSlug',
+  path: '/news/article/$articleSlug',
+  getParentRoute: () => rootRouteImport,
+} as any);
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute;
@@ -82,7 +81,7 @@ export interface FileRoutesByFullPath {
   '/news/$category': typeof NewsCategoryRoute;
   '/legal/': typeof LegalIndexRoute;
   '/news/': typeof NewsIndexRoute;
-  '/news/article/$blogName-$blogId': typeof NewsArticleBlogNameBlogIdRoute;
+  '/news/article/$articleSlug': typeof NewsArticleArticleSlugRoute;
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute;
@@ -94,7 +93,7 @@ export interface FileRoutesByTo {
   '/news/$category': typeof NewsCategoryRoute;
   '/legal': typeof LegalIndexRoute;
   '/news': typeof NewsIndexRoute;
-  '/news/article/$blogName-$blogId': typeof NewsArticleBlogNameBlogIdRoute;
+  '/news/article/$articleSlug': typeof NewsArticleArticleSlugRoute;
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport;
@@ -107,7 +106,7 @@ export interface FileRoutesById {
   '/news/$category': typeof NewsCategoryRoute;
   '/legal/': typeof LegalIndexRoute;
   '/news/': typeof NewsIndexRoute;
-  '/news/article/$blogName-$blogId': typeof NewsArticleBlogNameBlogIdRoute;
+  '/news/article/$articleSlug': typeof NewsArticleArticleSlugRoute;
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
@@ -121,7 +120,7 @@ export interface FileRouteTypes {
     | '/news/$category'
     | '/legal/'
     | '/news/'
-    | '/news/article/$blogName-$blogId';
+    | '/news/article/$articleSlug';
   fileRoutesByTo: FileRoutesByTo;
   to:
     | '/'
@@ -133,7 +132,7 @@ export interface FileRouteTypes {
     | '/news/$category'
     | '/legal'
     | '/news'
-    | '/news/article/$blogName-$blogId';
+    | '/news/article/$articleSlug';
   id:
     | '__root__'
     | '/'
@@ -145,7 +144,7 @@ export interface FileRouteTypes {
     | '/news/$category'
     | '/legal/'
     | '/news/'
-    | '/news/article/$blogName-$blogId';
+    | '/news/article/$articleSlug';
   fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
@@ -158,7 +157,7 @@ export interface RootRouteChildren {
   NewsCategoryRoute: typeof NewsCategoryRoute;
   LegalIndexRoute: typeof LegalIndexRoute;
   NewsIndexRoute: typeof NewsIndexRoute;
-  NewsArticleBlogNameBlogIdRoute: typeof NewsArticleBlogNameBlogIdRoute;
+  NewsArticleArticleSlugRoute: typeof NewsArticleArticleSlugRoute;
 }
 
 declare module '@tanstack/react-router' {
@@ -226,11 +225,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LegalNameRouteImport;
       parentRoute: typeof rootRouteImport;
     };
-    '/news/article/$blogName-$blogId': {
-      id: '/news/article/$blogName-$blogId';
-      path: '/news/article/$blogName-$blogId';
-      fullPath: '/news/article/$blogName-$blogId';
-      preLoaderRoute: typeof NewsArticleBlogNameBlogIdRouteImport;
+    '/news/article/$articleSlug': {
+      id: '/news/article/$articleSlug';
+      path: '/news/article/$articleSlug';
+      fullPath: '/news/article/$articleSlug';
+      preLoaderRoute: typeof NewsArticleArticleSlugRouteImport;
       parentRoute: typeof rootRouteImport;
     };
   }
@@ -246,7 +245,7 @@ const rootRouteChildren: RootRouteChildren = {
   NewsCategoryRoute: NewsCategoryRoute,
   LegalIndexRoute: LegalIndexRoute,
   NewsIndexRoute: NewsIndexRoute,
-  NewsArticleBlogNameBlogIdRoute: NewsArticleBlogNameBlogIdRoute,
+  NewsArticleArticleSlugRoute: NewsArticleArticleSlugRoute,
 };
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
