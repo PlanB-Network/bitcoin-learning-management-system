@@ -108,7 +108,7 @@ import { Route as LangCourseCoursesCourseSlugCourseSlugRetakeExamRouteImport } f
 import { Route as LangCourseCoursesCourseSlugCourseSlugOverviewRouteImport } from './routes/$lang/_course/courses/$courseSlug/_$courseSlug/overview';
 import { Route as LangCourseCoursesCourseSlugCourseSlugCreditsRouteImport } from './routes/$lang/_course/courses/$courseSlug/_$courseSlug/credits';
 import { Route as LangCourseCoursesCourseSlugCourseSlugAssignmentRouteImport } from './routes/$lang/_course/courses/$courseSlug/_$courseSlug/assignment';
-import { Route as LangCourseCoursesCourseSlugCourseSlugChapterNameChapterIdRouteImport } from './routes/$lang/_course/courses/$courseSlug/_$courseSlug/$chapterName-$chapterId';
+import { Route as LangCourseCoursesCourseSlugCourseSlugChapterSlugRouteImport } from './routes/$lang/_course/courses/$courseSlug/_$courseSlug/$chapterSlug';
 
 const LangIndexRoute = LangIndexRouteImport.update({
   id: '/$lang/',
@@ -676,10 +676,10 @@ const LangCourseCoursesCourseSlugCourseSlugAssignmentRoute =
     path: '/assignment',
     getParentRoute: () => LangCourseCoursesCourseSlugCourseSlugRoute,
   } as any);
-const LangCourseCoursesCourseSlugCourseSlugChapterNameChapterIdRoute =
-  LangCourseCoursesCourseSlugCourseSlugChapterNameChapterIdRouteImport.update({
-    id: '/$chapterName-$chapterId',
-    path: '/$chapterName-$chapterId',
+const LangCourseCoursesCourseSlugCourseSlugChapterSlugRoute =
+  LangCourseCoursesCourseSlugCourseSlugChapterSlugRouteImport.update({
+    id: '/$chapterSlug',
+    path: '/$chapterSlug',
     getParentRoute: () => LangCourseCoursesCourseSlugCourseSlugRoute,
   } as any);
 
@@ -765,7 +765,7 @@ export interface FileRoutesByFullPath {
   '/$lang/dashboard/administration/educator-content/$status': typeof LangDashboardAdministrationEducatorContentStatusRoute;
   '/$lang/tutorials/$category/$subcategory/$tutorialSlug': typeof LangTutorialsCategorySubcategoryTutorialSlugRoute;
   '/$lang/dashboard/administration/educator-content/': typeof LangDashboardAdministrationEducatorContentIndexRoute;
-  '/$lang/courses/$courseSlug/$chapterName-$chapterId': typeof LangCourseCoursesCourseSlugCourseSlugChapterNameChapterIdRoute;
+  '/$lang/courses/$courseSlug/$chapterSlug': typeof LangCourseCoursesCourseSlugCourseSlugChapterSlugRoute;
   '/$lang/courses/$courseSlug/assignment': typeof LangCourseCoursesCourseSlugCourseSlugAssignmentRoute;
   '/$lang/courses/$courseSlug/credits': typeof LangCourseCoursesCourseSlugCourseSlugCreditsRoute;
   '/$lang/courses/$courseSlug/overview': typeof LangCourseCoursesCourseSlugCourseSlugOverviewRoute;
@@ -867,7 +867,7 @@ export interface FileRoutesByTo {
   '/$lang/dashboard/administration/educator-content/$status': typeof LangDashboardAdministrationEducatorContentStatusRoute;
   '/$lang/tutorials/$category/$subcategory/$tutorialSlug': typeof LangTutorialsCategorySubcategoryTutorialSlugRoute;
   '/$lang/dashboard/administration/educator-content': typeof LangDashboardAdministrationEducatorContentIndexRoute;
-  '/$lang/courses/$courseSlug/$chapterName-$chapterId': typeof LangCourseCoursesCourseSlugCourseSlugChapterNameChapterIdRoute;
+  '/$lang/courses/$courseSlug/$chapterSlug': typeof LangCourseCoursesCourseSlugCourseSlugChapterSlugRoute;
   '/$lang/courses/$courseSlug/assignment': typeof LangCourseCoursesCourseSlugCourseSlugAssignmentRoute;
   '/$lang/courses/$courseSlug/credits': typeof LangCourseCoursesCourseSlugCourseSlugCreditsRoute;
   '/$lang/courses/$courseSlug/overview': typeof LangCourseCoursesCourseSlugCourseSlugOverviewRoute;
@@ -970,7 +970,7 @@ export interface FileRoutesById {
   '/$lang/dashboard/administration/educator-content/$status': typeof LangDashboardAdministrationEducatorContentStatusRoute;
   '/$lang/tutorials/$category/$subcategory/$tutorialSlug': typeof LangTutorialsCategorySubcategoryTutorialSlugRoute;
   '/$lang/dashboard/administration/educator-content/': typeof LangDashboardAdministrationEducatorContentIndexRoute;
-  '/$lang/_course/courses/$courseSlug/_$courseSlug/$chapterName-$chapterId': typeof LangCourseCoursesCourseSlugCourseSlugChapterNameChapterIdRoute;
+  '/$lang/_course/courses/$courseSlug/_$courseSlug/$chapterSlug': typeof LangCourseCoursesCourseSlugCourseSlugChapterSlugRoute;
   '/$lang/_course/courses/$courseSlug/_$courseSlug/assignment': typeof LangCourseCoursesCourseSlugCourseSlugAssignmentRoute;
   '/$lang/_course/courses/$courseSlug/_$courseSlug/credits': typeof LangCourseCoursesCourseSlugCourseSlugCreditsRoute;
   '/$lang/_course/courses/$courseSlug/_$courseSlug/overview': typeof LangCourseCoursesCourseSlugCourseSlugOverviewRoute;
@@ -1074,7 +1074,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/administration/educator-content/$status'
     | '/$lang/tutorials/$category/$subcategory/$tutorialSlug'
     | '/$lang/dashboard/administration/educator-content/'
-    | '/$lang/courses/$courseSlug/$chapterName-$chapterId'
+    | '/$lang/courses/$courseSlug/$chapterSlug'
     | '/$lang/courses/$courseSlug/assignment'
     | '/$lang/courses/$courseSlug/credits'
     | '/$lang/courses/$courseSlug/overview'
@@ -1176,7 +1176,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/administration/educator-content/$status'
     | '/$lang/tutorials/$category/$subcategory/$tutorialSlug'
     | '/$lang/dashboard/administration/educator-content'
-    | '/$lang/courses/$courseSlug/$chapterName-$chapterId'
+    | '/$lang/courses/$courseSlug/$chapterSlug'
     | '/$lang/courses/$courseSlug/assignment'
     | '/$lang/courses/$courseSlug/credits'
     | '/$lang/courses/$courseSlug/overview'
@@ -1278,7 +1278,7 @@ export interface FileRouteTypes {
     | '/$lang/dashboard/administration/educator-content/$status'
     | '/$lang/tutorials/$category/$subcategory/$tutorialSlug'
     | '/$lang/dashboard/administration/educator-content/'
-    | '/$lang/_course/courses/$courseSlug/_$courseSlug/$chapterName-$chapterId'
+    | '/$lang/_course/courses/$courseSlug/_$courseSlug/$chapterSlug'
     | '/$lang/_course/courses/$courseSlug/_$courseSlug/assignment'
     | '/$lang/_course/courses/$courseSlug/_$courseSlug/credits'
     | '/$lang/_course/courses/$courseSlug/_$courseSlug/overview'
@@ -2086,11 +2086,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangCourseCoursesCourseSlugCourseSlugAssignmentRouteImport;
       parentRoute: typeof LangCourseCoursesCourseSlugCourseSlugRoute;
     };
-    '/$lang/_course/courses/$courseSlug/_$courseSlug/$chapterName-$chapterId': {
-      id: '/$lang/_course/courses/$courseSlug/_$courseSlug/$chapterName-$chapterId';
-      path: '/$chapterName-$chapterId';
-      fullPath: '/$lang/courses/$courseSlug/$chapterName-$chapterId';
-      preLoaderRoute: typeof LangCourseCoursesCourseSlugCourseSlugChapterNameChapterIdRouteImport;
+    '/$lang/_course/courses/$courseSlug/_$courseSlug/$chapterSlug': {
+      id: '/$lang/_course/courses/$courseSlug/_$courseSlug/$chapterSlug';
+      path: '/$chapterSlug';
+      fullPath: '/$lang/courses/$courseSlug/$chapterSlug';
+      preLoaderRoute: typeof LangCourseCoursesCourseSlugCourseSlugChapterSlugRouteImport;
       parentRoute: typeof LangCourseCoursesCourseSlugCourseSlugRoute;
     };
   }
@@ -2121,7 +2121,7 @@ const LangDashboardAdministrationTranslationPanelRouteWithChildren =
   );
 
 interface LangCourseCoursesCourseSlugCourseSlugRouteChildren {
-  LangCourseCoursesCourseSlugCourseSlugChapterNameChapterIdRoute: typeof LangCourseCoursesCourseSlugCourseSlugChapterNameChapterIdRoute;
+  LangCourseCoursesCourseSlugCourseSlugChapterSlugRoute: typeof LangCourseCoursesCourseSlugCourseSlugChapterSlugRoute;
   LangCourseCoursesCourseSlugCourseSlugAssignmentRoute: typeof LangCourseCoursesCourseSlugCourseSlugAssignmentRoute;
   LangCourseCoursesCourseSlugCourseSlugCreditsRoute: typeof LangCourseCoursesCourseSlugCourseSlugCreditsRoute;
   LangCourseCoursesCourseSlugCourseSlugOverviewRoute: typeof LangCourseCoursesCourseSlugCourseSlugOverviewRoute;
@@ -2132,8 +2132,8 @@ interface LangCourseCoursesCourseSlugCourseSlugRouteChildren {
 
 const LangCourseCoursesCourseSlugCourseSlugRouteChildren: LangCourseCoursesCourseSlugCourseSlugRouteChildren =
   {
-    LangCourseCoursesCourseSlugCourseSlugChapterNameChapterIdRoute:
-      LangCourseCoursesCourseSlugCourseSlugChapterNameChapterIdRoute,
+    LangCourseCoursesCourseSlugCourseSlugChapterSlugRoute:
+      LangCourseCoursesCourseSlugCourseSlugChapterSlugRoute,
     LangCourseCoursesCourseSlugCourseSlugAssignmentRoute:
       LangCourseCoursesCourseSlugCourseSlugAssignmentRoute,
     LangCourseCoursesCourseSlugCourseSlugCreditsRoute:

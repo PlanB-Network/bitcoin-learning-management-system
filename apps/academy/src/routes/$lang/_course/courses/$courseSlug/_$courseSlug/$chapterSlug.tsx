@@ -51,7 +51,7 @@ import { SingleTrialExamWorkflow } from '../-components/single-trial-exam/single
 import { getTabs } from '../-utils/get-tabs.tsx';
 
 export const Route = createFileRoute(
-  '/$lang/_course/courses/$courseSlug/_$courseSlug/$chapterName-$chapterId',
+  '/$lang/_course/courses/$courseSlug/_$courseSlug/$chapterSlug',
 )({
   // params: {
   //   parse: (params) => ({
@@ -68,19 +68,18 @@ export const Route = createFileRoute(
   component: CourseChapter,
   params: {
     parse: (params: Record<string, string>) => {
-      const paramNameId = params['chapterName-$chapterId'];
-      const { id, name } = getNameAndIdFromUrl(paramNameId);
+      const { id, name } = getNameAndIdFromUrl(params.chapterSlug);
 
       return {
         chapterId: z.string().parse(id),
         chapterName: z.string().parse(name),
-        'chapterName-$chapterId': `${name}-${id}`,
+        chapterSlug: params.chapterSlug,
         courseId: z.string().parse(params.courseSlug),
         lang: z.string().parse(params.lang),
       };
     },
     stringify: ({ lang, courseId, chapterName, chapterId }) => ({
-      'chapterName-$chapterId': `${chapterName}-${chapterId}`,
+      chapterSlug: `${chapterName}-${chapterId}`,
       courseId: `${courseId}`,
       lang: lang,
     }),
