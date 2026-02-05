@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "pdfjs-dist": "~5.4.394"
+    "pdfjs-dist": "~5.4.624"
   },
   "devDependencies": {
     "@blms/types": "workspace:*"

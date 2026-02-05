@@ -17,6 +17,6 @@ export const createRestEventRoutes = (
 
   const getEventMembers = createGetEventUsers(dependencies);
   router.get('/event/:eventId', apiKeyAuth, async (req, res) => {
-    res.json(await getEventMembers({ eventId: req.params.eventId }));
+    res.json(await getEventMembers({ eventId: req.params.eventId as string }));
   });
 };

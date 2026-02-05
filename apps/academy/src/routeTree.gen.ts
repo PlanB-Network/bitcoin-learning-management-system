@@ -8,8 +8,6 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { createFileRoute } from '@tanstack/react-router';
-
 import { Route as rootRouteImport } from './routes/__root';
 import { Route as LangIndexRouteImport } from './routes/$lang/index';
 import { Route as LangTutorialsIndexRouteImport } from './routes/$lang/tutorials/index';
@@ -111,10 +109,6 @@ import { Route as LangCourseCoursesCourseSlugCourseSlugOverviewRouteImport } fro
 import { Route as LangCourseCoursesCourseSlugCourseSlugCreditsRouteImport } from './routes/$lang/_course/courses/$courseSlug/_$courseSlug/credits';
 import { Route as LangCourseCoursesCourseSlugCourseSlugAssignmentRouteImport } from './routes/$lang/_course/courses/$courseSlug/_$courseSlug/assignment';
 import { Route as LangCourseCoursesCourseSlugCourseSlugChapterNameChapterIdRouteImport } from './routes/$lang/_course/courses/$courseSlug/_$courseSlug/$chapterName-$chapterId';
-
-const LangCourseCoursesCourseSlugRouteImport = createFileRoute(
-  '/$lang/_course/courses/$courseSlug',
-)();
 
 const LangIndexRoute = LangIndexRouteImport.update({
   id: '/$lang/',
@@ -252,12 +246,6 @@ const LangMiscAboutRoute = LangMiscAboutRouteImport.update({
   path: '/$lang/about',
   getParentRoute: () => rootRouteImport,
 } as any);
-const LangCourseCoursesCourseSlugRoute =
-  LangCourseCoursesCourseSlugRouteImport.update({
-    id: '/$lang/_course/courses/$courseSlug',
-    path: '/$lang/courses/$courseSlug',
-    getParentRoute: () => rootRouteImport,
-  } as any);
 const LangTutorialsCategoryIndexRoute =
   LangTutorialsCategoryIndexRouteImport.update({
     id: '/$lang/tutorials/$category/',
@@ -574,8 +562,9 @@ const LangDashboardAdministrationEducatorContentStatusRoute =
   } as any);
 const LangCourseCoursesCourseSlugCourseSlugRoute =
   LangCourseCoursesCourseSlugCourseSlugRouteImport.update({
-    id: '/_$courseSlug',
-    getParentRoute: () => LangCourseCoursesCourseSlugRoute,
+    id: '/$lang/_course/courses/$courseSlug/_$courseSlug',
+    path: '/$lang/courses/$courseSlug',
+    getParentRoute: () => rootRouteImport,
   } as any);
 const LangDashboardProfessorManageCoursesCourseIdStudentsRoute =
   LangDashboardProfessorManageCoursesCourseIdStudentsRouteImport.update({
@@ -695,7 +684,7 @@ const LangCourseCoursesCourseSlugCourseSlugChapterNameChapterIdRoute =
   } as any);
 
 export interface FileRoutesByFullPath {
-  '/$lang': typeof LangIndexRoute;
+  '/$lang/': typeof LangIndexRoute;
   '/$lang/about': typeof LangMiscAboutRoute;
   '/$lang/become-teacher': typeof LangMiscBecomeTeacherRoute;
   '/$lang/manifesto': typeof LangMiscManifestoRoute;
@@ -710,17 +699,17 @@ export interface FileRoutesByFullPath {
   '/$lang/events/$eventId': typeof LangEventsEventIdRoute;
   '/$lang/events/my-tickets': typeof LangEventsMyTicketsRoute;
   '/$lang/events/plan-b-week': typeof LangEventsPlanBWeekRoute;
-  '/$lang/account': typeof LangAccountIndexRoute;
-  '/$lang/calendar': typeof LangCalendarIndexRoute;
-  '/$lang/career-portal': typeof LangCareerPortalIndexRoute;
-  '/$lang/dashboard': typeof LangDashboardIndexRoute;
-  '/$lang/educator-content-guide': typeof LangEducatorContentGuideIndexRoute;
-  '/$lang/educator-content': typeof LangEducatorContentIndexRoute;
-  '/$lang/events': typeof LangEventsIndexRoute;
-  '/$lang/notifications': typeof LangNotificationsIndexRoute;
-  '/$lang/resources': typeof LangResourcesIndexRoute;
-  '/$lang/search': typeof LangSearchIndexRoute;
-  '/$lang/tutorials': typeof LangTutorialsIndexRoute;
+  '/$lang/account/': typeof LangAccountIndexRoute;
+  '/$lang/calendar/': typeof LangCalendarIndexRoute;
+  '/$lang/career-portal/': typeof LangCareerPortalIndexRoute;
+  '/$lang/dashboard/': typeof LangDashboardIndexRoute;
+  '/$lang/educator-content-guide/': typeof LangEducatorContentGuideIndexRoute;
+  '/$lang/educator-content/': typeof LangEducatorContentIndexRoute;
+  '/$lang/events/': typeof LangEventsIndexRoute;
+  '/$lang/notifications/': typeof LangNotificationsIndexRoute;
+  '/$lang/resources/': typeof LangResourcesIndexRoute;
+  '/$lang/search/': typeof LangSearchIndexRoute;
+  '/$lang/tutorials/': typeof LangTutorialsIndexRoute;
   '/$lang/courses/$courseName-$courseId': typeof LangCourseCoursesCourseNameCourseIdRoute;
   '/$lang/courses/btc105': typeof LangCourseCoursesBtc105Route;
   '/$lang/learn-anytime/course-selector': typeof LangCourseLearnAnytimeCourseSelectorRoute;
@@ -752,30 +741,30 @@ export interface FileRoutesByFullPath {
   '/$lang/resources/papers/$paperTitle-$paperId': typeof LangResourcesPapersPaperTitlePaperIdRoute;
   '/$lang/resources/podcasts/$podcastName-$podcastId': typeof LangResourcesPodcastsPodcastNamePodcastIdRoute;
   '/$lang/resources/projects/$projectName-$projectId': typeof LangResourcesProjectsProjectNameProjectIdRoute;
-  '/$lang/courses': typeof LangCourseCoursesIndexRoute;
-  '/$lang/learn-anytime': typeof LangCourseLearnAnytimeIndexRoute;
-  '/$lang/live-classes': typeof LangCourseLiveClassesIndexRoute;
-  '/$lang/my-courses': typeof LangCourseMyCoursesIndexRoute;
-  '/$lang/programs': typeof LangCourseProgramsIndexRoute;
-  '/$lang/legal': typeof LangMiscLegalIndexRoute;
-  '/$lang/plan-b-labs': typeof LangMiscPlanBLabsIndexRoute;
-  '/$lang/professors': typeof LangMiscProfessorsIndexRoute;
-  '/$lang/resources/bet': typeof LangResourcesBetIndexRoute;
-  '/$lang/resources/books': typeof LangResourcesBooksIndexRoute;
-  '/$lang/resources/channels': typeof LangResourcesChannelsIndexRoute;
-  '/$lang/resources/conferences': typeof LangResourcesConferencesIndexRoute;
-  '/$lang/resources/glossary': typeof LangResourcesGlossaryIndexRoute;
-  '/$lang/resources/lectures': typeof LangResourcesLecturesIndexRoute;
-  '/$lang/resources/movies': typeof LangResourcesMoviesIndexRoute;
-  '/$lang/resources/newsletters': typeof LangResourcesNewslettersIndexRoute;
-  '/$lang/resources/papers': typeof LangResourcesPapersIndexRoute;
-  '/$lang/resources/podcasts': typeof LangResourcesPodcastsIndexRoute;
-  '/$lang/resources/projects': typeof LangResourcesProjectsIndexRoute;
-  '/$lang/tutorials/$category': typeof LangTutorialsCategoryIndexRoute;
+  '/$lang/courses/': typeof LangCourseCoursesIndexRoute;
+  '/$lang/learn-anytime/': typeof LangCourseLearnAnytimeIndexRoute;
+  '/$lang/live-classes/': typeof LangCourseLiveClassesIndexRoute;
+  '/$lang/my-courses/': typeof LangCourseMyCoursesIndexRoute;
+  '/$lang/programs/': typeof LangCourseProgramsIndexRoute;
+  '/$lang/legal/': typeof LangMiscLegalIndexRoute;
+  '/$lang/plan-b-labs/': typeof LangMiscPlanBLabsIndexRoute;
+  '/$lang/professors/': typeof LangMiscProfessorsIndexRoute;
+  '/$lang/resources/bet/': typeof LangResourcesBetIndexRoute;
+  '/$lang/resources/books/': typeof LangResourcesBooksIndexRoute;
+  '/$lang/resources/channels/': typeof LangResourcesChannelsIndexRoute;
+  '/$lang/resources/conferences/': typeof LangResourcesConferencesIndexRoute;
+  '/$lang/resources/glossary/': typeof LangResourcesGlossaryIndexRoute;
+  '/$lang/resources/lectures/': typeof LangResourcesLecturesIndexRoute;
+  '/$lang/resources/movies/': typeof LangResourcesMoviesIndexRoute;
+  '/$lang/resources/newsletters/': typeof LangResourcesNewslettersIndexRoute;
+  '/$lang/resources/papers/': typeof LangResourcesPapersIndexRoute;
+  '/$lang/resources/podcasts/': typeof LangResourcesPodcastsIndexRoute;
+  '/$lang/resources/projects/': typeof LangResourcesProjectsIndexRoute;
+  '/$lang/tutorials/$category/': typeof LangTutorialsCategoryIndexRoute;
   '/$lang/courses/$courseSlug': typeof LangCourseCoursesCourseSlugCourseSlugRouteWithChildren;
   '/$lang/dashboard/administration/educator-content/$status': typeof LangDashboardAdministrationEducatorContentStatusRoute;
   '/$lang/tutorials/$category/$subcategory/$name-$id': typeof LangTutorialsCategorySubcategoryNameIdRoute;
-  '/$lang/dashboard/administration/educator-content': typeof LangDashboardAdministrationEducatorContentIndexRoute;
+  '/$lang/dashboard/administration/educator-content/': typeof LangDashboardAdministrationEducatorContentIndexRoute;
   '/$lang/courses/$courseSlug/$chapterName-$chapterId': typeof LangCourseCoursesCourseSlugCourseSlugChapterNameChapterIdRoute;
   '/$lang/courses/$courseSlug/assignment': typeof LangCourseCoursesCourseSlugCourseSlugAssignmentRoute;
   '/$lang/courses/$courseSlug/credits': typeof LangCourseCoursesCourseSlugCourseSlugCreditsRoute;
@@ -977,7 +966,6 @@ export interface FileRoutesById {
   '/$lang/resources/podcasts/': typeof LangResourcesPodcastsIndexRoute;
   '/$lang/resources/projects/': typeof LangResourcesProjectsIndexRoute;
   '/$lang/tutorials/$category/': typeof LangTutorialsCategoryIndexRoute;
-  '/$lang/_course/courses/$courseSlug': typeof LangCourseCoursesCourseSlugRouteWithChildren;
   '/$lang/_course/courses/$courseSlug/_$courseSlug': typeof LangCourseCoursesCourseSlugCourseSlugRouteWithChildren;
   '/$lang/dashboard/administration/educator-content/$status': typeof LangDashboardAdministrationEducatorContentStatusRoute;
   '/$lang/tutorials/$category/$subcategory/$name-$id': typeof LangTutorialsCategorySubcategoryNameIdRoute;
@@ -1005,7 +993,7 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
   fullPaths:
-    | '/$lang'
+    | '/$lang/'
     | '/$lang/about'
     | '/$lang/become-teacher'
     | '/$lang/manifesto'
@@ -1020,17 +1008,17 @@ export interface FileRouteTypes {
     | '/$lang/events/$eventId'
     | '/$lang/events/my-tickets'
     | '/$lang/events/plan-b-week'
-    | '/$lang/account'
-    | '/$lang/calendar'
-    | '/$lang/career-portal'
-    | '/$lang/dashboard'
-    | '/$lang/educator-content-guide'
-    | '/$lang/educator-content'
-    | '/$lang/events'
-    | '/$lang/notifications'
-    | '/$lang/resources'
-    | '/$lang/search'
-    | '/$lang/tutorials'
+    | '/$lang/account/'
+    | '/$lang/calendar/'
+    | '/$lang/career-portal/'
+    | '/$lang/dashboard/'
+    | '/$lang/educator-content-guide/'
+    | '/$lang/educator-content/'
+    | '/$lang/events/'
+    | '/$lang/notifications/'
+    | '/$lang/resources/'
+    | '/$lang/search/'
+    | '/$lang/tutorials/'
     | '/$lang/courses/$courseName-$courseId'
     | '/$lang/courses/btc105'
     | '/$lang/learn-anytime/course-selector'
@@ -1062,30 +1050,30 @@ export interface FileRouteTypes {
     | '/$lang/resources/papers/$paperTitle-$paperId'
     | '/$lang/resources/podcasts/$podcastName-$podcastId'
     | '/$lang/resources/projects/$projectName-$projectId'
-    | '/$lang/courses'
-    | '/$lang/learn-anytime'
-    | '/$lang/live-classes'
-    | '/$lang/my-courses'
-    | '/$lang/programs'
-    | '/$lang/legal'
-    | '/$lang/plan-b-labs'
-    | '/$lang/professors'
-    | '/$lang/resources/bet'
-    | '/$lang/resources/books'
-    | '/$lang/resources/channels'
-    | '/$lang/resources/conferences'
-    | '/$lang/resources/glossary'
-    | '/$lang/resources/lectures'
-    | '/$lang/resources/movies'
-    | '/$lang/resources/newsletters'
-    | '/$lang/resources/papers'
-    | '/$lang/resources/podcasts'
-    | '/$lang/resources/projects'
-    | '/$lang/tutorials/$category'
+    | '/$lang/courses/'
+    | '/$lang/learn-anytime/'
+    | '/$lang/live-classes/'
+    | '/$lang/my-courses/'
+    | '/$lang/programs/'
+    | '/$lang/legal/'
+    | '/$lang/plan-b-labs/'
+    | '/$lang/professors/'
+    | '/$lang/resources/bet/'
+    | '/$lang/resources/books/'
+    | '/$lang/resources/channels/'
+    | '/$lang/resources/conferences/'
+    | '/$lang/resources/glossary/'
+    | '/$lang/resources/lectures/'
+    | '/$lang/resources/movies/'
+    | '/$lang/resources/newsletters/'
+    | '/$lang/resources/papers/'
+    | '/$lang/resources/podcasts/'
+    | '/$lang/resources/projects/'
+    | '/$lang/tutorials/$category/'
     | '/$lang/courses/$courseSlug'
     | '/$lang/dashboard/administration/educator-content/$status'
     | '/$lang/tutorials/$category/$subcategory/$name-$id'
-    | '/$lang/dashboard/administration/educator-content'
+    | '/$lang/dashboard/administration/educator-content/'
     | '/$lang/courses/$courseSlug/$chapterName-$chapterId'
     | '/$lang/courses/$courseSlug/assignment'
     | '/$lang/courses/$courseSlug/credits'
@@ -1286,7 +1274,6 @@ export interface FileRouteTypes {
     | '/$lang/resources/podcasts/'
     | '/$lang/resources/projects/'
     | '/$lang/tutorials/$category/'
-    | '/$lang/_course/courses/$courseSlug'
     | '/$lang/_course/courses/$courseSlug/_$courseSlug'
     | '/$lang/dashboard/administration/educator-content/$status'
     | '/$lang/tutorials/$category/$subcategory/$name-$id'
@@ -1390,7 +1377,7 @@ export interface RootRouteChildren {
   LangResourcesPodcastsIndexRoute: typeof LangResourcesPodcastsIndexRoute;
   LangResourcesProjectsIndexRoute: typeof LangResourcesProjectsIndexRoute;
   LangTutorialsCategoryIndexRoute: typeof LangTutorialsCategoryIndexRoute;
-  LangCourseCoursesCourseSlugRoute: typeof LangCourseCoursesCourseSlugRouteWithChildren;
+  LangCourseCoursesCourseSlugCourseSlugRoute: typeof LangCourseCoursesCourseSlugCourseSlugRouteWithChildren;
   LangDashboardAdministrationEducatorContentStatusRoute: typeof LangDashboardAdministrationEducatorContentStatusRoute;
   LangTutorialsCategorySubcategoryNameIdRoute: typeof LangTutorialsCategorySubcategoryNameIdRoute;
   LangDashboardAdministrationEducatorContentIndexRoute: typeof LangDashboardAdministrationEducatorContentIndexRoute;
@@ -1409,84 +1396,84 @@ declare module '@tanstack/react-router' {
     '/$lang/': {
       id: '/$lang/';
       path: '/$lang';
-      fullPath: '/$lang';
+      fullPath: '/$lang/';
       preLoaderRoute: typeof LangIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/tutorials/': {
       id: '/$lang/tutorials/';
       path: '/$lang/tutorials';
-      fullPath: '/$lang/tutorials';
+      fullPath: '/$lang/tutorials/';
       preLoaderRoute: typeof LangTutorialsIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/search/': {
       id: '/$lang/search/';
       path: '/$lang/search';
-      fullPath: '/$lang/search';
+      fullPath: '/$lang/search/';
       preLoaderRoute: typeof LangSearchIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/resources/': {
       id: '/$lang/resources/';
       path: '/$lang/resources';
-      fullPath: '/$lang/resources';
+      fullPath: '/$lang/resources/';
       preLoaderRoute: typeof LangResourcesIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/notifications/': {
       id: '/$lang/notifications/';
       path: '/$lang/notifications';
-      fullPath: '/$lang/notifications';
+      fullPath: '/$lang/notifications/';
       preLoaderRoute: typeof LangNotificationsIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/events/': {
       id: '/$lang/events/';
       path: '/$lang/events';
-      fullPath: '/$lang/events';
+      fullPath: '/$lang/events/';
       preLoaderRoute: typeof LangEventsIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/educator-content/': {
       id: '/$lang/educator-content/';
       path: '/$lang/educator-content';
-      fullPath: '/$lang/educator-content';
+      fullPath: '/$lang/educator-content/';
       preLoaderRoute: typeof LangEducatorContentIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/educator-content-guide/': {
       id: '/$lang/educator-content-guide/';
       path: '/$lang/educator-content-guide';
-      fullPath: '/$lang/educator-content-guide';
+      fullPath: '/$lang/educator-content-guide/';
       preLoaderRoute: typeof LangEducatorContentGuideIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/dashboard/': {
       id: '/$lang/dashboard/';
       path: '/$lang/dashboard';
-      fullPath: '/$lang/dashboard';
+      fullPath: '/$lang/dashboard/';
       preLoaderRoute: typeof LangDashboardIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/career-portal/': {
       id: '/$lang/career-portal/';
       path: '/$lang/career-portal';
-      fullPath: '/$lang/career-portal';
+      fullPath: '/$lang/career-portal/';
       preLoaderRoute: typeof LangCareerPortalIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/calendar/': {
       id: '/$lang/calendar/';
       path: '/$lang/calendar';
-      fullPath: '/$lang/calendar';
+      fullPath: '/$lang/calendar/';
       preLoaderRoute: typeof LangCalendarIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/account/': {
       id: '/$lang/account/';
       path: '/$lang/account';
-      fullPath: '/$lang/account';
+      fullPath: '/$lang/account/';
       preLoaderRoute: typeof LangAccountIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
@@ -1588,150 +1575,143 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LangMiscAboutRouteImport;
       parentRoute: typeof rootRouteImport;
     };
-    '/$lang/_course/courses/$courseSlug': {
-      id: '/$lang/_course/courses/$courseSlug';
-      path: '/$lang/courses/$courseSlug';
-      fullPath: '/$lang/courses/$courseSlug';
-      preLoaderRoute: typeof LangCourseCoursesCourseSlugRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
     '/$lang/tutorials/$category/': {
       id: '/$lang/tutorials/$category/';
       path: '/$lang/tutorials/$category';
-      fullPath: '/$lang/tutorials/$category';
+      fullPath: '/$lang/tutorials/$category/';
       preLoaderRoute: typeof LangTutorialsCategoryIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/resources/projects/': {
       id: '/$lang/resources/projects/';
       path: '/$lang/resources/projects';
-      fullPath: '/$lang/resources/projects';
+      fullPath: '/$lang/resources/projects/';
       preLoaderRoute: typeof LangResourcesProjectsIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/resources/podcasts/': {
       id: '/$lang/resources/podcasts/';
       path: '/$lang/resources/podcasts';
-      fullPath: '/$lang/resources/podcasts';
+      fullPath: '/$lang/resources/podcasts/';
       preLoaderRoute: typeof LangResourcesPodcastsIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/resources/papers/': {
       id: '/$lang/resources/papers/';
       path: '/$lang/resources/papers';
-      fullPath: '/$lang/resources/papers';
+      fullPath: '/$lang/resources/papers/';
       preLoaderRoute: typeof LangResourcesPapersIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/resources/newsletters/': {
       id: '/$lang/resources/newsletters/';
       path: '/$lang/resources/newsletters';
-      fullPath: '/$lang/resources/newsletters';
+      fullPath: '/$lang/resources/newsletters/';
       preLoaderRoute: typeof LangResourcesNewslettersIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/resources/movies/': {
       id: '/$lang/resources/movies/';
       path: '/$lang/resources/movies';
-      fullPath: '/$lang/resources/movies';
+      fullPath: '/$lang/resources/movies/';
       preLoaderRoute: typeof LangResourcesMoviesIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/resources/lectures/': {
       id: '/$lang/resources/lectures/';
       path: '/$lang/resources/lectures';
-      fullPath: '/$lang/resources/lectures';
+      fullPath: '/$lang/resources/lectures/';
       preLoaderRoute: typeof LangResourcesLecturesIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/resources/glossary/': {
       id: '/$lang/resources/glossary/';
       path: '/$lang/resources/glossary';
-      fullPath: '/$lang/resources/glossary';
+      fullPath: '/$lang/resources/glossary/';
       preLoaderRoute: typeof LangResourcesGlossaryIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/resources/conferences/': {
       id: '/$lang/resources/conferences/';
       path: '/$lang/resources/conferences';
-      fullPath: '/$lang/resources/conferences';
+      fullPath: '/$lang/resources/conferences/';
       preLoaderRoute: typeof LangResourcesConferencesIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/resources/channels/': {
       id: '/$lang/resources/channels/';
       path: '/$lang/resources/channels';
-      fullPath: '/$lang/resources/channels';
+      fullPath: '/$lang/resources/channels/';
       preLoaderRoute: typeof LangResourcesChannelsIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/resources/books/': {
       id: '/$lang/resources/books/';
       path: '/$lang/resources/books';
-      fullPath: '/$lang/resources/books';
+      fullPath: '/$lang/resources/books/';
       preLoaderRoute: typeof LangResourcesBooksIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/resources/bet/': {
       id: '/$lang/resources/bet/';
       path: '/$lang/resources/bet';
-      fullPath: '/$lang/resources/bet';
+      fullPath: '/$lang/resources/bet/';
       preLoaderRoute: typeof LangResourcesBetIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/_misc/professors/': {
       id: '/$lang/_misc/professors/';
       path: '/$lang/professors';
-      fullPath: '/$lang/professors';
+      fullPath: '/$lang/professors/';
       preLoaderRoute: typeof LangMiscProfessorsIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/_misc/plan-b-labs/': {
       id: '/$lang/_misc/plan-b-labs/';
       path: '/$lang/plan-b-labs';
-      fullPath: '/$lang/plan-b-labs';
+      fullPath: '/$lang/plan-b-labs/';
       preLoaderRoute: typeof LangMiscPlanBLabsIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/_misc/legal/': {
       id: '/$lang/_misc/legal/';
       path: '/$lang/legal';
-      fullPath: '/$lang/legal';
+      fullPath: '/$lang/legal/';
       preLoaderRoute: typeof LangMiscLegalIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/_course/programs/': {
       id: '/$lang/_course/programs/';
       path: '/$lang/programs';
-      fullPath: '/$lang/programs';
+      fullPath: '/$lang/programs/';
       preLoaderRoute: typeof LangCourseProgramsIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/_course/my-courses/': {
       id: '/$lang/_course/my-courses/';
       path: '/$lang/my-courses';
-      fullPath: '/$lang/my-courses';
+      fullPath: '/$lang/my-courses/';
       preLoaderRoute: typeof LangCourseMyCoursesIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/_course/live-classes/': {
       id: '/$lang/_course/live-classes/';
       path: '/$lang/live-classes';
-      fullPath: '/$lang/live-classes';
+      fullPath: '/$lang/live-classes/';
       preLoaderRoute: typeof LangCourseLiveClassesIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/_course/learn-anytime/': {
       id: '/$lang/_course/learn-anytime/';
       path: '/$lang/learn-anytime';
-      fullPath: '/$lang/learn-anytime';
+      fullPath: '/$lang/learn-anytime/';
       preLoaderRoute: typeof LangCourseLearnAnytimeIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/_course/courses/': {
       id: '/$lang/_course/courses/';
       path: '/$lang/courses';
-      fullPath: '/$lang/courses';
+      fullPath: '/$lang/courses/';
       preLoaderRoute: typeof LangCourseCoursesIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
@@ -1955,7 +1935,7 @@ declare module '@tanstack/react-router' {
     '/$lang/dashboard/administration/educator-content/': {
       id: '/$lang/dashboard/administration/educator-content/';
       path: '/$lang/dashboard/administration/educator-content';
-      fullPath: '/$lang/dashboard/administration/educator-content';
+      fullPath: '/$lang/dashboard/administration/educator-content/';
       preLoaderRoute: typeof LangDashboardAdministrationEducatorContentIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
@@ -1978,7 +1958,7 @@ declare module '@tanstack/react-router' {
       path: '/$lang/courses/$courseSlug';
       fullPath: '/$lang/courses/$courseSlug';
       preLoaderRoute: typeof LangCourseCoursesCourseSlugCourseSlugRouteImport;
-      parentRoute: typeof LangCourseCoursesCourseSlugRoute;
+      parentRoute: typeof rootRouteImport;
     };
     '/$lang/dashboard/professor/manage-courses/$courseId/students': {
       id: '/$lang/dashboard/professor/manage-courses/$courseId/students';
@@ -2173,21 +2153,6 @@ const LangCourseCoursesCourseSlugCourseSlugRouteWithChildren =
     LangCourseCoursesCourseSlugCourseSlugRouteChildren,
   );
 
-interface LangCourseCoursesCourseSlugRouteChildren {
-  LangCourseCoursesCourseSlugCourseSlugRoute: typeof LangCourseCoursesCourseSlugCourseSlugRouteWithChildren;
-}
-
-const LangCourseCoursesCourseSlugRouteChildren: LangCourseCoursesCourseSlugRouteChildren =
-  {
-    LangCourseCoursesCourseSlugCourseSlugRoute:
-      LangCourseCoursesCourseSlugCourseSlugRouteWithChildren,
-  };
-
-const LangCourseCoursesCourseSlugRouteWithChildren =
-  LangCourseCoursesCourseSlugRoute._addFileChildren(
-    LangCourseCoursesCourseSlugRouteChildren,
-  );
-
 const rootRouteChildren: RootRouteChildren = {
   LangIndexRoute: LangIndexRoute,
   LangMiscAboutRoute: LangMiscAboutRoute,
@@ -2286,8 +2251,8 @@ const rootRouteChildren: RootRouteChildren = {
   LangResourcesPodcastsIndexRoute: LangResourcesPodcastsIndexRoute,
   LangResourcesProjectsIndexRoute: LangResourcesProjectsIndexRoute,
   LangTutorialsCategoryIndexRoute: LangTutorialsCategoryIndexRoute,
-  LangCourseCoursesCourseSlugRoute:
-    LangCourseCoursesCourseSlugRouteWithChildren,
+  LangCourseCoursesCourseSlugCourseSlugRoute:
+    LangCourseCoursesCourseSlugCourseSlugRouteWithChildren,
   LangDashboardAdministrationEducatorContentStatusRoute:
     LangDashboardAdministrationEducatorContentStatusRoute,
   LangTutorialsCategorySubcategoryNameIdRoute:

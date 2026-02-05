@@ -4,7 +4,7 @@
     "@blms/database": "workspace:*",
     "drizzle-orm": "^0.44.7",
     "drizzle-zod": "~0.8.3",
-    "zod": "~4.1.12"
+    "zod": "~4.1.13"
   },
   "exports": {
     "development": "./src/index.ts",

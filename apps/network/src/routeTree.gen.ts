@@ -80,8 +80,8 @@ export interface FileRoutesByFullPath {
   '/hubs': typeof HubsRoute;
   '/legal/$name': typeof LegalNameRoute;
   '/news/$category': typeof NewsCategoryRoute;
-  '/legal': typeof LegalIndexRoute;
-  '/news': typeof NewsIndexRoute;
+  '/legal/': typeof LegalIndexRoute;
+  '/news/': typeof NewsIndexRoute;
   '/news/article/$blogName-$blogId': typeof NewsArticleBlogNameBlogIdRoute;
 }
 export interface FileRoutesByTo {
@@ -119,8 +119,8 @@ export interface FileRouteTypes {
     | '/hubs'
     | '/legal/$name'
     | '/news/$category'
-    | '/legal'
-    | '/news'
+    | '/legal/'
+    | '/news/'
     | '/news/article/$blogName-$blogId';
   fileRoutesByTo: FileRoutesByTo;
   to:
@@ -201,14 +201,14 @@ declare module '@tanstack/react-router' {
     '/news/': {
       id: '/news/';
       path: '/news';
-      fullPath: '/news';
+      fullPath: '/news/';
       preLoaderRoute: typeof NewsIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/legal/': {
       id: '/legal/';
       path: '/legal';
-      fullPath: '/legal';
+      fullPath: '/legal/';
       preLoaderRoute: typeof LegalIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };

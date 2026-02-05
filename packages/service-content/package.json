@@ -5,14 +5,14 @@
     "@blms/s3": "workspace:*",
     "@blms/service-common": "workspace:*",
     "@blms/shared": "workspace:*",
-    "@trpc/server": "^11.7.1",
+    "@trpc/server": "^11.9.0",
     "gray-matter": "^4.0.3",
-    "js-yaml": "^4.1.0",
-    "marked": "^17.0.0",
-    "remove-markdown": "^0.6.2",
+    "js-yaml": "^4.1.1",
+    "marked": "^17.0.1",
+    "remove-markdown": "^0.6.3",
     "typesense": "~2.1.0",
     "uuid": "^13.0.0",
-    "zod": "~4.1.12"
+    "zod": "~4.1.13"
   },
   "devDependencies": {
     "@blms/types": "workspace:*",

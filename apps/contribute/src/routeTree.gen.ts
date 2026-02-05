@@ -71,12 +71,12 @@ const LangContentTranslateCourseIdChapterIdCompareSlideIndexRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute;
-  '/$lang': typeof LangIndexRoute;
+  '/$lang/': typeof LangIndexRoute;
   '/$lang/content/create': typeof LangContentCreateRoute;
   '/$lang/content/edit': typeof LangContentEditRoute;
-  '/$lang/content': typeof LangContentIndexRoute;
+  '/$lang/content/': typeof LangContentIndexRoute;
   '/$lang/content/translate/$courseId': typeof LangContentTranslateCourseIdRouteWithChildren;
-  '/$lang/content/translate': typeof LangContentTranslateIndexRoute;
+  '/$lang/content/translate/': typeof LangContentTranslateIndexRoute;
   '/$lang/content/translate/$courseId/$chapterId': typeof LangContentTranslateCourseIdChapterIdRouteWithChildren;
   '/$lang/content/translate/$courseId/$chapterId/compare/$slideIndex': typeof LangContentTranslateCourseIdChapterIdCompareSlideIndexRoute;
 }
@@ -107,12 +107,12 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
   fullPaths:
     | '/'
-    | '/$lang'
+    | '/$lang/'
     | '/$lang/content/create'
     | '/$lang/content/edit'
-    | '/$lang/content'
+    | '/$lang/content/'
     | '/$lang/content/translate/$courseId'
-    | '/$lang/content/translate'
+    | '/$lang/content/translate/'
     | '/$lang/content/translate/$courseId/$chapterId'
     | '/$lang/content/translate/$courseId/$chapterId/compare/$slideIndex';
   fileRoutesByTo: FileRoutesByTo;
@@ -161,14 +161,14 @@ declare module '@tanstack/react-router' {
     '/$lang/': {
       id: '/$lang/';
       path: '/$lang';
-      fullPath: '/$lang';
+      fullPath: '/$lang/';
       preLoaderRoute: typeof LangIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     '/$lang/content/': {
       id: '/$lang/content/';
       path: '/$lang/content';
-      fullPath: '/$lang/content';
+      fullPath: '/$lang/content/';
       preLoaderRoute: typeof LangContentIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
@@ -189,7 +189,7 @@ declare module '@tanstack/react-router' {
     '/$lang/content/translate/': {
       id: '/$lang/content/translate/';
       path: '/$lang/content/translate';
-      fullPath: '/$lang/content/translate';
+      fullPath: '/$lang/content/translate/';
       preLoaderRoute: typeof LangContentTranslateIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };

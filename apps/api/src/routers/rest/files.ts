@@ -483,9 +483,11 @@ export const createRestFilesRoutes = async (
   });
 
   // Fetch single file from S3
-  router.get('/files/:dir/:key(*)', async (req, res, next) => {
+  router.get('/files/:dir/*', async (req, res, next) => {
     try {
-      const { dir, key } = req.params;
+      const params = req.params as unknown as { dir: string; 0: string };
+      const dir = params.dir;
+      const key = params[0];
 
       const allowedBuckets = [
         'certificates',

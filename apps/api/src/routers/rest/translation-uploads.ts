@@ -804,7 +804,10 @@ export const createRestTranslationUploadRoutes = async (
       }
 
       try {
-        const result = await startTranslationFromUpload(uploadId, languages);
+        const result = await startTranslationFromUpload(
+          uploadId as string,
+          languages,
+        );
         res.json(result);
       } catch (error) {
         next(error);
@@ -824,7 +827,7 @@ export const createRestTranslationUploadRoutes = async (
       }
 
       try {
-        const uploads = await getUploadsService(courseId);
+        const uploads = await getUploadsService(courseId as string);
         res.json({
           courseId,
           uploads: uploads || [],
@@ -850,7 +853,7 @@ export const createRestTranslationUploadRoutes = async (
       }
 
       try {
-        const job = await getTranslationJob(courseId, 'upload');
+        const job = await getTranslationJob(courseId as string, 'upload');
 
         if (!job) {
           return res.status(404).json({
@@ -880,7 +883,7 @@ export const createRestTranslationUploadRoutes = async (
       }
 
       try {
-        const uploadRecord = await getUploadByIdService(uploadId);
+        const uploadRecord = await getUploadByIdService(uploadId as string);
 
         if (!uploadRecord) {
           return next(new BadRequest('Upload not found'));
@@ -978,7 +981,7 @@ export const createRestTranslationUploadRoutes = async (
       }
 
       try {
-        const job = await getTranslationJob(courseId, 'translation');
+        const job = await getTranslationJob(courseId as string, 'translation');
 
         if (!job) {
           return res.status(404).json({
@@ -1017,7 +1020,10 @@ export const createRestTranslationUploadRoutes = async (
 
       try {
         // Check if a translation job is already in progress (check DB)
-        const existingJob = await getTranslationJob(courseId, 'translation');
+        const existingJob = await getTranslationJob(
+          courseId as string,
+          'translation',
+        );
         if (
           existingJob &&
           (existingJob.status === 'starting' ||
@@ -1036,7 +1042,7 @@ export const createRestTranslationUploadRoutes = async (
         const originalLanguage = 'en';
 
         // Start translations for selected languages
-        await startTranslations({ courseId, languages });
+        await startTranslations({ courseId: courseId as string, languages });
 
         console.log(
           `[Translation] Retrying translation for course ${courseId}, languages: ${languages.join(', ')}`,
@@ -1045,7 +1051,7 @@ export const createRestTranslationUploadRoutes = async (
         // Start async translation and polling in background (fire and forget)
         startAndPollTranslation(
           dependencies,
-          courseId,
+          courseId as string,
           languages,
           originalLanguage,
           setReadyService,
