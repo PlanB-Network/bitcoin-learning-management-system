@@ -157,7 +157,7 @@ const GlossaryLink: React.FC<{ href: string; children: React.ReactNode }> = ({
 
   // Truncate for mobile (longer limit)
   const truncatedDefinitionMobile = truncateAtWord(
-    glossaryWord.definition,
+    glossaryWord.shortDefinition || glossaryWord.definition,
     600,
   );
   const cleanDefinitionMobile = cleanMarkdown(truncatedDefinitionMobile);
