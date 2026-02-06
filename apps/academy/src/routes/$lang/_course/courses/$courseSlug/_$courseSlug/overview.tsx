@@ -1,6 +1,14 @@
 import { NotificationType } from '@blms/constants';
 import type { ScheduledCourseAnnouncement } from '@blms/types';
-import { cn, TextTag } from '@blms/ui';
+import {
+  cn,
+  TextTag,
+  Tooltip,
+  TooltipArrow,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { useContext, useEffect, useMemo, useState } from 'react';
@@ -109,9 +117,35 @@ function Overview() {
             <div className="flex flex-col gap-6 mt-6 course-overview">
               <div className="flex justify-between w-full items-center">
                 <SectionTitle title={t('dashboard.course.courseCalendar')} />
-                <button onClick={() => setIsModalOpen(true)} type="button">
-                  <TbCalendarDown size={24} />
-                </button>
+                <TooltipProvider>
+                  <Tooltip delayDuration={0}>
+                    <TooltipTrigger asChild>
+                      <button
+                        onClick={() => setIsModalOpen(true)}
+                        type="button"
+                      >
+                        <TbCalendarDown size={24} />
+                      </button>
+                    </TooltipTrigger>
+
+                    <TooltipContent
+                      sideOffset={5}
+                      side={'top'}
+                      className={
+                        'flex flex-col items-center shadow-none! text-xs! w-fit px-3! text-start bg-neutral-50 rounded-full border-0!'
+                      }
+                    >
+                      <TooltipArrow
+                        className="fill-neutral-50"
+                        width={9}
+                        height={7}
+                      />
+                      <span className="text-xs">
+                        {t('dashboard.course.downloadCalendar')}
+                      </span>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               </div>
               <CourseCalendar events={events} />
               <CalendarDownloadModal
