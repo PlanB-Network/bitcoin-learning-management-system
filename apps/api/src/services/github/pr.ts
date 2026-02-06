@@ -330,7 +330,7 @@ export const createResourcePR = async (
     const { data: prData } = await octokit.rest.pulls.create({
       owner,
       repo,
-      title: `[${input.type.slice(0, -1).toUpperCase()} submission] ${input.title}`,
+      title: `${process.env.PLANB_ENVIRONMENT !== 'mainnet' ? '[TEST] ' : ''}[${input.type.slice(0, -1).toUpperCase()} submission] ${input.title}`,
       head: branchName,
       base: baseBranch,
       body: `This PR adds a new ${input.type.slice(0, -1)} resource: **${input.title}**.\n\nSubmission from the BLMS platform by ${contributorName}.`,
