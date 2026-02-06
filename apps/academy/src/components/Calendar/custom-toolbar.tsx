@@ -88,35 +88,40 @@ export default function CustomToolbar({
     <div className="max-md:px-1 mb-5">
       <div className="flex max-md:flex-col justify-between w-full items-center gap-2">
         {/* Navigation Buttons */}
-        <div className="flex items-center gap-2 px-2.5 py-2 border border-neutral-200 rounded-lg text-neutral-700 max-md:order-2">
+        <div className="inline-flex justify-start items-center gap-3 max-md:order-2">
+          <div className="h-8 px-2.5 bg-white rounded-lg border border-neutral-200 flex justify-center items-center gap-2 overflow-hidden">
+            <button
+              type="button"
+              className="flex items-center justify-center border-none! p-0!"
+              onClick={() => onNavigate('PREV')}
+              aria-label={messages.previous!.toString()}
+            >
+              <TbChevronLeft size={16} className="text-neutral-700" />
+            </button>
+            <div className="justify-start text-neutral-700 text-sm font-normal">
+              {displayLabel}
+            </div>
+            <button
+              type="button"
+              className="flex items-center justify-center border-none! p-0!"
+              onClick={() => onNavigate('NEXT')}
+              aria-label={messages.next!.toString()}
+            >
+              <TbChevronRight size={16} className="text-neutral-700" />
+            </button>
+          </div>
           <button
             type="button"
-            className="flex items-center justify-center border-none! p-0!"
-            onClick={() => onNavigate('PREV')}
-            aria-label={messages.previous!.toString()}
-          >
-            <TbChevronLeft size={16} />
-          </button>
-          <button
-            type="button"
-            className="flex items-center justify-center whitespace-nowrap
-            border-none! p-0!"
+            className="h-8 px-2.5 bg-white rounded-lg border border-neutral-200 flex justify-center items-center gap-2 overflow-hidden max-md:hidden"
             onClick={() => onNavigate('TODAY')}
-            aria-label={messages.today!.toString()}
           >
-            {displayLabel}
-          </button>
-          <button
-            type="button"
-            className="flex items-center justify-center border-none! p-0!"
-            onClick={() => onNavigate('NEXT')}
-            aria-label={messages.next!.toString()}
-          >
-            <TbChevronRight size={16} />
+            <div className="justify-start text-neutral-700 text-sm font-normal">
+              {messages.today!.toString()}
+            </div>
           </button>
         </div>
 
-        <span className="rbc-toolbar-label">{displayLabel}</span>
+        <span className="rbc-toolbar-label hidden">{displayLabel}</span>
 
         {/* View Switcher Buttons */}
         <ViewNamesGroup
