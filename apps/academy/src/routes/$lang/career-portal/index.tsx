@@ -316,7 +316,9 @@ function CareerPortal() {
       telegram: '',
     },
     mode: 'onTouched',
-    resolver: standardSchemaResolver(schemas[step - 1]),
+    resolver: standardSchemaResolver(
+      schemas[step > 0 ? step - 1 : 0] as any,
+    ) as any,
   });
 
   const {

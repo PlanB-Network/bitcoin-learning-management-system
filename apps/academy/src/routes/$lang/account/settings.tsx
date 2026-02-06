@@ -152,7 +152,7 @@ const NotificationSettings = () => {
       emailNotifications: getDefaultEmailNotifications(),
       platformNotifications: getDefaultPlatformNotifications(),
     },
-    resolver: standardSchemaResolver(FormSchema),
+    resolver: standardSchemaResolver(FormSchema) as any,
   });
 
   const changeNotificationSettings = useMutation(

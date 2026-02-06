@@ -56,7 +56,7 @@ function ChangeEmailPreferences() {
     defaultValues: {
       emailNotifications: [],
     },
-    resolver: standardSchemaResolver(FormSchema),
+    resolver: standardSchemaResolver(FormSchema) as any,
   });
 
   const changeEmailSettings = useMutation(
