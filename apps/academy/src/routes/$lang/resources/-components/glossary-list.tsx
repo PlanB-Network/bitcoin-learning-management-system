@@ -73,7 +73,10 @@ export const GlossaryList = ({
               </Link>
               <div className="w-3/4 text-neutral-800 line-clamp-5 text-justify body-large">
                 <Suspense fallback="...">
-                  <GlossaryMarkdownBody content={term.definition} isPreview />
+                  <GlossaryMarkdownBody
+                    content={term.shortDefinition || term.definition}
+                    isPreview
+                  />
                 </Suspense>
               </div>
             </div>
@@ -96,7 +99,10 @@ export const GlossaryList = ({
               </Link>
               <div className="w-full text-neutral-800 line-clamp-5 text-justify body-large">
                 <Suspense fallback="...">
-                  <GlossaryMarkdownBody content={term.definition} isPreview />
+                  <GlossaryMarkdownBody
+                    content={term.shortDefinition || term.definition}
+                    isPreview
+                  />
                 </Suspense>
               </div>
             </div>

@@ -81,6 +81,17 @@ function GlossaryWord() {
         <>
           <div className="flex flex-col w-full md:mt-4 mt-2">
             <Suspense fallback={<Loader size={'s'} />}>
+              {glossaryWord?.shortDefinition && (
+                <section className="flex gap-1 flex-col px-4 py-2 border-l-2 border-orange-500 mb-6 md:mb-8">
+                  <span className="text-orange-500 title-small uppercase">
+                    {t('glossary.inShort')}
+                  </span>
+                  <p className="body-large">{glossaryWord?.shortDefinition}</p>
+                </section>
+              )}
+              <span className="text-orange-500 title-small uppercase">
+                {t('glossary.detailedExplanation')}
+              </span>
               <GlossaryMarkdownBody
                 content={glossaryWord?.definition || ''}
                 assetPrefix={cdnUrl(glossaryWord?.path || '')}

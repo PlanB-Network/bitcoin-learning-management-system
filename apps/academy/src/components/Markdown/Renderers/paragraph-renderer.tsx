@@ -14,8 +14,8 @@ const paragraphStyles = cva('text-base tracking-wide', {
       conference: 'desktop-subtitle1 text-neutral-500',
       default: 'text-blue-950 body-16px',
       general: 'text-blue-950 text-base tracking-wide',
-      glossary: 'mobile-body2 md:desktop-body1 text-black my-3 last:mb-0',
-      'glossary-preview': 'mobile-body2 md:desktop-body1 text-black',
+      glossary: 'body-base text-black my-3 last:mb-0',
+      'glossary-preview': 'body-small md:body-large text-black',
     },
   },
 });
