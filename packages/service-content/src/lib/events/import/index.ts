@@ -1,4 +1,4 @@
-import { sql } from '@blms/database';
+import { asTransaction, sql } from '@blms/database';
 import type { ChangedFile } from '@blms/types';
 
 import type { Dependencies } from '../../dependencies.js';
@@ -68,7 +68,8 @@ export const createUpdateEvents = ({
   return async (event: ChangedEvent, errors: string[]) => {
     const main = event.files[0];
     return postgres
-      .begin(async (transaction) => {
+      .begin(async (_tx) => {
+        const transaction = asTransaction(_tx);
         try {
           if (main) {
             const processMainFile = createProcessMainFile(transaction);

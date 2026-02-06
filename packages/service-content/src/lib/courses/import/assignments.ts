@@ -1,4 +1,9 @@
-import { firstRow, sql, type TransactionSql } from '@blms/database';
+import {
+  asTransaction,
+  firstRow,
+  sql,
+  type TransactionSql,
+} from '@blms/database';
 import type { S3Service } from '@blms/s3';
 import type { ChangedFile, Course } from '@blms/types';
 import type { Dependencies } from '../../dependencies.js';
@@ -73,7 +78,8 @@ export const createUpdateAssignments = ({
     const { main, files } = separateContentFiles(assignment, 'assignment.yml');
 
     return postgres
-      .begin(async (transaction) => {
+      .begin(async (_tx) => {
+        const transaction = asTransaction(_tx);
         const processMainFile = createProcessMainFile(transaction);
         const processPdfFile = createProcessPdfFile(transaction, s3);
 

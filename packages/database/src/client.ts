@@ -1,9 +1,4 @@
-import type {
-  TransactionSql as OriginalTransactionSql,
-  PendingQuery,
-  Row,
-  Sql,
-} from 'postgres';
+import type { PendingQuery, Row, Sql } from 'postgres';
 import postgres from 'postgres';
 
 import { firstRow, rejectOnEmpty } from './helpers.js';
@@ -16,15 +11,50 @@ export interface PostgresClientConfig {
   password: string;
 }
 
-type PostgresTypesMapper = {
+export type PostgresTypesMapper = {
   bigint: number;
   numeric: number;
   null: undefined; // Placeholder for TypeScript to accept undefined values
 };
 
-export type TransactionSql = OriginalTransactionSql<PostgresTypesMapper>;
+// Re-export the postgres package's TransactionSql with our type mapper.
+// Note: postgres.TransactionSql extends Omit<Sql, ...> which doesn't preserve call signatures.
+// We define our own interface that is structurally compatible with postgres.TransactionSql
+// and explicitly includes the Sql call signatures for template tag and helper usage.
+export interface TransactionSql
+  extends Omit<
+    Sql<PostgresTypesMapper>,
+    | 'parameters'
+    | 'largeObject'
+    | 'subscribe'
+    | 'CLOSE'
+    | 'END'
+    | 'PostgresError'
+    | 'options'
+    | 'reserve'
+    | 'listen'
+    | 'begin'
+    | 'close'
+    | 'end'
+  > {
+  // Template tag call signature
+  <T extends readonly (object | undefined)[] = Row[]>(
+    template: TemplateStringsArray,
+    ...parameters: readonly unknown[]
+  ): PendingQuery<T>;
+
+  // Helper function call signature (for building SQL fragments)
+  <T>(first: T, ...rest: unknown[]): unknown;
+}
 
 export type SqlHelper = Sql<PostgresTypesMapper>;
+
+/**
+ * Helper to cast postgres package's TransactionSql to our typed TransactionSql.
+ * Use this when receiving a transaction from postgres.begin() callback.
+ */
+export const asTransaction = (tx: unknown): TransactionSql =>
+  tx as TransactionSql;
 
 // Set when createPostgresClient is called
 export let sql: SqlHelper;

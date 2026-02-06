@@ -1,5 +1,4 @@
-import type { TransactionSql } from '@blms/database';
-import { firstRow } from '@blms/database';
+import { firstRow, type TransactionSql } from '@blms/database';
 import type { Legal } from '@blms/types';
 
 import type { ChangedLegal } from './index.js';

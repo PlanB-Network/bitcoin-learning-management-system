@@ -1,4 +1,4 @@
-import { firstRow, sql } from '@blms/database';
+import { asTransaction, firstRow, sql } from '@blms/database';
 import type { Blog, ChangedFile } from '@blms/types';
 import matter from 'gray-matter';
 
@@ -102,7 +102,8 @@ export const createUpdateBlogs = ({
     const { main, files } = separateContentFiles(blog, 'post.yml');
 
     return postgres
-      .begin(async (transaction) => {
+      .begin(async (_tx) => {
+        const transaction = asTransaction(_tx);
         try {
           const processMainFile = createProcessMainFile(transaction);
           await processMainFile(blog, main);

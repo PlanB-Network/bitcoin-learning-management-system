@@ -1,4 +1,4 @@
-import { firstRow } from '@blms/database';
+import { asTransaction, firstRow } from '@blms/database';
 import type { Bet, Proofreading, Resource } from '@blms/types';
 
 import type { ProofreadingEntry } from '#src/lib/types.js';
@@ -30,7 +30,8 @@ export const createProcessChangedBet = (
 ) => {
   return async (resource: ChangedResource) => {
     return postgres
-      .begin(async (transaction) => {
+      .begin(async (_tx) => {
+        const transaction = asTransaction(_tx);
         const { main, files } = separateContentFiles(resource, 'bet.yml');
         if (!main) return;
 

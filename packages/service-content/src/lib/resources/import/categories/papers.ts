@@ -1,4 +1,4 @@
-import { firstRow, type TransactionSql } from '@blms/database';
+import { asTransaction, firstRow, type TransactionSql } from '@blms/database';
 import type { S3Service } from '@blms/s3';
 import type { ChangedFile, Resource } from '@blms/types';
 
@@ -27,7 +27,8 @@ export const createProcessChangedPaper = (
 ) => {
   return async (resource: ChangedResource) => {
     return postgres
-      .begin(async (transaction) => {
+      .begin(async (_tx) => {
+        const transaction = asTransaction(_tx);
         const { main, files } = separateContentFiles(resource, 'paper.yml');
 
         if (!main) return;

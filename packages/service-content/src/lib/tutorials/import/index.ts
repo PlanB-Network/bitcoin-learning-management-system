@@ -1,4 +1,4 @@
-import { firstRow, sql } from '@blms/database';
+import { asTransaction, firstRow, sql } from '@blms/database';
 import type { ChangedAsset, ChangedFile, Tutorial } from '@blms/types';
 import matter from 'gray-matter';
 import type { Language } from '../../const.js';
@@ -116,7 +116,8 @@ export const createUpdateTutorials = ({
     const { main, files } = separateContentFiles(tutorial, 'tutorial.yml');
 
     return postgres
-      .begin(async (transaction) => {
+      .begin(async (_tx) => {
+        const transaction = asTransaction(_tx);
         try {
           const processMainFile = createProcessMainFile(transaction);
           await processMainFile(tutorial, main);

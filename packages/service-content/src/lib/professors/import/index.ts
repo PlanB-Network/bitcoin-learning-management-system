@@ -1,4 +1,4 @@
-import { firstRow, sql } from '@blms/database';
+import { asTransaction, firstRow, sql } from '@blms/database';
 import type { ChangedFile, Professor } from '@blms/types';
 
 import type { Language } from '../../const.js';
@@ -88,7 +88,8 @@ export const createUpdateProfessors = ({
     const { main, files } = separateContentFiles(professor, 'professor.yml');
 
     return postgres
-      .begin(async (transaction) => {
+      .begin(async (_tx) => {
+        const transaction = asTransaction(_tx);
         const processMainFile = createProcessMainFile(transaction);
         const processLocalFile = createProcessLocalFile(transaction);
 

@@ -1,4 +1,4 @@
-import { firstRow } from '@blms/database';
+import { asTransaction, firstRow } from '@blms/database';
 import type { Project, Proofreading, Resource } from '@blms/types';
 
 import type { ProofreadingEntry } from '#src/lib/types.js';
@@ -39,7 +39,8 @@ export const createProcessChangedProject = (
 ) => {
   return async (resource: ChangedResource) => {
     return postgres
-      .begin(async (transaction) => {
+      .begin(async (_tx) => {
+        const transaction = asTransaction(_tx);
         const processMainFile = createProcessMainFile(transaction);
         const { main, files } = separateContentFiles(resource, 'project.yml');
         if (!main) return;

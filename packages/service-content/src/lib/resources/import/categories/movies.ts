@@ -1,4 +1,4 @@
-import { firstRow } from '@blms/database';
+import { asTransaction, firstRow } from '@blms/database';
 import type { Resource } from '@blms/types';
 
 import type { Dependencies } from '../../../dependencies.js';
@@ -26,7 +26,8 @@ export const createProcessChangedMovie = (
 ) => {
   return async (resource: ChangedResource) => {
     return postgres
-      .begin(async (transaction) => {
+      .begin(async (_tx) => {
+        const transaction = asTransaction(_tx);
         const { main } = separateContentFiles(resource, 'movie.yml');
         if (!main) return;
 

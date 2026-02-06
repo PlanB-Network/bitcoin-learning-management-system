@@ -1,8 +1,8 @@
 {
   "dependencies": {
     "@blms/constants": "workspace:*",
-    "drizzle-orm": "^0.44.7",
-    "postgres": "3.4.7"
+    "drizzle-orm": "^0.45.1",
+    "postgres": "3.4.8"
   },
   "devDependencies": {
     "drizzle-kit": "^0.31.8",

@@ -1,4 +1,4 @@
-import { firstRow } from '@blms/database';
+import { asTransaction, firstRow } from '@blms/database';
 import type { Calendar, Proofreading, Resource } from '@blms/types';
 
 import type { ProofreadingEntry } from '#src/lib/types.js';
@@ -25,7 +25,8 @@ export const createProcessChangedCalendar = (
 ) => {
   return async (resource: ChangedResource) => {
     return postgres
-      .begin(async (transaction) => {
+      .begin(async (_tx) => {
+        const transaction = asTransaction(_tx);
         const { main, files } = separateContentFiles(resource, 'calendar.yml');
         if (!main) return;
 

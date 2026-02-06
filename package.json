@@ -2,9 +2,9 @@
   "name": "blms",
   "version": "0.0.0",
   "devDependencies": {
-    "@biomejs/biome": "2.3.11",
+    "@biomejs/biome": "2.3.14",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^24.10.10",
+    "@types/node": "^24.10.11",
     "husky": "^9.1.7",
     "jsonc-parser": "^3.3.1",
     "knip": "^5.83.0",

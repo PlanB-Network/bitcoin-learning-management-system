@@ -1,4 +1,4 @@
-import { firstRow, sql } from '@blms/database';
+import { asTransaction, firstRow, sql } from '@blms/database';
 import { LANGUAGES_MAP } from '@blms/shared';
 import type {
   ChangedAsset,
@@ -396,7 +396,8 @@ export const createUpdateCourses = ({
     let parsedCourse: CourseMain;
 
     return postgres
-      .begin(async (transaction) => {
+      .begin(async (_tx) => {
+        const transaction = asTransaction(_tx);
         try {
           parsedCourse = await yamlToObject<CourseMain>(main);
 

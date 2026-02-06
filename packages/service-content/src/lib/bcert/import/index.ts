@@ -1,4 +1,4 @@
-import { firstRow, sql } from '@blms/database';
+import { asTransaction, firstRow, sql } from '@blms/database';
 import type { BCertExam, ChangedFile } from '@blms/types';
 
 import type { Dependencies } from '../../dependencies.js';
@@ -100,7 +100,8 @@ export const createUpdateBCertExams = ({
     );
 
     return postgres
-      .begin(async (transaction) => {
+      .begin(async (_tx) => {
+        const transaction = asTransaction(_tx);
         const processMainFile = createProcessMainFile(transaction);
         const processResultFile = createProcessResultFile(transaction);
         const processTimestampFile = createProcessTimestampFile(

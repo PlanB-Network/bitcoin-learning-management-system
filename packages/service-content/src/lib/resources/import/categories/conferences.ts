@@ -1,4 +1,4 @@
-import { firstRow } from '@blms/database';
+import { asTransaction, firstRow } from '@blms/database';
 import type { Conference, Proofreading, Resource } from '@blms/types';
 import matter from 'gray-matter';
 import { marked } from 'marked';
@@ -89,7 +89,8 @@ export const createProcessChangedConference = (
 ) => {
   return async (resource: ChangedResource) => {
     return postgres
-      .begin(async (transaction) => {
+      .begin(async (_tx) => {
+        const transaction = asTransaction(_tx);
         const { main, files } = separateContentFiles(
           resource,
           'conference.yml',

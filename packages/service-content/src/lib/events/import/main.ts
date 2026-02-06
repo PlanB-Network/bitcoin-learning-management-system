@@ -1,5 +1,4 @@
-import type { TransactionSql } from '@blms/database';
-import { firstRow } from '@blms/database';
+import { firstRow, type TransactionSql } from '@blms/database';
 import type { ChangedFile, Event } from '@blms/types';
 
 import { yamlToObject } from '../../utils.js';

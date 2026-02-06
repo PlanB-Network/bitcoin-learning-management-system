@@ -1,4 +1,4 @@
-import type { BasicCourse } from '@blms/types';
+import type { JoinedCourse } from '@blms/types';
 import { Button } from '@blms/ui';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useEffect, useMemo, useState } from 'react';
@@ -77,14 +77,14 @@ function TranslateCoursesPage() {
       .map((contribution: { courseId: string }) =>
         allCourses?.find((c) => c.id === contribution.courseId),
       )
-      .filter((course): course is BasicCourse => course !== undefined);
+      .filter((course): course is JoinedCourse => course !== undefined);
 
     // Combine + deduplicate by id
     const combined = [
-      ...(filteredCourses as BasicCourse[]),
+      ...(filteredCourses as JoinedCourse[]),
       ...contributionCourses,
     ];
-    const uniqueById = new Map<string, BasicCourse>();
+    const uniqueById = new Map<string, JoinedCourse>();
     for (const course of combined) {
       uniqueById.set(course.id, course);
     }
@@ -140,7 +140,7 @@ function TranslateCoursesPage() {
       .map((contribution: { courseId: string }) =>
         allCourses?.find((c) => c.id === contribution.courseId),
       )
-      .filter((course): course is BasicCourse => course !== undefined);
+      .filter((course): course is JoinedCourse => course !== undefined);
 
     // Apply topic filter so the TopicFilter works in "Your contributions" view
     const filteredContributions = filterCoursesByTopic(

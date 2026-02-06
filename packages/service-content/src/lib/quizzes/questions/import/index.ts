@@ -1,4 +1,4 @@
-import { sql } from '@blms/database';
+import { asTransaction, sql } from '@blms/database';
 import type { ChangedFile } from '@blms/types';
 
 import type { Language } from '../../../const.js';
@@ -97,7 +97,8 @@ export const createUpdateQuizQuestions = ({
     const { main, files } = separateContentFiles(quizQuestion, 'question.yml');
 
     return postgres
-      .begin(async (transaction) => {
+      .begin(async (_tx) => {
+        const transaction = asTransaction(_tx);
         const processMainFile = createProcessMainFile(transaction);
         const processLocalFile = createProcessLocalFile(transaction);
 

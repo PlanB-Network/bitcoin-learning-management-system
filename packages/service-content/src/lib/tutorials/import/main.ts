@@ -1,5 +1,4 @@
-import type { TransactionSql } from '@blms/database';
-import { firstRow } from '@blms/database';
+import { firstRow, type TransactionSql } from '@blms/database';
 import type { ChangedFile, Proofreading, Tutorial } from '@blms/types';
 
 import type { ProofreadingEntry } from '#src/lib/types.js';

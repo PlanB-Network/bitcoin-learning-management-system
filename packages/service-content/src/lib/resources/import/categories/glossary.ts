@@ -1,4 +1,4 @@
-import { firstRow } from '@blms/database';
+import { asTransaction, firstRow } from '@blms/database';
 import type { GlossaryWord, Proofreading, Resource } from '@blms/types';
 import matter from 'gray-matter';
 
@@ -22,7 +22,8 @@ export const createProcessChangedGlossaryWord = (
 ) => {
   return async (resource: ChangedResource) => {
     return postgres
-      .begin(async (transaction) => {
+      .begin(async (_tx) => {
+        const transaction = asTransaction(_tx);
         const processMainFile = createProcessMainFile(transaction);
         const { main, files } = separateContentFiles(resource, 'word.yml');
         if (!main) return;

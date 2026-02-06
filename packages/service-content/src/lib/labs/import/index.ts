@@ -1,4 +1,4 @@
-import { firstRow, sql } from '@blms/database';
+import { asTransaction, firstRow, sql } from '@blms/database';
 import type { ChangedFile, Lab } from '@blms/types';
 import type { Dependencies } from '../../dependencies.js';
 import type { ChangedContent } from '../../types.js';
@@ -25,7 +25,8 @@ export const createUpdateLabs = ({
     const { main, files } = separateContentFiles(lab, 'lab.yml');
 
     return postgres
-      .begin(async (transaction) => {
+      .begin(async (_tx) => {
+        const transaction = asTransaction(_tx);
         const processMainFile = createProcessMainFile(transaction);
         const processSessionFile = createProcessSessionFile(transaction);
 
