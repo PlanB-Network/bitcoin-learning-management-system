@@ -386,6 +386,15 @@ export const createGetMetadata = (dependencies: Dependencies) => {
     const [category, ...rest] = parts;
 
     switch (category) {
+      case 'news': {
+        // Handle /news/article/:slug
+        if (rest[0] === 'article') {
+          return getBlogMetadata(lang, rest.slice(1)) //
+            .catch(defaultOnError(lang));
+        }
+        return defaultMeta(lang);
+      }
+
       case 'courses': {
         return getCourseMetadata(lang, rest) //
           .catch(defaultOnError(lang));
