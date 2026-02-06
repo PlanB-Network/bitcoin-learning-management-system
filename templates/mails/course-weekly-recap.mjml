@@ -83,7 +83,7 @@
         </mj-column>
       </mj-section>
 
-      {{#each upcomingChapters}}
+      <mj-raw>{{#each upcomingChapters}}</mj-raw>
         <!-- Class -->
         <mj-section padding-top="10px" padding-bottom="10px">
           <mj-column width="90%">
@@ -93,7 +93,7 @@
             </mj-text>
           </mj-column>
         </mj-section>
-      {{/each}}
+      <mj-raw>{{/each}}</mj-raw>
 
       <!-- Closing text -->
       <mj-section padding-top="20px" padding-bottom="15px">

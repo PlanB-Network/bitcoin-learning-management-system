@@ -1,0 +1,73 @@
+<mjml>
+  <mj-head>
+    <mj-font name="Rubik" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" />
+    <mj-font name="IBM Plex Sans" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;700&display=swap" />
+    <mj-attributes>
+      <mj-all font-family="'IBM Plex Sans', Rubik, Arial, sans-serif" color="#000000" />
+      <mj-text font-size="16px" line-height="24px" letter-spacing="0.10px" />
+      <mj-button border-radius="10px" background-color="#FF5C00" color="#ffffff" font-weight="500" font-size="18px" font-family="Rubik, Arial, sans-serif" />
+    </mj-attributes>
+    <mj-style>
+      .main-text div {
+        font-size: 18px !important;
+        font-weight: 400 !important;
+        line-height: 27px !important;
+        font-family: 'IBM Plex Sans', Rubik, Arial, sans-serif !important;
+      }
+    </mj-style>
+  </mj-head>
+  <mj-body>
+    <mj-wrapper padding-left="25px" padding-right="25px">
+      <!-- Logo -->
+      <mj-section padding-top="32px" padding-bottom="20px">
+        <mj-column>
+          <mj-image src="http://cdn.mcauto-images-production.sendgrid.net/1320c1d7e5304d1f/4fc3540f-18ed-4e56-acc9-11251f854028/558x104.png" alt="Logo" width="264px" align="center" padding="0" />
+        </mj-column>
+      </mj-section>
+
+      <!-- Message Text -->
+      <mj-section padding-top="0px" padding-bottom="0px">
+        <mj-column>
+          <mj-text align="left" padding-bottom="16px" css-class="main-text">
+            You're almost set to start using your account on Plan ₿ Academy. Simply click on the link below to confirm your email address and get started.
+          </mj-text>
+          <mj-text align="left" padding-bottom="0px" css-class="main-text">
+            This link will expire in 1 hour.
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <!-- Action Button -->
+      <mj-section padding-top="20px" padding-bottom="0px">
+        <mj-column>
+          <mj-button align="left" href="{{token_url}}">
+            Verify your mail
+          </mj-button>
+        </mj-column>
+      </mj-section>
+
+      <!-- Link Fallback Section -->
+      <mj-section padding-top="20px" padding-bottom="0px">
+        <mj-column>
+          <mj-text align="left" padding-bottom="8px" css-class="main-text">
+            In case the link is not working, please copy/paste the following URL in your browser:
+          </mj-text>
+          <mj-text align="left" padding-bottom="0px" css-class="main-text">
+            {{token_url}}
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <!-- Signature -->
+      <mj-section padding-top="0px" padding-bottom="0px">
+        <mj-column>
+          <mj-text font-weight="400">
+            Best regards,<br />
+            Plan ₿ Academy
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+    </mj-wrapper>
+  </mj-body>
+</mjml>

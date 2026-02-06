@@ -54,7 +54,7 @@
           line-height="1.5"
           css-class="body-text">
           Hi there,<br /><br />
-          The following material has been submitted as new educator content, and is waiting for your review and approval:
+          We're sorry to inform you that your Educator Content, <b>{{title}}</b>, has been rejected and cannot be added to planb.academy.
         </mj-text>
       </mj-column>
     </mj-section>
@@ -69,33 +69,23 @@
           padding="0 25px"
           line-height="1.8"
           css-class="body-text">
-          {{#each contents}}
-          • {{title}}, submitted by {{authorName}}<br />
-          {{/each}}
+          If you have any questions or would like further clarification, please feel free to contact us at <a href="mailto:profedustream@planb.network" style="color: #FF5C00; text-decoration: underline;">profedustream@planb.network</a>.<br />
         </mj-text>
       </mj-column>
     </mj-section>
 
-    <!-- Button -->
-    <mj-section padding-top="20px" padding-bottom="40px" padding-left="20px" padding-right="20px">
-      <mj-column>
-        <mj-button
-          href={{reviewLink}}
-          align="center"
-          padding="0"
-          inner-padding="14px 18px">
-          Review content
-        </mj-button>
-      </mj-column>
-    </mj-section>
 
-    <mj-section padding-top="0px" padding-bottom="15px">
-        <mj-column width="90%">
-            <mj-text font-weight="400" padding="0">
+	    <mj-section padding-top="10px" padding-bottom="10px" padding-left="20px" padding-right="20px">
+        <mj-column>
+          <mj-text
+          	font-size="14px"
+          	padding="0 25px"
+            font-weight="400"
+						padding="0">
             Best regards,<br />
             The Plan ₿ Academy team
-            </mj-text>
+          </mj-text>
         </mj-column>
-    </mj-section>
+      </mj-section>
   </mj-body>
 </mjml>

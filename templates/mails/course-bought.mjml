@@ -38,7 +38,7 @@
           font-weight="400"
           padding="0 25px"
           css-class="title-text">
-          Educator Content
+          Welcome to {{courseName}}!
         </mj-text>
       </mj-column>
     </mj-section>
@@ -47,31 +47,13 @@
     <mj-section padding-top="15px" padding-bottom="20px" padding-left="20px" padding-right="20px">
       <mj-column>
         <mj-text
-          align="left"
+          align="center"
           font-size="18px"
           font-weight="400"
           padding="0 25px"
           line-height="1.5"
           css-class="body-text">
-          Hi there,<br /><br />
-          The following material has been submitted as new educator content, and is waiting for your review and approval:
-        </mj-text>
-      </mj-column>
-    </mj-section>
-
-    <!-- Content List -->
-    <mj-section padding-top="10px" padding-bottom="10px" padding-left="20px" padding-right="20px">
-      <mj-column>
-        <mj-text
-          align="left"
-          font-size="16px"
-          font-weight="400"
-          padding="0 25px"
-          line-height="1.8"
-          css-class="body-text">
-          {{#each contents}}
-          • {{title}}, submitted by {{authorName}}<br />
-          {{/each}}
+          Thank you for your registration. You are now officially part of the {{courseName}} promotion.<br/><br/>Log in to your account and find in your student dashboard all the information relative to the course.
         </mj-text>
       </mj-column>
     </mj-section>
@@ -80,22 +62,13 @@
     <mj-section padding-top="20px" padding-bottom="40px" padding-left="20px" padding-right="20px">
       <mj-column>
         <mj-button
-          href={{reviewLink}}
+          href="https://planb.network/en/my-courses"
           align="center"
           padding="0"
           inner-padding="14px 18px">
-          Review content
+          Go to course dashboard
         </mj-button>
       </mj-column>
-    </mj-section>
-
-    <mj-section padding-top="0px" padding-bottom="15px">
-        <mj-column width="90%">
-            <mj-text font-weight="400" padding="0">
-            Best regards,<br />
-            The Plan ₿ Academy team
-            </mj-text>
-        </mj-column>
     </mj-section>
   </mj-body>
 </mjml>

@@ -64,11 +64,11 @@
           <mj-text font-weight="400" padding="0" padding-bottom="20px">
             Hello,<br/>Here is an important announcement from your professor:
           </mj-text>
-          {{#each announcementText}}
           <mj-text css-class="announcement-highlight" padding="0">
-            {{this}}
+            {{#each announcementText}}
+              {{this}}<br />
+            {{/each}}
           </mj-text>
-          {{/each}}
         </mj-column>
       </mj-section>
 
