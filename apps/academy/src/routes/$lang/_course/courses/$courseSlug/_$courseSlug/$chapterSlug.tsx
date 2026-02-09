@@ -404,7 +404,13 @@ function CourseChapter() {
 
   const { openAuthModal: openAuthModalContext } = useAuthModal();
 
-  const { course, courseProgress, isLoggedIn } = useContext(CourseContext);
+  const { course, courseProgress, isLoggedIn, isCoursePaid } =
+    useContext(CourseContext);
+
+  // Early access check: if course requires payment and user doesn't have access,
+  // we skip the expensive API calls and show error immediately
+  const needsAccess =
+    course?.requiresPayment && (!isLoggedIn || isCoursePaid === false);
 
   const [isContentExpanded, setIsContentExpanded] = useState(true);
 
@@ -436,6 +442,7 @@ function CourseChapter() {
       },
       {
         refetchOnWindowFocus: false,
+        enabled: !needsAccess,
       },
     ),
   );
@@ -453,10 +460,15 @@ function CourseChapter() {
   );
 
   const { data: quizzArray } = useQuery(
-    trpc.content.getCourseChapterQuizQuestions.queryOptions({
-      chapterId: params.chapterId,
-      language: i18n.language,
-    }),
+    trpc.content.getCourseChapterQuizQuestions.queryOptions(
+      {
+        chapterId: params.chapterId,
+        language: i18n.language,
+      },
+      {
+        enabled: !needsAccess,
+      },
+    ),
   );
 
   const questionsArray: Question[] = useMemo(() => {
@@ -600,13 +612,8 @@ function CourseChapter() {
       }
     >
       <div className="text-black flex flex-col grow">
-        {!isFetched && (
-          <div className="flex flex-col flex-1 items-center size-full">
-            <Loader size={'s'} />
-          </div>
-        )}
-
-        {isFetched && isError && error.data?.code === 'UNAUTHORIZED' && (
+        {/* Early access check - show immediately without waiting for API calls */}
+        {needsAccess && !isLoggedIn && (
           <div className="flex flex-col flex-1 items-center size-full">
             <div>{t('courses.details.premiumContentNeedsLogin')}</div>
             <div>
@@ -623,7 +630,7 @@ function CourseChapter() {
           </div>
         )}
 
-        {isFetched && isError && error.data?.code === 'FORBIDDEN' && (
+        {needsAccess && isLoggedIn && (
           <div className="flex flex-col flex-1 items-center size-full">
             <div>{t('courses.details.premiumContentNeedsPayment')}</div>
             <div>
@@ -638,14 +645,58 @@ function CourseChapter() {
           </div>
         )}
 
-        {isFetched && !isError && !chapter && (
+        {!needsAccess && !isFetched && (
+          <div className="flex flex-col flex-1 items-center size-full">
+            <Loader size={'s'} />
+          </div>
+        )}
+
+        {!needsAccess &&
+          isFetched &&
+          isError &&
+          error.data?.code === 'UNAUTHORIZED' && (
+            <div className="flex flex-col flex-1 items-center size-full">
+              <div>{t('courses.details.premiumContentNeedsLogin')}</div>
+              <div>
+                <Button
+                  size="l"
+                  mode="light"
+                  variant="primary"
+                  className="mt-4"
+                  onClick={openAuthModal}
+                >
+                  {t('auth.signIn')}
+                </Button>
+              </div>
+            </div>
+          )}
+
+        {!needsAccess &&
+          isFetched &&
+          isError &&
+          error.data?.code === 'FORBIDDEN' && (
+            <div className="flex flex-col flex-1 items-center size-full">
+              <div>{t('courses.details.premiumContentNeedsPayment')}</div>
+              <div>
+                <Link
+                  to={'/courses/$courseId'}
+                  params={{ courseId: params.courseSlug }}
+                  className="text-orange-500 hover:underline"
+                >
+                  {t('courses.details.premiumContentNeedsPaymentAction')}
+                </Link>
+              </div>
+            </div>
+          )}
+
+        {!needsAccess && isFetched && !isError && !chapter && (
           <div className="flex size-full flex-col items-start py-6 md:items-center md:py-10">
             {t('underConstruction.itemNotFoundOrTranslated', {
               item: t('words.chapter'),
             })}
           </div>
         )}
-        {chapter && (
+        {!needsAccess && chapter && (
           <div className="flex size-full flex-col">
             {/* Desktop */}
             <TimelineBig

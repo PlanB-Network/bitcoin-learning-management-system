@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Outlet } from '@tanstack/react-router';
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AppContext } from '#src/providers/context.tsx';
 import { CourseContext } from '#src/providers/courseContext.tsx';
@@ -37,10 +37,27 @@ function CourseLayout() {
     ),
   );
 
+  const { data: payments } = useQuery(
+    trpc.user.courses.getPayments.queryOptions(undefined, {
+      enabled: isLoggedIn && !!course?.requiresPayment,
+    }),
+  );
+
+  const isCoursePaid = useMemo(
+    () =>
+      payments?.some(
+        (payment) =>
+          payment.paymentStatus === 'paid' && payment.courseId === course?.id,
+      ),
+    [payments, course?.id],
+  );
+
   if (!course) return null;
 
   return (
-    <CourseContext.Provider value={{ course, courseProgress, isLoggedIn }}>
+    <CourseContext.Provider
+      value={{ course, courseProgress, isLoggedIn, isCoursePaid }}
+    >
       <Outlet />
     </CourseContext.Provider>
   );
