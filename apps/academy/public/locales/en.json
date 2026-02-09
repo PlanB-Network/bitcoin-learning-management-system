@@ -1950,6 +1950,10 @@
     },
     "projects": {
       "addProjects": "Add project",
+      "joinCommunity": "Join community",
+      "joinCommunitySuccess": "You are now part of {{communityName}}",
+      "leaveCommunity": "Leave community",
+      "noMembers": "This community doesn’t have any registered members on the platform yet",
       "title": "Projects",
       "types": {
         "communities": "Communities",
@@ -2203,6 +2207,7 @@
     "intermediate": "Intermediate",
     "invoice": "Invoice",
     "invoices": "Invoices",
+    "joined": "Joined",
     "language": "Language",
     "lecture": "Lecture",
     "lectures": "Lectures",
@@ -2223,7 +2228,7 @@
     "list": "List",
     "location": "Location",
     "map": "Map",
-    "members": " Members",
+    "members": "Members",
     "mentor": "Mentor",
     "mining": "Mining",
     "month": "Month",

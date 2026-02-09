@@ -6,6 +6,8 @@ import type { UserPermission, UserRole } from '@blms/constants';
 export interface UserAccount {
   calendarToken: string;
   certificateName: string | null;
+  communityId: string | null;
+  communityJoinedAt: Date | null;
   contributorId: string;
   createdAt: Date;
   currentEmailChecked: boolean;
@@ -48,6 +50,8 @@ export interface UserDetails {
   role: UserRole;
   uid: string;
   username: string;
+  communityId: string | null;
+  communityJoinedAt: Date | null;
   boughtCourses: string[];
   professorCourses: string[];
   professorTutorials: string[];
@@ -92,4 +96,9 @@ export interface ApiKey {
 export interface EmailSettings {
   emailNotifyCourses: boolean;
   emailNotifyGeneral: boolean;
+}
+
+export interface CommunityMember {
+  username: string;
+  picture: string | null;
 }

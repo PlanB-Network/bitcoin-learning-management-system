@@ -28,6 +28,8 @@ import {
   createGetUserAccountSettings,
   createGetUserDetails,
   createGetUsersRoles,
+  createJoinCommunity,
+  createLeaveCommunity,
   createPasswordReset,
   createPasswordResetToken,
   createSaveGeneralPayment,
@@ -272,6 +274,23 @@ export const userRouter = createTRPCRouter({
         role: input.role,
       }),
     ),
+
+  joinCommunity: studentProcedure
+    .input(z.object({ communityId: z.string() }))
+    .output<Parser<void>>(z.void())
+    .mutation(async ({ ctx, input }) => {
+      await createJoinCommunity(ctx.dependencies)(
+        ctx.user.uid,
+        input.communityId,
+      );
+    }),
+
+  leaveCommunity: studentProcedure
+    .output<Parser<void>>(z.void())
+    .mutation(async ({ ctx }) => {
+      await createLeaveCommunity(ctx.dependencies)(ctx.user.uid);
+    }),
+
   notifications: userNotificationsRouter,
   requestPasswordReset: publicProcedure
     .input(z.object({ email: z.string().email() }))

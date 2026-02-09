@@ -1,4 +1,5 @@
 import {
+  communityMemberSchema,
   joinedBetSchema,
   joinedBookSchema,
   joinedConferenceSchema,
@@ -36,8 +37,12 @@ import {
   createGetYoutubeChannels,
   createSearch,
 } from '@blms/service-content';
-import { createGetLanguages } from '@blms/service-user';
+import {
+  createGetCommunityMembers,
+  createGetLanguages,
+} from '@blms/service-user';
 import type {
+  CommunityMember,
   JoinedBet,
   JoinedBook,
   JoinedConference,
@@ -224,4 +229,11 @@ export const resourcesRouter = createTRPCRouter({
     .input(z.void())
     .output<Parser<Language[] | null>>(languageSchema.array().nullable())
     .query(({ ctx }) => createGetLanguages(ctx.dependencies)()),
+
+  getCommunityMembers: publicProcedure
+    .input(z.object({ communityId: z.string() }))
+    .output<Parser<CommunityMember[]>>(communityMemberSchema.array())
+    .query(({ ctx, input }) =>
+      createGetCommunityMembers(ctx.dependencies)(input.communityId),
+    ),
 });

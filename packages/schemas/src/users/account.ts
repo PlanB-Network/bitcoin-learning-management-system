@@ -30,6 +30,8 @@ export const userDetailsSchema = userAccountSchema
     role: true,
     uid: true,
     username: true,
+    communityId: true,
+    communityJoinedAt: true,
   })
   .merge(
     z.object({
@@ -74,4 +76,9 @@ export const apiKeySchema = createSelectSchema(usersApiKeys);
 export const emailSettingsSchema = userAccountSettingsSchema.pick({
   emailNotifyCourses: true,
   emailNotifyGeneral: true,
+});
+
+export const communityMemberSchema = userAccountSchema.pick({
+  username: true,
+  picture: true,
 });

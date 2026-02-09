@@ -73,6 +73,10 @@ export const userPermissionsEnum = pgNativeEnum(
 export const usersAccounts = users.table('accounts', (t) => ({
   calendarToken: t.uuid().defaultRandom().unique().notNull(),
   certificateName: t.varchar({ length: 255 }),
+  communityId: t
+    .uuid()
+    .references(() => contentProjects.id, { onDelete: 'set null' }),
+  communityJoinedAt: t.timestamp({ withTimezone: true }),
   contributorId: t.varchar({ length: 63 }).unique().notNull(),
   createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
   currentEmailChecked: t.boolean().default(false).notNull(),
