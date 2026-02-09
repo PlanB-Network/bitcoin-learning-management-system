@@ -32,7 +32,6 @@
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^4.1.3",
     "@storybook/addon-docs": "^10.2.7",
     "@storybook/addon-links": "^10.2.7",
     "@storybook/addon-onboarding": "^10.2.7",
