@@ -39,6 +39,9 @@ export const userDetailsSchema = userAccountSchema
       professorCourses: z.string().array(),
       professorTutorials: z.string().array(),
       pendingEmail: z.string().nullable(),
+      communityName: z.string().nullable(),
+      communityPath: z.string().nullable(),
+      communityLastCommit: z.string().nullable(),
     }),
   );
 

@@ -1953,6 +1953,7 @@
       "joinCommunity": "Join community",
       "joinCommunitySuccess": "You are now part of {{communityName}}",
       "leaveCommunity": "Leave community",
+      "memberOf": "You are a member of {{communityName}}",
       "noMembers": "This community doesn’t have any registered members on the platform yet",
       "title": "Projects",
       "types": {

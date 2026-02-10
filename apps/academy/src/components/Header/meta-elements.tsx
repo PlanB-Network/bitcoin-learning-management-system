@@ -1,4 +1,12 @@
-import { Button, cn } from '@blms/ui';
+import {
+  Button,
+  cn,
+  Tooltip,
+  TooltipArrow,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@blms/ui';
 import { Link } from '@tanstack/react-router';
 import { cva } from 'class-variance-authority';
 import { useContext } from 'react';
@@ -8,6 +16,7 @@ import { useGreater } from '#src/hooks/use-greater.js';
 import { useSmaller } from '#src/hooks/use-smaller.js';
 import { AppContext } from '#src/providers/context.js';
 import { getPictureUrl } from '#src/services/user.js';
+import { resourceImgUrl } from '#src/utils/index.js';
 import SignInIconBlue from '../../assets/icons/sign-in-blue.svg';
 import SignInIconGreen from '../../assets/icons/sign-in-green.svg';
 import SignInIconOrange from '../../assets/icons/sign-in-orange.svg';
@@ -43,7 +52,10 @@ export const MetaElements = ({ onClickLogin }: MetaElementsProps) => {
             />
           </Link>
           <NotificationsPanel />
-          <UserRoleAvatar />
+          <div className="flex items-center gap-0.5">
+            <CommunityLogo />
+            <UserRoleAvatar />
+          </div>
         </>
       )}
 
@@ -128,5 +140,55 @@ export const UserRoleAvatar = ({
         />
       </button>
     </Link>
+  );
+};
+
+const CommunityLogo = () => {
+  const { t } = useTranslation();
+  const { user } = useContext(AppContext);
+
+  if (!user?.communityId || !user.communityName || !user.communityPath) {
+    return null;
+  }
+
+  const communityLogoUrl = resourceImgUrl(
+    {
+      path: user.communityPath,
+      lastCommit: user.communityLastCommit || '',
+    },
+    'logo.webp',
+  );
+
+  return (
+    <TooltipProvider>
+      <Tooltip delayDuration={0}>
+        <TooltipTrigger asChild>
+          <Link
+            to={`/resources/projects/${user.communityId}`}
+            className="flex items-center"
+          >
+            <img
+              src={communityLogoUrl}
+              alt={user.communityName}
+              className="size-8 rounded-full shrink-0 object-cover"
+            />
+          </Link>
+        </TooltipTrigger>
+        <TooltipContent
+          sideOffset={5}
+          side={'bottom'}
+          className={
+            'flex flex-col items-center shadow-none! text-xs! w-fit px-3! text-start bg-yellow-50 rounded-full border-0!'
+          }
+        >
+          <TooltipArrow className="fill-yellow-50" width={9} height={7} />
+          <span className="text-xs">
+            {t('resources.projects.memberOf', {
+              communityName: user.communityName,
+            })}
+          </span>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 };

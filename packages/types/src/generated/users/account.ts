@@ -56,6 +56,9 @@ export interface UserDetails {
   professorCourses: string[];
   professorTutorials: string[];
   pendingEmail: string | null;
+  communityName: string | null;
+  communityPath: string | null;
+  communityLastCommit: string | null;
 }
 
 export interface UserRoles {

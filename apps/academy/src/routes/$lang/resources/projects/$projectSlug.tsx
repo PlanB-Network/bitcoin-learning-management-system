@@ -1,5 +1,5 @@
 import { formatNameForURL } from '@blms/shared';
-import { BasicModal, Button, EmptyState, Loader } from '@blms/ui';
+import { BasicModal, Button, cn, EmptyState, Loader } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import { type ReactNode, useContext, useEffect, useState } from 'react';
@@ -9,6 +9,7 @@ import {
   TbBrandLinkedin,
   TbBrandX,
   TbCheck,
+  TbChevronsDown,
   TbLink,
 } from 'react-icons/tb';
 import { z } from 'zod';
@@ -61,6 +62,7 @@ function Project() {
     useContext(AppContext);
 
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const [showAllMembers, setShowAllMembers] = useState(false);
 
   const { data: project, isFetched } = useQuery(
     trpc.content.getProject.queryOptions(
@@ -342,27 +344,45 @@ function Project() {
               </div>
 
               {members && members.length > 0 ? (
-                <div className="flex flex-wrap mt-4 w-full gap-8">
-                  {members.map((member) => (
-                    <div
-                      className="flex items-center gap-4 w-40"
-                      key={member.username}
-                    >
-                      <img
-                        src={
-                          member.picture
-                            ? `/api/files/user-files/${member.picture}`
-                            : SignInIconLight
-                        }
-                        alt={member.username}
-                        className="size-6 rounded-full shrink-0"
-                      />
-                      <span className="body-extra-small-bold w-full truncate">
-                        @{member.username}
-                      </span>
+                <>
+                  <div className="flex flex-wrap mt-4 w-full gap-3.5 md:gap-8">
+                    {members.map((member, index) => (
+                      <div
+                        key={member.username}
+                        className={cn(
+                          'flex items-center gap-2 w-40',
+                          !showAllMembers && index >= 10 && 'max-md:hidden',
+                        )}
+                      >
+                        <img
+                          src={
+                            member.picture
+                              ? `/api/files/user-files/${member.picture}`
+                              : SignInIconLight
+                          }
+                          alt={member.username}
+                          className="size-6 rounded-full shrink-0"
+                        />
+                        <span className="body-extra-small-bold w-full truncate">
+                          @{member.username}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  {!showAllMembers && members.length > 10 && (
+                    <div className="md:hidden w-full relative flex items-center justify-center my-2">
+                      <div className="absolute w-full h-px bg-orange-50" />
+                      <button
+                        type="button"
+                        onClick={() => setShowAllMembers(true)}
+                        className="relative z-10 rounded-full flex items-center gap-2 px-3 py-2 text-orange-500 bg-orange-50 body-extra-small-bold"
+                      >
+                        <TbChevronsDown size={16} />
+                        <span>{t('words.viewAll')}</span>
+                      </button>
                     </div>
-                  ))}
-                </div>
+                  )}
+                </>
               ) : (
                 <EmptyState
                   className="w-full"
