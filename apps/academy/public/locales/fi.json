@@ -154,7 +154,9 @@
       "finishCourse": "Viimeistele luento",
       "live": {
         "stayTuned": "Live-lähetys alkaa puoli tuntia (30min) ennen luennon alkua. Pysy kuulolla.",
-        "title": "Live-video"
+        "title": "Live-video",
+        "joinLive": "Liity live-sessioon",
+        "joining": "Liittyy..."
       },
       "next": "Suoritettu, siirrytään seuraavaan osioon"
     },
@@ -873,7 +875,8 @@
     "calendar": {
       "eventType": {
         "class": "Luokat",
-        "event": "Tapahtumat"
+        "event": "Tapahtumat",
+        "history": "Bitcoin-päivämäärät"
       },
       "personalCalendar": "Henkilökohtainen kalenteri",
       "downloadButton": "Lataa .ics-kalenteri ja tuo se",
@@ -887,7 +890,8 @@
       "subscribeStep1": "Kopioi kalenterilinkki",
       "subscribeStep2": "Liitä se kalenterisovelluksesi \"Tilaa\" -vaihtoehtoon",
       "subscribeStep3": "Tapahtumat päivittyvät automaattisesti, jos mikään muuttuu",
-      "subscribeTitle": "Tilaa kalenteri(automaattinen synkronointi)"
+      "subscribeTitle": "Tilaa kalenteri(automaattinen synkronointi)",
+      "followSelectedCalendar": "Seuraa valittua kalenteria"
     },
     "careerPortal": {
       "acceptedFormat": "Hyväksytty tiedostomuoto: pdf / Suurin tiedostokoko: 10MB.",
@@ -1389,7 +1393,8 @@
       "noEventsFound": "Tapahtumia ei löytynyt",
       "thisMonth": "Tämä kuukausi",
       "today": "Tänään",
-      "xMonthsAgo": "{{number}} kuukautta sitten"
+      "xMonthsAgo": "{{number}} kuukautta sitten",
+      "allDay": "Koko päivä"
     },
     "eventInfos": {
       "eventBooked": "Tapahtuma varattu",
@@ -1741,7 +1746,11 @@
     "youtube_channel": "Youtube-kanava",
     "youtube_channels": "Youtube-kanavat",
     "noResults": "Ei tuloksia",
-    "resultsFound": "{{count}} tulosta löydetty"
+    "resultsFound": "{{count}} tulosta löydetty",
+    "movie": "Elokuva",
+    "movies": "Elokuvat",
+    "research_paper": "Tutkimusartikkeli",
+    "research_papers": "Tutkimusartikkelit"
   },
   "settings": {
     "changeDisplayName": "Muuta näyttönimeä",
@@ -2027,7 +2036,8 @@
     "default": "oletus",
     "host": "Isäntä",
     "link": "Linkki",
-    "published": "Julkaistu"
+    "published": "Julkaistu",
+    "hide": "Piilota"
   },
   "youtubeChannels": {
     "view": "Katso Youtube-kanava",
@@ -2211,7 +2221,73 @@
       "title": "Lisenssi"
     },
     "imageTooLarge": "Kuvan koko ei saa ylittää 15MB",
-    "supportedFileTypes": "Tuetut tiedostotyypit: kuvat, PDF, esitykset, laskentataulukot, tekstiasiakirjat"
+    "supportedFileTypes": "Tuetut tiedostotyypit: kuvat, PDF, esitykset, laskentataulukot, tekstiasiakirjat",
+    "guideContent": {
+      "guideline6P3": "Lataa vain sisältöä, jolla on oikeus jakaa.",
+      "intro": "Kiitos, että olet täällä! Tämä opas auttaa sinua ymmärtämään, kuinka voit jakaa opetusmateriaalisi globaalin Bitcoin-opettajayhteisön kanssa.",
+      "purposeTitle": "Tarkoitus",
+      "purposeP1": "Opettajasisältö-osion tavoitteena on auttaa Bitcoin-opettajia tukemaan toisiaan ja vähentämään päällekkäistä työtä. Tällä tavoin kenenkään ei tarvitse aloittaa alusta joka kerta, kun he valmistelevat esitystä tai opetusmateriaalia.",
+      "purposeP2": "Tiedämme, kuinka paljon vaivaa ja energiaa opettajat käyttävät sisällön luomiseen paikallisyhteisöilleen. Uskomme, että tämä sisältö voi olla erittäin arvokasta muille opettajille, jotka tekevät samaa työtä ympäri maailmaa.",
+      "purposeP3": "Idea on olla vahvempi yhdessä: parempi sisältö, paremmin jaettu ja vähemmän aikaa tuhlattu uudelleenluomalla sitä, mikä jo on olemassa.",
+      "whatYouCanShareTitle": "Mitä voit jakaa",
+      "whatYouCanShareP1": "Opettajasisältö-osioon Bitcoin-opettajat ja -yhteisöt voivat jakaa ja levittää sisältönsä, sekä ladata muiden luomia materiaaleja.",
+      "whatYouCanShareP2": "Sisältö voi olla monimuotoista:",
+      "whatYouCanSharePresentations": "**Esitykset:** Diaesitykset, työpajamateriaalit, kurssisuunnitelmat",
+      "whatYouCanSharePrint": "**Painotuotteet:** Esitteet, julisteet, tarrat, banderollit",
+      "whatYouCanShareDocuments": "**Dokumentit:** Oppaat, jaettavat materiaalit, työarkit, infografiikat",
+      "whatYouCanShareP3": "Sisältöä voi jakaa missä tahansa kielessä, joko:",
+      "whatYouCanShareStatic": "**Staattiset tiedostot:** PDF, PNG, JPG (valmiit käytettäviksi tai tulostettaviksi)",
+      "whatYouCanShareEditable": "**Muokattavat versiot:** Canva-linkit, Google Slides -esitykset, lähdefileet (jotta muut voivat mukauttaa ja muokata)",
+      "whatYouCanShareFileTypes": "**Tuetut tiedostotyypit:** Kuvat, PDF, esitykset, laskentataulukot, tekstidokumentit",
+      "contentGuidelinesTitle": "Sisällön ohjeet",
+      "guideline1Title": "1. Vain Bitcoin-keskeinen sisältö",
+      "guideline1P1": "Opettajien sisältöalueella jaettavan sisällön tulee liittyä suoraan Bitcoiniin, mukaan lukien sen opetukselliset, taloudelliset, yksityisyys-, turvallisuus- tai itsemääräämisnäkökohdat. Aiheen vierestä oleva sisältö voidaan moderoida tai poistaa.",
+      "guideline2Title": "2. Jaa toisille hyödyllistä sisältöä",
+      "guideline2P1": "Lataa tiedostoja, jotka uskot hyödyttävän laajasti Bitcoin-yhteisöä, erityisesti koulutustarkoituksiin. Tavoitteena on kerätä resursseja, jotka voivat palvella opettajia ja yhteisöjä, jotka opettavat Bitcoinia ympäri maailmaa.",
+      "guideline2P2": "Vältä tiedostojen lataamista, joilla on erittäin pieni todennäköisyys, että muut käyttävät niitä. Liian monet merkityksettömät tiedostot vaikeuttavat arvokkaan sisällön löytämistä.",
+      "guideline3Title": "3. Kirjoita selkeitä otsikoita ja kuvauksia",
+      "guideline3P1": "Resurssit ovat paljon vaikuttavampia ja hyödyllisempiä, kun ne on selkeästi nimetty ja kuvattu. Kerrothan sisällönkuvaustekstissäsi yhteyden, jotta muut ymmärtävät:",
+      "guideline3Bullet1": "Mistä sisältö kertoo",
+      "guideline3Bullet2": "Miten olet käyttänyt sitä",
+      "guideline3Bullet3": "Miten muut saattavat hyödyntää sitä omassa kontekstissaan",
+      "guideline3P2": "Valitse myös kantekuvasi huolella ja varmista, että se kuvaa sisältöä oikein.",
+      "guideline3P3": "Käytä tiedostoja ladatessasi kuvaavia tiedostonimiä. Tiedostonimi näkyy muille käyttäjille, kun he lataavat sisältöäsi. Vältä geneerisiä nimiä, kuten \"final_v2.png\". Käytä sen sijaan selkeitä nimiä, jotka kuvaavat sisältöä, kuten \"bitcoin-basics-workshop-slides.pdf\".",
+      "guideline4Title": "4. Ryhmittele aiheeseen liittyvät tiedostot nippuihin",
+      "guideline4P1": "Opettajien sisältöosio on suunniteltu tiedon jakamista ja yhteistyötä varten. Luettavuuden ja reilun näkyvyyden takaamiseksi suosittelemme ryhmittelemään yhteen aiheeseen liittyvät tiedostot. Esimerkiksi sarja esityksiä on näkyvämpi ja vaikuttavampi opetussuunnitelmana kuin yksittäisinä esityksinä, jotka on vaikea yhdistää. Niput helpottavat muiden opettajien löytämistä ja täydellisten materiaalikokonaisuuksien käyttämistä.",
+      "guideline5Title": "5. Tarjoa useita formaatteja mahdollisuuksien mukaan",
+      "guideline5P1": "Jokaiseen resurssiin voit liittää sekä linkkejä että tiedostoja. Tämä antaa sinulle mahdollisuuden:",
+      "guideline5Bullet1": "**Jakaa linkkejä** muokattaviin tai monistettaviin resursseihin (Canva, Google Slides, Figma), jotta muut opettajat voivat sopeuttaa työsi heidän tarpeisiinsa",
+      "guideline5Bullet2": "**Liittää useita tiedostomuotoja** (PDF, PNG, lähdekoodit), jotta muut voivat valita heille parhaiten sopivan formaatin",
+      "guideline5P2": "Tämä joustavuus tekee sisällöstäsi hyödyllisemmän laajemmalle yleisölle.",
+      "guideline6Title": "6. Kunnioita tekijänoikeuksia",
+      "guideline6P1": "Jos lisäät sisältöä, jota et ole luonut, alkuperäisen lähteen on oltava mainittuna kuvauksessa. Sisällön on myös jaettava samalla lisenssillä, jolla se on alun perin julkaistu.",
+      "guideline6P2": "Kun lataat sisältöä Opettajasisällön portaaliin, se linkitetään Plan ₿ Academy -tiliisi. Olet vastuussa jakamastasi sisällöstä. Tekijänoikeuksilla suojatun materiaalin jakaminen ilman asianmukaista lupaa ei ole sallittua ja sitä valvotaan.",
+      "guideline7Title": "7. Valitse lisenssi",
+      "guideline7P1": "Kaikki sisältö julkaistaan oletusarvoisesti CC-BY-SA-lisenssillä.",
+      "guideline7P2": "Jos haluat soveltaa sisältöösi eri lisenssiä, voit valita seuraavista vaihtoehdoista:",
+      "guideline7Licenses": "CC BY, CC BY-NC, CC BY-NC-SA, CC BY-ND, CC BY-NC-ND, MIT",
+      "guideline7LearnMore": "Lisätietoja Creative Commons -lisensseistä",
+      "guideline7P3": "Jos et ole perehtynyt lisensseihin, voit turvallisesti pitää suositellun oletusvaihtoehdon (CC-BY-SA).",
+      "guideline8Title": "8. Ei mainoksia tai roskapostia",
+      "guideline8P1": "Mainossisältö ei ole sallittua Opettajasisältö-osiossa. Tähän kuuluu:",
+      "guideline8Bullet1": "Suosittelulinkit",
+      "guideline8Bullet2": "Affiliate-linkit",
+      "guideline8Bullet3": "Naamioitu kaupallinen mainonta",
+      "guideline8P2": "Tällainen sisältö poistetaan.",
+      "guideline8P3": "Älä lataa materiaalia, jota voidaan pitää roskapostina, huijauksina tai joka sisältää harhaanjohtavaa tietoa.",
+      "guideline9Title": "9. Tarkistusprosessi",
+      "guideline9P1": "Kun lähetät sisältösi tarkistettavaksi, tiimimme tarkistaa, että se noudattaa näitä ohjeita.",
+      "guideline9Bullet1": "**Jos virheitä on vähäisiä:** Otamme itse aloitteen niiden korjaamiseen.",
+      "guideline9Bullet2": "**Jos sisältöä ei voida hyväksyä ilman merkittäviä korjauksia:** Hylkäämme lähetyksen.",
+      "guideline9P2": "Molemmissa tapauksissa, hyväksyimmepä sisältösi tai hylkäsimme sen, saat ilmoituksen sähköpostitse.",
+      "communityStandardsTitle": "Yhteisön normit",
+      "guideline10Title": "10. Kunnioita tekijöitä",
+      "guideline10P1": "Opintojen jakaminen vaatii vaivaa ja rohkeutta. Palaute ja kritiikki ovat siksi tervetulleita **vain, jos ne ovat rakentavia, kunnioittavia ja asianmukaisia**. Näin ollen henkilökohtaisia hyökkäyksiä tai loukkaavia kommentteja ei hyväksytä.",
+      "guideline11Title": "11. Ei vihaa tai häirintää",
+      "guideline11P1": "Kaikki sisällöt tai kommentit, jotka edistävät **vihapuheita, syrjintää tai ahdistelua, ovat kiellettyjä**. Tämä sisältää huomautuksia, jotka kohdistuvat rotuun tai ihon väriin, uskontoon, kulttuuriin, alkuperään tai mihin tahansa muuhun henkilökohtaiseen ominaisuuteen.",
+      "guideline12Title": "12. Osoita kohteliaisuutta ja kunnioita yksityisyyttä",
+      "guideline12P1": "Kohtele kaikkia kunnioittavasti. Terveyttä ja rakentavaa keskustelua kannustetaan, mutta kohteliaisuus on välttämätöntä. Kunnioita myös ihmisten yksityisyyttä äläkä jaa henkilökohtaista tietoa ilman suostumusta."
+    }
   },
   "forms": {
     "browse": "Selaa",

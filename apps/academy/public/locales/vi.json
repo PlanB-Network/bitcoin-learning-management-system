@@ -154,7 +154,9 @@
       "finishCourse": "Hoàn thành khoá học",
       "live": {
         "stayTuned": "Buổi phát trực tiếp sẽ bắt đầu nửa tiếng trước khi buổi học bắt đầu. Hãy theo dõi!",
-        "title": "Video trực tiếp"
+        "title": "Video trực tiếp",
+        "joinLive": "Tham gia phiên trực tuyến",
+        "joining": "Đang tham gia..."
       },
       "next": "Xong, hãy đi tới chương tiếp theo!"
     },
@@ -873,7 +875,8 @@
     "calendar": {
       "eventType": {
         "class": "Các lớp",
-        "event": "Sự kiện"
+        "event": "Sự kiện",
+        "history": "Ngày Bitcoin"
       },
       "personalCalendar": "Lịch cá nhân",
       "subscribeTitle": "Đăng ký lịch (đồng bộ tự động)",
@@ -887,7 +890,8 @@
       "subscribeButton": "Copy liên kết lịch đã đồng bộ",
       "subscribeStep1": "Copy liên kết lịch",
       "subscribeStep2": "Dán nó vào tùy chọn \"Đăng ký\" của ứng dụng lịch của bạn",
-      "subscribeStep3": "Sự kiện sẽ tự động cập nhật nếu có bất kỳ thay đổi nào"
+      "subscribeStep3": "Sự kiện sẽ tự động cập nhật nếu có bất kỳ thay đổi nào",
+      "followSelectedCalendar": "Theo dõi lịch đã chọn"
     },
     "careerPortal": {
       "acceptedFormat": "Định dạng file được chấp nhận: pdf / Độ lớn tối đa: 10 MB.",
@@ -1389,7 +1393,8 @@
       "noEventsFound": "Không tìm thấy sự kiện nào",
       "thisMonth": "Tháng này",
       "today": "Hôm nay",
-      "xMonthsAgo": "{{number}} tháng trước"
+      "xMonthsAgo": "{{number}} tháng trước",
+      "allDay": "Cả ngày"
     },
     "eventInfos": {
       "eventBooked": "Đã đặt sự kiện",
@@ -1741,7 +1746,11 @@
     "youtube_channel": "Kênh Youtube",
     "youtube_channels": "Các kênh Youtube",
     "noResults": "Không có kết quả",
-    "resultsFound": "Tìm thấy {{count}} kết quả"
+    "resultsFound": "Tìm thấy {{count}} kết quả",
+    "movie": "Phim",
+    "movies": "Phim & Phim tài liệu",
+    "research_paper": "Bài viết nghiên cứu",
+    "research_papers": "Bài viết nghiên cứu"
   },
   "settings": {
     "changeDisplayName": "Thay đổi tên hiển thị",
@@ -2027,7 +2036,8 @@
     "published": "Đã xuất bản",
     "default": "mặc định",
     "host": "Chủ trì",
-    "link": "Liên kết"
+    "link": "Liên kết",
+    "hide": "Ẩn"
   },
   "youtubeChannels": {
     "view": "Xem kênh Youtube",
@@ -2225,7 +2235,73 @@
     },
     "supportedFileTypes": "Các loại tệp được hỗ trợ: hình ảnh, PDF, bài thuyết trình, bảng tính, tài liệu văn bản",
     "uploadFilesHelper": "Nếu bạn có các tệp liên quan, hãy tải chúng lên cùng một lúc dưới dạng một gói. Đặt tên cho các tệp của bạn một cách rõ ràng trước khi tải lên.",
-    "fileTypeNotAllowed": "Chỉ chấp nhận hình ảnh và tài liệu (PDF, bài thuyết trình, bảng tính, tài liệu văn bản)"
+    "fileTypeNotAllowed": "Chỉ chấp nhận hình ảnh và tài liệu (PDF, bài thuyết trình, bảng tính, tài liệu văn bản)",
+    "guideContent": {
+      "whatYouCanShareFileTypes": "Các loại tệp được hỗ trợ: hình ảnh, PDF, bài thuyết trình, bảng tính, tài liệu văn bản",
+      "guideline6P3": "Chỉ tải lên nội dung bạn có quyền chia sẻ.",
+      "intro": "Cảm ơn bạn đã đến đây! Hướng dẫn này sẽ giúp bạn hiểu cách chia sẻ tài liệu giáo dục của mình với cộng đồng giáo viên Bitcoin trên toàn cầu.",
+      "purposeTitle": "Mục đích",
+      "purposeP1": "Mục tiêu của phần Nội dung Giáo dục là giúp giáo viên Bitcoin hỗ trợ lẫn nhau và giảm công việc lặp lại. Như vậy, không ai phải bắt đầu từ đầu mỗi khi họ chuẩn bị một bài thuyết trình hay tài liệu giáo dục.",
+      "purposeP2": "Chúng tôi biết giáo viên đã nỗ lực và bỏ nhiều công sức vào việc tạo nội dung cho cộng đồng địa phương của mình. Chúng tôi tin rằng nội dung này có thể cực kỳ quý giá cho các giáo viên khác đang làm công việc tương tự trên toàn cầu.",
+      "purposeP3": "Ý tưởng là trở nên mạnh mẽ hơn khi cùng nhau: nội dung tốt hơn, phân phối tốt hơn và ít thời gian bị lãng phí để tái tạo những gì đã tồn tại.",
+      "whatYouCanShareTitle": "Những gì bạn có thể chia sẻ",
+      "whatYouCanShareP1": "Trong phần Nội dung Giáo dục, giáo viên Bitcoin và cộng đồng có thể chia sẻ và phân phối nội dung của họ, cũng như tải xuống tài liệu do người khác tạo ra.",
+      "whatYouCanShareP2": "Nội dung có thể nhận nhiều hình thức:",
+      "whatYouCanSharePresentations": "**Bài thuyết trình:** Bộ slide, tài liệu học phần, chương trình học",
+      "whatYouCanSharePrint": "**Vật liệu in:** Tờ rơi, poster, sticker, banner",
+      "whatYouCanShareDocuments": "**Tài liệu:** Hướng dẫn, tài liệu phát tay, bảng làm việc, infographics",
+      "whatYouCanShareP3": "Nội dung có thể được chia sẻ bằng bất kỳ ngôn ngữ nào, dưới dạng:",
+      "whatYouCanShareStatic": "**File tĩnh:** PDF, PNG, JPG (sẵn sàng để sử dụng hoặc in)",
+      "whatYouCanShareEditable": "**Phiên bản có thể chỉnh sửa:** Liên kết Canva, Google Slides, file nguồn (để người khác có thể điều chỉnh và tùy chỉnh)",
+      "contentGuidelinesTitle": "Hướng dẫn về Nội dung",
+      "guideline1Title": "1. Chỉ tập trung vào nội dung liên quan đến Bitcoin",
+      "guideline1P1": "Nội dung chia sẻ trong phần Nội dung Giáo dục phải liên quan trực tiếp đến Bitcoin, bao gồm các khía cạnh giáo dục, kinh tế, riêng tư, bảo mật hoặc tự chủ của nó. Nội dung không liên quan có thể được điều chỉnh hoặc loại bỏ.",
+      "guideline2Title": "2. Chia sẻ nội dung có ích cho người khác",
+      "guideline2P1": "Tải lên các tệp mà bạn tin rằng sẽ mang lại lợi ích cho cộng đồng Bitcoin nói chung, đặc biệt là cho mục đích giáo dục. Mục tiêu là thu thập các nguồn lực có thể phục vụ giáo viên và cộng đồng giảng dạy Bitcoin trên toàn thế giới.",
+      "guideline2P2": "Hãy tránh tải lên những tệp có xác suất rất thấp được sử dụng bởi người khác. Quá nhiều tệp không liên quan khiến việc tìm nội dung giá trị trở nên khó khăn hơn.",
+      "guideline3Title": "3. Viết tiêu đề và mô tả rõ ràng",
+      "guideline3P1": "Các tài nguyên sẽ có tác động và hữu ích hơn nhiều khi chúng được đặt tên và mô tả rõ ràng. Hãy cung cấp ngữ cảnh trong mô tả nội dung của bạn để giúp người khác hiểu:",
+      "guideline3Bullet1": "Nội dung đó nói về điều gì",
+      "guideline3Bullet2": "Bạn đã sử dụng nó như thế nào",
+      "guideline3Bullet3": "Người khác có thể sử dụng nó trong bối cảnh của họ như thế nào",
+      "guideline3P2": "Hơn nữa, hãy chọn cẩn thận hình ảnh bìa của bạn và đảm bảo nó thể hiện chính xác nội dung.",
+      "guideline3P3": "Khi tải tệp lên, sử dụng tên tệp mô tả. Tên tệp sẽ xuất hiện cho người dùng khác khi họ tải nội dung của bạn. Tránh các tên chung chung như \"final_v2.png\". Thay vào đó, sử dụng các tên rõ ràng mô tả nội dung, như \"bitcoin-basics-workshop-slides.pdf\".",
+      "guideline4Title": "4. Nhóm các tệp liên quan thành gói",
+      "guideline4P1": "Phần Nội dung Giáo dục được thiết kế để chia sẻ kiến thức và hợp tác. Để đảm bảo dễ đọc và hiển thị công bằng, chúng tôi khuyến khích bạn nhóm các tệp liên quan lại với nhau. Ví dụ, một loạt bài thuyết trình sẽ có độ hiển thị và tác động hơn nếu được tổ chức dưới dạng một chương trình học, thay vì là các bài thuyết trình riêng lẻ khó liên kết. Các gói giúp giáo viên khác dễ dàng tìm kiếm và sử dụng toàn bộ tài liệu.",
+      "guideline5Title": "5. Cung cấp nhiều định dạng nếu có thể",
+      "guideline5P1": "Đối với mỗi tài nguyên, bạn có thể đính kèm cả liên kết và tệp. Điều này cho phép bạn:",
+      "guideline5Bullet1": "**Chia sẻ liên kết** đến các nguồn lực có thể chỉnh sửa hoặc sao chép (Canva, Google Slides, Figma), để giáo viên khác có thể điều chỉnh công việc của bạn theo nhu cầu của họ",
+      "guideline5Bullet2": "**Đính kèm nhiều định dạng tệp** (PDF, PNG, tệp nguồn), để người khác có thể chọn định dạng phù hợp nhất với họ",
+      "guideline5P2": "Sự linh hoạt này làm cho nội dung của bạn hữu ích hơn với một lượng lớn khán giả.",
+      "guideline6Title": "6. Tôn trọng quyền tác giả",
+      "guideline6P1": "Nếu bạn thêm vào nội dung mà bạn không tạo ra, nguồn gốc ban đầu phải được ghi công trong mô tả. Nội dung cũng phải được chia sẻ dưới cùng một giấy phép mà nó lúc đầu được xuất bản.",
+      "guideline6P2": "Khi bạn tải nội dung lên Cổng thông tin Nội dung Giáo dục, nó được liên kết với tài khoản Plan ₿ Academy của bạn. Bạn chịu trách nhiệm về nội dung mà bạn chia sẻ. Việc chia sẻ tài liệu có bản quyền mà không có sự ủy quyền phù hợp không được phép và sẽ bị kiểm duyệt.",
+      "guideline7Title": "7. Chọn một giấy phép",
+      "guideline7P1": "Tất cả nội dung được xuất bản dưới giấy phép CC-BY-SA mặc định.",
+      "guideline7P2": "Nếu bạn muốn áp dụng một giấy phép khác cho nội dung của bạn, bạn có thể chọn từ các lựa chọn sau:",
+      "guideline7Licenses": "CC BY, CC BY-NC, CC BY-NC-SA, CC BY-ND, CC BY-NC-ND, MIT",
+      "guideline7LearnMore": "Tìm hiểu thêm về giấy phép Creative Commons",
+      "guideline7P3": "Nếu bạn không quen với giấy phép, bạn có thể an toàn giữ tùy chọn mặc định được đề xuất (CC-BY-SA).",
+      "guideline8Title": "8. Không quảng bá hay spam",
+      "guideline8P1": "Nội dung quảng cáo không được cho phép trong phần Nội dung Giáo dục. Điều này bao gồm:",
+      "guideline8Bullet1": "Liên kết giới thiệu",
+      "guideline8Bullet2": "Liên kết liên kết",
+      "guideline8Bullet3": "Quảng bá thương mại che giấu",
+      "guideline8P2": "Nội dung như vậy sẽ bị xóa.",
+      "guideline8P3": "Không tải lên tài liệu có thể được coi là spam, lừa đảo hoặc chứa thông tin gây hiểu lầm.",
+      "guideline9Title": "9. Quy trình xem xét",
+      "guideline9P1": "Khi bạn nộp nội dung của mình để xem xét, đội ngũ của chúng tôi sẽ kiểm tra xem nó có tuân theo các hướng dẫn này hay không.",
+      "guideline9Bullet1": "**Nếu có lỗi nhỏ:** Chúng tôi sẽ tự chủ động sửa chúng.",
+      "guideline9Bullet2": "**Nếu nội dung không thể được chấp nhận mà không có sự chỉnh sửa lớn:** Chúng tôi sẽ từ chối bài đăng.",
+      "guideline9P2": "Trong cả hai trường hợp, dù nội dung của bạn được chấp nhận hay từ chối, bạn sẽ nhận được thông báo qua email.",
+      "communityStandardsTitle": "Tiêu chuẩn Cộng đồng",
+      "guideline10Title": "10. Tôn trọng người đóng góp",
+      "guideline10P1": "Việc chia sẻ nội dung giáo dục đòi hỏi nỗ lực và can đảm. Vì vậy, phản hồi và phê bình được chào đón **chỉ khi chúng là xây dựng, tôn trọng và liên quan**. Do đó, các cuộc tấn công cá nhân hoặc những bình luận gây hại sẽ không được chấp nhận.",
+      "guideline11Title": "11. Không thù hận hoặc quấy rối",
+      "guideline11P1": "Bất kỳ nội dung hoặc bình luận nào khuyến khích **thù hận, phân biệt đối xử hoặc quấy rối đều bị cấm**. Điều này bao gồm những lời nhắc nhở về chủng tộc hoặc màu da, tôn giáo, văn hóa, nguồn gốc hoặc bất kỳ đặc điểm cá nhân nào khác.",
+      "guideline12Title": "12. Hãy lịch sự và tôn trọng quyền riêng tư",
+      "guideline12P1": "Hãy đối xử tôn trọng với mọi người. Một cuộc thảo luận lành mạnh và xây dựng được khuyến khích, nhưng lòng lịch sự là thiết yếu. Vui lòng cũng tôn trọng quyền riêng tư của mọi người và không chia sẻ thông tin cá nhân mà không có sự đồng ý."
+    }
   },
   "mentor": {
     "collapse": "Thu gọn",

@@ -154,7 +154,9 @@
       "finishCourse": "Zakończ kurs",
       "live": {
         "stayTuned": "Transmisja na żywo rozpocznie się na pół godziny przed rozpoczęciem zajęć. Bądźcie czujni!",
-        "title": "Nagranie na żywo"
+        "title": "Nagranie na żywo",
+        "joinLive": "Dołącz do sesji na żywo",
+        "joining": "Łączenie..."
       },
       "next": "Gotowe, przejdź do następnego rozdziału"
     },
@@ -873,7 +875,8 @@
     "calendar": {
       "eventType": {
         "class": "Zajęcia",
-        "event": "Wydarzenia"
+        "event": "Wydarzenia",
+        "history": "Daty Bitcoin"
       },
       "personalCalendar": "Kalendarz osobisty",
       "downloadCalendar": "Pobierz kalendarz",
@@ -887,7 +890,8 @@
       "downloadTitle": "Lub pobierz aktualny kalendarz",
       "subscribeButton": "Skopiuj synchronizowany link do kalendarza",
       "subscribeStep3": "Wydarzenia są aktualizowane automatycznie, jeśli coś się zmieni",
-      "subscribeTitle": "Subskrybuj kalendarz (synchronizacja automatyczna)"
+      "subscribeTitle": "Subskrybuj kalendarz (synchronizacja automatyczna)",
+      "followSelectedCalendar": "Obserwuj wybrany kalendarz"
     },
     "careerPortal": {
       "acceptedFormat": "Akceptowany format pliku: pdf / Maksymalny rozmiar pliku: 10 MB.",
@@ -1389,7 +1393,8 @@
       "noEventsFound": "Nie znaleziono wydarzeń",
       "thisMonth": "W tym miesiącu",
       "today": "Dzisiaj",
-      "xMonthsAgo": "{{number}} miesięcy temu"
+      "xMonthsAgo": "{{number}} miesięcy temu",
+      "allDay": "Cały dzień"
     },
     "eventInfos": {
       "eventBooked": "Wydarzenie zarezerwowane",
@@ -1744,7 +1749,11 @@
     "youtube_channel": "Kanał na Youtube",
     "youtube_channels": "Kanały na Youtube",
     "noResults": "Brak wyników",
-    "resultsFound": "Znaleziono {{count}} wyników"
+    "resultsFound": "Znaleziono {{count}} wyników",
+    "movie": "Film",
+    "movies": "Nagrania i filmy dokumentalne",
+    "research_paper": "Praca badawcza",
+    "research_papers": "Prace badawcze"
   },
   "settings": {
     "changeDisplayName": "Zmień wyświetlaną nazwę",
@@ -2030,7 +2039,8 @@
     "link": "Link",
     "published": "Opublikowano",
     "default": "domyślny",
-    "host": "Gospodarz"
+    "host": "Gospodarz",
+    "hide": "Ukryj"
   },
   "youtubeChannels": {
     "view": "Zobacz kanał na Youtube",
@@ -2211,7 +2221,73 @@
     "supportedFileTypes": "Obsługiwane typy plików: obrazy, pliki PDF, prezentacje, arkusze kalkulacyjne, dokumenty tekstowe",
     "uploadFilesHelper": "Jeśli masz powiązane pliki, prześlij je razem jako jeden pakiet. Przed przesłaniem jasno nazwij swoje pliki.",
     "fileTypeNotAllowed": "Dozwolone są tylko obrazy i dokumenty (PDF, prezentacje, arkusze kalkulacyjne, dokumenty tekstowe)",
-    "imageTooLarge": "Rozmiar obrazu nie może przekraczać 15MB"
+    "imageTooLarge": "Rozmiar obrazu nie może przekraczać 15MB",
+    "guideContent": {
+      "whatYouCanShareFileTypes": "Obsługiwane typy plików: obrazy, pliki PDF, prezentacje, arkusze kalkulacyjne, dokumenty tekstowe",
+      "guideline6P3": "Przesyłaj tylko treści, które masz prawo udostępnić.",
+      "intro": "Dziękujemy, że jesteś tutaj! Ten przewodnik pomoże ci zrozumieć, jak udostępnić swoje materiały edukacyjne globalnej społeczności edukatorów Bitcoin.",
+      "purposeTitle": "Cel",
+      "purposeP1": "Celem sekcji Treści Edukacyjnych jest pomoc edukatorom Bitcoin we wzajemnym wsparciu i zmniejszeniu powielania pracy. Dzięki temu, nikt nie musi zaczynać od zera za każdym razem, gdy przygotowuje prezentację lub materiał edukacyjny.",
+      "purposeP2": "Wiemy, ile wysiłku i energii edukatorzy wkładają w tworzenie treści dla swoich lokalnych społeczności. Wierzymy, że te treści mogą być niezwykle cenne dla innych edukatorów prowadzących podobną pracę na całym świecie.",
+      "purposeP3": "Idea polega na wzajemnym wzmacnianiu: lepsza treść, lepiej dystrybuowana i mniej czasu marnowanego na odtwarzanie tego, co już istnieje.",
+      "whatYouCanShareTitle": "Co Możesz Udostępnić",
+      "whatYouCanShareP1": "W sekcji Edukatorów Bitcoin, edukatorzy i społeczności mogą udostępniać i dystrybuować swoje treści, a także pobierać materiały stworzone przez innych.",
+      "whatYouCanShareP2": "Treści mogą przybierać różne formy:",
+      "whatYouCanSharePresentations": "**Prezentacje:** Pokazy slajdów, materiały warsztatowe, programy nauczania",
+      "whatYouCanSharePrint": "**Materiały drukowane:** Ulotki, plakaty, naklejki, banery",
+      "whatYouCanShareDocuments": "**Dokumenty:** Przewodniki, ulotki, zestawy zadań, infografiki",
+      "whatYouCanShareP3": "Treści można udostępniać w dowolnym języku, jako:",
+      "whatYouCanShareStatic": "**Pliki statyczne:** PDF, PNG, JPG (gotowe do użycia lub druku)",
+      "whatYouCanShareEditable": "**Wersje edytowalne:** Linki Canva, Slajdy Google, pliki źródłowe (dla innych do dostosowania i personalizacji)",
+      "contentGuidelinesTitle": "Wytyczne dotyczące treści",
+      "guideline1Title": "1. Tylko treści skoncentrowane na Bitcoinie",
+      "guideline1P1": "Treści udostępniane w dziale Treści dla Edukatorów muszą być bezpośrednio powiązane z Bitcoinem, w tym jego aspektami edukacyjnymi, ekonomicznymi, prywatności, bezpieczeństwa czy suwerenności. Treści niezwiązane z tematem mogą być moderowane lub usuwane.",
+      "guideline2Title": "2. Udostępniaj treści, które mogą być przydatne dla innych",
+      "guideline2P1": "Przesyłaj pliki, które twoim zdaniem przyniosą korzyść społeczności Bitcoin w szerszym zakresie, szczególnie w celach edukacyjnych. Celem jest zebranie zasobów, które mogą służyć edukatorom i społecznościom nauczającym Bitcoin na całym świecie.",
+      "guideline2P2": "Proszę unikać przesyłania plików, które mają bardzo niskie prawdopodobieństwo wykorzystania przez innych. Zbyt wiele nieistotnych plików utrudnia znalezienie wartościowych treści.",
+      "guideline3Title": "3. Pisząc tytuły i opisy, bądź jasny",
+      "guideline3P1": "Zasoby są o wiele bardziej efektywne i przydatne, gdy są jasno nazwane i opisane. Proszę dostarczyć kontekst w opisie treści, aby pomóc innym zrozumieć:",
+      "guideline3Bullet1": "O czym jest ta treść",
+      "guideline3Bullet2": "Jak jej używasz",
+      "guideline3Bullet3": "Jak inni mogą z niej korzystać w swoich warunkach",
+      "guideline3P2": "Ponadto wybierz obraz na okładkę z troską i upewnij się, że dobrze reprezentuje treść.",
+      "guideline3P3": "Podczas przesyłania plików, używaj opisowych nazw plików. Nazwa pliku będzie widoczna dla innych użytkowników, kiedy pobierają twoje treści. Unikaj generycznych nazw jak \"final_v2.png\". Zamiast tego, używaj jasnych nazw, które opisują treść, na przykład \"bitcoin-basics-workshop-slides.pdf\".",
+      "guideline4Title": "4. Grupuj powiązane pliki w pakiety",
+      "guideline4P1": "Dział Treści dla Edukatorów jest przeznaczony do dzielenia się wiedzą i współpracy. Aby zapewnić czytelność i sprawiedliwą widoczność, zachęcamy do grupowania powiązanych plików. Na przykład, seria prezentacji będzie bardziej widoczna i skuteczna jako program nauczania, a nie jako pojedyncze prezentacje trudne do połączenia. Pakiety ułatwiają innym edukatorom znalezienie i korzystanie z kompletnych zestawów materiałów.",
+      "guideline5Title": "5. Zapewnij różne formaty, jeśli to możliwe",
+      "guideline5P1": "Do każdego zasobu możesz dołączyć zarówno linki, jak i pliki. Daje ci to możliwość:",
+      "guideline5Bullet1": "**Udostępniania linków** do zasobów, które można edytować lub dublować (Canva, Google Slides, Figma), dzięki czemu inni edukatorzy mogą dostosować twoją pracę do swoich potrzeb",
+      "guideline5Bullet2": "**Dołączania wielu formatów plików** (PDF, PNG, pliki źródłowe), dzięki czemu inni mogą wybrać format, który najlepiej im odpowiada",
+      "guideline5P2": "Ta elastyczność sprawia, że twoja treść jest bardziej użyteczna dla szerszej publiczności.",
+      "guideline6Title": "6. Szanuj prawa autorskie",
+      "guideline6P1": "Jeśli dodajesz treść, której nie stworzyłeś, musisz wymienić pierwotne źródło w opisie. Treść musi być również udostępniana na tych samych zasadach, na jakich została pierwotnie opublikowana.",
+      "guideline6P2": "Kiedy przesyłasz treść do portalu z treściami edukacyjnymi, jest ona powiązana z twoim kontem w Akademii Plan ₿. Ponosisz odpowiedzialność za udostępniane treści. Udostępnianie materiałów objętych prawem autorskim bez odpowiedniego upoważnienia jest niedozwolone i będzie podlegało moderacji.",
+      "guideline7Title": "7. Wybierz licencję",
+      "guideline7P1": "Wszystkie treści są domyślnie publikowane na licencji CC-BY-SA.",
+      "guideline7P2": "Jeśli chcesz zastosować inną licencję do swojej treści, możesz wybrać spośród następujących opcji:",
+      "guideline7Licenses": "CC BY, CC BY-NC, CC BY-NC-SA, CC BY-ND, CC BY-NC-ND, MIT",
+      "guideline7LearnMore": "Dowiedz się więcej o licencjach Creative Commons",
+      "guideline7P3": "Jeśli nie znasz się na licencjach, możesz bezpiecznie pozostać przy zalecanej opcji domyślnej (CC-BY-SA).",
+      "guideline8Title": "8. Bez promocji i spamu",
+      "guideline8P1": "Treści promocyjne nie są dozwolone w sekcji treści edukacyjnych. Obejmuje to:",
+      "guideline8Bullet1": "Linki referencyjne",
+      "guideline8Bullet2": "Linki afiliacyjne",
+      "guideline8Bullet3": "Przebrana promocja komercyjna",
+      "guideline8P2": "Tego typu treści zostaną usunięte.",
+      "guideline8P3": "Nie przesyłaj materiałów, które mogą być uznane za spam, oszustwa lub zawierające mylące informacje.",
+      "guideline9Title": "9. Proces przeglądu",
+      "guideline9P1": "Po przesłaniu twojej treści do recenzji, nasz zespół sprawdzi, czy jest zgodna z tymi wytycznymi.",
+      "guideline9Bullet1": "**Jeżeli wystąpią drobne błędy:** Sami zainicjujemy ich poprawę.",
+      "guideline9Bullet2": "**Jeżeli treść nie może być zaakceptowana bez poważnych poprawek:** Odrzucimy przesłanie.",
+      "guideline9P2": "W obu przypadkach, niezależnie od tego, czy Twoja treść zostanie zaakceptowana, czy odrzucona, otrzymasz powiadomienie e-mail.",
+      "communityStandardsTitle": "Standardy społeczności",
+      "guideline10Title": "10. Szanuj twórców",
+      "guideline10P1": "Udostępnianie edukacyjnych treści wymaga wysiłku i odwagi. Feedback i krytyka są więc mile widziani **tylko, jeżeli są konstruktywne, pełne szacunku i relewantne**. Ataki personalne czy krzywdzące komentarze nie będą tolerowane.",
+      "guideline11Title": "11. Nie propaguj nienawiści ani nie dokuczaj",
+      "guideline11P1": "Wszelkie treści lub komentarze promujące **nienawiść, dyskryminację lub nękaniem są zabronione**. Dotyczy to również uwag dotyczących rasy lub koloru skóry, religii, kultury, pochodzenia czy jakiejkolwiek innej cechy osobistej.",
+      "guideline12Title": "12. Bądź uprzejmy i szanuj prywatność",
+      "guideline12P1": "Traktuj wszystkich z szacunkiem. Zdrowe i konstruktywne debaty są zachęcane, ale uprzejmość jest kluczowa. Proszę również szanować prywatność osób i nie udostępniać informacji osobistych bez zgody."
+    }
   },
   "mentor": {
     "welcome": "Zapytaj mnie o cokolwiek na temat Bitcoin!",

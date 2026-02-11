@@ -154,7 +154,9 @@
       "finishCourse": "Selesaikan kursus",
       "live": {
         "stayTuned": "Tayangan langsung akan dimulai tiga puluh menit sebelum kelas dimulai. Tetaplah menonton!",
-        "title": "Video tayangan langsung"
+        "title": "Video tayangan langsung",
+        "joinLive": "Bergabung dengan sesi langsung",
+        "joining": "Sedang bergabung..."
       },
       "next": "Selesai, masuk ke bab berikutnya"
     },
@@ -873,7 +875,8 @@
     "calendar": {
       "eventType": {
         "class": "Kelas",
-        "event": "Acara"
+        "event": "Acara",
+        "history": "Tanggal Bitcoin"
       },
       "personalCalendar": "Kalender pribadi",
       "downloadButton": "Unduh kalender .ics dan impor",
@@ -887,7 +890,8 @@
       "subscribeStep1": "Salin tautan kalender",
       "subscribeStep2": "Tempelkan ke opsi \"Berlangganan\" pada aplikasi kalender Anda",
       "subscribeStep3": "Jadwal acara tetap diperbarui secara otomatis jika ada perubahan",
-      "subscribeTitle": "Berlangganan kalender (sinkronisasi otomatis)"
+      "subscribeTitle": "Berlangganan kalender (sinkronisasi otomatis)",
+      "followSelectedCalendar": "Ikuti kalender yang dipilih"
     },
     "careerPortal": {
       "acceptedFormat": "Format file yang diterima: pdf / Ukuran file maksimum: 10 MB.",
@@ -1405,7 +1409,8 @@
       "noEventsFound": "Tidak ada acara yang ditemukan",
       "thisMonth": "Bulan ini",
       "today": "Hari ini",
-      "xMonthsAgo": "{{number}} bulan yang lalu"
+      "xMonthsAgo": "{{number}} bulan yang lalu",
+      "allDay": "Sehari penuh"
     },
     "eventInfos": {
       "eventBooked": "Acara sudah dipesan",
@@ -1744,7 +1749,11 @@
     "youtube_channel": "Saluran Youtube",
     "youtube_channels": "Saluran Youtube",
     "noResults": "Tidak ada hasil yang ditemukan",
-    "resultsFound": "Ditemukan hasil {{count}}"
+    "resultsFound": "Ditemukan hasil {{count}}",
+    "movie": "Movie strict-same",
+    "movies": "Film & Dokumenter",
+    "research_paper": "Kertas penelitian",
+    "research_papers": "Kertas penelitian"
   },
   "settings": {
     "changeDisplayName": "Ganti nama tampilan",
@@ -2030,7 +2039,8 @@
     "link": "Tautan",
     "default": "bawaan",
     "host": "Tuan Rumah",
-    "published": "Diterbitkan"
+    "published": "Diterbitkan",
+    "hide": "Sembunyikan"
   },
   "youtubeChannels": {
     "view": "Lihat Saluran Youtube",
@@ -2211,7 +2221,73 @@
       "title": "Lisensi"
     },
     "imageTooLarge": "Ukuran gambar tidak boleh melebihi 15MB",
-    "uploadFilesHelper": "Jika Anda memiliki file yang berhubungan, unggah bersamaan sebagai satu paket. Beri nama file Anda dengan jelas sebelum mengunggah."
+    "uploadFilesHelper": "Jika Anda memiliki file yang berhubungan, unggah bersamaan sebagai satu paket. Beri nama file Anda dengan jelas sebelum mengunggah.",
+    "guideContent": {
+      "guideline6P3": "Hanya unggah konten yang Anda miliki hak untuk membagikannya.",
+      "intro": "Terima kasih telah berada di sini! Panduan ini akan membantu Anda memahami cara membagikan materi pendidikan Anda kepada komunitas pendidik Bitcoin global.",
+      "purposeTitle": "Tujuan",
+      "purposeP1": "Tujuan bagian Konten Pendidik ini adalah untuk membantu pendidik Bitcoin saling mendukung dan mengurangi pekerjaan yang berulang. Dengan cara ini, tidak seorang pun harus memulai dari awal setiap kali mereka menyiapkan presentasi atau materi pendidikan.",
+      "purposeP2": "Kami tahu berapa banyak usaha dan energi yang ditanamkan pendidik dalam menciptakan konten untuk komunitas lokal mereka. Kami percaya konten ini dapat sangat berharga untuk pendidik lain yang melakukan pekerjaan yang sama di seluruh dunia.",
+      "purposeP3": "Ideanya adalah untuk menjadi lebih kuat bersama: konten yang lebih baik, lebih baik didistribusikan, dan mengurangi waktu yang terbuang untuk menciptakan kembali apa yang sudah ada.",
+      "whatYouCanShareTitle": "Apa Yang Bisa Anda Bagikan",
+      "whatYouCanShareP1": "Di bagian Konten Pendidik, pendidik dan komunitas Bitcoin dapat berbagi dan mendistribusikan konten mereka, serta mengunduh materi yang dibuat oleh orang lain.",
+      "whatYouCanShareP2": "Konten bisa dalam berbagai bentuk:",
+      "whatYouCanSharePresentations": "**Presentasi:** Slide presentasi, materi workshop, kurikulum",
+      "whatYouCanSharePrint": "**Materi cetak:** Brosur, poster, stiker, spanduk",
+      "whatYouCanShareDocuments": "**Dokumen:** Panduan, lembaran tangan, lembar kerja, infografis",
+      "whatYouCanShareP3": "Konten dapat dibagikan dalam bahasa apa pun, baik sebagai:",
+      "whatYouCanShareStatic": "**Berkas statis:** PDF, PNG, JPG (siap untuk digunakan atau dicetak)",
+      "whatYouCanShareEditable": "**Versi yang dapat diedit:** Link Canva, Slide Google, berkas sumber (sehingga orang lain dapat menyesuaikan dan mengkustomisasi)",
+      "whatYouCanShareFileTypes": "**Jenis file yang didukung:** Gambar, PDF, presentasi, spreadsheet, dokumen teks",
+      "contentGuidelinesTitle": "Pedoman Konten",
+      "guideline1Title": "1. Konten yang berfokus pada Bitcoin saja",
+      "guideline1P1": "Konten yang dibagikan di bagian Konten Pendidik harus berkaitan langsung dengan Bitcoin, termasuk aspek pendidikan, ekonomi, privasi, keamanan, atau kedaulatan diri. Konten yang tidak sesuai topik dapat dimoderasi atau dihapus.",
+      "guideline2Title": "2. Bagikan konten yang bermanfaat untuk orang lain",
+      "guideline2P1": "Unggah file yang menurut Anda akan menguntungkan komunitas Bitcoin secara umum, terutama untuk tujuan pendidikan. Tujuannya adalah untuk mengumpulkan sumber daya yang dapat melayani pendidik dan komunitas yang mengajar Bitcoin di seluruh dunia.",
+      "guideline2P2": "Harap hindari mengunggah file yang memiliki probabilitas sangat rendah untuk digunakan oleh orang lain. Terlalu banyak file yang tidak relevan membuatnya lebih sulit untuk menemukan konten yang berharga.",
+      "guideline3Title": "3. Tulis judul dan deskripsi yang jelas",
+      "guideline3P1": "Sumber daya menjadi lebih berdampak dan berguna ketika dinamai dan dijelaskan dengan jelas. Harap berikan konteks dalam deskripsi konten Anda untuk membantu orang lain memahami:",
+      "guideline3Bullet1": "Apa isi dari konten",
+      "guideline3Bullet2": "Bagaimana Anda telah menggunakannya",
+      "guideline3Bullet3": "Bagaimana orang lain mungkin menggunakannya dalam konteks mereka sendiri",
+      "guideline3P2": "Juga, pilih gambar sampul Anda dengan hati-hati dan pastikan itu mewakili konten dengan akurat.",
+      "guideline3P3": "Ketika mengunggah file, gunakan nama file yang deskriptif. Nama file akan terlihat oleh pengguna lain ketika mereka mengunduh konten Anda. Hindari nama umum seperti \"final_v2.png\". Sebaliknya, gunakan nama yang jelas yang menggambarkan konten, seperti \"bitcoin-basics-workshop-slides.pdf\".",
+      "guideline4Title": "4. Kelompokkan file terkait ke dalam bundel",
+      "guideline4P1": "Bagian Konten Pendidik dirancang untuk berbagi pengetahuan dan kolaborasi. Untuk memastikan keterbacaan dan visibilitas yang adil, kami mendorong Anda untuk mengelompokkan file terkait bersama-sama. Sebagai contoh, serangkaian presentasi akan memiliki visibilitas dan dampak lebih besar sebagai kurikulum, daripada presentasi individu yang sulit untuk dihubungkan. Bundel membuatnya lebih mudah bagi pendidik lain untuk menemukan dan menggunakan set lengkap bahan.",
+      "guideline5Title": "5. Sediakan berbagai format bila mungkin",
+      "guideline5P1": "Untuk setiap sumber daya, Anda dapat melampirkan tautan dan file. Ini memberi Anda kesempatan untuk:",
+      "guideline5Bullet1": "**Berbagi tautan** ke sumber daya yang dapat disunting atau duplikat (Canva, Google Slides, Figma), sehingga pendidik lain dapat menyesuaikan karya Anda dengan kebutuhan mereka",
+      "guideline5Bullet2": "**Lampirkan berbagai format file** (PDF, PNG, file sumber), sehingga orang lain dapat memilih format yang paling cocok untuk mereka",
+      "guideline5P2": "Fleksibilitas ini membuat konten Anda lebih berguna bagi audiens yang lebih luas.",
+      "guideline6Title": "6. Menghormati hak cipta",
+      "guideline6P1": "Jika Anda menambahkan konten yang tidak Anda buat, sumber aslinya harus dikreditkan dalam deskripsi. Konten juga harus dibagikan di bawah lisensi yang sama dengan lisensi aslinya.",
+      "guideline6P2": "Ketika Anda mengunggah konten ke portal Konten Pendidik, konten tersebut terhubung ke akun Plan ₿ Academy Anda. Anda bertanggung jawab atas konten yang Anda bagikan. Membagikan materi yang dilindungi hak cipta tanpa otorisasi yang tepat tidak diperbolehkan dan akan menjadi subjek moderasi.",
+      "guideline7Title": "7. Pilih lisensi",
+      "guideline7P1": "Semua konten diterbitkan di bawah lisensi CC-BY-SA secara default.",
+      "guideline7P2": "Jika Anda ingin menerapkan lisensi yang berbeda pada konten Anda, Anda dapat memilih dari opsi berikut:",
+      "guideline7Licenses": "CC BY, CC BY-NC, CC BY-NC-SA, CC BY-ND, CC BY-NC-ND, MIT",
+      "guideline7LearnMore": "Pelajari lebih lanjut tentang lisensi Creative Commons",
+      "guideline7P3": "Jika Anda tidak familiar dengan lisensi, Anda dapat dengan aman menjaga opsi default yang direkomendasikan (CC-BY-SA).",
+      "guideline8Title": "8. Tidak ada promosi atau spam",
+      "guideline8P1": "Konten promosi tidak diperbolehkan di bagian Konten Pendidik. Ini termasuk:",
+      "guideline8Bullet1": "Tautan referal",
+      "guideline8Bullet2": "Tautan afiliasi",
+      "guideline8Bullet3": "Promosi komersial yang disamarkan",
+      "guideline8P2": "Konten semacam itu akan dihapus.",
+      "guideline8P3": "Jangan mengunggah materi yang bisa dianggap sebagai spam, penipuan, atau yang mengandung informasi yang menyesatkan.",
+      "guideline9Title": "9. Proses Review",
+      "guideline9P1": "Setelah Anda mengirimkan konten Anda untuk ditinjau, tim kami akan memeriksa apakah konten tersebut mengikuti pedoman ini.",
+      "guideline9Bullet1": "**Jika ada kesalahan minor:** Kita akan mengambil inisiatif untuk memperbaikinya secara langsung.",
+      "guideline9Bullet2": "**Jika konten tidak bisa diterima tanpa koreksi besar:** Kami akan menolak pengajuan tersebut.",
+      "guideline9P2": "Dalam kedua kasus, baik konten Anda diterima atau ditolak, Anda akan menerima pemberitahuan melalui email.",
+      "communityStandardsTitle": "Standar Komunitas",
+      "guideline10Title": "10. Hormati kontributor",
+      "guideline10P1": "Berbagi konten pendidikan membutuhkan usaha dan keberanian. Oleh karenanya, umpan balik dan kritik diterima **hanya jika mereka konstruktif, penuh hormat dan relevan**. Oleh karena itu, serangan pribadi atau komentar yang merugikan tidak akan ditolerir.",
+      "guideline11Title": "11. Tidak ada kebencian atau pelecehan",
+      "guideline11P1": "Konten atau komentar apapun yang mempromosikan **kebencian, diskriminasi, atau pelecehan, dilarang**. Ini termasuk komentar yang menargetkan ras atau warna kulit, agama, budaya, asal, atau atribut pribadi lainnya.",
+      "guideline12Title": "12. Bersikap sopan dan hormati privasi",
+      "guideline12P1": "Perlakukan semua orang dengan hormat. Debates yang sehat dan konstruktif sangat dianjurkan, tapi sopan santun sangat penting. Harap juga menghormati privasi orang dan jangan bagikan informasi pribadi tanpa izin."
+    }
   },
   "forms": {
     "browse": "Telusuri",

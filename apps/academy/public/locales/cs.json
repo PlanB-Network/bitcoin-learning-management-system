@@ -154,9 +154,12 @@
       "finishCourse": "Dokončit kurz",
       "live": {
         "stayTuned": "Přímý přenost začne půl hodiny před začátkem lekce. Zůstaňte na příjmu!",
-        "title": "Přímý přenos"
+        "title": "Přímý přenos",
+        "joinLive": "Připojte se k živému přenosu",
+        "joining": "Připojuji..."
       },
-      "next": "Hotovo, pokračovat na další kapitolu"
+      "next": "Hotovo, pokračovat na další kapitolu",
+      "watchRecording": "Sledujte záznam"
     },
     "conclusion": {
       "completedChaptersHeadline": "Všechny kapitoly jsou nyní dokončeny!",
@@ -873,7 +876,8 @@
     "calendar": {
       "eventType": {
         "class": "Třídy",
-        "event": "Události"
+        "event": "Události",
+        "history": "Bitcoinové termíny"
       },
       "personalCalendar": "Osobní kalendář",
       "downloadButton": "Stáhněte si .ics kalendář a importujte",
@@ -887,7 +891,8 @@
       "subscribeStep1": "Kopírovat odkaz na kalendář",
       "subscribeStep2": "Vložte ho do možnosti “Odebírat” své aplikace kalendáře",
       "subscribeStep3": "Události se automaticky aktualizují, pokud dojde k jakékoliv změně",
-      "subscribeTitle": "Odebírat kalendář (automatická synchronizace)"
+      "subscribeTitle": "Odebírat kalendář (automatická synchronizace)",
+      "followSelectedCalendar": "Sledovat vybraný kalendář"
     },
     "careerPortal": {
       "acceptedFormat": "Přijímaný formát souboru: pdf / Maximální velikost souboru: 10 MB.",
@@ -1389,7 +1394,8 @@
       "noEventsFound": "Nebyly nalezeny žádné události",
       "thisMonth": "Tento měsíc",
       "today": "Dnes",
-      "xMonthsAgo": "Před {{number}} měsíci"
+      "xMonthsAgo": "Před {{number}} měsíci",
+      "allDay": "Celý den"
     },
     "eventInfos": {
       "eventBooked": "Událost rezervována",
@@ -1741,7 +1747,11 @@
     "youtube_channel": "Youtube kanál",
     "youtube_channels": "Youtube kanály",
     "noResults": "Žádné výsledky",
-    "resultsFound": "Nalezeno {{count}} výsledků"
+    "resultsFound": "Nalezeno {{count}} výsledků",
+    "movie": "Film",
+    "movies": "Filmy & Dokumenty",
+    "research_paper": "Výzkumná práce",
+    "research_papers": "Výzkumné práce"
   },
   "settings": {
     "changeDisplayName": "Změnit zobrazované jméno",
@@ -2027,7 +2037,8 @@
     "default": "výchozí",
     "host": "Hostitel",
     "link": "Odkaz",
-    "published": "Publikováno"
+    "published": "Publikováno",
+    "hide": "Skrýt"
   },
   "youtubeChannels": {
     "view": "Zobrazit YouTube kanál",
@@ -2211,7 +2222,73 @@
       "licensedByDefault": "Standardně licencováno jako CC BY-SA",
       "title": "Licence"
     },
-    "imageTooLarge": "Velikost obrázku nesmí překročit 15MB"
+    "imageTooLarge": "Velikost obrázku nesmí překročit 15MB",
+    "guideContent": {
+      "guideline6P3": "Nahrávejte pouze obsah, který máte právo sdílet.",
+      "purposeP3": "Myšlenka je být silnější společně: lepší obsah, lépe distribuovaný a méně času vynaloženého na opětovné vytváření toho, co již existuje.",
+      "whatYouCanShareP1": "Ve sekci Educator Content mohou bitcoinoví vzdělavatelé a komunity sdílet a distribuovat svůj obsah, stejně jako stahovat materiály vytvořené ostatními.",
+      "whatYouCanShareP2": "Obsah může mít mnoho podob:",
+      "whatYouCanSharePresentations": "**Prezentace:** Sady snímků, materiály pro workshopy, osnovy",
+      "whatYouCanSharePrint": "**Tiskové materiály:** Letáky, plakáty, nálepky, bannery",
+      "whatYouCanShareDocuments": "**Dokumenty:** Průvodce, informační letáky, pracovní listy, infografiky",
+      "whatYouCanShareP3": "Obsah lze sdílet v jakémkoli jazyce, buď jako:",
+      "whatYouCanShareStatic": "**Statické soubory:** PDF, PNG, JPG (připravené k použití nebo tisku)",
+      "whatYouCanShareEditable": "**Upravitelné verze:** Odkazy na Canvu, Google Slides, zdrojové soubory (aby je ostatní mohli přizpůsobit a upravit)",
+      "whatYouCanShareFileTypes": "**Podporované typy souborů:** Obrázky, PDF, prezentace, tabulky, textové dokumenty",
+      "contentGuidelinesTitle": "Pokyny pro obsah",
+      "guideline1Title": "1. Zaměřujte se pouze na obsah týkající se Bitcoinu",
+      "guideline1P1": "Obsah sdílený v sekci Edukační obsah musí být přímo spojen s Bitcoinem, včetně jeho vzdělávacích, ekonomických, soukromých, bezpečnostních nebo aspektů samostatnosti. Mimo téma obsah může být moderován nebo odstraněn.",
+      "guideline2P1": "Nahrávejte soubory, které podle vašeho názoru přinesou prospěch komunitě Bitcoinu jako celku, zejména pro vzdělávací účely. Cílem je shromáždit zdroje, které mohou sloužit vyučujícím a komunitám, vyučujícím Bitcoin po celém světě.",
+      "guideline2P2": "Vyhněte se prosím nahrávání souborů, které mají velmi nízkou pravděpodobnost, že je ostatní využijí. Příliš mnoho nerelevantních souborů ztěžuje hledání cenného obsahu.",
+      "guideline3Title": "3. Pište jasné názvy a popisy",
+      "guideline3P1": "Zdroje jsou mnohem výraznější a užitečnější, když mají jasně pojmenovány a popsané. Poskytněte kontext ve vašem popisu obsahu, který pomůže ostatním pochopit:",
+      "guideline3Bullet1": "O čem je obsah",
+      "guideline3Bullet2": "Jak ho používáte",
+      "guideline3Bullet3": "Jak by jej mohli ostatní používat ve svém kontextu",
+      "guideline3P2": "Také pečlivě vyberte obrázek obálky a ujistěte se, že přesně reprezentuje obsah.",
+      "guideline3P3": "Při nahrávání souborů používejte popisné názvy souborů. Název souboru bude viditelný pro ostatní uživatele, když si stáhnou váš obsah. Vyhněte se generickým názvům jako \"final_v2.png\". Místo toho používejte jasné názvy, které popisují obsah, jako například \"bitcoin-základní-dílna-slajdy.pdf\".",
+      "guideline4Title": "4. Seskupte související soubory do balíků",
+      "guideline4P1": "Sekce Edukační obsah je navržena pro sdílení znalostí a spolupráci. Abychom zajistili čitelnost a spravedlivou viditelnost, doporučujeme vám seskupit související soubory dohromady. Například série prezentací bude mít větší viditelnost a dopad jako učební plán, než jako jednotlivé prezentace, které jsou těžko spojitelné. Balíky usnadňují ostatním vyučujícím nalézt a používat kompletní sady materiálů.",
+      "guideline5Title": "5. Poskytujte vícero formátů, pokud je to možné",
+      "guideline5P1": "K každému zdroji můžete připojit odkazy i soubory. To vám přináší možnost:",
+      "guideline5Bullet1": "**Sdílet odkazy** na editovatelné nebo duplikovatelné zdroje (Canva, Google Slides, Figma), takže ostatní vyučující mohou přizpůsobit vaši práci svým potřebám",
+      "guideline5Bullet2": "**Připojit vícero formátů souborů** (PDF, PNG, zdrojové soubory), takže ostatní si mohou vybrat formát, který pro ně nejlépe funguje",
+      "guideline5P2": "Tato flexibilita činí váš obsah užitečnějším pro širší publikum.",
+      "guideline6Title": "6. Dodržujte autorská práva",
+      "guideline6P1": "Pokud přidáváte obsah, který jste nevytvořili, musí být v popisu uveden původní zdroj. Obsah musí být navíc sdílen pod stejnou licencí, pod kterou byl původně publikován.",
+      "guideline6P2": "Když nahráváte obsah do portálu pro vzdělavatelský obsah, je připojen k vašemu účtu v Plan ₿ Academy. Za obsah, který sdílíte, jste odpovědní. Sdílení autorsky chráněného materiálu bez řádné autorizace není povolené a bude předmětem moderování.",
+      "guideline7Title": "7. Vyberte licenci",
+      "guideline7P1": "Veškerý obsah je standardně publikován pod licencí CC-BY-SA.",
+      "guideline7P2": "Pokud si přejete svému obsahu přiřadit jinou licenci, můžete vybrat z následujících možností:",
+      "guideline7Licenses": "CC BY, CC BY-NC, CC BY-NC-SA, CC BY-ND, CC BY-NC-ND, MIT",
+      "guideline7LearnMore": "Dozvědět se více o licencích Creative Commons",
+      "guideline8Bullet3": "Maskované komerční propagace",
+      "guideline8P2": "Takový obsah bude odstraněn.",
+      "guideline8P3": "Nenahrávejte materiál, který by mohl být považován za spam, podvody, nebo obsahuje zavádějící informace.",
+      "guideline9Title": "9. Proces recenze",
+      "guideline9P1": "Jakmile svůj obsah předložíte k recenzi, náš tým zkontroluje, zda dodržuje tyto pokyny.",
+      "guideline9Bullet1": "**Pokud jsou chyby menší:** Přijmeme iniciativu a opravíme je přímo.",
+      "guideline9Bullet2": "**Pokud obsah nelze přijmout bez zásadních oprav:** Odmítneme podání.",
+      "guideline9P2": "V obou případech, ať už je váš obsah přijat nebo odmítnut, obdržíte oznámení e-mailem.",
+      "communityStandardsTitle": "Standardy komunity",
+      "guideline10Title": "10. Respektujte přispěvatele",
+      "guideline10P1": "Sdílení vzdělávacího obsahu vyžaduje úsilí a odvahu. Zpětná vazba a kritika jsou proto vítány **pouze pokud jsou konstruktivní, respektující a relevantní**. Osobní útoky nebo škodlivé komentáře proto nebudou tolerovány.",
+      "guideline11Title": "11. Žádná nenávist nebo obtěžování",
+      "intro": "Děkujeme, že jste tady! Tento průvodce vám pomůže pochopit, jak sdílet své vzdělávací materiály s celosvětovou komunitou vzdělavatelů Bitcoinu.",
+      "purposeTitle": "Účel",
+      "purposeP1": "Cílem sekce Educator Content je pomoci bitcoinovým vzdělavatelům navzájem se podpořit a snížit duplikaci práce. Tímto způsobem nikdo nemusí začínat od nuly pokaždé, když připravuje prezentaci nebo vzdělávací materiál.",
+      "purposeP2": "Víme, kolik úsilí a energie věnují vzdělavatelé vytváření obsahu pro své lokální komunity. Věříme, že tento obsah může být pro ostatní vzdělavatele, kteří dělají stejnou práci po celém světě, nesmírně cenný.",
+      "whatYouCanShareTitle": "Co můžete sdílet",
+      "guideline2Title": "2. Sdílejte obsah, který je pro ostatní užitečný",
+      "guideline7P3": "Pokud nejste s licencemi obeznámeni, můžete bezpečně ponechat doporučenou výchozí volbu (CC-BY-SA).",
+      "guideline8Title": "8. Žádné propagace nebo spam",
+      "guideline8P1": "Propagační obsah není v sekci pro vzdělavatelský obsah povolen. To zahrnuje:",
+      "guideline8Bullet1": "Odkazy na doporučení",
+      "guideline8Bullet2": "Affiliate odkazy",
+      "guideline11P1": "Jakýkoli obsah nebo komentáře, které podporují **nenávist, diskriminaci nebo obtěžování jsou zakázány**. To zahrnuje poznámky zaměřené na rasu nebo barvu pleti, náboženství, kulturu, původ nebo jakýkoli jiný osobní atribut.",
+      "guideline12Title": "12. Buďte zdvořilí a respektujte soukromí",
+      "guideline12P1": "S každým zacházejte s respektem. Zdravé a konstruktivní debaty jsou povzbuzovány, ale zdvořilost je nezbytná. Také prosím respektujte soukromí lidí a nesdílejte osobní informace bez souhlasu."
+    }
   },
   "mentor": {
     "close": "Zavřít",
