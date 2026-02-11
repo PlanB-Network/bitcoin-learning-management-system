@@ -154,7 +154,9 @@
       "finishCourse": "完成課程",
       "live": {
         "stayTuned": "直播將在課程開始前 30 分鐘開放，敬請期待！",
-        "title": "直播影片"
+        "title": "直播影片",
+        "joinLive": "參加現場會議",
+        "joining": "正在加入..."
       },
       "next": "完成，進入下一章篇"
     },
@@ -873,7 +875,8 @@
     "calendar": {
       "eventType": {
         "class": "課程",
-        "event": "活動"
+        "event": "活動",
+        "history": "比特幣日期"
       },
       "personalCalendar": "個人日曆",
       "subscribeStep1": "複製日曆鏈接",
@@ -887,7 +890,8 @@
       "downloadStep2": "用您的日曆應用程式開啟它",
       "downloadStep3": "如果日期改變，活動將不會更新",
       "downloadTitle": "或下載當前日曆",
-      "subscribeButton": "複製同步日曆鏈接"
+      "subscribeButton": "複製同步日曆鏈接",
+      "followSelectedCalendar": "跟隨所選日曆"
     },
     "careerPortal": {
       "acceptedFormat": "接受的文件格式：pdf / 最大文件大小：10 MB。",
@@ -1404,7 +1408,8 @@
       "lastMonth": "上個月",
       "nextMonth": "下個月",
       "noEventsFound": "未找到活動",
-      "thisMonth": "本月"
+      "thisMonth": "本月",
+      "allDay": "整日"
     },
     "addEvent": "新增活動",
     "eventInfos": {
@@ -1744,7 +1749,11 @@
     "youtube_channel": "Youtube 頻道",
     "youtube_channels": "Youtube 頻道",
     "noResults": "無結果",
-    "resultsFound": "找到{{count}}個結果"
+    "resultsFound": "找到{{count}}個結果",
+    "movie": "電影",
+    "movies": "電影與紀錄片",
+    "research_paper": "研究報告",
+    "research_papers": "研究論文"
   },
   "settings": {
     "changeDisplayName": "更改顯示名稱",
@@ -2030,7 +2039,8 @@
     "published": "已發布",
     "default": "預設",
     "host": "主持人",
-    "link": "連結"
+    "link": "連結",
+    "hide": "隱藏"
   },
   "youtubeChannels": {
     "view": "查看Youtube頻道",
@@ -2225,7 +2235,73 @@
     },
     "supportedFileTypes": "支援的檔案類型：圖片，PDF，簡報，試算表，文字檔",
     "uploadFilesHelper": "如果你有相關檔案，建議一起上傳為一個檔案包。上傳前請將你的檔案名稱清楚。",
-    "fileTypeNotAllowed": "只允許圖片和文件（PDF，演示文稿，試算表，文字文檔）"
+    "fileTypeNotAllowed": "只允許圖片和文件（PDF，演示文稿，試算表，文字文檔）",
+    "guideContent": {
+      "whatYouCanShareFileTypes": "支援的檔案類型：圖片，PDF，簡報，試算表，文字檔",
+      "guideline6P3": "只上傳您有權分享的內容。",
+      "intro": "謝謝您的參與！這份指南將幫助您理解如何與全球比特幣教育者社區分享您的教育材料。",
+      "purposeTitle": "目的",
+      "purposeP1": "教育者內容部分的目標是幫助比特幣教育者互相支持並減少重複的工作。這樣一來，每次準備演講或教育材料時，就不必從頭開始。",
+      "purposeP2": "我們知道教育者在為他們的本地社區創作內容時，投入了多少精力和能量。我們相信這些內容對於世界各地做同樣工作的其他教育者來說，可能非常有價值。",
+      "purposeP3": "想法是要讓我們更強大：更好的內容，更佳的分發，並減少重造已有東西的時間浪費。",
+      "whatYouCanShareTitle": "您可分享的內容",
+      "whatYouCanShareP1": "在教育者內容部分，比特幣教育者和社區可以分享和分發他們的內容，也可以下載其他人創建的材料。",
+      "whatYouCanShareP2": "內容可以有許多形式：",
+      "whatYouCanSharePresentations": "**演示文稿：** 幻燈片、工作坊材料、課程",
+      "whatYouCanSharePrint": "**列印材料：** 傳單、海報、貼紙、橫幅",
+      "whatYouCanShareDocuments": "**文件：** 指南、手冊、工作表、資訊圖表",
+      "whatYouCanShareP3": "內容可以以任何語言分享，形式可以為：",
+      "whatYouCanShareStatic": "**靜態文件：** PDF、PNG、JPG（隨時使用或列印）",
+      "whatYouCanShareEditable": "**可編輯版本：** Canva鏈接、Google幻燈片、原始文件（供他人調整和自定義）",
+      "contentGuidelinesTitle": "內容指導方針",
+      "guideline1Title": "1. 僅限於比特幣相關的內容",
+      "guideline1P1": "在教育內容區分享的內容必須直接與比特幣相關，包括其教育、經濟、隱私、安全或自主權方面。與主題無關的內容可能會被調整或移除。",
+      "guideline2Title": "2. 分享對他人有用的內容",
+      "guideline2P1": "上傳你認為會對整個比特幣社區有利，尤其是對教育有利的文件。我們的目標是收集可以服務於全世界教授比特幣的教育工作者和社區的資源。",
+      "guideline2P2": "請避免上傳有很低機會被他人使用的文件。太多無關的文件會讓找到有價值的內容變得困難。",
+      "guideline3Title": "3. 寫清楚的標題和描述",
+      "guideline3P1": "資源在明確命名並描述清楚時會更有影響力和實用性。請在你的內容描述中提供背景以幫助他人理解：",
+      "guideline3Bullet1": "內容是關於什麼",
+      "guideline3Bullet2": "你如何使用它",
+      "guideline3Bullet3": "其他人如何可能在他們自己的情況中使用它",
+      "guideline3P2": "另外，請小心選擇你的封面圖片，確保它可以準確地代表內容。",
+      "guideline3P3": "上傳文件時，請使用具有描述性的檔案名稱。當他們下載你的內容時，其他用戶會看到檔案名稱。避免使用如\"final_v2.png\"這樣的一般名稱。相反，請使用清楚描述內容的名稱，如\"bitcoin-basics-workshop-slides.pdf\"。",
+      "guideline4Title": "4. 將相關檔案整理成一個包",
+      "guideline4P1": "教育內容部分是為了分享知識和協作而設計的。為了確保可讀性和公平的可見性，我們鼓勵你將相關的檔案整理在一起。例如，一系列的演示文稿作為一個課程來展示會有更大的可見性和影響力，而非單獨的演示文稿則難以連接。包讓其他教育者更容易找到並使用完整的教材集。",
+      "guideline5Title": "5. 在可能的情況下提供多種格式",
+      "guideline5P1": "對於每一種資源，你可以附上網址和檔案。這給你提供了以下使用機會：",
+      "guideline5Bullet1": "**分享網址** 到可編輯或可複製的資源（Canva、Google 幻燈片、Figma），以便其他教育者可以根據他們的需求調整你的工作",
+      "guideline5Bullet2": "**附上多種檔案格式** （PDF、PNG、原始檔案），以便其他人可以選擇最適合他們的格式。",
+      "guideline5P2": "這種靈活性使您的內容對更廣泛的觀眾更有用。",
+      "guideline6Title": "6. 尊重版權",
+      "guideline6P1": "如果您添加的內容不是您創建的，原始來源必須在描述中註明。內容也必須以它最初發布的相同許可證分享。",
+      "guideline6P2": "當您將內容上傳到教育者內容門戶網站時，它會被連接到您的Plan ₿ Academy賬戶。您對分享的內容負責。未經適當授權分享版權材料是不允許的，並將受到審核。",
+      "guideline7Title": "7. 選擇許可證",
+      "guideline7P1": "所有內容默認都在CC-BY-SA許可證下發布。",
+      "guideline7P2": "如果您希望為您的內容應用不同的許可證，您可以從以下選擇：",
+      "guideline7Licenses": "CC BY，CC BY-NC，CC BY-NC-SA，CC BY-ND，CC BY-NC-ND，MIT",
+      "guideline7LearnMore": "了解更多關於創意共享許可證",
+      "guideline7P3": "如果您對許可證不熟悉，您可以安全地保留推薦的默認選項（CC-BY-SA）。",
+      "guideline8Title": "8. 無推廣或垃圾郵件",
+      "guideline8P1": "教育者內容部分不允許有推廣內容。包括：",
+      "guideline8Bullet1": "推薦鏈接",
+      "guideline8Bullet2": "聯盟鏈接",
+      "guideline8Bullet3": "偽裝的商業推廣",
+      "guideline8P2": "此類內容將被刪除。",
+      "guideline8P3": "不要上傳可能被認為是垃圾郵件，詐騙，或包含誤導信息的材料。",
+      "guideline9Title": "9. 審核流程",
+      "guideline9P1": "一旦您提交了用於審核的內容，我們的團隊將檢查它是否遵循這些指南。",
+      "guideline9Bullet1": "**如果有小錯誤：** 我們將主動直接進行修正。",
+      "guideline9Bullet2": "**如果內容在未經重大修正的情況下無法接受：** 我們將拒絕提交。",
+      "guideline9P2": "在兩種情況下，無論您的內容被接受或被拒絕，您都將通過email接收到通知。",
+      "communityStandardsTitle": "社區規範",
+      "guideline10Title": "10. 尊重貢獻者",
+      "guideline10P1": "分享教育內容需要付出努力和勇氣。所以，我們歡迎**建設性、尊重以及相關**的回饋和批評。因此，任何人身攻擊或有害的評論都將不被容忍。",
+      "guideline11Title": "11. 禁止仇恨或騷擾",
+      "guideline11P1": "禁止任何促使**仇恨、歧視或騷擾**的內容或評論。這包括針對種族或膚色、宗教、文化、起源或任何其他個人特徵的言論。",
+      "guideline12Title": "12. 彬彬有禮並尊重隱私",
+      "guideline12P1": "請尊重每一個人。我們鼓勵健康且建設性的辯論，但禮貌是必須的。也請尊重他人的隱私，未經同意不得分享個人資料。"
+    }
   },
   "mentor": {
     "collapse": "摺疊",

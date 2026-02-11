@@ -154,7 +154,9 @@
       "finishCourse": "Kursu bitirin",
       "live": {
         "stayTuned": "Canlı oturum, dersin başlamasından 30 dakika önce başlayacak. Takipte kalın!",
-        "title": "Canlı vidyo"
+        "title": "Canlı vidyo",
+        "joinLive": "Canlı oturuma katıl",
+        "joining": "Katılıyor..."
       },
       "next": "Bölümü bitir"
     },
@@ -873,7 +875,8 @@
     "calendar": {
       "eventType": {
         "class": "Dersler",
-        "event": "Etkinlikler"
+        "event": "Etkinlikler",
+        "history": "Bitcoin tarihleri"
       },
       "personalCalendar": "Kişisel takvim",
       "subscribeStep1": "Takvim bağlantısını kopyala",
@@ -887,7 +890,8 @@
       "downloadStep2": "Onu takvim uygulamanızla açın",
       "downloadStep3": "Tarihler değişirse etkinlikler güncellenmez",
       "downloadTitle": "Veya mevcut takvimi indirin",
-      "subscribeButton": "Senkronize takvim bağlantısını kopyala"
+      "subscribeButton": "Senkronize takvim bağlantısını kopyala",
+      "followSelectedCalendar": "Seçilen takvimi takip et"
     },
     "careerPortal": {
       "acceptedFormat": "Kabul edilen dosya formatı: pdf / Maksimum dosya boyutu: 10 MB.",
@@ -1388,7 +1392,8 @@
       "thisMonth": "Bu ay",
       "today": "Bugün",
       "xMonthsAgo": "{{number}} ay önce",
-      "noEventsFound": "Hiçbir etkinlik bulunamadı"
+      "noEventsFound": "Hiçbir etkinlik bulunamadı",
+      "allDay": "Tüm gün"
     },
     "planBWeek": {
       "pageTitle": "Plan ₿ Haftası"
@@ -1741,7 +1746,11 @@
     "youtube_channel": "Youtube kanalı",
     "youtube_channels": "Youtube kanalları",
     "noResults": "Sonuç yok",
-    "resultsFound": "{{count}} sonuç bulundu"
+    "resultsFound": "{{count}} sonuç bulundu",
+    "movie": "Film",
+    "movies": "Filmler & Belgeseller",
+    "research_paper": "Araştırma kağıdı",
+    "research_papers": "Araştırma kağıtları"
   },
   "settings": {
     "changeDisplayName": "Görünen adı değiştir",
@@ -2027,7 +2036,8 @@
     "published": "Yayınlandı",
     "host": "Ev sahibi",
     "link": "Bağlantı",
-    "default": "varsayılan"
+    "default": "varsayılan",
+    "hide": "Gizle"
   },
   "youtubeChannels": {
     "view": "Youtube Kanalını Görüntüle",
@@ -2211,7 +2221,73 @@
     "uploadFilesHelper": "İlgili dosyalarınız varsa, bunları bir paket olarak yükleyin. Dosyalarınızı yüklemadan önce açıkça adlandırın.",
     "fileTypeNotAllowed": "Sadece görseller ve belgeler (PDF, sunumlar, hesaplama tabloları, metin belgeleri) izin verilmiştir",
     "supportedFileTypes": "Desteklenen dosya türleri: görseller, PDF, sunumlar, hesaplama tabloları, metin belgeleri",
-    "imageTooLarge": "Görsel boyutu 15MB'ı aşamaz"
+    "imageTooLarge": "Görsel boyutu 15MB'ı aşamaz",
+    "guideContent": {
+      "intro": "Burada olduğunuz için teşekkür ederiz! Bu rehber, eğitim materyallerinizi küresel Bitcoin eğitmen topluluğuyla nasıl paylaşacağınızı anlamanıza yardımcı olacak.",
+      "purposeTitle": "Amaç",
+      "purposeP1": "Eğitmen İçerik bölümünün amacı, Bitcoin eğitmenlerinin birbirlerine destek olmasına ve tekrarlanan çalışmaları azaltmasına yardımcı olmaktır. Bu şekilde, herkes bir sunum veya eğitim materyali hazırlarken her seferinde sıfırdan başlamak zorunda kalmaz.",
+      "purposeP2": "Eğitmenlerin yerel toplulukları için içerik oluştururken ne kadar çok çaba ve enerji harcadığını biliyoruz. Bu içeriğin, dünya çapında aynı işi yapan diğer eğitmenler için son derece değerli olabileceğine inanıyoruz.",
+      "purposeP3": "Fikir, birlikte daha güçlü olmaktır: daha iyi içerik, daha iyi dağıtılmış ve zaten var olanı yeniden yaratmak için harcanan zamanı azaltmak.",
+      "whatYouCanShareTitle": "Paylaşabileceğiniz Şeyler",
+      "whatYouCanShareP1": "Eğitmen İçerik bölümünde, Bitcoin eğitmenleri ve toplulukları kendi içeriklerini paylaşabilir ve dağıtabilir, ayrıca başkalarının oluşturduğu materyalleri indirebilirler.",
+      "whatYouCanShareP2": "İçerik birçok form alabilir:",
+      "whatYouCanSharePresentations": "**Sunumlar:** Slayt deckleri, atölye materyalleri, müfredat",
+      "whatYouCanSharePrint": "**Basılı materyaller:** Broşürler, posterler, çıkartmalar, afişler",
+      "whatYouCanShareDocuments": "**Dökümanlar:** Rehberler, el ilanları, çalışma sayfaları, bilgi grafikleri",
+      "whatYouCanShareP3": "İçerik herhangi bir dilde ve aşağıda belirtilenlerin herhangi birisi olarak paylaşılabilir:",
+      "whatYouCanShareStatic": "**Statik dosyalar:** PDF, PNG, JPG (kullanıma veya baskıya hazır)",
+      "whatYouCanShareEditable": "**Düzenlenebilir versiyonlar:** Canva linkleri, Google Slaytlar, kaynak dosyaları (böylece diğerleri uyarlanabilir ve özelleştirilebilir)",
+      "whatYouCanShareFileTypes": "**Desteklenen dosya türleri:** Resimler, PDF, sunumlar, hesap tabloları, metin belgeleri",
+      "contentGuidelinesTitle": "İçerik Kılavuzları",
+      "guideline1Title": "1. Sadece Bitcoin odaklı içerik",
+      "guideline1P1": "Eğitici İçerik bölümünde paylaşılan içeriklerin doğrudan Bitcoin'le ilgili olması gerekmektedir, bu durumun eğitsel, ekonomik, gizlilik, güvenlik ya da öz-yönetim yönlerini içermesi beklenir. Konu dışı içerikler denetlenebilir veya kaldırılabilir.",
+      "guideline2Title": "2. Diğerleri için faydalı olan içerikleri paylaşın",
+      "guideline2P1": "Özellikle eğitim amaçları doğrultusunda Bitcoin topluluğuna genel olarak fayda sağlayacak dosyaları yükleyin. Amaç; eğitmenlere ve dünya genelinde Bitcoin öğreten topluluklara hizmet verebilecek kaynakları toplamaktır.",
+      "guideline2P2": "Lütfen başkaları tarafından kullanılma olasılığı çok düşük olan dosyaları yüklemekten kaçının. Fazla sayıda alakasız dosya, değerli içerikleri bulmayı zorlaştırır.",
+      "guideline3Title": "3. Açık başlıklar ve açıklamalar yazın",
+      "guideline3P1": "Kaynaklar, açık bir şekilde adlandırıldığında ve açıklandığında çok daha etkileyici ve kullanışlıdır. Lütfen içeriğinizin açıklamasında bağlam sunun ve diğerlerinin anlamasına yardımcı olun:",
+      "guideline3Bullet1": "İçeriğin ne hakkında olduğu",
+      "guideline3Bullet2": "Bunu nasıl kullandığınız",
+      "guideline3Bullet3": "Diğerlerinin kendi bağlamlarında nasıl kullanabileceği",
+      "guideline3P2": "Ayrıca, kapak resminizi dikkatlice seçin ve içeriği doğru bir şekilde temsil ettiğinden emin olun.",
+      "guideline3P3": "Dosya yüklerken, açıklayıcı dosya adları kullanın. Dosya adınız, diğer kullanıcılar içeriğinizi indirdiklerinde görünür olacaktır. \"final_v2.png\" gibi genel isimlerden kaçının. Bunun yerine, içeriği açıklayan net isimler kullanın, örneğin \"bitcoin-basics-workshop-slides.pdf\".",
+      "guideline4Title": "4. İlgili dosyaları paketler halinde gruplandırın",
+      "guideline4P1": "Eğitici İçerik bölümü, bilgi paylaşımı ve iş birliği için tasarlanmıştır. Okunabilirlik ve adil görünürlük sağlamak amacıyla, ilgili dosyaları bir araya getirmenizi teşvik ederiz. Örneğin, bir sunum serisi, tek tek sunumlar olarak bağlantıları zor olanlardan daha çok görünürlük ve etki sağlar. Paketler, diğer eğitmenlerin tam materyal setlerini bulmalarını ve kullanmalarını kolaylaştırır.",
+      "guideline5Title": "5. Mümkün olduğunda birden fazla format sağlayın",
+      "guideline5P1": "Her kaynak için hem bağlantıları hem de dosyaları ekleyebilirsiniz. Bu size şu fırsatları sunar:",
+      "guideline5Bullet1": "**Bağlantıları paylaşın** düzenlenebilir veya kopyalanabilir kaynaklara (Canva, Google Slides, Figma) böylece diğer eğitmenler çalışmanızı kendi ihtiyaçlarına göre adapte edebilirler",
+      "guideline5Bullet2": "**Birden fazla dosya formatı ekleyin** (PDF, PNG, kaynak dosyaları), böylece diğerleri için en uygun formatı seçmeleri mümkün olur.",
+      "guideline5P2": "Bu esneklik içeriğinizi daha geniş bir kitle için daha faydalı hale getirir.",
+      "guideline6Title": "6. Telif hakkına saygı gösterin",
+      "guideline6P1": "Eğer oluşturmadığınız bir içerik ekliyorsanız, orijinal kaynağın açıklamada belirtilmesi gerekmektedir. İçerik ayrıca orijinal olarak yayınlandığı lisansla paylaşılmalıdır.",
+      "guideline6P2": "İçeriği Eğitmen İçerik portalına yüklediğinizde, bu Plan ₿ Akademisi hesabınıza bağlanır. Paylaştığınız içerikten siz sorumlusunuz. Uygun yetki olmadan telif haklarına sahip materyal paylaşmak izin verilmez ve denetime tabi olacaktır.",
+      "guideline7Title": "7. Bir lisans seçin",
+      "guideline7P1": "Tüm içerik varsayılan olarak CC-BY-SA lisansı altında yayınlanır.",
+      "guideline7P2": "İçeriğinize farklı bir lisans uygulamak isterseniz, aşağıdaki seçeneklerden seçim yapabilirsiniz:",
+      "guideline7Licenses": "CC BY, CC BY-NC, CC BY-NC-SA, CC BY-ND, CC BY-NC-ND, MIT",
+      "guideline7LearnMore": "Creative Commons lisansları hakkında daha fazla bilgi edinin",
+      "guideline7P3": "Lisanslar konusunda aşina değilseniz, önerilen default seçeneği (CC-BY-SA) güvenle sürdürebilirsiniz.",
+      "guideline8Title": "8. Promosyonlar veya spam yok",
+      "guideline8P1": "Eğitmen İçerik bölümünde promosyon içeriğine izin verilmez. Bu da içerir:",
+      "guideline8Bullet1": "Referans linkleri",
+      "guideline8Bullet2": "Affiliate linkleri",
+      "guideline8Bullet3": "Gizlenmiş ticari promosyonlar",
+      "guideline8P2": "Böyle bir içerik kaldırılacaktır.",
+      "guideline8P3": "Spam, aldatmaca veya yanıltıcı bilgi içeren materyal yüklemeyin.",
+      "guideline9Title": "9. İnceleme Süreci",
+      "guideline9P1": "İçeriğinizi inceleme için gönderdiğinizde, ekibimiz onun bu kılavuzlara uyup uymadığını kontrol edecektir.",
+      "guideline9Bullet1": "**Küçük hatalar varsa:** Doğrudan düzeltmeye öncülük edeceğiz.",
+      "guideline9Bullet2": "**İçerik büyük düzeltmeler olmadan kabul edilemezse:** Gönderiyi reddederiz.",
+      "guideline9P2": "Her iki durumda da, içeriğinizin kabul edilip edilmediği konusunda e-posta ile bir bildirim alacaksınız.",
+      "communityStandardsTitle": "Topluluk Standartları",
+      "guideline10Title": "10. Katkıda bulunanlara saygı gösterin",
+      "guideline10P1": "Eğitici içerik paylaşmak çaba ve cesaret gerektirir. Bu nedenle, geri bildirim ve eleştiriler **yalnızca yapıcı, saygılı ve alakalı oldukları sürece** hoş karşılanmaktadır. Bu yüzden, kişisel saldırılar veya zararlı yorumlara tolerans gösterilmez.",
+      "guideline11Title": "11. Nefret veya tacize yer yok",
+      "guideline11P1": "**Nefreti, ayrımcılığı veya tacizi teşvik eden her türlü içerik veya yorum yasaktır**. Bu, ırka veya cilt rengine, dini inançlara, kültüre, kökene veya diğer herhangi bir kişisel özelliğe yönelik ifadeleri içerir.",
+      "guideline12Title": "12. Nezaketli davranın ve gizliliğe saygı gösterin",
+      "guideline12P1": "Herkesi saygı ile davranın. Sağlıklı ve yapıcı tartışmalar teşvik edilir ancak nezaket esastır. Lütfen ayrıca, insanların gizliliklerine saygı gösterin ve rızaları olmadan kişisel bilgilerini paylaşmayın.",
+      "guideline6P3": "Paylaşma hakkına sahip olduğunuz içeriği yükleyin."
+    }
   },
   "becomeTeacher": {
     "activeBitcoinLearners": "Aktif Bitcoin öğrenenler",

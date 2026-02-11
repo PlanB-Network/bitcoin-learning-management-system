@@ -154,7 +154,9 @@
       "finishCourse": "完成课程",
       "live": {
         "stayTuned": "直播将在课程开始前半小时开始。请保持关注。",
-        "title": "直播视频"
+        "title": "直播视频",
+        "joinLive": "参加直播会议",
+        "joining": "正在加入..."
       },
       "next": "完成，进入下一章节"
     },
@@ -873,7 +875,8 @@
     "calendar": {
       "eventType": {
         "class": "课程",
-        "event": "活动"
+        "event": "活动",
+        "history": "比特币日期"
       },
       "personalCalendar": "个人时间安排",
       "downloadButton": "下载 .ics 日历并导入",
@@ -887,7 +890,8 @@
       "subscribeStep1": "复制日历链接",
       "subscribeStep2": "将其粘贴到您的日历应用的“订阅”选项中",
       "subscribeStep3": "如果有任何变化，活动信息会自动更新",
-      "subscribeTitle": "订阅日历（活动会自动同步更新）"
+      "subscribeTitle": "订阅日历（活动会自动同步更新）",
+      "followSelectedCalendar": "遵循已选日历"
     },
     "careerPortal": {
       "acceptedFormat": "可接收文件格式：pdf/最大文件大小：10 MB。",
@@ -1388,7 +1392,8 @@
       "noEventsFound": "未找到活动",
       "thisMonth": "本月",
       "today": "今天",
-      "xMonthsAgo": "{{number}}个月前"
+      "xMonthsAgo": "{{number}}个月前",
+      "allDay": "全天"
     },
     "eventInfos": {
       "eventBooked": "已预订的活动",
@@ -1744,7 +1749,11 @@
     "youtube_channel": "YouTube频道",
     "youtube_channels": "YouTube频道",
     "noResults": "无结果",
-    "resultsFound": "找到 {{count}} 个结果"
+    "resultsFound": "找到 {{count}} 个结果",
+    "movie": "电影",
+    "movies": "电影与纪录片",
+    "research_paper": "研究论文",
+    "research_papers": "研究论文"
   },
   "settings": {
     "changeDisplayName": "更改显示名称",
@@ -2030,7 +2039,8 @@
     "default": "默认",
     "host": "主持人",
     "link": "链接",
-    "published": "已发布"
+    "published": "已发布",
+    "hide": "隐藏"
   },
   "youtubeChannels": {
     "view": "查看YouTube频道",
@@ -2225,7 +2235,73 @@
       "title": "许可证"
     },
     "supportedFileTypes": "支持的文件类型：图片，PDF，演示文稿，电子表格，文本文档",
-    "uploadFilesHelper": "如果你有相关的文件，请将它们一起上传为一个包。上传前清晰命名你的文件。"
+    "uploadFilesHelper": "如果你有相关的文件，请将它们一起上传为一个包。上传前清晰命名你的文件。",
+    "guideContent": {
+      "guideline6P3": "请只上传您有权分享的内容。",
+      "intro": "感谢你的出席！本指南将帮助你理解如何与全球比特币教育者社区分享你的教育材料。",
+      "purposeTitle": "目的",
+      "purposeP1": "教育内容板块的目标是帮助比特币教育者互相支持并减少重复的工作。这样，每次他们准备演示或教育材料时，就无需从头开始。",
+      "purposeP2": "我们知道教育者为创建他们本地社区的内容投入了多少努力和精力。我们相信这些内容对于全球各地进行同样工作的其他教育者可能非常有价值。",
+      "purposeP3": "理念是团结起来会更强大：内容更好，分发更好，且不再浪费时间重新制作已经存在的内容。",
+      "whatYouCanShareTitle": "你能分享什么",
+      "whatYouCanShareP1": "在教育内容板块，比特币教育者和社区可以分享并分发他们的内容，以及下载他人创建的材料。",
+      "whatYouCanShareP2": "内容可以采取多种形式：",
+      "whatYouCanSharePresentations": "**演示：** 幻灯片堆栈，研讨会材料，课程",
+      "whatYouCanSharePrint": "**印刷材料：** 传单，海报，贴纸，横幅",
+      "whatYouCanShareDocuments": "**文件：** 指南，手册，练习题，信息图",
+      "whatYouCanShareP3": "可以以任何语言共享内容，格式如下：",
+      "whatYouCanShareStatic": "**静态文件：** PDF，PNG，JPG（可直接使用或打印）",
+      "whatYouCanShareEditable": "**可编辑版本：** Canva链接，Google幻灯片，源文件（使他人能够调整和定制）",
+      "whatYouCanShareFileTypes": "**支持的文件类型：** 图片，PDF，演示文稿，电子表格，文本文档",
+      "contentGuidelinesTitle": "内容指南",
+      "guideline1Title": "1. 仅关注比特币的内容",
+      "guideline1P1": "在教育者内容部分分享的内容必须直接与比特币相关，包括其教育、经济、隐私、安全或自主权的方面。偏题的内容可能会被调整或删除。",
+      "guideline2Title": "2. 分享对他人有用的内容",
+      "guideline2P1": "上传你认为会对比特币社区有大的益处的文件，特别是用于教育目的。目标是收集可以服务于世界各地教育比特币的教育者和社区的资源。",
+      "guideline2P2": "请避免上传其他人使用的可能性非常低的文件。过多无关的文件会使找到有价值的内容变得更困难。",
+      "guideline3Title": "3. 写清楚的标题和说明",
+      "guideline3P1": "当资源明确命名和说明时，它们会更有影响力和用途。请在内容描述中提供上下文，以帮助其他人理解：",
+      "guideline3Bullet1": "内容是关于什么",
+      "guideline3Bullet2": "你是如何使用它的",
+      "guideline3Bullet3": "其他人如何在他们自己的情况下使用它",
+      "guideline3P2": "此外，仔细选择你的封面图像，并确保它准确地代表内容。",
+      "guideline3P3": "上传文件时，使用描述性的文件名。当其他用户下载你的内容时，文件名将对他们可见。避免使用像 \"final_v2.png\" 这样的通用名字。相反，使用描述内容的清晰名称，如 \"bitcoin-basics-workshop-slides.pdf\"。",
+      "guideline4Title": "4. 将相关文件分组到包中",
+      "guideline4P1": "教育者内容部分旨在分享知识和协作。为了确保可读性和公正的可见度，我们鼓励你将相关的文件归组在一起。例如，一系列的演示文稿作为一个课程能获得更多的可见度和影响力，而不是作为难以连接的单独的演示文稿。包使其他的教育者更容易找到和使用完整的材料集合。",
+      "guideline5Title": "5. 尽可能提供多种格式",
+      "guideline5P1": "对于每个资源，你可以附加链接和文件。这给你机会：",
+      "guideline5Bullet1": "**分享链接** 到可编辑或可复制的资源（Canva，Google Slides，Figma），以便其他的教育者可以根据他们的需要调整你的工作",
+      "guideline5Bullet2": "**附加多种文件格式**（PDF，PNG，源文件），以便他人可以选择最适合他们的格式",
+      "guideline5P2": "这种灵活性使您的内容对更广泛的受众更有用。",
+      "guideline6Title": "6. 尊重版权",
+      "guideline6P1": "如果您添加的内容不是您自己创造的，那么必须在描述中注明原始来源。此外，该内容必须按照其原始发布的许可方式进行共享。",
+      "guideline6P2": "当您将内容上传到教育者内容门户时，它将与您的Plan ₿ Academy账户关联。您对分享的内容负责。未经适当授权就分享受版权保护的材料是不允许的，将受到管理。",
+      "guideline7Title": "7. 选择许可证",
+      "guideline7P1": "所有内容默认皆以CC-BY-SA许可证发布。",
+      "guideline7P2": "如果你希望为你的内容应用不同的许可证，你可以从以下选项中选择：",
+      "guideline7Licenses": "CC BY、CC BY-NC、CC BY-NC-SA、CC BY-ND、CC BY-NC-ND、MIT",
+      "guideline7LearnMore": "了解更多有关创作共享许可证的信息",
+      "guideline7P3": "如果你对许可证不熟悉，可以安全地保持推荐的默认选项（CC-BY-SA）。",
+      "guideline8Title": "8. 不允许进行推销或发送垃圾邮件",
+      "guideline8P1": "教育者内容部分不允许有推销内容。这包括：",
+      "guideline8Bullet1": "推荐链接",
+      "guideline8Bullet2": "联盟链接",
+      "guideline8Bullet3": "伪装的商业推广",
+      "guideline8P2": "这类内容将被移除。",
+      "guideline8P3": "不要上传可能被视为垃圾邮件、诈骗或包含误导信息的材料。",
+      "guideline9Title": "9. 审核流程",
+      "guideline9P1": "一旦您提交需要审查的内容，我们的团队将核查它是否符合这些指导原则。",
+      "guideline9Bullet1": "**如果存在小错误：** 我们会主动进行直接纠正。",
+      "guideline9Bullet2": "**如果内容在没有大修的情况下无法被接受：** 我们将拒绝这个提交。",
+      "guideline9P2": "无论你的内容被接受还是被拒，你都将通过邮件收到通知。",
+      "communityStandardsTitle": "社区规定",
+      "guideline10Title": "10. 尊重稿件提供者",
+      "guideline10P1": "分享教育内容需要努力和勇气。因此，我们欢迎**建设性、尊重性和相关性**的反馈和批评。因此，对个人的攻击或有害的评论将不被容忍。",
+      "guideline11Title": "11. 不得存在仇恨或骚扰",
+      "guideline11P1": "任何宣传**仇恨、歧视或骚扰的内容或评论都是被禁止的**。这包括针对种族或皮肤颜色、宗教、文化、来源或其他任何个人特质的言论。",
+      "guideline12Title": "12. 请礼貌对待他人并尊重隐私",
+      "guideline12P1": "请尊重每个人。我们鼓励健康和建设性的辩论，但礼貌至关重要。请尊重别人的隐私，未经同意不要分享个人信息。"
+    }
   },
   "mentor": {
     "collapse": "折叠",

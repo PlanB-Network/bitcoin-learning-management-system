@@ -154,7 +154,9 @@
       "finishCourse": "Slutför kursen",
       "live": {
         "stayTuned": "Den direktsända sessionen kommer att börja 30 minuter innan lektionen börjar. Håll utkik!",
-        "title": "Livevideo"
+        "title": "Livevideo",
+        "joinLive": "Delta i live-sessionen",
+        "joining": "Ansluter..."
       },
       "next": "Slutför kapitel"
     },
@@ -873,7 +875,8 @@
     "calendar": {
       "eventType": {
         "class": "Klasser",
-        "event": "Events"
+        "event": "Events",
+        "history": "Bitcoin-datum"
       },
       "personalCalendar": "Personlig kalender",
       "downloadStep3": "Händelser uppdateras inte om datumen ändras",
@@ -887,7 +890,8 @@
       "downloadCalendar": "Ladda ner kalender",
       "downloadCalendarTitle": "Ladda ner kalender",
       "downloadStep1": "Ladda ner kalenderfilen",
-      "downloadStep2": "Öppna den med din kalender-app"
+      "downloadStep2": "Öppna den med din kalender-app",
+      "followSelectedCalendar": "Följ det valda kalendret"
     },
     "careerPortal": {
       "acceptedFormat": "Accepterat filformat: pdf / Maximal filstorlek: 10 MB.",
@@ -1388,7 +1392,8 @@
       "noEventsFound": "Inga evenemang hittades",
       "thisMonth": "Denna månad",
       "today": "Idag",
-      "xMonthsAgo": "{{number}} månader sedan"
+      "xMonthsAgo": "{{number}} månader sedan",
+      "allDay": "Hela dagen"
     },
     "planBWeek": {
       "pageTitle": "Plan ₿ vecka"
@@ -1741,7 +1746,11 @@
     "youtube_channel": "Youtube-kanal",
     "youtube_channels": "Youtube-kanaler",
     "noResults": "Inga resultat",
-    "resultsFound": "{{count}} resultat hittades"
+    "resultsFound": "{{count}} resultat hittades",
+    "movie": "Film",
+    "movies": "Filmer och dokumentärer",
+    "research_paper": "Forskningsrapport",
+    "research_papers": "Forskningsartiklar"
   },
   "settings": {
     "changeDisplayName": "Ändra visningsnamn",
@@ -2027,7 +2036,8 @@
     "host": "Värd",
     "link": "Länk",
     "published": "Publicerad",
-    "default": "standard"
+    "default": "standard",
+    "hide": "Dölj"
   },
   "youtubeChannels": {
     "view": "Visa Youtube-kanal",
@@ -2225,6 +2235,72 @@
       "learnMore": "Lär dig mer om licenser",
       "licensedByDefault": "Licensierad som standard som CC BY-SA",
       "title": "Licens"
+    },
+    "guideContent": {
+      "whatYouCanShareFileTypes": "Stödda filtyper: bilder, PDF, presentationer, kalkylblad, textdokument",
+      "guideline6P3": "Ladda endast upp innehåll som du har rätt att dela.",
+      "intro": "Tack för att du är här! Den här guiden kommer att hjälpa dig att förstå hur du delar dina utbildningsmaterial med det globala Bitcoin-lärarsamfundet.",
+      "purposeTitle": "Syfte",
+      "purposeP1": "Målet med avsnittet för lärarinnehåll är att hjälpa Bitcoin-lärare att stödja varandra och minska dubbelt arbete. På detta sätt behöver ingen börja från början varje gång de förbereder en presentation eller utbildningsmaterial.",
+      "purposeP2": "Vi vet hur mycket arbete och energi lärare lägger ner på att skapa innehåll för sina lokala samhällen. Vi tror att detta innehåll kan vara extremt värdefullt för andra lärare som gör samma arbete runt om i världen.",
+      "purposeP3": "Ideen är att vara starkare tillsammans: bättre innehåll, bättre distribuerat och mindre tid slösat på att återskapa det som redan finns.",
+      "whatYouCanShareTitle": "Vad du kan dela",
+      "whatYouCanShareP1": "I avsnittet för lärarinnehåll kan Bitcoin-lärare och samhällen dela och distribuera sitt innehåll, samt ladda ner material som skapats av andra.",
+      "whatYouCanShareP2": "Innehållet kan ta många former:",
+      "whatYouCanSharePresentations": "**Presentationer:** Bildspel, workshopmaterial, läroplaner",
+      "whatYouCanSharePrint": "**Tryckta material:** Flyers, affischer, klistermärken, banderoller",
+      "whatYouCanShareDocuments": "**Dokument:** Guider, handouts, arbetsblad, infografik",
+      "whatYouCanShareP3": "Innehåll kan delas på vilket språk som helst, antingen som:",
+      "whatYouCanShareStatic": "**Statiska filer:** PDF, PNG, JPG (redo att använda eller skriva ut)",
+      "whatYouCanShareEditable": "**Redigerbara versioner:** Canva-länkar, Google Slides, källfiler (så att andra kan anpassa och anpassa)",
+      "contentGuidelinesTitle": "Innehållsriktlinjer",
+      "guideline1Title": "1. Endast innehåll inriktat på Bitcoin",
+      "guideline1P1": "Innehåll som delas i sektionen för utbildningsinnehåll måste direkt relatera till Bitcoin, inklusive dess utbildningsmässiga, ekonomiska, privata, säkerhetsmässiga eller självständiga aspekter. Icke-relaterat innehåll kan modereras eller tas bort.",
+      "guideline2Title": "2. Dela innehåll som är användbart för andra",
+      "guideline2P1": "Ladda upp filer som du tror kommer att gynna Bitcoin-gemenskapen i stort, särskilt för utbildningsändamål. Målet är att samla resurser som kan tjäna utbildare och samhällen som undervisar om Bitcoin runt om i världen.",
+      "guideline2P2": "Undvik att ladda upp filer som har en mycket låg sannolikhet att användas av andra. För många irrelevanta filer gör det svårare att hitta värdefullt innehåll.",
+      "guideline3Title": "3. Skriv tydliga titlar och beskrivningar",
+      "guideline3P1": "Resurser är mycket mer effektiva och användbara när de är tydligt namngivna och beskrivna. Ge kontext i din innehållsbeskrivning för att hjälpa andra att förstå:",
+      "guideline3Bullet1": "Vad innehållet handlar om",
+      "guideline3Bullet2": "Hur du har använt det",
+      "guideline3Bullet3": "Hur andra kanske kan använda det i sitt eget sammanhang",
+      "guideline3P2": "Välj också ditt omslagsbild noggrant och se till att det representerar innehållet korrekt.",
+      "guideline3P3": "När du laddar upp filer, använd beskrivande filnamn. Filnamnet kommer att vara synligt för andra användare när de laddar ner ditt innehåll. Undvik generiska namn som \"final_v2.png\". Använd istället tydliga namn som beskriver innehållet, såsom \"bitcoin-grunderna-workshop-slides.pdf\".",
+      "guideline4Title": "4. Gruppera relaterade filer i buntar",
+      "guideline4P1": "Sektionen för utbildningsinnehåll är utformad för kunskapsdelning och samarbete. För att säkerställa läsbarhet och rättvis synlighet uppmuntrar vi dig att gruppera relaterade filer tillsammans. Till exempel kommer en serie presentationer att ha mer synlighet och inverkan som en läroplan, snarare än som enskilda presentationer som är svåra att koppla ihop. Buntar gör det lättare för andra utbildare att hitta och använda kompletta materialset.",
+      "guideline5Title": "5. Tillhandahåll fler format när det är möjligt",
+      "guideline5P1": "För varje resurs kan du bifoga både länkar och filer. Detta ger dig möjlighet att:",
+      "guideline5Bullet1": "**Dela länkar** till redigerbara eller duplicerbara resurser (Canva, Google Slides, Figma), så att andra utbildare kan anpassa ditt arbete till sina behov",
+      "guideline5Bullet2": "**Bifoga flera filformat** (PDF, PNG, källfiler), så att andra kan välja det format som fungerar bäst för dem",
+      "guideline5P2": "Denna flexibilitet gör ditt innehåll mer användbart för en bredare publik.",
+      "guideline6Title": "6. Respektera upphovsrätten",
+      "guideline6P1": "Om du lägger till innehåll som du inte skapat måste den ursprungliga källan krediteras i beskrivningen. Innehållet måste också delas under samma licens som det ursprungligen publicerades med.",
+      "guideline6P2": "När du laddar upp innehåll till portalen för Utbildningsinnehåll kopplas det till ditt Plan ₿ Academy-konto. Du är ansvarig för det innehåll du delar. Att dela upphovsrättsskyddat material utan korrekt auktorisation är inte tillåtet och kommer att modereras.",
+      "guideline7Title": "7. Välj en licens",
+      "guideline7P1": "Allt innehåll publiceras som standard under licensen CC-BY-SA.",
+      "guideline7P2": "Om du önskar använda en annan licens för ditt innehåll kan du välja mellan följande alternativ:",
+      "guideline7Licenses": "CC BY, CC BY-NC, CC BY-NC-SA, CC BY-ND, CC BY-NC-ND, MIT",
+      "guideline7LearnMore": "Lär dig mer om Creative Commons-licenser",
+      "guideline7P3": "Om du inte är bekant med licenser kan du tryggt behålla det rekommenderade standardalternativet (CC-BY-SA).",
+      "guideline8Title": "8. Inga kampanjer eller spam",
+      "guideline8P1": "Reklaminnehåll är inte tillåtet i utbildningsinnehållssektionen. Detta inkluderar:",
+      "guideline8Bullet1": "Hänvisningslänkar",
+      "guideline8Bullet2": "Affiliatelänkar",
+      "guideline8Bullet3": "Dolda kommersiella kampanjer",
+      "guideline8P2": "Sådant innehåll kommer att tas bort.",
+      "guideline8P3": "Ladda inte upp material som kan betraktas som skräppost, bedrägerier eller som innehåller vilseledande information.",
+      "guideline9Title": "9. Granskningsprocess",
+      "guideline9P1": "När du skickar in ditt innehåll för granskning kommer vårt team att kontrollera att det följer dessa riktlinjer.",
+      "guideline9Bullet1": "**Om det finns mindre fel:** Vi kommer att ta initiativet att rätta dem direkt.",
+      "guideline9Bullet2": "**Om innehållet inte kan accepteras utan stora korrigeringar:** Vi kommer att avvisa inlämningen.",
+      "guideline9P2": "I båda fallen, oavsett om ditt innehåll godkänns eller avvisas, kommer du att få ett meddelande via e-post.",
+      "communityStandardsTitle": "Gemenskapsregler",
+      "guideline10Title": "10. Respektera bidragsgivarna",
+      "guideline10P1": "Att dela utbildningsinnehåll kräver ansträngning och mod. Feedback och kritik är därför välkomna **endast om de är konstruktiva, respektfulla och relevanta**. Därför kommer vi inte att tolerera personliga attacker eller skadliga kommentarer.",
+      "guideline11Title": "11. Ingen hat eller trakasserier",
+      "guideline11P1": "Alla innehåll eller kommentarer som främjar **hat, diskriminering eller trakasserier är förbjudna**. Detta inkluderar kommentarer som riktar sig mot ras eller hudfärg, religion, kultur, ursprung eller någon annan personlig egenskap.",
+      "guideline12Title": "12. Var artig och respektera privatlivet",
+      "guideline12P1": "Behandla alla med respekt. Sund och konstruktiv debatt uppmuntras, men artighet är avgörande. Respektera också människors privatliv och dela inte personlig information utan samtycke."
     }
   },
   "forms": {

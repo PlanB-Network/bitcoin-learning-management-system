@@ -154,7 +154,9 @@
       "finishCourse": "Maliza kozi",
       "live": {
         "stayTuned": "Kipindi cha moja kwa moja kitaanza dakika 30 kabla ya darasa kuanza.kaa tayari!",
-        "title": "Video ya moja kwa moja"
+        "title": "Video ya moja kwa moja",
+        "joinLive": "Jiunge na kikao cha moja kwa moja",
+        "joining": "Kujiunga..."
       },
       "next": "Tayari tumemaliza"
     },
@@ -873,7 +875,8 @@
     "calendar": {
       "eventType": {
         "class": "Madarasa",
-        "event": "Matukio"
+        "event": "Matukio",
+        "history": "Tarehe za Bitcoin"
       },
       "personalCalendar": "Kalenda ya kibinafsi",
       "downloadButton": "Pakua kalenda ya .ics na iingize",
@@ -887,7 +890,8 @@
       "subscribeStep1": "Nakili kiungo cha kalenda",
       "subscribeStep2": "Weka kwenye chaguo la \"Jiandikishe\" katika programu yako ya kalenda",
       "subscribeStep3": "Matukio yanabaki yameboreshwa kiotomatiki ikiwa chochote kinabadilika",
-      "subscribeTitle": "Jiunge na kalenda (unganisha kiotomatiki)"
+      "subscribeTitle": "Jiunge na kalenda (unganisha kiotomatiki)",
+      "followSelectedCalendar": "Fuata kalenda iliyochaguliwa"
     },
     "careerPortal": {
       "acceptedFormat": "Muundo wa faili unakubalika: pdf / Ukubwa wa faili kubwa zaidi: 10 MB.",
@@ -1389,7 +1393,8 @@
       "noEventsFound": "Hakuna matukio yaliyopatikana",
       "thisMonth": "Mwezi huu",
       "today": "Leo",
-      "xMonthsAgo": "Miezi {{number}} iliyopita"
+      "xMonthsAgo": "Miezi {{number}} iliyopita",
+      "allDay": "Siku nzima"
     },
     "eventInfos": {
       "eventBooked": "Tukio limehifadhiwa",
@@ -1744,7 +1749,11 @@
     "youtube_channel": "Kituo cha Youtube",
     "youtube_channels": "Vituo vya Youtube",
     "noResults": "Hakuna matokeo yaliyopatikana",
-    "resultsFound": "Matokeo {{count}} yamepatikana"
+    "resultsFound": "Matokeo {{count}} yamepatikana",
+    "movie": "Filamu",
+    "movies": "Filamu na Makala",
+    "research_paper": "Karatasi ya Utafiti",
+    "research_papers": "Makaratasi ya Utafiti"
   },
   "settings": {
     "changeDisplayName": "Badilisha jina la onyesho",
@@ -2030,7 +2039,8 @@
     "default": "chaguo-msingi",
     "host": "Mwenyeji",
     "link": "Kiungo",
-    "published": "Iliyochapishwa"
+    "published": "Iliyochapishwa",
+    "hide": "Ficha"
   },
   "youtubeChannels": {
     "view": "Tazama Channel ya Youtube",
@@ -2225,7 +2235,73 @@
       "title": "Leseni"
     },
     "supportedFileTypes": "Aina za faili zinazoungwa mkono: picha, PDF, maonyesho, spreadsheets, nyaraka za maandishi",
-    "uploadFilesHelper": "Ikiwa una faili zinazohusiana, upakie pamoja kama bando moja. Panga majina ya faili zako vizuri kabla ya kupakia."
+    "uploadFilesHelper": "Ikiwa una faili zinazohusiana, upakie pamoja kama bando moja. Panga majina ya faili zako vizuri kabla ya kupakia.",
+    "guideContent": {
+      "intro": "Asante kwa kuwepo hapa! Mwongozo huu utakusaidia kuelewa jinsi ya kushiriki vifaa vyako vya kielimu na jamii ya walimu wa Bitcoin ulimwenguni.",
+      "purposeTitle": "Kusudi",
+      "purposeP1": "Lengo la sehemu ya Maudhui ya Mwalimu ni kusaidia walimu wa Bitcoin kuungana na kupunguza kazi zinazorudiwa. Hivyo, hakuna mtu anayelazimika kuanza upya kila wakati anapoandaa mawasilisho au nyenzo za kielimu.",
+      "purposeP2": "Tunajua jinsi walimu wanavyowekeza nguvu na juhudi katika kuunda maudhui kwa jamii zao za ndani. Tunaamini maudhui haya yanaweza kuwa yenye thamani kubwa kwa walimu wengine wanaofanya kazi sawa duniani kote.",
+      "purposeP3": "Wazo ni kuwa imara pamoja: maudhui bora, yanasambazwa vizuri, na muda mdogo unapotezwa kuunda upya kile kilichopo tayari.",
+      "whatYouCanShareTitle": "Unaweza Kushiriki Nini",
+      "whatYouCanShareP1": "Katika sehemu ya Maudhui ya Mwalimu, walimu wa Bitcoin na jamii wanaweza kushiriki na kusambaza maudhui yao, na pia kudownload nyenzo zilizotengenezwa na wengine.",
+      "whatYouCanShareP2": "Maudhui yanaweza kuwa katika muundo tofauti:",
+      "whatYouCanSharePresentations": "**Mawasilisho:** Uwasilishaji wa slaidi, nyenzo za warsha, mitalaa",
+      "whatYouCanSharePrint": "**Nyenzo za uchapishaji:** vipeperushi, mabango, stika, bendera",
+      "whatYouCanShareDocuments": "**Nyaraka:** Mwongozo, vipeperushi, karatasi za kazi, infographics",
+      "whatYouCanShareP3": "Maudhui yanaweza kushirikiwa katika lugha yoyote, ama kama:",
+      "whatYouCanShareStatic": "**Nakala za kudumu:** PDF, PNG, JPG (tayari kutumia au kuprinti)",
+      "whatYouCanShareEditable": "**Nakala za kuharirika:** Viungo vya Canva, Google Slides, faili za chanzo (ili wengine waweze kubadilisha na kubinafsisha)",
+      "contentGuidelinesTitle": "Mwongozo wa Yaliyomo",
+      "guideline1Title": "1. Yaliyomo yanayohusu Bitcoin pekee",
+      "guideline1P1": "Yaliyomo yanayoshirikiwa katika sehemu ya Yaliyomo ya Mwalimu yanapaswa kuwa yanahusiana moja kwa moja na Bitcoin, ikiwa ni pamoja na mitazamo yake ya elimu, uchumi, faragha, usalama au uhuru wa kujitawala. Yaliyomo ya kando ya mada yanaweza kudhibitiwa au kuondolewa.",
+      "guideline2Title": "2. Shiriki yaliyomo ambayo ni yenye manufaa kwa wengine",
+      "guideline2P1": "Pakia faili ambayo unafikiria itanufaisha jamii ya Bitcoin kwa ujumla, hasa kwa madhumuni ya elimu. Lengo ni kukusanya rasilimali ambazo zinaweza kuwatumikia walimu na jamii zinazofundisha Bitcoin duniani kote.",
+      "guideline2P2": "Tafadhali epuka kupakia faili ambazo zina uwezekano mdogo sana wa kutumiwa na wengine. Faili nyingi zisizo na umuhimu hufanya iwe vigumu kupata yaliyomo yenye thamani.",
+      "guideline3Title": "3. Andika vichwa vya habari na maelezo yaliyo wazi",
+      "guideline3P1": "Rasilimali ni yenye ufanisi zaidi na manufaa wakati zinapewa jina na kuelezewa kwa uwazi. Tafadhali toa muktadha katika maelezo yako ya yaliyomo ili kuwasaidia wengine kuelewa:",
+      "guideline3Bullet1": "Yaliyomo yana kuhusu nini",
+      "guideline3Bullet2": "Jinsi unavyoitumia",
+      "guideline3Bullet3": "Jinsi wengine wanaweza kuitumia katika muktadha wao",
+      "guideline3P2": "Pia, chagua picha yako ya jalada kwa makini na hakikisha inawakilisha yaliyomo kwa usahihi.",
+      "guideline3P3": "Wakati wa kupakia faili, tumia majina ya faili yanayoelezea. Jina la faili litakuwa linaonekana kwa watumiaji wengine wakati wanapakua yaliyomo yako. Epuka majina ya jumla kama \"final_v2.png\". Badala yake, tumia majina wazi yanayoelezea yaliyomo, kama vile \"bitcoin-basics-workshop-slides.pdf\".",
+      "guideline4Title": "4. Kusanya faili zinazohusiana kwenye makundi",
+      "guideline4P1": "Sehemu ya Yaliyomo ya Mwalimu imeundwa kwa ajili ya kushiriki maarifa na ushirikiano. Ili kuhakikisha inasomeka na kuwa na mwonekano wa haki, tunakuhimiza uweke faili zinazohusiana pamoja. Kwa mfano, mfululizo wa maonyesho utakuwa na mwonekano zaidi na athari kama mtaala, badala ya maonyesho ya kibinafsi ambayo ni vigumu kuyaunganisha. Makundi hufanya iwe rahisi kwa walimu wengine kupata na kutumia seti kamili ya vifaa.",
+      "guideline5Title": "5. Toa miundo tofauti iwezekanavyo",
+      "guideline5P1": "Kwa kila rasilimali, unaweza kuambatanisha viungo na faili. Hii inakupa fursa ya:",
+      "guideline5Bullet1": "**Kushiriki viungo** kwa rasilimali zinazoweza kuhaririwa au kunakiliwa (Canva, Google Slides, Figma), ili walimu wengine waweze kubadilisha kazi yako kulingana na mahitaji yao",
+      "guideline5Bullet2": "**Kuambatanisha miundo tofauti ya faili** (PDF, PNG, faili za chanzo), ili wengine waweze kuchagua muundo unaofaa kwao.",
+      "guideline5P2": "Uwepesi huu hufanya maudhui yako yafae zaidi kwa hadhira pana.",
+      "guideline6Title": "6. Heshimu haki miliki",
+      "guideline6P1": "Ikiwa unaweka maudhui ambayo hukuumba, chanzo cha asili lazima kiwekwe katika maelezo. Maudhui hayo lazima pia yashirikishwe chini ya leseni ile ile ambayo yalichapishwa nayo awali.",
+      "guideline6P2": "Unapo pakia maudhui kwenye portal ya Maudhui ya Mwalimu, yanahusishwa na akaunti yako ya Academy ya Plan ₿. Wewe ndiye unayewajibika kwa maudhui unayoshiriki. Kushiriki materiale iliyo na haki miliki bila idhini sahihi hairuhusiwi na itakuwa chini ya ukaguzi.",
+      "guideline7Title": "7. Chagua leseni",
+      "guideline7P1": "Maudhui yote yanachapishwa chini ya leseni ya CC-BY-SA kwa chaguomsingi.",
+      "guideline7P2": "Ikiwa unataka kutumia leseni tofauti kwa maudhui yako, unaweza kuchagua kutoka kwa chaguo zifuatazo:",
+      "guideline7Licenses": "CC BY, CC BY-NC, CC BY-NC-SA, CC BY-ND, CC BY-NC-ND, MIT",
+      "guideline7LearnMore": "Jifunze zaidi juu ya leseni za Creative Commons",
+      "guideline7P3": "Ikiwa hufahamu vizuri leseni, unaweza salama kuendelea na chaguo la chaguomsingi lililopendekezwa (CC-BY-SA).",
+      "guideline8Title": "8. Hakuna matangazo au taka za barua pepe",
+      "guideline8P1": "Maudhui ya matangazo hayaruhusiwi katika sehemu ya Maudhui ya Mwalimu. Hii inajumuisha:",
+      "guideline8Bullet1": "Viunga vya kurejelea",
+      "guideline8Bullet2": "Viunga vya ushirika",
+      "guideline8Bullet3": "Matangazo ya biashara yaliyofichwa",
+      "guideline8P2": "Maudhui kama haya yataondolewa.",
+      "guideline8P3": "Usipakie materiale inayoweza kuchukuliwa kama taka ya barua pepe, udanganyifu, au inayokunywa taarifa zinazopotosha.",
+      "guideline9Title": "9. Mchakato wa Ukaguzi",
+      "guideline9P1": "Mara tu unapowasilisha maudhui yako kwa ukaguzi, timu yetu itahakikisha kuwa inafuata mwongozo huu.",
+      "guideline9Bullet1": "**Ikiwa kuna makosa madogo:** Tutachukua jukumu la kuyarekebisha moja kwa moja.",
+      "guideline9Bullet2": "**Ikiwa yaliyomo hayawezi kukubaliwa bila marekebisho makubwa:** Tutakataa uwasilishaji.",
+      "guideline9P2": "Katika hali zote mbili, iwapo yaliyomo yako yamekubalika au kukataliwa, utapata notofikesheni kwa barua pepe.",
+      "communityStandardsTitle": "Viwango vya Jumuiya",
+      "guideline10Title": "10. Waheshimu wachangiaji",
+      "guideline10P1": "Kugawana yaliyomo ya elimu inahitaji juhudi na ujasiri. Hivyo, maoni na ukosoaji wanakaribishwa tu **ikiwa ni yenye kujenga, heshima, na yanayohusiana**. Hivyo, mashambulizi ya kibinafsi au maoni yasiyofaa hayatavumilika.",
+      "guideline11Title": "11. Hakuna chuki au unyanyasaji",
+      "guideline11P1": "Yaliyomo yoyote au maoni yaliyo na **chuki, ubaguzi au unyanyasaji yamekatazwa**. Hii inajumuisha maoni yanayolenga rangi ya ngozi, dini, utamaduni, asili au sifa nyingine yoyote ya kibinafsi.",
+      "guideline12Title": "12. Kuwa na adabu na kuheshimu faragha",
+      "guideline12P1": "Tendea kila mtu kwa heshima. Mijadala yenye afya na inayojenga inahimizwa, lakini adabu ni muhimu. Tafadhali pia heshimu faragha za watu na usigawanye taarifa za kibinafsi bila ridhaa.",
+      "whatYouCanShareFileTypes": "Aina za faili zinazoungwa mkono: picha, PDF, maonyesho, spreadsheets, nyaraka za maandishi",
+      "guideline6P3": "Pakia tu maudhui pekee unayo haki ya kushiriki."
+    }
   },
   "forms": {
     "browse": "Vinjari",

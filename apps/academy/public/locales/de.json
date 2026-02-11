@@ -154,7 +154,9 @@
       "finishCourse": "Beenden Sie den Kurs",
       "live": {
         "stayTuned": "Die Live-Sitzung beginnt 30 Minuten vor Beginn des Unterrichts. Bleiben Sie dran!",
-        "title": "Live-Video"
+        "title": "Live-Video",
+        "joinLive": "An Live-Sitzung teilnehmen",
+        "joining": "Verbindet..."
       },
       "next": "Fertig, gehen Sie zum nächsten Kapitel"
     },
@@ -873,7 +875,8 @@
     "calendar": {
       "eventType": {
         "class": "Lektionen",
-        "event": "Veranstaltungen"
+        "event": "Veranstaltungen",
+        "history": "Bitcoin-Daten"
       },
       "personalCalendar": "Persönlicher Kalender",
       "downloadButton": "Download .ics-Kalender und Import",
@@ -887,7 +890,8 @@
       "subscribeStep1": "Den Kalenderlink kopieren",
       "subscribeStep2": "Fügen Sie ihn in die Option \"Abonnieren\" Ihrer Kalender-App ein",
       "subscribeStep3": "Ereignisse bleiben automatisch aktualisiert, wenn sich etwas ändert",
-      "subscribeTitle": "Kalender abonnieren (automatische Synchronisation)"
+      "subscribeTitle": "Kalender abonnieren (automatische Synchronisation)",
+      "followSelectedCalendar": "Ausgewählten Kalender verfolgen"
     },
     "careerPortal": {
       "acceptedFormat": "Akzeptiertes Dateiformat: pdf / Maximale Dateigröße: 10 MB.",
@@ -1389,7 +1393,8 @@
       "noEventsFound": "Keine Ereignisse gefunden",
       "thisMonth": "Diesen Monat",
       "today": "Heute",
-      "xMonthsAgo": "Vor {{number}} Monaten"
+      "xMonthsAgo": "Vor {{number}} Monaten",
+      "allDay": "Ganztägig"
     },
     "eventInfos": {
       "eventBooked": "Veranstaltung gebucht",
@@ -1741,7 +1746,11 @@
     "youtube_channel": "Youtube-Kanal",
     "youtube_channels": "Youtube Kanäle",
     "noResults": "Keine Ergebnisse",
-    "resultsFound": "{{count}} Ergebnisse gefunden"
+    "resultsFound": "{{count}} Ergebnisse gefunden",
+    "movie": "Film",
+    "movies": "Filme & Dokumentarfilme",
+    "research_paper": "Forschungsarbeit",
+    "research_papers": "Forschungsarbeiten"
   },
   "settings": {
     "changeDisplayName": "Namen ändern",
@@ -2027,7 +2036,8 @@
     "host": "Gastgeber",
     "published": "Veröffentlicht",
     "default": "Standard",
-    "link": "Link"
+    "link": "Link",
+    "hide": "Ausblenden"
   },
   "youtubeChannels": {
     "view": "Youtube-Kanal ansehen",
@@ -2211,7 +2221,73 @@
       "changeLicense": "Lizenz ändern"
     },
     "imageTooLarge": "Die Bildgröße darf 15MB nicht überschreiten",
-    "supportedFileTypes": "Unterstützte Dateitypen: Bilder, PDF, Präsentationen, Tabellen, Textdokumente"
+    "supportedFileTypes": "Unterstützte Dateitypen: Bilder, PDF, Präsentationen, Tabellen, Textdokumente",
+    "guideContent": {
+      "guideline6P3": "Laden Sie nur Inhalte hoch, zu deren Freigabe Sie berechtigt sind.",
+      "intro": "Danke, dass Sie hier sind! Dieser Leitfaden wird Ihnen helfen zu verstehen, wie Sie Ihre Bildungsmaterialien mit der globalen Bitcoin-Bildungsgemeinschaft teilen können.",
+      "purposeTitle": "Zweck",
+      "purposeP1": "Das Ziel des Erzieher-Inhaltsabschnitts ist es, Bitcoin-Erzieher dabei zu unterstützen, sich gegenseitig zu unterstützen und doppelte Arbeit zu reduzieren. Auf diese Weise muss niemand jedes Mal bei Null anfangen, wenn er eine Präsentation oder Bildungsmaterial vorbereitet.",
+      "purposeP2": "Wir wissen, wie viel Anstrengung und Energie Erzieher in die Erstellung von Inhalten für ihre lokalen Gemeinschaften stecken. Wir glauben, dass dieser Inhalt für andere Erzieher, die auf der ganzen Welt die gleiche Arbeit leisten, äußerst wertvoll sein kann.",
+      "purposeP3": "Die Idee ist, gemeinsam stärker zu sein: Bessere Inhalte, besser verbreitet und weniger Zeit verschwendet mit dem Neuschaffen dessen, was bereits existiert.",
+      "whatYouCanShareTitle": "Was Sie teilen können",
+      "whatYouCanShareP1": "Im Abschnitt \"Erzieherinhalt\" können Bitcoin-Erzieher und -Gemeinschaften ihre Inhalte teilen und verbreiten, sowie Materialien herunterladen, die von anderen erstellt wurden.",
+      "whatYouCanShareP2": "Der Inhalt kann viele Formen annehmen:",
+      "whatYouCanSharePresentations": "**Präsentationen:** Foliensätze, Workshop-Materialien, Lehrpläne",
+      "whatYouCanSharePrint": "**Druckmaterialien:** Flyer, Poster, Aufkleber, Banner",
+      "whatYouCanShareDocuments": "**Dokumente:** Leitfäden, Handzettel, Arbeitsblätter, Infografiken",
+      "whatYouCanShareP3": "Inhalte können in jeder Sprache geteilt werden, entweder als:",
+      "whatYouCanShareStatic": "**Statische Dateien:** PDF, PNG, JPG (bereit zum Gebrauch oder Druck)",
+      "whatYouCanShareEditable": "**Bearbeitbare Versionen:** Canva-Links, Google Slides, Quelldateien (damit andere sie anpassen und anpassen können)",
+      "whatYouCanShareFileTypes": "**Unterstützte Dateitypen:** Bilder, PDF, Präsentationen, Tabellenkalkulationen, Textdokumente",
+      "contentGuidelinesTitle": "Inhaltliche Richtlinien",
+      "guideline1Title": "1. Nur auf Bitcoin fokussierte Inhalte",
+      "guideline1P1": "Inhalte, die im Bereich Lehrer-Content geteilt werden, müssen direkt mit Bitcoin in Verbindung stehen, einschließlich seiner Bildungs-, Wirtschafts-, Datenschutz-, Sicherheits- oder Selbstverwaltungsaspekte. Off-Topic-Inhalte können moderiert oder entfernt werden.",
+      "guideline2Title": "2. Teilen Sie Inhalte, die für andere nützlich sind",
+      "guideline2P1": "Laden Sie Dateien hoch, von denen Sie glauben, dass sie der Bitcoin-Community insgesamt nutzen, insbesondere für Bildungszwecke. Ziel ist es, Ressourcen zu sammeln, die Pädagogen und Gemeinschaften, die Bitcoin weltweit unterrichten, dienen können.",
+      "guideline2P2": "Bitte vermeiden Sie es, Dateien hochzuladen, die eine sehr geringe Wahrscheinlichkeit haben, von anderen verwendet zu werden. Zu viele nicht relevante Dateien erschweren die Suche nach wertvollen Inhalten.",
+      "guideline3Title": "3. Verfassen Sie klare Titel und Beschreibungen",
+      "guideline3P1": "Ressourcen sind weit effektiver und nützlicher, wenn sie deutlich benannt und beschrieben werden. Bitte geben Sie in Ihrer Inhaltsbeschreibung den Kontext an, um anderen zu helfen, zu verstehen:",
+      "guideline3Bullet1": "Worüber der Inhalt ist",
+      "guideline3Bullet2": "Wie Sie ihn verwendet haben",
+      "guideline3Bullet3": "Wie andere ihn in ihrem eigenen Kontext verwenden könnten",
+      "guideline3P2": "Wählen Sie außerdem Ihr Titelbild sorgfältig aus und stellen Sie sicher, dass es den Inhalt genau darstellt.",
+      "guideline3P3": "Wenn Sie Dateien hochladen, verwenden Sie aussagekräftige Dateinamen. Der Dateiname wird anderen Benutzern sichtbar sein, wenn sie Ihren Inhalt herunterladen. Vermeiden Sie allgemeine Namen wie \"final_v2.png\". Verwenden Sie stattdessen klare Namen, die den Inhalt beschreiben, wie zum Beispiel \"bitcoin-grundlagen-workshop-folien.pdf\".",
+      "guideline4Title": "4. Gruppieren Sie verwandte Dateien in Bundles",
+      "guideline4P1": "Der Bereich Lehrer-Content ist für Wissensaustausch und Zusammenarbeit ausgelegt. Um Lesbarkeit und angemessene Sichtbarkeit zu gewährleisten, ermutigen wir Sie, verwandte Dateien zusammenzufassen. Beispielsweise hat eine Reihe von Präsentationen als Lehrplan eine größere Sichtbarkeit und Wirkung als einzelne Präsentationen, die schwer zu verbinden sind. Pakete erleichtern es anderen Pädagogen, vollständige Materialsets zu finden und zu verwenden.",
+      "guideline5Title": "5. Stellen Sie, wenn möglich, verschiedene Formate bereit",
+      "guideline5P1": "Für jede Ressource können Sie sowohl Links als auch Dateien anhängen. Dies gibt Ihnen die Möglichkeit:",
+      "guideline5Bullet1": "**Links zu teilen** zu bearbeitbaren oder duplizierbaren Ressourcen (Canva, Google Slides, Figma), damit andere Lehrer Ihre Arbeit an ihre Bedürfnisse anpassen können",
+      "guideline5Bullet2": "**Mehrere Dateiformate anzuhängen** (PDF, PNG, Quelldateien), damit andere das Format wählen können, das für sie am besten funktioniert",
+      "guideline5P2": "Diese Flexibilität macht Ihren Inhalt einem breiteren Publikum nützlicher.",
+      "guideline6Title": "6. Urheberrecht respektieren",
+      "guideline6P1": "Wenn Sie Inhalte hinzufügen, die Sie nicht erstellt haben, muss die ursprüngliche Quelle in der Beschreibung gutgeschrieben werden. Der Inhalt muss auch unter der gleichen Lizenz geteilt werden, unter der er ursprünglich veröffentlicht wurde.",
+      "guideline6P2": "Wenn Sie Inhalte auf das Educator Content Portal hochladen, wird es mit Ihrem Plan ₿ Academy-Konto verknüpft. Sie sind verantwortlich für die Inhalte, die Sie teilen. Das Teilen von urheberrechtlich geschütztem Material ohne ordnungsgemäße Autorisierung ist nicht erlaubt und wird moderiert.",
+      "guideline7Title": "7. Wählen Sie eine Lizenz",
+      "guideline7P1": "Alle Inhalte werden standardmäßig unter der CC-BY-SA-Lizenz veröffentlicht.",
+      "guideline7P2": "Wenn Sie Ihrem Inhalt eine andere Lizenz zuweisen möchten, können Sie aus den folgenden Optionen auswählen:",
+      "guideline7Licenses": "CC BY, CC BY-NC, CC BY-NC-SA, CC BY-ND, CC BY-NC-ND, MIT",
+      "guideline7LearnMore": "Erfahren Sie mehr über Creative Commons-Lizenzen",
+      "guideline7P3": "Wenn Sie mit Lizenzen nicht vertraut sind, können Sie sicher die empfohlene Standardoption (CC-BY-SA) beibehalten.",
+      "guideline8Title": "8. Keine Werbung oder Spam",
+      "guideline8P1": "Werbeinhalte sind im Abschnitt \"Educator Content\" nicht erlaubt. Dazu gehören:",
+      "guideline8Bullet1": "Empfehlungslinks",
+      "guideline8Bullet2": "Affiliate-Links",
+      "guideline8Bullet3": "Getarnte kommerzielle Werbung",
+      "guideline8P2": "Solche Inhalte werden entfernt.",
+      "guideline8P3": "Laden Sie kein Material hoch, das als Spam, Betrug oder irreführende Informationen angesehen werden könnte.",
+      "guideline9Title": "9. Prüfprozess",
+      "guideline9P1": "Sobald Sie Ihren Inhalt zur Überprüfung eingereicht haben, wird unser Team überprüfen, ob er diesen Richtlinien entspricht.",
+      "guideline9Bullet1": "**Bei geringfügigen Fehlern:** Wir werden die Initiative ergreifen und sie direkt korrigieren.",
+      "guideline9Bullet2": "**Wenn der Inhalt ohne größere Korrekturen nicht akzeptiert werden kann:** Wir werden die Einreichung ablehnen.",
+      "guideline9P2": "In beiden Fällen, ob Ihr Inhalt akzeptiert oder abgelehnt wird, erhalten Sie eine Benachrichtigung per E-Mail.",
+      "communityStandardsTitle": "Gemeinschaftsstandards",
+      "guideline10Title": "10. Achte auf Beitragende",
+      "guideline10P1": "Die Bereitstellung von Bildungsinhalten erfordert Anstrengung und Mut. Feedback und Kritik sind daher **nur willkommen, wenn sie konstruktiv, respektvoll und relevant sind**. Demzufolge werden persönliche Angriffe oder schädliche Kommentare nicht toleriert.",
+      "guideline11Title": "11. Kein Hass oder Belästigung",
+      "guideline11P1": "Alle Inhalte oder Kommentare, die **Hass, Diskriminierung oder Belästigung fördern, sind verboten**. Dies beinhaltet Bemerkungen in Bezug auf Rasse oder Hautfarbe, Religion, Kultur, Herkunft oder andere persönliche Attribute.",
+      "guideline12Title": "12. Sei höflich und respektiere die Privatsphäre",
+      "guideline12P1": "Behandele jeden mit Respekt. Gesunde und konstruktive Debatten sind erwünscht, aber Höflichkeit ist essentiell. Bitte respektiere auch die Privatsphäre der Menschen und teile keine persönlichen Informationen ohne Zustimmung."
+    }
   },
   "forms": {
     "replace": "Ersetzen",

@@ -154,7 +154,9 @@
       "finishCourse": "Lõpeta kursus",
       "live": {
         "stayTuned": "Otseülekanne algab 30 minutit enne tunni algust. Püsige lainel!",
-        "title": "Reaalajas video"
+        "title": "Reaalajas video",
+        "joinLive": "Liitu otseülekandega",
+        "joining": "Ühendamisel..."
       },
       "next": "Tehtud, liigu järgmise peatüki juurde"
     },
@@ -873,7 +875,8 @@
     "calendar": {
       "eventType": {
         "class": "Klassid",
-        "event": "Sündmused"
+        "event": "Sündmused",
+        "history": "Bitcoin'i kuupäevad"
       },
       "personalCalendar": "Isiklik kalender",
       "downloadButton": "Laadige alla .ics kalender ja importige",
@@ -887,7 +890,8 @@
       "subscribeStep1": "Kopeeri kalendri link",
       "subscribeStep2": "Kleepige see oma kalendri rakenduse \"Telli\" valikusse",
       "subscribeStep3": "Üritused uuenevad automaatselt, kui midagi muutub",
-      "subscribeTitle": "Telli kalender (sünkroonitakse automaatselt)"
+      "subscribeTitle": "Telli kalender (sünkroonitakse automaatselt)",
+      "followSelectedCalendar": "Järgi valitud kalendrit"
     },
     "careerPortal": {
       "acceptedFormat": "Lubatud failivorming: PDF / Maksimaalne faili suurus: 10 MB.",
@@ -1388,7 +1392,8 @@
       "thisMonth": "Käesolev kuu",
       "inXMonths": "{{number}} kuu pärast",
       "noEventsFound": "Ühtegi sündmust ei leitud",
-      "xMonthsAgo": "{{number}} kuud tagasi"
+      "xMonthsAgo": "{{number}} kuud tagasi",
+      "allDay": "Kogu päev"
     },
     "types": {
       "plurals": {
@@ -1744,7 +1749,11 @@
     "youtube_channel": "Youtube'i kanal",
     "youtube_channels": "Youtube'i kanalid",
     "noResults": "Tulemusi ei leitud",
-    "resultsFound": "Leitud {{count}} vastet"
+    "resultsFound": "Leitud {{count}} vastet",
+    "movie": "Film",
+    "movies": "Filmid ja dokumentaalid",
+    "research_paper": "Teadusartikkel",
+    "research_papers": "Teadusartiklid"
   },
   "settings": {
     "changeDisplayName": "Muuda kuvanime",
@@ -2044,7 +2053,8 @@
     "link": "Link",
     "host": "Peremees",
     "published": "Avaldatud",
-    "default": "vaikimisi"
+    "default": "vaikimisi",
+    "hide": "Peida"
   },
   "youtubeChannels": {
     "view": "Vaata Youtube'i kanalit",
@@ -2211,7 +2221,73 @@
     },
     "supportedFileTypes": "Toetatud failitüübid: pildid, PDF, esitlused, tabelarvutused, tekstidokumendid",
     "uploadFilesHelper": "Kui teil on seotud faile, laadige need üles koos ühe paketina. Nimetage oma faile selgelt enne üleslaadimist.",
-    "fileTypeNotAllowed": "Lubatud on ainult pildid ja dokumendid (PDF, esitlused, tabelarvutused, tekstidokumendid)"
+    "fileTypeNotAllowed": "Lubatud on ainult pildid ja dokumendid (PDF, esitlused, tabelarvutused, tekstidokumendid)",
+    "guideContent": {
+      "guideline6P3": "Laadige üles ainult sisu, mille jagamiseks on teil õigus.",
+      "intro": "Aitäh, et olete siin! See juhend aitab teil mõista, kuidas jagada oma haridusmaterjale ülemaailmse Bitcoin'i õpetajate kogukonnaga.",
+      "purposeTitle": "Eesmärk",
+      "purposeP1": "Haridusmaterjalide sektsiooni eesmärk on aidata Bitcoin'i koolitajatel üksteist toetada ja vähendada dubleeritud tööd. Sel viisil ei pea keegi iga kord alustama nullist, kui nad ette valmistavad esitlust või haridusmaterjali.",
+      "purposeP2": "Teame, kui palju vaeva ja energiat õpetajad panevad oma kohalike kogukondade jaoks sisu loomiseks. Me usume, et see sisu võib olla äärmiselt väärtuslik teistele õpetajatele, kes teevad sama tööd üle maailma.",
+      "purposeP3": "Ideeks on olla koos tugevamad: parem sisu, paremini jaotatud ja vähem aega raisatakse olemasoleva taasloomisele.",
+      "whatYouCanShareTitle": "Mida saate jagada",
+      "whatYouCanShareP1": "Haridusmaterjalide sektsioonis saavad Bitcoin'i koolitajad ja kogukonnad jagada ja levitada oma sisu ning alla laadida teiste loodud materjale.",
+      "whatYouCanShareP2": "Sisu võib olla mitmesuguses vormis:",
+      "whatYouCanSharePresentations": "**Esitlused:** Slaididekogud, töötoa materjalid, õppekavad",
+      "whatYouCanSharePrint": "**Trükimaterjalid:** Flaiyerid, plakatid, kleepsud, bännerid",
+      "whatYouCanShareDocuments": "**Dokumendid:** Juhendid, jaotusmaterjalid, töölehed, infograafikud",
+      "whatYouCanShareP3": "Sisu saab jagada mis tahes keeles, kas:",
+      "whatYouCanShareStatic": "**Staatilised failid:** PDF, PNG, JPG (valmis kasutamiseks või printimiseks)",
+      "whatYouCanShareEditable": "**Muudetavad versioonid:** Canva lingid, Google'i slaidid, algfailid (nii et teised saaksid kohandada ja kohandada)",
+      "whatYouCanShareFileTypes": "**Toetatud failitüübid:** Pildid, PDF-id, esitlused, tabelarvutused, tekstidokumendid",
+      "contentGuidelinesTitle": "Sisujuhised",
+      "guideline1Title": "1. Ainult Bitcoin'ile keskenduv sisu",
+      "guideline1P1": "Haridussisu jaotises jagatav sisu peab olema otseselt seotud Bitcoin'iga, kaasa arvatud selle hariduslikud, majanduslikud, privaatsus-, turva- või enesevalitsemise aspektid. Teemavälise sisu võib modereerida või eemaldada.",
+      "guideline2Title": "2. Jaga teistele kasulikku sisu",
+      "guideline2P1": "Laadige üles faile, millest usute, et need on Bitcoin'i üldsusele kasulikud, eriti hariduse eesmärkidel. Eesmärk on koguda ressursse, mis aitaksid haridustöötajaid ja kogukondi, kes õpetavad Bitcoin'i üle maailma.",
+      "guideline2P2": "Palun vältige failide üleslaadimist, millel on väga väike tõenäosus, et teised neid kasutavad. Liiga palju ebarelevantseid faile muudab väärtusliku sisu leidmise keerulisemaks.",
+      "guideline3Title": "3. Kirjutage selged pealkirjad ja kirjeldused",
+      "guideline3P1": "Ressursside mõjuvõime ja kasulikkuse tõstmine on lihtsam, kui need on selgelt nimetatud ja kirjeldatud. Palun lisage oma sisukirjeldusele konteksti, et teised mõistaksid paremini:",
+      "guideline3Bullet1": "Millest sisu räägib",
+      "guideline3Bullet2": "Kuidas te seda olete kasutanud",
+      "guideline3Bullet3": "Kuidas teised võiksid seda oma kontekstis kasutada",
+      "guideline3P2": "Samuti valige oma kaanepilt hoolikalt ja veenduge, et see esindab sisu täpselt.",
+      "guideline3P3": "Failide üleslaadimisel kasutage kirjeldavaid failinimesid. Faili nimi on teistele kasutajatele nähtav, kui nad laadivad alla teie sisu. Vältige üldist nimetust nagu \"final_v2.png\". Kasutage selle asemel selgeid nimesid, mis kirjeldavad sisu, näiteks \"bitcoin-põhitõed-töötoa-slaidid.pdf\".",
+      "guideline4Title": "4. Rühmitage seotud failid kimpudesse",
+      "guideline4P1": "Haridussisu jaotis on loodud teadmiste jagamiseks ja koostöö tegemiseks. Lugejaskonna ja mõistliku nähtavuse tagamiseks soovitame teil seotud faile rühmitada. Näiteks seeria esitlusi on nähtavamad ja mõjuvõimsamad õppekavana, mitte üksikute esitlustena, mis on raske ühendada. Komplektid muudavad teistele haridustöötajatele materjalide kogumite leidmise ja kasutamise lihtsamaks.",
+      "guideline5Title": "5. Esitage võimaluse korral mitmeid vorminguid",
+      "guideline5P1": "Iga ressursi puhul võite lisada nii linke kui ka faile. See annab teile võimaluse:",
+      "guideline5Bullet1": "**Jagada linke** muudetavatele või duplitseeritavatele ressurssidele (Canva, Google Slides, Figma), nii et teised haridustöötajad saaksid oma tööd oma vajadustele kohandada.",
+      "guideline5Bullet2": "**Lisada mitmeid failivorminguid** (PDF, PNG, lähtefaile), et teised saaksid valida neile parima formaadi.",
+      "guideline5P2": "See paindlikkus muudab teie sisu laiemale publikule kasulikumaks.",
+      "guideline6Title": "6. Austa autoriõigust",
+      "guideline6P1": "Kui lisad sisu, mida sa ei loonud, tuleb algne allikas kirjelduse all märkida. Sisu peab olema jagatud samal litsentsil, mille alusel see algselt avaldati.",
+      "guideline6P2": "Kui üles laadid sisu Hariduse Sisu portaali, seotakse see sinu Plaan ₿ Akadeemia kontoga. Sa oled vastutav sisu eest, mida jagad. Autoriõigustega kaitstud materjali jagamine ilma nõuetekohase loata ei ole lubatud ja see allutatakse modereerimisele.",
+      "guideline7Title": "7. Vali litsents",
+      "guideline7P1": "Kogu sisu avaldatakse vaikimisi CC-BY-SA litsentsi alusel.",
+      "guideline7P2": "Kui soovid oma sisule rakendada erinevat litsentsi, võid valida järgmiste võimaluste hulgast:",
+      "guideline7Licenses": "CC BY, CC BY-NC, CC BY-NC-SA, CC BY-ND, CC BY-NC-ND, MIT",
+      "guideline7LearnMore": "Loe rohkem Creative Commonsi litsentsidest",
+      "guideline7P3": "Kui sa pole litsentsidega tuttav, võid kindlalt jääda soovitatud vaikevalikule (CC-BY-SA).",
+      "guideline8Title": "8. Ei mingit reklaami ega rämpsu",
+      "guideline8P1": "Hariduse sisuosas ei ole lubatud reklaamisisu. See hõlmab:",
+      "guideline8Bullet1": "Soovituslikke linke",
+      "guideline8Bullet2": "Partneri linke",
+      "guideline8Bullet3": "Maskeeritud kaubanduslikke reklaame",
+      "guideline8P2": "Selline sisu eemaldatakse.",
+      "guideline8P3": "Ära lae üles materjali, mida võib pidada rämpsuks, pettuseks või mis sisaldab eksitavat teavet.",
+      "guideline9Title": "9. Ülevaatamisprotsess",
+      "guideline9P1": "Kui esitad sisu ülevaatamiseks, kontrollib meie meeskond, et see järgiks neid juhiseid.",
+      "guideline9Bullet1": "**Väikeste vigade korral:** Teeme algatuseks need vead ise korda.",
+      "guideline9Bullet2": "**Kui sisu ei ole suurte parandusteta aktsepteeritav:** Lükkame esituse tagasi.",
+      "guideline9P2": "Mõlemal juhul, olgu teie sisu aktsepteeritud või tagasi lükatud, saate teavitusi e-posti teel.",
+      "communityStandardsTitle": "Ühiskonna standardid",
+      "guideline10Title": "10. Austa panustajaid",
+      "guideline10P1": "Haridusalase sisu jagamine nõuab vaeva ja julgust. Tagasiside ja kriitika on seetõttu tervitatavad **ainult siis, kui need on konstruktiivsed, austavad ja asjakohased**. Sellisel juhul ei tolererita isiklikke rünnakuid ega kahjulikke kommentaare.",
+      "guideline11Title": "11. Viha või ahistamine on keelatud",
+      "guideline11P1": "Igasugune sisu või kommentaarid, mis propageerivad **viha, diskrimineerimist või ahistamist on keelatud**. See hõlmab märkusi, mis on suunatud rassi või nahavärvi, religiooni, kultuuri, päritolu või ükskõik millise muu isikliku omaduse vastu.",
+      "guideline12Title": "12. Ole viisakas ja austa privaatsust",
+      "guideline12P1": "Kohtle kõiki austusega. Julgustame tervislikku ja konstruktiivset debatti, kuid viisakus on hädavajalik. Palun austage ka inimeste privaatsust ja ärge jagage isiklikku teavet ilma nõusolekuta."
+    }
   },
   "forms": {
     "browse": "Sirvi",

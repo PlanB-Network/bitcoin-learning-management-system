@@ -154,7 +154,9 @@
       "finishCourse": "Voltooi de cursus",
       "live": {
         "stayTuned": "De live sessie begint 30 minuten voordat de les begint. Blijf op de hoogte!",
-        "title": "Live video"
+        "title": "Live video",
+        "joinLive": "Doe mee aan live sessie",
+        "joining": "Aan het verbinden..."
       },
       "next": "Voltooi hoofdstuk"
     },
@@ -873,7 +875,8 @@
     "calendar": {
       "eventType": {
         "class": "Lessen",
-        "event": "Evenementen"
+        "event": "Evenementen",
+        "history": "Bitcoin-dates"
       },
       "personalCalendar": "Persoonlijke kalender",
       "subscribeStep1": "Kopieer de kalenderlink",
@@ -887,7 +890,8 @@
       "downloadStep2": "Open het met uw kalender-app",
       "downloadStep3": "Evenementen worden niet bijgewerkt als de datums veranderen",
       "downloadTitle": "Of download de huidige kalender",
-      "subscribeButton": "Gesynchroniseerde kalenderlink kopiëren"
+      "subscribeButton": "Gesynchroniseerde kalenderlink kopiëren",
+      "followSelectedCalendar": "Volg geselecteerde kalender"
     },
     "careerPortal": {
       "acceptedFormat": "Geaccepteerd bestandsformaat: pdf / Maximale bestandsgrootte: 10 MB.",
@@ -1388,7 +1392,8 @@
       "noEventsFound": "Geen evenementen gevonden",
       "thisMonth": "Deze maand",
       "today": "Vandaag",
-      "xMonthsAgo": "{{number}} maanden geleden"
+      "xMonthsAgo": "{{number}} maanden geleden",
+      "allDay": "Hele dag"
     },
     "addEvent": "Evenement toevoegen",
     "eventInfos": {
@@ -1744,7 +1749,11 @@
     "youtube_channel": "Youtube kanaal",
     "youtube_channels": "Youtube kanalen",
     "noResults": "Geen resultaten",
-    "resultsFound": "{{count}} resultaten gevonden"
+    "resultsFound": "{{count}} resultaten gevonden",
+    "movie": "Film",
+    "movies": "Films & Documentaires",
+    "research_paper": "Onderzoekspapier",
+    "research_papers": "Onderzoekspapieren"
   },
   "settings": {
     "changeDisplayName": "Weergavenaam wijzigen",
@@ -2030,7 +2039,8 @@
     "default": "standaard",
     "host": "Gastheer",
     "link": "Link",
-    "published": "Gepubliceerd"
+    "published": "Gepubliceerd",
+    "hide": "Verbergen"
   },
   "videoSelector": {
     "language": {
@@ -2211,7 +2221,73 @@
       "learnMore": "Lees meer over licenties",
       "changeLicense": "Verander van licentie"
     },
-    "imageTooLarge": "De afbeeldingsgrootte mag niet groter zijn dan 15MB"
+    "imageTooLarge": "De afbeeldingsgrootte mag niet groter zijn dan 15MB",
+    "guideContent": {
+      "whatYouCanShareFileTypes": "Ondersteunde bestandstypen: afbeeldingen, PDF, presentaties, spreadsheets, tekstdocumenten",
+      "guideline6P3": "Upload alleen inhoud waarvan u het recht heeft om deze te delen.",
+      "intro": "Bedankt dat je hier bent! Deze gids helpt je te begrijpen hoe je jouw educatieve materialen kunt delen met de wereldwijde Bitcoin-educatorgemeenschap.",
+      "purposeTitle": "Doel",
+      "purposeP1": "Het doel van de Onderwijsinhoud sectie is om Bitcoin-pleitbezorgers te helpen elkaar te ondersteunen en dubbel werk te verminderen. Op deze manier hoeft niemand telkens weer vanaf nul te beginnen wanneer ze een presentatie of educatief materiaal voorbereiden.",
+      "purposeP2": "We weten hoeveel inspanning en energie lesgevers steken in het creëren van content voor hun lokale gemeenschappen. Wij geloven dat deze content uiterst waardevol kan zijn voor andere lesgevers die hetzelfde werk rond de wereld doen.",
+      "purposeP3": "Het idee is om samen sterker te staan: betere content, beter verspreid, en minder tijd verspild aan het opnieuw maken van wat al bestaat.",
+      "whatYouCanShareTitle": "Wat u kunt delen",
+      "whatYouCanShareP1": "In de Onderwijsinhoud sectie kunnen Bitcoin-pleitbezorgers en gemeenschappen hun content delen en verspreiden, maar ook materiaal downloaden dat door anderen is gecreëerd.",
+      "whatYouCanShareP2": "De content kan vele vormen aannemen:",
+      "whatYouCanSharePresentations": "**Presentaties:** Dia-reeksen, workshopmaterialen, curricula",
+      "whatYouCanSharePrint": "**Gedrukt materiaal:** Flyers, posters, stickers, banners",
+      "whatYouCanShareDocuments": "**Documenten:** Gidsen, handouts, werkbladen, infographics",
+      "whatYouCanShareP3": "Content kan gedeeld worden in elke taal, in de vorm van:",
+      "whatYouCanShareStatic": "**Statische bestanden:** PDF, PNG, JPG (klaar voor gebruik of afdrukken)",
+      "whatYouCanShareEditable": "**Bewerkbare versies:** Canva links, Google Slides, bronbestanden (zodat anderen kunnen aanpassen en personaliseren)",
+      "contentGuidelinesTitle": "Inhoudsrichtlijnen",
+      "guideline1Title": "1. Alleen inhoud gericht op Bitcoin",
+      "guideline1P1": "Inhoud die wordt gedeeld in de sectie 'Educatieve inhoud' moet direct gerelateerd zijn aan Bitcoin, inclusief zijn educatieve, economische, privacy, veiligheids- of zelfsoevereiniteit aspecten. Off-topic inhoud kan worden gemodereerd of verwijderd.",
+      "guideline2Title": "2. Deel inhoud die nuttig is voor anderen",
+      "guideline2P1": "Upload bestanden waarvan je denkt dat ze voordelig zullen zijn voor de Bitcoin-gemeenschap in het algemeen, vooral voor educatieve doeleinden. Het doel is om middelen te verzamelen die opvoeders en gemeenschappen over de hele wereld die Bitcoin onderwijzen, kunnen dienen.",
+      "guideline2P2": "Probeer geen bestanden te uploaden die een zeer lage waarschijnlijkheid hebben om door anderen te worden gebruikt. Te veel irrelevante bestanden maken het moeilijker om waardevolle inhoud te vinden.",
+      "guideline3Title": "3. Schrijf duidelijke titels en beschrijvingen",
+      "guideline3P1": "Middelen zijn veel impactvoller en nuttiger als ze duidelijk zijn vernoemd en beschreven. Geef context in je inhoudsbeschrijving om anderen te helpen begrijpen:",
+      "guideline3Bullet1": "Waar de inhoud over gaat",
+      "guideline3Bullet2": "Hoe je het hebt gebruikt",
+      "guideline3Bullet3": "Hoe anderen het in hun eigen context kunnen gebruiken",
+      "guideline3P2": "Kies daarnaast zorgvuldig je omslagafbeelding en zorg ervoor dat deze de inhoud nauwkeurig weergeeft.",
+      "guideline3P3": "Bij het uploaden van bestanden, gebruik beschrijvende bestandsnamen. De bestandsnaam zal zichtbaar zijn voor andere gebruikers wanneer ze jouw inhoud downloaden. Vermijd generieke namen zoals \"final_v2.png\". Gebruik in plaats daarvan duidelijke namen die de inhoud beschrijven, zoals \"bitcoin-basis-workshop-slides.pdf\".",
+      "guideline4Title": "4. Groepeer gerelateerde bestanden in bundels",
+      "guideline4P1": "De sectie 'Educatieve inhoud' is ontworpen voor kennisdeling en samenwerking. Om leesbaarheid en eerlijke zichtbaarheid te garanderen, moedigen we je aan om gerelateerde bestanden samen te groeperen. Een serie presentaties zal bijvoorbeeld meer zichtbaarheid en impact hebben als een curriculum, dan als individuele presentaties die moeilijk met elkaar te verbinden zijn. Bundels maken het voor andere opvoeders makkelijker om volledige sets materialen te vinden en te gebruiken.",
+      "guideline5Title": "5. Bied meerdere formaten aan waar mogelijk",
+      "guideline5P1": "Voor elke bron kun je zowel links als bestanden bijvoegen. Dit geeft je de mogelijkheid om:",
+      "guideline5Bullet1": "**Links delen** naar bewerkbare of dupliceerbare bronnen (Canva, Google Slides, Figma), zodat andere opvoeders jouw werk aan hun behoeften kunnen aanpassen",
+      "guideline5Bullet2": "**Meerdere bestandsformaten bijvoegen** (PDF, PNG, bronbestanden), zodat anderen het formaat kunnen kiezen dat het beste voor hen werkt",
+      "guideline5P2": "Deze flexibiliteit maakt uw inhoud nuttiger voor een breder publiek.",
+      "guideline6Title": "6. Respecteer auteursrechten",
+      "guideline6P1": "Als u inhoud toevoegt die u niet hebt gecreëerd, moet de originele bron worden gecrediteerd in de beschrijving. De inhoud moet ook worden gedeeld onder dezelfde licentie waaronder deze oorspronkelijk is gepubliceerd.",
+      "guideline6P2": "Wanneer u inhoud uploadt naar het Educator-inhoudsportaal, wordt deze gekoppeld aan uw Plan ₿ Academy-account. U bent verantwoordelijk voor de inhoud die u deelt. Het delen van auteursrechtelijk beschermd materiaal zonder de juiste autorisatie is niet toegestaan en zal onderhevig zijn aan moderatie.",
+      "guideline7Title": "7. Kies een licentie",
+      "guideline7P1": "Alle inhoud wordt standaard gepubliceerd onder de CC-BY-SA-licentie.",
+      "guideline7P2": "Als u een andere licentie wilt toepassen op uw inhoud, kunt u kiezen uit de volgende opties:",
+      "guideline7Licenses": "CC BY, CC BY-NC, CC BY-NC-SA, CC BY-ND, CC BY-NC-ND, MIT",
+      "guideline7LearnMore": "Meer informatie over Creative Commons licenties",
+      "guideline7P3": "Als u niet vertrouwd bent met licenties, kunt u veilig de aanbevolen standaardoptie (CC-BY-SA) behouden.",
+      "guideline8Title": "8. Geen promoties of spam",
+      "guideline8P1": "Promotionele inhoud is niet toegestaan in de sectie Educator Content. Dit omvat:",
+      "guideline8Bullet1": "Verwijzingslinks",
+      "guideline8Bullet2": "Affiliate links",
+      "guideline8Bullet3": "Verhulde commerciële promoties",
+      "guideline8P2": "Dergelijke inhoud zal worden verwijderd.",
+      "guideline8P3": "Upload geen materiaal dat als spam, oplichting kan worden beschouwd, of dat misleidende informatie bevat.",
+      "guideline9Title": "9. Beoordelingsproces",
+      "guideline9P1": "Zodra u uw inhoud ter beoordeling indient, zal ons team controleren of deze voldoet aan deze richtlijnen.",
+      "guideline9Bullet1": "**Als er kleine fouten zijn:** We nemen het initiatief om deze direct te corrigeren.",
+      "guideline9Bullet2": "**Als de inhoud niet kan worden geaccepteerd zonder grote correcties:** We zullen de inzending afwijzen.",
+      "guideline9P2": "In beide gevallen, of uw inhoud nu wordt geaccepteerd of afgewezen, ontvangt u een melding per e-mail.",
+      "communityStandardsTitle": "Community-standaarden",
+      "guideline10Title": "10. Respecteer bijdragers",
+      "guideline10P1": "Het delen van educatieve inhoud vereist inspanning en moed. Feedback en kritiek zijn daarom welkom **alleen als ze constructief, respectvol en relevant zijn**. Persoonlijke aanvallen of schadelijke opmerkingen worden dus niet getolereerd.",
+      "guideline11Title": "11. Geen haat of intimidatie",
+      "guideline11P1": "Alle inhoud of opmerkingen die **haat, discriminatie of intimidatie bevorderen, zijn verboden**. Dit omvat opmerkingen die zich richten op ras of huidskleur, religie, cultuur, herkomst of enige andere persoonlijke eigenschap.",
+      "guideline12Title": "12. Wees beleefd en respecteer privacy",
+      "guideline12P1": "Behandel iedereen met respect. Gezonde en constructieve debatten worden aangemoedigd, maar beleefdheid is essentieel. Respecteer ook de privacy van mensen en deel geen persoonlijke informatie zonder toestemming."
+    }
   },
   "forms": {
     "replace": "Vervangen",
