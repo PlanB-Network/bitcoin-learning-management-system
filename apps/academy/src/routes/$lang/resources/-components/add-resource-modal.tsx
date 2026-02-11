@@ -17,7 +17,7 @@ import {
   Textarea,
 } from '@blms/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -31,6 +31,7 @@ import { z } from 'zod';
 import Nostr from '#src/assets/icons/nostr.svg?react';
 import SuccessParty from '#src/assets/icons/success_party.svg?react';
 import { ImageInput } from '#src/components/image-input.tsx';
+import { getLanguageName, LANGUAGES } from '#src/utils/i18n.ts';
 import { trpc } from '#src/utils/trpc.js';
 
 interface AddResourceModalProps {
@@ -125,6 +126,8 @@ const RESOURCE_FORM_CONFIG: Record<string, ResourceFormConfig> = {
   },
 };
 
+const optionalUrl = z.url().optional();
+
 const createResourcePRSchema = z.object({
   type: z.enum([
     'projects',
@@ -141,15 +144,15 @@ const createResourcePRSchema = z.object({
   description: z.string().min(1, 'Description is required'),
   links: z
     .object({
-      website: z.url().optional(),
-      twitter: z.url().optional(),
-      github: z.url().optional(),
-      nostr: z.url().optional(),
-      linkedin: z.url().optional(),
+      website: optionalUrl,
+      twitter: optionalUrl,
+      github: optionalUrl,
+      nostr: optionalUrl,
+      linkedin: optionalUrl,
     })
     .optional(),
-  resourceLink: z.url().optional(),
-  trailerLink: z.url().optional(),
+  resourceLink: optionalUrl,
+  trailerLink: optionalUrl,
   language: z.string(),
   contentLanguage: z.string().optional(),
   coverImage: z
@@ -161,7 +164,7 @@ const createResourcePRSchema = z.object({
   duration: z.number().optional(),
 });
 
-type FormData = z.infer<typeof createResourcePRSchema>;
+type FormData = z.input<typeof createResourcePRSchema>;
 
 export const AddResourceModal = ({
   isOpen,
@@ -187,13 +190,7 @@ export const AddResourceModal = ({
     },
   });
 
-  const { data: languages } = useQuery(
-    trpc.content.getLanguages.queryOptions(),
-  );
-
-  const sortedLanguages = languages
-    ? [...languages].sort((a, b) => a.code.localeCompare(b.code))
-    : [];
+  const sortedLanguages = [...LANGUAGES].sort((a, b) => a.localeCompare(b));
 
   const createPR = useMutation(
     trpc.github.createResourcePR.mutationOptions({
@@ -225,10 +222,24 @@ export const AddResourceModal = ({
     const minutes = durationMinutes ? Number.parseInt(durationMinutes) : 0;
     const totalMinutes = config.showDuration ? hours * 60 + minutes : undefined;
 
+    // Clean up empty string URLs to undefined
+    const cleanUrl = (v: string | undefined) => (v ? v : undefined);
+
     createPR.mutate({
       ...data,
       type: data.type,
       duration: totalMinutes,
+      resourceLink: cleanUrl(data.resourceLink),
+      trailerLink: cleanUrl(data.trailerLink),
+      links: data.links
+        ? {
+            website: cleanUrl(data.links.website),
+            twitter: cleanUrl(data.links.twitter),
+            github: cleanUrl(data.links.github),
+            nostr: cleanUrl(data.links.nostr),
+            linkedin: cleanUrl(data.links.linkedin),
+          }
+        : undefined,
       coverImage:
         coverImageBase64 && coverImageName
           ? {
@@ -564,8 +575,8 @@ export const AddResourceModal = ({
                     </SelectTrigger>
                     <SelectContent>
                       {sortedLanguages.map((lang) => (
-                        <SelectItem key={lang.code} value={lang.code}>
-                          {lang.nativeName}
+                        <SelectItem key={lang} value={lang}>
+                          {getLanguageName(lang)}
                         </SelectItem>
                       ))}
                     </SelectContent>

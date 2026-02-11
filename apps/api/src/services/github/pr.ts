@@ -6,6 +6,25 @@ import type { CreateResourcePR } from '@blms/types';
 import yaml from 'js-yaml';
 import type { Dependencies } from '../../dependencies.js';
 
+/**
+ * Dumps a YAML object, formatting the `description` field using
+ * block scalar (`|`) syntax instead of inline quoted strings.
+ */
+function dumpYamlWithBlockDescription(obj: Record<string, unknown>): string {
+  const { description, ...rest } = obj;
+  let output = yaml.dump(rest, { lineWidth: -1 });
+
+  if (typeof description === 'string' && description.length > 0) {
+    const indented = description
+      .split('\n')
+      .map((line) => `  ${line}`)
+      .join('\n');
+    output += `description: |\n${indented}\n`;
+  }
+
+  return output;
+}
+
 export const createResourcePR = async (
   dependencies: Dependencies,
   input: CreateResourcePR,
@@ -81,15 +100,13 @@ export const createResourcePR = async (
 
     files.push({
       path: `${basePath}/project.yml`,
-      content: yaml.dump(projectYaml, {
-        lineWidth: -1,
-      }),
+      content: yaml.dump(projectYaml, { lineWidth: -1 }),
     });
     files.push({
       path: `${basePath}/${input.language}.yml`,
-      content: yaml.dump(projectLocalizedYaml, {
-        lineWidth: -1,
-      }),
+      content: dumpYamlWithBlockDescription(
+        projectLocalizedYaml as Record<string, unknown>,
+      ),
     });
 
     if (input.coverImage) {
@@ -122,15 +139,13 @@ export const createResourcePR = async (
 
     files.push({
       path: `${basePath}/book.yml`,
-      content: yaml.dump(bookYaml, {
-        lineWidth: -1,
-      }),
+      content: yaml.dump(bookYaml, { lineWidth: -1 }),
     });
     files.push({
       path: `${basePath}/${input.language}.yml`,
-      content: yaml.dump(bookLocalizedYaml, {
-        lineWidth: -1,
-      }),
+      content: dumpYamlWithBlockDescription(
+        bookLocalizedYaml as Record<string, unknown>,
+      ),
     });
 
     if (input.coverImage) {
@@ -161,9 +176,9 @@ export const createResourcePR = async (
 
     files.push({
       path: `${basePath}/podcast.yml`,
-      content: yaml.dump(podcastYaml, {
-        lineWidth: -1,
-      }),
+      content: dumpYamlWithBlockDescription(
+        podcastYaml as Record<string, unknown>,
+      ),
     });
 
     if (input.coverImage) {
@@ -190,9 +205,9 @@ export const createResourcePR = async (
 
     files.push({
       path: `${basePath}/channel.yml`,
-      content: yaml.dump(channelYaml, {
-        lineWidth: -1,
-      }),
+      content: dumpYamlWithBlockDescription(
+        channelYaml as Record<string, unknown>,
+      ),
     });
 
     if (input.coverImage) {
@@ -221,9 +236,9 @@ export const createResourcePR = async (
 
     files.push({
       path: `${basePath}/newsletter.yml`,
-      content: yaml.dump(newsletterYaml, {
-        lineWidth: -1,
-      }),
+      content: dumpYamlWithBlockDescription(
+        newsletterYaml as Record<string, unknown>,
+      ),
     });
 
     if (input.coverImage) {
@@ -255,9 +270,9 @@ export const createResourcePR = async (
 
     files.push({
       path: `${basePath}/movie.yml`,
-      content: yaml.dump(movieYaml, {
-        lineWidth: -1,
-      }),
+      content: dumpYamlWithBlockDescription(
+        movieYaml as Record<string, unknown>,
+      ),
     });
 
     if (input.coverImage) {
