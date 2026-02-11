@@ -41,7 +41,7 @@
     "@blms/api": "workspace:*",
     "@blms/types": "workspace:*",
     "@tailwindcss/postcss": "^4.1.18",
-    "@types/react": "^19.2.13",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@types/react-syntax-highlighter": "~15.5.13",
     "@vitejs/plugin-react": "^5.1.3",
