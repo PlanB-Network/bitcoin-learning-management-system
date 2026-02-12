@@ -17,6 +17,7 @@ import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { ChangeDisplayNameModal } from '#src/routes/$lang/dashboard/-components/change-display-name-modal.tsx';
+import { EXAM_QUESTION_DURATION_SECONDS } from '#src/utils/courses.ts';
 import { formatTimeRange } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 import { ChangeDisplayName } from '../shared-between-exams/change-display-name.tsx';
@@ -127,7 +128,7 @@ export const SingleTrialExamPresentation = ({
             <ul className="body-16px flex flex-col list-disc list-outside pl-6">
               <li>
                 {t('courses.exam.timerStart', {
-                  minutes: nbQuestion / 2,
+                  minutes: (nbQuestion * EXAM_QUESTION_DURATION_SECONDS) / 60,
                 })}
               </li>
               <li>

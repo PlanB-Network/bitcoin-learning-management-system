@@ -25,6 +25,7 @@ import SuccessExam from '#src/assets/icons/success_party.svg?react';
 import { PageLayout } from '#src/components/page-layout.tsx';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { CourseContext } from '#src/providers/courseContext.tsx';
+import { EXAM_QUESTION_DURATION_SECONDS } from '#src/utils/courses.ts';
 import { formatDate, formatDateRange } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 import { CourseTitle } from '../-components/course-title.tsx';
@@ -318,7 +319,9 @@ const ExamItem = ({
                 {isExamInfoFetched ? (
                   <span className="subtitle-medium-16px md:subtitle-large-18px">
                     {t('courses.exam.nbQuestions', { nb: nbQuestion })} /{' '}
-                    {t('courses.exam.nbMinutes', { nb: nbQuestion / 2 })}
+                    {t('courses.exam.nbMinutes', {
+                      nb: (nbQuestion * EXAM_QUESTION_DURATION_SECONDS) / 60,
+                    })}
                   </span>
                 ) : null}
               </div>

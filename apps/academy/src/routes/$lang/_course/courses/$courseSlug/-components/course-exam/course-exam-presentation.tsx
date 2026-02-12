@@ -10,7 +10,11 @@ import { AuthModalState } from '#src/components/AuthModals/props.ts';
 import { useDisclosure } from '#src/hooks/use-disclosure.ts';
 import { AppContext } from '#src/providers/context.tsx';
 import { ChangeDisplayNameModal } from '#src/routes/$lang/dashboard/-components/change-display-name-modal.tsx';
-import { goToChapterParameters } from '#src/utils/courses.ts';
+import {
+  EXAM_QUESTION_DURATION_SECONDS,
+  goToChapterParameters,
+  MULTI_ATTEMPT_EXAM_QUESTION_NUMBER,
+} from '#src/utils/courses.ts';
 import { trpc } from '#src/utils/trpc.js';
 import { ChangeDisplayName } from '../shared-between-exams/change-display-name.tsx';
 
@@ -94,8 +98,19 @@ export const CourseExamPresentation = ({
           {t('courses.exam.instructions')}
         </span>
         <ul className="body-16px flex flex-col list-disc list-outside pl-6">
-          <li>{t('courses.exam.timerStart', { minutes: 20 })}</li>
-          <li>{t('courses.exam.examDetails', { nb: 40 })}</li>
+          <li>
+            {t('courses.exam.timerStart', {
+              minutes:
+                (MULTI_ATTEMPT_EXAM_QUESTION_NUMBER *
+                  EXAM_QUESTION_DURATION_SECONDS) /
+                60,
+            })}
+          </li>
+          <li>
+            {t('courses.exam.examDetails', {
+              nb: MULTI_ATTEMPT_EXAM_QUESTION_NUMBER,
+            })}
+          </li>
           <li>{t('courses.exam.passRate')}</li>
           <li>{t('courses.exam.dontWorry')}</li>
         </ul>
