@@ -1,6 +1,7 @@
 import type { CourseChapterResponse, PartialExamQuestion } from '@blms/types';
 import { BasicModal, Button, ButtonWithArrow, cn, DialogClose } from '@blms/ui';
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { useBlocker } from '@tanstack/react-router';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdTimer } from 'react-icons/md';
@@ -171,19 +172,13 @@ export const ExamSession = ({
     }
   }, [completeExamAttempt.status]);
 
-  // Prevent closing the tab
-  useEffect(() => {
-    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
-      event.preventDefault();
-      event.returnValue = true;
-    };
-
-    window.addEventListener('beforeunload', handleBeforeUnload);
-
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  }, []);
+  // Block navigation within the app
+  useBlocker({
+    shouldBlockFn: () => {
+      if (hasSubmitted) return false;
+      return !window.confirm(t('courses.exam.leaveExamWarning'));
+    },
+  });
 
   const isMobile = window.innerWidth < 768;
 

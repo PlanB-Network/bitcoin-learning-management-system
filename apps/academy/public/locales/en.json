@@ -273,6 +273,7 @@
       "passRate": "The pass rate is 80%.",
       "passed": "Passed",
       "planBTimeStamp": "At Plan ₿ Network, we secure your diploma using the time-stamping technology backed by blockchain.",
+      "leaveExamWarning": "You have an ongoing exam, are you sure you want to leave?",
       "quitWithoutSubmitting": "Oups, it seems that you left the page without submitting your answers. This cancels the test.",
       "readyToTest": "Ready to test your knowledge?",
       "receiveDiploma": "Receive your diploma",
