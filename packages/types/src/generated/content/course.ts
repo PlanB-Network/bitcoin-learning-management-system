@@ -481,14 +481,16 @@ export interface CourseChapterResponse {
 export interface CourseReviewsExtended {
   difficulty: number[];
   faithful: number[];
-  feedbacks: {
-    adminComment: string | null;
-    date: string;
-    publicComment: string;
-    teacherComment: string | null;
-    user: string;
-    userPicture: string | null;
-  }[];
+  feedbacks:
+    | {
+        adminComment: string | null;
+        date: string | null;
+        publicComment: string | null;
+        teacherComment: string | null;
+        user: string | null;
+        userPicture: string | null;
+      }[]
+    | null;
   general: number[];
   length: number[];
   quality: number[];

@@ -526,7 +526,7 @@ function CourseDetails() {
 
     const maxRating = 5;
 
-    const feedbacksWithComments = reviews.feedbacks.filter(
+    const feedbacksWithComments = (reviews.feedbacks ?? []).filter(
       (feedback) => feedback.publicComment,
     );
 
@@ -572,17 +572,19 @@ function CourseDetails() {
         <section className="w-full max-w-[1016px] mx-auto flex flex-wrap gap-6 justify-center mt-2">
           {[...feedbacksWithComments]
             .sort(
-              (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+              (a, b) =>
+                new Date(b.date ?? 0).getTime() -
+                new Date(a.date ?? 0).getTime(),
             )
             .slice(0, visibleFeedbacks)
             .map((feedback, index) => (
               <PublicComment
                 // biome-ignore lint/suspicious/noArrayIndexKey: explanation
                 key={index}
-                author={feedback.user}
-                date={feedback.date}
+                author={feedback.user ?? ''}
+                date={feedback.date ?? ''}
                 avatar={feedback.userPicture || ''}
-                comment={feedback.publicComment}
+                comment={feedback.publicComment ?? ''}
               />
             ))}
         </section>

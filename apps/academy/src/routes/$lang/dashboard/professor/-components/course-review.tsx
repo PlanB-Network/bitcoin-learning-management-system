@@ -171,8 +171,9 @@ const CourseFeedbacks = ({
         {t('dashboard.teacher.reviews.checkComments')}
       </p>
       <WrittenFeedbacks
-        feedbacks={[...feedbacks].sort(
-          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+        feedbacks={[...(feedbacks ?? [])].sort(
+          (a, b) =>
+            new Date(b.date ?? 0).getTime() - new Date(a.date ?? 0).getTime(),
         )}
       />
     </section>
@@ -191,7 +192,7 @@ const WrittenFeedbacks = ({
     setVisibleFeedbacks((prev) => prev + 5);
   };
 
-  const nonEmptyFeedbacks = feedbacks.filter(
+  const nonEmptyFeedbacks = (feedbacks ?? []).filter(
     (feedback) => feedback.publicComment || feedback.teacherComment,
   );
 
@@ -202,7 +203,7 @@ const WrittenFeedbacks = ({
         <article key={index} className="flex flex-col">
           <div className="flex flex-col">
             <span className="label-small-12px text-neutral-500 capitalize">
-              {new Date(feedback.date).toLocaleDateString(undefined, {
+              {new Date(feedback.date ?? 0).toLocaleDateString(undefined, {
                 day: 'numeric',
                 month: 'long',
                 year: 'numeric',

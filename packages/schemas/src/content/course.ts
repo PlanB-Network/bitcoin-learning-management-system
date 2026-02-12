@@ -284,16 +284,18 @@ export const courseChapterResponseSchema =
 export const courseReviewsExtendedSchema = z.object({
   difficulty: z.array(z.number()),
   faithful: z.array(z.number()),
-  feedbacks: z.array(
-    z.object({
-      adminComment: z.string().nullable(),
-      date: z.string(),
-      publicComment: z.string(),
-      teacherComment: z.string().nullable(),
-      user: z.string(),
-      userPicture: z.string().nullable(),
-    }),
-  ),
+  feedbacks: z
+    .array(
+      z.object({
+        adminComment: z.string().nullable(),
+        date: z.string().nullable(),
+        publicComment: z.string().nullable(),
+        teacherComment: z.string().nullable(),
+        user: z.string().nullable(),
+        userPicture: z.string().nullable(),
+      }),
+    )
+    .nullable(),
   general: z.array(z.number()),
   length: z.array(z.number()),
   quality: z.array(z.number()),
