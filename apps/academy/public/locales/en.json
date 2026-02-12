@@ -173,10 +173,11 @@
       },
       "finishCourse": "Finish the course",
       "live": {
-        "joinLive": "Join live session",
+        "joinLive": "Join live class",
         "joining": "Joining...",
+        "redirectNotice": "You will be redirected to our streaming platform.",
         "stayTuned": "The live session will start 30 minutes before the class begins. Stay tuned!",
-        "title": "Live video"
+        "title": "Live class"
       },
       "next": "Complete chapter",
       "watchRecording": "Watch recording"
