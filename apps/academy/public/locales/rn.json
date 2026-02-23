@@ -154,7 +154,8 @@
       "finishCourse": "Guheza icirwa",
       "live": {
         "stayTuned": "Ikiganiro c'imbonankubone c'ikibiriraho kizotangura iminota 30 imbere y’uko ishure ritangura. Mugume murimaso!",
-        "title": "Videwo y’imbonankubone"
+        "title": "Videwo y’imbonankubone",
+        "joinLive": "Injira mu kiganiro kirikuba ikibiriraho"
       },
       "next": "Rangiza ikigabane"
     },

@@ -158,7 +158,8 @@
         "joinLive": "Rejoindre la session en direct",
         "joining": "Connexion en cours..."
       },
-      "next": "Chapitre terminé"
+      "next": "Chapitre terminé",
+      "watchRecording": "Voir l’enregistrement"
     },
     "conclusion": {
       "completedChaptersHeadline": "Tous les chapitres sont maintenant terminés !",
@@ -1130,7 +1131,8 @@
       "viewScoreSummary": "Voir le résumé des scores",
       "wellDoneCompleting": "Félicitations pour avoir terminé et réussi ce cours !\nVoici votre diplôme bien mérité",
       "yourProjectAssignment": "Votre affectation de projet",
-      "assignmentNotAccessible": "L’attribution a déjà commencé et n’est plus accessible."
+      "assignmentNotAccessible": "L’attribution a déjà commencé et n’est plus accessible.",
+      "downloadCalendar": "Télécharger le calendrier"
     },
     "credentials": {
       "beingGraded": "Votre examen est en cours de correction. Les résultats devraient être disponibles dans 1 ou 2 semaines.",
@@ -1434,7 +1436,9 @@
     "relatedWords": "Mots associés :",
     "term": "Terme",
     "showMoreWords": "Afficher plus de mots",
-    "learnMore": "En savoir plus"
+    "learnMore": "En savoir plus",
+    "detailedExplanation": "Explication détaillée",
+    "inShort": "En bref"
   },
   "home": {
     "aboutUsSection": {
