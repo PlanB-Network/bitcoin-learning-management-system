@@ -154,11 +154,14 @@
       "finishCourse": "完成课程",
       "live": {
         "stayTuned": "直播将在课程开始前半小时开始。请保持关注。",
-        "title": "直播视频",
+        "title": "直播课程",
         "joinLive": "参加直播会议",
-        "joining": "正在加入..."
+        "joining": "正在加入...",
+        "redirectNotice": "您即将前往我们的流媒体平台。"
       },
-      "next": "完成，进入下一章节"
+      "next": "完成，进入下一章节",
+      "recorded": "录制的课程",
+      "watchRecording": "观看录像"
     },
     "conclusion": {
       "completedChaptersHeadline": "所有章节已完成！",
@@ -296,7 +299,8 @@
       "wishTryAgain": "24小时后，您可以重新参加考试。",
       "yesSubmit": "是，提交",
       "examResults": "考试结果",
-      "scoreAndDiploma": "得分与文凭"
+      "scoreAndDiploma": "得分与文凭",
+      "leaveExamWarning": "您正在参加考试，确定要离开吗？"
     },
     "explorer": {
       "goal": "目标：",
@@ -1130,7 +1134,8 @@
       "tweetTextCourseDiploma": "很高兴完成了在@planb_network上由{{courseCoordinator}}教授的{{courseName}}课程，并且获得了我的文凭！\n#PBNDiploma\n\n{{certificateUrl}}",
       "viewScoreSummary": "查看成绩汇总",
       "wellDoneCompleting": "恭喜您完成并通过了这门课程！\n这是您应得的毕业文凭",
-      "yourProjectAssignment": "您的项目任务"
+      "yourProjectAssignment": "您的项目任务",
+      "downloadCalendar": "下载日历"
     },
     "credentials": {
       "beingGraded": "您的考试正在被评分。结果将在1到2周内公布。",
@@ -1434,7 +1439,9 @@
     "relatedWords": "相关词汇：",
     "term": "术语",
     "showMoreWords": "加载更多单词",
-    "learnMore": "进一步学习"
+    "learnMore": "进一步学习",
+    "detailedExplanation": "详细解释",
+    "inShort": "简而言之"
   },
   "home": {
     "aboutUsSection": {

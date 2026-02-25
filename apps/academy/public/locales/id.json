@@ -154,11 +154,14 @@
       "finishCourse": "Selesaikan kursus",
       "live": {
         "stayTuned": "Tayangan langsung akan dimulai tiga puluh menit sebelum kelas dimulai. Tetaplah menonton!",
-        "title": "Video tayangan langsung",
-        "joinLive": "Bergabung dengan sesi langsung",
-        "joining": "Sedang bergabung..."
+        "title": "Kelas tatap muka",
+        "joinLive": "Bergabung dengan kelas langsung",
+        "joining": "Sedang bergabung...",
+        "redirectNotice": "Anda akan dialihkan ke platform streaming kami."
       },
-      "next": "Selesai, masuk ke bab berikutnya"
+      "next": "Selesai, masuk ke bab berikutnya",
+      "recorded": "Kelas yang direkam",
+      "watchRecording": "Tonton rekaman"
     },
     "conclusion": {
       "completedChaptersHeadline": "Semua bab sekarang sudah selesai!",
@@ -296,7 +299,8 @@
       "wishTryAgain": "Anda dapat mengikuti ujian ulang setelah 24 jam.",
       "yesSubmit": "Ya, kirimkan",
       "examResults": "Hasil Ujian",
-      "scoreAndDiploma": "Nilai & Diploma"
+      "scoreAndDiploma": "Nilai & Diploma",
+      "leaveExamWarning": "Anda sedang dalam ujian, apakah Anda yakin ingin pergi?"
     },
     "explorer": {
       "goal": "Tujuan:",
@@ -1130,7 +1134,8 @@
       "tweetTextCourseDiploma": "Dengan gembira telah menyelesaikan kursus {{courseName}}, yang diajarkan oleh {{courseCoordinator}} di @planb_network dan telah mendapatkan diplomaku!\n#PBNDiploma\n\n{{certificateUrl}}",
       "viewScoreSummary": "Lihat ringkasan nilai",
       "wellDoneCompleting": "Selamat atas penyelesaian dan kelulusan dari kursus ini!\nBerikut adalah gelar diploma yang pantas Anda terima.",
-      "yourProjectAssignment": "Tugas proyek Anda"
+      "yourProjectAssignment": "Tugas proyek Anda",
+      "downloadCalendar": "Unduh kalender"
     },
     "credentials": {
       "beingGraded": "Ujian Anda sedang dinilai. Hasilnya akan tersedia dalam 1 atau 2 minggu.",
@@ -1434,7 +1439,9 @@
     "relatedWords": "Kata terkait :",
     "term": "Istilah",
     "showMoreWords": "Tampilkan lebih banyak kata",
-    "learnMore": "Pelajari lebih lanjut"
+    "learnMore": "Pelajari lebih lanjut",
+    "detailedExplanation": "Penjelasan detail",
+    "inShort": "Singkatnya"
   },
   "home": {
     "aboutUsSection": {
