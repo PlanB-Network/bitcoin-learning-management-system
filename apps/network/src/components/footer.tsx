@@ -34,7 +34,7 @@ const SOCIAL_LINKS = [
     label: 'Linkedin',
   },
   {
-    href: 'https://discord.gg/q9CFPmRNAD',
+    href: 'https://discord.gg/8wuekdsHp5',
     icon: TbBrandDiscordFilled,
     isReactIcon: true,
     label: 'Discord',
