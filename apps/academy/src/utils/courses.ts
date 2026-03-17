@@ -9,7 +9,7 @@ export function addSpaceToCourseIndex(courseIndex?: string | null) {
 }
 
 export const MULTI_ATTEMPT_EXAM_QUESTION_NUMBER = 40;
-export const EXAM_QUESTION_DURATION_SECONDS = 45;
+export const EXAM_QUESTION_DURATION_SECONDS = 60;
 
 export const goToChapterParameters = (
   chapter: CourseChapterResponse,
