@@ -11,6 +11,7 @@ import {
   createRefreshCoursesRatings,
 } from '@blms/service-content';
 import {
+  createAffectProjectToBizSchoolStudents,
   createAssignSingleAssignmentToCourseStudents,
   createExamTimestampService,
   createGetPendingCoursePayments,
@@ -19,6 +20,7 @@ import {
   createInsertUserNotifications,
   createProcessTeacherLedCoursesWithConclusionIn24Hours,
   createPublishScheduledCourseAnnouncement,
+  createSelectBizSchoolStudentsForAssignments,
   createSendCoordinatorNewStudentsDailyRecapEmail,
   createSendCourseStartingSoonEmail,
   createSendCourseWeeklyRecapEmail,
@@ -514,22 +516,63 @@ export const registerCronTasks = async (ctx: Dependencies) => {
     });
   }
 
-  // ctx.crons.addTask('jun1_23_gmt', async () => {
-  //   console.log('[cron] Running selectBizSchoolStudentsForAssignments job');
-  //   const selectBizSchoolStudentsForAssignments =
-  //     createSelectBizSchoolStudentsForAssignments(ctx);
-  //   await selectBizSchoolStudentsForAssignments;
-  //   console.log('[cron] Finished selectBizSchoolStudentsForAssignments job');
-  // });
+  const bizSchoolCourseId = 'a54c48c0-9b90-11f0-bee7-dbbaea825cda';
+  const devSchoolCourseId = '0be6cfae-9d32-11f0-9601-0f79f5ccc576';
 
-  // TODO : Either change the cron date whenever we want to run this job or use the assignment_start_date field (in course). Second option could be tricky as we would have to run it constantly and check if the date is reached + it could create issues with the older Biz School editions
-  // ctx.crons.addTask('jun3_0_gmt', async () => {
-  //   console.log('[cron] Running affectProjectToBizSchoolStudents job');
-  //   const affectProjectToBizSchoolStudents =
-  //     createAffectProjectToBizSchoolStudents(ctx);
-  //   await affectProjectToBizSchoolStudents;
-  //   console.log('[cron] Finished affectProjectToBizSchoolStudents job');
-  // });
+  // PLAN B PROGRAM JOB
+  ctx.crons.addTask('mar25_15_gmt', async () => {
+    console.log('[cron] Running selectBizSchoolStudentsForAssignments job');
+
+    const selectBizSchoolStudentsForAssignments =
+      createSelectBizSchoolStudentsForAssignments(ctx);
+
+    await selectBizSchoolStudentsForAssignments(bizSchoolCourseId);
+    await selectBizSchoolStudentsForAssignments(devSchoolCourseId);
+
+    console.log('[cron] Finished selectBizSchoolStudentsForAssignments job');
+  });
+
+  // PLAN B PROGRAM JOB
+  ctx.crons.addTask('mar31_12_gmt', async () => {
+    console.log('[cron] Running affectProjectToBizSchoolStudents job');
+
+    const affectProjectToBizSchoolStudents =
+      createAffectProjectToBizSchoolStudents(ctx);
+
+    await affectProjectToBizSchoolStudents(bizSchoolCourseId);
+    await affectProjectToBizSchoolStudents(devSchoolCourseId);
+
+    console.log('[cron] Finished affectProjectToBizSchoolStudents job');
+  });
+
+  // TESTNET ONLY
+  if (process.env.NODE_ENV === 'testnet') {
+    // PLAN B PROGRAM JOB
+    ctx.crons.addTask('mar20_13_gmt', async () => {
+      console.log('[cron] Running selectBizSchoolStudentsForAssignments job');
+
+      const selectBizSchoolStudentsForAssignments =
+        createSelectBizSchoolStudentsForAssignments(ctx);
+
+      await selectBizSchoolStudentsForAssignments(bizSchoolCourseId);
+      await selectBizSchoolStudentsForAssignments(devSchoolCourseId);
+
+      console.log('[cron] Finished selectBizSchoolStudentsForAssignments job');
+    });
+
+    // PLAN B PROGRAM JOB
+    ctx.crons.addTask('mar23_11_gmt', async () => {
+      console.log('[cron] Running affectProjectToBizSchoolStudents job');
+
+      const affectProjectToBizSchoolStudents =
+        createAffectProjectToBizSchoolStudents(ctx);
+
+      await affectProjectToBizSchoolStudents(bizSchoolCourseId);
+      await affectProjectToBizSchoolStudents(devSchoolCourseId);
+
+      console.log('[cron] Finished affectProjectToBizSchoolStudents job');
+    });
+  }
 
   {
     const getCourses = createGetCourses(ctx);

@@ -47,6 +47,7 @@ import { AppContext } from '#src/providers/context.tsx';
 import { CourseContext } from '#src/providers/courseContext.tsx';
 import { WeightIndicator } from '#src/routes/$lang/dashboard/professor/-components/exam-results.tsx';
 import { formatDate, formatDateRange, formatTime } from '#src/utils/date.ts';
+import { isTestnetOrDevelopmentEnvironment } from '#src/utils/misc.ts';
 import { trpc } from '#src/utils/trpc.ts';
 import { CourseTitle } from '../-components/course-title.tsx';
 import { getTabs } from '../-utils/get-tabs.tsx';
@@ -151,10 +152,12 @@ function Assignment() {
   const [isUploading, setIsUploading] = useState(false);
 
   const openAssignmentDate = new Date(
-    courseInfo?.assignmentStartDate || '2026-04-02T00:00:00Z',
+    isTestnetOrDevelopmentEnvironment()
+      ? '2026-03-20T15:00:00Z'
+      : courseInfo?.assignmentStartDate || '2026-03-27T14:00:00Z',
   ).getTime();
   const endAssignmentDate = new Date(
-    courseInfo?.assignmentEndDate || '2026-04-23T23:59:00Z',
+    courseInfo?.assignmentEndDate || '2026-04-30T11:00:00Z',
   ).getTime();
   const currentTime = Date.now();
   const isAssignmentOpen = currentTime >= openAssignmentDate;

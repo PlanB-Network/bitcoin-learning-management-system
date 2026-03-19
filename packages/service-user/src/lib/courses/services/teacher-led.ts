@@ -19,6 +19,7 @@ export const createProcessTeacherLedCoursesWithConclusionIn24Hours = ({
                 AND ccl.is_course_conclusion = TRUE
             WHERE
                 c.teaching_format = 'professor_led'
+                AND c.is_planb_school = FALSE
                 AND c.are_scores_calculated = FALSE
                 AND ccl.release_date IS NOT NULL
                 AND ccl.release_date > NOW()
