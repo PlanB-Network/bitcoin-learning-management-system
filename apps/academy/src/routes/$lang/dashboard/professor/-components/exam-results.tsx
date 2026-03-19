@@ -25,13 +25,13 @@ import {
   TbWeight,
 } from 'react-icons/tb';
 
+import { EXAM_QUESTION_DURATION_SECONDS } from '#src/utils/courses.ts';
 import { formatDateRange } from '#src/utils/date.ts';
 import { trpc } from '#src/utils/trpc.ts';
 
 export const SELF_PACED_PASSING_THRESHOLD = 80;
 const DEFAULT_ASSIGNMENT_WEIGHT = 40;
 const MAX_QUESTIONS_IN_MULTI_ATTEMPT_EXAM = 40;
-const DURATION_CALCULATION_QUESTIONS_PER_MINUTE = 2;
 const TWO_HOURS_IN_MS = 2 * 60 * 60 * 1000;
 const WEIGHT_PER_BAR = 20;
 const TOTAL_WEIGHT_BARS = 5;
@@ -434,9 +434,7 @@ const ExamCard = ({
 
   const averageDuration = calculateAverageDuration(
     examGrades,
-    Math.round(
-      questionsInExam * (60 / DURATION_CALCULATION_QUESTIONS_PER_MINUTE),
-    ),
+    Math.round(questionsInExam * EXAM_QUESTION_DURATION_SECONDS),
   );
 
   if (!isExamInfoFetched && type === 'single-trial') {
@@ -525,7 +523,7 @@ const ExamCard = ({
             {questionsInExam > 0 && (
               <InfoRow
                 label={t('words.duration')}
-                value={`${Math.round(questionsInExam / DURATION_CALCULATION_QUESTIONS_PER_MINUTE)}'`}
+                value={`${Math.round((questionsInExam * EXAM_QUESTION_DURATION_SECONDS) / 60)}'`}
                 icon={<TbClock className="size-6 shrink-0" />}
                 showBorder={type !== 'multi-attempts'}
               />
@@ -778,9 +776,7 @@ const downloadExamGrades = async (
               new Date(grade.startedAt).getTime()) /
               1000,
           ),
-          Math.round(
-            (totalQuestions * 60) / DURATION_CALCULATION_QUESTIONS_PER_MINUTE,
-          ),
+          Math.round(totalQuestions * EXAM_QUESTION_DURATION_SECONDS),
         );
       }
 
