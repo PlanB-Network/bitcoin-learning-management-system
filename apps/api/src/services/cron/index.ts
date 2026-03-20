@@ -548,7 +548,7 @@ export const registerCronTasks = async (ctx: Dependencies) => {
   // TESTNET ONLY
   if (process.env.NODE_ENV === 'testnet') {
     // PLAN B PROGRAM JOB
-    ctx.crons.addTask('mar20_13_gmt', async () => {
+    ctx.crons.addTask('mar22_17_gmt', async () => {
       console.log('[cron] Running selectBizSchoolStudentsForAssignments job');
 
       const selectBizSchoolStudentsForAssignments =
@@ -567,8 +567,8 @@ export const registerCronTasks = async (ctx: Dependencies) => {
       const affectProjectToBizSchoolStudents =
         createAffectProjectToBizSchoolStudents(ctx);
 
-      await affectProjectToBizSchoolStudents(bizSchoolCourseId, 9);
-      await affectProjectToBizSchoolStudents(devSchoolCourseId, 7);
+      await affectProjectToBizSchoolStudents(bizSchoolCourseId, 1);
+      await affectProjectToBizSchoolStudents(devSchoolCourseId, 2);
 
       console.log('[cron] Finished affectProjectToBizSchoolStudents job');
     });
