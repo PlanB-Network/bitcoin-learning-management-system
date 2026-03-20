@@ -526,8 +526,8 @@ export const registerCronTasks = async (ctx: Dependencies) => {
     const selectBizSchoolStudentsForAssignments =
       createSelectBizSchoolStudentsForAssignments(ctx);
 
-    await selectBizSchoolStudentsForAssignments(bizSchoolCourseId);
-    await selectBizSchoolStudentsForAssignments(devSchoolCourseId);
+    await selectBizSchoolStudentsForAssignments(bizSchoolCourseId, 75);
+    await selectBizSchoolStudentsForAssignments(devSchoolCourseId, 75);
 
     console.log('[cron] Finished selectBizSchoolStudentsForAssignments job');
   });
@@ -539,8 +539,8 @@ export const registerCronTasks = async (ctx: Dependencies) => {
     const affectProjectToBizSchoolStudents =
       createAffectProjectToBizSchoolStudents(ctx);
 
-    await affectProjectToBizSchoolStudents(bizSchoolCourseId);
-    await affectProjectToBizSchoolStudents(devSchoolCourseId);
+    await affectProjectToBizSchoolStudents(bizSchoolCourseId, 9);
+    await affectProjectToBizSchoolStudents(devSchoolCourseId, 7);
 
     console.log('[cron] Finished affectProjectToBizSchoolStudents job');
   });
@@ -554,8 +554,8 @@ export const registerCronTasks = async (ctx: Dependencies) => {
       const selectBizSchoolStudentsForAssignments =
         createSelectBizSchoolStudentsForAssignments(ctx);
 
-      await selectBizSchoolStudentsForAssignments(bizSchoolCourseId);
-      await selectBizSchoolStudentsForAssignments(devSchoolCourseId);
+      await selectBizSchoolStudentsForAssignments(bizSchoolCourseId, 75);
+      await selectBizSchoolStudentsForAssignments(devSchoolCourseId, 75);
 
       console.log('[cron] Finished selectBizSchoolStudentsForAssignments job');
     });
@@ -567,8 +567,8 @@ export const registerCronTasks = async (ctx: Dependencies) => {
       const affectProjectToBizSchoolStudents =
         createAffectProjectToBizSchoolStudents(ctx);
 
-      await affectProjectToBizSchoolStudents(bizSchoolCourseId);
-      await affectProjectToBizSchoolStudents(devSchoolCourseId);
+      await affectProjectToBizSchoolStudents(bizSchoolCourseId, 9);
+      await affectProjectToBizSchoolStudents(devSchoolCourseId, 7);
 
       console.log('[cron] Finished affectProjectToBizSchoolStudents job');
     });

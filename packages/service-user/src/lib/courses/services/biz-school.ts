@@ -5,7 +5,7 @@ import type { Dependencies } from '#src/dependencies.js';
 export const createSelectBizSchoolStudentsForAssignments = ({
   postgres,
 }: Dependencies) => {
-  return (courseId: string) =>
+  return (courseId: string, topStudentsLimit: number) =>
     postgres.exec(sql`
     WITH exam_chapters AS (
       SELECT DISTINCT ON (cc.chapter_id)
@@ -42,7 +42,7 @@ export const createSelectBizSchoolStudentsForAssignments = ({
       FROM student_scores
       GROUP BY uid
       ORDER BY new_score DESC
-      LIMIT ${process.env.NODE_ENV === 'testnet' ? 6 : 75}
+      LIMIT ${process.env.NODE_ENV === 'testnet' ? 6 : topStudentsLimit}
     )
     UPDATE users.course_progress cp
     SET is_selected_for_assignment = true
@@ -63,12 +63,11 @@ interface UserCourseProgress {
 export const createAffectProjectToBizSchoolStudents = ({
   postgres,
 }: Dependencies) => {
-  return async (courseId: string) => {
+  return async (courseId: string, maxStudentsPerAssignment: number) => {
     console.log('[AffectProjects] === START');
 
     const assignmentApplications: Record<string, Set<string>> = {};
     const notAssignedUids: string[] = [];
-    const MAX_STUDENTS_PER_ASSIGNMENT = 5;
 
     const students = await postgres.exec(sql<StudentWithScore[]>`
     WITH exam_chapters AS (
@@ -145,7 +144,7 @@ export const createAffectProjectToBizSchoolStudents = ({
 
         if (
           assignmentApplications[appliedAssignmentId].size <
-          MAX_STUDENTS_PER_ASSIGNMENT
+          maxStudentsPerAssignment
         ) {
           assignmentApplications[appliedAssignmentId].add(student.uid);
           console.log(
@@ -162,7 +161,7 @@ export const createAffectProjectToBizSchoolStudents = ({
           break; // Move to the next student
         }
         console.log(
-          '[AffectProjects] Assignment already has 5 students assigned:',
+          `[AffectProjects] Assignment already has ${maxStudentsPerAssignment} students assigned:`,
           appliedAssignmentId,
         );
       }
@@ -190,8 +189,7 @@ export const createAffectProjectToBizSchoolStudents = ({
         }
 
         if (
-          assignmentApplications[assignment.id].size <
-          MAX_STUDENTS_PER_ASSIGNMENT
+          assignmentApplications[assignment.id].size < maxStudentsPerAssignment
         ) {
           assignmentApplications[assignment.id].add(uid);
 
