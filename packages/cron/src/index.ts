@@ -9,8 +9,8 @@ export type Frequency =
   | '1day'
   | '1month'
   | 'sun4pm'
-  | 'mar20_13_gmt'
-  | 'mar23_11_gmt'
+  | 'mar23_12_gmt'
+  | 'mar24_10_gmt'
   | 'mar25_15_gmt'
   | 'mar31_12_gmt'
   | 'daily_8_gmt'
@@ -51,16 +51,16 @@ export const createCronService = () => {
   crons.set('1month', new CronJob('0 0 1 * *', createExecTasks('1month')));
   crons.set('sun4pm', new CronJob('0 16 * * 0', createExecTasks('sun4pm')));
   crons.set(
-    'mar20_13_gmt',
-    new CronJob('0 13 20 3 *', createExecTasks('mar20_13_gmt')),
+    'mar23_12_gmt',
+    new CronJob('0 12 23 3 *', createExecTasks('mar23_12_gmt')),
   );
   crons.set(
     'mar25_15_gmt',
     new CronJob('0 15 25 3 *', createExecTasks('mar25_15_gmt')),
   );
   crons.set(
-    'mar23_11_gmt',
-    new CronJob('0 11 23 3 *', createExecTasks('mar23_11_gmt')),
+    'mar24_10_gmt',
+    new CronJob('0 10 24 3 *', createExecTasks('mar24_10_gmt')),
   );
   crons.set(
     'mar31_12_gmt',
