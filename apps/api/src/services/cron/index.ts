@@ -11,7 +11,6 @@ import {
   createRefreshCoursesRatings,
 } from '@blms/service-content';
 import {
-  createAffectProjectToBizSchoolStudents,
   createAssignSingleAssignmentToCourseStudents,
   createExamTimestampService,
   createGetPendingCoursePayments,
@@ -20,7 +19,6 @@ import {
   createInsertUserNotifications,
   createProcessTeacherLedCoursesWithConclusionIn24Hours,
   createPublishScheduledCourseAnnouncement,
-  createSelectBizSchoolStudentsForAssignments,
   createSendCoordinatorNewStudentsDailyRecapEmail,
   createSendCourseStartingSoonEmail,
   createSendCourseWeeklyRecapEmail,
@@ -513,64 +511,6 @@ export const registerCronTasks = async (ctx: Dependencies) => {
       console.log(
         '[cron] Finished sending monthly mail recap to course coordinators about new enrolled students, graduated students, reviews and ratings',
       );
-    });
-  }
-
-  const bizSchoolCourseId = 'a54c48c0-9b90-11f0-bee7-dbbaea825cda';
-  const devSchoolCourseId = '0be6cfae-9d32-11f0-9601-0f79f5ccc576';
-
-  // PLAN B PROGRAM JOB
-  ctx.crons.addTask('mar25_15_gmt', async () => {
-    console.log('[cron] Running selectBizSchoolStudentsForAssignments job');
-
-    const selectBizSchoolStudentsForAssignments =
-      createSelectBizSchoolStudentsForAssignments(ctx);
-
-    await selectBizSchoolStudentsForAssignments(bizSchoolCourseId, 75);
-    await selectBizSchoolStudentsForAssignments(devSchoolCourseId, 75);
-
-    console.log('[cron] Finished selectBizSchoolStudentsForAssignments job');
-  });
-
-  // PLAN B PROGRAM JOB
-  ctx.crons.addTask('mar31_12_gmt', async () => {
-    console.log('[cron] Running affectProjectToBizSchoolStudents job');
-
-    const affectProjectToBizSchoolStudents =
-      createAffectProjectToBizSchoolStudents(ctx);
-
-    await affectProjectToBizSchoolStudents(bizSchoolCourseId, 9);
-    await affectProjectToBizSchoolStudents(devSchoolCourseId, 7);
-
-    console.log('[cron] Finished affectProjectToBizSchoolStudents job');
-  });
-
-  // TESTNET ONLY
-  if (process.env.NODE_ENV === 'testnet') {
-    // PLAN B PROGRAM JOB
-    ctx.crons.addTask('mar23_12_gmt', async () => {
-      console.log('[cron] Running selectBizSchoolStudentsForAssignments job');
-
-      const selectBizSchoolStudentsForAssignments =
-        createSelectBizSchoolStudentsForAssignments(ctx);
-
-      await selectBizSchoolStudentsForAssignments(bizSchoolCourseId, 75);
-      await selectBizSchoolStudentsForAssignments(devSchoolCourseId, 75);
-
-      console.log('[cron] Finished selectBizSchoolStudentsForAssignments job');
-    });
-
-    // PLAN B PROGRAM JOB
-    ctx.crons.addTask('mar24_10_gmt', async () => {
-      console.log('[cron] Running affectProjectToBizSchoolStudents job');
-
-      const affectProjectToBizSchoolStudents =
-        createAffectProjectToBizSchoolStudents(ctx);
-
-      await affectProjectToBizSchoolStudents(bizSchoolCourseId, 1);
-      await affectProjectToBizSchoolStudents(devSchoolCourseId, 2);
-
-      console.log('[cron] Finished affectProjectToBizSchoolStudents job');
     });
   }
 

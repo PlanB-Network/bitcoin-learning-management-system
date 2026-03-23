@@ -1,4 +1,7 @@
-import { createSelectBizSchoolStudentsForAssignments } from '@blms/service-user';
+import {
+  createAffectProjectToBizSchoolStudents,
+  createSelectBizSchoolStudentsForAssignments,
+} from '@blms/service-user';
 import type { Router } from 'express';
 
 import type { Dependencies } from '#src/dependencies.js';
@@ -36,6 +39,29 @@ export const createRestPlanbProgramRoutes = (
         res.json({ success: true });
       } catch (error) {
         console.error('Failed to select students for assignments:', error);
+        res.status(500).json({ error: 'Internal server error' });
+      }
+    },
+  );
+
+  router.post(
+    '/planb-program/affect-project-to-students',
+    protectMiddleware,
+    async (_req, res): Promise<void> => {
+      try {
+        console.log('[api] Running affectProjectToBizSchoolStudents job');
+
+        const affectProjectToBizSchoolStudents =
+          createAffectProjectToBizSchoolStudents(dependencies);
+
+        await affectProjectToBizSchoolStudents(bizSchoolCourseId, 1);
+        await affectProjectToBizSchoolStudents(devSchoolCourseId, 2);
+
+        console.log('[api] Finished affectProjectToBizSchoolStudents job');
+
+        res.json({ success: true });
+      } catch (error) {
+        console.error('Failed to affect project to students:', error);
         res.status(500).json({ error: 'Internal server error' });
       }
     },

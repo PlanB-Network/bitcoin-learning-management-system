@@ -920,12 +920,12 @@ const ConfirmAssignmentsOrderDialog = ({
       }
       iconSrc={InformationIcon}
     >
-      <div className="!flex max-md:flex-wrap justify-center items-center gap-2.5 md:!gap-7">
+      <div className="!flex max-md:flex-col w-full justify-center items-center gap-2.5 md:!gap-7">
         <DialogClose asChild>
           <Button
             variant="primary"
             size={isMobile ? 'm' : 'l'}
-            className="w-fit"
+            className="max-md:w-full md:w-fit"
             onClick={onConfirm}
           >
             {t('dashboard.course.confirmList')}
@@ -936,7 +936,7 @@ const ConfirmAssignmentsOrderDialog = ({
           <Button
             variant="outline"
             size={isMobile ? 'm' : 'l'}
-            className="w-fit"
+            className="max-md:w-full md:w-fit"
           >
             {t('dashboard.course.keepEditing')} <BiPencil className="ml-2.5" />
           </Button>
@@ -979,12 +979,12 @@ const ConfirmSubmissionDialog = ({
       }
       iconSrc={InformationIcon}
     >
-      <div className="!flex max-md:flex-col justify-center items-center gap-2.5 md:!gap-7">
+      <div className="!flex max-md:flex-col w-full justify-center items-center gap-2.5 md:!gap-7">
         <DialogClose asChild>
           <Button
             variant="primary"
             size={isMobile ? 'm' : 'l'}
-            className="w-fit"
+            className="max-md:w-full md:w-fit"
             onClick={onConfirm}
           >
             {t('dashboard.course.confirmSubmission')}{' '}
@@ -995,7 +995,7 @@ const ConfirmSubmissionDialog = ({
           <Button
             variant="outline"
             size={isMobile ? 'm' : 'l'}
-            className="w-fit"
+            className="max-md:w-full md:w-fit"
           >
             {t('courses.exam.goBack')} <TbArrowBackUp className="ml-2.5" />
           </Button>
