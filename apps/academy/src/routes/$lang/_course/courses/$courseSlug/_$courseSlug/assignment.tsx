@@ -153,7 +153,7 @@ function Assignment() {
 
   const openAssignmentDate = new Date(
     isTestnetOrDevelopmentEnvironment()
-      ? '2026-03-22T17:00:00Z'
+      ? '2026-03-23T13:00:00Z'
       : courseInfo?.assignmentStartDate || '2026-03-25T17:00:00Z',
   ).getTime();
   const endAssignmentDate = new Date(
