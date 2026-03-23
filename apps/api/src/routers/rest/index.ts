@@ -9,6 +9,7 @@ import { createRestFilesRoutes } from './files.js';
 import { createRestMentorRoutes } from './mentor.js';
 import { createRestMetadataRoutes } from './metadata.js';
 import { createRestPaymentRoutes } from './payment.js';
+import { createRestPlanbProgramRoutes } from './planb-program.js';
 import { createRestPngViewerRoutes } from './png-viewer.js';
 import { createRestSyncRoutes } from './sync.js';
 import { createRestTranslationAudioRoutes } from './translation-audio.js';
@@ -31,6 +32,7 @@ export const createRestRouter = async (
   createRestMentorRoutes(dependencies, router);
   createRestPaymentRoutes(dependencies, router);
   createRestSyncRoutes(dependencies, router);
+  createRestPlanbProgramRoutes(dependencies, router);
   createRestEventRoutes(dependencies, router);
   createRestCouponsRoutes(dependencies, router);
   createRestCalendarRoutes(dependencies, router);
