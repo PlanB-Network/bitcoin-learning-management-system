@@ -31,8 +31,8 @@ export const createRestPlanbProgramRoutes = (
         const selectBizSchoolStudentsForAssignments =
           createSelectBizSchoolStudentsForAssignments(dependencies);
 
-        await selectBizSchoolStudentsForAssignments(bizSchoolCourseId, 75);
-        await selectBizSchoolStudentsForAssignments(devSchoolCourseId, 75);
+        await selectBizSchoolStudentsForAssignments(bizSchoolCourseId, 91);
+        await selectBizSchoolStudentsForAssignments(devSchoolCourseId, 48);
 
         console.log('[api] Finished selectBizSchoolStudentsForAssignments job');
 
@@ -54,8 +54,8 @@ export const createRestPlanbProgramRoutes = (
         const affectProjectToBizSchoolStudents =
           createAffectProjectToBizSchoolStudents(dependencies);
 
-        await affectProjectToBizSchoolStudents(bizSchoolCourseId, 1);
-        await affectProjectToBizSchoolStudents(devSchoolCourseId, 2);
+        await affectProjectToBizSchoolStudents(bizSchoolCourseId, 7);
+        await affectProjectToBizSchoolStudents(devSchoolCourseId, 8);
 
         console.log('[api] Finished affectProjectToBizSchoolStudents job');
 
