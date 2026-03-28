@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { createFileRoute, Outlet } from '@tanstack/react-router';
 import { useContext, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -22,7 +22,7 @@ function CourseLayout() {
   const { data: course } = useQuery(
     trpc.content.getCourse.queryOptions(
       { id: courseSlug, language: i18n.language },
-      { staleTime: 300_000 },
+      { staleTime: 300_000, placeholderData: keepPreviousData },
     ),
   );
 

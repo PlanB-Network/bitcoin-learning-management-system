@@ -99,6 +99,8 @@ function Assignment() {
     CourseAssignment[]
   >([]);
 
+  const RANKING_DRAFT_KEY = `ranking-draft-${courseId}`;
+
   const {
     data: userProgress,
     refetch: refetchUserProgress,
@@ -213,6 +215,7 @@ function Assignment() {
   };
 
   const handleSaveList = () => {
+    localStorage.removeItem(RANKING_DRAFT_KEY);
     saveAssignments.mutate({
       assignmentsIds: assignmentsOrdered.map((assignment) => assignment.id),
       courseId,
@@ -315,11 +318,49 @@ function Assignment() {
     }
   };
 
+  const RANKING_DRAFT_TTL = 14 * 24 * 60 * 60 * 1000; // 14 days
+
   useEffect(() => {
-    if (assignments) {
+    if (assignments && assignmentsOrdered.length === 0) {
+      const saved = localStorage.getItem(RANKING_DRAFT_KEY);
+      if (saved) {
+        try {
+          const { ids: savedIds, timestamp } = JSON.parse(saved) as {
+            ids: string[];
+            timestamp: number;
+          };
+          if (Date.now() - timestamp < RANKING_DRAFT_TTL) {
+            const serverIds = assignments.map((a) => a.id);
+            if (
+              savedIds.length === serverIds.length &&
+              savedIds.every((id) => serverIds.includes(id))
+            ) {
+              setAssignmentsOrdered(
+                savedIds.map((id) => assignments.find((a) => a.id === id)!),
+              );
+              return;
+            }
+          }
+        } catch {
+          // ignore malformed data
+        }
+        localStorage.removeItem(RANKING_DRAFT_KEY);
+      }
       setAssignmentsOrdered(assignments);
     }
-  }, [assignments]);
+  }, [assignments, assignmentsOrdered.length, RANKING_DRAFT_KEY]);
+
+  useEffect(() => {
+    if (assignmentsOrdered.length > 0 && canRankAssignments) {
+      localStorage.setItem(
+        RANKING_DRAFT_KEY,
+        JSON.stringify({
+          ids: assignmentsOrdered.map((a) => a.id),
+          timestamp: Date.now(),
+        }),
+      );
+    }
+  }, [assignmentsOrdered, canRankAssignments, RANKING_DRAFT_KEY]);
 
   if (!courseInfo) {
     return <Loader />;
