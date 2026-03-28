@@ -40,6 +40,7 @@ TYPESENSE_CONTAINER="blms-local-typesense"
 LOG_DIR="/tmp/blms-dev"
 LOG_FILE="$LOG_DIR/combined.log"
 PID_FILE="$LOG_DIR/dev.pid"
+LOCK_FILE="$LOG_DIR/local-dev.lock"
 
 # Colors
 RED='\033[0;31m'
@@ -104,6 +105,27 @@ is_dev_running() {
     [[ -f "$PID_FILE" ]] && kill -0 "$(cat "$PID_FILE")" 2>/dev/null
 }
 
+acquire_lock() {
+    mkdir -p "$LOG_DIR"
+    if [[ -f "$LOCK_FILE" ]]; then
+        local lock_pid
+        lock_pid=$(cat "$LOCK_FILE")
+        if kill -0 "$lock_pid" 2>/dev/null; then
+            error "Another local-dev.sh is running (PID ${lock_pid}). Wait or run 'down' first."
+            exit 1
+        fi
+        # Stale lock — remove it
+        rm -f "$LOCK_FILE"
+    fi
+    echo $$ > "$LOCK_FILE"
+    trap 'rm -f "$LOCK_FILE"' EXIT
+}
+
+release_lock() {
+    rm -f "$LOCK_FILE"
+    trap - EXIT
+}
+
 wait_for_api() {
     info "Waiting for API on ${API_URL} ..."
     for i in $(seq 1 60); do
@@ -149,6 +171,7 @@ trigger_sync() {
 # ============================================================
 
 cmd_up() {
+    acquire_lock
     header "Infrastructure"
 
     # .env
@@ -276,6 +299,7 @@ cmd_up() {
     echo -e "  Sync:    ${BOLD}./scripts/local-dev.sh sync${NC}"
     echo -e "  Stop:    ${BOLD}./scripts/local-dev.sh down${NC}"
     echo ""
+    release_lock
 }
 
 cmd_down() {
@@ -293,10 +317,10 @@ cmd_down() {
         fi
         kill "$pid" 2>/dev/null || true
         rm -f "$PID_FILE"
-        # Also kill any orphaned pnpm dev / turbo processes
-        pkill -f "turbo dev" 2>/dev/null || true
-        pkill -f "tsx.*src/index.ts" 2>/dev/null || true
-        pkill -f "vite serve --mode development" 2>/dev/null || true
+        # Kill orphaned processes scoped to THIS project directory only
+        pgrep -f "turbo.*dev.*${PROJECT_DIR}" 2>/dev/null | xargs -r kill 2>/dev/null || true
+        pgrep -f "tsx.*${PROJECT_DIR}" 2>/dev/null | xargs -r kill 2>/dev/null || true
+        pgrep -f "vite.*${PROJECT_DIR}" 2>/dev/null | xargs -r kill 2>/dev/null || true
         sleep 1
         ok "Dev servers stopped"
     else
@@ -313,6 +337,7 @@ cmd_down() {
         fi
     done
 
+    rm -f "$LOCK_FILE"
     ok "Everything stopped (containers preserved, use 'nuke' to delete)"
 }
 
