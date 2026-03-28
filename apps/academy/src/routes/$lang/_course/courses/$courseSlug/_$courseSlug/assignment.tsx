@@ -316,10 +316,10 @@ function Assignment() {
   };
 
   useEffect(() => {
-    if (assignments) {
+    if (assignments && assignmentsOrdered.length === 0) {
       setAssignmentsOrdered(assignments);
     }
-  }, [assignments]);
+  }, [assignments, assignmentsOrdered.length]);
 
   if (!courseInfo) {
     return <Loader />;
