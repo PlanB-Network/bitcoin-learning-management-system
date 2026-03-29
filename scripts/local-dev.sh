@@ -16,6 +16,8 @@ set -euo pipefail
 # Branch options (CLI-friendly for agents):
 #   --app <branch>              Switch BLMS application branch
 #   --content <branch>          Switch public content repo branch + sync
+#   --content-pr <number>       Switch to a content PR's branch (handles forks) + sync
+#   --content-reset             Reset content repo to upstream main
 #   --private-content <branch>  Switch private content repo branch + sync
 #
 # Log files (agent-readable):
@@ -28,6 +30,8 @@ set -euo pipefail
 #   ./scripts/local-dev.sh logs --errors
 #   ./scripts/local-dev.sh branch --app fix/assignment-ranking-state-reset
 #   ./scripts/local-dev.sh branch --content dev --private-content main
+#   ./scripts/local-dev.sh branch --content-pr 3777   # review PR from any fork
+#   ./scripts/local-dev.sh branch --content-reset      # back to upstream main
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
@@ -41,6 +45,8 @@ LOG_DIR="/tmp/blms-dev"
 LOG_FILE="$LOG_DIR/combined.log"
 PID_FILE="$LOG_DIR/dev.pid"
 LOCK_FILE="$LOG_DIR/local-dev.lock"
+UPSTREAM_CONTENT_REPO="https://github.com/PlanB-Network/bitcoin-educational-content"
+UPSTREAM_CONTENT_SLUG="PlanB-Network/bitcoin-educational-content"
 
 # Colors
 RED='\033[0;31m'
@@ -139,6 +145,39 @@ wait_for_api() {
     return 1
 }
 
+restart_dev_servers() {
+    if ! is_dev_running; then
+        info "Dev servers not running, skipping restart"
+        return
+    fi
+
+    info "Restarting dev servers (env vars changed) ..."
+
+    # Stop
+    local pid
+    pid=$(cat "$PID_FILE")
+    local pgid
+    pgid=$(ps -o pgid= -p "$pid" 2>/dev/null | tr -d ' ') || true
+    if [[ -n "$pgid" ]]; then
+        kill -- -"$pgid" 2>/dev/null || true
+    fi
+    kill "$pid" 2>/dev/null || true
+    rm -f "$PID_FILE"
+    pgrep -f "turbo.*dev.*${PROJECT_DIR}" 2>/dev/null | xargs -r kill 2>/dev/null || true
+    pgrep -f "tsx.*${PROJECT_DIR}" 2>/dev/null | xargs -r kill 2>/dev/null || true
+    pgrep -f "vite.*${PROJECT_DIR}" 2>/dev/null | xargs -r kill 2>/dev/null || true
+    sleep 1
+
+    # Start
+    cd "$PROJECT_DIR"
+    pnpm dev 2>&1 \
+        | awk '{ print strftime("[%H:%M:%S]"), $0; fflush() }' \
+        >> "$LOG_FILE" &
+    local dev_pid=$!
+    echo "$dev_pid" > "$PID_FILE"
+    ok "Dev servers restarted (PID ${dev_pid})"
+}
+
 trigger_sync() {
     local pub_branch priv_branch
     pub_branch=$(read_env_var DATA_REPOSITORY_BRANCH "main")
@@ -149,6 +188,12 @@ trigger_sync() {
     if ! wait_for_api; then
         error "Cannot sync — API is not running"
         return 1
+    fi
+
+    # Snapshot log position before sync to only check new lines after
+    local log_lines_before=0
+    if [[ -f "$LOG_FILE" ]]; then
+        log_lines_before=$(wc -l < "$LOG_FILE")
     fi
 
     local response http_code
@@ -163,6 +208,24 @@ trigger_sync() {
         ok "Content synced"
     else
         warn "Sync returned HTTP ${http_code}"
+    fi
+
+    # Check new log lines for sync errors
+    if [[ -f "$LOG_FILE" ]]; then
+        local sync_errors
+        sync_errors=$(tail -n +"$((log_lines_before + 1))" "$LOG_FILE" \
+            | grep -i 'error processing file\|failed to sync\|failed to clone' \
+            | tail -20) || true
+        if [[ -n "$sync_errors" ]]; then
+            echo ""
+            warn "${BOLD}Sync errors detected:${NC}"
+            echo "$sync_errors" | while IFS= read -r line; do
+                local clean
+                clean=$(echo "$line" | sed 's/^\[[0-9:]*\] @blms\/api:dev: //')
+                echo -e "  ${RED}x${NC} ${clean}"
+            done
+            echo ""
+        fi
     fi
 }
 
@@ -337,6 +400,44 @@ cmd_down() {
         fi
     done
 
+    # Reset branches to defaults
+    header "Resetting branches"
+
+    local app_branch
+    app_branch=$(cd "$PROJECT_DIR" && git branch --show-current 2>/dev/null || echo "")
+    if [[ -n "$app_branch" && "$app_branch" != "dev" ]]; then
+        (cd "$PROJECT_DIR" && git checkout dev 2>/dev/null) && ok "App branch: dev" || warn "Could not checkout dev"
+    else
+        ok "App branch already on dev"
+    fi
+
+    if [[ -f "$ENV_FILE" ]]; then
+        local content_url content_branch private_branch
+        content_url=$(read_env_var DATA_REPOSITORY_URL "")
+        content_branch=$(read_env_var DATA_REPOSITORY_BRANCH "main")
+        private_branch=$(read_env_var PRIVATE_DATA_REPOSITORY_BRANCH "")
+
+        local changed=false
+        if [[ -n "$content_url" && "$content_url" != "$UPSTREAM_CONTENT_REPO" ]]; then
+            set_env_var DATA_REPOSITORY_URL "$UPSTREAM_CONTENT_REPO"
+            changed=true
+        fi
+        if [[ "$content_branch" != "dev" ]]; then
+            set_env_var DATA_REPOSITORY_BRANCH "dev"
+            changed=true
+        fi
+        if [[ -n "$private_branch" && "$private_branch" != "dev" ]]; then
+            set_env_var PRIVATE_DATA_REPOSITORY_BRANCH "dev"
+            changed=true
+        fi
+
+        if [[ "$changed" == true ]]; then
+            ok "Content branches reset to dev (upstream)"
+        else
+            ok "Content branches already on dev"
+        fi
+    fi
+
     rm -f "$LOCK_FILE"
     ok "Everything stopped (containers preserved, use 'nuke' to delete)"
 }
@@ -362,10 +463,20 @@ cmd_status() {
 
     # Content branches
     if [[ -f "$ENV_FILE" ]]; then
-        local content_branch private_branch
+        local content_branch private_branch content_repo_url
         content_branch=$(read_env_var DATA_REPOSITORY_BRANCH "main")
         private_branch=$(read_env_var PRIVATE_DATA_REPOSITORY_BRANCH "")
-        echo -e "  Content branch:         ${BOLD}${content_branch}${NC}"
+        content_repo_url=$(read_env_var DATA_REPOSITORY_URL "")
+
+        local fork_indicator=""
+        if [[ -n "$content_repo_url" && "$content_repo_url" != "$UPSTREAM_CONTENT_REPO" ]]; then
+            fork_indicator=" ${YELLOW}(fork)${NC}"
+        fi
+
+        echo -e "  Content branch:         ${BOLD}${content_branch}${NC}${fork_indicator}"
+        if [[ -n "$fork_indicator" ]]; then
+            echo -e "  Content repo:           ${DIM}${content_repo_url}${NC}"
+        fi
         echo -e "  Private content branch: ${BOLD}${private_branch:-not set}${NC}"
     else
         echo -e "  Content branch:         ${DIM}no .env${NC}"
@@ -452,42 +563,55 @@ cmd_logs() {
 
 cmd_branch() {
     local app_branch="" content_branch="" private_branch=""
+    local content_pr="" content_reset=false
     local interactive=true
 
     while [[ $# -gt 0 ]]; do
         case "$1" in
             --app)             app_branch="$2"; interactive=false; shift 2 ;;
             --content)         content_branch="$2"; interactive=false; shift 2 ;;
+            --content-pr)      content_pr="$2"; interactive=false; shift 2 ;;
+            --content-reset)   content_reset=true; interactive=false; shift ;;
             --private-content) private_branch="$2"; interactive=false; shift 2 ;;
             *)                 error "Unknown flag: $1"; exit 1 ;;
         esac
     done
 
     if [[ "$interactive" == true ]]; then
-        local current_app current_content current_private
+        local current_app current_content current_private current_repo_url
         current_app=$(cd "$PROJECT_DIR" && git branch --show-current 2>/dev/null || echo "unknown")
 
         ensure_env
         current_content=$(read_env_var DATA_REPOSITORY_BRANCH "main")
         current_private=$(read_env_var PRIVATE_DATA_REPOSITORY_BRANCH "")
+        current_repo_url=$(read_env_var DATA_REPOSITORY_URL "")
+
+        local fork_indicator=""
+        if [[ -n "$current_repo_url" && "$current_repo_url" != "$UPSTREAM_CONTENT_REPO" ]]; then
+            fork_indicator=" ${YELLOW}(fork)${NC}"
+        fi
 
         echo ""
         echo -e "  Current state:"
         echo -e "    App:             ${BOLD}${current_app}${NC}"
-        echo -e "    Content:         ${BOLD}${current_content}${NC}"
+        echo -e "    Content:         ${BOLD}${current_content}${NC}${fork_indicator}"
         echo -e "    Private content: ${BOLD}${current_private:-not set}${NC}"
         echo ""
         echo -e "  ${BOLD}1)${NC} Switch app branch"
         echo -e "  ${BOLD}2)${NC} Switch content branch"
-        echo -e "  ${BOLD}3)${NC} Switch both"
-        echo -e "  ${BOLD}4)${NC} Cancel"
+        echo -e "  ${BOLD}3)${NC} Review a content PR (handles forks)"
+        echo -e "  ${BOLD}4)${NC} Reset content to upstream main"
+        echo -e "  ${BOLD}5)${NC} Switch both (app + content)"
+        echo -e "  ${BOLD}6)${NC} Cancel"
         echo ""
-        read -rp "$(echo -e "${CYAN}>${NC}") Choice [1/2/3/4]: " choice
+        read -rp "$(echo -e "${CYAN}>${NC}") Choice [1-6]: " choice
 
         case "$choice" in
             1) _pick_app_branch; app_branch="$PICKED_BRANCH" ;;
             2) _pick_content_branch; content_branch="$PICKED_BRANCH" ;;
-            3)
+            3) _pick_content_pr; content_pr="$PICKED_PR" ;;
+            4) content_reset=true ;;
+            5)
                 _pick_app_branch; app_branch="$PICKED_BRANCH"
                 _pick_content_branch; content_branch="$PICKED_BRANCH"
                 ;;
@@ -519,7 +643,36 @@ cmd_branch() {
     local need_sync=false
     ensure_env
 
+    # --content-reset: restore upstream repo + main branch
+    if [[ "$content_reset" == true ]]; then
+        header "Resetting content to upstream"
+        set_env_var DATA_REPOSITORY_URL "$UPSTREAM_CONTENT_REPO"
+        set_env_var DATA_REPOSITORY_BRANCH "main"
+        ok "Content repo: ${BOLD}${UPSTREAM_CONTENT_REPO}${NC}"
+        ok "Content branch: ${BOLD}main${NC}"
+        need_sync=true
+    fi
+
+    # --content-pr: resolve PR, set fork URL + branch
+    if [[ -n "$content_pr" ]]; then
+        header "Switching to content PR"
+        _resolve_content_pr "$content_pr"
+        set_env_var DATA_REPOSITORY_URL "$PR_REPO_URL"
+        set_env_var DATA_REPOSITORY_BRANCH "$PR_BRANCH"
+        ok "Content repo set to: ${BOLD}${PR_REPO_URL}${NC}"
+        ok "Content branch set to: ${BOLD}${PR_BRANCH}${NC}"
+        need_sync=true
+    fi
+
     if [[ -n "$content_branch" ]]; then
+        # When explicitly setting a branch, reset URL to upstream
+        # (user likely wants a branch from the main repo, not the fork)
+        local current_url
+        current_url=$(read_env_var DATA_REPOSITORY_URL "")
+        if [[ -n "$current_url" && "$current_url" != "$UPSTREAM_CONTENT_REPO" ]]; then
+            info "Resetting content repo URL to upstream (was pointing to a fork)"
+            set_env_var DATA_REPOSITORY_URL "$UPSTREAM_CONTENT_REPO"
+        fi
         set_env_var DATA_REPOSITORY_BRANCH "$content_branch"
         ok "Content branch set to: ${BOLD}${content_branch}${NC}"
         need_sync=true
@@ -532,6 +685,7 @@ cmd_branch() {
     fi
 
     if [[ "$need_sync" == true ]]; then
+        restart_dev_servers
         trigger_sync
     fi
 }
@@ -587,6 +741,85 @@ _pick_content_branch() {
         read -rp "$(echo -e "${CYAN}>${NC}") Branch name: " PICKED_BRANCH
         [[ -z "$PICKED_BRANCH" ]] && { error "No selection"; exit 1; }
     fi
+}
+
+_resolve_content_pr() {
+    local pr_number="$1"
+
+    if ! command -v gh &>/dev/null; then
+        error "gh CLI not found — install it: https://cli.github.com"
+        exit 1
+    fi
+
+    info "Fetching PR #${pr_number} from ${BOLD}${UPSTREAM_CONTENT_SLUG}${NC} ..."
+    local pr_json
+    pr_json=$(gh pr view "$pr_number" --repo "$UPSTREAM_CONTENT_SLUG" \
+        --json headRefName,headRepository,headRepositoryOwner,title,number,state 2>/dev/null) || {
+        error "Could not fetch PR #${pr_number} from ${UPSTREAM_CONTENT_SLUG}"
+        error "Check that the PR number is correct and you have gh auth"
+        exit 1
+    }
+
+    PR_BRANCH=$(echo "$pr_json" | jq -r '.headRefName')
+    PR_TITLE=$(echo "$pr_json" | jq -r '.title')
+    PR_NUMBER=$(echo "$pr_json" | jq -r '.number')
+    PR_STATE=$(echo "$pr_json" | jq -r '.state')
+    local owner repo_name
+    owner=$(echo "$pr_json" | jq -r '.headRepositoryOwner.login')
+    repo_name=$(echo "$pr_json" | jq -r '.headRepository.name')
+    PR_REPO_URL="https://github.com/${owner}/${repo_name}"
+
+    local fork_label=""
+    if [[ "$PR_REPO_URL" != "$UPSTREAM_CONTENT_REPO" ]]; then
+        fork_label=" ${YELLOW}(fork)${NC}"
+    fi
+
+    ok "PR #${PR_NUMBER}: ${PR_TITLE}"
+    info "  Branch: ${BOLD}${PR_BRANCH}${NC}"
+    info "  Repo:   ${BOLD}${PR_REPO_URL}${NC}${fork_label}"
+    info "  State:  ${PR_STATE}"
+}
+
+_pick_content_pr() {
+    if ! command -v gh &>/dev/null; then
+        error "gh CLI not found — install it: https://cli.github.com"
+        exit 1
+    fi
+
+    info "Fetching open PRs from ${BOLD}${UPSTREAM_CONTENT_SLUG}${NC} ..."
+    local pr_list
+    pr_list=$(gh pr list --repo "$UPSTREAM_CONTENT_SLUG" --state open --limit 100 \
+        --json number,title,headRefName,author \
+        --jq '.[] | "#\(.number)  \(.headRefName)  \(.title)  @\(.author.login)"' 2>/dev/null)
+
+    if [[ -z "$pr_list" ]]; then
+        warn "No open PRs found"
+        exit 1
+    fi
+
+    local pr_count
+    pr_count=$(echo "$pr_list" | wc -l | tr -d ' ')
+    info "Found ${BOLD}${pr_count}${NC} open PRs"
+
+    local selection
+    if command -v fzf &>/dev/null; then
+        selection=$(echo "$pr_list" | fzf \
+            --height=~40% \
+            --reverse \
+            --prompt="pr> " \
+            --header="Type to fuzzy-search · ESC to cancel" \
+            --delimiter='  ' \
+            --with-nth=1,3,4 \
+        ) || { error "Cancelled"; exit 1; }
+    else
+        warn "fzf not found — install it for fuzzy search"
+        echo "$pr_list"
+        read -rp "$(echo -e "${CYAN}>${NC}") PR number: " selection
+        [[ -z "$selection" ]] && { error "No selection made"; exit 1; }
+    fi
+
+    # Extract PR number (strip the # prefix)
+    PICKED_PR=$(echo "$selection" | awk -F'  ' '{print $1}' | tr -d '#')
 }
 
 cmd_sync() {
