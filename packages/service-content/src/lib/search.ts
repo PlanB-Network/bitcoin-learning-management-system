@@ -345,25 +345,27 @@ export const createIndexContent = ({
     await deleteIndexes();
     await createIndexes();
 
-    const data: Searchable<Language>[] = [
-      ...(await postgres.exec(getCoursePartsQuery())),
-      ...(await postgres.exec(getCourseChaptersQuery())),
-      ...(await postgres.exec(getProfessorsQuery())),
-      ...(await postgres.exec(getCoursesQuery())),
-      ...(await postgres.exec(getTutorialsQuery())),
-      ...(await postgres.exec(getBooksQuery())),
-      ...(await postgres.exec(getPodcastsQuery())),
-      ...(await postgres.exec(getGlossaryQuery())),
-      ...(await postgres.exec(getNewslettersQuery())),
-      ...(await postgres.exec(getEventsQuery())),
-      ...(await postgres.exec(getYoutubeChannelsQuery())),
-      ...(await postgres.exec(getConferenceQuery())),
-      ...(await postgres.exec(getConferenceReplaysQuery())),
-      ...(await postgres.exec(getProjectsQuery())),
-      ...(await postgres.exec(getLectureReplaysQuery())),
-      ...(await postgres.exec(getMoviesQuery())),
-      ...(await postgres.exec(getResearchPapersQuery())),
-    ];
+    const data: Searchable<Language>[] = (
+      await Promise.all([
+        postgres.exec(getCoursePartsQuery()),
+        postgres.exec(getCourseChaptersQuery()),
+        postgres.exec(getProfessorsQuery()),
+        postgres.exec(getCoursesQuery()),
+        postgres.exec(getTutorialsQuery()),
+        postgres.exec(getBooksQuery()),
+        postgres.exec(getPodcastsQuery()),
+        postgres.exec(getGlossaryQuery()),
+        postgres.exec(getNewslettersQuery()),
+        postgres.exec(getEventsQuery()),
+        postgres.exec(getYoutubeChannelsQuery()),
+        postgres.exec(getConferenceQuery()),
+        postgres.exec(getConferenceReplaysQuery()),
+        postgres.exec(getProjectsQuery()),
+        postgres.exec(getLectureReplaysQuery()),
+        postgres.exec(getMoviesQuery()),
+        postgres.exec(getResearchPapersQuery()),
+      ])
+    ).flat();
 
     await ingestData(data);
 
