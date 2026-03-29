@@ -41,6 +41,7 @@ API_URL="${API_URL:-http://localhost:3000}"
 POSTGRES_CONTAINER="blms-local-postgres"
 CDN_CONTAINER="blms-local-cdn"
 TYPESENSE_CONTAINER="blms-local-typesense"
+MINIO_CONTAINER="blms-local-minio"
 LOG_DIR="/tmp/blms-dev"
 LOG_FILE="$LOG_DIR/combined.log"
 PID_FILE="$LOG_DIR/dev.pid"
@@ -76,6 +77,11 @@ ensure_env() {
             sed -i 's|^POSTGRES_DB=.*|POSTGRES_DB=postgres|' "$ENV_FILE"
             sed -i 's|^POSTGRES_USER=.*|POSTGRES_USER=postgres|' "$ENV_FILE"
             sed -i 's|^POSTGRES_PASSWORD=.*|POSTGRES_PASSWORD=postgres|' "$ENV_FILE"
+            sed -i 's|^S3_ENDPOINT=.*|S3_ENDPOINT=http://localhost:9000|' "$ENV_FILE"
+            sed -i 's|^S3_ACCESS_KEY=.*|S3_ACCESS_KEY=minioadmin|' "$ENV_FILE"
+            sed -i 's|^S3_SECRET_KEY=.*|S3_SECRET_KEY=minioadmin|' "$ENV_FILE"
+            sed -i 's|^S3_BUCKET=.*|S3_BUCKET=blms-local|' "$ENV_FILE"
+            sed -i 's|^S3_REGION=.*|S3_REGION=us-east-1|' "$ENV_FILE"
             ok ".env created with local defaults"
             warn "Edit .env to add GITHUB_ACCESS_TOKEN if you need private content repo"
         else
@@ -325,6 +331,59 @@ cmd_up() {
         ok "CDN running on localhost:8080"
     fi
 
+    # Ensure .env S3 vars point to local MinIO (before starting container so bucket name is correct)
+    local current_s3_endpoint
+    current_s3_endpoint=$(read_env_var S3_ENDPOINT "")
+    if [[ "$current_s3_endpoint" != "http://localhost:9000" ]]; then
+        info "Patching S3 env vars for local MinIO"
+        set_env_var S3_ENDPOINT "http://localhost:9000"
+        set_env_var S3_ACCESS_KEY "minioadmin"
+        set_env_var S3_SECRET_KEY "minioadmin"
+        set_env_var S3_BUCKET "blms-local"
+        set_env_var S3_REGION "us-east-1"
+    fi
+
+    # MinIO (S3-compatible storage — required by sync for assignment PDFs)
+    if is_container_running "$MINIO_CONTAINER"; then
+        ok "MinIO already running"
+    else
+        if docker ps -a --filter "name=^${MINIO_CONTAINER}$" --format '{{.Names}}' 2>/dev/null | grep -q "^${MINIO_CONTAINER}$"; then
+            info "Restarting MinIO container (data preserved) ..."
+            docker start "$MINIO_CONTAINER" > /dev/null
+        else
+            info "Creating MinIO container ..."
+            docker run -d \
+                --name "$MINIO_CONTAINER" \
+                -p 127.0.0.1:9000:9000 \
+                -p 127.0.0.1:9001:9001 \
+                -e MINIO_ROOT_USER=minioadmin \
+                -e MINIO_ROOT_PASSWORD=minioadmin \
+                -v blms-local-minio-data:/data \
+                --restart unless-stopped \
+                minio/minio server /data --console-address ":9001" > /dev/null
+        fi
+        info "Waiting for MinIO ..."
+        for i in $(seq 1 20); do
+            if curl -sf http://localhost:9000/minio/health/live > /dev/null 2>&1; then
+                break
+            fi
+            sleep 1
+        done
+        ok "MinIO running on localhost:9000 (console: localhost:9001)"
+
+        # Create bucket if it doesn't exist (uses minio/mc image as a one-shot tool)
+        local bucket
+        bucket=$(read_env_var S3_BUCKET "blms-local")
+        if docker run --rm --net=host --entrypoint sh minio/mc -c \
+            "mc alias set local http://localhost:9000 minioadmin minioadmin > /dev/null 2>&1 \
+             && mc mb local/${bucket} --ignore-existing > /dev/null 2>&1"; then
+            ok "S3 bucket '${bucket}' ready"
+        else
+            warn "Could not auto-create S3 bucket '${bucket}'"
+            info "Create it manually via the MinIO console at http://localhost:9001"
+        fi
+    fi
+
     # Dev servers
     header "Dev servers"
 
@@ -354,8 +413,9 @@ cmd_up() {
 
     header "Ready"
     echo ""
-    echo -e "  ${GREEN}App running at:${NC}  ${BOLD}http://localhost:8181${NC}"
-    echo -e "  ${GREEN}API running at:${NC}  ${BOLD}http://localhost:3000${NC}"
+    echo -e "  ${GREEN}App running at:${NC}    ${BOLD}http://localhost:8181${NC}"
+    echo -e "  ${GREEN}API running at:${NC}    ${BOLD}http://localhost:3000${NC}"
+    echo -e "  ${GREEN}MinIO console:${NC}     ${BOLD}http://localhost:9001${NC}  ${DIM}(minioadmin/minioadmin)${NC}"
     echo ""
     echo -e "  Logs:    ${BOLD}cat ${LOG_FILE}${NC}"
     echo -e "  Errors:  ${BOLD}./scripts/local-dev.sh logs --errors${NC}"
@@ -391,7 +451,7 @@ cmd_down() {
     fi
 
     # Stop containers (keep them — restart is faster than recreate)
-    for container in "$CDN_CONTAINER" "$TYPESENSE_CONTAINER" "$POSTGRES_CONTAINER"; do
+    for container in "$CDN_CONTAINER" "$TYPESENSE_CONTAINER" "$MINIO_CONTAINER" "$POSTGRES_CONTAINER"; do
         if is_container_running "$container"; then
             docker stop "$container" > /dev/null
             ok "Stopped $container"
@@ -445,10 +505,11 @@ cmd_down() {
 cmd_nuke() {
     header "Nuking everything"
     cmd_down
-    for container in "$CDN_CONTAINER" "$TYPESENSE_CONTAINER" "$POSTGRES_CONTAINER"; do
+    for container in "$CDN_CONTAINER" "$TYPESENSE_CONTAINER" "$MINIO_CONTAINER" "$POSTGRES_CONTAINER"; do
         docker rm "$container" 2>/dev/null && ok "Removed $container" || true
     done
     docker volume rm blms-local-pgdata 2>/dev/null && ok "Removed PostgreSQL data volume" || true
+    docker volume rm blms-local-minio-data 2>/dev/null && ok "Removed MinIO data volume" || true
     rm -rf "$LOG_DIR"
     ok "All data destroyed. Next 'up' will be a fresh start."
 }
@@ -485,9 +546,10 @@ cmd_status() {
     echo ""
 
     # Services
-    local pg_status cdn_status api_status academy_status dev_status
+    local pg_status cdn_status minio_status api_status academy_status dev_status
     if is_container_running "$POSTGRES_CONTAINER"; then pg_status="${GREEN}running${NC}"; else pg_status="${RED}stopped${NC}"; fi
     if is_container_running "$CDN_CONTAINER"; then cdn_status="${GREEN}running${NC}"; else cdn_status="${RED}stopped${NC}"; fi
+    if is_container_running "$MINIO_CONTAINER"; then minio_status="${GREEN}running${NC}"; else minio_status="${RED}stopped${NC}"; fi
     if is_dev_running; then
         dev_status="${GREEN}running${NC} (PID $(cat "$PID_FILE"))"
     else
@@ -505,6 +567,7 @@ cmd_status() {
     fi
 
     echo -e "  PostgreSQL (docker):  ${pg_status}  :5432"
+    echo -e "  MinIO S3 (docker):    ${minio_status}  :9000 (console :9001)"
     echo -e "  CDN nginx (docker):   ${cdn_status}  :8080"
     echo -e "  Dev servers:          ${dev_status}"
     echo -e "    API:                ${api_status}  :3000"

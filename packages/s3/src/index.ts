@@ -65,6 +65,7 @@ export const createS3Service = (config: S3Config): S3Service => {
       secretAccessKey: config.secretKey,
     },
     endpoint: config.endpoint,
+    forcePathStyle: !config.endpoint.includes('amazonaws.com'),
     region: config.region,
   });
 
