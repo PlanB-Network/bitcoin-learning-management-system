@@ -658,9 +658,9 @@ export const createUpdateCourses = ({
 
           // If the resource has tags, insert them into the tags table and link them to the resource
           if (parsedCourse.tags && parsedCourse.tags?.length > 0) {
-            const lowercaseTags = parsedCourse.tags.map((tag) =>
-              tag.toLowerCase(),
-            );
+            const lowercaseTags = parsedCourse.tags
+              .map((tag) => tag.toLowerCase())
+              .sort();
 
             await transaction`
               DELETE FROM content.course_tags WHERE course_id = ${insertedCourse.id}

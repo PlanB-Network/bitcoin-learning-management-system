@@ -53,7 +53,9 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
     const blogId = result.id;
 
     if (parsedBlog.tags && parsedBlog.tags.length > 0) {
-      const lowercaseTags = parsedBlog.tags.map((tag) => tag.toLowerCase());
+      const lowercaseTags = parsedBlog.tags
+        .map((tag) => tag.toLowerCase())
+        .sort();
 
       await transaction`
         DELETE FROM content.blog_tags WHERE blog_id = ${blogId}
