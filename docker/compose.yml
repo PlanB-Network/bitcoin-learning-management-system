@@ -84,6 +84,31 @@ services:
     volumes:
       - ./well-known:/usr/share/nginx/html/.well-known:ro
 
+  # Prerender — serves pre-rendered HTML to search engine and AI crawlers
+  # Bot UA detection via Traefik HeadersRegexp, priority 100 (above academy default)
+  # Source list: https://github.com/monperrus/crawler-user-agents
+  prerender:
+    <<: *defaults
+    image: ghcr.io/planb-network/blms-prerender:${IMAGE_TAG}
+    environment:
+      PORT: "3000"
+    expose:
+      - 3000
+    shm_size: 1gb
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.university-prerender-${ENV}.rule=Host(`${DOMAIN_ACADEMY}`) && HeadersRegexp(`User-Agent`, `(?i)(googlebot|bingbot|yandex|baiduspider|duckduckbot|facebookexternalhit|twitterbot|linkedinbot|slackbot|telegrambot|whatsapp|discordbot|applebot|gptbot|oai-searchbot|chatgpt-user|claudebot|claude-web|perplexitybot|google-extended|applebot-extended|amazonbot|bytespider|deepseekbot|meta-externalagent|ccbot|diffbot|petalbot)`)
+      - traefik.http.routers.university-prerender-${ENV}.entrypoints=https
+      - traefik.http.routers.university-prerender-${ENV}.tls=true
+      - traefik.http.routers.university-prerender-${ENV}.priority=100
+      - traefik.http.services.university-prerender-${ENV}.loadbalancer.server.port=3000
+      - traefik.http.routers.university-prerender-${ENV}.middlewares=prerender-prefix-${ENV}
+      - traefik.http.middlewares.prerender-prefix-${ENV}.addprefix.prefix=/https://${DOMAIN_ACADEMY}
+
   network:
     <<: *defaults
     image: ghcr.io/planb-network/blms-network:${IMAGE_TAG}

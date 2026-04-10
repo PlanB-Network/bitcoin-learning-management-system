@@ -1,0 +1,7 @@
+{
+  "name": "blms-prerender",
+  "private": true,
+  "dependencies": {
+    "prerender": "^5.21.6"
+  }
+}
