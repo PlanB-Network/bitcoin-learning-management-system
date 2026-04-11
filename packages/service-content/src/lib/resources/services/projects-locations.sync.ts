@@ -23,13 +23,25 @@ const expectedResponseSchema = z.array(
     })),
 );
 
+const NOMINATIM_DELAY_MS = 1100; // Nominatim policy: max 1 req/s
+
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
 const fetchProjectLocation = async (query: string) => {
   const q = encodeURIComponent(query);
 
   const res = await fetch(
     `https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&q=${q}`,
+    {
+      headers: {
+        'User-Agent': 'PlanBNetwork/1.0 (https://planb.network)',
+      },
+    },
   );
-  console.log('Searching location for event:', query);
+
+  if (!res.ok) {
+    throw new Error(`Nominatim HTTP ${res.status} for "${query}"`);
+  }
 
   const data = await res.json();
   return expectedResponseSchema.parse(data)?.[0];
@@ -43,6 +55,7 @@ export const createSyncProjectsLocations = ({
       const locations = await postgres.exec(getProjectsWithoutLocationQuery());
 
       for (const { name } of locations) {
+        await sleep(NOMINATIM_DELAY_MS);
         const result = await fetchProjectLocation(name).catch(() => null);
         if (!result) {
           const warn = `[sync] Could not find project location: ${name}`;
