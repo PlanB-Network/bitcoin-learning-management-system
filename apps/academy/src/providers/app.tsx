@@ -150,6 +150,11 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
     };
   }, [currentLanguage]);
 
+  // Signal prerender that the page is ready for snapshotting
+  useEffect(() => {
+    (window as any).prerenderReady = true;
+  }, []);
+
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>

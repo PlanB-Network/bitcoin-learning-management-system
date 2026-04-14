@@ -15,10 +15,11 @@ const server = prerender({
     '--js-flags=--max-old-space-size=512',
   ],
   logRequests: true,
-  pageLoadTimeout: 30000,
-  waitAfterLastRequest: 3000,
+  pageLoadTimeout: 10000,
+  waitAfterLastRequest: 500,
 });
 
+server.use(require('./cache-plugin'));
 server.use(prerender.removeScriptTags());
 server.use(prerender.httpHeaders());
 
