@@ -159,7 +159,7 @@ function Assignment() {
       : courseInfo?.assignmentStartDate || '2026-03-25T17:00:00Z',
   ).getTime();
   const endAssignmentDate = new Date(
-    courseInfo?.assignmentEndDate || '2026-04-30T11:00:00Z',
+    courseInfo?.assignmentEndDate || '2026-04-23T23:59:00',
   ).getTime();
   const currentTime = Date.now();
   const isAssignmentOpen = currentTime >= openAssignmentDate;
