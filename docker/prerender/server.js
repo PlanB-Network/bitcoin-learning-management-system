@@ -20,20 +20,9 @@ const server = prerender({
   waitAfterLastRequest: 500,
 });
 
-// Strip <script> tags but preserve JSON-LD (application/ld+json) so structured
-// data markup survives prerender output. Replaces prerender.removeScriptTags().
-server.use({
-  pageLoaded: (req, res, next) => {
-    if (req.prerender.content) {
-      req.prerender.content = req.prerender.content.replace(
-        /<script\b([^>]*)>([\s\S]*?)<\/script>/gi,
-        (match, attrs) =>
-          /type\s*=\s*["']application\/ld\+json["']/i.test(attrs) ? match : '',
-      );
-    }
-    next();
-  },
-});
+// removeScriptTags already preserves <script type="application/ld+json"> upstream,
+// so no custom stripping is needed to keep structured data safe.
+server.use(prerender.removeScriptTags());
 server.use(prerender.httpHeaders());
 server.use(require('./cache-plugin'));
 
