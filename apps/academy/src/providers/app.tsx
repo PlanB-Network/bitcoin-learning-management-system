@@ -150,10 +150,27 @@ export const AppProvider = ({ children }: PropsWithChildren) => {
     };
   }, [currentLanguage]);
 
-  // Signal prerender that the page is ready for snapshotting
+  // Signal prerender that the page is ready for snapshotting.
+  // Wait for queries to start AND finish before signaling — prerenderReady
+  // firing too early causes prerender to snapshot a loading skeleton.
   useEffect(() => {
-    (window as any).prerenderReady = true;
-  }, []);
+    let hasStartedFetching = false;
+    const unsub = queryClient.getQueryCache().subscribe(() => {
+      const fetching = queryClient.isFetching();
+      if (fetching > 0) hasStartedFetching = true;
+      if (hasStartedFetching && fetching === 0) {
+        window.prerenderReady = true;
+      }
+    });
+    // Fallback: pages with no queries (e.g. static) still signal ready
+    const fallback = setTimeout(() => {
+      window.prerenderReady = true;
+    }, 3000);
+    return () => {
+      unsub();
+      clearTimeout(fallback);
+    };
+  }, [queryClient]);
 
   return (
     <HelmetProvider>

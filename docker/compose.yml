@@ -102,11 +102,11 @@ services:
         limits:
           memory: 8G
     healthcheck:
-      test: ['CMD', 'curl', '-sf', 'http://localhost:3000/render?url=http://localhost']
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 15s
+      <<: *healthcheck
+      test: ['CMD', 'curl', '-sf', 'http://localhost:3000/healthz']
+      interval: 60s
+      timeout: 15s
+      start_period: 30s
     labels:
       - traefik.enable=true
       - traefik.http.routers.university-prerender-${ENV}.rule=Host(`${DOMAIN_ACADEMY}`) && HeadersRegexp(`User-Agent`, `(?i)(googlebot|bingbot|yandex|baiduspider|duckduckbot|facebookexternalhit|twitterbot|linkedinbot|slackbot|telegrambot|whatsapp|discordbot|applebot|gptbot|oai-searchbot|chatgpt-user|claudebot|claude-web|perplexitybot|google-extended|applebot-extended|amazonbot|bytespider|deepseekbot|meta-externalagent|ccbot|diffbot|petalbot)`)
@@ -114,8 +114,12 @@ services:
       - traefik.http.routers.university-prerender-${ENV}.tls=true
       - traefik.http.routers.university-prerender-${ENV}.priority=100
       - traefik.http.services.university-prerender-${ENV}.loadbalancer.server.port=3000
-      - traefik.http.routers.university-prerender-${ENV}.middlewares=prerender-prefix-${ENV}
+      - traefik.http.routers.university-prerender-${ENV}.middlewares=prerender-ratelimit-${ENV},prerender-prefix-${ENV}
       - traefik.http.middlewares.prerender-prefix-${ENV}.addprefix.prefix=/https://${DOMAIN_ACADEMY}
+      - traefik.http.middlewares.prerender-ratelimit-${ENV}.ratelimit.average=2
+      - traefik.http.middlewares.prerender-ratelimit-${ENV}.ratelimit.period=1s
+      - traefik.http.middlewares.prerender-ratelimit-${ENV}.ratelimit.burst=20
+      - traefik.http.middlewares.prerender-ratelimit-${ENV}.ratelimit.sourcecriterion.ipstrategy.depth=1
 
   network:
     <<: *defaults
