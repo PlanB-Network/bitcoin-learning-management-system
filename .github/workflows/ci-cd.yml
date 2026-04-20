@@ -9,6 +9,10 @@ on:
       - dev
   pull_request:
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   build_base:
     name: Build & Test
