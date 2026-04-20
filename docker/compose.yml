@@ -84,6 +84,43 @@ services:
     volumes:
       - ./well-known:/usr/share/nginx/html/.well-known:ro
 
+  # Prerender — serves pre-rendered HTML to search engine and AI crawlers
+  # Bot UA detection via Traefik HeadersRegexp, priority 100 (above academy default)
+  # Source list: https://github.com/monperrus/crawler-user-agents
+  prerender:
+    <<: *defaults
+    image: ghcr.io/planb-network/blms-prerender:${IMAGE_TAG}
+    environment:
+      PORT: "3000"
+      CACHE_MAXSIZE: "20000"
+      CACHE_TTL: "86400"
+    expose:
+      - 3000
+    shm_size: 1gb
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+    healthcheck:
+      <<: *healthcheck
+      test: ['CMD', 'curl', '-sf', 'http://localhost:3000/healthz']
+      interval: 60s
+      timeout: 15s
+      start_period: 30s
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.university-prerender-${ENV}.rule=Host(`${DOMAIN_ACADEMY}`) && HeadersRegexp(`User-Agent`, `(?i)(googlebot|bingbot|yandex|baiduspider|duckduckbot|facebookexternalhit|twitterbot|linkedinbot|slackbot|telegrambot|whatsapp|discordbot|applebot|gptbot|oai-searchbot|chatgpt-user|claudebot|claude-web|perplexitybot|google-extended|applebot-extended|amazonbot|bytespider|deepseekbot|meta-externalagent|ccbot|diffbot|petalbot)`)
+      - traefik.http.routers.university-prerender-${ENV}.entrypoints=https
+      - traefik.http.routers.university-prerender-${ENV}.tls=true
+      - traefik.http.routers.university-prerender-${ENV}.priority=100
+      - traefik.http.services.university-prerender-${ENV}.loadbalancer.server.port=3000
+      - traefik.http.routers.university-prerender-${ENV}.middlewares=prerender-ratelimit-${ENV},prerender-prefix-${ENV}
+      - traefik.http.middlewares.prerender-prefix-${ENV}.addprefix.prefix=/https://${DOMAIN_ACADEMY}
+      - traefik.http.middlewares.prerender-ratelimit-${ENV}.ratelimit.average=2
+      - traefik.http.middlewares.prerender-ratelimit-${ENV}.ratelimit.period=1s
+      - traefik.http.middlewares.prerender-ratelimit-${ENV}.ratelimit.burst=20
+      - traefik.http.middlewares.prerender-ratelimit-${ENV}.ratelimit.sourcecriterion.ipstrategy.depth=1
+
   network:
     <<: *defaults
     image: ghcr.io/planb-network/blms-network:${IMAGE_TAG}

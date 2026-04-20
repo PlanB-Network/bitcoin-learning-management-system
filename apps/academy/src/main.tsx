@@ -24,8 +24,12 @@ declare global {
 
   interface Window {
     Pear?: Pear;
+    prerenderReady?: boolean;
   }
 }
+
+// Signal prerender to wait for the app to finish rendering
+window.prerenderReady = false;
 
 // Pear update handling
 if (isPearApp && typeof Pear !== 'undefined') {
