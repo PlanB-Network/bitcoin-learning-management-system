@@ -110,7 +110,7 @@ services:
       start_period: 30s
     labels:
       - traefik.enable=true
-      - traefik.http.routers.university-prerender-${ENV}.rule=Host(`${DOMAIN_ACADEMY}`) && Method(`GET`,`HEAD`) && HeadersRegexp(`User-Agent`, `(?i)(googlebot|bingbot|yandex|baiduspider|duckduckbot|facebookexternalhit|twitterbot|linkedinbot|slackbot|telegrambot|whatsapp|discordbot|applebot|gptbot|oai-searchbot|chatgpt-user|claudebot|claude-web|perplexitybot|google-extended|applebot-extended|amazonbot|bytespider|deepseekbot|meta-externalagent|ccbot|diffbot|petalbot)`) && PathRegexp(`^/(?:[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*)/(?:courses|live-classes|learn-anytime|tutorials|resources|events)(?:/.*)?$`)
+      - traefik.http.routers.university-prerender-${ENV}.rule=Host(`${DOMAIN_ACADEMY}`) && Method(`GET`,`HEAD`) && HeadersRegexp(`User-Agent`, `(?i)(googlebot|bingbot|yandex|baiduspider|duckduckbot|facebookexternalhit|twitterbot|linkedinbot|slackbot|telegrambot|whatsapp|discordbot|applebot|gptbot|oai-searchbot|chatgpt-user|claudebot|claude-web|perplexitybot|google-extended|applebot-extended|amazonbot|bytespider|deepseekbot|meta-externalagent|ccbot|diffbot|petalbot)`) && PathRegexp(`^/$|^/(?:[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*)/(?:courses|live-classes|learn-anytime|tutorials|resources|events)(?:/.*)?$`)
       - traefik.http.routers.university-prerender-${ENV}.entrypoints=https
       - traefik.http.routers.university-prerender-${ENV}.tls=true
       - traefik.http.routers.university-prerender-${ENV}.priority=100
