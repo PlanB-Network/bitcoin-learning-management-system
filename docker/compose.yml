@@ -84,11 +84,23 @@ services:
     volumes:
       - ./well-known:/usr/share/nginx/html/.well-known:ro
 
-  # Prerender — serves pre-rendered HTML to search engine and AI crawlers
-  # Bot UA detection via Traefik HeadersRegexp, priority 100 (above academy default)
-  # NOTE: Traefik v2 has no path-regex matcher (PathRegexp is v3+), so we can't
-  # whitelist document paths here. UA + Host + GET/HEAD + rate-limit is the gate.
-  # Source list: https://github.com/monperrus/crawler-user-agents
+  # Prerender — serves pre-rendered HTML to search engine and AI crawlers.
+  # UA allowlist covers three tiers:
+  #   1. Named bots (Googlebot, GPTBot, ClaudeBot, …) — training + indexing.
+  #   2. On-behalf-of-user UAs (Claude-User, ChatGPT-User, Perplexity-User, …)
+  #      — AI assistants fetching a URL live for a human's question.
+  #   3. Programmatic HTTP clients (curl, wget, python-requests, …) — ad-hoc
+  #      scripts and agentic tools that don't masquerade as a browser.
+  # Real browsers (Chrome/Firefox/Safari/Edge UAs) fall through to the SPA
+  # and hydrate client-side. Rate-limit (2 req/s, burst 20, per-IP) below
+  # caps abuse from the programmatic tier.
+  # NOTE: Traefik v2 has no path-regex matcher (PathRegexp is v3+), so we
+  # can't whitelist document paths. UA + Host + GET/HEAD + rate-limit is the gate.
+  # Source lists:
+  #   https://github.com/monperrus/crawler-user-agents
+  #   https://docs.anthropic.com/en/docs/agents-and-tools/web-fetch-tool
+  #   https://docs.perplexity.ai/guides/bots
+  #   https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers
   prerender:
     <<: *defaults
     image: ghcr.io/planb-network/blms-prerender:${IMAGE_TAG}
@@ -111,7 +123,7 @@ services:
       start_period: 30s
     labels:
       - traefik.enable=true
-      - traefik.http.routers.university-prerender-${ENV}.rule=Host(`${DOMAIN_ACADEMY}`) && Method(`GET`,`HEAD`) && HeadersRegexp(`User-Agent`, `(?i)(googlebot|bingbot|yandex|baiduspider|duckduckbot|facebookexternalhit|twitterbot|linkedinbot|slackbot|telegrambot|whatsapp|discordbot|applebot|gptbot|oai-searchbot|chatgpt-user|claudebot|claude-web|perplexitybot|google-extended|applebot-extended|amazonbot|bytespider|deepseekbot|meta-externalagent|ccbot|diffbot|petalbot)`)
+      - traefik.http.routers.university-prerender-${ENV}.rule=Host(`${DOMAIN_ACADEMY}`) && Method(`GET`,`HEAD`) && HeadersRegexp(`User-Agent`, `(?i)(googlebot|googleother|bingbot|yandex|baiduspider|duckduckbot|facebookexternalhit|twitterbot|linkedinbot|slackbot|telegrambot|whatsapp|discordbot|applebot|gptbot|oai-searchbot|chatgpt-user|claudebot|claude-web|claude-user|claude-searchbot|perplexitybot|perplexity-user|google-extended|applebot-extended|amazonbot|bytespider|deepseekbot|meta-externalagent|ccbot|diffbot|petalbot|curl|wget|python-requests|python-urllib|node-fetch|axios|go-http-client|okhttp|httpx|libwww-perl)`)
       - traefik.http.routers.university-prerender-${ENV}.entrypoints=https
       - traefik.http.routers.university-prerender-${ENV}.tls=true
       - traefik.http.routers.university-prerender-${ENV}.priority=100
