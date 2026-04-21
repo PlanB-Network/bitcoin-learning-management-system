@@ -25,15 +25,29 @@ const server = prerender({
 server.use(prerender.removeScriptTags());
 server.use(prerender.httpHeaders());
 server.use(require('./cache-plugin'));
+server.use({
+  beforeSend: (req, _res, next) => {
+    req.prerender.headers = {
+      ...(req.prerender.headers || {}),
+      'Cache-Control': 'no-store, no-cache, must-revalidate',
+      Pragma: 'no-cache',
+    };
+    next();
+  },
+});
 
-// Healthcheck endpoint — returns 200 without rendering
+// Healthcheck endpoint — only healthy when prerender still has a live Chrome connection
 server.use({
   requestReceived: (req, res, next) => {
-    if (req.prerender.url === 'healthz') {
-      res.send(200, 'ok');
-    } else {
-      next();
+    if (req.prerender.url !== 'healthz') {
+      return next();
     }
+
+    if (req.server?.isBrowserConnected) {
+      return res.send(200, 'ok');
+    }
+
+    return res.send(503, 'chrome-disconnected');
   },
 });
 
