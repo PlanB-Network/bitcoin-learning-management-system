@@ -1,7 +1,7 @@
 {
   "about": {
     "activeContributors": "Aktiivsed panustajad",
-    "commitmentContent": "Meie panused Bitcoini kogukonda ees on järgmised:\n • Säilida avatud lähtekoodiga\n • Pakkuda kõrgkvaliteedilist hariduslikku sisu\n • Tõlkida meie sisu võimalikult paljudesse keeltesse\n • Toetada Bitcoini ehitajaid nende ettevõtlusteekonnal",
+    "commitmentContent": "Meie panused Bitcoini kogukonna ees on järgmised:\n • Säilida avatud lähtekood\n • Pakkuda kõrgkvaliteedilist hariduslikku sisu\n • Tõlkida meie sisu võimalikult paljudesse keeltesse\n • Toetada Bitcoini ehitajaid nende ettevõtlusteekonnal",
     "commitmentTitle": "Meie panused",
     "coreTeamAjelexRole": "Sõlmede koordinaator",
     "coreTeamAsioRole": "Hariduskoordinaator",
@@ -156,9 +156,12 @@
         "stayTuned": "Otseülekanne algab 30 minutit enne tunni algust. Püsige lainel!",
         "title": "Reaalajas video",
         "joinLive": "Liitu otseülekandega",
-        "joining": "Ühendamisel..."
+        "joining": "Ühendamisel...",
+        "redirectNotice": "Teid suunatakse meie voogedastusplatvormile."
       },
-      "next": "Tehtud, liigu järgmise peatüki juurde"
+      "next": "Tehtud, liigu järgmise peatüki juurde",
+      "recorded": "Salvestatud loeng",
+      "watchRecording": "Vaata salvestust"
     },
     "conclusion": {
       "completedChaptersHeadline": "Kõik peatükid on nüüd valmis!",
@@ -277,7 +280,7 @@
       "successDiploma": "Palju õnne! Oled eksami edukalt sooritanud.\nTeie diplom on kättesaadav teie õpingute töölaual. See on varustatud <0>ajatempliga</0>, mis tagab selle autentsuse.",
       "successDiplomaTeacherLed": "Palju õnne! Olete kursuse edukalt läbinud. \nTeie diplom on nüüd kättesaadav teie õpingute töölaual.",
       "successDiplomaTimeStamped": "Palju õnne! Olete eksami edukalt sooritanud.\nTeie diplom saab olema kättesaadav õpilase juhtpaneelil umbes 10 tunni jooksul pärast eksami tegemist. See viivitus tuleneb <0>aja-tempeldamise</0> tehnoloogiast, mis tagab diplomi autentsuse.",
-      "successfulPassedThreshold": "Õnnitlused kursuse lõpetamise puhul!\nOled edukalt saavutanud selle kursuse lävendi ning oled nüüd lõpetanud.\nDiplomi on leitav teie töölaual.",
+      "successfulPassedThreshold": "Õnnitlused kursuse lõpetamise puhul!\nOlete edukalt saavutanud selle kursuse lävendi ning olete nüüd lõpetanud.",
       "sureSubmit": "Kas olete kindel, et soovite oma eksami esitada?",
       "takeExam": "Tee testi",
       "tamperProof": "Manipuleerimiskindel: Plokiahel tagab, et keegi ei saa teie volitusi ning andmeid muuta ega võltsida.",
@@ -296,7 +299,8 @@
       "weight": "Kaal: {{weight}}%",
       "whyTimeStamp": "Oma diplomile ajatempli lisamine:\nMiks see oluline on",
       "wishTryAgain": "Juhul kui soovite uuesti proovida, on eksam saadaval 24 tunni pärast.",
-      "yesSubmit": "Jah, esita"
+      "yesSubmit": "Jah, esita",
+      "leaveExamWarning": "Teil on käimasolev eksam, olete kindel, et soovite lahkuda?"
     },
     "explorer": {
       "goal": "Eesmärk:",
@@ -389,7 +393,7 @@
     "liveClasses": {
       "liveClasses": "Reaalajas toimuvad tunnid",
       "allOtherTitle": "Kõik teised reaalajas toimuvad tunnid",
-      "title": "Plaan ₿ ametlikud aastaprogrammid",
+      "title": "Ole muutuste eestvedaja. Saavuta meisterlikkus Bitcoinis.",
       "program": {
         "goal": "Valitse Bitcoin'i tööstus Giacomo Zucco abil 5-kuulises programmis, mis ühendab teooriat, reaalseid juhtumiuuringuid ja eksklusiivseid võrgustumisvõimalusi.",
         "semester": "Semester",
@@ -414,7 +418,7 @@
         "lastUpdate": "Viimane uuendus",
         "lastUpdated": "Viimati uuendatud",
         "profession": "Elukutse",
-        "resultsRemaining": "{{count}} tulemusi jäänud",
+        "resultsRemaining": "{{results}} tulemusi jäänud",
         "seeMore": "Vaata rohkem",
         "viewCV": "Vaata CV-d",
         "candidateFile": "Kandidaadi fail",
@@ -1105,14 +1109,14 @@
       "keepMovingForward": "Kuigi te ei läbinud seekord, ehitab iga samm arengut.\nJätkake jõudsalt oma õppeteekonnal edasi liikumist!",
       "leastPreferred": "Vähim eelistatud",
       "listSaved": "Teie eelistuste nimekiri on salvestatud.",
-      "listSavedComeTomorrow": "Teie eelistuste nimekiri on salvestatud. \nTulge homme siia tagasi, et saada teada, millisele projektile teid on määratud.",
+      "listSavedComeTomorrow": "Teie eelistuste nimekiri on salvestatud. \nTulge 31. märtsil siia tagasi, et saada teada, millisele projektile teid on määratud.",
       "mostPreferred": "Enim eelistatud",
       "mustBePdf": "Teie fail peab olema PDF. Kui peate esitama veel ühe faili, lisage palun selle link oma PDF-i.",
       "notSelectedAssignment": "Kahjuks ei ole teid valitud projektiülesandes osalema.\nVõite siiski jätkata kursuse loengute jälgimist.",
       "projectRankingInstructions": "Projekti edetabeli juhised:",
       "ranking": "Edetabel",
       "rankingInstructions": "Sea pakutud projektid eelistuste järgi järjekorda (number 1-ks on sinu kõige eelistatum valik). See järjestus aitab meil määrata sulle kõige sobivama projekti. Kõrgemate tulemustega üliõpilaste valikuid arvestatakse esimesena.",
-      "rankingOnly24Hours": "Edetabeli portaal on avatud ainult 24 tunniks, 2. juunil kella 00:00-st kuni 23:59-ni (UTC+2).",
+      "rankingOnly24Hours": "Edetabeli portaal on avatud 31. märtsini kell 12:00 GTM+1",
       "rankProjectPreferences": "Reasta oma projekti eelistused",
       "ratingsAndFeedbacks": "Hinnangud ja tagasiside",
       "readAssignment": "Loe ülesannet",
@@ -1130,7 +1134,8 @@
       "viewScoreSummary": "Vaadake skoori kokkuvõtet",
       "wellDoneCompleting": "Tubli töö käesoleva kursuse lõpetamisel ja läbimisel! \nSiin on teie vääriliselt teenitud diplom",
       "yourProjectAssignment": "Teie projekti ülesanne",
-      "assignmentNotAccessible": "Ülesanne on juba alanud ja pole enam kättesaadav."
+      "assignmentNotAccessible": "Ülesanne on juba alanud ja pole enam kättesaadav.",
+      "downloadCalendar": "Lae kalender alla"
     },
     "credentials": {
       "beingGraded": "Teie eksamit hinnatakse. Tulemused peaksid olema saadaval 1 või 2 nädala pärast.",
@@ -1414,7 +1419,7 @@
     "eventInfos": {
       "eventBooked": "Üritus broneeritud",
       "eventType": "Sündmuse tüüp",
-      "whatsPlanned": "Mis on plaanis?",
+      "whatsPlanned": "Mis on plaanis",
       "numberOfSpots": "Kohtade arv",
       "onlineAndInPerson": "Internetis ja kohapeal",
       "secureYourSpot": "Kindlusta oma koht",
@@ -1434,7 +1439,9 @@
     "relatedWords": "Seotud sõnad :",
     "term": "Mõiste",
     "showMoreWords": "Kuva rohkem sõnu",
-    "learnMore": "Loe lähemalt"
+    "learnMore": "Loe lähemalt",
+    "detailedExplanation": "Detailne selgitus",
+    "inShort": "Lühidalt"
   },
   "home": {
     "aboutUsSection": {
@@ -1769,7 +1776,7 @@
     "checkSpam": "(Kui te seda ei näe, kontrollige oma rämpsposti kausta.)",
     "emailSentSpam": "(Kui te seda ei näe, kontrollige oma rämpsposti kausta.)",
     "verifyEmailClick": "Kinnitage oma e-posti aadress, klõpsates saadud lingil.",
-    "verifyEmailContinue": "Kinnita e-post jätkamiseks."
+    "verifyEmailContinue": "Kinnita e-post, et jätkata"
   },
   "tutorials": {
     "business": {
@@ -2139,7 +2146,7 @@
     "noResultsDescription": "Proovi kohandada oma otsingufiltreid",
     "noResultsTitle": "Õpetaja sisu ei leitud",
     "onlyImages": "Lubatud on ainult pildifailid",
-    "resourceType": "Ressursi tüüp",
+    "resourceType": "Mis tüüpi ressurss see on?",
     "status": {
       "draft": "Ootel",
       "published": "Avaldatud",
@@ -2156,7 +2163,7 @@
     "browseImages": "või sirvi pilte",
     "coverRequired": "Kaane pilt on kohustuslik",
     "currentCoverPresent": "Hetkel kaas on olemas",
-    "descriptionHelper": "Kirjelda ressursi sisu, et teised selle sisu mõistaksid ja leiaksid",
+    "descriptionHelper": "Paku oma sisule natuke konteksti, et teised mõistaksid, kuidas seda kasutada.",
     "descriptionRequired": "Kirjeldus ei tohi olla tühi",
     "descriptionTooLong": "Kirjeldus ei tohi ületada 350 tähemärki",
     "detail": {
@@ -2223,7 +2230,7 @@
     "uploadFilesHelper": "Kui teil on seotud faile, laadige need üles koos ühe paketina. Nimetage oma faile selgelt enne üleslaadimist.",
     "fileTypeNotAllowed": "Lubatud on ainult pildid ja dokumendid (PDF, esitlused, tabelarvutused, tekstidokumendid)",
     "guideContent": {
-      "guideline6P3": "Laadige üles ainult sisu, mille jagamiseks on teil õigus.",
+      "guideline6P3": "**Laadige üles ainult sisu, mille jagamiseks teil õigused on.**",
       "intro": "Aitäh, et olete siin! See juhend aitab teil mõista, kuidas jagada oma haridusmaterjale ülemaailmse Bitcoin'i õpetajate kogukonnaga.",
       "purposeTitle": "Eesmärk",
       "purposeP1": "Haridusmaterjalide sektsiooni eesmärk on aidata Bitcoin'i koolitajatel üksteist toetada ja vähendada dubleeritud tööd. Sel viisil ei pea keegi iga kord alustama nullist, kui nad ette valmistavad esitlust või haridusmaterjali.",
@@ -2256,8 +2263,8 @@
       "guideline4P1": "Haridussisu jaotis on loodud teadmiste jagamiseks ja koostöö tegemiseks. Lugejaskonna ja mõistliku nähtavuse tagamiseks soovitame teil seotud faile rühmitada. Näiteks seeria esitlusi on nähtavamad ja mõjuvõimsamad õppekavana, mitte üksikute esitlustena, mis on raske ühendada. Komplektid muudavad teistele haridustöötajatele materjalide kogumite leidmise ja kasutamise lihtsamaks.",
       "guideline5Title": "5. Esitage võimaluse korral mitmeid vorminguid",
       "guideline5P1": "Iga ressursi puhul võite lisada nii linke kui ka faile. See annab teile võimaluse:",
-      "guideline5Bullet1": "**Jagada linke** muudetavatele või duplitseeritavatele ressurssidele (Canva, Google Slides, Figma), nii et teised haridustöötajad saaksid oma tööd oma vajadustele kohandada.",
-      "guideline5Bullet2": "**Lisada mitmeid failivorminguid** (PDF, PNG, lähtefaile), et teised saaksid valida neile parima formaadi.",
+      "guideline5Bullet1": "**Jagage linke** muudetavatele või duplikeeritavatele ressurssidele (Canva, Google Slides, Figma), et teised haridustöötajad saaksid teie tööd oma vajadustele kohandada",
+      "guideline5Bullet2": "**Lisa mitu failiformaati** (PDF, PNG, lähtefailid), et teised saaksid endale kõige sobivama valida",
       "guideline5P2": "See paindlikkus muudab teie sisu laiemale publikule kasulikumaks.",
       "guideline6Title": "6. Austa autoriõigust",
       "guideline6P1": "Kui lisad sisu, mida sa ei loonud, tuleb algne allikas kirjelduse all märkida. Sisu peab olema jagatud samal litsentsil, mille alusel see algselt avaldati.",

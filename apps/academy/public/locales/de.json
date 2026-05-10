@@ -156,9 +156,12 @@
         "stayTuned": "Die Live-Sitzung beginnt 30 Minuten vor Beginn des Unterrichts. Bleiben Sie dran!",
         "title": "Live-Video",
         "joinLive": "An Live-Sitzung teilnehmen",
-        "joining": "Verbindet..."
+        "joining": "Verbindet...",
+        "redirectNotice": "Sie werden zu unserer Streaming-Plattform weitergeleitet."
       },
-      "next": "Fertig, gehen Sie zum nächsten Kapitel"
+      "next": "Fertig, gehen Sie zum nächsten Kapitel",
+      "recorded": "Aufgezeichnete Vorlesung",
+      "watchRecording": "Aufzeichnung ansehen"
     },
     "conclusion": {
       "completedChaptersHeadline": "Alle Kapitel sind nun abgeschlossen!",
@@ -296,7 +299,8 @@
       "wishTryAgain": "Wenn Sie es noch einmal versuchen möchten, steht Ihnen die Prüfung innerhalb von 24 Stunden zur Verfügung.",
       "yesSubmit": "Ja, einreichen",
       "examResults": "Prüfungsergebnisse",
-      "scoreAndDiploma": "Punktzahl & Diplom"
+      "scoreAndDiploma": "Punktzahl & Diplom",
+      "leaveExamWarning": "Du bist gerade mitten in einer Prüfung. Bist du sicher, dass du die Seite verlassen möchtest?"
     },
     "explorer": {
       "goal": "Ziel:",
@@ -1111,7 +1115,7 @@
       "projectRankingInstructions": "Anweisungen zur Projektrangliste:",
       "ranking": "Rangliste",
       "rankingInstructions": "Ordne die vorgeschlagenen Projekte entsprechend deiner Vorlieben (Nummer 1 ist deine erste Wahl). Diese Rangfolge ermöglicht es uns, dir das am besten geeignete Projekt zuzuweisen. Studierende mit höheren Punktzahlen werden bei der Auswahl zuerst berücksichtigt.",
-      "rankingOnly24Hours": "Das Ranglisten-Portal wird nur für 24 Stunden geöffnet sein, am 2. Juni von 00:00 bis 23:59 Uhr (UTC+2).",
+      "rankingOnly24Hours": "Das Ranglisten-Portal wird nur für 24 Stunden geöffnet sein, bis zum 31. März, 12:00 Uhr GMT+1.",
       "rankProjectPreferences": "Bewerte deine Projektpräferenzen",
       "ratingsAndFeedbacks": "Bewertungen & Rückmeldungen",
       "readAssignment": "Leseaufgabe",
@@ -1130,7 +1134,8 @@
       "wellDoneCompleting": "Gut gemacht, dass du diesen Kurs abgeschlossen und bestanden hast! \nHier ist dein wohlverdientes Diplom",
       "yourProjectAssignment": "Deine Projektaufgabe",
       "assignmentNotAccessible": "Die Aufgabe hat bereits begonnen und ist nicht mehr zugänglich.",
-      "assignmentScore": "Aufgabenbewertung"
+      "assignmentScore": "Aufgabenbewertung",
+      "downloadCalendar": "Kalender herunterladen"
     },
     "credentials": {
       "beingGraded": "Ihre Prüfung wird gerade benotet. Die Ergebnisse sollten in 1 bis 2 Wochen vorliegen.",
@@ -1434,7 +1439,9 @@
     "relatedWords": "Verwandte Wörter:",
     "term": "Begriff",
     "showMoreWords": "Mehr Wörter anzeigen",
-    "learnMore": "Erfahren Sie mehr"
+    "learnMore": "Erfahren Sie mehr",
+    "detailedExplanation": "Ausführliche Erläuterung",
+    "inShort": "Kurz gesagt"
   },
   "home": {
     "aboutUsSection": {
