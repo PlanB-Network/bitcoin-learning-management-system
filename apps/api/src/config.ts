@@ -136,6 +136,8 @@ export const s3: S3Config = {
   accessKey: getenv('S3_ACCESS_KEY').trim(),
   bucket: getenv('S3_BUCKET').trim(),
   endpoint: getenv('S3_ENDPOINT').trim(),
+  // Required for MinIO and most self-hosted S3 (no wildcard DNS for vhost-style buckets)
+  forcePathStyle: getenv('S3_FORCE_PATH_STYLE', 'false') === 'true',
   region: getenv('S3_REGION').trim(),
   secretKey: getenv('S3_SECRET_KEY').trim(),
 };

@@ -38,7 +38,8 @@ PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 ENV_FILE="$PROJECT_DIR/.env"
 ENV_EXAMPLE="$PROJECT_DIR/.env.example"
 API_URL="${API_URL:-http://localhost:3000}"
-POSTGRES_CONTAINER="blms-local-postgres"
+# Overridable so `context` presets can target the compose stack's postgres too
+POSTGRES_CONTAINER="${POSTGRES_CONTAINER:-blms-local-postgres}"
 CDN_CONTAINER="blms-local-cdn"
 TYPESENSE_CONTAINER="blms-local-typesense"
 MINIO_CONTAINER="blms-local-minio"
@@ -82,6 +83,8 @@ ensure_env() {
             sed -i 's|^S3_SECRET_KEY=.*|S3_SECRET_KEY=minioadmin|' "$ENV_FILE"
             sed -i 's|^S3_BUCKET=.*|S3_BUCKET=blms-local|' "$ENV_FILE"
             sed -i 's|^S3_REGION=.*|S3_REGION=us-east-1|' "$ENV_FILE"
+            sed -i 's|^S3_FORCE_PATH_STYLE=.*|S3_FORCE_PATH_STYLE=true|' "$ENV_FILE"
+            grep -q '^S3_FORCE_PATH_STYLE=' "$ENV_FILE" || echo 'S3_FORCE_PATH_STYLE=true' >> "$ENV_FILE"
             ok ".env created with local defaults"
             warn "Edit .env to add GITHUB_ACCESS_TOKEN if you need private content repo"
         else
@@ -245,6 +248,13 @@ cmd_up() {
 
     # .env
     ensure_env
+    # Guard: the docker-compose stack (README option 1) binds the same ports
+    if docker ps --format '{{.Names}}' 2>/dev/null | grep -q '^bitcoin-learning-management-system-'; then
+        error "The docker compose stack is running (bitcoin-learning-management-system-*)."
+        error "It binds the same ports (5432, 8108, 9000). Stop it first:"
+        error "    docker compose down"
+        exit 1
+    fi
 
     # node_modules
     if [[ ! -d "$PROJECT_DIR/node_modules" ]]; then
@@ -341,6 +351,9 @@ cmd_up() {
         set_env_var S3_SECRET_KEY "minioadmin"
         set_env_var S3_BUCKET "blms-local"
         set_env_var S3_REGION "us-east-1"
+    fi
+    if [[ "$(read_env_var S3_FORCE_PATH_STYLE "")" != "true" ]]; then
+        set_env_var S3_FORCE_PATH_STYLE "true"
     fi
 
     # MinIO (S3-compatible storage — required by sync for assignment PDFs)
@@ -970,6 +983,93 @@ _resolve_course() {
     fi
     echo "$course_id"
 }
+# Course granting access to the career portal (BTC402, see COURSES_CAREER_ACCESS)
+CAREER_COURSE_ID="0b71eea1-4811-4601-a6ad-38d043b52dca"
+
+_ensure_career_access() {
+    local uid="$1"
+    # Course row must exist (FK). Create a minimal stub if content is not synced.
+    local course
+    course=$(_db "SELECT id FROM content.courses WHERE id = '${CAREER_COURSE_ID}';")
+    if [[ -z "$course" ]]; then
+        info "Course BTC402 not in DB (content not synced) — creating stub"
+        _db "INSERT INTO content.courses (id, level, hours, topic, subtopic, last_commit, index)
+             VALUES ('${CAREER_COURSE_ID}', 'beginner', 1, 'bitcoin', 'career', 'local-dev-stub', 'btc402');" > /dev/null
+    fi
+    local paid
+    paid=$(_db "SELECT 1 FROM users.course_payment WHERE uid = '${uid}' AND course_id = '${CAREER_COURSE_ID}' AND payment_status = 'paid';")
+    if [[ -z "$paid" ]]; then
+        _db "INSERT INTO users.course_payment (uid, course_id, payment_status, amount, payment_id, method)
+             VALUES ('${uid}', '${CAREER_COURSE_ID}', 'paid', 0, 'local-dev-grant', 'free');" > /dev/null
+    fi
+    ok "Career portal access granted (paid BTC402)"
+}
+
+_ensure_career_profile() {
+    # Creates/returns a career profile id for the user.
+    # IMPORTANT: always use gen_random_uuid() — zod validates UUIDs strictly
+    # (hand-crafted ids like 1111... fail output validation with an opaque 500).
+    local uid="$1"
+    local pid
+    pid=$(_db "SELECT id FROM users.career_profiles WHERE uid = '${uid}';")
+    if [[ -z "$pid" ]]; then
+        pid=$(_db "INSERT INTO users.career_profiles (uid, id) VALUES ('${uid}', gen_random_uuid()) RETURNING id;" | head -n1)
+    fi
+    echo "$pid"
+}
+
+_career_fill_step1() {
+    local uid="$1" pid="$2"
+    _db "UPDATE users.career_profiles SET
+            first_name = 'Test', last_name = 'User', country = 'France', email = '${TEST_EMAIL}'
+         WHERE id = '${pid}';" > /dev/null
+    _db "INSERT INTO users.career_languages (career_profile_id, language_code, level)
+         VALUES ('${pid}', 'en', 'fluent') ON CONFLICT DO NOTHING;" > /dev/null
+}
+
+_career_fill_step2() {
+    local pid="$1"
+    # job_titles is seeded by migrations; pick a real row (never invent ids)
+    _db "INSERT INTO users.career_roles (career_profile_id, role_id, level)
+         SELECT '${pid}', id, 'junior' FROM users.job_titles LIMIT 1
+         ON CONFLICT DO NOTHING;" > /dev/null
+    _db "INSERT INTO users.career_company_sizes (career_profile_id, size)
+         VALUES ('${pid}', '1To10') ON CONFLICT DO NOTHING;" > /dev/null
+}
+
+_career_fill_step3() {
+    local pid="$1"
+    _db "UPDATE users.career_profiles SET
+            cv_url = '/api/files/cvs/${pid}',
+            motivation_letter = 'Local-dev seeded motivation letter.'
+         WHERE id = '${pid}';" > /dev/null
+}
+
+_apply_career_preset() {
+    local preset="$1" uid="$2"
+    _ensure_career_access "$uid"
+    local pid
+    pid=$(_ensure_career_profile "$uid")
+    case "$preset" in
+        career-access) ;; # access only, no profile data
+        career-step1) _career_fill_step1 "$uid" "$pid" ;;
+        career-step2) _career_fill_step1 "$uid" "$pid"; _career_fill_step2 "$pid" ;;
+        career-step3) _career_fill_step1 "$uid" "$pid"; _career_fill_step2 "$pid"; _career_fill_step3 "$pid" ;;
+        career-complete)
+            _career_fill_step1 "$uid" "$pid"; _career_fill_step2 "$pid"; _career_fill_step3 "$pid"
+            _db "UPDATE users.career_profiles SET are_terms_accepted = true, allow_receiving_emails = true WHERE id = '${pid}';" > /dev/null
+            ;;
+        career-reset)
+            _db "DELETE FROM users.career_profiles WHERE uid = '${uid}';" > /dev/null
+            ok "Career profile deleted"
+            return
+            ;;
+    esac
+    ok "Preset '${preset}' applied (profile ${pid})"
+    _db_pretty "SELECT first_name, country, cv_url IS NOT NULL AS has_cv, motivation_letter IS NOT NULL AS has_letter, are_terms_accepted, allow_receiving_emails
+                FROM users.career_profiles WHERE id = '${pid}';"
+}
+
 
 _apply_preset() {
     local preset="$1" uid="$2" course_id="$3"
@@ -1057,6 +1157,10 @@ _apply_preset() {
             echo "  assignment-submitted  — has submitted work"
             echo "  not-selected          — not selected for assignment"
             echo "  clean                 — reset all assignment fields to null"
+            echo "  career-access         — grant career portal access (paid BTC402)"
+            echo "  career-step1|2|3      — career profile filled up to step N"
+            echo "  career-complete       — career profile fully validated"
+            echo "  career-reset          — delete career profile"
             exit 1
             ;;
     esac
@@ -1109,6 +1213,14 @@ cmd_context() {
         echo -e "  ${BOLD}not-selected${NC}           not selected for assignment"
         echo -e "  ${BOLD}clean${NC}                  reset all assignment fields"
         echo ""
+        echo -e "  ${BOLD}career-access${NC}          grant career portal access (paid BTC402)"
+        echo -e "  ${BOLD}career-step1|2|3${NC}       career profile filled up to step N"
+        echo -e "  ${BOLD}career-complete${NC}        career profile fully validated"
+        echo -e "  ${BOLD}career-reset${NC}           delete career profile"
+        echo ""
+        echo "Career presets don't need --course:"
+        echo "  ./scripts/local-dev.sh context --preset career-step3"
+        echo ""
         echo "Usage: ./scripts/local-dev.sh context --preset <name> --course <id-or-name>"
         return
     fi
@@ -1116,6 +1228,11 @@ cmd_context() {
     # Ensure test user exists
     local uid
     uid=$(_ensure_test_user)
+    # Career presets are course-independent
+    if [[ "$preset" == career-* ]]; then
+        _apply_career_preset "$preset" "$uid"
+        return
+    fi
 
     if [[ "$setup" == true && -z "$course" ]]; then
         echo ""
