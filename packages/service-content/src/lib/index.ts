@@ -61,16 +61,6 @@ import {
 } from './tutorials/import/index.js';
 import { pMap } from './utils/concurrency.js';
 
-export const timeLog = (len: number, name: string) => {
-  const key = `[sync] Syncing ${len} ${name}${len > 1 ? 's' : ''}`;
-  console.log(`${key}...`);
-  console.time(key);
-
-  return () => {
-    console.timeEnd(key);
-  };
-};
-
 interface SyncResult {
   errors: string[];
   warnings: string[];

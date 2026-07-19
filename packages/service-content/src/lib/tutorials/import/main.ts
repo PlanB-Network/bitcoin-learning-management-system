@@ -129,9 +129,14 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
           RETURNING *;
         `.then(firstRow);
 
-        if (p.contributor_names) {
+        if (p.contributor_names && p.contributor_names.length > 0) {
+          // Sorted bulk insert: deterministic lock order across concurrent transactions
+          const contributorIds = [...new Set(p.contributor_names)].sort();
+          await transaction`
+            INSERT INTO content.contributors ${transaction(contributorIds.map((id) => ({ id })))}
+            ON CONFLICT DO NOTHING
+          `;
           for (const [index, contrib] of p.contributor_names.entries()) {
-            await transaction`INSERT INTO content.contributors (id) VALUES (${contrib}) ON CONFLICT DO NOTHING`;
             await transaction`
               INSERT INTO content.proofreading_contributor(proofreading_id, contributor_id, "order")
               VALUES (${proofreadResult?.id},${contrib},${index})
