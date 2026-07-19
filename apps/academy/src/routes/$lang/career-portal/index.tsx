@@ -1160,8 +1160,8 @@ function CareerPortal() {
                   size="m"
                   type="submit"
                   disabled={
-                    form.getValues().areTermsAccepted === false ||
-                    form.getValues().allowReceivingEmails === false
+                    !form.watch('areTermsAccepted') ||
+                    !form.watch('allowReceivingEmails')
                   }
                 >
                   {isMobile
