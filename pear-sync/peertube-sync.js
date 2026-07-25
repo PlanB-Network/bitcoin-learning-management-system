@@ -21,7 +21,7 @@ if (check[0].result !== 2) {
   throw new Error('Database connection failed');
 }
 
-const peerTubeBaseUrl = 'https://peertube.planb.network/api/v1/videos/';
+const peerTubeBaseUrl = 'https://peertube.planb.academy/api/v1/videos/';
 
 const now = () => new Date().toISOString();
 

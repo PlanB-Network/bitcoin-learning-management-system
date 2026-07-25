@@ -11,7 +11,7 @@ import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TbVideo } from 'react-icons/tb';
 import ReactPlayer from 'react-player';
-import { fixEmbedUrl } from '#src/utils/misc.ts';
+import { fixEmbedUrl, PEERTUBE_HOST } from '#src/utils/misc.ts';
 import { trpc } from '#src/utils/trpc.ts';
 import { isPearApp } from '../env.ts';
 
@@ -296,7 +296,7 @@ function DisplayVideo({
       );
     }
     case VideoProvider.Peertube: {
-      const peertubeUrl = `https://peertube.planb.network/videos/embed/${idFromProvider}`;
+      const peertubeUrl = `https://${PEERTUBE_HOST}/videos/embed/${idFromProvider}`;
 
       return (
         <div className="relative pt-[56.25%]">
