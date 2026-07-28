@@ -33,7 +33,7 @@ import {
   getUTCOffset,
 } from '#src/utils/date.ts';
 import { resourceImgUrl } from '#src/utils/index.ts';
-import { base64ToBlob } from '#src/utils/misc.ts';
+import { base64ToBlob, PEERTUBE_HOST } from '#src/utils/misc.ts';
 import { trpc } from '#src/utils/trpc.js';
 import { ListElement2 } from '../_course/courses/$courseSlug/_$courseSlug/summer-school.tsx';
 import { AddEmailModal } from '../dashboard/-components/add-email-modal.tsx';
@@ -375,7 +375,7 @@ function EventDetails() {
                 )}
                 {event?.chatUrl && (
                   <iframe
-                    src="https://peertube.planb.network/plugins/livechat/router/webchat/room/4f4a811a-2d98-40dc-80ea-736088b408e7"
+                    src={`https://${PEERTUBE_HOST}/plugins/livechat/router/webchat/room/4f4a811a-2d98-40dc-80ea-736088b408e7`}
                     title="Chat"
                     sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
                     className="w-full"

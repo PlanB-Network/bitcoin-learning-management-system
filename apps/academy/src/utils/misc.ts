@@ -33,7 +33,30 @@ export const base64ToBlob = (
   return blob;
 };
 
+/**
+ * PeerTube moved from `planb.network` to `planb.academy` when the instance was
+ * consolidated onto pba-core. Content published before the move still carries
+ * the legacy host, so URLs are normalised onto the current host before use
+ * rather than rewritten across the content repository.
+ */
+export const PEERTUBE_HOST = 'peertube.planb.academy';
+const PEERTUBE_LEGACY_HOSTS = ['peertube.planb.network'];
+
+export const normalizePeertubeHost = (src: string) =>
+  PEERTUBE_LEGACY_HOSTS.reduce(
+    (acc, legacyHost) => acc.replaceAll(legacyHost, PEERTUBE_HOST),
+    src,
+  );
+
+const isPeertubeUrl = (src: string) =>
+  [PEERTUBE_HOST, ...PEERTUBE_LEGACY_HOSTS].some((host) =>
+    src.startsWith(`https://${host}`),
+  );
+
 export const fixEmbedUrl = (src: string) => {
+  // biome-ignore lint/style/noParameterAssign: legacy PeerTube host is rewritten in place
+  src = normalizePeertubeHost(src);
+
   if (src.includes('embed')) {
     return src;
   }
@@ -53,10 +76,10 @@ export const fixEmbedUrl = (src: string) => {
     case src.includes('youtube.com'): {
       return src.replace('youtube.com/', 'youtube.com/embed/');
     }
-    case src.includes('peertube.planb.network'): {
+    case src.includes(PEERTUBE_HOST): {
       return src.replace(
-        'peertube.planb.network/videos/',
-        'peertube.planb.network/videos/embed/',
+        `${PEERTUBE_HOST}/videos/`,
+        `${PEERTUBE_HOST}/videos/embed/`,
       );
     }
     case src.includes('makertube.net'): {
@@ -73,7 +96,7 @@ export const isUrlFromValidVideoPlatform = (src: string) => {
     doesVideoUrlWorkWithReactPlayer(src) ||
     src.startsWith('https://www.rumble.com') ||
     src.startsWith('https://rumble.com') ||
-    src.startsWith('https://peertube.planb.network') ||
+    isPeertubeUrl(src) ||
     src.startsWith('https://makertube.net') ||
     src.startsWith('https://live.planb.academy/playback')
   );
