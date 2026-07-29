@@ -98,8 +98,9 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           cache-from: type=gha,scope=global
           cache-to: type=gha,mode=max,scope=global
-          build-args:
+          build-args: |
             BASE_IMAGE=${{ env.base }}
+            GIT_SHA=${{ github.sha }}
 
   build_academy:
     name: Build Academy

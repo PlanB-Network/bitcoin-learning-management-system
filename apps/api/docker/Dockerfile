@@ -78,4 +78,8 @@ USER node
 
 COPY --from=installer /app .
 
+# Build identity for GET /api/version, last so it doesn't bust the cache above
+ARG GIT_SHA=unknown
+ENV GIT_SHA=$GIT_SHA
+
 CMD node apps/api/dist/src/index.js
