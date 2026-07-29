@@ -50,6 +50,11 @@ function getenv<
 export const production = getenv('NODE_ENV') === 'production';
 
 /**
+ * Commit SHA of the build, injected at image build time
+ */
+export const gitSha: string = getenv('GIT_SHA', 'unknown');
+
+/**
  * Application domain (without protocol)
  */
 export const domain = getenv('DOMAIN', 'localhost:8181');
