@@ -33,12 +33,6 @@ export const base64ToBlob = (
   return blob;
 };
 
-/**
- * PeerTube moved from `planb.network` to `planb.academy` when the instance was
- * consolidated onto pba-core. Content published before the move still carries
- * the legacy host, so URLs are normalised onto the current host before use
- * rather than rewritten across the content repository.
- */
 export const PEERTUBE_HOST = 'peertube.planb.academy';
 const PEERTUBE_LEGACY_HOSTS = ['peertube.planb.network'];
 
