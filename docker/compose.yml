@@ -32,7 +32,8 @@ services:
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
     ports:
-      - "127.0.0.1:5432:5432"  # Binds only to localhost
+      # DB_PORT lets several environments coexist on one host; container port unchanged
+      - "127.0.0.1:${DB_PORT:-5432}:5432"
 
   api:
     <<: *defaults
