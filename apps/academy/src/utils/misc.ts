@@ -33,12 +33,6 @@ export const base64ToBlob = (
   return blob;
 };
 
-/**
- * PeerTube moved from `planb.network` to `planb.academy` when the instance was
- * consolidated onto pba-core. Content published before the move still carries
- * the legacy host, so URLs are normalised onto the current host before use
- * rather than rewritten across the content repository.
- */
 export const PEERTUBE_HOST = 'peertube.planb.academy';
 const PEERTUBE_LEGACY_HOSTS = ['peertube.planb.network'];
 
@@ -98,7 +92,7 @@ export const isUrlFromValidVideoPlatform = (src: string) => {
     src.startsWith('https://rumble.com') ||
     isPeertubeUrl(src) ||
     src.startsWith('https://makertube.net') ||
-    src.startsWith('https://live.planb.academy/playback')
+    isPlaybackBigBlueButtonUrl(src)
   );
 };
 
@@ -111,10 +105,14 @@ export const doesVideoUrlWorkWithReactPlayer = (src: string) => {
   );
 };
 
-export const isLiveBigBlueButtonUrl = (src: string) => {
-  return src.startsWith('https://live.planb.academy/rooms');
-};
+export const BBB_LIVE_HOST = 'live.planb.academy';
+export const BBB_PLAYBACK_HOST = 'replay.planb.academy';
+const BBB_PLAYBACK_LEGACY_HOSTS = [BBB_LIVE_HOST];
 
-export const isPlaybackBigBlueButtonUrl = (src: string) => {
-  return src.startsWith('https://live.planb.academy/playback');
-};
+export const isLiveBigBlueButtonUrl = (src: string) =>
+  src.startsWith(`https://${BBB_LIVE_HOST}/rooms`);
+
+export const isPlaybackBigBlueButtonUrl = (src: string) =>
+  [BBB_PLAYBACK_HOST, ...BBB_PLAYBACK_LEGACY_HOSTS].some((host) =>
+    src.startsWith(`https://${host}/playback`),
+  );
