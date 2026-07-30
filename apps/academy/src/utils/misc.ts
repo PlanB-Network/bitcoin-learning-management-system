@@ -98,7 +98,7 @@ export const isUrlFromValidVideoPlatform = (src: string) => {
     src.startsWith('https://rumble.com') ||
     isPeertubeUrl(src) ||
     src.startsWith('https://makertube.net') ||
-    src.startsWith('https://live.planb.academy/playback')
+    isPlaybackBigBlueButtonUrl(src)
   );
 };
 
@@ -111,10 +111,21 @@ export const doesVideoUrlWorkWithReactPlayer = (src: string) => {
   );
 };
 
-export const isLiveBigBlueButtonUrl = (src: string) => {
-  return src.startsWith('https://live.planb.academy/rooms');
-};
+/**
+ * BigBlueButton served both live rooms and published recordings from a single
+ * host. Recordings are static files and outlive any server, so they move to a
+ * dedicated host on pba-core while `live` is kept free for an actual live
+ * server. Content published before the split still carries the legacy host, so
+ * both are accepted until the content repository is rewritten.
+ */
+export const BBB_LIVE_HOST = 'live.planb.academy';
+export const BBB_PLAYBACK_HOST = 'replay.planb.academy';
+const BBB_PLAYBACK_LEGACY_HOSTS = [BBB_LIVE_HOST];
 
-export const isPlaybackBigBlueButtonUrl = (src: string) => {
-  return src.startsWith('https://live.planb.academy/playback');
-};
+export const isLiveBigBlueButtonUrl = (src: string) =>
+  src.startsWith(`https://${BBB_LIVE_HOST}/rooms`);
+
+export const isPlaybackBigBlueButtonUrl = (src: string) =>
+  [BBB_PLAYBACK_HOST, ...BBB_PLAYBACK_LEGACY_HOSTS].some((host) =>
+    src.startsWith(`https://${host}/playback`),
+  );
