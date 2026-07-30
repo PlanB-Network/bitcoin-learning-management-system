@@ -98,8 +98,9 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           cache-from: type=gha,scope=global
           cache-to: type=gha,mode=max,scope=global
-          build-args:
+          build-args: |
             BASE_IMAGE=${{ env.base }}
+            GIT_SHA=${{ github.sha }}
 
   build_academy:
     name: Build Academy
@@ -393,3 +394,21 @@ jobs:
         with:
           webhook_url: ${{ github.ref == 'refs/heads/mainnet' && secrets.MAINNET_WEBHOOK_URL || secrets.TESTNET_WEBHOOK_URL }}
           webhook_secret: ${{ github.ref == 'refs/heads/mainnet' && secrets.MAINNET_WEBHOOK_SECRET || secrets.TESTNET_WEBHOOK_SECRET }}
+
+      # The hook answers 200 before doing anything (it runs ci-hook.sh in the
+      # background), so a green webhook step proves nothing. Poll until the
+      # target actually serves the commit we just built.
+      - name: Verify deployed build
+        timeout-minutes: 10
+        env:
+          TARGET_URL: ${{ github.ref == 'refs/heads/mainnet' && 'https://planb.academy' || 'https://planbtest.academy' }}
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          echo "Waiting for ${TARGET_URL}/api/version to report ${EXPECTED_SHA}"
+          # 404 / network error means "not deployed yet": the endpoint is absent
+          # from older builds, and containers are down during pull + up.
+          until [ "$(curl -sf --max-time 10 "${TARGET_URL}/api/version" | jq -r '.sha // empty')" = "${EXPECTED_SHA}" ]; do
+            echo "Not deployed yet, retrying in 15s."
+            sleep 15
+          done
+          echo "Deployed build matches ${EXPECTED_SHA}."

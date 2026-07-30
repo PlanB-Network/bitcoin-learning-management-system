@@ -16,6 +16,7 @@ import { createRestTranslationAudioRoutes } from './translation-audio.js';
 import { createRestTranslationDownloadRoutes } from './translation-downloads.js';
 // import { createRestTranslationUploadRoutes } from './translation-uploads.js';
 import { createRestTranslationUploadRoutes } from './translation-uploads.js';
+import { createRestVersionRoutes } from './version.js';
 
 export const createRestRouter = async (
   dependencies: Dependencies,
@@ -36,6 +37,7 @@ export const createRestRouter = async (
   createRestEventRoutes(dependencies, router);
   createRestCouponsRoutes(dependencies, router);
   createRestCalendarRoutes(dependencies, router);
+  createRestVersionRoutes(dependencies, router);
 
   return router;
 };
