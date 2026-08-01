@@ -20,6 +20,35 @@ const server = prerender({
   waitAfterLastRequest: 500,
 });
 
+// prerender@5.21.6 stops Chrome with a bare SIGINT and then waits for the
+// child's 'close' event to respawn it. Chrome ignores SIGINT often enough that
+// no 'close' ever fires: isBrowserConnected stays false and every render waits
+// 20s then 504s, until the next scheduled recycle 10 minutes later. Escalate to
+// SIGKILL so a kill always produces a close, and therefore always a respawn.
+const KILL_GRACE_MS =
+  Number.parseInt(process.env.CHROME_KILL_GRACE_MS, 10) || 5000;
+const browser = server.browser;
+const gracefulKill = browser.kill.bind(browser);
+
+browser.kill = function killWithEscalation() {
+  const child = browser.chromeChild;
+  gracefulKill();
+  if (!child || child.exitCode !== null || child.signalCode !== null) {
+    return;
+  }
+
+  const escalation = setTimeout(() => {
+    if (child.exitCode === null && child.signalCode === null) {
+      console.log(
+        `[chrome] SIGINT ignored after ${KILL_GRACE_MS}ms, sending SIGKILL`,
+      );
+      child.kill('SIGKILL');
+    }
+  }, KILL_GRACE_MS);
+  escalation.unref();
+  child.once('close', () => clearTimeout(escalation));
+};
+
 // Healthcheck endpoint — registered first so no other plugin (notably the cache)
 // can answer it. Only healthy when prerender still has a live Chrome connection.
 server.use({

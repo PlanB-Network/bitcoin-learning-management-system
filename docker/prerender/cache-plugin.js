@@ -8,21 +8,43 @@
  *
  * Env vars:
  *   CACHE_MAXSIZE  — max entries (default 20000)
+ *   CACHE_MAXBYTES — max total content bytes (default 512 MiB)
  *   CACHE_TTL      — fresh duration in seconds (default 86400 = 24h)
  */
 
 const CACHE_MAXSIZE = Number.parseInt(process.env.CACHE_MAXSIZE, 10) || 20000;
+const CACHE_MAXBYTES =
+  Number.parseInt(process.env.CACHE_MAXBYTES, 10) || 512 * 1024 * 1024;
 const CACHE_TTL_MS =
   (Number.parseInt(process.env.CACHE_TTL, 10) || 86400) * 1000;
 
 // Simple LRU via Map (insertion-order iteration, delete+re-set to refresh)
-const cache = new Map(); // url → { content, createdAt }
+const cache = new Map(); // url → { content, bytes, createdAt }
 const revalidating = new Set(); // urls currently being re-rendered
+let cacheBytes = 0;
 
+function store(url, content) {
+  drop(url);
+  const bytes = Buffer.byteLength(content);
+  cache.set(url, { content, bytes, createdAt: Date.now() });
+  cacheBytes += bytes;
+  evictIfNeeded();
+}
+
+function drop(url) {
+  const entry = cache.get(url);
+  if (!entry) return;
+  cacheBytes -= entry.bytes;
+  cache.delete(url);
+}
+
+// An entry is a full HTML page, so the entry count alone is not a memory bound:
+// 20000 pages overran V8's default heap and crashed the process.
 function evictIfNeeded() {
-  while (cache.size > CACHE_MAXSIZE) {
+  while (cache.size > CACHE_MAXSIZE || cacheBytes > CACHE_MAXBYTES) {
     const oldest = cache.keys().next().value;
-    cache.delete(oldest);
+    if (oldest === undefined) return;
+    drop(oldest);
   }
 }
 
@@ -63,9 +85,7 @@ module.exports = {
           });
           response.on('end', () => {
             if (response.statusCode === 200 && body.length > 0) {
-              cache.delete(url);
-              cache.set(url, { content: body, createdAt: Date.now() });
-              evictIfNeeded();
+              store(url, body);
               console.log(`[cache] revalidated: ${url} (${body.length} bytes)`);
             }
             revalidating.delete(url);
@@ -82,13 +102,7 @@ module.exports = {
 
   beforeSend: (req, _res, next) => {
     if (!req.prerender.cacheHit && req.prerender.statusCode === 200) {
-      const url = req.prerender.url;
-      cache.delete(url);
-      cache.set(url, {
-        content: req.prerender.content,
-        createdAt: Date.now(),
-      });
-      evictIfNeeded();
+      store(req.prerender.url, req.prerender.content);
     }
     next();
   },
