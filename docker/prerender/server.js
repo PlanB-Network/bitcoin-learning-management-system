@@ -20,6 +20,22 @@ const server = prerender({
   waitAfterLastRequest: 500,
 });
 
+// Healthcheck endpoint — registered first so no other plugin (notably the cache)
+// can answer it. Only healthy when prerender still has a live Chrome connection.
+server.use({
+  requestReceived: (req, res, next) => {
+    if (req.prerender.url !== 'healthz') {
+      return next();
+    }
+
+    if (req.server?.isBrowserConnected) {
+      return res.send(200, 'ok');
+    }
+
+    return res.send(503, 'chrome-disconnected');
+  },
+});
+
 // removeScriptTags already preserves <script type="application/ld+json"> upstream,
 // so no custom stripping is needed to keep structured data safe.
 server.use(prerender.removeScriptTags());
@@ -33,21 +49,6 @@ server.use({
       Pragma: 'no-cache',
     };
     next();
-  },
-});
-
-// Healthcheck endpoint — only healthy when prerender still has a live Chrome connection
-server.use({
-  requestReceived: (req, res, next) => {
-    if (req.prerender.url !== 'healthz') {
-      return next();
-    }
-
-    if (req.server?.isBrowserConnected) {
-      return res.send(200, 'ok');
-    }
-
-    return res.send(503, 'chrome-disconnected');
   },
 });
 
