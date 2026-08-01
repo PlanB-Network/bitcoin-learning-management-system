@@ -1,5 +1,6 @@
 import { firstRow } from '@blms/database';
 import type { JoinedProject } from '@blms/types';
+import { TRPCError } from '@trpc/server';
 
 import type { Dependencies } from '../../dependencies.js';
 import { getProjectQuery } from '../queries/get-project.js';
@@ -11,7 +12,10 @@ export const createGetProject = ({ postgres }: Dependencies) => {
       .then(firstRow);
 
     if (!project) {
-      throw new Error('Project not found');
+      throw new TRPCError({
+        code: 'NOT_FOUND',
+        message: 'Project not found',
+      });
     }
 
     return project;

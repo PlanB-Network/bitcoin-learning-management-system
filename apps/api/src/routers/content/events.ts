@@ -25,7 +25,7 @@ const getRecentEventsProcedure = publicProcedure
   .query(({ ctx }) => createGetRecentEvents(ctx.dependencies)());
 
 const getEventProcedure = publicProcedure
-  .input(z.object({ id: z.string() }))
+  .input(z.object({ id: z.uuid() }))
   .output<Parser<JoinedEvent>>(joinedEventSchema)
   .query(async ({ ctx, input }) => {
     const uid = ctx.user?.uid || null;

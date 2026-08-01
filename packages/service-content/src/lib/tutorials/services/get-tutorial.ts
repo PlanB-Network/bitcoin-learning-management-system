@@ -1,6 +1,6 @@
 import { firstRow } from '@blms/database';
-
 import type { GetTutorialResponse } from '@blms/types';
+import { TRPCError } from '@trpc/server';
 import type { Dependencies } from '../../dependencies.js';
 import { getProfessorQuery } from '../../professors/queries/get-professor.js';
 import { formatProfessor } from '../../professors/services/utils.js';
@@ -18,7 +18,10 @@ export const createGetTutorial = ({ postgres }: Dependencies) => {
       .then(firstRow);
 
     if (!tutorial) {
-      throw new Error('Tutorial not found');
+      throw new TRPCError({
+        code: 'NOT_FOUND',
+        message: 'Tutorial not found',
+      });
     }
 
     const professor = tutorial.professorId

@@ -1,5 +1,6 @@
 import { firstRow } from '@blms/database';
 import type { CourseResponse } from '@blms/types';
+import { TRPCError } from '@trpc/server';
 
 import type { Dependencies } from '../../dependencies.js';
 import { getProfessorsQuery } from '../../professors/queries/get-professors.js';
@@ -16,7 +17,10 @@ export const createGetCourse = ({ postgres }: Dependencies) => {
       .then(firstRow);
 
     if (!course) {
-      throw new Error(`Course ${id} not found`);
+      throw new TRPCError({
+        code: 'NOT_FOUND',
+        message: `Course ${id} not found`,
+      });
     }
 
     // `id` may be a legacy index (e.g. "btc204"); everything below keys on the UUID.
