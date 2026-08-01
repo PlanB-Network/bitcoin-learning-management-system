@@ -62,9 +62,11 @@ const createGetResourcesProcedure = () => {
   );
 };
 
+// `id` addresses a uuid-backed resource column. Without this constraint a
+// malformed id reaches Postgres and its driver message is returned to the client.
 const createGetResourceProcedure = () => {
   return publicProcedure.input(
-    z.object({ id: z.string(), language: z.string() }),
+    z.object({ id: z.uuid(), language: z.string() }),
   );
 };
 

@@ -114,7 +114,7 @@ const getTutorialsWithProfessorNameProcedure = publicProcedure
 const getTutorialProcedure = publicProcedure
   .input(
     z.object({
-      id: z.string(),
+      id: z.uuid(),
       language: z.string(),
     }),
   )

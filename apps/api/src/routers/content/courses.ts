@@ -105,6 +105,8 @@ const getTeacherCourseReviewsProcedure = professorProcedure
     return createGetTeacherCourseReviews(ctx.dependencies)(input.courseId);
   });
 
+// `id` is not constrained to a uuid: courses.id is a varchar and the lookup also
+// accepts the legacy courses.index slug (e.g. "btc204"). No uuid cast, no leak.
 const getCourseProcedure = publicProcedure
   .input(
     z.object({

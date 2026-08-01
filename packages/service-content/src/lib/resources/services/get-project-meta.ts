@@ -1,4 +1,5 @@
 import { firstRow } from '@blms/database';
+import { TRPCError } from '@trpc/server';
 
 import type { Dependencies } from '../../dependencies.js';
 import { getProjectMetaQuery } from '../queries/get-project-meta.js';
@@ -10,7 +11,10 @@ export const createGetProjectMeta = ({ postgres }: Dependencies) => {
       .then(firstRow);
 
     if (!project) {
-      throw new Error('Project not found');
+      throw new TRPCError({
+        code: 'NOT_FOUND',
+        message: 'Project not found',
+      });
     }
 
     return project;

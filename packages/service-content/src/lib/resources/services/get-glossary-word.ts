@@ -1,5 +1,6 @@
 import { firstRow } from '@blms/database';
 import type { JoinedGlossaryWord } from '@blms/types';
+import { TRPCError } from '@trpc/server';
 
 import type { Dependencies } from '../../dependencies.js';
 import { getGlossaryWordQuery } from '../queries/get-glossary-word.js';
@@ -14,7 +15,10 @@ export const createGetGlossaryWord = ({ postgres }: Dependencies) => {
       .then(firstRow);
 
     if (!word) {
-      throw new Error('Word not found');
+      throw new TRPCError({
+        code: 'NOT_FOUND',
+        message: 'Word not found',
+      });
     }
 
     return word;

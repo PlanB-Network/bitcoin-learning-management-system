@@ -1,5 +1,6 @@
 import { firstRow } from '@blms/database';
 import type { JoinedEvent } from '@blms/types';
+import { TRPCError } from '@trpc/server';
 
 import type { Dependencies } from '../../dependencies.js';
 import { getEventQuery } from '../queries/get-event.js';
@@ -9,7 +10,10 @@ export const createGetEvent = ({ postgres }: Dependencies) => {
     const event = await postgres.exec(getEventQuery(id)).then(firstRow);
 
     if (!event) {
-      throw new Error(`Event ${id} not found`);
+      throw new TRPCError({
+        code: 'NOT_FOUND',
+        message: `Event ${id} not found`,
+      });
     }
 
     if (!isAllowed) {
