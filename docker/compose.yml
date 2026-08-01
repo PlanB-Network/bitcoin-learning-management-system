@@ -108,7 +108,12 @@ services:
     environment:
       PORT: "3000"
       CACHE_MAXSIZE: "20000"
+      CACHE_MAXBYTES: "536870912"
       CACHE_TTL: "86400"
+      # V8 defaults to ~2G regardless of the 8G cgroup limit below, and hitting
+      # it is a hard crash rather than an eviction. Keep the heap under the
+      # cache ceiling plus headroom so eviction happens first.
+      NODE_OPTIONS: "--max-old-space-size=3072"
     expose:
       - 3000
     shm_size: 1gb
