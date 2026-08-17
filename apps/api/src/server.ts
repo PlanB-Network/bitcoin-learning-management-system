@@ -1,7 +1,7 @@
 import type { Server } from 'node:http';
 
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
-import express, { json, Router } from 'express';
+import express, { type ErrorRequestHandler, json, Router } from 'express';
 import { requestLogging } from './config.js';
 import type { Dependencies } from './dependencies.js';
 import { createCookieSessionMiddleware } from './middlewares/session.js';
@@ -42,6 +42,33 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
   app.use(createCookieSessionMiddleware(dependencies));
 
   const genRequestId = () => crypto.randomUUID().replace(/-/g, '').slice(0, 16);
+
+  const handlePayloadTooLarge: ErrorRequestHandler = (
+    error,
+    req,
+    res,
+    next,
+  ) => {
+    if (error.type !== 'entity.too.large') {
+      next(error);
+      return;
+    }
+
+    req.id ||= req.header('x-request-id') || genRequestId();
+    console.warn(
+      `[request] ${req.id} BODY_TOO_LARGE ${req.method} ${req.path} content_length=${req.header('content-length') ?? 'unknown'}`,
+    );
+    res.status(413).json({
+      error: {
+        json: {
+          message:
+            'The cover image is too large. Use an image smaller than 15 MB.',
+          code: -32600,
+          data: { code: 'PAYLOAD_TOO_LARGE', httpStatus: 413 },
+        },
+      },
+    });
+  };
 
   // Basic request logger + Set request ID
   app.use((req, res, next) => {
@@ -97,6 +124,7 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
   const baseRoute = '/api';
   app.use(baseRoute, router);
   app.use(baseRoute, restRouter);
+  app.use(handlePayloadTooLarge);
 
   const server = app.listen(port, '0.0.0.0');
 
