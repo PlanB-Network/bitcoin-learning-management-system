@@ -200,11 +200,16 @@ export const AddResourceModal = ({
         setCoverImageBase64(null);
         setCoverImageName(null);
       },
-      onError: () => {
-        customToast(t('resources.addResource.errorSendingAddition'), {
-          mode: 'light',
-          color: 'warning',
-        });
+      onError: (error: { data?: { httpStatus?: number } }) => {
+        customToast(
+          error.data?.httpStatus === 413
+            ? t('educatorContent.imageTooLarge')
+            : t('resources.addResource.errorSendingAddition'),
+          {
+            mode: 'light',
+            color: 'warning',
+          },
+        );
       },
     }),
   );
