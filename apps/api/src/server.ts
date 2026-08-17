@@ -23,6 +23,9 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
   // Trust IP information from proxy (e.g. when behind Cloudflare)
   app.set('trust proxy', true);
 
+  // Resource submissions include a base64-encoded cover image.
+  app.use('/api/trpc/github.createResourcePR', json({ limit: '21mb' }));
+
   // Parse JSON bodies
   app.use(
     json({
