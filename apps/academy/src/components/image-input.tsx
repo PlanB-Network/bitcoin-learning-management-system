@@ -1,3 +1,4 @@
+import { MAX_COVER_IMAGE_BYTES } from '@blms/constants';
 import { Button, cn, customToast, FieldLabel } from '@blms/ui';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -25,8 +26,6 @@ export const ImageInput = ({
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleImage = (file: File) => {
-    const MAX_SIZE = 15 * 1024 * 1024; // 15MB
-
     if (!file.type.startsWith('image/')) {
       customToast(t('educatorContent.onlyImages'), {
         mode: 'light',
@@ -37,7 +36,7 @@ export const ImageInput = ({
       return;
     }
 
-    if (file.size > MAX_SIZE) {
+    if (file.size > MAX_COVER_IMAGE_BYTES) {
       customToast(t('educatorContent.imageTooLarge'), {
         mode: 'light',
         color: 'warning',
