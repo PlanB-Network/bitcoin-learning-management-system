@@ -1,5 +1,6 @@
 import type { Server } from 'node:http';
 
+import { MAX_RESOURCE_SUBMISSION_BYTES } from '@blms/constants';
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
 import express, { type ErrorRequestHandler, json, Router } from 'express';
 import { requestLogging } from './config.js';
@@ -23,8 +24,20 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
   // Trust IP information from proxy (e.g. when behind Cloudflare)
   app.set('trust proxy', true);
 
-  // Resource submissions include a base64-encoded cover image.
-  app.use('/api/trpc/github.createResourcePR', json({ limit: '21mb' }));
+  // Resource submissions carry a base64-encoded cover image. tRPC batches
+  // procedures into a single comma-separated path, so match the procedure
+  // rather than an URL prefix.
+  const resourceSubmissionParser = json({
+    limit: MAX_RESOURCE_SUBMISSION_BYTES,
+  });
+
+  app.use('/api/trpc', (req, res, next) => {
+    const procedures = req.path.replace(/^\//, '').split(',');
+
+    return procedures.includes('github.createResourcePR')
+      ? resourceSubmissionParser(req, res, next)
+      : next();
+  });
 
   // Parse JSON bodies
   app.use(
@@ -61,8 +74,7 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
     res.status(413).json({
       error: {
         json: {
-          message:
-            'The cover image is too large. Use an image smaller than 15 MB.',
+          message: 'Request body too large.',
           code: -32600,
           data: { code: 'PAYLOAD_TOO_LARGE', httpStatus: 413 },
         },
