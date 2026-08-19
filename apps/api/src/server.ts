@@ -1,7 +1,8 @@
 import type { Server } from 'node:http';
 
+import { MAX_RESOURCE_SUBMISSION_BYTES } from '@blms/constants';
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
-import express, { json, Router } from 'express';
+import express, { type ErrorRequestHandler, json, Router } from 'express';
 import { requestLogging } from './config.js';
 import type { Dependencies } from './dependencies.js';
 import { createCookieSessionMiddleware } from './middlewares/session.js';
@@ -23,6 +24,21 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
   // Trust IP information from proxy (e.g. when behind Cloudflare)
   app.set('trust proxy', true);
 
+  // Resource submissions carry a base64-encoded cover image. tRPC batches
+  // procedures into a single comma-separated path, so match the procedure
+  // rather than an URL prefix.
+  const resourceSubmissionParser = json({
+    limit: MAX_RESOURCE_SUBMISSION_BYTES,
+  });
+
+  app.use('/api/trpc', (req, res, next) => {
+    const procedures = req.path.replace(/^\//, '').split(',');
+
+    return procedures.includes('github.createResourcePR')
+      ? resourceSubmissionParser(req, res, next)
+      : next();
+  });
+
   // Parse JSON bodies
   app.use(
     json({
@@ -39,6 +55,32 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
   app.use(createCookieSessionMiddleware(dependencies));
 
   const genRequestId = () => crypto.randomUUID().replace(/-/g, '').slice(0, 16);
+
+  const handlePayloadTooLarge: ErrorRequestHandler = (
+    error,
+    req,
+    res,
+    next,
+  ) => {
+    if (error.type !== 'entity.too.large') {
+      next(error);
+      return;
+    }
+
+    req.id ||= req.header('x-request-id') || genRequestId();
+    console.warn(
+      `[request] ${req.id} BODY_TOO_LARGE ${req.method} ${req.path} content_length=${req.header('content-length') ?? 'unknown'}`,
+    );
+    res.status(413).json({
+      error: {
+        json: {
+          message: 'Request body too large.',
+          code: -32600,
+          data: { code: 'PAYLOAD_TOO_LARGE', httpStatus: 413 },
+        },
+      },
+    });
+  };
 
   // Basic request logger + Set request ID
   app.use((req, res, next) => {
@@ -94,6 +136,7 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
   const baseRoute = '/api';
   app.use(baseRoute, router);
   app.use(baseRoute, restRouter);
+  app.use(handlePayloadTooLarge);
 
   const server = app.listen(port, '0.0.0.0');
 

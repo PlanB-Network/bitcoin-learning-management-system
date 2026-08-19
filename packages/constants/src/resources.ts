@@ -52,3 +52,13 @@ export enum ResourceType {
   Glossary = 'glossary',
   Conference = 'conferences',
 }
+
+/** Largest cover image a contributor can submit, before base64 encoding. */
+export const MAX_COVER_IMAGE_BYTES = 15 * 1024 * 1024;
+
+/** Size of that image once base64 encoded, which is how it travels in JSON. */
+export const MAX_COVER_IMAGE_BASE64_BYTES = (MAX_COVER_IMAGE_BYTES / 3) * 4;
+
+/** Base64 cover plus room for the rest of the submission body. */
+export const MAX_RESOURCE_SUBMISSION_BYTES =
+  MAX_COVER_IMAGE_BASE64_BYTES + 1024 * 1024;

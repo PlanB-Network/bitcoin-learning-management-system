@@ -1,3 +1,4 @@
+import type { AppRouter } from '@blms/api/src/trpc/types.ts';
 import type { ResourceType } from '@blms/constants';
 import {
   BasicModal,
@@ -18,6 +19,7 @@ import {
 } from '@blms/ui';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
+import type { TRPCClientErrorLike } from '@trpc/client';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -200,11 +202,16 @@ export const AddResourceModal = ({
         setCoverImageBase64(null);
         setCoverImageName(null);
       },
-      onError: () => {
-        customToast(t('resources.addResource.errorSendingAddition'), {
-          mode: 'light',
-          color: 'warning',
-        });
+      onError: (error: TRPCClientErrorLike<AppRouter>) => {
+        customToast(
+          error.data?.httpStatus === 413
+            ? t('educatorContent.imageTooLarge')
+            : t('resources.addResource.errorSendingAddition'),
+          {
+            mode: 'light',
+            color: 'warning',
+          },
+        );
       },
     }),
   );

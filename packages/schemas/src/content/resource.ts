@@ -1,3 +1,4 @@
+import { MAX_COVER_IMAGE_BASE64_BYTES } from '@blms/constants';
 import {
   contentResources,
   contentResourceTags,
@@ -40,7 +41,7 @@ export const createResourcePRSchema = z.object({
   coverImage: z
     .object({
       name: z.string(),
-      data: z.string(), // base64
+      data: z.string().max(MAX_COVER_IMAGE_BASE64_BYTES), // base64
     })
     .optional(),
   duration: z.number().optional(),
