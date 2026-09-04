@@ -3,7 +3,6 @@ import { createFileRoute, Link } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 
 import Corporates from '#src/assets/about/corporates.webp?no-inline';
-import PpAjelex from '#src/assets/people/ajelex.webp?no-inline';
 import PpAsi0 from '#src/assets/people/asi0.webp?no-inline';
 import Ct01 from '#src/assets/people/contributors/01.webp?no-inline';
 import Ct02 from '#src/assets/people/contributors/02.webp?no-inline';
@@ -146,11 +145,6 @@ const CoreTeam = () => {
             name="Rogzy"
             job={t('about.coreTeamRogzyRole')}
             picture={PpRogzy}
-          />
-          <Person
-            name="Ajelex"
-            job={t('about.coreTeamAjelexRole')}
-            picture={PpAjelex}
           />
         </div>
       </div>
