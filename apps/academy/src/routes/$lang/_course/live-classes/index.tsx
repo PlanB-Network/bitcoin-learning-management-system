@@ -1,13 +1,14 @@
 import { TeachingFormat } from '@blms/constants';
 import { getCountryForFlagFromAddress } from '@blms/shared';
 import type { CourseResponse, JoinedCourse } from '@blms/types';
-import { Button, cn, Flag, Image, Loader } from '@blms/ui';
+import { Button, cn, EmptyState, Flag, Image, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useContext, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   TbCalendarEvent,
+  TbCalendarOff,
   TbChevronDown,
   TbChevronRight,
   TbClock,
@@ -148,10 +149,6 @@ function AllCourses() {
         </div>
       )}
 
-      <h2 className="lg:hidden title-large-sb-24px font-semibold mb-2 lg:mb-6">
-        {t('courses.liveClasses.title')}
-      </h2>
-
       {planbCourse && (
         <div className="bg-vertical-orange-gradient border border-orange-200 rounded-2xl">
           <div className="max-lg:hidden flex flex-col">
@@ -167,6 +164,19 @@ function AllCourses() {
             </div>
           </div>
         </div>
+      )}
+
+      {!planbCourse && otherCourses.length === 0 && (
+        <EmptyState
+          title={t('courses.liveClasses.emptyState.title')}
+          description={t('courses.liveClasses.emptyState.description')}
+          icon={TbCalendarOff}
+          linkButton={{
+            href: '/learn-anytime',
+            label: t('courses.liveClasses.emptyState.action'),
+          }}
+          className="mt-6 lg:mt-8"
+        />
       )}
 
       {otherCourses.length === 0 ? null : (
