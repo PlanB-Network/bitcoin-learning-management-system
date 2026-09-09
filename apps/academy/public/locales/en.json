@@ -335,6 +335,11 @@
     },
     "liveClasses": {
       "allOtherTitle": "All other live classes",
+      "emptyState": {
+        "action": "Explore self-paced courses",
+        "description": "New teacher-led courses will appear here when dates are confirmed.",
+        "title": "No live classes scheduled"
+      },
       "liveClasses": "Live classes",
       "program": {
         "goal": "Master the Bitcoin industry with Giacomo Zucco in a 5-month program that blends theory, real-case studies, and exclusive networking opportunities.",
