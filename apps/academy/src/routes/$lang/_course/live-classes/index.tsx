@@ -21,6 +21,7 @@ import { formatShortDateRange } from '#src/utils/date.ts';
 import { resourceImgUrl } from '#src/utils/index.ts';
 import { getSystemLanguage, isLanguageMatch } from '#src/utils/language.ts';
 import { trpc } from '#src/utils/trpc.ts';
+import { findActivePlanbSchoolCourse } from './-utils.ts';
 
 export const Route = createFileRoute('/$lang/_course/live-classes/')({
   component: AllCourses,
@@ -59,14 +60,7 @@ function AllCourses() {
           return 0;
         });
 
-  const planbCourses = !courses
-    ? []
-    : courses.filter(
-        (course) =>
-          course.isArchived === false &&
-          course.isPlanbSchool === true &&
-          (course.endDate ? course.endDate.getTime() > Date.now() : true),
-      );
+  const planbCourse = findActivePlanbSchoolCourse(courses ?? []);
 
   const systemLanguage = useMemo(() => getSystemLanguage(), []);
 
@@ -158,20 +152,22 @@ function AllCourses() {
         {t('courses.liveClasses.title')}
       </h2>
 
-      <div className="bg-vertical-orange-gradient border border-orange-200 rounded-2xl">
-        <div className="max-lg:hidden flex flex-col">
-          <div className=" py-6 px-6 w-full">
-            <h2 className="display-base">{t('courses.liveClasses.title')}</h2>
+      {planbCourse && (
+        <div className="bg-vertical-orange-gradient border border-orange-200 rounded-2xl">
+          <div className="max-lg:hidden flex flex-col">
+            <div className=" py-6 px-6 w-full">
+              <h2 className="display-base">{t('courses.liveClasses.title')}</h2>
+            </div>
+            <Link to={'/programs'} />
           </div>
-          <Link to={'/programs'} />
-        </div>
 
-        <div className="flex flex-wrap gap-4 lg:gap-8 mt-2 lg:mt-4 px-2 lg:px-6 pb-2 lg:pb-6">
-          <div className="w-full">
-            <ProgramCard course={planbCourses.at(0)!} />
+          <div className="flex flex-wrap gap-4 lg:gap-8 mt-2 lg:mt-4 px-2 lg:px-6 pb-2 lg:pb-6">
+            <div className="w-full">
+              <ProgramCard course={planbCourse} />
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {otherCourses.length === 0 ? null : (
         <>
