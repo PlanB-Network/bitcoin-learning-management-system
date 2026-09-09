@@ -149,10 +149,6 @@ function AllCourses() {
         </div>
       )}
 
-      <h2 className="lg:hidden title-large-sb-24px font-semibold mb-2 lg:mb-6">
-        {t('courses.liveClasses.title')}
-      </h2>
-
       {planbCourse && (
         <div className="bg-vertical-orange-gradient border border-orange-200 rounded-2xl">
           <div className="max-lg:hidden flex flex-col">
