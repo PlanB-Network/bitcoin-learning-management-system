@@ -2,10 +2,11 @@
   "background_color": "#FFFFFF",
   "description": "The Plan ₿ Network aims to provide the best tools and educational content worldwide, empowering people to regain their sovereignty.",
   "display": "standalone",
+  "id": "/",
   "icons": [
     {
       "sizes": "any",
-      "src": "/icons/icon.svg",
+      "src": "/icons/favicon.svg",
       "type": "image/svg+xml"
     },
     {
@@ -51,7 +52,8 @@
   ],
   "name": "Plan ₿ Academy",
   "orientation": "portrait",
+  "scope": "/",
   "short_name": "Plan ₿ Academy",
-  "start_url": ".",
+  "start_url": "/",
   "theme_color": "rgb(255 92 0)"
 }
