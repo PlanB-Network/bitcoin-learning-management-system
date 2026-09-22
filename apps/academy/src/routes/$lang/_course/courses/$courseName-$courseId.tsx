@@ -248,13 +248,14 @@ function CourseDetails() {
   }, []);
 
   useEffect(() => {
+    if (isLiveClassBlocked) return;
     if (course && params.courseName !== formatNameForURL(course.name)) {
       navigate({
         replace: true,
         to: `/courses/${formatNameForURL(course.name)}-${course.id}`,
       });
     }
-  }, [course, isFetched, navigate, params.courseName]);
+  }, [course, isFetched, isLiveClassBlocked, navigate, params.courseName]);
 
   const Header = ({ course }: { course: CourseResponse }) => {
     const beginnerFriendlyCourses = ['btc101', 'btc102', 'scu101'];

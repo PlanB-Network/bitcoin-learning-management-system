@@ -1,10 +1,11 @@
 import { createFileRoute, redirect } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/$lang/_course/live-classes/')({
-  loader: () => {
+  loader: ({ params }) => {
     return redirect({
       throw: false,
-      to: '/',
+      to: '/$lang',
+      params: { lang: params.lang },
     });
   },
 });
