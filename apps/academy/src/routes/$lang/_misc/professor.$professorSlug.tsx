@@ -1,3 +1,4 @@
+import { TeachingFormat } from '@blms/constants';
 import { formatNameForURL } from '@blms/shared';
 import { Button, Loader } from '@blms/ui';
 import { useQuery } from '@tanstack/react-query';
@@ -99,6 +100,11 @@ function ProfessorDetail() {
     }
   }, [professor, isFetched, navigateTo404, navigate, params.professorName]);
 
+  const selfPacedCourses =
+    professor?.courses.filter(
+      (course) => course.teachingFormat !== TeachingFormat.ProfessorLed,
+    ) ?? [];
+
   return (
     <PageLayout
       layoutSize="wide"
@@ -132,15 +138,15 @@ function ProfessorDetail() {
             }
             socials={<SocialLinks professor={professor} />}
           />
-          {professor.courses.length > 0 && (
+          {selfPacedCourses.length > 0 && (
             <>
               <div className="mt-6 lg:mt-12 title-large-24px md:display-small-32px">
                 <span>{t('words.courses')}</span>
               </div>
 
-              {professor.courses.length > 0 && (
+              {selfPacedCourses.length > 0 && (
                 <section className="flex justify-start gap-5 md:gap-10 flex-wrap mt-6">
-                  {professor.courses.map((course) => (
+                  {selfPacedCourses.map((course) => (
                     <CourseCard key={course.id} course={course} />
                   ))}
                 </section>

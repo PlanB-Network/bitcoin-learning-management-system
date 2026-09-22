@@ -20,7 +20,6 @@ import ProjectPen from '#src/assets/icons/pixelated/navbar/project_pen.svg?react
 import Replay from '#src/assets/icons/pixelated/navbar/replay.svg?react';
 import Target from '#src/assets/icons/pixelated/navbar/target.svg?react';
 import TasksList from '#src/assets/icons/pixelated/navbar/tasks_list.svg?react';
-import Teacher from '#src/assets/icons/pixelated/navbar/teacher.svg?react';
 import Ticket from '#src/assets/icons/pixelated/navbar/ticket.svg?react';
 import { useSmaller } from '#src/hooks/use-smaller.ts';
 import { AppContext } from '#src/providers/context.tsx';
@@ -145,16 +144,6 @@ export const SideBarContent = ({
               description={t('navbar.learnAnytimeDescription')}
               link="/learn-anytime"
               isActive={window.location.pathname.includes('/learn-anytime')}
-              isSidebarOpen={isSidebarOpen}
-              isMain
-            />
-            <SideBarItem
-              icon={Teacher}
-              iconColor="orange"
-              label={t('navbar.liveClassesTitle')}
-              description={t('navbar.liveClassesDescription')}
-              link="/live-classes"
-              isActive={window.location.pathname.includes('/live-classes')}
               isSidebarOpen={isSidebarOpen}
               isMain
             />

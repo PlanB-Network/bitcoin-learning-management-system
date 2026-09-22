@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Live classes : retrait front-end à blast radius minimal</title>
+<meta name="description" content="Investigation du code de l'academy PlanB : où les live classes apparaissent, qui les voit (anonyme, compte, acheteur), et le plan de retrait front-end en 5 fichiers sans toucher au backend.">
+<meta name="report-type" content="investigation">
+<meta name="keywords" content="planb, academy, live-classes, front-end, tanstack-router, blast-radius">
+<style>
+:root{
+  --bg:oklch(98.2% 0.006 70);
+  --panel:oklch(100% 0 0);
+  --panel-2:oklch(96% 0.01 70);
+  --line:oklch(88% 0.012 70);
+  --ink:oklch(20% 0.012 70);
+  --dim:oklch(46% 0.014 70);
+  --subject:oklch(62% 0.19 55);
+  --subject-deep:oklch(46% 0.16 55);
+  --subject-soft:oklch(95% 0.04 60);
+  --ok:oklch(46% 0.13 150);
+  --ok-soft:oklch(94% 0.05 150);
+  --warn:oklch(58% 0.14 80);
+  --warn-soft:oklch(95% 0.06 85);
+  --bad:oklch(50% 0.17 25);
+  --bad-soft:oklch(94% 0.05 25);
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","DejaVu Sans",sans-serif;
+  --serif:"Iowan Old Style",Charter,Georgia,"Noto Serif",serif;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono","DejaVu Sans Mono",monospace;
+  --s2:2px;--s4:4px;--s8:8px;--s12:12px;--s16:16px;--s24:24px;--s32:32px;--s40:40px;--s48:48px;
+  --r-s:4px;--r-m:8px;--r-l:16px;
+  --rail:190px;--top:0px;
+}
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth}
+body{margin:0;min-height:100dvh;color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(24px,3.2vw,30px)}
+h2{font-size:24px;margin-top:var(--s48);padding-top:var(--s16);border-top:1px solid var(--line)}
+h3{font-size:18px;margin-top:var(--s24)}
+p{text-wrap:pretty;margin:var(--s8) 0}
+p,li{max-width:75ch}
+a{color:var(--subject-deep)}
+code,.mono{font-family:var(--mono);font-size:14px}
+code{background:var(--panel-2);padding:1px var(--s4);border-radius:var(--r-s)}
+pre{background:var(--panel-2);border-radius:var(--r-m);padding:var(--s12) var(--s16);overflow:auto;font-size:14px;line-height:1.45;max-width:100%}
+pre code{background:none;padding:0}
+small,.small{font-size:14px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+.layout{display:grid;grid-template-columns:minmax(0,var(--rail)) minmax(0,1fr);gap:var(--s24);align-items:start;
+  padding:var(--s16) max(14px,env(safe-area-inset-right)) var(--s48) max(14px,env(safe-area-inset-left));max-width:1400px;margin:0 auto}
+.layout.toc-collapsed{grid-template-columns:minmax(0,1fr)}
+.layout.toc-collapsed>.rail{display:none}
+.rail{position:sticky;top:var(--s8);max-height:calc(100dvh - 16px);overflow-y:auto;padding-right:var(--s4)}
+.rail nav{display:flex;flex-direction:column;gap:var(--s2)}
+.rail a{display:block;padding:var(--s8) var(--s12);border-radius:var(--r-m);color:var(--dim);text-decoration:none;font-size:14px;line-height:1.3;min-height:38px;border-left:3px solid transparent}
+.rail a[aria-current="true"]{color:var(--ink);background:var(--subject-soft);border-left-color:var(--subject)}
+.rail .lbl{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);padding:var(--s8) var(--s12) var(--s4)}
+main{min-width:0}
+.topbar{display:flex;align-items:center;gap:var(--s12);margin-bottom:var(--s8)}
+.btn{display:inline-flex;align-items:center;gap:var(--s8);min-height:38px;padding:0 var(--s12);border:1px solid var(--line);background:var(--panel);border-radius:var(--r-m);font:inherit;font-size:14px;color:var(--ink);cursor:pointer}
+.btn[aria-pressed="true"]{background:var(--subject-soft);border-color:var(--subject)}
+.btn svg{width:18px;height:18px}
+.jumprow{display:none;flex-wrap:wrap;gap:var(--s8);margin:var(--s12) 0}
+.jumprow a{display:inline-flex;align-items:center;min-height:38px;padding:0 var(--s12);border:1px solid var(--line);border-radius:999px;background:var(--panel);text-decoration:none;font-size:14px;color:var(--ink)}
+.meta{color:var(--dim);font-size:14px;margin:var(--s4) 0 var(--s16)}
+.tldr{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--subject);border-radius:var(--r-l);padding:var(--s16) var(--s24);margin:var(--s16) 0 var(--s24)}
+.tldr ul{margin:var(--s8) 0 0;padding-left:var(--s24)}
+.tldr li{margin:var(--s4) 0}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s12);margin:var(--s16) 0}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-m);padding:var(--s12) var(--s16)}
+.kpi .v{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:30px;line-height:1.1;font-weight:600}
+.kpi .k{font-size:14px;color:var(--dim)}
+.retenir{background:var(--subject-soft);border-radius:var(--r-m);padding:var(--s12) var(--s16);margin:var(--s16) 0 0;max-width:none}
+.retenir b{color:var(--subject-deep)}
+figure{margin:var(--s16) 0}
+figcaption{font-size:14px;color:var(--dim);margin-top:var(--s8)}
+table{border-collapse:collapse;width:100%;font-size:14px;background:var(--panel);border-radius:var(--r-m);overflow:hidden}
+th,td{padding:var(--s8) var(--s12);text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{background:var(--panel-2);font-weight:600;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--dim)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.tag{display:inline-block;padding:1px var(--s8);border-radius:999px;font-size:12px;font-weight:600;line-height:1.6;white-space:nowrap}
+.t-ok{background:var(--ok-soft);color:var(--ok)}
+.t-warn{background:var(--warn-soft);color:var(--warn)}
+.t-bad{background:var(--bad-soft);color:var(--bad)}
+.t-sub{background:var(--subject-soft);color:var(--subject-deep)}
+.t-dim{background:var(--panel-2);color:var(--dim)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-m)}
+.controls{display:flex;flex-wrap:wrap;gap:var(--s8);align-items:center;margin-bottom:var(--s8)}
+.controls .lbl{font-size:14px;color:var(--dim);margin-right:var(--s4)}
+.matrix td.cell{text-align:center;font-weight:600}
+.matrix tr.dimmed td{opacity:.35}
+.pipe{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--s8);align-items:stretch}
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-m);padding:var(--s12);position:relative;font-size:14px;min-height:118px}
+.stage .n{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.stage .t{font-weight:600;display:block;margin:var(--s2) 0 var(--s4)}
+.stage .f{font-family:var(--mono);font-size:12px;color:var(--dim);word-break:break-all}
+.stage.hot{border-color:var(--warn);background:var(--warn-soft)}
+.stage.good{border-color:var(--ok)}
+.stage::after{content:"";position:absolute;right:-9px;top:50%;width:0;height:0;border-left:8px solid var(--line);border-top:7px solid transparent;border-bottom:7px solid transparent}
+.stage:last-child::after{display:none}
+.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s12)}
+.opt{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-l);padding:var(--s16)}
+.opt.reco{border:2px solid var(--subject)}
+.opt h3{margin-top:0;display:flex;align-items:center;gap:var(--s8);flex-wrap:wrap}
+.opt .pc{display:grid;grid-template-columns:1fr 1fr;gap:var(--s12);font-size:14px;margin-top:var(--s8)}
+.opt ul{margin:var(--s4) 0 0;padding-left:var(--s16)}
+.opt .pro::before{content:"Pour";display:block;font-weight:600;color:var(--ok)}
+.opt .con::before{content:"Contre";display:block;font-weight:600;color:var(--bad)}
+.filelist td:first-child{font-family:var(--mono);font-size:13px}
+details{border:1px solid var(--line);border-radius:var(--r-m);padding:var(--s8) var(--s16);background:var(--panel);margin:var(--s12) 0}
+summary{cursor:pointer;font-weight:600;min-height:38px;display:flex;align-items:center}
+.next ol{padding-left:var(--s24)}
+.next li{margin:var(--s8) 0}
+svg.tree{width:100%;height:auto;display:block;font-family:var(--sans);font-size:13px}
+svg.tree text{fill:var(--ink)}
+svg.tree .dim{fill:var(--dim)}
+svg.tree .box{fill:var(--panel);stroke:var(--line);stroke-width:1.5}
+svg.tree .box.ok{stroke:var(--ok);fill:var(--ok-soft)}
+svg.tree .box.bad{stroke:var(--bad);fill:var(--bad-soft)}
+svg.tree .box.q{stroke:var(--subject);fill:var(--subject-soft)}
+svg.tree line{stroke:var(--line);stroke-width:1.5}
+svg.tree line.reco{stroke:var(--subject);stroke-width:2.5}
+
+@media (pointer:coarse) and (orientation:portrait) and (aspect-ratio < 3/4){
+  .layout{display:block;padding-inline:max(14px,env(safe-area-inset-left)) max(14px,env(safe-area-inset-right))}
+  .rail{display:none}.jumprow{display:flex}.toc-btn{display:none}
+  body{font-size:18px}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pipe{grid-template-columns:repeat(2,minmax(0,1fr))}.stage::after{display:none}
+  .options{grid-template-columns:1fr}
+}
+@media (pointer:coarse) and (orientation:landscape) and (aspect-ratio > 3/2){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  .rail{display:none}.jumprow{display:flex}.toc-btn{display:none}
+  .pipe{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (pointer:coarse) and (orientation:portrait) and (aspect-ratio >= 3/4){
+  .layout{grid-template-columns:minmax(0,var(--rail)) minmax(0,1fr)}
+  .layout.toc-collapsed{grid-template-columns:minmax(0,1fr)}
+  .pipe{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (pointer:coarse) and (orientation:landscape) and (aspect-ratio <= 3/2){
+  .layout{grid-template-columns:minmax(0,var(--rail)) minmax(0,1fr)}
+  .layout.toc-collapsed{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pipe{grid-template-columns:repeat(2,minmax(0,1fr))}.stage::after{display:none}
+  .options{grid-template-columns:1fr}
+  .opt .pc{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="layout" id="layout">
+  <aside class="rail" id="rail" aria-label="Sommaire">
+    <nav>
+      <div class="lbl">Sommaire</div>
+      <a href="#tldr">Réponse courte</a>
+      <a href="#perimetre">1. Ce qu'est une live class</a>
+      <a href="#surfaces">2. Carte des surfaces</a>
+      <a href="#groupes">3. Les trois groupes</a>
+      <a href="#acheteur">4. Parcours de l'acheteur</a>
+      <a href="#garde">5. La garde centrale</a>
+      <a href="#options">6. Options A–D</a>
+      <a href="#plan">7. Plan par fichier</a>
+      <a href="#verif">8. Vérification</a>
+      <a href="#next">Prochaines actions</a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="topbar">
+      <button class="btn toc-btn" id="tocToggle" aria-expanded="true" aria-controls="rail" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h16"/></svg>
+        Sommaire
+      </button>
+      <span class="meta">Investigation · branche <code>feat/hide-live-classes-frontend</code> · 2026-09-22</span>
+    </div>
+
+    <h1>Retirer les live classes du front sans casser l'accès des acheteurs</h1>
+    <p class="meta">Academy PlanB · apps/academy · TanStack Router + tRPC · backend intact</p>
+
+    <div class="jumprow" aria-label="Aller à">
+      <a href="#tldr">Réponse</a><a href="#surfaces">Surfaces</a><a href="#groupes">Groupes</a><a href="#acheteur">Acheteur</a><a href="#options">Options</a><a href="#plan">Plan</a><a href="#next">Actions</a>
+    </div>
+
+    <section id="tldr" class="tldr">
+      <strong>Réponse courte</strong>
+      <ul>
+        <li><b>Le blast radius est petit.</b> Un seul point d'entrée de navigation (l'item sidebar), une page de listing, une page programme sans autre lien entrant. Aucun changement backend nécessaire.</li>
+        <li><b>Le chemin des acheteurs existe déjà.</b> Le paiement réussi crée une ligne <code>course_progress</code>, et <code>/my-courses</code> affiche une section "Live classes" à partir de cette ligne. Il faut surtout ne pas le casser : ne jamais filtrer le catalogue global <code>AppContext.courses</code>.</li>
+        <li><b>Trois fuites restent après retrait des listings</b> : recherche, page professeur, URL directe. Une seule garde sur la page cours les ferme toutes.</li>
+        <li><b>Recommandation : option B</b>, 5 fichiers front, environ 60 lignes, réversible par simple revert.</li>
+      </ul>
+    </section>
+
+    <div class="kpis" aria-label="Chiffres clés">
+      <div class="kpi"><div class="v">5</div><div class="k">fichiers front à modifier</div></div>
+      <div class="kpi"><div class="v">0</div><div class="k">fichier backend touché</div></div>
+      <div class="kpi"><div class="v">1</div><div class="k">entrée de navigation à retirer</div></div>
+      <div class="kpi"><div class="v">3</div><div class="k">fuites fermées par une garde</div></div>
+    </div>
+
+    <h2 id="perimetre">1. Ce qu'est une live class dans le code</h2>
+    <p>Le backend ne connaît pas le mot "live class". Le front construit ce concept à partir de deux champs du cours et de deux routes.</p>
+    <figure>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Élément</th><th>Valeur</th><th>Où</th></tr></thead>
+      <tbody>
+        <tr><td>Format d'enseignement</td><td><code>teachingFormat === 'professor_led'</code></td><td><code>packages/constants/src/courses.ts:32</code></td></tr>
+        <tr><td>Programme Plan ₿ School</td><td><code>isPlanbSchool === true</code></td><td>Colonne du cours, filtrée dans <code>programs/index.tsx:269</code></td></tr>
+        <tr><td>Page listing</td><td><code>/$lang/live-classes</code></td><td><code>routes/$lang/_course/live-classes/index.tsx</code> (326 lignes, 0 guard, 0 loader)</td></tr>
+        <tr><td>Page programme</td><td><code>/$lang/programs</code></td><td><code>routes/$lang/_course/programs/index.tsx</code> (contenu hardcodé, 4 deep links vers des cours)</td></tr>
+        <tr><td>Page cours et lecteur</td><td><code>/courses/:name-:id</code>, <code>/courses/:id/:chapter</code></td><td>Partagées avec les cours self-paced. Aucune condition sur le format pour l'accès.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <figcaption>Le lecteur de chapitre reste commun aux deux formats : c'est ce qui garantit que l'acheteur peut toujours suivre son cours.</figcaption>
+    </figure>
+    <p class="retenir"><b>À retenir.</b> "Retirer les live classes" veut dire retirer la découverte et l'achat des cours <code>professor_led</code>, pas le lecteur. Le lecteur est commun et reste tel quel.</p>
+
+    <h2 id="surfaces">2. Carte des surfaces</h2>
+    <p>Chaque ligne est un endroit où un utilisateur peut voir ou atteindre une live class aujourd'hui. Le filtre par groupe montre ce qui compte pour chacun.</p>
+    <figure data-figure="surface-map" data-figure-label="Carte des surfaces" data-figure-state="group=all">
+    <div class="controls" role="group" aria-label="Filtrer par groupe">
+      <span class="lbl">Voir pour :</span>
+      <button class="btn grp" type="button" data-g="all" aria-pressed="true">Tous</button>
+      <button class="btn grp" type="button" data-g="anon" aria-pressed="false">Anonyme</button>
+      <button class="btn grp" type="button" data-g="acct" aria-pressed="false">Compte sans achat</button>
+      <button class="btn grp" type="button" data-g="buyer" aria-pressed="false">Acheteur</button>
+    </div>
+    <div class="tablewrap">
+    <table class="matrix" id="surfaceTable">
+      <thead><tr><th>Surface</th><th>Fichier</th><th class="cell">Anonyme</th><th class="cell">Compte</th><th class="cell">Acheteur</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr data-g="anon acct buyer"><td>Item sidebar "Live classes"</td><td class="mono">sidebar-content.tsx:150</td><td class="cell">voit</td><td class="cell">voit</td><td class="cell">voit</td><td><span class="tag t-bad">retirer</span></td></tr>
+        <tr data-g="anon acct buyer"><td>Page <code>/live-classes</code></td><td class="mono">live-classes/index.tsx:27</td><td class="cell">voit</td><td class="cell">voit</td><td class="cell">voit</td><td><span class="tag t-bad">rediriger</span></td></tr>
+        <tr data-g="anon acct buyer"><td>Page <code>/programs</code></td><td class="mono">programs/index.tsx:27</td><td class="cell">voit</td><td class="cell">voit</td><td class="cell">voit</td><td><span class="tag t-bad">rediriger</span></td></tr>
+        <tr data-g="anon acct"><td>Page cours d'une live class (bouton acheter)</td><td class="mono">$courseName-$courseId.tsx:196</td><td class="cell">achète</td><td class="cell">achète</td><td class="cell">accède</td><td><span class="tag t-warn">garder + garde</span></td></tr>
+        <tr data-g="anon acct buyer"><td>Lien retour "Live classes" sur la page cours</td><td class="mono">$courseName-$courseId.tsx:864</td><td class="cell">voit</td><td class="cell">voit</td><td class="cell">voit</td><td><span class="tag t-warn">repointer</span></td></tr>
+        <tr data-g="anon acct buyer"><td>Résultats de recherche (index <code>courses_localized</code>, sans format)</td><td class="mono">search/index.tsx:34 · service-content/search.ts:24</td><td class="cell">voit</td><td class="cell">voit</td><td class="cell">voit</td><td><span class="tag t-ok">couvert par la garde</span></td></tr>
+        <tr data-g="anon acct buyer"><td>Page professeur (liste tous ses cours)</td><td class="mono">professor.$professorSlug.tsx:143</td><td class="cell">voit</td><td class="cell">voit</td><td class="cell">voit</td><td><span class="tag t-ok">couvert par la garde</span></td></tr>
+        <tr data-g="buyer"><td>Section "Live classes" de <code>/my-courses</code></td><td class="mono">my-courses/index.tsx:126</td><td class="cell">—</td><td class="cell">—</td><td class="cell">voit</td><td><span class="tag t-sub">garder</span></td></tr>
+        <tr data-g="buyer"><td>Lecteur de chapitre, vidéo live BBB</td><td class="mono">$chapterSlug.tsx:529 · live-video.tsx</td><td class="cell">—</td><td class="cell">—</td><td class="cell">voit</td><td><span class="tag t-sub">garder</span></td></tr>
+        <tr data-g="buyer"><td>Calendrier et tickets (userSpecific)</td><td class="mono">calendar/index.tsx:47 · events/my-tickets.tsx:23</td><td class="cell">—</td><td class="cell">—</td><td class="cell">voit</td><td><span class="tag t-sub">garder</span></td></tr>
+        <tr data-g="buyer"><td>Dashboard professeur et admin</td><td class="mono">dashboard/professor/**</td><td class="cell">—</td><td class="cell">—</td><td class="cell">rôle</td><td><span class="tag t-dim">hors périmètre</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <figcaption id="surfaceCaption">11 surfaces. 3 à retirer ou rediriger, 2 à ajuster sur la page cours, 2 fuites couvertes par la garde, 3 à garder pour l'acheteur, 1 hors périmètre.</figcaption>
+    </figure>
+    <p>Ce que la carte ne montre pas et qui rassure : le header, le footer et la page d'accueil ne contiennent aucun lien vers les live classes. L'accueil redirige vers <code>/my-courses</code> ou <code>/learn-anytime</code>. La route <code>/courses</code> redirige vers <code>/learn-anytime</code>, qui filtre déjà strictement sur <code>self_paced</code>.</p>
+    <p class="retenir"><b>À retenir.</b> La découverte tient à un item de sidebar et une page. Les fuites restantes convergent toutes vers la page cours : c'est là que se place la garde.</p>
+
+    <h2 id="groupes">3. Les trois groupes, avant et après</h2>
+    <figure>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Groupe</th><th>Aujourd'hui</th><th>Après option B</th><th>Point d'attention</th></tr></thead>
+      <tbody>
+        <tr><td><b>Anonyme</b></td><td>Voit l'item sidebar, la page listing, le programme, peut ouvrir une page cours et cliquer "acheter" (ouvre la modale de connexion).</td><td>Plus d'item, plus de listing. Une URL directe, un résultat de recherche ou une page professeur mène à la page cours, qui redirige vers <code>/learn-anytime</code>.</td><td>La garde doit attendre que <code>course</code> soit chargé avant de décider, sinon flash de redirection sur un cours self-paced.</td></tr>
+        <tr><td><b>Compte sans achat</b></td><td>Idem anonyme, plus la modale de paiement.</td><td>Idem anonyme. La section "Live classes" de <code>/my-courses</code> ne s'affiche pas car il n'a aucune ligne <code>course_progress</code> de format <code>professor_led</code>.</td><td>Cas limite : un compte inscrit à une live class gratuite via "Start" a une ligne de progression sans paiement. Il est traité comme acheteur, ce qui est le comportement souhaitable.</td></tr>
+        <tr><td><b>Acheteur</b></td><td>Retrouve son cours dans <code>/my-courses</code> (section "Live classes") et dans la sidebar via "Mes cours".</td><td>Identique. La page cours reste accessible car <code>isCoursePaid</code> est vrai. Le lien retour pointe vers <code>/my-courses</code> au lieu de <code>/live-classes</code>.</td><td>Ne pas filtrer <code>AppContext.courses</code> ni <code>content.getCourses</code> : <code>my-courses</code> résout le cours par <code>courses.find</code> et abandonne la carte si le cours manque.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <figcaption>Le groupe "compte sans achat" est le plus simple : il ne voit rien de plus qu'un anonyme aujourd'hui, hormis la modale de paiement.</figcaption>
+    </figure>
+    <p class="retenir"><b>À retenir.</b> Le seul groupe qui demande du soin est l'acheteur, et son chemin dépend de trois choses déjà en place : la ligne de progression créée au paiement, la section dédiée de <code>/my-courses</code>, et le catalogue global non filtré.</p>
+
+    <h2 id="acheteur">4. Le parcours de l'acheteur, étape par étape</h2>
+    <p>Chaque étape est vérifiée dans le code. L'étape orange est le seul point fragile.</p>
+    <figure data-figure="buyer-pipeline" data-figure-label="Parcours acheteur" data-figure-state="static">
+    <div class="pipe">
+      <div class="stage good"><span class="n">1</span><span class="t">Paiement réussi</span><span class="f">save-course-payment.ts:288 postSuccessfulCoursePaymentHandling</span></div>
+      <div class="stage good"><span class="n">2</span><span class="t">Ligne de progression créée</span><span class="f">start-course.ts:15 → INSERT users.course_progress</span></div>
+      <div class="stage good"><span class="n">3</span><span class="t">getProgress la renvoie</span><span class="f">get-progress.ts:22 JOIN content.courses, sans filtre de format</span></div>
+      <div class="stage hot"><span class="n">4</span><span class="t">my-courses résout le cours</span><span class="f">my-courses/index.tsx:81 courses?.find(c ⇒ c.id === progress.courseId)</span></div>
+      <div class="stage good"><span class="n">5</span><span class="t">Section "Live classes"</span><span class="f">my-courses/index.tsx:126 InProgressCourseCard</span></div>
+      <div class="stage good"><span class="n">6</span><span class="t">Lecteur de chapitre</span><span class="f">in-progress-course-card.tsx:27 → /courses/:id/:nextChapter</span></div>
+    </div>
+    <figcaption>Étape 4 : <code>AppContext.courses</code> vient de <code>content.getCourses({language})</code>, qui inclut aussi la langue d'origine du cours et les cours archivés. Le chemin tient tant que ce catalogue n'est pas filtré par format.</figcaption>
+    </figure>
+    <p>Deux vérifications supplémentaires faites sur ce chemin :</p>
+    <ul>
+      <li><b>Langue.</b> <code>getCoursesQuery</code> garde un cours si sa langue est celle de l'interface <em>ou</em> sa langue d'origine (<code>get-courses.ts:77</code>). Un acheteur qui change de langue retrouve donc son cours.</li>
+      <li><b>Archivage.</b> Le cours archivé reste dans le catalogue et <code>my-courses</code> le garde s'il est en cours (<code>my-courses/index.tsx:50</code>). La fin de la session n'efface pas l'accès.</li>
+      <li><b>Accès au contenu.</b> Le lecteur vérifie <code>requiresPayment && !isCoursePaid</code> via <code>getPayments</code> (<code>_$courseSlug.tsx:39</code>), jamais le format. Rien à changer.</li>
+    </ul>
+    <p class="retenir"><b>À retenir.</b> Le chemin acheteur est déjà complet. Le travail consiste à ne pas le casser, pas à le construire.</p>
+
+    <h2 id="garde">5. La garde centrale sur la page cours</h2>
+    <p>Une seule règle, placée dans <code>$courseName-$courseId.tsx</code>, ferme la recherche, la page professeur et les URL directes. Elle ne s'exécute qu'une fois les données chargées.</p>
+    <figure data-figure="guard-tree" data-figure-label="Arbre de décision de la garde" data-figure-state="static">
+    <svg class="tree" viewBox="0 0 900 300" role="img" aria-label="Arbre de décision : format professor_led, puis accès (payé ou progression), puis afficher ou rediriger">
+      <rect class="box q" x="20" y="120" width="180" height="60" rx="8"/>
+      <text x="110" y="145" text-anchor="middle">course chargé ?</text>
+      <text x="110" y="165" text-anchor="middle" class="dim">sinon : attendre</text>
+      <line x1="200" y1="150" x2="260" y2="150"/>
+      <rect class="box q" x="260" y="120" width="200" height="60" rx="8"/>
+      <text x="360" y="145" text-anchor="middle">teachingFormat</text>
+      <text x="360" y="165" text-anchor="middle" class="dim">=== 'professor_led' ?</text>
+      <line x1="460" y1="150" x2="520" y2="60"/>
+      <line x1="460" y1="150" x2="520" y2="240" class="reco"/>
+      <rect class="box ok" x="520" y="30" width="170" height="60" rx="8"/>
+      <text x="605" y="55" text-anchor="middle">non</text>
+      <text x="605" y="75" text-anchor="middle" class="dim">page normale</text>
+      <rect class="box q" x="520" y="210" width="200" height="60" rx="8"/>
+      <text x="620" y="235" text-anchor="middle">oui · accès ?</text>
+      <text x="620" y="255" text-anchor="middle" class="dim">isCoursePaid || progress.length</text>
+      <line x1="720" y1="240" x2="760" y2="180"/>
+      <line x1="720" y1="240" x2="760" y2="280" class="reco"/>
+      <rect class="box ok" x="760" y="150" width="130" height="60" rx="8"/>
+      <text x="825" y="175" text-anchor="middle">oui</text>
+      <text x="825" y="195" text-anchor="middle" class="dim">afficher</text>
+      <rect class="box bad" x="760" y="250" width="130" height="46" rx="8"/>
+      <text x="825" y="270" text-anchor="middle">non</text>
+      <text x="825" y="288" text-anchor="middle" class="dim">→ /learn-anytime</text>
+    </svg>
+    <figcaption>Le chemin épais est celui qui change. "Accès" combine le paiement (<code>getPayments</code>, déjà chargé ligne 142) et une ligne de progression (<code>getProgress</code>, déjà chargé ligne 134) pour couvrir les live classes gratuites.</figcaption>
+    </figure>
+    <p>Détail de synchronisation : pour un utilisateur connecté, <code>payments</code> et <code>userCourseProgress</code> arrivent après <code>course</code>. La garde attend <code>isFetched</code> des deux requêtes quand <code>isLoggedIn</code>, et redirige tout de suite sinon. Sans cela un acheteur verrait une redirection avant que son paiement soit connu.</p>
+    <p>Le lecteur de chapitre n'a pas besoin de garde supplémentaire : pour un cours payant, <code>needsAccess</code> bloque déjà les requêtes de contenu. Pour une live class gratuite, l'utilisateur non inscrit pourrait encore ouvrir un chapitre par URL. C'est une fuite mineure, notée en option dans le plan.</p>
+    <p class="retenir"><b>À retenir.</b> Une condition de dix lignes, au même endroit que <code>courseHasToBePurchased</code>, remplace trois filtres backend.</p>
+
+    <h2 id="options">6. Options, du plus petit au plus complet</h2>
+    <div class="options">
+      <div class="opt">
+        <h3>A · Retirer l'item sidebar <span class="tag t-dim">1 fichier</span></h3>
+        <p class="small">Supprimer le bloc <code>SideBarItem</code> lignes 150–160.</p>
+        <div class="pc">
+          <ul class="pro"><li>Diff de 11 lignes.</li><li>Zéro risque pour l'acheteur.</li></ul>
+          <ul class="con"><li>Les pages restent accessibles par URL, recherche, page professeur, lien retour.</li><li>Un anonyme peut toujours acheter.</li></ul>
+        </div>
+      </div>
+      <div class="opt reco">
+        <h3>B · Sidebar + redirections + garde <span class="tag t-sub">recommandé · 5 fichiers</span></h3>
+        <p class="small">A, plus un <code>loader</code> de redirection sur <code>/live-classes</code> et <code>/programs</code>, la garde de la section 5, et le lien retour vers <code>/my-courses</code>.</p>
+        <div class="pc">
+          <ul class="pro"><li>Ferme toutes les fuites front identifiées.</li><li>Aucun changement backend, aucune migration, aucun changement d'API.</li><li>Réversible par un revert du commit.</li><li>Les fichiers restent en place : le test <code>-utils.test.ts</code> continue de passer.</li></ul>
+          <ul class="con"><li>La garde ajoute une dépendance temporelle sur deux requêtes.</li><li>Les résultats de recherche montrent encore le titre avant redirection.</li></ul>
+        </div>
+      </div>
+      <div class="opt">
+        <h3>C · B + filtres côté API <span class="tag t-warn">2 fichiers backend</span></h3>
+        <p class="small">Exclure <code>professor_led</code> de l'index de recherche (<code>search.ts:24</code>) et de <code>getProfessorCourses</code>.</p>
+        <div class="pc">
+          <ul class="pro"><li>Les live classes disparaissent aussi des résultats.</li></ul>
+          <ul class="con"><li>Contredit le brief "backend intact".</li><li>Une page professeur avec seulement des live classes devient vide.</li><li>Plus large à tester.</li></ul>
+        </div>
+      </div>
+      <div class="opt">
+        <h3>D · B derrière un flag d'environnement <span class="tag t-dim">6 fichiers</span></h3>
+        <p class="small">Ajouter <code>VITE_LIVE_CLASSES_ENABLED</code> dans <code>env.ts</code> et conditionner chaque changement.</p>
+        <div class="pc">
+          <ul class="pro"><li>Réactivation sans déploiement de code.</li></ul>
+          <ul class="con"><li>Aucun mécanisme de feature flag n'existe ; seul <code>isPearApp</code> est un précédent.</li><li>Trois branches conditionnelles de plus à maintenir.</li><li>Un revert git fait le même travail si le retour n'est pas planifié.</li></ul>
+        </div>
+      </div>
+    </div>
+    <p class="retenir"><b>Décision.</b> B. Si un retour des live classes est déjà daté, D vaut le coût ; sinon un revert suffit.</p>
+
+    <h2 id="plan">7. Plan d'implémentation par fichier (option B)</h2>
+    <figure>
+    <div class="tablewrap">
+    <table class="filelist">
+      <thead><tr><th>Fichier</th><th>Changement</th><th class="num">≈ lignes</th></tr></thead>
+      <tbody>
+        <tr><td>components/sidebar-content.tsx</td><td>Supprimer le <code>SideBarItem</code> "Live classes" (150–160) et l'import <code>Teacher</code> s'il devient inutilisé.</td><td class="num">−12</td></tr>
+        <tr><td>routes/$lang/_course/live-classes/index.tsx</td><td>Remplacer le composant par un <code>loader</code> qui renvoie <code>redirect({ throw:false, to:'/' })</code>. L'accueil dispatche déjà vers <code>/my-courses</code> ou <code>/learn-anytime</code> selon la session. Garder <code>-utils.ts</code> et son test.</td><td class="num">−300 / +8</td></tr>
+        <tr><td>routes/$lang/_course/programs/index.tsx</td><td>Même <code>loader</code> de redirection. Le contenu peut rester dans le fichier ou partir : sans lien entrant il est mort.</td><td class="num">+6</td></tr>
+        <tr><td>routes/$lang/_course/courses/$courseName-$courseId.tsx</td><td>Garde de la section 5 dans un <code>useEffect</code> après les requêtes existantes. Lien retour : <code>professor_led</code> → <code>/my-courses</code> avec le libellé <code>navbar.myCourses</code>.</td><td class="num">+14</td></tr>
+        <tr><td>routeTree.gen.ts</td><td>Régénéré automatiquement si un fichier de route est supprimé. Avec l'approche loader, inchangé.</td><td class="num">0</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <figcaption>Le modèle de <code>loader</code> existe déjà dans <code>routes/$lang/_misc/plan-b-labs/index.tsx:4</code>. Le chemin cible est relatif à la langue : le <code>onStay</code> de <code>__root.tsx</code> préfixe la langue.</figcaption>
+    </figure>
+
+    <details>
+      <summary>Détails · esquisse de la garde</summary>
+<pre><code>const isLiveClass = course?.teachingFormat === TeachingFormat.ProfessorLed;
+const accessResolved = !isLoggedIn || (isPaymentsFetched &amp;&amp; isProgressFetched);
+const hasAccess = isCoursePaid || (userCourseProgress?.length ?? 0) &gt; 0;
+
+useEffect(() => {
+  if (!isFetched || !course || !isLiveClass || !accessResolved) return;
+  if (!hasAccess) navigate({ to: '/learn-anytime', replace: true });
+}, [isFetched, course, isLiveClass, accessResolved, hasAccess]);</code></pre>
+      <p class="small">Les deux <code>isFetched</code> viennent des <code>useQuery</code> déjà présents lignes 134 et 142. <code>isCoursePaid</code> existe ligne 148.</p>
+    </details>
+
+    <details>
+      <summary>Détails · ce qu'on ne touche pas, et pourquoi</summary>
+      <ul>
+        <li><b><code>my-courses/index.tsx</code></b> : la section "Live classes" est le chemin de l'acheteur. Le titre <code>navbar.liveClassesTitle</code> peut rester.</li>
+        <li><b><code>providers/context.tsx</code></b> et <b><code>content.getCourses</code></b> : filtrer ici casserait l'étape 4 du parcours acheteur et la page professeur.</li>
+        <li><b>Clés i18n</b> : 11 clés <code>courses.liveClasses.*</code> et 2 clés <code>navbar.liveClasses*</code> dans 20 fichiers de langue. Les laisser évite un diff massif et un conflit avec le pipeline de traduction.</li>
+        <li><b>Lecteur, vidéo BBB, examens, dashboard professeur</b> : logique métier des sessions live, nécessaire aux acheteurs et aux enseignants.</li>
+        <li><b>Calendrier et tickets</b> : requêtes <code>userSpecific</code>, donc déjà limitées à ce que l'utilisateur a réservé.</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>Détails · fuites mineures laissées ouvertes en B</summary>
+      <ul>
+        <li>Un chapitre d'une live class <em>gratuite</em> reste ouvrable par URL par un non-inscrit. Correction possible dans <code>_$courseSlug.tsx</code> avec la même règle, +8 lignes.</li>
+        <li>Le titre d'une live class apparaît dans les résultats de recherche avant la redirection. Correction en C seulement.</li>
+        <li>Les quatre deep links hardcodés de <code>programs/index.tsx</code> vers des cours <code>plan-*-program-*</code> deviennent inaccessibles avec la page, donc sans effet.</li>
+      </ul>
+    </details>
+    <p class="retenir"><b>À retenir.</b> Quatre fichiers réels, un fichier généré inchangé. Le gros du diff est de la suppression.</p>
+
+    <h2 id="verif">8. Vérification avant merge</h2>
+    <figure>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Groupe</th><th>Scénario</th><th>Attendu</th></tr></thead>
+      <tbody>
+        <tr><td>Anonyme</td><td>Ouvrir <code>/fr/live-classes</code> et <code>/fr/programs</code></td><td>Arrive sur <code>/fr/learn-anytime</code>, aucun flash de contenu</td></tr>
+        <tr><td>Anonyme</td><td>Chercher un titre de live class, cliquer le résultat</td><td>Redirigé vers <code>/learn-anytime</code></td></tr>
+        <tr><td>Anonyme</td><td>Ouvrir une page cours self-paced</td><td>Inchangé, aucune redirection</td></tr>
+        <tr><td>Compte</td><td>Sidebar en mode "learn"</td><td>Deux items : Learn anytime, puis la ligne de séparation ; plus de "Live classes"</td></tr>
+        <tr><td>Compte</td><td>Ouvrir une page cours <code>professor_led</code> jamais achetée</td><td>Redirigé après chargement des paiements</td></tr>
+        <tr><td>Acheteur</td><td><code>/my-courses</code></td><td>Section "Live classes" avec la carte du cours, bouton vers le prochain chapitre</td></tr>
+        <tr><td>Acheteur</td><td>Page cours du cours acheté, lien retour</td><td>Page affichée, lien retour vers "Mes cours"</td></tr>
+        <tr><td>Acheteur</td><td>Changer la langue de l'interface</td><td>La carte reste visible (langue d'origine conservée par <code>getCourses</code>)</td></tr>
+        <tr><td>Auto</td><td><code>bun run test</code> dans <code>apps/academy</code></td><td><code>live-classes/-utils.test.ts</code> passe toujours</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <figcaption>Pour l'acheteur, tester avec un compte de staging qui a une ligne <code>users.course_payment</code> en statut <code>paid</code> sur un cours <code>professor_led</code>.</figcaption>
+    </figure>
+    <p class="retenir"><b>À retenir.</b> Le scénario qui protège vraiment est "acheteur → /my-courses → chapitre". Le jouer en dernier, sur staging, avant de merger.</p>
+
+    <section id="next" class="next">
+      <h2>Prochaines actions</h2>
+      <ol type="A">
+        <li><b>Implémenter B sur la branche <code>feat/hide-live-classes-frontend</code></b> <span class="tag t-sub">recommandé, d'abord</span>. Coût : une demi-journée avec la vérification. Risque : la course de chargement dans la garde, couverte par les tests manuels de la section 8.</li>
+        <li><b>Ajouter la garde sur le lecteur de chapitre</b> pour les live classes gratuites. Coût : +8 lignes. À faire dans le même PR si des live classes gratuites existent en production, sinon à reporter.</li>
+        <li><b>Décider du flag (D)</b> seulement si une date de retour des live classes est connue. Sinon la réactivation est un revert.</li>
+        <li><b>Nettoyer plus tard</b> : supprimer <code>programs/index.tsx</code>, les assets <code>program-main.webp</code> et les clés i18n une fois le retrait validé en production. Séparé pour garder le premier diff lisible.</li>
+      </ol>
+    </section>
+  </main>
+</div>
+
+<script>
+(function(){
+  var KEY='live-classes-report:v1';
+  var state={};
+  try{state=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+  var layout=document.getElementById('layout');
+  var tocBtn=document.getElementById('tocToggle');
+  function applyToc(collapsed){
+    layout.classList.toggle('toc-collapsed',collapsed);
+    tocBtn.setAttribute('aria-expanded',String(!collapsed));
+  }
+  applyToc(!!state.tocCollapsed);
+  tocBtn.addEventListener('click',function(){
+    state.tocCollapsed=!layout.classList.contains('toc-collapsed');
+    applyToc(state.tocCollapsed);
+    localStorage.setItem(KEY,JSON.stringify(state));
+  });
+
+  var fig=document.querySelector('[data-figure="surface-map"]');
+  var rows=Array.prototype.slice.call(document.querySelectorAll('#surfaceTable tbody tr'));
+  var cap=document.getElementById('surfaceCaption');
+  var caps={
+    all:'11 surfaces. 3 à retirer ou rediriger, 2 à ajuster sur la page cours, 2 fuites couvertes par la garde, 3 à garder pour l’acheteur, 1 hors périmètre.',
+    anon:'Anonyme : 7 surfaces visibles aujourd’hui. Après B, aucune ne mène à une live class : 3 disparaissent, 4 redirigent via la page cours.',
+    acct:'Compte sans achat : mêmes 7 surfaces qu’un anonyme, plus la modale de paiement. Après B, identique à l’anonyme.',
+    buyer:'Acheteur : 11 surfaces. Les 4 surfaces "garder" restent intactes ; la page cours s’affiche car isCoursePaid est vrai.'
+  };
+  function applyGroup(g){
+    rows.forEach(function(r){
+      var ok=g==='all'||(' '+r.getAttribute('data-g')+' ').indexOf(' '+g+' ')>=0;
+      r.classList.toggle('dimmed',!ok);
+    });
+    document.querySelectorAll('.grp').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-g')===g))});
+    fig.setAttribute('data-figure-state','group='+g);
+    cap.textContent=caps[g];
+  }
+  applyGroup(state.group||'all');
+  document.querySelectorAll('.grp').forEach(function(b){
+    b.addEventListener('click',function(){
+      state.group=b.getAttribute('data-g');
+      applyGroup(state.group);
+      localStorage.setItem(KEY,JSON.stringify(state));
+    });
+  });
+
+  var links=Array.prototype.slice.call(document.querySelectorAll('.rail a'));
+  var targets=links.map(function(a){return document.querySelector(a.getAttribute('href'))}).filter(Boolean);
+  if('IntersectionObserver' in window){
+    var current=null;
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ current=en.target.id; } });
+      if(!current) return;
+      links.forEach(function(a){ a.setAttribute('aria-current', a.getAttribute('href')==='#'+current ? 'true' : 'false'); });
+    },{rootMargin:'-10% 0px -70% 0px',threshold:0});
+    targets.forEach(function(t){io.observe(t)});
+  }
+})();
+</script>
+</body>
+</html>

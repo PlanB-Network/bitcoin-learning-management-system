@@ -130,7 +130,7 @@ function CourseDetails() {
     ),
   );
 
-  const { data: userCourseProgress } = useQuery(
+  const { data: userCourseProgress, isFetched: isProgressFetched } = useQuery(
     trpc.user.courses.getProgress.queryOptions(
       {
         courseId,
@@ -139,7 +139,11 @@ function CourseDetails() {
     ),
   );
 
-  const { data: payments, refetch: refetchPayment } = useQuery(
+  const {
+    data: payments,
+    refetch: refetchPayment,
+    isFetched: isPaymentsFetched,
+  } = useQuery(
     trpc.user.courses.getPayments.queryOptions(undefined, {
       enabled: isLoggedIn,
     }),
@@ -194,6 +198,29 @@ function CourseDetails() {
   }
 
   const courseHasToBePurchased = course?.requiresPayment && !isCoursePaid;
+
+  const isLiveClass = course?.teachingFormat === TeachingFormat.ProfessorLed;
+  const accessResolved =
+    session !== undefined &&
+    (!isLoggedIn || (isPaymentsFetched && isProgressFetched));
+  const hasLiveClassAccess =
+    !!isCoursePaid || (userCourseProgress?.length ?? 0) > 0;
+  const isLiveClassBlocked =
+    isLiveClass && (!accessResolved || !hasLiveClassAccess);
+
+  useEffect(() => {
+    if (!isFetched || !course || !isLiveClass || !accessResolved) return;
+    if (!hasLiveClassAccess) {
+      navigate({ to: '/learn-anytime', replace: true });
+    }
+  }, [
+    isFetched,
+    course,
+    isLiveClass,
+    accessResolved,
+    hasLiveClassAccess,
+    navigate,
+  ]);
   const displayDownloadTicket =
     isCoursePaidForInPerson &&
     course?.availableSeats &&
@@ -769,9 +796,6 @@ function CourseDetails() {
           }
         : async () => {
             if (isLoggedIn) {
-              const isLiveClass =
-                course?.teachingFormat === TeachingFormat.ProfessorLed;
-
               if (!isLiveClass || (user?.email && user?.currentEmailChecked)) {
                 await startCourse({ courseId });
                 if (
@@ -858,22 +882,22 @@ function CourseDetails() {
       title={course?.name}
       hideTitle
       backLink={
-        isFetched && course
+        isFetched && course && !isLiveClassBlocked
           ? {
               text:
                 course?.teachingFormat === TeachingFormat.ProfessorLed
-                  ? t('navbar.liveClassesTitle')
+                  ? t('navbar.myCourses')
                   : t('navbar.learnAnytimeTitle'),
               href:
                 course?.teachingFormat === TeachingFormat.ProfessorLed
-                  ? '/live-classes'
+                  ? '/my-courses'
                   : '/learn-anytime',
             }
           : undefined
       }
     >
       <div className="text-neutral-1000">
-        {!isFetched && <Loader size={'s'} />}
+        {(!isFetched || isLiveClassBlocked) && <Loader size={'s'} />}
         {isFetched && !course && (
           <div className="flex size-full flex-col items-start justify-center sm:items-center">
             {t('underConstruction.itemNotFoundOrTranslated', {
@@ -881,7 +905,7 @@ function CourseDetails() {
             })}
           </div>
         )}
-        {course && (
+        {course && !isLiveClassBlocked && (
           <div className="flex size-full flex-col items-start justify-center sm:items-center mx-auto">
             <Header course={course} />
             <CourseInfo course={course} />
