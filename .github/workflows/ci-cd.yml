@@ -399,7 +399,7 @@ jobs:
       # background), so a green webhook step proves nothing. Poll until the
       # target actually serves the commit we just built.
       - name: Verify deployed build
-        timeout-minutes: 10
+        timeout-minutes: 30
         env:
           TARGET_URL: ${{ github.ref == 'refs/heads/mainnet' && 'https://planb.academy' || 'https://planbtest.academy' }}
           EXPECTED_SHA: ${{ github.sha }}
