@@ -53,7 +53,6 @@ small,.small{font-size:14px}
 .layout{display:grid;grid-template-columns:minmax(0,var(--rail)) minmax(0,1fr);gap:var(--s24);align-items:start;
   padding:var(--s16) max(14px,env(safe-area-inset-right)) var(--s48) max(14px,env(safe-area-inset-left));max-width:1400px;margin:0 auto}
 .layout.toc-collapsed{grid-template-columns:minmax(0,1fr)}
-.layout.toc-collapsed>.rail{display:none}
 .rail{position:sticky;top:var(--s8);max-height:calc(100dvh - 16px);overflow-y:auto;padding-right:var(--s4)}
 .rail nav{display:flex;flex-direction:column;gap:var(--s2)}
 .rail a{display:block;padding:var(--s8) var(--s12);border-radius:var(--r-m);color:var(--dim);text-decoration:none;font-size:14px;line-height:1.3;min-height:38px;border-left:3px solid transparent}
@@ -154,6 +153,7 @@ svg.tree line.reco{stroke:var(--subject);stroke-width:2.5}
   .options{grid-template-columns:1fr}
   .opt .pc{grid-template-columns:1fr}
 }
+.layout.toc-collapsed>.rail{display:none}
 </style>
 </head>
 <body>
@@ -453,60 +453,64 @@ useEffect(() => {
 </div>
 
 <script>
-(function(){
-  var KEY='live-classes-report:v1';
-  var state={};
-  try{state=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
-  var layout=document.getElementById('layout');
-  var tocBtn=document.getElementById('tocToggle');
-  function applyToc(collapsed){
-    layout.classList.toggle('toc-collapsed',collapsed);
-    tocBtn.setAttribute('aria-expanded',String(!collapsed));
-  }
-  applyToc(!!state.tocCollapsed);
-  tocBtn.addEventListener('click',function(){
-    state.tocCollapsed=!layout.classList.contains('toc-collapsed');
-    applyToc(state.tocCollapsed);
-    localStorage.setItem(KEY,JSON.stringify(state));
-  });
-
-  var fig=document.querySelector('[data-figure="surface-map"]');
-  var rows=Array.prototype.slice.call(document.querySelectorAll('#surfaceTable tbody tr'));
-  var cap=document.getElementById('surfaceCaption');
-  var caps={
-    all:'11 surfaces. 3 à retirer ou rediriger, 2 à ajuster sur la page cours, 2 fuites couvertes par la garde, 3 à garder pour l’acheteur, 1 hors périmètre.',
-    anon:'Anonyme : 7 surfaces visibles aujourd’hui. Après B, aucune ne mène à une live class : 3 disparaissent, 4 redirigent via la page cours.',
-    acct:'Compte sans achat : mêmes 7 surfaces qu’un anonyme, plus la modale de paiement. Après B, identique à l’anonyme.',
-    buyer:'Acheteur : 11 surfaces. Les 4 surfaces "garder" restent intactes ; la page cours s’affiche car isCoursePaid est vrai.'
+(() => {
+  const KEY = 'live-classes-report:v1';
+  let state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (_e) { state = {}; }
+  const layout = document.getElementById('layout');
+  const tocBtn = document.getElementById('tocToggle');
+  const applyToc = (collapsed) => {
+    layout.classList.toggle('toc-collapsed', collapsed);
+    tocBtn.setAttribute('aria-expanded', String(!collapsed));
   };
-  function applyGroup(g){
-    rows.forEach(function(r){
-      var ok=g==='all'||(' '+r.getAttribute('data-g')+' ').indexOf(' '+g+' ')>=0;
-      r.classList.toggle('dimmed',!ok);
-    });
-    document.querySelectorAll('.grp').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-g')===g))});
-    fig.setAttribute('data-figure-state','group='+g);
-    cap.textContent=caps[g];
-  }
-  applyGroup(state.group||'all');
-  document.querySelectorAll('.grp').forEach(function(b){
-    b.addEventListener('click',function(){
-      state.group=b.getAttribute('data-g');
-      applyGroup(state.group);
-      localStorage.setItem(KEY,JSON.stringify(state));
-    });
+  applyToc(!!state.tocCollapsed);
+  tocBtn.addEventListener('click', () => {
+    state.tocCollapsed = !layout.classList.contains('toc-collapsed');
+    applyToc(state.tocCollapsed);
+    localStorage.setItem(KEY, JSON.stringify(state));
   });
 
-  var links=Array.prototype.slice.call(document.querySelectorAll('.rail a'));
-  var targets=links.map(function(a){return document.querySelector(a.getAttribute('href'))}).filter(Boolean);
-  if('IntersectionObserver' in window){
-    var current=null;
-    var io=new IntersectionObserver(function(entries){
-      entries.forEach(function(en){ if(en.isIntersecting){ current=en.target.id; } });
-      if(!current) return;
-      links.forEach(function(a){ a.setAttribute('aria-current', a.getAttribute('href')==='#'+current ? 'true' : 'false'); });
-    },{rootMargin:'-10% 0px -70% 0px',threshold:0});
-    targets.forEach(function(t){io.observe(t)});
+  const fig = document.querySelector('[data-figure="surface-map"]');
+  const rows = Array.from(document.querySelectorAll('#surfaceTable tbody tr'));
+  const cap = document.getElementById('surfaceCaption');
+  const caps = {
+    all: '11 surfaces. 3 à retirer ou rediriger, 2 à ajuster sur la page cours, 2 fuites couvertes par la garde, 3 à garder pour l’acheteur, 1 hors périmètre.',
+    anon: 'Anonyme : 7 surfaces visibles aujourd’hui. Après B, aucune ne mène à une live class : 3 disparaissent, 4 redirigent via la page cours.',
+    acct: 'Compte sans achat : mêmes 7 surfaces qu’un anonyme, plus la modale de paiement. Après B, identique à l’anonyme.',
+    buyer: 'Acheteur : 11 surfaces. Les 4 surfaces "garder" restent intactes ; la page cours s’affiche car isCoursePaid est vrai.',
+  };
+  const applyGroup = (g) => {
+    for (const r of rows) {
+      const ok = g === 'all' || ` ${r.getAttribute('data-g')} `.includes(` ${g} `);
+      r.classList.toggle('dimmed', !ok);
+    }
+    for (const b of document.querySelectorAll('.grp')) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-g') === g));
+    }
+    fig.setAttribute('data-figure-state', `group=${g}`);
+    cap.textContent = caps[g];
+  };
+  applyGroup(state.group || 'all');
+  for (const b of document.querySelectorAll('.grp')) {
+    b.addEventListener('click', () => {
+      state.group = b.getAttribute('data-g');
+      applyGroup(state.group);
+      localStorage.setItem(KEY, JSON.stringify(state));
+    });
+  }
+
+  const links = Array.from(document.querySelectorAll('.rail a'));
+  const targets = links.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  if ('IntersectionObserver' in window) {
+    let current = null;
+    const io = new IntersectionObserver((entries) => {
+      for (const en of entries) { if (en.isIntersecting) current = en.target.id; }
+      if (!current) return;
+      for (const a of links) {
+        a.setAttribute('aria-current', a.getAttribute('href') === `#${current}` ? 'true' : 'false');
+      }
+    }, { rootMargin: '-10% 0px -70% 0px', threshold: 0 });
+    for (const t of targets) io.observe(t);
   }
 })();
 </script>
