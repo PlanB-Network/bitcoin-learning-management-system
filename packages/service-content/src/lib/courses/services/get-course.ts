@@ -19,9 +19,15 @@ export const createGetCourse = ({ postgres }: Dependencies) => {
       throw new Error(`Course ${id} not found`);
     }
 
-    const parts = await postgres.exec(getCoursePartsQuery(id, course.language));
+    // `id` may be a legacy index (e.g. "btc204"); everything below keys on the UUID.
+    const parts = await postgres.exec(
+      getCoursePartsQuery(course.id, course.language),
+    );
     const chapters = await postgres.exec(
-      getCourseChaptersQuery({ courseId: id, language: course.language }),
+      getCourseChaptersQuery({
+        courseId: course.id,
+        language: course.language,
+      }),
     );
 
     const mainProfessors = await postgres.exec(

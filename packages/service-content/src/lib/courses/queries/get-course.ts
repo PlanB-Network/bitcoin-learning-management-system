@@ -74,7 +74,7 @@ export const getCourseQuery = (id: string, language?: string) => {
       WHERE cp.course_id = c.id AND cp.is_coordinator = false
     ) AS cp_assoc_agg ON TRUE
 
-    WHERE c.id = ${id}
+    WHERE (c.id = ${id} OR c.index = ${id})
       ${language ? sql`AND (cl.language = LOWER(${language}) OR cl.language = c.original_language)` : sql``}
     ORDER BY
       c.id,
