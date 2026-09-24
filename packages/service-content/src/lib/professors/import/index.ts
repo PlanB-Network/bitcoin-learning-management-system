@@ -128,17 +128,38 @@ export const createUpdateProfessors = ({
   };
 };
 
+const formatError = (error: unknown) => {
+  const detail = (error as { detail?: string }).detail;
+  return `${error}${detail ? ` - Detail: ${detail}` : ''}`;
+};
+
 export const createDeleteProfessors = ({
   postgres,
 }: Pick<Dependencies, 'postgres'>) => {
   return async (sync_date: number, errors: string[]) => {
+    let stale: Array<{ id: string; name: string }>;
+
     try {
-      await postgres.exec(
-        sql`DELETE FROM content.professors WHERE last_sync < ${sync_date}
-      `,
+      stale = await postgres.exec<{ id: string; name: string }>(
+        sql`SELECT id, name FROM content.professors WHERE last_sync < ${sync_date}`,
       );
-    } catch {
-      errors.push('Error deleting professors');
+    } catch (error) {
+      errors.push(`Error listing professors to delete: ${formatError(error)}`);
+      return;
+    }
+
+    // Delete one by one: a professor still referenced by a user account or by
+    // another table must not prevent the other stale profiles from being removed.
+    for (const professor of stale) {
+      try {
+        await postgres.exec(
+          sql`DELETE FROM content.professors WHERE id = ${professor.id}`,
+        );
+      } catch (error) {
+        errors.push(
+          `Error deleting professor ${professor.name} (${professor.id}): ${formatError(error)}`,
+        );
+      }
     }
   };
 };
