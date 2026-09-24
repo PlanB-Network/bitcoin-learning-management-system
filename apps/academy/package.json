@@ -3,7 +3,6 @@
     "@blms/constants": "workspace:*",
     "@blms/shared": "workspace:*",
     "@blms/ui": "workspace:*",
-    "@calcom/embed-react": "^1.5.3",
     "@hookform/resolvers": "^5.2.2",
     "@react-hooks-library/core": "^0.6.2",
     "@stripe/react-stripe-js": "^5.6.0",

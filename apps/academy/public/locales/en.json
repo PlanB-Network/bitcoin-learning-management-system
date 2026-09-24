@@ -125,13 +125,14 @@
   "becomeTeacher": {
     "activeBitcoinLearners": "Active Bitcoin learners",
     "bitcoinOnly": "Bitcoin-only",
-    "bookCall": "Book a 30-min call to become a teacher",
-    "description": "If you’re a passionate Bitcoiner who loves teaching and wants to make a real impact in your local community, you can host your own course on our learning platform.",
+    "description": "If you’re a passionate Bitcoiner who loves teaching, you can propose your own Bitcoin course through our open-source GitHub repository.",
     "enhanceExperience": "<0>Enhance your students’ learning experience</0> with the platform tools",
     "globalReach": "Global reach",
-    "hostOwnCourse": "<0>Host your own course</0>, online or in-person",
+    "hostOwnCourse": "<0>Publish your own self-paced course</0> on Plan ₿ Academy",
     "inspireLearners": "Inspire a community of learners",
     "joinMission": "<0>Join the mission</0> as a true Bitcoin educator",
+    "liveClassProposalsPaused": "We are not accepting proposals for live classes at the moment.",
+    "proposeCourse": "Learn how to propose your course on GitHub",
     "superiorAmount": ">{{amount}}",
     "teachWhatYouLove": "<0>Teach what you love</0>",
     "title": "Teach Bitcoin and inspire others"
