@@ -66,6 +66,8 @@ export interface S3Config {
   endpoint: string;
   accessKey: string;
   secretKey: string;
+  /** Path-style addressing (bucket in path, not subdomain) — required for MinIO and most self-hosted S3. */
+  forcePathStyle: boolean;
 }
 
 export interface SwissBitcoinPayConfig {
