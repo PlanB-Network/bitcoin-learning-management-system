@@ -158,7 +158,9 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
     }
 
     if (result && parsedEvent.tags && parsedEvent.tags?.length > 0) {
-      const lowercaseTags = parsedEvent.tags.map((tag) => tag.toLowerCase());
+      const lowercaseTags = parsedEvent.tags
+        .map((tag) => tag.toLowerCase())
+        .sort();
 
       await transaction`
         DELETE FROM content.event_tags WHERE event_id = ${result.id}
