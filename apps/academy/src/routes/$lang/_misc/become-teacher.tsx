@@ -1,7 +1,5 @@
 import { Button } from '@blms/ui';
-import { getCalApi } from '@calcom/embed-react';
-import { createFileRoute } from '@tanstack/react-router';
-import { useEffect } from 'react';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { Trans, useTranslation } from 'react-i18next';
 import type { IconType } from 'react-icons/lib';
 import {
@@ -65,7 +63,12 @@ function BecomeTeacher() {
           subtitle={t('becomeTeacher.globalReach')}
         />
       </div>
-      <CalComButton />
+      <div className="flex flex-col items-center gap-4 mt-10 md:mt-14">
+        <p className="body-base text-center text-neutral-700">
+          {t('becomeTeacher.liveClassProposalsPaused')}
+        </p>
+        <CourseProposalButton />
+      </div>
     </PageLayout>
   );
 }
@@ -106,37 +109,19 @@ const InfoBox = ({ icon, title, subtitle }: InfoBoxProps) => {
   );
 };
 
-const CalComButton = () => {
+const CourseProposalButton = () => {
   const { t } = useTranslation();
   const isMobile = useSmaller('md') || window.innerWidth < 768;
 
-  useEffect(() => {
-    (async () => {
-      const cal = await getCalApi({
-        namespace: 'become-a-teacher',
-        embedJsUrl: 'https://cal.planb.network/embed/embed.js',
-      });
-      cal('ui', {
-        theme: 'light',
-        cssVarsPerTheme: {
-          light: { 'cal-brand': '#ff5e00' },
-          dark: { 'cal-brand': '#F7931A' },
-        },
-        hideEventTypeDetails: false,
-        layout: 'month_view',
-      });
-    })();
-  }, []);
   return (
     <Button
-      data-cal-namespace="become-a-teacher"
-      data-cal-link="asi0/become-a-teacher"
-      data-cal-origin="https://cal.planb.network"
-      data-cal-config='{"layout":"month_view","theme":"light"}'
+      asChild
       size={isMobile ? 'm' : 'l'}
-      className="mt-10 md:mt-14 mx-auto text-wrap! max-w-full"
+      className="text-wrap! max-w-full"
     >
-      {t('becomeTeacher.bookCall')}
+      <Link to="/tutorials/contribution/content/contribution-tutorials-4d142a6a-9127-4ffb-9e0a-5aba29f169e2">
+        {t('becomeTeacher.proposeCourse')}
+      </Link>
     </Button>
   );
 };
