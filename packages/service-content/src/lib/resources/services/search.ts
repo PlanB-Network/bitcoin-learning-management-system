@@ -8,6 +8,10 @@ interface SearchInput {
 
   surroundingWords: number;
 
+  // Full documents carry the whole chapter text (paid courses included):
+  // only server-side callers may ask for it.
+  includeBody?: boolean;
+
   // Pagination
   limit: number;
   cursor: number;
@@ -134,8 +138,9 @@ export const createSearch = ({ typesense }: Dependencies) => {
     console.log('Search filter:', filter);
 
     return typesense.collections<Searchable>('searchable').documents().search({
+      ...(search.includeBody ? {} : { exclude_fields: 'body' }),
       filter_by: filter,
-      highlight_affix_num_tokens: search.surroundingWords,
+      highlight_affix_num_tokens: Math.min(search.surroundingWords, 50),
       limit: search.limit,
       page: search.cursor,
       prioritize_exact_match: true,

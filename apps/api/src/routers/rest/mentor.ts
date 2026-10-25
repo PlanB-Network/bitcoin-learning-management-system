@@ -1,5 +1,9 @@
 import { sql } from '@blms/database';
-import { createGetCourseChapter, createSearch } from '@blms/service-content';
+import {
+  createCheckChapterAccess,
+  createGetCourseChapter,
+  createSearch,
+} from '@blms/service-content';
 import type { Router } from 'express';
 
 import type { Dependencies } from '#src/dependencies.js';
@@ -106,20 +110,27 @@ export const createRestMentorRoutes = (
           content: row.content,
         }));
 
-      // Fetch current chapter content if chapterId is provided
+      // Fetch current chapter content if chapterId is provided. Its text goes
+      // into the prompt: same paywall as content.getCourseChapter.
       let currentChapterContext = '';
       let currentChapterTitle = '';
       if (chapterId) {
         try {
-          const getCourseChapter = createGetCourseChapter({
-            ...dependencies,
-            log: console.log,
-          });
-          const chapter = await getCourseChapter(chapterId, language);
-          if (chapter) {
-            currentChapterTitle = chapter.title || '';
-            const chapterContent = chapter.rawContent || '';
-            currentChapterContext = chapterContent.slice(0, 3000);
+          const access = await createCheckChapterAccess(dependencies)(
+            chapterId,
+            uid,
+          );
+          if (access.allowed) {
+            const getCourseChapter = createGetCourseChapter({
+              ...dependencies,
+              log: console.log,
+            });
+            const chapter = await getCourseChapter(chapterId, language);
+            if (chapter) {
+              currentChapterTitle = chapter.title || '';
+              const chapterContent = chapter.rawContent || '';
+              currentChapterContext = chapterContent.slice(0, 3000);
+            }
           }
         } catch {
           console.warn(`[mentor] Chapter ${chapterId} not found`);
@@ -134,6 +145,7 @@ export const createRestMentorRoutes = (
         categories: ['courses'],
         limit: 5,
         surroundingWords: 20,
+        includeBody: true,
         cursor: 1,
       });
 

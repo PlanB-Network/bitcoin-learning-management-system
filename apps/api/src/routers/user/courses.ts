@@ -353,6 +353,7 @@ const getPaymentProcedure = studentProcedure
   .query(({ ctx, input }) =>
     createGetPayment(ctx.dependencies)({
       paymentId: input.paymentId,
+      uid: ctx.user.uid,
     }),
   );
 
