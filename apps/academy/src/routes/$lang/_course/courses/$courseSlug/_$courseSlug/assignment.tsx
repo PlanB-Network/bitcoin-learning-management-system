@@ -1,4 +1,3 @@
-import { formatNameForURL } from '@blms/shared';
 import type { CourseAssignment } from '@blms/types';
 import {
   Alert,
@@ -84,7 +83,6 @@ interface InfoRowProps {
 function Assignment() {
   const { t } = useTranslation();
   const params = Route.useParams();
-  const { user } = useContext(AppContext);
   const { courses } = useContext(AppContext);
 
   const { course } = useContext(CourseContext);
@@ -272,20 +270,15 @@ function Assignment() {
         return;
       }
 
-      const renamedFile = new File(
-        [file],
-        `${formatNameForURL(affectedAssignment?.name || '')}_${formatNameForURL(user?.username || '')}.pdf`,
-        { type: file.type },
-      );
-
+      // The server names the stored file after the student's assignment
       const formData = new FormData();
-      formData.append('file', renamedFile);
+      formData.append('file', file);
 
       setIsUploading(true);
 
       try {
         const response = await fetch(
-          `/api/course-assignments/submit/${courseId}/${renamedFile.name}`,
+          `/api/course-assignments/submit/${courseId}`,
           {
             body: formData,
             method: 'POST',

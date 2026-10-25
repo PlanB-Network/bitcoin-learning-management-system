@@ -1297,6 +1297,7 @@
           "gradesPublished": "The grades are published.",
           "missingGradesDescription": "If grades are published, those missing grades will be replaced by 0/100.",
           "missingGradesTitle": "There are still {{count}} grades missing!",
+          "openSubmission": "Open the submitted work",
           "publishAllGrades": "Publish all grades",
           "studentDisplayName": "Student (Display name)",
           "title": "Assignment grades"

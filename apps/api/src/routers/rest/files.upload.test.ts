@@ -5,11 +5,22 @@ import type { Server } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import type { Readable } from 'node:stream';
 
+import { createPostgresClient } from '@blms/database';
 import express, { Router } from 'express';
 
 import type { Dependencies } from '#src/dependencies.js';
 
 import { createRestFilesRoutes } from './files.js';
+
+// Initialise the module-level `sql` helper. No connection is opened: the fake
+// client below never executes a query.
+createPostgresClient({
+  database: 'test',
+  host: '127.0.0.1',
+  password: 'test',
+  port: 1,
+  username: 'test',
+});
 
 const startApp = async () => {
   const s3 = {
@@ -20,8 +31,12 @@ const startApp = async () => {
     },
   };
 
+  // The caller owns career profile `profile-1`, the target of the CV uploads
+  const postgres = { exec: async () => [{ id: 'profile-1' }] };
+
   const dependencies = {
     config: { opentimestamps: { armoredKey: '' } },
+    postgres,
     s3,
   } as unknown as Dependencies;
 
