@@ -479,6 +479,32 @@ const OnlyOfficeSlideEditorInner = forwardRef<
             absoluteFileUrl = `${protocol}//${host}${absoluteFileUrl}`;
           }
 
+          // The API only accepts saves through a callback URL carrying a token
+          // it issued for this slide
+          const callbackTokenResponse = await fetch(
+            '/api/translation-downloads/pptx-callback-token',
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                courseId,
+                language,
+                partId,
+                chapterId,
+                slideId,
+              }),
+              credentials: 'include',
+            },
+          );
+          if (!callbackTokenResponse.ok) {
+            console.error('Failed to get the OnlyOffice callback token');
+            setLoadingState('error');
+            return;
+          }
+          const { token: callbackToken } = await callbackTokenResponse.json();
+
           // Generate session-based document key with timestamp to avoid conflicts
           // Each session gets a unique key to prevent version conflicts
           const sessionKey = `${courseId}-${partId}-${chapterId}-${slideId}-${language}`;
@@ -575,7 +601,7 @@ const OnlyOfficeSlideEditorInner = forwardRef<
             editorConfig: {
               mode,
               lang: 'en',
-              callbackUrl: `${window.location.protocol}//${apiHost}/api/translation-downloads/pptx-callback?courseId=${courseId}&partId=${partId}&chapterId=${chapterId}&slideId=${slideId}&language=${language}&fileName=${fileName}`,
+              callbackUrl: `${window.location.protocol}//${apiHost}/api/translation-downloads/pptx-callback?token=${encodeURIComponent(callbackToken)}`,
               coEditing: {
                 mode: 'fast',
                 change: false,
