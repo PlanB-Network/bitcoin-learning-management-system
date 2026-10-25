@@ -111,6 +111,7 @@ export const stripe: StripeConfig = {
 
 export const swissBitcoinPay: SwissBitcoinPayConfig = {
   apiKey: getenv('SBP_API_KEY', null),
+  hmacSecret: getenv('SBP_HMAC_SECRET', null),
   proxyUrl: getenv('PUBLIC_PROXY_URL', null),
 };
 

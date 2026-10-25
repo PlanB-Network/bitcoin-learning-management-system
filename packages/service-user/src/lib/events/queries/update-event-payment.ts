@@ -23,7 +23,7 @@ export const updateEventPaymentQuery = ({
       SET payment_status = 'expired'
       ${intentId ? sql`, stripe_payment_intent = ${intentId}` : sql``}
       ${stripeInvoiceId ? sql`, stripe_invoice_id = ${stripeInvoiceId}` : sql``}
-      WHERE payment_id = ${id}
+      WHERE payment_id = ${id} AND payment_status = 'pending'
       RETURNING event_id, uid;
     `;
   }
@@ -34,7 +34,7 @@ export const updateEventPaymentQuery = ({
         SET payment_status = 'paid'
         ${intentId ? sql`, stripe_payment_intent = ${intentId}` : sql``}
         ${stripeInvoiceId ? sql`, stripe_invoice_id = ${stripeInvoiceId}` : sql``}
-        WHERE payment_id = ${id}
+        WHERE payment_id = ${id} AND payment_status <> 'paid'
       RETURNING event_id, uid;
     `;
   }

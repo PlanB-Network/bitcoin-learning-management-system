@@ -208,7 +208,7 @@ export const createUpdateGeneralPayment = ({
 }: Pick<Dependencies, 'postgres'>) => {
   return async (options: Options2) => {
     const query = updateGeneralPaymentQuery(options);
-    await postgres.exec(query);
+    return postgres.exec(query).then(firstRow);
   };
 };
 

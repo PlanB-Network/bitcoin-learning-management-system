@@ -70,6 +70,11 @@ export interface S3Config {
 
 export interface SwissBitcoinPayConfig {
   apiKey: string | null;
+  /**
+   * Secret key (HMAC) from the SwissBitcoinPay dashboard. When set, webhook
+   * requests must carry a valid `sbp-sig` header.
+   */
+  hmacSecret: string | null;
   proxyUrl: string | null;
 }
 
