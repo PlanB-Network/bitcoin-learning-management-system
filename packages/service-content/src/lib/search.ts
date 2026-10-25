@@ -50,22 +50,25 @@ const getCoursePartsQuery = () => sql<Searchable<Language>[]>`
 `;
 
 // Category - Course
+// The index is searched by anyone: the text of a chapter is only indexed when
+// its course is free. Chapters of paid courses are found by their title.
 const getCourseChaptersQuery = () => sql<Searchable<Language>[]>`
   SELECT
     'course_chapter' as type,
-    LOWER(language) as language,
+    LOWER(ch.language) as language,
     CONCAT(
       '/',
-      language,
+      ch.language,
       '/courses/',
-      course_id,
+      ch.course_id,
       '/',
-      chapter_id
+      ch.chapter_id
     ) as link,
-    title,
-    raw_content as body
-  FROM content.course_chapters_localized
-  WHERE LENGTH(raw_content) > 0
+    ch.title,
+    CASE WHEN c.requires_payment THEN '' ELSE ch.raw_content END as body
+  FROM content.course_chapters_localized ch
+  JOIN content.courses c ON c.id = ch.course_id
+  WHERE LENGTH(ch.raw_content) > 0
 `;
 
 // Category - Professor

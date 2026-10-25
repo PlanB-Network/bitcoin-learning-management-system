@@ -7,11 +7,13 @@ import { getPaymentQuery, getPaymentsQuery } from '../queries/get-payment.js';
 export const createGetPayment = ({ postgres }: Dependencies) => {
   return async ({
     paymentId,
+    uid,
   }: {
     paymentId: string;
+    uid: string;
   }): Promise<CoursePaymentLight> => {
     const payment = await postgres
-      .exec(getPaymentQuery(paymentId))
+      .exec(getPaymentQuery(paymentId, uid))
       .then(firstRow);
 
     if (!payment) {
