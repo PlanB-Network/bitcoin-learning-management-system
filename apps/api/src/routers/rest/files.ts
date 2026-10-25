@@ -33,6 +33,22 @@ const zipStream = (zip: JSZip) => {
   });
 };
 
+// formidable calls the parse callback from a stream event, outside of any
+// try/catch: an exception thrown there is uncaught and stops the process.
+// Turn it into a rejection of the upload promise (then a 4xx/5xx response).
+const rejectOnThrow = <A extends unknown[]>(
+  reject: (error: unknown) => void,
+  callback: (...args: A) => void,
+) => {
+  return (...args: A) => {
+    try {
+      callback(...args);
+    } catch (error) {
+      reject(error);
+    }
+  };
+};
+
 const receiveImage = (
   req: Request,
   resizeOptions: ResizeOptions | null = defaultResizeOptions,
@@ -50,32 +66,35 @@ const receiveImage = (
     });
 
     try {
-      form.parse<never, 'file'>(req, (err, _fields, files) => {
-        if (err) {
-          throw new InternalServerError('Failed to parse form data');
-        }
+      form.parse<never, 'file'>(
+        req,
+        rejectOnThrow(reject, (err, _fields, files) => {
+          if (err) {
+            throw new BadRequest('Failed to parse form data');
+          }
 
-        if (files.file?.length !== 1) {
-          throw new BadRequest('Invalid number of files');
-        }
+          if (files.file?.length !== 1) {
+            throw new BadRequest('Invalid number of files');
+          }
 
-        const [file] = files.file;
+          const [file] = files.file;
 
-        // Sanity check
-        if (!req.session.uid) {
-          throw new InternalServerError('Missing session uid');
-        }
+          // Sanity check
+          if (!req.session.uid) {
+            throw new InternalServerError('Missing session uid');
+          }
 
-        if (!file.mimetype) {
-          throw new InternalServerError('Missing file mimetype');
-        }
+          if (!file.mimetype) {
+            throw new InternalServerError('Missing file mimetype');
+          }
 
-        if (!file.originalFilename) {
-          throw new InternalServerError('Missing file name');
-        }
+          if (!file.originalFilename) {
+            throw new InternalServerError('Missing file name');
+          }
 
-        resolve(sharpStream);
-      });
+          resolve(sharpStream);
+        }),
+      );
     } catch (error) {
       req.log('Error:', error);
       reject(error);
@@ -90,53 +109,56 @@ const receivePdf = (req: Request) => {
     });
 
     try {
-      form.parse<never, 'file'>(req, (err, _, files) => {
-        if (err) {
-          throw new InternalServerError('Failed to parse form data');
-        }
+      form.parse<never, 'file'>(
+        req,
+        rejectOnThrow(reject, (err, _, files) => {
+          if (err) {
+            throw new BadRequest('Failed to parse form data');
+          }
 
-        if (files.file?.length !== 1) {
-          throw new BadRequest('Invalid number of files');
-        }
+          if (files.file?.length !== 1) {
+            throw new BadRequest('Invalid number of files');
+          }
 
-        const [file] = files.file;
+          const [file] = files.file;
 
-        // Sanity check
-        if (!req.session.uid) {
-          throw new InternalServerError('Missing session uid');
-        }
+          // Sanity check
+          if (!req.session.uid) {
+            throw new InternalServerError('Missing session uid');
+          }
 
-        if (!file.mimetype) {
-          throw new InternalServerError('Missing file mimetype');
-        }
+          if (!file.mimetype) {
+            throw new InternalServerError('Missing file mimetype');
+          }
 
-        if (file.mimetype !== 'application/pdf') {
-          throw new BadRequest('Invalid file type');
-        }
+          if (file.mimetype !== 'application/pdf') {
+            throw new BadRequest('Invalid file type');
+          }
 
-        if (!file.originalFilename) {
-          throw new InternalServerError('Missing file name');
-        }
+          if (!file.originalFilename) {
+            throw new InternalServerError('Missing file name');
+          }
 
-        // Size limit
-        if (file.size > 10 * 1024 * 1024) {
-          throw new BadRequest('File too large');
-        }
+          // Size limit
+          if (file.size > 10 * 1024 * 1024) {
+            throw new BadRequest('File too large');
+          }
 
-        // Validate file is within the OS temp directory (formidable default)
-        const tempDir = os.tmpdir();
-        let resolvedPath: string;
-        try {
-          resolvedPath = fs.realpathSync(path.resolve(file.filepath));
-        } catch (_e) {
-          throw new BadRequest('Invalid file path');
-        }
-        if (!resolvedPath.startsWith(path.resolve(tempDir))) {
-          throw new BadRequest('Disallowed file path');
-        }
-        const fileStream = fs.createReadStream(resolvedPath);
-        resolve(fileStream);
-      });
+          // Validate file is within the OS temp directory (formidable default)
+          const tempDir = os.tmpdir();
+          let resolvedPath: string;
+          try {
+            resolvedPath = fs.realpathSync(path.resolve(file.filepath));
+          } catch (_e) {
+            throw new BadRequest('Invalid file path');
+          }
+          if (!resolvedPath.startsWith(path.resolve(tempDir))) {
+            throw new BadRequest('Disallowed file path');
+          }
+          const fileStream = fs.createReadStream(resolvedPath);
+          resolve(fileStream);
+        }),
+      );
     } catch (error) {
       req.log('Error:', error);
       reject(error);
@@ -155,54 +177,57 @@ const receiveGenericFile = (req: Request) => {
     });
 
     try {
-      form.parse<never, 'file'>(req, (err, _, files) => {
-        if (err) {
-          throw new InternalServerError('Failed to parse form data');
-        }
+      form.parse<never, 'file'>(
+        req,
+        rejectOnThrow(reject, (err, _, files) => {
+          if (err) {
+            throw new BadRequest('Failed to parse form data');
+          }
 
-        if (files.file?.length !== 1) {
-          throw new BadRequest('Invalid number of files');
-        }
+          if (files.file?.length !== 1) {
+            throw new BadRequest('Invalid number of files');
+          }
 
-        const [file] = files.file;
+          const [file] = files.file;
 
-        // Sanity check
-        if (!req.session.uid) {
-          throw new InternalServerError('Missing session uid');
-        }
+          // Sanity check
+          if (!req.session.uid) {
+            throw new InternalServerError('Missing session uid');
+          }
 
-        if (!file.mimetype) {
-          throw new InternalServerError('Missing file mimetype');
-        }
+          if (!file.mimetype) {
+            throw new InternalServerError('Missing file mimetype');
+          }
 
-        if (!file.originalFilename) {
-          throw new InternalServerError('Missing file name');
-        }
+          if (!file.originalFilename) {
+            throw new InternalServerError('Missing file name');
+          }
 
-        // Size limit (50MB)
-        if (file.size > 50 * 1024 * 1024) {
-          throw new BadRequest('File too large');
-        }
+          // Size limit (50MB)
+          if (file.size > 50 * 1024 * 1024) {
+            throw new BadRequest('File too large');
+          }
 
-        // Validate file is within the OS temp directory (formidable default)
-        const tempDir = os.tmpdir();
-        let resolvedPath: string;
-        try {
-          resolvedPath = fs.realpathSync(path.resolve(file.filepath));
-        } catch (_e) {
-          throw new BadRequest('Invalid file path');
-        }
-        if (!resolvedPath.startsWith(path.resolve(tempDir))) {
-          throw new BadRequest('Disallowed file path');
-        }
-        const fileStream = fs.createReadStream(resolvedPath);
+          // Validate file is within the OS temp directory (formidable default)
+          const tempDir = os.tmpdir();
+          let resolvedPath: string;
+          try {
+            resolvedPath = fs.realpathSync(path.resolve(file.filepath));
+          } catch (_e) {
+            throw new BadRequest('Invalid file path');
+          }
+          if (!resolvedPath.startsWith(path.resolve(tempDir))) {
+            throw new BadRequest('Disallowed file path');
+          }
+          const fileStream = fs.createReadStream(resolvedPath);
 
-        resolve({
-          stream: fileStream,
-          mimetype: file.mimetype,
-          originalFilename: file.originalFilename,
-        });
-      });
+          resolve({
+            stream: fileStream,
+            mimetype: file.mimetype,
+            originalFilename: file.originalFilename,
+          });
+        }),
+      );
     } catch (error) {
       req.log('Error:', error);
       reject(error);
