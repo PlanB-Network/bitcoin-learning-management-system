@@ -5,6 +5,7 @@ import { hash } from 'argon2';
 import type { Dependencies } from '../../../dependencies.js';
 import { changePasswordQuery } from '../queries/change-password.js';
 import { getUserByEmailQuery } from '../queries/get-user.js';
+import { revokeSessionsQuery } from '../queries/revoke-sessions.js';
 import { consumeTokenQuery, createTokenQuery } from '../queries/token.js';
 import { createSendEmail } from './email.js';
 
@@ -73,7 +74,12 @@ export const createPasswordReset = ({ postgres }: Dependencies) => {
         .then(rejectOnEmpty),
       hash(newPassword),
     ])
-      .then(([{ uid }, hash]) => postgres.exec(changePasswordQuery(uid, hash)))
+      .then(async ([{ uid }, hash]) => {
+        await postgres.exec(changePasswordQuery(uid, hash));
+        // A reset means the account may be in someone else's hands: log out
+        // every session
+        await postgres.exec(revokeSessionsQuery(uid));
+      })
       .then(() => ({ success: true }))
       .catch((error) => {
         if (error instanceof EmptyResultError) {

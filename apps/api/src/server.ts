@@ -5,6 +5,10 @@ import { createExpressMiddleware } from '@trpc/server/adapters/express';
 import express, { type ErrorRequestHandler, json, Router } from 'express';
 import { requestLogging } from './config.js';
 import type { Dependencies } from './dependencies.js';
+import {
+  createRequestLogger,
+  genRequestId,
+} from './middlewares/request-logger.js';
 import { createCookieSessionMiddleware } from './middlewares/session.js';
 import { createRestRouter } from './routers/rest/index.js';
 import { trpcRouter } from './routers/trpc-router.js';
@@ -54,8 +58,6 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
 
   app.use(createCookieSessionMiddleware(dependencies));
 
-  const genRequestId = () => crypto.randomUUID().replace(/-/g, '').slice(0, 16);
-
   const handlePayloadTooLarge: ErrorRequestHandler = (
     error,
     req,
@@ -82,45 +84,7 @@ export const startServer = async (dependencies: Dependencies, port = 3000) => {
     });
   };
 
-  // Basic request logger + Set request ID
-  app.use((req, res, next) => {
-    const path = req.path;
-    const method = req.method;
-    const sessionId = req.session?.id || '';
-    const uid = req.session?.uid || '';
-    const ip =
-      req.header('cf-connecting-ip') ||
-      req.header('x-real-ip') ||
-      req.header('x-forwarded-for') ||
-      req.ip;
-
-    req.id ||= req.header('x-request-id') || genRequestId();
-    req.log = (...a: any[]) =>
-      console.log(
-        `[request] ${req.id}${requestLogging ? `|ip=${ip}${uid && `|session=${sessionId}|uid=${uid}`}` : ''}`,
-        ...a,
-      );
-
-    if (!path.includes('getUserNotifications')) {
-      req.log(`${method} ${path}`);
-    }
-
-    // Log response time
-    const start = process.hrtime();
-    res.on('finish', () => {
-      const [s, ns] = process.hrtime(start);
-      const len = res.get('Content-Length');
-      const status = res.statusCode;
-
-      if (!path.includes('getUserNotifications')) {
-        req.log(
-          `${method} ${path} took ${s * 1000 + ns / 1e6}ms (${status})${len ? `, ${len} bytes` : ''}`,
-        );
-      }
-    });
-
-    next();
-  });
+  app.use(createRequestLogger(requestLogging));
 
   // Register tRPC routes
   router.use(

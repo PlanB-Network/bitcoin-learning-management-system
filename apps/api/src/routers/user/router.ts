@@ -149,6 +149,7 @@ export const userRouter = createTRPCRouter({
       createChangePassword(ctx.dependencies)({
         newPassword: input.newPassword,
         oldPassword: input.oldPassword,
+        sessionId: ctx.sessionId,
         uid: ctx.user.uid,
       }),
     ),

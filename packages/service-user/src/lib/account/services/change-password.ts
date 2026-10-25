@@ -7,15 +7,18 @@ import { hash, verify as verifyHash } from 'argon2';
 import type { Dependencies } from '../../../dependencies.js';
 import { changePasswordQuery } from '../queries/change-password.js';
 import { getUserByIdQuery } from '../queries/get-user.js';
+import { revokeSessionsQuery } from '../queries/revoke-sessions.js';
 
 interface Options {
   uid: string;
   oldPassword: string;
   newPassword: string;
+  /** The session changing the password: it stays logged in */
+  sessionId?: string;
 }
 
 export const createChangePassword = ({ postgres }: Dependencies) => {
-  return async ({ uid, oldPassword, newPassword }: Options) => {
+  return async ({ uid, oldPassword, newPassword, sessionId }: Options) => {
     const user = await postgres.exec(getUserByIdQuery(uid)).then(firstRow);
 
     if (!user) {
@@ -41,5 +44,7 @@ export const createChangePassword = ({ postgres }: Dependencies) => {
 
     const hashedPassword = await hash(newPassword);
     await postgres.exec(changePasswordQuery(uid, hashedPassword));
+    // Whoever knew the old password must not stay logged in
+    await postgres.exec(revokeSessionsQuery(uid, sessionId));
   };
 };
