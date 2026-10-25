@@ -50,6 +50,7 @@
     "clear": "rm -rf ./dist && rm -f *.tsbuildinfo",
     "dev": "tsx --env-file=../../.env --conditions=development --watch src/index.ts",
     "lint": "biome check .'",
+    "test": "mocha src/**/*.test.ts",
     "trace-performance": "npx tsc --extendedDiagnostics --noEmit -p tsconfig.trpc.json | head -n 12 > performance.log",
     "type-check": "tsc --build"
   },
