@@ -1,19 +1,21 @@
 import { createCalculateEventSeats } from '@blms/service-content';
 import {
-  createUpdateCoursePayment,
+  createHandleSbpWebhook,
   createUpdateCoursePaymentInvoiceId,
   createUpdateCoursePaymentStatus,
-  createUpdateEventPayment,
   createUpdateEventPaymentInvoiceId,
   createUpdateEventPaymentStatus,
-  createUpdateGeneralPayment,
   createUpdateGeneralPaymentInvoiceId,
   createUpdateGeneralPaymentStatus,
+  isValidSbpSignature,
+  type SbpPaymentType,
 } from '@blms/service-user';
-import type { SwissBitcoinPayCheckout } from '@blms/types';
 import type { Router } from 'express';
+import type Stripe from 'stripe';
 
 import type { Dependencies } from '#src/dependencies.js';
+
+const sbpWebhookTypes: SbpPaymentType[] = ['courses', 'events', 'general'];
 
 export const createRestPaymentRoutes = (
   dependencies: Dependencies,
@@ -21,139 +23,80 @@ export const createRestPaymentRoutes = (
 ) => {
   const { stripe, config } = dependencies;
 
-  const updateCoursePayment = createUpdateCoursePayment(dependencies);
-
-  // Course payments webhook for SwissBitcoinPay only
-  router.post(
-    '/users/courses/payment/webhooks',
-    async (req, res): Promise<void> => {
-      try {
-        const status = req.body as SwissBitcoinPayCheckout;
-
-        if (typeof status.id !== 'string') {
-          res.status(400).json({ message: 'Invalid or missing id' });
-          return;
-        }
-
-        if (status.isPaid === null || status.isExpired === null) {
-          res.status(400).json({
-            message:
-              'Invalid isPaid or isExpired values. Must be true or false.',
-          });
-          return;
-        }
-
-        const coursePayment = await updateCoursePayment(status);
-
-        res.json({
-          coursePayment,
-          message: 'success',
-        });
-      } catch (error) {
-        req.log('Error in courses webhook', error);
-      }
-    },
-  );
-
-  const updateEventPayment = createUpdateEventPayment(dependencies);
+  const handleSbpWebhook = createHandleSbpWebhook(dependencies);
   const calculateEventSeats = createCalculateEventSeats(dependencies);
 
-  // Events payments webhook for SwissBitcoinPay only
-  router.post(
-    '/users/events/payment/webhooks',
-    async (req, res): Promise<void> => {
-      try {
-        const status = req.body as SwissBitcoinPayCheckout;
+  // SwissBitcoinPay webhooks (courses, events and general payments).
+  // The body is untrusted: only the checkout id is read from it, the payment
+  // status and amount are fetched back from SwissBitcoinPay.
+  for (const type of sbpWebhookTypes) {
+    router.post(
+      `/users/${type}/payment/webhooks`,
+      async (req, res): Promise<void> => {
+        const { hmacSecret } = config.swissBitcoinPay;
+        if (
+          hmacSecret &&
+          !isValidSbpSignature(req.rawBody, req.header('sbp-sig'), hmacSecret)
+        ) {
+          req.log(`SBP ${type} webhook refused: invalid signature`);
+          res.sendStatus(401);
+          return;
+        }
 
-        if (typeof status.id !== 'string') {
+        const id = req.body?.id;
+        if (typeof id !== 'string' || !/^[\w-]{1,128}$/.test(id)) {
           res.status(400).json({ message: 'Invalid or missing id' });
           return;
         }
 
-        if (status.isPaid === null || status.isExpired === null) {
-          res.status(400).json({
-            message:
-              'Invalid isPaid or isExpired values. Must be true or false.',
-          });
-          return;
+        try {
+          const result = await handleSbpWebhook(type, id);
+          req.log(`SBP ${type} webhook`, id, result);
+
+          if (type === 'events' && result.outcome === 'paid') {
+            await calculateEventSeats();
+          }
+
+          // Same answer whatever the outcome, so callers cannot probe which
+          // payment ids exist
+          res.json({ message: 'success' });
+        } catch (error) {
+          req.log(`Error in SBP ${type} webhook`, error);
+          res.sendStatus(500);
         }
-
-        const result = await updateEventPayment(status);
-
-        if (status.isPaid === true) {
-          await calculateEventSeats();
-        }
-
-        res.json({
-          message: 'success',
-          result,
-        });
-      } catch (error) {
-        req.log('Error in events webhook', error);
-      }
-    },
-  );
-
-  const updateGeneralPayment = createUpdateGeneralPayment(dependencies);
-
-  // General payments webhook for SwissBitcoinPay only
-  router.post(
-    '/users/general/payment/webhooks',
-    async (req, res): Promise<void> => {
-      console.log('======== Received general payment webhook ========');
-      try {
-        const status = req.body as SwissBitcoinPayCheckout;
-
-        if (typeof status.id !== 'string') {
-          res.status(400).json({ message: 'Invalid or missing id' });
-          return;
-        }
-
-        if (status.isPaid === null || status.isExpired === null) {
-          res.status(400).json({
-            message:
-              'Invalid isPaid or isExpired values. Must be true or false.',
-          });
-          return;
-        }
-
-        const result = await updateGeneralPayment(status);
-
-        res.json({
-          message: 'success',
-          result,
-        });
-      } catch (error) {
-        req.log('Error in events webhook', error);
-      }
-    },
-  );
+      },
+    );
+  }
 
   router.post('/webhooks/stripe', async (req, res): Promise<void> => {
     try {
-      let event = req.body;
+      // Only signed events are processed: without the endpoint secret the
+      // webhook cannot be verified, so it is refused
+      const { endpointSecret } = config.stripe;
+      if (!stripe || !endpointSecret) {
+        req.log(
+          'Stripe webhook refused: Stripe or STRIPE_ENDPOINT_SECRET is not configured',
+        );
+        res.sendStatus(503);
+        return;
+      }
 
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      if (config.stripe.endpointSecret) {
-        const signature = req.headers['stripe-signature'] as string;
-
-        try {
-          if (!stripe) {
-            throw new Error('Stripe instance is not available');
-          }
-
-          event = stripe.webhooks.constructEvent(
-            // @ts-expect-error TODO: fix this?
-            req.rawBody,
-            signature,
-            config.stripe.endpointSecret,
-          );
-        } catch (error: any) {
-          req.log('Webhook signature verification failed.', error.message);
-          res.sendStatus(400);
-          return;
-        }
+      let event: Stripe.Event;
+      try {
+        event = stripe.webhooks.constructEvent(
+          req.rawBody ?? '',
+          req.header('stripe-signature') ?? '',
+          endpointSecret,
+        );
+      } catch (error) {
+        req.log(
+          'Webhook signature verification failed.',
+          error instanceof Error ? error.message : error,
+        );
+        res.sendStatus(400);
+        return;
       }
 
       switch (event.type) {
@@ -187,14 +130,16 @@ export const createRestPaymentRoutes = (
         case 'invoice.paid': {
           req.log('============ Stripe webhook', event.type);
 
-          const invoice = event.data.object;
+          // The payload shape follows the webhook endpoint's API version;
+          // stripe v19's Invoice type no longer declares `payment_intent`
+          const invoice = event.data.object as unknown as {
+            id: string;
+            payment_intent: string;
+            hosted_invoice_url: string;
+          };
           const intentId = invoice.payment_intent;
           const invoiceId = invoice.id;
           const hostedInvoiceUrl = invoice.hosted_invoice_url;
-
-          if (!stripe) {
-            throw new Error('Stripe instance is not available');
-          }
 
           const paymentIntent = await stripe.paymentIntents.retrieve(intentId);
           const product = paymentIntent.metadata.product;

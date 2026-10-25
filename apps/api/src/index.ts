@@ -10,6 +10,8 @@ declare global {
   namespace Express {
     interface Request extends LogContext {
       id: string;
+      /** Raw JSON body, kept for webhook signature checks (see server.ts) */
+      rawBody?: Buffer;
     }
   }
 }

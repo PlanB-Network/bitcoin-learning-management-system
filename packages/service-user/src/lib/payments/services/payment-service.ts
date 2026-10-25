@@ -30,12 +30,11 @@ export async function checkSatsPrice(dollarPrice: number, satsPrice: number) {
   }
 }
 
+/** Product family of a SwissBitcoinPay checkout, also the webhook route segment */
+export type SbpPaymentType = 'courses' | 'events' | 'general';
+
 export const createSbpPayment = (config: SwissBitcoinPayConfig) => {
-  return async (
-    elementId: string,
-    satsPrice: number,
-    type: 'courses' | 'events' | 'general',
-  ) => {
+  return async (elementId: string, satsPrice: number, type: SbpPaymentType) => {
     const ONE_MONTH = 60 * 24 * 30;
 
     const paymentData = {
@@ -76,19 +75,24 @@ export const createSbpPayment = (config: SwissBitcoinPayConfig) => {
 };
 
 /**
- * Pull SwissBitcoinPay checkout status
+ * Pull SwissBitcoinPay checkout status.
+ * Resolves to `null` when SwissBitcoinPay does not know the id (HTTP 404).
  */
-export const createGetSbpCheckout = (ctx: Dependencies) => {
+export const createGetSbpCheckout = (ctx: Pick<Dependencies, 'config'>) => {
   const config = ctx.config.swissBitcoinPay;
 
-  return async (id: string) => {
-    const url = `https://api.swiss-bitcoin-pay.ch/checkout/${id}`;
+  return async (id: string): Promise<SwissBitcoinPayCheckout | null> => {
+    const url = `https://api.swiss-bitcoin-pay.ch/checkout/${encodeURIComponent(id)}`;
     const response = await fetch(url, {
       headers: {
         'api-key': config.apiKey || '',
         'Content-Type': 'application/json',
       },
     });
+
+    if (response.status === 404) {
+      return null;
+    }
 
     // Check if the response is ok (status in the range 200-299).
     if (!response.ok) {

@@ -25,6 +25,8 @@ export const createUpdateEventPayment = ({
         userId: paymentDetails.uid,
       });
     }
+
+    return paymentDetails;
   };
 };
 
