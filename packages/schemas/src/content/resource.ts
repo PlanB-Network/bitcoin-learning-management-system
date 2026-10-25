@@ -36,7 +36,8 @@ export const createResourcePRSchema = z.object({
     .optional(),
   resourceLink: z.string().optional(),
   trailerLink: z.string().optional(),
-  language: z.string(),
+  // Used as a file name in the content repository (`<language>.yml`)
+  language: z.string().regex(/^[a-zA-Z-]{2,10}$/),
   contentLanguage: z.string().optional(),
   coverImage: z
     .object({
