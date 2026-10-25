@@ -23,7 +23,12 @@ export const createUpdateEducatorContent = ({ postgres }: Dependencies) => {
       throw new Error('Not authorized');
     }
 
-    return updateEducatorContentFlow({ postgres }, input);
+    // An author's edit always goes back to moderation, even on published
+    // content: only the admin flows publish.
+    return updateEducatorContentFlow(
+      { postgres },
+      { ...input, status: EducatorContentStatus.Draft },
+    );
   };
 };
 

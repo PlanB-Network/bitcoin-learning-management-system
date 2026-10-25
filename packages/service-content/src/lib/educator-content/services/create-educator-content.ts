@@ -7,13 +7,17 @@ import {
   updateEducatorContentQuery,
 } from '../queries/mutate-educator-content.js';
 
+// Content created by its author is always a draft: only the admin approval
+// flow (createApproveEducatorContent) publishes it.
 export const createCreateEducatorContent = ({ postgres }: Dependencies) => {
   return async (
-    input: Omit<JoinedEducatorContent, 'id' | 'links' | 'files'> & {
+    userInput: Omit<JoinedEducatorContent, 'id' | 'links' | 'files'> & {
       links?: { url: string }[];
       files?: { path: string; name: string; mime_type: string; size: number }[];
     },
   ) => {
+    const input = { ...userInput, status: EducatorContentStatus.Draft };
+
     if (input.originalId) {
       const existingDrafts = await postgres.exec(
         getEducatorContentQuery(

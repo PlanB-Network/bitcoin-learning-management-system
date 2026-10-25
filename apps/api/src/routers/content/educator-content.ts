@@ -60,7 +60,6 @@ export const educatorContentRouter = createTRPCRouter({
         language: z.string(),
         title: z.string(),
         description: z.string().optional(),
-        status: z.enum(EducatorContentStatus).optional(),
         originalId: z.string().optional(),
         license: z.enum(EducatorContentLicense),
         links: z
@@ -91,7 +90,6 @@ export const educatorContentRouter = createTRPCRouter({
         uid: ctx.user.uid,
         cover: input.cover ?? null,
         description: input.description ?? null,
-        status: input.status ?? EducatorContentStatus.Draft,
         originalId: input.originalId ?? null,
       } as any);
     }),
@@ -105,7 +103,6 @@ export const educatorContentRouter = createTRPCRouter({
         language: z.string().optional(),
         title: z.string().optional(),
         description: z.string().optional(),
-        status: z.enum(EducatorContentStatus).optional(),
         license: z.enum(EducatorContentLicense).optional(),
         links: z
           .array(
