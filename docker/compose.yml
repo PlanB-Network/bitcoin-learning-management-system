@@ -1,15 +1,18 @@
+# Each container receives only the variables it reads. Never add `env_file: .env`
+# here: the .env file holds every secret of the stack, and a shared env_file hands
+# all of them to every container, third-party images included. Compose still reads
+# .env to interpolate ${...} in this file; that is separate from container env.
+# A value-less key under `environment:` (e.g. `SESSION_SECRET:`) is passed through
+# from .env, and left out of the container when .env does not set it.
+x-node-environment: &environment
+  DOCKER: true
+  NODE_ENV: production
+  POSTGRES_HOST: postgres
+  POSTGRES_PORT: 5432
+
 x-defaults: &defaults
   restart: always
   init: true
-
-  env_file:
-    - .env
-
-  environment: &environment
-    DOCKER: true
-    NODE_ENV: production
-    POSTGRES_HOST: postgres
-    POSTGRES_PORT: 5432
 
   healthcheck: &healthcheck
     interval: 15s
@@ -25,6 +28,8 @@ x-defaults: &defaults
       tag: '{{.Name}}'
 
 services:
+  # postgres:15.2 reads POSTGRES_USER/POSTGRES_PASSWORD/POSTGRES_DB only to initialise
+  # an empty data directory. On a fresh volume, pass them for the first start only.
   postgres:
     <<: *defaults
     image: postgres:15.2
@@ -42,6 +47,53 @@ services:
       <<: *environment
       HOST: 0.0.0.0
       PORT: 3000
+      # Read by apps/api/src/config.ts and packages/*; passed through from .env.
+      ALLOWED_DOWNLOAD_HOSTNAMES:
+      CDN_PATH:
+      CONVERT_API_SECRET:
+      DATA_REPOSITORY_BRANCH:
+      DATA_REPOSITORY_URL:
+      DOMAIN:
+      DOMAIN_URL:
+      GITHUB_ACCESS_TOKEN:
+      GITHUB_PR_TOKEN:
+      GROQ_API_KEY:
+      LT_BASE_URL:
+      LT_CLIENT_ID:
+      LT_CLIENT_SECRET:
+      LTK_STATIC_TOKEN:
+      ONLYOFFICE_URL:
+      OTS_PGP_KEY_PASSPHRASE:
+      OTS_RPC_PASSWORD:
+      OTS_RPC_URL:
+      OTS_RPC_USER:
+      PLANB_ENVIRONMENT:
+      POSTGRES_DB:
+      POSTGRES_PASSWORD:
+      POSTGRES_USER:
+      PRIVATE_DATA_REPOSITORY_BRANCH:
+      PRIVATE_DATA_REPOSITORY_URL:
+      PROTECT_SYNC_ROUTE:
+      PUBLIC_PROXY_URL:
+      REQUEST_LOGGING:
+      S3_ACCESS_KEY:
+      S3_BUCKET:
+      S3_ENDPOINT:
+      S3_REGION:
+      S3_SECRET_KEY:
+      SBP_API_KEY:
+      SENDGRID_EMAIL:
+      SENDGRID_ENABLE:
+      SENDGRID_KEY:
+      SESSION_COOKIE_NAME:
+      SESSION_MAX_AGE:
+      SESSION_SECRET:
+      STRIPE_ENDPOINT_SECRET:
+      STRIPE_SECRET:
+      SYNC_PATH:
+      TYPESENSE_API_KEY:
+      TYPESENSE_NODES:
+      VITE_STRIPE_PUBLIC:
     expose:
       - 3000
     volumes:
@@ -199,6 +251,10 @@ services:
       <<: *environment
       POSTGRES_HOST: postgres
       CORESTORE_PATH: /pear-sync-data
+      # Read by pear-sync/peertube-sync.js; passed through from .env.
+      POSTGRES_DB:
+      POSTGRES_PASSWORD:
+      POSTGRES_USER:
 
   # ONLYOFFICE Document Server for rich PPTX editing
   onlyoffice:
