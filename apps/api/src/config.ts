@@ -99,7 +99,12 @@ export const session: SessionConfig = {
   cookieName: getenv('SESSION_COOKIE_NAME', 'session'),
   domain: production ? domain : undefined,
   maxAge: getenv('SESSION_MAX_AGE', 1000 * 60 * 60 * 24 * 7), // 1 week
-  secret: getenv('SESSION_SECRET', 'super secret'),
+  // The secret signs session cookies: with a known default, anyone who learns
+  // a session id can sign a valid cookie for it. Production refuses to start
+  // without it.
+  secret: production
+    ? getenv('SESSION_SECRET')
+    : getenv('SESSION_SECRET', 'super secret'),
   secure: production,
 };
 
