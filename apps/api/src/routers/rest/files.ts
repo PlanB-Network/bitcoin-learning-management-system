@@ -20,6 +20,18 @@ import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest, InternalServerError } from '#src/errors.js';
 import { expressAuthMiddleware } from '#src/middlewares/auth.js';
 
+// Files under /api/files are uploaded by users and served from the
+// application origin. Only these types may be rendered by the browser; any
+// other type (HTML, SVG, XML, JavaScript...) is sent as an opaque download.
+const inlineContentTypes: Record<string, true> = {
+  'application/pdf': true,
+  'audio/mpeg': true,
+  'image/gif': true,
+  'image/jpeg': true,
+  'image/png': true,
+  'image/webp': true,
+};
+
 const defaultResizeOptions: ResizeOptions = {
   height: 200,
   width: 200,
@@ -283,7 +295,11 @@ export const createRestFilesRoutes = async (
 
           return dependencies.s3
             .upload(`contribute/educator-content/${id}`, stream, {
-              contentType: mimetype,
+              // Never store a client-declared type we would not serve as is
+              contentType:
+                inlineContentTypes[mimetype] === true
+                  ? mimetype
+                  : 'application/octet-stream',
             })
             .then(() => id);
         })
@@ -504,17 +520,31 @@ export const createRestFilesRoutes = async (
       }
 
       const head = await dependencies.s3.head(`${dir}/${key}`);
-      if (head.contentType) {
-        res.setHeader('Content-Type', head.contentType);
+      const inline =
+        !!head.contentType && inlineContentTypes[head.contentType] === true;
+
+      res.setHeader(
+        'Content-Type',
+        inline && head.contentType
+          ? head.contentType
+          : 'application/octet-stream',
+      );
+      res.setHeader('X-Content-Type-Options', 'nosniff');
+      // Chrome refuses to open a PDF in its viewer under a sandbox policy;
+      // a PDF served with nosniff cannot run script on this origin anyway.
+      if (head.contentType !== 'application/pdf') {
+        res.setHeader('Content-Security-Policy', "default-src 'none'; sandbox");
       }
 
       const { fileName } = req.query;
-      if (fileName && typeof fileName === 'string') {
-        res.setHeader(
-          'Content-Disposition',
-          `inline; filename="${fileName.replace(/"/g, '')}"`,
-        );
-      }
+      const fileNameParam =
+        typeof fileName === 'string' && fileName
+          ? `; filename*=UTF-8''${encodeURIComponent(fileName)}`
+          : '';
+      res.setHeader(
+        'Content-Disposition',
+        `${inline ? 'inline' : 'attachment'}${fileNameParam}`,
+      );
 
       const stream = await dependencies.s3.getStream(`${dir}/${key}`);
       if (!stream) {
