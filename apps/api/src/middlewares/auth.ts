@@ -5,7 +5,7 @@ import { TRPCError } from '@trpc/server';
 import type { NextFunction, Request, RequestHandler, Response } from 'express';
 
 import type { Dependencies } from '#src/dependencies.js';
-import { Unauthorized } from '#src/errors.js';
+import { Forbidden, Unauthorized } from '#src/errors.js';
 
 import { createMiddleware } from '../trpc/index.js';
 
@@ -77,6 +77,27 @@ export const expressAuthMiddleware = (
   }
 
   next();
+};
+
+/**
+ * Express middleware that enforces an authenticated user with the given role
+ * (401 without a session, 403 when the role is not enough).
+ */
+export const createExpressRoleMiddleware = (
+  requiredRole: UserRole,
+): RequestHandler => {
+  return (req, _res, next) => {
+    const { uid, role, permissions } = req.session;
+    if (!uid || !role) {
+      throw new Unauthorized();
+    }
+
+    if (!canAccess(requiredRole)({ permissions, role })) {
+      throw new Forbidden();
+    }
+
+    next();
+  };
 };
 
 /**

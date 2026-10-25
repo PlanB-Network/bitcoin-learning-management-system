@@ -1,5 +1,6 @@
 import { randomBytes, randomUUID } from 'node:crypto';
 import { Readable } from 'node:stream';
+import { UserRole } from '@blms/constants';
 import { sql } from '@blms/database';
 import { NoSuchKey } from '@blms/s3';
 import {
@@ -9,8 +10,12 @@ import {
 import type { Router } from 'express';
 import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest } from '#src/errors.js';
-import { expressAuthMiddleware } from '#src/middlewares/auth.js';
+import { createExpressRoleMiddleware } from '#src/middlewares/auth.js';
 import { convertSlideToProofreadPngs } from '#src/utils/convert-api.js';
+
+const contributorRoleMiddleware = createExpressRoleMiddleware(
+  UserRole.Contributor,
+);
 
 // Added SSRF-protection: OnlyOffice base URL and trusted URL builder
 const ONLYOFFICE_BASE_URL =
@@ -109,7 +114,7 @@ export const createRestTranslationDownloadRoutes = async (
   // Proxy endpoint for OnlyOffice forcesave command (avoids CORS issues)
   router.post(
     '/translation-downloads/pptx-forcesave',
-    expressAuthMiddleware,
+    contributorRoleMiddleware,
     async (req, res, next) => {
       try {
         const {
@@ -428,7 +433,7 @@ export const createRestTranslationDownloadRoutes = async (
   // Create proofread copy endpoint - copies current PPTX as proofread version
   router.post(
     '/translation-downloads/pptx-create-proofread-copy',
-    expressAuthMiddleware,
+    contributorRoleMiddleware,
     async (req, res, next) => {
       try {
         const { courseId, partId, chapterId, slideId, language, fileName } =
@@ -547,7 +552,7 @@ export const createRestTranslationDownloadRoutes = async (
   // Generate PNG images from PPTX endpoint
   router.post(
     '/translation-downloads/generate-png',
-    expressAuthMiddleware,
+    contributorRoleMiddleware,
     async (req, res, next) => {
       try {
         const { courseId, partId, chapterId, slideId, language } = req.body;
@@ -704,7 +709,7 @@ export const createRestTranslationDownloadRoutes = async (
   // Generate temporary download token for OnlyOffice
   router.post(
     '/translation-downloads/pptx-token',
-    expressAuthMiddleware,
+    contributorRoleMiddleware,
     async (req, res, next) => {
       try {
         const { courseId, slideId, language, partId, chapterId, fileName } =
@@ -844,7 +849,7 @@ export const createRestTranslationDownloadRoutes = async (
 
   router.get(
     '/translation-downloads/audio/:courseId/:language/:chapterId/:slideId',
-    expressAuthMiddleware,
+    contributorRoleMiddleware,
     async (req, res, next) => {
       try {
         const { courseId, language, chapterId, slideId } = req.params as any;
@@ -1000,7 +1005,7 @@ export const createRestTranslationDownloadRoutes = async (
   // Stream translated PPTX files stored in S3 to the client
   router.get(
     '/translation-downloads/pptx/:courseId/:language/:partId/:chapterId/:slideId/:fileName',
-    expressAuthMiddleware,
+    contributorRoleMiddleware,
     async (req, res, next) => {
       try {
         const { courseId, language, partId, chapterId, slideId, fileName } =

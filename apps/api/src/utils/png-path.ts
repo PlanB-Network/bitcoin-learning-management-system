@@ -1,3 +1,5 @@
+import { BadRequest } from '#src/errors.js';
+
 /**
  * Build S3 key for original PNG slide directory
  * Pattern: contribute/<course_id>/<original_language>/<part_id>/<chapter_id>/pptx/
@@ -27,10 +29,32 @@ export const buildOriginalPngKey = (
 };
 
 /**
+ * The PNG viewer gets ppt_resource_path from the client. Refuse anything that
+ * is not `contribute/.../pptx/<name>.pptx`, so that the builders below can
+ * only produce keys of slide PNGs, never an arbitrary S3 key.
+ */
+const assertSlidePptxPath = (pptResourcePath: string) => {
+  const segments = pptResourcePath.split('/');
+  const isSlidePptxPath =
+    segments[0] === 'contribute' &&
+    segments.at(-2) === 'pptx' &&
+    segments.every((segment) => !['', '.', '..'].includes(segment)) &&
+    // the builders replace the first occurrence of each
+    pptResourcePath.indexOf('/pptx/') ===
+      pptResourcePath.lastIndexOf('/pptx/') &&
+    pptResourcePath.indexOf('.pptx') === pptResourcePath.length - 5;
+
+  if (!isSlidePptxPath) {
+    throw new BadRequest('Invalid slide path');
+  }
+};
+
+/**
  * Build S3 key for translated PNG slide
  * Uses ppt_resource_path and replaces pptx with png and .pptx with .png
  */
 export const buildTranslatedPngKey = (pptResourcePath: string): string => {
+  assertSlidePptxPath(pptResourcePath);
   return pptResourcePath.replace('/pptx/', '/png/').replace('.pptx', '.png');
 };
 
@@ -41,6 +65,7 @@ export const buildTranslatedPngKey = (pptResourcePath: string): string => {
 export const buildTranslatedProofreadPngKey = (
   pptResourcePath: string,
 ): string => {
+  assertSlidePptxPath(pptResourcePath);
   return pptResourcePath
     .replace('/pptx/', '/png/')
     .replace('.pptx', '-proofread.png');

@@ -1,3 +1,4 @@
+import { UserRole } from '@blms/constants';
 import {
   createGetSlideProfessor,
   createUpdateSlideAudioStatus,
@@ -6,7 +7,11 @@ import type { Router } from 'express';
 
 import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest, InternalServerError } from '#src/errors.js';
-import { expressAuthMiddleware } from '#src/middlewares/auth.js';
+import { createExpressRoleMiddleware } from '#src/middlewares/auth.js';
+
+const contributorRoleMiddleware = createExpressRoleMiddleware(
+  UserRole.Contributor,
+);
 
 /**
  * Routes for generating slide audio using the external Language-Toolkit API.
@@ -74,7 +79,7 @@ export const createRestTranslationAudioRoutes = async (
    */
   router.post(
     '/translation-audio/generate',
-    expressAuthMiddleware,
+    contributorRoleMiddleware,
     async (req, res, next) => {
       try {
         const {
@@ -236,7 +241,7 @@ export const createRestTranslationAudioRoutes = async (
    */
   router.get(
     '/translation-audio/tasks/:taskId',
-    expressAuthMiddleware,
+    contributorRoleMiddleware,
     async (req, res, next) => {
       try {
         const { taskId } = req.params as { taskId: string };
