@@ -3,21 +3,29 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import type { Readable } from 'node:stream';
+import { UserPermission, UserRole } from '@blms/constants';
 import { NoSuchKey } from '@blms/s3';
-import { createGetEducatorContent } from '@blms/service-content';
+import {
+  createCheckCoordinator,
+  createGetEducatorContent,
+} from '@blms/service-content';
 
 import {
   createExamTimestampService,
+  createGetAssignmentSubmitter,
+  createGetCareerProfileId,
   createSetProfilePicture,
 } from '@blms/service-user';
-import type { Request, Router } from 'express';
+import { formatNameForURL } from '@blms/shared';
+import { canAccess } from '@blms/shared/auth';
+import type { Request, Response, Router } from 'express';
 import formidable from 'formidable';
 import JSZip from 'jszip';
 import type { ResizeOptions } from 'sharp';
 import sharp from 'sharp';
 
 import type { Dependencies } from '#src/dependencies.js';
-import { BadRequest, InternalServerError } from '#src/errors.js';
+import { BadRequest, Forbidden, InternalServerError } from '#src/errors.js';
 import { expressAuthMiddleware } from '#src/middlewares/auth.js';
 
 // Files under /api/files are uploaded by users and served from the
@@ -45,6 +53,22 @@ const zipStream = (zip: JSZip) => {
   });
 };
 
+// formidable calls the parse callback from a stream event, outside of any
+// try/catch: an exception thrown there is uncaught and stops the process.
+// Turn it into a rejection of the upload promise (then a 4xx/5xx response).
+const rejectOnThrow = <A extends unknown[]>(
+  reject: (error: unknown) => void,
+  callback: (...args: A) => void,
+) => {
+  return (...args: A) => {
+    try {
+      callback(...args);
+    } catch (error) {
+      reject(error);
+    }
+  };
+};
+
 const receiveImage = (
   req: Request,
   resizeOptions: ResizeOptions | null = defaultResizeOptions,
@@ -62,32 +86,35 @@ const receiveImage = (
     });
 
     try {
-      form.parse<never, 'file'>(req, (err, _fields, files) => {
-        if (err) {
-          throw new InternalServerError('Failed to parse form data');
-        }
+      form.parse<never, 'file'>(
+        req,
+        rejectOnThrow(reject, (err, _fields, files) => {
+          if (err) {
+            throw new BadRequest('Failed to parse form data');
+          }
 
-        if (files.file?.length !== 1) {
-          throw new BadRequest('Invalid number of files');
-        }
+          if (files.file?.length !== 1) {
+            throw new BadRequest('Invalid number of files');
+          }
 
-        const [file] = files.file;
+          const [file] = files.file;
 
-        // Sanity check
-        if (!req.session.uid) {
-          throw new InternalServerError('Missing session uid');
-        }
+          // Sanity check
+          if (!req.session.uid) {
+            throw new InternalServerError('Missing session uid');
+          }
 
-        if (!file.mimetype) {
-          throw new InternalServerError('Missing file mimetype');
-        }
+          if (!file.mimetype) {
+            throw new InternalServerError('Missing file mimetype');
+          }
 
-        if (!file.originalFilename) {
-          throw new InternalServerError('Missing file name');
-        }
+          if (!file.originalFilename) {
+            throw new InternalServerError('Missing file name');
+          }
 
-        resolve(sharpStream);
-      });
+          resolve(sharpStream);
+        }),
+      );
     } catch (error) {
       req.log('Error:', error);
       reject(error);
@@ -102,53 +129,56 @@ const receivePdf = (req: Request) => {
     });
 
     try {
-      form.parse<never, 'file'>(req, (err, _, files) => {
-        if (err) {
-          throw new InternalServerError('Failed to parse form data');
-        }
+      form.parse<never, 'file'>(
+        req,
+        rejectOnThrow(reject, (err, _, files) => {
+          if (err) {
+            throw new BadRequest('Failed to parse form data');
+          }
 
-        if (files.file?.length !== 1) {
-          throw new BadRequest('Invalid number of files');
-        }
+          if (files.file?.length !== 1) {
+            throw new BadRequest('Invalid number of files');
+          }
 
-        const [file] = files.file;
+          const [file] = files.file;
 
-        // Sanity check
-        if (!req.session.uid) {
-          throw new InternalServerError('Missing session uid');
-        }
+          // Sanity check
+          if (!req.session.uid) {
+            throw new InternalServerError('Missing session uid');
+          }
 
-        if (!file.mimetype) {
-          throw new InternalServerError('Missing file mimetype');
-        }
+          if (!file.mimetype) {
+            throw new InternalServerError('Missing file mimetype');
+          }
 
-        if (file.mimetype !== 'application/pdf') {
-          throw new BadRequest('Invalid file type');
-        }
+          if (file.mimetype !== 'application/pdf') {
+            throw new BadRequest('Invalid file type');
+          }
 
-        if (!file.originalFilename) {
-          throw new InternalServerError('Missing file name');
-        }
+          if (!file.originalFilename) {
+            throw new InternalServerError('Missing file name');
+          }
 
-        // Size limit
-        if (file.size > 10 * 1024 * 1024) {
-          throw new BadRequest('File too large');
-        }
+          // Size limit
+          if (file.size > 10 * 1024 * 1024) {
+            throw new BadRequest('File too large');
+          }
 
-        // Validate file is within the OS temp directory (formidable default)
-        const tempDir = os.tmpdir();
-        let resolvedPath: string;
-        try {
-          resolvedPath = fs.realpathSync(path.resolve(file.filepath));
-        } catch (_e) {
-          throw new BadRequest('Invalid file path');
-        }
-        if (!resolvedPath.startsWith(path.resolve(tempDir))) {
-          throw new BadRequest('Disallowed file path');
-        }
-        const fileStream = fs.createReadStream(resolvedPath);
-        resolve(fileStream);
-      });
+          // Validate file is within the OS temp directory (formidable default)
+          const tempDir = os.tmpdir();
+          let resolvedPath: string;
+          try {
+            resolvedPath = fs.realpathSync(path.resolve(file.filepath));
+          } catch (_e) {
+            throw new BadRequest('Invalid file path');
+          }
+          if (!resolvedPath.startsWith(path.resolve(tempDir))) {
+            throw new BadRequest('Disallowed file path');
+          }
+          const fileStream = fs.createReadStream(resolvedPath);
+          resolve(fileStream);
+        }),
+      );
     } catch (error) {
       req.log('Error:', error);
       reject(error);
@@ -167,54 +197,57 @@ const receiveGenericFile = (req: Request) => {
     });
 
     try {
-      form.parse<never, 'file'>(req, (err, _, files) => {
-        if (err) {
-          throw new InternalServerError('Failed to parse form data');
-        }
+      form.parse<never, 'file'>(
+        req,
+        rejectOnThrow(reject, (err, _, files) => {
+          if (err) {
+            throw new BadRequest('Failed to parse form data');
+          }
 
-        if (files.file?.length !== 1) {
-          throw new BadRequest('Invalid number of files');
-        }
+          if (files.file?.length !== 1) {
+            throw new BadRequest('Invalid number of files');
+          }
 
-        const [file] = files.file;
+          const [file] = files.file;
 
-        // Sanity check
-        if (!req.session.uid) {
-          throw new InternalServerError('Missing session uid');
-        }
+          // Sanity check
+          if (!req.session.uid) {
+            throw new InternalServerError('Missing session uid');
+          }
 
-        if (!file.mimetype) {
-          throw new InternalServerError('Missing file mimetype');
-        }
+          if (!file.mimetype) {
+            throw new InternalServerError('Missing file mimetype');
+          }
 
-        if (!file.originalFilename) {
-          throw new InternalServerError('Missing file name');
-        }
+          if (!file.originalFilename) {
+            throw new InternalServerError('Missing file name');
+          }
 
-        // Size limit (50MB)
-        if (file.size > 50 * 1024 * 1024) {
-          throw new BadRequest('File too large');
-        }
+          // Size limit (50MB)
+          if (file.size > 50 * 1024 * 1024) {
+            throw new BadRequest('File too large');
+          }
 
-        // Validate file is within the OS temp directory (formidable default)
-        const tempDir = os.tmpdir();
-        let resolvedPath: string;
-        try {
-          resolvedPath = fs.realpathSync(path.resolve(file.filepath));
-        } catch (_e) {
-          throw new BadRequest('Invalid file path');
-        }
-        if (!resolvedPath.startsWith(path.resolve(tempDir))) {
-          throw new BadRequest('Disallowed file path');
-        }
-        const fileStream = fs.createReadStream(resolvedPath);
+          // Validate file is within the OS temp directory (formidable default)
+          const tempDir = os.tmpdir();
+          let resolvedPath: string;
+          try {
+            resolvedPath = fs.realpathSync(path.resolve(file.filepath));
+          } catch (_e) {
+            throw new BadRequest('Invalid file path');
+          }
+          if (!resolvedPath.startsWith(path.resolve(tempDir))) {
+            throw new BadRequest('Disallowed file path');
+          }
+          const fileStream = fs.createReadStream(resolvedPath);
 
-        resolve({
-          stream: fileStream,
-          mimetype: file.mimetype,
-          originalFilename: file.originalFilename,
-        });
-      });
+          resolve({
+            stream: fileStream,
+            mimetype: file.mimetype,
+            originalFilename: file.originalFilename,
+          });
+        }),
+      );
     } catch (error) {
       req.log('Error:', error);
       reject(error);
@@ -350,53 +383,200 @@ export const createRestFilesRoutes = async (
     }
   });
 
+  const getCareerProfileId = createGetCareerProfileId(dependencies);
+  const getAssignmentSubmitter = createGetAssignmentSubmitter(dependencies);
+  const checkCoordinator = createCheckCoordinator(dependencies);
+
+  const isAdmin = (req: Request, permission?: UserPermission) => {
+    const { role, permissions } = req.session;
+    return (
+      !!role && canAccess(UserRole.Admin, permission)({ permissions, role })
+    );
+  };
+
+  // CVs and submitted assignments are personal data: only the authenticated
+  // routes below serve them, never /files/:dir/*.
+  const sendPrivatePdf = async (
+    res: Response,
+    key: string,
+    fileName: string,
+  ) => {
+    const stream = await dependencies.s3.getStream(key);
+    if (!stream) {
+      res.status(404).send('Not found');
+      return;
+    }
+
+    res.setHeader('Cache-Control', 'private, no-store');
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader(
+      'Content-Disposition',
+      `inline; filename*=UTF-8''${encodeURIComponent(fileName)}`,
+    );
+    stream.pipe(res);
+  };
+
+  // A user uploads the CV of their own career profile only
   router.post('/career/cvs/:key', expressAuthMiddleware, (req, res, next) => {
-    const { key } = req.params;
+    const uid = req.session.uid;
 
     // Sanity check
-    if (!req.session.uid) {
+    if (!uid) {
       throw new InternalServerError('Missing session uid');
     }
-    if (!key) {
-      throw new BadRequest('Missing key');
-    }
 
-    receivePdf(req)
-      .then((stream) => {
-        return dependencies.s3.upload(`cvs/${key}`, stream, {
-          contentType: 'application/pdf',
-        });
+    getCareerProfileId({ uid })
+      .then((profileId) => {
+        if (!profileId || profileId !== req.params.key) {
+          throw new Forbidden('This is not your career profile');
+        }
+
+        return receivePdf(req).then((stream) =>
+          dependencies.s3.upload(`cvs/${profileId}`, stream, {
+            contentType: 'application/pdf',
+          }),
+        );
       })
       .then(() => res.json())
       .catch(next);
   });
 
+  // A CV is readable by the owner of the career profile and career admins
+  router.get(
+    '/files/cvs/:profileId',
+    expressAuthMiddleware,
+    async (req, res, next) => {
+      try {
+        const uid = req.session.uid;
+        const { profileId } = req.params;
+
+        // Sanity check
+        if (!uid) {
+          throw new InternalServerError('Missing session uid');
+        }
+
+        const ownProfileId = await getCareerProfileId({ uid });
+        if (
+          profileId !== ownProfileId &&
+          !isAdmin(req, UserPermission.Career)
+        ) {
+          throw new Forbidden();
+        }
+
+        await sendPrivatePdf(res, `cvs/${profileId}`, 'cv.pdf');
+      } catch (error) {
+        if (error instanceof NoSuchKey) {
+          res.status(404).send('Not found');
+          return;
+        }
+
+        next(error);
+      }
+    },
+  );
+
+  const submissionKey = (courseId: string, assignmentId: string, uid: string) =>
+    `course-assignments/${courseId}/submitted/${assignmentId}/${uid}.pdf`;
+
+  // The object key comes from the caller and the assignment they were given
+  // in this course, never from the client. Academy builds released before
+  // this change still append their own file name: it is ignored.
   router.post(
-    '/course-assignments/submit/:courseId/:key',
+    '/course-assignments/submit/:courseId/:ignoredKey?',
     expressAuthMiddleware,
     (req, res, next) => {
-      const { courseId, key } = req.params;
+      const uid = req.session.uid;
+      const { courseId } = req.params as { courseId: string };
 
       // Sanity check
-      if (!req.session.uid) {
+      if (!uid) {
         throw new InternalServerError('Missing session uid');
       }
-      if (!courseId || !key) {
-        throw new BadRequest('Missing courseId or key');
+      if (!courseId) {
+        throw new BadRequest('Missing courseId');
       }
 
-      receivePdf(req)
-        .then((stream) => {
-          return dependencies.s3.upload(
-            `course-assignments/${courseId}/submitted/${key}`,
-            stream,
-            {
-              contentType: 'application/pdf',
-            },
+      getAssignmentSubmitter({ courseId, uid })
+        .then((submitter) => {
+          if (!submitter) {
+            throw new Forbidden('No assignment to submit in this course');
+          }
+
+          return receivePdf(req).then((stream) =>
+            dependencies.s3.upload(
+              submissionKey(courseId, submitter.assignmentId, uid),
+              stream,
+              { contentType: 'application/pdf' },
+            ),
           );
         })
         .then(() => res.json())
         .catch(next);
+    },
+  );
+
+  // A submission is readable by its author, the coordinators of the course
+  // and admins
+  router.get(
+    '/course-assignments/:courseId/submissions/:uid',
+    expressAuthMiddleware,
+    async (req, res, next) => {
+      try {
+        const callerUid = req.session.uid;
+        const { courseId, uid } = req.params as {
+          courseId: string;
+          uid: string;
+        };
+
+        // Sanity check
+        if (!callerUid) {
+          throw new InternalServerError('Missing session uid');
+        }
+
+        const allowed =
+          callerUid === uid ||
+          isAdmin(req) ||
+          (await checkCoordinator({ courseId, userId: callerUid }));
+        if (!allowed) {
+          throw new Forbidden();
+        }
+
+        const submitter = await getAssignmentSubmitter({ courseId, uid });
+        if (!submitter) {
+          res.status(404).send('Not found');
+          return;
+        }
+
+        // Readable name, and the key the academy itself chose for
+        // submissions uploaded before keys were derived by the server
+        const fileName = `${formatNameForURL(submitter.assignmentName ?? '')}_${formatNameForURL(submitter.username)}.pdf`;
+
+        try {
+          await sendPrivatePdf(
+            res,
+            submissionKey(courseId, submitter.assignmentId, uid),
+            fileName,
+          );
+        } catch (error) {
+          if (!(error instanceof NoSuchKey)) {
+            throw error;
+          }
+
+          await sendPrivatePdf(
+            res,
+            `course-assignments/${courseId}/submitted/${fileName}`,
+            fileName,
+          );
+        }
+      } catch (error) {
+        if (error instanceof NoSuchKey) {
+          res.status(404).send('Not found');
+          return;
+        }
+
+        next(error);
+      }
     },
   );
 
@@ -510,12 +690,24 @@ export const createRestFilesRoutes = async (
         'course-assignments',
         'bcertresults',
         'user-files',
-        'cvs',
         'contribute',
         'resources',
       ];
       if (!allowedBuckets.includes(dir)) {
         res.status(401).send('Unauthorized');
+        return;
+      }
+
+      // Submitted assignments are only served by the route that checks who
+      // is asking. S3 collapses repeated slashes, and dot segments could be
+      // resolved by a proxy or the storage provider: refuse them.
+      const segments = key.split('/');
+      if (
+        segments.includes('.') ||
+        segments.includes('..') ||
+        (dir === 'course-assignments' && segments.includes('submitted'))
+      ) {
+        res.status(404).send('Not found');
         return;
       }
 

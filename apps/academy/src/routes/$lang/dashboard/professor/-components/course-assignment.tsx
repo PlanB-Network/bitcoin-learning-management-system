@@ -258,6 +258,7 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
               <AssignmentGradesTable
                 key={assignment.id}
                 assignment={assignment}
+                courseId={courseId}
                 isEditing={currentEditingState?.isEditing ?? false}
                 editingGrades={currentEditingState?.grades ?? {}}
                 onToggleEdit={() => handleToggleEdit(assignment.id)}
@@ -276,6 +277,7 @@ export const CourseAssignment = ({ courseId }: { courseId: string }) => {
 
 interface AssignmentGradesTableProps {
   assignment: MinimalCourseAssignmentWithStudents;
+  courseId: string;
   isEditing: boolean;
   editingGrades: Record<string, number | null>;
   onToggleEdit: () => void;
@@ -290,6 +292,7 @@ interface SortConfig {
 
 const AssignmentGradesTable = ({
   assignment,
+  courseId,
   isEditing,
   editingGrades,
   onToggleEdit,
@@ -445,12 +448,30 @@ const AssignmentGradesTable = ({
                   </td>
                   <td className="py-2.5 pr-2 flex flex-col md:hidden">
                     <span className="body-16px">{student.displayName}</span>
-                    <span className="text-neutral-500 body-12px">
+                    <a
+                      href={`/api/course-assignments/${courseId}/submissions/${student.uid}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      title={t(
+                        'dashboard.teacher.courses.assignmentGrade.openSubmission',
+                      )}
+                      className="text-neutral-500 body-12px underline"
+                    >
                       {student.username}
-                    </span>
+                    </a>
                   </td>
                   <td className="py-2.5 pr-2 body-16px max-md:hidden">
-                    {student.username}
+                    <a
+                      href={`/api/course-assignments/${courseId}/submissions/${student.uid}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      title={t(
+                        'dashboard.teacher.courses.assignmentGrade.openSubmission',
+                      )}
+                      className="underline"
+                    >
+                      {student.username}
+                    </a>
                   </td>
                   <td className="text-right py-2.5">
                     <input

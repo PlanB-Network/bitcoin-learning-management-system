@@ -5,6 +5,7 @@ export * from './complete-exam.js';
 export * from './course-certificate-service.js';
 export * from './final-lesson.js';
 export * from './generate-chapter-ticket.js';
+export * from './get-assignment-submitter.js';
 export * from './get-certificate-details.js';
 export * from './get-course-activity.js';
 export * from './get-course-review.js';
