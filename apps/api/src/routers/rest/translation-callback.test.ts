@@ -22,7 +22,7 @@ createPostgresClient({
   username: 'test',
 });
 
-const startApp = async (session: { uid?: string }) => {
+const startApp = async (session: { uid?: string; role?: string }) => {
   const uploads: string[] = [];
   const outboundFetches: string[] = [];
 
@@ -144,7 +144,10 @@ describe('REST translation downloads: OnlyOffice callback', () => {
   });
 
   it('saves only the proofread copy of the slide the token was issued for', async () => {
-    const { base, stop, uploads } = await startApp({ uid: 'uid-translator' });
+    const { base, stop, uploads } = await startApp({
+      role: 'contributor',
+      uid: 'uid-translator',
+    });
     try {
       const tokenResponse = await postJson(
         `${base}/translation-downloads/pptx-callback-token`,
@@ -175,7 +178,10 @@ describe('REST translation downloads: OnlyOffice callback', () => {
   });
 
   it('refuses to issue a token for ids that are not single path segments', async () => {
-    const { base, stop } = await startApp({ uid: 'uid-translator' });
+    const { base, stop } = await startApp({
+      role: 'contributor',
+      uid: 'uid-translator',
+    });
     try {
       const res = await postJson(
         `${base}/translation-downloads/pptx-callback-token`,

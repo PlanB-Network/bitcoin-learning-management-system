@@ -1,13 +1,18 @@
+import { UserRole } from '@blms/constants';
 import { NoSuchKey } from '@blms/s3';
 import type { Router } from 'express';
 import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest } from '#src/errors.js';
-import { expressAuthMiddleware } from '#src/middlewares/auth.js';
+import { createExpressRoleMiddleware } from '#src/middlewares/auth.js';
 import {
   buildOriginalPngDirectory,
   buildTranslatedPngKey,
   buildTranslatedProofreadPngKey,
 } from '#src/utils/png-path.js';
+
+const contributorRoleMiddleware = createExpressRoleMiddleware(
+  UserRole.Contributor,
+);
 
 // ------------------------------
 // Simple in-memory cache for PNG availability
@@ -25,7 +30,7 @@ export const createRestPngViewerRoutes = async (
   // Get original PNG slide for admin viewing
   router.get(
     '/png-viewer/original/:courseId/:originalLanguage/:partId/:chapterId/:slideId/:fileName/:filename',
-    expressAuthMiddleware,
+    contributorRoleMiddleware,
     async (req, res, next) => {
       try {
         const {
@@ -95,7 +100,7 @@ export const createRestPngViewerRoutes = async (
   // Get translated PNG slide for admin viewing
   router.get(
     '/png-viewer/translated/:courseId/:language/:partId/:chapterId/:slideId/:fileName/:slideNumber',
-    expressAuthMiddleware,
+    contributorRoleMiddleware,
     async (req, res, next) => {
       try {
         const {
@@ -202,7 +207,7 @@ export const createRestPngViewerRoutes = async (
 
   router.get(
     '/png-viewer/availability/:courseId/:translationLanguage/:originalLanguage/:partId/:chapterId',
-    expressAuthMiddleware,
+    contributorRoleMiddleware,
     async (req, res, next) => {
       try {
         const {
@@ -291,7 +296,7 @@ export const createRestPngViewerRoutes = async (
   // List PNG files in the pptx directory and check availability
   router.get(
     '/png-viewer/availability/:courseId/:translationLanguage/:originalLanguage/:partId/:chapterId/:slideId/:fileName',
-    expressAuthMiddleware,
+    contributorRoleMiddleware,
     async (req, res, next) => {
       try {
         const {
