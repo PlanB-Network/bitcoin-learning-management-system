@@ -65,6 +65,14 @@ const defaultOnError = (lang: string) => (err: Error) => {
 const ellipsis = (text: string, length = 200) =>
   text.length > length ? `${text.slice(0, length)}...` : text;
 
+const escapeHtml = (value: string) =>
+  value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+
 const meta = (
   title?: string | null,
   description?: string | null,
@@ -380,7 +388,7 @@ export const createGetMetadata = (dependencies: Dependencies) => {
     );
   };
 
-  return async (parts: string[]): Promise<Metadata> => {
+  const resolveMetadata = async (parts: string[]): Promise<Metadata> => {
     const lang = (parts[0]?.length === 2 && parts.shift()) || 'en';
 
     const [category, ...rest] = parts;
@@ -431,5 +439,18 @@ export const createGetMetadata = (dependencies: Dependencies) => {
         return defaultMeta(lang);
       }
     }
+  };
+
+  // nginx pastes the result verbatim into the <head> of index.html with
+  // sub_filter (apps/*/docker/nginx.conf). Titles, languages and covers can be
+  // written by any user (educator content), so every field is HTML-escaped.
+  return async (parts: string[]): Promise<Metadata> => {
+    const metadata = await resolveMetadata(parts);
+    return {
+      description: escapeHtml(metadata.description),
+      image: escapeHtml(metadata.image),
+      lang: escapeHtml(metadata.lang),
+      title: escapeHtml(metadata.title),
+    };
   };
 };
