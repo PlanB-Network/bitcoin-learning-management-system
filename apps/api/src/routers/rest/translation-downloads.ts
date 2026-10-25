@@ -230,7 +230,7 @@ export const createRestTranslationDownloadRoutes = async (
   // Issue the token of the callback URL given to OnlyOffice for one slide
   router.post(
     '/translation-downloads/pptx-callback-token',
-    expressAuthMiddleware,
+    contributorRoleMiddleware,
     async (req, res, next) => {
       try {
         const { courseId, language, partId, chapterId, slideId } = req.body;
