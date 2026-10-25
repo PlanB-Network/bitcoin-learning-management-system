@@ -1,5 +1,6 @@
-import { randomUUID } from 'node:crypto';
+import { randomBytes, randomUUID } from 'node:crypto';
 import { Readable } from 'node:stream';
+import { UserRole } from '@blms/constants';
 import { sql } from '@blms/database';
 import { NoSuchKey } from '@blms/s3';
 import {
@@ -9,8 +10,12 @@ import {
 import type { Router } from 'express';
 import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest } from '#src/errors.js';
-import { expressAuthMiddleware } from '#src/middlewares/auth.js';
+import { createExpressRoleMiddleware } from '#src/middlewares/auth.js';
 import { convertSlideToProofreadPngs } from '#src/utils/convert-api.js';
+
+const contributorRoleMiddleware = createExpressRoleMiddleware(
+  UserRole.Contributor,
+);
 
 // Added SSRF-protection: OnlyOffice base URL and trusted URL builder
 const ONLYOFFICE_BASE_URL =
@@ -65,6 +70,24 @@ const downloadTokens = new Map<
   }
 >();
 
+// Tokens of the OnlyOffice callback URLs. The callback is called by the
+// Document Server without a session: its token is the only credential and
+// pins the slide whose proofread copy it may save.
+const callbackTokens = new Map<
+  string,
+  {
+    courseId: string;
+    language: string;
+    partId: string;
+    chapterId: string;
+    slideId: string;
+    expires: number;
+  }
+>();
+
+// Path segments of the S3 keys built from these ids
+const SLIDE_ID_PATTERN = /^[\w-]+$/;
+
 // Clean up expired tokens every 5 minutes
 setInterval(
   () => {
@@ -74,9 +97,14 @@ setInterval(
         downloadTokens.delete(token);
       }
     }
+    for (const [token, data] of callbackTokens.entries()) {
+      if (data.expires < now) {
+        callbackTokens.delete(token);
+      }
+    }
   },
   5 * 60 * 1000,
-);
+).unref();
 
 // Stream translated audio files stored in S3 to the client
 export const createRestTranslationDownloadRoutes = async (
@@ -86,7 +114,7 @@ export const createRestTranslationDownloadRoutes = async (
   // Proxy endpoint for OnlyOffice forcesave command (avoids CORS issues)
   router.post(
     '/translation-downloads/pptx-forcesave',
-    expressAuthMiddleware,
+    contributorRoleMiddleware,
     async (req, res, next) => {
       try {
         const {
@@ -199,36 +227,80 @@ export const createRestTranslationDownloadRoutes = async (
     },
   );
 
+  // Issue the token of the callback URL given to OnlyOffice for one slide
+  router.post(
+    '/translation-downloads/pptx-callback-token',
+    contributorRoleMiddleware,
+    async (req, res, next) => {
+      try {
+        const { courseId, language, partId, chapterId, slideId } = req.body;
+        const ids = [courseId, language, partId, chapterId, slideId];
+        if (
+          !ids.every(
+            (id) => typeof id === 'string' && SLIDE_ID_PATTERN.test(id),
+          )
+        ) {
+          throw new BadRequest(
+            'Invalid courseId, language, partId, chapterId or slideId',
+          );
+        }
+
+        const slides = await dependencies.postgres.exec(sql`
+          SELECT slide_id
+          FROM content.course_translation_slides
+          WHERE course_id = ${courseId}
+            AND language = ${language}
+            AND chapter_id = ${chapterId}
+            AND slide_id = ${slideId}
+        `);
+        if (slides.length === 0) {
+          throw new BadRequest('Slide not found');
+        }
+
+        const token = randomBytes(32).toString('base64url');
+        callbackTokens.set(token, {
+          courseId,
+          language,
+          partId,
+          chapterId,
+          slideId,
+          expires: Date.now() + 24 * 60 * 60 * 1000,
+        });
+
+        res.json({ token });
+      } catch (error) {
+        next(error);
+      }
+    },
+  );
+
   // OnlyOffice callback endpoint for manual saves
   router.post(
     '/translation-downloads/pptx-callback',
     async (req, res, _next) => {
       try {
         console.log('OnlyOffice callback received:', req.body);
-        console.log('OnlyOffice callback query params:', req.query);
+
+        const { token } = req.query;
+        const job =
+          typeof token === 'string' ? callbackTokens.get(token) : undefined;
+        if (!job || job.expires < Date.now()) {
+          res.status(403).json({ error: 1, message: 'Invalid callback token' });
+          return;
+        }
 
         const { status, url } = req.body;
 
-        const { courseId, partId, chapterId, slideId, language, fileName } =
-          req.query as any;
+        // The slide comes from the token, never from the request
+        const { courseId, partId, chapterId, slideId, language } = job;
 
         // Handle forcesave operations (status 6 = forcesave) and regular saves (status 2 = ready for saving)
-        if (
-          (status === 6 || status === 2) &&
-          courseId &&
-          partId &&
-          chapterId &&
-          slideId &&
-          language &&
-          fileName
-        ) {
+        if (status === 6 || status === 2) {
           console.log(
             `OnlyOffice callback: Document save requested (status: ${status}) for ${courseId}/${slideId}/${language}`,
           );
 
           try {
-            // Note: slideId comes from OnlyOffice callback URL parameters
-
             // Validate and download the document from OnlyOffice
             // OnlyOffice may return callback URLs with host "localhost" which
             // is not reachable from within the API container. Rewrite the host
@@ -291,9 +363,6 @@ export const createRestTranslationDownloadRoutes = async (
               pptResourcePath,
             );
 
-            console.log(
-              `[PPTX Callback] Request fileName from frontend: ${fileName}`,
-            );
             console.log(
               `[PPTX Callback] ppt_resource_path from DB: ${pptResourcePath}`,
             );
@@ -364,7 +433,7 @@ export const createRestTranslationDownloadRoutes = async (
   // Create proofread copy endpoint - copies current PPTX as proofread version
   router.post(
     '/translation-downloads/pptx-create-proofread-copy',
-    expressAuthMiddleware,
+    contributorRoleMiddleware,
     async (req, res, next) => {
       try {
         const { courseId, partId, chapterId, slideId, language, fileName } =
@@ -483,7 +552,7 @@ export const createRestTranslationDownloadRoutes = async (
   // Generate PNG images from PPTX endpoint
   router.post(
     '/translation-downloads/generate-png',
-    expressAuthMiddleware,
+    contributorRoleMiddleware,
     async (req, res, next) => {
       try {
         const { courseId, partId, chapterId, slideId, language } = req.body;
@@ -640,7 +709,7 @@ export const createRestTranslationDownloadRoutes = async (
   // Generate temporary download token for OnlyOffice
   router.post(
     '/translation-downloads/pptx-token',
-    expressAuthMiddleware,
+    contributorRoleMiddleware,
     async (req, res, next) => {
       try {
         const { courseId, slideId, language, partId, chapterId, fileName } =
@@ -780,7 +849,7 @@ export const createRestTranslationDownloadRoutes = async (
 
   router.get(
     '/translation-downloads/audio/:courseId/:language/:chapterId/:slideId',
-    expressAuthMiddleware,
+    contributorRoleMiddleware,
     async (req, res, next) => {
       try {
         const { courseId, language, chapterId, slideId } = req.params as any;
@@ -936,7 +1005,7 @@ export const createRestTranslationDownloadRoutes = async (
   // Stream translated PPTX files stored in S3 to the client
   router.get(
     '/translation-downloads/pptx/:courseId/:language/:partId/:chapterId/:slideId/:fileName',
-    expressAuthMiddleware,
+    contributorRoleMiddleware,
     async (req, res, next) => {
       try {
         const { courseId, language, partId, chapterId, slideId, fileName } =

@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { UserRole } from '@blms/constants';
 import {
   createCreateCourseTranslationUpload,
   createDeleteCourseTranslationUploadsByCourseId,
@@ -20,7 +21,7 @@ import type { Router } from 'express';
 import formidable from 'formidable';
 import type { Dependencies } from '#src/dependencies.js';
 import { BadRequest, InternalServerError } from '#src/errors.js';
-import { expressAuthMiddleware } from '#src/middlewares/auth.js';
+import { createExpressRoleMiddleware } from '#src/middlewares/auth.js';
 import { convertPptxToPngs } from '#src/utils/convert-api.js';
 import {
   blobToString,
@@ -38,6 +39,8 @@ import {
   TRANSLATION_UPLOAD_CONSTANTS,
   type UploadFormData,
 } from '#src/utils/translation-upload-helpers.js';
+
+const adminRoleMiddleware = createExpressRoleMiddleware(UserRole.Admin);
 
 // Constants
 const ALLOWED_DOWNLOAD_HOSTNAMES = (
@@ -732,7 +735,7 @@ export const createRestTranslationUploadRoutes = async (
   // Endpoint 1: Upload files only (returns immediately with courseId as job identifier)
   router.post(
     '/upload-translation-files',
-    expressAuthMiddleware,
+    adminRoleMiddleware,
     (req, res, next) => {
       const uid = req.session.uid;
       if (!uid) {
@@ -789,7 +792,7 @@ export const createRestTranslationUploadRoutes = async (
   // Endpoint 2: Start translation with uploaded files
   router.post(
     '/start-translation/:uploadId',
-    expressAuthMiddleware,
+    adminRoleMiddleware,
     async (req, res, next) => {
       const uid = req.session.uid;
       const { uploadId } = req.params;
@@ -818,7 +821,7 @@ export const createRestTranslationUploadRoutes = async (
   // Endpoint to get all uploads for a course
   router.get(
     '/course-uploads/:courseId',
-    expressAuthMiddleware,
+    adminRoleMiddleware,
     async (req, res, next) => {
       const { courseId } = req.params;
 
@@ -844,7 +847,7 @@ export const createRestTranslationUploadRoutes = async (
   // Uses courseId as the job identifier for recovery and duplicate prevention
   router.get(
     '/upload-job-status/:courseId',
-    expressAuthMiddleware,
+    adminRoleMiddleware,
     async (req, res, next) => {
       const { courseId } = req.params;
 
@@ -874,7 +877,7 @@ export const createRestTranslationUploadRoutes = async (
   // Endpoint to check upload status
   router.get(
     '/upload-status/:uploadId',
-    expressAuthMiddleware,
+    adminRoleMiddleware,
     async (req, res, next) => {
       const { uploadId } = req.params;
 
@@ -907,7 +910,7 @@ export const createRestTranslationUploadRoutes = async (
   // Endpoint to check translation task status
   router.get(
     '/translation-status/:taskId',
-    expressAuthMiddleware,
+    adminRoleMiddleware,
     async (req, res, next) => {
       const { taskId } = req.params;
 
@@ -972,7 +975,7 @@ export const createRestTranslationUploadRoutes = async (
   // Endpoint to check translation job status (for polling and recovery)
   router.get(
     '/translation-job-status/:courseId',
-    expressAuthMiddleware,
+    adminRoleMiddleware,
     async (req, res, next) => {
       const { courseId } = req.params;
 
@@ -1002,7 +1005,7 @@ export const createRestTranslationUploadRoutes = async (
   // Endpoint to retry translation without re-uploading files
   router.post(
     '/retry-translation/:courseId',
-    expressAuthMiddleware,
+    adminRoleMiddleware,
     async (req, res, next) => {
       const uid = req.session.uid;
       const { courseId } = req.params;
@@ -1076,7 +1079,7 @@ export const createRestTranslationUploadRoutes = async (
   // Endpoint to get all translation jobs (for admin jobs dashboard)
   router.get(
     '/translation-jobs',
-    expressAuthMiddleware,
+    adminRoleMiddleware,
     async (req, res, next) => {
       try {
         const limit = Number(req.query.limit) || 50;
