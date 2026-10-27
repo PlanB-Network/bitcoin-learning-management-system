@@ -1811,6 +1811,7 @@
     "insertReductionCode": "Insert your reduction code",
     "payByCard": "Pay by Card",
     "payWithBitcoin": "Pay with Bitcoin",
+    "paymentsDisabled": "Payments are currently disabled on Plan B Academy. Free courses and the courses you already own remain available.",
     "taxesMayApply": "Taxes may apply at checkout",
     "terms": "See our <0>general terms</0> and conditions for refund details",
     "total": "Total"

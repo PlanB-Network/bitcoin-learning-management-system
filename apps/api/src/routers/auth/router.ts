@@ -37,6 +37,7 @@ const configProcedure = publicProcedure
   .output<Parser<EnvConfigEndpointResult>>(envConfigEndpointResultSchema)
   .query(({ ctx }) => {
     return {
+      paymentsDisabled: ctx.dependencies.config.paymentsDisabled,
       stripePublicKey: ctx.dependencies.config.stripe.publicKey,
     };
   });

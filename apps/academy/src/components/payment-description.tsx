@@ -73,6 +73,11 @@ export const PaymentDescription = ({
   const [isBookEnabled, setIsBookEnabled] = useState(!isGdprCompliance);
   const [isBtnClicked, setIsBtnClicked] = useState(false);
 
+  const { data: config } = useQuery(trpc.auth.config.queryOptions());
+  // PAYMENTS_DISABLED on the API: paid checkouts are refused, free ones still go through
+  const isCheckoutDisabled =
+    paidPriceDollars !== 0 && config?.paymentsDisabled === true;
+
   let couponId = itemId;
   if (itemId === GeneralPaymentItem.SummerSchool2025) {
     couponId = 'c762773a-9017-4129-bc0e-06adf86050ef';
@@ -262,40 +267,46 @@ export const PaymentDescription = ({
           </span>
         )}
 
-        <div className="flex flex-col-reverse md:flex-row md:w-full md:justify-center gap-4">
-          {paidPriceDollars !== 0 && (
+        {isCheckoutDisabled ? (
+          <p className="text-center text-sm font-medium text-neutral-600">
+            {t('payment.paymentsDisabled')}
+          </p>
+        ) : (
+          <div className="flex flex-col-reverse md:flex-row md:w-full md:justify-center gap-4">
+            {paidPriceDollars !== 0 && (
+              <Button
+                variant="outline"
+                className="w-full"
+                onClick={() => {
+                  setIsBtnClicked(true);
+                  if (isBookEnabled) {
+                    initPayment('stripe');
+                  }
+                }}
+              >
+                {t('payment.payByCard')}
+              </Button>
+            )}
             <Button
-              variant="outline"
-              className="w-full"
+              variant="primary"
+              className={cn(
+                paidPriceDollars !== 0 ? 'w-full' : 'min-w-42 md:min-w-47',
+              )}
               onClick={() => {
                 setIsBtnClicked(true);
                 if (isBookEnabled) {
-                  initPayment('stripe');
+                  initPayment('sbp');
                 }
               }}
             >
-              {t('payment.payByCard')}
+              {t(
+                paidPriceDollars !== 0
+                  ? 'payment.payWithBitcoin'
+                  : 'words.continue',
+              )}
             </Button>
-          )}
-          <Button
-            variant="primary"
-            className={cn(
-              paidPriceDollars !== 0 ? 'w-full' : 'min-w-42 md:min-w-47',
-            )}
-            onClick={() => {
-              setIsBtnClicked(true);
-              if (isBookEnabled) {
-                initPayment('sbp');
-              }
-            }}
-          >
-            {t(
-              paidPriceDollars !== 0
-                ? 'payment.payWithBitcoin'
-                : 'words.continue',
-            )}
-          </Button>
-        </div>
+          </div>
+        )}
       </div>
       <div className="text-center uppercase md:text-xs justify-self-end mt-auto mb-4 md:mb-2">
         <div className="text-[10px] md:text-xs">
