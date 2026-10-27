@@ -13,6 +13,7 @@ import {
   updateGeneralPaymentQuery,
 } from '../queries/update-general-payment.js';
 import {
+  assertPaymentsEnabled,
   checkSatsPrice,
   createSbpPayment,
   createStripePayment,
@@ -78,6 +79,10 @@ export const createSaveGeneralPayment = (dependencies: Dependencies) => {
 
     if (priceInDollars !== dollarPrice) {
       throw new Error('Price is not the correct one');
+    }
+
+    if (priceInDollars !== 0) {
+      assertPaymentsEnabled(config);
     }
 
     if (priceInDollars === 0) {

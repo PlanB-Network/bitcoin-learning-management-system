@@ -10,7 +10,7 @@ import {
   isValidSbpSignature,
   type SbpPaymentType,
 } from '@blms/service-user';
-import type { Router } from 'express';
+import type { Request, Response, Router } from 'express';
 import type Stripe from 'stripe';
 
 import type { Dependencies } from '#src/dependencies.js';
@@ -26,6 +26,16 @@ export const createRestPaymentRoutes = (
   const handleSbpWebhook = createHandleSbpWebhook(dependencies);
   const calculateEventSeats = createCalculateEventSeats(dependencies);
 
+  // PAYMENTS_DISABLED kill switch: no provider event is processed
+  const refusedWhilePaymentsDisabled = (req: Request, res: Response) => {
+    if (!config.paymentsDisabled) {
+      return false;
+    }
+    req.log(`Payment webhook refused: payments are disabled (${req.path})`);
+    res.sendStatus(503);
+    return true;
+  };
+
   // SwissBitcoinPay webhooks (courses, events and general payments).
   // The body is untrusted: only the checkout id is read from it, the payment
   // status and amount are fetched back from SwissBitcoinPay.
@@ -33,6 +43,10 @@ export const createRestPaymentRoutes = (
     router.post(
       `/users/${type}/payment/webhooks`,
       async (req, res): Promise<void> => {
+        if (refusedWhilePaymentsDisabled(req, res)) {
+          return;
+        }
+
         const { hmacSecret } = config.swissBitcoinPay;
         if (
           hmacSecret &&
@@ -69,6 +83,10 @@ export const createRestPaymentRoutes = (
   }
 
   router.post('/webhooks/stripe', async (req, res): Promise<void> => {
+    if (refusedWhilePaymentsDisabled(req, res)) {
+      return;
+    }
+
     try {
       // Only signed events are processed: without the endpoint secret the
       // webhook cannot be verified, so it is refused

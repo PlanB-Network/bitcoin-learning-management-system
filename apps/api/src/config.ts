@@ -66,6 +66,12 @@ export const protectSyncRoute: boolean = getenv('PROTECT_SYNC_ROUTE', true);
 export const requestLogging: boolean = getenv('REQUEST_LOGGING', false);
 
 /**
+ * Kill switch for every payment: when true, paid checkouts (Stripe and
+ * SwissBitcoinPay) are refused and payment webhooks answer 503
+ */
+export const paymentsDisabled: boolean = getenv('PAYMENTS_DISABLED', false);
+
+/**
  * Real application domain (without trailing slash)
  */
 export const domainUrl = getenv('DOMAIN_URL', 'http://localhost:8181');

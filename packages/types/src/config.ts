@@ -48,6 +48,12 @@ export interface EnvConfig {
   swissBitcoinPay: SwissBitcoinPayConfig;
   groq: GroqConfig;
   protectSyncRoute: boolean;
+  /**
+   * Kill switch (`PAYMENTS_DISABLED=true`): no paid checkout can be opened
+   * and payment provider webhooks are refused. Free (0 $) checkouts and
+   * existing paid access are unaffected.
+   */
+  paymentsDisabled: boolean;
 }
 
 export interface OpenTimestampsConfig {

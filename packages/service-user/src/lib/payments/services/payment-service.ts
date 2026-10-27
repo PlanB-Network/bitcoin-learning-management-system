@@ -1,10 +1,30 @@
 import type {
   CheckoutData,
+  EnvConfig,
   SwissBitcoinPayCheckout,
   SwissBitcoinPayConfig,
 } from '@blms/types';
+import { TRPCError } from '@trpc/server';
 
 import type { Dependencies } from '#src/dependencies.js';
+
+export const PAYMENTS_DISABLED_MESSAGE =
+  'Payments are disabled on Plan B Academy';
+
+/**
+ * Kill switch (`PAYMENTS_DISABLED=true`): refuse to open a paid checkout,
+ * whatever the provider. Callers skip it for free (0 $) checkouts.
+ */
+export const assertPaymentsEnabled = (
+  config: Pick<EnvConfig, 'paymentsDisabled'>,
+) => {
+  if (config.paymentsDisabled) {
+    throw new TRPCError({
+      code: 'FORBIDDEN',
+      message: PAYMENTS_DISABLED_MESSAGE,
+    });
+  }
+};
 
 export async function checkSatsPrice(dollarPrice: number, satsPrice: number) {
   const response = await fetch('https://mempool.space/api/v1/prices');

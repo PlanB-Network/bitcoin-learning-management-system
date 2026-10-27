@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import type { Dependencies } from '../../../dependencies.js';
 import { createGetUserVerifiedEmail } from '../../account/services/index.js';
 import {
+  assertPaymentsEnabled,
   checkSatsPrice,
   createSbpPayment,
   createStripePayment,
@@ -72,6 +73,10 @@ export const createSaveEventPayment = (dependencies: Dependencies) => {
 
     if (eventPriceInDollars !== dollarPrice) {
       throw new Error('Price is not the correct one');
+    }
+
+    if (eventPriceInDollars !== 0) {
+      assertPaymentsEnabled(config);
     }
 
     if (eventPriceInDollars === 0) {
