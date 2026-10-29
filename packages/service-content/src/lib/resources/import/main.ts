@@ -46,7 +46,9 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
 
     // If the resource has tags, insert them into the tags table and link them to the resource
     if (result && parsedResource.tags && parsedResource.tags?.length > 0) {
-      const lowercaseTags = parsedResource.tags.map((tag) => tag.toLowerCase());
+      const lowercaseTags = parsedResource.tags
+        .map((tag) => tag.toLowerCase())
+        .sort();
 
       await transaction`
         DELETE FROM content.resource_tags WHERE resource_id = ${result.id}

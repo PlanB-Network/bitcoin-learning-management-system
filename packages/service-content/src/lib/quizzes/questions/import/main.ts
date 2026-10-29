@@ -101,9 +101,9 @@ export const createProcessMainFile = (transaction: TransactionSql) => {
       parsedQuizQuestion.tags &&
       parsedQuizQuestion.tags?.length > 0
     ) {
-      const lowercaseTags = parsedQuizQuestion.tags.map((tag) =>
-        tag.toLowerCase(),
-      );
+      const lowercaseTags = parsedQuizQuestion.tags
+        .map((tag) => tag.toLowerCase())
+        .sort();
 
       await transaction`
         DELETE FROM content.quiz_question_tags WHERE quiz_question_id = ${result.id}

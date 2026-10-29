@@ -59,16 +59,7 @@ import {
   createUpdateTutorials,
   groupByTutorial,
 } from './tutorials/import/index.js';
-
-export const timeLog = (len: number, name: string) => {
-  const key = `[sync] Syncing ${len} ${name}${len > 1 ? 's' : ''}`;
-  console.log(`${key}...`);
-  console.time(key);
-
-  return () => {
-    console.timeEnd(key);
-  };
-};
+import { pMap } from './utils/concurrency.js';
 
 interface SyncResult {
   errors: string[];
@@ -106,124 +97,73 @@ export const createProcessContentFiles = (
       supportedContentTypes.some((value) => asset.path.startsWith(value)),
     );
 
+    const CONCURRENCY = 10;
+
     const errors: string[] = [];
     const warnings: string[] = [];
     console.log('[sync] Deleting proofreadings');
     await deleteProofreadings(errors);
 
-    // Sync professors
-    {
-      const professors = groupByProfessor(filteredFiles, errors);
-      const time = timeLog(professors.length, 'professor');
-      for (const professor of professors) {
-        await updateProfessors(professor, errors);
-      }
-      time();
-    }
+    // Group all content types (CPU-only, fast)
+    const professors = groupByProfessor(filteredFiles, errors);
+    const labs = groupByLab(filteredFiles, errors);
+    const resources = groupByResource(filteredFiles, errors);
+    const events = groupByEvent(filteredFiles, errors);
+    const courses = groupByCourse(filteredFiles, errors);
+    const coursesAssets = groupByCourse(filteredAssets, errors);
+    const assignments = groupByAssignments(filteredFiles, errors);
+    const legals = groupByLegal(filteredFiles, errors);
+    const tutorials = groupByTutorial(filteredFiles, filteredAssets, errors);
+    const blogs = groupByBlog(filteredFiles, errors);
+    const quizQuestions = groupByQuizQuestion(filteredFiles, errors);
+    const bCerts = groupByBCertExam(filteredFiles, errors);
 
-    // Sync labs
-    {
-      const labs = groupByLab(filteredFiles, errors);
-      const time = timeLog(labs.length, 'Plan B Labs');
-      for (const lab of labs) {
-        await updateLabs(lab, errors);
-      }
-      time();
-    }
+    // Phase 1: Independent types (no FK dependencies)
+    console.time('[sync] Phase 1: Independent types');
+    console.log(
+      `[sync] Phase 1: professors(${professors.length}), labs(${labs.length}), resources(${resources.length}), events(${events.length}), blogs(${blogs.length}), legals(${legals.length}), bcerts(${bCerts.length})`,
+    );
+    await Promise.all([
+      pMap(professors, (p) => updateProfessors(p, errors), CONCURRENCY),
+      pMap(labs, (l) => updateLabs(l, errors), CONCURRENCY),
+      pMap(resources, (r) => updateResources(r, errors), CONCURRENCY),
+      pMap(events, (e) => updateEvents(e, errors), CONCURRENCY),
+      pMap(blogs, (b) => updateBlogs(b, errors), CONCURRENCY),
+      pMap(legals, (l) => updateLegals(l, errors), CONCURRENCY),
+      pMap(bCerts, (b) => updateBCerts(b, errors), CONCURRENCY),
+    ]);
+    console.timeEnd('[sync] Phase 1: Independent types');
 
-    // Sync resources
-    {
-      const resources = groupByResource(filteredFiles, errors);
-      const time = timeLog(resources.length, 'resource');
-      for (const resource of resources) {
-        await updateResources(resource, errors);
-      }
-      time();
-    }
+    // Phase 2: Depends on professors
+    console.time('[sync] Phase 2: Courses & tutorials');
+    console.log(
+      `[sync] Phase 2: courses(${courses.length}), tutorials(${tutorials.length})`,
+    );
+    await Promise.all([
+      pMap(
+        courses,
+        (course) => {
+          const courseAsset = coursesAssets.find(
+            (c) => c.index === course.index,
+          );
+          return updateCourses(course, courseAsset, errors);
+        },
+        CONCURRENCY,
+      ),
+      pMap(tutorials, (t) => updateTutorials(t, errors), CONCURRENCY),
+    ]);
+    console.timeEnd('[sync] Phase 2: Courses & tutorials');
 
-    // Sync events
-    {
-      const events = groupByEvent(filteredFiles, errors);
-      const time = timeLog(events.length, 'event');
-      for (const event of events) {
-        await updateEvents(event, errors);
-      }
-      time();
-    }
-
-    // Sync courses
-    {
-      const courses = groupByCourse(filteredFiles, errors);
-      const coursesAssets = groupByCourse(filteredAssets, errors);
-      const time = timeLog(courses.length, 'course');
-
-      for (const course of courses) {
-        const courseAsset = coursesAssets.find((c) => c.index === course.index);
-        await updateCourses(course, courseAsset, errors);
-      }
-
-      time();
-    }
-
-    // Sync Assignments
-    {
-      const assignments = groupByAssignments(filteredFiles, errors);
-      const time = timeLog(assignments.length, 'assignments');
-      for (const assignment of assignments) {
-        await updateAssignments(assignment, errors);
-      }
-      time();
-    }
-
-    // Sync legals
-    {
-      const legals = groupByLegal(filteredFiles, errors);
-      const time = timeLog(legals.length, 'legal');
-      for (const legal of legals) {
-        await updateLegals(legal, errors);
-      }
-      time();
-    }
-
-    // Sync tutorials
-    {
-      const tutorials = groupByTutorial(filteredFiles, filteredAssets, errors);
-      const time = timeLog(tutorials.length, 'tutorial');
-      for (const tutorial of tutorials) {
-        await updateTutorials(tutorial, errors);
-      }
-      time();
-    }
-
-    // Sync blogs
-    {
-      const blogs = groupByBlog(filteredFiles, errors);
-      const time = timeLog(blogs.length, 'blog');
-      for (const blog of blogs) {
-        await updateBlogs(blog, errors);
-      }
-      time();
-    }
-
-    // Sync quiz questions
-    {
-      const quizQuestions = groupByQuizQuestion(filteredFiles, errors);
-      const time = timeLog(quizQuestions.length, 'quiz question');
-      for (const quizQuestion of quizQuestions) {
-        await updateQuizQuestions(quizQuestion, errors);
-      }
-      time();
-    }
-
-    // Sync B Certificates exams
-    {
-      const bCerts = groupByBCertExam(filteredFiles, errors);
-      const time = timeLog(bCerts.length, 'B Certificate exam');
-      for (const bCert of bCerts) {
-        await updateBCerts(bCert, errors);
-      }
-      time();
-    }
+    // Phase 3: Depends on courses
+    console.time('[sync] Phase 3: Quiz questions & assignments');
+    console.log(
+      `[sync] Phase 3: quizQuestions(${quizQuestions.length}), assignments(${assignments.length})`,
+    );
+    await Promise.all([
+      pMap(quizQuestions, (q) => updateQuizQuestions(q, errors), CONCURRENCY),
+      pMap(assignments, (a) => updateAssignments(a, errors), CONCURRENCY),
+    ]);
+    console.timeEnd('[sync] Phase 3: Quiz questions & assignments');
 
     // Index content
     console.log('[sync] Indexing search content (Typesense)');
