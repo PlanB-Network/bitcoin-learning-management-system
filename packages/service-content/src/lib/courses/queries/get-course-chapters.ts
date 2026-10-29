@@ -55,7 +55,7 @@ export const getCourseChaptersQuery = ({
         AND ch.part_id = cl.part_id
       LEFT JOIN content.courses co
         ON c.course_id = co.id
-      WHERE c.course_id = ${courseId}
+      WHERE (c.course_id = ${courseId} OR co.index = ${courseId})
       ${
         language
           ? sql`

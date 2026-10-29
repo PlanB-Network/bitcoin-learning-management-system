@@ -17,7 +17,7 @@ export const getCourseMetaQuery = (id: string, language?: string) => {
     FROM content.courses c
     JOIN content.courses_localized cl ON c.id = cl.course_id
 
-    WHERE c.id = ${id}
+    WHERE (c.id = ${id} OR c.index = ${id})
     ${language ? sql`AND cl.language = LOWER(${language})` : sql``}
   `;
 };
