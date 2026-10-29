@@ -16,6 +16,8 @@ set -euo pipefail
 # Branch options (CLI-friendly for agents):
 #   --app <branch>              Switch BLMS application branch
 #   --content <branch>          Switch public content repo branch + sync
+#   --content-pr <number>       Switch to a content PR's branch (handles forks) + sync
+#   --content-reset             Reset content repo to upstream main
 #   --private-content <branch>  Switch private content repo branch + sync
 #
 # Log files (agent-readable):
@@ -28,19 +30,25 @@ set -euo pipefail
 #   ./scripts/local-dev.sh logs --errors
 #   ./scripts/local-dev.sh branch --app fix/assignment-ranking-state-reset
 #   ./scripts/local-dev.sh branch --content dev --private-content main
+#   ./scripts/local-dev.sh branch --content-pr 3777   # review PR from any fork
+#   ./scripts/local-dev.sh branch --content-reset      # back to upstream main
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 ENV_FILE="$PROJECT_DIR/.env"
 ENV_EXAMPLE="$PROJECT_DIR/.env.example"
 API_URL="${API_URL:-http://localhost:3000}"
-POSTGRES_CONTAINER="blms-local-postgres"
+# Overridable so `context` presets can target the compose stack's postgres too
+POSTGRES_CONTAINER="${POSTGRES_CONTAINER:-blms-local-postgres}"
 CDN_CONTAINER="blms-local-cdn"
 TYPESENSE_CONTAINER="blms-local-typesense"
+MINIO_CONTAINER="blms-local-minio"
 LOG_DIR="/tmp/blms-dev"
 LOG_FILE="$LOG_DIR/combined.log"
 PID_FILE="$LOG_DIR/dev.pid"
 LOCK_FILE="$LOG_DIR/local-dev.lock"
+UPSTREAM_CONTENT_REPO="https://github.com/PlanB-Network/bitcoin-educational-content"
+UPSTREAM_CONTENT_SLUG="PlanB-Network/bitcoin-educational-content"
 
 # Colors
 RED='\033[0;31m'
@@ -70,6 +78,13 @@ ensure_env() {
             sed -i 's|^POSTGRES_DB=.*|POSTGRES_DB=postgres|' "$ENV_FILE"
             sed -i 's|^POSTGRES_USER=.*|POSTGRES_USER=postgres|' "$ENV_FILE"
             sed -i 's|^POSTGRES_PASSWORD=.*|POSTGRES_PASSWORD=postgres|' "$ENV_FILE"
+            sed -i 's|^S3_ENDPOINT=.*|S3_ENDPOINT=http://localhost:9000|' "$ENV_FILE"
+            sed -i 's|^S3_ACCESS_KEY=.*|S3_ACCESS_KEY=minioadmin|' "$ENV_FILE"
+            sed -i 's|^S3_SECRET_KEY=.*|S3_SECRET_KEY=minioadmin|' "$ENV_FILE"
+            sed -i 's|^S3_BUCKET=.*|S3_BUCKET=blms-local|' "$ENV_FILE"
+            sed -i 's|^S3_REGION=.*|S3_REGION=us-east-1|' "$ENV_FILE"
+            sed -i 's|^S3_FORCE_PATH_STYLE=.*|S3_FORCE_PATH_STYLE=true|' "$ENV_FILE"
+            grep -q '^S3_FORCE_PATH_STYLE=' "$ENV_FILE" || echo 'S3_FORCE_PATH_STYLE=true' >> "$ENV_FILE"
             ok ".env created with local defaults"
             warn "Edit .env to add GITHUB_ACCESS_TOKEN if you need private content repo"
         else
@@ -139,6 +154,39 @@ wait_for_api() {
     return 1
 }
 
+restart_dev_servers() {
+    if ! is_dev_running; then
+        info "Dev servers not running, skipping restart"
+        return
+    fi
+
+    info "Restarting dev servers (env vars changed) ..."
+
+    # Stop
+    local pid
+    pid=$(cat "$PID_FILE")
+    local pgid
+    pgid=$(ps -o pgid= -p "$pid" 2>/dev/null | tr -d ' ') || true
+    if [[ -n "$pgid" ]]; then
+        kill -- -"$pgid" 2>/dev/null || true
+    fi
+    kill "$pid" 2>/dev/null || true
+    rm -f "$PID_FILE"
+    pgrep -f "turbo.*dev.*${PROJECT_DIR}" 2>/dev/null | xargs -r kill 2>/dev/null || true
+    pgrep -f "tsx.*${PROJECT_DIR}" 2>/dev/null | xargs -r kill 2>/dev/null || true
+    pgrep -f "vite.*${PROJECT_DIR}" 2>/dev/null | xargs -r kill 2>/dev/null || true
+    sleep 1
+
+    # Start
+    cd "$PROJECT_DIR"
+    pnpm dev 2>&1 \
+        | awk '{ print strftime("[%H:%M:%S]"), $0; fflush() }' \
+        >> "$LOG_FILE" &
+    local dev_pid=$!
+    echo "$dev_pid" > "$PID_FILE"
+    ok "Dev servers restarted (PID ${dev_pid})"
+}
+
 trigger_sync() {
     local pub_branch priv_branch
     pub_branch=$(read_env_var DATA_REPOSITORY_BRANCH "main")
@@ -149,6 +197,12 @@ trigger_sync() {
     if ! wait_for_api; then
         error "Cannot sync — API is not running"
         return 1
+    fi
+
+    # Snapshot log position before sync to only check new lines after
+    local log_lines_before=0
+    if [[ -f "$LOG_FILE" ]]; then
+        log_lines_before=$(wc -l < "$LOG_FILE")
     fi
 
     local response http_code
@@ -164,6 +218,24 @@ trigger_sync() {
     else
         warn "Sync returned HTTP ${http_code}"
     fi
+
+    # Check new log lines for sync errors
+    if [[ -f "$LOG_FILE" ]]; then
+        local sync_errors
+        sync_errors=$(tail -n +"$((log_lines_before + 1))" "$LOG_FILE" \
+            | grep -i 'error processing file\|failed to sync\|failed to clone' \
+            | tail -20) || true
+        if [[ -n "$sync_errors" ]]; then
+            echo ""
+            warn "${BOLD}Sync errors detected:${NC}"
+            echo "$sync_errors" | while IFS= read -r line; do
+                local clean
+                clean=$(echo "$line" | sed 's/^\[[0-9:]*\] @blms\/api:dev: //')
+                echo -e "  ${RED}x${NC} ${clean}"
+            done
+            echo ""
+        fi
+    fi
 }
 
 # ============================================================
@@ -176,6 +248,13 @@ cmd_up() {
 
     # .env
     ensure_env
+    # Guard: the docker-compose stack (README option 1) binds the same ports
+    if docker ps --format '{{.Names}}' 2>/dev/null | grep -q '^bitcoin-learning-management-system-'; then
+        error "The docker compose stack is running (bitcoin-learning-management-system-*)."
+        error "It binds the same ports (5432, 8108, 9000). Stop it first:"
+        error "    docker compose down"
+        exit 1
+    fi
 
     # node_modules
     if [[ ! -d "$PROJECT_DIR/node_modules" ]]; then
@@ -262,6 +341,62 @@ cmd_up() {
         ok "CDN running on localhost:8080"
     fi
 
+    # Ensure .env S3 vars point to local MinIO (before starting container so bucket name is correct)
+    local current_s3_endpoint
+    current_s3_endpoint=$(read_env_var S3_ENDPOINT "")
+    if [[ "$current_s3_endpoint" != "http://localhost:9000" ]]; then
+        info "Patching S3 env vars for local MinIO"
+        set_env_var S3_ENDPOINT "http://localhost:9000"
+        set_env_var S3_ACCESS_KEY "minioadmin"
+        set_env_var S3_SECRET_KEY "minioadmin"
+        set_env_var S3_BUCKET "blms-local"
+        set_env_var S3_REGION "us-east-1"
+    fi
+    if [[ "$(read_env_var S3_FORCE_PATH_STYLE "")" != "true" ]]; then
+        set_env_var S3_FORCE_PATH_STYLE "true"
+    fi
+
+    # MinIO (S3-compatible storage — required by sync for assignment PDFs)
+    if is_container_running "$MINIO_CONTAINER"; then
+        ok "MinIO already running"
+    else
+        if docker ps -a --filter "name=^${MINIO_CONTAINER}$" --format '{{.Names}}' 2>/dev/null | grep -q "^${MINIO_CONTAINER}$"; then
+            info "Restarting MinIO container (data preserved) ..."
+            docker start "$MINIO_CONTAINER" > /dev/null
+        else
+            info "Creating MinIO container ..."
+            docker run -d \
+                --name "$MINIO_CONTAINER" \
+                -p 127.0.0.1:9000:9000 \
+                -p 127.0.0.1:9001:9001 \
+                -e MINIO_ROOT_USER=minioadmin \
+                -e MINIO_ROOT_PASSWORD=minioadmin \
+                -v blms-local-minio-data:/data \
+                --restart unless-stopped \
+                minio/minio server /data --console-address ":9001" > /dev/null
+        fi
+        info "Waiting for MinIO ..."
+        for i in $(seq 1 20); do
+            if curl -sf http://localhost:9000/minio/health/live > /dev/null 2>&1; then
+                break
+            fi
+            sleep 1
+        done
+        ok "MinIO running on localhost:9000 (console: localhost:9001)"
+
+        # Create bucket if it doesn't exist (uses minio/mc image as a one-shot tool)
+        local bucket
+        bucket=$(read_env_var S3_BUCKET "blms-local")
+        if docker run --rm --net=host --entrypoint sh minio/mc -c \
+            "mc alias set local http://localhost:9000 minioadmin minioadmin > /dev/null 2>&1 \
+             && mc mb local/${bucket} --ignore-existing > /dev/null 2>&1"; then
+            ok "S3 bucket '${bucket}' ready"
+        else
+            warn "Could not auto-create S3 bucket '${bucket}'"
+            info "Create it manually via the MinIO console at http://localhost:9001"
+        fi
+    fi
+
     # Dev servers
     header "Dev servers"
 
@@ -291,8 +426,9 @@ cmd_up() {
 
     header "Ready"
     echo ""
-    echo -e "  ${GREEN}App running at:${NC}  ${BOLD}http://localhost:8181${NC}"
-    echo -e "  ${GREEN}API running at:${NC}  ${BOLD}http://localhost:3000${NC}"
+    echo -e "  ${GREEN}App running at:${NC}    ${BOLD}http://localhost:8181${NC}"
+    echo -e "  ${GREEN}API running at:${NC}    ${BOLD}http://localhost:3000${NC}"
+    echo -e "  ${GREEN}MinIO console:${NC}     ${BOLD}http://localhost:9001${NC}  ${DIM}(minioadmin/minioadmin)${NC}"
     echo ""
     echo -e "  Logs:    ${BOLD}cat ${LOG_FILE}${NC}"
     echo -e "  Errors:  ${BOLD}./scripts/local-dev.sh logs --errors${NC}"
@@ -328,7 +464,7 @@ cmd_down() {
     fi
 
     # Stop containers (keep them — restart is faster than recreate)
-    for container in "$CDN_CONTAINER" "$TYPESENSE_CONTAINER" "$POSTGRES_CONTAINER"; do
+    for container in "$CDN_CONTAINER" "$TYPESENSE_CONTAINER" "$MINIO_CONTAINER" "$POSTGRES_CONTAINER"; do
         if is_container_running "$container"; then
             docker stop "$container" > /dev/null
             ok "Stopped $container"
@@ -337,6 +473,44 @@ cmd_down() {
         fi
     done
 
+    # Reset branches to defaults
+    header "Resetting branches"
+
+    local app_branch
+    app_branch=$(cd "$PROJECT_DIR" && git branch --show-current 2>/dev/null || echo "")
+    if [[ -n "$app_branch" && "$app_branch" != "dev" ]]; then
+        (cd "$PROJECT_DIR" && git checkout dev 2>/dev/null) && ok "App branch: dev" || warn "Could not checkout dev"
+    else
+        ok "App branch already on dev"
+    fi
+
+    if [[ -f "$ENV_FILE" ]]; then
+        local content_url content_branch private_branch
+        content_url=$(read_env_var DATA_REPOSITORY_URL "")
+        content_branch=$(read_env_var DATA_REPOSITORY_BRANCH "main")
+        private_branch=$(read_env_var PRIVATE_DATA_REPOSITORY_BRANCH "")
+
+        local changed=false
+        if [[ -n "$content_url" && "$content_url" != "$UPSTREAM_CONTENT_REPO" ]]; then
+            set_env_var DATA_REPOSITORY_URL "$UPSTREAM_CONTENT_REPO"
+            changed=true
+        fi
+        if [[ "$content_branch" != "dev" ]]; then
+            set_env_var DATA_REPOSITORY_BRANCH "dev"
+            changed=true
+        fi
+        if [[ -n "$private_branch" && "$private_branch" != "dev" ]]; then
+            set_env_var PRIVATE_DATA_REPOSITORY_BRANCH "dev"
+            changed=true
+        fi
+
+        if [[ "$changed" == true ]]; then
+            ok "Content branches reset to dev (upstream)"
+        else
+            ok "Content branches already on dev"
+        fi
+    fi
+
     rm -f "$LOCK_FILE"
     ok "Everything stopped (containers preserved, use 'nuke' to delete)"
 }
@@ -344,10 +518,11 @@ cmd_down() {
 cmd_nuke() {
     header "Nuking everything"
     cmd_down
-    for container in "$CDN_CONTAINER" "$TYPESENSE_CONTAINER" "$POSTGRES_CONTAINER"; do
+    for container in "$CDN_CONTAINER" "$TYPESENSE_CONTAINER" "$MINIO_CONTAINER" "$POSTGRES_CONTAINER"; do
         docker rm "$container" 2>/dev/null && ok "Removed $container" || true
     done
     docker volume rm blms-local-pgdata 2>/dev/null && ok "Removed PostgreSQL data volume" || true
+    docker volume rm blms-local-minio-data 2>/dev/null && ok "Removed MinIO data volume" || true
     rm -rf "$LOG_DIR"
     ok "All data destroyed. Next 'up' will be a fresh start."
 }
@@ -362,10 +537,20 @@ cmd_status() {
 
     # Content branches
     if [[ -f "$ENV_FILE" ]]; then
-        local content_branch private_branch
+        local content_branch private_branch content_repo_url
         content_branch=$(read_env_var DATA_REPOSITORY_BRANCH "main")
         private_branch=$(read_env_var PRIVATE_DATA_REPOSITORY_BRANCH "")
-        echo -e "  Content branch:         ${BOLD}${content_branch}${NC}"
+        content_repo_url=$(read_env_var DATA_REPOSITORY_URL "")
+
+        local fork_indicator=""
+        if [[ -n "$content_repo_url" && "$content_repo_url" != "$UPSTREAM_CONTENT_REPO" ]]; then
+            fork_indicator=" ${YELLOW}(fork)${NC}"
+        fi
+
+        echo -e "  Content branch:         ${BOLD}${content_branch}${NC}${fork_indicator}"
+        if [[ -n "$fork_indicator" ]]; then
+            echo -e "  Content repo:           ${DIM}${content_repo_url}${NC}"
+        fi
         echo -e "  Private content branch: ${BOLD}${private_branch:-not set}${NC}"
     else
         echo -e "  Content branch:         ${DIM}no .env${NC}"
@@ -374,9 +559,10 @@ cmd_status() {
     echo ""
 
     # Services
-    local pg_status cdn_status api_status academy_status dev_status
+    local pg_status cdn_status minio_status api_status academy_status dev_status
     if is_container_running "$POSTGRES_CONTAINER"; then pg_status="${GREEN}running${NC}"; else pg_status="${RED}stopped${NC}"; fi
     if is_container_running "$CDN_CONTAINER"; then cdn_status="${GREEN}running${NC}"; else cdn_status="${RED}stopped${NC}"; fi
+    if is_container_running "$MINIO_CONTAINER"; then minio_status="${GREEN}running${NC}"; else minio_status="${RED}stopped${NC}"; fi
     if is_dev_running; then
         dev_status="${GREEN}running${NC} (PID $(cat "$PID_FILE"))"
     else
@@ -394,6 +580,7 @@ cmd_status() {
     fi
 
     echo -e "  PostgreSQL (docker):  ${pg_status}  :5432"
+    echo -e "  MinIO S3 (docker):    ${minio_status}  :9000 (console :9001)"
     echo -e "  CDN nginx (docker):   ${cdn_status}  :8080"
     echo -e "  Dev servers:          ${dev_status}"
     echo -e "    API:                ${api_status}  :3000"
@@ -452,42 +639,55 @@ cmd_logs() {
 
 cmd_branch() {
     local app_branch="" content_branch="" private_branch=""
+    local content_pr="" content_reset=false
     local interactive=true
 
     while [[ $# -gt 0 ]]; do
         case "$1" in
             --app)             app_branch="$2"; interactive=false; shift 2 ;;
             --content)         content_branch="$2"; interactive=false; shift 2 ;;
+            --content-pr)      content_pr="$2"; interactive=false; shift 2 ;;
+            --content-reset)   content_reset=true; interactive=false; shift ;;
             --private-content) private_branch="$2"; interactive=false; shift 2 ;;
             *)                 error "Unknown flag: $1"; exit 1 ;;
         esac
     done
 
     if [[ "$interactive" == true ]]; then
-        local current_app current_content current_private
+        local current_app current_content current_private current_repo_url
         current_app=$(cd "$PROJECT_DIR" && git branch --show-current 2>/dev/null || echo "unknown")
 
         ensure_env
         current_content=$(read_env_var DATA_REPOSITORY_BRANCH "main")
         current_private=$(read_env_var PRIVATE_DATA_REPOSITORY_BRANCH "")
+        current_repo_url=$(read_env_var DATA_REPOSITORY_URL "")
+
+        local fork_indicator=""
+        if [[ -n "$current_repo_url" && "$current_repo_url" != "$UPSTREAM_CONTENT_REPO" ]]; then
+            fork_indicator=" ${YELLOW}(fork)${NC}"
+        fi
 
         echo ""
         echo -e "  Current state:"
         echo -e "    App:             ${BOLD}${current_app}${NC}"
-        echo -e "    Content:         ${BOLD}${current_content}${NC}"
+        echo -e "    Content:         ${BOLD}${current_content}${NC}${fork_indicator}"
         echo -e "    Private content: ${BOLD}${current_private:-not set}${NC}"
         echo ""
         echo -e "  ${BOLD}1)${NC} Switch app branch"
         echo -e "  ${BOLD}2)${NC} Switch content branch"
-        echo -e "  ${BOLD}3)${NC} Switch both"
-        echo -e "  ${BOLD}4)${NC} Cancel"
+        echo -e "  ${BOLD}3)${NC} Review a content PR (handles forks)"
+        echo -e "  ${BOLD}4)${NC} Reset content to upstream main"
+        echo -e "  ${BOLD}5)${NC} Switch both (app + content)"
+        echo -e "  ${BOLD}6)${NC} Cancel"
         echo ""
-        read -rp "$(echo -e "${CYAN}>${NC}") Choice [1/2/3/4]: " choice
+        read -rp "$(echo -e "${CYAN}>${NC}") Choice [1-6]: " choice
 
         case "$choice" in
             1) _pick_app_branch; app_branch="$PICKED_BRANCH" ;;
             2) _pick_content_branch; content_branch="$PICKED_BRANCH" ;;
-            3)
+            3) _pick_content_pr; content_pr="$PICKED_PR" ;;
+            4) content_reset=true ;;
+            5)
                 _pick_app_branch; app_branch="$PICKED_BRANCH"
                 _pick_content_branch; content_branch="$PICKED_BRANCH"
                 ;;
@@ -519,7 +719,36 @@ cmd_branch() {
     local need_sync=false
     ensure_env
 
+    # --content-reset: restore upstream repo + main branch
+    if [[ "$content_reset" == true ]]; then
+        header "Resetting content to upstream"
+        set_env_var DATA_REPOSITORY_URL "$UPSTREAM_CONTENT_REPO"
+        set_env_var DATA_REPOSITORY_BRANCH "main"
+        ok "Content repo: ${BOLD}${UPSTREAM_CONTENT_REPO}${NC}"
+        ok "Content branch: ${BOLD}main${NC}"
+        need_sync=true
+    fi
+
+    # --content-pr: resolve PR, set fork URL + branch
+    if [[ -n "$content_pr" ]]; then
+        header "Switching to content PR"
+        _resolve_content_pr "$content_pr"
+        set_env_var DATA_REPOSITORY_URL "$PR_REPO_URL"
+        set_env_var DATA_REPOSITORY_BRANCH "$PR_BRANCH"
+        ok "Content repo set to: ${BOLD}${PR_REPO_URL}${NC}"
+        ok "Content branch set to: ${BOLD}${PR_BRANCH}${NC}"
+        need_sync=true
+    fi
+
     if [[ -n "$content_branch" ]]; then
+        # When explicitly setting a branch, reset URL to upstream
+        # (user likely wants a branch from the main repo, not the fork)
+        local current_url
+        current_url=$(read_env_var DATA_REPOSITORY_URL "")
+        if [[ -n "$current_url" && "$current_url" != "$UPSTREAM_CONTENT_REPO" ]]; then
+            info "Resetting content repo URL to upstream (was pointing to a fork)"
+            set_env_var DATA_REPOSITORY_URL "$UPSTREAM_CONTENT_REPO"
+        fi
         set_env_var DATA_REPOSITORY_BRANCH "$content_branch"
         ok "Content branch set to: ${BOLD}${content_branch}${NC}"
         need_sync=true
@@ -532,6 +761,7 @@ cmd_branch() {
     fi
 
     if [[ "$need_sync" == true ]]; then
+        restart_dev_servers
         trigger_sync
     fi
 }
@@ -587,6 +817,85 @@ _pick_content_branch() {
         read -rp "$(echo -e "${CYAN}>${NC}") Branch name: " PICKED_BRANCH
         [[ -z "$PICKED_BRANCH" ]] && { error "No selection"; exit 1; }
     fi
+}
+
+_resolve_content_pr() {
+    local pr_number="$1"
+
+    if ! command -v gh &>/dev/null; then
+        error "gh CLI not found — install it: https://cli.github.com"
+        exit 1
+    fi
+
+    info "Fetching PR #${pr_number} from ${BOLD}${UPSTREAM_CONTENT_SLUG}${NC} ..."
+    local pr_json
+    pr_json=$(gh pr view "$pr_number" --repo "$UPSTREAM_CONTENT_SLUG" \
+        --json headRefName,headRepository,headRepositoryOwner,title,number,state 2>/dev/null) || {
+        error "Could not fetch PR #${pr_number} from ${UPSTREAM_CONTENT_SLUG}"
+        error "Check that the PR number is correct and you have gh auth"
+        exit 1
+    }
+
+    PR_BRANCH=$(echo "$pr_json" | jq -r '.headRefName')
+    PR_TITLE=$(echo "$pr_json" | jq -r '.title')
+    PR_NUMBER=$(echo "$pr_json" | jq -r '.number')
+    PR_STATE=$(echo "$pr_json" | jq -r '.state')
+    local owner repo_name
+    owner=$(echo "$pr_json" | jq -r '.headRepositoryOwner.login')
+    repo_name=$(echo "$pr_json" | jq -r '.headRepository.name')
+    PR_REPO_URL="https://github.com/${owner}/${repo_name}"
+
+    local fork_label=""
+    if [[ "$PR_REPO_URL" != "$UPSTREAM_CONTENT_REPO" ]]; then
+        fork_label=" ${YELLOW}(fork)${NC}"
+    fi
+
+    ok "PR #${PR_NUMBER}: ${PR_TITLE}"
+    info "  Branch: ${BOLD}${PR_BRANCH}${NC}"
+    info "  Repo:   ${BOLD}${PR_REPO_URL}${NC}${fork_label}"
+    info "  State:  ${PR_STATE}"
+}
+
+_pick_content_pr() {
+    if ! command -v gh &>/dev/null; then
+        error "gh CLI not found — install it: https://cli.github.com"
+        exit 1
+    fi
+
+    info "Fetching open PRs from ${BOLD}${UPSTREAM_CONTENT_SLUG}${NC} ..."
+    local pr_list
+    pr_list=$(gh pr list --repo "$UPSTREAM_CONTENT_SLUG" --state open --limit 100 \
+        --json number,title,headRefName,author \
+        --jq '.[] | "#\(.number)  \(.headRefName)  \(.title)  @\(.author.login)"' 2>/dev/null)
+
+    if [[ -z "$pr_list" ]]; then
+        warn "No open PRs found"
+        exit 1
+    fi
+
+    local pr_count
+    pr_count=$(echo "$pr_list" | wc -l | tr -d ' ')
+    info "Found ${BOLD}${pr_count}${NC} open PRs"
+
+    local selection
+    if command -v fzf &>/dev/null; then
+        selection=$(echo "$pr_list" | fzf \
+            --height=~40% \
+            --reverse \
+            --prompt="pr> " \
+            --header="Type to fuzzy-search · ESC to cancel" \
+            --delimiter='  ' \
+            --with-nth=1,3,4 \
+        ) || { error "Cancelled"; exit 1; }
+    else
+        warn "fzf not found — install it for fuzzy search"
+        echo "$pr_list"
+        read -rp "$(echo -e "${CYAN}>${NC}") PR number: " selection
+        [[ -z "$selection" ]] && { error "No selection made"; exit 1; }
+    fi
+
+    # Extract PR number (strip the # prefix)
+    PICKED_PR=$(echo "$selection" | awk -F'  ' '{print $1}' | tr -d '#')
 }
 
 cmd_sync() {
@@ -674,6 +983,93 @@ _resolve_course() {
     fi
     echo "$course_id"
 }
+# Course granting access to the career portal (BTC402, see COURSES_CAREER_ACCESS)
+CAREER_COURSE_ID="0b71eea1-4811-4601-a6ad-38d043b52dca"
+
+_ensure_career_access() {
+    local uid="$1"
+    # Course row must exist (FK). Create a minimal stub if content is not synced.
+    local course
+    course=$(_db "SELECT id FROM content.courses WHERE id = '${CAREER_COURSE_ID}';")
+    if [[ -z "$course" ]]; then
+        info "Course BTC402 not in DB (content not synced) — creating stub"
+        _db "INSERT INTO content.courses (id, level, hours, topic, subtopic, last_commit, index)
+             VALUES ('${CAREER_COURSE_ID}', 'beginner', 1, 'bitcoin', 'career', 'local-dev-stub', 'btc402');" > /dev/null
+    fi
+    local paid
+    paid=$(_db "SELECT 1 FROM users.course_payment WHERE uid = '${uid}' AND course_id = '${CAREER_COURSE_ID}' AND payment_status = 'paid';")
+    if [[ -z "$paid" ]]; then
+        _db "INSERT INTO users.course_payment (uid, course_id, payment_status, amount, payment_id, method)
+             VALUES ('${uid}', '${CAREER_COURSE_ID}', 'paid', 0, 'local-dev-grant', 'free');" > /dev/null
+    fi
+    ok "Career portal access granted (paid BTC402)"
+}
+
+_ensure_career_profile() {
+    # Creates/returns a career profile id for the user.
+    # IMPORTANT: always use gen_random_uuid() — zod validates UUIDs strictly
+    # (hand-crafted ids like 1111... fail output validation with an opaque 500).
+    local uid="$1"
+    local pid
+    pid=$(_db "SELECT id FROM users.career_profiles WHERE uid = '${uid}';")
+    if [[ -z "$pid" ]]; then
+        pid=$(_db "INSERT INTO users.career_profiles (uid, id) VALUES ('${uid}', gen_random_uuid()) RETURNING id;" | head -n1)
+    fi
+    echo "$pid"
+}
+
+_career_fill_step1() {
+    local uid="$1" pid="$2"
+    _db "UPDATE users.career_profiles SET
+            first_name = 'Test', last_name = 'User', country = 'France', email = '${TEST_EMAIL}'
+         WHERE id = '${pid}';" > /dev/null
+    _db "INSERT INTO users.career_languages (career_profile_id, language_code, level)
+         VALUES ('${pid}', 'en', 'fluent') ON CONFLICT DO NOTHING;" > /dev/null
+}
+
+_career_fill_step2() {
+    local pid="$1"
+    # job_titles is seeded by migrations; pick a real row (never invent ids)
+    _db "INSERT INTO users.career_roles (career_profile_id, role_id, level)
+         SELECT '${pid}', id, 'junior' FROM users.job_titles LIMIT 1
+         ON CONFLICT DO NOTHING;" > /dev/null
+    _db "INSERT INTO users.career_company_sizes (career_profile_id, size)
+         VALUES ('${pid}', '1To10') ON CONFLICT DO NOTHING;" > /dev/null
+}
+
+_career_fill_step3() {
+    local pid="$1"
+    _db "UPDATE users.career_profiles SET
+            cv_url = '/api/files/cvs/${pid}',
+            motivation_letter = 'Local-dev seeded motivation letter.'
+         WHERE id = '${pid}';" > /dev/null
+}
+
+_apply_career_preset() {
+    local preset="$1" uid="$2"
+    _ensure_career_access "$uid"
+    local pid
+    pid=$(_ensure_career_profile "$uid")
+    case "$preset" in
+        career-access) ;; # access only, no profile data
+        career-step1) _career_fill_step1 "$uid" "$pid" ;;
+        career-step2) _career_fill_step1 "$uid" "$pid"; _career_fill_step2 "$pid" ;;
+        career-step3) _career_fill_step1 "$uid" "$pid"; _career_fill_step2 "$pid"; _career_fill_step3 "$pid" ;;
+        career-complete)
+            _career_fill_step1 "$uid" "$pid"; _career_fill_step2 "$pid"; _career_fill_step3 "$pid"
+            _db "UPDATE users.career_profiles SET are_terms_accepted = true, allow_receiving_emails = true WHERE id = '${pid}';" > /dev/null
+            ;;
+        career-reset)
+            _db "DELETE FROM users.career_profiles WHERE uid = '${uid}';" > /dev/null
+            ok "Career profile deleted"
+            return
+            ;;
+    esac
+    ok "Preset '${preset}' applied (profile ${pid})"
+    _db_pretty "SELECT first_name, country, cv_url IS NOT NULL AS has_cv, motivation_letter IS NOT NULL AS has_letter, are_terms_accepted, allow_receiving_emails
+                FROM users.career_profiles WHERE id = '${pid}';"
+}
+
 
 _apply_preset() {
     local preset="$1" uid="$2" course_id="$3"
@@ -761,6 +1157,10 @@ _apply_preset() {
             echo "  assignment-submitted  — has submitted work"
             echo "  not-selected          — not selected for assignment"
             echo "  clean                 — reset all assignment fields to null"
+            echo "  career-access         — grant career portal access (paid BTC402)"
+            echo "  career-step1|2|3      — career profile filled up to step N"
+            echo "  career-complete       — career profile fully validated"
+            echo "  career-reset          — delete career profile"
             exit 1
             ;;
     esac
@@ -813,6 +1213,14 @@ cmd_context() {
         echo -e "  ${BOLD}not-selected${NC}           not selected for assignment"
         echo -e "  ${BOLD}clean${NC}                  reset all assignment fields"
         echo ""
+        echo -e "  ${BOLD}career-access${NC}          grant career portal access (paid BTC402)"
+        echo -e "  ${BOLD}career-step1|2|3${NC}       career profile filled up to step N"
+        echo -e "  ${BOLD}career-complete${NC}        career profile fully validated"
+        echo -e "  ${BOLD}career-reset${NC}           delete career profile"
+        echo ""
+        echo "Career presets don't need --course:"
+        echo "  ./scripts/local-dev.sh context --preset career-step3"
+        echo ""
         echo "Usage: ./scripts/local-dev.sh context --preset <name> --course <id-or-name>"
         return
     fi
@@ -820,6 +1228,11 @@ cmd_context() {
     # Ensure test user exists
     local uid
     uid=$(_ensure_test_user)
+    # Career presets are course-independent
+    if [[ "$preset" == career-* ]]; then
+        _apply_career_preset "$preset" "$uid"
+        return
+    fi
 
     if [[ "$setup" == true && -z "$course" ]]; then
         echo ""
