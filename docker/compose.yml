@@ -102,7 +102,7 @@ services:
       - ./key.asc:/tmp/key.asc:ro
     labels:
       - traefik.enable=true
-      - traefik.http.routers.university-api-${ENV}.rule=((Host(`${DOMAIN_NETWORK}`) || Host(`${DOMAIN_ACADEMY}`) || Host(`contribute.${DOMAIN_ACADEMY}`)) && PathPrefix(`/api`))
+      - traefik.http.routers.university-api-${ENV}.rule=((Host(`${DOMAIN_NETWORK}`) || Host(`${DOMAIN_ACADEMY}`)) && PathPrefix(`/api`))
       - traefik.http.routers.university-api-${ENV}.entrypoints=https
       - traefik.http.routers.university-api-${ENV}.tls=true
       - traefik.http.services.university-api-${ENV}.loadbalancer.server.port=3000
@@ -118,7 +118,7 @@ services:
       - ./data/cdn:/var/www/cdn
     labels:
       - traefik.enable=true
-      - traefik.http.routers.university-cdn-${ENV}.rule=((Host(`${DOMAIN_NETWORK}`) || Host(`${DOMAIN_ACADEMY}`) || Host(`contribute.${DOMAIN_ACADEMY}`)) && PathPrefix(`/cdn`))
+      - traefik.http.routers.university-cdn-${ENV}.rule=((Host(`${DOMAIN_NETWORK}`) || Host(`${DOMAIN_ACADEMY}`)) && PathPrefix(`/cdn`))
       - traefik.http.routers.university-cdn-${ENV}.entrypoints=https
       - traefik.http.routers.university-cdn-${ENV}.tls=true
       - traefik.http.routers.university-cdn-${ENV}.middlewares=university-cdn-${ENV}-compress
@@ -198,17 +198,6 @@ services:
       - traefik.http.routers.university-network-${ENV}.tls=true
       - traefik.http.routers.university-network-${ENV}.middlewares=university-academy-${ENV}-compress
       - traefik.http.middlewares.university-network-${ENV}-compress.compress=true
-
-  contribute:
-    <<: *defaults
-    image: ghcr.io/planb-network/blms-contribute:${IMAGE_TAG}
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.university-contribute-${ENV}.rule=Host(`contribute.${DOMAIN_ACADEMY}`)
-      - traefik.http.routers.university-contribute-${ENV}.entrypoints=https
-      - traefik.http.routers.university-contribute-${ENV}.tls=true
-      - traefik.http.routers.university-contribute-${ENV}.middlewares=university-academy-${ENV}-compress
-      - traefik.http.middlewares.university-contribute-${ENV}-compress.compress=true
 
   design_system:
     <<: *defaults
