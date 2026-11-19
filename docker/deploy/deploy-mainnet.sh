@@ -25,7 +25,19 @@ fi
 ref="refs/heads/$branch"
 sha="${SSH_ORIGINAL_COMMAND:-}"
 if [[ "$sha" =~ ^[0-9a-f]{40}$ ]]; then
-  ref="$sha"
+  # Only deploy commits that are on the mainnet branch. raw.githubusercontent
+  # also serves commits that exist only in forks, so without this check
+  # whoever holds the key could deploy a compose.yml from their own fork.
+  status="$(curl -fsS --max-time 20 \
+    "https://api.github.com/repos/PlanB-Network/bitcoin-learning-management-system/compare/$sha...$branch" \
+    | jq -r '.status // empty' || true)"
+  case "$status" in
+    identical|ahead) ref="$sha" ;;
+    *)
+      echo "Refusing to deploy $sha: not on the $branch branch (compare status: ${status:-unknown})." | tee -a "$log" >&2
+      exit 1
+      ;;
+  esac
 elif [[ -n "$sha" ]]; then
   echo "Ignoring unexpected argument; deploying the $branch branch head." >&2
 fi

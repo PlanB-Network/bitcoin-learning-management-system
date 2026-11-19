@@ -381,6 +381,9 @@ jobs:
     # Testnet is shut down (planbtest.academy is no longer ours), so only
     # mainnet deploys.
     if: (github.event_name == 'push') && (github.ref == 'refs/heads/mainnet')
+    # The deploy key lives in the "production" environment, which only the
+    # mainnet branch may use: workflows on other branches can't read it.
+    environment: production
     concurrency:
       group: deploy-mainnet
       cancel-in-progress: false
