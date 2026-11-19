@@ -377,8 +377,16 @@ jobs:
           cache-to: type=gha,mode=max,scope=global
 
   deploy:
-    name: Deploy hook
-    if: (github.event_name == 'push') && (github.ref == 'refs/heads/mainnet' || github.ref == 'refs/heads/testnet')
+    name: Deploy
+    # Testnet is shut down (planbtest.academy is no longer ours), so only
+    # mainnet deploys.
+    if: (github.event_name == 'push') && (github.ref == 'refs/heads/mainnet')
+    # The deploy key lives in the "production" environment, which only the
+    # mainnet branch may use: workflows on other branches can't read it.
+    environment: production
+    concurrency:
+      group: deploy-mainnet
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     needs:
       - build_api
@@ -389,24 +397,31 @@ jobs:
       - build_pear_sync
       - build_prerender
     steps:
-      - name: Invoke deployment hook
-        uses: distributhor/workflow-webhook@v3
-        with:
-          webhook_url: ${{ github.ref == 'refs/heads/mainnet' && secrets.MAINNET_WEBHOOK_URL || secrets.TESTNET_WEBHOOK_URL }}
-          webhook_secret: ${{ github.ref == 'refs/heads/mainnet' && secrets.MAINNET_WEBHOOK_SECRET || secrets.TESTNET_WEBHOOK_SECRET }}
-
-      # The hook answers 200 before doing anything (it runs ci-hook.sh in the
-      # background), so a green webhook step proves nothing. Poll until the
-      # target actually serves the commit we just built.
-      - name: Verify deployed build
-        timeout-minutes: 30
+      # The deploy key is pinned server-side to /usr/local/bin/deploy-mainnet.sh
+      # (restrict,command=...), so it can only run the deploy. The only thing
+      # we pass is the commit SHA, so the server uses this commit's compose.yml.
+      - name: Deploy over SSH
+        timeout-minutes: 20
         env:
-          TARGET_URL: ${{ github.ref == 'refs/heads/mainnet' && 'https://planb.academy' || 'https://planbtest.academy' }}
+          SSH_KEY: ${{ secrets.MAINNET_DEPLOY_SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.MAINNET_DEPLOY_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes \
+            -o ServerAliveInterval=30 ubuntu@65.21.231.90 "${{ github.sha }}"
+
+      # The SSH step waits for the deploy to finish, so this is a final check
+      # that the API actually serves the new build.
+      - name: Verify deployed build
+        timeout-minutes: 10
+        env:
+          TARGET_URL: https://planb.academy
           EXPECTED_SHA: ${{ github.sha }}
         run: |
           echo "Waiting for ${TARGET_URL}/api/version to report ${EXPECTED_SHA}"
-          # 404 / network error means "not deployed yet": the endpoint is absent
-          # from older builds, and containers are down during pull + up.
           until [ "$(curl -sf --max-time 10 "${TARGET_URL}/api/version" | jq -r '.sha // empty')" = "${EXPECTED_SHA}" ]; do
             echo "Not deployed yet, retrying in 15s."
             sleep 15
